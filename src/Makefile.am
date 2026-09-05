@@ -186,6 +186,7 @@ BITCOIN_CORE_H = \
   random.h \
   randomenv.h \
   reverse_iterator.h \
+  roster/record.h \
   rpc/blockchain.h \
   rpc/client.h \
   rpc/mining.h \
@@ -507,6 +508,7 @@ libbitcoin_common_a_SOURCES = \
   policy/policy.cpp \
   protocol.cpp \
   psbt.cpp \
+  roster/record.cpp \
   rpc/rawtransaction_util.cpp \
   rpc/util.cpp \
   scheduler.cpp \

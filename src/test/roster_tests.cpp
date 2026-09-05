@@ -346,7 +346,7 @@ BOOST_AUTO_TEST_CASE(signing_key_per_type)
         r.type = RecordType::DELEGATE;
         r.id_key = XOnly(id);
         r.op_key = XOnly(op);
-        r.expiry_height = 500;
+        r.expiry_height = 500 + MIN_TTL;
         BOOST_CHECK(SigningKeyBytes(r) == XOnly(id));
         SignInPlace(r, id, CHAIN_MAIN);
         BOOST_CHECK(VerifyRecord(r, SerializeRecord(r), CHAIN_MAIN));
@@ -384,16 +384,28 @@ BOOST_AUTO_TEST_CASE(tags_are_distinct)
 //! both edges are pinned rather than assumed.
 BOOST_AUTO_TEST_CASE(expiry_window_bounds)
 {
-    BOOST_CHECK(!ExpiryInRange(100, 100));                 // equal: already stale
-    BOOST_CHECK(!ExpiryInRange(99, 100));                  // in the past
-    BOOST_CHECK(ExpiryInRange(101, 100));                  // one block ahead
-    BOOST_CHECK(ExpiryInRange(100 + MAX_TTL, 100));        // exactly the cap
-    BOOST_CHECK(!ExpiryInRange(100 + MAX_TTL + 1, 100));   // one past the cap
-    BOOST_CHECK(!ExpiryInRange(5, -1));                    // no chain yet
+    // The floor. Below it a peer could renew every block, which costs 56.8 MB
+    // of permanent chain a year from a single identity.
+    BOOST_CHECK(!ExpiryInRange(100, 100));                       // already stale
+    BOOST_CHECK(!ExpiryInRange(99, 100));                        // in the past
+    BOOST_CHECK(!ExpiryInRange(101, 100));                       // one block of life
+    BOOST_CHECK(!ExpiryInRange(100 + MIN_TTL - 1, 100));         // one short of the floor
+    BOOST_CHECK(ExpiryInRange(100 + MIN_TTL, 100));              // exactly the floor
+
+    // The cap. Beyond it the roster stops being a function of a bounded window.
+    BOOST_CHECK(ExpiryInRange(100 + MAX_TTL, 100));              // exactly the cap
+    BOOST_CHECK(!ExpiryInRange(100 + MAX_TTL + 1, 100));         // one past the cap
+
+    BOOST_CHECK(!ExpiryInRange(5, -1));                          // no chain yet
 
     // Must not wrap. A near-maximal uint32 expiry against a realistic height is
-    // exactly the input that a naive confirm_height + MAX_TTL would overflow.
+    // exactly the input that 32-bit arithmetic would overflow into accepting.
     BOOST_CHECK(!ExpiryInRange(0xFFFFFFFFu, 1219021));
+
+    // A month is the shortest renewal cycle and a year the longest, so those
+    // are the two cadences the design actually offers.
+    BOOST_CHECK_EQUAL(MIN_TTL, 14400U);                          // ~30 days at 180 s
+    BOOST_CHECK_EQUAL(MAX_TTL, 175320U);                         // ~1 year at 180 s
 }
 
 //! What a record contributes to a block filter, and what authorises it. These
@@ -456,7 +468,7 @@ CommitmentEntry MakeEntry(const CKey& key, uint32_t height)
     Record rec;
     rec.type = RecordType::ANNOUNCE;
     rec.op_key = entry.key;
-    rec.expiry_height = height + 1000;
+    rec.expiry_height = height + MIN_TTL;
     rec.endpoints.push_back(EpIPv4(9345));
     entry.raw = SerializeRecord(rec);
     return entry;
@@ -596,7 +608,7 @@ std::vector<unsigned char> SignedAnnounceAt(const CKey& key, int height)
     Record rec;
     rec.type = RecordType::ANNOUNCE;
     rec.op_key = XOnly(key);
-    rec.expiry_height = height + 100;
+    rec.expiry_height = height + MIN_TTL;
     rec.endpoints.push_back(EpIPv4(9345));
     SignInPlace(rec, key, Params().NetworkIDString());
     return SerializeRecord(rec);
@@ -786,7 +798,7 @@ BOOST_AUTO_TEST_CASE(build_roster_drops_expired)
     Record rec;
     rec.type = RecordType::ANNOUNCE;
     rec.op_key = XOnly(key);
-    rec.expiry_height = 905; // five blocks of life
+    rec.expiry_height = 900 + MIN_TTL; // the shortest life a record may claim
     rec.endpoints.push_back(EpIPv4(9345));
     SignInPlace(rec, key, Params().NetworkIDString());
 
@@ -794,10 +806,10 @@ BOOST_AUTO_TEST_CASE(build_roster_drops_expired)
     BOOST_REQUIRE(index.WriteBlock(BlockWith({SerializeRecord(rec)}), &bi));
 
     std::map<KeyBytes, RosterEntry> roster;
-    BOOST_REQUIRE(index.BuildRoster(904, roster));
+    BOOST_REQUIRE(index.BuildRoster(900 + MIN_TTL - 1, roster));
     BOOST_CHECK_EQUAL(roster.size(), 1U);
 
-    BOOST_REQUIRE(index.BuildRoster(905, roster));
+    BOOST_REQUIRE(index.BuildRoster(900 + MIN_TTL, roster));
     BOOST_CHECK_EQUAL(roster.size(), 0U); // expiry_height is not inclusive
 }
 

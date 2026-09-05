@@ -108,23 +108,39 @@ static constexpr size_t ADDR_SIZE_CJDNS = 16;
 size_t EndpointAddrSize(uint8_t network);
 
 /**
- * The rolling window, in blocks. ~30 days at 180-second spacing.
+ * The rolling window, in blocks — one year at 180-second spacing.
  *
- * This is the single most consequential constant in the design. It caps how
- * far in the future an expiry may sit, which is what makes the live roster a
- * function of the last MAX_TTL blocks rather than of the whole chain — so a
- * cold roster build stays O(MAX_TTL) forever.
+ * The single most consequential constant here. It caps how far ahead an expiry
+ * may sit, which is what makes the live roster a function of the last MAX_TTL
+ * blocks rather than of the whole chain, so a cold build stays O(MAX_TTL)
+ * forever rather than O(chain).
+ *
+ * A year rather than a month because renewal is the dominant cost: at 324 B on
+ * disk per announcement, a peer renewing yearly costs 324 B/yr against 3.9 KB
+ * monthly and 16.9 KB weekly. The price is a larger window to scan — roughly
+ * 158 MB at the measured 904-byte mean block, against 13 MB at a month.
  */
-static constexpr uint32_t MAX_TTL = 14400;
+static constexpr uint32_t MAX_TTL = 175320;
 
 /**
- * Whether an absolute expiry height is legal for a record confirmed at
- * `confirm_height`.
+ * The shortest life a record may claim — one month.
  *
- * Both halves are load-bearing. An expiry at or before confirmation is already
- * stale and would let a record be published dead; an expiry beyond the window
- * would escape the bounded scan and quietly make the roster O(chain).
+ * Without a floor the minimum viable TTL is a single block, and a peer renewing
+ * every block costs 56.8 MB of permanent chain a year on its own: a third of
+ * BPS's entire baseline growth, from one identity, for about 0.42 BPS in fees.
+ * That asymmetry is the denial-of-service §2 reversed the fee-less prototype to
+ * avoid.
+ *
+ * The floor does not by itself stop a peer republishing a long-lived record
+ * every block. What it does is remove any legitimate reason to: with a
+ * month-minimum life, re-announcing sooner gains the announcer nothing, since
+ * the roster keeps only the latest record either way. It converts a plausible
+ * usage pattern into self-evident waste, which is the most a stateless check at
+ * this layer can do. Rate-limiting the redundant republication itself needs
+ * mempool state and belongs with §3's per-block cap.
  */
+static constexpr uint32_t MIN_TTL = 14400;
+
 bool ExpiryInRange(uint32_t expiry_height, int confirm_height);
 
 /** A reachable address, encoded as BIP155: net(1) || addr(n) || port(2, BE). */

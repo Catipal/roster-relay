@@ -85,7 +85,9 @@ bool ExpiryInRange(uint32_t expiry_height, int confirm_height)
 {
     if (confirm_height < 0) return false;
     const uint64_t confirm = static_cast<uint64_t>(confirm_height);
-    return expiry_height > confirm && expiry_height <= confirm + MAX_TTL;
+    // 64-bit throughout: confirm + MAX_TTL would overflow uint32 for a
+    // near-maximal expiry, and the comparison would then wrap into accepting it.
+    return expiry_height >= confirm + MIN_TTL && expiry_height <= confirm + MAX_TTL;
 }
 
 bool operator==(const Endpoint& a, const Endpoint& b)

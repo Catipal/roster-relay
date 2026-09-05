@@ -3,6 +3,8 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <key.h>
+#include <primitives/block.h>
+#include <roster/commitment.h>
 #include <roster/record.h>
 #include <test/util/setup_common.h>
 
@@ -438,6 +440,113 @@ BOOST_AUTO_TEST_CASE(record_keys_and_signer_per_type)
         BOOST_CHECK_EQUAL(RecordKeys(r).size(), 2U);
         BOOST_CHECK(SigningKeyBytes(r) == XOnly(recovery));
     }
+}
+
+namespace {
+
+CommitmentEntry MakeEntry(const CKey& key, uint32_t height)
+{
+    CommitmentEntry entry;
+    entry.key = XOnly(key);
+    entry.height = height;
+
+    Record rec;
+    rec.type = RecordType::ANNOUNCE;
+    rec.op_key = entry.key;
+    rec.expiry_height = height + 1000;
+    rec.endpoints.push_back(EpIPv4(9345));
+    entry.raw = SerializeRecord(rec);
+    return entry;
+}
+
+} // namespace
+
+/**
+ * The commitment is consensus-critical once activated, so the root must depend
+ * on the roster's contents and on nothing else — in particular not on the
+ * order a node happened to walk its database in.
+ */
+BOOST_AUTO_TEST_CASE(commitment_root_is_order_independent)
+{
+    const CommitmentEntry a = MakeEntry(MakeKey(30), 100);
+    const CommitmentEntry b = MakeEntry(MakeKey(31), 101);
+    const CommitmentEntry c = MakeEntry(MakeKey(32), 102);
+
+    const uint256 r1 = MerkleRoot({a, b, c});
+    const uint256 r2 = MerkleRoot({c, a, b});
+    const uint256 r3 = MerkleRoot({b, c, a});
+
+    BOOST_CHECK(r1 == r2);
+    BOOST_CHECK(r2 == r3);
+    BOOST_CHECK(r1 != uint256());
+
+    // An empty roster commits to a value no populated roster can produce.
+    BOOST_CHECK(MerkleRoot({}) == uint256());
+}
+
+BOOST_AUTO_TEST_CASE(commitment_covers_height_and_membership)
+{
+    const CKey key = MakeKey(33);
+
+    // Height is committed explicitly because §1 keeps time out of the record:
+    // without this a record could be proved present without proving when.
+    BOOST_CHECK(MerkleRoot({MakeEntry(key, 100)}) != MerkleRoot({MakeEntry(key, 101)}));
+
+    // Membership changes the root, including at odd counts, where the merkle
+    // construction duplicates a trailing leaf.
+    const CommitmentEntry a = MakeEntry(MakeKey(34), 1);
+    const CommitmentEntry b = MakeEntry(MakeKey(35), 2);
+    const CommitmentEntry c = MakeEntry(MakeKey(36), 3);
+    BOOST_CHECK(MerkleRoot({a, b}) != MerkleRoot({a, b, c}));
+
+    // Duplicate keys are a caller error, not something to hash anyway: the
+    // trailing-leaf duplication is only unambiguous while leaves are unique.
+    bool duplicate = false;
+    BOOST_CHECK(MerkleRoot({a, a}, &duplicate) == uint256());
+    BOOST_CHECK(duplicate);
+    duplicate = true;
+    MerkleRoot({a, b}, &duplicate);
+    BOOST_CHECK(!duplicate);
+}
+
+BOOST_AUTO_TEST_CASE(commitment_script_roundtrip)
+{
+    const uint256 root = MerkleRoot({MakeEntry(MakeKey(37), 500)});
+
+    CMutableTransaction coinbase;
+    coinbase.vin.resize(1);
+    coinbase.vout.resize(1);
+    coinbase.vout[0].scriptPubKey = CScript() << OP_TRUE;
+
+    CBlock block;
+    block.vtx.push_back(MakeTransactionRef(coinbase));
+    BOOST_CHECK_EQUAL(GetCommitmentIndex(block), NO_ROSTER_COMMITMENT);
+
+    coinbase.vout.push_back(CTxOut(0, MakeCommitmentScript(root)));
+    block.vtx[0] = MakeTransactionRef(coinbase);
+    BOOST_CHECK_EQUAL(GetCommitmentIndex(block), 1);
+
+    uint256 found;
+    BOOST_CHECK(GetCommitmentRoot(block, found));
+    BOOST_CHECK(found == root);
+
+    // A miner may only append, so the last commitment is the authoritative one
+    // — the same rule the witness commitment follows.
+    const uint256 later = MerkleRoot({MakeEntry(MakeKey(38), 501)});
+    coinbase.vout.push_back(CTxOut(0, MakeCommitmentScript(later)));
+    block.vtx[0] = MakeTransactionRef(coinbase);
+    BOOST_CHECK_EQUAL(GetCommitmentIndex(block), 2);
+    BOOST_CHECK(GetCommitmentRoot(block, found) && found == later);
+
+    // A corrupted header must not be read as a commitment at all.
+    CScript wrong_header = MakeCommitmentScript(root);
+    wrong_header[2] ^= 0x01;
+    CMutableTransaction only_bad;
+    only_bad.vin.resize(1);
+    only_bad.vout.push_back(CTxOut(0, wrong_header));
+    CBlock bad_block;
+    bad_block.vtx.push_back(MakeTransactionRef(only_bad));
+    BOOST_CHECK_EQUAL(GetCommitmentIndex(bad_block), NO_ROSTER_COMMITMENT);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

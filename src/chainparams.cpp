@@ -96,6 +96,12 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_TAPROOT].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TAPROOT].nTimeout = 1230767999; // December 31, 2008
 
+        // Defined but not scheduled: an expired window, so the roster
+        // commitment is inert until a real one is chosen. See DEPLOYMENT_ROSTER.
+        consensus.vDeployments[Consensus::DEPLOYMENT_ROSTER].bit = 3;
+        consensus.vDeployments[Consensus::DEPLOYMENT_ROSTER].nStartTime = 1199145601; // January 1, 2008
+        consensus.vDeployments[Consensus::DEPLOYMENT_ROSTER].nTimeout = 1230767999; // December 31, 2008
+
         consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000074e123470d6bcaa7c"); //block 236,425
         consensus.defaultAssumeValid = uint256S("0xf24b2bc2f0476da8a42042610524991c66871ae065dac162b47de60ac379f934"); //block 236,425
 
@@ -213,6 +219,12 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_TAPROOT].bit = 2;
         consensus.vDeployments[Consensus::DEPLOYMENT_TAPROOT].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TAPROOT].nTimeout = 1230767999; // December 31, 2008
+
+        // Defined but not scheduled: an expired window, so the roster
+        // commitment is inert until a real one is chosen. See DEPLOYMENT_ROSTER.
+        consensus.vDeployments[Consensus::DEPLOYMENT_ROSTER].bit = 3;
+        consensus.vDeployments[Consensus::DEPLOYMENT_ROSTER].nStartTime = 1199145601; // January 1, 2008
+        consensus.vDeployments[Consensus::DEPLOYMENT_ROSTER].nTimeout = 1230767999; // December 31, 2008
 
         consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000"); // 0
         consensus.defaultAssumeValid = uint256S("0x00000fe2acf48e35c5b594d9ff7db2a7bbafa1b73205b2789a6833be70595818"); // 0
@@ -344,6 +356,12 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_TAPROOT].nStartTime = Consensus::BIP9Deployment::ALWAYS_ACTIVE;
         consensus.vDeployments[Consensus::DEPLOYMENT_TAPROOT].nTimeout = Consensus::BIP9Deployment::NO_TIMEOUT;
 
+        // Defined but not scheduled: an expired window, so the roster
+        // commitment is inert until a real one is chosen. See DEPLOYMENT_ROSTER.
+        consensus.vDeployments[Consensus::DEPLOYMENT_ROSTER].bit = 3;
+        consensus.vDeployments[Consensus::DEPLOYMENT_ROSTER].nStartTime = 1199145601; // January 1, 2008
+        consensus.vDeployments[Consensus::DEPLOYMENT_ROSTER].nTimeout = 1230767999; // December 31, 2008
+
         // message start is defined as the first 4 bytes of the sha256d of the block script
         CHashWriter h(SER_DISK, 0);
         h << consensus.signet_challenge;
@@ -420,6 +438,12 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_TAPROOT].bit = 2;
         consensus.vDeployments[Consensus::DEPLOYMENT_TAPROOT].nStartTime = Consensus::BIP9Deployment::ALWAYS_ACTIVE;
         consensus.vDeployments[Consensus::DEPLOYMENT_TAPROOT].nTimeout = Consensus::BIP9Deployment::NO_TIMEOUT;
+
+        // Defined but not scheduled: an expired window, so the roster
+        // commitment is inert until a real one is chosen. See DEPLOYMENT_ROSTER.
+        consensus.vDeployments[Consensus::DEPLOYMENT_ROSTER].bit = 3;
+        consensus.vDeployments[Consensus::DEPLOYMENT_ROSTER].nStartTime = 1199145601; // January 1, 2008
+        consensus.vDeployments[Consensus::DEPLOYMENT_ROSTER].nTimeout = 1230767999; // December 31, 2008
 
         consensus.nMinimumChainWork = uint256{};
         consensus.defaultAssumeValid = uint256{};

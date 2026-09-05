@@ -15,7 +15,16 @@ enum DeploymentPos
 {
     DEPLOYMENT_TESTDUMMY,
     DEPLOYMENT_TAPROOT, // Deployment of Schnorr/Taproot (BIPs 340-342)
-    // NOTE: Also add new deployments to VersionBitsDeploymentInfo in versionbits.cpp
+    // Deployment of the coinbase roster commitment (design note 001 §6).
+    //
+    // Defined but not scheduled on any network: every vDeployments entry below
+    // uses an expired window, so this is inert until someone deliberately sets
+    // a real one. Activating it makes the roster consensus state — every node
+    // must then maintain it, MAX_TTL becomes a consensus parameter, and a
+    // disagreement about whether a record parses becomes a chain split rather
+    // than an index quirk. That is a decision to take on its own merits, not a
+    // consequence of the code existing.
+    DEPLOYMENT_ROSTER,
     MAX_VERSION_BITS_DEPLOYMENTS
 };
 

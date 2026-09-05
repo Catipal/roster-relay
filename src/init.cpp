@@ -1045,6 +1045,18 @@ bool AppInitParameterInteraction(const ArgsManager& args)
         if (!g_enabled_filter_types.empty()) {
             return InitError(_("Prune mode is incompatible with -blockfilterindex."));
         }
+        // Same reason as the two above: BaseIndex syncs from genesis, and a
+        // pruned node no longer has the blocks to sync from.
+        //
+        // Note this does not conflict with NODE_ROSTER, which is about serving
+        // the window rather than indexing it: a pruned node can hold and serve
+        // the last MAX_TTL blocks perfectly well without maintaining an index
+        // over them. Making the index itself prune-compatible means starting
+        // it at tip - MAX_TTL instead of at genesis, which is worth doing and
+        // is not what BaseIndex does today.
+        if (args.GetBoolArg("-rosterindex", DEFAULT_ROSTERINDEX)) {
+            return InitError(_("Prune mode is incompatible with -rosterindex."));
+        }
     }
 
     // -bind and -whitebind can't be set when not listening

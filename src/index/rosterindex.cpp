@@ -209,6 +209,15 @@ BaseIndex::DB& RosterIndex::GetDB() const { return *m_db; }
 
 bool RosterIndex::WriteBlock(const CBlock& block, const CBlockIndex* pindex)
 {
+    // Skip history below the configured start, checked here rather than only
+    // in Init(). Init() seeds the stored locator by resolving the height
+    // against the active chain, which works when the index is switched on
+    // afterwards but not during -reindex or an initial sync: the chain is
+    // empty at that point, the height does not resolve, and the start silently
+    // degrades to genesis -- precisely when skipping matters most. This check
+    // needs no chain state and so holds in every case.
+    if (m_start_height > 0 && pindex->nHeight < m_start_height) return true;
+
     CDBBatch batch(*m_db);
     uint32_t ordinal = 0;
 

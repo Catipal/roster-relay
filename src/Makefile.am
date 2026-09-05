@@ -189,6 +189,7 @@ BITCOIN_CORE_H = \
   reverse_iterator.h \
   roster/commitment.h \
   roster/extract.h \
+  roster/keystore.h \
   roster/record.h \
   rpc/blockchain.h \
   rpc/client.h \
@@ -330,6 +331,7 @@ libbitcoin_server_a_SOURCES = \
   rpc/misc.cpp \
   rpc/net.cpp \
   rpc/rawtransaction.cpp \
+  rpc/roster.cpp \
   rpc/server.cpp \
   script/sigcache.cpp \
   shutdown.cpp \
@@ -514,6 +516,7 @@ libbitcoin_common_a_SOURCES = \
   psbt.cpp \
   roster/commitment.cpp \
   roster/extract.cpp \
+  roster/keystore.cpp \
   roster/record.cpp \
   rpc/rawtransaction_util.cpp \
   rpc/util.cpp \

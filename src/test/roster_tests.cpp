@@ -2,6 +2,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <chain.h>
+#include <chainparams.h>
+#include <index/rosterindex.h>
 #include <key.h>
 #include <primitives/block.h>
 #include <roster/commitment.h>
@@ -43,7 +46,7 @@ KeyBytes XOnly(const CKey& key)
 Endpoint EpIPv4(uint16_t port)
 {
     Endpoint ep;
-    ep.network = NET_IPV4;
+    ep.network = EP_IPV4;
     ep.addr = {192, 0, 2, 1};
     ep.port = port;
     return ep;
@@ -52,7 +55,7 @@ Endpoint EpIPv4(uint16_t port)
 Endpoint EpIPv6(uint16_t port)
 {
     Endpoint ep;
-    ep.network = NET_IPV6;
+    ep.network = EP_IPV6;
     ep.addr.assign(ADDR_SIZE_IPV6, 0xab);
     ep.port = port;
     return ep;
@@ -61,7 +64,7 @@ Endpoint EpIPv6(uint16_t port)
 Endpoint EpOnion(uint16_t port)
 {
     Endpoint ep;
-    ep.network = NET_TORV3;
+    ep.network = EP_TORV3;
     ep.addr.assign(ADDR_SIZE_TORV3, 0x5c);
     ep.port = port;
     return ep;
@@ -257,7 +260,7 @@ BOOST_AUTO_TEST_CASE(parse_rejects_malformed)
     {
         // Tor v2 is a recognised BIP155 id that we refuse to carry.
         std::vector<unsigned char> b = good;
-        b[RECORD_HEADER_SIZE + 45] = NET_TORV2;
+        b[RECORD_HEADER_SIZE + 45] = EP_TORV2;
         expect(b, ParseError::BAD_ENDPOINT_NETWORK);
     }
     {
@@ -547,6 +550,255 @@ BOOST_AUTO_TEST_CASE(commitment_script_roundtrip)
     CBlock bad_block;
     bad_block.vtx.push_back(MakeTransactionRef(only_bad));
     BOOST_CHECK_EQUAL(GetCommitmentIndex(bad_block), NO_ROSTER_COMMITMENT);
+}
+
+namespace {
+
+/**
+ * Exposes WriteBlock, which is protected on the real index.
+ *
+ * The window is passed straight to the constructor, bypassing init.cpp's
+ * floor of MAX_TTL. That floor is an operator guard — a window narrower than
+ * the rolling window would make the live roster wrong — and it has nothing to
+ * do with whether the pruning machinery works. Driving it with a window of ten
+ * blocks tests the same code in a few milliseconds instead of mining 14,400.
+ */
+class TestableRosterIndex : public RosterIndex
+{
+public:
+    TestableRosterIndex(int start_height, int window)
+        : RosterIndex(1 << 20, /*f_memory=*/true, /*f_wipe=*/false, start_height, window) {}
+    using RosterIndex::WriteBlock;
+};
+
+//! A block carrying one transaction per payload. Records never live in the
+//! coinbase, so there is always one in front of them.
+CBlock BlockWith(const std::vector<std::vector<unsigned char>>& payloads)
+{
+    CBlock block;
+    CMutableTransaction coinbase;
+    coinbase.vin.resize(1);
+    coinbase.vout.resize(1);
+    coinbase.vout[0].scriptPubKey = CScript() << OP_TRUE;
+    block.vtx.push_back(MakeTransactionRef(coinbase));
+
+    for (const std::vector<unsigned char>& payload : payloads) {
+        CMutableTransaction tx;
+        tx.vin.resize(1);
+        tx.vout.push_back(CTxOut(0, CScript() << OP_RETURN << payload));
+        block.vtx.push_back(MakeTransactionRef(tx));
+    }
+    return block;
+}
+
+std::vector<unsigned char> SignedAnnounceAt(const CKey& key, int height)
+{
+    Record rec;
+    rec.type = RecordType::ANNOUNCE;
+    rec.op_key = XOnly(key);
+    rec.expiry_height = height + 100;
+    rec.endpoints.push_back(EpIPv4(9345));
+    SignInPlace(rec, key, Params().NetworkIDString());
+    return SerializeRecord(rec);
+}
+
+std::vector<unsigned char> SignedRevoke(const CKey& key)
+{
+    Record rec;
+    rec.type = RecordType::REVOKE;
+    rec.op_key = XOnly(key);
+    SignInPlace(rec, key, Params().NetworkIDString());
+    return SerializeRecord(rec);
+}
+
+CBlockIndex IndexAt(int height)
+{
+    CBlockIndex bi;
+    bi.nHeight = height;
+    return bi;
+}
+
+} // namespace
+
+BOOST_AUTO_TEST_CASE(index_stores_and_reads_back)
+{
+    TestableRosterIndex index(0, 0);
+    const CKey key = MakeKey(40);
+    CBlockIndex bi = IndexAt(500);
+
+    BOOST_REQUIRE(index.WriteBlock(BlockWith({SignedAnnounceAt(key, 500)}), &bi));
+
+    std::vector<RosterEntry> found;
+    BOOST_REQUIRE(index.ReadRecordsAtHeight(500, found));
+    BOOST_REQUIRE_EQUAL(found.size(), 1U);
+    BOOST_CHECK_EQUAL(found[0].height, 500);
+
+    Record parsed;
+    BOOST_CHECK(found[0].Parse(parsed));
+    BOOST_CHECK(parsed.op_key == XOnly(key));
+
+    // Filed under its key as well, which is what makes the age chain readable.
+    std::vector<RosterEntry> by_key;
+    BOOST_REQUIRE(index.ReadRecordsForKey(XOnly(key), by_key));
+    BOOST_CHECK_EQUAL(by_key.size(), 1U);
+}
+
+//! A record whose signature does not check must never reach the database, so
+//! that no reader has to remember to verify.
+BOOST_AUTO_TEST_CASE(index_rejects_unverifiable_records)
+{
+    TestableRosterIndex index(0, 0);
+    const CKey key = MakeKey(45);
+    CBlockIndex bi = IndexAt(600);
+
+    std::vector<unsigned char> tampered = SignedAnnounceAt(key, 600);
+    tampered[RECORD_HEADER_SIZE + 40] ^= 0x01; // flip a services bit, breaking the signature
+
+    BOOST_REQUIRE(index.WriteBlock(BlockWith({tampered}), &bi));
+
+    std::vector<RosterEntry> found;
+    BOOST_REQUIRE(index.ReadRecordsAtHeight(600, found));
+    BOOST_CHECK(found.empty());
+}
+
+BOOST_AUTO_TEST_CASE(index_skips_below_start_height)
+{
+    TestableRosterIndex index(1000, 0);
+    const CKey key = MakeKey(44);
+
+    CBlockIndex below = IndexAt(999);
+    CBlockIndex at = IndexAt(1000);
+    BOOST_REQUIRE(index.WriteBlock(BlockWith({SignedAnnounceAt(key, 999)}), &below));
+    BOOST_REQUIRE(index.WriteBlock(BlockWith({SignedAnnounceAt(key, 1000)}), &at));
+
+    std::vector<RosterEntry> found;
+    BOOST_REQUIRE(index.ReadRecordsAtHeight(999, found));
+    BOOST_CHECK(found.empty());
+    BOOST_REQUIRE(index.ReadRecordsAtHeight(1000, found));
+    BOOST_CHECK_EQUAL(found.size(), 1U);
+}
+
+//! The retention window, exercised against a real LevelDB rather than reasoned
+//! about: entries must leave as the tip advances past them, in both key
+//! families, and nothing inside the window may be lost.
+BOOST_AUTO_TEST_CASE(index_prunes_outside_the_window)
+{
+    const int window = 10;
+    const int tip = 30;
+    TestableRosterIndex index(0, window);
+    const CKey key = MakeKey(41);
+
+    for (int h = 1; h <= tip; ++h) {
+        CBlockIndex bi = IndexAt(h);
+        BOOST_REQUIRE(index.WriteBlock(BlockWith({SignedAnnounceAt(key, h)}), &bi));
+    }
+
+    std::vector<RosterEntry> found;
+    for (int h = 1; h < tip - window; ++h) {
+        BOOST_REQUIRE(index.ReadRecordsAtHeight(h, found));
+        BOOST_CHECK_MESSAGE(found.empty(), "height " << h << " should have been pruned");
+    }
+    for (int h = tip - window; h <= tip; ++h) {
+        BOOST_REQUIRE(index.ReadRecordsAtHeight(h, found));
+        BOOST_CHECK_MESSAGE(found.size() == 1U, "height " << h << " should still be present");
+    }
+
+    // The by-key family must shrink with it. Leaving those behind would strand
+    // entries pointing at height rows that no longer exist.
+    std::vector<RosterEntry> by_key;
+    BOOST_REQUIRE(index.ReadRecordsForKey(XOnly(key), by_key));
+    BOOST_CHECK_EQUAL(by_key.size(), static_cast<size_t>(window + 1));
+
+    // An unwindowed index keeps everything, so the window is doing the work
+    // rather than some other limit.
+    TestableRosterIndex archival(0, 0);
+    for (int h = 1; h <= tip; ++h) {
+        CBlockIndex bi = IndexAt(h);
+        BOOST_REQUIRE(archival.WriteBlock(BlockWith({SignedAnnounceAt(key, h)}), &bi));
+    }
+    BOOST_REQUIRE(archival.ReadRecordsForKey(XOnly(key), by_key));
+    BOOST_CHECK_EQUAL(by_key.size(), static_cast<size_t>(tip));
+}
+
+//! Rewriting a height must replace it, not merge into it. A reorg that
+//! substitutes a block carrying fewer records would otherwise leave the
+//! surplus entries of its predecessor in the roster.
+BOOST_AUTO_TEST_CASE(index_write_is_idempotent_across_reorg)
+{
+    TestableRosterIndex index(0, 0);
+    const CKey a = MakeKey(42);
+    const CKey b = MakeKey(43);
+    CBlockIndex bi = IndexAt(700);
+
+    BOOST_REQUIRE(index.WriteBlock(BlockWith({SignedAnnounceAt(a, 700), SignedAnnounceAt(b, 700)}), &bi));
+    std::vector<RosterEntry> found;
+    BOOST_REQUIRE(index.ReadRecordsAtHeight(700, found));
+    BOOST_REQUIRE_EQUAL(found.size(), 2U);
+
+    BOOST_REQUIRE(index.WriteBlock(BlockWith({SignedAnnounceAt(a, 700)}), &bi));
+    BOOST_REQUIRE(index.ReadRecordsAtHeight(700, found));
+    BOOST_CHECK_EQUAL(found.size(), 1U);
+
+    // The dropped record must be gone from the key family too.
+    std::vector<RosterEntry> for_b;
+    BOOST_REQUIRE(index.ReadRecordsForKey(XOnly(b), for_b));
+    BOOST_CHECK(for_b.empty());
+}
+
+//! Revocation is terminal: a later announcement under a revoked key must not
+//! bring the identity back.
+BOOST_AUTO_TEST_CASE(build_roster_honours_revocation)
+{
+    TestableRosterIndex index(0, 0);
+    const CKey live = MakeKey(46);
+    const CKey doomed = MakeKey(47);
+
+    CBlockIndex h800 = IndexAt(800);
+    CBlockIndex h801 = IndexAt(801);
+    CBlockIndex h802 = IndexAt(802);
+
+    BOOST_REQUIRE(index.WriteBlock(BlockWith({SignedAnnounceAt(live, 800), SignedAnnounceAt(doomed, 800)}), &h800));
+
+    std::map<KeyBytes, RosterEntry> roster;
+    BOOST_REQUIRE(index.BuildRoster(800, roster));
+    BOOST_CHECK_EQUAL(roster.size(), 2U);
+
+    BOOST_REQUIRE(index.WriteBlock(BlockWith({SignedRevoke(doomed)}), &h801));
+    BOOST_REQUIRE(index.BuildRoster(801, roster));
+    BOOST_CHECK_EQUAL(roster.size(), 1U);
+    BOOST_CHECK(roster.count(XOnly(live)) == 1);
+    BOOST_CHECK(roster.count(XOnly(doomed)) == 0);
+
+    // Announcing again after revocation must not resurrect the identity.
+    BOOST_REQUIRE(index.WriteBlock(BlockWith({SignedAnnounceAt(doomed, 802)}), &h802));
+    BOOST_REQUIRE(index.BuildRoster(802, roster));
+    BOOST_CHECK_EQUAL(roster.size(), 1U);
+    BOOST_CHECK(roster.count(XOnly(doomed)) == 0);
+}
+
+//! An expiry that has passed leaves the roster by arithmetic, with no
+//! deletion pass and no record on chain.
+BOOST_AUTO_TEST_CASE(build_roster_drops_expired)
+{
+    TestableRosterIndex index(0, 0);
+    const CKey key = MakeKey(48);
+
+    Record rec;
+    rec.type = RecordType::ANNOUNCE;
+    rec.op_key = XOnly(key);
+    rec.expiry_height = 905; // five blocks of life
+    rec.endpoints.push_back(EpIPv4(9345));
+    SignInPlace(rec, key, Params().NetworkIDString());
+
+    CBlockIndex bi = IndexAt(900);
+    BOOST_REQUIRE(index.WriteBlock(BlockWith({SerializeRecord(rec)}), &bi));
+
+    std::map<KeyBytes, RosterEntry> roster;
+    BOOST_REQUIRE(index.BuildRoster(904, roster));
+    BOOST_CHECK_EQUAL(roster.size(), 1U);
+
+    BOOST_REQUIRE(index.BuildRoster(905, roster));
+    BOOST_CHECK_EQUAL(roster.size(), 0U); // expiry_height is not inclusive
 }
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -86,12 +86,12 @@ static constexpr size_t MAX_DATACARRIER_FOR_ROSTER = MAX_RECORD_SIZE + OP_RETURN
  * track an internal detail of the address class.
  */
 enum : uint8_t {
-    NET_IPV4 = 1,
-    NET_IPV6 = 2,
-    NET_TORV2 = 3, //!< named only so that it can be rejected deliberately
-    NET_TORV3 = 4,
-    NET_I2P = 5,
-    NET_CJDNS = 6,
+    EP_IPV4 = 1,
+    EP_IPV6 = 2,
+    EP_TORV2 = 3, //!< named only so that it can be rejected deliberately
+    EP_TORV3 = 4,
+    EP_I2P = 5,
+    EP_CJDNS = 6,
 };
 
 //! Address byte counts for the networks above. Declared here rather than taken

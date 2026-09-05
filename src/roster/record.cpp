@@ -18,11 +18,11 @@ namespace roster {
 size_t EndpointAddrSize(uint8_t network)
 {
     switch (network) {
-    case NET_IPV4: return ADDR_SIZE_IPV4;
-    case NET_IPV6: return ADDR_SIZE_IPV6;
-    case NET_TORV3: return ADDR_SIZE_TORV3;
-    case NET_I2P: return ADDR_SIZE_I2P;
-    case NET_CJDNS: return ADDR_SIZE_CJDNS;
+    case EP_IPV4: return ADDR_SIZE_IPV4;
+    case EP_IPV6: return ADDR_SIZE_IPV6;
+    case EP_TORV3: return ADDR_SIZE_TORV3;
+    case EP_I2P: return ADDR_SIZE_I2P;
+    case EP_CJDNS: return ADDR_SIZE_CJDNS;
     default: return 0;
     }
 }

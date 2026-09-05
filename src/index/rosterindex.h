@@ -54,7 +54,7 @@ struct RosterEntry {
  * fail are simply not stored, so anything the index returns has already been
  * authenticated against the key it names.
  */
-class RosterIndex final : public BaseIndex
+class RosterIndex : public BaseIndex
 {
 protected:
     class DB;

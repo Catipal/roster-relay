@@ -377,6 +377,10 @@ static RPCHelpMan createannouncement()
                 {RPCResult::Type::STR_HEX, "key", "The operational key that signed it"},
                 {RPCResult::Type::NUM, "expiry_height", "Absolute height the record stops counting"},
                 {RPCResult::Type::NUM, "size", "Record length in bytes"},
+                {RPCResult::Type::ARR, "warnings", /* optional */ true, "Present only when something about the record deserves saying out loud",
+                    {
+                        {RPCResult::Type::STR, "", "A condition that does not make the record invalid, but does affect who can reach it"},
+                    }},
             }},
         RPCExamples{
             HelpExampleCli("createannouncement", "'{\"endpoints\":[{\"network\":\"ipv4\",\"address\":\"203.0.113.7\",\"port\":9345}]}'")
@@ -497,11 +501,31 @@ static RPCHelpMan createannouncement()
         throw JSONRPCError(RPC_INTERNAL_ERROR, "Produced a record that does not verify; this is a bug");
     }
 
+    // Say so when a record names something this node could not dial itself.
+    // A warning rather than a refusal: unlike the retired relay bits, these
+    // networks are real and other implementations do speak them, so publishing
+    // one is a legitimate choice — it just should not be a silent one.
+    UniValue warnings(UniValue::VARR);
+    for (const roster::Endpoint& ep : rec.endpoints) {
+        if (ep.network == roster::EP_I2P) {
+            warnings.push_back("This build has no I2P transport, so it cannot dial the I2P endpoint "
+                               "it just signed. Peers running a node with I2P support can.");
+        } else if (ep.network == roster::EP_CJDNS) {
+            warnings.push_back("CJDNS endpoints route only for hosts already on a CJDNS network; "
+                               "peers not on one will not reach this address.");
+        }
+    }
+    if (rec.endpoints.empty()) {
+        warnings.push_back("No endpoints: this record lists the identity but offers nowhere to dial. "
+                           "Intentional for a name holder or for accruing age; add an endpoint to be reachable.");
+    }
+
     UniValue out(UniValue::VOBJ);
     out.pushKV("hex", HexStr(raw));
     out.pushKV("key", HexStr(rec.op_key));
     out.pushKV("expiry_height", (uint64_t)rec.expiry_height);
     out.pushKV("size", (uint64_t)raw.size());
+    if (!warnings.empty()) out.pushKV("warnings", warnings);
     return out;
 },
     };

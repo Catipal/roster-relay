@@ -22,6 +22,7 @@
 #include <httprpc.h>
 #include <httpserver.h>
 #include <index/blockfilterindex.h>
+#include <index/rosterindex.h>
 #include <index/txindex.h>
 #include <interfaces/chain.h>
 #include <interfaces/node.h>
@@ -175,6 +176,9 @@ void Interrupt(NodeContext& node)
     if (g_txindex) {
         g_txindex->Interrupt();
     }
+    if (g_rosterindex) {
+        g_rosterindex->Interrupt();
+    }
     ForEachBlockFilterIndex([](BlockFilterIndex& index) { index.Interrupt(); });
 }
 
@@ -269,6 +273,10 @@ void Shutdown(NodeContext& node)
     if (g_txindex) {
         g_txindex->Stop();
         g_txindex.reset();
+    }
+    if (g_rosterindex) {
+        g_rosterindex->Stop();
+        g_rosterindex.reset();
     }
     ForEachBlockFilterIndex([](BlockFilterIndex& index) { index.Stop(); });
     DestroyAllBlockFilterIndexes();
@@ -437,6 +445,7 @@ void SetupServerArgs(NodeContext& node)
     hidden_args.emplace_back("-sysperms");
 #endif
     argsman.AddArg("-txindex", strprintf("Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)", DEFAULT_TXINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
+    argsman.AddArg("-rosterindex", strprintf("Maintain a peer roster index over chain-anchored discovery records (default: %u)", DEFAULT_ROSTERINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-blockfilterindex=<type>",
                  strprintf("Maintain an index of compact filters by block (default: %s, values: %s).", DEFAULT_BLOCKFILTERINDEX, ListBlockFilterTypes()) +
                  " If <type> is not supplied or if <type> = 1, indexes for all known types are enabled.",
@@ -904,7 +913,10 @@ namespace { // Variables internal to initialization process only
 int nMaxConnections;
 int nUserMaxConnections;
 int nFD;
-ServiceFlags nLocalServices = ServiceFlags(NODE_NETWORK | NODE_NETWORK_LIMITED);
+// NODE_ROSTER is set unconditionally here because an unpruned node holds the
+// whole chain and therefore the whole roster window. Pruning clears it again
+// unless the configured target is comfortably larger than the window.
+ServiceFlags nLocalServices = ServiceFlags(NODE_NETWORK | NODE_NETWORK_LIMITED | NODE_ROSTER);
 int64_t peer_connect_timeout;
 std::set<BlockFilterType> g_enabled_filter_types;
 
@@ -1137,6 +1149,26 @@ bool AppInitParameterInteraction(const ArgsManager& args)
         }
         LogPrintf("Prune configured to target %u MiB on disk for block and undo files.\n", nPruneTarget / 1024 / 1024);
         fPruneMode = true;
+
+        // A pruned node can still serve the roster window, and saying so is the
+        // whole point of NODE_ROSTER: NODE_NETWORK_LIMITED's 288-block floor is
+        // ~50x too small for it, so without this a roster bootstrap needs an
+        // archival peer.
+        //
+        // The budget below is deliberately crude and generous. Measured mean
+        // block size on this chain is ~904 bytes, so the window costs roughly
+        // 13 MB; reserving 4 KB per block is a ~4.5x margin against future
+        // growth, and is satisfied by every legal prune target since the
+        // minimum is 550 MiB. A dynamic check against blocks actually retained
+        // would be better, and service flags are fixed at startup.
+        //
+        // Withdraw rather than grant, so that a target too small to cover the
+        // window fails closed: advertising a commitment we cannot meet would
+        // get peers disconnected mid-bootstrap, which is worse than never
+        // having offered.
+        if (nPruneTarget < static_cast<uint64_t>(roster::MAX_TTL) * 4096) {
+            nLocalServices = ServiceFlags(nLocalServices & ~NODE_ROSTER);
+        }
     }
 
     nConnectTimeout = args.GetArg("-timeout", DEFAULT_CONNECT_TIMEOUT);
@@ -1822,6 +1854,11 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
     if (args.GetBoolArg("-txindex", DEFAULT_TXINDEX)) {
         g_txindex = MakeUnique<TxIndex>(nTxIndexCache, false, fReindex);
         g_txindex->Start();
+    }
+
+    if (args.GetBoolArg("-rosterindex", DEFAULT_ROSTERINDEX)) {
+        g_rosterindex = MakeUnique<RosterIndex>(nTxIndexCache, false, fReindex);
+        g_rosterindex->Start();
     }
 
     for (const auto& filter_type : g_enabled_filter_types) {

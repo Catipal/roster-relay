@@ -81,6 +81,13 @@ static constexpr size_t BODY_VETO = RECORD_KEY_SIZE * 2;                        
 
 } // namespace
 
+bool ExpiryInRange(uint32_t expiry_height, int confirm_height)
+{
+    if (confirm_height < 0) return false;
+    const uint64_t confirm = static_cast<uint64_t>(confirm_height);
+    return expiry_height > confirm && expiry_height <= confirm + MAX_TTL;
+}
+
 bool operator==(const Endpoint& a, const Endpoint& b)
 {
     return a.network == b.network && a.addr == b.addr && a.port == b.port;
@@ -275,6 +282,24 @@ std::vector<unsigned char> SerializeRecord(const Record& rec)
 
     out.insert(out.end(), rec.sig.begin(), rec.sig.end());
     return out;
+}
+
+std::vector<KeyBytes> RecordKeys(const Record& rec)
+{
+    switch (rec.type) {
+    case RecordType::ANNOUNCE:
+    case RecordType::REVOKE:
+        return {rec.op_key};
+    case RecordType::DELEGATE:
+        return {rec.id_key, rec.op_key};
+    case RecordType::ROTATE:
+        // Both ends, so a watcher of either identity sees the move. Missing the
+        // new key would hide exactly the event worth watching for.
+        return {rec.id_key, rec.new_id_key};
+    case RecordType::VETO:
+        return {rec.id_key, rec.recovery_key};
+    }
+    return {};
 }
 
 const KeyBytes& SigningKeyBytes(const Record& rec)

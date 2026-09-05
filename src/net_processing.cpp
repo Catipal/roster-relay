@@ -17,6 +17,7 @@
 #include <netbase.h>
 #include <netmessagemaker.h>
 #include <policy/fees.h>
+#include <roster/record.h>
 #include <policy/policy.h>
 #include <primitives/block.h>
 #include <primitives/transaction.h>
@@ -1676,9 +1677,18 @@ void static ProcessGetBlockData(CNode& pfrom, const CChainParams& chainparams, c
         pfrom.fDisconnect = true;
         send = false;
     }
-    // Avoid leaking prune-height by never sending blocks below the NODE_NETWORK_LIMITED threshold
+    // Avoid leaking prune-height by never sending blocks below the NODE_NETWORK_LIMITED threshold.
+    //
+    // NODE_ROSTER widens that floor to the roster window. A node advertising it
+    // has undertaken to serve the last MAX_TTL blocks, which is what a peer
+    // needs to rebuild the roster without an archival node; refusing at 288
+    // while advertising the wider commitment would strand precisely the clients
+    // the bit exists for.
+    const int historical_serve_floor = (pfrom.GetLocalServices() & NODE_ROSTER)
+                                           ? static_cast<int>(roster::MAX_TTL)
+                                           : static_cast<int>(NODE_NETWORK_LIMITED_MIN_BLOCKS);
     if (send && !pfrom.HasPermission(PF_NOBAN) && (
-            (((pfrom.GetLocalServices() & NODE_NETWORK_LIMITED) == NODE_NETWORK_LIMITED) && ((pfrom.GetLocalServices() & NODE_NETWORK) != NODE_NETWORK) && (::ChainActive().Tip()->nHeight - pindex->nHeight > (int)NODE_NETWORK_LIMITED_MIN_BLOCKS + 2 /* add two blocks buffer extension for possible races */) )
+            (((pfrom.GetLocalServices() & NODE_NETWORK_LIMITED) == NODE_NETWORK_LIMITED) && ((pfrom.GetLocalServices() & NODE_NETWORK) != NODE_NETWORK) && (::ChainActive().Tip()->nHeight - pindex->nHeight > historical_serve_floor + 2 /* add two blocks buffer extension for possible races */) )
        )) {
         LogPrint(BCLog::NET, "Ignore block request below NODE_NETWORK_LIMITED threshold from peer=%d\n", pfrom.GetId());
 

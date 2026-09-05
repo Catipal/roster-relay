@@ -142,6 +142,7 @@ BITCOIN_CORE_H = \
   httpserver.h \
   index/base.h \
   index/blockfilterindex.h \
+  index/rosterindex.h \
   index/disktxpos.h \
   index/txindex.h \
   indirectmap.h \
@@ -186,6 +187,7 @@ BITCOIN_CORE_H = \
   random.h \
   randomenv.h \
   reverse_iterator.h \
+  roster/extract.h \
   roster/record.h \
   rpc/blockchain.h \
   rpc/client.h \
@@ -301,6 +303,7 @@ libbitcoin_server_a_SOURCES = \
   httpserver.cpp \
   index/base.cpp \
   index/blockfilterindex.cpp \
+  index/rosterindex.cpp \
   index/txindex.cpp \
   init.cpp \
   interfaces/chain.cpp \
@@ -508,6 +511,7 @@ libbitcoin_common_a_SOURCES = \
   policy/policy.cpp \
   protocol.cpp \
   psbt.cpp \
+  roster/extract.cpp \
   roster/record.cpp \
   rpc/rawtransaction_util.cpp \
   rpc/util.cpp \

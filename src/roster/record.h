@@ -56,10 +56,26 @@ static constexpr size_t RECORD_HASH_SIZE = 32;
 static constexpr size_t MAX_ENDPOINTS = 3;
 
 /**
- * Cheap upper bound used to reject obvious non-records before any real work.
- * The largest legal record is a 3-endpoint ANNOUNCE with meta_hash present.
+ * The largest legal record, and the cheap bound used to reject obvious
+ * non-records before any real work.
+ *
+ * A 3-endpoint ANNOUNCE with meta_hash present, every endpoint an onion v3:
+ *
+ *     header  4 + op_key 32 + expiry 4 + services 4 + prev_height 4
+ *           + ep_count 1 + 3 x (1 + 32 + 2) + meta 32 + sig 64  =  250
+ *
+ * Carried in an OP_RETURN this needs 253 script bytes: OP_RETURN, then
+ * OP_PUSHDATA1 and a length byte, since any push above 75 bytes needs them.
+ * MAX_DATACARRIER_FOR_ROSTER records that, because a relay limit below it
+ * would silently make some legal records unpublishable.
  */
-static constexpr size_t MAX_RECORD_SIZE = 256;
+static constexpr size_t MAX_RECORD_SIZE = 250;
+
+/** Script bytes an OP_RETURN needs to carry a record: opcode, pushdata, length. */
+static constexpr size_t OP_RETURN_OVERHEAD = 3;
+
+/** The smallest -datacarriersize that can carry every legal record. */
+static constexpr size_t MAX_DATACARRIER_FOR_ROSTER = MAX_RECORD_SIZE + OP_RETURN_OVERHEAD;
 
 /**
  * Network ids for Endpoint::network.
@@ -90,6 +106,26 @@ static constexpr size_t ADDR_SIZE_CJDNS = 16;
 
 /** Address length for a network id, or 0 if the network is not carried. */
 size_t EndpointAddrSize(uint8_t network);
+
+/**
+ * The rolling window, in blocks. ~30 days at 180-second spacing.
+ *
+ * This is the single most consequential constant in the design. It caps how
+ * far in the future an expiry may sit, which is what makes the live roster a
+ * function of the last MAX_TTL blocks rather than of the whole chain — so a
+ * cold roster build stays O(MAX_TTL) forever.
+ */
+static constexpr uint32_t MAX_TTL = 14400;
+
+/**
+ * Whether an absolute expiry height is legal for a record confirmed at
+ * `confirm_height`.
+ *
+ * Both halves are load-bearing. An expiry at or before confirmation is already
+ * stale and would let a record be published dead; an expiry beyond the window
+ * would escape the bounded scan and quietly make the roster O(chain).
+ */
+bool ExpiryInRange(uint32_t expiry_height, int confirm_height);
 
 /** A reachable address, encoded as BIP155: net(1) || addr(n) || port(2, BE). */
 struct Endpoint {
@@ -183,6 +219,15 @@ ParseError ParseRecord(Span<const unsigned char> raw, Record& out);
 
 /** Serialise a record. Round-trips exactly with ParseRecord(). */
 std::vector<unsigned char> SerializeRecord(const Record& rec);
+
+/**
+ * Every key this record names.
+ *
+ * Used to decide what a record contributes to a block filter, so that a client
+ * watching one identity is told about the delegations, rotations and vetoes
+ * that shaped it — not only about its announcements.
+ */
+std::vector<KeyBytes> RecordKeys(const Record& rec);
 
 /** The key whose signature authenticates a record of this type. */
 const KeyBytes& SigningKeyBytes(const Record& rec);

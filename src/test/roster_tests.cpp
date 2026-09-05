@@ -375,4 +375,69 @@ BOOST_AUTO_TEST_CASE(tags_are_distinct)
     BOOST_CHECK(RecordTag(RecordType::ANNOUNCE, "main") != RecordTag(RecordType::ANNOUNCE, "test"));
 }
 
+//! The window bounds decide whether a cold roster build stays O(MAX_TTL), so
+//! both edges are pinned rather than assumed.
+BOOST_AUTO_TEST_CASE(expiry_window_bounds)
+{
+    BOOST_CHECK(!ExpiryInRange(100, 100));                 // equal: already stale
+    BOOST_CHECK(!ExpiryInRange(99, 100));                  // in the past
+    BOOST_CHECK(ExpiryInRange(101, 100));                  // one block ahead
+    BOOST_CHECK(ExpiryInRange(100 + MAX_TTL, 100));        // exactly the cap
+    BOOST_CHECK(!ExpiryInRange(100 + MAX_TTL + 1, 100));   // one past the cap
+    BOOST_CHECK(!ExpiryInRange(5, -1));                    // no chain yet
+
+    // Must not wrap. A near-maximal uint32 expiry against a realistic height is
+    // exactly the input that a naive confirm_height + MAX_TTL would overflow.
+    BOOST_CHECK(!ExpiryInRange(0xFFFFFFFFu, 1219021));
+}
+
+//! What a record contributes to a block filter, and what authorises it. These
+//! two differ on purpose for the identity records, and confusing them would be
+//! an authentication bug rather than a cosmetic one.
+BOOST_AUTO_TEST_CASE(record_keys_and_signer_per_type)
+{
+    const CKey id = MakeKey(20);
+    const CKey op = MakeKey(21);
+    const CKey recovery = MakeKey(22);
+
+    {
+        Record r;
+        r.type = RecordType::ANNOUNCE;
+        r.op_key = XOnly(op);
+        BOOST_CHECK_EQUAL(RecordKeys(r).size(), 1U);
+        BOOST_CHECK(SigningKeyBytes(r) == XOnly(op));
+    }
+    {
+        Record r;
+        r.type = RecordType::DELEGATE;
+        r.id_key = XOnly(id);
+        r.op_key = XOnly(op);
+        const auto keys = RecordKeys(r);
+        BOOST_CHECK_EQUAL(keys.size(), 2U);
+        BOOST_CHECK(keys[0] == XOnly(id));
+        BOOST_CHECK(keys[1] == XOnly(op));
+        // Watched under both, but only the identity may authorise it.
+        BOOST_CHECK(SigningKeyBytes(r) == XOnly(id));
+    }
+    {
+        Record r;
+        r.type = RecordType::ROTATE;
+        r.id_key = XOnly(id);
+        r.new_id_key = XOnly(op);
+        const auto keys = RecordKeys(r);
+        BOOST_CHECK_EQUAL(keys.size(), 2U);
+        // Both ends must be filterable, or a watcher of the new identity would
+        // never see the move that created it.
+        BOOST_CHECK(keys[1] == XOnly(op));
+    }
+    {
+        Record r;
+        r.type = RecordType::VETO;
+        r.id_key = XOnly(id);
+        r.recovery_key = XOnly(recovery);
+        BOOST_CHECK_EQUAL(RecordKeys(r).size(), 2U);
+        BOOST_CHECK(SigningKeyBytes(r) == XOnly(recovery));
+    }
+}
+
 BOOST_AUTO_TEST_SUITE_END()

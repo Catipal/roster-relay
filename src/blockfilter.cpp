@@ -12,6 +12,8 @@
 #include <primitives/transaction.h>
 #include <script/script.h>
 #include <streams.h>
+#include <roster/extract.h>
+#include <roster/record.h>
 #include <util/golombrice.h>
 
 /// SerType used to serialize parameters in GCS filter encoding.
@@ -22,6 +24,7 @@ static constexpr int GCS_SER_VERSION = 0;
 
 static const std::map<BlockFilterType, std::string> g_filter_types = {
     {BlockFilterType::BASIC, "basic"},
+    {BlockFilterType::ROSTER, "roster"},
 };
 
 // Map a value x that is uniformly distributed in the range [0, 2^64) to a
@@ -249,6 +252,40 @@ static GCSFilter::ElementSet BasicFilterElements(const CBlock& block,
     return elements;
 }
 
+/**
+ * Elements of a roster filter: every key named by every parseable record in
+ * the block.
+ *
+ * Signatures are deliberately not checked here. Filters are recomputed by every
+ * node, so the cost would be paid network-wide, and the only consequence of
+ * including a key from a badly-signed record is a false positive — which
+ * filters already exist to tolerate. The index verifies signatures, so nothing
+ * unauthenticated survives past a match.
+ *
+ * No undo data is consulted: records live in outputs being created, never in
+ * outputs being spent, so the block alone determines the filter.
+ */
+static GCSFilter::ElementSet RosterFilterElements(const CBlock& block)
+{
+    GCSFilter::ElementSet elements;
+
+    for (const CTransactionRef& tx : block.vtx) {
+        for (const CTxOut& txout : tx->vout) {
+            std::vector<unsigned char> payload;
+            if (!roster::ExtractOpReturnPayload(txout.scriptPubKey, payload)) continue;
+
+            roster::Record rec;
+            if (roster::ParseRecord(payload, rec) != roster::ParseError::OK) continue;
+
+            for (const roster::KeyBytes& key : roster::RecordKeys(rec)) {
+                elements.emplace(key.begin(), key.end());
+            }
+        }
+    }
+
+    return elements;
+}
+
 BlockFilter::BlockFilter(BlockFilterType filter_type, const uint256& block_hash,
                          std::vector<unsigned char> filter)
     : m_filter_type(filter_type), m_block_hash(block_hash)
@@ -267,7 +304,9 @@ BlockFilter::BlockFilter(BlockFilterType filter_type, const CBlock& block, const
     if (!BuildParams(params)) {
         throw std::invalid_argument("unknown filter_type");
     }
-    m_filter = GCSFilter(params, BasicFilterElements(block, block_undo));
+    m_filter = GCSFilter(params, filter_type == BlockFilterType::ROSTER
+                                     ? RosterFilterElements(block)
+                                     : BasicFilterElements(block, block_undo));
 }
 
 bool BlockFilter::BuildParams(GCSFilter::Params& params) const
@@ -278,6 +317,12 @@ bool BlockFilter::BuildParams(GCSFilter::Params& params) const
         params.m_siphash_k1 = m_block_hash.GetUint64(1);
         params.m_P = BASIC_FILTER_P;
         params.m_M = BASIC_FILTER_M;
+        return true;
+    case BlockFilterType::ROSTER:
+        params.m_siphash_k0 = m_block_hash.GetUint64(0);
+        params.m_siphash_k1 = m_block_hash.GetUint64(1);
+        params.m_P = ROSTER_FILTER_P;
+        params.m_M = ROSTER_FILTER_M;
         return true;
     case BlockFilterType::INVALID:
         return false;

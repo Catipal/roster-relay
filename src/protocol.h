@@ -291,6 +291,19 @@ enum ServiceFlags : uint64_t {
     // serving the last 288 (2 day) blocks
     // See BIP159 for details on how this is implemented.
     NODE_NETWORK_LIMITED = (1 << 10),
+    // NODE_ROSTER means the node undertakes to serve at least the last MAX_TTL
+    // blocks — the rolling window the peer roster is rebuilt from.
+    //
+    // This exists because NODE_NETWORK_LIMITED's 288-block floor is roughly
+    // fifty times too small for that window, so without it a roster bootstrap
+    // depends entirely on archival NODE_NETWORK peers. The window is only a
+    // few tens of megabytes, so a pruned node at any sane target already holds
+    // it; what was missing was a way to say so.
+    //
+    // The bit is BPS-specific. Its network is separate from Bitcoin's and does
+    // not track that project's service-bit allocations, so the low bits are
+    // ours to assign.
+    NODE_ROSTER = (1 << 11),
 
     // Bits 24-31 are reserved for temporary experiments. Just pick a bit that
     // isn't getting used, or one not being used much, and notify the

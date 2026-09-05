@@ -85,9 +85,33 @@ public:
 constexpr uint8_t BASIC_FILTER_P = 19;
 constexpr uint32_t BASIC_FILTER_M = 784931;
 
+/**
+ * Golomb-Rice parameters for the roster filter.
+ *
+ * Deliberately the same values as the basic filter, but named separately: a
+ * roster filter holds far fewer elements than a basic one, so the density it is
+ * tuned against is different and these will likely want retuning once there is
+ * real data. Sharing the constants would make that change look riskier than it
+ * is.
+ */
+constexpr uint8_t ROSTER_FILTER_P = 19;
+constexpr uint32_t ROSTER_FILTER_M = 784931;
+
 enum class BlockFilterType : uint8_t
 {
     BASIC = 0,
+    /**
+     * Indexes the keys named by peer roster records, which BASIC cannot: it
+     * excludes OP_RETURN outputs outright (see BasicFilterElements), so a
+     * client scanning basic filters would never match an announcement however
+     * many a block carried.
+     *
+     * Value 2 rather than 1. BPS does not track Bitcoin Core upstream, so the
+     * number space is its own, but 1 was historically claimed by a proposed
+     * "extended" BIP158 type and leaving it alone keeps a BPS roster filter
+     * from being mistaken for that by tooling written against Bitcoin.
+     */
+    ROSTER = 2,
     INVALID = 255,
 };
 

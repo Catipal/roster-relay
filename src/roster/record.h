@@ -49,21 +49,27 @@ enum class RecordType : uint8_t {
  * Bit 31 is structural — it changes the record's length. Every other bit is
  * advisory and has no parsing consequence.
  *
- * Bits 0 and 1 are RESERVED AND UNIMPLEMENTED. They were RELAY_CAPABLE and
- * RENDEZVOUS_ONLY, for a peer-carried relay layer that has since been declined
- * on legal grounds: carrying traffic you cannot inspect is what draws abuse
- * complaints and ISP termination to a volunteer's home connection, and a Tor
- * onion service delivers the same two benefits — no published IP, and inbound
- * reachability behind NAT — without asking any operator to carry anyone else's
- * bytes. Running a hidden service exposes you to nothing; running a relay does.
+ * Bits 0 and 1 are DEFINED BUT NOT IMPLEMENTED. Nothing sets or reads them; a
+ * record carrying one is legal and inert, and createannouncement refuses to
+ * set one rather than let an operator advertise something undeliverable.
  *
- * The positions are burned rather than recycled. Records may already carry
- * them, and a future feature reusing bit 0 would inherit a meaning it never
- * agreed to. Nothing sets or reads these; a record carrying one is legal and
- * inert.
+ * An earlier revision recorded the relay layer as abandoned on legal grounds
+ * and renamed these to RESERVED. That was wrong, and it contradicted §8's own
+ * finding: an overlay relay carries encrypted protocol messages between BPS
+ * peers and cannot reach arbitrary hosts, so no third party's logs ever hold
+ * an operator's address. That is far closer to running an ordinary node, which
+ * already forwards other people's transactions and blocks, than to running a
+ * Tor exit. The liability argument applies to exits, and the design never
+ * included exits.
+ *
+ * What does block the feature is sybil resistance: path selection needs relays
+ * that cannot be cheaply mass-created, and announcements are free by
+ * construction. That is unsolved, so the bits stay unimplemented — but the
+ * question is open rather than closed, and these names describe what they
+ * would mean.
  */
-static constexpr uint32_t SERVICE_RESERVED_RELAY = 1U << 0;
-static constexpr uint32_t SERVICE_RESERVED_RENDEZVOUS = 1U << 1;
+static constexpr uint32_t SERVICE_RELAY_CAPABLE = 1U << 0;
+static constexpr uint32_t SERVICE_RENDEZVOUS_ONLY = 1U << 1;
 static constexpr uint32_t SERVICE_META_PRESENT = 1U << 31;
 
 static constexpr size_t RECORD_HEADER_SIZE = 4; //!< magic(3) + ver/type(1)

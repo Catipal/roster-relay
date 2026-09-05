@@ -390,17 +390,20 @@ static RPCHelpMan createannouncement()
 {
     const UniValue options = request.params[0].isNull() ? UniValue(UniValue::VOBJ) : request.params[0].get_obj();
 
-    // Silently ignoring a retired option is how someone ends up believing they
-    // enabled something. Name it and say what replaced it.
-    for (const std::string& retired : {"relay_capable", "rendezvous_only"}) {
-        if (options.exists(retired)) {
+    // Refused rather than ignored, and refused rather than honoured. The relay
+    // layer is an open design question, not an abandoned one, but nothing
+    // implements it -- so setting the bit would advertise a capability no peer
+    // can use, and silently dropping the option would let an operator believe
+    // they had enabled something.
+    for (const std::string& unimplemented : {"relay_capable", "rendezvous_only"}) {
+        if (options.exists(unimplemented)) {
             throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
-                "%s was retired along with the peer-carried relay layer, which was declined "
-                "because carrying traffic you cannot inspect draws abuse complaints and ISP "
-                "termination to the operator. For an address you can publish without revealing "
-                "your location, and which works behind NAT, use an onion endpoint instead — a "
-                "hidden service exposes you to none of that. Omitting endpoints entirely is also "
-                "legal and lists the identity without offering anywhere to dial.", retired));
+                "%s is defined in the record format but not implemented: no peer relays, so the "
+                "bit would advertise something undeliverable. The obstacle is sybil resistance for "
+                "relay selection rather than anything about the wire format. For an address you can "
+                "publish without revealing your location, and which works behind NAT today, use an "
+                "onion endpoint. Omitting endpoints entirely is also legal and lists the identity "
+                "without offering anywhere to dial.", unimplemented));
         }
     }
 

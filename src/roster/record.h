@@ -43,10 +43,27 @@ enum class RecordType : uint8_t {
     VETO = 0x05,
 };
 
-//! services bitfield. Bit 31 is structural (it changes the record's length);
-//! the low bits are advisory and carry no parsing consequence.
-static constexpr uint32_t SERVICE_RELAY_CAPABLE = 1U << 0;
-static constexpr uint32_t SERVICE_RENDEZVOUS_ONLY = 1U << 1;
+/**
+ * services bitfield.
+ *
+ * Bit 31 is structural — it changes the record's length. Every other bit is
+ * advisory and has no parsing consequence.
+ *
+ * Bits 0 and 1 are RESERVED AND UNIMPLEMENTED. They were RELAY_CAPABLE and
+ * RENDEZVOUS_ONLY, for a peer-carried relay layer that has since been declined
+ * on legal grounds: carrying traffic you cannot inspect is what draws abuse
+ * complaints and ISP termination to a volunteer's home connection, and a Tor
+ * onion service delivers the same two benefits — no published IP, and inbound
+ * reachability behind NAT — without asking any operator to carry anyone else's
+ * bytes. Running a hidden service exposes you to nothing; running a relay does.
+ *
+ * The positions are burned rather than recycled. Records may already carry
+ * them, and a future feature reusing bit 0 would inherit a meaning it never
+ * agreed to. Nothing sets or reads these; a record carrying one is legal and
+ * inert.
+ */
+static constexpr uint32_t SERVICE_RESERVED_RELAY = 1U << 0;
+static constexpr uint32_t SERVICE_RESERVED_RENDEZVOUS = 1U << 1;
 static constexpr uint32_t SERVICE_META_PRESENT = 1U << 31;
 
 static constexpr size_t RECORD_HEADER_SIZE = 4; //!< magic(3) + ver/type(1)
@@ -186,6 +203,12 @@ struct Record {
     uint32_t expiry_height{0};
 
     //! ANNOUNCE only.
+    //!
+    //! An announcement with no endpoints is legal and useful: it lists an
+    //! identity without offering a way to dial it. That covers a §11 name
+    //! holder who runs no node, and a peer accruing age before it goes live.
+    //! Readers must therefore treat "in the roster" and "dialable" as separate
+    //! questions rather than assuming every entry can be connected to.
     uint32_t services{0};
     uint32_t prev_height{0};
     std::vector<Endpoint> endpoints;

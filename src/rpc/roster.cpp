@@ -108,8 +108,10 @@ UniValue EntryToJSON(const RosterEntry& entry, const roster::Record& rec)
         out.pushKV("key", HexStr(rec.op_key));
         out.pushKV("expiry_height", (uint64_t)rec.expiry_height);
         out.pushKV("services", (uint64_t)rec.services);
-        out.pushKV("relay_capable", (rec.services & roster::SERVICE_RELAY_CAPABLE) != 0);
-        out.pushKV("rendezvous_only", (rec.services & roster::SERVICE_RENDEZVOUS_ONLY) != 0);
+        // Being listed and being reachable are different questions: an
+        // announcement may carry no endpoint at all, which is legal and says
+        // "this identity exists" without offering anywhere to dial.
+        out.pushKV("dialable", !rec.endpoints.empty());
         out.pushKV("prev_height", (uint64_t)rec.prev_height);
         {
             UniValue eps(UniValue::VARR);
@@ -254,8 +256,7 @@ static RPCHelpMan getroster()
                     {RPCResult::Type::NUM, "height", "Height the record confirmed at"},
                     {RPCResult::Type::NUM, "expiry_height", "Height the record stops counting"},
                     {RPCResult::Type::NUM, "prev_height", "Height of this key's previous record, 0 if first"},
-                    {RPCResult::Type::BOOL, "relay_capable", "Whether the peer offers to act as a rendezvous point"},
-                    {RPCResult::Type::BOOL, "rendezvous_only", "Whether the peer publishes no address"},
+                    {RPCResult::Type::BOOL, "dialable", "Whether the record carries any endpoint at all"},
                     {RPCResult::Type::ARR, "endpoints", "Dialable addresses, empty when reachable only by rendezvous",
                         {
                             {RPCResult::Type::OBJ, "", "",
@@ -356,8 +357,6 @@ static RPCHelpMan createannouncement()
                 {
                     {"expiry_height", RPCArg::Type::NUM, /* default */ "tip + min_ttl + 144",
                      "Absolute height the record stops counting, measured against the block that confirms it rather than the current tip. Must be at least min_ttl and at most max_ttl ahead of that block, so leave room to confirm; the default adds 144 blocks for exactly that."},
-                    {"relay_capable", RPCArg::Type::BOOL, /* default */ "false", "Advertise willingness to act as a rendezvous point."},
-                    {"rendezvous_only", RPCArg::Type::BOOL, /* default */ "false", "Publish no address; be reached by derived rendezvous."},
                     {"prev_height", RPCArg::Type::NUM, /* default */ "looked up from the index",
                      "Height of this key's previous record, linking the age chain. 0 for a first announcement."},
                     {"endpoints", RPCArg::Type::ARR, RPCArg::Optional::OMITTED_NAMED_ARG, "Up to three addresses.",
@@ -381,11 +380,25 @@ static RPCHelpMan createannouncement()
             }},
         RPCExamples{
             HelpExampleCli("createannouncement", "'{\"endpoints\":[{\"network\":\"ipv4\",\"address\":\"203.0.113.7\",\"port\":9345}]}'")
-          + HelpExampleCli("createannouncement", "'{\"rendezvous_only\":true}'")
+          + HelpExampleCli("createannouncement", "'{}'")
         },
         [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
 {
     const UniValue options = request.params[0].isNull() ? UniValue(UniValue::VOBJ) : request.params[0].get_obj();
+
+    // Silently ignoring a retired option is how someone ends up believing they
+    // enabled something. Name it and say what replaced it.
+    for (const std::string& retired : {"relay_capable", "rendezvous_only"}) {
+        if (options.exists(retired)) {
+            throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
+                "%s was retired along with the peer-carried relay layer, which was declined "
+                "because carrying traffic you cannot inspect draws abuse complaints and ISP "
+                "termination to the operator. For an address you can publish without revealing "
+                "your location, and which works behind NAT, use an onion endpoint instead — a "
+                "hidden service exposes you to none of that. Omitting endpoints entirely is also "
+                "legal and lists the identity without offering anywhere to dial.", retired));
+        }
+    }
 
     CKey key;
     std::string error;
@@ -410,13 +423,6 @@ static RPCHelpMan createannouncement()
     rec.expiry_height = options.exists("expiry_height")
         ? (uint32_t)options["expiry_height"].get_int64()
         : (uint32_t)(tip + (int)roster::MIN_TTL + DEFAULT_CONFIRM_MARGIN);
-
-    if (options.exists("relay_capable") && options["relay_capable"].get_bool()) {
-        rec.services |= roster::SERVICE_RELAY_CAPABLE;
-    }
-    if (options.exists("rendezvous_only") && options["rendezvous_only"].get_bool()) {
-        rec.services |= roster::SERVICE_RENDEZVOUS_ONLY;
-    }
 
     if (options.exists("endpoints")) {
         const UniValue& eps = options["endpoints"].get_array();

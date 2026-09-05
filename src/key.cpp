@@ -10,7 +10,9 @@
 #include <random.h>
 
 #include <secp256k1.h>
+#include <secp256k1_extrakeys.h>
 #include <secp256k1_recovery.h>
+#include <secp256k1_schnorrsig.h>
 
 #include <openssl/bn.h>
 #include <openssl/ecdsa.h>
@@ -273,6 +275,24 @@ bool CKey::SignCompact(const uint256 &hash, std::vector<unsigned char>& vchSig) 
     assert(rec != -1);
     vchSig[0] = 27 + rec + (fCompressed ? 4 : 0);
     return true;
+}
+
+bool CKey::SignSchnorr(const uint256& hash, Span<unsigned char> sig, const uint256* aux) const
+{
+    assert(sig.size() == 64);
+    if (!fValid) return false;
+
+    secp256k1_keypair keypair;
+    if (!secp256k1_keypair_create(secp256k1_context_sign, &keypair, begin())) return false;
+
+    const bool ret = secp256k1_schnorrsig_sign(secp256k1_context_sign, sig.data(), hash.begin(),
+                                               &keypair, secp256k1_nonce_function_bip340,
+                                               aux ? (void*)aux->begin() : nullptr);
+
+    // The keypair holds the secret key in expanded form; do not leave it on the
+    // stack for whatever runs next.
+    memory_cleanse(&keypair, sizeof(keypair));
+    return ret;
 }
 
 bool CKey::Load(const CPrivKey &seckey, const CPubKey &vchPubKey, bool fSkipCheck=false) {

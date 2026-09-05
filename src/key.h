@@ -128,6 +128,18 @@ public:
      */
     bool SignCompact(const uint256& hash, std::vector<unsigned char>& vchSig) const;
 
+    /**
+     * Create a 64-byte BIP340 Schnorr signature over hash.
+     *
+     * sig must be exactly 64 bytes. aux, if given, is 32 bytes of auxiliary
+     * randomness as specified by BIP340; passing nullptr yields the
+     * deterministic variant, which is what makes signed records reproducible
+     * from the same key and message.
+     *
+     * The counterpart to XOnlyPubKey::VerifySchnorr, which existed here first.
+     */
+    bool SignSchnorr(const uint256& hash, Span<unsigned char> sig, const uint256* aux = nullptr) const;
+
     //! Derive BIP32 child key.
     bool Derive(CKey& keyChild, ChainCode &ccChild, unsigned int nChild, const ChainCode& cc) const;
 

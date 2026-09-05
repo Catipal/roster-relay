@@ -5,13 +5,13 @@
 #ifndef BITCOIN_ROSTER_RECORD_H
 #define BITCOIN_ROSTER_RECORD_H
 
+#include <optional.h>
 #include <pubkey.h>
 #include <span.h>
 #include <uint256.h>
 
 #include <array>
 #include <cstdint>
-#include <optional>
 #include <string>
 #include <vector>
 
@@ -173,10 +173,10 @@ struct Record {
     uint32_t services{0};
     uint32_t prev_height{0};
     std::vector<Endpoint> endpoints;
-    std::optional<uint256> meta_hash;
+    Optional<uint256> meta_hash;
 
     //! DELEGATE only, present on an identity's first delegation.
-    std::optional<uint256> recovery_commit;
+    Optional<uint256> recovery_commit;
 
     std::array<unsigned char, RECORD_SIG_SIZE> sig{};
 };

@@ -72,9 +72,9 @@ Record MakeAnnounce(const CKey& key)
     Record rec;
     rec.type = RecordType::ANNOUNCE;
     rec.op_key = XOnly(key);
-    rec.expiry_height = 1'233'421;
+    rec.expiry_height = 1233421;
     rec.services = SERVICE_RELAY_CAPABLE;
-    rec.prev_height = 1'219'021;
+    rec.prev_height = 1219021;
     rec.endpoints.push_back(EpIPv4(9345));
     return rec;
 }
@@ -147,7 +147,7 @@ BOOST_AUTO_TEST_CASE(documented_record_sizes)
     del.type = RecordType::DELEGATE;
     del.id_key = XOnly(key);
     del.op_key = XOnly(key2);
-    del.expiry_height = 1'233'421;
+    del.expiry_height = 1233421;
     BOOST_CHECK_EQUAL(SerializeRecord(del).size(), 136U);
     del.recovery_commit = uint256::ONE;
     BOOST_CHECK_EQUAL(SerializeRecord(del).size(), 168U);

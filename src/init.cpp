@@ -1046,17 +1046,19 @@ bool AppInitParameterInteraction(const ArgsManager& args)
         if (!g_enabled_filter_types.empty()) {
             return InitError(_("Prune mode is incompatible with -blockfilterindex."));
         }
-        // Same reason as the two above: BaseIndex syncs from genesis, and a
-        // pruned node no longer has the blocks to sync from.
+        // The roster index is not blanket-incompatible with pruning, and it
+        // would be inconsistent to make it so: the live roster is a function
+        // of the last MAX_TTL blocks alone, and NODE_ROSTER exists precisely
+        // so that pruned nodes can serve that window. A node holding the
+        // window holds everything the index needs.
         //
-        // Note this does not conflict with NODE_ROSTER, which is about serving
-        // the window rather than indexing it: a pruned node can hold and serve
-        // the last MAX_TTL blocks perfectly well without maintaining an index
-        // over them. Making the index itself prune-compatible means starting
-        // it at tip - MAX_TTL instead of at genesis, which is worth doing and
-        // is not what BaseIndex does today.
-        if (args.GetBoolArg("-rosterindex", DEFAULT_ROSTERINDEX)) {
-            return InitError(_("Prune mode is incompatible with -rosterindex."));
+        // What is incompatible is the *default* start height. Syncing from
+        // genesis needs blocks a pruned node has discarded, so the index is
+        // refused only when no start height is given. With one set the
+        // operator is asserting that retention covers it, and a block that
+        // turns out to be missing stops the index rather than the node.
+        if (args.GetBoolArg("-rosterindex", DEFAULT_ROSTERINDEX) && !args.IsArgSet("-rosterindexstart")) {
+            return InitError(_("Prune mode is incompatible with -rosterindex unless -rosterindexstart is set to a height the node still retains."));
         }
     }
 

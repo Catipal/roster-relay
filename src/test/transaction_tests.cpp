@@ -741,12 +741,20 @@ BOOST_AUTO_TEST_CASE(test_IsStandard)
     BOOST_CHECK_EQUAL(reason, "scriptpubkey");
 
     // MAX_OP_RETURN_RELAY-byte TxoutType::NULL_DATA (standard)
-    t.vout[0].scriptPubKey = CScript() << OP_RETURN << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef3804678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38");
+    //
+    // The payload is derived from the limit rather than written out as fixed
+    // hex. The previous form hardcoded 80 bytes and asserted that it equalled
+    // MAX_OP_RETURN_RELAY, so the test silently encoded the old value of a
+    // constant it claimed to be testing against, and broke the moment that
+    // constant moved. Three bytes of overhead: OP_RETURN, OP_PUSHDATA1, length
+    // — PUSHDATA1 because any payload above 75 bytes requires it.
+    const unsigned int max_datacarrier_payload = MAX_OP_RETURN_RELAY - 3;
+    t.vout[0].scriptPubKey = CScript() << OP_RETURN << std::vector<unsigned char>(max_datacarrier_payload, 0x5a);
     BOOST_CHECK_EQUAL(MAX_OP_RETURN_RELAY, t.vout[0].scriptPubKey.size());
     BOOST_CHECK(IsStandardTx(CTransaction(t), reason));
 
     // MAX_OP_RETURN_RELAY+1-byte TxoutType::NULL_DATA (non-standard)
-    t.vout[0].scriptPubKey = CScript() << OP_RETURN << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef3804678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef3800");
+    t.vout[0].scriptPubKey = CScript() << OP_RETURN << std::vector<unsigned char>(max_datacarrier_payload + 1, 0x5a);
     BOOST_CHECK_EQUAL(MAX_OP_RETURN_RELAY + 1, t.vout[0].scriptPubKey.size());
     reason.clear();
     BOOST_CHECK(!IsStandardTx(CTransaction(t), reason));

@@ -95,10 +95,23 @@ public:
 };
 
 /**
- * Default setting for nMaxDatacarrierBytes. 80 bytes of data, +1 for OP_RETURN,
+ * Default setting for nMaxDatacarrierBytes. 250 bytes of data, +1 for OP_RETURN,
  * +2 for the pushdata opcodes.
+ *
+ * Raised from Bitcoin's 83 so that peer roster records relay. 250 is not a
+ * round number chosen for headroom: it is exactly the largest legal record —
+ * a 3-endpoint ANNOUNCE carrying meta_hash with every endpoint an onion v3 —
+ * and roster::MAX_DATACARRIER_FOR_ROSTER derives this same 253 from the record
+ * format rather than restating it.
+ *
+ * Two consequences worth being explicit about. This is a relay limit for every
+ * OP_RETURN, not only for records, so it raises the data-carrying capacity of
+ * the chain generally; §4 of design note 001 takes that growth deliberately.
+ * And gating the larger size on the payload actually parsing as a record was
+ * considered and rejected — it would put record parsing inside policy, which
+ * is both a layering inversion and a parse cost on every relayed transaction.
  */
-static const unsigned int MAX_OP_RETURN_RELAY = 83;
+static const unsigned int MAX_OP_RETURN_RELAY = 253;
 
 /**
  * A data carrying output is an unspendable output containing data. The script

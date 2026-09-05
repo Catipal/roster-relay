@@ -447,6 +447,7 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-txindex", strprintf("Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)", DEFAULT_TXINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-rosterindex", strprintf("Maintain a peer roster index over chain-anchored discovery records (default: %u)", DEFAULT_ROSTERINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-rosterindexstart=<n>", "Height at which -rosterindex begins scanning (default: 0, genesis). Records cannot exist before the roster feature shipped, so on an established chain setting this to that height avoids a long scan of blocks that provably contain none. Setting it above the first record silently misses records, so it is left to the operator rather than guessed.", ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
+    argsman.AddArg("-rosterindexwindow=<n>", "Blocks of roster history -rosterindex retains, or 0 to keep all of it (default: 0). The live roster needs only the last MAX_TTL blocks, so a window bounds the index instead of letting it grow forever; what it gives up is serving other nodes age proofs, which any node holding the history can supply. Must be at least MAX_TTL.", ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-blockfilterindex=<type>",
                  strprintf("Maintain an index of compact filters by block (default: %s, values: %s).", DEFAULT_BLOCKFILTERINDEX, ListBlockFilterTypes()) +
                  " If <type> is not supplied or if <type> = 1, indexes for all known types are enabled.",
@@ -1060,6 +1061,17 @@ bool AppInitParameterInteraction(const ArgsManager& args)
         if (args.GetBoolArg("-rosterindex", DEFAULT_ROSTERINDEX) && !args.IsArgSet("-rosterindexstart")) {
             return InitError(_("Prune mode is incompatible with -rosterindex unless -rosterindexstart is set to a height the node still retains."));
         }
+
+    // A window shorter than the rolling window would leave BuildRoster unable
+    // to see records that are still live, so the roster would be wrong rather
+    // than merely incomplete. Refuse instead of clamping: silently widening an
+    // operator's number hides the mistake.
+    if (args.IsArgSet("-rosterindexwindow")) {
+        const int64_t window = args.GetArg("-rosterindexwindow", 0);
+        if (window != 0 && window < (int64_t)roster::MAX_TTL) {
+            return InitError(strprintf(_("-rosterindexwindow=%d is below MAX_TTL (%u); the live roster would be incomplete."), window, roster::MAX_TTL));
+        }
+    }
     }
 
     // -bind and -whitebind can't be set when not listening
@@ -1872,8 +1884,9 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
     }
 
     if (args.GetBoolArg("-rosterindex", DEFAULT_ROSTERINDEX)) {
+        const int roster_window = (int)args.GetArg("-rosterindexwindow", 0);
         g_rosterindex = MakeUnique<RosterIndex>(nTxIndexCache, false, fReindex,
-                                               (int)args.GetArg("-rosterindexstart", 0));
+                                               (int)args.GetArg("-rosterindexstart", 0), roster_window);
         g_rosterindex->Start();
     }
 

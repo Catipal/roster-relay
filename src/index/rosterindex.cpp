@@ -122,11 +122,59 @@ public:
     }
 };
 
-RosterIndex::RosterIndex(size_t n_cache_size, bool f_memory, bool f_wipe, int start_height)
+RosterIndex::RosterIndex(size_t n_cache_size, bool f_memory, bool f_wipe, int start_height, int window)
     : m_db(MakeUnique<RosterIndex::DB>(n_cache_size, f_memory, f_wipe)),
       m_chain_id(Params().NetworkIDString()),
-      m_start_height(start_height)
+      m_start_height(start_height),
+      m_window(window)
 {
+}
+
+void RosterIndex::EraseHeight(int height, CDBBatch& batch) const
+{
+    std::unique_ptr<CDBIterator> it(m_db->NewIterator());
+    it->Seek(DBHeightKey(height, 0));
+
+    while (it->Valid()) {
+        DBHeightKey key;
+        if (!it->GetKey(key) || key.height != height) break;
+
+        // The by-key entry is filed under the record's own key, so it has to
+        // be read back to be found. Leaving it behind would strand an entry
+        // that ReadRecordsForKey would then try to resolve against a height
+        // entry that no longer exists.
+        RosterEntry entry;
+        roster::Record rec;
+        if (it->GetValue(entry) && entry.Parse(rec)) {
+            batch.Erase(DBKeyKey(IndexKeyFor(rec), key.height, key.ordinal));
+        }
+        batch.Erase(key);
+        it->Next();
+    }
+}
+
+void RosterIndex::PruneBelow(int threshold, CDBBatch& batch) const
+{
+    if (threshold <= 0) return;
+
+    std::unique_ptr<CDBIterator> it(m_db->NewIterator());
+    it->Seek(DBHeightKey(0, 0));
+
+    while (it->Valid()) {
+        DBHeightKey key;
+        // Heights are big-endian, so the first key at or above the threshold
+        // ends the scan: everything after it is newer. In steady state this
+        // costs one seek and nothing else.
+        if (!it->GetKey(key) || key.height >= threshold) break;
+
+        RosterEntry entry;
+        roster::Record rec;
+        if (it->GetValue(entry) && entry.Parse(rec)) {
+            batch.Erase(DBKeyKey(IndexKeyFor(rec), key.height, key.ordinal));
+        }
+        batch.Erase(key);
+        it->Next();
+    }
 }
 
 bool RosterIndex::Init()
@@ -164,6 +212,13 @@ bool RosterIndex::WriteBlock(const CBlock& block, const CBlockIndex* pindex)
     CDBBatch batch(*m_db);
     uint32_t ordinal = 0;
 
+    // Clear anything already filed at this height before writing. During a
+    // normal sync there is nothing to clear; after a reorg the height is being
+    // rewritten, and a replacement block with fewer records would otherwise
+    // leave the surplus entries of its predecessor behind. Making the write
+    // idempotent is cheaper than reasoning about which reorgs can do that.
+    EraseHeight(pindex->nHeight, batch);
+
     for (const CTransactionRef& tx : block.vtx) {
         for (uint32_t n = 0; n < tx->vout.size(); ++n) {
             std::vector<unsigned char> payload;
@@ -194,9 +249,20 @@ bool RosterIndex::WriteBlock(const CBlock& block, const CBlockIndex* pindex)
         }
     }
 
+    // Drop history that has fallen out of the retention window. Doing it here
+    // rather than in a sweep keeps the work proportional to one block: heights
+    // advance one at a time, so in steady state this finds a single height's
+    // worth of entries, or none.
+    bool pruned = false;
+    if (m_window > 0 && pindex->nHeight > m_window) {
+        const int threshold = pindex->nHeight - m_window;
+        PruneBelow(threshold, batch);
+        pruned = true;
+    }
+
     // Blocks carrying no records are the overwhelming majority; do not pay a
-    // write for them.
-    if (ordinal == 0) return true;
+    // write for them unless the batch has erasures to flush.
+    if (ordinal == 0 && !pruned && batch.SizeEstimate() == 0) return true;
     return m_db->WriteBatch(batch);
 }
 

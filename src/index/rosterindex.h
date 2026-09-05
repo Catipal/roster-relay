@@ -69,6 +69,16 @@ private:
     //! First height worth scanning. See the constructor.
     const int m_start_height;
 
+    //! Blocks of history to retain, or 0 to keep everything. See the constructor.
+    const int m_window;
+
+    //! Remove both key families for one height. Makes WriteBlock idempotent,
+    //! which is what keeps the index correct across a reorg.
+    void EraseHeight(int height, CDBBatch& batch) const;
+
+    //! Drop every entry below `threshold`.
+    void PruneBelow(int threshold, CDBBatch& batch) const;
+
 protected:
     /**
      * Seed the index's stored locator so a first run begins at m_start_height
@@ -96,9 +106,19 @@ public:
      *   above the height at which records first became possible would silently
      *   miss them, so it is an explicit operator choice rather than a guess
      *   the index makes for itself.
+     *
+     * @param window  Blocks of history to retain, or 0 to keep everything.
+     *   The live roster needs only the last MAX_TTL blocks (§5), so a windowed
+     *   index is bounded rather than ever-growing. What it gives up is serving
+     *   another party's age proofs, which is safe to give up because those are
+     *   merkle inclusion proofs against headers that any untrusted party can
+     *   supply — the chain is the authority for age, not this index.
+     *
+     *   Archival by default: an index that quietly discards history would make
+     *   age queries wrong rather than slow.
      */
     explicit RosterIndex(size_t n_cache_size, bool f_memory = false, bool f_wipe = false,
-                         int start_height = 0);
+                         int start_height = 0, int window = 0);
 
     // Declared because this class holds a unique_ptr to an incomplete type.
     virtual ~RosterIndex() override;

@@ -446,6 +446,7 @@ void SetupServerArgs(NodeContext& node)
 #endif
     argsman.AddArg("-txindex", strprintf("Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)", DEFAULT_TXINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-rosterindex", strprintf("Maintain a peer roster index over chain-anchored discovery records (default: %u)", DEFAULT_ROSTERINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
+    argsman.AddArg("-rosterindexstart=<n>", "Height at which -rosterindex begins scanning (default: 0, genesis). Records cannot exist before the roster feature shipped, so on an established chain setting this to that height avoids a long scan of blocks that provably contain none. Setting it above the first record silently misses records, so it is left to the operator rather than guessed.", ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-blockfilterindex=<type>",
                  strprintf("Maintain an index of compact filters by block (default: %s, values: %s).", DEFAULT_BLOCKFILTERINDEX, ListBlockFilterTypes()) +
                  " If <type> is not supplied or if <type> = 1, indexes for all known types are enabled.",
@@ -1869,7 +1870,8 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
     }
 
     if (args.GetBoolArg("-rosterindex", DEFAULT_ROSTERINDEX)) {
-        g_rosterindex = MakeUnique<RosterIndex>(nTxIndexCache, false, fReindex);
+        g_rosterindex = MakeUnique<RosterIndex>(nTxIndexCache, false, fReindex,
+                                               (int)args.GetArg("-rosterindexstart", 0));
         g_rosterindex->Start();
     }
 

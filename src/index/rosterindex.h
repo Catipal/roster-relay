@@ -66,7 +66,23 @@ private:
     //! network cannot be replayed onto this one. Captured once at construction.
     const std::string m_chain_id;
 
+    //! First height worth scanning. See the constructor.
+    const int m_start_height;
+
 protected:
+    /**
+     * Seed the index's stored locator so a first run begins at m_start_height
+     * rather than at genesis.
+     *
+     * BaseIndex starts from whatever block its database says it last indexed,
+     * and from genesis when that is unset. That default suits txindex, which
+     * genuinely wants all history. It suits a roster index badly: records
+     * cannot exist before the feature ships, so on an established chain the
+     * default spends a long scan proving that the first million-odd blocks
+     * contain nothing.
+     */
+    bool Init() override;
+
     bool WriteBlock(const CBlock& block, const CBlockIndex* pindex) override;
 
     BaseIndex::DB& GetDB() const override;
@@ -74,7 +90,15 @@ protected:
     const char* GetName() const override { return "rosterindex"; }
 
 public:
-    explicit RosterIndex(size_t n_cache_size, bool f_memory = false, bool f_wipe = false);
+    /**
+     * @param start_height  First height to scan. 0 means genesis, which is
+     *   complete but wasteful on a chain older than the feature. Setting it
+     *   above the height at which records first became possible would silently
+     *   miss them, so it is an explicit operator choice rather than a guess
+     *   the index makes for itself.
+     */
+    explicit RosterIndex(size_t n_cache_size, bool f_memory = false, bool f_wipe = false,
+                         int start_height = 0);
 
     // Declared because this class holds a unique_ptr to an incomplete type.
     virtual ~RosterIndex() override;

@@ -11,6 +11,7 @@
 #include <roster/extract.h>
 #include <script/script.h>
 #include <util/system.h>
+#include <validation.h>
 
 #include <algorithm>
 #include <set>
@@ -121,10 +122,37 @@ public:
     }
 };
 
-RosterIndex::RosterIndex(size_t n_cache_size, bool f_memory, bool f_wipe)
+RosterIndex::RosterIndex(size_t n_cache_size, bool f_memory, bool f_wipe, int start_height)
     : m_db(MakeUnique<RosterIndex::DB>(n_cache_size, f_memory, f_wipe)),
-      m_chain_id(Params().NetworkIDString())
+      m_chain_id(Params().NetworkIDString()),
+      m_start_height(start_height)
 {
+}
+
+bool RosterIndex::Init()
+{
+    if (m_start_height > 0) {
+        CBlockLocator existing;
+        if (!m_db->ReadBestBlock(existing)) {
+            LOCK(cs_main);
+            const CBlockIndex* start = ::ChainActive()[m_start_height - 1];
+            if (start) {
+                // Declaring the block before m_start_height as already indexed
+                // is true in the only sense that matters -- there is nothing
+                // there to index -- and it is how BaseIndex is told where to
+                // resume without reaching into its private state.
+                CDBBatch batch(*m_db);
+                m_db->WriteBestBlock(batch, ::ChainActive().GetLocator(start));
+                m_db->WriteBatch(batch);
+                LogPrintf("rosterindex: starting at height %d, skipping %d earlier blocks\n",
+                          m_start_height, m_start_height);
+            } else {
+                LogPrintf("rosterindex: -rosterindexstart=%d is beyond the current tip, "
+                          "starting from genesis instead\n", m_start_height);
+            }
+        }
+    }
+    return BaseIndex::Init();
 }
 
 RosterIndex::~RosterIndex() = default;

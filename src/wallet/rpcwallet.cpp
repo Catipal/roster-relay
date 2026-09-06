@@ -5,6 +5,7 @@
 
 #include <addressbook.h>
 #include <amount.h>
+#include <chainparams.h>
 #include <core_io.h>
 #include <interfaces/chain.h>
 #include <key_io.h>
@@ -16,6 +17,7 @@
 #include <policy/fees.h>
 #include <policy/policy.h>
 #include <policy/rbf.h>
+#include <roster/record.h>
 #include <rpc/rawtransaction_util.h>
 #include <rpc/server.h>
 #include <rpc/util.h>
@@ -4902,6 +4904,121 @@ static RPCHelpMan send()
     };
 }
 
+static RPCHelpMan publishrecord()
+{
+    return RPCHelpMan{"publishrecord",
+                "\nPay to publish a signed roster record, whoever signed it.\n"
+                "\nThe record is checked before a single coin is spent, so one that is malformed,\n"
+                "unverifiable or already out of range costs nothing. Nothing about the payer\n"
+                "enters the record — the signature covers the record alone — which is what lets\n"
+                "a peer holding no coins be listed at all, and what lets a relay keep its own\n"
+                "users listed month to month (design note 001 §2, §8).\n"
+                "\nThe signer builds the record with createannouncement on their own node and\n"
+                "sends the hex; renewing is the same call again with a fresh expiry.\n",
+                {
+                    {"hex", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "The signed record, as returned by createannouncement on the signer's node."},
+                    {"options", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED_NAMED_ARG, "Funding options, as accepted by fundrawtransaction — fee_rate, conf_target, changeAddress and the rest.", {}, "options"},
+                },
+                RPCResult{
+                    RPCResult::Type::OBJ, "", "", {
+                        {RPCResult::Type::STR_HEX, "txid", "Transaction carrying the record"},
+                        {RPCResult::Type::STR_HEX, "key", "Operational key the record was published for"},
+                        {RPCResult::Type::NUM, "expiry_height", "Absolute height the record stops counting"},
+                        {RPCResult::Type::STR_AMOUNT, "fee", "Fee paid, in " + CURRENCY_UNIT},
+                    }},
+                RPCExamples{
+                    HelpExampleCli("publishrecord", "\"4250530100...\"")
+            + HelpExampleRpc("publishrecord", "\"4250530100...\"")
+                },
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    std::shared_ptr<CWallet> const wallet = GetWalletForJSONRPCRequest(request);
+    if (!wallet) return NullUniValue;
+    CWallet* const pwallet = wallet.get();
+
+    const std::string hex = request.params[0].get_str();
+    if (!IsHex(hex)) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "hex is not valid hexadecimal");
+    }
+    const std::vector<unsigned char> raw = ParseHex(hex);
+
+    // Verify before spending, because the payer has no other protection. An
+    // invalid record is not rejected by consensus — it is simply never indexed,
+    // so the fee would buy an entry that no reader ever sees, and nothing would
+    // report the loss.
+    roster::Record rec;
+    if (!roster::ParseAndVerify(raw, Params().NetworkIDString(), rec)) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER,
+                           "Not a valid roster record for this chain: it does not parse, or its "
+                           "signature does not verify. Nothing was spent.");
+    }
+
+    int next_height;
+    {
+        LOCK(pwallet->cs_wallet);
+        next_height = pwallet->GetLastBlockHeight() + 1;
+    }
+
+    // Expiry is absolute and measured against the confirming block, so a record
+    // that looks fine against the tip can still be out of range once mined. The
+    // next block is the earliest it could confirm, and therefore the earliest
+    // height at which this can be judged at all.
+    const bool carries_expiry = rec.type == roster::RecordType::ANNOUNCE ||
+                                rec.type == roster::RecordType::DELEGATE;
+    if (carries_expiry && !roster::ExpiryInRange(rec.expiry_height, next_height)) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER,
+                           strprintf("expiry_height %u is out of range for a record confirming at height %d, which must "
+                                     "be between %u and %u blocks ahead of it. Ask the signer to rebuild the record. "
+                                     "Nothing was spent.",
+                                     rec.expiry_height, next_height,
+                                     (unsigned)roster::MIN_TTL, (unsigned)roster::MAX_TTL));
+    }
+
+    // This node's own mempool applies the same standardness rule its peers do,
+    // so an oversized record fails at broadcast rather than quietly failing to
+    // relay. Name the knob rather than making the operator find it.
+    const unsigned needed = (unsigned)(raw.size() + roster::OP_RETURN_OVERHEAD);
+    if (needed > nMaxDatacarrierBytes) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER,
+                           strprintf("This record needs a datacarrier limit of %u bytes and this node allows %u. Raise "
+                                     "-datacarriersize; roster records need %u. Nothing was spent.",
+                                     needed, nMaxDatacarrierBytes, (unsigned)roster::MAX_DATACARRIER_FOR_ROSTER));
+    }
+
+    CMutableTransaction rawTx;
+    rawTx.vout.emplace_back(0, CScript() << OP_RETURN << raw);
+
+    CCoinControl coin_control;
+    coin_control.m_add_inputs = true;
+    CAmount fee = 0;
+    int change_position = -1;
+    FundTransaction(pwallet, rawTx, fee, change_position, request.params[1], coin_control, /* override_min_fee */ true);
+
+    PartiallySignedTransaction psbtx(rawTx);
+    bool complete = true;
+    const TransactionError err = pwallet->FillPSBT(psbtx, complete, SIGHASH_ALL, true, false);
+    if (err != TransactionError::OK) {
+        throw JSONRPCTransactionError(err);
+    }
+
+    CMutableTransaction mtx;
+    if (!FinalizeAndExtractPSBT(psbtx, mtx)) {
+        throw JSONRPCError(RPC_WALLET_ERROR, "Could not sign the funding inputs. Nothing was broadcast.");
+    }
+
+    CTransactionRef tx(MakeTransactionRef(std::move(mtx)));
+    pwallet->CommitTransaction(tx, {}, {} /* orderForm */);
+
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("txid", tx->GetHash().GetHex());
+    out.pushKV("key", HexStr(rec.op_key));
+    out.pushKV("expiry_height", (uint64_t)rec.expiry_height);
+    out.pushKV("fee", ValueFromAmount(fee));
+    return out;
+},
+    };
+}
+
 static RPCHelpMan sethdseed()
 {
     return RPCHelpMan{"sethdseed",
@@ -5258,6 +5375,7 @@ static const CRPCCommand commands[] =
     { "wallet",             "backupwallet",                     &backupwallet,                  {"destination"} },
     { "wallet",             "bumpfee",                          &bumpfee,                       {"txid", "options"} },
     { "wallet",             "psbtbumpfee",                      &psbtbumpfee,                   {"txid", "options"} },
+    { "wallet",             "publishrecord",                    &publishrecord,                 {"hex","options"} },
     { "wallet",             "createwallet",                     &createwallet,                  {"wallet_name", "disable_private_keys", "blank", "passphrase", "avoid_reuse", "descriptors", "load_on_startup"} },
     { "wallet",             "dumpprivkey",                      &dumpprivkey,                   {"address"}  },
     { "wallet",             "dumpwallet",                       &dumpwallet,                    {"filename"} },

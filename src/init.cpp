@@ -2137,7 +2137,7 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 connman->AddNewAddresses(addrs, CAddress());
             }
             LogPrint(BCLog::NET, "roster: %u live, %u addresses offered "
-                     "(%u without an endpoint, %u unreachable, %u unrepresentable)\n",
+                     "(%u without an endpoint, %u unroutable, %u unreachable, %u unrepresentable)\n",
                      stats.live, stats.collected, stats.no_endpoint,
                      stats.unroutable, stats.unreachable, stats.unrepresentable);
         }, roster::ROSTER_PEERS_INTERVAL);

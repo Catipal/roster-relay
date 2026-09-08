@@ -380,6 +380,34 @@ class RosterTest(BitcoinTestFramework):
         addresses = {a["address"] for a in self.nodes[0].getnodeaddresses(0)}
         assert IPV4_ENDPOINT["address"] not in addresses
 
+    def test_onion_endpoints_reach_the_address_manager(self):
+        self.log.info("an onion endpoint is offered, so the private path is not filtered out")
+        # "Routable" in IsRoutable() means "usable on the public internet" and
+        # excludes LAN, loopback and documentation ranges. It is unrelated to
+        # publishing a routed address instead of a real one: CNetAddr::IsRoutable
+        # exempts Tor explicitly - (IsRFC4193() && !IsTor()) - so an onion
+        # address is never dropped for being unroutable.
+        #
+        # It IS dropped when the node has no way to dial it, which is a node
+        # with no Tor proxy - the default, including here. That is the filter
+        # working, not the privacy path being blocked, so the proxy is
+        # configured to show the address arriving once dialling is possible.
+        # It never has to answer; reachability is a matter of configuration.
+        record = self.nodes[1].createannouncement({"endpoints": [ONION_ENDPOINT]})
+        self.publish(record)
+        self.restart_node(0, self.extra_args[0] + ["-onion=127.0.0.1:9050"])
+        self.connect_nodes(0, 1)
+        self.nodes[0].mockscheduler(ROSTER_PEERS_INTERVAL_SECONDS + 1)
+        self.wait_until(
+            lambda: any(a["address"].endswith(".onion")
+                        for a in self.nodes[0].getnodeaddresses(0)),
+            timeout=30)
+        onions = [a for a in self.nodes[0].getnodeaddresses(0)
+                  if a["address"].endswith(".onion")]
+        assert_equal(onions[0]["port"], ONION_ENDPOINT["port"])
+        self.restart_node(0, self.extra_args[0])
+        self.connect_nodes(0, 1)
+
     def test_index_can_be_switched_off(self):
         self.log.info("without -rosterindex the queries refuse rather than lie")
         self.restart_node(0, ["-fallbackfee=0.0001"])
@@ -416,6 +444,7 @@ class RosterTest(BitcoinTestFramework):
         self.test_deployment_is_addressable_by_name()
         self.test_roster_feeds_peer_discovery()
         self.test_documentation_addresses_are_not_offered()
+        self.test_onion_endpoints_reach_the_address_manager()
         self.test_index_can_be_switched_off()
 
 

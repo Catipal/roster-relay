@@ -24,6 +24,8 @@
 #include <index/blockfilterindex.h>
 #include <index/rosterindex.h>
 #include <roster/peers.h>
+#include <overlay/relay.h>
+#include <roster/keystore.h>
 #include <index/txindex.h>
 #include <interfaces/chain.h>
 #include <interfaces/node.h>
@@ -160,6 +162,15 @@ NODISCARD static bool CreatePidFile(const ArgsManager& args)
 
 static std::unique_ptr<ECCVerifyHandle> globalVerifyHandle;
 
+/**
+ * The overlay, when it is running.
+ *
+ * Identified by the same operational key the roster publishes, so a peer that
+ * finds this node in the roster can reach it here - the two halves name the
+ * same node or neither is any use.
+ */
+static std::unique_ptr<overlay::Relay> g_overlay;
+
 static std::thread g_load_block;
 
 static boost::thread_group threadGroup;
@@ -219,6 +230,11 @@ void Shutdown(NodeContext& node)
     //   EraseOrphansFor, which locks g_cs_orphans.
     //
     // Thus the implicit locking order requirement is: (1) cs_main, (2) g_cs_orphans, (3) cs_vNodes.
+    if (g_overlay) {
+        g_overlay->Stop();
+        g_overlay.reset();
+    }
+
     if (node.connman) {
         node.connman->StopThreads();
         LOCK2(::cs_main, ::g_cs_orphans);
@@ -447,6 +463,8 @@ void SetupServerArgs(NodeContext& node)
 #endif
     argsman.AddArg("-txindex", strprintf("Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)", DEFAULT_TXINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-rosterindex", strprintf("Maintain a peer roster index over chain-anchored discovery records (default: %u)", DEFAULT_ROSTERINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
+    argsman.AddArg("-overlay", strprintf("Run the encrypted overlay: an authenticated UDP transport between nodes, keyed by the same operational key the roster publishes (default: %u). Off by default because the handshake has not been reviewed by anyone who did not write it, and nothing in the node depends on it yet.", overlay::DEFAULT_OVERLAY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-overlayport=<port>", strprintf("Port the overlay listens on (default: %u). Its own socket, separate from the peer-to-peer port, because the overlay is a datagram protocol and the peer-to-peer one is not.", overlay::DEFAULT_OVERLAY_PORT), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-rosterconnect", strprintf("Offer peers listed in the roster to the address manager, so the chain is used for discovery rather than only indexed (default: %u). Needs -rosterindex; ignored without it. Addresses are filtered to networks this node can reach and are dated by the block that carried the record, so an old announcement is treated as old.", roster::DEFAULT_ROSTERCONNECT), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-rosterindexstart=<n>", "Height at which -rosterindex begins scanning (default: 0, genesis). Records cannot exist before the roster feature shipped, so on an established chain setting this to that height avoids a long scan of blocks that provably contain none. Setting it above the first record silently misses records, so it is left to the operator rather than guessed.", ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-rosterindexwindow=<n>", "Blocks of roster history -rosterindex retains, or 0 to keep all of it (default: 0). The live roster needs only the last MAX_TTL blocks, so a window bounds the index instead of letting it grow forever; what it gives up is serving other nodes age proofs, which any node holding the history can supply. Must be at least MAX_TTL.", ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
@@ -2108,6 +2126,39 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
     node.scheduler->scheduleEvery([banman]{
         banman->DumpBanlist();
     }, DUMP_BANS_INTERVAL);
+
+    // Start the overlay, if it was asked for. It uses the same operational key
+    // the roster publishes, so a node found in the roster is reachable here,
+    // and it listens on its own UDP socket rather than sharing the
+    // peer-to-peer one, which is a stream protocol and cannot carry datagrams.
+    if (args.GetBoolArg("-overlay", overlay::DEFAULT_OVERLAY)) {
+        CKey op_key;
+        std::string key_error;
+        if (!roster::GetOperationalKey(op_key, key_error)) {
+            return InitError(Untranslated(strprintf("overlay: %s", key_error)));
+        }
+        const uint16_t port = static_cast<uint16_t>(
+            args.GetArg("-overlayport", overlay::DEFAULT_OVERLAY_PORT));
+        g_overlay = MakeUnique<overlay::Relay>(op_key);
+        std::string bind_error;
+        const CService listen_at(LookupNumeric("0.0.0.0", port));
+        if (!g_overlay->Bind(listen_at, bind_error)) {
+            g_overlay.reset();
+            return InitError(Untranslated(strprintf("overlay: %s", bind_error)));
+        }
+        // Nothing consumes overlay traffic yet, so arriving payloads are
+        // counted in the log and dropped. Wiring a consumer is a separate
+        // decision from being able to carry the traffic at all.
+        if (!g_overlay->Start([](const overlay::Hop& from, std::vector<unsigned char>&& payload) {
+                LogPrint(BCLog::NET, "overlay: %u bytes from %s\n", payload.size(),
+                         from.via_path ? strprintf("path %016x", from.path)
+                                       : from.addr.ToString());
+            })) {
+            g_overlay.reset();
+            return InitError(Untranslated("overlay: could not start the receive thread"));
+        }
+        LogPrintf("overlay: listening on %s\n", g_overlay->BoundAddress().ToString());
+    }
 
     // Offer the roster to peer discovery. Without this the index is a database
     // nothing reads: the node would publish its own record and answer queries

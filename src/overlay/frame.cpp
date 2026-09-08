@@ -158,6 +158,38 @@ bool OpenFrame(const FrameKey& key, const unsigned char* data, size_t len,
     return true;
 }
 
+void AeadSeal(const FrameKey& key, uint64_t nonce, const unsigned char* aad,
+              size_t aad_len, const std::vector<unsigned char>& plaintext,
+              std::vector<unsigned char>& out)
+{
+    out.assign(plaintext.size() + FRAME_TAG_SIZE, 0);
+    if (!plaintext.empty()) {
+        Keystream(key, nonce, plaintext.data(), out.data(), plaintext.size());
+    }
+    ComputeTag(key, nonce, aad, aad_len, out.data(), plaintext.size(),
+               out.data() + plaintext.size());
+}
+
+bool AeadOpen(const FrameKey& key, uint64_t nonce, const unsigned char* aad,
+              size_t aad_len, const unsigned char* data, size_t len,
+              std::vector<unsigned char>& out)
+{
+    if (len < FRAME_TAG_SIZE) return false;
+    const size_t ct_len = len - FRAME_TAG_SIZE;
+
+    unsigned char expected[POLY1305_TAGLEN];
+    ComputeTag(key, nonce, aad, aad_len, data, ct_len, expected);
+
+    unsigned char diff = 0;
+    for (size_t i = 0; i < POLY1305_TAGLEN; ++i) diff |= expected[i] ^ data[ct_len + i];
+    memory_cleanse(expected, sizeof(expected));
+    if (diff != 0) return false;
+
+    out.assign(ct_len, 0);
+    if (ct_len != 0) Keystream(key, nonce, data, out.data(), ct_len);
+    return true;
+}
+
 bool ReplayWindow::Accept(uint64_t counter)
 {
     if (!m_any) {

@@ -91,6 +91,22 @@ bool OpenFrame(const FrameKey& key, const unsigned char* data, size_t len,
                uint64_t& counter_out, std::vector<unsigned char>& payload_out);
 
 /**
+ * ChaCha20-Poly1305 over an arbitrary buffer with explicit associated data.
+ *
+ * The handshake needs the same AEAD but has its own message layout rather than
+ * the frame header, so it cannot go through SealFrame. Same nonce discipline
+ * applies: never reuse one under a given key.
+ */
+void AeadSeal(const FrameKey& key, uint64_t nonce, const unsigned char* aad,
+              size_t aad_len, const std::vector<unsigned char>& plaintext,
+              std::vector<unsigned char>& out);
+
+/** Counterpart to AeadSeal. False on a failed tag, before any plaintext exists. */
+bool AeadOpen(const FrameKey& key, uint64_t nonce, const unsigned char* aad,
+              size_t aad_len, const unsigned char* data, size_t len,
+              std::vector<unsigned char>& out);
+
+/**
  * Rejects replayed and long-delayed frames.
  *
  * UDP reorders, so a strictly increasing counter would drop legitimate traffic.

@@ -188,6 +188,7 @@ BITCOIN_CORE_H = \
   randomenv.h \
   reverse_iterator.h \
   overlay/frame.h \
+  overlay/handshake.h \
   roster/commitment.h \
   roster/extract.h \
   roster/keystore.h \
@@ -517,6 +518,7 @@ libbitcoin_common_a_SOURCES = \
   protocol.cpp \
   psbt.cpp \
   overlay/frame.cpp \
+  overlay/handshake.cpp \
   roster/commitment.cpp \
   roster/extract.cpp \
   roster/keystore.cpp \

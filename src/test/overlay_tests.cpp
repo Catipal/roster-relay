@@ -5,6 +5,8 @@
 #include <overlay/frame.h>
 #include <overlay/handshake.h>
 #include <overlay/session.h>
+#include <overlay/path.h>
+#include <overlay/relay.h>
 #include <overlay/socket.h>
 #include <overlay/transport.h>
 #include <util/time.h>
@@ -961,6 +963,281 @@ BOOST_AUTO_TEST_CASE(socket_stop_is_idempotent)
     BOOST_REQUIRE(S.Start(in.Handler()));
     S.Stop();
     S.Stop(); // must not hang or crash on a second call, nor on destruction
+}
+
+
+BOOST_AUTO_TEST_CASE(path_messages_roundtrip)
+{
+    std::vector<unsigned char> msg;
+    const std::vector<unsigned char> body = Payload(200, 4);
+    BOOST_CHECK(overlay::EncodeAppData(body, msg));
+    overlay::MessageKind kind;
+    BOOST_CHECK(overlay::DecodeKind(msg, kind));
+    BOOST_CHECK(kind == overlay::MessageKind::APP_DATA);
+    std::vector<unsigned char> got;
+    BOOST_CHECK(overlay::DecodeAppData(msg, got));
+    BOOST_CHECK(got == body);
+
+    const CService hop = Addr("10.1.2.3", 9346);
+    BOOST_CHECK(overlay::EncodePathBuild(0x1122334455667788ULL, hop, msg));
+    uint64_t id = 0;
+    CService next;
+    BOOST_CHECK(overlay::DecodePathBuild(msg, id, next));
+    BOOST_CHECK_EQUAL(id, 0x1122334455667788ULL);
+    BOOST_CHECK(next == hop);
+
+    BOOST_CHECK(overlay::EncodePathResult(true, 7, msg));
+    bool ok = false;
+    BOOST_CHECK(overlay::DecodePathResult(msg, ok, id));
+    BOOST_CHECK(ok);
+    BOOST_CHECK_EQUAL(id, 7u);
+    BOOST_CHECK(overlay::EncodePathResult(false, 8, msg));
+    BOOST_CHECK(overlay::DecodePathResult(msg, ok, id));
+    BOOST_CHECK(!ok);
+
+    const std::vector<unsigned char> inner = Payload(64, 1);
+    BOOST_CHECK(overlay::EncodePathData(99, inner, msg));
+    std::vector<unsigned char> got_inner;
+    BOOST_CHECK(overlay::DecodePathData(msg, id, got_inner));
+    BOOST_CHECK_EQUAL(id, 99u);
+    BOOST_CHECK(got_inner == inner);
+}
+
+BOOST_AUTO_TEST_CASE(path_messages_reject_malformed)
+{
+    std::vector<unsigned char> out;
+    uint64_t id;
+    CService next;
+    std::vector<unsigned char> inner;
+    overlay::MessageKind kind;
+
+    BOOST_CHECK(!overlay::DecodeKind(std::vector<unsigned char>(), kind));
+    // An unknown kind is refused rather than guessed at.
+    BOOST_CHECK(!overlay::DecodeKind(std::vector<unsigned char>{0x7f}, kind));
+
+    // Each decoder must reject the others' messages, so a confusion between
+    // kinds cannot be engineered by an attacker choosing the body.
+    BOOST_CHECK(overlay::EncodePathData(1, Payload(8), out));
+    BOOST_CHECK(!overlay::DecodePathBuild(out, id, next));
+    BOOST_CHECK(!overlay::DecodeAppData(out, inner));
+
+    // Truncated bodies.
+    BOOST_CHECK(overlay::EncodePathBuild(1, Addr("10.0.0.1", 9346), out));
+    out.pop_back();
+    BOOST_CHECK(!overlay::DecodePathBuild(out, id, next));
+
+    // Trailing bytes would give one message two encodings.
+    BOOST_CHECK(overlay::EncodePathBuild(1, Addr("10.0.0.1", 9346), out));
+    out.push_back(0x00);
+    BOOST_CHECK(!overlay::DecodePathBuild(out, id, next));
+
+    // PATH_DATA with no inner payload carries nothing to forward.
+    BOOST_CHECK(!overlay::EncodePathData(1, std::vector<unsigned char>(), out));
+
+    // Oversized bodies cannot fit a datagram and are refused at encode.
+    BOOST_CHECK(!overlay::EncodeAppData(Payload(overlay::MAX_FRAME_PAYLOAD), out));
+    BOOST_CHECK(!overlay::EncodePathData(1, Payload(overlay::MAX_FRAME_PAYLOAD), out));
+}
+
+BOOST_AUTO_TEST_CASE(path_table_forwards_both_ways)
+{
+    overlay::PathTable t;
+    const CService a = Addr("10.0.0.1", 9346), c = Addr("10.0.0.3", 9346);
+    BOOST_CHECK(t.Create(42, a, c, 1000));
+    BOOST_CHECK(t.Has(42));
+    BOOST_CHECK_EQUAL(t.Size(), 1u);
+
+    CService to;
+    BOOST_CHECK(overlay::Route::FORWARD == t.Next(42, a, to, 1001));
+    BOOST_CHECK(to == c);
+    BOOST_CHECK(overlay::Route::FORWARD == t.Next(42, c, to, 1002));
+    BOOST_CHECK(to == a);
+}
+
+BOOST_AUTO_TEST_CASE(path_table_refuses_strangers_and_hijacks)
+{
+    overlay::PathTable t;
+    const CService a = Addr("10.0.0.1", 9346), c = Addr("10.0.0.3", 9346);
+    const CService stranger = Addr("10.0.0.9", 9346);
+    BOOST_CHECK(t.Create(42, a, c, 1000));
+
+    // Knowing a path id is not membership of it.
+    CService to;
+    BOOST_CHECK(overlay::Route::FORWARD != t.Next(42, stranger, to, 1001));
+    // An unknown path is simply not there.
+    BOOST_CHECK(overlay::Route::FORWARD != t.Next(43, a, to, 1001));
+
+    // A duplicate id is refused rather than replacing the entry, or anyone who
+    // guessed an id could redirect someone else's traffic.
+    BOOST_CHECK(!t.Create(42, stranger, c, 1002));
+    BOOST_CHECK(overlay::Route::FORWARD == t.Next(42, a, to, 1003));
+    BOOST_CHECK(to == c);
+
+    // A path from a peer to itself is a reflection loop.
+    BOOST_CHECK(!t.Create(50, a, a, 1000));
+}
+
+BOOST_AUTO_TEST_CASE(path_table_is_bounded_and_expires)
+{
+    // Strangers ask a relay to build paths, so both limits are load bearing.
+    overlay::PathTable t;
+    const CService a = Addr("10.0.0.1", 9346), c = Addr("10.0.0.3", 9346);
+    for (size_t i = 0; i < overlay::PathTable::MAX_PATHS; ++i) {
+        BOOST_REQUIRE(t.Create(i + 1, a, c, 1000));
+    }
+    BOOST_CHECK_EQUAL(t.Size(), overlay::PathTable::MAX_PATHS);
+    // Full: memory cannot be consumed without limit.
+    BOOST_CHECK(!t.Create(999999, a, c, 1000));
+
+    // Use one of them, then let the rest go idle.
+    CService to;
+    BOOST_CHECK(overlay::Route::FORWARD == t.Next(1, a, to, 1000 + overlay::PathTable::PATH_TTL - 1));
+    const size_t gone = t.Expire(1000 + overlay::PathTable::PATH_TTL);
+    BOOST_CHECK_EQUAL(gone, overlay::PathTable::MAX_PATHS - 1);
+    BOOST_CHECK(t.Has(1));
+    BOOST_CHECK_EQUAL(t.Size(), 1u);
+
+    // Room again once the abandoned ones are gone.
+    BOOST_CHECK(t.Create(999999, a, c, 1000 + overlay::PathTable::PATH_TTL));
+}
+
+
+BOOST_AUTO_TEST_CASE(relay_forwards_between_two_peers)
+{
+    // Stage two, end to end on real datagrams: A and C each know only the
+    // relay, and the relay joins them. C never learns A's address.
+    CKey ka, kr, kc;
+    ka.MakeNewKey(true);
+    kr.MakeNewKey(true);
+    kc.MakeNewKey(true);
+
+    overlay::Relay A(ka), R(kr), C(kc);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    BOOST_REQUIRE_MESSAGE(A.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(R.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(C.Bind(any, err), err);
+
+    Inbox in_a, in_c, in_r;
+    Mutex results_mutex;
+    std::map<uint64_t, bool> results;
+    auto path_handler = [&](uint64_t id, bool ok) {
+        LOCK(results_mutex);
+        results[id] = ok;
+    };
+
+    BOOST_REQUIRE(A.Start(in_a.Handler(), path_handler));
+    BOOST_REQUIRE(R.Start(in_r.Handler()));
+    BOOST_REQUIRE(C.Start(in_c.Handler()));
+
+    const CService r_addr = R.BoundAddress();
+    // Both ends need their own session with the relay first: it will only join
+    // peers it already knows, never dial somewhere new on a stranger's say-so.
+    BOOST_REQUIRE(WaitFor([&] {
+        if (A.HasSession(r_addr)) return true;
+        A.Connect(r_addr, kr.GetPubKey());
+        return A.HasSession(r_addr);
+    }));
+    BOOST_REQUIRE(WaitFor([&] {
+        if (C.HasSession(r_addr)) return true;
+        C.Connect(r_addr, kr.GetPubKey());
+        return C.HasSession(r_addr);
+    }));
+    BOOST_REQUIRE(WaitFor([&] { return R.PathCount() == 0 && A.HasSession(r_addr); }));
+
+    const uint64_t path = 0xBEEF01;
+    const CService c_addr = C.BoundAddress();
+    BOOST_REQUIRE(WaitFor([&] {
+        {
+            LOCK(results_mutex);
+            if (results.count(path)) return true;
+        }
+        A.BuildPath(path, r_addr, c_addr);
+        LOCK(results_mutex);
+        return results.count(path) > 0;
+    }));
+    {
+        LOCK(results_mutex);
+        BOOST_CHECK(results[path]);
+    }
+    BOOST_CHECK_EQUAL(R.PathCount(), 1u);
+
+    // A speaks to C without ever having a session with it.
+    BOOST_CHECK(!A.HasSession(c_addr));
+    const std::vector<unsigned char> msg = Payload(300, 2);
+    BOOST_REQUIRE(WaitFor([&] {
+        if (in_c.Count() > 0) return true;
+        A.SendVia(r_addr, path, msg);
+        return in_c.Count() > 0;
+    }));
+    BOOST_CHECK(in_c.At(0) == msg);
+
+    // And back along the same path.
+    const std::vector<unsigned char> back = Payload(80, 6);
+    BOOST_REQUIRE(WaitFor([&] {
+        if (in_a.Count() > 0) return true;
+        C.SendVia(r_addr, path, back);
+        return in_a.Count() > 0;
+    }));
+    BOOST_CHECK(in_a.At(0) == back);
+
+    A.Stop();
+    R.Stop();
+    C.Stop();
+}
+
+BOOST_AUTO_TEST_CASE(relay_refuses_to_be_an_open_proxy)
+{
+    // A relay must only join peers it already has sessions with. Otherwise a
+    // stranger could name any host on the internet and have the relay dial it,
+    // which is what separates an overlay relay from an open proxy - and it is
+    // the difference between forwarding protocol traffic and being an exit.
+    CKey ka, kr;
+    ka.MakeNewKey(true);
+    kr.MakeNewKey(true);
+
+    overlay::Relay A(ka), R(kr);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    BOOST_REQUIRE_MESSAGE(A.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(R.Bind(any, err), err);
+
+    Inbox in_a, in_r;
+    Mutex m;
+    std::map<uint64_t, bool> results;
+    BOOST_REQUIRE(A.Start(in_a.Handler(), [&](uint64_t id, bool ok) {
+        LOCK(m);
+        results[id] = ok;
+    }));
+    BOOST_REQUIRE(R.Start(in_r.Handler()));
+
+    const CService r_addr = R.BoundAddress();
+    BOOST_REQUIRE(WaitFor([&] {
+        if (A.HasSession(r_addr)) return true;
+        A.Connect(r_addr, kr.GetPubKey());
+        return A.HasSession(r_addr);
+    }));
+
+    // A host the relay has never spoken to.
+    const CService stranger = CService(LookupNumeric("198.18.0.1", 9346));
+    const uint64_t path = 0xDEAD02;
+    BOOST_REQUIRE(WaitFor([&] {
+        {
+            LOCK(m);
+            if (results.count(path)) return true;
+        }
+        A.BuildPath(path, r_addr, stranger);
+        LOCK(m);
+        return results.count(path) > 0;
+    }));
+    {
+        LOCK(m);
+        BOOST_CHECK(!results[path]); // refused
+    }
+    BOOST_CHECK_EQUAL(R.PathCount(), 0u);
+
+    A.Stop();
+    R.Stop();
 }
 
 BOOST_AUTO_TEST_SUITE_END()

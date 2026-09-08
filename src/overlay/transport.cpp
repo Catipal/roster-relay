@@ -29,9 +29,11 @@ void PackHandshake(FrameType type, const std::vector<unsigned char>& msg,
 
 } // namespace
 
-Transport::Transport(const CKey& static_key) : m_static(static_key) {}
+template <typename PeerKey>
+TransportT<PeerKey>::TransportT(const CKey& static_key) : m_static(static_key) {}
 
-bool Transport::Connect(const CService& peer, const CPubKey& peer_static,
+template <typename PeerKey>
+bool TransportT<PeerKey>::Connect(const PeerKey& peer, const CPubKey& peer_static,
                         std::vector<unsigned char>& datagram_out)
 {
     if (!m_static.IsValid() || !peer_static.IsValid()) return false;
@@ -50,7 +52,8 @@ bool Transport::Connect(const CService& peer, const CPubKey& peer_static,
     return true;
 }
 
-Transport::Result Transport::Receive(const CService& from, const unsigned char* data,
+template <typename PeerKey>
+typename TransportT<PeerKey>::Result TransportT<PeerKey>::Receive(const PeerKey& from, const unsigned char* data,
                                      size_t len, std::vector<unsigned char>& reply_out,
                                      std::vector<unsigned char>& payload_out)
 {
@@ -59,14 +62,14 @@ Transport::Result Transport::Receive(const CService& from, const unsigned char* 
 
     FrameType type;
     uint64_t session = 0, counter = 0;
-    if (!PeekFrame(data, len, type, session, counter)) return Result::IGNORED;
+    if (!PeekFrame(data, len, type, session, counter)) return TransportT<PeerKey>::Result::IGNORED;
 
     const unsigned char* body = data + FRAME_HEADER_SIZE;
     const size_t body_len = len - FRAME_HEADER_SIZE;
 
     switch (type) {
     case FrameType::HANDSHAKE_INIT: {
-        if (session != 0 || counter != 0) return Result::IGNORED;
+        if (session != 0 || counter != 0) return TransportT<PeerKey>::Result::IGNORED;
 
         // Anyone may open a handshake, and this is where a flood would land.
         // Nothing here is expensive enough to be a resource attack on its own,
@@ -77,7 +80,7 @@ Transport::Result Transport::Receive(const CService& from, const unsigned char* 
         SessionKeys keys;
         HandshakeResponder responder;
         if (!responder.Accept(m_static, body, body_len, initiator, msg2, keys)) {
-            return Result::IGNORED;
+            return TransportT<PeerKey>::Result::IGNORED;
         }
 
         // A completed handshake replaces whatever was there. The peer proved
@@ -90,14 +93,14 @@ Transport::Result Transport::Receive(const CService& from, const unsigned char* 
         m_pending.erase(from);
 
         PackHandshake(FrameType::HANDSHAKE_RESP, msg2, reply_out);
-        return Result::ESTABLISHED;
+        return TransportT<PeerKey>::Result::ESTABLISHED;
     }
 
     case FrameType::HANDSHAKE_RESP: {
-        if (session != 0 || counter != 0) return Result::IGNORED;
+        if (session != 0 || counter != 0) return TransportT<PeerKey>::Result::IGNORED;
 
-        std::map<CService, Pending>::iterator it = m_pending.find(from);
-        if (it == m_pending.end()) return Result::IGNORED;
+        typename std::map<PeerKey, Pending>::iterator it = m_pending.find(from);
+        if (it == m_pending.end()) return TransportT<PeerKey>::Result::IGNORED;
 
         SessionKeys keys;
         // A rejected reply leaves the handshake intact, so the pending entry
@@ -105,7 +108,7 @@ Transport::Result Transport::Receive(const CService& from, const unsigned char* 
         // let anyone spoofing the peer's address end a handshake with a single
         // junk datagram.
         if (!it->second.initiator.Finish(body, body_len, keys)) {
-            return Result::IGNORED;
+            return TransportT<PeerKey>::Result::IGNORED;
         }
         const CPubKey expected = it->second.expected;
         m_pending.erase(it);
@@ -116,51 +119,62 @@ Transport::Result Transport::Receive(const CService& from, const unsigned char* 
         // its identity is the key we deliberately encrypted to.
         est.identity = expected;
         m_sessions[from] = std::move(est);
-        return Result::ESTABLISHED;
+        return TransportT<PeerKey>::Result::ESTABLISHED;
     }
 
     case FrameType::DATA: {
-        std::map<CService, Established>::iterator it = m_sessions.find(from);
-        if (it == m_sessions.end()) return Result::IGNORED;
+        typename std::map<PeerKey, Established>::iterator it = m_sessions.find(from);
+        if (it == m_sessions.end()) return TransportT<PeerKey>::Result::IGNORED;
         // The session id in the header is only a hint for lookup; Open checks
         // it against the authenticated one and verifies the tag.
-        if (!it->second.session->Open(data, len, payload_out)) return Result::IGNORED;
-        return Result::PAYLOAD;
+        if (!it->second.session->Open(data, len, payload_out)) return TransportT<PeerKey>::Result::IGNORED;
+        return TransportT<PeerKey>::Result::PAYLOAD;
     }
     }
 
-    return Result::IGNORED;
+    return TransportT<PeerKey>::Result::IGNORED;
 }
 
-bool Transport::Send(const CService& peer, const std::vector<unsigned char>& payload,
+template <typename PeerKey>
+bool TransportT<PeerKey>::Send(const PeerKey& peer, const std::vector<unsigned char>& payload,
                      std::vector<unsigned char>& datagram_out)
 {
-    std::map<CService, Established>::iterator it = m_sessions.find(peer);
+    typename std::map<PeerKey, Established>::iterator it = m_sessions.find(peer);
     if (it == m_sessions.end()) return false;
     return it->second.session->Seal(payload, datagram_out);
 }
 
-bool Transport::HasSession(const CService& peer) const
+template <typename PeerKey>
+bool TransportT<PeerKey>::HasSession(const PeerKey& peer) const
 {
     return m_sessions.find(peer) != m_sessions.end();
 }
 
-bool Transport::HasPendingHandshake(const CService& peer) const
+template <typename PeerKey>
+bool TransportT<PeerKey>::HasPendingHandshake(const PeerKey& peer) const
 {
     return m_pending.find(peer) != m_pending.end();
 }
 
-CPubKey Transport::PeerIdentity(const CService& peer) const
+template <typename PeerKey>
+CPubKey TransportT<PeerKey>::PeerIdentity(const PeerKey& peer) const
 {
-    std::map<CService, Established>::const_iterator it = m_sessions.find(peer);
+    typename std::map<PeerKey, Established>::const_iterator it = m_sessions.find(peer);
     if (it == m_sessions.end()) return CPubKey();
     return it->second.identity;
 }
 
-void Transport::Forget(const CService& peer)
+template <typename PeerKey>
+void TransportT<PeerKey>::Forget(const PeerKey& peer)
 {
     m_sessions.erase(peer);
     m_pending.erase(peer);
 }
+
+// Explicit instantiations: hop sessions keyed by address, path sessions keyed
+// by path id. Keeping the definitions here rather than in the header means the
+// tested code did not have to move.
+template class TransportT<CService>;
+template class TransportT<uint64_t>;
 
 } // namespace overlay

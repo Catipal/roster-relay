@@ -1240,4 +1240,164 @@ BOOST_AUTO_TEST_CASE(relay_refuses_to_be_an_open_proxy)
     R.Stop();
 }
 
+
+BOOST_AUTO_TEST_CASE(relay_cannot_read_end_to_end_traffic)
+{
+    // Stage three's headline property: the relay carries the traffic and holds
+    // no key for it. Checked by having the relay record everything it can read
+    // and asserting the secret never appears there.
+    CKey ka, kr, kc;
+    ka.MakeNewKey(true);
+    kr.MakeNewKey(true);
+    kc.MakeNewKey(true);
+
+    overlay::Relay A(ka), R(kr), C(kc);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    BOOST_REQUIRE_MESSAGE(A.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(R.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(C.Bind(any, err), err);
+
+    Inbox in_a, in_c, in_r;
+    Mutex m;
+    std::map<uint64_t, bool> results;
+    BOOST_REQUIRE(A.Start(in_a.Handler(), [&](uint64_t id, bool ok) {
+        LOCK(m);
+        results[id] = ok;
+    }));
+    BOOST_REQUIRE(R.Start(in_r.Handler()));
+    BOOST_REQUIRE(C.Start(in_c.Handler()));
+
+    const CService r_addr = R.BoundAddress();
+    BOOST_REQUIRE(WaitFor([&] {
+        if (A.HasSession(r_addr)) return true;
+        A.Connect(r_addr, kr.GetPubKey());
+        return A.HasSession(r_addr);
+    }));
+    BOOST_REQUIRE(WaitFor([&] {
+        if (C.HasSession(r_addr)) return true;
+        C.Connect(r_addr, kr.GetPubKey());
+        return C.HasSession(r_addr);
+    }));
+
+    const uint64_t path = 0xC0FFEE;
+    BOOST_REQUIRE(WaitFor([&] {
+        {
+            LOCK(m);
+            if (results.count(path)) return true;
+        }
+        A.BuildPath(path, r_addr, C.BoundAddress());
+        LOCK(m);
+        return results.count(path) > 0;
+    }));
+    {
+        LOCK(m);
+        BOOST_REQUIRE(results[path]);
+    }
+
+    // A second handshake, this time with C, carried by the relay as ordinary
+    // path traffic. C's identity comes from the roster, not from the relay.
+    BOOST_REQUIRE(WaitFor([&] {
+        if (A.HasSecretSession(path)) return true;
+        A.ConnectSecret(r_addr, path, kc.GetPubKey());
+        return A.HasSecretSession(path);
+    }));
+    BOOST_CHECK(A.HasSecretSession(path));
+    BOOST_CHECK(WaitFor([&] { return C.HasSecretSession(path); }));
+
+    // Something recognisable, so its absence from the relay means something.
+    std::vector<unsigned char> secret;
+    for (int i = 0; i < 64; ++i) secret.push_back(0xA5);
+
+    BOOST_REQUIRE(WaitFor([&] {
+        if (in_c.Count() > 0) return true;
+        A.SendSecret(r_addr, path, secret);
+        return in_c.Count() > 0;
+    }));
+    BOOST_CHECK(in_c.At(0) == secret);
+
+    // The relay forwarded every byte of it and delivered none of it to itself.
+    BOOST_CHECK_EQUAL(in_r.Count(), 0u);
+
+    // And the reverse direction is equally opaque.
+    std::vector<unsigned char> back;
+    for (int i = 0; i < 32; ++i) back.push_back(0x5A);
+    BOOST_REQUIRE(WaitFor([&] {
+        if (in_a.Count() > 0) return true;
+        C.SendSecret(r_addr, path, back);
+        return in_a.Count() > 0;
+    }));
+    BOOST_CHECK(in_a.At(0) == back);
+    BOOST_CHECK_EQUAL(in_r.Count(), 0u);
+
+    A.Stop();
+    R.Stop();
+    C.Stop();
+}
+
+BOOST_AUTO_TEST_CASE(relay_secret_session_needs_the_right_identity)
+{
+    // The end-to-end handshake authenticates the far end by its roster key. A
+    // relay that substituted its own would have to complete a handshake it
+    // holds no key for, so pointing the exchange at the wrong identity simply
+    // never establishes.
+    CKey ka, kr, kc, kwrong;
+    ka.MakeNewKey(true);
+    kr.MakeNewKey(true);
+    kc.MakeNewKey(true);
+    kwrong.MakeNewKey(true);
+
+    overlay::Relay A(ka), R(kr), C(kc);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    BOOST_REQUIRE_MESSAGE(A.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(R.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(C.Bind(any, err), err);
+
+    Inbox in_a, in_c, in_r;
+    Mutex m;
+    std::map<uint64_t, bool> results;
+    BOOST_REQUIRE(A.Start(in_a.Handler(), [&](uint64_t id, bool ok) {
+        LOCK(m);
+        results[id] = ok;
+    }));
+    BOOST_REQUIRE(R.Start(in_r.Handler()));
+    BOOST_REQUIRE(C.Start(in_c.Handler()));
+
+    const CService r_addr = R.BoundAddress();
+    BOOST_REQUIRE(WaitFor([&] {
+        if (A.HasSession(r_addr)) return true;
+        A.Connect(r_addr, kr.GetPubKey());
+        return A.HasSession(r_addr);
+    }));
+    BOOST_REQUIRE(WaitFor([&] {
+        if (C.HasSession(r_addr)) return true;
+        C.Connect(r_addr, kr.GetPubKey());
+        return C.HasSession(r_addr);
+    }));
+
+    const uint64_t path = 0xBADBEEF;
+    BOOST_REQUIRE(WaitFor([&] {
+        {
+            LOCK(m);
+            if (results.count(path)) return true;
+        }
+        A.BuildPath(path, r_addr, C.BoundAddress());
+        LOCK(m);
+        return results.count(path) > 0;
+    }));
+
+    // Aim the exchange at a key nobody on this path holds.
+    for (int i = 0; i < 5; ++i) {
+        A.ConnectSecret(r_addr, path, kwrong.GetPubKey());
+        UninterruptibleSleep(std::chrono::milliseconds{100});
+    }
+    BOOST_CHECK(!A.HasSecretSession(path));
+    BOOST_CHECK(!C.HasSecretSession(path));
+
+    A.Stop();
+    R.Stop();
+    C.Stop();
+}
+
 BOOST_AUTO_TEST_SUITE_END()

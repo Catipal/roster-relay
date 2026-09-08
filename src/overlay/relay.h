@@ -20,11 +20,16 @@ namespace overlay {
  * and own the thread, and routing is a separate decision that should not be
  * able to break the transport by being wrong.
  *
- * The anonymity this provides at one hop is limited and worth stating plainly.
- * A relay forwarding a payload can read it, because the two ends share no key
- * it lacks. What it does buy is that the far end learns the relay's address
- * rather than the origin's. Layered encryption over longer paths is what makes
- * the relay blind, and that is the next stage, not this one.
+ * Traffic can travel two ways. SendVia hands the relay bytes it can read, which
+ * is enough when the point is only that the far end sees the relay rather than
+ * the origin. SendSecret runs a second handshake with the far end THROUGH the
+ * path, so the relay carries ciphertext it holds no key for - it still learns
+ * that two of its peers are talking and how much, but not what.
+ *
+ * One relay is still one relay. It knows both ends by address even when it
+ * cannot read them, so this resists a curious relay rather than a hostile one.
+ * Not being in a position to know both ends needs more than one hop, which is
+ * what remains after this.
  */
 class Relay
 {
@@ -55,9 +60,26 @@ public:
      */
     bool BuildPath(uint64_t path_id, const CService& via, const CService& dest);
 
-    /** Send bytes along an established path. */
+    /** Send bytes along an established path. The relay can read these. */
     bool SendVia(const CService& via, uint64_t path_id,
                  const std::vector<unsigned char>& inner);
+
+    /**
+     * Begin an end-to-end session with the far end of a path.
+     *
+     * The handshake travels as ordinary path traffic, so the relay forwards it
+     * without being able to complete it: only the holder of `far_static` can,
+     * and that key comes from the roster rather than from the relay.
+     */
+    bool ConnectSecret(const CService& via, uint64_t path_id,
+                       const CPubKey& far_static);
+
+    /** True once the far end of this path has completed the exchange. */
+    bool HasSecretSession(uint64_t path_id);
+
+    /** Send data the relay carrying it cannot read. */
+    bool SendSecret(const CService& via, uint64_t path_id,
+                    const std::vector<unsigned char>& payload);
 
     size_t PathCount();
 
@@ -67,6 +89,9 @@ private:
     Socket m_socket;
     Mutex m_mutex;
     PathTable m_paths GUARDED_BY(m_mutex);
+    // Sessions with the far ends of paths, keyed by path rather than address,
+    // because the far end of a path has no address this node knows.
+    PathTransport m_secret GUARDED_BY(m_mutex);
     AppHandler m_app;
     PathHandler m_path;
 };

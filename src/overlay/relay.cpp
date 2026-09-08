@@ -9,7 +9,7 @@
 
 namespace overlay {
 
-Relay::Relay(const CKey& static_key) : m_socket(static_key) {}
+Relay::Relay(const CKey& static_key) : m_socket(static_key), m_secret(static_key) {}
 
 bool Relay::Bind(const CService& listen_addr, std::string& error)
 {
@@ -52,6 +52,36 @@ bool Relay::SendVia(const CService& via, uint64_t path_id,
     std::vector<unsigned char> msg;
     if (!EncodePathData(path_id, inner, msg)) return false;
     return m_socket.Send(via, msg);
+}
+
+bool Relay::ConnectSecret(const CService& via, uint64_t path_id,
+                          const CPubKey& far_static)
+{
+    std::vector<unsigned char> hello;
+    {
+        LOCK(m_mutex);
+        if (!m_secret.Connect(path_id, far_static, hello)) return false;
+    }
+    // The handshake rides the path as ordinary traffic. The relay forwards it
+    // and cannot complete it: only the holder of far_static can.
+    return SendVia(via, path_id, hello);
+}
+
+bool Relay::HasSecretSession(uint64_t path_id)
+{
+    LOCK(m_mutex);
+    return m_secret.HasSession(path_id);
+}
+
+bool Relay::SendSecret(const CService& via, uint64_t path_id,
+                       const std::vector<unsigned char>& payload)
+{
+    std::vector<unsigned char> sealed;
+    {
+        LOCK(m_mutex);
+        if (!m_secret.Send(path_id, payload, sealed)) return false;
+    }
+    return SendVia(via, path_id, sealed);
 }
 
 size_t Relay::PathCount()
@@ -148,9 +178,30 @@ void Relay::OnPayload(const CService& from, std::vector<unsigned char>&& msg)
             route = m_paths.Next(path_id, from, next, GetTime());
         }
         if (route == Route::DELIVER) {
-            // The end of the path: this is ours.
-            if (m_app) m_app(from, std::move(inner));
-            return;
+            // The end of the path. The bytes may be an end-to-end handshake or
+            // a sealed payload for us, in which case the relay that carried
+            // them holds no key for them - or plain traffic it could read.
+            std::vector<unsigned char> reply, opened;
+            PathTransport::Result r;
+            {
+                LOCK(m_mutex);
+                r = m_secret.Receive(path_id, inner.data(), inner.size(), reply, opened);
+            }
+            if (!reply.empty()) SendVia(from, path_id, reply);
+            switch (r) {
+            case PathTransport::Result::PAYLOAD:
+                if (m_app) m_app(from, std::move(opened));
+                return;
+            case PathTransport::Result::ESTABLISHED:
+                LogPrint(BCLog::NET, "overlay: end-to-end session on path %016x\n", path_id);
+                return;
+            default:
+                // Not end-to-end traffic, so it is plain path data addressed
+                // to us. Delivered as it stands, and readable by the relay -
+                // which is the difference SendSecret exists to remove.
+                if (m_app) m_app(from, std::move(inner));
+                return;
+            }
         }
         if (route != Route::FORWARD) return;
 

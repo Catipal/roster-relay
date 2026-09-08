@@ -28,8 +28,14 @@ namespace overlay {
  * failures are intermittent and hard to reproduce.
  *
  * One instance per node, holding every session that node has.
+ *
+ * Templated on how a peer is named. Hop sessions are keyed by address; sessions
+ * that run end to end through a relay are keyed by the path they travel, since
+ * the far end of a path has no address this node knows - that is the point of
+ * it. The logic is identical either way, so it is written once.
  */
-class Transport
+template <typename PeerKey>
+class TransportT
 {
 public:
     /** What Receive() concluded about a datagram. */
@@ -40,7 +46,7 @@ public:
         PAYLOAD,      //!< payload_out holds application data
     };
 
-    explicit Transport(const CKey& static_key);
+    explicit TransportT(const CKey& static_key);
 
     /**
      * Begin a session with a peer whose identity comes from the roster.
@@ -49,32 +55,34 @@ public:
      * replaces any handshake already in flight, because a peer that never
      * answers must not pin a slot forever.
      */
-    bool Connect(const CService& peer, const CPubKey& peer_static,
+    bool Connect(const PeerKey& peer, const CPubKey& peer_static,
                  std::vector<unsigned char>& datagram_out);
 
     /**
      * Feed one received datagram.
      *
-     * `from` is the address it arrived from, which is a hint rather than an
-     * identity - anyone can forge a source address on UDP. What authenticates
-     * a peer is the handshake and afterwards the session key, never this.
+     * `from` says where it came from - an address for a hop session, a path id
+     * for one that runs end to end. Either way it is a hint for lookup and
+     * never an identity: a UDP source address is forgeable and a path id is
+     * known to the relay carrying it. What authenticates a peer is the
+     * handshake, and afterwards the session key.
      */
-    Result Receive(const CService& from, const unsigned char* data, size_t len,
+    Result Receive(const PeerKey& from, const unsigned char* data, size_t len,
                    std::vector<unsigned char>& reply_out,
                    std::vector<unsigned char>& payload_out);
 
     /** Wrap application data for an established peer. */
-    bool Send(const CService& peer, const std::vector<unsigned char>& payload,
+    bool Send(const PeerKey& peer, const std::vector<unsigned char>& payload,
               std::vector<unsigned char>& datagram_out);
 
-    bool HasSession(const CService& peer) const;
-    bool HasPendingHandshake(const CService& peer) const;
+    bool HasSession(const PeerKey& peer) const;
+    bool HasPendingHandshake(const PeerKey& peer) const;
 
     /** Who this peer proved itself to be. Invalid if there is no session. */
-    CPubKey PeerIdentity(const CService& peer) const;
+    CPubKey PeerIdentity(const PeerKey& peer) const;
 
     /** Drop everything for one peer. */
-    void Forget(const CService& peer);
+    void Forget(const PeerKey& peer);
 
     size_t SessionCount() const { return m_sessions.size(); }
     size_t PendingCount() const { return m_pending.size(); }
@@ -90,9 +98,15 @@ private:
     };
 
     CKey m_static;
-    std::map<CService, Pending> m_pending;
-    std::map<CService, Established> m_sessions;
+    std::map<PeerKey, Pending> m_pending;
+    std::map<PeerKey, Established> m_sessions;
 };
+
+/** Sessions with an adjacent peer, named by where it is. */
+using Transport = TransportT<CService>;
+
+/** Sessions with the far end of a path, named by the path itself. */
+using PathTransport = TransportT<uint64_t>;
 
 } // namespace overlay
 

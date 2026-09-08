@@ -192,6 +192,7 @@ BITCOIN_CORE_H = \
   overlay/path.h \
   overlay/relay.h \
   overlay/rendezvous.h \
+  overlay/select.h \
   overlay/socket.h \
   overlay/session.h \
   overlay/transport.h \
@@ -528,6 +529,7 @@ libbitcoin_common_a_SOURCES = \
   overlay/path.cpp \
   overlay/relay.cpp \
   overlay/rendezvous.cpp \
+  overlay/select.cpp \
   overlay/socket.cpp \
   overlay/session.cpp \
   overlay/transport.cpp \

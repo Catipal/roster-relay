@@ -8,6 +8,7 @@
 #include <overlay/path.h>
 #include <overlay/relay.h>
 #include <overlay/rendezvous.h>
+#include <overlay/select.h>
 #include <set>
 #include <overlay/socket.h>
 #include <overlay/transport.h>
@@ -1929,6 +1930,166 @@ BOOST_AUTO_TEST_CASE(socket_flood_does_not_lock_out_an_honest_peer)
     A.Stop();
     B.Stop();
     C.Stop();
+}
+
+
+namespace {
+
+overlay::RelayCandidate Cand(unsigned char id, const char* ip)
+{
+    overlay::RelayCandidate c;
+    c.key.fill(id);
+    c.addr = CService(LookupNumeric(ip, 9346));
+    return c;
+}
+
+/** A roster spread across distinct address blocks. */
+std::vector<overlay::RelayCandidate> SpreadRoster(size_t n)
+{
+    std::vector<overlay::RelayCandidate> r;
+    for (size_t i = 0; i < n; ++i) {
+        char ip[32];
+        snprintf(ip, sizeof(ip), "%u.%u.0.1",
+                 (unsigned)(11 + i / 200), (unsigned)(1 + i % 200));
+        r.push_back(Cand(static_cast<unsigned char>(i), ip));
+    }
+    return r;
+}
+
+} // namespace
+
+BOOST_AUTO_TEST_CASE(select_keeps_its_entry_relays)
+{
+    // The counterintuitive rule: entry relays are kept, not rotated. Rotating
+    // them would make an adversary's chance of being seen at least once rise
+    // toward certainty over many paths.
+    overlay::PathSelector sel;
+    sel.SetRelays(SpreadRoster(40));
+
+    std::vector<overlay::RelayCandidate> first;
+    BOOST_REQUIRE(sel.Select(3, first));
+    const std::vector<overlay::RelayCandidate> guards = sel.Guards();
+    BOOST_CHECK_EQUAL(guards.size(), overlay::PathSelector::GUARD_COUNT);
+
+    for (int i = 0; i < 50; ++i) {
+        std::vector<overlay::RelayCandidate> path;
+        BOOST_REQUIRE(sel.Select(3, path));
+        BOOST_CHECK_EQUAL(path.size(), 3u);
+        // The entry is always one of the held guards, every time.
+        bool from_guards = false;
+        for (size_t g = 0; g < guards.size(); ++g) {
+            if (path[0].key == guards[g].key) from_guards = true;
+        }
+        BOOST_CHECK(from_guards);
+    }
+    // And the guard set did not drift over fifty paths.
+    BOOST_CHECK(sel.Guards() == guards);
+}
+
+BOOST_AUTO_TEST_CASE(select_rotates_the_later_hops)
+{
+    // Later hops are fresh per path: rotating them costs nothing, and an
+    // adversary who is not the entry learns far less by being one.
+    overlay::PathSelector sel;
+    sel.SetRelays(SpreadRoster(40));
+
+    std::set<roster::KeyBytes> seen;
+    for (int i = 0; i < 40; ++i) {
+        std::vector<overlay::RelayCandidate> path;
+        BOOST_REQUIRE(sel.Select(3, path));
+        seen.insert(path[2].key);
+    }
+    // The exit position should have moved around a lot across forty paths.
+    BOOST_CHECK_GT(seen.size(), 5u);
+}
+
+BOOST_AUTO_TEST_CASE(select_refuses_two_hops_behind_one_operator)
+{
+    // Two relays in one address block are plausibly one party, and a path
+    // through both is a path with one hop.
+    std::vector<overlay::RelayCandidate> same_block;
+    for (unsigned char i = 0; i < 8; ++i) {
+        char ip[32];
+        snprintf(ip, sizeof(ip), "12.34.0.%u", (unsigned)(i + 1));
+        same_block.push_back(Cand(i, ip));
+    }
+    overlay::PathSelector sel;
+    sel.SetRelays(same_block);
+
+    std::vector<overlay::RelayCandidate> path;
+    // One hop is all this roster can honestly supply.
+    BOOST_CHECK(sel.Select(1, path));
+    // Two is refused rather than quietly satisfied with the same operator
+    // twice, which would leave the caller believing something untrue.
+    BOOST_CHECK(!sel.Select(2, path));
+    BOOST_CHECK(path.empty());
+}
+
+BOOST_AUTO_TEST_CASE(select_survives_a_guard_going_down)
+{
+    overlay::PathSelector sel;
+    sel.SetRelays(SpreadRoster(40));
+    std::vector<overlay::RelayCandidate> path;
+    BOOST_REQUIRE(sel.Select(2, path));
+
+    const std::vector<overlay::RelayCandidate> before = sel.Guards();
+    BOOST_REQUIRE_EQUAL(before.size(), 2u);
+    sel.DropGuard(before[0].key);
+    BOOST_CHECK_EQUAL(sel.Guards().size(), 1u);
+
+    // A replacement is drawn, and the surviving guard is still held - losing
+    // one must not reshuffle the other.
+    BOOST_REQUIRE(sel.Select(2, path));
+    const std::vector<overlay::RelayCandidate> after = sel.Guards();
+    BOOST_CHECK_EQUAL(after.size(), 2u);
+    bool survivor_kept = false;
+    for (size_t i = 0; i < after.size(); ++i) {
+        if (after[i].key == before[1].key) survivor_kept = true;
+    }
+    BOOST_CHECK(survivor_kept);
+}
+
+BOOST_AUTO_TEST_CASE(select_keeps_guards_across_a_roster_change)
+{
+    // A guard that rotated whenever the roster shifted would give back the
+    // cumulative exposure it exists to prevent.
+    overlay::PathSelector sel;
+    const std::vector<overlay::RelayCandidate> roster = SpreadRoster(40);
+    sel.SetRelays(roster);
+    std::vector<overlay::RelayCandidate> path;
+    BOOST_REQUIRE(sel.Select(2, path));
+    const std::vector<overlay::RelayCandidate> guards = sel.Guards();
+
+    // The roster grows; guards must not move.
+    sel.SetRelays(SpreadRoster(80));
+    BOOST_CHECK(sel.Guards() == guards);
+
+    // A guard leaving the roster is dropped, because it is no longer eligible.
+    std::vector<overlay::RelayCandidate> without;
+    const std::vector<overlay::RelayCandidate> all = SpreadRoster(40);
+    for (size_t i = 0; i < all.size(); ++i) {
+        if (!(all[i].key == guards[0].key)) without.push_back(all[i]);
+    }
+    sel.SetRelays(without);
+    BOOST_CHECK_EQUAL(sel.Guards().size(), guards.size() - 1);
+}
+
+BOOST_AUTO_TEST_CASE(select_handles_an_empty_or_tiny_roster)
+{
+    overlay::PathSelector sel;
+    std::vector<overlay::RelayCandidate> path;
+    // Bootstrap: no relays is a state, not an error.
+    BOOST_CHECK(!sel.Select(1, path));
+    BOOST_CHECK_EQUAL(sel.CandidateCount(), 0u);
+
+    sel.SetRelays(SpreadRoster(1));
+    BOOST_CHECK(sel.Select(1, path));
+    BOOST_CHECK_EQUAL(path.size(), 1u);
+    // Asking for more than exists is refused.
+    BOOST_CHECK(!sel.Select(2, path));
+    // Asking for none is refused too, rather than returning an empty path a
+    // caller might treat as usable.
+    BOOST_CHECK(!sel.Select(0, path));
 }
 
 BOOST_AUTO_TEST_SUITE_END()

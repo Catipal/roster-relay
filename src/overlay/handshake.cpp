@@ -164,7 +164,10 @@ bool HandshakeInitiator::Start(const CKey& static_key, const CPubKey& responder_
 
 bool HandshakeInitiator::Finish(const unsigned char* msg2, size_t len, SessionKeys& out)
 {
-    if (!m_started) return false;
+    if (!m_started || m_consumed) return false;
+    // Everything below advances the transcript, so this attempt is spent
+    // whether or not it succeeds.
+    m_consumed = true;
     if (len != HANDSHAKE_RESP_SIZE) return false;
 
     CPubKey re(msg2, msg2 + HANDSHAKE_PUBKEY_SIZE);

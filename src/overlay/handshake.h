@@ -75,7 +75,17 @@ public:
     bool Start(const CKey& static_key, const CPubKey& responder_static,
                std::vector<unsigned char>& msg1_out);
 
-    /** Consume the reply and derive the session. */
+    /**
+     * Consume the reply and derive the session.
+     *
+     * Single shot. Processing a reply advances the transcript before it can
+     * fail, so a rejected message leaves this object half-advanced and unable
+     * to complete correctly. Rather than leave that implicit, the attempt is
+     * consumed either way: a second call returns false without touching
+     * attacker-supplied bytes again. The caller discards the handshake and
+     * starts a new one, which is also what stops a stray datagram from making
+     * a pending handshake do unbounded work.
+     */
     bool Finish(const unsigned char* msg2, size_t len, SessionKeys& out);
 
     ~HandshakeInitiator();
@@ -86,6 +96,7 @@ private:
     CKey m_ephemeral;
     CKey m_static;
     bool m_started{false};
+    bool m_consumed{false};
 };
 
 class HandshakeResponder

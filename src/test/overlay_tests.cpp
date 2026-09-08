@@ -415,4 +415,122 @@ BOOST_AUTO_TEST_CASE(handshake_cannot_be_restarted)
     BOOST_CHECK(!p.I.Start(p.i_static, p.r_static.GetPubKey(), again));
 }
 
+BOOST_AUTO_TEST_CASE(handshake_reply_cannot_be_spliced_across_sessions)
+{
+    // Two sessions run in parallel between the same pair. The reply belonging
+    // to one must not complete the other, or an attacker who can reorder
+    // datagrams could join a victim to a session of its choosing.
+    Parties a, b;
+    BOOST_CHECK(a.I.Start(a.i_static, a.r_static.GetPubKey(), a.msg1));
+    b.i_static = a.i_static;
+    b.r_static = a.r_static;
+    BOOST_CHECK(b.I.Start(b.i_static, b.r_static.GetPubKey(), b.msg1));
+
+    BOOST_CHECK(a.R.Accept(a.r_static, a.msg1.data(), a.msg1.size(), a.learned, a.msg2, a.rkeys));
+    BOOST_CHECK(b.R.Accept(b.r_static, b.msg1.data(), b.msg1.size(), b.learned, b.msg2, b.rkeys));
+    BOOST_CHECK(a.msg2 != b.msg2);
+
+    overlay::SessionKeys spliced;
+    BOOST_CHECK(!a.I.Finish(b.msg2.data(), b.msg2.size(), spliced));
+}
+
+BOOST_AUTO_TEST_CASE(handshake_replayed_first_message_yields_a_different_session)
+{
+    // Replaying msg1 is not preventable at this layer and does not need to be:
+    // the responder answers with a fresh ephemeral, so the replayer derives
+    // nothing and the session it creates is not the original one. Anti-flood
+    // for that belongs at the socket, not here.
+    Parties p;
+    BOOST_CHECK(p.I.Start(p.i_static, p.r_static.GetPubKey(), p.msg1));
+
+    CPubKey l1, l2;
+    std::vector<unsigned char> r1, r2;
+    overlay::SessionKeys k1, k2;
+    overlay::HandshakeResponder R1, R2;
+    BOOST_CHECK(R1.Accept(p.r_static, p.msg1.data(), p.msg1.size(), l1, r1, k1));
+    BOOST_CHECK(R2.Accept(p.r_static, p.msg1.data(), p.msg1.size(), l2, r2, k2));
+
+    BOOST_CHECK(l1 == l2); // same claimed identity, correctly
+    BOOST_CHECK(k1.session_id != k2.session_id);
+    BOOST_CHECK(k1.send != k2.send);
+}
+
+BOOST_AUTO_TEST_CASE(handshake_rejects_junk_public_keys)
+{
+    // The bytes on the wire are attacker-controlled. A public key field that is
+    // not a curve point must be refused rather than reaching key agreement.
+    Parties p;
+    BOOST_CHECK(p.I.Start(p.i_static, p.r_static.GetPubKey(), p.msg1));
+
+    overlay::HandshakeResponder R;
+    CPubKey learned;
+    std::vector<unsigned char> msg2;
+    overlay::SessionKeys keys;
+
+    std::vector<unsigned char> zeroed = p.msg1;
+    std::fill(zeroed.begin(), zeroed.begin() + overlay::HANDSHAKE_PUBKEY_SIZE, 0);
+    BOOST_CHECK(!R.Accept(p.r_static, zeroed.data(), zeroed.size(), learned, msg2, keys));
+
+    // Valid prefix byte, but the x coordinate is not on the curve.
+    std::vector<unsigned char> offcurve = p.msg1;
+    offcurve[0] = 0x02;
+    std::fill(offcurve.begin() + 1, offcurve.begin() + overlay::HANDSHAKE_PUBKEY_SIZE, 0xff);
+    BOOST_CHECK(!R.Accept(p.r_static, offcurve.data(), offcurve.size(), learned, msg2, keys));
+
+    // And the same in the reply's ephemeral slot.
+    BOOST_CHECK(p.R.Accept(p.r_static, p.msg1.data(), p.msg1.size(), p.learned, p.msg2, p.rkeys));
+    std::vector<unsigned char> bad_reply = p.msg2;
+    std::fill(bad_reply.begin(), bad_reply.begin() + overlay::HANDSHAKE_PUBKEY_SIZE, 0);
+    overlay::SessionKeys never;
+    BOOST_CHECK(!p.I.Finish(bad_reply.data(), bad_reply.size(), never));
+}
+
+BOOST_AUTO_TEST_CASE(handshake_with_itself_is_coherent)
+{
+    // A node dialling its own published address is a configuration mistake, not
+    // an attack, but it must not crash or produce a session whose two
+    // directions collapse into one key.
+    CKey self;
+    self.MakeNewKey(true);
+
+    overlay::HandshakeInitiator I;
+    overlay::HandshakeResponder R;
+    std::vector<unsigned char> m1, m2;
+    CPubKey learned;
+    overlay::SessionKeys ik, rk;
+
+    BOOST_CHECK(I.Start(self, self.GetPubKey(), m1));
+    BOOST_CHECK(R.Accept(self, m1.data(), m1.size(), learned, m2, rk));
+    BOOST_CHECK(I.Finish(m2.data(), m2.size(), ik));
+    BOOST_CHECK(learned == self.GetPubKey());
+    BOOST_CHECK(ik.send != ik.recv);
+    BOOST_CHECK(ik.send == rk.recv);
+}
+
+BOOST_AUTO_TEST_CASE(handshake_finish_is_single_shot)
+{
+    // Processing a reply advances the transcript before it can fail, so a
+    // rejected message leaves the initiator unable to complete correctly. The
+    // attempt is spent either way rather than leaving that implicit, which also
+    // means a stray datagram cannot make a pending handshake keep doing key
+    // agreement on attacker-supplied bytes.
+    Parties p;
+    BOOST_CHECK(p.I.Start(p.i_static, p.r_static.GetPubKey(), p.msg1));
+    BOOST_CHECK(p.R.Accept(p.r_static, p.msg1.data(), p.msg1.size(),
+                           p.learned, p.msg2, p.rkeys));
+
+    std::vector<unsigned char> corrupted = p.msg2;
+    corrupted.back() ^= 0x01;
+    overlay::SessionKeys keys;
+    BOOST_CHECK(!p.I.Finish(corrupted.data(), corrupted.size(), keys));
+    // The genuine reply must not rescue it: the state has already moved.
+    BOOST_CHECK(!p.I.Finish(p.msg2.data(), p.msg2.size(), keys));
+
+    // And a successful handshake cannot be completed twice either.
+    Parties q;
+    BOOST_CHECK(q.Run());
+    overlay::SessionKeys twice;
+    BOOST_CHECK(!q.I.Finish(q.msg2.data(), q.msg2.size(), twice));
+}
+
 BOOST_AUTO_TEST_SUITE_END()

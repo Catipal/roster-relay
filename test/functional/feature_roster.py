@@ -46,7 +46,14 @@ DEFAULT_CONFIRM_MARGIN = 144
 # src/consensus/consensus.h - this fork matures coinbases at 500, not 100.
 COINBASE_MATURITY = 500
 
+# RFC5737 documentation space: a legal endpoint to publish, but not routable,
+# so the address manager will not take it. Used wherever the test only needs a
+# record to exist.
 IPV4_ENDPOINT = {"network": "ipv4", "address": "203.0.113.7", "port": 9345}
+# Ordinary public space, for the one test that checks an address really lands.
+ROUTABLE_ENDPOINT = {"network": "ipv4", "address": "51.68.204.11", "port": 9345}
+# roster/peers.h
+ROSTER_PEERS_INTERVAL_SECONDS = 30 * 60
 ONION_ENDPOINT = {
     "network": "onion",
     "address": "1122334455667788990011223344556677889900112233445566778899001122",
@@ -337,6 +344,42 @@ class RosterTest(BitcoinTestFramework):
         self.restart_node(1, self.extra_args[1])
         self.connect_nodes(0, 1)
 
+    def test_roster_feeds_peer_discovery(self):
+        self.log.info("a listed peer reaches the address manager")
+        # The point of the roster: a node that reads it learns where to connect.
+        # Without this the index is a database nothing consults.
+        before = {a["address"] for a in self.nodes[0].getnodeaddresses(0)}
+        assert ROUTABLE_ENDPOINT["address"] not in before
+
+        record = self.nodes[1].createannouncement({"endpoints": [ROUTABLE_ENDPOINT]})
+        self.publish(record)
+
+        # The top-up runs on a timer; drive it rather than waiting half an hour.
+        self.nodes[0].mockscheduler(ROSTER_PEERS_INTERVAL_SECONDS + 1)
+        self.wait_until(
+            lambda: ROUTABLE_ENDPOINT["address"] in
+                    {a["address"] for a in self.nodes[0].getnodeaddresses(0)},
+            timeout=30)
+
+        entry = [a for a in self.nodes[0].getnodeaddresses(0)
+                 if a["address"] == ROUTABLE_ENDPOINT["address"]][0]
+        assert_equal(entry["port"], ROUTABLE_ENDPOINT["port"])
+        # Dated by the block that carried the record, not by when it was read -
+        # an old announcement must not present itself as fresh.
+        tip_time = self.nodes[0].getblock(self.nodes[0].getbestblockhash())["time"]
+        assert_greater_than(tip_time + 1, entry["time"])
+
+    def test_documentation_addresses_are_not_offered(self):
+        self.log.info("non-routable endpoints are dropped rather than handed over")
+        # IPV4_ENDPOINT is in RFC5737 documentation space, which addrman rejects
+        # outright (addrman.cpp:264). Publishing one must not put it in the
+        # address manager, or the collector's counts would be fiction.
+        record = self.nodes[1].createannouncement({"endpoints": [IPV4_ENDPOINT]})
+        self.publish(record)
+        self.nodes[0].mockscheduler(ROSTER_PEERS_INTERVAL_SECONDS + 1)
+        addresses = {a["address"] for a in self.nodes[0].getnodeaddresses(0)}
+        assert IPV4_ENDPOINT["address"] not in addresses
+
     def test_index_can_be_switched_off(self):
         self.log.info("without -rosterindex the queries refuse rather than lie")
         self.restart_node(0, ["-fallbackfee=0.0001"])
@@ -371,6 +414,8 @@ class RosterTest(BitcoinTestFramework):
         self.test_reorg_leaves_one_copy()
         self.test_competing_block_clears_the_old_records()
         self.test_deployment_is_addressable_by_name()
+        self.test_roster_feeds_peer_discovery()
+        self.test_documentation_addresses_are_not_offered()
         self.test_index_can_be_switched_off()
 
 

@@ -23,6 +23,7 @@
 #include <httpserver.h>
 #include <index/blockfilterindex.h>
 #include <index/rosterindex.h>
+#include <roster/peers.h>
 #include <index/txindex.h>
 #include <interfaces/chain.h>
 #include <interfaces/node.h>
@@ -446,6 +447,7 @@ void SetupServerArgs(NodeContext& node)
 #endif
     argsman.AddArg("-txindex", strprintf("Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)", DEFAULT_TXINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-rosterindex", strprintf("Maintain a peer roster index over chain-anchored discovery records (default: %u)", DEFAULT_ROSTERINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
+    argsman.AddArg("-rosterconnect", strprintf("Offer peers listed in the roster to the address manager, so the chain is used for discovery rather than only indexed (default: %u). Needs -rosterindex; ignored without it. Addresses are filtered to networks this node can reach and are dated by the block that carried the record, so an old announcement is treated as old.", roster::DEFAULT_ROSTERCONNECT), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-rosterindexstart=<n>", "Height at which -rosterindex begins scanning (default: 0, genesis). Records cannot exist before the roster feature shipped, so on an established chain setting this to that height avoids a long scan of blocks that provably contain none. Setting it above the first record silently misses records, so it is left to the operator rather than guessed.", ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-rosterindexwindow=<n>", "Blocks of roster history -rosterindex retains, or 0 to keep all of it (default: 0). The live roster needs only the last MAX_TTL blocks, so a window bounds the index instead of letting it grow forever; what it gives up is serving other nodes age proofs, which any node holding the history can supply. Must be at least MAX_TTL.", ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-blockfilterindex=<type>",
@@ -2106,6 +2108,40 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
     node.scheduler->scheduleEvery([banman]{
         banman->DumpBanlist();
     }, DUMP_BANS_INTERVAL);
+
+    // Offer the roster to peer discovery. Without this the index is a database
+    // nothing reads: the node would publish its own record and answer queries
+    // about others, but never act on what the chain told it.
+    if (g_rosterindex && args.GetBoolArg("-rosterconnect", roster::DEFAULT_ROSTERCONNECT)) {
+        CConnman* connman = node.connman.get();
+        node.scheduler->scheduleEvery([connman]{
+            RosterIndex* index = g_rosterindex.get();
+            if (index == nullptr) return;
+            int tip_height;
+            {
+                LOCK(cs_main);
+                tip_height = ::ChainActive().Height();
+            }
+            std::vector<CAddress> addrs;
+            roster::CollectStats stats;
+            if (!roster::CollectPeers(*index, tip_height, addrs, stats)) {
+                LogPrint(BCLog::NET, "roster: could not read the index for peer discovery\n");
+                return;
+            }
+            if (!addrs.empty()) {
+                // One source for the whole roster, deliberately. The address
+                // manager buckets by source, so presenting the chain as a
+                // single source bounds how much of addrman roster records can
+                // ever occupy. That is the flood limit worth having when
+                // announcements are free to make by construction.
+                connman->AddNewAddresses(addrs, CAddress());
+            }
+            LogPrint(BCLog::NET, "roster: %u live, %u addresses offered "
+                     "(%u without an endpoint, %u unreachable, %u unrepresentable)\n",
+                     stats.live, stats.collected, stats.no_endpoint,
+                     stats.unroutable, stats.unreachable, stats.unrepresentable);
+        }, roster::ROSTER_PEERS_INTERVAL);
+    }
 
 #if HAVE_SYSTEM
     StartupNotify(args);

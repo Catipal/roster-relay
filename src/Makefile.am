@@ -190,6 +190,7 @@ BITCOIN_CORE_H = \
   roster/commitment.h \
   roster/extract.h \
   roster/keystore.h \
+  roster/peers.h \
   roster/record.h \
   rpc/blockchain.h \
   rpc/client.h \
@@ -517,6 +518,7 @@ libbitcoin_common_a_SOURCES = \
   roster/commitment.cpp \
   roster/extract.cpp \
   roster/keystore.cpp \
+  roster/peers.cpp \
   roster/record.cpp \
   rpc/rawtransaction_util.cpp \
   rpc/util.cpp \

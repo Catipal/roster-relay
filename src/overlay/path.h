@@ -19,11 +19,16 @@
  * why the frame layer is untouched here - it is settled and tested, and routing
  * is a different concern that belongs above it.
  *
- * What this stage does NOT provide is anonymity. A relay forwarding a payload
- * at this point can read it: there is one hop, and the two ends share no key
- * the relay lacks. Layered encryption and longer paths are the next stage, and
- * until then the honest description of a relay is "a router that can see your
- * traffic", not "an anonymity hop".
+ * Paths carry two kinds of traffic and the difference matters. Plain path data
+ * is readable by every relay carrying it, which is enough when the only goal is
+ * that the far end sees a relay rather than the origin. Traffic sealed for the
+ * far end is not: each relay holds a key for its own leg and none for the one
+ * beyond, so it forwards ciphertext.
+ *
+ * With two hops that separation becomes the point. The first relay knows who is
+ * asking but not who is being reached; the second knows who is being reached
+ * but has no address for who is asking - it is spoken to through a path, which
+ * is why a peer here is a Hop and not an address.
  */
 namespace overlay {
 
@@ -34,6 +39,48 @@ enum class MessageKind : uint8_t {
     PATH_FAIL = 0x04,  //!< the relay refused
     PATH_DATA = 0x05,  //!< carry this along an established path
     PATH_BIND = 0x06,  //!< a relay telling the far end it is a path's endpoint
+};
+
+/**
+ * Where a message came from, or is going to.
+ *
+ * At the first hop that is an address. Past it, it is a path: the second relay
+ * in a chain has no address for the client it is working for, and must not -
+ * that is the whole reason for a second hop. Both are peers as far as
+ * forwarding is concerned, so they share a type.
+ */
+struct Hop {
+    CService addr;    //!< set when this is an adjacent peer
+    uint64_t path{0}; //!< set when this is the far end of a path
+    bool via_path{false};
+
+    Hop() {}
+    static Hop Direct(const CService& a)
+    {
+        Hop h;
+        h.addr = a;
+        return h;
+    }
+    static Hop Path(uint64_t id)
+    {
+        Hop h;
+        h.path = id;
+        h.via_path = true;
+        return h;
+    }
+    bool IsValid() const { return via_path ? path != 0 : addr.IsValid(); }
+    bool operator==(const Hop& o) const
+    {
+        if (via_path != o.via_path) return false;
+        return via_path ? path == o.path : addr == o.addr;
+    }
+    bool operator!=(const Hop& o) const { return !(*this == o); }
+    bool operator<(const Hop& o) const
+    {
+        if (via_path != o.via_path) return via_path < o.via_path;
+        if (via_path) return path < o.path;
+        return addr < o.addr;
+    }
 };
 
 /** What a relay should do with a datagram on a path. */
@@ -91,8 +138,8 @@ public:
      * anyone who guessed or observed an id redirect somebody else's traffic,
      * which is a hijack rather than a collision.
      */
-    bool Create(uint64_t path_id, const CService& upstream,
-                const CService& downstream, int64_t now);
+    bool Create(uint64_t path_id, const Hop& upstream, const Hop& downstream,
+                int64_t now);
 
     /**
      * Add a path this node is the far end of.
@@ -101,7 +148,7 @@ public:
      * reply goes back upstream. Without this the destination would drop
      * everything it was sent, having never asked for the path itself.
      */
-    bool CreateEndpoint(uint64_t path_id, const CService& upstream, int64_t now);
+    bool CreateEndpoint(uint64_t path_id, const Hop& upstream, int64_t now);
 
     /**
      * What to do with a datagram on this path.
@@ -110,18 +157,27 @@ public:
      * ends - knowing an id is not membership of it. Refreshes the path's
      * activity time otherwise, so a path in use is not expired underneath it.
      */
-    Route Next(uint64_t path_id, const CService& from, CService& to_out, int64_t now);
+    Route Next(uint64_t path_id, const Hop& from, Hop& to_out, int64_t now);
 
     /** Drop paths idle for longer than PATH_TTL. Returns how many went. */
     size_t Expire(int64_t now);
+
+    /**
+     * Which hop carries a path we are an end of.
+     *
+     * Only meaningful at an end: a relay in the middle of a path has two
+     * carriers and no reason to ask. False when the path is unknown or when
+     * this node is not one of its ends.
+     */
+    bool Carrier(uint64_t path_id, Hop& out) const;
 
     bool Has(uint64_t path_id) const;
     size_t Size() const { return m_paths.size(); }
 
 private:
     struct Entry {
-        CService upstream;
-        CService downstream; //!< invalid when this node is the endpoint
+        Hop upstream;
+        Hop downstream; //!< invalid when this node is the endpoint
         int64_t last_used{0};
     };
     std::map<uint64_t, Entry> m_paths;

@@ -14,27 +14,31 @@
 namespace overlay {
 
 /**
- * A node that can carry other people's traffic.
+ * A node that can carry other people's traffic, and build paths through others.
  *
  * Sits above Socket rather than inside it: the socket's job is to move bytes
  * and own the thread, and routing is a separate decision that should not be
  * able to break the transport by being wrong.
  *
- * Traffic can travel two ways. SendVia hands the relay bytes it can read, which
- * is enough when the point is only that the far end sees the relay rather than
- * the origin. SendSecret runs a second handshake with the far end THROUGH the
- * path, so the relay carries ciphertext it holds no key for - it still learns
- * that two of its peers are talking and how much, but not what.
+ * Paths are extended one hop at a time, each extension travelling through the
+ * part already built. So the first relay is asked over a direct session, the
+ * second is asked through the first, and so on - which is why a peer is a Hop
+ * rather than an address: past the first relay, the node doing the asking has
+ * no address the asked node could learn.
  *
- * One relay is still one relay. It knows both ends by address even when it
- * cannot read them, so this resists a curious relay rather than a hostile one.
- * Not being in a position to know both ends needs more than one hop, which is
- * what remains after this.
+ * The layering that follows is what makes more than one hop worth having:
+ *
+ *   A -> R1  sees ciphertext for R2, and does not know C
+ *   R1 -> R2 sees ciphertext for C, and does not know A
+ *
+ * Neither relay is in a position to know both ends, which is the property one
+ * hop cannot provide however well it is encrypted.
  */
 class Relay
 {
 public:
-    using AppHandler = std::function<void(const CService&, std::vector<unsigned char>&&)>;
+    /** Called with authenticated application data, and where it came from. */
+    using AppHandler = std::function<void(const Hop&, std::vector<unsigned char>&&)>;
     /** Called when a path we asked for was accepted or refused. */
     using PathHandler = std::function<void(uint64_t path_id, bool ok)>;
 
@@ -48,43 +52,43 @@ public:
     CService BoundAddress() const { return m_socket.BoundAddress(); }
     bool HasSession(const CService& peer) { return m_socket.HasSession(peer); }
 
-    /** Send application data straight to a peer we have a session with. */
+    /** Send application data straight to an adjacent peer. */
     bool SendApp(const CService& peer, const std::vector<unsigned char>& payload);
 
     /**
      * Ask `via` to carry traffic between us and `dest`.
      *
-     * Both legs must already be sessions of the relay's, so the relay is asked
-     * only to join two peers it already knows, never to dial somewhere new on
-     * a stranger's say-so.
+     * `via` is an adjacent peer for the first hop, or a path for any hop after
+     * it - extending a path means asking its far end to build the next leg.
+     * The asked relay will only join peers it already has sessions with.
      */
-    bool BuildPath(uint64_t path_id, const CService& via, const CService& dest);
+    bool BuildPath(uint64_t path_id, const Hop& via, const CService& dest);
 
-    /** Send bytes along an established path. The relay can read these. */
-    bool SendVia(const CService& via, uint64_t path_id,
-                 const std::vector<unsigned char>& inner);
+    /** Send bytes along a path. Every relay on it can read these. */
+    bool SendOnPath(uint64_t path_id, const std::vector<unsigned char>& inner);
 
     /**
      * Begin an end-to-end session with the far end of a path.
      *
-     * The handshake travels as ordinary path traffic, so the relay forwards it
+     * The handshake travels as ordinary path traffic, so the relays forward it
      * without being able to complete it: only the holder of `far_static` can,
-     * and that key comes from the roster rather than from the relay.
+     * and that key comes from the roster rather than from any relay.
      */
-    bool ConnectSecret(const CService& via, uint64_t path_id,
-                       const CPubKey& far_static);
+    bool ConnectSecret(uint64_t path_id, const CPubKey& far_static);
 
     /** True once the far end of this path has completed the exchange. */
     bool HasSecretSession(uint64_t path_id);
 
-    /** Send data the relay carrying it cannot read. */
-    bool SendSecret(const CService& via, uint64_t path_id,
-                    const std::vector<unsigned char>& payload);
+    /** Send data no relay on the path can read. */
+    bool SendSecret(uint64_t path_id, const std::vector<unsigned char>& payload);
 
     size_t PathCount();
 
 private:
-    void OnPayload(const CService& from, std::vector<unsigned char>&& msg);
+    /** Dispatch one decrypted overlay message. */
+    void OnMessage(const Hop& from, std::vector<unsigned char>&& msg);
+    /** Route a message to a hop, wrapping it for a path if that is what it is. */
+    bool SendToHop(const Hop& to, const std::vector<unsigned char>& msg);
 
     Socket m_socket;
     Mutex m_mutex;

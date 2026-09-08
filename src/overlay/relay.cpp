@@ -21,7 +21,7 @@ bool Relay::Start(AppHandler app, PathHandler path)
     m_app = std::move(app);
     m_path = std::move(path);
     return m_socket.Start([this](const CService& from, std::vector<unsigned char>&& msg) {
-        OnPayload(from, std::move(msg));
+        OnMessage(Hop::Direct(from), std::move(msg));
     });
 }
 
@@ -39,32 +39,55 @@ bool Relay::SendApp(const CService& peer, const std::vector<unsigned char>& payl
     return m_socket.Send(peer, msg);
 }
 
-bool Relay::BuildPath(uint64_t path_id, const CService& via, const CService& dest)
+bool Relay::SendToHop(const Hop& to, const std::vector<unsigned char>& msg)
+{
+    if (!to.via_path) return m_socket.Send(to.addr, msg);
+
+    // A path hop: seal for the far end of that path, wrap as path traffic, and
+    // hand it to whichever hop carries that path. The recursion is the onion -
+    // one wrapping per leg, applied from the inside out.
+    std::vector<unsigned char> sealed;
+    Hop carrier;
+    {
+        LOCK(m_mutex);
+        if (!m_secret.Send(to.path, msg, sealed)) return false;
+        if (!m_paths.Carrier(to.path, carrier)) return false;
+    }
+
+    std::vector<unsigned char> wrapped;
+    if (!EncodePathData(to.path, sealed, wrapped)) return false;
+    return SendToHop(carrier, wrapped);
+}
+
+bool Relay::BuildPath(uint64_t path_id, const Hop& via, const CService& dest)
 {
     std::vector<unsigned char> msg;
     if (!EncodePathBuild(path_id, dest, msg)) return false;
-    return m_socket.Send(via, msg);
+    return SendToHop(via, msg);
 }
 
-bool Relay::SendVia(const CService& via, uint64_t path_id,
-                    const std::vector<unsigned char>& inner)
+bool Relay::SendOnPath(uint64_t path_id, const std::vector<unsigned char>& inner)
 {
+    Hop carrier;
+    {
+        LOCK(m_mutex);
+        if (!m_paths.Carrier(path_id, carrier)) return false;
+    }
     std::vector<unsigned char> msg;
     if (!EncodePathData(path_id, inner, msg)) return false;
-    return m_socket.Send(via, msg);
+    return SendToHop(carrier, msg);
 }
 
-bool Relay::ConnectSecret(const CService& via, uint64_t path_id,
-                          const CPubKey& far_static)
+bool Relay::ConnectSecret(uint64_t path_id, const CPubKey& far_static)
 {
     std::vector<unsigned char> hello;
     {
         LOCK(m_mutex);
         if (!m_secret.Connect(path_id, far_static, hello)) return false;
     }
-    // The handshake rides the path as ordinary traffic. The relay forwards it
-    // and cannot complete it: only the holder of far_static can.
-    return SendVia(via, path_id, hello);
+    // The handshake rides the path as ordinary traffic. Relays forward it and
+    // cannot complete it: only the holder of far_static can.
+    return SendOnPath(path_id, hello);
 }
 
 bool Relay::HasSecretSession(uint64_t path_id)
@@ -73,15 +96,21 @@ bool Relay::HasSecretSession(uint64_t path_id)
     return m_secret.HasSession(path_id);
 }
 
-bool Relay::SendSecret(const CService& via, uint64_t path_id,
-                       const std::vector<unsigned char>& payload)
+bool Relay::SendSecret(uint64_t path_id, const std::vector<unsigned char>& payload)
 {
+    // Wrapped as a message before sealing, because what comes out of an
+    // end-to-end session is dispatched rather than delivered - that is how a
+    // relay is asked to extend a path, and application data has to be
+    // distinguishable from that asking.
+    std::vector<unsigned char> msg;
+    if (!EncodeAppData(payload, msg)) return false;
+
     std::vector<unsigned char> sealed;
     {
         LOCK(m_mutex);
-        if (!m_secret.Send(path_id, payload, sealed)) return false;
+        if (!m_secret.Send(path_id, msg, sealed)) return false;
     }
-    return SendVia(via, path_id, sealed);
+    return SendOnPath(path_id, sealed);
 }
 
 size_t Relay::PathCount()
@@ -90,12 +119,12 @@ size_t Relay::PathCount()
     return m_paths.Size();
 }
 
-void Relay::OnPayload(const CService& from, std::vector<unsigned char>&& msg)
+void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
 {
     MessageKind kind;
     // Unrecognised messages are dropped without a reply. The sender is
-    // authenticated, so this is not an attack surface so much as a version
-    // difference, and answering it tells an observer the two disagree.
+    // authenticated, so this is a version difference rather than an attack, and
+    // answering it tells an observer the two disagree.
     if (!DecodeKind(msg, kind)) return;
 
     switch (kind) {
@@ -111,30 +140,27 @@ void Relay::OnPayload(const CService& from, std::vector<unsigned char>&& msg)
         CService dest;
         if (!DecodePathBuild(msg, path_id, dest)) return;
 
-        // Only join two peers already known here. Building a path to somewhere
-        // this node has never spoken to would let a stranger use it to dial
-        // arbitrary hosts, which is the property that separates an overlay
-        // relay from an open proxy.
-        bool ok = m_socket.HasSession(dest) && dest != from;
+        // Only join peers already known here. Building a path to a host this
+        // node has never spoken to would let a stranger name any address and
+        // have the relay dial it, which is an open proxy rather than an
+        // overlay relay.
+        const Hop dest_hop = Hop::Direct(dest);
+        bool ok = m_socket.HasSession(dest) && dest_hop != from;
         if (ok) {
             LOCK(m_mutex);
             m_paths.Expire(GetTime());
-            ok = m_paths.Create(path_id, from, dest, GetTime());
+            ok = m_paths.Create(path_id, from, dest_hop, GetTime());
         }
 
         if (ok) {
             // Tell the far end it is this path's endpoint, or it would drop
-            // everything forwarded to it having never asked for a path.
+            // everything forwarded to it, having never asked for a path.
             std::vector<unsigned char> bind;
-            if (EncodePathBind(path_id, bind)) m_socket.Send(dest, bind);
+            if (EncodePathBind(path_id, bind)) SendToHop(dest_hop, bind);
         }
 
         std::vector<unsigned char> reply;
-        if (EncodePathResult(ok, path_id, reply)) m_socket.Send(from, reply);
-        if (ok) {
-            LogPrint(BCLog::NET, "overlay: path %016x joins %s and %s\n", path_id,
-                     from.ToString(), dest.ToString());
-        }
+        if (EncodePathResult(ok, path_id, reply)) SendToHop(from, reply);
         return;
     }
 
@@ -145,8 +171,8 @@ void Relay::OnPayload(const CService& from, std::vector<unsigned char>&& msg)
         if (!DecodePathResult(msg, ok, path_id)) return;
         if (ok) {
             // The originator is an end of its own path too. Without an entry
-            // here it sends fine and then drops every reply, because return
-            // traffic arrives as PATH_DATA for a path it does not recognise.
+            // here it sends fine and drops every reply, because return traffic
+            // arrives on a path it has not recorded itself as an end of.
             LOCK(m_mutex);
             m_paths.CreateEndpoint(path_id, from, GetTime());
         }
@@ -157,9 +183,6 @@ void Relay::OnPayload(const CService& from, std::vector<unsigned char>&& msg)
     case MessageKind::PATH_BIND: {
         uint64_t path_id = 0;
         if (!DecodePathBind(msg, path_id)) return;
-        // Accepted only from a peer we already have a session with, which
-        // Socket guarantees by delivering nothing else. Being made someone's
-        // endpoint costs one table entry, bounded like any other.
         LOCK(m_mutex);
         m_paths.Expire(GetTime());
         m_paths.CreateEndpoint(path_id, from, GetTime());
@@ -171,47 +194,52 @@ void Relay::OnPayload(const CService& from, std::vector<unsigned char>&& msg)
         std::vector<unsigned char> inner;
         if (!DecodePathData(msg, path_id, inner)) return;
 
-        CService next;
+        Hop next;
         Route route;
         {
             LOCK(m_mutex);
             route = m_paths.Next(path_id, from, next, GetTime());
         }
-        if (route == Route::DELIVER) {
-            // The end of the path. The bytes may be an end-to-end handshake or
-            // a sealed payload for us, in which case the relay that carried
-            // them holds no key for them - or plain traffic it could read.
-            std::vector<unsigned char> reply, opened;
-            PathTransport::Result r;
-            {
-                LOCK(m_mutex);
-                r = m_secret.Receive(path_id, inner.data(), inner.size(), reply, opened);
-            }
-            if (!reply.empty()) SendVia(from, path_id, reply);
-            switch (r) {
-            case PathTransport::Result::PAYLOAD:
-                if (m_app) m_app(from, std::move(opened));
-                return;
-            case PathTransport::Result::ESTABLISHED:
-                LogPrint(BCLog::NET, "overlay: end-to-end session on path %016x\n", path_id);
-                return;
-            default:
-                // Not end-to-end traffic, so it is plain path data addressed
-                // to us. Delivered as it stands, and readable by the relay -
-                // which is the difference SendSecret exists to remove.
-                if (m_app) m_app(from, std::move(inner));
-                return;
-            }
-        }
-        if (route != Route::FORWARD) return;
 
-        // Re-wrapped rather than passed through: the outer session is per hop,
-        // so the bytes that arrive from one peer are never the bytes that go to
-        // the other.
-        std::vector<unsigned char> out;
-        if (!EncodePathData(path_id, inner, out)) return;
-        m_socket.Send(next, out);
-        return;
+        if (route == Route::FORWARD) {
+            // Re-wrapped rather than passed through: each leg has its own
+            // encryption, so the bytes arriving from one hop are never the
+            // bytes leaving for the next.
+            std::vector<unsigned char> out;
+            if (!EncodePathData(path_id, inner, out)) return;
+            SendToHop(next, out);
+            return;
+        }
+        if (route != Route::DELIVER) return;
+
+        // The end of the path. These bytes may be an end-to-end handshake or a
+        // payload sealed for us, which the relays that carried them hold no key
+        // for - or plain path traffic they could read.
+        std::vector<unsigned char> reply, opened;
+        PathTransport::Result r;
+        {
+            LOCK(m_mutex);
+            r = m_secret.Receive(path_id, inner.data(), inner.size(), reply, opened);
+        }
+        if (!reply.empty()) SendOnPath(path_id, reply);
+
+        switch (r) {
+        case PathTransport::Result::PAYLOAD:
+            // Sealed traffic from the far end. Dispatched rather than
+            // delivered: this is how a relay is asked to extend a path, since
+            // the asking arrives through the part already built.
+            OnMessage(Hop::Path(path_id), std::move(opened));
+            return;
+        case PathTransport::Result::ESTABLISHED:
+            LogPrint(BCLog::NET, "overlay: end-to-end session on path %016x\n", path_id);
+            return;
+        default:
+            // Not end-to-end traffic, so it is plain path data for us -
+            // readable by every relay that carried it, which is the difference
+            // SendSecret exists to remove.
+            if (m_app) m_app(from, std::move(inner));
+            return;
+        }
     }
     }
 }

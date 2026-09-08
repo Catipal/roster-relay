@@ -642,6 +642,8 @@ BOOST_AUTO_TEST_CASE(session_counter_never_wraps)
 
 namespace {
 
+overlay::Hop H(const CService& s) { return overlay::Hop::Direct(s); }
+
 CService Addr(const char* ip, uint16_t port)
 {
     return CService(LookupNumeric(ip, port));
@@ -845,9 +847,18 @@ struct Inbox {
     Mutex mutex;
     std::vector<std::vector<unsigned char>> items;
 
-    overlay::Socket::PayloadHandler Handler()
+    /** For a bare Socket, which reports the address a datagram came from. */
+    overlay::Socket::PayloadHandler SocketHandler()
     {
         return [this](const CService&, std::vector<unsigned char>&& p) {
+            LOCK(mutex);
+            items.push_back(std::move(p));
+        };
+    }
+    /** For a Relay, where the sender may be a path rather than an address. */
+    overlay::Relay::AppHandler Handler()
+    {
+        return [this](const overlay::Hop&, std::vector<unsigned char>&& p) {
             LOCK(mutex);
             items.push_back(std::move(p));
         };
@@ -884,8 +895,8 @@ BOOST_AUTO_TEST_CASE(socket_two_nodes_talk_over_real_udp)
     BOOST_CHECK(B.BoundAddress().GetPort() != A.BoundAddress().GetPort());
 
     Inbox in_a, in_b;
-    BOOST_REQUIRE(A.Start(in_a.Handler()));
-    BOOST_REQUIRE(B.Start(in_b.Handler()));
+    BOOST_REQUIRE(A.Start(in_a.SocketHandler()));
+    BOOST_REQUIRE(B.Start(in_b.SocketHandler()));
 
     // UDP may drop the first datagram; retrying is the transport's normal
     // condition rather than a failure, so the test retries as a real client
@@ -938,8 +949,8 @@ BOOST_AUTO_TEST_CASE(socket_ignores_traffic_from_a_stranger)
     BOOST_REQUIRE_MESSAGE(C.Bind(any, err), err);
 
     Inbox in_a, in_c;
-    BOOST_REQUIRE(A.Start(in_a.Handler()));
-    BOOST_REQUIRE(C.Start(in_c.Handler()));
+    BOOST_REQUIRE(A.Start(in_a.SocketHandler()));
+    BOOST_REQUIRE(C.Start(in_c.SocketHandler()));
 
     // C tries to speak to A while claiming a key A never agreed with. The
     // handshake will complete - anyone may open one - but C cannot send data
@@ -960,7 +971,7 @@ BOOST_AUTO_TEST_CASE(socket_stop_is_idempotent)
     std::string err;
     BOOST_REQUIRE_MESSAGE(S.Bind(CService(LookupNumeric("127.0.0.1", 0)), err), err);
     Inbox in;
-    BOOST_REQUIRE(S.Start(in.Handler()));
+    BOOST_REQUIRE(S.Start(in.SocketHandler()));
     S.Stop();
     S.Stop(); // must not hang or crash on a second call, nor on destruction
 }
@@ -1043,15 +1054,15 @@ BOOST_AUTO_TEST_CASE(path_table_forwards_both_ways)
 {
     overlay::PathTable t;
     const CService a = Addr("10.0.0.1", 9346), c = Addr("10.0.0.3", 9346);
-    BOOST_CHECK(t.Create(42, a, c, 1000));
+    BOOST_CHECK(t.Create(42, H(a), H(c), 1000));
     BOOST_CHECK(t.Has(42));
     BOOST_CHECK_EQUAL(t.Size(), 1u);
 
-    CService to;
-    BOOST_CHECK(overlay::Route::FORWARD == t.Next(42, a, to, 1001));
-    BOOST_CHECK(to == c);
-    BOOST_CHECK(overlay::Route::FORWARD == t.Next(42, c, to, 1002));
-    BOOST_CHECK(to == a);
+    overlay::Hop to;
+    BOOST_CHECK(overlay::Route::FORWARD == t.Next(42, H(a), to, 1001));
+    BOOST_CHECK(to == H(c));
+    BOOST_CHECK(overlay::Route::FORWARD == t.Next(42, H(c), to, 1002));
+    BOOST_CHECK(to == H(a));
 }
 
 BOOST_AUTO_TEST_CASE(path_table_refuses_strangers_and_hijacks)
@@ -1059,22 +1070,22 @@ BOOST_AUTO_TEST_CASE(path_table_refuses_strangers_and_hijacks)
     overlay::PathTable t;
     const CService a = Addr("10.0.0.1", 9346), c = Addr("10.0.0.3", 9346);
     const CService stranger = Addr("10.0.0.9", 9346);
-    BOOST_CHECK(t.Create(42, a, c, 1000));
+    BOOST_CHECK(t.Create(42, H(a), H(c), 1000));
 
     // Knowing a path id is not membership of it.
-    CService to;
-    BOOST_CHECK(overlay::Route::FORWARD != t.Next(42, stranger, to, 1001));
+    overlay::Hop to;
+    BOOST_CHECK(overlay::Route::FORWARD != t.Next(42, H(stranger), to, 1001));
     // An unknown path is simply not there.
-    BOOST_CHECK(overlay::Route::FORWARD != t.Next(43, a, to, 1001));
+    BOOST_CHECK(overlay::Route::FORWARD != t.Next(43, H(a), to, 1001));
 
     // A duplicate id is refused rather than replacing the entry, or anyone who
     // guessed an id could redirect someone else's traffic.
-    BOOST_CHECK(!t.Create(42, stranger, c, 1002));
-    BOOST_CHECK(overlay::Route::FORWARD == t.Next(42, a, to, 1003));
-    BOOST_CHECK(to == c);
+    BOOST_CHECK(!t.Create(42, H(stranger), H(c), 1002));
+    BOOST_CHECK(overlay::Route::FORWARD == t.Next(42, H(a), to, 1003));
+    BOOST_CHECK(to == H(c));
 
     // A path from a peer to itself is a reflection loop.
-    BOOST_CHECK(!t.Create(50, a, a, 1000));
+    BOOST_CHECK(!t.Create(50, H(a), H(a), 1000));
 }
 
 BOOST_AUTO_TEST_CASE(path_table_is_bounded_and_expires)
@@ -1083,22 +1094,22 @@ BOOST_AUTO_TEST_CASE(path_table_is_bounded_and_expires)
     overlay::PathTable t;
     const CService a = Addr("10.0.0.1", 9346), c = Addr("10.0.0.3", 9346);
     for (size_t i = 0; i < overlay::PathTable::MAX_PATHS; ++i) {
-        BOOST_REQUIRE(t.Create(i + 1, a, c, 1000));
+        BOOST_REQUIRE(t.Create(i + 1, H(a), H(c), 1000));
     }
     BOOST_CHECK_EQUAL(t.Size(), overlay::PathTable::MAX_PATHS);
     // Full: memory cannot be consumed without limit.
-    BOOST_CHECK(!t.Create(999999, a, c, 1000));
+    BOOST_CHECK(!t.Create(999999, H(a), H(c), 1000));
 
     // Use one of them, then let the rest go idle.
-    CService to;
-    BOOST_CHECK(overlay::Route::FORWARD == t.Next(1, a, to, 1000 + overlay::PathTable::PATH_TTL - 1));
+    overlay::Hop to;
+    BOOST_CHECK(overlay::Route::FORWARD == t.Next(1, H(a), to, 1000 + overlay::PathTable::PATH_TTL - 1));
     const size_t gone = t.Expire(1000 + overlay::PathTable::PATH_TTL);
     BOOST_CHECK_EQUAL(gone, overlay::PathTable::MAX_PATHS - 1);
     BOOST_CHECK(t.Has(1));
     BOOST_CHECK_EQUAL(t.Size(), 1u);
 
     // Room again once the abandoned ones are gone.
-    BOOST_CHECK(t.Create(999999, a, c, 1000 + overlay::PathTable::PATH_TTL));
+    BOOST_CHECK(t.Create(999999, H(a), H(c), 1000 + overlay::PathTable::PATH_TTL));
 }
 
 
@@ -1152,7 +1163,7 @@ BOOST_AUTO_TEST_CASE(relay_forwards_between_two_peers)
             LOCK(results_mutex);
             if (results.count(path)) return true;
         }
-        A.BuildPath(path, r_addr, c_addr);
+        A.BuildPath(path, H(r_addr), c_addr);
         LOCK(results_mutex);
         return results.count(path) > 0;
     }));
@@ -1167,7 +1178,7 @@ BOOST_AUTO_TEST_CASE(relay_forwards_between_two_peers)
     const std::vector<unsigned char> msg = Payload(300, 2);
     BOOST_REQUIRE(WaitFor([&] {
         if (in_c.Count() > 0) return true;
-        A.SendVia(r_addr, path, msg);
+        A.SendOnPath(path, msg);
         return in_c.Count() > 0;
     }));
     BOOST_CHECK(in_c.At(0) == msg);
@@ -1176,7 +1187,7 @@ BOOST_AUTO_TEST_CASE(relay_forwards_between_two_peers)
     const std::vector<unsigned char> back = Payload(80, 6);
     BOOST_REQUIRE(WaitFor([&] {
         if (in_a.Count() > 0) return true;
-        C.SendVia(r_addr, path, back);
+        C.SendOnPath(path, back);
         return in_a.Count() > 0;
     }));
     BOOST_CHECK(in_a.At(0) == back);
@@ -1226,7 +1237,7 @@ BOOST_AUTO_TEST_CASE(relay_refuses_to_be_an_open_proxy)
             LOCK(m);
             if (results.count(path)) return true;
         }
-        A.BuildPath(path, r_addr, stranger);
+        A.BuildPath(path, H(r_addr), stranger);
         LOCK(m);
         return results.count(path) > 0;
     }));
@@ -1286,7 +1297,7 @@ BOOST_AUTO_TEST_CASE(relay_cannot_read_end_to_end_traffic)
             LOCK(m);
             if (results.count(path)) return true;
         }
-        A.BuildPath(path, r_addr, C.BoundAddress());
+        A.BuildPath(path, H(r_addr), C.BoundAddress());
         LOCK(m);
         return results.count(path) > 0;
     }));
@@ -1299,7 +1310,7 @@ BOOST_AUTO_TEST_CASE(relay_cannot_read_end_to_end_traffic)
     // path traffic. C's identity comes from the roster, not from the relay.
     BOOST_REQUIRE(WaitFor([&] {
         if (A.HasSecretSession(path)) return true;
-        A.ConnectSecret(r_addr, path, kc.GetPubKey());
+        A.ConnectSecret(path, kc.GetPubKey());
         return A.HasSecretSession(path);
     }));
     BOOST_CHECK(A.HasSecretSession(path));
@@ -1311,7 +1322,7 @@ BOOST_AUTO_TEST_CASE(relay_cannot_read_end_to_end_traffic)
 
     BOOST_REQUIRE(WaitFor([&] {
         if (in_c.Count() > 0) return true;
-        A.SendSecret(r_addr, path, secret);
+        A.SendSecret(path, secret);
         return in_c.Count() > 0;
     }));
     BOOST_CHECK(in_c.At(0) == secret);
@@ -1324,7 +1335,7 @@ BOOST_AUTO_TEST_CASE(relay_cannot_read_end_to_end_traffic)
     for (int i = 0; i < 32; ++i) back.push_back(0x5A);
     BOOST_REQUIRE(WaitFor([&] {
         if (in_a.Count() > 0) return true;
-        C.SendSecret(r_addr, path, back);
+        C.SendSecret(path, back);
         return in_a.Count() > 0;
     }));
     BOOST_CHECK(in_a.At(0) == back);
@@ -1382,14 +1393,14 @@ BOOST_AUTO_TEST_CASE(relay_secret_session_needs_the_right_identity)
             LOCK(m);
             if (results.count(path)) return true;
         }
-        A.BuildPath(path, r_addr, C.BoundAddress());
+        A.BuildPath(path, H(r_addr), C.BoundAddress());
         LOCK(m);
         return results.count(path) > 0;
     }));
 
     // Aim the exchange at a key nobody on this path holds.
     for (int i = 0; i < 5; ++i) {
-        A.ConnectSecret(r_addr, path, kwrong.GetPubKey());
+        A.ConnectSecret(path, kwrong.GetPubKey());
         UninterruptibleSleep(std::chrono::milliseconds{100});
     }
     BOOST_CHECK(!A.HasSecretSession(path));
@@ -1397,6 +1408,141 @@ BOOST_AUTO_TEST_CASE(relay_secret_session_needs_the_right_identity)
 
     A.Stop();
     R.Stop();
+    C.Stop();
+}
+
+
+BOOST_AUTO_TEST_CASE(relay_two_hop_path_splits_the_knowledge)
+{
+    // A -> R1 -> R2 -> C. The property one hop cannot give: neither relay is in
+    // a position to know both ends. R1 sees A but not C; R2 sees C but reaches
+    // A only as a path, having no address for it at all.
+    CKey ka, k1, k2, kc;
+    ka.MakeNewKey(true);
+    k1.MakeNewKey(true);
+    k2.MakeNewKey(true);
+    kc.MakeNewKey(true);
+
+    overlay::Relay A(ka), R1(k1), R2(k2), C(kc);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    BOOST_REQUIRE_MESSAGE(A.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(R1.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(R2.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(C.Bind(any, err), err);
+
+    Inbox in_a, in_1, in_2, in_c;
+    Mutex m;
+    std::map<uint64_t, bool> results;
+    auto note = [&](uint64_t id, bool ok) {
+        LOCK(m);
+        results[id] = ok;
+    };
+    BOOST_REQUIRE(A.Start(in_a.Handler(), note));
+    BOOST_REQUIRE(R1.Start(in_1.Handler()));
+    BOOST_REQUIRE(R2.Start(in_2.Handler()));
+    BOOST_REQUIRE(C.Start(in_c.Handler()));
+
+    const CService a1 = R1.BoundAddress(), a2 = R2.BoundAddress(), ac = C.BoundAddress();
+
+    // Adjacent sessions: A-R1, R1-R2, R2-C. Each relay only ever joins peers it
+    // already knows, so the chain has to exist before a path can use it.
+    BOOST_REQUIRE(WaitFor([&] {
+        if (A.HasSession(a1)) return true;
+        A.Connect(a1, k1.GetPubKey());
+        return A.HasSession(a1);
+    }));
+    BOOST_REQUIRE(WaitFor([&] {
+        if (R1.HasSession(a2)) return true;
+        R1.Connect(a2, k2.GetPubKey());
+        return R1.HasSession(a2);
+    }));
+    BOOST_REQUIRE(WaitFor([&] {
+        if (R2.HasSession(ac)) return true;
+        R2.Connect(ac, kc.GetPubKey());
+        return R2.HasSession(ac);
+    }));
+
+    // First leg: A asks R1 to carry to R2, then talks to R2 through it.
+    const uint64_t p1 = 0x1111;
+    BOOST_REQUIRE(WaitFor([&] {
+        {
+            LOCK(m);
+            if (results.count(p1)) return true;
+        }
+        A.BuildPath(p1, H(a1), a2);
+        LOCK(m);
+        return results.count(p1) > 0;
+    }));
+    {
+        LOCK(m);
+        BOOST_REQUIRE(results[p1]);
+    }
+    BOOST_REQUIRE(WaitFor([&] {
+        if (A.HasSecretSession(p1)) return true;
+        A.ConnectSecret(p1, k2.GetPubKey());
+        return A.HasSecretSession(p1);
+    }));
+
+    // Second leg: the request to extend travels through the first, so R2 is
+    // asked by a path rather than by an address.
+    const uint64_t p2 = 0x2222;
+    BOOST_REQUIRE(WaitFor([&] {
+        {
+            LOCK(m);
+            if (results.count(p2)) return true;
+        }
+        A.BuildPath(p2, overlay::Hop::Path(p1), ac);
+        LOCK(m);
+        return results.count(p2) > 0;
+    }, 10000));
+    {
+        LOCK(m);
+        BOOST_REQUIRE(results[p2]);
+    }
+
+    // End to end with C, two relays away.
+    BOOST_REQUIRE(WaitFor([&] {
+        if (A.HasSecretSession(p2)) return true;
+        A.ConnectSecret(p2, kc.GetPubKey());
+        return A.HasSecretSession(p2);
+    }, 10000));
+    BOOST_CHECK(WaitFor([&] { return C.HasSecretSession(p2); }));
+
+    std::vector<unsigned char> secret;
+    for (int i = 0; i < 48; ++i) secret.push_back(0x7E);
+    BOOST_REQUIRE(WaitFor([&] {
+        if (in_c.Count() > 0) return true;
+        A.SendSecret(p2, secret);
+        return in_c.Count() > 0;
+    }, 10000));
+    BOOST_CHECK(in_c.At(0) == secret);
+
+    // Neither relay read a byte of it.
+    BOOST_CHECK_EQUAL(in_1.Count(), 0u);
+    BOOST_CHECK_EQUAL(in_2.Count(), 0u);
+
+    // And the reverse direction works, which exercises the return leg through
+    // both tunnels.
+    std::vector<unsigned char> back;
+    for (int i = 0; i < 24; ++i) back.push_back(0xE7);
+    BOOST_REQUIRE(WaitFor([&] {
+        if (in_a.Count() > 0) return true;
+        C.SendSecret(p2, back);
+        return in_a.Count() > 0;
+    }, 10000));
+    BOOST_CHECK(in_a.At(0) == back);
+    BOOST_CHECK_EQUAL(in_1.Count(), 0u);
+    BOOST_CHECK_EQUAL(in_2.Count(), 0u);
+
+    // A never spoke to R2 or C directly, and C never spoke to A.
+    BOOST_CHECK(!A.HasSession(a2));
+    BOOST_CHECK(!A.HasSession(ac));
+    BOOST_CHECK(!C.HasSession(A.BoundAddress()));
+
+    A.Stop();
+    R1.Stop();
+    R2.Stop();
     C.Stop();
 }
 

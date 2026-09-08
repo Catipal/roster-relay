@@ -195,8 +195,8 @@ bool DecodePathData(const std::vector<unsigned char>& msg, uint64_t& path_id_out
 constexpr size_t PathTable::MAX_PATHS;
 constexpr int64_t PathTable::PATH_TTL;
 
-bool PathTable::Create(uint64_t path_id, const CService& upstream,
-                       const CService& downstream, int64_t now)
+bool PathTable::Create(uint64_t path_id, const Hop& upstream, const Hop& downstream,
+                       int64_t now)
 {
     if (!upstream.IsValid() || !downstream.IsValid()) return false;
     // A path from a peer back to itself is a reflection loop, not a route.
@@ -214,7 +214,7 @@ bool PathTable::Create(uint64_t path_id, const CService& upstream,
     return true;
 }
 
-bool PathTable::CreateEndpoint(uint64_t path_id, const CService& upstream, int64_t now)
+bool PathTable::CreateEndpoint(uint64_t path_id, const Hop& upstream, int64_t now)
 {
     if (!upstream.IsValid()) return false;
     if (m_paths.size() >= MAX_PATHS) return false;
@@ -222,14 +222,13 @@ bool PathTable::CreateEndpoint(uint64_t path_id, const CService& upstream, int64
 
     Entry e;
     e.upstream = upstream;
-    e.downstream = CService(); // invalid: this node is the far end
+    e.downstream = Hop(); // invalid: this node is the far end
     e.last_used = now;
     m_paths[path_id] = e;
     return true;
 }
 
-Route PathTable::Next(uint64_t path_id, const CService& from, CService& to_out,
-                      int64_t now)
+Route PathTable::Next(uint64_t path_id, const Hop& from, Hop& to_out, int64_t now)
 {
     std::map<uint64_t, Entry>::iterator it = m_paths.find(path_id);
     if (it == m_paths.end()) return Route::UNKNOWN;
@@ -268,6 +267,18 @@ size_t PathTable::Expire(int64_t now)
         }
     }
     return removed;
+}
+
+bool PathTable::Carrier(uint64_t path_id, Hop& out) const
+{
+    std::map<uint64_t, Entry>::const_iterator it = m_paths.find(path_id);
+    if (it == m_paths.end()) return false;
+    // An endpoint entry has no downstream, and its upstream is the hop the
+    // path runs through. A full forwarding entry belongs to a relay in the
+    // middle, which has two and is not asking on its own behalf.
+    if (it->second.downstream.IsValid()) return false;
+    out = it->second.upstream;
+    return out.IsValid();
 }
 
 bool PathTable::Has(uint64_t path_id) const

@@ -4,6 +4,7 @@
 
 #include <overlay/frame.h>
 #include <overlay/handshake.h>
+#include <overlay/session.h>
 
 #include <test/util/setup_common.h>
 
@@ -531,6 +532,104 @@ BOOST_AUTO_TEST_CASE(handshake_finish_is_single_shot)
     BOOST_CHECK(q.Run());
     overlay::SessionKeys twice;
     BOOST_CHECK(!q.I.Finish(q.msg2.data(), q.msg2.size(), twice));
+}
+
+BOOST_AUTO_TEST_CASE(session_carries_traffic_both_ways)
+{
+    Parties p;
+    BOOST_CHECK(p.Run());
+    overlay::Session i(p.ikeys), r(p.rkeys);
+    BOOST_CHECK_EQUAL(i.Id(), r.Id());
+
+    for (int n = 0; n < 5; ++n) {
+        const std::vector<unsigned char> out = Payload(100 + n, (unsigned char)n);
+        std::vector<unsigned char> dgram, got;
+        BOOST_CHECK(i.Seal(out, dgram));
+        BOOST_CHECK(r.Open(dgram.data(), dgram.size(), got));
+        BOOST_CHECK(got == out);
+
+        std::vector<unsigned char> back, got_back;
+        BOOST_CHECK(r.Seal(out, back));
+        BOOST_CHECK(i.Open(back.data(), back.size(), got_back));
+        BOOST_CHECK(got_back == out);
+    }
+    BOOST_CHECK_EQUAL(i.FramesSent(), 5u);
+}
+
+BOOST_AUTO_TEST_CASE(session_rejects_replays_and_foreign_frames)
+{
+    Parties p;
+    BOOST_CHECK(p.Run());
+    overlay::Session i(p.ikeys), r(p.rkeys);
+
+    std::vector<unsigned char> dgram, got;
+    BOOST_CHECK(i.Seal(Payload(64), dgram));
+    BOOST_CHECK(r.Open(dgram.data(), dgram.size(), got));
+    // The same datagram twice is the attack the counter exists to stop.
+    BOOST_CHECK(!r.Open(dgram.data(), dgram.size(), got));
+
+    // A frame from an unrelated session must not open here.
+    Parties q;
+    BOOST_CHECK(q.Run());
+    overlay::Session other(q.ikeys);
+    std::vector<unsigned char> foreign;
+    BOOST_CHECK(other.Seal(Payload(64), foreign));
+    BOOST_CHECK(!r.Open(foreign.data(), foreign.size(), got));
+
+    // And a node must not accept its own frame reflected back at it.
+    BOOST_CHECK(!i.Open(dgram.data(), dgram.size(), got));
+}
+
+BOOST_AUTO_TEST_CASE(session_tolerates_reordering)
+{
+    // UDP delivers out of order; the session must not treat that as an attack.
+    Parties p;
+    BOOST_CHECK(p.Run());
+    overlay::Session i(p.ikeys), r(p.rkeys);
+
+    std::vector<std::vector<unsigned char>> wire;
+    for (int n = 0; n < 4; ++n) {
+        std::vector<unsigned char> d;
+        BOOST_CHECK(i.Seal(Payload(32, (unsigned char)n), d));
+        wire.push_back(d);
+    }
+
+    std::vector<unsigned char> got;
+    BOOST_CHECK(r.Open(wire[3].data(), wire[3].size(), got));
+    BOOST_CHECK(r.Open(wire[1].data(), wire[1].size(), got));
+    BOOST_CHECK(r.Open(wire[0].data(), wire[0].size(), got));
+    BOOST_CHECK(r.Open(wire[2].data(), wire[2].size(), got));
+    // Every one of them exactly once, though.
+    BOOST_CHECK(!r.Open(wire[2].data(), wire[2].size(), got));
+}
+
+BOOST_AUTO_TEST_CASE(session_refuses_oversized_payloads)
+{
+    Parties p;
+    BOOST_CHECK(p.Run());
+    overlay::Session i(p.ikeys);
+    std::vector<unsigned char> d;
+    BOOST_CHECK(i.Seal(Payload(overlay::MAX_FRAME_PAYLOAD), d));
+    BOOST_CHECK_EQUAL(d.size(), overlay::SAFE_DATAGRAM);
+    BOOST_CHECK(!i.Seal(Payload(overlay::MAX_FRAME_PAYLOAD + 1), d));
+    // A refused seal must not have consumed a counter.
+    BOOST_CHECK_EQUAL(i.FramesSent(), 1u);
+}
+
+BOOST_AUTO_TEST_CASE(session_counter_never_wraps)
+{
+    // The counter is the AEAD nonce. Wrapping would reuse one, which loses
+    // confidentiality for both frames involved - so exhaustion has to be a
+    // refusal. Unreachable in practice, checked anyway because the failure is
+    // silent and total.
+    Parties p;
+    BOOST_CHECK(p.Run());
+    overlay::Session s(p.ikeys);
+    BOOST_CHECK_EQUAL(s.Remaining(), UINT64_MAX);
+
+    std::vector<unsigned char> d;
+    BOOST_CHECK(s.Seal(Payload(8), d));
+    BOOST_CHECK_EQUAL(s.Remaining(), UINT64_MAX - 1);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

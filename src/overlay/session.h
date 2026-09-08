@@ -1,0 +1,78 @@
+// Copyright (c) 2026 The Bitcoin PoS Core developers
+// Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
+#ifndef BITCOIN_OVERLAY_SESSION_H
+#define BITCOIN_OVERLAY_SESSION_H
+
+#include <overlay/frame.h>
+#include <overlay/handshake.h>
+
+#include <stdint.h>
+#include <vector>
+
+namespace overlay {
+
+/**
+ * An established link to one peer.
+ *
+ * Holds what the handshake produced and everything that must not be got wrong
+ * afterwards: a counter that never repeats, a replay window for the traffic
+ * coming back, and the session id both sides agreed on.
+ *
+ * The counter is the AEAD nonce, so a repeat is not a bug that degrades
+ * performance - it destroys confidentiality for both frames involved. That is
+ * why Seal owns the counter rather than accepting one, and why exhaustion is a
+ * refusal rather than a wrap.
+ */
+class Session
+{
+public:
+    explicit Session(const SessionKeys& keys);
+    ~Session();
+
+    /**
+     * Wrap a payload as a datagram ready to send.
+     *
+     * False when the payload is too large for one frame, or when this session
+     * has sent all the frames it safely can. Callers fragment above this.
+     */
+    bool Seal(const std::vector<unsigned char>& payload,
+              std::vector<unsigned char>& datagram_out);
+
+    /**
+     * Unwrap a received datagram.
+     *
+     * False for anything not sealed by this peer for this session, and for
+     * replays. A frame that fails here is discarded, not answered: on a
+     * connectionless transport, replying to junk is how a node becomes a
+     * reflector for somebody else's traffic.
+     */
+    bool Open(const unsigned char* data, size_t len,
+              std::vector<unsigned char>& payload_out);
+
+    uint64_t Id() const { return m_id; }
+    uint64_t FramesSent() const { return m_next_counter - 1; }
+
+    /**
+     * Frames this session may still send.
+     *
+     * Rekeying does not exist yet, so a session is finite by construction. The
+     * ceiling is far beyond any plausible use - at a thousand frames a second
+     * it is millions of years - but it is a real edge and it is checked rather
+     * than assumed, because the failure mode if it were ever reached silently
+     * is the worst one this design has.
+     */
+    uint64_t Remaining() const;
+
+private:
+    FrameKey m_send;
+    FrameKey m_recv;
+    uint64_t m_id;
+    uint64_t m_next_counter{1}; //!< 0 is never used, so a zeroed struct is obvious
+    ReplayWindow m_replay;
+};
+
+} // namespace overlay
+
+#endif // BITCOIN_OVERLAY_SESSION_H

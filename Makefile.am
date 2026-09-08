@@ -6,7 +6,11 @@
 print-%:
 	@echo $* = $($*)
 
-ACLOCAL_AMFLAGS = -I build-aux/m4
+# Superseded by AC_CONFIG_MACRO_DIR in configure.ac. Keeping both makes
+# libtoolize refuse outright - 'AC_CONFIG_MACRO_DIRS conflicts with
+# ACLOCAL_AMFLAGS' - which breaks autogen.sh and so blocks any reconfigure,
+# including enabling the GUI or the secp256k1 ECDH module.
+# ACLOCAL_AMFLAGS = -I build-aux/m4
 SUBDIRS = src
 if ENABLE_MAN
 SUBDIRS += doc/man

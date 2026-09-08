@@ -1,4 +1,6 @@
-ACLOCAL_AMFLAGS = -I build-aux/m4
+# Superseded by AC_CONFIG_MACRO_DIR in configure.ac. Newer libtoolize refuses
+# when both are present, which breaks autogen.sh for the whole tree.
+# ACLOCAL_AMFLAGS = -I build-aux/m4
 
 lib_LTLIBRARIES = libsecp256k1.la
 include_HEADERS = include/secp256k1.h

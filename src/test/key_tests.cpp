@@ -293,4 +293,41 @@ BOOST_AUTO_TEST_CASE(bip340_test_vectors)
     }
 }
 
+BOOST_AUTO_TEST_CASE(key_ecdh_agrees_both_ways)
+{
+    // The one property the overlay handshake rests on: each side, holding its
+    // own secret and the other's public key, arrives at the same 32 bytes.
+    CKey a, b;
+    a.MakeNewKey(true);
+    b.MakeNewKey(true);
+
+    uint256 from_a, from_b;
+    BOOST_CHECK(b.GetPubKey().ECDH(a.begin(), from_a));
+    BOOST_CHECK(a.GetPubKey().ECDH(b.begin(), from_b));
+    BOOST_CHECK_EQUAL(from_a.ToString(), from_b.ToString());
+    BOOST_CHECK(from_a != uint256());
+
+    // A third party sharing neither secret lands somewhere else entirely.
+    CKey c;
+    c.MakeNewKey(true);
+    uint256 unrelated;
+    BOOST_CHECK(b.GetPubKey().ECDH(c.begin(), unrelated));
+    BOOST_CHECK(unrelated != from_a);
+
+    // An uncompressed key is the same point, so it must give the same secret -
+    // otherwise the encoding, not the key, would decide the session.
+    CKey a_uncomp;
+    a_uncomp.Set(a.begin(), a.end(), false);
+    CPubKey b_pub = b.GetPubKey();
+    BOOST_CHECK(b_pub.Decompress());
+    uint256 from_uncompressed;
+    BOOST_CHECK(b_pub.ECDH(a.begin(), from_uncompressed));
+    BOOST_CHECK_EQUAL(from_uncompressed.ToString(), from_a.ToString());
+
+    // An invalid public key yields nothing rather than a predictable value.
+    CPubKey broken;
+    uint256 never;
+    BOOST_CHECK(!broken.ECDH(a.begin(), never));
+}
+
 BOOST_AUTO_TEST_SUITE_END()

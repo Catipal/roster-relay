@@ -210,6 +210,21 @@ public:
     //! Turn this public key into an uncompressed public key.
     bool Decompress();
 
+    /**
+     * Elliptic-curve Diffie-Hellman against a private key.
+     *
+     * Multiplies this public key by `seckey32` and hashes the resulting point,
+     * so the output is 32 uniform bytes rather than a curve point with
+     * structure. That hash is SHA256 over the compressed encoding, which is
+     * what libsecp256k1's own ECDH module computes by default - this exists
+     * because that module is not enabled in this build, and enabling it needs a
+     * reconfigure that autogen.sh currently cannot perform.
+     *
+     * False for an invalid public key, an invalid scalar, or the point at
+     * infinity. Both parties computing it arrive at the same value.
+     */
+    bool ECDH(const unsigned char* seckey32, uint256& shared_out) const;
+
     //! Derive BIP32 child pubkey.
     bool Derive(CPubKey& pubkeyChild, ChainCode &ccChild, unsigned int nChild, const ChainCode& cc) const;
 };

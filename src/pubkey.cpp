@@ -8,6 +8,7 @@
 #include <secp256k1.h>
 #include <secp256k1_recovery.h>
 #include <secp256k1_schnorrsig.h>
+#include <support/cleanse.h>
 
 namespace
 {
@@ -249,6 +250,36 @@ bool CPubKey::IsFullyValid() const {
     secp256k1_pubkey pubkey;
     assert(secp256k1_context_verify && "secp256k1_context_verify must be initialized to use CPubKey.");
     return secp256k1_ec_pubkey_parse(secp256k1_context_verify, &pubkey, vch, size());
+}
+
+bool CPubKey::ECDH(const unsigned char* seckey32, uint256& shared_out) const
+{
+    if (!IsValid()) return false;
+    assert(secp256k1_context_verify && "secp256k1_context_verify must be initialized to use CPubKey.");
+
+    secp256k1_pubkey pubkey;
+    if (!secp256k1_ec_pubkey_parse(secp256k1_context_verify, &pubkey, vch, size())) {
+        return false;
+    }
+    // Fails for a scalar of zero or one at or above the curve order, and for
+    // the point at infinity - all of which must be refused rather than turned
+    // into a shared secret that both sides would agree on and an attacker
+    // could predict.
+    if (!secp256k1_ec_pubkey_tweak_mul(secp256k1_context_verify, &pubkey, seckey32)) {
+        return false;
+    }
+
+    unsigned char point[COMPRESSED_SIZE];
+    size_t pointlen = sizeof(point);
+    secp256k1_ec_pubkey_serialize(secp256k1_context_verify, point, &pointlen,
+                                  &pubkey, SECP256K1_EC_COMPRESSED);
+    // Hashing the compressed point is what libsecp256k1's ECDH module does by
+    // default, so this agrees with it byte for byte should the module ever be
+    // enabled and this be replaced.
+    CSHA256().Write(point, pointlen).Finalize(shared_out.begin());
+    memory_cleanse(point, sizeof(point));
+    memory_cleanse(&pubkey, sizeof(pubkey));
+    return true;
 }
 
 bool CPubKey::Decompress() {

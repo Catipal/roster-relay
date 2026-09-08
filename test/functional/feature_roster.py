@@ -307,6 +307,36 @@ class RosterTest(BitcoinTestFramework):
             assert_equal([h for h in self.nodes[0].getrosterhistory(record["key"])
                           if h["height"] == forked_height], [])
 
+    def test_deployment_is_addressable_by_name(self):
+        self.log.info("the roster deployment can be driven and named without crashing")
+        # DEPLOYMENT_ROSTER needs an entry in VersionBitsDeploymentInfo[], or
+        # its name is a null pointer. Two places read it and neither is exotic:
+        # -vbparams compares against that name at startup, and getblocktemplate
+        # builds a std::string from it for any deployment past DEFINED. Both
+        # are reached the moment a real activation window is set, which is the
+        # first thing scheduling the roster would do - so the crash would land
+        # on whoever schedules it, not on whoever added the enum.
+        window = ["-vbparams=roster:0:999999999999"]
+        self.restart_node(0, self.extra_args[0] + window)
+        self.restart_node(1, self.extra_args[1] + window)
+        self.connect_nodes(0, 1)
+        self.nodes[0].generatetoaddress(300, self.sink)
+        self.sync_blocks()
+
+        status = self.nodes[0].getblockchaininfo()["softforks"]["roster"]["bip9"]["status"]
+        assert status != "defined", status
+
+        # getblocktemplate refuses outright while the node has no peers, so the
+        # reconnect above is load-bearing rather than tidiness.
+        template = self.nodes[0].getblocktemplate({"rules": ["segwit"]})
+        named = "roster" in template.get("vbavailable", {}) or \
+                "roster" in template.get("rules", [])
+        assert named, "deployment reached %s without appearing by name" % status
+
+        self.restart_node(0, self.extra_args[0])
+        self.restart_node(1, self.extra_args[1])
+        self.connect_nodes(0, 1)
+
     def test_index_can_be_switched_off(self):
         self.log.info("without -rosterindex the queries refuse rather than lie")
         self.restart_node(0, ["-fallbackfee=0.0001"])
@@ -340,6 +370,7 @@ class RosterTest(BitcoinTestFramework):
         self.test_datacarrier_limit_is_reported_usefully()
         self.test_reorg_leaves_one_copy()
         self.test_competing_block_clears_the_old_records()
+        self.test_deployment_is_addressable_by_name()
         self.test_index_can_be_switched_off()
 
 

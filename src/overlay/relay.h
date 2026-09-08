@@ -11,6 +11,7 @@
 
 #include <functional>
 #include <map>
+#include <memory>
 
 namespace overlay {
 
@@ -124,6 +125,14 @@ private:
     AppHandler m_app;
     PathHandler m_path;
 };
+
+/**
+ * The running overlay, or null when -overlay is off.
+ *
+ * Declared here and defined in relay.cpp, the way the indexes are, so that
+ * anything needing it does not have to reach into init.
+ */
+extern std::unique_ptr<Relay> g_overlay;
 
 } // namespace overlay
 

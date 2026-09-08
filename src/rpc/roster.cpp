@@ -9,6 +9,9 @@
 #include <netaddress.h>
 #include <roster/keystore.h>
 #include <roster/record.h>
+#include <overlay/relay.h>
+#include <overlay/rendezvous.h>
+#include <overlay/select.h>
 #include <rpc/server.h>
 #include <rpc/util.h>
 #include <util/strencodings.h>
@@ -185,6 +188,89 @@ std::vector<unsigned char> ParseEndpointAddress(uint8_t network, const std::stri
 }
 
 } // namespace
+
+static RPCHelpMan getoverlayinfo()
+{
+    return RPCHelpMan{"getoverlayinfo",
+                "\nState of the encrypted overlay, and where this node can be met.\n"
+                "\nThe rendezvous points below are computed, not looked up: any node with\n"
+                "the same roster arrives at the same list by the same arithmetic, so nobody\n"
+                "is in a position to answer the question differently for different callers.\n",
+                {},
+                RPCResult{
+                    RPCResult::Type::OBJ, "", "",
+                    {
+                        {RPCResult::Type::BOOL, "enabled", "Whether -overlay is running"},
+                        {RPCResult::Type::STR, "listening", /* optional */ true, "Address the overlay socket is bound to"},
+                        {RPCResult::Type::NUM, "sessions", /* optional */ true, "Established links to adjacent peers"},
+                        {RPCResult::Type::NUM, "paths", /* optional */ true, "Paths this node is an end of or carries"},
+                        {RPCResult::Type::NUM, "introductions", /* optional */ true, "Services registered here as a rendezvous point"},
+                        {RPCResult::Type::NUM, "handshakes_refused", /* optional */ true, "Inbound handshakes dropped by the flood limit"},
+                        {RPCResult::Type::NUM, "relay_candidates", /* optional */ true, "Relays from the roster this node would route through"},
+                        {RPCResult::Type::ARR, "guards", /* optional */ true, "Entry relays, which are kept rather than rotated",
+                            {{RPCResult::Type::STR_HEX, "", "Operational key"}}},
+                        {RPCResult::Type::NUM, "epoch", /* optional */ true, "Rendezvous epoch at the current height"},
+                        {RPCResult::Type::ARR, "rendezvous", /* optional */ true, "Where this node can be met this epoch, derived from the roster",
+                            {{RPCResult::Type::STR_HEX, "", "Operational key of a rendezvous relay"}}},
+                    }},
+                RPCExamples{HelpExampleCli("getoverlayinfo", "") + HelpExampleRpc("getoverlayinfo", "")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    UniValue out(UniValue::VOBJ);
+    if (!overlay::g_overlay) {
+        out.pushKV("enabled", false);
+        return out;
+    }
+
+    out.pushKV("enabled", true);
+    out.pushKV("listening", overlay::g_overlay->BoundAddress().ToString());
+    out.pushKV("paths", (uint64_t)overlay::g_overlay->PathCount());
+    out.pushKV("introductions", (uint64_t)overlay::g_overlay->IntroductionCount());
+
+    int tip;
+    {
+        LOCK(cs_main);
+        tip = ::ChainActive().Height();
+    }
+    const uint64_t epoch = overlay::RendezvousEpoch(tip);
+    out.pushKV("epoch", (uint64_t)epoch);
+
+    LOCK(overlay::g_selector_mutex);
+    if (!overlay::g_selector) return out;
+    out.pushKV("relay_candidates", (uint64_t)overlay::g_selector->CandidateCount());
+
+    UniValue guards(UniValue::VARR);
+    const std::vector<overlay::RelayCandidate> held = overlay::g_selector->Guards();
+    for (size_t i = 0; i < held.size(); ++i) {
+        guards.push_back(HexStr(held[i].key));
+    }
+    out.pushKV("guards", guards);
+
+    // Derived from this node's own operational key, so this answers "where
+    // would somebody looking for me be told to go" without anyone being asked.
+    CKey op_key;
+    std::string error;
+    if (roster::GetOperationalKey(op_key, error)) {
+        const CPubKey pub = op_key.GetPubKey();
+        roster::KeyBytes self;
+        std::copy(pub.begin() + 1, pub.begin() + 33, self.begin());
+
+        // The roster in key order, which is the order derivation requires.
+        const std::vector<overlay::RelayCandidate>& all = overlay::g_selector->Candidates();
+        std::vector<roster::KeyBytes> relay_keys;
+        relay_keys.reserve(all.size());
+        for (size_t i = 0; i < all.size(); ++i) relay_keys.push_back(all[i].key);
+
+        UniValue rv(UniValue::VARR);
+        std::vector<roster::KeyBytes> points =
+            overlay::RendezvousPoints(self, epoch, relay_keys);
+        for (size_t i = 0; i < points.size(); ++i) rv.push_back(HexStr(points[i]));
+        out.pushKV("rendezvous", rv);
+    }
+    return out;
+},
+    };
+}
 
 static RPCHelpMan getrosterinfo()
 {
@@ -540,6 +626,7 @@ void RegisterRosterRPCCommands(CRPCTable& t)
 static const CRPCCommand commands[] =
 { //  category            name                    actor (function)        argNames
   //  ------------------  ----------------------  ----------------------  ----------
+    { "overlay",          "getoverlayinfo",       &getoverlayinfo,        {} },
     { "roster",           "getrosterinfo",        &getrosterinfo,         {} },
     { "roster",           "getroster",            &getroster,             {"count","skip"} },
     { "roster",           "getrosterhistory",     &getrosterhistory,      {"key"} },

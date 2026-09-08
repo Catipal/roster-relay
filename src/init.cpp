@@ -25,6 +25,8 @@
 #include <index/rosterindex.h>
 #include <roster/peers.h>
 #include <overlay/relay.h>
+#include <overlay/rendezvous.h>
+#include <overlay/select.h>
 #include <roster/keystore.h>
 #include <index/txindex.h>
 #include <interfaces/chain.h>
@@ -162,14 +164,7 @@ NODISCARD static bool CreatePidFile(const ArgsManager& args)
 
 static std::unique_ptr<ECCVerifyHandle> globalVerifyHandle;
 
-/**
- * The overlay, when it is running.
- *
- * Identified by the same operational key the roster publishes, so a peer that
- * finds this node in the roster can reach it here - the two halves name the
- * same node or neither is any use.
- */
-static std::unique_ptr<overlay::Relay> g_overlay;
+
 
 static std::thread g_load_block;
 
@@ -230,9 +225,13 @@ void Shutdown(NodeContext& node)
     //   EraseOrphansFor, which locks g_cs_orphans.
     //
     // Thus the implicit locking order requirement is: (1) cs_main, (2) g_cs_orphans, (3) cs_vNodes.
-    if (g_overlay) {
-        g_overlay->Stop();
-        g_overlay.reset();
+    if (overlay::g_overlay) {
+        overlay::g_overlay->Stop();
+        overlay::g_overlay.reset();
+    }
+    {
+        LOCK(overlay::g_selector_mutex);
+        overlay::g_selector.reset();
     }
 
     if (node.connman) {
@@ -2139,25 +2138,30 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
         }
         const uint16_t port = static_cast<uint16_t>(
             args.GetArg("-overlayport", overlay::DEFAULT_OVERLAY_PORT));
-        g_overlay = MakeUnique<overlay::Relay>(op_key);
+        overlay::g_overlay = MakeUnique<overlay::Relay>(op_key);
         std::string bind_error;
         const CService listen_at(LookupNumeric("0.0.0.0", port));
-        if (!g_overlay->Bind(listen_at, bind_error)) {
-            g_overlay.reset();
+        if (!overlay::g_overlay->Bind(listen_at, bind_error)) {
+            overlay::g_overlay.reset();
             return InitError(Untranslated(strprintf("overlay: %s", bind_error)));
         }
         // Nothing consumes overlay traffic yet, so arriving payloads are
         // counted in the log and dropped. Wiring a consumer is a separate
         // decision from being able to carry the traffic at all.
-        if (!g_overlay->Start([](const overlay::Hop& from, std::vector<unsigned char>&& payload) {
+        if (!overlay::g_overlay->Start([](const overlay::Hop& from, std::vector<unsigned char>&& payload) {
                 LogPrint(BCLog::NET, "overlay: %u bytes from %s\n", payload.size(),
                          from.via_path ? strprintf("path %016x", from.path)
                                        : from.addr.ToString());
             })) {
-            g_overlay.reset();
+            overlay::g_overlay.reset();
             return InitError(Untranslated("overlay: could not start the receive thread"));
         }
-        LogPrintf("overlay: listening on %s\n", g_overlay->BoundAddress().ToString());
+        LogPrintf("overlay: listening on %s\n", overlay::g_overlay->BoundAddress().ToString());
+
+        // Path selection is client policy and lives beside the overlay rather
+        // than inside it. Empty until the roster refresh below fills it.
+        LOCK(overlay::g_selector_mutex);
+        overlay::g_selector = MakeUnique<overlay::PathSelector>();
     }
 
     // Offer the roster to peer discovery. Without this the index is a database
@@ -2187,6 +2191,25 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 // announcements are free to make by construction.
                 connman->AddNewAddresses(addrs, CAddress());
             }
+            // The overlay's own view of the relay set, from the same read.
+            if (overlay::g_overlay) {
+                std::vector<roster::RelayInfo> relays;
+                if (roster::CollectRelays(*index, tip_height, relays)) {
+                    std::vector<overlay::RelayCandidate> candidates;
+                    candidates.reserve(relays.size());
+                    for (size_t i = 0; i < relays.size(); ++i) {
+                        overlay::RelayCandidate c;
+                        c.key = relays[i].key;
+                        c.addr = relays[i].addr;
+                        candidates.push_back(c);
+                    }
+                    LOCK(overlay::g_selector_mutex);
+                    if (overlay::g_selector) overlay::g_selector->SetRelays(candidates);
+                    LogPrint(BCLog::NET, "overlay: %u relay candidates from the roster\n",
+                             candidates.size());
+                }
+            }
+
             LogPrint(BCLog::NET, "roster: %u live, %u addresses offered "
                      "(%u without an endpoint, %u unroutable, %u unreachable, %u unrepresentable)\n",
                      stats.live, stats.collected, stats.no_endpoint,

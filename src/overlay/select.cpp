@@ -10,6 +10,9 @@ namespace overlay {
 
 constexpr size_t PathSelector::GUARD_COUNT;
 
+Mutex g_selector_mutex;
+std::unique_ptr<PathSelector> g_selector;
+
 namespace {
 
 /** The address manager's own grouping, so this does not invent a second one. */

@@ -11,8 +11,11 @@
 #include <stddef.h>
 #include <vector>
 
+// netaddress.h rather than a forward declaration, because RelayInfo holds a
+// CService by value.
+#include <netaddress.h>
+
 class CAddress;
-class CService;
 class RosterIndex;
 
 /**
@@ -53,6 +56,26 @@ static constexpr std::chrono::minutes ROSTER_PEERS_INTERVAL{30};
  * never heard of.
  */
 bool EndpointToService(const Endpoint& ep, CService& out);
+
+/** One roster member, as the overlay needs it: who it is, and where. */
+struct RelayInfo {
+    KeyBytes key;
+    CService addr;
+};
+
+/**
+ * The live roster as relay candidates, in ascending key order.
+ *
+ * Ordered canonically because rendezvous derivation is arithmetic over this
+ * list: two nodes with the same members in a different order compute different
+ * meeting points and never meet.
+ *
+ * One entry per key, taking the first dialable endpoint. A relay advertising
+ * three addresses is still one relay, and counting it three times would let it
+ * occupy three path positions.
+ */
+bool CollectRelays(const RosterIndex& index, int tip_height,
+                   std::vector<RelayInfo>& out);
 
 /** Why entries were passed over, for logging that says something useful. */
 struct CollectStats {

@@ -9,6 +9,8 @@
 #include <random.h>
 #include <roster/record.h>
 
+#include <memory>
+#include <sync.h>
 #include <vector>
 
 /**
@@ -77,6 +79,15 @@ public:
 
     size_t CandidateCount() const { return m_relays.size(); }
 
+    /**
+     * Every candidate, in the order they were supplied.
+     *
+     * That order is the roster's own, ascending by key, which rendezvous
+     * derivation depends on: a differently ordered list gives different
+     * meeting points, and two nodes that disagree never meet.
+     */
+    const std::vector<RelayCandidate>& Candidates() const { return m_relays; }
+
 private:
     bool DistinctOperator(const RelayCandidate& c,
                           const std::vector<RelayCandidate>& chosen) const;
@@ -86,6 +97,15 @@ private:
     std::vector<RelayCandidate> m_guards;
     mutable FastRandomContext m_rng;
 };
+
+/**
+ * Which relays this node will route through, refreshed from the roster.
+ *
+ * Guarded because the refresh runs on the scheduler and readers are RPC
+ * threads. Null until the overlay starts.
+ */
+extern Mutex g_selector_mutex;
+extern std::unique_ptr<PathSelector> g_selector GUARDED_BY(g_selector_mutex);
 
 } // namespace overlay
 

@@ -51,6 +51,38 @@ bool EndpointToService(const Endpoint& ep, CService& out)
     return true;
 }
 
+bool CollectRelays(const RosterIndex& index, int tip_height,
+                   std::vector<RelayInfo>& out)
+{
+    out.clear();
+
+    std::map<KeyBytes, RosterEntry> live;
+    if (!index.BuildRoster(tip_height, live)) return false;
+
+    // std::map iterates in key order, which is the canonical order rendezvous
+    // derivation depends on - both sides must build the identical list.
+    for (std::map<KeyBytes, RosterEntry>::const_iterator it = live.begin();
+         it != live.end(); ++it) {
+        Record rec;
+        if (!it->second.Parse(rec)) continue;
+
+        for (size_t i = 0; i < rec.endpoints.size(); ++i) {
+            CService service;
+            if (!EndpointToService(rec.endpoints[i], service)) continue;
+            if (!service.IsRoutable() || !IsReachable(service)) continue;
+            RelayInfo info;
+            info.key = it->first;
+            info.addr = service;
+            out.push_back(info);
+            // One entry per key: a relay advertising three addresses is one
+            // relay, and counting it three times would let it hold three
+            // positions on a path that is supposed to have three parties.
+            break;
+        }
+    }
+    return true;
+}
+
 bool CollectPeers(const RosterIndex& index, int tip_height,
                   std::vector<CAddress>& out, CollectStats& stats)
 {

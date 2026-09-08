@@ -9,6 +9,8 @@
 
 namespace overlay {
 
+std::unique_ptr<Relay> g_overlay;
+
 Relay::Relay(const CKey& static_key) : m_socket(static_key), m_secret(static_key) {}
 
 bool Relay::Bind(const CService& listen_addr, std::string& error)

@@ -96,6 +96,16 @@ bool Relay::HasSecretSession(uint64_t path_id)
     return m_secret.HasSession(path_id);
 }
 
+bool Relay::SendSecretRaw(uint64_t path_id, const std::vector<unsigned char>& msg)
+{
+    std::vector<unsigned char> sealed;
+    {
+        LOCK(m_mutex);
+        if (!m_secret.Send(path_id, msg, sealed)) return false;
+    }
+    return SendOnPath(path_id, sealed);
+}
+
 bool Relay::SendSecret(uint64_t path_id, const std::vector<unsigned char>& payload)
 {
     // Wrapped as a message before sealing, because what comes out of an
@@ -111,6 +121,28 @@ bool Relay::SendSecret(uint64_t path_id, const std::vector<unsigned char>& paylo
         if (!m_secret.Send(path_id, msg, sealed)) return false;
     }
     return SendOnPath(path_id, sealed);
+}
+
+bool Relay::Introduce(uint64_t path_id, const roster::KeyBytes& service)
+{
+    std::vector<unsigned char> msg;
+    if (!EncodeIntroduce(service, msg)) return false;
+    // Sealed, so the relays carrying the path cannot see which service is
+    // registering - only the rendezvous point at the far end learns that.
+    return SendSecretRaw(path_id, msg);
+}
+
+bool Relay::Meet(uint64_t path_id, const roster::KeyBytes& service, uint64_t meet_id)
+{
+    std::vector<unsigned char> msg;
+    if (!EncodeMeet(service, meet_id, msg)) return false;
+    return SendSecretRaw(path_id, msg);
+}
+
+size_t Relay::IntroductionCount()
+{
+    LOCK(m_mutex);
+    return m_intros.size();
 }
 
 size_t Relay::PathCount()
@@ -186,6 +218,52 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
         LOCK(m_mutex);
         m_paths.Expire(GetTime());
         m_paths.CreateEndpoint(path_id, from, GetTime());
+        return;
+    }
+
+    case MessageKind::INTRODUCE: {
+        roster::KeyBytes service;
+        if (!DecodeIntroduce(msg, service)) return;
+        // Only over a path: a service registering from an address would have
+        // just told the relay where it is, which is the one thing it must not.
+        if (!from.via_path) return;
+        LOCK(m_mutex);
+        if (m_intros.size() >= PathTable::MAX_PATHS &&
+            m_intros.find(service) == m_intros.end()) {
+            return; // bounded, because registering is something strangers do
+        }
+        m_intros[service] = from.path;
+        return;
+    }
+
+    case MessageKind::MEET: {
+        roster::KeyBytes service;
+        uint64_t meet_id = 0;
+        if (!DecodeMeet(msg, service, meet_id)) return;
+        if (!from.via_path) return;
+
+        Hop service_hop;
+        bool ok = false;
+        {
+            LOCK(m_mutex);
+            std::map<roster::KeyBytes, uint64_t>::const_iterator it = m_intros.find(service);
+            if (it != m_intros.end()) {
+                service_hop = Hop::Path(it->second);
+                m_paths.Expire(GetTime());
+                // The splice: two paths joined, and this relay is the only
+                // node that touches both. It still knows neither end's
+                // address, because it reaches both of them through paths.
+                ok = (service_hop != from) &&
+                     m_paths.Create(meet_id, from, service_hop, GetTime());
+            }
+        }
+
+        if (ok) {
+            std::vector<unsigned char> bind;
+            if (EncodePathBind(meet_id, bind)) SendToHop(service_hop, bind);
+        }
+        std::vector<unsigned char> reply;
+        if (EncodePathResult(ok, meet_id, reply)) SendToHop(from, reply);
         return;
     }
 

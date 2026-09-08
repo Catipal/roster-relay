@@ -10,6 +10,7 @@
 #include <sync.h>
 
 #include <functional>
+#include <map>
 
 namespace overlay {
 
@@ -82,11 +83,32 @@ public:
     /** Send data no relay on the path can read. */
     bool SendSecret(uint64_t path_id, const std::vector<unsigned char>& payload);
 
+    /**
+     * Register as reachable at the far end of a path.
+     *
+     * A service does this at each of its derived rendezvous points. The relay
+     * learns only a key and a path - not where the service is, and not who
+     * will come looking for it.
+     */
+    bool Introduce(uint64_t path_id, const roster::KeyBytes& service);
+
+    /**
+     * Ask the far end of a path to splice us to a service.
+     *
+     * On success both sides end up as ends of `meet_id`, which the relay joins
+     * without either learning the other's address. Neither side had to look
+     * anything up: the relay was chosen by arithmetic from the roster.
+     */
+    bool Meet(uint64_t path_id, const roster::KeyBytes& service, uint64_t meet_id);
+
     size_t PathCount();
+    size_t IntroductionCount();
 
 private:
     /** Dispatch one decrypted overlay message. */
     void OnMessage(const Hop& from, std::vector<unsigned char>&& msg);
+    /** Seal an already-formed message for the far end of a path. */
+    bool SendSecretRaw(uint64_t path_id, const std::vector<unsigned char>& msg);
     /** Route a message to a hop, wrapping it for a path if that is what it is. */
     bool SendToHop(const Hop& to, const std::vector<unsigned char>& msg);
 
@@ -96,6 +118,9 @@ private:
     // Sessions with the far ends of paths, keyed by path rather than address,
     // because the far end of a path has no address this node knows.
     PathTransport m_secret GUARDED_BY(m_mutex);
+    // Services that have registered here, and the path each is reachable on.
+    // Bounded like the path table: registering is something strangers do.
+    std::map<roster::KeyBytes, uint64_t> m_intros GUARDED_BY(m_mutex);
     AppHandler m_app;
     PathHandler m_path;
 };

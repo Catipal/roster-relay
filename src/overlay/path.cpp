@@ -41,6 +41,8 @@ bool KnownKind(unsigned char raw, MessageKind& out)
     case static_cast<unsigned char>(MessageKind::PATH_FAIL):
     case static_cast<unsigned char>(MessageKind::PATH_DATA):
     case static_cast<unsigned char>(MessageKind::PATH_BIND):
+    case static_cast<unsigned char>(MessageKind::INTRODUCE):
+    case static_cast<unsigned char>(MessageKind::MEET):
         out = static_cast<MessageKind>(raw);
         return true;
     default:
@@ -132,6 +134,42 @@ bool DecodePathBind(const std::vector<unsigned char>& msg, uint64_t& path_id_out
     if (!DecodeKind(msg, kind) || kind != MessageKind::PATH_BIND) return false;
     if (msg.size() != KIND_SIZE + PATH_ID_SIZE) return false;
     path_id_out = ReadLE64(msg.data() + KIND_SIZE);
+    return true;
+}
+
+bool EncodeIntroduce(const roster::KeyBytes& service, std::vector<unsigned char>& out)
+{
+    PutKind(MessageKind::INTRODUCE, out);
+    out.insert(out.end(), service.begin(), service.end());
+    return true;
+}
+
+bool DecodeIntroduce(const std::vector<unsigned char>& msg, roster::KeyBytes& service_out)
+{
+    MessageKind kind;
+    if (!DecodeKind(msg, kind) || kind != MessageKind::INTRODUCE) return false;
+    if (msg.size() != KIND_SIZE + service_out.size()) return false;
+    std::copy(msg.begin() + KIND_SIZE, msg.end(), service_out.begin());
+    return true;
+}
+
+bool EncodeMeet(const roster::KeyBytes& service, uint64_t meet_id,
+                std::vector<unsigned char>& out)
+{
+    PutKind(MessageKind::MEET, out);
+    PutU64(meet_id, out);
+    out.insert(out.end(), service.begin(), service.end());
+    return true;
+}
+
+bool DecodeMeet(const std::vector<unsigned char>& msg, roster::KeyBytes& service_out,
+                uint64_t& meet_id_out)
+{
+    MessageKind kind;
+    if (!DecodeKind(msg, kind) || kind != MessageKind::MEET) return false;
+    if (msg.size() != KIND_SIZE + PATH_ID_SIZE + service_out.size()) return false;
+    meet_id_out = ReadLE64(msg.data() + KIND_SIZE);
+    std::copy(msg.begin() + KIND_SIZE + PATH_ID_SIZE, msg.end(), service_out.begin());
     return true;
 }
 

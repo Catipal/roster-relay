@@ -7,6 +7,8 @@
 #include <overlay/session.h>
 #include <overlay/path.h>
 #include <overlay/relay.h>
+#include <overlay/rendezvous.h>
+#include <set>
 #include <overlay/socket.h>
 #include <overlay/transport.h>
 #include <util/time.h>
@@ -1542,6 +1544,266 @@ BOOST_AUTO_TEST_CASE(relay_two_hop_path_splits_the_knowledge)
 
     A.Stop();
     R1.Stop();
+    R2.Stop();
+    C.Stop();
+}
+
+
+namespace {
+
+roster::KeyBytes RvKey(unsigned char fill, unsigned char tail = 0)
+{
+    roster::KeyBytes k;
+    k.fill(fill);
+    k[31] = tail;
+    return k;
+}
+
+std::vector<roster::KeyBytes> RvRoster(size_t n)
+{
+    std::vector<roster::KeyBytes> r;
+    for (size_t i = 0; i < n; ++i) {
+        r.push_back(RvKey(static_cast<unsigned char>(i / 256),
+                          static_cast<unsigned char>(i % 256)));
+    }
+    std::sort(r.begin(), r.end()); // canonical order, as the roster supplies it
+    return r;
+}
+
+} // namespace
+
+BOOST_AUTO_TEST_CASE(rendezvous_both_sides_compute_the_same_points)
+{
+    // The whole point: nobody is asked, so nobody can answer selectively. Two
+    // parties with the same roster reach the same meeting points every time.
+    const std::vector<roster::KeyBytes> roster = RvRoster(50);
+    const roster::KeyBytes service = RvKey(0xAA, 0x01);
+
+    const std::vector<roster::KeyBytes> mine =
+        overlay::RendezvousPoints(service, 7, roster);
+    const std::vector<roster::KeyBytes> theirs =
+        overlay::RendezvousPoints(service, 7, roster);
+    BOOST_CHECK(mine == theirs);
+    BOOST_CHECK_EQUAL(mine.size(), overlay::RENDEZVOUS_POINTS);
+
+    // Distinct relays, so losing one does not lose the service.
+    std::set<roster::KeyBytes> distinct(mine.begin(), mine.end());
+    BOOST_CHECK_EQUAL(distinct.size(), mine.size());
+    for (size_t i = 0; i < mine.size(); ++i) {
+        BOOST_CHECK(std::find(roster.begin(), roster.end(), mine[i]) != roster.end());
+    }
+}
+
+BOOST_AUTO_TEST_CASE(rendezvous_rotates_and_differs_per_service)
+{
+    const std::vector<roster::KeyBytes> roster = RvRoster(200);
+    const roster::KeyBytes a = RvKey(0x11, 0x01);
+    const roster::KeyBytes b = RvKey(0x22, 0x02);
+
+    // Rotation stops an adversary installing itself as one service's meeting
+    // point permanently and simply waiting.
+    BOOST_CHECK(overlay::RendezvousPoints(a, 1, roster) !=
+                overlay::RendezvousPoints(a, 2, roster));
+    // Two services do not share a fate.
+    BOOST_CHECK(overlay::RendezvousPoints(a, 1, roster) !=
+                overlay::RendezvousPoints(b, 1, roster));
+}
+
+BOOST_AUTO_TEST_CASE(rendezvous_spreads_across_the_roster)
+{
+    // If the draw favoured part of the roster, an adversary could sit there.
+    // Not a statistical proof, but it would catch a derivation that collapsed
+    // onto a handful of relays.
+    const std::vector<roster::KeyBytes> roster = RvRoster(64);
+    std::set<roster::KeyBytes> hit;
+    for (uint64_t epoch = 0; epoch < 60; ++epoch) {
+        for (unsigned char s = 0; s < 20; ++s) {
+            const std::vector<roster::KeyBytes> pts =
+                overlay::RendezvousPoints(RvKey(s, s), epoch, roster);
+            hit.insert(pts.begin(), pts.end());
+        }
+    }
+    // Nearly the whole roster should get used across many services and epochs.
+    BOOST_CHECK_GT(hit.size(), roster.size() * 3 / 4);
+}
+
+BOOST_AUTO_TEST_CASE(rendezvous_handles_small_and_empty_rosters)
+{
+    const roster::KeyBytes service = RvKey(0x33, 0x03);
+
+    // Bootstrap: no relays means nowhere to meet, which is a state rather than
+    // an error.
+    BOOST_CHECK(overlay::RendezvousPoints(service, 1,
+                                          std::vector<roster::KeyBytes>()).empty());
+
+    // A roster smaller than the number of points wanted yields all of it and
+    // does not spin looking for more.
+    const std::vector<roster::KeyBytes> two = RvRoster(2);
+    const std::vector<roster::KeyBytes> pts = overlay::RendezvousPoints(service, 1, two);
+    BOOST_CHECK_EQUAL(pts.size(), 2u);
+    std::set<roster::KeyBytes> distinct(pts.begin(), pts.end());
+    BOOST_CHECK_EQUAL(distinct.size(), 2u);
+
+    // One relay, one point.
+    BOOST_CHECK_EQUAL(overlay::RendezvousPoints(service, 1, RvRoster(1)).size(), 1u);
+    // Asking for none gets none.
+    BOOST_CHECK(overlay::RendezvousPoints(service, 1, two, 0).empty());
+}
+
+BOOST_AUTO_TEST_CASE(rendezvous_epoch_follows_height)
+{
+    BOOST_CHECK_EQUAL(overlay::RendezvousEpoch(0), 0u);
+    BOOST_CHECK_EQUAL(overlay::RendezvousEpoch(overlay::RENDEZVOUS_EPOCH_BLOCKS - 1), 0u);
+    BOOST_CHECK_EQUAL(overlay::RendezvousEpoch(overlay::RENDEZVOUS_EPOCH_BLOCKS), 1u);
+    // By height rather than clock, so nodes agree without synchronised time.
+    BOOST_CHECK_EQUAL(overlay::RendezvousEpoch(overlay::RENDEZVOUS_EPOCH_BLOCKS * 5 + 3), 5u);
+    // A height before genesis is not a thing, and must not underflow.
+    BOOST_CHECK_EQUAL(overlay::RendezvousEpoch(-1), 0u);
+}
+
+
+BOOST_AUTO_TEST_CASE(rendezvous_client_reaches_a_service_that_never_published_an_address)
+{
+    // The whole design in one test. S is reachable at a meeting point it never
+    // told anyone about - the point was computed from its roster key. C works
+    // out the same point by the same arithmetic, asks nobody, and is spliced to
+    // S. Neither learns the other's address, and no relay reads the traffic.
+    //
+    //   S -> R1 -> RV <- R2 <- C
+    CKey ks, k1, krv, k2, kc;
+    ks.MakeNewKey(true);
+    k1.MakeNewKey(true);
+    krv.MakeNewKey(true);
+    k2.MakeNewKey(true);
+    kc.MakeNewKey(true);
+
+    overlay::Relay S(ks), R1(k1), RV(krv), R2(k2), C(kc);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    BOOST_REQUIRE_MESSAGE(S.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(R1.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(RV.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(R2.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(C.Bind(any, err), err);
+
+    Inbox in_s, in_1, in_rv, in_2, in_c;
+    Mutex m;
+    std::map<uint64_t, bool> results;
+    auto note = [&](uint64_t id, bool ok) {
+        LOCK(m);
+        results[id] = ok;
+    };
+    BOOST_REQUIRE(S.Start(in_s.Handler(), note));
+    BOOST_REQUIRE(R1.Start(in_1.Handler()));
+    BOOST_REQUIRE(RV.Start(in_rv.Handler()));
+    BOOST_REQUIRE(R2.Start(in_2.Handler()));
+    BOOST_REQUIRE(C.Start(in_c.Handler(), note));
+
+    const CService a1 = R1.BoundAddress(), arv = RV.BoundAddress();
+    const CService a2 = R2.BoundAddress();
+
+    auto dial = [&](overlay::Relay& from, const CService& to, const CKey& to_key) {
+        BOOST_REQUIRE(WaitFor([&] {
+            if (from.HasSession(to)) return true;
+            from.Connect(to, to_key.GetPubKey());
+            return from.HasSession(to);
+        }));
+    };
+    dial(S, a1, k1);
+    dial(R1, arv, krv);
+    dial(C, a2, k2);
+    dial(R2, arv, krv);
+
+    auto build = [&](overlay::Relay& who, uint64_t id, const CService& via,
+                     const CService& dest, const CKey& dest_key) {
+        BOOST_REQUIRE(WaitFor([&] {
+            {
+                LOCK(m);
+                if (results.count(id)) return true;
+            }
+            who.BuildPath(id, H(via), dest);
+            LOCK(m);
+            return results.count(id) > 0;
+        }, 10000));
+        {
+            LOCK(m);
+            BOOST_REQUIRE(results[id]);
+        }
+        BOOST_REQUIRE(WaitFor([&] {
+            if (who.HasSecretSession(id)) return true;
+            who.ConnectSecret(id, dest_key.GetPubKey());
+            return who.HasSecretSession(id);
+        }, 10000));
+    };
+
+    // Each side reaches the meeting point through one relay, so the meeting
+    // point never learns where either of them is.
+    const uint64_t p_s = 0xA1, p_c = 0xB1;
+    build(S, p_s, a1, arv, krv);
+    build(C, p_c, a2, arv, krv);
+
+    // The service registers under its roster identity - 32 bytes, the same
+    // x-only key the roster publishes.
+    const CPubKey s_pub = ks.GetPubKey();
+    roster::KeyBytes service;
+    std::copy(s_pub.begin() + 1, s_pub.begin() + 33, service.begin());
+
+    BOOST_REQUIRE(WaitFor([&] {
+        if (RV.IntroductionCount() > 0) return true;
+        S.Introduce(p_s, service);
+        return RV.IntroductionCount() > 0;
+    }, 10000));
+    BOOST_CHECK_EQUAL(RV.IntroductionCount(), 1u);
+
+    // C asks to be spliced. It looked nothing up: in a live network the
+    // meeting point comes from RendezvousPoints over the roster.
+    const uint64_t meet = 0xEE01;
+    BOOST_REQUIRE(WaitFor([&] {
+        {
+            LOCK(m);
+            if (results.count(meet)) return true;
+        }
+        C.Meet(p_c, service, meet);
+        LOCK(m);
+        return results.count(meet) > 0;
+    }, 10000));
+    {
+        LOCK(m);
+        BOOST_REQUIRE(results[meet]);
+    }
+
+    // End to end across the splice, authenticated by the service's roster key.
+    BOOST_REQUIRE(WaitFor([&] {
+        if (C.HasSecretSession(meet)) return true;
+        C.ConnectSecret(meet, s_pub);
+        return C.HasSecretSession(meet);
+    }, 15000));
+    BOOST_CHECK(WaitFor([&] { return S.HasSecretSession(meet); }));
+
+    std::vector<unsigned char> hello;
+    for (int i = 0; i < 40; ++i) hello.push_back(0x3C);
+    BOOST_REQUIRE(WaitFor([&] {
+        if (in_s.Count() > 0) return true;
+        C.SendSecret(meet, hello);
+        return in_s.Count() > 0;
+    }, 15000));
+    BOOST_CHECK(in_s.At(0) == hello);
+
+    // No relay on either side read a byte, the meeting point included.
+    BOOST_CHECK_EQUAL(in_1.Count(), 0u);
+    BOOST_CHECK_EQUAL(in_2.Count(), 0u);
+    BOOST_CHECK_EQUAL(in_rv.Count(), 0u);
+
+    // And neither end ever held a session with the other, or with the other's
+    // relay - which is what "never published an address" means in practice.
+    BOOST_CHECK(!C.HasSession(S.BoundAddress()));
+    BOOST_CHECK(!S.HasSession(C.BoundAddress()));
+    BOOST_CHECK(!C.HasSession(a1));
+    BOOST_CHECK(!S.HasSession(a2));
+
+    S.Stop();
+    R1.Stop();
+    RV.Stop();
     R2.Stop();
     C.Stop();
 }

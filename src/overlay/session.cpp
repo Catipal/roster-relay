@@ -4,9 +4,24 @@
 
 #include <overlay/session.h>
 
+#include <crypto/common.h>
 #include <support/cleanse.h>
 
 namespace overlay {
+
+namespace {
+/** Chosen so short control messages stay cheap and everything else collapses. */
+const size_t BUCKETS[] = {64, 256, 640, MAX_FRAME_PAYLOAD};
+} // namespace
+
+size_t PaddedSize(size_t payload_len)
+{
+    const size_t needed = payload_len + SESSION_LENGTH_PREFIX;
+    for (size_t i = 0; i < sizeof(BUCKETS) / sizeof(BUCKETS[0]); ++i) {
+        if (needed <= BUCKETS[i]) return BUCKETS[i];
+    }
+    return MAX_FRAME_PAYLOAD;
+}
 
 Session::Session(const SessionKeys& keys)
     : m_send(keys.send), m_recv(keys.recv), m_id(keys.session_id)
@@ -28,10 +43,16 @@ uint64_t Session::Remaining() const
 bool Session::Seal(const std::vector<unsigned char>& payload,
                    std::vector<unsigned char>& datagram_out)
 {
-    if (payload.size() > MAX_FRAME_PAYLOAD) return false;
+    if (payload.size() > MAX_SESSION_PAYLOAD) return false;
     if (Remaining() == 0) return false;
 
-    if (!SealFrame(m_send, FrameType::DATA, m_id, m_next_counter, payload,
+    // length(2) || payload || zeros, all inside the encryption, so the real
+    // length is recoverable by the far end and by nobody else.
+    std::vector<unsigned char> padded(PaddedSize(payload.size()), 0);
+    WriteLE16(padded.data(), static_cast<uint16_t>(payload.size()));
+    std::copy(payload.begin(), payload.end(), padded.begin() + SESSION_LENGTH_PREFIX);
+
+    if (!SealFrame(m_send, FrameType::DATA, m_id, m_next_counter, padded,
                    datagram_out)) {
         return false;
     }
@@ -58,7 +79,15 @@ bool Session::Open(const unsigned char* data, size_t len,
     if (type != FrameType::DATA) return false;
     if (!m_replay.Accept(counter)) return false;
 
-    payload_out = std::move(payload);
+    if (payload.size() < SESSION_LENGTH_PREFIX) return false;
+    const size_t real = ReadLE16(payload.data());
+    // A length claiming more than arrived is a malformed frame from an
+    // authenticated peer, which is a bug or a version difference, not an
+    // attack - but it is still refused rather than truncated.
+    if (real > payload.size() - SESSION_LENGTH_PREFIX) return false;
+
+    payload_out.assign(payload.begin() + SESSION_LENGTH_PREFIX,
+                       payload.begin() + SESSION_LENGTH_PREFIX + real);
     return true;
 }
 

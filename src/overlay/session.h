@@ -14,6 +14,30 @@
 namespace overlay {
 
 /**
+ * Padding, so a relay cannot read message sizes off the wire.
+ *
+ * Content is encrypted, but its length is not: a relay forwarding 41 bytes and
+ * then 900 learns a great deal about what is being carried, and lengths alone
+ * identify message types and fingerprint traffic. Padding to a handful of
+ * buckets collapses that into almost no information.
+ *
+ * Buckets rather than always padding to the maximum, because a network where
+ * every acknowledgement costs 1200 bytes is a network nobody runs. This is the
+ * usual compromise and it is a compromise: an observer still learns which
+ * bucket, which is a few bits.
+ *
+ * What this does NOT address, and no amount of padding will: timing and volume.
+ * An adversary watching both ends of a path can correlate when things move and
+ * how much, and that remains the open problem in this field rather than
+ * something left undone here.
+ */
+static constexpr size_t SESSION_LENGTH_PREFIX = 2;
+static constexpr size_t MAX_SESSION_PAYLOAD = MAX_FRAME_PAYLOAD - SESSION_LENGTH_PREFIX;
+
+/** Every sealed payload is padded up to one of these. */
+size_t PaddedSize(size_t payload_len);
+
+/**
  * An established link to one peer.
  *
  * Holds what the handshake produced and everything that must not be got wrong
@@ -33,6 +57,9 @@ public:
 
     /**
      * Wrap a payload as a datagram ready to send.
+     *
+     * The payload is padded to a size bucket before sealing, so what goes on
+     * the wire says almost nothing about how long the message was.
      *
      * False when the payload is too large for one frame, or when this session
      * has sent all the frames it safely can. Callers fragment above this.

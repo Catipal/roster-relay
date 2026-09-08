@@ -618,11 +618,58 @@ BOOST_AUTO_TEST_CASE(session_refuses_oversized_payloads)
     BOOST_CHECK(p.Run());
     overlay::Session i(p.ikeys);
     std::vector<unsigned char> d;
-    BOOST_CHECK(i.Seal(Payload(overlay::MAX_FRAME_PAYLOAD), d));
+    BOOST_CHECK(i.Seal(Payload(overlay::MAX_SESSION_PAYLOAD), d));
     BOOST_CHECK_EQUAL(d.size(), overlay::SAFE_DATAGRAM);
-    BOOST_CHECK(!i.Seal(Payload(overlay::MAX_FRAME_PAYLOAD + 1), d));
+    BOOST_CHECK(!i.Seal(Payload(overlay::MAX_SESSION_PAYLOAD + 1), d));
     // A refused seal must not have consumed a counter.
     BOOST_CHECK_EQUAL(i.FramesSent(), 1u);
+}
+
+BOOST_AUTO_TEST_CASE(session_pads_away_message_length)
+{
+    // Content is encrypted but length is not, and lengths alone fingerprint
+    // traffic. Payloads inside one bucket must be indistinguishable on the wire.
+    Parties p;
+    BOOST_CHECK(p.Run());
+    overlay::Session i(p.ikeys), r(p.rkeys);
+
+    std::vector<unsigned char> a, b;
+    BOOST_CHECK(i.Seal(Payload(1), a));
+    BOOST_CHECK(i.Seal(Payload(40), b));
+    BOOST_CHECK_EQUAL(a.size(), b.size());
+
+    // And every size still round-trips exactly, padding stripped.
+    const size_t sizes[] = {0, 1, 61, 62, 63, 254, 300, 638, 700,
+                            overlay::MAX_SESSION_PAYLOAD};
+    for (size_t n = 0; n < sizeof(sizes) / sizeof(sizes[0]); ++n) {
+        const std::vector<unsigned char> msg = Payload(sizes[n], 3);
+        std::vector<unsigned char> sealed, got;
+        BOOST_REQUIRE(i.Seal(msg, sealed));
+        BOOST_REQUIRE_MESSAGE(r.Open(sealed.data(), sealed.size(), got),
+                              "size " << sizes[n] << " did not open");
+        BOOST_CHECK_MESSAGE(got == msg, "size " << sizes[n] << " round-tripped wrong");
+        // Only a handful of distinct sizes ever appear on the wire.
+        BOOST_CHECK_EQUAL(sealed.size(),
+                          overlay::PaddedSize(sizes[n]) + overlay::FRAME_OVERHEAD);
+    }
+}
+
+BOOST_AUTO_TEST_CASE(session_padding_buckets_are_few_and_bounded)
+{
+    // The point of buckets is that many lengths collapse onto few. If this
+    // grew, padding would stop hiding anything.
+    std::set<size_t> distinct;
+    for (size_t n = 0; n <= overlay::MAX_SESSION_PAYLOAD; ++n) {
+        distinct.insert(overlay::PaddedSize(n));
+    }
+    BOOST_CHECK_LE(distinct.size(), 4u);
+    // The largest bucket must still fit a datagram once sealed.
+    BOOST_CHECK_EQUAL(overlay::PaddedSize(overlay::MAX_SESSION_PAYLOAD),
+                      overlay::MAX_FRAME_PAYLOAD);
+    // Padding never shrinks a message below what it needs.
+    for (size_t n = 0; n <= overlay::MAX_SESSION_PAYLOAD; n += 37) {
+        BOOST_CHECK_GE(overlay::PaddedSize(n), n + overlay::SESSION_LENGTH_PREFIX);
+    }
 }
 
 BOOST_AUTO_TEST_CASE(session_counter_never_wraps)

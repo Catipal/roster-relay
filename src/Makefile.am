@@ -190,6 +190,7 @@ BITCOIN_CORE_H = \
   overlay/frame.h \
   overlay/handshake.h \
   overlay/session.h \
+  overlay/transport.h \
   roster/commitment.h \
   roster/extract.h \
   roster/keystore.h \
@@ -521,6 +522,7 @@ libbitcoin_common_a_SOURCES = \
   overlay/frame.cpp \
   overlay/handshake.cpp \
   overlay/session.cpp \
+  overlay/transport.cpp \
   roster/commitment.cpp \
   roster/extract.cpp \
   roster/keystore.cpp \

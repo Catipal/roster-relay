@@ -91,6 +91,22 @@ bool OpenFrame(const FrameKey& key, const unsigned char* data, size_t len,
                uint64_t& counter_out, std::vector<unsigned char>& payload_out);
 
 /**
+ * Read a frame header without decrypting.
+ *
+ * A receiver has to know which session a datagram belongs to before it can
+ * choose a key, so this necessarily runs on unauthenticated bytes. It reports
+ * only what the header claims - nothing here is trustworthy until OpenFrame
+ * verifies the tag, and callers must treat the session id as a hint for
+ * lookup rather than as a fact.
+ */
+bool PeekFrame(const unsigned char* data, size_t len, FrameType& type_out,
+               uint64_t& session_out, uint64_t& counter_out);
+
+/** Header for a datagram whose body carries its own authentication. */
+void WriteFrameHeader(FrameType type, uint64_t session, uint64_t counter,
+                      std::vector<unsigned char>& out);
+
+/**
  * ChaCha20-Poly1305 over an arbitrary buffer with explicit associated data.
  *
  * The handshake needs the same AEAD but has its own message layout rather than

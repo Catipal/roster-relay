@@ -78,13 +78,15 @@ public:
     /**
      * Consume the reply and derive the session.
      *
-     * Single shot. Processing a reply advances the transcript before it can
-     * fail, so a rejected message leaves this object half-advanced and unable
-     * to complete correctly. Rather than leave that implicit, the attempt is
-     * consumed either way: a second call returns false without touching
-     * attacker-supplied bytes again. The caller discards the handshake and
-     * starts a new one, which is also what stops a stray datagram from making
-     * a pending handshake do unbounded work.
+     * A rejected reply leaves this object untouched, so the real one still
+     * completes it afterwards. That matters because UDP source addresses are
+     * forgeable: if failure advanced the transcript, a single spoofed datagram
+     * would kill any handshake in flight, and an attacker who merely knows two
+     * peers are connecting could stop them ever doing so.
+     *
+     * Succeeding is what consumes it. Completing twice would hand out the same
+     * keys to two holders, both starting their counters at one, which is the
+     * nonce reuse the frame layer cannot survive.
      */
     bool Finish(const unsigned char* msg2, size_t len, SessionKeys& out);
 

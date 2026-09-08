@@ -5,6 +5,8 @@
 #include <overlay/frame.h>
 #include <overlay/handshake.h>
 #include <overlay/session.h>
+#include <overlay/transport.h>
+#include <netbase.h>
 
 #include <test/util/setup_common.h>
 
@@ -508,30 +510,31 @@ BOOST_AUTO_TEST_CASE(handshake_with_itself_is_coherent)
     BOOST_CHECK(ik.send == rk.recv);
 }
 
-BOOST_AUTO_TEST_CASE(handshake_finish_is_single_shot)
+BOOST_AUTO_TEST_CASE(handshake_survives_a_forged_reply)
 {
-    // Processing a reply advances the transcript before it can fail, so a
-    // rejected message leaves the initiator unable to complete correctly. The
-    // attempt is spent either way rather than leaving that implicit, which also
-    // means a stray datagram cannot make a pending handshake keep doing key
-    // agreement on attacker-supplied bytes.
+    // UDP source addresses are forgeable, so anyone who knows two peers are
+    // connecting can send a junk reply claiming to be one of them. Rejecting it
+    // must cost the honest party nothing: the real reply still completes the
+    // handshake afterwards.
     Parties p;
     BOOST_CHECK(p.I.Start(p.i_static, p.r_static.GetPubKey(), p.msg1));
     BOOST_CHECK(p.R.Accept(p.r_static, p.msg1.data(), p.msg1.size(),
                            p.learned, p.msg2, p.rkeys));
 
-    std::vector<unsigned char> corrupted = p.msg2;
-    corrupted.back() ^= 0x01;
+    std::vector<unsigned char> forged = p.msg2;
+    forged.back() ^= 0x01;
     overlay::SessionKeys keys;
-    BOOST_CHECK(!p.I.Finish(corrupted.data(), corrupted.size(), keys));
-    // The genuine reply must not rescue it: the state has already moved.
-    BOOST_CHECK(!p.I.Finish(p.msg2.data(), p.msg2.size(), keys));
+    BOOST_CHECK(!p.I.Finish(forged.data(), forged.size(), keys));
 
-    // And a successful handshake cannot be completed twice either.
-    Parties q;
-    BOOST_CHECK(q.Run());
+    // Untouched by the rejection, so the genuine reply still works.
+    BOOST_CHECK(p.I.Finish(p.msg2.data(), p.msg2.size(), p.ikeys));
+    BOOST_CHECK(p.ikeys.send == p.rkeys.recv);
+
+    // But succeeding consumes it: handing the same keys to two holders would
+    // start two counters at one, which is the nonce reuse the frame layer
+    // cannot survive.
     overlay::SessionKeys twice;
-    BOOST_CHECK(!q.I.Finish(q.msg2.data(), q.msg2.size(), twice));
+    BOOST_CHECK(!p.I.Finish(p.msg2.data(), p.msg2.size(), twice));
 }
 
 BOOST_AUTO_TEST_CASE(session_carries_traffic_both_ways)
@@ -630,6 +633,193 @@ BOOST_AUTO_TEST_CASE(session_counter_never_wraps)
     std::vector<unsigned char> d;
     BOOST_CHECK(s.Seal(Payload(8), d));
     BOOST_CHECK_EQUAL(s.Remaining(), UINT64_MAX - 1);
+}
+
+
+namespace {
+
+CService Addr(const char* ip, uint16_t port)
+{
+    return CService(LookupNumeric(ip, port));
+}
+
+/** Drive a full handshake between two transports and assert it succeeded. */
+void Introduce(overlay::Transport& a, const CService& a_addr,
+               overlay::Transport& b, const CKey& b_key, const CService& b_addr)
+{
+    std::vector<unsigned char> m1, reply, payload;
+    BOOST_REQUIRE(a.Connect(b_addr, b_key.GetPubKey(), m1));
+
+    BOOST_REQUIRE(b.Receive(a_addr, m1.data(), m1.size(), reply, payload)
+                  == overlay::Transport::Result::ESTABLISHED);
+    BOOST_REQUIRE(!reply.empty());
+
+    std::vector<unsigned char> none, none2;
+    BOOST_REQUIRE(a.Receive(b_addr, reply.data(), reply.size(), none, none2)
+                  == overlay::Transport::Result::ESTABLISHED);
+}
+
+} // namespace
+
+BOOST_AUTO_TEST_CASE(transport_establishes_and_carries_payloads)
+{
+    CKey ka, kb;
+    ka.MakeNewKey(true);
+    kb.MakeNewKey(true);
+    const CService aa = Addr("10.0.0.1", 9346), ba = Addr("10.0.0.2", 9346);
+    overlay::Transport A(ka), B(kb);
+
+    Introduce(A, aa, B, kb, ba);
+    BOOST_CHECK(A.HasSession(ba));
+    BOOST_CHECK(B.HasSession(aa));
+    // Each side learned who the other actually is.
+    BOOST_CHECK(A.PeerIdentity(ba) == kb.GetPubKey());
+    BOOST_CHECK(B.PeerIdentity(aa) == ka.GetPubKey());
+    BOOST_CHECK(!A.HasPendingHandshake(ba));
+
+    const std::vector<unsigned char> msg = Payload(500, 3);
+    std::vector<unsigned char> dgram, reply, got;
+    BOOST_CHECK(A.Send(ba, msg, dgram));
+    BOOST_CHECK(B.Receive(aa, dgram.data(), dgram.size(), reply, got)
+                == overlay::Transport::Result::PAYLOAD);
+    BOOST_CHECK(got == msg);
+    BOOST_CHECK(reply.empty()); // data is not answered at this layer
+
+    std::vector<unsigned char> back, got_back;
+    BOOST_CHECK(B.Send(aa, msg, back));
+    BOOST_CHECK(A.Receive(ba, back.data(), back.size(), reply, got_back)
+                == overlay::Transport::Result::PAYLOAD);
+    BOOST_CHECK(got_back == msg);
+}
+
+BOOST_AUTO_TEST_CASE(transport_ignores_junk_without_answering)
+{
+    // On a connectionless transport, answering junk turns a node into a
+    // reflector for someone else's traffic. Nothing unrecognised gets a reply.
+    CKey k;
+    k.MakeNewKey(true);
+    overlay::Transport T(k);
+    const CService from = Addr("10.0.0.9", 9346);
+
+    const unsigned char junk[64] = {0};
+    std::vector<unsigned char> reply, payload;
+    BOOST_CHECK(T.Receive(from, junk, sizeof(junk), reply, payload)
+                == overlay::Transport::Result::IGNORED);
+    BOOST_CHECK(reply.empty());
+
+    // A well-formed header wrapping nonsense is still ignored.
+    std::vector<unsigned char> framed;
+    overlay::WriteFrameHeader(overlay::FrameType::HANDSHAKE_INIT, 0, 0, framed);
+    framed.resize(framed.size() + overlay::HANDSHAKE_INIT_SIZE, 0x41);
+    BOOST_CHECK(T.Receive(from, framed.data(), framed.size(), reply, payload)
+                == overlay::Transport::Result::IGNORED);
+    BOOST_CHECK(reply.empty());
+    BOOST_CHECK_EQUAL(T.SessionCount(), 0u);
+}
+
+BOOST_AUTO_TEST_CASE(transport_rejects_data_from_strangers)
+{
+    // A datagram from an address with no session must not be acted on, however
+    // well formed - otherwise a forged source address would be enough.
+    CKey ka, kb;
+    ka.MakeNewKey(true);
+    kb.MakeNewKey(true);
+    const CService aa = Addr("10.0.0.1", 9346), ba = Addr("10.0.0.2", 9346);
+    const CService ca = Addr("10.0.0.3", 9346);
+    overlay::Transport A(ka), B(kb);
+    Introduce(A, aa, B, kb, ba);
+
+    std::vector<unsigned char> dgram, reply, got;
+    BOOST_CHECK(A.Send(ba, Payload(50), dgram));
+    // Same bytes, claimed to come from somewhere else.
+    BOOST_CHECK(B.Receive(ca, dgram.data(), dgram.size(), reply, got)
+                == overlay::Transport::Result::IGNORED);
+    BOOST_CHECK(reply.empty());
+}
+
+BOOST_AUTO_TEST_CASE(transport_ignores_an_unsolicited_reply)
+{
+    // A HANDSHAKE_RESP with no handshake in flight is dropped rather than
+    // starting one, so an attacker cannot push a session onto a node.
+    CKey ka;
+    ka.MakeNewKey(true);
+    const CService ba = Addr("10.0.0.2", 9346);
+    overlay::Transport A(ka);
+
+    std::vector<unsigned char> fake;
+    overlay::WriteFrameHeader(overlay::FrameType::HANDSHAKE_RESP, 0, 0, fake);
+    fake.resize(fake.size() + overlay::HANDSHAKE_RESP_SIZE, 0x00);
+    std::vector<unsigned char> reply, payload;
+    BOOST_CHECK(A.Receive(ba, fake.data(), fake.size(), reply, payload)
+                == overlay::Transport::Result::IGNORED);
+    BOOST_CHECK_EQUAL(A.SessionCount(), 0u);
+}
+
+BOOST_AUTO_TEST_CASE(transport_handshake_fields_must_be_zero)
+{
+    // Unused header fields that accept any value are tamper surface for
+    // nothing in return, so they are pinned.
+    CKey ka, kb;
+    ka.MakeNewKey(true);
+    kb.MakeNewKey(true);
+    const CService aa = Addr("10.0.0.1", 9346), ba = Addr("10.0.0.2", 9346);
+    overlay::Transport A(ka), B(kb);
+
+    std::vector<unsigned char> m1;
+    BOOST_CHECK(A.Connect(ba, kb.GetPubKey(), m1));
+    m1[6] ^= 0x01; // session id byte inside the header
+    std::vector<unsigned char> reply, payload;
+    BOOST_CHECK(B.Receive(aa, m1.data(), m1.size(), reply, payload)
+                == overlay::Transport::Result::IGNORED);
+    BOOST_CHECK(reply.empty());
+}
+
+BOOST_AUTO_TEST_CASE(transport_reconnect_replaces_a_stalled_handshake)
+{
+    // A peer that never answers must not hold the slot forever.
+    CKey ka, kb;
+    ka.MakeNewKey(true);
+    kb.MakeNewKey(true);
+    const CService aa = Addr("10.0.0.1", 9346), ba = Addr("10.0.0.2", 9346);
+    overlay::Transport A(ka), B(kb);
+
+    std::vector<unsigned char> first, second;
+    BOOST_CHECK(A.Connect(ba, kb.GetPubKey(), first));
+    BOOST_CHECK(A.Connect(ba, kb.GetPubKey(), second));
+    BOOST_CHECK(first != second);
+    BOOST_CHECK_EQUAL(A.PendingCount(), 1u);
+
+    // The abandoned attempt's reply is no longer accepted.
+    std::vector<unsigned char> reply, payload;
+    BOOST_CHECK(B.Receive(aa, first.data(), first.size(), reply, payload)
+                == overlay::Transport::Result::ESTABLISHED);
+    std::vector<unsigned char> none, none2;
+    BOOST_CHECK(A.Receive(ba, reply.data(), reply.size(), none, none2)
+                == overlay::Transport::Result::IGNORED);
+
+    // The current attempt still completes.
+    std::vector<unsigned char> reply2;
+    BOOST_CHECK(B.Receive(aa, second.data(), second.size(), reply2, payload)
+                == overlay::Transport::Result::ESTABLISHED);
+    BOOST_CHECK(A.Receive(ba, reply2.data(), reply2.size(), none, none2)
+                == overlay::Transport::Result::ESTABLISHED);
+}
+
+BOOST_AUTO_TEST_CASE(transport_forget_drops_everything)
+{
+    CKey ka, kb;
+    ka.MakeNewKey(true);
+    kb.MakeNewKey(true);
+    const CService aa = Addr("10.0.0.1", 9346), ba = Addr("10.0.0.2", 9346);
+    overlay::Transport A(ka), B(kb);
+    Introduce(A, aa, B, kb, ba);
+
+    std::vector<unsigned char> dgram;
+    BOOST_CHECK(A.Send(ba, Payload(10), dgram));
+    A.Forget(ba);
+    BOOST_CHECK(!A.HasSession(ba));
+    BOOST_CHECK(!A.Send(ba, Payload(10), dgram));
+    BOOST_CHECK(!A.PeerIdentity(ba).IsValid());
 }
 
 BOOST_AUTO_TEST_SUITE_END()

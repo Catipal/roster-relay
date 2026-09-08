@@ -158,6 +158,26 @@ bool OpenFrame(const FrameKey& key, const unsigned char* data, size_t len,
     return true;
 }
 
+bool PeekFrame(const unsigned char* data, size_t len, FrameType& type_out,
+               uint64_t& session_out, uint64_t& counter_out)
+{
+    if (len < FRAME_HEADER_SIZE || len > SAFE_DATAGRAM) return false;
+    if (std::memcmp(data, FRAME_MAGIC, sizeof(FRAME_MAGIC)) != 0) return false;
+    if (data[4] != FRAME_VERSION) return false;
+    if (!KnownType(data[5], type_out)) return false;
+    session_out = ReadLE64(data + 6);
+    counter_out = ReadLE64(data + 14);
+    return true;
+}
+
+void WriteFrameHeader(FrameType type, uint64_t session, uint64_t counter,
+                      std::vector<unsigned char>& out)
+{
+    const size_t at = out.size();
+    out.resize(at + FRAME_HEADER_SIZE);
+    WriteHeader(out.data() + at, type, session, counter);
+}
+
 void AeadSeal(const FrameKey& key, uint64_t nonce, const unsigned char* aad,
               size_t aad_len, const std::vector<unsigned char>& plaintext,
               std::vector<unsigned char>& out)

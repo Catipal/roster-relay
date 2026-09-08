@@ -165,38 +165,52 @@ bool HandshakeInitiator::Start(const CKey& static_key, const CPubKey& responder_
 bool HandshakeInitiator::Finish(const unsigned char* msg2, size_t len, SessionKeys& out)
 {
     if (!m_started || m_consumed) return false;
-    // Everything below advances the transcript, so this attempt is spent
-    // whether or not it succeeds.
-    m_consumed = true;
     if (len != HANDSHAKE_RESP_SIZE) return false;
+
+    // Work on copies and commit only on success. Anyone can send a datagram
+    // claiming to come from the peer - UDP source addresses are forgeable - so
+    // if a rejected reply advanced this object, one spoofed packet would kill
+    // any handshake in flight. Rejecting must cost the attacker something and
+    // the honest party nothing.
+    uint256 ck = m_ck;
+    uint256 h = m_h;
 
     CPubKey re(msg2, msg2 + HANDSHAKE_PUBKEY_SIZE);
     if (!re.IsValid()) return false;
-    MixHash(m_h, msg2, HANDSHAKE_PUBKEY_SIZE);
+    MixHash(h, msg2, HANDSHAKE_PUBKEY_SIZE);
 
     uint256 ee;
     if (!re.ECDH(m_ephemeral.begin(), ee)) return false;
     FrameKey k3;
-    MixKey(m_ck, ee, k3);
+    MixKey(ck, ee, k3);
     memory_cleanse(ee.begin(), 32);
     memory_cleanse(k3.data(), k3.size());
 
     uint256 se;
     if (!re.ECDH(m_static.begin(), se)) return false;
     FrameKey k4;
-    MixKey(m_ck, se, k4);
+    MixKey(ck, se, k4);
     memory_cleanse(se.begin(), 32);
 
     std::vector<unsigned char> plain;
-    const bool ok = AeadOpen(k4, 0, m_h.begin(), 32, msg2 + HANDSHAKE_PUBKEY_SIZE,
+    const bool ok = AeadOpen(k4, 0, h.begin(), 32, msg2 + HANDSHAKE_PUBKEY_SIZE,
                              FRAME_TAG_SIZE, plain);
     memory_cleanse(k4.data(), k4.size());
     // A failed tag here means the far side did not hold the static key we
     // encrypted to, so it is not the peer the roster named.
-    if (!ok || !plain.empty()) return false;
+    if (!ok || !plain.empty()) {
+        memory_cleanse(ck.begin(), 32);
+        memory_cleanse(h.begin(), 32);
+        return false;
+    }
 
-    MixHash(m_h, msg2 + HANDSHAKE_PUBKEY_SIZE, FRAME_TAG_SIZE);
-    SplitSession(m_ck, m_h, /*initiator=*/true, out);
+    MixHash(h, msg2 + HANDSHAKE_PUBKEY_SIZE, FRAME_TAG_SIZE);
+    SplitSession(ck, h, /*initiator=*/true, out);
+    // Completed exactly once: a second success would hand out the same keys
+    // twice, and both holders would start their counters at one.
+    m_consumed = true;
+    m_ck = ck;
+    m_h = h;
     return true;
 }
 

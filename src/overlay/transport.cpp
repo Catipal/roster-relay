@@ -1,0 +1,166 @@
+// Copyright (c) 2026 The Bitcoin PoS Core developers
+// Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
+#include <overlay/transport.h>
+
+#include <cstring>
+
+namespace overlay {
+
+namespace {
+
+/**
+ * Wrap a handshake message in a datagram.
+ *
+ * Handshake datagrams are not sealed by the frame layer - there is no key yet,
+ * which is the point of sending them. The header exists so a receiver can tell
+ * what arrived, and the message carries its own authentication. Session and
+ * counter are zero and are required to be zero on receipt: unused fields that
+ * accept any value are tamper surface for nothing in return.
+ */
+void PackHandshake(FrameType type, const std::vector<unsigned char>& msg,
+                   std::vector<unsigned char>& out)
+{
+    out.clear();
+    WriteFrameHeader(type, 0, 0, out);
+    out.insert(out.end(), msg.begin(), msg.end());
+}
+
+} // namespace
+
+Transport::Transport(const CKey& static_key) : m_static(static_key) {}
+
+bool Transport::Connect(const CService& peer, const CPubKey& peer_static,
+                        std::vector<unsigned char>& datagram_out)
+{
+    if (!m_static.IsValid() || !peer_static.IsValid()) return false;
+
+    // A handshake already in flight is abandoned rather than kept: a peer that
+    // never answers must not hold the slot against a later attempt.
+    m_pending.erase(peer);
+
+    Pending pending;
+    pending.expected = peer_static;
+    std::vector<unsigned char> msg1;
+    if (!pending.initiator.Start(m_static, peer_static, msg1)) return false;
+
+    PackHandshake(FrameType::HANDSHAKE_INIT, msg1, datagram_out);
+    m_pending[peer] = std::move(pending);
+    return true;
+}
+
+Transport::Result Transport::Receive(const CService& from, const unsigned char* data,
+                                     size_t len, std::vector<unsigned char>& reply_out,
+                                     std::vector<unsigned char>& payload_out)
+{
+    reply_out.clear();
+    payload_out.clear();
+
+    FrameType type;
+    uint64_t session = 0, counter = 0;
+    if (!PeekFrame(data, len, type, session, counter)) return Result::IGNORED;
+
+    const unsigned char* body = data + FRAME_HEADER_SIZE;
+    const size_t body_len = len - FRAME_HEADER_SIZE;
+
+    switch (type) {
+    case FrameType::HANDSHAKE_INIT: {
+        if (session != 0 || counter != 0) return Result::IGNORED;
+
+        // Anyone may open a handshake, and this is where a flood would land.
+        // Nothing here is expensive enough to be a resource attack on its own,
+        // but the socket layer above still has to rate limit by source, because
+        // a responder does real key agreement before it learns anything.
+        CPubKey initiator;
+        std::vector<unsigned char> msg2;
+        SessionKeys keys;
+        HandshakeResponder responder;
+        if (!responder.Accept(m_static, body, body_len, initiator, msg2, keys)) {
+            return Result::IGNORED;
+        }
+
+        // A completed handshake replaces whatever was there. The peer proved
+        // it holds the static key, which is a stronger claim than the age of
+        // an existing entry.
+        Established est;
+        est.session.reset(new Session(keys));
+        est.identity = initiator;
+        m_sessions[from] = std::move(est);
+        m_pending.erase(from);
+
+        PackHandshake(FrameType::HANDSHAKE_RESP, msg2, reply_out);
+        return Result::ESTABLISHED;
+    }
+
+    case FrameType::HANDSHAKE_RESP: {
+        if (session != 0 || counter != 0) return Result::IGNORED;
+
+        std::map<CService, Pending>::iterator it = m_pending.find(from);
+        if (it == m_pending.end()) return Result::IGNORED;
+
+        SessionKeys keys;
+        // A rejected reply leaves the handshake intact, so the pending entry
+        // survives to be completed by the real one. Discarding it here would
+        // let anyone spoofing the peer's address end a handshake with a single
+        // junk datagram.
+        if (!it->second.initiator.Finish(body, body_len, keys)) {
+            return Result::IGNORED;
+        }
+        const CPubKey expected = it->second.expected;
+        m_pending.erase(it);
+
+        Established est;
+        est.session.reset(new Session(keys));
+        // The responder authenticated itself by completing the exchange, so
+        // its identity is the key we deliberately encrypted to.
+        est.identity = expected;
+        m_sessions[from] = std::move(est);
+        return Result::ESTABLISHED;
+    }
+
+    case FrameType::DATA: {
+        std::map<CService, Established>::iterator it = m_sessions.find(from);
+        if (it == m_sessions.end()) return Result::IGNORED;
+        // The session id in the header is only a hint for lookup; Open checks
+        // it against the authenticated one and verifies the tag.
+        if (!it->second.session->Open(data, len, payload_out)) return Result::IGNORED;
+        return Result::PAYLOAD;
+    }
+    }
+
+    return Result::IGNORED;
+}
+
+bool Transport::Send(const CService& peer, const std::vector<unsigned char>& payload,
+                     std::vector<unsigned char>& datagram_out)
+{
+    std::map<CService, Established>::iterator it = m_sessions.find(peer);
+    if (it == m_sessions.end()) return false;
+    return it->second.session->Seal(payload, datagram_out);
+}
+
+bool Transport::HasSession(const CService& peer) const
+{
+    return m_sessions.find(peer) != m_sessions.end();
+}
+
+bool Transport::HasPendingHandshake(const CService& peer) const
+{
+    return m_pending.find(peer) != m_pending.end();
+}
+
+CPubKey Transport::PeerIdentity(const CService& peer) const
+{
+    std::map<CService, Established>::const_iterator it = m_sessions.find(peer);
+    if (it == m_sessions.end()) return CPubKey();
+    return it->second.identity;
+}
+
+void Transport::Forget(const CService& peer)
+{
+    m_sessions.erase(peer);
+    m_pending.erase(peer);
+}
+
+} // namespace overlay

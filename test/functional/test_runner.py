@@ -127,6 +127,7 @@ BASE_SCRIPTS = [
     'wallet_address_types.py --descriptors',
     'feature_bip68_sequence.py',
     'p2p_feefilter.py',
+    'feature_roster.py',
     'feature_reindex.py',
     'feature_abortnode.py',
     # vv Tests less than 30s vv

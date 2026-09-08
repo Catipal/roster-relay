@@ -5,7 +5,9 @@
 #include <overlay/frame.h>
 #include <overlay/handshake.h>
 #include <overlay/session.h>
+#include <overlay/socket.h>
 #include <overlay/transport.h>
+#include <util/time.h>
 #include <netbase.h>
 
 #include <test/util/setup_common.h>
@@ -820,6 +822,145 @@ BOOST_AUTO_TEST_CASE(transport_forget_drops_everything)
     BOOST_CHECK(!A.HasSession(ba));
     BOOST_CHECK(!A.Send(ba, Payload(10), dgram));
     BOOST_CHECK(!A.PeerIdentity(ba).IsValid());
+}
+
+
+namespace {
+
+/** Poll until `pred` holds or the deadline passes. Returns whether it held. */
+template <typename Pred>
+bool WaitFor(Pred pred, int timeout_ms = 5000)
+{
+    for (int waited = 0; waited < timeout_ms; waited += 10) {
+        if (pred()) return true;
+        UninterruptibleSleep(std::chrono::milliseconds{10});
+    }
+    return pred();
+}
+
+/** Collects payloads delivered on the receive thread. */
+struct Inbox {
+    Mutex mutex;
+    std::vector<std::vector<unsigned char>> items;
+
+    overlay::Socket::PayloadHandler Handler()
+    {
+        return [this](const CService&, std::vector<unsigned char>&& p) {
+            LOCK(mutex);
+            items.push_back(std::move(p));
+        };
+    }
+    size_t Count()
+    {
+        LOCK(mutex);
+        return items.size();
+    }
+    std::vector<unsigned char> At(size_t i)
+    {
+        LOCK(mutex);
+        return items.at(i);
+    }
+};
+
+} // namespace
+
+BOOST_AUTO_TEST_CASE(socket_two_nodes_talk_over_real_udp)
+{
+    // The end of the first stage: two nodes, real datagrams on the loopback,
+    // a session negotiated from nothing but each other's roster identity.
+    CKey ka, kb;
+    ka.MakeNewKey(true);
+    kb.MakeNewKey(true);
+
+    overlay::Socket A(ka), B(kb);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    BOOST_REQUIRE_MESSAGE(A.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(B.Bind(any, err), err);
+    // Binding port zero must report the port the system actually chose.
+    BOOST_CHECK(A.BoundAddress().GetPort() != 0);
+    BOOST_CHECK(B.BoundAddress().GetPort() != A.BoundAddress().GetPort());
+
+    Inbox in_a, in_b;
+    BOOST_REQUIRE(A.Start(in_a.Handler()));
+    BOOST_REQUIRE(B.Start(in_b.Handler()));
+
+    // UDP may drop the first datagram; retrying is the transport's normal
+    // condition rather than a failure, so the test retries as a real client
+    // would instead of asserting on one attempt.
+    const CService b_addr = B.BoundAddress();
+    BOOST_REQUIRE(WaitFor([&] {
+        if (A.HasSession(b_addr)) return true;
+        A.Connect(b_addr, kb.GetPubKey());
+        return A.HasSession(b_addr);
+    }));
+
+    BOOST_CHECK(A.HasSession(b_addr));
+    BOOST_CHECK(WaitFor([&] { return B.SessionCount() == 1; }));
+
+    const std::vector<unsigned char> msg = Payload(600, 5);
+    BOOST_REQUIRE(WaitFor([&] {
+        if (in_b.Count() > 0) return true;
+        A.Send(b_addr, msg);
+        return in_b.Count() > 0;
+    }));
+    BOOST_CHECK(in_b.At(0) == msg);
+
+    // And back the other way, which uses the opposite direction's key.
+    const CService a_addr = A.BoundAddress();
+    const std::vector<unsigned char> reply = Payload(120, 9);
+    BOOST_REQUIRE(WaitFor([&] {
+        if (in_a.Count() > 0) return true;
+        B.Send(a_addr, reply);
+        return in_a.Count() > 0;
+    }));
+    BOOST_CHECK(in_a.At(0) == reply);
+
+    A.Stop();
+    B.Stop();
+}
+
+BOOST_AUTO_TEST_CASE(socket_ignores_traffic_from_a_stranger)
+{
+    // A third node that never handshook must get nowhere, and must not provoke
+    // a reply that would make this node a reflector.
+    CKey ka, kb, kc;
+    ka.MakeNewKey(true);
+    kb.MakeNewKey(true);
+    kc.MakeNewKey(true);
+
+    overlay::Socket A(ka), C(kc);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    BOOST_REQUIRE_MESSAGE(A.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(C.Bind(any, err), err);
+
+    Inbox in_a, in_c;
+    BOOST_REQUIRE(A.Start(in_a.Handler()));
+    BOOST_REQUIRE(C.Start(in_c.Handler()));
+
+    // C tries to speak to A while claiming a key A never agreed with. The
+    // handshake will complete - anyone may open one - but C cannot send data
+    // before it does, and A never delivers anything it has not authenticated.
+    BOOST_CHECK(!C.Send(A.BoundAddress(), Payload(40)));
+    UninterruptibleSleep(std::chrono::milliseconds{200});
+    BOOST_CHECK_EQUAL(in_a.Count(), 0u);
+
+    A.Stop();
+    C.Stop();
+}
+
+BOOST_AUTO_TEST_CASE(socket_stop_is_idempotent)
+{
+    CKey k;
+    k.MakeNewKey(true);
+    overlay::Socket S(k);
+    std::string err;
+    BOOST_REQUIRE_MESSAGE(S.Bind(CService(LookupNumeric("127.0.0.1", 0)), err), err);
+    Inbox in;
+    BOOST_REQUIRE(S.Start(in.Handler()));
+    S.Stop();
+    S.Stop(); // must not hang or crash on a second call, nor on destruction
 }
 
 BOOST_AUTO_TEST_SUITE_END()

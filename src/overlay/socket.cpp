@@ -7,6 +7,7 @@
 #include <logging.h>
 #include <netbase.h>
 #include <util/system.h>
+#include <util/time.h>
 
 
 #include <cstring>
@@ -165,10 +166,50 @@ bool Socket::HasSession(const CService& peer)
     return m_transport.HasSession(peer);
 }
 
+size_t Socket::HandshakesRefused()
+{
+    LOCK(m_mutex);
+    return m_refused;
+}
+
 size_t Socket::SessionCount()
 {
     LOCK(m_mutex);
     return m_transport.SessionCount();
+}
+
+bool Socket::AllowHandshake(const CService& from, int64_t now)
+{
+    if (now - m_window_start >= RATE_WINDOW) {
+        m_window_start = now;
+        m_global_attempts = 0;
+        m_attempts.clear();
+    }
+
+    if (m_global_attempts >= GLOBAL_LIMIT) {
+        ++m_refused;
+        return false;
+    }
+
+    // A forged source address would otherwise get its own quota, so the source
+    // table is bounded too: past the cap, unknown sources are refused rather
+    // than tracked, and the global limit above is doing the real work.
+    std::map<CService, size_t>::iterator it = m_attempts.find(from);
+    if (it == m_attempts.end()) {
+        if (m_attempts.size() >= MAX_TRACKED_SOURCES) {
+            ++m_refused;
+            return false;
+        }
+        it = m_attempts.insert(std::make_pair(from, size_t{0})).first;
+    }
+    if (it->second >= PER_SOURCE_LIMIT) {
+        ++m_refused;
+        return false;
+    }
+
+    ++it->second;
+    ++m_global_attempts;
+    return true;
 }
 
 void Socket::ThreadReceive()
@@ -206,6 +247,15 @@ void Socket::ThreadReceive()
         Transport::Result result;
         {
             LOCK(m_mutex);
+            // Metered before any key agreement happens, which is the only
+            // place it helps: past this point the work is already done.
+            FrameType type;
+            uint64_t sid = 0, ctr = 0;
+            if (PeekFrame(buffer.data(), static_cast<size_t>(got), type, sid, ctr) &&
+                type == FrameType::HANDSHAKE_INIT &&
+                !AllowHandshake(peer, GetTime())) {
+                continue;
+            }
             result = m_transport.Receive(peer, buffer.data(), static_cast<size_t>(got),
                                          reply, payload);
         }
@@ -231,5 +281,10 @@ void Socket::ThreadReceive()
         }
     }
 }
+
+constexpr int64_t Socket::RATE_WINDOW;
+constexpr size_t Socket::PER_SOURCE_LIMIT;
+constexpr size_t Socket::GLOBAL_LIMIT;
+constexpr size_t Socket::MAX_TRACKED_SOURCES;
 
 } // namespace overlay

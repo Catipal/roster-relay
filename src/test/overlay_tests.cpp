@@ -1808,4 +1808,80 @@ BOOST_AUTO_TEST_CASE(rendezvous_client_reaches_a_service_that_never_published_an
     C.Stop();
 }
 
+
+BOOST_AUTO_TEST_CASE(socket_meters_inbound_handshakes)
+{
+    // A responder does two Diffie-Hellman operations before it learns anything
+    // about who is asking, so an unmetered handshake is free CPU for whoever
+    // sends it. This is the one place a limit helps: past it the work is done.
+    CKey ka, kb;
+    ka.MakeNewKey(true);
+    kb.MakeNewKey(true);
+
+    overlay::Socket A(ka), B(kb);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    BOOST_REQUIRE_MESSAGE(A.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(B.Bind(any, err), err);
+
+    Inbox in_a, in_b;
+    BOOST_REQUIRE(A.Start(in_a.SocketHandler()));
+    BOOST_REQUIRE(B.Start(in_b.SocketHandler()));
+    BOOST_CHECK_EQUAL(B.HandshakesRefused(), 0u);
+
+    // Far more attempts than the per-source allowance, as fast as they go.
+    const CService b_addr = B.BoundAddress();
+    for (int i = 0; i < 60; ++i) A.Connect(b_addr, kb.GetPubKey());
+    BOOST_CHECK(WaitFor([&] { return B.HandshakesRefused() > 0; }, 3000));
+
+    // Refused before any key agreement, which is the whole point - counting
+    // sessions would prove nothing, since sessions are keyed by address and one
+    // source can only ever produce one.
+    BOOST_CHECK_GT(B.HandshakesRefused(), 0u);
+
+    A.Stop();
+    B.Stop();
+}
+
+BOOST_AUTO_TEST_CASE(socket_flood_does_not_lock_out_an_honest_peer)
+{
+    // The limit must refuse excess without refusing everyone: a second peer
+    // arriving during a flood still gets through, because the global cap is far
+    // above the per-source one.
+    CKey ka, kb, kc;
+    ka.MakeNewKey(true);
+    kb.MakeNewKey(true);
+    kc.MakeNewKey(true);
+
+    overlay::Socket A(ka), B(kb), C(kc);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    BOOST_REQUIRE_MESSAGE(A.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(B.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(C.Bind(any, err), err);
+
+    Inbox in_a, in_b, in_c;
+    BOOST_REQUIRE(A.Start(in_a.SocketHandler()));
+    BOOST_REQUIRE(B.Start(in_b.SocketHandler()));
+    BOOST_REQUIRE(C.Start(in_c.SocketHandler()));
+
+    const CService b_addr = B.BoundAddress();
+    for (int i = 0; i < 60; ++i) A.Connect(b_addr, kb.GetPubKey());
+    BOOST_CHECK(WaitFor([&] { return B.HandshakesRefused() > 0; }, 3000));
+
+    // C retries with a backoff longer than the round trip, because each attempt
+    // discards the one before it - a tight loop never completes.
+    BOOST_REQUIRE(WaitFor([&] {
+        if (C.HasSession(b_addr)) return true;
+        C.Connect(b_addr, kb.GetPubKey());
+        UninterruptibleSleep(std::chrono::milliseconds{150});
+        return C.HasSession(b_addr);
+    }, 8000));
+    BOOST_CHECK(C.HasSession(b_addr));
+
+    A.Stop();
+    B.Stop();
+    C.Stop();
+}
+
 BOOST_AUTO_TEST_SUITE_END()

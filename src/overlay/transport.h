@@ -54,6 +54,11 @@ public:
      * Produces the datagram to send. Starting again with the same peer
      * replaces any handshake already in flight, because a peer that never
      * answers must not pin a slot forever.
+     *
+     * That has a consequence callers have to respect: retrying faster than the
+     * round trip never completes, because each attempt discards the one whose
+     * reply is still arriving. Retry with a backoff longer than the expected
+     * round trip, not in a tight loop.
      */
     bool Connect(const PeerKey& peer, const CPubKey& peer_static,
                  std::vector<unsigned char>& datagram_out);

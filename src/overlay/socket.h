@@ -14,6 +14,7 @@
 #include <threadinterrupt.h>
 
 #include <atomic>
+#include <map>
 #include <functional>
 #include <string>
 #include <thread>
@@ -66,11 +67,16 @@ public:
     bool HasSession(const CService& peer);
     size_t SessionCount();
 
+    /** Handshakes dropped by the flood limit, for tests and diagnostics. */
+    size_t HandshakesRefused();
+
     /** The address actually bound, which resolves a port of 0. */
     CService BoundAddress() const { return m_bound; }
 
 private:
     void ThreadReceive();
+    /** False when this datagram should be dropped before any key agreement. */
+    bool AllowHandshake(const CService& from, int64_t now) EXCLUSIVE_LOCKS_REQUIRED(m_mutex);
     bool SendDatagram(const CService& to, const std::vector<unsigned char>& datagram);
 
     SOCKET m_socket{INVALID_SOCKET};
@@ -82,6 +88,21 @@ private:
     // of subtlety that hides protocol bugs.
     Mutex m_mutex;
     Transport m_transport GUARDED_BY(m_mutex);
+
+    // Handshake flood control. A responder performs two Diffie-Hellman
+    // operations before it learns anything at all about who is asking, so an
+    // unmetered HANDSHAKE_INIT is free CPU for an attacker. Two limits, because
+    // one is not enough: per source stops a single host, and the global cap is
+    // what actually holds when sources are forged - which on UDP they can be,
+    // freely.
+    static constexpr int64_t RATE_WINDOW = 10;      //!< seconds
+    static constexpr size_t PER_SOURCE_LIMIT = 10;  //!< handshakes per window
+    static constexpr size_t GLOBAL_LIMIT = 200;     //!< handshakes per window
+    static constexpr size_t MAX_TRACKED_SOURCES = 4096;
+    std::map<CService, size_t> m_attempts GUARDED_BY(m_mutex);
+    size_t m_global_attempts GUARDED_BY(m_mutex){0};
+    int64_t m_window_start GUARDED_BY(m_mutex){0};
+    size_t m_refused GUARDED_BY(m_mutex){0};
 
     PayloadHandler m_handler;
     std::thread m_thread;

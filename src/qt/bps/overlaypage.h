@@ -53,12 +53,11 @@ private:
     ClientModel* m_client_model{nullptr};
 
     QLabel* m_issued{nullptr};
-    QLabel* m_payable{nullptr};
     QLabel* m_relays{nullptr};
     QLabel* m_users{nullptr};
     QLabel* m_per_relay{nullptr};
     QLabel* m_share{nullptr};
-    QLabel* m_share_amount{nullptr};
+    QLabel* m_own_payout{nullptr};
 
     int m_display_unit{0};
     qint64 m_subsidy{-1};  //!< satoshi per block, -1 until known

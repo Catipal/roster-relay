@@ -13,6 +13,9 @@
 #include <qt/clientmodel.h>
 #include <qt/optionsmodel.h>
 
+#include <amount.h>
+#include <util/strencodings.h>
+
 #include <univalue.h>
 
 #include <QDateTime>
@@ -30,6 +33,7 @@ namespace {
 const char* TAG_OVERLAY = "ov:info";
 const char* TAG_ROSTER = "ov:roster";
 const char* TAG_SUBSIDY = "ov:subsidy";
+const char* TAG_PAYOUT = "ov:payout";
 const int REFRESH_MS = 5000;
 
 //! Blocks a day at the chain's 180-second spacing.
@@ -51,6 +55,19 @@ QLabel* MakeField(QGridLayout* grid, int row, int column, const QString& caption
     grid->addWidget(head, row, column * 2);
     grid->addWidget(value, row, column * 2 + 1);
     return value;
+}
+
+//! An amount out of a JSON reply, exactly.
+//!
+//! UniValue keeps the number as the string it was written as, so reading it
+//! through a double would round what the node said. AmountFromValue does this
+//! properly but lives behind the RPC server headers, which a Qt page has no
+//! business including.
+CAmount AmountOf(const UniValue& value)
+{
+    CAmount amount = 0;
+    if (!value.isNum() || !ParseFixedPoint(value.getValStr(), 8, &amount)) return 0;
+    return amount;
 }
 
 void FillKeys(QListWidget* list, const UniValue& array, const QString& empty_text)
@@ -154,27 +171,33 @@ OverlayPage::OverlayPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(
     QGridLayout* pay_grid = new QGridLayout();
     pay_grid->setHorizontalSpacing(12);
     m_issued = MakeField(pay_grid, 0, 0, tr("Issued per day"));
-    m_payable = MakeField(pay_grid, 0, 1, tr("Of that, payable"));
-    m_relays = MakeField(pay_grid, 0, 2, tr("Relays"));
-    m_users = MakeField(pay_grid, 1, 0, tr("Users"));
-    m_per_relay = MakeField(pay_grid, 1, 1, tr("Users per relay"));
-    m_share = MakeField(pay_grid, 1, 2, tr("Share per user"));
-    m_share_amount = MakeField(pay_grid, 2, 0, tr("About, per day"));
-    pay_grid->setColumnStretch(7, 1);
+    m_relays = MakeField(pay_grid, 0, 1, tr("Relays"));
+    m_users = MakeField(pay_grid, 0, 2, tr("Users"));
+    m_per_relay = MakeField(pay_grid, 1, 0, tr("Users per relay"));
+    m_share = MakeField(pay_grid, 1, 1, tr("Share per user"));
+    pay_grid->setColumnStretch(6, 1);
     pay_layout->addLayout(pay_grid);
 
     QLabel* pay_note = new QLabel(
-        tr("A relay pays a user by delegating stake to the key that user published, so what "
-           "reaches the user is the cold-staker fee on the blocks that delegation wins \xe2\x80\x94 "
-           "%1% of the reward, not all of it. That is the ceiling on this whole mechanism: "
-           "the rest of the issuance stays with whoever staked it. A user's share of it is "
-           "one divided by how many users their relay carries, so taking a share of the "
-           "network's users still costs a share of the stake.")
-            .arg(COLD_STAKER_FEE),
+        tr("A relay pays the peers it lists from inside its own block rewards, so a user's "
+           "share is one divided by how many users their relay carries \xe2\x80\x94 which is why "
+           "taking a share of the network's users costs a share of the stake. How much of a "
+           "reward a relay shares is its own choice and nothing enforces it: a relay that "
+           "pays nothing produces a perfectly valid block. What makes it pay is that a relay "
+           "with no users protects nobody, itself included."),
         pay);
     pay_note->setWordWrap(true);
     pay_note->setEnabled(false);
     pay_layout->addWidget(pay_note);
+
+    // The rows above are what the network looks like. This is what this node
+    // is actually doing, which is the only part the operator controls.
+    m_own_payout = new QLabel(pay);
+    m_own_payout->setWordWrap(true);
+    QFont own_font = m_own_payout->font();
+    own_font.setBold(true);
+    m_own_payout->setFont(own_font);
+    pay_layout->addWidget(m_own_payout);
 
     outer->addWidget(pay);
 
@@ -220,6 +243,7 @@ void OverlayPage::Refresh()
 {
     m_rpc.Call(TAG_OVERLAY, "getoverlayinfo");
     m_rpc.Call(TAG_ROSTER, "getrosterinfo");
+    m_rpc.Call(TAG_PAYOUT, "getrelaypayout");
 
     // Not getmininginfo, which would be the obvious source for a block reward:
     // this fork made it ask the wallet for a stake weight through
@@ -243,6 +267,37 @@ void OverlayPage::onRpcResult(const QString& tag, const UniValue& value)
         const UniValue& live = find_value(value, "live_peers");
         m_listed = live.isNum() ? live.get_int() : -1;
         UpdatePay();
+        return;
+    }
+
+    if (tag == TAG_PAYOUT) {
+        const UniValue& percent = find_value(value, "share_percent");
+        const UniValue& users = find_value(value, "users");
+        const UniValue& total = find_value(value, "total");
+        const UniValue& each = find_value(value, "each");
+        const UniValue& note = find_value(value, "note");
+
+        const int share = percent.isNum() ? percent.get_int() : 0;
+        if (share <= 0) {
+            m_own_payout->setText(tr("This node shares nothing. Set -relayshare to a percent, "
+                                     "and take peers on with addrosteruser."));
+            return;
+        }
+        if (note.isStr()) {
+            m_own_payout->setText(tr("This node would share %1%, but %2.")
+                                      .arg(share)
+                                      .arg(QString::fromStdString(note.get_str())));
+            return;
+        }
+        m_own_payout->setText(
+            tr("This node shares %1% with %2 peer(s): the next block it stakes pays %3, "
+               "%4 each.")
+                .arg(share)
+                .arg(users.isNum() ? users.get_int() : 0)
+                .arg(BitcoinUnits::formatWithUnit(m_display_unit,
+                                                  AmountOf(total)))
+                .arg(BitcoinUnits::formatWithUnit(m_display_unit,
+                                                  AmountOf(each))));
         return;
     }
 
@@ -303,6 +358,7 @@ void OverlayPage::onRpcResult(const QString& tag, const UniValue& value)
 void OverlayPage::onRpcFailed(const QString& tag, const QString& message)
 {
     if (tag == TAG_ROSTER) { m_listed = -1; UpdatePay(); return; }
+    if (tag == TAG_PAYOUT) { m_own_payout->setText(message); return; }
     if (tag == TAG_SUBSIDY) { m_subsidy = -1; UpdatePay(); return; }
     if (tag != TAG_OVERLAY) return;
     m_state->setText(message);
@@ -315,14 +371,8 @@ void OverlayPage::UpdatePay()
     const QString unknown = QString::fromUtf8("\xe2\x80\x94");
 
     const qint64 issued = m_subsidy < 0 ? -1 : m_subsidy * (qint64)BLOCKS_PER_DAY;
-    // Only the cold-staker fee reaches a user: a relay pays by delegating
-    // stake, and consensus fixes the staker's cut at exactly this percentage.
-    const qint64 payable = issued < 0 ? -1 : (issued * COLD_STAKER_FEE) / 100;
-
     m_issued->setText(issued < 0 ? unknown
                                  : BitcoinUnits::formatWithUnit(m_display_unit, issued));
-    m_payable->setText(payable < 0 ? unknown
-                                   : BitcoinUnits::formatWithUnit(m_display_unit, payable));
     m_relays->setText(m_relay_count < 0 ? unknown : QString::number(m_relay_count));
 
     // Everyone listed who is not a relay is somebody a relay could be carrying.
@@ -335,7 +385,6 @@ void OverlayPage::UpdatePay()
     if (users < 0 || m_relay_count <= 0) {
         m_per_relay->setText(unknown);
         m_share->setText(m_relay_count == 0 ? tr("no relays yet") : unknown);
-        m_share_amount->setText(unknown);
         return;
     }
 
@@ -347,9 +396,7 @@ void OverlayPage::UpdatePay()
     const double share = per_relay <= 1.0 ? 100.0 : 100.0 / per_relay;
     m_share->setText(QString::number(share, 'f', share < 10.0 ? 2 : 1) + "%");
 
-    if (payable < 0 || users == 0) {
-        m_share_amount->setText(users == 0 ? tr("nobody to pay") : unknown);
-        return;
-    }
-    m_share_amount->setText(BitcoinUnits::formatWithUnit(m_display_unit, payable / (qint64)users));
+    // No absolute per-user figure here. Turning the share into an amount needs
+    // a percentage of the reward, and no such number exists network-wide: each
+    // relay picks its own. This node's exact figures are on the line below.
 }

@@ -17,6 +17,7 @@ class BpsRpc;
 class ClientModel;
 class DiscoveryPage;
 class NetworkStyle;
+class NodePage;
 class OverlayPage;
 class PlatformStyle;
 class RPCConsole;
@@ -98,7 +99,8 @@ private:
     QStackedWidget* m_pages{nullptr};
     DiscoveryPage* m_discovery{nullptr};
     OverlayPage* m_overlay{nullptr};
-    RPCConsole* m_console{nullptr};
+    NodePage* m_node_page{nullptr};
+    RPCConsole* m_console{nullptr}; //!< owned by m_node_page
 #ifdef ENABLE_WALLET
     WalletPage* m_wallet{nullptr};
 #endif

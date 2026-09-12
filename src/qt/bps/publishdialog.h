@@ -68,7 +68,6 @@ private:
     QComboBox* m_network{nullptr};
     QLineEdit* m_address{nullptr};
     QSpinBox* m_port{nullptr};
-    QComboBox* m_duration{nullptr};
     QComboBox* m_wallet{nullptr};
     QLabel* m_status{nullptr};
     QDialogButtonBox* m_buttons{nullptr};

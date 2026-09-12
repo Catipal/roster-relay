@@ -21,6 +21,7 @@ BPS_QT_H = \
   qt/bps/bpsutil.h \
   qt/bps/bpswindow.h \
   qt/bps/discoverypage.h \
+  qt/bps/nodepage.h \
   qt/bps/overlaypage.h \
   qt/bps/publishdialog.h \
   qt/bps/rostermodel.h
@@ -35,6 +36,7 @@ BPS_QT_CPP = \
   qt/bps/bpsutil.cpp \
   qt/bps/bpswindow.cpp \
   qt/bps/discoverypage.cpp \
+  qt/bps/nodepage.cpp \
   qt/bps/overlaypage.cpp \
   qt/bps/publishdialog.cpp \
   qt/bps/rostermodel.cpp
@@ -48,6 +50,7 @@ BPS_QT_MOC_CPP = \
   qt/bps/moc_bpsrpc.cpp \
   qt/bps/moc_bpswindow.cpp \
   qt/bps/moc_discoverypage.cpp \
+  qt/bps/moc_nodepage.cpp \
   qt/bps/moc_overlaypage.cpp \
   qt/bps/moc_publishdialog.cpp \
   qt/bps/moc_rostermodel.cpp

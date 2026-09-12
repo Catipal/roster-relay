@@ -54,8 +54,27 @@ PublishDialog::PublishDialog(BpsRpc& rpc, int tip, bool renewing, QWidget* paren
     outer->addWidget(intro);
 
     // --- where ---------------------------------------------------------
-    QGroupBox* where = new QGroupBox(tr("Where can peers reach you?"), this);
+    QGroupBox* where = new QGroupBox(tr("How should peers reach you?"), this);
     QVBoxLayout* where_layout = new QVBoxLayout(where);
+
+    // The overlay comes first and is the default. Publishing an address is the
+    // exception, not the starting point: a listing with no address is legal,
+    // useful and private, and a default that leaks your location is a default
+    // most people will never change.
+    m_nowhere = new QRadioButton(tr("Through the overlay \xe2\x80\x94 publish no address"), where);
+    where_layout->addWidget(m_nowhere);
+
+    QLabel* nowhere_note = new QLabel(
+        tr("Your listing says who you are and not where you run. Peers reach you over "
+           "the overlay instead, meeting you at points both sides work out from the "
+           "roster. This is what this client turns on by default."),
+        where);
+    nowhere_note->setWordWrap(true);
+    nowhere_note->setContentsMargins(24, 0, 0, 0);
+    QFont small = nowhere_note->font();
+    small.setPointSizeF(small.pointSizeF() * 0.9);
+    nowhere_note->setFont(small);
+    where_layout->addWidget(nowhere_note);
 
     m_at_address = new QRadioButton(tr("At an address I publish"), where);
     where_layout->addWidget(m_at_address);
@@ -79,33 +98,31 @@ PublishDialog::PublishDialog(BpsRpc& rpc, int tip, bool renewing, QWidget* paren
     row->addWidget(m_port);
     where_layout->addWidget(m_address_row);
 
-    m_nowhere = new QRadioButton(tr("Nowhere \xe2\x80\x94 list me, but not my address"), where);
-    where_layout->addWidget(m_nowhere);
-
-    QLabel* nowhere_note = new QLabel(
-        tr("A listing with no address still counts: it puts your identity in the roster "
-           "and starts building its history, without telling anyone where you run. "
-           "Peers reach you through the overlay instead."),
+    QLabel* address_note = new QLabel(
+        tr("Anyone can see it, and the chain keeps it permanently. An onion address "
+           "publishes a location nobody can trace back to you and works from behind "
+           "NAT; an IP address does neither."),
         where);
-    nowhere_note->setWordWrap(true);
-    nowhere_note->setContentsMargins(24, 0, 0, 0);
-    QFont small = nowhere_note->font();
-    small.setPointSizeF(small.pointSizeF() * 0.9);
-    nowhere_note->setFont(small);
-    where_layout->addWidget(nowhere_note);
+    address_note->setWordWrap(true);
+    address_note->setContentsMargins(24, 0, 0, 0);
+    QFont address_font = address_note->font();
+    address_font.setPointSizeF(address_font.pointSizeF() * 0.9);
+    address_note->setFont(address_font);
+    where_layout->addWidget(address_note);
 
-    m_at_address->setChecked(true);
+    m_nowhere->setChecked(true);
     outer->addWidget(where);
 
     // --- how long, and who pays ----------------------------------------
     QFormLayout* form = new QFormLayout();
 
-    m_duration = new QComboBox(this);
-    m_duration->addItem(tr("A month"), (int)roster::MIN_TTL);
-    m_duration->addItem(tr("Three months"), 43200);
-    m_duration->addItem(tr("Six months"), 86400);
-    m_duration->addItem(tr("A year"), (int)roster::MAX_TTL);
-    form->addRow(tr("Keep the listing for"), m_duration);
+    // Not a choice. A listing runs a month and is then renewed - that is the
+    // cadence the relay economics are built on, where a relay pays for its
+    // users' monthly renewals and a relay's own listing runs yearly. Offering a
+    // slider here would invite an operator to pick a length that does not match
+    // the role they are in.
+    QLabel* duration = new QLabel(tr("A month, then it needs renewing"), this);
+    form->addRow(tr("How long it lasts"), duration);
 
     m_wallet = new QComboBox(this);
     m_wallet->setEnabled(false);
@@ -148,7 +165,6 @@ void PublishDialog::SetBusy(bool busy)
     m_network->setEnabled(!busy && m_at_address->isChecked());
     m_address->setEnabled(!busy && m_at_address->isChecked());
     m_port->setEnabled(!busy && m_at_address->isChecked());
-    m_duration->setEnabled(!busy);
     m_wallet->setEnabled(!busy && m_wallet->count() > 1);
 }
 
@@ -182,12 +198,10 @@ void PublishDialog::onPublish()
         options.pushKV("endpoints", endpoints);
     }
 
-    const int blocks = m_duration->currentData().toInt();
-    // The longest choice already spans the whole window, so it gets no margin:
-    // a transaction that confirms late only shortens the life, which stays legal.
-    const int expiry = (blocks >= (int)roster::MAX_TTL) ? m_tip + (int)roster::MAX_TTL
-                                                        : m_tip + blocks + CONFIRM_MARGIN;
-    options.pushKV("expiry_height", expiry);
+    // A month, plus slack for the transaction to confirm - the same default
+    // createannouncement would apply on its own, stated here rather than left
+    // implicit because the height is what actually goes on the chain.
+    options.pushKV("expiry_height", m_tip + (int)roster::MIN_TTL + CONFIRM_MARGIN);
 
     UniValue params(UniValue::VARR);
     params.push_back(options);

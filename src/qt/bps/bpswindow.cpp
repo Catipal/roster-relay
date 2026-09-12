@@ -6,6 +6,7 @@
 
 #include <qt/bps/bpsrpc.h>
 #include <qt/bps/discoverypage.h>
+#include <qt/bps/nodepage.h>
 #include <qt/bps/overlaypage.h>
 #ifdef ENABLE_WALLET
 #include <qt/bps/walletpage.h>
@@ -85,9 +86,10 @@ BpsWindow::BpsWindow(interfaces::Node& node, const PlatformStyle* platformStyle,
 
     m_discovery = new DiscoveryPage(*m_rpc, this);
     m_overlay = new OverlayPage(*m_rpc, this);
-    // Not a reimplementation: this is the wallet client's own console, peer
-    // table and traffic graph, linked rather than copied.
-    m_console = new RPCConsole(node, platformStyle, nullptr);
+    // The console, peer table and traffic graph are the wallet client's own,
+    // wrapped in a page that adds the relay economics above them.
+    m_node_page = new NodePage(*m_rpc, node, platformStyle, this);
+    m_console = m_node_page->Console();
 
     m_pages = new QStackedWidget(this);
     m_pages->addWidget(m_discovery);
@@ -110,7 +112,7 @@ BpsWindow::BpsWindow(interfaces::Node& node, const PlatformStyle* platformStyle,
 #endif
 
     m_pages->addWidget(m_overlay);
-    m_pages->addWidget(m_console);
+    m_pages->addWidget(m_node_page);
     m_nav->addItem(tr("Overlay"));
     m_nav->addItem(tr("Node"));
     m_nav->setFixedWidth(180);
@@ -178,14 +180,7 @@ void BpsWindow::setClientModel(ClientModel* model, interfaces::BlockAndHeaderTip
 
     // The console owns a good deal of state tied to the model, so it is told
     // first and told the same things the wallet client tells it.
-    if (m_console) {
-        if (model && tip_info) {
-            m_console->setClientModel(model, tip_info->block_height,
-                                      tip_info->block_time, tip_info->verification_progress);
-        } else {
-            m_console->setClientModel(model);
-        }
-    }
+    if (m_node_page) m_node_page->setClientModel(model, tip_info);
 
     m_discovery->setClientModel(model);
     m_overlay->setClientModel(model);

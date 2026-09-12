@@ -8,6 +8,7 @@
 
 #include <qt/bps/bpsapp.h>
 #include <qt/bps/bpswindow.h>
+#include <qt/bps/settingspage.h>
 
 // The wallet client's own startup worker, its models and its dialogs. Linked,
 // not copied: this is what keeps the two clients from drifting.
@@ -171,9 +172,9 @@ void BpsApplication::parameterSetup()
     // one. Discovery is the whole purpose here, so the roster index and the
     // overlay are on unless the operator turns them off; in the node and in the
     // wallet client they stay off, because there they are an extra nobody asked
-    // for. SoftSet, so anything on the command line or in the config file wins.
-    gArgs.SoftSetBoolArg("-rosterindex", true);
-    gArgs.SoftSetBoolArg("-overlay", true);
+    // for. The settings page owns these now - it stores them and soft-sets
+    // them, so anything on the command line or in the config file still wins.
+    SettingsPage::ApplyStoredSettings();
 
     InitLogging(gArgs);
     InitParameterInteraction(gArgs);

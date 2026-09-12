@@ -17,10 +17,10 @@ class BpsRpc;
 class ClientModel;
 class DiscoveryPage;
 class NetworkStyle;
-class NodePage;
 class OverlayPage;
 class PlatformStyle;
 class RPCConsole;
+class SettingsPage;
 class WalletController;
 class WalletPage;
 
@@ -89,6 +89,9 @@ private Q_SLOTS:
 private:
     void subscribeToCoreSignals();
 
+    /** The chain half of the status bar, from a height and a sync fraction. */
+    void ShowChainStatus(int height, double progress);
+
     interfaces::Node& m_node;
     const PlatformStyle* m_platform_style;
 
@@ -99,8 +102,8 @@ private:
     QStackedWidget* m_pages{nullptr};
     DiscoveryPage* m_discovery{nullptr};
     OverlayPage* m_overlay{nullptr};
-    NodePage* m_node_page{nullptr};
-    RPCConsole* m_console{nullptr}; //!< owned by m_node_page
+    RPCConsole* m_console{nullptr};
+    SettingsPage* m_settings{nullptr};
 #ifdef ENABLE_WALLET
     WalletPage* m_wallet{nullptr};
 #endif

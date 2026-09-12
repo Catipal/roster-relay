@@ -7,11 +7,16 @@
 #include <qt/bps/bpsrpc.h>
 #include <qt/bps/bpsutil.h>
 
+#include <qt/bitcoinunits.h>
 #include <qt/clientmodel.h>
+#include <qt/optionsmodel.h>
 
 #include <univalue.h>
 
+#include <QDateTime>
+#include <QFont>
 #include <QFormLayout>
+#include <QGridLayout>
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QLabel>
@@ -21,7 +26,30 @@
 
 namespace {
 const char* TAG_OVERLAY = "ov:info";
+const char* TAG_ROSTER = "ov:roster";
+const char* TAG_SUBSIDY = "ov:subsidy";
 const int REFRESH_MS = 5000;
+
+//! Blocks a day at the chain's 180-second spacing.
+const int BLOCKS_PER_DAY = 24 * 60 * 60 / BpsUtil::SECONDS_PER_BLOCK;
+
+QLabel* MakeField(QGridLayout* grid, int row, int column, const QString& caption)
+{
+    QLabel* head = new QLabel(caption);
+    QFont head_font = head->font();
+    head_font.setPointSizeF(head_font.pointSizeF() * 0.85);
+    head->setFont(head_font);
+    head->setEnabled(false);
+
+    QLabel* value = new QLabel(QString::fromUtf8("\xe2\x80\x94"));
+    QFont value_font = value->font();
+    value_font.setBold(true);
+    value->setFont(value_font);
+
+    grid->addWidget(head, row, column * 2);
+    grid->addWidget(value, row, column * 2 + 1);
+    return value;
+}
 
 void FillKeys(QListWidget* list, const UniValue& array, const QString& empty_text)
 {
@@ -117,6 +145,35 @@ OverlayPage::OverlayPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(
 
     outer->addLayout(lists, 1);
 
+    // --- what relaying pays ------------------------------------------------
+    QGroupBox* pay = new QGroupBox(tr("What relaying pays"), this);
+    QVBoxLayout* pay_layout = new QVBoxLayout(pay);
+
+    QGridLayout* pay_grid = new QGridLayout();
+    pay_grid->setHorizontalSpacing(12);
+    m_issued = MakeField(pay_grid, 0, 0, tr("Issued per day"));
+    m_relays = MakeField(pay_grid, 0, 1, tr("Relays"));
+    m_users = MakeField(pay_grid, 0, 2, tr("Users"));
+    m_per_relay = MakeField(pay_grid, 1, 0, tr("Users per relay"));
+    m_share = MakeField(pay_grid, 1, 1, tr("Share per user"));
+    m_share_amount = MakeField(pay_grid, 1, 2, tr("About, per day"));
+    pay_grid->setColumnStretch(7, 1);
+    pay_layout->addLayout(pay_grid);
+
+    QLabel* pay_note = new QLabel(
+        tr("A relay's income is its share of block rewards, and it splits that among the "
+           "users listed through it \xe2\x80\x94 so a user's share is simply one divided by how "
+           "many users their relay carries. Taking a share of the network's users therefore "
+           "costs a share of the stake, which is the whole of the argument. The daily figure "
+           "assumes relays hold stake in proportion to the users they carry. Nothing pays "
+           "any of this out yet."),
+        pay);
+    pay_note->setWordWrap(true);
+    pay_note->setEnabled(false);
+    pay_layout->addWidget(pay_note);
+
+    outer->addWidget(pay);
+
     QLabel* caveat = new QLabel(
         tr("Not yet reviewed by anyone who did not write it, and it hides where you are "
            "rather than when you speak: someone watching both ends can still line up the "
@@ -136,10 +193,21 @@ OverlayPage::OverlayPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(
 
 void OverlayPage::setClientModel(ClientModel* model)
 {
+    m_client_model = model;
     if (!model) {
         m_timer->stop();
         return;
     }
+
+    if (model->getOptionsModel()) {
+        m_display_unit = model->getOptionsModel()->getDisplayUnit();
+        connect(model->getOptionsModel(), &OptionsModel::displayUnitChanged, this,
+                [this](int unit) {
+                    m_display_unit = unit;
+                    UpdatePay();
+                });
+    }
+
     m_timer->start();
     Refresh();
 }
@@ -147,10 +215,40 @@ void OverlayPage::setClientModel(ClientModel* model)
 void OverlayPage::Refresh()
 {
     m_rpc.Call(TAG_OVERLAY, "getoverlayinfo");
+    m_rpc.Call(TAG_ROSTER, "getrosterinfo");
+
+    // Not getmininginfo, which would be the obvious source for a block reward:
+    // this fork made it ask the wallet for a stake weight through
+    // GetWalletForJSONRPCRequest, which throws when no wallet is open and when
+    // two are. getblockstats is chain-only, and one field of it is cheap.
+    if (!m_client_model) return;
+    const int height = m_client_model->getNumBlocks();
+    if (height <= 0) return; // genesis carries no undo data to read
+
+    UniValue params(UniValue::VARR);
+    params.push_back(height);
+    UniValue fields(UniValue::VARR);
+    fields.push_back("subsidy");
+    params.push_back(fields);
+    m_rpc.Call(TAG_SUBSIDY, "getblockstats", params);
 }
 
 void OverlayPage::onRpcResult(const QString& tag, const UniValue& value)
 {
+    if (tag == TAG_ROSTER) {
+        const UniValue& live = find_value(value, "live_peers");
+        m_listed = live.isNum() ? live.get_int() : -1;
+        UpdatePay();
+        return;
+    }
+
+    if (tag == TAG_SUBSIDY) {
+        const UniValue& reward = find_value(value, "subsidy");
+        m_subsidy = reward.isNum() ? reward.get_int64() : -1;
+        UpdatePay();
+        return;
+    }
+
     if (tag != TAG_OVERLAY) return;
 
     const UniValue& enabled = find_value(value, "enabled");
@@ -184,11 +282,11 @@ void OverlayPage::onRpcResult(const QString& tag, const UniValue& value)
     m_introductions->setText(introductions.isNum() ? QString::number(introductions.get_int()) : tr("\xe2\x80\x94"));
 
     const UniValue& candidates = find_value(value, "relay_candidates");
+    m_relay_count = candidates.isNum() ? candidates.get_int() : -1;
     // Zero is a real state on a young network and while the relay list waits
     // for its refresh, so it is worded rather than printed as a bare 0.
-    m_candidates->setText(candidates.isNum() && candidates.get_int() > 0
-                              ? QString::number(candidates.get_int())
-                              : tr("none yet"));
+    m_candidates->setText(m_relay_count > 0 ? QString::number(m_relay_count) : tr("none yet"));
+    UpdatePay();
 
     const UniValue& epoch = find_value(value, "epoch");
     m_epoch->setText(epoch.isNum() ? QString::number(epoch.get_int64()) : tr("\xe2\x80\x94"));
@@ -200,6 +298,50 @@ void OverlayPage::onRpcResult(const QString& tag, const UniValue& value)
 
 void OverlayPage::onRpcFailed(const QString& tag, const QString& message)
 {
+    if (tag == TAG_ROSTER) { m_listed = -1; UpdatePay(); return; }
+    if (tag == TAG_SUBSIDY) { m_subsidy = -1; UpdatePay(); return; }
     if (tag != TAG_OVERLAY) return;
     m_state->setText(message);
+    m_relay_count = -1;
+    UpdatePay();
+}
+
+void OverlayPage::UpdatePay()
+{
+    const QString unknown = QString::fromUtf8("\xe2\x80\x94");
+
+    m_issued->setText(m_subsidy < 0
+                          ? unknown
+                          : BitcoinUnits::formatWithUnit(m_display_unit,
+                                                         m_subsidy * (qint64)BLOCKS_PER_DAY));
+    m_relays->setText(m_relay_count < 0 ? unknown : QString::number(m_relay_count));
+
+    // Everyone listed who is not a relay is somebody a relay could be carrying.
+    // The roster does not record which relay listed whom - a record names a key
+    // and an endpoint, nothing about who paid for it - so this is the network
+    // average rather than any particular relay's roll.
+    const int users = (m_listed < 0 || m_relay_count < 0) ? -1 : m_listed - m_relay_count;
+    m_users->setText(users < 0 ? unknown : QString::number(users));
+
+    if (users < 0 || m_relay_count <= 0) {
+        m_per_relay->setText(unknown);
+        m_share->setText(m_relay_count == 0 ? tr("no relays yet") : unknown);
+        m_share_amount->setText(unknown);
+        return;
+    }
+
+    const double per_relay = (double)users / (double)m_relay_count;
+    m_per_relay->setText(QString::number(per_relay, 'f', 1));
+
+    // One user on a relay takes all of it; fewer than one is still all of it,
+    // not more, so the share is capped rather than allowed past 100%.
+    const double share = per_relay <= 1.0 ? 100.0 : 100.0 / per_relay;
+    m_share->setText(QString::number(share, 'f', share < 10.0 ? 2 : 1) + "%");
+
+    if (m_subsidy < 0 || users == 0) {
+        m_share_amount->setText(users == 0 ? tr("nobody to pay") : unknown);
+        return;
+    }
+    m_share_amount->setText(BitcoinUnits::formatWithUnit(
+        m_display_unit, (m_subsidy * (qint64)BLOCKS_PER_DAY) / (qint64)users));
 }

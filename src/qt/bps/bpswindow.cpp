@@ -6,8 +6,8 @@
 
 #include <qt/bps/bpsrpc.h>
 #include <qt/bps/discoverypage.h>
-#include <qt/bps/nodepage.h>
 #include <qt/bps/overlaypage.h>
+#include <qt/bps/settingspage.h>
 #ifdef ENABLE_WALLET
 #include <qt/bps/walletpage.h>
 #include <qt/walletmodel.h>
@@ -86,10 +86,9 @@ BpsWindow::BpsWindow(interfaces::Node& node, const PlatformStyle* platformStyle,
 
     m_discovery = new DiscoveryPage(*m_rpc, this);
     m_overlay = new OverlayPage(*m_rpc, this);
-    // The console, peer table and traffic graph are the wallet client's own,
-    // wrapped in a page that adds the relay economics above them.
-    m_node_page = new NodePage(*m_rpc, node, platformStyle, this);
-    m_console = m_node_page->Console();
+    // Not a reimplementation: this is the wallet client's own console, peer
+    // table and traffic graph, linked rather than copied.
+    m_console = new RPCConsole(node, platformStyle, nullptr);
 
     m_pages = new QStackedWidget(this);
     m_pages->addWidget(m_discovery);
@@ -111,10 +110,18 @@ BpsWindow::BpsWindow(interfaces::Node& node, const PlatformStyle* platformStyle,
     }
 #endif
 
+    m_settings = new SettingsPage(platformStyle, this);
+    connect(m_settings, &SettingsPage::message, this,
+            [this](const QString& title, const QString& text, unsigned int style) {
+                message(title, text, style);
+            });
+
     m_pages->addWidget(m_overlay);
-    m_pages->addWidget(m_node_page);
+    m_pages->addWidget(m_console);
+    m_pages->addWidget(m_settings);
     m_nav->addItem(tr("Overlay"));
     m_nav->addItem(tr("Node"));
+    m_nav->addItem(tr("Settings"));
     m_nav->setFixedWidth(180);
     m_nav->setFrameShape(QFrame::NoFrame);
     m_nav->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -176,14 +183,27 @@ void BpsWindow::setClientModel(ClientModel* model, interfaces::BlockAndHeaderTip
         setNumConnections(model->getNumConnections());
         connect(model, &ClientModel::numConnectionsChanged, this, &BpsWindow::setNumConnections);
         connect(model, &ClientModel::numBlocksChanged, this, &BpsWindow::setNumBlocks);
+
+        // Paint the height now rather than waiting for the next block. A node
+        // with a loaded chain and no peers never receives one, so the status
+        // bar otherwise reads "connecting..." for as long as it runs.
+        if (tip_info) ShowChainStatus(tip_info->block_height, tip_info->verification_progress);
     }
 
     // The console owns a good deal of state tied to the model, so it is told
     // first and told the same things the wallet client tells it.
-    if (m_node_page) m_node_page->setClientModel(model, tip_info);
+    if (m_console) {
+        if (model && tip_info) {
+            m_console->setClientModel(model, tip_info->block_height,
+                                      tip_info->block_time, tip_info->verification_progress);
+        } else {
+            m_console->setClientModel(model);
+        }
+    }
 
     m_discovery->setClientModel(model);
     m_overlay->setClientModel(model);
+    if (m_settings) m_settings->setClientModel(model);
 #ifdef ENABLE_WALLET
     if (m_wallet) m_wallet->setClientModel(model);
 #endif
@@ -210,10 +230,15 @@ void BpsWindow::setNumBlocks(int count, const QDateTime& block_date, double prog
                              bool header, SynchronizationState sync_state)
 {
     if (header) return;
+    ShowChainStatus(count, progress);
+}
+
+void BpsWindow::ShowChainStatus(int height, double progress)
+{
     if (progress < 0.999) {
         m_status_chain->setText(tr("catching up \xe2\x80\x94 %1%").arg(progress * 100, 0, 'f', 1));
     } else {
-        m_status_chain->setText(tr("block %1").arg(count));
+        m_status_chain->setText(tr("block %1").arg(height));
     }
 }
 

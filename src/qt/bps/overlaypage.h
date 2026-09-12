@@ -46,7 +46,23 @@ private Q_SLOTS:
     void onRpcFailed(const QString& tag, const QString& message);
 
 private:
+    /** Recompute what a user would be paid, from the relay and user counts. */
+    void UpdatePay();
+
     BpsRpc& m_rpc;
+    ClientModel* m_client_model{nullptr};
+
+    QLabel* m_issued{nullptr};
+    QLabel* m_relays{nullptr};
+    QLabel* m_users{nullptr};
+    QLabel* m_per_relay{nullptr};
+    QLabel* m_share{nullptr};
+    QLabel* m_share_amount{nullptr};
+
+    int m_display_unit{0};
+    qint64 m_subsidy{-1};  //!< satoshi per block, -1 until known
+    int m_listed{-1};      //!< peers in the live roster
+    int m_relay_count{-1}; //!< of those, the ones this node would route through
 
     QLabel* m_state{nullptr};
     QLabel* m_listening{nullptr};

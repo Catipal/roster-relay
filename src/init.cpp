@@ -2156,7 +2156,7 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             overlay::g_overlay.reset();
             return InitError(Untranslated("overlay: could not start the receive thread"));
         }
-        LogPrintf("overlay: listening on %s\n", overlay::g_overlay->BoundAddress().ToString());
+        // The socket logs the address it bound to, so nothing is said twice here.
 
         // Path selection is client policy and lives beside the overlay rather
         // than inside it. Empty until the roster refresh below fills it.
@@ -2169,7 +2169,7 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
     // about others, but never act on what the chain told it.
     if (g_rosterindex && args.GetBoolArg("-rosterconnect", roster::DEFAULT_ROSTERCONNECT)) {
         CConnman* connman = node.connman.get();
-        node.scheduler->scheduleEvery([connman]{
+        const std::function<void()> refresh_roster = [connman]{
             RosterIndex* index = g_rosterindex.get();
             if (index == nullptr) return;
             int tip_height;
@@ -2214,7 +2214,17 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                      "(%u without an endpoint, %u unroutable, %u unreachable, %u unrepresentable)\n",
                      stats.live, stats.collected, stats.no_endpoint,
                      stats.unroutable, stats.unreachable, stats.unrepresentable);
-        }, roster::ROSTER_PEERS_INTERVAL);
+        };
+
+        // Once shortly after startup, and then on the long interval.
+        // scheduleEvery does not fire until its first interval has passed, so
+        // on its own it leaves a node - and any overlay path it wants to build
+        // - with nothing from the chain for the first half hour, which is a
+        // strange thing for a discovery mechanism to do at the one moment it
+        // is most needed. The work is idempotent, so running it twice early
+        // costs a read.
+        node.scheduler->scheduleFromNow(refresh_roster, std::chrono::seconds{10});
+        node.scheduler->scheduleEvery(refresh_roster, roster::ROSTER_PEERS_INTERVAL);
     }
 
 #if HAVE_SYSTEM

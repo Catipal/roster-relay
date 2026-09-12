@@ -20,6 +20,7 @@
 
 #include <chainparams.h>
 #include <consensus/validation.h>
+#include <consensus/consensus.h>
 #include <key.h>
 #include <miner.h>
 #include <primitives/block.h>
@@ -193,6 +194,72 @@ BOOST_AUTO_TEST_CASE(coldstakeoutputs_rejects_a_second_foreign_output)
     block.vtx[1] = MakeTransactionRef(bad);
     BOOST_CHECK_MESSAGE(!CheckColdStakeOutputs(block),
                         "CheckColdStakeOutputs must allow at most one non-P2CS output");
+}
+
+// A coinstake that is NOT a cold stake may pay as many parties as it likes.
+//
+// Worth pinning down, because it decides how a relay can pay its users and the
+// answer is counterintuitive. Every rule above restricts a COLD stake: the
+// script rule, CheckColdStakeOutputs and the COLD_STAKER_FEE pin all key off
+// HasP2CSOutputs(). A plain coinstake meets none of them, so past the MPoS
+// window CheckReward drops to one recipient and returns before it looks at a
+// single output - leaving only the ceiling on total value.
+//
+// So a relay that stakes its own coins can split the reward among any number of
+// peers, in any proportion, inside a block it was producing anyway: no extra
+// transaction, no extra chain bytes, no 7% cap and no consensus change. The
+// cold-stake path is the one that is constrained, not the ordinary one.
+BOOST_AUTO_TEST_CASE(plain_coinstake_may_pay_many_parties)
+{
+    const Consensus::Params& params = Params().GetConsensus();
+    // Past nLastMPoSBlock, where rewardRecipients falls back to 1.
+    const int height = params.nLastMPoSBlock + 1000;
+
+    CKey miner;
+    miner.MakeNewKey(true);
+    const CScript own = GetScriptForDestination(PKHash(miner.GetPubKey()));
+
+    CMutableTransaction coinbase;
+    coinbase.vin.resize(1);
+    coinbase.vout.resize(1);
+    coinbase.vout[0].SetEmpty();
+
+    CMutableTransaction coinstake;
+    coinstake.vin.resize(1);
+    coinstake.vin[0].prevout = COutPoint(InsecureRand256(), 0);
+    coinstake.vin[0].scriptSig = CScript() << OP_1;
+    coinstake.vout.resize(2);
+    coinstake.vout[0].SetEmpty();
+
+    const CAmount reward = GetBlockSubsidy(height, params);
+    const int kUsers = 8;
+    const CAmount each = reward / (kUsers + 1);
+
+    coinstake.vout[1] = CTxOut(reward - each * kUsers, own);
+    for (int i = 0; i < kUsers; ++i) {
+        // Eight unrelated destinations, as eight users' addresses would be.
+        coinstake.vout.push_back(CTxOut(each, AttackerScript()));
+    }
+
+    CBlock block;
+    block.vtx.push_back(MakeTransactionRef(coinbase));
+    block.vtx.push_back(MakeTransactionRef(coinstake));
+    block.prevoutStake = coinstake.vin[0].prevout; // what makes it proof-of-stake
+
+    BOOST_CHECK(block.IsProofOfStake());
+    BOOST_CHECK(!block.vtx[1]->HasP2CSOutputs());
+
+    // The two rules that constrain a cold stake do not engage at all.
+    BOOST_CHECK(CheckColdStakeOutputs(block));
+
+    BlockValidationState state;
+    BOOST_CHECK_MESSAGE(CheckReward(block, state, height, params, /*nFees=*/0, reward),
+                        "a plain coinstake paying many parties must be accepted");
+
+    // The one rule that does apply is the ceiling on total value.
+    BlockValidationState overpaid;
+    BOOST_CHECK_MESSAGE(!CheckReward(block, overpaid, height, params, 0, reward + 1),
+                        "a coinstake paying more than the reward must still be rejected");
 }
 
 BOOST_AUTO_TEST_SUITE_END()

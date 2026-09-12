@@ -6,6 +6,8 @@
 #define BITCOIN_ROSTER_KEYSTORE_H
 
 #include <key.h>
+#include <pubkey.h>
+#include <roster/record.h>
 
 #include <string>
 
@@ -32,6 +34,21 @@ bool GetOperationalKey(CKey& key_out, std::string& error);
 
 /** Where the key lives, for logging and for error messages. */
 std::string OperationalKeyPath();
+
+/**
+ * The ordinary pubkey behind a published roster key.
+ *
+ * A record carries only the x coordinate, so an address cannot be read off it
+ * without a convention for the missing parity byte. The convention is even-Y,
+ * which is what GetOperationalKey stores, so this and the peer's own wallet
+ * arrive at the same key. That is what lets a relay delegate stake to a peer it
+ * has only ever seen on the chain: the peer's staking address is a function of
+ * its listing, and nothing extra has to be published or asked for.
+ *
+ * False when the 32 bytes are not an x coordinate on the curve at all, which a
+ * record signature check would already have rejected.
+ */
+bool StakerPubKeyFromRoster(const KeyBytes& op_key, CPubKey& pubkey_out);
 
 } // namespace roster
 

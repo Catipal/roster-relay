@@ -6,6 +6,7 @@
 #include <chainparams.h>
 #include <compat.h>
 #include <index/rosterindex.h>
+#include <key_io.h>
 #include <netaddress.h>
 #include <roster/keystore.h>
 #include <roster/record.h>
@@ -17,6 +18,7 @@
 #include <util/strencodings.h>
 #include <validation.h>
 
+#include <algorithm>
 #include <cstring>
 #include <map>
 #include <string>
@@ -620,6 +622,108 @@ static RPCHelpMan createannouncement()
     };
 }
 
+static RPCHelpMan getrosterstaker()
+{
+    return RPCHelpMan{"getrosterstaker",
+        "\nThe staking address behind a roster key.\n"
+        "\nThis is what lets a relay pay a peer it has only ever seen on the chain. A relay\n"
+        "delegates stake with the peer's key as the staker and its own as the owner, so the\n"
+        "peer earns the staker fee on every block that delegation wins, and consensus stops\n"
+        "the peer from spending the principal (OP_CHECKCOLDSTAKEVERIFY). Nothing has to be\n"
+        "asked of the peer and no payout address is ever published: the address is a\n"
+        "function of the listing.\n"
+        "\nA record carries only the x coordinate of the key, so the parity byte is fixed by\n"
+        "convention at even, which is the form a node keeps in roster.key.\n",
+        {
+            {"key", RPCArg::Type::STR_HEX, /* default */ "this node's own key",
+             "The 32-byte roster key, hex, as getroster reports it."},
+        },
+        RPCResult{
+            RPCResult::Type::OBJ, "", "", {
+                {RPCResult::Type::STR_HEX, "key", "The roster key asked about"},
+                {RPCResult::Type::STR_HEX, "staker_pubkey", "The full public key it names"},
+                {RPCResult::Type::STR, "staker_address", "Pass this to delegatestake as staker_address"},
+            }},
+        RPCExamples{
+            HelpExampleCli("getrosterstaker", "")
+          + HelpExampleCli("getrosterstaker", "\"e6caa9dc821087cadae32b2dc4a5a4c8201acc78cf6033297c8b66318d082b5e\"")
+        },
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    roster::KeyBytes key{};
+
+    if (request.params[0].isNull()) {
+        CKey own;
+        std::string error;
+        if (!roster::GetOperationalKey(own, error)) throw JSONRPCError(RPC_INTERNAL_ERROR, error);
+        const CPubKey pubkey = own.GetPubKey();
+        std::copy(pubkey.begin() + 1, pubkey.begin() + 33, key.begin());
+    } else {
+        const std::string hex = request.params[0].get_str();
+        if (!IsHex(hex) || hex.size() != roster::RECORD_KEY_SIZE * 2) {
+            throw JSONRPCError(RPC_INVALID_PARAMETER, "key must be 32 bytes of hex");
+        }
+        const std::vector<unsigned char> raw = ParseHex(hex);
+        std::copy(raw.begin(), raw.end(), key.begin());
+    }
+
+    CPubKey staker;
+    if (!roster::StakerPubKeyFromRoster(key, staker)) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER,
+                           "Those 32 bytes are not a point on the curve, so they name no key. "
+                           "A record carrying them could never have verified.");
+    }
+
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("key", HexStr(key));
+    out.pushKV("staker_pubkey", HexStr(staker));
+    out.pushKV("staker_address", EncodeDestination(PKHash(staker)));
+    return out;
+},
+    };
+}
+
+static RPCHelpMan dumprosterkey()
+{
+    return RPCHelpMan{"dumprosterkey",
+        "\nThe private key behind this node's roster listing, in wallet import format.\n"
+        "\nOnly needed to be paid. A relay delegating stake to this node names its roster key\n"
+        "as the staker, and producing those coinstakes needs the key in a wallet - so import\n"
+        "this into a staking wallet with importprivkey.\n"
+        "\nIt is already unencrypted in the datadir, by design: section 7 makes this the\n"
+        "operational key, hot, signing routine announcements, and cheap to replace in one\n"
+        "block. It is not the identity key. Even so, anything that can reach this RPC can\n"
+        "take over this node's listing until it is revoked, so treat the answer as a secret\n"
+        "and do not run it on a node whose RPC is exposed.\n",
+        {},
+        RPCResult{
+            RPCResult::Type::OBJ, "", "", {
+                {RPCResult::Type::STR, "wif", "The key, for importprivkey"},
+                {RPCResult::Type::STR_HEX, "key", "The roster key it corresponds to"},
+                {RPCResult::Type::STR, "staker_address", "The address a relay would delegate to"},
+                {RPCResult::Type::STR, "path", "Where the key is stored"},
+            }},
+        RPCExamples{HelpExampleCli("dumprosterkey", "") + HelpExampleRpc("dumprosterkey", "")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    CKey key;
+    std::string error;
+    if (!roster::GetOperationalKey(key, error)) throw JSONRPCError(RPC_INTERNAL_ERROR, error);
+
+    const CPubKey pubkey = key.GetPubKey();
+    roster::KeyBytes op_key{};
+    std::copy(pubkey.begin() + 1, pubkey.begin() + 33, op_key.begin());
+
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("wif", EncodeSecret(key));
+    out.pushKV("key", HexStr(op_key));
+    out.pushKV("staker_address", EncodeDestination(PKHash(pubkey)));
+    out.pushKV("path", roster::OperationalKeyPath());
+    return out;
+},
+    };
+}
+
 void RegisterRosterRPCCommands(CRPCTable& t)
 {
 // clang-format off
@@ -631,6 +735,8 @@ static const CRPCCommand commands[] =
     { "roster",           "getroster",            &getroster,             {"count","skip"} },
     { "roster",           "getrosterhistory",     &getrosterhistory,      {"key"} },
     { "roster",           "createannouncement",   &createannouncement,    {"options"} },
+    { "roster",           "getrosterstaker",      &getrosterstaker,       {"key"} },
+    { "roster",           "dumprosterkey",        &dumprosterkey,         {} },
 };
 // clang-format on
     for (const auto& c : commands) {

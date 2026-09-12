@@ -168,10 +168,12 @@ void SettingsPage::setClientModel(ClientModel* model)
 
     m_loading = true;
     m_unit->clear();
-    m_unit->addItem(BitcoinUnits::longName(BitcoinUnits::BPS), BitcoinUnits::BPS);
-    m_unit->addItem(BitcoinUnits::longName(BitcoinUnits::mBPS), BitcoinUnits::mBPS);
-    m_unit->addItem(BitcoinUnits::longName(BitcoinUnits::uBPS), BitcoinUnits::uBPS);
-    m_unit->addItem(BitcoinUnits::longName(BitcoinUnits::SAT), BitcoinUnits::SAT);
+    // Whatever the shared list offers, so the two clients and the core options
+    // dialog never disagree about which units exist.
+    const QList<BitcoinUnits::Unit> units = BitcoinUnits::availableUnits();
+    for (int i = 0; i < units.size(); ++i) {
+        m_unit->addItem(BitcoinUnits::longName(units.at(i)), units.at(i));
+    }
     const int current = m_unit->findData(m_options_model->getDisplayUnit());
     if (current >= 0) m_unit->setCurrentIndex(current);
     m_loading = false;

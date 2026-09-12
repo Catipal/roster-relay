@@ -20,7 +20,9 @@ QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
     unitlist.append(BPS);
     unitlist.append(mBPS);
     unitlist.append(uBPS);
-    unitlist.append(SAT);
+    // SAT is deliberately not offered. The enum keeps it, so a stored setting
+    // from an older build still parses and formats, but it is not a choice a
+    // unit picker should present.
     return unitlist;
 }
 

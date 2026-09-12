@@ -5,6 +5,8 @@
 
 #include <wallet/wallet.h>
 
+#include <roster/payout.h>
+
 #include <amount.h>
 #include <chain.h>
 #include <consensus/consensus.h>
@@ -18,6 +20,7 @@
 #include <optional.h>
 #include <policy/fees.h>
 #include <policy/policy.h>
+#include <policy/settings.h>
 #include <primitives/block.h>
 #include <primitives/transaction.h>
 #include <script/descriptor.h>
@@ -3671,6 +3674,40 @@ bool CWallet::WarmStakeCache(const std::set<std::pair<const CWalletTx*,unsigned 
     return true;
 }
 
+//! What this node owes the peers it lists, out of one block's reward.
+//!
+//! The list is read fresh rather than cached: a relay that has just taken on a
+//! peer wants that to count at the next block it wins, not at the next restart.
+//! It is a handful of lines read once per block found, which is nothing beside
+//! the work of finding one.
+static CAmount PlanRelayPayouts(CAmount reward, std::vector<roster::Payout>& out)
+{
+    out.clear();
+
+    const int share = (int)gArgs.GetArg("-relayshare", roster::DEFAULT_RELAY_SHARE);
+    if (share <= 0) return 0;
+
+    std::vector<roster::KeyBytes> users;
+    std::string error;
+    if (!roster::LoadUsers(users, error)) {
+        // Pay nobody rather than guess. A malformed list is an operator error
+        // and silently paying a subset would hide it.
+        LogPrintf("roster: %s - sharing nothing this block\n", error);
+        return 0;
+    }
+    if (users.empty()) return 0;
+
+    // The floor is the real dust threshold for the output shape being created,
+    // not a guessed constant: below it the peer receives something that costs
+    // more to spend than it is worth.
+    const CTxOut sample(0, CScript() << OP_DUP << OP_HASH160
+                                     << std::vector<unsigned char>(20, 0)
+                                     << OP_EQUALVERIFY << OP_CHECKSIG);
+    const CAmount floor = GetDustThreshold(sample, ::dustRelayFee);
+
+    return roster::PlanPayouts(reward, share, users, floor, out);
+}
+
 bool CWallet::CreateCoinStake(const CWallet& wallet, unsigned int nBits, const CAmount& nTotalFees, uint32_t nTimeBlock, CMutableTransaction& tx, CKey& key, std::set<std::pair<const CWalletTx*,unsigned int> >& setCoins, const CAmount& nStakeableBalance)
 {
     // Enforced at runtime too, not just by the annotation: this file builds under GCC,
@@ -3905,6 +3942,8 @@ bool CWallet::CreateCoinStake(const CWallet& wallet, unsigned int nBits, const C
     const Consensus::Params& consensusParams = Params().GetConsensus();
     int64_t nRewardPiece = 0;
     int64_t nColdStakerRewardPiece = 0;
+    std::vector<roster::Payout> vRelayPayouts;
+    CAmount nPayoutTotal = 0;
     // How much of the reward will the owner of the coins will get
     int cold_staker_fee_factor = std::max(std::min(COLD_STAKER_FEE, 100), 0);
     int owner_factor = 100 - cold_staker_fee_factor;
@@ -3924,8 +3963,17 @@ bool CWallet::CreateCoinStake(const CWallet& wallet, unsigned int nBits, const C
             }
             else
             {
-                // Keep whole reward
+                // Keep whole reward, less whatever is shared with listed peers.
+                //
+                // Only here, and deliberately. This branch is the plain stake:
+                // no P2CS output, so none of the cold-staking rules engage and
+                // the coinstake may carry any number of payouts. A cold stake
+                // may carry exactly one output differing from the delegation,
+                // so adding payouts there would make the block invalid - which
+                // is why the isColdStake branch above does not do this.
                 nCredit += nReward;
+                nPayoutTotal = PlanRelayPayouts(nReward, vRelayPayouts);
+                nCredit -= nPayoutTotal;
             }
         }
         else
@@ -3970,6 +4018,18 @@ bool CWallet::CreateCoinStake(const CWallet& wallet, unsigned int nBits, const C
     {
         // Append the staker reward output
         txNew.vout.push_back(CTxOut(nColdStakerRewardPiece, coldStakerScriptPubKeyOut));
+    }
+
+    // Append each listed peer's share. After the staker's own outputs, so
+    // vout[1] stays the one the block signature is recovered from.
+    for (size_t i = 0; i < vRelayPayouts.size(); ++i)
+    {
+        txNew.vout.push_back(CTxOut(vRelayPayouts[i].amount, vRelayPayouts[i].script));
+    }
+    if (!vRelayPayouts.empty())
+    {
+        LogPrint(BCLog::COINSTAKE, "CreateCoinStake : sharing %d with %u listed peers\n",
+                 nPayoutTotal, vRelayPayouts.size());
     }
 
     // Append the Refunds To Sender to the transaction outputs

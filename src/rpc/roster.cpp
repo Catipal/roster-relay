@@ -8,13 +8,18 @@
 #include <index/rosterindex.h>
 #include <key_io.h>
 #include <netaddress.h>
+#include <core_io.h>
+#include <policy/policy.h>
+#include <policy/settings.h>
 #include <roster/keystore.h>
+#include <roster/payout.h>
 #include <roster/record.h>
 #include <overlay/relay.h>
 #include <overlay/rendezvous.h>
 #include <overlay/select.h>
 #include <rpc/server.h>
 #include <rpc/util.h>
+#include <script/standard.h>
 #include <util/strencodings.h>
 #include <validation.h>
 
@@ -724,6 +729,202 @@ static RPCHelpMan dumprosterkey()
     };
 }
 
+namespace {
+
+//! Read one 32-byte roster key from an RPC argument.
+roster::KeyBytes ParseRosterKey(const UniValue& value)
+{
+    const std::string hex = value.get_str();
+    if (!IsHex(hex) || hex.size() != roster::RECORD_KEY_SIZE * 2) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "key must be 32 bytes of hex");
+    }
+    const std::vector<unsigned char> raw = ParseHex(hex);
+    roster::KeyBytes key{};
+    std::copy(raw.begin(), raw.end(), key.begin());
+    return key;
+}
+
+} // namespace
+
+static RPCHelpMan addrosteruser()
+{
+    return RPCHelpMan{"addrosteruser",
+        "\nTake on a peer: list it, and share this node's block rewards with it.\n"
+        "\nThe list is local and is never published. Section 8 has the peer hand its signed\n"
+        "record to a relay, which pays the fee - so a relay knows its own roll because the\n"
+        "peers came to it, and putting that on the chain would hand an adversary the map of\n"
+        "who a relay carries.\n"
+        "\nSharing only happens while -relayshare is above zero and this node is staking its\n"
+        "own coins. A delegated stake never shares: consensus allows a cold stake exactly one\n"
+        "output besides the delegation.\n",
+        {
+            {"key", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "The peer's 32-byte roster key."},
+        },
+        RPCResult{
+            RPCResult::Type::OBJ, "", "", {
+                {RPCResult::Type::BOOL, "added", "False if it was already listed"},
+                {RPCResult::Type::NUM, "users", "How many peers are listed now"},
+                {RPCResult::Type::STR, "pays_to", "Where its share would go"},
+            }},
+        RPCExamples{HelpExampleCli("addrosteruser", "\"e6caa9dc...\"")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    const roster::KeyBytes key = ParseRosterKey(request.params[0]);
+
+    CPubKey pubkey;
+    if (!roster::StakerPubKeyFromRoster(key, pubkey)) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER,
+                           "Those 32 bytes are not a point on the curve, so there is nowhere to "
+                           "pay. A record carrying them could never have verified.");
+    }
+
+    std::vector<roster::KeyBytes> users;
+    std::string error;
+    if (!roster::LoadUsers(users, error)) throw JSONRPCError(RPC_INTERNAL_ERROR, error);
+
+    const bool added = std::find(users.begin(), users.end(), key) == users.end();
+    if (added) {
+        users.push_back(key);
+        if (!roster::SaveUsers(users, error)) throw JSONRPCError(RPC_INTERNAL_ERROR, error);
+    }
+
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("added", added);
+    out.pushKV("users", (uint64_t)users.size());
+    out.pushKV("pays_to", EncodeDestination(PKHash(pubkey)));
+    return out;
+},
+    };
+}
+
+static RPCHelpMan removerosteruser()
+{
+    return RPCHelpMan{"removerosteruser",
+        "\nStop sharing with a peer.\n"
+        "\nThis is the whole enforcement mechanism, and it needs no evidence anybody else can\n"
+        "check: a relay watches its own connections, so it knows whether a listed peer\n"
+        "actually carries traffic, and never has to prove it. The party who knows is the\n"
+        "party who acts.\n",
+        {
+            {"key", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "The peer's 32-byte roster key."},
+        },
+        RPCResult{
+            RPCResult::Type::OBJ, "", "", {
+                {RPCResult::Type::BOOL, "removed", "False if it was not listed"},
+                {RPCResult::Type::NUM, "users", "How many peers are listed now"},
+            }},
+        RPCExamples{HelpExampleCli("removerosteruser", "\"e6caa9dc...\"")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    const roster::KeyBytes key = ParseRosterKey(request.params[0]);
+
+    std::vector<roster::KeyBytes> users;
+    std::string error;
+    if (!roster::LoadUsers(users, error)) throw JSONRPCError(RPC_INTERNAL_ERROR, error);
+
+    const size_t before = users.size();
+    users.erase(std::remove(users.begin(), users.end(), key), users.end());
+    const bool removed = users.size() != before;
+    if (removed && !roster::SaveUsers(users, error)) {
+        throw JSONRPCError(RPC_INTERNAL_ERROR, error);
+    }
+
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("removed", removed);
+    out.pushKV("users", (uint64_t)users.size());
+    return out;
+},
+    };
+}
+
+static RPCHelpMan getrelaypayout()
+{
+    return RPCHelpMan{"getrelaypayout",
+        "\nWho this node shares its block rewards with, and what each would receive.\n"
+        "\nThe amounts are what the next block this node wins would pay, not a schedule and\n"
+        "not a promise. Nothing enforces the share: a relay that pays nothing produces a\n"
+        "perfectly valid block. What makes it happen is that a relay with no users protects\n"
+        "nobody, itself included.\n",
+        {},
+        RPCResult{
+            RPCResult::Type::OBJ, "", "", {
+                {RPCResult::Type::NUM, "share_percent", "Percent of each reward shared, from -relayshare"},
+                {RPCResult::Type::NUM, "users", "Peers listed"},
+                {RPCResult::Type::STR_AMOUNT, "block_reward", "The reward at the current height"},
+                {RPCResult::Type::STR_AMOUNT, "total", "What the next block would share in all"},
+                {RPCResult::Type::STR_AMOUNT, "each", "What one peer would receive"},
+                {RPCResult::Type::STR, "note", /* optional */ true, "Why nothing would be paid, when nothing would"},
+                {RPCResult::Type::ARR, "payouts", "",
+                    {
+                        {RPCResult::Type::OBJ, "", "",
+                            {
+                                {RPCResult::Type::STR_HEX, "key", "The peer's roster key"},
+                                {RPCResult::Type::STR, "address", "Where its share goes"},
+                                {RPCResult::Type::STR_AMOUNT, "amount", "What it would receive"},
+                            }},
+                    }},
+            }},
+        RPCExamples{HelpExampleCli("getrelaypayout", "") + HelpExampleRpc("getrelaypayout", "")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    const int share = (int)gArgs.GetArg("-relayshare", roster::DEFAULT_RELAY_SHARE);
+
+    std::vector<roster::KeyBytes> users;
+    std::string error;
+    if (!roster::LoadUsers(users, error)) throw JSONRPCError(RPC_INTERNAL_ERROR, error);
+
+    int height;
+    {
+        LOCK(cs_main);
+        height = ::ChainActive().Height();
+    }
+    const CAmount reward = GetBlockSubsidy(height + 1, Params().GetConsensus());
+
+    // The same floor CreateCoinStake applies, so this reports what would
+    // actually happen rather than an idealised version of it.
+    const CTxOut sample(0, CScript() << OP_DUP << OP_HASH160
+                                     << std::vector<unsigned char>(20, 0)
+                                     << OP_EQUALVERIFY << OP_CHECKSIG);
+    const CAmount floor = GetDustThreshold(sample, ::dustRelayFee);
+
+    std::vector<roster::Payout> payouts;
+    const CAmount total = roster::PlanPayouts(reward, share, users, floor, payouts);
+
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("share_percent", share);
+    out.pushKV("users", (uint64_t)users.size());
+    out.pushKV("block_reward", ValueFromAmount(reward));
+    out.pushKV("total", ValueFromAmount(total));
+    out.pushKV("each", ValueFromAmount(payouts.empty() ? 0 : payouts[0].amount));
+
+    if (total == 0) {
+        if (share <= 0) {
+            out.pushKV("note", "-relayshare is zero, so nothing is shared");
+        } else if (users.empty()) {
+            out.pushKV("note", "no peers are listed; see addrosteruser");
+        } else {
+            out.pushKV("note", strprintf(
+                "each share would be under the %d satoshi dust floor, so nobody is paid - "
+                "raise -relayshare or list fewer peers", floor));
+        }
+    }
+
+    UniValue list(UniValue::VARR);
+    for (size_t i = 0; i < payouts.size(); ++i) {
+        CPubKey pubkey;
+        roster::StakerPubKeyFromRoster(payouts[i].key, pubkey);
+        UniValue entry(UniValue::VOBJ);
+        entry.pushKV("key", HexStr(payouts[i].key));
+        entry.pushKV("address", EncodeDestination(PKHash(pubkey)));
+        entry.pushKV("amount", ValueFromAmount(payouts[i].amount));
+        list.push_back(entry);
+    }
+    out.pushKV("payouts", list);
+    return out;
+},
+    };
+}
+
 void RegisterRosterRPCCommands(CRPCTable& t)
 {
 // clang-format off
@@ -737,6 +938,9 @@ static const CRPCCommand commands[] =
     { "roster",           "createannouncement",   &createannouncement,    {"options"} },
     { "roster",           "getrosterstaker",      &getrosterstaker,       {"key"} },
     { "roster",           "dumprosterkey",        &dumprosterkey,         {} },
+    { "roster",           "addrosteruser",        &addrosteruser,         {"key"} },
+    { "roster",           "removerosteruser",     &removerosteruser,      {"key"} },
+    { "roster",           "getrelaypayout",       &getrelaypayout,        {} },
 };
 // clang-format on
     for (const auto& c : commands) {

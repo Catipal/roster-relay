@@ -11,6 +11,7 @@
 #include <node/context.h>
 #include <node/ui_interface.h>
 #include <outputtype.h>
+#include <roster/payout.h>
 #include <univalue.h>
 #include <util/check.h>
 #include <util/moneystr.h>
@@ -40,6 +41,7 @@ const WalletInitInterface& g_wallet_init_interface = WalletInit();
 
 void WalletInit::AddWalletOptions(ArgsManager& argsman) const
 {
+    argsman.AddArg("-relayshare=<n>", strprintf("Percent of each block reward this node shares with the peers listed in roster_users, paid inside its own coinstake (default: %u, meaning share nothing). Applies only when staking this node's own coins: consensus allows a cold stake exactly one output besides the delegation, so a delegated stake never shares.", roster::DEFAULT_RELAY_SHARE), ArgsManager::ALLOW_ANY, OptionsCategory::WALLET);
     argsman.AddArg("-addresstype", strprintf("What type of addresses to use (\"legacy\", \"p2sh-segwit\", or \"bech32\", default: \"%s\")", FormatOutputType(DEFAULT_ADDRESS_TYPE)), ArgsManager::ALLOW_ANY, OptionsCategory::WALLET);
     argsman.AddArg("-avoidpartialspends", strprintf("Group outputs by address, selecting all or none, instead of selecting on a per-output basis. Privacy is improved as an address is only used once (unless someone sends to it after spending from it), but may result in slightly higher fees as suboptimal coin selection may result due to the added limitation (default: %u (always enabled for wallets with \"avoid_reuse\" enabled))", DEFAULT_AVOIDPARTIALSPENDS), ArgsManager::ALLOW_ANY, OptionsCategory::WALLET);
     argsman.AddArg("-changetype", "What type of change to use (\"legacy\", \"p2sh-segwit\", or \"bech32\"). Default is same as -addresstype, except when -addresstype=p2sh-segwit a native segwit output is used when sending to a native segwit address)", ArgsManager::ALLOW_ANY, OptionsCategory::WALLET);

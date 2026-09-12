@@ -129,6 +129,7 @@ BASE_SCRIPTS = [
     'p2p_feefilter.py',
     'feature_roster.py',
     'feature_roster_delegation.py',
+    'feature_roster_payout.py',
     'feature_reindex.py',
     'feature_abortnode.py',
     # vv Tests less than 30s vv

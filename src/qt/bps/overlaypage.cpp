@@ -7,6 +7,8 @@
 #include <qt/bps/bpsrpc.h>
 #include <qt/bps/bpsutil.h>
 
+#include <miner.h>
+
 #include <qt/bitcoinunits.h>
 #include <qt/clientmodel.h>
 #include <qt/optionsmodel.h>
@@ -152,21 +154,23 @@ OverlayPage::OverlayPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(
     QGridLayout* pay_grid = new QGridLayout();
     pay_grid->setHorizontalSpacing(12);
     m_issued = MakeField(pay_grid, 0, 0, tr("Issued per day"));
-    m_relays = MakeField(pay_grid, 0, 1, tr("Relays"));
-    m_users = MakeField(pay_grid, 0, 2, tr("Users"));
-    m_per_relay = MakeField(pay_grid, 1, 0, tr("Users per relay"));
-    m_share = MakeField(pay_grid, 1, 1, tr("Share per user"));
-    m_share_amount = MakeField(pay_grid, 1, 2, tr("About, per day"));
+    m_payable = MakeField(pay_grid, 0, 1, tr("Of that, payable"));
+    m_relays = MakeField(pay_grid, 0, 2, tr("Relays"));
+    m_users = MakeField(pay_grid, 1, 0, tr("Users"));
+    m_per_relay = MakeField(pay_grid, 1, 1, tr("Users per relay"));
+    m_share = MakeField(pay_grid, 1, 2, tr("Share per user"));
+    m_share_amount = MakeField(pay_grid, 2, 0, tr("About, per day"));
     pay_grid->setColumnStretch(7, 1);
     pay_layout->addLayout(pay_grid);
 
     QLabel* pay_note = new QLabel(
-        tr("A relay's income is its share of block rewards, and it splits that among the "
-           "users listed through it \xe2\x80\x94 so a user's share is simply one divided by how "
-           "many users their relay carries. Taking a share of the network's users therefore "
-           "costs a share of the stake, which is the whole of the argument. The daily figure "
-           "assumes relays hold stake in proportion to the users they carry. Nothing pays "
-           "any of this out yet."),
+        tr("A relay pays a user by delegating stake to the key that user published, so what "
+           "reaches the user is the cold-staker fee on the blocks that delegation wins \xe2\x80\x94 "
+           "%1% of the reward, not all of it. That is the ceiling on this whole mechanism: "
+           "the rest of the issuance stays with whoever staked it. A user's share of it is "
+           "one divided by how many users their relay carries, so taking a share of the "
+           "network's users still costs a share of the stake.")
+            .arg(COLD_STAKER_FEE),
         pay);
     pay_note->setWordWrap(true);
     pay_note->setEnabled(false);
@@ -310,10 +314,15 @@ void OverlayPage::UpdatePay()
 {
     const QString unknown = QString::fromUtf8("\xe2\x80\x94");
 
-    m_issued->setText(m_subsidy < 0
-                          ? unknown
-                          : BitcoinUnits::formatWithUnit(m_display_unit,
-                                                         m_subsidy * (qint64)BLOCKS_PER_DAY));
+    const qint64 issued = m_subsidy < 0 ? -1 : m_subsidy * (qint64)BLOCKS_PER_DAY;
+    // Only the cold-staker fee reaches a user: a relay pays by delegating
+    // stake, and consensus fixes the staker's cut at exactly this percentage.
+    const qint64 payable = issued < 0 ? -1 : (issued * COLD_STAKER_FEE) / 100;
+
+    m_issued->setText(issued < 0 ? unknown
+                                 : BitcoinUnits::formatWithUnit(m_display_unit, issued));
+    m_payable->setText(payable < 0 ? unknown
+                                   : BitcoinUnits::formatWithUnit(m_display_unit, payable));
     m_relays->setText(m_relay_count < 0 ? unknown : QString::number(m_relay_count));
 
     // Everyone listed who is not a relay is somebody a relay could be carrying.
@@ -338,10 +347,9 @@ void OverlayPage::UpdatePay()
     const double share = per_relay <= 1.0 ? 100.0 : 100.0 / per_relay;
     m_share->setText(QString::number(share, 'f', share < 10.0 ? 2 : 1) + "%");
 
-    if (m_subsidy < 0 || users == 0) {
+    if (payable < 0 || users == 0) {
         m_share_amount->setText(users == 0 ? tr("nobody to pay") : unknown);
         return;
     }
-    m_share_amount->setText(BitcoinUnits::formatWithUnit(
-        m_display_unit, (m_subsidy * (qint64)BLOCKS_PER_DAY) / (qint64)users));
+    m_share_amount->setText(BitcoinUnits::formatWithUnit(m_display_unit, payable / (qint64)users));
 }

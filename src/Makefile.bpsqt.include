@@ -1,0 +1,73 @@
+# Copyright (c) 2026 The BPS developers
+# Distributed under the MIT software license, see the accompanying
+# file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
+# bps-qt: the discovery client.
+#
+# A second Qt binary rather than a second page in the first one. It links
+# qt/libbitcoinqt.a and the same core libraries the wallet client links, so
+# every model, dialog and widget the two genuinely share exists once and a
+# change to the core layer reaches both by rebuilding.
+#
+# The link line is deliberately not written out again here: it is whatever
+# Makefile.qt.include decided for the wallet client, plus this client's own
+# objects. Adding a library to core therefore does not need a second edit.
+
+bin_PROGRAMS += qt/bps-qt
+
+BPS_QT_H = \
+  qt/bps/bpsapp.h \
+  qt/bps/bpsrpc.h \
+  qt/bps/bpsutil.h \
+  qt/bps/bpswindow.h \
+  qt/bps/discoverypage.h \
+  qt/bps/overlaypage.h \
+  qt/bps/publishdialog.h \
+  qt/bps/rostermodel.h
+
+BPS_QT_CPP = \
+  qt/bps/bpsapp.cpp \
+  qt/bps/bpsrpc.cpp \
+  qt/bps/bpsutil.cpp \
+  qt/bps/bpswindow.cpp \
+  qt/bps/discoverypage.cpp \
+  qt/bps/overlaypage.cpp \
+  qt/bps/publishdialog.cpp \
+  qt/bps/rostermodel.cpp
+
+BPS_QT_MOC_CPP = \
+  qt/bps/moc_bpsapp.cpp \
+  qt/bps/moc_bpsrpc.cpp \
+  qt/bps/moc_bpswindow.cpp \
+  qt/bps/moc_discoverypage.cpp \
+  qt/bps/moc_overlaypage.cpp \
+  qt/bps/moc_publishdialog.cpp \
+  qt/bps/moc_rostermodel.cpp
+
+EXTRA_LIBRARIES += qt/libbpsqt.a
+
+qt_libbpsqt_a_CPPFLAGS = $(bitcoin_pos_qt_cppflags)
+qt_libbpsqt_a_CXXFLAGS = $(bitcoin_pos_qt_cxxflags)
+qt_libbpsqt_a_SOURCES = $(BPS_QT_CPP) $(BPS_QT_H)
+nodist_qt_libbpsqt_a_SOURCES = $(BPS_QT_MOC_CPP)
+
+# The generated forms and moc files of the wallet client are includes here too,
+# so they have to exist before anything in this directory compiles.
+$(qt_libbpsqt_a_OBJECTS) $(qt_bps_qt_OBJECTS) : | $(QT_MOC) $(QT_FORMS_H)
+
+qt_bps_qt_CPPFLAGS = $(bitcoin_pos_qt_cppflags)
+qt_bps_qt_CXXFLAGS = $(bitcoin_pos_qt_cxxflags)
+qt_bps_qt_SOURCES = qt/bps/bpsmain.cpp
+if TARGET_WINDOWS
+  qt_bps_qt_SOURCES += $(BITCOIN_RC)
+endif
+qt_bps_qt_LDADD = qt/libbpsqt.a $(bitcoin_pos_qt_ldadd)
+qt_bps_qt_LDFLAGS = $(bitcoin_pos_qt_ldflags)
+qt_bps_qt_LIBTOOLFLAGS = $(bitcoin_pos_qt_libtoolflags)
+
+CLEANFILES += $(BPS_QT_MOC_CPP) qt/bps/*.gcda qt/bps/*.gcno
+
+bps_qt_clean: FORCE
+	rm -f $(BPS_QT_MOC_CPP) $(qt_libbpsqt_a_OBJECTS) $(qt_bps_qt_OBJECTS) qt/bps-qt$(EXEEXT) qt/libbpsqt.a
+
+bps_qt: qt/bps-qt$(EXEEXT)

@@ -217,7 +217,11 @@ BOOST_AUTO_TEST_CASE(plain_coinstake_may_pay_many_parties)
 
     CKey miner;
     miner.MakeNewKey(true);
-    const CScript own = GetScriptForDestination(PKHash(miner.GetPubKey()));
+    // vout[1] must be pay-to-pubkey, and that is not a stylistic choice:
+    // GetBlockPublicKey reads the block's signing key straight out of this
+    // output, and CheckBlockSignature verifies the block against it. A P2PKH
+    // here yields no key and the block cannot be validated at all.
+    const CScript own = GetScriptForRawPubKey(miner.GetPubKey());
 
     CMutableTransaction coinbase;
     coinbase.vin.resize(1);
@@ -248,6 +252,13 @@ BOOST_AUTO_TEST_CASE(plain_coinstake_may_pay_many_parties)
 
     BOOST_CHECK(block.IsProofOfStake());
     BOOST_CHECK(!block.vtx[1]->HasP2CSOutputs());
+
+    // The payouts do not disturb the one output the block signature depends on.
+    block.vchBlockSig = std::vector<unsigned char>(64, 0x01); // shape only
+    std::vector<unsigned char> signing_key;
+    BOOST_CHECK_MESSAGE(GetBlockPublicKey(block, signing_key),
+                        "vout[1] must still yield the block signing key");
+    BOOST_CHECK(CPubKey(signing_key) == miner.GetPubKey());
 
     // The two rules that constrain a cold stake do not engage at all.
     BOOST_CHECK(CheckColdStakeOutputs(block));

@@ -7,6 +7,10 @@
 #include <qt/bps/bpsrpc.h>
 #include <qt/bps/discoverypage.h>
 #include <qt/bps/overlaypage.h>
+#ifdef ENABLE_WALLET
+#include <qt/bps/walletpage.h>
+#include <qt/walletmodel.h>
+#endif
 
 #include <qt/clientmodel.h>
 #include <qt/guiutil.h>
@@ -87,11 +91,26 @@ BpsWindow::BpsWindow(interfaces::Node& node, const PlatformStyle* platformStyle,
 
     m_pages = new QStackedWidget(this);
     m_pages->addWidget(m_discovery);
-    m_pages->addWidget(m_overlay);
-    m_pages->addWidget(m_console);
 
     m_nav = new QListWidget(this);
     m_nav->addItem(tr("Discovery"));
+
+#ifdef ENABLE_WALLET
+    // Second rather than first: this client is about who is on the network, and
+    // the wallet is here because publishing a listing costs a fee.
+    if (WalletModel::isWalletEnabled()) {
+        m_wallet = new WalletPage(platformStyle, this);
+        connect(m_wallet, &WalletPage::message, this,
+                [this](const QString& title, const QString& text, unsigned int style) {
+                    message(title, text, style);
+                });
+        m_pages->addWidget(m_wallet);
+        m_nav->addItem(tr("Wallet"));
+    }
+#endif
+
+    m_pages->addWidget(m_overlay);
+    m_pages->addWidget(m_console);
     m_nav->addItem(tr("Overlay"));
     m_nav->addItem(tr("Node"));
     m_nav->setFixedWidth(180);
@@ -170,12 +189,22 @@ void BpsWindow::setClientModel(ClientModel* model, interfaces::BlockAndHeaderTip
 
     m_discovery->setClientModel(model);
     m_overlay->setClientModel(model);
+#ifdef ENABLE_WALLET
+    if (m_wallet) m_wallet->setClientModel(model);
+#endif
 
     if (!model) {
         m_status_chain->setText(tr("shutting down\xe2\x80\xa6"));
         m_status_peers->clear();
     }
 }
+
+#ifdef ENABLE_WALLET
+void BpsWindow::setWalletController(WalletController* controller)
+{
+    if (m_wallet) m_wallet->setWalletController(controller);
+}
+#endif
 
 void BpsWindow::setNumConnections(int count)
 {

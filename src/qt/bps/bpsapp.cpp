@@ -23,6 +23,11 @@
 #include <qt/splashscreen.h>
 #include <qt/utilitydialog.h>
 
+#ifdef ENABLE_WALLET
+#include <qt/walletcontroller.h>
+#include <qt/walletmodel.h>
+#endif
+
 #include <amount.h>
 #include <chainparams.h>
 #include <init.h>
@@ -77,6 +82,9 @@ void RegisterMetaTypes()
 {
     qRegisterMetaType<bool*>();
     qRegisterMetaType<SynchronizationState>();
+#ifdef ENABLE_WALLET
+    qRegisterMetaType<WalletModel*>();
+#endif
     qRegisterMetaType<CAmount>("CAmount");
     qRegisterMetaType<size_t>("size_t");
     qRegisterMetaType<std::function<void()> >("std::function<void()>");
@@ -267,6 +275,13 @@ void BpsApplication::initializeResult(bool success, interfaces::BlockAndHeaderTi
     qInfo() << "Platform customization:" << m_platform_style->getName();
     m_client_model = new ClientModel(node(), m_options_model);
     m_window->setClientModel(m_client_model, &tip_info);
+
+#ifdef ENABLE_WALLET
+    if (WalletModel::isWalletEnabled()) {
+        m_wallet_controller = new WalletController(*m_client_model, m_platform_style, this);
+        m_window->setWalletController(m_wallet_controller);
+    }
+#endif
 
     if (!gArgs.GetBoolArg("-min", false)) {
         m_window->show();

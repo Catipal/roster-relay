@@ -20,6 +20,8 @@ class NetworkStyle;
 class OverlayPage;
 class PlatformStyle;
 class RPCConsole;
+class WalletController;
+class WalletPage;
 
 enum class SynchronizationState;
 
@@ -63,6 +65,11 @@ public:
     void setClientModel(ClientModel* model = nullptr,
                         interfaces::BlockAndHeaderTipInfo* tip_info = nullptr);
 
+#ifdef ENABLE_WALLET
+    /** Hand over the controller that opens and closes wallets. */
+    void setWalletController(WalletController* controller);
+#endif
+
     /** Called before shutdown, while an event loop is still running. */
     void unsubscribeFromCoreSignals();
 
@@ -92,6 +99,9 @@ private:
     DiscoveryPage* m_discovery{nullptr};
     OverlayPage* m_overlay{nullptr};
     RPCConsole* m_console{nullptr};
+#ifdef ENABLE_WALLET
+    WalletPage* m_wallet{nullptr};
+#endif
 
     QLabel* m_status_chain{nullptr};
     QLabel* m_status_peers{nullptr};

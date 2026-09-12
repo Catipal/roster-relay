@@ -22,6 +22,7 @@ class NetworkStyle;
 class OptionsModel;
 class PlatformStyle;
 class SplashScreen;
+class WalletController;
 
 QT_BEGIN_NAMESPACE
 class QThread;
@@ -93,6 +94,9 @@ private:
     std::unique_ptr<QWidget> m_shutdown_window;
     SplashScreen* m_splash{nullptr};
     interfaces::Node* m_node{nullptr};
+#ifdef ENABLE_WALLET
+    WalletController* m_wallet_controller{nullptr};
+#endif
 };
 
 /** Entry point, called from qt/bps/bpsmain.cpp. */

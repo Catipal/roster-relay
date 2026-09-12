@@ -25,6 +25,10 @@ BPS_QT_H = \
   qt/bps/publishdialog.h \
   qt/bps/rostermodel.h
 
+if ENABLE_WALLET
+BPS_QT_H += qt/bps/walletpage.h
+endif
+
 BPS_QT_CPP = \
   qt/bps/bpsapp.cpp \
   qt/bps/bpsrpc.cpp \
@@ -35,6 +39,10 @@ BPS_QT_CPP = \
   qt/bps/publishdialog.cpp \
   qt/bps/rostermodel.cpp
 
+if ENABLE_WALLET
+BPS_QT_CPP += qt/bps/walletpage.cpp
+endif
+
 BPS_QT_MOC_CPP = \
   qt/bps/moc_bpsapp.cpp \
   qt/bps/moc_bpsrpc.cpp \
@@ -43,6 +51,10 @@ BPS_QT_MOC_CPP = \
   qt/bps/moc_overlaypage.cpp \
   qt/bps/moc_publishdialog.cpp \
   qt/bps/moc_rostermodel.cpp
+
+if ENABLE_WALLET
+BPS_QT_MOC_CPP += qt/bps/moc_walletpage.cpp
+endif
 
 EXTRA_LIBRARIES += qt/libbpsqt.a
 

@@ -23,6 +23,7 @@
 #include <qt/transactionview.h>
 #include <qt/sendcoinsdialog.h>
 #include <amount.h>
+#include <key_io.h>
 #include <miner.h>
 #include <wallet/wallet.h>
 
@@ -290,6 +291,7 @@ void StakePage::updateEncryptionStatus()
     // now. getstakingstatus already separates those: walletstakingenabled against
     // staking.
     syncStakingSwitch();
+    syncAutoDelegation();
 }
 
 void StakePage::on_newAddressButton_clicked()
@@ -347,23 +349,36 @@ void StakePage::syncAutoDelegation()
     }
     ui->autoDelegationClearButton->setEnabled(!stakers.empty());
 
-    if (on) {
-        ui->labelAutoDelegationStatus->setText(
-            stakers.size() == 1
-                ? tr("On. Coins sent to this wallet's delegation addresses stake on arrival.")
-                : tr("On, spread across %1 addresses. Each new delegation goes to whichever is "
-                     "named by the fewest so far, counted by number rather than by amount.")
-                      .arg(stakers.size()));
-    } else if (!stakers.empty()) {
-        // The record is there but cold staking is switched off for the node, so the
-        // outputs would not be stakeable. Saying "on" here would be a lie.
+    // The on/off line only restated what the list and its buttons already show. The one
+    // thing the controls cannot show is the node refusing to cold stake at all, which
+    // would leave the list claiming a delegation that is not happening, so the label
+    // survives for that alone and stays hidden the rest of the time.
+    const bool blocked = !on && !stakers.empty();
+
+    // A staking key held by this wallet signs only while the wallet is unlocked, so an
+    // encrypted wallet delegating to itself stakes nothing while locked -- and looks
+    // exactly like one that is staking. Passwordless staking needs the key in a
+    // separate, unencrypted staking wallet.
+    bool self_on_encrypted = false;
+    if (!blocked && walletModel->wallet().isCrypted()) {
+        for (const std::string& staker : stakers) {
+            if (walletModel->wallet().isSpendable(DecodeDestination(staker))) {
+                self_on_encrypted = true;
+                break;
+            }
+        }
+    }
+
+    ui->labelAutoDelegationStatus->setVisible(blocked || self_on_encrypted);
+    if (blocked) {
         ui->labelAutoDelegationStatus->setText(
             tr("Cold staking is disabled on this node (-coldstaking=0), so nothing is "
                "being delegated."));
-    } else {
+    } else if (self_on_encrypted) {
         ui->labelAutoDelegationStatus->setText(
-            tr("Off. Add an address to stake coins as they arrive; until then change goes "
-               "to ordinary addresses, which do not stake."));
+            tr("A staking address here belongs to this wallet, which is encrypted, so it "
+               "only stakes while the wallet is unlocked. To stake without a passphrase, "
+               "use an address from a separate unencrypted staking wallet."));
     }
 }
 

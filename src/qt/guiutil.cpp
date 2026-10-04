@@ -2,6 +2,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#if defined(HAVE_CONFIG_H)
+#include <config/bitcoin-config.h>
+#endif
+
 #include <qt/guiutil.h>
 
 #include <qt/bitcoinaddressvalidator.h>
@@ -64,6 +68,20 @@ void ForceActivation();
 #endif
 
 namespace GUIUtil {
+
+namespace {
+QString g_client_name;
+} // namespace
+
+QString ClientName()
+{
+    return g_client_name.isEmpty() ? QString(PACKAGE_NAME) : g_client_name;
+}
+
+void SetClientName(const QString& name)
+{
+    g_client_name = name;
+}
 
 QString dateTimeStr(const QDateTime &date)
 {

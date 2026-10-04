@@ -43,6 +43,15 @@ QT_END_NAMESPACE
  */
 namespace GUIUtil
 {
+    /**
+     * The product name shown by the screens both clients share - the splash,
+     * the data directory chooser, About and the shutdown notice. PACKAGE_NAME
+     * unless a client has named itself, so the wallet client is unchanged and
+     * BPS Relay does not introduce itself as Bitcoin PoS Core.
+     */
+    QString ClientName();
+    void SetClientName(const QString& name);
+
     // Create human-readable string from date
     QString dateTimeStr(const QDateTime &datetime);
     QString dateTimeStr(qint64 nTime);

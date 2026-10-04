@@ -79,6 +79,10 @@ namespace {
 //! window geometry and options.
 const char* BPS_APP_NAME = "BPS-Relay";
 
+//! What this client calls itself on every screen it shares with the wallet
+//! client, starting with the splash and the data directory chooser.
+const char* BPS_CLIENT_NAME = "Bitcoin PoS Relay";
+
 void RegisterMetaTypes()
 {
     qRegisterMetaType<bool*>();
@@ -303,7 +307,7 @@ void BpsApplication::handleRunawayException(const QString& message)
 {
     QMessageBox::critical(
         nullptr, "Runaway exception",
-        BpsWindow::tr("A fatal error occurred. %1 can no longer continue safely and will quit.").arg(PACKAGE_NAME) +
+        BpsWindow::tr("A fatal error occurred. %1 can no longer continue safely and will quit.").arg(GUIUtil::ClientName()) +
             QString("<br><br>") + message);
     ::exit(EXIT_FAILURE);
 }
@@ -349,13 +353,14 @@ int BpsGuiMain(int argc, char* argv[])
 #endif
 
     BpsApplication app;
+    GUIUtil::SetClientName(BPS_CLIENT_NAME);
 
     SetupServerArgs(node_context);
     SetupBpsUIArgs(gArgs);
     std::string error;
     if (!gArgs.ParseParameters(argc, argv, error)) {
         InitError(strprintf(Untranslated("Error parsing command line arguments: %s\n"), error));
-        QMessageBox::critical(nullptr, PACKAGE_NAME,
+        QMessageBox::critical(nullptr, GUIUtil::ClientName(),
                               QString::fromStdString("Error parsing command line arguments: %1.").arg(QString::fromStdString(error)));
         return EXIT_FAILURE;
     }
@@ -383,13 +388,13 @@ int BpsGuiMain(int argc, char* argv[])
 
     if (!CheckDataDirOption()) {
         InitError(strprintf(Untranslated("Specified data directory \"%s\" does not exist.\n"), gArgs.GetArg("-datadir", "")));
-        QMessageBox::critical(nullptr, PACKAGE_NAME,
+        QMessageBox::critical(nullptr, GUIUtil::ClientName(),
                               QObject::tr("Error: Specified data directory \"%1\" does not exist.").arg(QString::fromStdString(gArgs.GetArg("-datadir", ""))));
         return EXIT_FAILURE;
     }
     if (!gArgs.ReadConfigFiles(error, true)) {
         InitError(strprintf(Untranslated("Error reading configuration file: %s\n"), error));
-        QMessageBox::critical(nullptr, PACKAGE_NAME,
+        QMessageBox::critical(nullptr, GUIUtil::ClientName(),
                               QObject::tr("Error: Cannot parse configuration file: %1.").arg(QString::fromStdString(error)));
         return EXIT_FAILURE;
     }
@@ -398,13 +403,13 @@ int BpsGuiMain(int argc, char* argv[])
         SelectParams(gArgs.GetChainName());
     } catch (const std::exception& e) {
         InitError(Untranslated(strprintf("%s\n", e.what())));
-        QMessageBox::critical(nullptr, PACKAGE_NAME, QObject::tr("Error: %1").arg(e.what()));
+        QMessageBox::critical(nullptr, GUIUtil::ClientName(), QObject::tr("Error: %1").arg(e.what()));
         return EXIT_FAILURE;
     }
 
     if (!gArgs.InitSettings(error)) {
         InitError(Untranslated(error));
-        QMessageBox::critical(nullptr, PACKAGE_NAME, QObject::tr("Error initializing settings: %1").arg(QString::fromStdString(error)));
+        QMessageBox::critical(nullptr, GUIUtil::ClientName(), QObject::tr("Error initializing settings: %1").arg(QString::fromStdString(error)));
         return EXIT_FAILURE;
     }
 

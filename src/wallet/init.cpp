@@ -129,7 +129,7 @@ void WalletInit::Construct(NodeContext& node) const
     auto wallet_client = interfaces::MakeWalletClient(*node.chain, args);
     // The node decides whether to answer a listing request at all; the wallet
     // is only how it pays, so it registers rather than being called by name.
-    roster::SetListingPublisher(PublishListingForPeer);
+    roster::SetListingPublisher(PublishListingForPeer, StakingWeightForListings);
     node.wallet_client = wallet_client.get();
     node.chain_clients.emplace_back(std::move(wallet_client));
 }

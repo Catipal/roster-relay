@@ -138,7 +138,8 @@ BOOST_AUTO_TEST_CASE(pays_for_the_requesters_own_record)
     const CKey peer = MakeKey(2);
     Record rec;
     std::string reason;
-    BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(peer), ContextFor(peer), rec, reason), reason);
+    uint32_t needed = 0;
+    BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(peer), ContextFor(peer), rec, reason, needed), reason);
     BOOST_CHECK(rec.op_key == XOnly(peer));
 }
 
@@ -150,7 +151,8 @@ BOOST_AUTO_TEST_CASE(refuses_a_record_for_someone_else)
     const CKey other = MakeKey(4);
     Record rec;
     std::string reason;
-    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(other), ContextFor(peer), rec, reason));
+    uint32_t needed = 0;
+    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(other), ContextFor(peer), rec, reason, needed));
     BOOST_CHECK(reason.find("different key") != std::string::npos);
 }
 
@@ -159,17 +161,18 @@ BOOST_AUTO_TEST_CASE(refuses_what_the_index_would_drop)
     const CKey peer = MakeKey(5);
     Record rec;
     std::string reason;
+    uint32_t needed = 0;
 
     std::vector<unsigned char> tampered = SignedAnnounce(peer);
     tampered[40] ^= 1; // inside the signed part
-    BOOST_CHECK(!CheckListingRequest(tampered, ContextFor(peer), rec, reason));
+    BOOST_CHECK(!CheckListingRequest(tampered, ContextFor(peer), rec, reason, needed));
 
     ListingContext other_chain = ContextFor(peer);
     other_chain.chain_id = "main";
-    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(peer), other_chain, rec, reason));
+    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(peer), other_chain, rec, reason, needed));
 
     // Too short a life for a record confirming at the next height.
-    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(peer, NEXT_HEIGHT + 10), ContextFor(peer), rec, reason));
+    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(peer, NEXT_HEIGHT + 10), ContextFor(peer), rec, reason, needed));
     BOOST_CHECK(reason.find("out of range") != std::string::npos);
 }
 
@@ -178,26 +181,27 @@ BOOST_AUTO_TEST_CASE(refuses_to_pay_twice)
     const CKey peer = MakeKey(6);
     Record rec;
     std::string reason;
+    uint32_t needed = 0;
 
     // Already paid and still confirming.
     ListingContext pending = ContextFor(peer);
     pending.pending_height = NEXT_HEIGHT - 10;
-    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(peer), pending, rec, reason));
+    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(peer), pending, rec, reason, needed));
     BOOST_CHECK(reason.find("waiting to confirm") != std::string::npos);
 
     // Long enough ago that it should have confirmed: asking again is a renewal.
     pending.pending_height = NEXT_HEIGHT - (int)MIN_TTL;
-    BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(peer), pending, rec, reason), reason);
+    BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(peer), pending, rec, reason, needed), reason);
 
     // Listed with most of the month still to run.
     ListingContext listed = ContextFor(peer);
     listed.live_expiry = NEXT_HEIGHT + MIN_TTL - 100;
-    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(peer), listed, rec, reason));
+    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(peer), listed, rec, reason, needed));
     BOOST_CHECK(reason.find("Renew in the last half") != std::string::npos);
 
     // In the last half of the month, renewing is what the relay is for.
     listed.live_expiry = NEXT_HEIGHT + MIN_TTL / 2 - 1;
-    BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(peer), listed, rec, reason), reason);
+    BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(peer), listed, rec, reason, needed), reason);
 }
 
 BOOST_AUTO_TEST_CASE(a_full_relay_still_renews_its_own_peers)
@@ -205,15 +209,68 @@ BOOST_AUTO_TEST_CASE(a_full_relay_still_renews_its_own_peers)
     const CKey peer = MakeKey(7);
     Record rec;
     std::string reason;
+    uint32_t needed = 0;
 
     ListingContext full = ContextFor(peer);
     full.listed_users = 3;
     full.max_users = 3;
-    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(peer), full, rec, reason));
+    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(peer), full, rec, reason, needed));
     BOOST_CHECK(reason.find("not taking on more") != std::string::npos);
 
     full.already_user = true;
-    BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(peer), full, rec, reason), reason);
+    BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(peer), full, rec, reason, needed), reason);
+}
+
+BOOST_AUTO_TEST_CASE(needs_window_round_trip)
+{
+    ListingOutcome longer;
+    longer.needed_window = 600;
+    std::vector<unsigned char> msg;
+    BOOST_REQUIRE(EncodeListingResult(9, longer, msg));
+    uint64_t id = 0;
+    ListingOutcome back;
+    BOOST_REQUIRE(DecodeListingResult(msg, id, back));
+    BOOST_CHECK(!back.ok);
+    BOOST_CHECK_EQUAL(back.needed_window, 600U);
+
+    // A window no record could have is not something to sign for.
+    std::vector<unsigned char> absurd = {(uint8_t)AppMessage::LISTING_RESULT, 1, 0, 0, 0, 0, 0, 0, 0, 2,
+                                         0xff, 0xff, 0xff, 0xff};
+    BOOST_CHECK(!DecodeListingResult(absurd, id, back));
+}
+
+BOOST_AUTO_TEST_CASE(window_follows_the_relays_stake)
+{
+    // Staking as much as the rest of the network together: a block every other
+    // block or so, so the ordinary window is plenty.
+    BOOST_CHECK_EQUAL(NeededConfirmWindow(1000, 2000), DEFAULT_CONFIRM_WINDOW);
+    // A hundredth of the network: one block in a hundred, three of those.
+    BOOST_CHECK_EQUAL(NeededConfirmWindow(1, 100), 300U);
+    // So rare that no legal record could wait long enough.
+    BOOST_CHECK_EQUAL(NeededConfirmWindow(1, 1000000000), 0U);
+    // Not staking at all.
+    BOOST_CHECK_EQUAL(NeededConfirmWindow(0, 1000), 0U);
+}
+
+BOOST_AUTO_TEST_CASE(asks_for_a_longer_window_rather_than_paying_in_vain)
+{
+    // The relay puts the listing in a block it stakes itself. If the record
+    // would stop counting before that block is likely to come, paying for it
+    // buys nothing, so the relay says how long a window it needs instead.
+    const CKey peer = MakeKey(8);
+    Record rec;
+    std::string reason;
+    uint32_t needed = 0;
+
+    ListingContext slow = ContextFor(peer);
+    slow.needed_window = 600;
+    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(peer), slow, rec, reason, needed));
+    BOOST_CHECK_EQUAL(needed, 600U);
+
+    // Signed again with that window, it is paid for.
+    BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(peer, NEXT_HEIGHT + MIN_TTL + 600), slow, rec, reason, needed),
+                        reason);
+    BOOST_CHECK_EQUAL(needed, 0U);
 }
 
 BOOST_AUTO_TEST_CASE(overlay_listens_one_above_the_published_port)

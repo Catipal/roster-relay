@@ -5057,6 +5057,19 @@ static RPCHelpMan publishrecord()
     };
 }
 
+uint64_t StakingWeightForListings()
+{
+    uint64_t total = 0;
+    for (const std::shared_ptr<CWallet>& w : GetWallets()) {
+        // Staking now, not merely able to: weight in a wallet whose staker is
+        // off or has not searched yet is getting no blocks, and a block is what
+        // a listing this node pays for needs.
+        if (!w->m_enabled_staking || w->m_last_coin_stake_search_interval == 0) continue;
+        total += w->GetStakeWeight();
+    }
+    return total;
+}
+
 roster::ListingOutcome PublishListingForPeer(const std::vector<unsigned char>& raw)
 {
     roster::ListingOutcome outcome;

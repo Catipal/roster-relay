@@ -40,6 +40,15 @@ struct Hop;
  * Paying is opt-in on the relay's side and off by default. Spending a wallet's
  * coins because a stranger asked is something an operator should choose, not
  * discover.
+ *
+ * A relay also has to be staking, and that is what makes this work before the
+ * rest of the network upgrades (settled 2026-09-07). A record is larger than
+ * the 83 bytes a 0.21 node will relay, so until most nodes run this version a
+ * listing reaches a block only through a staker that does. The relay is that
+ * staker: the listing it pays for sits in its own mempool and goes into the
+ * next block it stakes, with no relay path needed at all. For the same reason
+ * the record must stay valid until then, so a relay that stakes rarely asks
+ * for a record that waits longer (ListingOutcome::needed_window).
  */
 namespace roster {
 
@@ -55,12 +64,27 @@ static const bool DEFAULT_ACCEPT_LISTINGS = false;
 static const unsigned int DEFAULT_MAX_LISTED_USERS = 100;
 /** A refusal is shown to a person, so it is short and bounded. */
 static constexpr size_t MAX_REFUSAL_LENGTH = 200;
+/**
+ * Blocks a freshly signed record leaves for confirming before it no longer
+ * counts: it stays valid for any block up to expiry - MIN_TTL. The default a
+ * signer uses; a relay that needs longer says so.
+ */
+static constexpr uint32_t DEFAULT_CONFIRM_WINDOW = 144;
+/**
+ * How many of its own average intervals between staked blocks a relay wants a
+ * record to wait for. Staking is a Poisson process, so three intervals is a
+ * 95% chance (1 - e^-3) of staking a block in time.
+ */
+static constexpr uint32_t CONFIRM_SAFETY = 3;
 
 /** What a relay did with a request, or what a requester heard back. */
 struct ListingOutcome {
     bool ok{false};
     uint256 txid;       //!< the transaction carrying the record, when ok
     std::string reason; //!< why not, when refused
+    //! Set instead of a plain refusal when the record would expire before this
+    //! relay can expect to stake a block: sign again leaving this many blocks.
+    uint32_t needed_window{0};
 };
 
 bool EncodeListingRequest(uint64_t id, const std::vector<unsigned char>& record,
@@ -82,7 +106,14 @@ struct ListingContext {
     size_t listed_users{0};      //!< peers this relay already keeps listed
     size_t max_users{DEFAULT_MAX_LISTED_USERS};
     bool already_user{false};    //!< the requester is one of them
+    uint32_t needed_window{DEFAULT_CONFIRM_WINDOW}; //!< blocks this relay needs to stake one
 };
+
+/**
+ * The confirm window a relay needs, from its stake weight and the network's.
+ * Zero when it stakes too rarely to meet even the longest record allowed.
+ */
+uint32_t NeededConfirmWindow(uint64_t own_weight, uint64_t network_weight);
 
 /**
  * Decide whether to pay for a peer's record, before any coin is touched.
@@ -92,16 +123,24 @@ struct ListingContext {
  * left, a second payment while the first is still confirming, and a new peer
  * once the relay is full. Each of those would cost the relay a fee and gain
  * nobody anything.
+ *
+ * A record that would stop counting before this relay can expect to stake it
+ * is not refused outright: `needed_window_out` says how long a window to sign
+ * with, and the requester signs again.
  */
 bool CheckListingRequest(const std::vector<unsigned char>& raw, const ListingContext& ctx,
-                         Record& rec_out, std::string& reason);
+                         Record& rec_out, std::string& reason, uint32_t& needed_window_out);
 
 /**
- * Pays to publish a record. The wallet installs one when it loads, so a node
- * built or run without a wallet refuses rather than failing somewhere deeper.
+ * How this node pays, and how much it stakes. The wallet installs both when it
+ * loads, so a node built or run without a wallet refuses rather than failing
+ * somewhere deeper. `stake_weight` counts only wallets that are staking now,
+ * because a listing paid for by a relay that is not staking may never reach a
+ * block.
  */
 using ListingPublisher = std::function<ListingOutcome(const std::vector<unsigned char>& record)>;
-void SetListingPublisher(ListingPublisher publisher);
+using StakeWeightSource = std::function<uint64_t()>;
+void SetListingPublisher(ListingPublisher publisher, StakeWeightSource stake_weight);
 
 /**
  * The overlay's consumer of application data. Installed at startup; answers

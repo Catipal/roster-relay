@@ -656,7 +656,11 @@ static RPCHelpMan requestlisting()
         "the peers it shares rewards with. A relay can refuse, and one that later stops\n"
         "paying lets the listing lapse within the month; renewing from a funded wallet\n"
         "with publishrecord is always possible (design note 001 section 8).\n"
-        "\nNeeds -overlay. With no relay named, this node's own entry relay is asked.\n",
+        "\nNeeds -overlay. With no relay named, this node's own entry relay is asked.\n"
+        "\nThe relay puts the listing into a block it stakes itself, which is how it\n"
+        "confirms while most nodes still refuse to relay records. A relay that stakes\n"
+        "rarely asks for a record that can wait longer to confirm; this call signs\n"
+        "again with the window it asks for, once.\n",
         {
             {"options", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED_NAMED_ARG, "As for createannouncement.", {}, "options"},
             {"relay", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED_NAMED_ARG, "The relay to ask, instead of this node's entry relay.",
@@ -672,6 +676,7 @@ static RPCHelpMan requestlisting()
                 {RPCResult::Type::STR, "relay_address", "Where it was asked"},
                 {RPCResult::Type::STR_HEX, "key", "This node's operational key"},
                 {RPCResult::Type::NUM, "expiry_height", "Height the listing stops counting"},
+                {RPCResult::Type::NUM, "confirm_window", "Blocks the listing could wait to confirm and still count"},
                 {RPCResult::Type::STR_HEX, "txid", /* optional */ true, "The relay's transaction, when published"},
                 {RPCResult::Type::STR, "reason", /* optional */ true, "Why not, when refused or unanswered"},
             }},
@@ -723,11 +728,33 @@ static RPCHelpMan requestlisting()
 
     roster::Record rec;
     UniValue warnings(UniValue::VARR);
-    const std::vector<unsigned char> raw = BuildAnnouncement(options, rec, warnings);
+    std::vector<unsigned char> raw = BuildAnnouncement(options, rec, warnings);
 
     bool answered = false;
-    const roster::ListingOutcome outcome = roster::RequestListing(
+    roster::ListingOutcome outcome = roster::RequestListing(
         relay_addr, relay_pubkey, raw, std::chrono::seconds{15}, std::chrono::seconds{30}, answered);
+
+    // The relay stakes too rarely for the window this record left. It knows
+    // its own staking rate and this node does not, so take its figure, sign
+    // again, and ask once more. A few blocks of slack cover the two nodes'
+    // tips differing.
+    if (!outcome.ok && answered && outcome.needed_window > 0) {
+        int tip;
+        {
+            LOCK(cs_main);
+            tip = ::ChainActive().Height();
+        }
+        UniValue longer = options;
+        longer.pushKV("expiry_height", tip + (int)roster::MIN_TTL + (int)outcome.needed_window + 6);
+        raw = BuildAnnouncement(longer, rec, warnings);
+        outcome = roster::RequestListing(relay_addr, relay_pubkey, raw, std::chrono::seconds{15},
+                                         std::chrono::seconds{30}, answered);
+    }
+    int tip_now;
+    {
+        LOCK(cs_main);
+        tip_now = ::ChainActive().Height();
+    }
 
     UniValue out(UniValue::VOBJ);
     out.pushKV("status", outcome.ok ? "published" : answered ? "refused" : "unanswered");
@@ -735,6 +762,7 @@ static RPCHelpMan requestlisting()
     out.pushKV("relay_address", relay_addr.ToString());
     out.pushKV("key", HexStr(rec.op_key));
     out.pushKV("expiry_height", (uint64_t)rec.expiry_height);
+    out.pushKV("confirm_window", (int64_t)rec.expiry_height - (int64_t)roster::MIN_TTL - tip_now);
     if (outcome.ok) {
         out.pushKV("txid", outcome.txid.GetHex());
     } else {

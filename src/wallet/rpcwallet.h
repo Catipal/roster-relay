@@ -41,6 +41,8 @@ LegacyScriptPubKeyMan& EnsureLegacyScriptPubKeyMan(CWallet& wallet, bool also_cr
  * guesses between several. Installed with roster::SetListingPublisher.
  */
 roster::ListingOutcome PublishListingForPeer(const std::vector<unsigned char>& raw);
+/** Stake weight of the wallets that are staking right now; 0 when none is. */
+uint64_t StakingWeightForListings();
 
 RPCHelpMan getaddressinfo();
 RPCHelpMan signrawtransactionwithwallet();

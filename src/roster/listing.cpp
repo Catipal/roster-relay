@@ -11,6 +11,7 @@
 #include <overlay/relay.h>
 #include <random.h>
 #include <roster/payout.h>
+#include <rpc/server.h>
 #include <sync.h>
 #include <tinyformat.h>
 #include <util/strencodings.h>
@@ -31,6 +32,7 @@ namespace {
 constexpr size_t ID_SIZE = 8;
 constexpr uint8_t RESULT_OK = 0;
 constexpr uint8_t RESULT_REFUSED = 1;
+constexpr uint8_t RESULT_NEEDS_WINDOW = 2;
 
 ListingOutcome Refused(const std::string& reason)
 {
@@ -49,6 +51,7 @@ bool SameKey(const CPubKey& pubkey, const KeyBytes& key)
 
 Mutex g_relay_mutex;
 ListingPublisher g_publisher GUARDED_BY(g_relay_mutex);
+StakeWeightSource g_stake_weight GUARDED_BY(g_relay_mutex);
 //! Height this node last paid for each peer's listing. Kept so a second
 //! request while the first payment is still unconfirmed does not pay twice;
 //! the chain answers the question once it confirms.
@@ -95,9 +98,11 @@ ListingOutcome Decide(const CService& from, const std::vector<unsigned char>& ra
     std::copy(identity.begin() + 1, identity.begin() + 33, ctx.requester.begin());
     ctx.chain_id = Params().NetworkIDString();
     int tip;
+    uint64_t network_weight;
     {
         LOCK(cs_main);
         tip = ::ChainActive().Height();
+        network_weight = (uint64_t)GetPoSKernelPS();
     }
     ctx.next_height = tip + 1;
     ctx.live_expiry = LiveExpiry(ctx.requester, tip);
@@ -113,17 +118,36 @@ ListingOutcome Decide(const CService& from, const std::vector<unsigned char>& ra
     ctx.max_users = (size_t)std::max<int64_t>(0, gArgs.GetArg("-maxlistedusers", DEFAULT_MAX_LISTED_USERS));
 
     ListingPublisher publisher;
+    StakeWeightSource stake_weight;
     {
         LOCK(g_relay_mutex);
         std::map<KeyBytes, int>::const_iterator it = g_paid_at.find(ctx.requester);
         if (it != g_paid_at.end()) ctx.pending_height = it->second;
         publisher = g_publisher;
+        stake_weight = g_stake_weight;
+    }
+    if (!publisher || !stake_weight) return Refused("This relay has no wallet to pay from.");
+
+    // The relay puts what it pays for into its own blocks; that is how a
+    // listing confirms while most nodes still refuse to relay it. A relay that
+    // is not staking would be paying for a transaction nobody may ever mine.
+    const uint64_t own_weight = stake_weight();
+    if (own_weight == 0) {
+        return Refused("This relay is not staking, so it could not get your listing into a block.");
+    }
+    ctx.needed_window = NeededConfirmWindow(own_weight, network_weight);
+    if (ctx.needed_window == 0) {
+        return Refused("This relay stakes too rarely to get a listing into a block before it would expire.");
     }
 
     Record rec;
     std::string reason;
-    if (!CheckListingRequest(raw, ctx, rec, reason)) return Refused(reason);
-    if (!publisher) return Refused("This relay has no wallet to pay from.");
+    uint32_t needed_window = 0;
+    if (!CheckListingRequest(raw, ctx, rec, reason, needed_window)) {
+        ListingOutcome refused = Refused(reason);
+        refused.needed_window = needed_window;
+        return refused;
+    }
 
     ListingOutcome outcome = publisher(raw);
     if (!outcome.ok) return Refused(outcome.reason);
@@ -225,6 +249,11 @@ bool EncodeListingResult(uint64_t id, const ListingOutcome& outcome,
     if (outcome.ok) {
         out[1 + ID_SIZE] = RESULT_OK;
         out.insert(out.end(), outcome.txid.begin(), outcome.txid.end());
+    } else if (outcome.needed_window > 0) {
+        out[1 + ID_SIZE] = RESULT_NEEDS_WINDOW;
+        unsigned char window[4];
+        WriteLE32(window, outcome.needed_window);
+        out.insert(out.end(), window, window + 4);
     } else {
         out[1 + ID_SIZE] = RESULT_REFUSED;
         const std::string reason = outcome.reason.substr(0, MAX_REFUSAL_LENGTH);
@@ -248,6 +277,14 @@ bool DecodeListingResult(const std::vector<unsigned char>& msg, uint64_t& id_out
         std::memcpy(outcome_out.txid.begin(), msg.data() + body, 32);
         return true;
     }
+    if (status == RESULT_NEEDS_WINDOW) {
+        if (msg.size() != body + 4) return false;
+        outcome_out.needed_window = ReadLE32(msg.data() + body);
+        if (outcome_out.needed_window == 0 || outcome_out.needed_window > MAX_TTL - MIN_TTL) return false;
+        outcome_out.reason = strprintf("The relay needs a listing that can wait %u blocks to confirm.",
+                                       outcome_out.needed_window);
+        return true;
+    }
     if (status != RESULT_REFUSED || msg.size() > body + MAX_REFUSAL_LENGTH) return false;
     // Shown to a person, so anything that is not printable text is dropped
     // rather than passed through: the relay is a stranger.
@@ -256,9 +293,20 @@ bool DecodeListingResult(const std::vector<unsigned char>& msg, uint64_t& id_out
     return true;
 }
 
-bool CheckListingRequest(const std::vector<unsigned char>& raw, const ListingContext& ctx,
-                         Record& rec, std::string& reason)
+uint32_t NeededConfirmWindow(uint64_t own_weight, uint64_t network_weight)
 {
+    if (own_weight == 0) return 0;
+    // This relay stakes one block in every network/own on average.
+    const uint64_t interval = std::max<uint64_t>(1, network_weight / own_weight);
+    const uint64_t longest = MAX_TTL - MIN_TTL;
+    if (interval > longest / CONFIRM_SAFETY) return 0;
+    return (uint32_t)std::max<uint64_t>(DEFAULT_CONFIRM_WINDOW, CONFIRM_SAFETY * interval);
+}
+
+bool CheckListingRequest(const std::vector<unsigned char>& raw, const ListingContext& ctx,
+                         Record& rec, std::string& reason, uint32_t& needed_window_out)
+{
+    needed_window_out = 0;
     if (!ParseAndVerify(raw, ctx.chain_id, rec)) {
         reason = "That is not a valid listing for this chain.";
         return false;
@@ -292,13 +340,23 @@ bool CheckListingRequest(const std::vector<unsigned char>& raw, const ListingCon
         reason = "This relay is not taking on more peers.";
         return false;
     }
+    // Last, so a peer is only asked to sign again when nothing else stands in
+    // the way. The record counts in a block at any height up to
+    // expiry - MIN_TTL; this relay has to be able to stake one of those.
+    const int64_t window = (int64_t)rec.expiry_height - MIN_TTL - ctx.next_height + 1;
+    if (window < (int64_t)ctx.needed_window) {
+        needed_window_out = ctx.needed_window;
+        reason = strprintf("This relay needs a listing that can wait %u blocks to confirm.", ctx.needed_window);
+        return false;
+    }
     return true;
 }
 
-void SetListingPublisher(ListingPublisher publisher)
+void SetListingPublisher(ListingPublisher publisher, StakeWeightSource stake_weight)
 {
     LOCK(g_relay_mutex);
     g_publisher = std::move(publisher);
+    g_stake_weight = std::move(stake_weight);
 }
 
 void HandleOverlayApp(const overlay::Hop& from, std::vector<unsigned char>&& payload)

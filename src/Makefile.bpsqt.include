@@ -2,7 +2,7 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-# bps-qt: the discovery client.
+# bps-relay: BPS Relay, the discovery and overlay client.
 #
 # A second Qt binary rather than a second page in the first one. It links
 # qt/libbitcoinqt.a and the same core libraries the wallet client links, so
@@ -13,7 +13,7 @@
 # Makefile.qt.include decided for the wallet client, plus this client's own
 # objects. Adding a library to core therefore does not need a second edit.
 
-bin_PROGRAMS += qt/bps-qt
+bin_PROGRAMS += qt/bps-relay
 
 BPS_QT_H = \
   qt/bps/bpsapp.h \
@@ -61,6 +61,10 @@ endif
 
 EXTRA_LIBRARIES += qt/libbpsqt.a
 
+# Its own version resource, so Windows shows BPS Relay rather than the wallet
+# client's name in Explorer and Task Manager.
+BPS_RELAY_RC = qt/res/bps-relay-res.rc
+
 qt_libbpsqt_a_CPPFLAGS = $(bitcoin_pos_qt_cppflags)
 qt_libbpsqt_a_CXXFLAGS = $(bitcoin_pos_qt_cxxflags)
 qt_libbpsqt_a_SOURCES = $(BPS_QT_CPP) $(BPS_QT_H)
@@ -68,21 +72,21 @@ nodist_qt_libbpsqt_a_SOURCES = $(BPS_QT_MOC_CPP)
 
 # The generated forms and moc files of the wallet client are includes here too,
 # so they have to exist before anything in this directory compiles.
-$(qt_libbpsqt_a_OBJECTS) $(qt_bps_qt_OBJECTS) : | $(QT_MOC) $(QT_FORMS_H)
+$(qt_libbpsqt_a_OBJECTS) $(qt_bps_relay_OBJECTS) : | $(QT_MOC) $(QT_FORMS_H)
 
-qt_bps_qt_CPPFLAGS = $(bitcoin_pos_qt_cppflags)
-qt_bps_qt_CXXFLAGS = $(bitcoin_pos_qt_cxxflags)
-qt_bps_qt_SOURCES = qt/bps/bpsmain.cpp
+qt_bps_relay_CPPFLAGS = $(bitcoin_pos_qt_cppflags)
+qt_bps_relay_CXXFLAGS = $(bitcoin_pos_qt_cxxflags)
+qt_bps_relay_SOURCES = qt/bps/bpsmain.cpp
 if TARGET_WINDOWS
-  qt_bps_qt_SOURCES += $(BITCOIN_RC)
+  qt_bps_relay_SOURCES += $(BPS_RELAY_RC)
 endif
-qt_bps_qt_LDADD = qt/libbpsqt.a $(bitcoin_pos_qt_ldadd)
-qt_bps_qt_LDFLAGS = $(bitcoin_pos_qt_ldflags)
-qt_bps_qt_LIBTOOLFLAGS = $(bitcoin_pos_qt_libtoolflags)
+qt_bps_relay_LDADD = qt/libbpsqt.a $(bitcoin_pos_qt_ldadd)
+qt_bps_relay_LDFLAGS = $(bitcoin_pos_qt_ldflags)
+qt_bps_relay_LIBTOOLFLAGS = $(bitcoin_pos_qt_libtoolflags)
 
 CLEANFILES += $(BPS_QT_MOC_CPP) qt/bps/*.gcda qt/bps/*.gcno
 
-bps_qt_clean: FORCE
-	rm -f $(BPS_QT_MOC_CPP) $(qt_libbpsqt_a_OBJECTS) $(qt_bps_qt_OBJECTS) qt/bps-qt$(EXEEXT) qt/libbpsqt.a
+bps_relay_clean: FORCE
+	rm -f $(BPS_QT_MOC_CPP) $(qt_libbpsqt_a_OBJECTS) $(qt_bps_relay_OBJECTS) qt/bps-relay$(EXEEXT) qt/libbpsqt.a
 
-bps_qt: qt/bps-qt$(EXEEXT)
+bps_relay: qt/bps-relay$(EXEEXT)

@@ -7,6 +7,10 @@ name: Release
 # directory holding the five binaries flat, tar.gz for Linux and macOS, zip for
 # Windows with doc/README_windows.txt alongside as readme.txt.
 #
+# BPS Relay, the discovery and overlay client, ships as its own archive beside
+# that one: bps-relay-<ver>/ holding bps-relay and doc/README_bps_relay.txt as
+# readme.txt, so the wallet archive keeps exactly the layout v0.21 had.
+#
 # Run it by hand first (Actions -> Release -> Run workflow) to check a target
 # builds before committing to a tag; with no tag the archives are left as
 # workflow artifacts and nothing is published.
@@ -132,6 +136,7 @@ jobs:
             test -f "src/$b$EXT" || { echo "missing src/$b$EXT"; exit 1; }
           done
           test -f "src/qt/bitcoin-pos-qt$EXT" || { echo "GUI was not built"; exit 1; }
+          test -f "src/qt/bps-relay$EXT" || { echo "BPS Relay was not built"; exit 1; }
 
       - name: Package
         run: |
@@ -151,6 +156,16 @@ jobs:
             ( cd dist && zip -q -r "bitcoin-pos-$VER-${{ matrix.name }}.zip" "$DIR" )
           else
             ( cd dist && tar czf "bitcoin-pos-$VER-${{ matrix.name }}.tar.gz" "$DIR" )
+          fi
+          RDIR="bps-relay-$VER"
+          mkdir -p "dist/$RDIR"
+          cp "src/qt/bps-relay$EXT" "dist/$RDIR/"
+          ${{ matrix.host }}-strip dist/$RDIR/* 2>/dev/null || strip dist/$RDIR/* 2>/dev/null || true
+          cp doc/README_bps_relay.txt "dist/$RDIR/readme.txt"
+          if [ "${{ matrix.windows }}" = "true" ]; then
+            ( cd dist && zip -q -r "bps-relay-$VER-${{ matrix.name }}.zip" "$RDIR" )
+          else
+            ( cd dist && tar czf "bps-relay-$VER-${{ matrix.name }}.tar.gz" "$RDIR" )
           fi
           ls -l dist/*.zip dist/*.tar.gz 2>/dev/null
 
@@ -217,6 +232,12 @@ jobs:
           cp src/qt/bitcoin-pos-qt "dist/$DIR/"
           strip dist/$DIR/* 2>/dev/null || true
           ( cd dist && tar czf "bitcoin-pos-$VER-osx64.tar.gz" "$DIR" )
+          RDIR="bps-relay-$VER"
+          mkdir -p "dist/$RDIR"
+          cp src/qt/bps-relay "dist/$RDIR/"
+          strip dist/$RDIR/bps-relay 2>/dev/null || true
+          cp doc/README_bps_relay.txt "dist/$RDIR/readme.txt"
+          ( cd dist && tar czf "bps-relay-$VER-osx64.tar.gz" "$RDIR" )
           make deploy
           # The volume name comes from PACKAGE_NAME, so glob rather than guess.
           DMG=$(ls *.dmg | head -1)

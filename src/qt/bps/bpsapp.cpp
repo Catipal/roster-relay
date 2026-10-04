@@ -77,7 +77,7 @@ namespace {
 
 //! QSettings namespace, so the two clients do not fight over one another's
 //! window geometry and options.
-const char* BPS_APP_NAME = "BPS-Discovery-Qt";
+const char* BPS_APP_NAME = "BPS-Relay";
 
 void RegisterMetaTypes()
 {
@@ -133,7 +133,7 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
 }
 
 int qt_argc = 1;
-const char* qt_argv = "bps-qt";
+const char* qt_argv = "bps-relay";
 
 } // namespace
 

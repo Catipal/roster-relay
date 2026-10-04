@@ -78,7 +78,7 @@ BpsWindow::BpsWindow(interfaces::Node& node, const PlatformStyle* platformStyle,
         resize(1000, 700);
     }
 
-    setWindowTitle(tr("BPS Discovery") + " " + networkStyle->getTitleAddText());
+    setWindowTitle(tr("BPS Relay") + " " + networkStyle->getTitleAddText());
     setWindowIcon(networkStyle->getTrayAndWindowIcon());
     setMinimumSize(900, 600);
 
@@ -253,7 +253,7 @@ void BpsWindow::detectShutdown()
 void BpsWindow::message(const QString& title, const QString& text, unsigned int style,
                         bool* ret, const QString& detailed_message)
 {
-    QString caption = title.isEmpty() ? tr("BPS Discovery") : title;
+    QString caption = title.isEmpty() ? tr("BPS Relay") : title;
 
     QMessageBox::Icon icon = QMessageBox::Information;
     switch (style & ((CClientUIInterface::ICON_MASK) & ~CClientUIInterface::ICON_INFORMATION)) {

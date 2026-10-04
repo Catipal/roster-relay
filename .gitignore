@@ -93,6 +93,7 @@ src/qt/bitcoin-qt.includes
 Makefile
 !depends/Makefile
 src/qt/bitcoin-pos-qt
+src/qt/bps-relay
 Bitcoin-POS-Qt.app
 background.tiff*
 

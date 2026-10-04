@@ -17,6 +17,7 @@
 #include <QString>
 
 #include <memory>
+#include <stdint.h>
 
 class BpsRpc;
 class UniValue;
@@ -78,6 +79,8 @@ private:
     /** The endpoint and expiry options both RPCs take. False with an error shown. */
     bool BuildOptions(UniValue& options);
     void Done();
+    /** Blocks a listing must be able to wait for this node to stake it; 0 if it never would. */
+    uint32_t OwnConfirmWindow(bool& staking) const;
 
     BpsRpc& m_rpc;
     WalletController* m_wallets;

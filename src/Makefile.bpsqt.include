@@ -24,6 +24,7 @@ BPS_QT_H = \
   qt/bps/overlaypage.h \
   qt/bps/publishdialog.h \
   qt/bps/rostermodel.h \
+  qt/bps/serverpage.h \
   qt/bps/settingspage.h
 
 if ENABLE_WALLET
@@ -39,6 +40,7 @@ BPS_QT_CPP = \
   qt/bps/overlaypage.cpp \
   qt/bps/publishdialog.cpp \
   qt/bps/rostermodel.cpp \
+  qt/bps/serverpage.cpp \
   qt/bps/settingspage.cpp
 
 if ENABLE_WALLET
@@ -53,6 +55,7 @@ BPS_QT_MOC_CPP = \
   qt/bps/moc_overlaypage.cpp \
   qt/bps/moc_publishdialog.cpp \
   qt/bps/moc_rostermodel.cpp \
+  qt/bps/moc_serverpage.cpp \
   qt/bps/moc_settingspage.cpp
 
 if ENABLE_WALLET

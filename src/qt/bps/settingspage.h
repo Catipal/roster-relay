@@ -15,7 +15,6 @@ QT_BEGIN_NAMESPACE
 class QCheckBox;
 class QComboBox;
 class QLabel;
-class QLineEdit;
 class QPushButton;
 class QSpinBox;
 QT_END_NAMESPACE
@@ -27,10 +26,11 @@ QT_END_NAMESPACE
  * questions in both clients, so the button at the bottom opens
  * qt/optionsdialog.cpp rather than asking them a second time here.
  *
- * What is here is the roster, the overlay and the relay: whether to keep the
- * index, whether to hand roster peers to the address manager, whether to run
- * the overlay and on which port, and whether to pay for and share rewards with
- * the peers that use this node. All are startup arguments in the node, so
+ * What is here is the roster and the overlay: whether to keep the index,
+ * whether to hand roster peers to the address manager, whether to run the
+ * overlay and on which port. What this node offers others - relaying, and the
+ * services to come - is on the Server page. All are startup arguments in the
+ * node, so
  * they are stored the way OptionsModel stores its own - in QSettings, soft-set
  * into the argument list at startup - which means a value on the command line
  * or in the config file still wins, and a change here takes effect at the next
@@ -73,10 +73,6 @@ private:
     QCheckBox* m_rosterconnect{nullptr};
     QCheckBox* m_overlay{nullptr};
     QSpinBox* m_overlayport{nullptr};
-    QCheckBox* m_acceptlistings{nullptr};
-    QSpinBox* m_maxlistedusers{nullptr};
-    QLineEdit* m_listingwallet{nullptr};
-    QSpinBox* m_relayshare{nullptr};
     QComboBox* m_unit{nullptr};
     QLabel* m_restart_note{nullptr};
     QPushButton* m_core_options{nullptr};

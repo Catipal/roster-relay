@@ -12,10 +12,12 @@
 #include <qt/bitcoinunits.h>
 #include <qt/optionsmodel.h>
 #include <qt/walletcontroller.h>
+#include <rpc/server.h>
 #endif
 
 #include <amount.h>
 #include <chainparams.h>
+#include <roster/listing.h>
 #include <roster/record.h>
 #include <univalue.h>
 
@@ -34,9 +36,6 @@
 #include <QVBoxLayout>
 
 namespace {
-//! Blocks between the record being built and the transaction confirming. The
-//! RPC's own default; repeated here because the expiry is stated explicitly.
-const int CONFIRM_MARGIN = 144;
 
 const char* TAG_OVERLAY = "publish:overlay";
 const char* TAG_CREATE = "publish:create";
@@ -227,24 +226,38 @@ void PublishDialog::onPayerChanged()
             can_publish = false;
         } else {
             note = tr("Your node signs the listing and sends it over the overlay to the relay it "
-                      "enters through. A relay that pays for listings publishes yours and adds you "
-                      "to the peers it shares its rewards with. If it later stops paying, your "
+                      "enters through. A relay that pays for listings puts yours into a block it "
+                      "stakes itself, so it confirms even while most nodes would not pass it on, and "
+                      "adds you to the peers it shares its rewards with. If it later stops paying, your "
                       "listing lapses within the month; you can always renew from a funded wallet "
                       "yourself.");
         }
     }
 #ifdef ENABLE_WALLET
     else if (m_wallets) {
+        // Settled 2026-09-07: a listing is bigger than a 0.21 node passes on,
+        // so until most stakers upgrade it reaches a block through a staker
+        // running this version - this node, if it stakes.
+        bool staking = false;
+        OwnConfirmWindow(staking);
+        if (!staking) {
+            note = tr("This node isn't staking. A listing is bigger than older nodes pass on, so "
+                      "until most stakers upgrade it confirms only when a staker running this "
+                      "version includes it, which can take a while. Staking puts it in your own "
+                      "next block; a relay that pays stakes it into its own.");
+        }
         const QString name = m_payer->currentData().toString().mid(WALLET_PREFIX.size());
         for (WalletModel* model : m_wallets->getOpenWallets()) {
             if (model->getWalletName() != name) continue;
             const WalletModel::EncryptionStatus status = model->getEncryptionStatus();
             if (status == WalletModel::Unlocked && model->getWalletUnlockStakingOnly()) {
-                note = tr("This wallet is unlocked for staking only. Paying asks for its passphrase, "
+                if (!note.isEmpty()) note += "\n\n";
+                note += tr("This wallet is unlocked for staking only. Paying asks for its passphrase, "
                           "and the wallet locks again afterwards, which stops staking until you "
                           "unlock it for staking again.");
             } else if (status == WalletModel::Locked) {
-                note = tr("Paying asks for this wallet's passphrase.");
+                if (!note.isEmpty()) note += "\n\n";
+                note += tr("Paying asks for this wallet's passphrase.");
             }
         }
     }
@@ -305,11 +318,35 @@ bool PublishDialog::BuildOptions(UniValue& options)
         endpoints.push_back(endpoint);
         options.pushKV("endpoints", endpoints);
     }
-    // A month, plus slack for the transaction to confirm - the same default
-    // createannouncement would apply on its own, stated here rather than left
-    // implicit because the height is what actually goes on the chain.
-    options.pushKV("expiry_height", m_tip + (int)roster::MIN_TTL + CONFIRM_MARGIN);
+    // A month, plus the blocks it may wait to confirm and still count. Paid
+    // from this node's wallet, the block is this node's own if it stakes, so
+    // the wait is sized to its stake; a relay that needs longer asks, and
+    // requestlisting signs again.
+    uint32_t window = roster::DEFAULT_CONFIRM_WINDOW;
+    if (!RelayChosen()) {
+        bool staking = false;
+        const uint32_t own = OwnConfirmWindow(staking);
+        if (staking && own > 0) window = own;
+    }
+    options.pushKV("expiry_height", m_tip + (int)roster::MIN_TTL + (int)window);
     return true;
+}
+
+uint32_t PublishDialog::OwnConfirmWindow(bool& staking) const
+{
+    staking = false;
+#ifdef ENABLE_WALLET
+    if (!m_wallets) return 0;
+    uint64_t weight = 0;
+    for (WalletModel* model : m_wallets->getOpenWallets()) {
+        if (!model->wallet().getEnabledStaking() || !model->wallet().getLastCoinStakeSearchInterval()) continue;
+        weight += model->getStakeWeight();
+    }
+    staking = weight > 0;
+    return roster::NeededConfirmWindow(weight, (uint64_t)GetPoSKernelPS());
+#else
+    return 0;
+#endif
 }
 
 void PublishDialog::onPublish()

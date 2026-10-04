@@ -8,6 +8,7 @@
 
 #include <qt/bps/bpsapp.h>
 #include <qt/bps/bpswindow.h>
+#include <qt/bps/serverpage.h>
 #include <qt/bps/settingspage.h>
 
 // The wallet client's own startup worker, its models and its dialogs. Linked,
@@ -179,6 +180,7 @@ void BpsApplication::parameterSetup()
     // for. The settings page owns these now - it stores them and soft-sets
     // them, so anything on the command line or in the config file still wins.
     SettingsPage::ApplyStoredSettings();
+    ServerPage::ApplyStoredSettings();
 
     InitLogging(gArgs);
     InitParameterInteraction(gArgs);

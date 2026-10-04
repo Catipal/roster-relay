@@ -21,6 +21,7 @@ class NetworkStyle;
 class OverlayPage;
 class PlatformStyle;
 class RPCConsole;
+class ServerPage;
 class SettingsPage;
 class WalletController;
 class WalletModel;
@@ -45,6 +46,7 @@ class QFrame;
 class QLabel;
 class QListWidget;
 class QStackedWidget;
+class QTabWidget;
 class QTimer;
 QT_END_NAMESPACE
 
@@ -58,7 +60,7 @@ QT_END_NAMESPACE
  * a change made to any of it in the core layer arrives here by rebuilding and
  * nothing else.
  *
- * The Node tab is qt/rpcconsole.cpp exactly as the wallet client uses it. That
+ * The peers and console tab is qt/rpcconsole.cpp exactly as the wallet client uses it. That
  * is the clearest example of the rule: the moment this client needed peer
  * tables and a console, the answer was to reuse the ones that exist, not to
  * write a second pair that would then have to be kept in step.
@@ -117,9 +119,11 @@ private:
 
     QListWidget* m_nav{nullptr};
     QStackedWidget* m_pages{nullptr};
+    QTabWidget* m_node_tabs{nullptr}; //!< Discovery, Overlay, and the peers and console
     DiscoveryPage* m_discovery{nullptr};
     OverlayPage* m_overlay{nullptr};
     RPCConsole* m_console{nullptr};
+    ServerPage* m_server{nullptr};
     SettingsPage* m_settings{nullptr};
 #ifdef ENABLE_WALLET
     WalletPage* m_wallet{nullptr};

@@ -8,6 +8,7 @@
 #include <qt/bps/bpsutil.h>
 #include <qt/bps/discoverypage.h>
 #include <qt/bps/overlaypage.h>
+#include <qt/bps/serverpage.h>
 #include <qt/bps/settingspage.h>
 #ifdef ENABLE_WALLET
 #include <qt/bps/walletpage.h>
@@ -44,6 +45,7 @@
 #include <QSettings>
 #include <QStackedWidget>
 #include <QStatusBar>
+#include <QTabWidget>
 #include <QTimer>
 #include <QWidget>
 
@@ -108,15 +110,24 @@ BpsWindow::BpsWindow(interfaces::Node& node, const PlatformStyle* platformStyle,
     // table and traffic graph, linked rather than copied.
     m_console = new RPCConsole(node, platformStyle, nullptr);
 
+    // The node first, because this client is about who is on the network: who
+    // is listed, the overlay this node runs, and the peers and console. Three
+    // views of one thing, so one section with tabs rather than three entries.
+    m_node_tabs = new QTabWidget(this);
+    m_node_tabs->setDocumentMode(true);
+    m_node_tabs->addTab(m_discovery, tr("Discovery"));
+    m_node_tabs->addTab(m_overlay, tr("Overlay"));
+    m_node_tabs->addTab(m_console, tr("Peers and console"));
+
     m_pages = new QStackedWidget(this);
-    m_pages->addWidget(m_discovery);
+    m_pages->addWidget(m_node_tabs);
 
     m_nav = new QListWidget(this);
-    m_nav->addItem(tr("Discovery"));
+    m_nav->addItem(tr("Node"));
 
 #ifdef ENABLE_WALLET
-    // Second rather than first: this client is about who is on the network, and
-    // the wallet is here because publishing a listing costs a fee.
+    // After the node: the wallet is here because publishing costs a fee and a
+    // relay stakes, not because this client is about coins.
     if (WalletModel::isWalletEnabled()) {
         m_wallet = new WalletPage(node, platformStyle, networkStyle, this);
         m_pages->addWidget(m_wallet);
@@ -124,17 +135,16 @@ BpsWindow::BpsWindow(interfaces::Node& node, const PlatformStyle* platformStyle,
     }
 #endif
 
+    m_server = new ServerPage(*m_rpc, this);
+    m_pages->addWidget(m_server);
+    m_nav->addItem(tr("Server"));
+
     m_settings = new SettingsPage(platformStyle, this);
     connect(m_settings, &SettingsPage::message, this,
             [this](const QString& title, const QString& text, unsigned int style) {
                 message(title, text, style);
             });
-
-    m_pages->addWidget(m_overlay);
-    m_pages->addWidget(m_console);
     m_pages->addWidget(m_settings);
-    m_nav->addItem(tr("Overlay"));
-    m_nav->addItem(tr("Node"));
     m_nav->addItem(tr("Settings"));
     m_nav->setFixedWidth(180);
     m_nav->setFrameShape(QFrame::NoFrame);
@@ -295,6 +305,7 @@ void BpsWindow::setClientModel(ClientModel* model, interfaces::BlockAndHeaderTip
 
     m_discovery->setClientModel(model);
     m_overlay->setClientModel(model);
+    m_server->setClientModel(model);
     if (m_settings) m_settings->setClientModel(model);
 #ifdef ENABLE_WALLET
     if (m_wallet) m_wallet->setClientModel(model, tip_info);
@@ -315,6 +326,7 @@ void BpsWindow::setWalletController(WalletController* controller)
     m_wallet_controller = controller;
     if (m_wallet) m_wallet->setWalletController(controller);
     m_discovery->setWalletController(controller);
+    m_server->setWalletController(controller);
     if (controller) {
         connect(controller, &WalletController::walletAdded, this, &BpsWindow::updateWalletStatus);
         connect(controller, &WalletController::walletRemoved, this, &BpsWindow::updateWalletStatus);

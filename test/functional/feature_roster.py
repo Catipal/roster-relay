@@ -87,6 +87,16 @@ class RosterTest(BitcoinTestFramework):
         node = node or self.nodes[0]
         return [entry["key"] for entry in node.getroster()]
 
+    def wait_for_index(self, node=None):
+        """Wait until the roster index has caught up with the node's tip.
+
+        The index follows the chain on its own thread, so reading it the
+        instant a block lands races - and loses on a slower machine.
+        """
+        node = node or self.nodes[0]
+        self.wait_until(lambda: node.getrosterinfo()["best_block_height"] == node.getblockcount(),
+                        timeout=30)
+
     def publish(self, record, payer=None):
         """Publish a record and confirm it, returning the entry the index kept."""
         payer = payer if payer is not None else self.nodes[0]
@@ -95,6 +105,7 @@ class RosterTest(BitcoinTestFramework):
         assert txid in payer.getrawmempool()
         self.nodes[0].generatetoaddress(1, self.sink)
         self.sync_all()
+        self.wait_for_index()
         matches = [e for e in self.nodes[0].getroster() if e["key"] == record["key"]]
         assert_equal(len(matches), 1)
         return matches[0]
@@ -257,20 +268,24 @@ class RosterTest(BitcoinTestFramework):
         self.nodes[0].generatetoaddress(1, self.sink)
         block_hash = self.nodes[0].getbestblockhash()
         height = self.nodes[0].getblockcount()
-        assert_equal(live_height(), height)
+        # The index follows the chain on its own thread, so each step waits for
+        # it rather than reading it the instant the block lands - which raced,
+        # and lost on a slower machine. live_height() still checks for a
+        # duplicate on every poll.
+        self.wait_until(lambda: live_height() == height, timeout=30)
         assert previous != height
 
         self.nodes[0].invalidateblock(block_hash)
         assert_equal(self.nodes[0].getblockcount(), height - 1)
         # The disconnected record is gone and the key has fallen back to
         # whatever it published before.
-        assert_equal(live_height(), previous)
+        self.wait_until(lambda: live_height() == previous, timeout=30)
 
         self.nodes[0].reconsiderblock(block_hash)
         assert_equal(self.nodes[0].getblockcount(), height)
         # Back, exactly once - the second write of the same block must not
         # stack a duplicate behind the first.
-        assert_equal(live_height(), height)
+        self.wait_until(lambda: live_height() == height, timeout=30)
         assert_equal(self.roster_keys().count(key), 1)
         assert_equal(len(self.nodes[0].getrosterhistory(key)),
                      len(set(h["height"] for h in self.nodes[0].getrosterhistory(key))))
@@ -294,6 +309,7 @@ class RosterTest(BitcoinTestFramework):
         self.nodes[0].generatetoaddress(1, self.sink)
         forked_height = self.nodes[0].getblockcount()
         losing_hash = self.nodes[0].getbestblockhash()
+        self.wait_for_index()
 
         at_height = [e for e in self.nodes[0].getroster()
                      if e["height"] == forked_height]
@@ -306,6 +322,7 @@ class RosterTest(BitcoinTestFramework):
 
         assert self.nodes[0].getbestblockhash() != losing_hash
         assert_equal(self.nodes[0].getblockcount(), forked_height + 1)
+        self.wait_for_index()
         # The losing block's records must be gone, not merely shadowed.
         survivors = [e for e in self.nodes[0].getroster()
                      if e["height"] == forked_height]

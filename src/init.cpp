@@ -466,7 +466,7 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-overlay", strprintf("Run the encrypted overlay: an authenticated UDP transport between nodes, keyed by the same operational key the roster publishes (default: %u). Off by default because the handshake has not been reviewed by anyone who did not write it, and nothing in the node depends on it yet.", overlay::DEFAULT_OVERLAY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-acceptlistings", strprintf("Pay to publish the listing of a peer that asks over the overlay, as a relay does for the peers it serves (default: %u). The record must name the key the peer connected with, and the peer joins the users this node shares rewards with (-relayshare). Pays from -listingwallet.", roster::DEFAULT_ACCEPT_LISTINGS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-maxlistedusers=<n>", strprintf("Most peers this node keeps listed under -acceptlistings (default: %u)", roster::DEFAULT_MAX_LISTED_USERS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
-    argsman.AddArg("-overlayport=<port>", strprintf("Port the overlay listens on (default: %u). Its own socket, separate from the peer-to-peer port, because the overlay is a datagram protocol and the peer-to-peer one is not.", overlay::DEFAULT_OVERLAY_PORT), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-overlayport=<port>", strprintf("UDP port the overlay listens on (default: one above the peer-to-peer port: %u, testnet: %u, signet: %u, regtest: %u). Its own socket, separate from the peer-to-peer port, because the overlay is a datagram protocol and the peer-to-peer one is not.", overlay::OverlayPortFor(defaultChainParams->GetDefaultPort()), overlay::OverlayPortFor(testnetChainParams->GetDefaultPort()), overlay::OverlayPortFor(signetChainParams->GetDefaultPort()), overlay::OverlayPortFor(regtestChainParams->GetDefaultPort())), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-rosterconnect", strprintf("Offer peers listed in the roster to the address manager, so the chain is used for discovery rather than only indexed (default: %u). Needs -rosterindex; ignored without it. Addresses are filtered to networks this node can reach and are dated by the block that carried the record, so an old announcement is treated as old.", roster::DEFAULT_ROSTERCONNECT), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-rosterindexstart=<n>", "Height at which -rosterindex begins scanning (default: 0, genesis). Records cannot exist before the roster feature shipped, so on an established chain setting this to that height avoids a long scan of blocks that provably contain none. Setting it above the first record silently misses records, so it is left to the operator rather than guessed.", ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-rosterindexwindow=<n>", "Blocks of roster history -rosterindex retains, or 0 to keep all of it (default: 0). The live roster needs only the last MAX_TTL blocks, so a window bounds the index instead of letting it grow forever; what it gives up is serving other nodes age proofs, which any node holding the history can supply. Must be at least MAX_TTL.", ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
@@ -2140,13 +2140,16 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             return InitError(Untranslated(strprintf("overlay: %s", key_error)));
         }
         const uint16_t port = static_cast<uint16_t>(
-            args.GetArg("-overlayport", overlay::DEFAULT_OVERLAY_PORT));
+            args.GetArg("-overlayport", overlay::OverlayPortFor(chainparams.GetDefaultPort())));
         overlay::g_overlay = MakeUnique<overlay::Relay>(op_key);
         std::string bind_error;
         const CService listen_at(LookupNumeric("0.0.0.0", port));
         if (!overlay::g_overlay->Bind(listen_at, bind_error)) {
             overlay::g_overlay.reset();
-            return InitError(Untranslated(strprintf("overlay: %s", bind_error)));
+            return InitError(Untranslated(strprintf(
+                "overlay: %s. Another node is probably already using UDP port %u on this computer; "
+                "stop it, or choose another port with -overlayport (in BPS Relay: Settings, Overlay).",
+                bind_error, port)));
         }
         // Application data addressed to this node. The one conversation so far
         // is a peer asking its relay to pay for its listing (roster/listing.h).

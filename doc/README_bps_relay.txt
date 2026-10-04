@@ -22,7 +22,8 @@ BPS Relay uses the same data directory as BitcoinPoS Core, so it shares its
 copy of the chain and its wallets. Only one of the two can run at a time.
 
 Unlike BitcoinPoS Core, BPS Relay turns the roster index and the overlay on by
-default. The overlay listens on UDP port 9346. Its handshake has not yet been
+default. The overlay listens on UDP port 48931, one above the peer-to-peer
+port, so allow it through the firewall if asked. Its handshake has not yet been
 reviewed by anyone who did not write it, so do not rely on it for anything
 that has to stay private. It can be switched off on the Settings page.
 

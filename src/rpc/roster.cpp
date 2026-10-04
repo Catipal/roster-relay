@@ -677,7 +677,7 @@ static RPCHelpMan requestlisting()
             }},
         RPCExamples{
             HelpExampleCli("requestlisting", "")
-          + HelpExampleCli("requestlisting", "'{}' '{\"key\":\"<hex>\",\"address\":\"203.0.113.7:9346\"}'")
+          + HelpExampleCli("requestlisting", "'{}' '{\"key\":\"<hex>\",\"address\":\"203.0.113.7:48931\"}'")
         },
         [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
 {
@@ -696,7 +696,7 @@ static RPCHelpMan requestlisting()
         }
         std::copy(key.begin(), key.end(), relay_key.begin());
         const std::string address = find_value(relay, "address").get_str();
-        if (!Lookup(address, relay_addr, overlay::DEFAULT_OVERLAY_PORT, false)) {
+        if (!Lookup(address, relay_addr, overlay::OverlayPortFor(Params().GetDefaultPort()), false)) {
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Cannot read the relay address: " + address);
         }
     } else {

@@ -13,6 +13,7 @@
 #include <qt/optionsdialog.h>
 #include <qt/optionsmodel.h>
 
+#include <chainparams.h>
 #include <index/rosterindex.h>
 #include <overlay/socket.h>
 #include <roster/listing.h>
@@ -57,15 +58,17 @@ void SettingsPage::ApplyStoredSettings()
         settings.setValue(KEY_ROSTERCONNECT, roster::DEFAULT_ROSTERCONNECT);
     }
     if (!settings.contains(KEY_OVERLAY)) settings.setValue(KEY_OVERLAY, true);
-    if (!settings.contains(KEY_OVERLAYPORT)) {
-        settings.setValue(KEY_OVERLAYPORT, (int)overlay::DEFAULT_OVERLAY_PORT);
-    }
+    // The first builds stored a fixed 9346 here on first run. That is neither
+    // one above this chain's peer-to-peer port nor different per network, so
+    // it is dropped and the node's own default applies.
+    if (settings.value(KEY_OVERLAYPORT).toInt() == 9346) settings.remove(KEY_OVERLAYPORT);
 
     gArgs.SoftSetBoolArg("-rosterindex", settings.value(KEY_ROSTERINDEX).toBool());
     gArgs.SoftSetBoolArg("-rosterconnect", settings.value(KEY_ROSTERCONNECT).toBool());
     gArgs.SoftSetBoolArg("-overlay", settings.value(KEY_OVERLAY).toBool());
-    gArgs.SoftSetArg("-overlayport",
-                     settings.value(KEY_OVERLAYPORT).toString().toStdString());
+    if (settings.contains(KEY_OVERLAYPORT)) {
+        gArgs.SoftSetArg("-overlayport", settings.value(KEY_OVERLAYPORT).toString().toStdString());
+    }
 
     // Paying for other peers' listings spends coins, so it stays off unless the
     // operator turns it on here; the node's own defaults apply until then.
@@ -219,7 +222,7 @@ void SettingsPage::Load()
     m_rosterindex->setChecked(settings.value(KEY_ROSTERINDEX, true).toBool());
     m_rosterconnect->setChecked(settings.value(KEY_ROSTERCONNECT, roster::DEFAULT_ROSTERCONNECT).toBool());
     m_overlay->setChecked(settings.value(KEY_OVERLAY, true).toBool());
-    m_overlayport->setValue(settings.value(KEY_OVERLAYPORT, (int)overlay::DEFAULT_OVERLAY_PORT).toInt());
+    m_overlayport->setValue((int)gArgs.GetArg("-overlayport", overlay::OverlayPortFor(Params().GetDefaultPort())));
     // What the node is running with, so a value from the command line or the
     // config file shows here rather than being contradicted by the page.
     m_acceptlistings->setChecked(gArgs.GetBoolArg("-acceptlistings", roster::DEFAULT_ACCEPT_LISTINGS));

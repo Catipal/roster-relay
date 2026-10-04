@@ -22,8 +22,15 @@
 
 namespace overlay {
 
-/** Default port for the overlay, one above this chain's p2p port. */
-static constexpr uint16_t DEFAULT_OVERLAY_PORT = 9346;
+/**
+ * The overlay's port for a given peer-to-peer port: the one above it.
+ *
+ * Derived rather than fixed, so every network has its own - a regtest or
+ * testnet node on the same machine as a main one would otherwise fight it for
+ * a single port - and so a relay can be found from the peer-to-peer endpoint
+ * its record publishes, which carries no second port.
+ */
+constexpr uint16_t OverlayPortFor(uint16_t p2p_port) { return static_cast<uint16_t>(p2p_port + 1); }
 
 /** Whether the overlay listens at all. Off until it has been reviewed. */
 static const bool DEFAULT_OVERLAY = false;

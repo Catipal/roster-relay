@@ -320,7 +320,7 @@ void HandleOverlayApp(const overlay::Hop& from, std::vector<unsigned char>&& pay
 
 CService OverlayAddressFor(const CService& endpoint)
 {
-    return CService(endpoint, static_cast<uint16_t>(endpoint.GetPort() + 1));
+    return CService(endpoint, overlay::OverlayPortFor(endpoint.GetPort()));
 }
 
 ListingOutcome RequestListing(const CService& relay_addr, const CPubKey& relay_key,

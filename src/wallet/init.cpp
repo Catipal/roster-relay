@@ -11,13 +11,16 @@
 #include <node/context.h>
 #include <node/ui_interface.h>
 #include <outputtype.h>
+#include <roster/listing.h>
 #include <roster/payout.h>
+#include <rpc/util.h>
 #include <univalue.h>
 #include <util/check.h>
 #include <util/moneystr.h>
 #include <util/system.h>
 #include <util/translation.h>
 #include <wallet/coincontrol.h>
+#include <wallet/rpcwallet.h>
 #include <wallet/wallet.h>
 #include <walletinitinterface.h>
 
@@ -41,6 +44,7 @@ const WalletInitInterface& g_wallet_init_interface = WalletInit();
 
 void WalletInit::AddWalletOptions(ArgsManager& argsman) const
 {
+    argsman.AddArg("-listingwallet=<name>", "Wallet that pays when a peer asks this node, over the overlay, to publish its listing (see -acceptlistings). Defaults to the only wallet open; with several open and none named, requests are declined rather than paid from a guess.", ArgsManager::ALLOW_ANY, OptionsCategory::WALLET);
     argsman.AddArg("-relayshare=<n>", strprintf("Percent of each block reward this node shares with the peers listed in roster_users, paid inside its own coinstake (default: %u, meaning share nothing). Applies only when staking this node's own coins: consensus allows a cold stake exactly one output besides the delegation, so a delegated stake never shares.", roster::DEFAULT_RELAY_SHARE), ArgsManager::ALLOW_ANY, OptionsCategory::WALLET);
     argsman.AddArg("-addresstype", strprintf("What type of addresses to use (\"legacy\", \"p2sh-segwit\", or \"bech32\", default: \"%s\")", FormatOutputType(DEFAULT_ADDRESS_TYPE)), ArgsManager::ALLOW_ANY, OptionsCategory::WALLET);
     argsman.AddArg("-avoidpartialspends", strprintf("Group outputs by address, selecting all or none, instead of selecting on a per-output basis. Privacy is improved as an address is only used once (unless someone sends to it after spending from it), but may result in slightly higher fees as suboptimal coin selection may result due to the added limitation (default: %u (always enabled for wallets with \"avoid_reuse\" enabled))", DEFAULT_AVOIDPARTIALSPENDS), ArgsManager::ALLOW_ANY, OptionsCategory::WALLET);
@@ -123,6 +127,9 @@ void WalletInit::Construct(NodeContext& node) const
         return;
     }
     auto wallet_client = interfaces::MakeWalletClient(*node.chain, args);
+    // The node decides whether to answer a listing request at all; the wallet
+    // is only how it pays, so it registers rather than being called by name.
+    roster::SetListingPublisher(PublishListingForPeer);
     node.wallet_client = wallet_client.get();
     node.chain_clients.emplace_back(std::move(wallet_client));
 }

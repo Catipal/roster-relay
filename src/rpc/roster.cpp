@@ -8,10 +8,12 @@
 #include <index/rosterindex.h>
 #include <key_io.h>
 #include <netaddress.h>
+#include <netbase.h>
 #include <core_io.h>
 #include <policy/policy.h>
 #include <policy/settings.h>
 #include <roster/keystore.h>
+#include <roster/listing.h>
 #include <roster/payout.h>
 #include <roster/record.h>
 #include <overlay/relay.h>
@@ -437,52 +439,17 @@ static RPCHelpMan getrosterhistory()
     };
 }
 
-static RPCHelpMan createannouncement()
+/**
+ * Build and sign an announcement with this node's operational key.
+ *
+ * Shared by createannouncement and requestlisting, so a record handed to a
+ * relay is exactly the one this node would publish itself. Throws
+ * JSONRPCError, naming the rule, rather than producing a record the index
+ * would silently drop.
+ */
+static std::vector<unsigned char> BuildAnnouncement(const UniValue& options, roster::Record& rec,
+                                                    UniValue& warnings)
 {
-    return RPCHelpMan{"createannouncement",
-        "\nBuild and sign an announcement record with this node's operational key.\n"
-        "\nReturns wire bytes only; nothing is broadcast and no coins are spent. Carry the\n"
-        "hex in an OP_RETURN output to publish it — createrawtransaction accepts it as a\n"
-        "\"data\" output. The signature covers the record alone, so anyone may pay the fee\n"
-        "and the payer is not recorded (design note 001 §2).\n",
-        {
-            {"options", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED_NAMED_ARG, "",
-                {
-                    {"expiry_height", RPCArg::Type::NUM, /* default */ "tip + min_ttl + 144",
-                     "Absolute height the record stops counting, measured against the block that confirms it rather than the current tip. Must be at least min_ttl and at most max_ttl ahead of that block, so leave room to confirm; the default adds 144 blocks for exactly that."},
-                    {"prev_height", RPCArg::Type::NUM, /* default */ "looked up from the index",
-                     "Height of this key's previous record, linking the age chain. 0 for a first announcement."},
-                    {"endpoints", RPCArg::Type::ARR, RPCArg::Optional::OMITTED_NAMED_ARG, "Up to three addresses.",
-                        {
-                            {"", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED, "",
-                                {
-                                    {"network", RPCArg::Type::STR, RPCArg::Optional::NO, "ipv4, ipv6, onion, i2p or cjdns."},
-                                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO,
-                                     "Dotted form for ipv4; hex bytes for every other network, including the 32-byte onion service pubkey."},
-                                    {"port", RPCArg::Type::NUM, RPCArg::Optional::NO, "TCP port."},
-                                }},
-                        }},
-                }},
-        },
-        RPCResult{
-            RPCResult::Type::OBJ, "", "", {
-                {RPCResult::Type::STR_HEX, "hex", "The signed record, ready for an OP_RETURN output"},
-                {RPCResult::Type::STR_HEX, "key", "The operational key that signed it"},
-                {RPCResult::Type::NUM, "expiry_height", "Absolute height the record stops counting"},
-                {RPCResult::Type::NUM, "size", "Record length in bytes"},
-                {RPCResult::Type::ARR, "warnings", /* optional */ true, "Present only when something about the record deserves saying out loud",
-                    {
-                        {RPCResult::Type::STR, "", "A condition that does not make the record invalid, but does affect who can reach it"},
-                    }},
-            }},
-        RPCExamples{
-            HelpExampleCli("createannouncement", "'{\"endpoints\":[{\"network\":\"ipv4\",\"address\":\"203.0.113.7\",\"port\":9345}]}'")
-          + HelpExampleCli("createannouncement", "'{}'")
-        },
-        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
-{
-    const UniValue options = request.params[0].isNull() ? UniValue(UniValue::VOBJ) : request.params[0].get_obj();
-
     // Refused rather than ignored, and refused rather than honoured. The relay
     // layer is an open design question, not an abandoned one, but nothing
     // implements it -- so setting the bit would advertise a capability no peer
@@ -510,7 +477,6 @@ static RPCHelpMan createannouncement()
         tip = ::ChainActive().Height();
     }
 
-    roster::Record rec;
     rec.type = roster::RecordType::ANNOUNCE;
     const CPubKey pubkey = key.GetPubKey();
     std::memcpy(rec.op_key.data(), pubkey.data() + 1, rec.op_key.size());
@@ -601,7 +567,7 @@ static RPCHelpMan createannouncement()
     // A warning rather than a refusal: unlike the retired relay bits, these
     // networks are real and other implementations do speak them, so publishing
     // one is a legitimate choice — it just should not be a silent one.
-    UniValue warnings(UniValue::VARR);
+    warnings = UniValue(UniValue::VARR);
     for (const roster::Endpoint& ep : rec.endpoints) {
         if (ep.network == roster::EP_I2P) {
             warnings.push_back("This build has no I2P transport, so it cannot dial the I2P endpoint "
@@ -616,12 +582,164 @@ static RPCHelpMan createannouncement()
                            "Intentional for a name holder or for accruing age; add an endpoint to be reachable.");
     }
 
+    return raw;
+}
+
+static RPCHelpMan createannouncement()
+{
+    return RPCHelpMan{"createannouncement",
+        "\nBuild and sign an announcement record with this node's operational key.\n"
+        "\nReturns wire bytes only; nothing is broadcast and no coins are spent. Carry the\n"
+        "hex in an OP_RETURN output to publish it — createrawtransaction accepts it as a\n"
+        "\"data\" output. The signature covers the record alone, so anyone may pay the fee\n"
+        "and the payer is not recorded (design note 001 §2).\n",
+        {
+            {"options", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED_NAMED_ARG, "",
+                {
+                    {"expiry_height", RPCArg::Type::NUM, /* default */ "tip + min_ttl + 144",
+                     "Absolute height the record stops counting, measured against the block that confirms it rather than the current tip. Must be at least min_ttl and at most max_ttl ahead of that block, so leave room to confirm; the default adds 144 blocks for exactly that."},
+                    {"prev_height", RPCArg::Type::NUM, /* default */ "looked up from the index",
+                     "Height of this key's previous record, linking the age chain. 0 for a first announcement."},
+                    {"endpoints", RPCArg::Type::ARR, RPCArg::Optional::OMITTED_NAMED_ARG, "Up to three addresses.",
+                        {
+                            {"", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED, "",
+                                {
+                                    {"network", RPCArg::Type::STR, RPCArg::Optional::NO, "ipv4, ipv6, onion, i2p or cjdns."},
+                                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO,
+                                     "Dotted form for ipv4; hex bytes for every other network, including the 32-byte onion service pubkey."},
+                                    {"port", RPCArg::Type::NUM, RPCArg::Optional::NO, "TCP port."},
+                                }},
+                        }},
+                }},
+        },
+        RPCResult{
+            RPCResult::Type::OBJ, "", "", {
+                {RPCResult::Type::STR_HEX, "hex", "The signed record, ready for an OP_RETURN output"},
+                {RPCResult::Type::STR_HEX, "key", "The operational key that signed it"},
+                {RPCResult::Type::NUM, "expiry_height", "Absolute height the record stops counting"},
+                {RPCResult::Type::NUM, "size", "Record length in bytes"},
+                {RPCResult::Type::ARR, "warnings", /* optional */ true, "Present only when something about the record deserves saying out loud",
+                    {
+                        {RPCResult::Type::STR, "", "A condition that does not make the record invalid, but does affect who can reach it"},
+                    }},
+            }},
+        RPCExamples{
+            HelpExampleCli("createannouncement", "'{\"endpoints\":[{\"network\":\"ipv4\",\"address\":\"203.0.113.7\",\"port\":9345}]}'")
+          + HelpExampleCli("createannouncement", "'{}'")
+        },
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    const UniValue options = request.params[0].isNull() ? UniValue(UniValue::VOBJ) : request.params[0].get_obj();
+
+    roster::Record rec;
+    UniValue warnings(UniValue::VARR);
+    const std::vector<unsigned char> raw = BuildAnnouncement(options, rec, warnings);
+
     UniValue out(UniValue::VOBJ);
     out.pushKV("hex", HexStr(raw));
     out.pushKV("key", HexStr(rec.op_key));
     out.pushKV("expiry_height", (uint64_t)rec.expiry_height);
     out.pushKV("size", (uint64_t)raw.size());
     if (!warnings.empty()) out.pushKV("warnings", warnings);
+    return out;
+},
+    };
+}
+
+static RPCHelpMan requestlisting()
+{
+    return RPCHelpMan{"requestlisting",
+        "\nAsk a relay to pay for publishing this node's listing.\n"
+        "\nFor a node with no coins. The record is built and signed here exactly as\n"
+        "createannouncement builds it, then sent over the overlay to a relay, which pays\n"
+        "the fee if it has chosen to (-acceptlistings on its side) and adds this node to\n"
+        "the peers it shares rewards with. A relay can refuse, and one that later stops\n"
+        "paying lets the listing lapse within the month; renewing from a funded wallet\n"
+        "with publishrecord is always possible (design note 001 section 8).\n"
+        "\nNeeds -overlay. With no relay named, this node's own entry relay is asked.\n",
+        {
+            {"options", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED_NAMED_ARG, "As for createannouncement.", {}, "options"},
+            {"relay", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED_NAMED_ARG, "The relay to ask, instead of this node's entry relay.",
+                {
+                    {"key", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "The relay's operational key, as the roster lists it."},
+                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "Where its overlay listens, host:port."},
+                }},
+        },
+        RPCResult{
+            RPCResult::Type::OBJ, "", "", {
+                {RPCResult::Type::STR, "status", "published, refused or unanswered"},
+                {RPCResult::Type::STR_HEX, "relay", "Key of the relay that was asked"},
+                {RPCResult::Type::STR, "relay_address", "Where it was asked"},
+                {RPCResult::Type::STR_HEX, "key", "This node's operational key"},
+                {RPCResult::Type::NUM, "expiry_height", "Height the listing stops counting"},
+                {RPCResult::Type::STR_HEX, "txid", /* optional */ true, "The relay's transaction, when published"},
+                {RPCResult::Type::STR, "reason", /* optional */ true, "Why not, when refused or unanswered"},
+            }},
+        RPCExamples{
+            HelpExampleCli("requestlisting", "")
+          + HelpExampleCli("requestlisting", "'{}' '{\"key\":\"<hex>\",\"address\":\"203.0.113.7:9346\"}'")
+        },
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    const UniValue options = request.params[0].isNull() ? UniValue(UniValue::VOBJ) : request.params[0].get_obj();
+    if (!overlay::g_overlay) {
+        throw JSONRPCError(RPC_MISC_ERROR, "The overlay is off (-overlay), so there is no way to reach a relay.");
+    }
+
+    roster::KeyBytes relay_key{};
+    CService relay_addr;
+    if (!request.params[1].isNull()) {
+        const UniValue& relay = request.params[1].get_obj();
+        const std::vector<unsigned char> key = ParseHexV(find_value(relay, "key"), "key");
+        if (key.size() != relay_key.size()) {
+            throw JSONRPCError(RPC_INVALID_PARAMETER, "key must be 32 bytes of hex, as the roster lists it");
+        }
+        std::copy(key.begin(), key.end(), relay_key.begin());
+        const std::string address = find_value(relay, "address").get_str();
+        if (!Lookup(address, relay_addr, overlay::DEFAULT_OVERLAY_PORT, false)) {
+            throw JSONRPCError(RPC_INVALID_PARAMETER, "Cannot read the relay address: " + address);
+        }
+    } else {
+        std::vector<overlay::RelayCandidate> chosen;
+        {
+            LOCK(overlay::g_selector_mutex);
+            if (!overlay::g_selector || !overlay::g_selector->Select(1, chosen)) {
+                throw JSONRPCError(RPC_MISC_ERROR,
+                    "No relay is listed in the roster yet, so there is nobody to ask. Name one, or "
+                    "publish from a funded wallet with publishrecord.");
+            }
+        }
+        // The entry relay, which this node keeps rather than rotating. It is the
+        // relay that already sees this node's address, so asking it reveals
+        // nothing new.
+        relay_key = chosen[0].key;
+        relay_addr = roster::OverlayAddressFor(chosen[0].addr);
+    }
+
+    CPubKey relay_pubkey;
+    if (!roster::StakerPubKeyFromRoster(relay_key, relay_pubkey)) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "The relay key is not a point on the curve.");
+    }
+
+    roster::Record rec;
+    UniValue warnings(UniValue::VARR);
+    const std::vector<unsigned char> raw = BuildAnnouncement(options, rec, warnings);
+
+    bool answered = false;
+    const roster::ListingOutcome outcome = roster::RequestListing(
+        relay_addr, relay_pubkey, raw, std::chrono::seconds{15}, std::chrono::seconds{30}, answered);
+
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("status", outcome.ok ? "published" : answered ? "refused" : "unanswered");
+    out.pushKV("relay", HexStr(relay_key));
+    out.pushKV("relay_address", relay_addr.ToString());
+    out.pushKV("key", HexStr(rec.op_key));
+    out.pushKV("expiry_height", (uint64_t)rec.expiry_height);
+    if (outcome.ok) {
+        out.pushKV("txid", outcome.txid.GetHex());
+    } else {
+        out.pushKV("reason", outcome.reason);
+    }
     return out;
 },
     };
@@ -936,6 +1054,7 @@ static const CRPCCommand commands[] =
     { "roster",           "getroster",            &getroster,             {"count","skip"} },
     { "roster",           "getrosterhistory",     &getrosterhistory,      {"key"} },
     { "roster",           "createannouncement",   &createannouncement,    {"options"} },
+    { "roster",           "requestlisting",       &requestlisting,        {"options","relay"} },
     { "roster",           "getrosterstaker",      &getrosterstaker,       {"key"} },
     { "roster",           "dumprosterkey",        &dumprosterkey,         {} },
     { "roster",           "addrosteruser",        &addrosteruser,         {"key"} },

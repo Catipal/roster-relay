@@ -32,6 +32,8 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "getroster", 1, "skip" },
     { "createannouncement", 0, "options" },
     { "publishrecord", 1, "options" },
+    { "requestlisting", 0, "options" },
+    { "requestlisting", 1, "relay" },
     { "utxoupdatepsbt", 1, "descriptors" },
     { "setstaking", 0, "staking" },
     { "generatetoaddress", 0, "nblocks" },

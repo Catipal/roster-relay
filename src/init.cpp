@@ -27,6 +27,7 @@
 #include <overlay/relay.h>
 #include <overlay/rendezvous.h>
 #include <overlay/select.h>
+#include <roster/listing.h>
 #include <roster/keystore.h>
 #include <index/txindex.h>
 #include <interfaces/chain.h>
@@ -463,6 +464,8 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-txindex", strprintf("Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)", DEFAULT_TXINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-rosterindex", strprintf("Maintain a peer roster index over chain-anchored discovery records (default: %u)", DEFAULT_ROSTERINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-overlay", strprintf("Run the encrypted overlay: an authenticated UDP transport between nodes, keyed by the same operational key the roster publishes (default: %u). Off by default because the handshake has not been reviewed by anyone who did not write it, and nothing in the node depends on it yet.", overlay::DEFAULT_OVERLAY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-acceptlistings", strprintf("Pay to publish the listing of a peer that asks over the overlay, as a relay does for the peers it serves (default: %u). The record must name the key the peer connected with, and the peer joins the users this node shares rewards with (-relayshare). Pays from -listingwallet.", roster::DEFAULT_ACCEPT_LISTINGS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-maxlistedusers=<n>", strprintf("Most peers this node keeps listed under -acceptlistings (default: %u)", roster::DEFAULT_MAX_LISTED_USERS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-overlayport=<port>", strprintf("Port the overlay listens on (default: %u). Its own socket, separate from the peer-to-peer port, because the overlay is a datagram protocol and the peer-to-peer one is not.", overlay::DEFAULT_OVERLAY_PORT), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-rosterconnect", strprintf("Offer peers listed in the roster to the address manager, so the chain is used for discovery rather than only indexed (default: %u). Needs -rosterindex; ignored without it. Addresses are filtered to networks this node can reach and are dated by the block that carried the record, so an old announcement is treated as old.", roster::DEFAULT_ROSTERCONNECT), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-rosterindexstart=<n>", "Height at which -rosterindex begins scanning (default: 0, genesis). Records cannot exist before the roster feature shipped, so on an established chain setting this to that height avoids a long scan of blocks that provably contain none. Setting it above the first record silently misses records, so it is left to the operator rather than guessed.", ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
@@ -2145,14 +2148,9 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             overlay::g_overlay.reset();
             return InitError(Untranslated(strprintf("overlay: %s", bind_error)));
         }
-        // Nothing consumes overlay traffic yet, so arriving payloads are
-        // counted in the log and dropped. Wiring a consumer is a separate
-        // decision from being able to carry the traffic at all.
-        if (!overlay::g_overlay->Start([](const overlay::Hop& from, std::vector<unsigned char>&& payload) {
-                LogPrint(BCLog::NET, "overlay: %u bytes from %s\n", payload.size(),
-                         from.via_path ? strprintf("path %016x", from.path)
-                                       : from.addr.ToString());
-            })) {
+        // Application data addressed to this node. The one conversation so far
+        // is a peer asking its relay to pay for its listing (roster/listing.h).
+        if (!overlay::g_overlay->Start(roster::HandleOverlayApp)) {
             overlay::g_overlay.reset();
             return InitError(Untranslated("overlay: could not start the receive thread"));
         }

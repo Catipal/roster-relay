@@ -67,6 +67,11 @@ public:
     bool HasSession(const CService& peer);
     size_t SessionCount();
 
+    /** The static key a peer proved in its handshake. Invalid with no session. */
+    CPubKey PeerIdentity(const CService& peer);
+    /** Whether a handshake this node started with a peer is still unanswered. */
+    bool HasPendingHandshake(const CService& peer);
+
     /** Handshakes dropped by the flood limit, for tests and diagnostics. */
     size_t HandshakesRefused();
 

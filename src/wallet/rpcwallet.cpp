@@ -4904,49 +4904,19 @@ static RPCHelpMan send()
     };
 }
 
-static RPCHelpMan publishrecord()
+/**
+ * Fund, sign and broadcast a transaction carrying one roster record.
+ *
+ * Shared by publishrecord and by a relay paying for a peer's listing, so the
+ * checks that protect the payer are the same either way. Throws JSONRPCError.
+ */
+static CTransactionRef PublishRecordTx(CWallet* const pwallet, const std::vector<unsigned char>& raw,
+                                       const UniValue& options, roster::Record& rec, CAmount& fee)
 {
-    return RPCHelpMan{"publishrecord",
-                "\nPay to publish a signed roster record, whoever signed it.\n"
-                "\nThe record is checked before a single coin is spent, so one that is malformed,\n"
-                "unverifiable or already out of range costs nothing. Nothing about the payer\n"
-                "enters the record — the signature covers the record alone — which is what lets\n"
-                "a peer holding no coins be listed at all, and what lets a relay keep its own\n"
-                "users listed month to month (design note 001 §2, §8).\n"
-                "\nThe signer builds the record with createannouncement on their own node and\n"
-                "sends the hex; renewing is the same call again with a fresh expiry.\n",
-                {
-                    {"hex", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "The signed record, as returned by createannouncement on the signer's node."},
-                    {"options", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED_NAMED_ARG, "Funding options, as accepted by fundrawtransaction — fee_rate, conf_target, changeAddress and the rest.", {}, "options"},
-                },
-                RPCResult{
-                    RPCResult::Type::OBJ, "", "", {
-                        {RPCResult::Type::STR_HEX, "txid", "Transaction carrying the record"},
-                        {RPCResult::Type::STR_HEX, "key", "Operational key the record was published for"},
-                        {RPCResult::Type::NUM, "expiry_height", "Absolute height the record stops counting"},
-                        {RPCResult::Type::STR_AMOUNT, "fee", "Fee paid, in " + CURRENCY_UNIT},
-                    }},
-                RPCExamples{
-                    HelpExampleCli("publishrecord", "\"4250530100...\"")
-            + HelpExampleRpc("publishrecord", "\"4250530100...\"")
-                },
-        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
-{
-    std::shared_ptr<CWallet> const wallet = GetWalletForJSONRPCRequest(request);
-    if (!wallet) return NullUniValue;
-    CWallet* const pwallet = wallet.get();
-
-    const std::string hex = request.params[0].get_str();
-    if (!IsHex(hex)) {
-        throw JSONRPCError(RPC_INVALID_PARAMETER, "hex is not valid hexadecimal");
-    }
-    const std::vector<unsigned char> raw = ParseHex(hex);
-
     // Verify before spending, because the payer has no other protection. An
     // invalid record is not rejected by consensus — it is simply never indexed,
     // so the fee would buy an entry that no reader ever sees, and nothing would
     // report the loss.
-    roster::Record rec;
     if (!roster::ParseAndVerify(raw, Params().NetworkIDString(), rec)) {
         throw JSONRPCError(RPC_INVALID_PARAMETER,
                            "Not a valid roster record for this chain: it does not parse, or its "
@@ -4985,14 +4955,38 @@ static RPCHelpMan publishrecord()
                                      needed, nMaxDatacarrierBytes, (unsigned)roster::MAX_DATACARRIER_FOR_ROSTER));
     }
 
+    // Paying is spending, so a wallet unlocked for staking only must refuse it
+    // the way every other spending call does. Without this a staking wallet
+    // could pay to publish with no passphrase at all.
+    EnsureWalletIsUnlocked(pwallet);
+
+    // The same record twice buys nothing - the roster keeps the earliest - so a
+    // second payment while the first is unconfirmed is refused. It is what a
+    // double click on Publish would otherwise cost.
+    const CScript carrier = CScript() << OP_RETURN << raw;
+    {
+        LOCK(pwallet->cs_wallet);
+        for (const auto& entry : pwallet->mapWallet) {
+            const CWalletTx& wtx = entry.second;
+            if (wtx.GetDepthInMainChain() != 0 || wtx.isAbandoned()) continue;
+            for (const CTxOut& out : wtx.tx->vout) {
+                if (out.scriptPubKey == carrier) {
+                    throw JSONRPCError(RPC_WALLET_ERROR, strprintf(
+                        "This wallet already paid to publish this record in %s, which has not confirmed yet. "
+                        "Nothing was spent.", wtx.GetHash().GetHex()));
+                }
+            }
+        }
+    }
+
     CMutableTransaction rawTx;
-    rawTx.vout.emplace_back(0, CScript() << OP_RETURN << raw);
+    rawTx.vout.emplace_back(0, carrier);
 
     CCoinControl coin_control;
     coin_control.m_add_inputs = true;
-    CAmount fee = 0;
+    fee = 0;
     int change_position = -1;
-    FundTransaction(pwallet, rawTx, fee, change_position, request.params[1], coin_control, /* override_min_fee */ true);
+    FundTransaction(pwallet, rawTx, fee, change_position, options, coin_control, /* override_min_fee */ true);
 
     PartiallySignedTransaction psbtx(rawTx);
     bool complete = true;
@@ -5008,6 +5002,50 @@ static RPCHelpMan publishrecord()
 
     CTransactionRef tx(MakeTransactionRef(std::move(mtx)));
     pwallet->CommitTransaction(tx, {}, {} /* orderForm */);
+    return tx;
+}
+
+static RPCHelpMan publishrecord()
+{
+    return RPCHelpMan{"publishrecord",
+                "\nPay to publish a signed roster record, whoever signed it.\n"
+                "\nThe record is checked before a single coin is spent, so one that is malformed,\n"
+                "unverifiable or already out of range costs nothing. Nothing about the payer\n"
+                "enters the record — the signature covers the record alone — which is what lets\n"
+                "a peer holding no coins be listed at all, and what lets a relay keep its own\n"
+                "users listed month to month (design note 001 §2, §8).\n"
+                "\nThe signer builds the record with createannouncement on their own node and\n"
+                "sends the hex; renewing is the same call again with a fresh expiry.\n",
+                {
+                    {"hex", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "The signed record, as returned by createannouncement on the signer's node."},
+                    {"options", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED_NAMED_ARG, "Funding options, as accepted by fundrawtransaction — fee_rate, conf_target, changeAddress and the rest.", {}, "options"},
+                },
+                RPCResult{
+                    RPCResult::Type::OBJ, "", "", {
+                        {RPCResult::Type::STR_HEX, "txid", "Transaction carrying the record"},
+                        {RPCResult::Type::STR_HEX, "key", "Operational key the record was published for"},
+                        {RPCResult::Type::NUM, "expiry_height", "Absolute height the record stops counting"},
+                        {RPCResult::Type::STR_AMOUNT, "fee", "Fee paid, in " + CURRENCY_UNIT},
+                    }},
+                RPCExamples{
+                    HelpExampleCli("publishrecord", "\"4250530100...\"")
+            + HelpExampleRpc("publishrecord", "\"4250530100...\"")
+                },
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    std::shared_ptr<CWallet> const wallet = GetWalletForJSONRPCRequest(request);
+    if (!wallet) return NullUniValue;
+    CWallet* const pwallet = wallet.get();
+
+    const std::string hex = request.params[0].get_str();
+    if (!IsHex(hex)) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "hex is not valid hexadecimal");
+    }
+    const std::vector<unsigned char> raw = ParseHex(hex);
+
+    roster::Record rec;
+    CAmount fee = 0;
+    const CTransactionRef tx = PublishRecordTx(pwallet, raw, request.params[1], rec, fee);
 
     UniValue out(UniValue::VOBJ);
     out.pushKV("txid", tx->GetHash().GetHex());
@@ -5017,6 +5055,53 @@ static RPCHelpMan publishrecord()
     return out;
 },
     };
+}
+
+roster::ListingOutcome PublishListingForPeer(const std::vector<unsigned char>& raw)
+{
+    roster::ListingOutcome outcome;
+    const std::vector<std::shared_ptr<CWallet>> wallets = GetWallets();
+    const std::string chosen = gArgs.GetArg("-listingwallet", "");
+
+    // Never a guess between wallets: paying from the wrong one spends coins the
+    // operator meant for something else.
+    std::shared_ptr<CWallet> payer;
+    if (!chosen.empty()) {
+        for (const std::shared_ptr<CWallet>& w : wallets) {
+            if (w->GetName() == chosen) payer = w;
+        }
+        if (!payer) {
+            LogPrintf("roster: -listingwallet=%s is not open, so a listing request was declined\n", chosen);
+        }
+    } else if (wallets.size() == 1) {
+        payer = wallets[0];
+    } else if (!wallets.empty()) {
+        LogPrintf("roster: more than one wallet is open and -listingwallet does not say which pays for "
+                  "listings, so a listing request was declined\n");
+    }
+    if (!payer) {
+        outcome.reason = "This relay has no wallet set to pay for listings.";
+        return outcome;
+    }
+
+    try {
+        roster::Record rec;
+        CAmount fee = 0;
+        const CTransactionRef tx = PublishRecordTx(payer.get(), raw, NullUniValue, rec, fee);
+        outcome.ok = true;
+        outcome.txid = tx->GetHash();
+    } catch (const UniValue& e) {
+        // The detail stays here. Whether this wallet is locked, empty or busy
+        // is the operator's business, not something to tell a stranger.
+        const UniValue& message = find_value(e, "message");
+        LogPrintf("roster: could not pay for a peer's listing from wallet %s: %s\n", payer->GetName(),
+                  message.isStr() ? message.get_str() : e.write());
+        outcome.reason = "This relay cannot pay right now.";
+    } catch (const std::exception& e) {
+        LogPrintf("roster: could not pay for a peer's listing from wallet %s: %s\n", payer->GetName(), e.what());
+        outcome.reason = "This relay cannot pay right now.";
+    }
+    return outcome;
 }
 
 static RPCHelpMan sethdseed()

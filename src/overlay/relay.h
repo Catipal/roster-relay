@@ -53,6 +53,9 @@ public:
     bool Connect(const CService& peer, const CPubKey& peer_static);
     CService BoundAddress() const { return m_socket.BoundAddress(); }
     bool HasSession(const CService& peer) { return m_socket.HasSession(peer); }
+    /** Who an adjacent peer proved itself to be - its roster key. */
+    CPubKey PeerIdentity(const CService& peer) { return m_socket.PeerIdentity(peer); }
+    bool HasPendingHandshake(const CService& peer) { return m_socket.HasPendingHandshake(peer); }
 
     /** Send application data straight to an adjacent peer. */
     bool SendApp(const CService& peer, const std::vector<unsigned char>& payload);

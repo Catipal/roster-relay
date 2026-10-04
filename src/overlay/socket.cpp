@@ -166,6 +166,18 @@ bool Socket::HasSession(const CService& peer)
     return m_transport.HasSession(peer);
 }
 
+CPubKey Socket::PeerIdentity(const CService& peer)
+{
+    LOCK(m_mutex);
+    return m_transport.PeerIdentity(peer);
+}
+
+bool Socket::HasPendingHandshake(const CService& peer)
+{
+    LOCK(m_mutex);
+    return m_transport.HasPendingHandshake(peer);
+}
+
 size_t Socket::HandshakesRefused()
 {
     LOCK(m_mutex);

@@ -5,6 +5,7 @@
 #ifndef BITCOIN_WALLET_RPCWALLET_H
 #define BITCOIN_WALLET_RPCWALLET_H
 
+#include <roster/listing.h>
 #include <span.h>
 
 #include <memory>
@@ -33,6 +34,13 @@ std::shared_ptr<CWallet> GetWalletForJSONRPCRequest(const JSONRPCRequest& reques
 void EnsureWalletIsUnlocked(const CWallet*);
 WalletContext& EnsureWalletContext(const util::Ref& context);
 LegacyScriptPubKeyMan& EnsureLegacyScriptPubKeyMan(CWallet& wallet, bool also_create = false);
+
+/**
+ * Pay to publish a peer's roster record, as a relay does for the peers it
+ * serves. Pays from -listingwallet, or from the only wallet open; never
+ * guesses between several. Installed with roster::SetListingPublisher.
+ */
+roster::ListingOutcome PublishListingForPeer(const std::vector<unsigned char>& raw);
 
 RPCHelpMan getaddressinfo();
 RPCHelpMan signrawtransactionwithwallet();

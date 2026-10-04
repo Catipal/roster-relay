@@ -199,6 +199,7 @@ BITCOIN_CORE_H = \
   roster/commitment.h \
   roster/extract.h \
   roster/keystore.h \
+  roster/listing.h \
   roster/payout.h \
   roster/peers.h \
   roster/record.h \
@@ -319,6 +320,7 @@ libbitcoin_server_a_SOURCES = \
   index/rosterindex.cpp \
   index/txindex.cpp \
   init.cpp \
+  roster/listing.cpp \
   interfaces/chain.cpp \
   interfaces/node.cpp \
   miner.cpp \

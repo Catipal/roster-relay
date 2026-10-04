@@ -10,6 +10,7 @@
 #endif
 
 #include <QMainWindow>
+#include <QPointer>
 
 #include <memory>
 
@@ -22,9 +23,15 @@ class PlatformStyle;
 class RPCConsole;
 class SettingsPage;
 class WalletController;
+class WalletModel;
 class WalletPage;
 
 enum class SynchronizationState;
+
+namespace GUIUtil {
+class ClickableLabel;
+class ClickableProgressBar;
+} // namespace GUIUtil
 
 namespace interfaces {
 class Handler;
@@ -34,13 +41,15 @@ struct BlockAndHeaderTipInfo;
 
 QT_BEGIN_NAMESPACE
 class QDateTime;
+class QFrame;
 class QLabel;
 class QListWidget;
 class QStackedWidget;
+class QTimer;
 QT_END_NAMESPACE
 
 /**
- * The window of the discovery client.
+ * The window of BPS Relay.
  *
  * Deliberately not BitcoinGUI and deliberately not a copy of it. The wallet
  * client's window is about coins; this one is about who is on the network. What
@@ -85,12 +94,20 @@ private Q_SLOTS:
     void setNumConnections(int count);
     void setNumBlocks(int count, const QDateTime& block_date, double progress,
                       bool header, SynchronizationState sync_state);
+    void updateNetworkState();
+    /** Lock and staking state in the footer, read from the open wallets. */
+    void updateWalletStatus();
 
 private:
     void subscribeToCoreSignals();
+    void CreateFooter();
+#ifdef ENABLE_WALLET
+    /** The wallet the footer reports on: one that is staking, else the first open. */
+    WalletModel* FooterWallet() const;
+#endif
 
-    /** The chain half of the status bar, from a height and a sync fraction. */
-    void ShowChainStatus(int height, double progress);
+    /** The chain half of the footer, from a height, its block's time and a sync fraction. */
+    void UpdateChain(int height, const QDateTime& block_date, double progress);
 
     interfaces::Node& m_node;
     const PlatformStyle* m_platform_style;
@@ -106,10 +123,25 @@ private:
     SettingsPage* m_settings{nullptr};
 #ifdef ENABLE_WALLET
     WalletPage* m_wallet{nullptr};
+    QPointer<WalletController> m_wallet_controller;
 #endif
 
-    QLabel* m_status_chain{nullptr};
-    QLabel* m_status_peers{nullptr};
+    // Footer, left to right.
+    QLabel* m_progress_label{nullptr};
+    GUIUtil::ClickableProgressBar* m_progress{nullptr};
+    QLabel* m_listing_label{nullptr};
+    QLabel* m_overlay_label{nullptr};
+    QFrame* m_wallet_separator{nullptr};
+    QLabel* m_lock_icon{nullptr};
+    QLabel* m_staking_icon{nullptr};
+    QLabel* m_staking_label{nullptr};
+    GUIUtil::ClickableLabel* m_connections_icon{nullptr};
+    QLabel* m_connections_label{nullptr};
+    QLabel* m_blocks_icon{nullptr};
+    QLabel* m_blocks_label{nullptr};
+    QTimer* m_staking_timer{nullptr};
+    int m_spinner_frame{0};
+    int m_prev_blocks{-1}; //!< so the first height painted gets an icon too
 
     std::unique_ptr<interfaces::Handler> m_handler_message_box;
     std::unique_ptr<interfaces::Handler> m_handler_question;

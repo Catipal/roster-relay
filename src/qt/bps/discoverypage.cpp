@@ -187,11 +187,14 @@ void DiscoveryPage::onCopyKey()
 
 void DiscoveryPage::onPublishClicked()
 {
-    PublishDialog dialog(m_rpc, m_tip, m_own_expiry > m_tip, this);
-    connect(&dialog, &PublishDialog::published, this, [this](const QString& txid) {
+    PublishDialog dialog(m_rpc, m_wallets, m_tip, m_own_expiry > m_tip, this);
+    connect(&dialog, &PublishDialog::published, this, [this](const QString& txid, bool by_relay) {
         m_error->setVisible(true);
-        m_error->setText(tr("Published in transaction %1. It counts once the transaction confirms.")
-                             .arg(BpsUtil::ShortKey(txid)));
+        m_error->setText(by_relay
+            ? tr("Your relay published your listing in transaction %1. It counts once the "
+                 "transaction confirms.").arg(BpsUtil::ShortKey(txid))
+            : tr("Published in transaction %1. It counts once the transaction confirms.")
+                  .arg(BpsUtil::ShortKey(txid)));
     });
     dialog.exec();
     Refresh();
@@ -201,14 +204,18 @@ void DiscoveryPage::UpdateListingSummary()
 {
     if (!m_index_enabled) {
         m_listing_state->setText(tr("unknown"));
+        Q_EMIT listingChanged(tr("roster index off"), false);
         return;
     }
     if (m_own_expiry == 0 || m_own_expiry <= m_tip) {
         m_listing_state->setText(tr("not listed"));
         m_publish->setText(tr("Publish your listing\xe2\x80\xa6"));
+        Q_EMIT listingChanged(tr("not listed"), false);
     } else {
-        m_listing_state->setText(tr("ends in %1").arg(BpsUtil::HumanBlocks(m_own_expiry - m_tip)));
+        const QString left = BpsUtil::HumanBlocks(m_own_expiry - m_tip);
+        m_listing_state->setText(tr("ends in %1").arg(left));
         m_publish->setText(tr("Renew your listing\xe2\x80\xa6"));
+        Q_EMIT listingChanged(tr("listed, ends in %1").arg(left), true);
     }
 }
 

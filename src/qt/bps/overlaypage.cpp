@@ -326,6 +326,7 @@ void OverlayPage::onRpcResult(const QString& tag, const UniValue& value)
         m_epoch->setText(tr("\xe2\x80\x94"));
         FillKeys(m_guards, UniValue(UniValue::VARR), tr("nothing while the overlay is off"));
         FillKeys(m_rendezvous, UniValue(UniValue::VARR), tr("nothing while the overlay is off"));
+        Q_EMIT overlayChanged(tr("overlay off"), false);
         return;
     }
 
@@ -346,6 +347,10 @@ void OverlayPage::onRpcResult(const QString& tag, const UniValue& value)
     // for its refresh, so it is worded rather than printed as a bare 0.
     m_candidates->setText(m_relay_count > 0 ? QString::number(m_relay_count) : tr("none yet"));
     UpdatePay();
+    Q_EMIT overlayChanged(m_relay_count <= 0 ? tr("overlay on, no relays yet")
+                          : m_relay_count == 1 ? tr("overlay on, 1 relay")
+                                               : tr("overlay on, %1 relays").arg(m_relay_count),
+                          true);
 
     const UniValue& epoch = find_value(value, "epoch");
     m_epoch->setText(epoch.isNum() ? QString::number(epoch.get_int64()) : tr("\xe2\x80\x94"));
@@ -364,6 +369,7 @@ void OverlayPage::onRpcFailed(const QString& tag, const QString& message)
     m_state->setText(message);
     m_relay_count = -1;
     UpdatePay();
+    Q_EMIT overlayChanged(tr("overlay unknown"), false);
 }
 
 void OverlayPage::UpdatePay()

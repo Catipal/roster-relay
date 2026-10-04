@@ -11,6 +11,7 @@ class BpsRpc;
 class ClientModel;
 class RosterModel;
 class UniValue;
+class WalletController;
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -40,6 +41,12 @@ public:
     DiscoveryPage(BpsRpc& rpc, QWidget* parent = nullptr);
 
     void setClientModel(ClientModel* model);
+    /** The open wallets, so publishing can offer them as payers. Null without a wallet. */
+    void setWalletController(WalletController* controller) { m_wallets = controller; }
+
+Q_SIGNALS:
+    /** Whether this node is listed, and until when, as one short phrase. */
+    void listingChanged(const QString& summary, bool listed);
 
 public Q_SLOTS:
     /** Ask the node for everything on this page. Cheap to call; answers are async. */
@@ -56,6 +63,7 @@ private:
 
     BpsRpc& m_rpc;
     ClientModel* m_client_model{nullptr};
+    WalletController* m_wallets{nullptr};
 
     QLabel* m_index_state{nullptr};
     QLabel* m_listing_state{nullptr};

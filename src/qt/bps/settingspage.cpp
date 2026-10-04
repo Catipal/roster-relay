@@ -15,6 +15,8 @@
 
 #include <index/rosterindex.h>
 #include <overlay/socket.h>
+#include <roster/listing.h>
+#include <roster/payout.h>
 #include <roster/peers.h>
 #include <util/system.h>
 
@@ -25,6 +27,7 @@
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <QLineEdit>
 #include <QPushButton>
 #include <QSettings>
 #include <QSpinBox>
@@ -37,6 +40,10 @@ const char* KEY_ROSTERINDEX = "bps/rosterindex";
 const char* KEY_ROSTERCONNECT = "bps/rosterconnect";
 const char* KEY_OVERLAY = "bps/overlay";
 const char* KEY_OVERLAYPORT = "bps/overlayport";
+const char* KEY_ACCEPTLISTINGS = "bps/acceptlistings";
+const char* KEY_MAXLISTEDUSERS = "bps/maxlistedusers";
+const char* KEY_LISTINGWALLET = "bps/listingwallet";
+const char* KEY_RELAYSHARE = "bps/relayshare";
 } // namespace
 
 void SettingsPage::ApplyStoredSettings()
@@ -59,6 +66,20 @@ void SettingsPage::ApplyStoredSettings()
     gArgs.SoftSetBoolArg("-overlay", settings.value(KEY_OVERLAY).toBool());
     gArgs.SoftSetArg("-overlayport",
                      settings.value(KEY_OVERLAYPORT).toString().toStdString());
+
+    // Paying for other peers' listings spends coins, so it stays off unless the
+    // operator turns it on here; the node's own defaults apply until then.
+    if (settings.contains(KEY_ACCEPTLISTINGS)) {
+        gArgs.SoftSetBoolArg("-acceptlistings", settings.value(KEY_ACCEPTLISTINGS).toBool());
+    }
+    if (settings.contains(KEY_MAXLISTEDUSERS)) {
+        gArgs.SoftSetArg("-maxlistedusers", settings.value(KEY_MAXLISTEDUSERS).toString().toStdString());
+    }
+    const QString listing_wallet = settings.value(KEY_LISTINGWALLET).toString();
+    if (!listing_wallet.isEmpty()) gArgs.SoftSetArg("-listingwallet", listing_wallet.toStdString());
+    if (settings.contains(KEY_RELAYSHARE)) {
+        gArgs.SoftSetArg("-relayshare", settings.value(KEY_RELAYSHARE).toString().toStdString());
+    }
 }
 
 SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
@@ -119,6 +140,42 @@ SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
     overlay_layout->addLayout(overlay_form);
     outer->addWidget(overlay_box);
 
+    // --- relay -------------------------------------------------------------
+    // What this node does for peers that use it: pay for their listings, and
+    // share its staking rewards with them (design note 001 section 8).
+    QGroupBox* relay_box = new QGroupBox(tr("Relay"), this);
+    QVBoxLayout* relay_layout = new QVBoxLayout(relay_box);
+
+    m_acceptlistings = new QCheckBox(tr("Pay to list peers that ask through the overlay"), relay_box);
+    m_acceptlistings->setToolTip(tr("A peer with no coins can ask this node to publish its monthly "
+                                    "listing. This node pays the fee and adds the peer to those it "
+                                    "shares rewards with. Off by default, because it spends this "
+                                    "node's coins."));
+    relay_layout->addWidget(m_acceptlistings);
+
+    QFormLayout* relay_form = new QFormLayout();
+    m_maxlistedusers = new QSpinBox(relay_box);
+    m_maxlistedusers->setRange(1, 100000);
+    m_maxlistedusers->setToolTip(tr("Peers past this number are turned away. Peers already listed "
+                                    "here can still renew."));
+    relay_form->addRow(tr("Most peers to keep listed"), m_maxlistedusers);
+
+    m_listingwallet = new QLineEdit(relay_box);
+    m_listingwallet->setPlaceholderText(tr("the only wallet open"));
+    m_listingwallet->setToolTip(tr("Which wallet pays. With several open and none named here, "
+                                   "requests are declined rather than paid from a guess. A small "
+                                   "unencrypted wallet keeps a staking wallet locked."));
+    relay_form->addRow(tr("Pay from wallet"), m_listingwallet);
+
+    m_relayshare = new QSpinBox(relay_box);
+    m_relayshare->setRange(0, 100);
+    m_relayshare->setSuffix(tr(" %"));
+    m_relayshare->setToolTip(tr("Part of every block this node stakes from its own coins, split "
+                                "equally among the peers it lists. 0 shares nothing."));
+    relay_form->addRow(tr("Share of each staked block"), m_relayshare);
+    relay_layout->addLayout(relay_form);
+    outer->addWidget(relay_box);
+
     // --- display -----------------------------------------------------------
     QGroupBox* display = new QGroupBox(tr("Display"), this);
     QFormLayout* display_form = new QFormLayout(display);
@@ -144,6 +201,12 @@ SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
     connect(m_overlay, &QCheckBox::toggled, this, &SettingsPage::onChanged);
     connect(m_overlayport, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, &SettingsPage::onChanged);
+    connect(m_acceptlistings, &QCheckBox::toggled, this, &SettingsPage::onChanged);
+    connect(m_maxlistedusers, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            this, &SettingsPage::onChanged);
+    connect(m_listingwallet, &QLineEdit::editingFinished, this, &SettingsPage::onChanged);
+    connect(m_relayshare, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            this, &SettingsPage::onChanged);
     connect(m_core_options, &QPushButton::clicked, this, &SettingsPage::onOpenCoreOptions);
 
     Load();
@@ -157,6 +220,12 @@ void SettingsPage::Load()
     m_rosterconnect->setChecked(settings.value(KEY_ROSTERCONNECT, roster::DEFAULT_ROSTERCONNECT).toBool());
     m_overlay->setChecked(settings.value(KEY_OVERLAY, true).toBool());
     m_overlayport->setValue(settings.value(KEY_OVERLAYPORT, (int)overlay::DEFAULT_OVERLAY_PORT).toInt());
+    // What the node is running with, so a value from the command line or the
+    // config file shows here rather than being contradicted by the page.
+    m_acceptlistings->setChecked(gArgs.GetBoolArg("-acceptlistings", roster::DEFAULT_ACCEPT_LISTINGS));
+    m_maxlistedusers->setValue((int)gArgs.GetArg("-maxlistedusers", roster::DEFAULT_MAX_LISTED_USERS));
+    m_listingwallet->setText(QString::fromStdString(gArgs.GetArg("-listingwallet", "")));
+    m_relayshare->setValue((int)gArgs.GetArg("-relayshare", roster::DEFAULT_RELAY_SHARE));
     m_loading = false;
 }
 
@@ -199,6 +268,10 @@ void SettingsPage::onChanged()
     settings.setValue(KEY_ROSTERCONNECT, m_rosterconnect->isChecked());
     settings.setValue(KEY_OVERLAY, m_overlay->isChecked());
     settings.setValue(KEY_OVERLAYPORT, m_overlayport->value());
+    settings.setValue(KEY_ACCEPTLISTINGS, m_acceptlistings->isChecked());
+    settings.setValue(KEY_MAXLISTEDUSERS, m_maxlistedusers->value());
+    settings.setValue(KEY_LISTINGWALLET, m_listingwallet->text().trimmed());
+    settings.setValue(KEY_RELAYSHARE, m_relayshare->value());
 
     m_restart_note->setVisible(true);
     m_restart_note->setText(tr("Saved. These are read when the node starts, so restart the "

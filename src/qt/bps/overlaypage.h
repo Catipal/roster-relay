@@ -38,6 +38,10 @@ public:
 
     void setClientModel(ClientModel* model);
 
+Q_SIGNALS:
+    /** Whether the overlay runs and how many relays it knows, as one short phrase. */
+    void overlayChanged(const QString& summary, bool on);
+
 public Q_SLOTS:
     void Refresh();
 

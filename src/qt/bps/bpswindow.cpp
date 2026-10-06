@@ -8,6 +8,7 @@
 #include <qt/bps/bpsutil.h>
 #include <qt/bps/discoverypage.h>
 #include <qt/bps/mailpage.h>
+#include <qt/bps/namespage.h>
 #include <qt/bps/overlaypage.h>
 #include <qt/bps/serverpage.h>
 #include <qt/bps/settingspage.h>
@@ -154,6 +155,11 @@ BpsWindow::BpsWindow(interfaces::Node& node, const PlatformStyle* platformStyle,
     connect(m_mail, &MailPage::unreadChanged, this, [this, mail_item](int unread) {
         mail_item->setText(unread > 0 ? tr("Mail (%1)").arg(unread) : tr("Mail"));
     });
+
+    // Names sit beside mail: a name is what people write to.
+    m_names = new NamesPage(node, this);
+    m_pages->addWidget(m_names);
+    m_nav->addItem(tr("Names"));
 
     m_server = new ServerPage(*m_rpc, this);
     m_pages->addWidget(m_server);
@@ -372,6 +378,7 @@ void BpsWindow::setClientModel(ClientModel* model, interfaces::BlockAndHeaderTip
     m_discovery->setClientModel(model);
     m_overlay->setClientModel(model);
     m_mail->setClientModel(model);
+    m_names->setClientModel(model);
     m_server->setClientModel(model);
     if (m_settings) m_settings->setClientModel(model);
 #ifdef ENABLE_WALLET

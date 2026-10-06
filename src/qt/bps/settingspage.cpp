@@ -35,6 +35,7 @@ namespace {
 //! QSettings keys. Prefixed, because this client shares an organisation name
 //! with the wallet client even though it has its own application name.
 const char* KEY_ROSTERINDEX = "bps/rosterindex";
+const char* KEY_NAMEINDEX = "bps/nameindex";
 const char* KEY_ROSTERCONNECT = "bps/rosterconnect";
 const char* KEY_OVERLAY = "bps/overlay";
 const char* KEY_OVERLAYPORT = "bps/overlayport";
@@ -47,6 +48,7 @@ void SettingsPage::ApplyStoredSettings()
     // Defaults differ from the node's on purpose: discovery is what this client
     // is for. See BpsApplication::parameterSetup.
     if (!settings.contains(KEY_ROSTERINDEX)) settings.setValue(KEY_ROSTERINDEX, true);
+    if (!settings.contains(KEY_NAMEINDEX)) settings.setValue(KEY_NAMEINDEX, true);
     if (!settings.contains(KEY_ROSTERCONNECT)) {
         settings.setValue(KEY_ROSTERCONNECT, roster::DEFAULT_ROSTERCONNECT);
     }
@@ -57,6 +59,7 @@ void SettingsPage::ApplyStoredSettings()
     if (settings.value(KEY_OVERLAYPORT).toInt() == 9346) settings.remove(KEY_OVERLAYPORT);
 
     gArgs.SoftSetBoolArg("-rosterindex", settings.value(KEY_ROSTERINDEX).toBool());
+    gArgs.SoftSetBoolArg("-nameindex", settings.value(KEY_NAMEINDEX).toBool());
     gArgs.SoftSetBoolArg("-rosterconnect", settings.value(KEY_ROSTERCONNECT).toBool());
     gArgs.SoftSetBoolArg("-overlay", settings.value(KEY_OVERLAY).toBool());
     if (settings.contains(KEY_OVERLAYPORT)) {
@@ -95,6 +98,9 @@ SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
     m_rosterindex = new QCheckBox(tr("Keep an index of the roster"), discovery);
     m_rosterindex->setToolTip(tr("Without it this node can publish but cannot see who else is listed."));
     discovery_layout->addWidget(m_rosterindex);
+    m_nameindex = new QCheckBox(tr("Index names"), discovery);
+    m_nameindex->setToolTip(tr("Needed to look names up, send mail to them and register your own."));
+    discovery_layout->addWidget(m_nameindex);
 
     m_rosterconnect = new QCheckBox(tr("Try to connect to peers found in the roster"), discovery);
     m_rosterconnect->setToolTip(tr("Hands roster addresses to the address manager, alongside the "
@@ -143,6 +149,7 @@ SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
     outer->addStretch(1);
 
     connect(m_rosterindex, &QCheckBox::toggled, this, &SettingsPage::onChanged);
+    connect(m_nameindex, &QCheckBox::toggled, this, &SettingsPage::onChanged);
     connect(m_rosterconnect, &QCheckBox::toggled, this, &SettingsPage::onChanged);
     connect(m_overlay, &QCheckBox::toggled, this, &SettingsPage::onChanged);
     connect(m_overlayport, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
@@ -157,6 +164,7 @@ void SettingsPage::Load()
     m_loading = true;
     QSettings settings;
     m_rosterindex->setChecked(settings.value(KEY_ROSTERINDEX, true).toBool());
+    m_nameindex->setChecked(settings.value(KEY_NAMEINDEX, true).toBool());
     m_rosterconnect->setChecked(settings.value(KEY_ROSTERCONNECT, roster::DEFAULT_ROSTERCONNECT).toBool());
     m_overlay->setChecked(settings.value(KEY_OVERLAY, true).toBool());
     m_overlayport->setValue((int)gArgs.GetArg("-overlayport", overlay::OverlayPortFor((uint16_t)gArgs.GetArg("-port", Params().GetDefaultPort()))));
@@ -199,6 +207,7 @@ void SettingsPage::onChanged()
 
     QSettings settings;
     settings.setValue(KEY_ROSTERINDEX, m_rosterindex->isChecked());
+    settings.setValue(KEY_NAMEINDEX, m_nameindex->isChecked());
     settings.setValue(KEY_ROSTERCONNECT, m_rosterconnect->isChecked());
     settings.setValue(KEY_OVERLAY, m_overlay->isChecked());
     settings.setValue(KEY_OVERLAYPORT, m_overlayport->value());

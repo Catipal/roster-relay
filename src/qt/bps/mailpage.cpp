@@ -57,15 +57,6 @@ QString When(int64_t t)
     return QDateTime::fromSecsSinceEpoch(t).toString("yyyy-MM-dd hh:mm");
 }
 
-bool IsRosterKey(const QString& text)
-{
-    if (text.size() != 64) return false;
-    for (const QChar c : text) {
-        if (!((c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F'))) return false;
-    }
-    return true;
-}
-
 QString Str(const UniValue& v, const char* key)
 {
     const UniValue& f = find_value(v, key);
@@ -455,7 +446,7 @@ ComposeDialog::ComposeDialog(BpsRpc& rpc, const QString& to, const QString& subj
     QVBoxLayout* layout = new QVBoxLayout(this);
     QFormLayout* form = new QFormLayout();
     m_to = new QLineEdit(to, this);
-    m_to->setPlaceholderText(tr("the recipient's roster key, 64 hex characters"));
+    m_to->setPlaceholderText(tr("a name, a petname from your address book, or a roster key"));
     m_to->setFont(GUIUtil::fixedPitchFont());
     form->addRow(tr("To"), m_to);
     m_subject = new QLineEdit(subject, this);
@@ -491,9 +482,9 @@ ComposeDialog::ComposeDialog(BpsRpc& rpc, const QString& to, const QString& subj
 
 void ComposeDialog::onSend()
 {
-    const QString to = m_to->text().trimmed().toLower();
-    if (!IsRosterKey(to)) {
-        m_status->setText(tr("The address is a roster key: 64 characters of 0-9 and a-f."));
+    const QString to = m_to->text().trimmed();
+    if (to.isEmpty()) {
+        m_status->setText(tr("Who is it for? A name, a petname or a roster key."));
         return;
     }
     const std::string body = m_body->toPlainText().toStdString();

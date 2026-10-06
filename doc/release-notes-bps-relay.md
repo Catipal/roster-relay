@@ -5,8 +5,8 @@ Bitcoin PoS Relay (BPS Relay) 0.22 is the first release of a second BitcoinPoS
 client. Bitcoin PoS Core is about coins; BPS Relay is about who is on the
 network. It runs the same full node, shares the same chain data and wallets,
 and adds a roster of peers kept on the chain, an encrypted relay network, the
-means to run a relay that pays the peers who use it, and mail between the
-people on the roster.
+means to run a relay that pays the peers who use it, mail between the
+people on the roster, and names for them.
 
 It ships as its own package, `bps-relay-0.22-<platform>`, next to the Bitcoin
 PoS Core one. Bitcoin PoS Core's own changes in 0.22 are in its release notes.
@@ -38,7 +38,8 @@ The first page, with three tabs.
 - **Discovery** - the peers listed on the chain, and your own listing. A
   listing is a short signed record saying you exist and, if you want,
   where to reach you. Nobody can list you without your key, hide you from
-  some clients and not others, or quietly remove you.
+  some clients and not others, or quietly remove you. Click a peer's key or
+  address to copy it.
 - **Overlay** - the encrypted relay network: whether it runs, the relays it
   knows, the two it enters through, and where people can meet you. Every
   path this node builds goes through three relays run by different people,
@@ -110,6 +111,41 @@ protocol in December 2025:
 A letter is signed by the sender's roster key and bound to the recipient, so
 it cannot be passed on to someone else as though it had been written to them.
 
+Names
+-----
+
+A name points people to your roster key, so they can write to you as
+`pilot` instead of 64 characters of key.
+
+- **Registering** - Register a name, choose one or two years, and see the
+  price before anything is spent. It takes two steps: a commitment that hides
+  the name, then, six blocks later (about twenty minutes), the claim, which
+  BPS Relay sends by itself and which burns the price. Nobody watching for
+  new names can take yours in between. Keep BPS Relay running and the wallet
+  unlocked until the claim goes out.
+- **Price** - burned, not paid to anyone, so a staker cannot register names
+  for free. Per year: 100 BPS for three letters, 20 for four, 5 for five and
+  1 for six or more. Names of one or two letters are held back for now.
+- **Renewing** - by hand, while the name is live and for a month after it
+  ends; after that anyone may register it. A name can be paid at most two
+  years ahead.
+- **Subnames** - free under a name you hold: `alice.pilot` can point to
+  anyone's key, and lasts as long as `pilot` does.
+- **Transfer** - give a name to another key.
+- **Look-alikes** - names are plain letters a-z, digits and hyphens, and a
+  name that looks like one somebody else holds (`pi1ot` for `pilot`, `rn` for
+  `m`) is refused.
+- **Address book** - your own labels for people (petnames), kept on this
+  computer and free. A petname wins over a registered name spelled the same.
+- **Look up** - what any name, subname or petname points to.
+
+Mail accepts a name or a petname wherever it accepts a key.
+
+Names count from a start height on each network. On regtest, testnet and
+signet that is the beginning; **mainnet has none yet**, because when names
+open there, and how the first ones are handed out, has still to be decided.
+Until then the Names page says so and only the address book works there.
+
 Server
 ------
 
@@ -125,7 +161,7 @@ What this node offers other people.
   for the people the roster makes this node a mailbox for, and only for
   listed people. It cannot read what it holds. You can turn it off or limit
   the disk it uses (256 MiB by default, 8 MiB at most for any one person).
-- **Names and Hosting** - shown as planned. Neither is built yet.
+- **Hosting** - shown as planned. Not built yet.
 
 Footer
 ------
@@ -144,6 +180,7 @@ New options
 | `-rosterindexstart`, `-rosterindexwindow` | | Where the index starts, and how far back it keeps |
 | `-overlay` | on in BPS Relay, off in the node | Run the encrypted relay network |
 | `-overlayport` | one above this node's peer-to-peer port (48931 on mainnet) | Its UDP port |
+| `-nameindex` | on in BPS Relay, off in the node | Keep an index of names, to look them up and register |
 | `-mail` | on | Send and collect mail (needs the overlay) |
 | `-mailbox` | on | Hold sealed mail for others (needs the overlay) |
 | `-mailboxmaxsize` | 256 | Disk the mailbox may use, in MiB |
@@ -160,9 +197,12 @@ New RPCs
 
 `getrosterinfo`, `getroster`, `getrosterhistory`, `createannouncement`,
 `publishrecord`, `requestlisting`, `getoverlayinfo`, `getrosterstaker`,
-`dumprosterkey`, `addrosteruser`, `removerosteruser`, `getrelaypayout`, and for
+`dumprosterkey`, `addrosteruser`, `removerosteruser`, `getrelaypayout`; for
 mail `sendmail`, `checkmail`, `listmail`, `readmail`, `deletemail` and
-`getmailinfo`. Each has its full description in `help`.
+`getmailinfo`; and for names `getnameinfo`, `resolvename`, `listnames`,
+`getnameprice`, `registername`, `renewname`, `transfername`, `setsubname`,
+`listnameregistrations`, `setpetname`, `deletepetname` and `listpetnames`.
+Each has its full description in `help`.
 
 The node also advertises a new service bit, `NODE_ROSTER`, meaning it serves
 the blocks a roster is built from, and `-blockfilterindex=roster` builds
@@ -183,5 +223,12 @@ Known issues
   for each person, but there is no spam filter yet.
 - Mail keys and letters on this computer are stored unencrypted in the data
   directory (`mail/`), like the roster key. Protect the computer itself.
+- Names have not started on mainnet (see Names).
+- A name cannot be paid yet. Paying by name needs the sender to derive a fresh
+  address from the name's key for every payment, so that one name never links
+  its payments together; that part is not built.
+- Nobody settles a disputed name. The first valid registration holds it.
+- There is no auction or early access for existing identities when names
+  open; the prices are the only protection against a rush.
 - `getmininginfo` and `getstakinginfo` fail when more than one wallet is open.
 - On Linux the window can stay in the process list after quitting.

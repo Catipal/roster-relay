@@ -70,6 +70,7 @@ private:
     bool m_loading{false};
 
     QCheckBox* m_rosterindex{nullptr};
+    QCheckBox* m_nameindex{nullptr};
     QCheckBox* m_rosterconnect{nullptr};
     QCheckBox* m_overlay{nullptr};
     QSpinBox* m_overlayport{nullptr};

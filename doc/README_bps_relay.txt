@@ -10,6 +10,7 @@ are about the network rather than about coins:
   Node       who is listed, the encrypted relay network, peers and console
   Wallet     the BitcoinPoS Core wallet itself, running inside this window
   Mail       letters to and from other people on the roster
+  Names      names that point to keys, and your own address book
   Server     what this node offers others: relaying and holding mail
   Settings   roster, overlay and display options
 
@@ -54,6 +55,15 @@ Your mail address is your roster key, shown on the Mail page. You need to be
 listed to have mailboxes. Letters are sealed so only the recipient can open
 them, travel through three relays, and wait at the recipient's mailboxes for
 up to two weeks until they collect them.
+
+
+Names
+-----
+A name points people to your roster key. Register one on the Names page: the
+price is burned, shorter names cost more, and you renew by hand. Names under
+yours are free, and so is the address book of your own labels for people.
+Names have not started on mainnet yet; until they do, only the address book
+works there.
 
 
 See the bitcoin proof of stake FAQs at:

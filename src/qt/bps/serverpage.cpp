@@ -148,9 +148,9 @@ ServerPage::ServerPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rp
     outer->addWidget(title);
 
     QLabel* subtitle = new QLabel(
-        tr("What this node offers other people. Relaying and holding mail run today; names and "
-           "hosting are on the way, and each is found the same way peers are \xe2\x80\x94 through "
-           "the roster."),
+        tr("What this node offers other people. Relaying and holding mail run today; hosting is on "
+           "the way, and like everything here it is found the same way peers are \xe2\x80\x94 through "
+           "the roster. Names have a page of their own."),
         content);
     subtitle->setWordWrap(true);
     subtitle->setEnabled(false);
@@ -163,20 +163,13 @@ ServerPage::ServerPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rp
     QGridLayout* planned = new QGridLayout();
     planned->setHorizontalSpacing(12);
     planned->setVerticalSpacing(12);
-    planned->addWidget(MakeCard(tr("Names"), Status::PLANNED,
-        tr("A name that resolves to your key, so people pay you by name instead of a "
-           "42-character address, with a fresh address for every payment. Root names are "
-           "priced and renewed; names under a root are free; a peer without a name stays a "
-           "full peer. Designed (design note 001, section 11); who settles a disputed name is "
-           "still open."),
-        content, nullptr), 0, 0);
     planned->addWidget(MakeCard(tr("Hosting"), Status::PLANNED,
         tr("A site or service served from this node, found by its key or name and reached over "
            "the overlay, so the host never publishes where it runs. The meeting part exists: a "
            "service registers at rendezvous points both sides work out from the roster. Serving "
            "pages and apps through it is not built yet."),
-        content, nullptr), 0, 1);
-    for (int c = 0; c < 2; ++c) planned->setColumnStretch(c, 1);
+        content, nullptr), 0, 0);
+    planned->setColumnStretch(0, 1);
     outer->addLayout(planned);
     outer->addStretch(1);
 

@@ -5,7 +5,9 @@
 #include <key.h>
 #include <names/name.h>
 #include <names/record.h>
+#include <names/sale.h>
 #include <names/state.h>
+#include <script/standard.h>
 
 #include <test/util/setup_common.h>
 
@@ -91,6 +93,84 @@ std::vector<unsigned char> SubnameRecord(const std::string& root, const std::str
     std::vector<unsigned char> raw;
     BOOST_REQUIRE(SignNameRecord(signer.key, rec, CHAIN, raw));
     return raw;
+}
+
+/** A sale of `name` by `seller`, on a sale coin at `coin`, as sellname makes it. */
+struct Sale {
+    COutPoint coin;
+    CScript coin_script;
+    CScript payout;
+    CAmount payout_value{0};
+    std::vector<unsigned char> raw;
+};
+
+Sale MakeSale(const std::string& name, const Person& seller, CAmount price, unsigned char coin_fill)
+{
+    Sale s;
+    uint256 txid;
+    std::fill(txid.begin(), txid.end(), coin_fill);
+    s.coin = COutPoint(txid, 0);
+    CKey payee;
+    payee.MakeNewKey(true);
+    s.payout = GetScriptForDestination(PKHash(payee.GetPubKey()));
+    s.payout_value = price + SALE_COIN_VALUE;
+    CKey sale_key;
+    BOOST_REQUIRE(SaleKey(seller.key, name, s.payout, sale_key));
+    s.coin_script = SaleCoinScript(sale_key.GetPubKey());
+    NameRecord rec;
+    rec.type = NameRecordType::SELL;
+    rec.name = name;
+    rec.coin = s.coin;
+    rec.payout_value = s.payout_value;
+    rec.payout = s.payout;
+    BOOST_REQUIRE(SignSale(sale_key, s.coin, s.coin_script, s.payout_value, s.payout, rec.coin_sig));
+    BOOST_REQUIRE(SignNameRecord(seller.key, rec, CHAIN, s.raw));
+    return s;
+}
+
+/** A SELL as the index files it: its transaction spent the sale coin's transaction. */
+IndexedRecord SellAt(int height, const Sale& sale)
+{
+    IndexedRecord r = At(height, sale.raw);
+    r.coin_funded = true;
+    return r;
+}
+
+/** A transaction `txid` spending `coin`, as the index files it. */
+IndexedRecord SpendAt(int height, const COutPoint& coin, const uint256& txid)
+{
+    IndexedRecord r;
+    r.spend = true;
+    r.spent = coin;
+    r.height = height;
+    r.txid = txid;
+    return r;
+}
+
+std::vector<unsigned char> BuyRecord(const std::string& name, const Person& buyer, uint32_t expiry)
+{
+    NameRecord rec;
+    rec.type = NameRecordType::BUY;
+    rec.key = buyer.x;
+    rec.name = name;
+    rec.expiry_height = expiry;
+    std::vector<unsigned char> raw;
+    BOOST_REQUIRE(SignNameRecord(buyer.key, rec, CHAIN, raw));
+    return raw;
+}
+
+IndexedRecord BuyAt(int height, const std::vector<unsigned char>& raw, CAmount burned, const uint256& txid)
+{
+    IndexedRecord r = At(height, raw, burned);
+    r.txid = txid;
+    return r;
+}
+
+uint256 Txid(unsigned char fill)
+{
+    uint256 h;
+    std::fill(h.begin(), h.end(), fill);
+    return h;
 }
 
 /** Register `name` for `owner`: commit at `at`, claim COMMIT_MIN_AGE later for a year. */
@@ -347,12 +427,131 @@ BOOST_AUTO_TEST_CASE(a_commitment_cannot_be_used_twice_or_too_late)
 
 BOOST_AUTO_TEST_CASE(names_count_only_from_the_networks_start)
 {
-    // Mainnet has no start height yet, so nothing on it counts.
+    // Mainnet opened at 1,220,000: nothing before counts, everything after does.
     NameState state("main");
+    BOOST_CHECK_EQUAL(state.StartHeight(), 1220000);
     Person a;
     const Salt salt = MakeSalt(1);
     BOOST_CHECK(state.Apply(At(100, CommitRecord("pilot", salt, a))) != "");
     BOOST_CHECK(state.CheckAvailable("pilot", a.x, 1000) != "");
+    BOOST_CHECK_EQUAL(state.CheckAvailable("pilot", a.x, 1220001), "");
+}
+
+BOOST_AUTO_TEST_CASE(sale_records_round_trip_and_the_coin_signature_spends_the_coin)
+{
+    for (int i = 0; i < 50; ++i) {
+        Person seller;
+        const Sale sale = MakeSale("pilot", seller, (i + 1) * COIN, (unsigned char)i);
+        NameRecord parsed;
+        BOOST_REQUIRE(ParseNameRecord(sale.raw, parsed));
+        BOOST_CHECK(parsed.type == NameRecordType::SELL);
+        BOOST_CHECK(parsed.coin == sale.coin);
+        BOOST_CHECK_EQUAL(parsed.payout_value, sale.payout_value);
+        BOOST_CHECK(parsed.payout == sale.payout);
+        BOOST_CHECK(SerializeNameRecord(parsed) == sale.raw);
+        BOOST_CHECK(VerifyNameRecord(parsed, sale.raw, seller.x, CHAIN));
+        BOOST_CHECK(sale.raw.size() <= roster::MAX_RECORD_SIZE);
+        // The signature spends the coin only into the payout it names.
+        const CTxOut coin(SALE_COIN_VALUE, sale.coin_script);
+        BOOST_CHECK(CheckSale(sale.coin, coin, sale.payout_value, sale.payout, parsed.coin_sig));
+        BOOST_CHECK(!CheckSale(sale.coin, coin, sale.payout_value - 1, sale.payout, parsed.coin_sig));
+        BOOST_CHECK(!CheckSale(sale.coin, coin, sale.payout_value, sale.coin_script, parsed.coin_sig));
+        BOOST_CHECK(!CheckSale(COutPoint(sale.coin.hash, 1), coin, sale.payout_value, sale.payout, parsed.coin_sig));
+    }
+    Person buyer;
+    NameRecord buy;
+    BOOST_REQUIRE(ParseNameRecord(BuyRecord("pilot", buyer, 5000), buy));
+    BOOST_CHECK(buy.type == NameRecordType::BUY);
+    BOOST_CHECK(buy.key == buyer.x);
+    BOOST_CHECK_EQUAL(buy.expiry_height, 5000U);
+}
+
+BOOST_AUTO_TEST_CASE(a_name_for_sale_is_bought_in_the_transaction_that_spends_its_coin)
+{
+    NameState state(CHAIN);
+    Person seller, buyer, other;
+    const int at = Register(state, "pilot", seller, 100);
+    const int h = at + 10;
+    BOOST_REQUIRE_EQUAL(state.Apply(At(h, SubnameRecord("pilot", "alice", other.x, at + BLOCKS_PER_YEAR, seller))), "");
+
+    // Only the holder can sell, and only once its sale coin is on the chain.
+    BOOST_CHECK(state.Apply(SellAt(h, MakeSale("pilot", other, 7 * COIN, 1))) != "");
+    const Sale sale = MakeSale("pilot", seller, 7 * COIN, 2);
+    BOOST_CHECK(state.Apply(At(h, sale.raw)) != "");
+    BOOST_REQUIRE_EQUAL(state.Apply(SellAt(h, sale)), "");
+    BOOST_REQUIRE(state.ActiveOffer("pilot", h + 1) != nullptr);
+    BOOST_CHECK_EQUAL(state.CheckSell("pilot", seller.x, h + 1), "pilot is up for sale already; take it off sale first.");
+
+    // While the coin is unspent the seller can neither re-list nor give it away.
+    BOOST_CHECK(state.Apply(SellAt(h + 1, MakeSale("pilot", seller, 1 * COIN, 3))) != "");
+    BOOST_CHECK(state.Apply(At(h + 1, TransferRecord("pilot", other, seller))) != "");
+
+    // A BUY in a transaction that did not spend the coin does nothing.
+    const uint32_t expiry = state.BuyExpiry("pilot", 1, h + 2);
+    const CAmount burn = Price(5, expiry - (at + BLOCKS_PER_YEAR));
+    BOOST_CHECK_EQUAL(expiry, (uint32_t)(at + 2 * BLOCKS_PER_YEAR));
+    BOOST_CHECK_EQUAL(state.CheckBuy("pilot", buyer.x, expiry, burn, h + 2), "");
+    BOOST_CHECK(state.CheckBuy("pilot", buyer.x, expiry, burn - 1, h + 2) != "");
+    BOOST_CHECK(state.CheckBuy("pilot", seller.x, expiry, burn, h + 2) != "");
+    const std::vector<unsigned char> buy = BuyRecord("pilot", buyer, expiry);
+    BOOST_CHECK(state.Apply(BuyAt(h + 2, buy, burn, Txid(9))) != "");
+
+    // The one that spends it moves the name, clean of the seller's subnames.
+    state.ApplyBlock(h + 2, {SpendAt(h + 2, sale.coin, Txid(10)), BuyAt(h + 2, buy, burn, Txid(10))});
+    Resolution res;
+    std::string why;
+    BOOST_REQUIRE(state.Resolve("pilot", h + 2, res, why));
+    BOOST_CHECK(res.key == buyer.x);
+    BOOST_CHECK_EQUAL(res.expiry, expiry);
+    BOOST_CHECK(!state.Resolve("alice.pilot", h + 2, res, why));
+    BOOST_CHECK(state.ActiveOffer("pilot", h + 3) == nullptr);
+
+    // The coin is gone, so nobody can buy it again, and the new holder can sell.
+    BOOST_CHECK(state.CheckBuy("pilot", other.x, expiry, burn, h + 3) != "");
+    BOOST_CHECK_EQUAL(state.CheckSell("pilot", buyer.x, h + 3), "");
+}
+
+BOOST_AUTO_TEST_CASE(a_sale_ends_when_its_coin_is_spent_without_a_purchase)
+{
+    NameState state(CHAIN);
+    Person seller, buyer, friend_;
+    const int at = Register(state, "relay", seller, 100);
+    const int h = at + 10;
+    const Sale sale = MakeSale("relay", seller, 3 * COIN, 4);
+    BOOST_REQUIRE_EQUAL(state.Apply(SellAt(h, sale)), "");
+
+    // Cancelling is spending the coin; a BUY in a later transaction is too late.
+    state.ApplyBlock(h + 1, {SpendAt(h + 1, sale.coin, Txid(20))});
+    BOOST_CHECK(state.ActiveOffer("relay", h + 2) == nullptr);
+    const uint32_t expiry = state.BuyExpiry("relay", 1, h + 2);
+    state.ApplyBlock(h + 2, {BuyAt(h + 2, BuyRecord("relay", buyer, expiry), 100 * COIN, Txid(20))});
+    Resolution res;
+    std::string why;
+    BOOST_REQUIRE(state.Resolve("relay", h + 2, res, why));
+    BOOST_CHECK(res.key == seller.x);
+
+    // Off sale, the holder can transfer it again.
+    BOOST_CHECK_EQUAL(state.Apply(At(h + 3, TransferRecord("relay", friend_, seller))), "");
+    BOOST_REQUIRE(state.Resolve("relay", h + 3, res, why));
+    BOOST_CHECK(res.key == friend_.x);
+}
+
+BOOST_AUTO_TEST_CASE(a_purchase_renews_at_least_a_month_up_to_two_years_ahead)
+{
+    NameState state(CHAIN);
+    Person seller, buyer;
+    const int at = Register(state, "names", seller, 100);
+    const int h = at + 10;
+    const Sale sale = MakeSale("names", seller, COIN, 5);
+    BOOST_REQUIRE_EQUAL(state.Apply(SellAt(h, sale)), "");
+    const uint32_t from = at + BLOCKS_PER_YEAR;
+    // Not shorter than it is, not less than a month on, not past two years.
+    BOOST_CHECK(state.CheckBuy("names", buyer.x, from - 1, 100 * COIN, h) != "");
+    BOOST_CHECK(state.CheckBuy("names", buyer.x, from + MIN_TERM - 1, 100 * COIN, h) != "");
+    BOOST_CHECK_EQUAL(state.CheckBuy("names", buyer.x, from + MIN_TERM, Price(5, MIN_TERM), h), "");
+    BOOST_CHECK(state.CheckBuy("names", buyer.x, h + MAX_TERM + 1, 100 * COIN, h) != "");
+    // Two years asked for stop at the limit.
+    BOOST_CHECK_EQUAL(state.BuyExpiry("names", 2, h), (uint32_t)h + MAX_TERM);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

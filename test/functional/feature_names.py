@@ -20,7 +20,11 @@ What the test is really about:
   * names that are taken, look like taken ones, or are too short are refused
     before anything is spent;
 
-  * a reorg that removes a record takes its effect away with it.
+  * a reorg that removes a record takes its effect away with it;
+
+  * a holder can put a name up for sale and anyone can buy it at once, the
+    seller offline: one transaction pays the seller, burns the renewal and
+    moves the name, and while it is for sale the seller cannot give it away.
 """
 
 from decimal import Decimal
@@ -34,6 +38,14 @@ from test_framework.util import (
 
 COMMIT_MIN_AGE = 6
 BLOCKS_PER_YEAR = 175320
+MAX_TERM = 2 * BLOCKS_PER_YEAR
+SALE_COIN = Decimal("0.0001")
+
+
+def burn_for(per_year, blocks):
+    """What `blocks` of a name costs, pro rata and rounded up to the satoshi."""
+    sat = int(per_year * 100000000)
+    return Decimal(-(-(sat * blocks) // BLOCKS_PER_YEAR)) / Decimal(100000000)
 
 
 class NamesTest(BitcoinTestFramework):
@@ -48,7 +60,10 @@ class NamesTest(BitcoinTestFramework):
     def key(self, n):
         return self.nodes[n].getrosterinfo()["operational_key"]
 
-    def mine(self, n=1):
+    def mine(self, n=1, sync_mempools=True):
+        # Transactions sent from node 1 have to reach node 0, which mines.
+        if sync_mempools:
+            self.sync_mempools()
         self.nodes[0].generatetoaddress(n, self.address)
         self.sync_all()
         tip = self.nodes[0].getblockcount()
@@ -162,12 +177,81 @@ class NamesTest(BitcoinTestFramework):
         # A longer chain without the transfer replaces the block that had it.
         payer.invalidateblock(payer.getbestblockhash())
         payer.prioritisetransaction(transfer, 0, -100 * 100000000)
-        self.mine(2)
+        self.mine(2, sync_mempools=False)
         assert_equal(other.resolvename("pilot")["key"], self.key(0))
         assert_equal([n["name"] for n in payer.listnames()], ["pilot"])
 
         self.log.info("pending registrations are listed")
         assert_equal(payer.listnameregistrations()[0]["status"], "done")
+
+        self.test_sale()
+
+    def test_sale(self):
+        payer, other = self.nodes
+        payer.sendtoaddress(other.getnewaddress("", "legacy"), 50)
+        self.mine()
+
+        self.log.info("the holder puts a name up for sale")
+        sale = payer.sellname("pilot", 7)
+        assert_equal(sale["price"], Decimal("7"))
+        self.mine()
+        listed = other.listnames("forsale")
+        assert_equal([n["name"] for n in listed], ["pilot"])
+        assert_equal(listed[0]["for_sale"]["price"], Decimal("7"))
+        assert_equal(listed[0]["for_sale"]["state"], "open")
+        assert_equal(listed[0]["for_sale"]["pay_to"], sale["pay_to"])
+
+        self.log.info("its price is the renewal plus what the holder asks")
+        quote = other.getnameprice("pilot")
+        assert_equal(quote["status"], "for sale")
+        assert_equal(quote["action"], "buy")
+        assert_equal(quote["available"], True)
+        assert_equal(quote["asking"], Decimal("7"))
+        # pilot is paid almost two years ahead, so the renewal that comes with
+        # it only reaches the two-year limit.
+        held = payer.listnames()[0]
+        nxt = payer.getblockcount() + 1
+        expected = burn_for(5, nxt + MAX_TERM - max(held["expiry_height"], nxt))
+        assert_equal(quote["renewal"], expected)
+        assert_equal(quote["total"], expected + Decimal("7"))
+
+        self.log.info("while it is for sale the seller cannot give it away or put it up again")
+        assert_raises_rpc_error(-8, "up for sale", payer.transfername, "pilot", self.key(1))
+        assert_raises_rpc_error(-8, "up for sale already", payer.sellname, "pilot", 9)
+        assert_raises_rpc_error(-8, "holds pilot already", payer.buyname, "pilot")
+
+        self.log.info("anyone buys it at once: paying and taking the name are one transaction")
+        bought = other.buyname("pilot")
+        assert_equal(bought["paid"], Decimal("7"))
+        assert_equal(bought["burned"], expected)
+        assert_equal(other.listnames("forsale")[0]["for_sale"]["state"], "pending")
+        self.mine()
+        for node in self.nodes:
+            assert_equal(node.resolvename("pilot")["key"], self.key(1))
+        assert_equal(other.listnames()[0]["expiry_height"], bought["expiry_height"])
+        assert_equal(other.listnames("forsale"), [])
+        assert_equal(payer.listnames(), [])
+        # The buyer gets it clean: the seller's subnames do not come with it.
+        assert_raises_rpc_error(-5, "no subname alice", other.resolvename, "alice.pilot")
+        # The seller was paid the price, and the coin set aside comes back too.
+        assert_equal(payer.getreceivedbyaddress(sale["pay_to"]), Decimal("7") + SALE_COIN)
+        txs = other.gettransaction(bought["txid"], False, True)["decoded"]
+        burns = [o for o in txs["vout"] if o["scriptPubKey"]["type"] == "nulldata"]
+        assert_equal(burns[0]["value"], expected)
+        assert_raises_rpc_error(-8, "not for sale", payer.buyname, "pilot")
+
+        self.log.info("a sale is taken off by spending its coin; then the name can move again")
+        other.sellname("pilot", 100)
+        self.mine()
+        assert_equal(payer.getnameprice("pilot")["asking"], Decimal("100"))
+        other.cancelnamesale("pilot")
+        self.mine()
+        assert_equal(other.listnames("forsale"), [])
+        assert_equal(payer.getnameprice("pilot")["status"], "held")
+        assert_raises_rpc_error(-8, "not for sale", payer.buyname, "pilot")
+        other.transfername("pilot", self.key(0))
+        self.mine()
+        assert_equal(other.resolvename("pilot")["key"], self.key(0))
 
 
 if __name__ == '__main__':

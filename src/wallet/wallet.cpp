@@ -4085,9 +4085,13 @@ void CWallet::CommitTransaction(CTransactionRef tx, mapValue_t mapValue, std::ve
         return true;
     });
 
-    // Notify that old coins are spent
+    // Notify that old coins are spent. An input from outside this wallet -
+    // the coin a name's seller set aside, which a buyer spends - has nothing
+    // here to mark.
     for (const CTxIn& txin : tx->vin) {
-        CWalletTx &coin = mapWallet.at(txin.prevout.hash);
+        const auto it = mapWallet.find(txin.prevout.hash);
+        if (it == mapWallet.end()) continue;
+        CWalletTx& coin = it->second;
         coin.MarkDirty();
         NotifyTransactionChanged(this, coin.GetHash(), CT_UPDATED);
     }

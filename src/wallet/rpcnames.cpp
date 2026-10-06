@@ -5,15 +5,21 @@
 #include <wallet/rpcnames.h>
 
 #include <chainparams.h>
+#include <coins.h>
 #include <core_io.h>
 #include <index/nameindex.h>
+#include <key_io.h>
 #include <names/name.h>
 #include <names/record.h>
 #include <names/registrar.h>
 #include <names/resolve.h>
+#include <names/sale.h>
 #include <names/state.h>
+#include <policy/feerate.h>
+#include <policy/policy.h>
 #include <psbt.h>
 #include <random.h>
+#include <roster/extract.h>
 #include <roster/keystore.h>
 #include <rpc/server.h>
 #include <rpc/util.h>
@@ -21,6 +27,7 @@
 #include <util/moneystr.h>
 #include <util/strencodings.h>
 #include <wallet/coincontrol.h>
+#include <wallet/fees.h>
 #include <wallet/rpcwallet.h>
 #include <wallet/wallet.h>
 
@@ -76,6 +83,58 @@ std::shared_ptr<const names::NameState> CurrentNames(int& next_out, bool wait = 
 }
 
 /**
+ * Sign a transaction this wallet has funded, check the mempool takes it, and
+ * only then keep it. A transaction the wallet keeps but the network refuses
+ * would sit unconfirmed, tying up its coins. Inputs listed in `presigned`
+ * already carry their input script and are left as they are.
+ */
+CTransactionRef SignAndSend(CWallet* const pwallet, CMutableTransaction raw_tx, const std::set<size_t>& presigned = {})
+{
+    PartiallySignedTransaction psbtx(raw_tx);
+    for (size_t i : presigned) {
+        psbtx.inputs[i].final_script_sig = raw_tx.vin[i].scriptSig;
+        psbtx.tx->vin[i].scriptSig.clear();
+    }
+    bool complete = true;
+    const TransactionError err = pwallet->FillPSBT(psbtx, complete, SIGHASH_ALL, true, false);
+    if (err != TransactionError::OK) throw JSONRPCTransactionError(err);
+    CMutableTransaction mtx;
+    if (!FinalizeAndExtractPSBT(psbtx, mtx)) {
+        throw JSONRPCError(RPC_WALLET_ERROR, "Could not sign the funding inputs. Nothing was broadcast.");
+    }
+    CTransactionRef tx(MakeTransactionRef(std::move(mtx)));
+    std::string error;
+    if (!pwallet->chain().broadcastTransaction(tx, pwallet->m_default_max_tx_fee, /* relay */ false, error)) {
+        throw JSONRPCError(RPC_TRANSACTION_REJECTED, error + ". Nothing was spent.");
+    }
+    pwallet->CommitTransaction(tx, {}, {});
+    return tx;
+}
+
+/**
+ * Fund `raw_tx` from this wallet with the change after every output it has,
+ * so the outputs keep their places. Returns where the change went, or -1.
+ */
+int FundChangeLast(CWallet* const pwallet, CMutableTransaction& raw_tx, CAmount& fee, CCoinControl& coin_control)
+{
+    coin_control.m_add_inputs = true;
+    fee = 0;
+    UniValue options(UniValue::VOBJ);
+    options.pushKV("changePosition", (int)raw_tx.vout.size());
+    int change_position = -1;
+    FundTransaction(pwallet, raw_tx, fee, change_position, options, coin_control, /* override_min_fee */ true);
+    return change_position;
+}
+
+/** Fund `raw_tx` from this wallet, its change last, then sign and send it. */
+CTransactionRef SendFunded(CWallet* const pwallet, CMutableTransaction raw_tx, CAmount& fee)
+{
+    CCoinControl coin_control;
+    FundChangeLast(pwallet, raw_tx, fee, coin_control);
+    return SignAndSend(pwallet, raw_tx);
+}
+
+/**
  * Pay to publish a name record, burning `burn` in the same OP_RETURN output.
  *
  * Every caller has checked the record against the name state first: the chain
@@ -110,23 +169,7 @@ CTransactionRef SendNameRecord(CWallet* const pwallet, const std::vector<unsigne
 
     CMutableTransaction raw_tx;
     raw_tx.vout.emplace_back(burn, carrier);
-    CCoinControl coin_control;
-    coin_control.m_add_inputs = true;
-    fee = 0;
-    int change_position = -1;
-    FundTransaction(pwallet, raw_tx, fee, change_position, NullUniValue, coin_control, /* override_min_fee */ true);
-
-    PartiallySignedTransaction psbtx(raw_tx);
-    bool complete = true;
-    const TransactionError err = pwallet->FillPSBT(psbtx, complete, SIGHASH_ALL, true, false);
-    if (err != TransactionError::OK) throw JSONRPCTransactionError(err);
-    CMutableTransaction mtx;
-    if (!FinalizeAndExtractPSBT(psbtx, mtx)) {
-        throw JSONRPCError(RPC_WALLET_ERROR, "Could not sign the funding inputs. Nothing was broadcast.");
-    }
-    CTransactionRef tx(MakeTransactionRef(std::move(mtx)));
-    pwallet->CommitTransaction(tx, {}, {});
-    return tx;
+    return SendFunded(pwallet, raw_tx, fee);
 }
 
 std::vector<unsigned char> Signed(const CKey& key, names::NameRecord& rec)
@@ -143,6 +186,40 @@ int Years(const UniValue& v)
     const int years = v.isNull() ? 1 : v.get_int();
     if (years < 1 || years > 2) throw JSONRPCError(RPC_INVALID_PARAMETER, "years must be 1 or 2");
     return years;
+}
+
+/** The sale coin as it stands now, in the chain or the mempool. */
+bool FindSaleCoin(CWallet* const pwallet, const COutPoint& outpoint, Coin& coin_out)
+{
+    std::map<COutPoint, Coin> coins;
+    coins[outpoint];
+    pwallet->chain().findCoins(coins);
+    coin_out = coins[outpoint];
+    return !coin_out.IsSpent();
+}
+
+/** Bytes a sale coin's input adds: outpoint, script length, a signature push, sequence. */
+constexpr unsigned SALE_INPUT_SIZE = 32 + 4 + 1 + 74 + 4;
+
+/** Refuse when this wallet has a sale of `name` waiting to confirm. */
+void CheckNoSaleWaiting(CWallet* const pwallet, const std::string& name)
+{
+    LOCK(pwallet->cs_wallet);
+    for (const auto& entry : pwallet->mapWallet) {
+        const CWalletTx& wtx = entry.second;
+        if (wtx.GetDepthInMainChain() != 0 || wtx.isAbandoned()) continue;
+        for (const CTxOut& out : wtx.tx->vout) {
+            std::vector<unsigned char> payload;
+            names::NameRecord rec;
+            if (!roster::ExtractOpReturnPayload(out.scriptPubKey, payload)) continue;
+            if (!names::ParseNameRecord(payload, rec)) continue;
+            if (rec.type == names::NameRecordType::SELL && rec.name == name) {
+                throw JSONRPCError(RPC_WALLET_ERROR, strprintf(
+                    "A sale of %s from this wallet is waiting to confirm in %s. Nothing was spent.",
+                    name, wtx.GetHash().GetHex()));
+            }
+        }
+    }
 }
 
 } // namespace
@@ -374,6 +451,11 @@ RPCHelpMan transfername()
         throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf("This node does not hold a live %s.", name));
     }
     if (to.key == owner) throw JSONRPCError(RPC_INVALID_PARAMETER, "That is this node's own key.");
+    if (state->ActiveOffer(name, next)) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
+            "%s is up for sale. Take it off sale first (cancelnamesale); a transfer would not count meanwhile. "
+            "Nothing was spent.", name));
+    }
     names::NameRecord rec;
     rec.type = names::NameRecordType::TRANSFER;
     rec.name = name;
@@ -441,6 +523,287 @@ RPCHelpMan setsubname()
     out.pushKV("txid", tx->GetHash().GetHex());
     out.pushKV("subname", full);
     out.pushKV("key", HexStr(rec.key));
+    return out;
+},
+    };
+}
+
+RPCHelpMan sellname()
+{
+    return RPCHelpMan{"sellname",
+        "\nPut a name this node holds up for sale. Anyone can then buy it at once, without this node being\n"
+        "online: they pay the price to this wallet and renew the name, both in one transaction.\n"
+        "\nTwo transactions are sent. The first sets aside a small coin; the second publishes the sale,\n"
+        "with this node's signature letting whoever pays the price spend that coin. Paying and taking\n"
+        "the name are then one transaction, so a buyer cannot pay without getting the name, and two\n"
+        "buyers cannot both pay. While the name is for sale it cannot be transferred or put up again;\n"
+        "cancelnamesale takes it off sale.\n",
+        {
+            {"name", RPCArg::Type::STR, RPCArg::Optional::NO, "The name"},
+            {"price", RPCArg::Type::AMOUNT, RPCArg::Optional::NO, "What the buyer pays this wallet, in " + CURRENCY_UNIT + ". The buyer burns the renewal on top."},
+        },
+        RPCResult{RPCResult::Type::OBJ, "", "", {
+            {RPCResult::Type::STR, "name", ""},
+            {RPCResult::Type::STR_AMOUNT, "price", "What a buyer pays this wallet"},
+            {RPCResult::Type::STR, "pay_to", "The address it is paid to"},
+            {RPCResult::Type::STR_HEX, "coin_txid", "Transaction setting aside the sale coin"},
+            {RPCResult::Type::STR_HEX, "txid", "Transaction publishing the sale"},
+            {RPCResult::Type::STR_AMOUNT, "fee", "Both fees together"},
+        }},
+        RPCExamples{HelpExampleCli("sellname", "\"pilot\" 250")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    std::shared_ptr<CWallet> const wallet = GetWalletForJSONRPCRequest(request);
+    if (!wallet) return NullUniValue;
+    CWallet* const pwallet = wallet.get();
+    const std::string name = Normal(request.params[0].get_str());
+    const CAmount price = AmountFromValue(request.params[1]);
+    if (price <= 0) throw JSONRPCError(RPC_INVALID_PARAMETER, "The price must be more than zero.");
+    if (!MoneyRange(price + names::SALE_COIN_VALUE)) throw JSONRPCError(RPC_INVALID_PARAMETER, "That price is out of range.");
+    roster::KeyBytes owner;
+    const CKey key = OwnKey(owner);
+    int next = 0;
+    std::shared_ptr<const names::NameState> state = CurrentNames(next);
+    const std::string why = state->CheckSell(name, owner, next);
+    if (!why.empty()) throw JSONRPCError(RPC_INVALID_PARAMETER, why + " Nothing was spent.");
+    CheckNoSaleWaiting(pwallet, name);
+    EnsureWalletIsUnlocked(pwallet);
+
+    CTxDestination pay_to, anchor_to;
+    std::string error;
+    {
+        LOCK(pwallet->cs_wallet);
+        if (!pwallet->GetNewDestination(OutputType::LEGACY, "sale of " + name, pay_to, error) ||
+            !pwallet->GetNewChangeDestination(OutputType::LEGACY, anchor_to, error)) {
+            throw JSONRPCError(RPC_WALLET_KEYPOOL_RAN_OUT, error);
+        }
+    }
+    const CScript payout = GetScriptForDestination(pay_to);
+    if (payout.size() > names::MAX_PAYOUT_SCRIPT) {
+        throw JSONRPCError(RPC_WALLET_ERROR, "This wallet's address is too long for a sale record.");
+    }
+    CKey sale_key;
+    if (!names::SaleKey(key, name, payout, sale_key)) throw JSONRPCError(RPC_MISC_ERROR, "Could not make the sale key.");
+    const CScript coin_script = names::SaleCoinScript(sale_key.GetPubKey());
+    const CAmount payout_value = price + names::SALE_COIN_VALUE;
+
+    // The sale coin, and beside it a coin the sale record will spend, so the
+    // record cannot confirm before the coin it sells exists.
+    CMutableTransaction coin_tx;
+    coin_tx.vout.emplace_back(names::SALE_COIN_VALUE, coin_script);
+    coin_tx.vout.emplace_back(names::SALE_COIN_VALUE, GetScriptForDestination(anchor_to));
+    CAmount coin_fee = 0;
+    const CTransactionRef coin = SendFunded(pwallet, coin_tx, coin_fee);
+    const COutPoint coin_out(coin->GetHash(), 0);
+    const COutPoint anchor(coin->GetHash(), 1);
+
+    names::NameRecord rec;
+    rec.type = names::NameRecordType::SELL;
+    rec.name = name;
+    rec.coin = coin_out;
+    rec.payout_value = payout_value;
+    rec.payout = payout;
+    if (coin->vout[0].scriptPubKey != coin_script || coin->vout[1].scriptPubKey != GetScriptForDestination(anchor_to) ||
+        !names::SignSale(sale_key, coin_out, coin_script, payout_value, payout, rec.coin_sig) ||
+        !names::CheckSale(coin_out, coin->vout[0], payout_value, payout, rec.coin_sig)) {
+        throw JSONRPCError(RPC_MISC_ERROR, strprintf(
+            "Could not sign the sale. The coin set aside in %s is still this node's.", coin->GetHash().GetHex()));
+    }
+    const std::vector<unsigned char> raw = Signed(key, rec);
+
+    CMutableTransaction sell_tx;
+    sell_tx.vin.emplace_back(anchor);
+    sell_tx.vout.emplace_back(0, CScript() << OP_RETURN << raw);
+    CAmount fee = 0;
+    const CTransactionRef tx = SendFunded(pwallet, sell_tx, fee);
+
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("name", name);
+    out.pushKV("price", ValueFromAmount(price));
+    out.pushKV("pay_to", EncodeDestination(pay_to));
+    out.pushKV("coin_txid", coin->GetHash().GetHex());
+    out.pushKV("txid", tx->GetHash().GetHex());
+    out.pushKV("fee", ValueFromAmount(coin_fee + fee));
+    return out;
+},
+    };
+}
+
+RPCHelpMan cancelnamesale()
+{
+    return RPCHelpMan{"cancelnamesale",
+        "\nTake a name this node holds off sale, by spending the coin set aside for the sale back to this\n"
+        "wallet. Nobody can buy it from then on, and once that confirms it can be transferred or put\n"
+        "up again.\n",
+        {
+            {"name", RPCArg::Type::STR, RPCArg::Optional::NO, "The name"},
+        },
+        RPCResult{RPCResult::Type::OBJ, "", "", {
+            {RPCResult::Type::STR_HEX, "txid", ""},
+            {RPCResult::Type::STR, "name", ""},
+        }},
+        RPCExamples{HelpExampleCli("cancelnamesale", "\"pilot\"")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    std::shared_ptr<CWallet> const wallet = GetWalletForJSONRPCRequest(request);
+    if (!wallet) return NullUniValue;
+    CWallet* const pwallet = wallet.get();
+    const std::string name = Normal(request.params[0].get_str());
+    roster::KeyBytes owner;
+    const CKey key = OwnKey(owner);
+    int next = 0;
+    std::shared_ptr<const names::NameState> state = CurrentNames(next);
+    const names::Offer* offer = state->ActiveOffer(name, next);
+    if (!offer || state->Find(name)->owner != owner) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf("This node has no sale of %s open.", name));
+    }
+    CKey sale_key;
+    if (!names::SaleKey(key, name, offer->payout, sale_key)) throw JSONRPCError(RPC_MISC_ERROR, "Could not make the sale key.");
+    const CScript coin_script = names::SaleCoinScript(sale_key.GetPubKey());
+    Coin coin;
+    if (!FindSaleCoin(pwallet, offer->coin, coin)) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
+            "The coin selling %s has been spent already, so the sale is over; it is off sale once that "
+            "transaction confirms.", name));
+    }
+    if (coin.out.scriptPubKey != coin_script) {
+        throw JSONRPCError(RPC_MISC_ERROR, "That sale was not made by this node's key.");
+    }
+
+    CTxDestination back_to;
+    std::string error;
+    {
+        LOCK(pwallet->cs_wallet);
+        if (!pwallet->GetNewChangeDestination(OutputType::LEGACY, back_to, error)) {
+            throw JSONRPCError(RPC_WALLET_KEYPOOL_RAN_OUT, error);
+        }
+    }
+    // The coin pays its own fee: one input, one output.
+    CCoinControl coin_control;
+    const CAmount fee = GetMinimumFeeRate(*pwallet, coin_control, nullptr).GetFee(10 + SALE_INPUT_SIZE + 34);
+    if (coin.out.nValue - fee <= GetDustThreshold(CTxOut(0, GetScriptForDestination(back_to)), pwallet->chain().relayDustFee())) {
+        throw JSONRPCError(RPC_WALLET_ERROR, "The sale coin is too small to pay the fee for spending it.");
+    }
+    CMutableTransaction mtx;
+    mtx.vin.emplace_back(offer->coin, CScript(), (uint32_t)CTxIn::SEQUENCE_FINAL);
+    mtx.vout.emplace_back(coin.out.nValue - fee, GetScriptForDestination(back_to));
+    const uint256 hash = SignatureHash(coin_script, mtx, 0, SIGHASH_ALL, coin.out.nValue, SigVersion::BASE);
+    std::vector<unsigned char> sig;
+    if (!sale_key.Sign(hash, sig)) throw JSONRPCError(RPC_MISC_ERROR, "Could not sign.");
+    sig.push_back((unsigned char)SIGHASH_ALL);
+    mtx.vin[0].scriptSig = CScript() << sig;
+    const CTransactionRef tx = MakeTransactionRef(std::move(mtx));
+    if (!pwallet->chain().broadcastTransaction(tx, pwallet->m_default_max_tx_fee, /* relay */ true, error)) {
+        throw JSONRPCError(RPC_TRANSACTION_REJECTED, error);
+    }
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("txid", tx->GetHash().GetHex());
+    out.pushKV("name", name);
+    return out;
+},
+    };
+}
+
+RPCHelpMan buyname()
+{
+    return RPCHelpMan{"buyname",
+        "\nBuy a name its holder has put up for sale, for this node's roster key.\n"
+        "\nOne transaction pays the holder's price, burns the renewal - as registering would - and moves\n"
+        "the name, so it either all happens or none of it does. Check the price first with getnameprice.\n",
+        {
+            {"name", RPCArg::Type::STR, RPCArg::Optional::NO, "The name"},
+            {"years", RPCArg::Type::NUM, /* default */ "1", "Years of renewal that come with it, 1 or 2, counted from when it ends now and at most two years ahead"},
+        },
+        RPCResult{RPCResult::Type::OBJ, "", "", {
+            {RPCResult::Type::STR_HEX, "txid", ""},
+            {RPCResult::Type::STR, "name", ""},
+            {RPCResult::Type::STR_AMOUNT, "paid", "To the holder"},
+            {RPCResult::Type::STR_AMOUNT, "burned", "The renewal"},
+            {RPCResult::Type::STR_AMOUNT, "fee", ""},
+            {RPCResult::Type::NUM, "expiry_height", "When the name ends for this node"},
+        }},
+        RPCExamples{HelpExampleCli("buyname", "\"pilot\"")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    std::shared_ptr<CWallet> const wallet = GetWalletForJSONRPCRequest(request);
+    if (!wallet) return NullUniValue;
+    CWallet* const pwallet = wallet.get();
+    const std::string name = Normal(request.params[0].get_str());
+    const int years = Years(request.params[1]);
+    roster::KeyBytes buyer;
+    const CKey key = OwnKey(buyer);
+    int next = 0;
+    std::shared_ptr<const names::NameState> state = CurrentNames(next);
+    const names::Offer* offer = state->ActiveOffer(name, next);
+    if (!offer) throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf("%s is not for sale.", name));
+    const names::NameEntry& entry = *state->Find(name);
+    const uint32_t expiry = state->BuyExpiry(name, years, next);
+    const uint32_t from = std::max<uint32_t>(entry.expiry, (uint32_t)next);
+    const CAmount burn = names::Price(name.size(), expiry - from);
+    const std::string why = state->CheckBuy(name, buyer, expiry, burn, next);
+    if (!why.empty()) throw JSONRPCError(RPC_INVALID_PARAMETER, why + " Nothing was spent.");
+    // A sale near the end of its grace month may be over before this confirms.
+    if ((int64_t)entry.expiry + names::GRACE <= (int64_t)next + 6) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
+            "%s lapses within a few blocks, and the purchase could arrive too late. Nothing was spent.", name));
+    }
+
+    Coin coin;
+    if (!FindSaleCoin(pwallet, offer->coin, coin)) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
+            "The coin selling %s has been spent: someone has just bought it, or its holder took it off sale. "
+            "Nothing was spent.", name));
+    }
+    if (!names::CheckSale(offer->coin, coin.out, offer->payout_value, offer->payout, offer->coin_sig)) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
+            "The sale of %s is not signed properly, so it cannot be bought. Nothing was spent.", name));
+    }
+    const CAmount paid = offer->payout_value - coin.out.nValue;
+    EnsureWalletIsUnlocked(pwallet);
+
+    names::NameRecord rec;
+    rec.type = names::NameRecordType::BUY;
+    rec.key = buyer;
+    rec.name = name;
+    rec.expiry_height = expiry;
+    const std::vector<unsigned char> raw = Signed(key, rec);
+
+    // The payment first, at the index the seller signed for; then the BUY.
+    CMutableTransaction mtx;
+    mtx.vout.emplace_back(offer->payout_value, offer->payout);
+    mtx.vout.emplace_back(burn, CScript() << OP_RETURN << raw);
+    CCoinControl coin_control;
+    CAmount fee = 0;
+    const int change_position = FundChangeLast(pwallet, mtx, fee, coin_control);
+
+    // The sale coin goes in front; it carries the seller's signature already.
+    // Its value comes back to this wallet less the fee its bytes add.
+    mtx.vin.insert(mtx.vin.begin(), CTxIn(offer->coin, names::SaleScriptSig(offer->coin_sig), CTxIn::SEQUENCE_FINAL));
+    const CAmount extra_fee = GetMinimumFeeRate(*pwallet, coin_control, nullptr).GetFee(SALE_INPUT_SIZE);
+    const CAmount back = coin.out.nValue - extra_fee;
+    if (change_position >= 0 && change_position < (int)mtx.vout.size()) {
+        mtx.vout[change_position].nValue += back;
+    } else {
+        CTxDestination change_to;
+        std::string error;
+        {
+            LOCK(pwallet->cs_wallet);
+            if (!pwallet->GetNewChangeDestination(OutputType::LEGACY, change_to, error)) {
+                throw JSONRPCError(RPC_WALLET_KEYPOOL_RAN_OUT, error);
+            }
+        }
+        const CTxOut change(back, GetScriptForDestination(change_to));
+        if (!IsDust(change, pwallet->chain().relayDustFee())) mtx.vout.push_back(change);
+    }
+    const CTransactionRef tx = SignAndSend(pwallet, mtx, {0});
+
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("txid", tx->GetHash().GetHex());
+    out.pushKV("name", name);
+    out.pushKV("paid", ValueFromAmount(paid));
+    out.pushKV("burned", ValueFromAmount(burn));
+    out.pushKV("fee", ValueFromAmount(fee + extra_fee));
+    out.pushKV("expiry_height", (int64_t)expiry);
     return out;
 },
     };

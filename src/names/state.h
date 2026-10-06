@@ -7,6 +7,7 @@
 
 #include <amount.h>
 #include <names/record.h>
+#include <primitives/transaction.h>
 #include <roster/record.h>
 #include <uint256.h>
 
@@ -33,16 +34,41 @@
  *   - A name that looks like a live name held by someone else (Skeleton) is
  *     refused.
  *   - The holder may transfer it, and may issue subnames under it for free.
+ *   - The holder may put it up for sale (SELL). While the sale coin is
+ *     unspent the name cannot be transferred or put up again, so a buyer
+ *     cannot be outrun by its own seller. A BUY counts only in the very
+ *     transaction that spends the sale coin, which pays the seller; it also
+ *     renews the name for the buyer, burning the renewal as a CLAIM would.
+ *     The buyer gets the name clean: subnames go with the old holder.
  */
 namespace names {
 
-/** One name record as the index found it on the chain. */
+/**
+ * One name record as the index found it on the chain, or - when `spend` is
+ * set - a transaction spending a coin some SELL record named. Spends come
+ * before the records of the same transaction, as inputs come before outputs.
+ */
 struct IndexedRecord {
     std::vector<unsigned char> raw;
     CAmount burned{0};
     int height{0};
     uint256 txid;
     uint32_t vout{0};
+    bool spend{false};
+    COutPoint spent;
+    //! SELL only: whether its transaction spent an output of the transaction
+    //! that made the sale coin, which puts the coin on the chain first.
+    bool coin_funded{false};
+};
+
+/** A name up for sale. */
+struct Offer {
+    COutPoint coin;
+    CAmount payout_value{0};
+    CScript payout;
+    std::vector<unsigned char> coin_sig;
+    roster::KeyBytes seller{};
+    int height{0};
 };
 
 struct Subname {
@@ -57,6 +83,9 @@ struct NameEntry {
     int registered{0};  //!< height of the claim that registered it to this holder
     int changed{0};     //!< last height its holder or term changed
     std::map<std::string, Subname> subnames;
+    //! Set from a SELL until its sale coin is spent.
+    bool for_sale{false};
+    Offer offer;
 };
 
 enum class Status {
@@ -107,6 +136,25 @@ public:
     std::string CheckClaim(const std::string& name, const roster::KeyBytes& owner, const Salt& salt,
                            uint32_t expiry, CAmount burn, int height) const;
 
+    /**
+     * Whether `owner` could put `name` up for sale at `height`. Empty when it
+     * could.
+     */
+    std::string CheckSell(const std::string& name, const roster::KeyBytes& owner, int height) const;
+
+    /**
+     * Whether a BUY with these terms would count at `height`, in a transaction
+     * that spends the name's sale coin. Empty when it would.
+     */
+    std::string CheckBuy(const std::string& name, const roster::KeyBytes& buyer, uint32_t expiry, CAmount burn,
+                         int height) const;
+
+    /** The term a buyer gets: `years` from when the name ends now, up to two years ahead. */
+    uint32_t BuyExpiry(const std::string& name, int years, int height) const;
+
+    /** The sale `name` is under at `height`, or null. */
+    const Offer* ActiveOffer(const std::string& name, int height) const;
+
     /** Height a commitment was first seen at, or -1. */
     int CommitHeight(const uint256& commitment) const;
 
@@ -128,6 +176,11 @@ private:
     std::map<std::string, std::set<std::string>> m_skeletons;
     std::map<uint256, int> m_commits;
     std::set<uint256> m_used;
+    //! Sale coin -> the name it is selling.
+    std::map<COutPoint, std::string> m_sale_coins;
+    //! Names whose sale coin a transaction of the block being applied spent,
+    //! with who was selling. A BUY counts only in that same transaction.
+    std::map<uint256, std::map<std::string, roster::KeyBytes>> m_sold_in;
 };
 
 } // namespace names

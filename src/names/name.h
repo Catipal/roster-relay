@@ -97,8 +97,7 @@ CAmount Price(size_t length, uint32_t blocks);
 
 /**
  * First height at which names count on this network. Records before it are
- * ignored. Mainnet has none yet: launching a namespace is the moment it gets
- * squatted, and when that happens, and how, is a decision still to be taken.
+ * ignored, and an index does not read the blocks before it.
  */
 int StartHeight(const std::string& chain_id);
 

@@ -167,6 +167,7 @@ BITCOIN_CORE_H = \
   names/record.h \
   names/registrar.h \
   names/resolve.h \
+  names/sale.h \
   names/state.h \
   memusage.h \
   merkleblock.h \
@@ -345,6 +346,7 @@ libbitcoin_server_a_SOURCES = \
   names/record.cpp \
   names/registrar.cpp \
   names/resolve.cpp \
+  names/sale.cpp \
   names/state.cpp \
   interfaces/chain.cpp \
   interfaces/node.cpp \

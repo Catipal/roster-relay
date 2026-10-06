@@ -11,6 +11,7 @@
 
 #include <atomic>
 #include <memory>
+#include <set>
 
 /**
  * NameIndex keeps every name record on the chain, with what it burned, and
@@ -38,7 +39,14 @@ private:
     mutable uint64_t m_cache_generation GUARDED_BY(m_cache_mutex){0};
     mutable int m_cache_height GUARDED_BY(m_cache_mutex){-1};
 
+    //! Coins SELL records have named. A transaction spending one is filed as
+    //! a spend, which is how a sale ends and how a purchase is recognised.
+    //! Touched only by Init and the index thread.
+    std::set<COutPoint> m_sale_coins;
+
     bool EraseHeight(int height, CDBBatch& batch) const;
+    //! Throw away an index written in an older format, so it is rebuilt.
+    bool Upgrade();
 
 protected:
     /** A new index starts at the network's start height for names, not at genesis. */

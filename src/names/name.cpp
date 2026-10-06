@@ -101,7 +101,9 @@ CAmount Price(size_t length, uint32_t blocks)
 
 int StartHeight(const std::string& chain_id)
 {
-    if (chain_id == "main") return std::numeric_limits<int>::max();
+    // Opened on 2026-10-06 below that day's tip, so names count at once. No
+    // name record can be older: the format did not exist.
+    if (chain_id == "main") return 1220000;
     return 0;
 }
 

@@ -27,6 +27,8 @@ const char* TagWord(NameRecordType type)
     case NameRecordType::CLAIM: return "name-claim";
     case NameRecordType::TRANSFER: return "name-transfer";
     case NameRecordType::SUBNAME: return "name-subname";
+    case NameRecordType::SELL: return "name-sell";
+    case NameRecordType::BUY: return "name-buy";
     }
     return "unknown";
 }
@@ -38,6 +40,8 @@ bool KnownType(uint8_t raw, NameRecordType& out)
     case static_cast<uint8_t>(NameRecordType::CLAIM):
     case static_cast<uint8_t>(NameRecordType::TRANSFER):
     case static_cast<uint8_t>(NameRecordType::SUBNAME):
+    case static_cast<uint8_t>(NameRecordType::SELL):
+    case static_cast<uint8_t>(NameRecordType::BUY):
         out = static_cast<NameRecordType>(raw);
         return true;
     default:
@@ -60,6 +64,23 @@ void PutLabel(std::vector<unsigned char>& out, const std::string& label)
 {
     out.push_back(static_cast<unsigned char>(label.size()));
     out.insert(out.end(), label.begin(), label.end());
+}
+
+/** Reads a length-prefixed byte string of 1 to `max` bytes. */
+bool ReadBytes(const unsigned char*& p, const unsigned char* end, size_t max, std::vector<unsigned char>& out)
+{
+    if (p >= end) return false;
+    const size_t n = *p++;
+    if (n == 0 || n > max || (size_t)(end - p) < n) return false;
+    out.assign(p, p + n);
+    p += n;
+    return true;
+}
+
+void PutBytes(std::vector<unsigned char>& out, const std::vector<unsigned char>& bytes)
+{
+    out.push_back(static_cast<unsigned char>(bytes.size()));
+    out.insert(out.end(), bytes.begin(), bytes.end());
 }
 
 } // namespace
@@ -106,6 +127,33 @@ bool ParseNameRecord(Span<const unsigned char> raw, NameRecord& out)
         rec.expiry_height = ReadLE32(p);
         p += 4;
         break;
+    case NameRecordType::SELL: {
+        if (!ReadLabel(p, end, rec.name) || rec.name.size() < MIN_ROOT_LENGTH) return false;
+        if (end - p < (ptrdiff_t)(32 + 4 + 8)) return false;
+        uint256 hash;
+        std::memcpy(hash.begin(), p, 32);
+        p += 32;
+        rec.coin = COutPoint(hash, ReadLE32(p));
+        p += 4;
+        rec.payout_value = (CAmount)ReadLE64(p);
+        p += 8;
+        if (!MoneyRange(rec.payout_value) || rec.payout_value <= 0) return false;
+        std::vector<unsigned char> payout;
+        if (!ReadBytes(p, end, MAX_PAYOUT_SCRIPT, payout)) return false;
+        rec.payout = CScript(payout.begin(), payout.end());
+        if (!ReadBytes(p, end, MAX_COIN_SIG, rec.coin_sig)) return false;
+        if (end - p != (ptrdiff_t)SIG) return false;
+        break;
+    }
+    case NameRecordType::BUY:
+        if (end - p < (ptrdiff_t)KEY) return false;
+        std::memcpy(rec.key.data(), p, KEY);
+        p += KEY;
+        if (!ReadLabel(p, end, rec.name) || rec.name.size() < MIN_ROOT_LENGTH) return false;
+        if (end - p != (ptrdiff_t)(4 + SIG)) return false;
+        rec.expiry_height = ReadLE32(p);
+        p += 4;
+        break;
     }
     std::memcpy(rec.sig.data(), p, SIG);
     out = rec;
@@ -136,6 +184,24 @@ std::vector<unsigned char> SerializeNameRecord(const NameRecord& rec)
         PutLabel(out, rec.name);
         PutLabel(out, rec.label);
         out.insert(out.end(), rec.key.begin(), rec.key.end());
+        WriteLE32(b, rec.expiry_height);
+        out.insert(out.end(), b, b + 4);
+        break;
+    case NameRecordType::SELL: {
+        PutLabel(out, rec.name);
+        out.insert(out.end(), rec.coin.hash.begin(), rec.coin.hash.end());
+        WriteLE32(b, rec.coin.n);
+        out.insert(out.end(), b, b + 4);
+        unsigned char v[8];
+        WriteLE64(v, (uint64_t)rec.payout_value);
+        out.insert(out.end(), v, v + 8);
+        PutBytes(out, std::vector<unsigned char>(rec.payout.begin(), rec.payout.end()));
+        PutBytes(out, rec.coin_sig);
+        break;
+    }
+    case NameRecordType::BUY:
+        out.insert(out.end(), rec.key.begin(), rec.key.end());
+        PutLabel(out, rec.name);
         WriteLE32(b, rec.expiry_height);
         out.insert(out.end(), b, b + 4);
         break;

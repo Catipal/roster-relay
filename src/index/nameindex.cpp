@@ -19,6 +19,15 @@ std::unique_ptr<NameIndex> g_nameindex;
 namespace {
 
 constexpr uint8_t DB_NAME_BY_HEIGHT = 'n';
+constexpr uint8_t DB_VERSION = 'V';
+//! 2: entries carry spends of sale coins.
+constexpr int32_t INDEX_VERSION = 2;
+//! BaseIndex's key for the last block indexed (index/base.cpp).
+constexpr char DB_BEST_BLOCK = 'B';
+
+constexpr uint8_t KIND_RECORD = 0;
+constexpr uint8_t KIND_SPEND = 1;
+constexpr uint8_t FLAG_COIN_FUNDED = 1;
 
 /** Big-endian height and ordinal, so key order is chain order. */
 struct DBHeightKey {
@@ -52,8 +61,14 @@ struct DBEntry {
     int32_t height{0};
     uint256 txid;
     uint32_t vout{0};
+    uint8_t kind{KIND_RECORD};
+    COutPoint spent;
+    uint8_t flags{0};
 
-    SERIALIZE_METHODS(DBEntry, obj) { READWRITE(obj.raw, obj.burned, obj.height, obj.txid, obj.vout); }
+    SERIALIZE_METHODS(DBEntry, obj)
+    {
+        READWRITE(obj.raw, obj.burned, obj.height, obj.txid, obj.vout, obj.kind, obj.spent, obj.flags);
+    }
 };
 
 } // namespace
@@ -79,8 +94,45 @@ NameIndex::~NameIndex() = default;
 
 BaseIndex::DB& NameIndex::GetDB() const { return *m_db; }
 
+bool NameIndex::Upgrade()
+{
+    int32_t version = 0;
+    if (m_db->Read(DB_VERSION, version) && version == INDEX_VERSION) return true;
+    CDBBatch batch(*m_db);
+    std::unique_ptr<CDBIterator> it(m_db->NewIterator());
+    bool had_entries = false;
+    for (it->Seek(DBHeightKey(0, 0)); it->Valid(); it->Next()) {
+        DBHeightKey key;
+        if (!it->GetKey(key)) break;
+        batch.Erase(key);
+        had_entries = true;
+    }
+    it.reset();
+    CBlockLocator existing;
+    if (had_entries || m_db->ReadBestBlock(existing)) {
+        LogPrintf("nameindex: written in an older format; rebuilding it\n");
+        batch.Erase(DB_BEST_BLOCK);
+    }
+    batch.Write(DB_VERSION, INDEX_VERSION);
+    return m_db->WriteBatch(batch, true);
+}
+
 bool NameIndex::Init()
 {
+    if (!Upgrade()) return false;
+    {
+        std::unique_ptr<CDBIterator> it(m_db->NewIterator());
+        for (it->Seek(DBHeightKey(0, 0)); it->Valid(); it->Next()) {
+            DBHeightKey key;
+            DBEntry entry;
+            if (!it->GetKey(key) || !it->GetValue(entry)) break;
+            names::NameRecord rec;
+            if (entry.kind == KIND_RECORD && names::ParseNameRecord(entry.raw, rec) &&
+                rec.type == names::NameRecordType::SELL) {
+                m_sale_coins.insert(rec.coin);
+            }
+        }
+    }
     // Nothing before the start height can count, so a new index does not read
     // those blocks: where names have not started (mainnet, for now) it begins
     // at the tip, and otherwise just below the start.
@@ -123,12 +175,33 @@ bool NameIndex::WriteBlock(const CBlock& block, const CBlockIndex* pindex)
     bool changed = EraseHeight(pindex->nHeight, batch);
     uint32_t ordinal = 0;
     for (const CTransactionRef& tx : block.vtx) {
+        // Inputs first, as a transaction spends before it creates: a purchase
+        // is a spend of the sale coin followed by a BUY in the same transaction.
+        if (!m_sale_coins.empty() && !tx->IsCoinBase()) {
+            for (uint32_t i = 0; i < tx->vin.size(); ++i) {
+                if (!m_sale_coins.count(tx->vin[i].prevout)) continue;
+                DBEntry entry;
+                entry.kind = KIND_SPEND;
+                entry.spent = tx->vin[i].prevout;
+                entry.height = pindex->nHeight;
+                entry.txid = tx->GetHash();
+                entry.vout = i;
+                batch.Write(DBHeightKey(pindex->nHeight, ordinal++), entry);
+                changed = true;
+            }
+        }
         for (uint32_t n = 0; n < tx->vout.size(); ++n) {
             std::vector<unsigned char> payload;
             if (!roster::ExtractOpReturnPayload(tx->vout[n].scriptPubKey, payload)) continue;
             names::NameRecord rec;
             if (!names::ParseNameRecord(payload, rec)) continue;
             DBEntry entry;
+            if (rec.type == names::NameRecordType::SELL) {
+                m_sale_coins.insert(rec.coin);
+                for (const CTxIn& in : tx->vin) {
+                    if (in.prevout.hash == rec.coin.hash) entry.flags |= FLAG_COIN_FUNDED;
+                }
+            }
             entry.raw = std::move(payload);
             entry.burned = tx->vout[n].nValue;
             entry.height = pindex->nHeight;
@@ -193,6 +266,9 @@ bool NameIndex::GetState(std::shared_ptr<const names::NameState>& state_out, int
         rec.height = entry.height;
         rec.txid = entry.txid;
         rec.vout = entry.vout;
+        rec.spend = entry.kind == KIND_SPEND;
+        rec.spent = entry.spent;
+        rec.coin_funded = (entry.flags & FLAG_COIN_FUNDED) != 0;
         block.push_back(std::move(rec));
     }
     if (!block.empty()) state->ApplyBlock(block_height, block);

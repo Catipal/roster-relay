@@ -19,6 +19,9 @@ struct RosterRow {
     int height{0};    //!< where the record confirmed
     int expiry{0};    //!< where it stops counting
     int prev{0};      //!< the previous record for this key, 0 when first
+    int age{0};       //!< blocks of continuous history, 0 until it is deep enough to count
+    int since{-1};    //!< where that history starts
+    QString identity; //!< the identity running it, full hex, or empty
 };
 
 /**

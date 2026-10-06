@@ -30,7 +30,7 @@ QVariant RosterModel::headerData(int section, Qt::Orientation orientation, int r
     case Where: return tr("Address");
     case ListedAt: return tr("Listed");
     case Until: return tr("Listing ends");
-    case History: return tr("History");
+    case History: return tr("Listed for");
     default: return QVariant();
     }
 }
@@ -55,6 +55,18 @@ QVariant RosterModel::data(const QModelIndex& index, int role) const
                              "\n" + tr("Click to copy");
         case ListedAt: return tr("Confirmed in block %1").arg(row.height);
         case Until: return tr("Stops counting at block %1").arg(row.expiry);
+        case History: {
+            // How long it has been listed without a break: the one thing a
+            // newcomer cannot fake, and what entry relays are chosen by.
+            QString text = row.since < 0 ? tr("No history before this listing.")
+                                         : tr("Listed without a break since block %1.").arg(row.since);
+            if (row.age == 0 && row.since >= 0) text += "\n" + tr("Too recent to count yet.");
+            text += "\n" + (row.identity.isEmpty()
+                                 ? tr("Not run under an identity.")
+                                 : tr("Run under identity %1, which keeps its age if it changes keys.")
+                                       .arg(BpsUtil::ShortKey(row.identity)));
+            return text;
+        }
         default: return QVariant();
         }
     }
@@ -83,7 +95,7 @@ QVariant RosterModel::data(const QModelIndex& index, int role) const
         return tr("in %1").arg(BpsUtil::HumanBlocks(left));
     }
     case History:
-        return row.prev == 0 ? tr("first listing") : tr("renewed");
+        return row.age > 0 ? BpsUtil::HumanBlocks(row.age) : tr("new");
     default:
         return QVariant();
     }
@@ -116,6 +128,12 @@ void RosterModel::SetRoster(const UniValue& reply, int tip)
             if (expiry.isNum()) row.expiry = expiry.get_int();
             const UniValue& prev = find_value(entry, "prev_height");
             if (prev.isNum()) row.prev = prev.get_int();
+            const UniValue& age = find_value(entry, "age_blocks");
+            if (age.isNum()) row.age = age.get_int();
+            const UniValue& since = find_value(entry, "since_height");
+            if (since.isNum()) row.since = since.get_int();
+            const UniValue& identity = find_value(entry, "identity");
+            if (identity.isStr()) row.identity = QString::fromStdString(identity.get_str());
 
             const UniValue& eps = find_value(entry, "endpoints");
             if (eps.isArray()) {

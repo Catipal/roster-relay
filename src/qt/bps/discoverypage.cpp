@@ -13,6 +13,11 @@
 
 #include <roster/listing.h>
 
+#ifdef ENABLE_WALLET
+#include <qt/walletcontroller.h>
+#include <qt/walletmodel.h>
+#endif
+
 #include <univalue.h>
 
 #include <QApplication>
@@ -25,6 +30,11 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QCursor>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QInputDialog>
+#include <QMessageBox>
+#include <QUrl>
 #include <QSortFilterProxyModel>
 #include <QTableView>
 #include <QTimer>
@@ -35,6 +45,8 @@ namespace {
 const char* TAG_INFO = "disc:info";
 const char* TAG_HISTORY = "disc:history";
 const char* TAG_ROSTER = "disc:roster";
+const char* TAG_IDENTITY = "disc:identity";
+const char* TAG_DELEGATION = "disc:delegation";
 
 //! How many entries the table holds. The roster is bounded by the rolling
 //! window rather than by the chain, but it can still be larger than anyone
@@ -124,6 +136,23 @@ DiscoveryPage::DiscoveryPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_
     key_row->addWidget(m_publish);
     outer->addLayout(key_row);
 
+    // --- the identity behind it (design note §7) ---------------------------
+    QHBoxLayout* identity_row = new QHBoxLayout();
+    QLabel* identity_caption = new QLabel(tr("Identity"), this);
+    identity_caption->setEnabled(false);
+    m_identity = new QLabel(tr("\xe2\x80\x94"), this);
+    m_identity->setFont(BpsUtil::FixedPitchFont());
+    m_identity->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    m_make_identity = new QPushButton(tr("Make one\xe2\x80\xa6"), this);
+    m_make_identity->setVisible(false);
+    m_make_identity->setToolTip(tr("An identity keeps this node's history - how long it has been listed - "
+                                   "if its key ever has to change."));
+    identity_row->addWidget(identity_caption);
+    identity_row->addWidget(m_identity);
+    identity_row->addWidget(m_make_identity);
+    identity_row->addStretch(1);
+    outer->addLayout(identity_row);
+
     m_error = new QLabel(this);
     m_error->setWordWrap(true);
     m_error->setVisible(false);
@@ -172,6 +201,7 @@ DiscoveryPage::DiscoveryPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_
     });
 
     connect(m_copy_key, &QPushButton::clicked, this, &DiscoveryPage::onCopyKey);
+    connect(m_make_identity, &QPushButton::clicked, this, &DiscoveryPage::onMakeIdentity);
     connect(m_publish, &QPushButton::clicked, this, &DiscoveryPage::onPublishClicked);
     connect(&m_rpc, &BpsRpc::result, this, &DiscoveryPage::onRpcResult);
     connect(&m_rpc, &BpsRpc::failed, this, &DiscoveryPage::onRpcFailed);
@@ -214,6 +244,41 @@ void DiscoveryPage::onCopyKey()
 {
     if (m_own_key.isEmpty()) return;
     QApplication::clipboard()->setText(m_own_key);
+}
+
+QStringList DiscoveryPage::OpenWalletNames() const
+{
+    QStringList names;
+#ifdef ENABLE_WALLET
+    if (m_wallets) {
+        for (WalletModel* model : m_wallets->getOpenWallets()) names << model->getWalletName();
+    }
+#endif
+    return names;
+}
+
+void DiscoveryPage::onMakeIdentity()
+{
+    const QStringList wallets = OpenWalletNames();
+    if (wallets.isEmpty()) return;
+    QString wallet = wallets.front();
+    bool ok = true;
+    if (wallets.size() > 1) {
+        wallet = QInputDialog::getItem(this, tr("Make an identity"), tr("Pay the fee from"), wallets, 0, false, &ok);
+        if (!ok) return;
+    }
+    if (QMessageBox::question(this, tr("Make an identity"),
+            tr("An identity is a second key that stands behind this node's key. If this node's key is ever lost "
+               "or stolen, a new key can be put under the same identity, and the node keeps how long it has "
+               "been listed instead of starting again.\n\n"
+               "You will be shown a recovery key once. Write it down: it is the only way to stop someone who "
+               "steals the identity from moving it. Then a small transaction publishes the identity, and your "
+               "next listing renewal links this node's key to it."),
+            QMessageBox::Ok | QMessageBox::Cancel, QMessageBox::Ok) != QMessageBox::Ok) {
+        return;
+    }
+    m_delegation_wallet = wallet;
+    m_rpc.Call(TAG_IDENTITY, "createidentity");
 }
 
 void DiscoveryPage::onPublishClicked()
@@ -266,6 +331,18 @@ void DiscoveryPage::onRpcResult(const QString& tag, const UniValue& value)
         const UniValue& enabled = find_value(value, "enabled");
         m_index_enabled = enabled.isBool() && enabled.get_bool();
 
+        const UniValue& identity = find_value(value, "identity_key");
+        m_identity_key = identity.isStr() ? QString::fromStdString(identity.get_str()) : QString();
+        if (m_identity_key.isEmpty()) {
+            m_identity->setText(tr("none"));
+            m_identity->setToolTip(QString());
+        } else {
+            m_identity->setText(BpsUtil::ShortKey(m_identity_key));
+            m_identity->setToolTip(m_identity_key);
+        }
+        m_make_identity->setVisible(m_identity_key.isEmpty());
+        m_make_identity->setEnabled(m_identity_key.isEmpty() && !OpenWalletNames().isEmpty());
+
         const UniValue& key = find_value(value, "operational_key");
         if (key.isStr()) {
             m_own_key = QString::fromStdString(key.get_str());
@@ -296,8 +373,19 @@ void DiscoveryPage::onRpcResult(const QString& tag, const UniValue& value)
         const UniValue& best = find_value(value, "best_block_height");
         if (synced.isBool() && !synced.get_bool()) {
             m_index_state->setText(tr("catching up (%1)").arg(best.isNum() ? best.get_int() : 0));
+        } else if (find_value(value, "stale").isTrue()) {
+            // Still used to reach peers; not trusted, because revocations made
+            // since may be missing from it (design note §5, §9).
+            const UniValue& age = find_value(value, "roster_age_seconds");
+            const int days = age.isNum() ? (int)(age.get_int64() / 86400) : 30;
+            m_index_state->setText(tr("%1 days old").arg(days));
+            m_index_state->setToolTip(tr("The newest block this node has is %1 days old, so peers revoked since then "
+                                         "may still be listed here. The roster is still used to reach peers, but the "
+                                         "overlay stops preferring long-listed relays until the chain catches up.")
+                                          .arg(days));
         } else {
             m_index_state->setText(tr("up to date"));
+            m_index_state->setToolTip(QString());
         }
 
         const UniValue& live = find_value(value, "live_peers");
@@ -319,11 +407,51 @@ void DiscoveryPage::onRpcResult(const QString& tag, const UniValue& value)
         return;
     }
 
+    if (tag == TAG_IDENTITY) {
+        const QString recovery = QString::fromStdString(find_value(value, "recovery_key_wif").getValStr());
+        const QString delegation = QString::fromStdString(find_value(value, "delegation").getValStr());
+        QDialog dialog(this);
+        dialog.setWindowTitle(tr("Your recovery key"));
+        QVBoxLayout* layout = new QVBoxLayout(&dialog);
+        QLabel* text = new QLabel(tr("Write this down and keep it somewhere safe, away from this computer. It is "
+                                     "shown only now and is not kept anywhere. Nobody can use it to spend coins; "
+                                     "it can only stop a move of your identity you did not make."), &dialog);
+        text->setWordWrap(true);
+        layout->addWidget(text);
+        QLineEdit* field = new QLineEdit(recovery, &dialog);
+        field->setReadOnly(true);
+        field->setFont(BpsUtil::FixedPitchFont());
+        layout->addWidget(field);
+        QDialogButtonBox* buttons = new QDialogButtonBox(&dialog);
+        QPushButton* copy = buttons->addButton(tr("Copy"), QDialogButtonBox::ActionRole);
+        buttons->addButton(tr("I have written it down"), QDialogButtonBox::AcceptRole);
+        connect(copy, &QPushButton::clicked, &dialog, [recovery] { QApplication::clipboard()->setText(recovery); });
+        connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+        layout->addWidget(buttons);
+        dialog.resize(560, dialog.sizeHint().height());
+        dialog.exec();
+        UniValue params(UniValue::VARR);
+        params.push_back(delegation.toStdString());
+        m_rpc.Call(TAG_DELEGATION, "publishrecord", params,
+                   "/wallet/" + QString::fromUtf8(QUrl::toPercentEncoding(m_delegation_wallet)));
+        Refresh();
+        return;
+    }
+
+    if (tag == TAG_DELEGATION) {
+        m_error->setVisible(true);
+        m_error->setText(tr("Your identity is published in transaction %1. Your next listing renewal links this "
+                            "node's key to it.").arg(BpsUtil::ShortKey(QString::fromStdString(find_value(value, "txid").getValStr()))));
+        return;
+    }
+
     if (tag == TAG_HISTORY) {
-        // Oldest first, so the last record with a live expiry is the one in force.
+        // Oldest first, so the last announcement is the one in force. The
+        // history also holds delegations naming this key, which are not listings.
         m_own_expiry = 0;
         if (value.isArray()) {
             for (size_t i = 0; i < value.size(); ++i) {
+                if (find_value(value[i], "type").getValStr() != "announce") continue;
                 const UniValue& expiry = find_value(value[i], "expiry_height");
                 if (expiry.isNum()) m_own_expiry = expiry.get_int();
             }

@@ -57,9 +57,12 @@ private Q_SLOTS:
     void onRpcFailed(const QString& tag, const QString& message);
     void onPublishClicked();
     void onCopyKey();
+    void onMakeIdentity();
 
 private:
     void UpdateListingSummary();
+    /** The wallets open now, by name; empty without a wallet. */
+    QStringList OpenWalletNames() const;
 
     BpsRpc& m_rpc;
     ClientModel* m_client_model{nullptr};
@@ -69,6 +72,8 @@ private:
     QLabel* m_listing_state{nullptr};
     QLabel* m_roster_size{nullptr};
     QLabel* m_key{nullptr};
+    QLabel* m_identity{nullptr};
+    QPushButton* m_make_identity{nullptr};
     QLabel* m_error{nullptr};
     QPushButton* m_copy_key{nullptr};
     QPushButton* m_publish{nullptr};
@@ -78,6 +83,8 @@ private:
     QTimer* m_timer{nullptr};
 
     QString m_own_key;
+    QString m_identity_key; //!< this node's identity, or empty
+    QString m_delegation_wallet; //!< which wallet publishes the identity's delegation
     int m_tip{0};
     int m_own_expiry{0}; //!< 0 when this node is not listed
     bool m_index_enabled{false};

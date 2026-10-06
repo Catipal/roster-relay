@@ -21,6 +21,10 @@ void RegisterMiningRPCCommands(CRPCTable &tableRPC);
 void RegisterRawTransactionRPCCommands(CRPCTable &tableRPC);
 /** Register roster RPC commands */
 void RegisterRosterRPCCommands(CRPCTable &tableRPC);
+/** Register roster identity, revocation and age RPC commands */
+void RegisterRosterIdentityRPCCommands(CRPCTable &tableRPC);
+/** Register roster commitment (light client) RPC commands */
+void RegisterRosterCommitmentRPCCommands(CRPCTable &tableRPC);
 /** Register mail RPC commands */
 void RegisterMailRPCCommands(CRPCTable &tableRPC);
 /** Register name RPC commands */
@@ -34,6 +38,8 @@ static inline void RegisterAllCoreRPCCommands(CRPCTable &t)
     RegisterMiningRPCCommands(t);
     RegisterRawTransactionRPCCommands(t);
     RegisterRosterRPCCommands(t);
+    RegisterRosterIdentityRPCCommands(t);
+    RegisterRosterCommitmentRPCCommands(t);
     RegisterMailRPCCommands(t);
     RegisterNameRPCCommands(t);
 }

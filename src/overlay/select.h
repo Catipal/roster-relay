@@ -60,6 +60,10 @@ static constexpr size_t DEFAULT_PATH_HOPS = 3;
 struct RelayCandidate {
     roster::KeyBytes key;
     CService addr;
+    //! Blocks of continuous history, or 0 when unknown or too young to count.
+    int age{0};
+    //! The identity running it, or all zeros: relays one identity runs are one operator.
+    roster::KeyBytes identity{};
 
     bool operator==(const RelayCandidate& o) const { return key == o.key; }
 };

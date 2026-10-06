@@ -111,6 +111,9 @@ public:
      */
     void Misbehaving(const NodeId pnode, const int howmuch, const std::string& message);
 
+    /** Pass a roster revocation to every connected peer but `except`. */
+    void RelayRosterRevocation(const std::vector<unsigned char>& raw, NodeId except = -1);
+
 private:
     /**
      * Potentially mark a node discouraged based on the contents of a BlockValidationState object

@@ -5,13 +5,34 @@
 #include <roster/commitment.h>
 
 #include <consensus/merkle.h>
+#include <consensus/validation.h>
 #include <hash.h>
 #include <primitives/block.h>
 
 #include <algorithm>
 #include <cstring>
+#include <map>
+#include <set>
 
 namespace roster {
+
+std::vector<WindowAnnouncement> SelectLive(const std::vector<WindowAnnouncement>& in_chain_order, int at_height,
+                                           const std::function<bool(const KeyBytes&)>& revoked)
+{
+    std::map<KeyBytes, const WindowAnnouncement*> latest;
+    std::map<KeyBytes, std::set<std::vector<unsigned char>>> seen;
+    for (const WindowAnnouncement& a : in_chain_order) {
+        if (!seen[a.key].insert(a.raw).second) continue;
+        latest[a.key] = &a;
+    }
+    std::vector<WindowAnnouncement> out;
+    for (const auto& item : latest) {
+        if (item.second->expiry <= static_cast<uint32_t>(std::max(at_height, 0))) continue;
+        if (revoked && revoked(item.first)) continue;
+        out.push_back(*item.second);
+    }
+    return out;
+}
 
 uint256 CommitmentLeaf(const CommitmentEntry& entry)
 {
@@ -53,41 +74,74 @@ uint256 MerkleRoot(std::vector<CommitmentEntry> entries, bool* duplicate_key)
     return ComputeMerkleRoot(std::move(leaves));
 }
 
-CScript MakeCommitmentScript(const uint256& root)
+std::vector<uint256> CommitmentLeaves(std::vector<CommitmentEntry> entries)
 {
-    CScript script;
-    script.resize(COMMITMENT_SCRIPT_SIZE);
-    script[0] = OP_RETURN;
-    script[1] = 0x24; // push 36 bytes: 4 header + 32 root
-    std::memcpy(&script[2], COMMITMENT_HEADER, sizeof(COMMITMENT_HEADER));
-    std::memcpy(&script[6], root.begin(), 32);
-    return script;
+    std::sort(entries.begin(), entries.end(),
+              [](const CommitmentEntry& a, const CommitmentEntry& b) { return a.key < b.key; });
+    std::vector<uint256> leaves;
+    leaves.reserve(entries.size());
+    for (const CommitmentEntry& entry : entries) leaves.push_back(CommitmentLeaf(entry));
+    return leaves;
 }
 
-int GetCommitmentIndex(const CBlock& block)
+std::vector<uint256> MerkleBranch(std::vector<uint256> leaves, uint32_t index)
 {
-    int position = NO_ROSTER_COMMITMENT;
-    if (block.vtx.empty()) return position;
-
-    const CTransactionRef& coinbase = block.vtx[0];
-    for (size_t o = 0; o < coinbase->vout.size(); ++o) {
-        const CScript& script = coinbase->vout[o].scriptPubKey;
-        if (script.size() < COMMITMENT_SCRIPT_SIZE) continue;
-        if (script[0] != OP_RETURN || script[1] != 0x24) continue;
-        if (std::memcmp(&script[2], COMMITMENT_HEADER, sizeof(COMMITMENT_HEADER)) != 0) continue;
-        position = static_cast<int>(o);
+    std::vector<uint256> branch;
+    if (index >= leaves.size()) return branch;
+    while (leaves.size() > 1) {
+        // The same shape as ComputeMerkleRoot: a lone last node pairs with itself.
+        if (leaves.size() & 1) leaves.push_back(leaves.back());
+        branch.push_back(leaves[index ^ 1]);
+        std::vector<uint256> next;
+        next.reserve(leaves.size() / 2);
+        for (size_t i = 0; i < leaves.size(); i += 2) next.push_back(Hash(leaves[i], leaves[i + 1]));
+        leaves.swap(next);
+        index >>= 1;
     }
-    return position;
+    return branch;
 }
 
-bool GetCommitmentRoot(const CBlock& block, uint256& root_out)
+uint256 RootFromBranch(uint256 leaf, const std::vector<uint256>& branch, uint32_t index)
 {
-    const int position = GetCommitmentIndex(block);
-    if (position == NO_ROSTER_COMMITMENT) return false;
+    for (const uint256& sibling : branch) {
+        leaf = (index & 1) ? Hash(sibling, leaf) : Hash(leaf, sibling);
+        index >>= 1;
+    }
+    return leaf;
+}
 
-    const CScript& script = block.vtx[0]->vout[position].scriptPubKey;
-    std::memcpy(root_out.begin(), &script[6], 32);
-    return true;
+void AppendCommitment(CScript& witness_commitment, const uint256& root)
+{
+    std::vector<unsigned char> push(COMMITMENT_HEADER, COMMITMENT_HEADER + sizeof(COMMITMENT_HEADER));
+    push.insert(push.end(), root.begin(), root.end());
+    witness_commitment << push;
+}
+
+bool ReadCommitment(const CScript& witness_commitment, uint256& root_out)
+{
+    if (witness_commitment.size() < MINIMUM_WITNESS_COMMITMENT) return false;
+    // Past the witness commitment's own push, each further push is a tagged
+    // section (BIP325 puts signet's signature here the same way).
+    CScript::const_iterator pc = witness_commitment.begin() + MINIMUM_WITNESS_COMMITMENT;
+    bool found = false;
+    opcodetype opcode;
+    std::vector<unsigned char> data;
+    while (pc < witness_commitment.end()) {
+        if (!witness_commitment.GetOp(pc, opcode, data)) return false;
+        if (data.size() != COMMITMENT_PUSH_DATA) continue;
+        if (std::memcmp(data.data(), COMMITMENT_HEADER, sizeof(COMMITMENT_HEADER)) != 0) continue;
+        if (found) return false;
+        std::memcpy(root_out.begin(), data.data() + sizeof(COMMITMENT_HEADER), 32);
+        found = true;
+    }
+    return found;
+}
+
+bool GetBlockCommitment(const CBlock& block, uint256& root_out)
+{
+    const int position = GetWitnessCommitmentIndex(block);
+    if (position == NO_WITNESS_COMMITMENT) return false;
+    return ReadCommitment(block.vtx[0]->vout[position].scriptPubKey, root_out);
 }
 
 } // namespace roster

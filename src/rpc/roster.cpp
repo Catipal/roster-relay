@@ -16,6 +16,7 @@
 #include <roster/listing.h>
 #include <roster/payout.h>
 #include <roster/record.h>
+#include <roster/view.h>
 #include <overlay/relay.h>
 #include <overlay/rendezvous.h>
 #include <overlay/select.h>
@@ -295,6 +296,11 @@ static RPCHelpMan getrosterinfo()
                 {RPCResult::Type::STR_HEX, "operational_key", "This node's announcing key, created on first use"},
                 {RPCResult::Type::NUM, "min_ttl", "Shortest life a record may claim, in blocks"},
                 {RPCResult::Type::NUM, "max_ttl", "Longest life a record may claim, in blocks"},
+                {RPCResult::Type::NUM, "roster_age_seconds", /* optional */ true, "How old the block the roster stands at is"},
+                {RPCResult::Type::BOOL, "stale", /* optional */ true, "Older than about 30 days: still dialled, not trusted, since revocations may be missing"},
+                {RPCResult::Type::STR_HEX, "identity_key", /* optional */ true, "This node's identity, if it has one here"},
+                {RPCResult::Type::NUM, "revocations_seen", "Revocations kept, from blocks, the mempool and peers"},
+                {RPCResult::Type::NUM, "unconfirmed_hints", "Announcements not on the chain, kept as dial hints"},
             }},
         RPCExamples{HelpExampleCli("getrosterinfo", "") + HelpExampleRpc("getrosterinfo", "")},
         [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
@@ -329,6 +335,16 @@ static RPCHelpMan getrosterinfo()
 
     out.pushKV("min_ttl", (uint64_t)roster::MIN_TTL);
     out.pushKV("max_ttl", (uint64_t)roster::MAX_TTL);
+    const roster::RosterStatus status = roster::GetRosterStatus();
+    if (status.enabled && status.block_time > 0) {
+        out.pushKV("roster_age_seconds", status.age_seconds);
+        out.pushKV("stale", status.stale);
+    }
+    CKey identity;
+    std::string identity_error;
+    if (roster::GetIdentityKey(identity, identity_error)) out.pushKV("identity_key", HexStr(roster::KeyBytesOf(identity)));
+    out.pushKV("revocations_seen", (uint64_t)(roster::g_revocations ? roster::g_revocations->Size() : 0));
+    out.pushKV("unconfirmed_hints", (uint64_t)roster::g_hints.All().size());
     return out;
 },
     };
@@ -338,10 +354,12 @@ static RPCHelpMan getroster()
 {
     return RPCHelpMan{"getroster",
         "\nThe live peer roster at the current tip.\n"
-        "\nBuilt from the rolling window only, so the cost does not grow with the chain.\n",
+        "\nBuilt from the rolling window only, so the cost does not grow with the chain. A key revoked by\n"
+        "a revocation this node has seen is left out at once, confirmed or not (design note 001, §9).\n",
         {
             {"count", RPCArg::Type::NUM, /* default */ "100", "Maximum entries to return, 0 for all."},
             {"skip", RPCArg::Type::NUM, /* default */ "0", "Entries to skip, for paging."},
+            {"hints", RPCArg::Type::BOOL, /* default */ "false", "Also list announcements not on the chain - waiting in the mempool or taken out by a reorg - marked unconfirmed"},
         },
         RPCResult{
             RPCResult::Type::ARR, "", "", {
@@ -352,6 +370,10 @@ static RPCHelpMan getroster()
                     {RPCResult::Type::NUM, "expiry_height", "Height the record stops counting"},
                     {RPCResult::Type::NUM, "prev_height", "Height of this key's previous record, 0 if first"},
                     {RPCResult::Type::BOOL, "dialable", "Whether the record carries any endpoint at all"},
+                    {RPCResult::Type::NUM, "age_blocks", "Blocks of continuous history, 0 until it is deep enough to count"},
+                    {RPCResult::Type::NUM, "since_height", "Where that history starts"},
+                    {RPCResult::Type::STR_HEX, "identity", /* optional */ true, "The identity running it"},
+                    {RPCResult::Type::BOOL, "unconfirmed", /* optional */ true, "Present on hints: not on the chain"},
                     {RPCResult::Type::ARR, "endpoints", "Dialable addresses, empty when reachable only by rendezvous",
                         {
                             {RPCResult::Type::OBJ, "", "",
@@ -384,15 +406,38 @@ static RPCHelpMan getroster()
         throw JSONRPCError(RPC_DATABASE_ERROR, "Failed to read the roster index");
     }
 
+    const bool hints = !request.params[2].isNull() && request.params[2].get_bool();
     UniValue out(UniValue::VARR);
     int seen = 0, emitted = 0;
     for (const std::pair<const roster::KeyBytes, RosterEntry>& item : live) {
+        if (roster::SeenRevoked(item.first)) continue;
         if (seen++ < skip) continue;
         if (count != 0 && emitted >= count) break;
         roster::Record rec;
         if (!item.second.Parse(rec)) continue;
-        out.push_back(EntryToJSON(item.second, rec));
+        UniValue entry = EntryToJSON(item.second, rec);
+        roster::Standing standing;
+        if (roster::GetStanding(index, item.first, tip, standing)) {
+            entry.pushKV("age_blocks", standing.age);
+            entry.pushKV("since_height", standing.anchor);
+            if (standing.has_identity) entry.pushKV("identity", HexStr(standing.identity));
+        }
+        out.push_back(entry);
         ++emitted;
+    }
+    if (hints) {
+        for (const auto& hint : roster::g_hints.All()) {
+            roster::Record rec;
+            if (roster::ParseRecord(hint.second.raw, rec) != roster::ParseError::OK) continue;
+            if (roster::SeenRevoked(hint.first)) continue;
+            RosterEntry entry;
+            entry.raw = hint.second.raw;
+            entry.height = -1;
+            UniValue o = EntryToJSON(entry, rec);
+            o.pushKV("unconfirmed", true);
+            o.pushKV("source", hint.second.source);
+            out.push_back(o);
+        }
     }
     return out;
 },
@@ -525,12 +570,30 @@ static std::vector<unsigned char> BuildAnnouncement(const UniValue& options, ros
     // Link the age chain without making the caller track it. §5's prev_height
     // is what makes age unforgeable, and an operator who has to remember it by
     // hand will eventually publish a zero and silently restart their history.
+    //
+    // The link goes to this key's last announcement - or, when this node's
+    // identity has delegated to the key since, to that delegation: linking to
+    // it is how the key accepts the identity (§7). Only this node's own
+    // identity: anyone can publish a delegation naming any key.
     if (options.exists("prev_height")) {
         rec.prev_height = (uint32_t)options["prev_height"].get_int64();
     } else if (g_rosterindex) {
         std::vector<RosterEntry> previous;
-        if (g_rosterindex->ReadRecordsForKey(rec.op_key, previous) && !previous.empty()) {
-            rec.prev_height = (uint32_t)previous.back().height;
+        CKey identity;
+        std::string identity_error;
+        const bool have_identity = roster::GetIdentityKey(identity, identity_error);
+        const roster::KeyBytes id = have_identity ? roster::KeyBytesOf(identity) : roster::KeyBytes{};
+        if (g_rosterindex->ReadRecordsForKey(rec.op_key, previous)) {
+            int announced = 0, delegated = 0;
+            for (const RosterEntry& e : previous) {
+                roster::Record r;
+                if (!e.Parse(r)) continue;
+                if (r.type == roster::RecordType::ANNOUNCE && r.op_key == rec.op_key) announced = e.height;
+                if (have_identity && r.type == roster::RecordType::DELEGATE && r.op_key == rec.op_key && r.id_key == id) {
+                    delegated = e.height;
+                }
+            }
+            rec.prev_height = (uint32_t)std::max(announced, delegated);
         }
     }
 
@@ -1084,7 +1147,7 @@ static const CRPCCommand commands[] =
   //  ------------------  ----------------------  ----------------------  ----------
     { "overlay",          "getoverlayinfo",       &getoverlayinfo,        {} },
     { "roster",           "getrosterinfo",        &getrosterinfo,         {} },
-    { "roster",           "getroster",            &getroster,             {"count","skip"} },
+    { "roster",           "getroster",            &getroster,             {"count","skip","hints"} },
     { "roster",           "getrosterhistory",     &getrosterhistory,      {"key"} },
     { "roster",           "createannouncement",   &createannouncement,    {"options"} },
     { "roster",           "requestlisting",       &requestlisting,        {"options","relay"} },

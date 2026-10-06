@@ -57,10 +57,14 @@ static constexpr std::chrono::minutes ROSTER_PEERS_INTERVAL{30};
  */
 bool EndpointToService(const Endpoint& ep, CService& out);
 
-/** One roster member, as the overlay needs it: who it is, and where. */
+/** One roster member, as the overlay needs it: who it is, where, and its standing. */
 struct RelayInfo {
     KeyBytes key;
     CService addr;
+    //! Blocks of continuous history (§5), 0 while it has none AGE_DEPTH deep.
+    int age{0};
+    //! The identity running it (§7), or all zeros.
+    KeyBytes identity{};
 };
 
 /**

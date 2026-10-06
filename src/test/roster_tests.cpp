@@ -4,6 +4,7 @@
 
 #include <chain.h>
 #include <chainparams.h>
+#include <consensus/validation.h>
 #include <index/rosterindex.h>
 #include <key.h>
 #include <primitives/block.h>
@@ -524,44 +525,68 @@ BOOST_AUTO_TEST_CASE(commitment_covers_height_and_membership)
     BOOST_CHECK(!duplicate);
 }
 
-BOOST_AUTO_TEST_CASE(commitment_script_roundtrip)
+BOOST_AUTO_TEST_CASE(commitment_rides_in_the_witness_commitment)
 {
     const uint256 root = MerkleRoot({MakeEntry(MakeKey(37), 500)});
 
+    // A witness commitment output as GenerateCoinbaseCommitment makes it.
+    CScript witness;
+    witness.resize(38);
+    witness[0] = OP_RETURN;
+    witness[1] = 0x24;
+    witness[2] = 0xaa;
+    witness[3] = 0x21;
+    witness[4] = 0xa9;
+    witness[5] = 0xed;
+    uint256 found;
+    BOOST_CHECK(!ReadCommitment(witness, found));
+
+    CScript extended = witness;
+    AppendCommitment(extended, root);
+    BOOST_CHECK_EQUAL(extended.size(), 38U + 37U);
+    BOOST_CHECK(ReadCommitment(extended, found));
+    BOOST_CHECK(found == root);
+
+    // What a node that does not know the rule looks at is unchanged: the
+    // output is still found as the witness commitment, and its witness root
+    // still sits at offset 6.
     CMutableTransaction coinbase;
     coinbase.vin.resize(1);
     coinbase.vout.resize(1);
-    coinbase.vout[0].scriptPubKey = CScript() << OP_TRUE;
-
+    coinbase.vout.push_back(CTxOut(0, extended));
     CBlock block;
     block.vtx.push_back(MakeTransactionRef(coinbase));
-    BOOST_CHECK_EQUAL(GetCommitmentIndex(block), NO_ROSTER_COMMITMENT);
+    BOOST_CHECK_EQUAL(GetWitnessCommitmentIndex(block), 1);
+    BOOST_CHECK(std::equal(extended.begin() + 6, extended.begin() + 38, witness.begin() + 6));
+    BOOST_CHECK(GetBlockCommitment(block, found) && found == root);
 
-    coinbase.vout.push_back(CTxOut(0, MakeCommitmentScript(root)));
-    block.vtx[0] = MakeTransactionRef(coinbase);
-    BOOST_CHECK_EQUAL(GetCommitmentIndex(block), 1);
+    // Other tagged sections, like a signet signature, may sit beside it.
+    CScript with_signet = witness;
+    with_signet << std::vector<unsigned char>{0xec, 0xc7, 0xda, 0xa2, 0x01, 0x02};
+    AppendCommitment(with_signet, root);
+    BOOST_CHECK(ReadCommitment(with_signet, found) && found == root);
 
-    uint256 found;
-    BOOST_CHECK(GetCommitmentRoot(block, found));
-    BOOST_CHECK(found == root);
+    // Two roster roots in one block would be two answers: none counts.
+    CScript twice = extended;
+    AppendCommitment(twice, root);
+    BOOST_CHECK(!ReadCommitment(twice, found));
+}
 
-    // A miner may only append, so the last commitment is the authoritative one
-    // — the same rule the witness commitment follows.
-    const uint256 later = MerkleRoot({MakeEntry(MakeKey(38), 501)});
-    coinbase.vout.push_back(CTxOut(0, MakeCommitmentScript(later)));
-    block.vtx[0] = MakeTransactionRef(coinbase);
-    BOOST_CHECK_EQUAL(GetCommitmentIndex(block), 2);
-    BOOST_CHECK(GetCommitmentRoot(block, found) && found == later);
-
-    // A corrupted header must not be read as a commitment at all.
-    CScript wrong_header = MakeCommitmentScript(root);
-    wrong_header[2] ^= 0x01;
-    CMutableTransaction only_bad;
-    only_bad.vin.resize(1);
-    only_bad.vout.push_back(CTxOut(0, wrong_header));
-    CBlock bad_block;
-    bad_block.vtx.push_back(MakeTransactionRef(only_bad));
-    BOOST_CHECK_EQUAL(GetCommitmentIndex(bad_block), NO_ROSTER_COMMITMENT);
+BOOST_AUTO_TEST_CASE(a_member_proves_itself_with_a_branch)
+{
+    std::vector<CommitmentEntry> entries;
+    for (int i = 0; i < 7; ++i) entries.push_back(MakeEntry(MakeKey(60 + i), 500 + i));
+    const uint256 root = MerkleRoot(entries);
+    const std::vector<uint256> leaves = CommitmentLeaves(entries);
+    for (uint32_t i = 0; i < leaves.size(); ++i) {
+        const std::vector<uint256> branch = MerkleBranch(leaves, i);
+        BOOST_CHECK(RootFromBranch(leaves[i], branch, i) == root);
+        // The wrong side gives another root - except for the lone last leaf,
+        // which the tree pairs with itself.
+        if (i + 1 < leaves.size()) BOOST_CHECK(RootFromBranch(leaves[i], branch, i ^ 1) != root);
+    }
+    BOOST_CHECK(MerkleBranch({leaves[0]}, 0).empty());
+    BOOST_CHECK(RootFromBranch(CommitmentLeaf(entries[0]), {}, 0) == MerkleRoot({entries[0]}));
 }
 
 namespace {

@@ -4,6 +4,8 @@
 
 #include <roster/peers.h>
 
+#include <roster/view.h>
+
 #include <chain.h>
 #include <chainparams.h>
 #include <chainparamsbase.h>
@@ -46,12 +48,17 @@ std::vector<RelayInfo> FreshRelays(int64_t max_age)
     const bool local = Params().NetworkIDString() == CBaseChainParams::REGTEST;
     if (!CollectRelays(*index, height, relays, local)) return g_fresh;
 
+    // A stale roster may be missing revocations, so the age it shows is not
+    // a thing to prefer relays by (§5); it still says where they are.
+    const bool stale = GetRosterStatus().stale;
     std::vector<overlay::RelayCandidate> candidates;
     candidates.reserve(relays.size());
     for (const RelayInfo& r : relays) {
         overlay::RelayCandidate c;
         c.key = r.key;
         c.addr = r.addr;
+        c.age = stale ? 0 : r.age;
+        c.identity = r.identity;
         candidates.push_back(c);
     }
     {
@@ -112,6 +119,8 @@ bool CollectRelays(const RosterIndex& index, int tip_height,
     // derivation depends on - both sides must build the identical list.
     for (std::map<KeyBytes, RosterEntry>::const_iterator it = live.begin();
          it != live.end(); ++it) {
+        // A revocation counts the moment this node sees it, confirmed or not.
+        if (SeenRevoked(it->first)) continue;
         Record rec;
         if (!it->second.Parse(rec)) continue;
 
@@ -122,6 +131,11 @@ bool CollectRelays(const RosterIndex& index, int tip_height,
             RelayInfo info;
             info.key = it->first;
             info.addr = service;
+            Standing standing;
+            if (GetStanding(index, it->first, tip_height, standing)) {
+                info.age = standing.age;
+                if (standing.has_identity) info.identity = standing.identity;
+            }
             out.push_back(info);
             // One entry per key: a relay advertising three addresses is one
             // relay, and counting it three times would let it hold three
@@ -143,9 +157,22 @@ bool CollectPeers(const RosterIndex& index, int tip_height,
     if (!index.BuildRoster(tip_height, live)) return false;
     stats.live = live.size();
 
+    // Announcements not on the chain - waiting in the mempool, or taken out by
+    // a reorg - are extra dial hints for keys the chain lists (§9), beside the
+    // confirmed address rather than instead of it: a stale address costs one
+    // failed handshake, because the transport checks the key.
+    std::vector<std::pair<KeyBytes, RosterEntry>> entries(live.begin(), live.end());
+    for (const auto& hint : g_hints.All()) {
+        if (!live.count(hint.first)) continue;
+        RosterEntry entry;
+        entry.raw = hint.second.raw;
+        entry.height = tip_height;
+        entries.emplace_back(hint.first, entry);
+    }
+
     LOCK(cs_main);
-    for (std::map<KeyBytes, RosterEntry>::const_iterator it = live.begin();
-         it != live.end(); ++it) {
+    for (auto it = entries.begin(); it != entries.end(); ++it) {
+        if (SeenRevoked(it->first)) continue;
         Record rec;
         if (!it->second.Parse(rec)) continue;
 

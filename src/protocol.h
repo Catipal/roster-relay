@@ -260,6 +260,13 @@ extern const char* CFCHECKPT;
  * @since protocol version 70016 as described by BIP 339.
  */
 extern const char* WTXIDRELAY;
+/**
+ * A roster REVOKE record, passed on without anyone paying to publish it
+ * (design note 001 §9). Self-authenticating - signed by the key it revokes -
+ * and only ever removes, so a node keeps one the moment it verifies and
+ * passes it on once. Nodes that do not know it ignore it.
+ */
+extern const char* ROSTERREVOKE;
 }; // namespace NetMsgType
 
 /* Get a vector of all valid message types (see above) */

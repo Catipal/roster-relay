@@ -50,6 +50,27 @@ std::string OperationalKeyPath();
  */
 bool StakerPubKeyFromRoster(const KeyBytes& op_key, CPubKey& pubkey_out);
 
+/** The 32 bytes a record publishes for a key. */
+KeyBytes KeyBytesOf(const CKey& key);
+
+/**
+ * This node's identity key (§7), from <datadir>/roster_identity.key.
+ *
+ * Unlike the operational key it is never created by itself: a node has an
+ * identity only once its operator makes one (createidentity). False with an
+ * empty error when there is none.
+ *
+ * It belongs offline, and an operator who wants it so keeps it elsewhere and
+ * passes it to the RPCs that sign with it instead. Kept here, it is a
+ * convenience that trades some of what the two tiers buy for not having to.
+ */
+bool GetIdentityKey(CKey& key_out, std::string& error);
+
+/** Store `key` as this node's identity key. A key it replaces is kept beside it, renamed. */
+bool SetIdentityKey(const CKey& key, std::string& error);
+
+std::string IdentityKeyPath();
+
 } // namespace roster
 
 #endif // BITCOIN_ROSTER_KEYSTORE_H

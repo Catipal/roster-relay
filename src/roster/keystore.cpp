@@ -9,6 +9,7 @@
 #include <support/cleanse.h>
 
 #include <algorithm>
+#include <util/strencodings.h>
 #include <util/system.h>
 
 namespace roster {
@@ -18,6 +19,7 @@ namespace {
 constexpr size_t SECRET_SIZE = 32;
 
 fs::path KeyPath() { return GetDataDir() / "roster.key"; }
+fs::path IdentityPath() { return GetDataDir() / "roster_identity.key"; }
 
 //! Best-effort owner-only permissions. Failure is logged rather than fatal:
 //! some filesystems cannot express it, and refusing to run there would be a
@@ -49,9 +51,82 @@ void CanonicaliseEvenY(CKey& key)
     if (pubkey.size() > 0 && pubkey[0] == 0x03) key.Negate();
 }
 
+bool ReadKeyFile(const fs::path& path, CKey& key_out, std::string& error)
+{
+    fsbridge::ifstream file(path, std::ios::binary);
+    if (!file.is_open()) {
+        error = "Cannot open " + path.string();
+        return false;
+    }
+    unsigned char secret[SECRET_SIZE];
+    file.read((char*)secret, SECRET_SIZE);
+    const bool complete = file.gcount() == static_cast<std::streamsize>(SECRET_SIZE);
+    if (complete) key_out.Set(secret, secret + SECRET_SIZE, /*fCompressedIn=*/true);
+    memory_cleanse(secret, sizeof(secret));
+    if (!complete || !key_out.IsValid()) {
+        error = path.string() + " does not contain a valid key";
+        return false;
+    }
+    return true;
+}
+
+bool WriteKeyFile(const fs::path& path, const CKey& key, std::string& error)
+{
+    fsbridge::ofstream file(path, std::ios::binary | std::ios::trunc);
+    if (!file.is_open()) {
+        error = "Cannot create " + path.string();
+        return false;
+    }
+    file.write((const char*)key.begin(), SECRET_SIZE);
+    file.close();
+    RestrictPermissions(path);
+    return true;
+}
+
 } // namespace
 
 std::string OperationalKeyPath() { return KeyPath().string(); }
+std::string IdentityKeyPath() { return IdentityPath().string(); }
+
+KeyBytes KeyBytesOf(const CKey& key)
+{
+    const CPubKey pub = key.GetPubKey();
+    KeyBytes out{};
+    std::copy(pub.begin() + 1, pub.begin() + 33, out.begin());
+    return out;
+}
+
+bool GetIdentityKey(CKey& key_out, std::string& error)
+{
+    error.clear();
+    const fs::path path = IdentityPath();
+    if (!fs::exists(path)) return false;
+    if (!ReadKeyFile(path, key_out, error)) return false;
+    CanonicaliseEvenY(key_out);
+    return true;
+}
+
+bool SetIdentityKey(const CKey& key, std::string& error)
+{
+    const fs::path path = IdentityPath();
+    CKey canonical = key;
+    CanonicaliseEvenY(canonical);
+    if (fs::exists(path)) {
+        CKey old;
+        if (ReadKeyFile(path, old, error)) {
+            const fs::path kept = GetDataDir() / ("roster_identity." + HexStr(KeyBytesOf(old)).substr(0, 16) + ".old");
+            try {
+                fs::rename(path, kept);
+            } catch (const fs::filesystem_error& e) {
+                error = "Cannot keep the old identity key: " + std::string(e.what());
+                return false;
+            }
+        }
+    }
+    if (!WriteKeyFile(path, canonical, error)) return false;
+    LogPrintf("roster: identity key stored at %s\n", path.string());
+    return true;
+}
 
 bool StakerPubKeyFromRoster(const KeyBytes& op_key, CPubKey& pubkey_out)
 {

@@ -6,10 +6,14 @@
 #define BITCOIN_INDEX_ROSTERINDEX_H
 
 #include <index/base.h>
+#include <roster/commitment.h>
+#include <roster/identity.h>
 #include <roster/record.h>
 #include <serialize.h>
+#include <sync.h>
 #include <uint256.h>
 
+#include <functional>
 #include <map>
 #include <memory>
 #include <vector>
@@ -29,11 +33,16 @@ struct RosterEntry {
     int32_t height{0};
     uint256 txid;
     uint32_t vout{0};
+    //! Position within its block, filled in on read; not stored in the value.
+    uint32_t ordinal{0};
 
     SERIALIZE_METHODS(RosterEntry, obj) { READWRITE(obj.raw, obj.height, obj.txid, obj.vout); }
 
     /** Re-parse the stored bytes. Always succeeds for entries the index wrote. */
     bool Parse(roster::Record& out) const;
+
+    /** The parsed record with where it confirmed. */
+    bool Held(roster::HeldRecord& out) const;
 };
 
 /**
@@ -46,7 +55,14 @@ struct RosterEntry {
  *   - by height, so the live set over the rolling window of §5 can be built by
  *     a bounded scan that never grows with the chain;
  *   - by key, so one identity's announcement history — its age chain — can be
- *     walked without touching the blocks in between.
+ *     walked without touching the blocks in between. A record is filed under
+ *     every key it names: a DELEGATE under the identity and the key it
+ *     authorises, a ROTATE under both identities, a VETO under the identity
+ *     and the recovery key. So one key's history holds everything that
+ *     shaped it, whoever signed it.
+ *
+ * Revocations are also kept by key, permanently and outside any retention
+ * window: a revoked key stays revoked however old the REVOKE is.
  *
  * Signature verification happens here rather than in the consumer. An index
  * holding unverified records is a trap: every reader would have to remember to
@@ -73,8 +89,21 @@ private:
     const int m_window;
 
     //! Remove both key families for one height. Makes WriteBlock idempotent,
-    //! which is what keeps the index correct across a reorg.
-    void EraseHeight(int height, CDBBatch& batch) const;
+    //! which is what keeps the index correct across a reorg. Records removed
+    //! are reported to the observer as reorged out.
+    void EraseHeight(int height, CDBBatch& batch);
+
+    //! Throw away an index written in an older format, so it is rebuilt.
+    bool Upgrade();
+
+    //! Every announcement confirmed in [first, last], in chain order.
+    bool ReadWindow(int first, int last, std::vector<roster::WindowAnnouncement>& out) const;
+
+    //! Told of every record written, and of every record a reorg removes.
+    mutable Mutex m_observer_mutex;
+    std::function<void(const roster::Record&, const std::vector<unsigned char>&, int, bool)>
+        m_observer GUARDED_BY(m_observer_mutex);
+    void Notify(const roster::Record& rec, const std::vector<unsigned char>& raw, int height, bool reorged_out);
 
     //! Drop every entry below `threshold`.
     void PruneBelow(int threshold, CDBBatch& batch) const;
@@ -126,8 +155,34 @@ public:
     /** Every record confirmed at one height, in the order they appear in the block. */
     bool ReadRecordsAtHeight(int height, std::vector<RosterEntry>& out) const;
 
-    /** Every record ever stored for one key, oldest first. This is the age chain. */
+    /** Every record ever stored naming one key, oldest first. This is the age chain. */
     bool ReadRecordsForKey(const roster::KeyBytes& key, std::vector<RosterEntry>& out) const;
+
+    /** The same, parsed, with chain positions. */
+    bool ReadHistory(const roster::KeyBytes& key, std::vector<roster::HeldRecord>& out) const;
+
+    /**
+     * Everything that shaped an identity: the records naming it and every
+     * identity it rotated from or to, followed as far as the links go.
+     */
+    bool ReadIdentityCluster(const roster::KeyBytes& key, std::vector<roster::HeldRecord>& out) const;
+
+    /** Height of the first REVOKE of `key` at or below `tip`, or -1. */
+    int RevokedAt(const roster::KeyBytes& key, int tip) const;
+
+    /**
+     * The roster a block at `height` commits to (§6): the latest announcement
+     * per key confirmed in [height - AGE_DEPTH - MAX_TTL, height - AGE_DEPTH],
+     * still unexpired at `height`, less every key revoked at or below
+     * height - AGE_DEPTH. Needs the index synced to height - AGE_DEPTH.
+     */
+    bool BuildCommittedRoster(int height, std::map<roster::KeyBytes, RosterEntry>& out) const;
+
+    /**
+     * Be told of every record the index writes, and of records a reorg takes
+     * out (`reorged_out`). Called on the index thread.
+     */
+    void SetObserver(std::function<void(const roster::Record&, const std::vector<unsigned char>&, int, bool)> f);
 
     /**
      * The live roster as of `tip_height`, keyed by operational key.

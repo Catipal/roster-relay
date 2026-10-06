@@ -262,6 +262,7 @@ BITCOIN_TESTS =\
   test/reverselock_tests.cpp \
   test/overlay_tests.cpp \
   test/roster_tests.cpp \
+  test/rosteridentity_tests.cpp \
   test/rosterlisting_tests.cpp \
   test/rosterpayout_tests.cpp \
   test/rpc_tests.cpp \

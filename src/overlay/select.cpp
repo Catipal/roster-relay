@@ -4,6 +4,8 @@
 
 #include <overlay/select.h>
 
+#include <roster/identity.h>
+
 #include <algorithm>
 
 namespace overlay {
@@ -69,10 +71,13 @@ void PathSelector::DropGuard(const roster::KeyBytes& key)
 bool PathSelector::DistinctOperator(const RelayCandidate& c,
                                     const std::vector<RelayCandidate>& chosen) const
 {
+    static const roster::KeyBytes NONE{};
     const std::vector<unsigned char> group = GroupOf(c.addr);
     for (size_t i = 0; i < chosen.size(); ++i) {
         if (chosen[i].key == c.key) return false;
         if (GroupOf(chosen[i].addr) == group) return false;
+        // Two relays one identity runs are one operator, wherever they are.
+        if (c.identity != NONE && chosen[i].identity == c.identity) return false;
     }
     return true;
 }
@@ -91,13 +96,20 @@ bool PathSelector::Select(size_t hops, std::vector<RelayCandidate>& out,
     // Top the guard set up first, so the entry relay is drawn once and then
     // reused rather than being part of every path's draw.
     while (m_guards.size() < m_guard_count) {
-        std::vector<RelayCandidate> eligible;
+        std::vector<RelayCandidate> eligible, seasoned;
         for (size_t i = 0; i < m_relays.size(); ++i) {
             if (IsSelf(m_relays[i])) continue;
-            if (DistinctOperator(m_relays[i], m_guards)) eligible.push_back(m_relays[i]);
+            if (!DistinctOperator(m_relays[i], m_guards)) continue;
+            eligible.push_back(m_relays[i]);
+            if (m_relays[i].age >= roster::GUARD_MIN_AGE) seasoned.push_back(m_relays[i]);
         }
         if (eligible.empty()) break; // a small roster may not support two
-        m_guards.push_back(eligible[m_rng.randrange(eligible.size())]);
+        // An entry relay is kept for months, so it is drawn from relays with a
+        // month of history behind them when there are any (§5): identities are
+        // free, history is not. Preferred, not required, or a young network -
+        // and an operator who lost a key - would have no entry at all.
+        const std::vector<RelayCandidate>& pool = seasoned.empty() ? eligible : seasoned;
+        m_guards.push_back(pool[m_rng.randrange(pool.size())]);
     }
 
     // The destination and its operator are ruled out everywhere, guards

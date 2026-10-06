@@ -30,6 +30,8 @@
 #include <roster/listing.h>
 #include <roster/payout.h>
 #include <roster/keystore.h>
+#include <roster/ledger.h>
+#include <roster/view.h>
 #include <index/nameindex.h>
 #include <mail/client.h>
 #include <names/name.h>
@@ -312,10 +314,16 @@ void Shutdown(NodeContext& node)
         g_txindex->Stop();
         g_txindex.reset();
     }
+    // The watcher reads the roster index, so it goes first.
+    if (roster::g_mempool_watcher) {
+        UnregisterSharedValidationInterface(roster::g_mempool_watcher);
+        roster::g_mempool_watcher.reset();
+    }
     if (g_rosterindex) {
         g_rosterindex->Stop();
         g_rosterindex.reset();
     }
+    roster::g_revocations.reset();
     names::g_registrar.reset();
     if (g_nameindex) {
         g_nameindex->Stop();
@@ -340,6 +348,7 @@ void Shutdown(NodeContext& node)
             }
         }
         pblocktree.reset();
+        roster::g_ledger.reset();
     }
     for (const auto& client : node.chain_clients) {
         client->stop();
@@ -581,6 +590,7 @@ void SetupServerArgs(NodeContext& node)
     hidden_args.emplace_back("-zmqpubsequencehwm=<n>");
 #endif
 
+    argsman.AddArg("-testrostercorrupt", "Build blocks with a wrong roster commitment and do not check others', so tests can see such blocks rejected (regtest only)", ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
     argsman.AddArg("-checkblocks=<n>", strprintf("How many blocks to check at startup (default: %u, 0 = all)", DEFAULT_CHECKBLOCKS), ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
     argsman.AddArg("-checklevel=<n>", strprintf("How thorough the block verification of -checkblocks is: %s (0-4, default: %u)", Join(CHECKLEVEL_DOC, ", "), DEFAULT_CHECKLEVEL), ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
     argsman.AddArg("-checkblockindex", strprintf("Do a consistency check for the block tree, chainstate, and other validation data structures occasionally. (default: %u, regtest: %u)", defaultChainParams->DefaultConsistencyChecks(), regtestChainParams->DefaultConsistencyChecks()), ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
@@ -1929,6 +1939,11 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
         return false;
     }
 
+    // The roster as consensus sees it, if the roster commitment can still
+    // matter on this network (roster/ledger.h). Built before any block
+    // connects, from the chain as it now stands.
+    roster::InitLedger(chainparams);
+
     fs::path est_path = GetDataDir() / FEE_ESTIMATES_FILENAME;
     CAutoFile est_filein(fsbridge::fopen(est_path, "rb"), SER_DISK, CLIENT_VERSION);
     // Allowed to fail as this file IS missing on first startup.
@@ -1942,10 +1957,22 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
         g_txindex->Start();
     }
 
+    // Revocations this node has seen are kept, and passed on, whether or not
+    // it keeps a roster itself: removals stick, from wherever they come (§9).
+    roster::g_revocations = MakeUnique<roster::RevocationStore>(GetDataDir() / "roster_revocations.dat",
+                                                                Params().NetworkIDString());
+    {
+        std::string revocations_error;
+        if (!roster::g_revocations->Load(revocations_error)) LogPrintf("roster: %s\n", revocations_error);
+    }
+    roster::g_mempool_watcher = std::make_shared<roster::MempoolWatcher>();
+    RegisterSharedValidationInterface(roster::g_mempool_watcher);
+
     if (args.GetBoolArg("-rosterindex", DEFAULT_ROSTERINDEX)) {
         const int roster_window = (int)args.GetArg("-rosterindexwindow", 0);
         g_rosterindex = MakeUnique<RosterIndex>(nTxIndexCache, false, fReindex,
                                                (int)args.GetArg("-rosterindexstart", 0), roster_window);
+        g_rosterindex->SetObserver(roster::OnIndexedRecord);
         g_rosterindex->Start();
     }
 

@@ -32,6 +32,8 @@
 #include <util/system.h>
 #include <validation.h>
 #include <consensus/merkle.h>
+#include <roster/record.h>
+#include <roster/view.h>
 #include <shutdown.h>
 #include <checkpoints.h>
 
@@ -3901,6 +3903,25 @@ void PeerManager::ProcessMessage(CNode& pfrom, const std::string& msg_type, CDat
         return;
     }
 
+    if (msg_type == NetMsgType::ROSTERREVOKE) {
+        std::vector<unsigned char> raw;
+        vRecv >> raw;
+        if (!roster::g_revocations) return;
+        if (raw.size() > roster::MAX_RECORD_SIZE) {
+            Misbehaving(pfrom.GetId(), 10, "oversized roster revocation");
+            return;
+        }
+        std::string error;
+        if (roster::g_revocations->Add(raw, &error)) {
+            // New to this node: pass it on once. A node that has it already
+            // returns false above, which is what stops it going round.
+            RelayRosterRevocation(raw, pfrom.GetId());
+        } else if (!error.empty()) {
+            Misbehaving(pfrom.GetId(), 10, "invalid roster revocation");
+        }
+        return;
+    }
+
     if (msg_type == NetMsgType::GETCFHEADERS) {
         ProcessGetCFHeaders(pfrom, vRecv, m_chainparams, m_connman);
         return;
@@ -3930,6 +3951,14 @@ void PeerManager::ProcessMessage(CNode& pfrom, const std::string& msg_type, CDat
     // Ignore unknown commands for extensibility
     LogPrint(BCLog::NET, "Unknown command \"%s\" from peer=%d\n", SanitizeString(msg_type), pfrom.GetId());
     return;
+}
+
+void PeerManager::RelayRosterRevocation(const std::vector<unsigned char>& raw, NodeId except)
+{
+    m_connman.ForEachNode([&](CNode* node) {
+        if (node->GetId() == except || !node->fSuccessfullyConnected || node->fDisconnect) return;
+        m_connman.PushMessage(node, CNetMsgMaker(node->GetCommonVersion()).Make(NetMsgType::ROSTERREVOKE, raw));
+    });
 }
 
 bool PeerManager::MaybeDiscourageAndDisconnect(CNode& pnode)

@@ -51,6 +51,8 @@
 #include <util/translation.h>
 #include <validationinterface.h>
 #include <warnings.h>
+#include <roster/commitment.h>
+#include <roster/ledger.h>
 #include <wallet/wallet.h>
 #include <key.h>
 
@@ -2574,6 +2576,31 @@ bool CChainState::ConnectBlock(const CBlock& block, BlockValidationState& state,
     int64_t nTime4 = GetTimeMicros(); nTimeVerify += nTime4 - nTime2;
     LogPrint(BCLog::BENCH, "    - Verify %u txins: %.2fms (%.3fms/txin) [%.2fs (%.2fms/blk)]\n", nInputs - 1, MILLI * (nTime4 - nTime2), nInputs <= 1 ? 0 : MILLI * (nTime4 - nTime2) / (nInputs-1), nTimeVerify * MICRO, nTimeVerify * MILLI / nBlocksTotal);
 
+    // The roster commitment (roster/commitment.h), once DEPLOYMENT_ROSTER is
+    // active: the block commits to the roster AGE_DEPTH blocks back. A node
+    // whose ledger cannot say - blocks pruned away before it was built - does
+    // not check, as a node that does not know the rule would not.
+    if (roster::CommitmentActive(pindex->pprev, chainparams.GetConsensus()) && !roster::IgnoringCommitments()) {
+        uint256 expected;
+        if (roster::g_ledger && roster::g_ledger->Root(pindex->nHeight, expected)) {
+            uint256 committed;
+            if (!roster::GetBlockCommitment(block, committed)) {
+                return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-roster-commitment-missing",
+                                     "block does not commit to the roster");
+            }
+            if (committed != expected) {
+                return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-roster-commitment",
+                                     "roster commitment mismatch");
+            }
+        } else {
+            static bool warned = false;
+            if (!warned) {
+                LogPrintf("roster: commitments are active but this node cannot check them\n");
+                warned = true;
+            }
+        }
+    }
+
     if (fJustCheck)
         return true;
 
@@ -2769,6 +2796,9 @@ bool CChainState::FlushStateToDisk(
             // Flush the chainstate (which may refer to block index entries).
             if (!CoinsTip().Flush())
                 return AbortNode(state, "Failed to write to coin database");
+            // The roster ledger is saved at the same point, so the two agree
+            // on where the chain was when the node starts again.
+            if (roster::g_ledger) roster::g_ledger->Save();
             nLastFlush = nNow;
             full_flush_completed = true;
         }
@@ -2903,6 +2933,7 @@ bool CChainState::DisconnectTip(BlockValidationState& state, const CChainParams&
             return error("DisconnectTip(): DisconnectBlock %s failed", pindexDelete->GetBlockHash().ToString());
         bool flushed = view.Flush();
         assert(flushed);
+        if (roster::g_ledger) roster::g_ledger->Disconnect(pindexDelete);
     }
     LogPrint(BCLog::BENCH, "- Disconnect block: %.2fms\n", (GetTimeMicros() - nStart) * MILLI);
     // Write the chain state to disk, if necessary.
@@ -3019,6 +3050,7 @@ bool CChainState::ConnectTip(BlockValidationState& state, const CChainParams& ch
         LogPrint(BCLog::BENCH, "  - Connect total: %.2fms [%.2fs (%.2fms/blk)]\n", (nTime3 - nTime2) * MILLI, nTimeConnectTotal * MICRO, nTimeConnectTotal * MILLI / nBlocksTotal);
         bool flushed = view.Flush();
         assert(flushed);
+        if (roster::g_ledger) roster::g_ledger->Connect(blockConnecting, pindexNew);
     }
     int64_t nTime4 = GetTimeMicros(); nTimeFlush += nTime4 - nTime3;
     LogPrint(BCLog::BENCH, "  - Flush: %.2fms [%.2fs (%.2fms/blk)]\n", (nTime4 - nTime3) * MILLI, nTimeFlush * MICRO, nTimeFlush * MILLI / nBlocksTotal);
@@ -4025,6 +4057,12 @@ std::vector<unsigned char> GenerateCoinbaseCommitment(CBlock& block, const CBloc
             out.scriptPubKey[4] = 0xa9;
             out.scriptPubKey[5] = 0xed;
             memcpy(&out.scriptPubKey[6], witnessroot.begin(), 32);
+            // The roster's fingerprint rides in the same output, after the
+            // witness root, where nodes that do not know it ignore it.
+            uint256 roster_root;
+            if (roster::CommitmentForNewBlock(pindexPrev, consensusParams, roster_root)) {
+                roster::AppendCommitment(out.scriptPubKey, roster_root);
+            }
             commitment = std::vector<unsigned char>(out.scriptPubKey.begin(), out.scriptPubKey.end());
             CMutableTransaction tx(*block.vtx[0]);
             tx.vout.push_back(out);

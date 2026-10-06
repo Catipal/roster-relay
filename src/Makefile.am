@@ -212,11 +212,14 @@ BITCOIN_CORE_H = \
   overlay/transport.h \
   roster/commitment.h \
   roster/extract.h \
+  roster/identity.h \
   roster/keystore.h \
+  roster/ledger.h \
   roster/listing.h \
   roster/payout.h \
   roster/peers.h \
   roster/record.h \
+  roster/view.h \
   rpc/blockchain.h \
   rpc/client.h \
   rpc/mining.h \
@@ -334,6 +337,8 @@ libbitcoin_server_a_SOURCES = \
   index/blockfilterindex.cpp \
   index/nameindex.cpp \
   index/rosterindex.cpp \
+  roster/view.cpp \
+  roster/ledger.cpp \
   index/txindex.cpp \
   init.cpp \
   roster/listing.cpp \
@@ -374,6 +379,8 @@ libbitcoin_server_a_SOURCES = \
   rpc/net.cpp \
   rpc/rawtransaction.cpp \
   rpc/roster.cpp \
+  rpc/rostercommitment.cpp \
+  rpc/rosteridentity.cpp \
   rpc/server.cpp \
   script/sigcache.cpp \
   shutdown.cpp \
@@ -580,6 +587,7 @@ libbitcoin_common_a_SOURCES = \
   overlay/transport.cpp \
   roster/commitment.cpp \
   roster/extract.cpp \
+  roster/identity.cpp \
   roster/keystore.cpp \
   roster/payout.cpp \
   roster/peers.cpp \

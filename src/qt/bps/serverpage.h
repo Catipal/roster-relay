@@ -31,8 +31,8 @@ QT_END_NAMESPACE
  * Relaying is the one service running today: paying for the listings of peers
  * that use this node and sharing its staking rewards with them. Its controls
  * live here rather than in Settings because they are what an operator runs,
- * not how the client behaves. The services still to come - names, mail and a
- * VPN - are shown for what they are, not built yet, so the page says where the
+ * not how the client behaves. The services still to come - names, mail and
+ * hosting - are shown for what they are, not built yet, so the page says where the
  * project is going without claiming anything it cannot do.
  *
  * Like Settings, the relay controls are startup arguments in the node, stored

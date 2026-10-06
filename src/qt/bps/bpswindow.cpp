@@ -21,6 +21,7 @@
 #include <qt/guiconstants.h>
 #include <qt/guiutil.h>
 #include <qt/networkstyle.h>
+#include <qt/optionsmodel.h>
 #include <qt/platformstyle.h>
 #include <qt/rpcconsole.h>
 
@@ -30,11 +31,16 @@
 #include <interfaces/handler.h>
 #include <interfaces/node.h>
 #include <interfaces/wallet.h>
+#include <univalue.h>
 #include <node/ui_interface.h>
+#include <policy/feerate.h>
+#include <util/moneystr.h>
+#include <util/strencodings.h>
 #include <util/system.h>
 #include <util/translation.h>
 
 #include <QApplication>
+#include <QCloseEvent>
 #include <QDateTime>
 #include <QFrame>
 #include <QHBoxLayout>
@@ -59,6 +65,9 @@ namespace {
 //! How often the staking state is looked at again. It changes when a stake
 //! search runs, and the wallet client polls on the same order.
 const int STAKING_REFRESH_MS = 5000;
+//! The block reward and the share given to peers change at most per block.
+const int REWARD_REFRESH_MS = 30000;
+const char* TAG_FOOTER_REWARD = "footer:reward";
 
 //! Core wants to say something. Marshalled onto the GUI thread by name, which
 //! is the only way to reach a slot from a thread that has no Qt connection.
@@ -255,8 +264,54 @@ void BpsWindow::CreateFooter()
         m_staking_timer->setInterval(STAKING_REFRESH_MS);
         connect(m_staking_timer, &QTimer::timeout, this, &BpsWindow::updateWalletStatus);
         m_staking_timer->start();
+
+        // What a block pays and how much of it this node gives its peers, for
+        // the yearly rate staking earns.
+        connect(m_rpc.get(), &BpsRpc::result, this, &BpsWindow::onRpcResult);
+        m_reward_timer = new QTimer(this);
+        m_reward_timer->setInterval(REWARD_REFRESH_MS);
+        connect(m_reward_timer, &QTimer::timeout, this, [this] {
+            if (m_client_model) m_rpc->Call(TAG_FOOTER_REWARD, "getrelaypayout");
+        });
+        m_reward_timer->start();
     }
 #endif
+}
+
+void BpsWindow::onRpcResult(const QString& tag, const UniValue& value)
+{
+    if (tag != TAG_FOOTER_REWARD) return;
+    const UniValue& reward = find_value(value, "block_reward");
+    const UniValue& share = find_value(value, "share_percent");
+    int64_t amount = 0;
+    if (reward.isNum() && ParseFixedPoint(reward.getValStr(), 8, &amount)) m_block_reward = amount;
+    if (share.isNum()) m_share_percent = share.get_int();
+    updateWalletStatus();
+}
+
+QString BpsWindow::YearlyRate(uint64_t network_weight, QString* detail) const
+{
+    if (m_block_reward <= 0 || network_weight == 0) return QString();
+    // Every staker wins blocks in proportion to its stake, so the rate is the
+    // same for all of them: what a year of blocks pays, over the coins staking.
+    // Fees are left out; on a chain this empty they are a rounding error.
+    const double blocks_per_year = 365.0 * 24 * 3600 / Params().GetConsensus().nPowTargetSpacing;
+    const double kept = 1.0 - m_share_percent / 100.0;
+    const double rate = 100.0 * blocks_per_year * (double)m_block_reward * kept / (double)network_weight;
+    if (detail) {
+        *detail = tr("Staking earns about %1% a year at the current network weight: %2 blocks a year, "
+                     "%3 %4 each, over %5 %4 staking.")
+                      .arg(rate, 0, 'f', 2)
+                      .arg((qint64)blocks_per_year)
+                      .arg(QString::fromStdString(FormatMoney(m_block_reward)))
+                      .arg(QString::fromStdString(CURRENCY_UNIT))
+                      .arg(network_weight / COIN);
+        if (m_share_percent > 0) {
+            *detail += "<br>" + tr("That is after the %1% of each block this node shares with its peers.")
+                                    .arg(m_share_percent);
+        }
+    }
+    return tr("%1% a year").arg(rate, 0, 'f', 1);
 }
 
 void BpsWindow::subscribeToCoreSignals()
@@ -489,20 +544,22 @@ void BpsWindow::updateWalletStatus()
     const uint64_t weight = model->getStakeWeight();
     const bool staking = model->wallet().getLastCoinStakeSearchInterval() &&
                          model->wallet().getEnabledStaking() && weight;
+    const uint64_t network_weight = GetPoSKernelPS();
+    QString rate_detail;
+    const QString rate = YearlyRate(network_weight, &rate_detail);
     if (staking) {
-        const uint64_t network_weight = GetPoSKernelPS();
         // Blocks until a reward, on average: the network's weight over ours.
         const int blocks = (int)std::max<uint64_t>(1, network_weight / weight);
         m_staking_icon->setPixmap(
             m_platform_style->SingleColorIcon(":/icons/staking_on").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
-        m_staking_label->setText(tr("staking"));
+        m_staking_label->setText(rate.isEmpty() ? tr("staking") : tr("staking, %1").arg(rate));
         tooltip = tr("<b>%1</b> is staking.<br>Its weight is %2<br>Network weight is %3<br>"
                      "Expected time to earn a reward is %4")
                       .arg(name).arg(weight / COIN).arg(network_weight / COIN).arg(BpsUtil::HumanBlocks(blocks));
     } else {
         m_staking_icon->setPixmap(
             m_platform_style->SingleColorIcon(":/icons/staking_off").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
-        m_staking_label->setText(tr("not staking"));
+        m_staking_label->setText(rate.isEmpty() ? tr("not staking") : tr("not staking (pays %1)").arg(rate));
         if (m_node.getNodeCount(CConnman::CONNECTIONS_ALL) < 4) {
             tooltip = tr("Not staking: too few peers");
         } else if (m_node.isInitialBlockDownload()) {
@@ -515,9 +572,26 @@ void BpsWindow::updateWalletStatus()
             tooltip = tr("Not staking");
         }
     }
+    if (!rate_detail.isEmpty()) tooltip += "<br><br>" + rate_detail;
     m_staking_icon->setToolTip(NoWrap(tooltip));
     m_staking_label->setToolTip(NoWrap(tooltip));
 #endif
+}
+
+void BpsWindow::closeEvent(QCloseEvent* event)
+{
+    // The application does not quit when its last window closes (the shutdown
+    // notice is a window of its own), so without this, closing only hid the
+    // window and left the node running with nothing on screen to stop it -
+    // there is no tray icon to come back through.
+    const OptionsModel* options = m_client_model ? m_client_model->getOptionsModel() : nullptr;
+    if (options && options->getMinimizeOnClose()) {
+        showMinimized();
+        event->ignore();
+        return;
+    }
+    QApplication::quit();
+    QMainWindow::closeEvent(event);
 }
 
 void BpsWindow::detectShutdown()

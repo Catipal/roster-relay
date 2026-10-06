@@ -23,6 +23,7 @@ class PlatformStyle;
 class RPCConsole;
 class ServerPage;
 class SettingsPage;
+class UniValue;
 class WalletController;
 class WalletModel;
 class WalletPage;
@@ -41,6 +42,7 @@ struct BlockAndHeaderTipInfo;
 } // namespace interfaces
 
 QT_BEGIN_NAMESPACE
+class QCloseEvent;
 class QDateTime;
 class QFrame;
 class QLabel;
@@ -85,6 +87,10 @@ public:
     /** Called before shutdown, while an event loop is still running. */
     void unsubscribeFromCoreSignals();
 
+protected:
+    /** Closing the window quits, unless the shared option says to minimise instead. */
+    void closeEvent(QCloseEvent* event) override;
+
 public Q_SLOTS:
     void detectShutdown();
 
@@ -99,6 +105,7 @@ private Q_SLOTS:
     void updateNetworkState();
     /** Lock and staking state in the footer, read from the open wallets. */
     void updateWalletStatus();
+    void onRpcResult(const QString& tag, const UniValue& value);
 
 private:
     void subscribeToCoreSignals();
@@ -107,6 +114,9 @@ private:
     /** The wallet the footer reports on: one that is staking, else the first open. */
     WalletModel* FooterWallet() const;
 #endif
+
+    /** What staking earns a year at this network weight, net of the share given to peers. */
+    QString YearlyRate(uint64_t network_weight, QString* detail) const;
 
     /** The chain half of the footer, from a height, its block's time and a sync fraction. */
     void UpdateChain(int height, const QDateTime& block_date, double progress);
@@ -144,6 +154,9 @@ private:
     QLabel* m_blocks_icon{nullptr};
     QLabel* m_blocks_label{nullptr};
     QTimer* m_staking_timer{nullptr};
+    QTimer* m_reward_timer{nullptr};
+    int64_t m_block_reward{-1}; //!< satoshi per block, -1 until known
+    int m_share_percent{0};     //!< of each staked block, given to listed peers
     int m_spinner_frame{0};
     int m_prev_blocks{-1}; //!< so the first height painted gets an icon too
 

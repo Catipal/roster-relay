@@ -162,11 +162,11 @@ ServerPage::ServerPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rp
         tr("Mail between roster keys, carried over the overlay: you are reached by key or by "
            "name, sealed end to end, with no mail server holding your inbox. Not designed yet."),
         content, nullptr), 0, 1);
-    planned->addWidget(MakeCard(tr("VPN"), Status::PLANNED,
-        tr("Your traffic routed encrypted through relays. The overlay already carries traffic "
-           "between nodes; reaching the wider internet also needs exit relays, which the overlay "
-           "deliberately is not today \xe2\x80\x94 an exit answers for the traffic it sends on. "
-           "Not designed yet."),
+    planned->addWidget(MakeCard(tr("Hosting"), Status::PLANNED,
+        tr("A site or service served from this node, found by its key or name and reached over "
+           "the overlay, so the host never publishes where it runs. The meeting part exists: a "
+           "service registers at rendezvous points both sides work out from the roster. Serving "
+           "pages and apps through it is not built yet."),
         content, nullptr), 0, 2);
     for (int c = 0; c < 3; ++c) planned->setColumnStretch(c, 1);
     outer->addLayout(planned);

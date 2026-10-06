@@ -132,19 +132,28 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
     m_nowhere->setChecked(true);
     outer->addWidget(where);
 
-    // --- how long, and who pays ----------------------------------------
+    // --- who pays, and how long ----------------------------------------
     QFormLayout* form = new QFormLayout();
-
-    // Not a choice. A listing runs a month and is then renewed - that is the
-    // cadence the relay economics are built on, where a relay pays for its
-    // users' monthly renewals and a relay's own listing runs yearly. Offering a
-    // slider here would invite an operator to pick a length that does not match
-    // the role they are in.
-    QLabel* duration = new QLabel(tr("A month, then it needs renewing"), this);
-    form->addRow(tr("How long it lasts"), duration);
 
     m_payer = new QComboBox(this);
     form->addRow(tr("Who pays the fee"), m_payer);
+
+    // The length follows who pays, from the relay economics: a listing a relay
+    // pays for runs a month, so a peer that has left stops costing its relay
+    // within the month; a node paying for itself - which is how a relay lists -
+    // may take a year. Never a free slider, which would invite a length that
+    // does not match the role.
+    QWidget* length = new QWidget(this);
+    QHBoxLayout* length_row = new QHBoxLayout(length);
+    length_row->setContentsMargins(0, 0, 0, 0);
+    m_length_fixed = new QLabel(tr("A month, then it needs renewing"), length);
+    m_length = new QComboBox(length);
+    m_length->addItem(tr("A month, then it needs renewing"));
+    m_length->addItem(tr("A year, then it needs renewing"));
+    length_row->addWidget(m_length_fixed);
+    length_row->addWidget(m_length);
+    length_row->addStretch(1);
+    form->addRow(tr("How long it lasts"), length);
     outer->addLayout(form);
 
     m_payer_note = SmallNote(QString(), this);
@@ -214,6 +223,8 @@ void PublishDialog::onPayerChanged()
 {
     bool can_publish = true;
     QString note;
+    m_length->setVisible(!RelayChosen());
+    m_length_fixed->setVisible(RelayChosen());
 
     if (RelayChosen()) {
         if (!m_overlay_on) {
@@ -283,6 +294,7 @@ void PublishDialog::SetBusy(bool busy)
     m_address->setEnabled(!busy && m_at_address->isChecked());
     m_port->setEnabled(!busy && m_at_address->isChecked());
     m_payer->setEnabled(!busy && m_payer->count() > 1);
+    m_length->setEnabled(!busy);
     m_nowhere->setEnabled(!busy);
     m_at_address->setEnabled(!busy);
     if (!busy) onPayerChanged();
@@ -322,6 +334,13 @@ bool PublishDialog::BuildOptions(UniValue& options)
     // from this node's wallet, the block is this node's own if it stakes, so
     // the wait is sized to its stake; a relay that needs longer asks, and
     // requestlisting signs again.
+    if (!RelayChosen() && m_length->currentIndex() == 1) {
+        // A year from the first block it could confirm in. Valid for a block
+        // anywhere up to MAX_TTL - MIN_TTL later, so the wait to confirm needs
+        // no allowance of its own.
+        options.pushKV("expiry_height", m_tip + (int)roster::MAX_TTL);
+        return true;
+    }
     uint32_t window = roster::DEFAULT_CONFIRM_WINDOW;
     if (!RelayChosen()) {
         bool staking = false;

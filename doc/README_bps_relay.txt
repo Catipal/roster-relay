@@ -7,11 +7,12 @@ Bitcoin PoS Relay (BPS Relay) is the BitcoinPoS client for finding peers and
 relaying for them. It runs a full node like BitcoinPoS Core does, but its pages
 are about the network rather than about coins:
 
-  Discovery  the peers listed on the chain, and publishing your own listing
+  Node       who is listed, the encrypted relay network, peers and console
   Wallet     the BitcoinPoS Core wallet itself, running inside this window
-  Overlay    the encrypted relay network, and what this node pays its users
-  Node       the console and peer details
-  Settings   roster, overlay, relay and display options
+  Server     what this node offers others: relaying today, more to come
+  Settings   roster, overlay and display options
+
+What changed in this version is in release-notes.md, next to this file.
 
 
 Setup
@@ -30,18 +31,20 @@ that has to stay private. It can be switched off on the Settings page.
 
 Getting listed
 --------------
-A listing is a short record on the chain saying that you exist. It lasts a
-month and costs a small fee. Publish it from the Discovery page.
+A listing is a short record on the chain saying that you exist. It costs a
+small fee. Publish it from the Discovery tab of the Node page.
 
-If your wallet has coins, it pays. If it has none, choose "A relay pays": your
-node signs the listing and sends it over the overlay to the relay it enters
-through, and a relay that has chosen to pay for its users publishes it for you.
-A relay that stops paying lets your listing lapse within the month; you can
-always renew from a funded wallet yourself.
+If your wallet pays, choose a month or a year. If your wallet has no coins,
+choose "A relay pays": your node signs the listing and sends it over the
+overlay to the relay it enters through, and a relay that has chosen to pay for
+its users publishes it for you, for a month.
 
-To pay for other peers' listings as a relay, turn on "Pay to list peers that
-ask through the overlay" under Settings > Relay. It spends your coins, so it is
-off until you turn it on.
+A listing can be renewed in its last three days, by hand. If you stop
+renewing, it simply lapses.
+
+To be a relay that pays for other peers' listings, turn on "Pay to list peers
+that ask through the overlay" on the Server page. It spends your coins, so it
+is off until you turn it on, and the node has to be staking.
 
 
 See the bitcoin proof of stake FAQs at:

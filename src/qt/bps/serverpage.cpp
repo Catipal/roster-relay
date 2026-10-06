@@ -159,8 +159,11 @@ ServerPage::ServerPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rp
            "still open."),
         content, nullptr), 0, 0);
     planned->addWidget(MakeCard(tr("Mail"), Status::PLANNED,
-        tr("Mail between roster keys, carried over the overlay: you are reached by key or by "
-           "name, sealed end to end, with no mail server holding your inbox. Not designed yet."),
+        tr("Mail between roster keys, carried over the overlay and held for you by relays chosen "
+           "from your key, so no mail server keeps your inbox. Encrypted the way Session's new "
+           "protocol is: keys that rotate per device and per account, with old ones deleted so "
+           "past mail stays sealed, and a post-quantum key exchange (ML-KEM) alongside the "
+           "usual one. Not built yet."),
         content, nullptr), 0, 1);
     planned->addWidget(MakeCard(tr("Hosting"), Status::PLANNED,
         tr("A site or service served from this node, found by its key or name and reached over "

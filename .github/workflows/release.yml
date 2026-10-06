@@ -8,8 +8,9 @@ name: Release
 # Windows with doc/README_windows.txt alongside as readme.txt.
 #
 # BPS Relay, the discovery and overlay client, ships as its own archive beside
-# that one: bps-relay-<ver>/ holding bps-relay and doc/README_bps_relay.txt as
-# readme.txt, so the wallet archive keeps exactly the layout v0.21 had.
+# that one: bps-relay-<ver>/ holding bps-relay, its own release notes
+# (doc/release-notes-bps-relay.md) and doc/README_bps_relay.txt as readme.txt,
+# so the wallet archive keeps exactly the layout v0.21 had.
 #
 # Run it by hand first (Actions -> Release -> Run workflow) to check a target
 # builds before committing to a tag; with no tag the archives are left as
@@ -162,6 +163,7 @@ jobs:
           cp "src/qt/bps-relay$EXT" "dist/$RDIR/"
           ${{ matrix.host }}-strip dist/$RDIR/* 2>/dev/null || strip dist/$RDIR/* 2>/dev/null || true
           cp doc/README_bps_relay.txt "dist/$RDIR/readme.txt"
+          cp doc/release-notes-bps-relay.md "dist/$RDIR/release-notes.md"
           if [ "${{ matrix.windows }}" = "true" ]; then
             ( cd dist && zip -q -r "bps-relay-$VER-${{ matrix.name }}.zip" "$RDIR" )
           else
@@ -237,6 +239,7 @@ jobs:
           cp src/qt/bps-relay "dist/$RDIR/"
           strip dist/$RDIR/bps-relay 2>/dev/null || true
           cp doc/README_bps_relay.txt "dist/$RDIR/readme.txt"
+          cp doc/release-notes-bps-relay.md "dist/$RDIR/release-notes.md"
           ( cd dist && tar czf "bps-relay-$VER-osx64.tar.gz" "$RDIR" )
           make deploy
           # The volume name comes from PACKAGE_NAME, so glob rather than guess.

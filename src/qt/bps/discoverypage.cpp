@@ -11,6 +11,8 @@
 
 #include <qt/clientmodel.h>
 
+#include <roster/listing.h>
+
 #include <univalue.h>
 
 #include <QApplication>
@@ -210,11 +212,21 @@ void DiscoveryPage::UpdateListingSummary()
     if (m_own_expiry == 0 || m_own_expiry <= m_tip) {
         m_listing_state->setText(tr("not listed"));
         m_publish->setText(tr("Publish your listing\xe2\x80\xa6"));
+        m_publish->setToolTip(QString());
+        m_publish->setEnabled(true);
         Q_EMIT listingChanged(tr("not listed"), false);
     } else {
-        const QString left = BpsUtil::HumanBlocks(m_own_expiry - m_tip);
+        const int blocks_left = m_own_expiry - m_tip;
+        const QString left = BpsUtil::HumanBlocks(blocks_left);
         m_listing_state->setText(tr("ends in %1").arg(left));
-        m_publish->setText(tr("Renew your listing\xe2\x80\xa6"));
+        // Renewal opens in the listing's last three days, the same rule a relay
+        // applies before paying, so a month already paid for is not cut short.
+        const bool can_renew = blocks_left <= (int)roster::RENEW_WINDOW;
+        m_publish->setText(can_renew ? tr("Renew your listing\xe2\x80\xa6")
+                                     : tr("Renew in the last 3 days"));
+        m_publish->setToolTip(can_renew ? QString()
+            : tr("Your listing ends in %1. Renewing opens three days before it does.").arg(left));
+        m_publish->setEnabled(can_renew);
         Q_EMIT listingChanged(tr("listed, ends in %1").arg(left), true);
     }
 }
@@ -262,7 +274,8 @@ void DiscoveryPage::onRpcResult(const QString& tag, const UniValue& value)
         const UniValue& live = find_value(value, "live_peers");
         m_roster_size->setText(live.isNum() ? QString::number(live.get_int()) : tr("\xe2\x80\x94"));
 
-        m_publish->setEnabled(true);
+        // Whether publishing or renewing is open is decided by the listing
+        // itself, once its history arrives (UpdateListingSummary).
         if (m_error->text().startsWith(tr("The roster index is not running"))) m_error->setVisible(false);
 
         // Two follow-ups: this node's own history, and the roster to display.

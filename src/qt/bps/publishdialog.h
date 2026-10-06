@@ -96,6 +96,8 @@ private:
     QLineEdit* m_address{nullptr};
     QSpinBox* m_port{nullptr};
     QComboBox* m_payer{nullptr};
+    QComboBox* m_length{nullptr};    //!< a month or a year, when this node pays
+    QLabel* m_length_fixed{nullptr}; //!< a month, when a relay pays
     QLabel* m_payer_note{nullptr};
     QLabel* m_status{nullptr};
     QDialogButtonBox* m_buttons{nullptr};

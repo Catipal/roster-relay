@@ -37,6 +37,7 @@
 #include <wallet/context.h>
 #include <wallet/feebumper.h>
 #include <wallet/load.h>
+#include <wallet/rpcnames.h>
 #include <wallet/rpcwallet.h>
 #include <wallet/wallet.h>
 #include <wallet/walletdb.h>
@@ -5474,6 +5475,10 @@ static const CRPCCommand commands[] =
     { "wallet",             "bumpfee",                          &bumpfee,                       {"txid", "options"} },
     { "wallet",             "psbtbumpfee",                      &psbtbumpfee,                   {"txid", "options"} },
     { "wallet",             "publishrecord",                    &publishrecord,                 {"hex","options"} },
+    { "names",              "registername",                     &registername,                  {"name","years"} },
+    { "names",              "renewname",                        &renewname,                     {"name","years"} },
+    { "names",              "transfername",                     &transfername,                  {"name","to"} },
+    { "names",              "setsubname",                       &setsubname,                    {"subname","to"} },
     { "wallet",             "createwallet",                     &createwallet,                  {"wallet_name", "disable_private_keys", "blank", "passphrase", "avoid_reuse", "descriptors", "load_on_startup"} },
     { "wallet",             "dumpprivkey",                      &dumpprivkey,                   {"address"}  },
     { "wallet",             "dumpwallet",                       &dumpwallet,                    {"filename"} },

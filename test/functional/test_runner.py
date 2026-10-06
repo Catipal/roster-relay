@@ -132,6 +132,7 @@ BASE_SCRIPTS = [
     'feature_roster_payout.py',
     'feature_roster_listing.py',
     'feature_mail.py',
+    'feature_names.py',
     'feature_reindex.py',
     'feature_abortnode.py',
     # vv Tests less than 30s vv

@@ -23,6 +23,8 @@ void RegisterRawTransactionRPCCommands(CRPCTable &tableRPC);
 void RegisterRosterRPCCommands(CRPCTable &tableRPC);
 /** Register mail RPC commands */
 void RegisterMailRPCCommands(CRPCTable &tableRPC);
+/** Register name RPC commands */
+void RegisterNameRPCCommands(CRPCTable &tableRPC);
 
 static inline void RegisterAllCoreRPCCommands(CRPCTable &t)
 {
@@ -33,6 +35,7 @@ static inline void RegisterAllCoreRPCCommands(CRPCTable &t)
     RegisterRawTransactionRPCCommands(t);
     RegisterRosterRPCCommands(t);
     RegisterMailRPCCommands(t);
+    RegisterNameRPCCommands(t);
 }
 
 #endif // BITCOIN_RPC_REGISTER_H

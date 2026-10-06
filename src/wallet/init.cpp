@@ -20,6 +20,7 @@
 #include <util/system.h>
 #include <util/translation.h>
 #include <wallet/coincontrol.h>
+#include <wallet/rpcnames.h>
 #include <wallet/rpcwallet.h>
 #include <wallet/wallet.h>
 #include <walletinitinterface.h>
@@ -130,6 +131,8 @@ void WalletInit::Construct(NodeContext& node) const
     // The node decides whether to answer a listing request at all; the wallet
     // is only how it pays, so it registers rather than being called by name.
     roster::SetListingPublisher(PublishListingForPeer, StakingWeightForListings);
+    // Likewise for names: the node sees a registration through, the wallet pays.
+    names::SetClaimPublisher(PublishNameClaim);
     node.wallet_client = wallet_client.get();
     node.chain_clients.emplace_back(std::move(wallet_client));
 }

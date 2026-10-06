@@ -30,7 +30,11 @@
 #include <roster/listing.h>
 #include <roster/payout.h>
 #include <roster/keystore.h>
+#include <index/nameindex.h>
 #include <mail/client.h>
+#include <names/name.h>
+#include <names/petnames.h>
+#include <names/registrar.h>
 #include <mail/mailbox.h>
 #include <mail/protocol.h>
 #include <index/txindex.h>
@@ -191,6 +195,9 @@ void Interrupt(NodeContext& node)
     if (g_rosterindex) {
         g_rosterindex->Interrupt();
     }
+    if (g_nameindex) {
+        g_nameindex->Interrupt();
+    }
     ForEachBlockFilterIndex([](BlockFilterIndex& index) { index.Interrupt(); });
 }
 
@@ -309,6 +316,12 @@ void Shutdown(NodeContext& node)
         g_rosterindex->Stop();
         g_rosterindex.reset();
     }
+    names::g_registrar.reset();
+    if (g_nameindex) {
+        g_nameindex->Stop();
+        g_nameindex.reset();
+    }
+    names::g_petnames.reset();
     ForEachBlockFilterIndex([](BlockFilterIndex& index) { index.Stop(); });
     DestroyAllBlockFilterIndexes();
 
@@ -476,6 +489,7 @@ void SetupServerArgs(NodeContext& node)
     hidden_args.emplace_back("-sysperms");
 #endif
     argsman.AddArg("-txindex", strprintf("Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)", DEFAULT_TXINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
+    argsman.AddArg("-nameindex", strprintf("Keep an index of registered names, to resolve and register them (default: %u)", DEFAULT_NAMEINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-rosterindex", strprintf("Maintain a peer roster index over chain-anchored discovery records (default: %u)", DEFAULT_ROSTERINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-overlay", strprintf("Run the encrypted overlay: an authenticated UDP transport between nodes, keyed by the same operational key the roster publishes (default: %u). Off by default because the handshake has not been reviewed by anyone who did not write it, and nothing in the node depends on it yet.", overlay::DEFAULT_OVERLAY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-acceptlistings", strprintf("Pay to publish the listing of a peer that asks over the overlay, as a relay does for the peers it serves (default: %u). The record must name the key the peer connected with, and the peer joins the users this node shares rewards with (-relayshare). Pays from -listingwallet.", roster::DEFAULT_ACCEPT_LISTINGS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -1098,6 +1112,11 @@ bool AppInitParameterInteraction(const ArgsManager& args)
         // refused only when no start height is given. With one set the
         // operator is asserting that retention covers it, and a block that
         // turns out to be missing stops the index rather than the node.
+        // Names count from the network's start height on; where that is the
+        // beginning, the index needs every block and a pruned node lacks them.
+        if (args.GetBoolArg("-nameindex", DEFAULT_NAMEINDEX) && names::StartHeight(chainparams.NetworkIDString()) == 0) {
+            return InitError(_("Prune mode is incompatible with -nameindex on this network."));
+        }
         if (args.GetBoolArg("-rosterindex", DEFAULT_ROSTERINDEX) && !args.IsArgSet("-rosterindexstart")) {
             return InitError(_("Prune mode is incompatible with -rosterindex unless -rosterindexstart is set to a height the node still retains."));
         }
@@ -1928,6 +1947,28 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
         g_rosterindex = MakeUnique<RosterIndex>(nTxIndexCache, false, fReindex,
                                                (int)args.GetArg("-rosterindexstart", 0), roster_window);
         g_rosterindex->Start();
+    }
+
+    // The address book is this user's own, so it is there whatever else is on.
+    names::g_petnames = MakeUnique<names::Petnames>(GetDataDir() / "petnames.json");
+    {
+        std::string petnames_error;
+        if (!names::g_petnames->Load(petnames_error)) {
+            LogPrintf("names: %s; starting with an empty address book\n", petnames_error);
+        }
+    }
+
+    if (args.GetBoolArg("-nameindex", DEFAULT_NAMEINDEX)) {
+        g_nameindex = MakeUnique<NameIndex>(nTxIndexCache, false, fReindex);
+        g_nameindex->Start();
+        // Registrations take two transactions some blocks apart; this sees
+        // the second one sent when it can be.
+        names::g_registrar = MakeUnique<names::Registrar>(GetDataDir() / "names_pending.json");
+        std::string registrar_error;
+        if (!names::g_registrar->Load(registrar_error)) LogPrintf("names: %s\n", registrar_error);
+        node.scheduler->scheduleEvery([] {
+            if (names::g_registrar) names::g_registrar->Process();
+        }, std::chrono::seconds{30});
     }
 
     for (const auto& filter_type : g_enabled_filter_types) {

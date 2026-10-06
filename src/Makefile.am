@@ -144,6 +144,7 @@ BITCOIN_CORE_H = \
   httpserver.h \
   index/base.h \
   index/blockfilterindex.h \
+  index/nameindex.h \
   index/rosterindex.h \
   index/disktxpos.h \
   index/txindex.h \
@@ -161,6 +162,12 @@ BITCOIN_CORE_H = \
   mail/letter.h \
   mail/mailbox.h \
   mail/protocol.h \
+  names/name.h \
+  names/petnames.h \
+  names/record.h \
+  names/registrar.h \
+  names/resolve.h \
+  names/state.h \
   memusage.h \
   merkleblock.h \
   miner.h \
@@ -279,6 +286,7 @@ BITCOIN_CORE_H = \
   wallet/fees.h \
   wallet/ismine.h \
   wallet/load.h \
+  wallet/rpcnames.h \
   wallet/rpcwallet.h \
   wallet/salvage.h \
   wallet/scriptpubkeyman.h \
@@ -323,6 +331,7 @@ libbitcoin_server_a_SOURCES = \
   httpserver.cpp \
   index/base.cpp \
   index/blockfilterindex.cpp \
+  index/nameindex.cpp \
   index/rosterindex.cpp \
   index/txindex.cpp \
   init.cpp \
@@ -331,6 +340,12 @@ libbitcoin_server_a_SOURCES = \
   mail/letter.cpp \
   mail/mailbox.cpp \
   mail/protocol.cpp \
+  names/name.cpp \
+  names/petnames.cpp \
+  names/record.cpp \
+  names/registrar.cpp \
+  names/resolve.cpp \
+  names/state.cpp \
   interfaces/chain.cpp \
   interfaces/node.cpp \
   miner.cpp \
@@ -352,6 +367,7 @@ libbitcoin_server_a_SOURCES = \
   rpc/blockchain.cpp \
   rpc/mail.cpp \
   rpc/mining.cpp \
+  rpc/names.cpp \
   rpc/misc.cpp \
   rpc/net.cpp \
   rpc/rawtransaction.cpp \
@@ -405,6 +421,7 @@ libbitcoin_wallet_a_SOURCES = \
   wallet/fees.cpp \
   wallet/load.cpp \
   wallet/rpcdump.cpp \
+  wallet/rpcnames.cpp \
   wallet/rpcwallet.cpp \
   wallet/salvage.cpp \
   wallet/scriptpubkeyman.cpp \

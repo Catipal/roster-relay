@@ -247,6 +247,7 @@ BITCOIN_TESTS =\
   test/mail_tests.cpp \
   test/miner_tests.cpp \
   test/mlkem_tests.cpp \
+  test/names_tests.cpp \
   test/multisig_tests.cpp \
   test/net_tests.cpp \
   test/netbase_tests.cpp \

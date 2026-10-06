@@ -5,6 +5,7 @@
 #include <mail/client.h>
 #include <mail/letter.h>
 #include <mail/mailbox.h>
+#include <names/resolve.h>
 #include <overlay/relay.h>
 #include <rpc/server.h>
 #include <rpc/util.h>
@@ -23,17 +24,6 @@ mail::MailClient& EnsureMail()
                                               : "Mail travels over the overlay, which is off (-overlay).");
     }
     return *mail::g_mail;
-}
-
-roster::KeyBytes ParseKey(const UniValue& v, const std::string& name)
-{
-    const std::vector<unsigned char> raw = ParseHexV(v, name);
-    if (raw.size() != 32) {
-        throw JSONRPCError(RPC_INVALID_PARAMETER, name + " must be a roster key: 32 bytes of hex, as the roster lists it");
-    }
-    roster::KeyBytes k;
-    std::copy(raw.begin(), raw.end(), k.begin());
-    return k;
 }
 
 UniValue LetterToJSON(const mail::StoredLetter& l, bool with_body)
@@ -69,14 +59,18 @@ static RPCHelpMan sendmail()
         "\nThe recipient's current mail key is fetched from one of their mailboxes and checked against\n"
         "their roster key. The letter is sealed to it with secp256k1 and ML-KEM-768 together, your\n"
         "roster key and signature go inside the seal, and every trip runs through a path of three\n"
-        "relays. Blocks while the paths are built.\n",
+        "relays. Blocks while the paths are built.\n"
+        "\nThe recipient can be written as a roster key, a petname from this node's address book, or\n"
+        "a registered name (resolvename shows what any of them resolves to).\n",
         {
-            {"to", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "The recipient's roster key"},
+            {"to", RPCArg::Type::STR, RPCArg::Optional::NO, "The recipient: a roster key, petname or name"},
             {"subject", RPCArg::Type::STR, RPCArg::Optional::NO, "Up to 200 bytes"},
             {"body", RPCArg::Type::STR, RPCArg::Optional::NO, "Up to 32 KiB of text"},
         },
         RPCResult{RPCResult::Type::OBJ, "", "", {
             {RPCResult::Type::STR_HEX, "id", "The sealed letter's id"},
+            {RPCResult::Type::STR_HEX, "to", "The roster key it was sealed to"},
+            {RPCResult::Type::STR, "via", "How the recipient was given: key, petname or name"},
             {RPCResult::Type::NUM, "delivered", "Mailboxes that took it"},
             {RPCResult::Type::NUM, "mailboxes", "Mailboxes the recipient has"},
             {RPCResult::Type::ARR, "notes", "What went wrong at the others", {{RPCResult::Type::STR, "", ""}}},
@@ -85,7 +79,12 @@ static RPCHelpMan sendmail()
         [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
 {
     mail::MailClient& client = EnsureMail();
-    const roster::KeyBytes to = ParseKey(request.params[0], "to");
+    names::Target target;
+    std::string error;
+    if (!names::ResolveTarget(request.params[0].get_str(), target, error)) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "to must be a roster key (32 bytes of hex), a petname or a name: " + error);
+    }
+    const roster::KeyBytes to = target.key;
     const mail::SendResult r = client.Send(to, request.params[1].get_str(), request.params[2].get_str());
     if (!r.ok) {
         std::string msg = r.error;
@@ -94,6 +93,8 @@ static RPCHelpMan sendmail()
     }
     UniValue out(UniValue::VOBJ);
     out.pushKV("id", r.id.GetHex());
+    out.pushKV("to", HexStr(to));
+    out.pushKV("via", names::SourceString(target.source));
     out.pushKV("delivered", r.delivered);
     out.pushKV("mailboxes", r.mailboxes);
     out.pushKV("notes", Notes(r.notes));

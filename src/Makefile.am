@@ -57,6 +57,8 @@ if ENABLE_SHANI
 LIBBITCOIN_CRYPTO_SHANI = crypto/libbitcoin_crypto_shani.a
 LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_SHANI)
 endif
+LIBBITCOIN_CRYPTO_MLKEM = crypto/libbitcoin_crypto_mlkem.a
+LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_MLKEM)
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(wildcard secp256k1/include/*)
 	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C $(@D) $(@F)
@@ -155,6 +157,10 @@ BITCOIN_CORE_H = \
   key_io.h \
   logging.h \
   logging/timer.h \
+  mail/client.h \
+  mail/letter.h \
+  mail/mailbox.h \
+  mail/protocol.h \
   memusage.h \
   merkleblock.h \
   miner.h \
@@ -321,6 +327,10 @@ libbitcoin_server_a_SOURCES = \
   index/txindex.cpp \
   init.cpp \
   roster/listing.cpp \
+  mail/client.cpp \
+  mail/letter.cpp \
+  mail/mailbox.cpp \
+  mail/protocol.cpp \
   interfaces/chain.cpp \
   interfaces/node.cpp \
   miner.cpp \
@@ -340,6 +350,7 @@ libbitcoin_server_a_SOURCES = \
   pos.cpp \
   rest.cpp \
   rpc/blockchain.cpp \
+  rpc/mail.cpp \
   rpc/mining.cpp \
   rpc/misc.cpp \
   rpc/net.cpp \
@@ -466,6 +477,18 @@ crypto_libbitcoin_crypto_shani_a_CPPFLAGS = $(AM_CPPFLAGS)
 crypto_libbitcoin_crypto_shani_a_CXXFLAGS += $(SHANI_CXXFLAGS)
 crypto_libbitcoin_crypto_shani_a_CPPFLAGS += -DENABLE_SHANI
 crypto_libbitcoin_crypto_shani_a_SOURCES = crypto/sha256_shani.cpp
+
+# ML-KEM-768 for mail, from mlkem-native (src/mlkem-native). A library of its
+# own because it is C, and so it stays out of libbitcoinconsensus, which takes
+# its sources from the base library. It depends on nothing else in the tree.
+crypto_libbitcoin_crypto_mlkem_a_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libbitcoin_crypto_mlkem_a_CFLAGS = $(AM_CFLAGS) $(PIE_FLAGS)
+crypto_libbitcoin_crypto_mlkem_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libbitcoin_crypto_mlkem_a_SOURCES = \
+  crypto/mlkem768.cpp \
+  crypto/mlkem768.h \
+  crypto/mlkem768_config.h \
+  crypto/mlkem768_impl.c
 
 # consensus: shared between all executables that validate any consensus rules.
 libbitcoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
@@ -726,6 +749,41 @@ CTAES_DIST += crypto/ctaes/ctaes.h
 CTAES_DIST += crypto/ctaes/README.md
 CTAES_DIST += crypto/ctaes/test.c
 
+MLKEM_DIST =  mlkem-native/LICENSE
+MLKEM_DIST += mlkem-native/mlkem/mlkem_native.c
+MLKEM_DIST += mlkem-native/mlkem/mlkem_native.h
+MLKEM_DIST += mlkem-native/mlkem/mlkem_native_config.h
+MLKEM_DIST += mlkem-native/mlkem/src/cbmc.h
+MLKEM_DIST += mlkem-native/mlkem/src/common.h
+MLKEM_DIST += mlkem-native/mlkem/src/compress.c
+MLKEM_DIST += mlkem-native/mlkem/src/compress.h
+MLKEM_DIST += mlkem-native/mlkem/src/context.h
+MLKEM_DIST += mlkem-native/mlkem/src/debug.c
+MLKEM_DIST += mlkem-native/mlkem/src/debug.h
+MLKEM_DIST += mlkem-native/mlkem/src/fips202/fips202.c
+MLKEM_DIST += mlkem-native/mlkem/src/fips202/fips202.h
+MLKEM_DIST += mlkem-native/mlkem/src/fips202/fips202x4.c
+MLKEM_DIST += mlkem-native/mlkem/src/fips202/fips202x4.h
+MLKEM_DIST += mlkem-native/mlkem/src/fips202/keccakf1600.c
+MLKEM_DIST += mlkem-native/mlkem/src/fips202/keccakf1600.h
+MLKEM_DIST += mlkem-native/mlkem/src/indcpa.c
+MLKEM_DIST += mlkem-native/mlkem/src/indcpa.h
+MLKEM_DIST += mlkem-native/mlkem/src/kem.c
+MLKEM_DIST += mlkem-native/mlkem/src/kem.h
+MLKEM_DIST += mlkem-native/mlkem/src/params.h
+MLKEM_DIST += mlkem-native/mlkem/src/poly.c
+MLKEM_DIST += mlkem-native/mlkem/src/poly.h
+MLKEM_DIST += mlkem-native/mlkem/src/poly_k.c
+MLKEM_DIST += mlkem-native/mlkem/src/poly_k.h
+MLKEM_DIST += mlkem-native/mlkem/src/randombytes.h
+MLKEM_DIST += mlkem-native/mlkem/src/sampling.c
+MLKEM_DIST += mlkem-native/mlkem/src/sampling.h
+MLKEM_DIST += mlkem-native/mlkem/src/symmetric.h
+MLKEM_DIST += mlkem-native/mlkem/src/sys.h
+MLKEM_DIST += mlkem-native/mlkem/src/verify.c
+MLKEM_DIST += mlkem-native/mlkem/src/verify.h
+MLKEM_DIST += mlkem-native/mlkem/src/zetas.inc
+
 CLEANFILES = $(EXTRA_LIBRARIES)
 
 CLEANFILES += *.gcda *.gcno
@@ -748,7 +806,7 @@ CLEANFILES += wallet/test/*.gcda wallet/test/*.gcno
 CLEANFILES += zmq/*.gcda zmq/*.gcno
 CLEANFILES += obj/build.h
 
-EXTRA_DIST = $(CTAES_DIST)
+EXTRA_DIST = $(CTAES_DIST) $(MLKEM_DIST)
 
 
 config/bitcoin-config.h: config/stamp-h1

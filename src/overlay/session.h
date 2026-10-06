@@ -61,11 +61,17 @@ public:
      * The payload is padded to a size bucket before sealing, so what goes on
      * the wire says almost nothing about how long the message was.
      *
+     * `pad` false skips that, and exists for one caller: a path layer wrapping
+     * traffic that was already padded where it began. Padding every layer
+     * again would round each one up to the next bucket, and with three relays
+     * that leaves room for barely sixty bytes of anything. The receiver does
+     * not need to know which was used - the real length is always inside.
+     *
      * False when the payload is too large for one frame, or when this session
      * has sent all the frames it safely can. Callers fragment above this.
      */
     bool Seal(const std::vector<unsigned char>& payload,
-              std::vector<unsigned char>& datagram_out);
+              std::vector<unsigned char>& datagram_out, bool pad = true);
 
     /**
      * Unwrap a received datagram.

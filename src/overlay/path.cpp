@@ -92,13 +92,20 @@ bool EncodeAppData(const std::vector<unsigned char>& payload,
 }
 
 bool EncodePathBuild(uint64_t path_id, const CService& next_hop,
-                     std::vector<unsigned char>& out)
+                     std::vector<unsigned char>& out, const CPubKey& next_key)
 {
     PutKind(MessageKind::PATH_BUILD, out);
     PutU64(path_id, out);
     if (!PutService(next_hop, out)) {
         out.clear();
         return false;
+    }
+    if (next_key.IsValid()) {
+        if (!next_key.IsCompressed()) {
+            out.clear();
+            return false;
+        }
+        out.insert(out.end(), next_key.begin(), next_key.end());
     }
     return out.size() <= MAX_FRAME_PAYLOAD;
 }
@@ -189,8 +196,9 @@ bool DecodeAppData(const std::vector<unsigned char>& msg,
 }
 
 bool DecodePathBuild(const std::vector<unsigned char>& msg, uint64_t& path_id_out,
-                     CService& next_hop_out)
+                     CService& next_hop_out, CPubKey& next_key_out)
 {
+    next_key_out = CPubKey();
     MessageKind kind;
     if (!DecodeKind(msg, kind) || kind != MessageKind::PATH_BUILD) return false;
     if (msg.size() < KIND_SIZE + PATH_ID_SIZE + 1) return false;
@@ -199,9 +207,20 @@ bool DecodePathBuild(const std::vector<unsigned char>& msg, uint64_t& path_id_ou
     size_t consumed = 0;
     const size_t at = KIND_SIZE + PATH_ID_SIZE;
     if (!GetService(msg.data() + at, msg.size() - at, next_hop_out, consumed)) return false;
-    // Trailing bytes would mean two encodings of the same message, so refuse
-    // rather than ignore them.
-    return at + consumed == msg.size();
+    const size_t rest = msg.size() - at - consumed;
+    if (rest == 0) return true;
+    // Exactly one compressed key or nothing. Anything else would mean two
+    // encodings of the same message, so it is refused rather than ignored.
+    if (rest != CPubKey::COMPRESSED_SIZE) return false;
+    next_key_out.Set(msg.begin() + at + consumed, msg.end());
+    return next_key_out.IsFullyValid();
+}
+
+bool DecodePathBuild(const std::vector<unsigned char>& msg, uint64_t& path_id_out,
+                     CService& next_hop_out)
+{
+    CPubKey key;
+    return DecodePathBuild(msg, path_id_out, next_hop_out, key);
 }
 
 bool DecodePathResult(const std::vector<unsigned char>& msg, bool& ok_out,
@@ -305,6 +324,18 @@ size_t PathTable::Expire(int64_t now)
         }
     }
     return removed;
+}
+
+bool PathTable::Remove(uint64_t path_id)
+{
+    return m_paths.erase(path_id) != 0;
+}
+
+bool PathTable::Joins(uint64_t path_id, const Hop& upstream, const Hop& downstream) const
+{
+    std::map<uint64_t, Entry>::const_iterator it = m_paths.find(path_id);
+    if (it == m_paths.end()) return false;
+    return it->second.upstream == upstream && it->second.downstream == downstream;
 }
 
 bool PathTable::Carrier(uint64_t path_id, Hop& out) const

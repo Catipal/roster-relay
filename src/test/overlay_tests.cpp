@@ -1763,7 +1763,7 @@ BOOST_AUTO_TEST_CASE(rendezvous_client_reaches_a_service_that_never_published_an
     dial(R2, arv, krv);
 
     auto build = [&](overlay::Relay& who, uint64_t id, const CService& via,
-                     const CService& dest, const CKey& dest_key) {
+                     const CService& dest, const CKey& dest_key, bool anonymous) {
         BOOST_REQUIRE(WaitFor([&] {
             {
                 LOCK(m);
@@ -1779,16 +1779,18 @@ BOOST_AUTO_TEST_CASE(rendezvous_client_reaches_a_service_that_never_published_an
         }
         BOOST_REQUIRE(WaitFor([&] {
             if (who.HasSecretSession(id)) return true;
-            who.ConnectSecret(id, dest_key.GetPubKey());
+            who.ConnectSecret(id, dest_key.GetPubKey(), anonymous);
             return who.HasSecretSession(id);
         }, 10000));
     };
 
     // Each side reaches the meeting point through one relay, so the meeting
-    // point never learns where either of them is.
+    // point never learns where either of them is. The service shows the
+    // meeting point its roster key, which registering requires; the client
+    // stays anonymous.
     const uint64_t p_s = 0xA1, p_c = 0xB1;
-    build(S, p_s, a1, arv, krv);
-    build(C, p_c, a2, arv, krv);
+    build(S, p_s, a1, arv, krv, /* anonymous */ false);
+    build(C, p_c, a2, arv, krv, /* anonymous */ true);
 
     // The service registers under its roster identity - 32 bytes, the same
     // x-only key the roster publishes.
@@ -2090,6 +2092,350 @@ BOOST_AUTO_TEST_CASE(select_handles_an_empty_or_tiny_roster)
     // Asking for none is refused too, rather than returning an empty path a
     // caller might treat as usable.
     BOOST_CHECK(!sel.Select(0, path));
+}
+
+namespace {
+
+/** Collects payloads together with the hop each came from. */
+struct HopInbox {
+    Mutex mutex;
+    std::vector<std::pair<overlay::Hop, std::vector<unsigned char>>> items;
+
+    overlay::Relay::AppHandler Handler()
+    {
+        return [this](const overlay::Hop& h, std::vector<unsigned char>&& p) {
+            LOCK(mutex);
+            items.emplace_back(h, std::move(p));
+        };
+    }
+    size_t Count()
+    {
+        LOCK(mutex);
+        return items.size();
+    }
+    std::pair<overlay::Hop, std::vector<unsigned char>> At(size_t i)
+    {
+        LOCK(mutex);
+        return items.at(i);
+    }
+};
+
+/** A dial policy from a fixed roster of (address, key). */
+overlay::Relay::DialPolicy Listed(const std::vector<std::pair<CService, CPubKey>>& listed)
+{
+    return [listed](const CService& dest, const CPubKey& key) {
+        for (const std::pair<CService, CPubKey>& l : listed) {
+            if (l.first == dest && l.second == key) return true;
+        }
+        return false;
+    };
+}
+
+overlay::RelayCandidate LocalCand(unsigned char id, uint16_t port)
+{
+    overlay::RelayCandidate c;
+    c.key.fill(id);
+    c.addr = CService(LookupNumeric("127.0.0.1", port));
+    return c;
+}
+
+} // namespace
+
+BOOST_AUTO_TEST_CASE(relay_three_hop_circuit_through_relays_it_had_to_dial)
+{
+    // A -> R1 -> R2 -> R3 -> C, the shape of every path a node now builds.
+    // Nobody was connected beforehand: each relay dials the next because the
+    // roster lists it there with that key, and only because it does.
+    CKey ka, k1, k2, k3, kc;
+    ka.MakeNewKey(true);
+    k1.MakeNewKey(true);
+    k2.MakeNewKey(true);
+    k3.MakeNewKey(true);
+    kc.MakeNewKey(true);
+
+    overlay::Relay A(ka), R1(k1), R2(k2), R3(k3), C(kc);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    BOOST_REQUIRE_MESSAGE(A.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(R1.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(R2.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(R3.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(C.Bind(any, err), err);
+
+    HopInbox in_a, in_c;
+    Inbox in_1, in_2, in_3;
+    BOOST_REQUIRE(A.Start(in_a.Handler()));
+    BOOST_REQUIRE(R1.Start(in_1.Handler()));
+    BOOST_REQUIRE(R2.Start(in_2.Handler()));
+    BOOST_REQUIRE(R3.Start(in_3.Handler()));
+    BOOST_REQUIRE(C.Start(in_c.Handler()));
+
+    const CService a1 = R1.BoundAddress(), a2 = R2.BoundAddress(), a3 = R3.BoundAddress();
+    const CService ac = C.BoundAddress();
+    const overlay::Relay::DialPolicy roster = Listed({{a1, k1.GetPubKey()}, {a2, k2.GetPubKey()},
+                                                      {a3, k3.GetPubKey()}, {ac, kc.GetPubKey()}});
+    R1.SetDialPolicy(roster);
+    R2.SetDialPolicy(roster);
+    R3.SetDialPolicy(roster);
+
+    std::vector<overlay::Relay::CircuitHop> hops(4);
+    hops[0].addr = a1;
+    hops[0].key = k1.GetPubKey();
+    hops[1].addr = a2;
+    hops[1].key = k2.GetPubKey();
+    hops[2].addr = a3;
+    hops[2].key = k3.GetPubKey();
+    hops[3].addr = ac;
+    hops[3].key = kc.GetPubKey();
+    uint64_t path = 0;
+    BOOST_REQUIRE_MESSAGE(A.BuildCircuit(hops, path, err, std::chrono::milliseconds{6000}), err);
+    BOOST_CHECK_EQUAL(A.CircuitLegs(path).size(), 3u);
+    BOOST_CHECK(WaitFor([&] { return C.HasSecretSession(path); }));
+
+    // The largest payload a path carries arrives whole. One byte more does
+    // not fit inside three layers and is refused rather than truncated.
+    const std::vector<unsigned char> big(overlay::MAX_PATH_APP_PAYLOAD, 0x5A);
+    BOOST_REQUIRE(WaitFor([&] {
+        if (in_c.Count() > 0) return true;
+        A.SendSecret(path, big);
+        return in_c.Count() > 0;
+    }, 10000));
+    BOOST_CHECK(in_c.At(0).second == big);
+    BOOST_CHECK(!A.SendSecret(path, std::vector<unsigned char>(overlay::MAX_PATH_APP_PAYLOAD + 1, 0x5A)));
+
+    // And back, on the path C was reached by.
+    const overlay::Hop back = in_c.At(0).first;
+    BOOST_REQUIRE(back.via_path);
+    BOOST_CHECK_EQUAL(back.path, path);
+    const std::vector<unsigned char> reply(100, 0xA5);
+    BOOST_REQUIRE(WaitFor([&] {
+        if (in_a.Count() > 0) return true;
+        C.SendSecret(back.path, reply);
+        return in_a.Count() > 0;
+    }, 10000));
+    BOOST_CHECK(in_a.At(0).second == reply);
+
+    // No relay read a byte.
+    BOOST_CHECK_EQUAL(in_1.Count(), 0u);
+    BOOST_CHECK_EQUAL(in_2.Count(), 0u);
+    BOOST_CHECK_EQUAL(in_3.Count(), 0u);
+
+    // C cannot tell who built the path: the key proved to it was made for that
+    // one handshake. The same holds at R2 and R3, which A also reached end to
+    // end.
+    const CPubKey seen = C.SecretPeerIdentity(path);
+    BOOST_CHECK(seen.IsValid());
+    BOOST_CHECK(seen != ka.GetPubKey());
+
+    // Only the entry relay ever spoke to A directly.
+    BOOST_CHECK(A.HasSession(a1));
+    BOOST_CHECK(!A.HasSession(a2));
+    BOOST_CHECK(!A.HasSession(a3));
+    BOOST_CHECK(!A.HasSession(ac));
+    BOOST_CHECK(!R2.HasSession(A.BoundAddress()));
+    BOOST_CHECK(!R3.HasSession(A.BoundAddress()));
+    BOOST_CHECK(!C.HasSession(A.BoundAddress()));
+
+    // Closing forgets it here.
+    A.ClosePath(A.CircuitLegs(path));
+    BOOST_CHECK(!A.HasSecretSession(path));
+
+    A.Stop();
+    R1.Stop();
+    R2.Stop();
+    R3.Stop();
+    C.Stop();
+}
+
+BOOST_AUTO_TEST_CASE(relay_dials_only_what_the_roster_lists)
+{
+    CKey ka, k1, kx, ku, kwrong;
+    ka.MakeNewKey(true);
+    k1.MakeNewKey(true);
+    kx.MakeNewKey(true);
+    ku.MakeNewKey(true);
+    kwrong.MakeNewKey(true);
+
+    overlay::Relay A(ka), R1(k1), X(kx), U(ku);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    BOOST_REQUIRE_MESSAGE(A.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(R1.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(X.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(U.Bind(any, err), err);
+    Inbox in_a, in_1, in_x, in_u;
+    BOOST_REQUIRE(A.Start(in_a.Handler()));
+    BOOST_REQUIRE(R1.Start(in_1.Handler()));
+    BOOST_REQUIRE(X.Start(in_x.Handler()));
+    BOOST_REQUIRE(U.Start(in_u.Handler()));
+
+    const CService a1 = R1.BoundAddress(), ax = X.BoundAddress(), au = U.BoundAddress();
+    R1.SetDialPolicy(Listed({{ax, kx.GetPubKey()}}));
+    BOOST_REQUIRE(WaitFor([&] {
+        if (A.HasSession(a1)) return true;
+        A.Connect(a1, k1.GetPubKey());
+        return A.HasSession(a1);
+    }));
+
+    // Named with a key the roster does not list there: refused, not dialled.
+    BOOST_REQUIRE(A.BuildPath(0x31, H(a1), ax, kwrong.GetPubKey()));
+    BOOST_CHECK_EQUAL(A.AwaitPath(0x31, std::chrono::milliseconds{3000}), 0);
+    BOOST_CHECK(!R1.HasSession(ax));
+    BOOST_CHECK(!R1.HasPendingHandshake(ax));
+
+    // A relay the roster does not list at all: refused, not dialled.
+    BOOST_REQUIRE(A.BuildPath(0x32, H(a1), au, ku.GetPubKey()));
+    BOOST_CHECK_EQUAL(A.AwaitPath(0x32, std::chrono::milliseconds{3000}), 0);
+    BOOST_CHECK(!R1.HasSession(au));
+
+    // Named as listed: dialled, then joined.
+    BOOST_REQUIRE(A.BuildPath(0x33, H(a1), ax, kx.GetPubKey()));
+    BOOST_CHECK_EQUAL(A.AwaitPath(0x33, std::chrono::milliseconds{5000}), 1);
+    BOOST_CHECK(R1.HasSession(ax));
+    // Asked again, as after a lost answer: granted again, not refused as a
+    // duplicate - the path exists.
+    BOOST_REQUIRE(A.BuildPath(0x33, H(a1), ax, kx.GetPubKey()));
+    BOOST_CHECK_EQUAL(A.AwaitPath(0x33, std::chrono::milliseconds{3000}), 1);
+
+    // Without a key, only an existing session is joined, as before.
+    BOOST_REQUIRE(A.BuildPath(0x34, H(a1), au));
+    BOOST_CHECK_EQUAL(A.AwaitPath(0x34, std::chrono::milliseconds{3000}), 0);
+
+    A.Stop();
+    R1.Stop();
+    X.Stop();
+    U.Stop();
+}
+
+BOOST_AUTO_TEST_CASE(meeting_point_registers_only_the_service_itself)
+{
+    // A service registering at its meeting point has to be that service. With
+    // anonymous path sessions now the default, anyone could otherwise claim
+    // any key and be spliced to its clients.
+    CKey ks, k1, krv, kother;
+    ks.MakeNewKey(true);
+    k1.MakeNewKey(true);
+    krv.MakeNewKey(true);
+    kother.MakeNewKey(true);
+    overlay::Relay S(ks), R1(k1), RV(krv);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    BOOST_REQUIRE_MESSAGE(S.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(R1.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(RV.Bind(any, err), err);
+    Inbox in_s, in_1, in_rv;
+    BOOST_REQUIRE(S.Start(in_s.Handler()));
+    BOOST_REQUIRE(R1.Start(in_1.Handler()));
+    BOOST_REQUIRE(RV.Start(in_rv.Handler()));
+    const CService a1 = R1.BoundAddress(), arv = RV.BoundAddress();
+    R1.SetDialPolicy(Listed({{arv, krv.GetPubKey()}}));
+
+    std::vector<overlay::Relay::CircuitHop> hops(2);
+    hops[0].addr = a1;
+    hops[0].key = k1.GetPubKey();
+    hops[1].addr = arv;
+    hops[1].key = krv.GetPubKey();
+    uint64_t anon = 0;
+    BOOST_REQUIRE_MESSAGE(S.BuildCircuit(hops, anon, err), err);
+
+    roster::KeyBytes service, other;
+    const CPubKey s_pub = ks.GetPubKey(), o_pub = kother.GetPubKey();
+    std::copy(s_pub.begin() + 1, s_pub.end(), service.begin());
+    std::copy(o_pub.begin() + 1, o_pub.end(), other.begin());
+
+    // Over an anonymous session, nothing registers - not even the truth.
+    for (int i = 0; i < 5; ++i) {
+        S.Introduce(anon, service);
+        S.Introduce(anon, other);
+        UninterruptibleSleep(std::chrono::milliseconds{100});
+    }
+    BOOST_CHECK_EQUAL(RV.IntroductionCount(), 0u);
+
+    // A path whose far end was shown the service's own key registers that
+    // key, and no other.
+    const uint64_t named = 0x5151;
+    BOOST_REQUIRE(S.BuildPath(named, H(a1), arv, krv.GetPubKey()));
+    BOOST_REQUIRE_EQUAL(S.AwaitPath(named, std::chrono::milliseconds{5000}), 1);
+    BOOST_REQUIRE(WaitFor([&] {
+        if (S.HasSecretSession(named)) return true;
+        S.ConnectSecret(named, krv.GetPubKey(), /* anonymous */ false);
+        return S.HasSecretSession(named);
+    }, 10000));
+    for (int i = 0; i < 5; ++i) {
+        S.Introduce(named, other);
+        UninterruptibleSleep(std::chrono::milliseconds{50});
+    }
+    BOOST_CHECK_EQUAL(RV.IntroductionCount(), 0u);
+    BOOST_CHECK(WaitFor([&] {
+        if (RV.IntroductionCount() > 0) return true;
+        S.Introduce(named, service);
+        return RV.IntroductionCount() > 0;
+    }, 10000));
+    BOOST_CHECK_EQUAL(RV.IntroductionCount(), 1u);
+
+    S.Stop();
+    R1.Stop();
+    RV.Stop();
+}
+
+BOOST_AUTO_TEST_CASE(select_builds_three_hops_around_the_destination)
+{
+    BOOST_CHECK_EQUAL(overlay::DEFAULT_PATH_HOPS, 3u);
+    const std::vector<overlay::RelayCandidate> roster = SpreadRoster(6);
+    overlay::PathSelector sel;
+    sel.SetRelays(roster);
+    sel.SetSelf(roster[0].key);
+
+    for (int i = 0; i < 40; ++i) {
+        const overlay::RelayCandidate& dest = roster[1 + i % 5];
+        std::vector<overlay::RelayCandidate> path;
+        BOOST_REQUIRE(sel.Select(overlay::DEFAULT_PATH_HOPS, path, dest));
+        BOOST_CHECK_EQUAL(path.size(), 3u);
+        for (const overlay::RelayCandidate& hop : path) {
+            // Never through the destination, and never through itself.
+            BOOST_CHECK(!(hop.key == dest.key));
+            BOOST_CHECK(!(hop.key == roster[0].key));
+        }
+    }
+
+    // A destination run by the same operator as a relay - here the same /16 -
+    // keeps that relay off the path: it would make the path one hop shorter
+    // than it claims to be.
+    overlay::RelayCandidate twin = Cand(99, "11.2.0.9"); // roster[1] is 11.2.0.1
+    std::vector<overlay::RelayCandidate> wide = roster;
+    wide.push_back(twin);
+    sel.SetRelays(wide);
+    for (int i = 0; i < 20; ++i) {
+        std::vector<overlay::RelayCandidate> path;
+        BOOST_REQUIRE(sel.Select(3, path, twin));
+        for (const overlay::RelayCandidate& hop : path) BOOST_CHECK(!(hop.key == roster[1].key));
+    }
+
+    // Itself, the destination and two others are not enough for three.
+    overlay::PathSelector small;
+    small.SetRelays(SpreadRoster(4));
+    small.SetSelf(SpreadRoster(4)[0].key);
+    std::vector<overlay::RelayCandidate> path;
+    BOOST_CHECK(!small.Select(3, path, SpreadRoster(4)[1]));
+}
+
+BOOST_AUTO_TEST_CASE(select_counts_local_relays_only_when_told_to)
+{
+    // On regtest every node is 127.0.0.1. The address manager calls that one
+    // group, which is right on a real network and would make every test path
+    // impossible; regtest counts each address and port as its own operator.
+    std::vector<overlay::RelayCandidate> roster;
+    for (unsigned char i = 0; i < 5; ++i) roster.push_back(LocalCand(i, 20000 + i));
+    std::vector<overlay::RelayCandidate> path;
+
+    overlay::PathSelector strict;
+    strict.SetRelays(roster);
+    BOOST_CHECK(!strict.Select(3, path));
+
+    overlay::PathSelector local(overlay::PathSelector::GUARD_COUNT, /* local_relays */ true);
+    local.SetRelays(roster);
+    BOOST_CHECK(local.Select(3, path, roster[4]));
+    BOOST_CHECK_EQUAL(path.size(), 3u);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

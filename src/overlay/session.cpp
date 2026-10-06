@@ -41,14 +41,15 @@ uint64_t Session::Remaining() const
 }
 
 bool Session::Seal(const std::vector<unsigned char>& payload,
-                   std::vector<unsigned char>& datagram_out)
+                   std::vector<unsigned char>& datagram_out, bool pad)
 {
     if (payload.size() > MAX_SESSION_PAYLOAD) return false;
     if (Remaining() == 0) return false;
 
     // length(2) || payload || zeros, all inside the encryption, so the real
     // length is recoverable by the far end and by nobody else.
-    std::vector<unsigned char> padded(PaddedSize(payload.size()), 0);
+    const size_t sealed = pad ? PaddedSize(payload.size()) : payload.size() + SESSION_LENGTH_PREFIX;
+    std::vector<unsigned char> padded(sealed, 0);
     WriteLE16(padded.data(), static_cast<uint16_t>(payload.size()));
     std::copy(payload.begin(), payload.end(), padded.begin() + SESSION_LENGTH_PREFIX);
 

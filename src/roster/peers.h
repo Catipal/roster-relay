@@ -73,9 +73,24 @@ struct RelayInfo {
  * One entry per key, taking the first dialable endpoint. A relay advertising
  * three addresses is still one relay, and counting it three times would let it
  * occupy three path positions.
+ *
+ * `allow_local` keeps loopback and private endpoints, for regtest only: every
+ * node of a functional test listens on 127.0.0.1, and a test of paths needs
+ * them to count as relays.
  */
 bool CollectRelays(const RosterIndex& index, int tip_height,
-                   std::vector<RelayInfo>& out);
+                   std::vector<RelayInfo>& out, bool allow_local = false);
+
+/**
+ * Re-read the relay set into the overlay's path selector, unless it was read
+ * at the index's current height less than `max_age` seconds ago, and return it.
+ *
+ * Read at the roster index's own height, on regtest with local endpoints
+ * kept. Rate limited, because it reads the index and its callers include
+ * relays deciding whether to dial for a stranger. Empty when the overlay or
+ * the index is off.
+ */
+std::vector<RelayInfo> FreshRelays(int64_t max_age = 10);
 
 /** Why entries were passed over, for logging that says something useful. */
 struct CollectStats {

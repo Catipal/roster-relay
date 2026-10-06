@@ -6,6 +6,7 @@
 #define BITCOIN_OVERLAY_PATH_H
 
 #include <netaddress.h>
+#include <pubkey.h>
 #include <roster/record.h>
 
 #include <map>
@@ -26,10 +27,12 @@
  * far end is not: each relay holds a key for its own leg and none for the one
  * beyond, so it forwards ciphertext.
  *
- * With two hops that separation becomes the point. The first relay knows who is
- * asking but not who is being reached; the second knows who is being reached
- * but has no address for who is asking - it is spoken to through a path, which
- * is why a peer here is a Hop and not an address.
+ * With more than one hop that separation becomes the point. The first relay
+ * knows who is asking but not who is being reached; the last knows who is being
+ * reached but has no address for who is asking - it is spoken to through a
+ * path, which is why a peer here is a Hop and not an address. Paths this node
+ * builds have three relays (DEFAULT_PATH_HOPS, overlay/select.h); the reason
+ * for the middle one is written there.
  */
 namespace overlay {
 
@@ -96,8 +99,17 @@ enum class Route {
 /** Encoded as kind(1) || body. */
 bool EncodeAppData(const std::vector<unsigned char>& payload,
                    std::vector<unsigned char>& out);
+/**
+ * kind || path_id(8) || next hop as addrv2 || optionally its key(33).
+ *
+ * With the key, a relay that has no session with the next hop yet may open
+ * one - but only to a relay the roster lists at that address with that key
+ * (Relay::SetDialPolicy). Without it, the relay joins only peers it already
+ * has a session with, as before.
+ */
 bool EncodePathBuild(uint64_t path_id, const CService& next_hop,
-                     std::vector<unsigned char>& out);
+                     std::vector<unsigned char>& out,
+                     const CPubKey& next_key = CPubKey());
 bool EncodePathResult(bool ok, uint64_t path_id, std::vector<unsigned char>& out);
 bool EncodePathData(uint64_t path_id, const std::vector<unsigned char>& inner,
                     std::vector<unsigned char>& out);
@@ -116,6 +128,8 @@ bool DecodeAppData(const std::vector<unsigned char>& msg,
                    std::vector<unsigned char>& payload_out);
 bool DecodePathBuild(const std::vector<unsigned char>& msg, uint64_t& path_id_out,
                      CService& next_hop_out);
+bool DecodePathBuild(const std::vector<unsigned char>& msg, uint64_t& path_id_out,
+                     CService& next_hop_out, CPubKey& next_key_out);
 bool DecodePathResult(const std::vector<unsigned char>& msg, bool& ok_out,
                       uint64_t& path_id_out);
 bool DecodePathData(const std::vector<unsigned char>& msg, uint64_t& path_id_out,
@@ -171,6 +185,12 @@ public:
 
     /** Drop paths idle for longer than PATH_TTL. Returns how many went. */
     size_t Expire(int64_t now);
+
+    /** Drop one path, when this node is done with a path it built. */
+    bool Remove(uint64_t path_id);
+
+    /** Whether this path already joins exactly these two peers. */
+    bool Joins(uint64_t path_id, const Hop& upstream, const Hop& downstream) const;
 
     /**
      * Which hop carries a path we are an end of.

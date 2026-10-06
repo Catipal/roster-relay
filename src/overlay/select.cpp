@@ -13,17 +13,29 @@ constexpr size_t PathSelector::GUARD_COUNT;
 Mutex g_selector_mutex;
 std::unique_ptr<PathSelector> g_selector;
 
-namespace {
+PathSelector::PathSelector(size_t guard_count, bool local_relays)
+    : m_guard_count(guard_count), m_local_relays(local_relays) {}
 
-/** The address manager's own grouping, so this does not invent a second one. */
-std::vector<unsigned char> GroupOf(const CService& a)
+void PathSelector::SetSelf(const roster::KeyBytes& self)
 {
-    return a.GetGroup(std::vector<bool>());
+    m_self = self;
+    m_has_self = true;
+    DropGuard(self);
 }
 
-} // namespace
-
-PathSelector::PathSelector(size_t guard_count) : m_guard_count(guard_count) {}
+std::vector<unsigned char> PathSelector::GroupOf(const CService& a) const
+{
+    // On regtest every node is on one loopback address, which the address
+    // manager rightly calls one group; there each address and port counts as
+    // its own operator instead, or no test could build a path at all.
+    if (m_local_relays && !a.IsRoutable()) {
+        std::vector<unsigned char> key = a.GetKey();
+        key.insert(key.begin(), 0xFF);
+        return key;
+    }
+    // The address manager's own grouping, so this does not invent a second one.
+    return a.GetGroup(std::vector<bool>());
+}
 
 void PathSelector::SetRelays(const std::vector<RelayCandidate>& relays)
 {
@@ -67,6 +79,12 @@ bool PathSelector::DistinctOperator(const RelayCandidate& c,
 
 bool PathSelector::Select(size_t hops, std::vector<RelayCandidate>& out)
 {
+    return Select(hops, out, RelayCandidate());
+}
+
+bool PathSelector::Select(size_t hops, std::vector<RelayCandidate>& out,
+                          const RelayCandidate& destination)
+{
     out.clear();
     if (hops == 0 || m_relays.empty()) return false;
 
@@ -75,21 +93,35 @@ bool PathSelector::Select(size_t hops, std::vector<RelayCandidate>& out)
     while (m_guards.size() < m_guard_count) {
         std::vector<RelayCandidate> eligible;
         for (size_t i = 0; i < m_relays.size(); ++i) {
+            if (IsSelf(m_relays[i])) continue;
             if (DistinctOperator(m_relays[i], m_guards)) eligible.push_back(m_relays[i]);
         }
         if (eligible.empty()) break; // a small roster may not support two
         m_guards.push_back(eligible[m_rng.randrange(eligible.size())]);
     }
-    if (m_guards.empty()) return false;
 
-    out.push_back(m_guards[m_rng.randrange(m_guards.size())]);
+    // The destination and its operator are ruled out everywhere, guards
+    // included. A guard that happens to be the destination is passed over for
+    // this path only; it stays a guard.
+    std::vector<RelayCandidate> avoid;
+    if (destination.addr.IsValid()) avoid.push_back(destination);
+    std::vector<RelayCandidate> usable_guards;
+    for (size_t i = 0; i < m_guards.size(); ++i) {
+        if (DistinctOperator(m_guards[i], avoid)) usable_guards.push_back(m_guards[i]);
+    }
+    if (usable_guards.empty()) return false;
+
+    out.push_back(usable_guards[m_rng.randrange(usable_guards.size())]);
 
     // The rest are fresh for every path: rotating these costs nothing, and an
     // adversary who is not the entry learns far less by being a later hop.
     while (out.size() < hops) {
+        std::vector<RelayCandidate> taken = out;
+        taken.insert(taken.end(), avoid.begin(), avoid.end());
         std::vector<RelayCandidate> eligible;
         for (size_t i = 0; i < m_relays.size(); ++i) {
-            if (DistinctOperator(m_relays[i], out)) eligible.push_back(m_relays[i]);
+            if (IsSelf(m_relays[i])) continue;
+            if (DistinctOperator(m_relays[i], taken)) eligible.push_back(m_relays[i]);
         }
         if (eligible.empty()) {
             // Refused rather than quietly returning a shorter path, or one

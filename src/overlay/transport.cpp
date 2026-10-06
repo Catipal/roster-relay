@@ -36,7 +36,14 @@ template <typename PeerKey>
 bool TransportT<PeerKey>::Connect(const PeerKey& peer, const CPubKey& peer_static,
                         std::vector<unsigned char>& datagram_out)
 {
-    if (!m_static.IsValid() || !peer_static.IsValid()) return false;
+    return ConnectAs(peer, peer_static, m_static, datagram_out);
+}
+
+template <typename PeerKey>
+bool TransportT<PeerKey>::ConnectAs(const PeerKey& peer, const CPubKey& peer_static,
+                                    const CKey& as, std::vector<unsigned char>& datagram_out)
+{
+    if (!as.IsValid() || !peer_static.IsValid()) return false;
 
     // A handshake already in flight is abandoned rather than kept: a peer that
     // never answers must not hold the slot against a later attempt.
@@ -45,7 +52,7 @@ bool TransportT<PeerKey>::Connect(const PeerKey& peer, const CPubKey& peer_stati
     Pending pending;
     pending.expected = peer_static;
     std::vector<unsigned char> msg1;
-    if (!pending.initiator.Start(m_static, peer_static, msg1)) return false;
+    if (!pending.initiator.Start(as, peer_static, msg1)) return false;
 
     PackHandshake(FrameType::HANDSHAKE_INIT, msg1, datagram_out);
     m_pending[peer] = std::move(pending);
@@ -137,11 +144,11 @@ typename TransportT<PeerKey>::Result TransportT<PeerKey>::Receive(const PeerKey&
 
 template <typename PeerKey>
 bool TransportT<PeerKey>::Send(const PeerKey& peer, const std::vector<unsigned char>& payload,
-                     std::vector<unsigned char>& datagram_out)
+                     std::vector<unsigned char>& datagram_out, bool pad)
 {
     typename std::map<PeerKey, Established>::iterator it = m_sessions.find(peer);
     if (it == m_sessions.end()) return false;
-    return it->second.session->Seal(payload, datagram_out);
+    return it->second.session->Seal(payload, datagram_out, pad);
 }
 
 template <typename PeerKey>

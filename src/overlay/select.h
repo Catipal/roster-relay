@@ -39,6 +39,24 @@
  */
 namespace overlay {
 
+/**
+ * Relays on every path this node builds, before its destination.
+ *
+ * Two is the fewest that keep any one relay from knowing both ends: the first
+ * sees who is asking, the last sees what is reached, and an adversary holding
+ * a fraction f of the relays sees a whole path with probability f squared.
+ *
+ * The third protects the entry relay. With two, the far relay sees which relay
+ * the traffic came through - the client's entry relay, which it keeps for
+ * months (see below) - and an adversary there can then watch or attack that
+ * one relay. A middle hop hides the entry from the far end. Tor and Session's
+ * onion requests use three for the same reason, and so does this. The cost is
+ * one more relay's latency on every packet and a roster that can supply three
+ * relays run by different operators; until it can, paths are refused rather
+ * than shortened.
+ */
+static constexpr size_t DEFAULT_PATH_HOPS = 3;
+
 struct RelayCandidate {
     roster::KeyBytes key;
     CService addr;
@@ -52,7 +70,15 @@ public:
     /** How many entry relays are kept. More than one so a single one going down is survivable, few enough that the bet stays taken once. */
     static constexpr size_t GUARD_COUNT = 2;
 
-    explicit PathSelector(size_t guard_count = GUARD_COUNT);
+    /**
+     * `local_relays` treats each loopback or private address with its port as
+     * an operator of its own. Only for regtest, where every node of a test is
+     * on 127.0.0.1 and would otherwise count as one operator.
+     */
+    explicit PathSelector(size_t guard_count = GUARD_COUNT, bool local_relays = false);
+
+    /** This node's own key, which no path it builds goes through. */
+    void SetSelf(const roster::KeyBytes& self);
 
     /**
      * Replace the candidate set, as read from the roster.
@@ -70,6 +96,15 @@ public:
      * quietly satisfied with two hops that are the same operator.
      */
     bool Select(size_t hops, std::vector<RelayCandidate>& out);
+
+    /**
+     * The same, for a path that ends at `destination`.
+     *
+     * The destination is never one of the relays, and none of them is its
+     * operator: a last relay run by whoever runs the destination makes the
+     * path one hop shorter than it claims to be.
+     */
+    bool Select(size_t hops, std::vector<RelayCandidate>& out, const RelayCandidate& destination);
 
     /** The entry relays currently held. */
     std::vector<RelayCandidate> Guards() const { return m_guards; }
@@ -91,8 +126,13 @@ public:
 private:
     bool DistinctOperator(const RelayCandidate& c,
                           const std::vector<RelayCandidate>& chosen) const;
+    std::vector<unsigned char> GroupOf(const CService& a) const;
+    bool IsSelf(const RelayCandidate& c) const { return m_has_self && c.key == m_self; }
 
     size_t m_guard_count;
+    bool m_local_relays;
+    bool m_has_self{false};
+    roster::KeyBytes m_self{};
     std::vector<RelayCandidate> m_relays;
     std::vector<RelayCandidate> m_guards;
     mutable FastRandomContext m_rng;

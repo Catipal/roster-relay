@@ -30,6 +30,9 @@
 #include <roster/listing.h>
 #include <roster/payout.h>
 #include <roster/keystore.h>
+#include <mail/client.h>
+#include <mail/mailbox.h>
+#include <mail/protocol.h>
 #include <index/txindex.h>
 #include <interfaces/chain.h>
 #include <interfaces/node.h>
@@ -227,10 +230,20 @@ void Shutdown(NodeContext& node)
     //   EraseOrphansFor, which locks g_cs_orphans.
     //
     // Thus the implicit locking order requirement is: (1) cs_main, (2) g_cs_orphans, (3) cs_vNodes.
+    // Mail first: its thread builds paths over the overlay. Anything still
+    // waiting on the network is told to give up, so it is not waited for.
+    if (overlay::g_overlay) overlay::g_overlay->Interrupt();
+    mail::InterruptAsks();
+    if (mail::g_mail) {
+        mail::g_mail->Stop();
+        mail::g_mail.reset();
+    }
     if (overlay::g_overlay) {
         overlay::g_overlay->Stop();
         overlay::g_overlay.reset();
     }
+    // After the overlay, whose receive thread is what serves the mailbox.
+    mail::g_mailbox.reset();
     {
         LOCK(overlay::g_selector_mutex);
         overlay::g_selector.reset();
@@ -466,6 +479,10 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-rosterindex", strprintf("Maintain a peer roster index over chain-anchored discovery records (default: %u)", DEFAULT_ROSTERINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-overlay", strprintf("Run the encrypted overlay: an authenticated UDP transport between nodes, keyed by the same operational key the roster publishes (default: %u). Off by default because the handshake has not been reviewed by anyone who did not write it, and nothing in the node depends on it yet.", overlay::DEFAULT_OVERLAY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-acceptlistings", strprintf("Pay to publish the listing of a peer that asks over the overlay, as a relay does for the peers it serves (default: %u). The record must name the key the peer connected with, and the peer joins the users this node shares rewards with (-relayshare). Pays from -listingwallet.", roster::DEFAULT_ACCEPT_LISTINGS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-mail", strprintf("Send and collect mail between roster keys over the overlay (default: %u). Needs -overlay. Letters are sealed to the recipient's weekly mail key with secp256k1 and ML-KEM-768 together, and every trip to a mailbox runs through a path of %u relays.", mail::DEFAULT_MAIL, (unsigned)overlay::DEFAULT_PATH_HOPS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-mailbox", strprintf("Hold sealed mail for the people the roster makes this node a mailbox for (default: %u). Needs -overlay. Letters are kept for two weeks at most and cannot be read here.", mail::DEFAULT_MAILBOX), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-mailboxmaxsize=<n>", strprintf("Disk the mailbox may use, in MiB (default: %u)", mail::DEFAULT_MAILBOX_MAX_MB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-mailpoll=<n>", strprintf("Seconds between trips to collect mail, or 0 to collect only when asked (default: %u)", mail::DEFAULT_MAIL_POLL), ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
     argsman.AddArg("-maxlistedusers=<n>", strprintf("Most peers this node keeps listed under -acceptlistings (default: %u)", roster::DEFAULT_MAX_LISTED_USERS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-overlayport=<port>", strprintf("UDP port the overlay listens on (default: one above the peer-to-peer port: %u, testnet: %u, signet: %u, regtest: %u). Its own socket, separate from the peer-to-peer port, because the overlay is a datagram protocol and the peer-to-peer one is not.", overlay::OverlayPortFor(defaultChainParams->GetDefaultPort()), overlay::OverlayPortFor(testnetChainParams->GetDefaultPort()), overlay::OverlayPortFor(signetChainParams->GetDefaultPort()), overlay::OverlayPortFor(regtestChainParams->GetDefaultPort())), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-rosterconnect", strprintf("Offer peers listed in the roster to the address manager, so the chain is used for discovery rather than only indexed (default: %u). Needs -rosterindex; ignored without it. Addresses are filtered to networks this node can reach and are dated by the block that carried the record, so an old announcement is treated as old.", roster::DEFAULT_ROSTERCONNECT), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -2118,9 +2135,6 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
 
     // ********************************************************* Step 13: finished
 
-    SetRPCWarmupFinished();
-    uiInterface.InitMessage(_("Done loading").translated);
-
     for (const auto& client : node.chain_clients) {
         client->start(*node.scheduler);
     }
@@ -2141,7 +2155,7 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             return InitError(Untranslated(strprintf("overlay: %s", key_error)));
         }
         const uint16_t port = static_cast<uint16_t>(
-            args.GetArg("-overlayport", overlay::OverlayPortFor(chainparams.GetDefaultPort())));
+            args.GetArg("-overlayport", overlay::OverlayPortFor(GetListenPort())));
         overlay::g_overlay = MakeUnique<overlay::Relay>(op_key);
         std::string bind_error;
         const CService listen_at(LookupNumeric("0.0.0.0", port));
@@ -2152,18 +2166,75 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 "stop it, or choose another port with -overlayport (in BPS Relay: Settings, Overlay).",
                 bind_error, port)));
         }
-        // Application data addressed to this node. The one conversation so far
-        // is a peer asking its relay to pay for its listing (roster/listing.h).
-        if (!overlay::g_overlay->Start(roster::HandleOverlayApp)) {
+        // Application data addressed to this node: a peer asking its relay
+        // to pay for its listing (roster/listing.h), or mail (mail/protocol.h).
+        if (!overlay::g_overlay->Start([](const overlay::Hop& from, std::vector<unsigned char>&& payload) {
+                if (mail::IsMailPayload(payload)) {
+                    mail::HandleOverlayApp(from, std::move(payload));
+                } else {
+                    roster::HandleOverlayApp(from, std::move(payload));
+                }
+            })) {
             overlay::g_overlay.reset();
             return InitError(Untranslated("overlay: could not start the receive thread"));
         }
         // The socket logs the address it bound to, so nothing is said twice here.
 
-        // Path selection is client policy and lives beside the overlay rather
-        // than inside it. Empty until the roster refresh below fills it.
-        LOCK(overlay::g_selector_mutex);
-        overlay::g_selector = MakeUnique<overlay::PathSelector>();
+        const roster::KeyBytes self = mail::XOnly(op_key.GetPubKey());
+        {
+            // Path selection is client policy and lives beside the overlay
+            // rather than inside it. Empty until the roster is read. On
+            // regtest every node is on 127.0.0.1, and each counts as its own
+            // operator there or no test could build a path.
+            LOCK(overlay::g_selector_mutex);
+            overlay::g_selector = MakeUnique<overlay::PathSelector>(
+                overlay::PathSelector::GUARD_COUNT, chainparams.NetworkIDString() == CBaseChainParams::REGTEST);
+            overlay::g_selector->SetSelf(self);
+        }
+
+        // Which relays this node will dial when a path asks it to reach one:
+        // those the roster lists, at the address and with the key it lists.
+        // Read again if the answer is not in a copy up to ten minutes old,
+        // since a relay that just listed is exactly who a path may name.
+        overlay::g_overlay->SetDialPolicy([](const CService& dest, const CPubKey& key) {
+            const roster::KeyBytes x = mail::XOnly(key);
+            for (int64_t max_age : {int64_t{600}, int64_t{10}}) {
+                for (const roster::RelayInfo& r : roster::FreshRelays(max_age)) {
+                    if (r.key == x && roster::OverlayAddressFor(r.addr) == dest) return true;
+                }
+            }
+            return false;
+        });
+
+        // Holding mail for others. Only for listed people this node is one of
+        // the mailboxes of, by the roster as it reads it now - with two places
+        // of slack, for a sender whose roster differs by a block or two.
+        if (args.GetBoolArg("-mailbox", mail::DEFAULT_MAILBOX)) {
+            const uint64_t max_mib = (uint64_t)std::max<int64_t>(1, args.GetArg("-mailboxmaxsize", (int64_t)mail::DEFAULT_MAILBOX_MAX_MB));
+            mail::g_mailbox = MakeUnique<mail::Mailbox>(GetDataDir() / "mailbox", max_mib << 20, self,
+                                                        chainparams.NetworkIDString());
+            mail::g_mailbox->SetOwnerCheck([self](const roster::KeyBytes& owner) {
+                if (g_rosterindex && roster::LiveExpiry(owner, g_rosterindex->GetSummary().best_block_height) == 0) {
+                    return false;
+                }
+                std::vector<roster::KeyBytes> keys;
+                for (const roster::RelayInfo& r : roster::FreshRelays()) keys.push_back(r.key);
+                const std::vector<roster::KeyBytes> boxes = mail::MailboxesFor(owner, keys, mail::MAILBOX_COUNT + 2);
+                return std::find(boxes.begin(), boxes.end(), self) != boxes.end();
+            });
+            node.scheduler->scheduleEvery([] {
+                if (mail::g_mailbox) mail::g_mailbox->Expire(GetTime());
+            }, std::chrono::hours{1});
+        }
+
+        // This node's own mail.
+        if (args.GetBoolArg("-mail", mail::DEFAULT_MAIL)) {
+            int64_t poll = args.GetArg("-mailpoll", mail::DEFAULT_MAIL_POLL);
+            if (poll > 0) poll = std::max<int64_t>(10, poll);
+            mail::g_mail = MakeUnique<mail::MailClient>(GetDataDir() / "mail", op_key, chainparams.NetworkIDString(),
+                                                        std::chrono::seconds{std::max<int64_t>(0, poll)});
+            if (poll > 0) mail::g_mail->Start();
+        }
     }
 
     // Which of the peers this node pays are still listed. Answered from the
@@ -2201,24 +2272,8 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 // announcements are free to make by construction.
                 connman->AddNewAddresses(addrs, CAddress());
             }
-            // The overlay's own view of the relay set, from the same read.
-            if (overlay::g_overlay) {
-                std::vector<roster::RelayInfo> relays;
-                if (roster::CollectRelays(*index, tip_height, relays)) {
-                    std::vector<overlay::RelayCandidate> candidates;
-                    candidates.reserve(relays.size());
-                    for (size_t i = 0; i < relays.size(); ++i) {
-                        overlay::RelayCandidate c;
-                        c.key = relays[i].key;
-                        c.addr = relays[i].addr;
-                        candidates.push_back(c);
-                    }
-                    LOCK(overlay::g_selector_mutex);
-                    if (overlay::g_selector) overlay::g_selector->SetRelays(candidates);
-                    LogPrint(BCLog::NET, "overlay: %u relay candidates from the roster\n",
-                             candidates.size());
-                }
-            }
+            // The overlay's own view of the relay set, read afresh.
+            if (overlay::g_overlay) roster::FreshRelays(0);
 
             LogPrint(BCLog::NET, "roster: %u live, %u addresses offered "
                      "(%u without an endpoint, %u unroutable, %u unreachable, %u unrepresentable)\n",
@@ -2236,6 +2291,12 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
         node.scheduler->scheduleFromNow(refresh_roster, std::chrono::seconds{10});
         node.scheduler->scheduleEvery(refresh_roster, roster::ROSTER_PEERS_INTERVAL);
     }
+
+    // Only now, so nothing answers over RPC while the overlay, the mailbox or
+    // mail is still being set up: those are read from RPC threads, and a
+    // caller would otherwise see them half there.
+    SetRPCWarmupFinished();
+    uiInterface.InitMessage(_("Done loading").translated);
 
 #if HAVE_SYSTEM
     StartupNotify(args);

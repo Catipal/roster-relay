@@ -94,12 +94,13 @@ bool Socket::Bind(const CService& listen_addr, std::string& error)
     return true;
 }
 
-bool Socket::Start(PayloadHandler handler)
+bool Socket::Start(PayloadHandler handler, EstablishedHandler established)
 {
     if (m_socket == INVALID_SOCKET) return false;
     if (m_running.exchange(true)) return false;
 
     m_handler = std::move(handler);
+    m_established = std::move(established);
     m_thread = std::thread(&TraceThread<std::function<void()> >, "overlay",
                            std::function<void()>([this] { ThreadReceive(); }));
     return true;
@@ -283,6 +284,7 @@ void Socket::ThreadReceive()
             break;
         case Transport::Result::ESTABLISHED:
             LogPrint(BCLog::NET, "overlay: session established with %s\n", peer.ToString());
+            if (m_established) m_established(peer);
             break;
         case Transport::Result::HANDSHAKE:
         case Transport::Result::IGNORED:

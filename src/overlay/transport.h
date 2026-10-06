@@ -64,6 +64,19 @@ public:
                  std::vector<unsigned char>& datagram_out);
 
     /**
+     * The same, proving `as` instead of this node's own static key.
+     *
+     * For a path this node builds, the far end is a stranger and needs no
+     * proof of who is asking - and every relay on a path that learned the
+     * builder's roster key could look up its address, which would undo the
+     * hops in front of it. A fresh key per handshake proves nothing about the
+     * builder, which is the point; the far end is still authenticated, since
+     * only it can answer.
+     */
+    bool ConnectAs(const PeerKey& peer, const CPubKey& peer_static, const CKey& as,
+                   std::vector<unsigned char>& datagram_out);
+
+    /**
      * Feed one received datagram.
      *
      * `from` says where it came from - an address for a hop session, a path id
@@ -76,9 +89,9 @@ public:
                    std::vector<unsigned char>& reply_out,
                    std::vector<unsigned char>& payload_out);
 
-    /** Wrap application data for an established peer. */
+    /** Wrap application data for an established peer. `pad` as Session::Seal. */
     bool Send(const PeerKey& peer, const std::vector<unsigned char>& payload,
-              std::vector<unsigned char>& datagram_out);
+              std::vector<unsigned char>& datagram_out, bool pad = true);
 
     bool HasSession(const PeerKey& peer) const;
     bool HasPendingHandshake(const PeerKey& peer) const;

@@ -52,6 +52,8 @@ class Socket
 public:
     /** Called on the receive thread for each authenticated payload. */
     using PayloadHandler = std::function<void(const CService&, std::vector<unsigned char>&&)>;
+    /** Called on the receive thread when a session with a peer completes, either way round. */
+    using EstablishedHandler = std::function<void(const CService&)>;
 
     explicit Socket(const CKey& static_key);
     ~Socket();
@@ -60,7 +62,7 @@ public:
     bool Bind(const CService& listen_addr, std::string& error);
 
     /** Begin the receive thread. Bind must have succeeded. */
-    bool Start(PayloadHandler handler);
+    bool Start(PayloadHandler handler, EstablishedHandler established = nullptr);
 
     /** Stop the thread and close the socket. Safe to call twice. */
     void Stop();
@@ -117,6 +119,7 @@ private:
     size_t m_refused GUARDED_BY(m_mutex){0};
 
     PayloadHandler m_handler;
+    EstablishedHandler m_established;
     std::thread m_thread;
     CThreadInterrupt m_interrupt;
     std::atomic<bool> m_running{false};

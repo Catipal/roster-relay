@@ -5,18 +5,67 @@
 #include <roster/peers.h>
 
 #include <chain.h>
+#include <chainparams.h>
+#include <chainparamsbase.h>
 #include <index/rosterindex.h>
+#include <logging.h>
 #include <net.h>
 #include <netaddress.h>
+#include <overlay/select.h>
 #include <protocol.h>
 #include <streams.h>
 #include <sync.h>
+#include <util/time.h>
 #include <validation.h>
 #include <version.h>
 
 #include <map>
 
 namespace roster {
+
+namespace {
+Mutex g_fresh_mutex;
+int64_t g_fresh_at GUARDED_BY(g_fresh_mutex){0};
+int g_fresh_height GUARDED_BY(g_fresh_mutex){-1};
+std::vector<RelayInfo> g_fresh GUARDED_BY(g_fresh_mutex);
+} // namespace
+
+std::vector<RelayInfo> FreshRelays(int64_t max_age)
+{
+    LOCK(g_fresh_mutex);
+    RosterIndex* index = g_rosterindex.get();
+    if (index == nullptr) return g_fresh;
+    // The roster only changes when the index reaches a new block, so a copy
+    // read at the index's current height is current whatever its age. The age
+    // limit only bounds how long the same height can be trusted.
+    const int height = index->GetSummary().best_block_height;
+    const int64_t now = GetTime();
+    if (g_fresh_at != 0 && height == g_fresh_height && now - g_fresh_at < max_age) return g_fresh;
+
+    std::vector<RelayInfo> relays;
+    const bool local = Params().NetworkIDString() == CBaseChainParams::REGTEST;
+    if (!CollectRelays(*index, height, relays, local)) return g_fresh;
+
+    std::vector<overlay::RelayCandidate> candidates;
+    candidates.reserve(relays.size());
+    for (const RelayInfo& r : relays) {
+        overlay::RelayCandidate c;
+        c.key = r.key;
+        c.addr = r.addr;
+        candidates.push_back(c);
+    }
+    {
+        LOCK(overlay::g_selector_mutex);
+        if (overlay::g_selector) overlay::g_selector->SetRelays(candidates);
+    }
+    if (relays.size() != g_fresh.size()) {
+        LogPrint(BCLog::NET, "overlay: %u relay candidates from the roster\n", relays.size());
+    }
+    g_fresh = relays;
+    g_fresh_at = now;
+    g_fresh_height = height;
+    return g_fresh;
+}
 
 bool EndpointToService(const Endpoint& ep, CService& out)
 {
@@ -52,7 +101,7 @@ bool EndpointToService(const Endpoint& ep, CService& out)
 }
 
 bool CollectRelays(const RosterIndex& index, int tip_height,
-                   std::vector<RelayInfo>& out)
+                   std::vector<RelayInfo>& out, bool allow_local)
 {
     out.clear();
 
@@ -69,7 +118,7 @@ bool CollectRelays(const RosterIndex& index, int tip_height,
         for (size_t i = 0; i < rec.endpoints.size(); ++i) {
             CService service;
             if (!EndpointToService(rec.endpoints[i], service)) continue;
-            if (!service.IsRoutable() || !IsReachable(service)) continue;
+            if (!allow_local && (!service.IsRoutable() || !IsReachable(service))) continue;
             RelayInfo info;
             info.key = it->first;
             info.addr = service;

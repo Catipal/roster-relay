@@ -117,17 +117,20 @@ BpsWindow::BpsWindow(interfaces::Node& node, const PlatformStyle* platformStyle,
 
     m_discovery = new DiscoveryPage(*m_rpc, this);
     m_overlay = new OverlayPage(*m_rpc, this);
+    m_names = new NamesPage(node, this);
     // Not a reimplementation: this is the wallet client's own console, peer
     // table and traffic graph, linked rather than copied.
     m_console = new RPCConsole(node, platformStyle, nullptr);
 
     // The node first, because this client is about who is on the network: who
-    // is listed, the overlay this node runs, and the peers and console. Three
-    // views of one thing, so one section with tabs rather than three entries.
+    // is listed, the overlay this node runs, the names that point at keys, and
+    // the peers and console. Views of one thing, so one section with tabs
+    // rather than an entry each.
     m_node_tabs = new QTabWidget(this);
     m_node_tabs->setDocumentMode(true);
     m_node_tabs->addTab(m_discovery, tr("Discovery"));
     m_node_tabs->addTab(m_overlay, tr("Overlay"));
+    m_node_tabs->addTab(m_names, tr("Names"));
     m_node_tabs->addTab(m_console, tr("Peers and console"));
 
     m_pages = new QStackedWidget(this);
@@ -155,11 +158,6 @@ BpsWindow::BpsWindow(interfaces::Node& node, const PlatformStyle* platformStyle,
     connect(m_mail, &MailPage::unreadChanged, this, [this, mail_item](int unread) {
         mail_item->setText(unread > 0 ? tr("Mail (%1)").arg(unread) : tr("Mail"));
     });
-
-    // Names sit beside mail: a name is what people write to.
-    m_names = new NamesPage(node, this);
-    m_pages->addWidget(m_names);
-    m_nav->addItem(tr("Names"));
 
     m_server = new ServerPage(*m_rpc, this);
     m_pages->addWidget(m_server);

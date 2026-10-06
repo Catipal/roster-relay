@@ -8,8 +8,11 @@
 #include <qt/bps/bpsutil.h>
 #include <qt/clientmodel.h>
 
+#include <core_io.h>
 #include <names/name.h>
 #include <util/moneystr.h>
+
+#include <memory>
 
 #include <QApplication>
 #include <cstring>
@@ -41,6 +44,10 @@ const char* TAG_PENDING = "names:pending";
 const char* TAG_PETS = "names:pets";
 const char* TAG_WALLETS = "names:wallets";
 const char* TAG_RESOLVE = "names:resolve";
+const char* TAG_LOOKUP_PRICE = "names:lookupprice";
+
+//! Table item data: whether a name of ours is up for sale.
+const int ROLE_FOR_SALE = Qt::UserRole + 1;
 const char* TAG_PAY = "names:pay:";
 const char* TAG_PET = "names:pet:";
 
@@ -104,8 +111,10 @@ NamesPage::NamesPage(interfaces::Node& node, QWidget* parent) : QWidget(parent),
 
     QLabel* subtitle = new QLabel(
         tr("A name points people to your roster key, so they can write to you by name instead of by key. "
-           "Names are bought by burning coins - shorter ones cost more - and renewed by hand. Names under "
-           "yours are free, and so are petnames: your own labels for people, kept on this computer."),
+           "A free name costs its renewal, burned - shorter ones cost more - and is renewed by hand. A name "
+           "someone holds can be bought if they put it up for sale: the price is the renewal plus what they "
+           "ask. Names under yours are free, and so are petnames: your own labels for people, kept on this "
+           "computer."),
         this);
     subtitle->setWordWrap(true);
     subtitle->setEnabled(false);
@@ -141,14 +150,16 @@ NamesPage::NamesPage(interfaces::Node& node, QWidget* parent) : QWidget(parent),
     outer->addWidget(m_owned, 2);
 
     QHBoxLayout* own_tools = new QHBoxLayout();
-    m_register = new QPushButton(tr("Register a name\xe2\x80\xa6"), this);
+    m_register = new QPushButton(tr("Get a name\xe2\x80\xa6"), this);
     m_renew = new QPushButton(tr("Renew\xe2\x80\xa6"), this);
     m_subname = new QPushButton(tr("Add a subname\xe2\x80\xa6"), this);
+    m_sell = new QPushButton(tr("Sell\xe2\x80\xa6"), this);
     m_transfer = new QPushButton(tr("Transfer\xe2\x80\xa6"), this);
     own_tools->addWidget(m_register);
     own_tools->addWidget(m_renew);
     own_tools->addWidget(m_subname);
     own_tools->addStretch(1);
+    own_tools->addWidget(m_sell);
     own_tools->addWidget(m_transfer);
     outer->addLayout(own_tools);
 
@@ -194,6 +205,7 @@ NamesPage::NamesPage(interfaces::Node& node, QWidget* parent) : QWidget(parent),
     connect(m_renew, &QPushButton::clicked, this, &NamesPage::onRenew);
     connect(m_transfer, &QPushButton::clicked, this, &NamesPage::onTransfer);
     connect(m_subname, &QPushButton::clicked, this, &NamesPage::onSubname);
+    connect(m_sell, &QPushButton::clicked, this, &NamesPage::onSell);
     connect(m_lookup_button, &QPushButton::clicked, this, &NamesPage::onLookup);
     connect(m_lookup, &QLineEdit::returnPressed, this, &NamesPage::onLookup);
     connect(m_add_pet, &QPushButton::clicked, this, &NamesPage::onAddPetname);
@@ -272,6 +284,14 @@ QString NamesPage::SelectedName() const
     return name ? name->data(Qt::UserRole).toString() : QString();
 }
 
+bool NamesPage::SelectedForSale() const
+{
+    const QList<QTableWidgetItem*> items = m_owned->selectedItems();
+    if (items.isEmpty()) return false;
+    const QTableWidgetItem* name = m_owned->item(items.first()->row(), 0);
+    return name && name->data(ROLE_FOR_SALE).toBool();
+}
+
 void NamesPage::UpdateButtons()
 {
     const bool usable = m_enabled && m_active;
@@ -279,7 +299,12 @@ void NamesPage::UpdateButtons()
     m_register->setEnabled(usable);
     m_renew->setEnabled(usable && !selected.isEmpty());
     m_subname->setEnabled(usable && !selected.isEmpty());
-    m_transfer->setEnabled(usable && !selected.isEmpty());
+    // While a name is up for sale it cannot be given away; the button says why.
+    const bool for_sale = SelectedForSale();
+    m_sell->setText(for_sale ? tr("Take off sale") : tr("Sell\xe2\x80\xa6"));
+    m_sell->setEnabled(usable && !selected.isEmpty());
+    m_transfer->setEnabled(usable && !selected.isEmpty() && !for_sale);
+    m_transfer->setToolTip(for_sale ? tr("Take it off sale first.") : QString());
     m_lookup_button->setEnabled(m_client_model != nullptr);
     m_remove_pet->setEnabled(!m_book->selectedItems().isEmpty());
 }
@@ -351,6 +376,21 @@ void NamesPage::onResult(const QString& tag, const UniValue& value)
         }
         m_lookup_result->setText(text);
         m_copy_resolved->setVisible(true);
+        // Say so when it can be bought.
+        if (source == "name" && !find_value(value, "subname").isTrue()) {
+            UniValue params(UniValue::VARR);
+            params.push_back(Str(value, "name").toStdString());
+            m_rpc->Call(TAG_LOOKUP_PRICE, "getnameprice", params);
+        }
+        return;
+    }
+    if (tag == TAG_LOOKUP_PRICE) {
+        if (Str(value, "status") == "for sale") {
+            m_lookup_result->setText(m_lookup_result->text() + "\n" +
+                tr("For sale: its holder asks %1, and %2 of renewal is burned with it. Use Get a name to buy it.")
+                    .arg(QString::fromStdString(find_value(value, "asking").getValStr()) + " BPS",
+                         QString::fromStdString(find_value(value, "renewal").getValStr()) + " BPS"));
+        }
         return;
     }
     if (tag.startsWith(TAG_PAY)) {
@@ -362,6 +402,19 @@ void NamesPage::onResult(const QString& tag, const UniValue& value)
                                   .arg(names::COMMIT_MIN_AGE)
                                   .arg(BpsUtil::HumanBlocks((int)names::COMMIT_MIN_AGE))
                                   .arg(QString::fromStdString(find_value(value, "price").getValStr()) + " BPS"));
+        } else if (what == "buy") {
+            m_status->setText(tr("Buying %1: %2 paid to its holder and %3 burned. It is yours once the "
+                                 "transaction confirms.")
+                                  .arg(Str(value, "name"))
+                                  .arg(QString::fromStdString(find_value(value, "paid").getValStr()) + " BPS")
+                                  .arg(QString::fromStdString(find_value(value, "burned").getValStr()) + " BPS"));
+        } else if (what == "sell") {
+            m_status->setText(tr("%1 is going up for sale at %2. Anyone can buy it from the next block on, without "
+                                 "this node being online; the price is paid to this wallet.")
+                                  .arg(Str(value, "name"))
+                                  .arg(QString::fromStdString(find_value(value, "price").getValStr()) + " BPS"));
+        } else if (what == "unsell") {
+            m_status->setText(tr("%1 is coming off sale. Nobody can buy it from now on.").arg(Str(value, "name")));
         } else if (what == "renew") {
             m_status->setText(tr("Renewed %1 until block %2; %3 BPS burned.")
                                   .arg(Str(value, "name")).arg(Num(value, "expiry_height"))
@@ -394,6 +447,7 @@ void NamesPage::onFailed(const QString& tag, const QString& message)
         QMessageBox::warning(this, tr("Names"), message);
         return;
     }
+    if (tag == TAG_LOOKUP_PRICE) return;
     if (tag == TAG_INFO) m_status->setText(message);
 }
 
@@ -424,9 +478,17 @@ void NamesPage::ShowNames()
         QStringList subs;
         const UniValue& list = find_value(n, "subnames");
         for (size_t j = 0; list.isArray() && j < list.size(); ++j) subs << Str(list[j], "name");
-        const int row = add(Str(n, "name"),
-                            status == "grace" ? tr("expired - renew within the month") : tr("held"),
-                            ends, subs.join(", "), true);
+        QString shown = status == "grace" ? tr("expired - renew within the month") : tr("held");
+        const UniValue& sale = find_value(n, "for_sale");
+        if (sale.isObject()) {
+            const QString price = QString::fromStdString(find_value(sale, "price").getValStr()) + " BPS";
+            const QString state = Str(sale, "state");
+            shown = state == "pending" ? tr("selling - a purchase is confirming")
+                  : state == "open" ? tr("for sale at %1").arg(price)
+                                    : tr("for sale at %1 - not yet buyable").arg(price);
+        }
+        const int row = add(Str(n, "name"), shown, ends, subs.join(", "), true);
+        m_owned->item(row, 0)->setData(ROLE_FOR_SALE, sale.isObject());
         if (Str(n, "name") == keep) m_owned->selectRow(row);
     }
     // Registrations still under way, and how recent ones ended.
@@ -460,7 +522,7 @@ void NamesPage::ShowPetnames()
 void NamesPage::onRegister()
 {
     QDialog dialog(this);
-    dialog.setWindowTitle(tr("Register a name"));
+    dialog.setWindowTitle(tr("Get a name"));
     QVBoxLayout* layout = new QVBoxLayout(&dialog);
     QFormLayout* form = new QFormLayout();
     QLineEdit* name = new QLineEdit(&dialog);
@@ -475,14 +537,19 @@ void NamesPage::onRegister()
     QLabel* price = new QLabel(&dialog);
     price->setWordWrap(true);
     layout->addWidget(price);
-    QLabel* how = new QLabel(tr("Registering takes two steps: a commitment that hides the name, and about 20 "
-                                "minutes later the claim, which BPS Relay sends by itself and which burns the price. "
-                                "Nobody can take the name in between."), &dialog);
+    const QString how_register = tr("Registering takes two steps: a commitment that hides the name, and about 20 "
+                                    "minutes later the claim, which BPS Relay sends by itself and which burns the "
+                                    "price. Nobody can take the name in between.");
+    const QString how_buy = tr("Buying is one transaction: it pays the holder, burns the renewal and makes the name "
+                               "yours, all at once or not at all.");
+    QLabel* how = new QLabel(how_register, &dialog);
     how->setWordWrap(true);
     how->setEnabled(false);
     layout->addWidget(how);
     QDialogButtonBox* buttons = new QDialogButtonBox(&dialog);
     QPushButton* ok = buttons->addButton(tr("Register"), QDialogButtonBox::AcceptRole);
+    // What the node said can be done with the name typed: register or buy.
+    std::shared_ptr<QString> action = std::make_shared<QString>("register");
     buttons->addButton(QDialogButtonBox::Cancel);
     layout->addWidget(buttons);
     connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
@@ -515,17 +582,35 @@ void NamesPage::onRegister()
         params.push_back(y);
         m_rpc->Call(QString("names:price:") + QString::fromStdString(normal), "getnameprice", params);
     };
-    connect(m_rpc.get(), &BpsRpc::result, &dialog, [name, price, ok](const QString& tag, const UniValue& value) {
+    connect(m_rpc.get(), &BpsRpc::result, &dialog,
+            [name, price, ok, how, how_register, how_buy, action](const QString& tag, const UniValue& value) {
         if (!tag.startsWith("names:price:")) return;
         std::string normal;
         names::Normalize(name->text().trimmed().toStdString(), normal);
         if (tag.mid(12).toStdString() != normal) return;
         const bool available = find_value(value, "available").isTrue();
-        QString text = price->text();
-        text.replace(QObject::tr("Checking whether it is free\xe2\x80\xa6"),
-                     available ? QObject::tr("It is free.")
-                               : QString::fromStdString(find_value(value, "reason").getValStr()));
-        price->setText(text);
+        const std::string reason = find_value(value, "reason").getValStr();
+        if (find_value(value, "status").getValStr() == "for sale") {
+            *action = "buy";
+            QString text = QObject::tr("%1 is held by someone, who has put it up for sale. They ask %2, and the "
+                                       "renewal that comes with it burns %3: %4 in all.")
+                               .arg(QString::fromStdString(normal))
+                               .arg(QString::fromStdString(find_value(value, "asking").getValStr()) + " BPS")
+                               .arg(QString::fromStdString(find_value(value, "renewal").getValStr()) + " BPS")
+                               .arg(QString::fromStdString(find_value(value, "total").getValStr()) + " BPS");
+            if (!available) text += " " + QString::fromStdString(reason);
+            price->setText(text);
+            how->setText(how_buy);
+            ok->setText(QObject::tr("Buy"));
+        } else {
+            *action = "register";
+            QString text = price->text();
+            text.replace(QObject::tr("Checking whether it is free\xe2\x80\xa6"),
+                         available ? QObject::tr("It is free.") : QString::fromStdString(reason));
+            price->setText(text);
+            how->setText(how_register);
+            ok->setText(QObject::tr("Register"));
+        }
         ok->setEnabled(available);
     });
     connect(name, &QLineEdit::textChanged, &dialog, update);
@@ -536,7 +621,51 @@ void NamesPage::onRegister()
     UniValue params(UniValue::VARR);
     params.push_back(name->text().trimmed().toLower().toStdString());
     params.push_back(years->currentData().toInt());
-    Pay("register", "registername", params);
+    if (*action == "buy") {
+        Pay("buy", "buyname", params);
+    } else {
+        Pay("register", "registername", params);
+    }
+}
+
+void NamesPage::onSell()
+{
+    const QString name = SelectedName();
+    if (name.isEmpty()) return;
+    if (SelectedForSale()) {
+        if (QMessageBox::question(this, tr("Take %1 off sale").arg(name),
+                tr("Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it "
+                   "or put it up again.").arg(name),
+                QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel) != QMessageBox::Yes) {
+            return;
+        }
+        UniValue params(UniValue::VARR);
+        params.push_back(name.toStdString());
+        Pay("unsell", "cancelnamesale", params);
+        return;
+    }
+    bool ok = false;
+    const QString text = QInputDialog::getText(this, tr("Sell %1").arg(name),
+        tr("Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay "
+           "you this and burn the renewal on top, in one transaction. While it is for sale you cannot transfer "
+           "it.").arg(name),
+        QLineEdit::Normal, QString(), &ok).trimmed();
+    if (!ok || text.isEmpty()) return;
+    CAmount price = 0;
+    if (!ParseMoney(text.toStdString(), price) || price <= 0) {
+        QMessageBox::warning(this, tr("Sell %1").arg(name), tr("\"%1\" is not an amount of BPS.").arg(text));
+        return;
+    }
+    if (QMessageBox::question(this, tr("Sell %1").arg(name),
+            tr("Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, "
+               "the other publishes the sale.").arg(name, Coins(price)),
+            QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel) != QMessageBox::Yes) {
+        return;
+    }
+    UniValue params(UniValue::VARR);
+    params.push_back(name.toStdString());
+    params.push_back(ValueFromAmount(price));
+    Pay("sell", "sellname", params);
 }
 
 void NamesPage::onRenew()

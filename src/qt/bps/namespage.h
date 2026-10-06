@@ -33,10 +33,10 @@ QT_END_NAMESPACE
  * Names (design note 001, section 11): the names this node holds, looking a
  * name up, and this user's own address book of petnames.
  *
- * Everything is an RPC, as on the other pages - registername, renewname,
- * transfername, setsubname, resolvename, setpetname - so the page and a
- * script see the same names. Its own RPC thread, because paying waits on the
- * wallet.
+ * Everything is an RPC, as on the other pages - registername, buyname,
+ * renewname, sellname, cancelnamesale, transfername, setsubname, resolvename,
+ * setpetname - so the page and a script see the same names. Its own RPC
+ * thread, because paying waits on the wallet. It is a tab of the Node page.
  */
 class NamesPage : public QWidget
 {
@@ -61,6 +61,7 @@ private Q_SLOTS:
     void onRenew();
     void onTransfer();
     void onSubname();
+    void onSell();
     void onLookup();
     void onAddPetname();
     void onRemovePetname();
@@ -70,6 +71,8 @@ private:
     void ShowPetnames();
     void UpdateButtons();
     QString SelectedName() const;
+    /** Whether the selected name is up for sale. */
+    bool SelectedForSale() const;
     /** The wallet a payment comes from: the only one, or the one chosen. */
     QString WalletUri() const;
     void Pay(const QString& tag, const QString& method, const UniValue& params);
@@ -93,6 +96,7 @@ private:
     QPushButton* m_renew{nullptr};
     QPushButton* m_transfer{nullptr};
     QPushButton* m_subname{nullptr};
+    QPushButton* m_sell{nullptr};
     QLineEdit* m_lookup{nullptr};
     QPushButton* m_lookup_button{nullptr};
     QLabel* m_lookup_result{nullptr};

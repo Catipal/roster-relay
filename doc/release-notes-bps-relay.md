@@ -21,7 +21,8 @@ copy of the chain and its wallets. Only one of the two can run at a time:
 close one before starting the other.
 
 The first start builds the roster index from the chain, which takes a few
-minutes on mainnet. Allow UDP port 48931 through the firewall if asked; that
+minutes on mainnet. A roster or name index made by an earlier test build is
+rebuilt once, the same way. Allow UDP port 48931 through the firewall if asked; that
 is the relay network.
 
 Windows: the programs are not code-signed yet, so Smart App Control may
@@ -33,13 +34,18 @@ What's in it
 Node
 ----
 
-The first page, with three tabs.
+The first page, with four tabs.
 
 - **Discovery** - the peers listed on the chain, and your own listing. A
   listing is a short signed record saying you exist and, if you want,
   where to reach you. Nobody can list you without your key, hide you from
   some clients and not others, or quietly remove you. Click a peer's key or
-  address to copy it.
+  address to copy it. "Listed for" is how long each peer has been listed
+  without a break - the one thing a newcomer cannot fake - and its tooltip
+  says whether an identity stands behind it (see Identities).
+  If the newest block this node has is over a month old, the roster is
+  marked as that old: it is still used to reach peers, but not trusted,
+  because peers revoked since may still be in it.
 - **Overlay** - the encrypted relay network: whether it runs, the relays it
   knows, the two it enters through, and where people can meet you. Every
   path this node builds goes through three relays run by different people,
@@ -47,8 +53,13 @@ The first page, with three tabs.
   that sees what you reach cannot tell which relay you came in through. Until
   the roster lists enough relays for that, paths are refused rather than
   shortened.
+- **Names** - see Names below.
 - **Peers and console** - the same console, peer table and traffic graph
   as Bitcoin PoS Core.
+
+The overlay picks the relay it enters through from relays listed for a month
+or more when there are any, and never puts two relays of the same identity
+on one path.
 
 Getting listed
 --------------
@@ -114,18 +125,26 @@ it cannot be passed on to someone else as though it had been written to them.
 Names
 -----
 
-A name points people to your roster key, so they can write to you as
-`pilot` instead of 64 characters of key.
+A tab of the Node page. A name points people to your roster key, so they can
+write to you as `pilot` instead of 64 characters of key.
 
-- **Registering** - Register a name, choose one or two years, and see the
-  price before anything is spent. It takes two steps: a commitment that hides
-  the name, then, six blocks later (about twenty minutes), the claim, which
-  BPS Relay sends by itself and which burns the price. Nobody watching for
-  new names can take yours in between. Keep BPS Relay running and the wallet
-  unlocked until the claim goes out.
-- **Price** - burned, not paid to anyone, so a staker cannot register names
-  for free. Per year: 100 BPS for three letters, 20 for four, 5 for five and
-  1 for six or more. Names of one or two letters are held back for now.
+- **Getting a name** - Get a name, type it, choose one or two years, and see
+  the price before anything is spent. A free name is registered in two steps:
+  a commitment that hides the name, then, six blocks later (about twenty
+  minutes), the claim, which BPS Relay sends by itself and which burns the
+  price. Nobody watching for new names can take yours in between. Keep BPS
+  Relay running and the wallet unlocked until the claim goes out.
+- **Price** - the renewal, burned, not paid to anyone, so a staker cannot
+  register names for free. Per year: 100 BPS for three letters, 20 for four,
+  5 for five and 1 for six or more. Names of one or two letters are held back
+  for now. A name somebody holds costs the renewal plus whatever they ask
+  for it, if they have put it up for sale.
+- **Selling and buying** - Sell a name you hold at your price, and anyone can
+  buy it at once, even while your BPS Relay is closed: one transaction pays
+  you, burns the buyer's renewal and moves the name, all or nothing. Two
+  buyers can never both pay, and while the name is for sale you cannot
+  transfer it, so a buyer cannot be outrun by the seller either. Take off
+  sale ends it. The buyer gets the name without its subnames.
 - **Renewing** - by hand, while the name is live and for a month after it
   ends; after that anyone may register it. A name can be paid at most two
   years ahead.
@@ -141,10 +160,47 @@ A name points people to your roster key, so they can write to you as
 
 Mail accepts a name or a petname wherever it accepts a key.
 
-Names count from a start height on each network. On regtest, testnet and
-signet that is the beginning; **mainnet has none yet**, because when names
-open there, and how the first ones are handed out, has still to be decided.
-Until then the Names page says so and only the address book works there.
+Names are open on mainnet, counting from block 1,220,000, and on regtest,
+testnet and signet from the beginning.
+
+Identities
+----------
+
+Your node's roster key is hot: it lives on the node and signs every listing.
+An identity is a second key that stands behind it, so that if the node's key
+is ever lost or stolen a new one can be put under the same identity and keep
+how long the node has been listed, instead of starting again.
+
+- **Making one** - Make one on the Discovery tab, or `createidentity`. You are
+  shown a recovery key once: write it down. A small transaction publishes the
+  identity, and your next listing renewal links the node's key to it - an
+  identity only stands behind a key whose own listing accepts it, so nobody
+  can claim your node as theirs.
+- **Moving it** - `createrotation` moves the identity to a new key, carrying
+  its age. The move takes effect about a day and a half after it confirms.
+- **If it is stolen** - whoever took it can try to move it away; within that
+  day and a half, `createveto` with your recovery key cancels the move.
+- **Ending a key** - `createrevocation` signs the end of a key, for good, and
+  `sendrevocation` passes it from node to node without a transaction: every
+  node drops the key the moment it hears, and keeps it dropped even if a
+  reorganisation takes away the block that carried it.
+- **Proving age** - `getageproof` proves how long a key has been listed, link
+  by link, to someone who holds only block headers; `verifyageproof` checks
+  it.
+
+The roster's fingerprint
+------------------------
+
+Built, and switched off on every network until an activation is scheduled.
+When active, every block carries the fingerprint - a merkle root - of the
+roster as it stood a hundred blocks earlier, as one more push after the
+witness commitment in its coinbase, so nodes that do not know the rule keep
+following the chain (a soft fork). A client that holds only block headers
+can then take the whole roster, or one entry of it, from any node it does not
+trust and check it (`getrostersnapshot` and `verifyrostersnapshot`,
+`getrostermembership` and `verifyrostermembership`). A node enforcing it
+keeps the roster beside its chain state (`roster_ledger.dat`), whether or not
+it runs the roster index.
 
 Server
 ------
@@ -180,7 +236,7 @@ New options
 | `-rosterindexstart`, `-rosterindexwindow` | | Where the index starts, and how far back it keeps |
 | `-overlay` | on in BPS Relay, off in the node | Run the encrypted relay network |
 | `-overlayport` | one above this node's peer-to-peer port (48931 on mainnet) | Its UDP port |
-| `-nameindex` | on in BPS Relay, off in the node | Keep an index of names, to look them up and register |
+| `-nameindex` | on in BPS Relay, off in the node | Keep an index of names, to look them up, register, sell and buy |
 | `-mail` | on | Send and collect mail (needs the overlay) |
 | `-mailbox` | on | Hold sealed mail for others (needs the overlay) |
 | `-mailboxmaxsize` | 256 | Disk the mailbox may use, in MiB |
@@ -201,8 +257,17 @@ New RPCs
 mail `sendmail`, `checkmail`, `listmail`, `readmail`, `deletemail` and
 `getmailinfo`; and for names `getnameinfo`, `resolvename`, `listnames`,
 `getnameprice`, `registername`, `renewname`, `transfername`, `setsubname`,
-`listnameregistrations`, `setpetname`, `deletepetname` and `listpetnames`.
-Each has its full description in `help`.
+`listnameregistrations`, `sellname`, `cancelnamesale`, `buyname`,
+`setpetname`, `deletepetname` and `listpetnames`; for identities and
+revocations `getidentity`, `createidentity`, `createdelegation`,
+`createrotation`, `createveto`, `createrevocation`, `sendrevocation`,
+`listrevocations`, `getageproof` and `verifyageproof`; and for the roster's
+fingerprint `getrostersnapshot`, `verifyrostersnapshot`,
+`getrostermembership` and `verifyrostermembership`. Each has its full
+description in `help`.
+
+Nodes pass revocations to each other in a new message, `rosterrevoke`, which
+older nodes ignore.
 
 The node also advertises a new service bit, `NODE_ROSTER`, meaning it serves
 the blocks a roster is built from, and `-blockfilterindex=roster` builds
@@ -223,12 +288,20 @@ Known issues
   for each person, but there is no spam filter yet.
 - Mail keys and letters on this computer are stored unencrypted in the data
   directory (`mail/`), like the roster key. Protect the computer itself.
-- Names have not started on mainnet (see Names).
+- The identity key is kept on the node by default, beside the roster key. It
+  is meant to live elsewhere; the RPCs that sign with it take it as an
+  argument for that.
+- A node whose roster key is revoked needs a new one by hand: stop it, move
+  `roster.key` aside, start it again. Names it holds stay with the old key, so
+  transfer them first.
+- The roster's fingerprint is not active on any network (see above).
+- An age proof does not carry age across an identity's move to a new key:
+  that the move was not vetoed cannot be shown to a client with headers only.
 - A name cannot be paid yet. Paying by name needs the sender to derive a fresh
   address from the name's key for every payment, so that one name never links
   its payments together; that part is not built.
 - Nobody settles a disputed name. The first valid registration holds it.
-- There is no auction or early access for existing identities when names
-  open; the prices are the only protection against a rush.
+- There was no auction or early access when names opened on mainnet; the
+  prices are the only protection against a rush.
 - `getmininginfo` and `getstakinginfo` fail when more than one wallet is open.
 - On Linux the window can stay in the process list after quitting.

@@ -7,10 +7,10 @@ Bitcoin PoS Relay (BPS Relay) is the BitcoinPoS client for finding peers and
 relaying for them. It runs a full node like BitcoinPoS Core does, but its pages
 are about the network rather than about coins:
 
-  Node       who is listed, the encrypted relay network, peers and console
+  Node       who is listed, the encrypted relay network, names, peers and
+             console
   Wallet     the BitcoinPoS Core wallet itself, running inside this window
   Mail       letters to and from other people on the roster
-  Names      names that point to keys, and your own address book
   Server     what this node offers others: relaying and holding mail
   Settings   roster, overlay and display options
 
@@ -59,11 +59,20 @@ up to two weeks until they collect them.
 
 Names
 -----
-A name points people to your roster key. Register one on the Names page: the
-price is burned, shorter names cost more, and you renew by hand. Names under
-yours are free, and so is the address book of your own labels for people.
-Names have not started on mainnet yet; until they do, only the address book
-works there.
+A name points people to your roster key. Get one on the Names tab of the Node
+page. A free name costs its renewal, burned - shorter names cost more - and
+you renew by hand. A name someone holds can be bought if they have put it up
+for sale: the price is the renewal plus what they ask, and it is yours at once,
+in one transaction. Names under yours are free, and so is the address book of
+your own labels for people.
+
+
+Identity
+--------
+An identity stands behind your node's key, so that if the key ever has to
+change, your node keeps how long it has been listed. Make one on the Discovery
+tab. Write down the recovery key it shows you: it is shown only once, and it is
+the only way to stop someone who steals your identity from moving it.
 
 
 See the bitcoin proof of stake FAQs at:

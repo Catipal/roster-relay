@@ -13,6 +13,7 @@
 #include <qt/walletmodel.h>
 #endif
 
+#include <mail/mailbox.h>
 #include <policy/feerate.h>
 #include <roster/listing.h>
 #include <roster/payout.h>
@@ -39,8 +40,11 @@ const char* KEY_ACCEPTLISTINGS = "bps/acceptlistings";
 const char* KEY_MAXLISTEDUSERS = "bps/maxlistedusers";
 const char* KEY_LISTINGWALLET = "bps/listingwallet";
 const char* KEY_RELAYSHARE = "bps/relayshare";
+const char* KEY_MAILBOX = "bps/mailbox";
+const char* KEY_MAILBOX_SIZE = "bps/mailboxmaxsize";
 
 const char* TAG_PAYOUT = "server:payout";
+const char* TAG_MAIL = "server:mail";
 
 //! The roster moves at block pace; so do the figures here.
 const int REFRESH_MS = 20000;
@@ -113,6 +117,12 @@ void ServerPage::ApplyStoredSettings()
     if (settings.contains(KEY_RELAYSHARE)) {
         gArgs.SoftSetArg("-relayshare", settings.value(KEY_RELAYSHARE).toString().toStdString());
     }
+    if (settings.contains(KEY_MAILBOX)) {
+        gArgs.SoftSetBoolArg("-mailbox", settings.value(KEY_MAILBOX).toBool());
+    }
+    if (settings.contains(KEY_MAILBOX_SIZE)) {
+        gArgs.SoftSetArg("-mailboxmaxsize", settings.value(KEY_MAILBOX_SIZE).toString().toStdString());
+    }
 }
 
 ServerPage::ServerPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rpc)
@@ -138,8 +148,9 @@ ServerPage::ServerPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rp
     outer->addWidget(title);
 
     QLabel* subtitle = new QLabel(
-        tr("What this node offers other people. Relaying runs today; the rest are on the way, "
-           "and each will be found the same way peers are \xe2\x80\x94 through the roster."),
+        tr("What this node offers other people. Relaying and holding mail run today; names and "
+           "hosting are on the way, and each is found the same way peers are \xe2\x80\x94 through "
+           "the roster."),
         content);
     subtitle->setWordWrap(true);
     subtitle->setEnabled(false);
@@ -147,6 +158,7 @@ ServerPage::ServerPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rp
     outer->addSpacing(6);
 
     outer->addWidget(MakeRelayCard());
+    outer->addWidget(MakeMailboxCard());
 
     QGridLayout* planned = new QGridLayout();
     planned->setHorizontalSpacing(12);
@@ -158,20 +170,13 @@ ServerPage::ServerPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rp
            "full peer. Designed (design note 001, section 11); who settles a disputed name is "
            "still open."),
         content, nullptr), 0, 0);
-    planned->addWidget(MakeCard(tr("Mail"), Status::PLANNED,
-        tr("Mail between roster keys, carried over the overlay and held for you by relays chosen "
-           "from your key, so no mail server keeps your inbox. Encrypted the way Session's new "
-           "protocol is: keys that rotate per device and per account, with old ones deleted so "
-           "past mail stays sealed, and a post-quantum key exchange (ML-KEM) alongside the "
-           "usual one. Not built yet."),
-        content, nullptr), 0, 1);
     planned->addWidget(MakeCard(tr("Hosting"), Status::PLANNED,
         tr("A site or service served from this node, found by its key or name and reached over "
            "the overlay, so the host never publishes where it runs. The meeting part exists: a "
            "service registers at rendezvous points both sides work out from the roster. Serving "
            "pages and apps through it is not built yet."),
-        content, nullptr), 0, 2);
-    for (int c = 0; c < 3; ++c) planned->setColumnStretch(c, 1);
+        content, nullptr), 0, 1);
+    for (int c = 0; c < 2; ++c) planned->setColumnStretch(c, 1);
     outer->addLayout(planned);
     outer->addStretch(1);
 
@@ -252,6 +257,54 @@ QWidget* ServerPage::MakeRelayCard()
     return card;
 }
 
+QWidget* ServerPage::MakeMailboxCard()
+{
+    QVBoxLayout* body = nullptr;
+    QFrame* card = MakeCard(tr("Mailbox"), Status::OFF,
+        tr("Hold sealed mail for the people the roster makes this node a mailbox for, until they "
+           "collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns "
+           "it. Senders and owners reach this node through three relays, so it never learns where "
+           "they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are "
+           "dropped after two weeks, and only listed people are served."),
+        this, &body, &m_mailbox_badge);
+
+    QFormLayout* status = new QFormLayout();
+    m_mailbox_holding = new QLabel(tr("\xe2\x80\x94"), card);
+    m_mailbox_keys = new QLabel(tr("\xe2\x80\x94"), card);
+    status->addRow(tr("Holding"), m_mailbox_holding);
+    status->addRow(tr("Mail keys held for senders"), m_mailbox_keys);
+    body->addLayout(status);
+
+    QFrame* rule = new QFrame(card);
+    rule->setFrameShape(QFrame::HLine);
+    rule->setFrameShadow(QFrame::Sunken);
+    body->addWidget(rule);
+
+    m_mailbox = new QCheckBox(tr("Hold mail for the people the roster assigns to this node"), card);
+    m_mailbox->setToolTip(tr("On by default wherever the overlay runs: a relay that refuses leaves the "
+                             "people it was chosen for with one mailbox fewer."));
+    body->addWidget(m_mailbox);
+
+    QFormLayout* form = new QFormLayout();
+    m_mailbox_size = new QSpinBox(card);
+    m_mailbox_size->setRange(1, 1 << 20);
+    m_mailbox_size->setSuffix(tr(" MiB"));
+    m_mailbox_size->setToolTip(tr("When this is full, new letters are refused until old ones are collected "
+                                  "or dropped. No one person can use more than 8 MiB of it."));
+    form->addRow(tr("Disk it may use"), m_mailbox_size);
+    body->addLayout(form);
+
+    m_mailbox_note = new QLabel(card);
+    m_mailbox_note->setWordWrap(true);
+    m_mailbox_note->setVisible(false);
+    body->addWidget(m_mailbox_note);
+
+    connect(m_mailbox, &QCheckBox::toggled, this, &ServerPage::onChanged);
+    connect(m_mailbox_size, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            this, &ServerPage::onChanged);
+    return card;
+}
+
 void ServerPage::Load()
 {
     m_loading = true;
@@ -261,6 +314,8 @@ void ServerPage::Load()
     m_maxlistedusers->setValue((int)gArgs.GetArg("-maxlistedusers", roster::DEFAULT_MAX_LISTED_USERS));
     m_listingwallet->setText(QString::fromStdString(gArgs.GetArg("-listingwallet", "")));
     m_relayshare->setValue((int)gArgs.GetArg("-relayshare", roster::DEFAULT_RELAY_SHARE));
+    m_mailbox->setChecked(gArgs.GetBoolArg("-mailbox", mail::DEFAULT_MAILBOX));
+    m_mailbox_size->setValue((int)gArgs.GetArg("-mailboxmaxsize", (int64_t)mail::DEFAULT_MAILBOX_MAX_MB));
     m_loading = false;
 }
 
@@ -272,9 +327,14 @@ void ServerPage::onChanged()
     settings.setValue(KEY_MAXLISTEDUSERS, m_maxlistedusers->value());
     settings.setValue(KEY_LISTINGWALLET, m_listingwallet->text().trimmed());
     settings.setValue(KEY_RELAYSHARE, m_relayshare->value());
-    m_restart_note->setVisible(true);
-    m_restart_note->setText(tr("Saved. These are read when the node starts, so restart the client "
-                               "for the change to take effect."));
+    settings.setValue(KEY_MAILBOX, m_mailbox->isChecked());
+    settings.setValue(KEY_MAILBOX_SIZE, m_mailbox_size->value());
+    const QString saved = tr("Saved. These are read when the node starts, so restart the client "
+                             "for the change to take effect.");
+    for (QLabel* note : {m_restart_note, m_mailbox_note}) {
+        note->setVisible(true);
+        note->setText(saved);
+    }
 }
 
 void ServerPage::setWalletController(WalletController* controller)
@@ -297,7 +357,10 @@ void ServerPage::setClientModel(ClientModel* model)
 void ServerPage::Refresh()
 {
     UpdateStaking();
-    if (m_client_model) m_rpc.Call(TAG_PAYOUT, "getrelaypayout");
+    if (m_client_model) {
+        m_rpc.Call(TAG_PAYOUT, "getrelaypayout");
+        m_rpc.Call(TAG_MAIL, "getmailinfo");
+    }
 }
 
 void ServerPage::UpdateStaking()
@@ -336,6 +399,30 @@ void ServerPage::UpdateStaking()
 
 void ServerPage::onRpcResult(const QString& tag, const UniValue& value)
 {
+    if (tag == TAG_MAIL) {
+        const UniValue& holding = find_value(value, "holding");
+        if (!find_value(holding, "enabled").isTrue()) {
+            SetBadge(m_mailbox_badge, Status::OFF,
+                     gArgs.GetBoolArg("-overlay", true) ? tr("off") : tr("needs the overlay"));
+            m_mailbox_holding->setText(tr("nothing \xe2\x80\x94 not holding mail"));
+            m_mailbox_keys->setText(tr("\xe2\x80\x94"));
+            return;
+        }
+        SetBadge(m_mailbox_badge, Status::RUNNING, tr("running"));
+        const int64_t letters = find_value(holding, "letters").get_int64();
+        const int64_t people = find_value(holding, "people").get_int64();
+        const int64_t bytes = find_value(holding, "bytes").get_int64();
+        const int64_t max_mib = find_value(holding, "max_bytes").get_int64() >> 20;
+        const QString what = letters == 0 ? tr("no letters")
+                             : letters == 1 ? tr("1 letter") : tr("%1 letters").arg(letters);
+        const QString whom = people == 1 ? tr("1 person") : tr("%1 people").arg(people);
+        const QString used = bytes < (1 << 20) ? tr("%1 KiB").arg((bytes + 1023) / 1024)
+                                               : tr("%1 MiB").arg(bytes / 1048576.0, 0, 'f', 1);
+        m_mailbox_holding->setText(letters == 0 ? tr("nothing at the moment, room for %1 MiB").arg(max_mib)
+                                                : tr("%1 for %2, %3 of %4 MiB").arg(what, whom, used).arg(max_mib));
+        m_mailbox_keys->setText(QString::number(find_value(holding, "keys").get_int64()));
+        return;
+    }
     if (tag != TAG_PAYOUT) return;
     const UniValue& users = find_value(value, "users");
     m_users->setText(users.isNum() ? QString::number(users.get_int()) : tr("\xe2\x80\x94"));
@@ -357,6 +444,10 @@ void ServerPage::onRpcResult(const QString& tag, const UniValue& value)
 
 void ServerPage::onRpcFailed(const QString& tag, const QString& message)
 {
+    if (tag == TAG_MAIL) {
+        m_mailbox_holding->setText(message);
+        return;
+    }
     if (tag != TAG_PAYOUT) return;
     m_payout->setText(message);
 }

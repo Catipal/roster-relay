@@ -4,8 +4,9 @@ Bitcoin PoS Relay version 0.22 Release Notes
 Bitcoin PoS Relay (BPS Relay) 0.22 is the first release of a second BitcoinPoS
 client. Bitcoin PoS Core is about coins; BPS Relay is about who is on the
 network. It runs the same full node, shares the same chain data and wallets,
-and adds a roster of peers kept on the chain, an encrypted relay network, and
-the means to run a relay that pays the peers who use it.
+and adds a roster of peers kept on the chain, an encrypted relay network, the
+means to run a relay that pays the peers who use it, and mail between the
+people on the roster.
 
 It ships as its own package, `bps-relay-0.22-<platform>`, next to the Bitcoin
 PoS Core one. Bitcoin PoS Core's own changes in 0.22 are in its release notes.
@@ -39,7 +40,12 @@ The first page, with three tabs.
   where to reach you. Nobody can list you without your key, hide you from
   some clients and not others, or quietly remove you.
 - **Overlay** - the encrypted relay network: whether it runs, the relays it
-  knows, the two it enters through, and where people can meet you.
+  knows, the two it enters through, and where people can meet you. Every
+  path this node builds goes through three relays run by different people,
+  so the relay that sees where you are never sees what you reach, and the one
+  that sees what you reach cannot tell which relay you came in through. Until
+  the roster lists enough relays for that, paths are refused rather than
+  shortened.
 - **Peers and console** - the same console, peer table and traffic graph
   as Bitcoin PoS Core.
 
@@ -71,6 +77,39 @@ Wallet
 The Bitcoin PoS Core wallet itself, running inside a window on this page -
 menus, toolbar, staking and all - so it always matches the wallet client.
 
+Mail
+----
+
+Letters between the people on the roster. Your address is your roster key,
+shown at the top of the page with a button to copy it.
+
+- **Writing** - Write, put in the recipient's roster key, and send. Your
+  node fetches the recipient's current mail key, seals the letter to it and
+  leaves it at each of their mailboxes. Up to 32 KB of text; no attachments.
+- **Mailboxes** - three relays chosen from each person's key by the roster
+  itself, so nobody assigns them and nobody can be asked where your mail
+  goes. They hold letters for two weeks at most.
+- **Collecting** - every five minutes, or now with Collect now. Collected
+  letters are removed from the mailboxes, so this computer keeps the only
+  copy.
+
+How it is protected, following the three changes Session announced for its
+protocol in December 2025:
+
+- **Old keys are deleted.** Your mail key changes every week, and the
+  private half of an old one is deleted once nothing sealed to it can still be
+  waiting, so a letter cannot be opened later from this computer's keys.
+- **Post-quantum.** Each letter is sealed with two key exchanges at once,
+  secp256k1 and ML-KEM-768 (FIPS 203), and stays sealed unless both are
+  broken. ML-KEM comes from mlkem-native 2.0.0, the implementation AWS uses,
+  and its answers are checked against Go's own implementation in the tests.
+- **Sealed sender.** Who wrote a letter travels inside the seal, signed, so
+  the mailbox holding it cannot tell. Every trip to a mailbox also goes
+  through three relays, so it does not learn where you are either.
+
+A letter is signed by the sender's roster key and bound to the recipient, so
+it cannot be passed on to someone else as though it had been written to them.
+
 Server
 ------
 
@@ -82,7 +121,11 @@ What this node offers other people.
   you stake to give them. A relay has to be staking: the listings it pays for
   go into blocks it stakes itself. Peers whose listing has run out are no
   longer paid.
-- **Names, Mail and Hosting** - shown as planned. None is built yet.
+- **Mailbox** - running wherever the relay network runs. Holds sealed mail
+  for the people the roster makes this node a mailbox for, and only for
+  listed people. It cannot read what it holds. You can turn it off or limit
+  the disk it uses (256 MiB by default, 8 MiB at most for any one person).
+- **Names and Hosting** - shown as planned. Neither is built yet.
 
 Footer
 ------
@@ -100,7 +143,10 @@ New options
 | `-rosterconnect` | on | Offer roster peers to the address manager |
 | `-rosterindexstart`, `-rosterindexwindow` | | Where the index starts, and how far back it keeps |
 | `-overlay` | on in BPS Relay, off in the node | Run the encrypted relay network |
-| `-overlayport` | one above the peer-to-peer port (48931 on mainnet) | Its UDP port |
+| `-overlayport` | one above this node's peer-to-peer port (48931 on mainnet) | Its UDP port |
+| `-mail` | on | Send and collect mail (needs the overlay) |
+| `-mailbox` | on | Hold sealed mail for others (needs the overlay) |
+| `-mailboxmaxsize` | 256 | Disk the mailbox may use, in MiB |
 | `-acceptlistings` | off | Pay for the listings peers ask this node to publish |
 | `-maxlistedusers` | 100 | Most peers to keep listed |
 | `-listingwallet` | the only wallet open | Which wallet pays for listings |
@@ -114,8 +160,9 @@ New RPCs
 
 `getrosterinfo`, `getroster`, `getrosterhistory`, `createannouncement`,
 `publishrecord`, `requestlisting`, `getoverlayinfo`, `getrosterstaker`,
-`dumprosterkey`, `addrosteruser`, `removerosteruser`, `getrelaypayout`.
-Each has its full description in `help`.
+`dumprosterkey`, `addrosteruser`, `removerosteruser`, `getrelaypayout`, and for
+mail `sendmail`, `checkmail`, `listmail`, `readmail`, `deletemail` and
+`getmailinfo`. Each has its full description in `help`.
 
 The node also advertises a new service bit, `NODE_ROSTER`, meaning it serves
 the blocks a roster is built from, and `-blockfilterindex=roster` builds
@@ -129,6 +176,12 @@ Known issues
 - A relay pays its peers inside the blocks it stakes, so who a relay pays is
   visible on the chain.
 - A listing records the peer-to-peer port only; a relay that moves its relay
-  network off the default port has to be named by hand.
+  network off one above it has to be named by hand.
+- Mail has one device per address. Session's third change, several devices
+  sharing one account, is not built.
+- Anyone listed can write to anyone listed. A mailbox limits how much it holds
+  for each person, but there is no spam filter yet.
+- Mail keys and letters on this computer are stored unencrypted in the data
+  directory (`mail/`), like the roster key. Protect the computer itself.
 - `getmininginfo` and `getstakinginfo` fail when more than one wallet is open.
 - On Linux the window can stay in the process list after quitting.

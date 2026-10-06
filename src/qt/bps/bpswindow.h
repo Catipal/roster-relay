@@ -21,6 +21,7 @@ class NetworkStyle;
 class OverlayPage;
 class PlatformStyle;
 class RPCConsole;
+class MailPage;
 class ServerPage;
 class SettingsPage;
 class UniValue;
@@ -133,6 +134,7 @@ private:
     DiscoveryPage* m_discovery{nullptr};
     OverlayPage* m_overlay{nullptr};
     RPCConsole* m_console{nullptr};
+    MailPage* m_mail{nullptr};
     ServerPage* m_server{nullptr};
     SettingsPage* m_settings{nullptr};
 #ifdef ENABLE_WALLET

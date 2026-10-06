@@ -159,7 +159,7 @@ void SettingsPage::Load()
     m_rosterindex->setChecked(settings.value(KEY_ROSTERINDEX, true).toBool());
     m_rosterconnect->setChecked(settings.value(KEY_ROSTERCONNECT, roster::DEFAULT_ROSTERCONNECT).toBool());
     m_overlay->setChecked(settings.value(KEY_OVERLAY, true).toBool());
-    m_overlayport->setValue((int)gArgs.GetArg("-overlayport", overlay::OverlayPortFor(Params().GetDefaultPort())));
+    m_overlayport->setValue((int)gArgs.GetArg("-overlayport", overlay::OverlayPortFor((uint16_t)gArgs.GetArg("-port", Params().GetDefaultPort()))));
     m_loading = false;
 }
 

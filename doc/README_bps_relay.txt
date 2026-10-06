@@ -9,7 +9,8 @@ are about the network rather than about coins:
 
   Node       who is listed, the encrypted relay network, peers and console
   Wallet     the BitcoinPoS Core wallet itself, running inside this window
-  Server     what this node offers others: relaying today, more to come
+  Mail       letters to and from other people on the roster
+  Server     what this node offers others: relaying and holding mail
   Settings   roster, overlay and display options
 
 What changed in this version is in release-notes.md, next to this file.
@@ -45,6 +46,14 @@ renewing, it simply lapses.
 To be a relay that pays for other peers' listings, turn on "Pay to list peers
 that ask through the overlay" on the Server page. It spends your coins, so it
 is off until you turn it on, and the node has to be staking.
+
+
+Mail
+----
+Your mail address is your roster key, shown on the Mail page. You need to be
+listed to have mailboxes. Letters are sealed so only the recipient can open
+them, travel through three relays, and wait at the recipient's mailboxes for
+up to two weeks until they collect them.
 
 
 See the bitcoin proof of stake FAQs at:

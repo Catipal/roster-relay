@@ -28,12 +28,13 @@ QT_END_NAMESPACE
 /**
  * What this node offers other people.
  *
- * Relaying is the one service running today: paying for the listings of peers
- * that use this node and sharing its staking rewards with them. Its controls
- * live here rather than in Settings because they are what an operator runs,
- * not how the client behaves. The services still to come - names, mail and
- * hosting - are shown for what they are, not built yet, so the page says where the
- * project is going without claiming anything it cannot do.
+ * Two services run today: relaying - paying for the listings of peers that use
+ * this node and sharing its staking rewards with them - and holding sealed mail
+ * for the people the roster makes this node a mailbox for. Their controls live
+ * here rather than in Settings because they are what an operator runs, not how
+ * the client behaves. The services still to come - names and hosting - are
+ * shown for what they are, not built yet, so the page says where the project
+ * is going without claiming anything it cannot do.
  *
  * Like Settings, the relay controls are startup arguments in the node, stored
  * in QSettings and soft-set at startup, so the command line and config file
@@ -63,6 +64,7 @@ private Q_SLOTS:
 
 private:
     QWidget* MakeRelayCard();
+    QWidget* MakeMailboxCard();
     void Load();
     void UpdateStaking();
 
@@ -80,6 +82,13 @@ private:
     QLineEdit* m_listingwallet{nullptr};
     QSpinBox* m_relayshare{nullptr};
     QLabel* m_restart_note{nullptr};
+
+    QLabel* m_mailbox_badge{nullptr};
+    QLabel* m_mailbox_holding{nullptr};
+    QLabel* m_mailbox_keys{nullptr};
+    QCheckBox* m_mailbox{nullptr};
+    QSpinBox* m_mailbox_size{nullptr};
+    QLabel* m_mailbox_note{nullptr};
     QTimer* m_timer{nullptr};
 };
 

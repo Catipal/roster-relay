@@ -70,6 +70,14 @@ QString Coins(CAmount amount)
     return QString::fromStdString(FormatMoney(amount)) + " BPS";
 }
 
+/** An amount as an RPC returns it, written as the rest of the page writes amounts. */
+QString CoinsOf(const UniValue& v)
+{
+    CAmount amount = 0;
+    if (!ParseMoney(v.getValStr(), amount)) return QString::fromStdString(v.getValStr()) + " BPS";
+    return Coins(amount);
+}
+
 QLabel* Heading(const QString& text, QWidget* parent)
 {
     QLabel* label = new QLabel(text, parent);
@@ -388,8 +396,8 @@ void NamesPage::onResult(const QString& tag, const UniValue& value)
         if (Str(value, "status") == "for sale") {
             m_lookup_result->setText(m_lookup_result->text() + "\n" +
                 tr("For sale: its holder asks %1, and %2 of renewal is burned with it. Use Get a name to buy it.")
-                    .arg(QString::fromStdString(find_value(value, "asking").getValStr()) + " BPS",
-                         QString::fromStdString(find_value(value, "renewal").getValStr()) + " BPS"));
+                    .arg(CoinsOf(find_value(value, "asking")),
+                         CoinsOf(find_value(value, "renewal"))));
         }
         return;
     }
@@ -401,18 +409,18 @@ void NamesPage::onResult(const QString& tag, const UniValue& value)
                                   .arg(Str(value, "name"))
                                   .arg(names::COMMIT_MIN_AGE)
                                   .arg(BpsUtil::HumanBlocks((int)names::COMMIT_MIN_AGE))
-                                  .arg(QString::fromStdString(find_value(value, "price").getValStr()) + " BPS"));
+                                  .arg(CoinsOf(find_value(value, "price"))));
         } else if (what == "buy") {
             m_status->setText(tr("Buying %1: %2 paid to its holder and %3 burned. It is yours once the "
                                  "transaction confirms.")
                                   .arg(Str(value, "name"))
-                                  .arg(QString::fromStdString(find_value(value, "paid").getValStr()) + " BPS")
-                                  .arg(QString::fromStdString(find_value(value, "burned").getValStr()) + " BPS"));
+                                  .arg(CoinsOf(find_value(value, "paid")))
+                                  .arg(CoinsOf(find_value(value, "burned"))));
         } else if (what == "sell") {
             m_status->setText(tr("%1 is going up for sale at %2. Anyone can buy it from the next block on, without "
                                  "this node being online; the price is paid to this wallet.")
                                   .arg(Str(value, "name"))
-                                  .arg(QString::fromStdString(find_value(value, "price").getValStr()) + " BPS"));
+                                  .arg(CoinsOf(find_value(value, "price"))));
         } else if (what == "unsell") {
             m_status->setText(tr("%1 is coming off sale. Nobody can buy it from now on.").arg(Str(value, "name")));
         } else if (what == "renew") {
@@ -481,7 +489,7 @@ void NamesPage::ShowNames()
         QString shown = status == "grace" ? tr("expired - renew within the month") : tr("held");
         const UniValue& sale = find_value(n, "for_sale");
         if (sale.isObject()) {
-            const QString price = QString::fromStdString(find_value(sale, "price").getValStr()) + " BPS";
+            const QString price = CoinsOf(find_value(sale, "price"));
             const QString state = Str(sale, "state");
             shown = state == "pending" ? tr("selling - a purchase is confirming")
                   : state == "open" ? tr("for sale at %1").arg(price)
@@ -595,9 +603,9 @@ void NamesPage::onRegister()
             QString text = QObject::tr("%1 is held by someone, who has put it up for sale. They ask %2, and the "
                                        "renewal that comes with it burns %3: %4 in all.")
                                .arg(QString::fromStdString(normal))
-                               .arg(QString::fromStdString(find_value(value, "asking").getValStr()) + " BPS")
-                               .arg(QString::fromStdString(find_value(value, "renewal").getValStr()) + " BPS")
-                               .arg(QString::fromStdString(find_value(value, "total").getValStr()) + " BPS");
+                               .arg(CoinsOf(find_value(value, "asking")))
+                               .arg(CoinsOf(find_value(value, "renewal")))
+                               .arg(CoinsOf(find_value(value, "total")));
             if (!available) text += " " + QString::fromStdString(reason);
             price->setText(text);
             how->setText(how_buy);

@@ -9,6 +9,7 @@
 #include <roster/record.h>
 #include <script/script.h>
 
+#include <functional>
 #include <string>
 #include <vector>
 
@@ -85,6 +86,23 @@ bool SaveUsers(const std::vector<KeyBytes>& users, std::string& error);
 
 /** Where that list lives, for logging and error messages. */
 std::string UsersPath();
+
+/**
+ * Whether a peer still has a live listing. The node installs this at startup,
+ * because answering needs the roster index; with none installed every listed
+ * peer counts, which is all a node without an index can know.
+ */
+using LivenessCheck = std::function<bool(const KeyBytes&)>;
+void SetLivenessCheck(LivenessCheck check);
+
+/**
+ * The peers worth paying: those whose listing has not lapsed.
+ *
+ * Renewal is manual on purpose - a peer leaves simply by not renewing - so a
+ * relay must stop paying a peer the month its listing runs out, or someone
+ * who left would go on drawing a share of every block it stakes.
+ */
+std::vector<KeyBytes> LiveUsers(const std::vector<KeyBytes>& users);
 
 } // namespace roster
 

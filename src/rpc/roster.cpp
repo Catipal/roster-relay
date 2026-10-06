@@ -995,7 +995,8 @@ static RPCHelpMan getrelaypayout()
         RPCResult{
             RPCResult::Type::OBJ, "", "", {
                 {RPCResult::Type::NUM, "share_percent", "Percent of each reward shared, from -relayshare"},
-                {RPCResult::Type::NUM, "users", "Peers listed"},
+                {RPCResult::Type::NUM, "users", "Peers listed and still live, the ones a block would pay"},
+                {RPCResult::Type::NUM, "lapsed", "Peers on the list whose listing has run out; not paid"},
                 {RPCResult::Type::STR_AMOUNT, "block_reward", "The reward at the current height"},
                 {RPCResult::Type::STR_AMOUNT, "total", "What the next block would share in all"},
                 {RPCResult::Type::STR_AMOUNT, "each", "What one peer would receive"},
@@ -1018,6 +1019,9 @@ static RPCHelpMan getrelaypayout()
     std::vector<roster::KeyBytes> users;
     std::string error;
     if (!roster::LoadUsers(users, error)) throw JSONRPCError(RPC_INTERNAL_ERROR, error);
+    // Exactly the peers the next staked block would pay: those still listed.
+    const size_t listed = users.size();
+    users = roster::LiveUsers(users);
 
     int height;
     {
@@ -1039,6 +1043,7 @@ static RPCHelpMan getrelaypayout()
     UniValue out(UniValue::VOBJ);
     out.pushKV("share_percent", share);
     out.pushKV("users", (uint64_t)users.size());
+    out.pushKV("lapsed", (uint64_t)(listed - users.size()));
     out.pushKV("block_reward", ValueFromAmount(reward));
     out.pushKV("total", ValueFromAmount(total));
     out.pushKV("each", ValueFromAmount(payouts.empty() ? 0 : payouts[0].amount));

@@ -3704,6 +3704,10 @@ static CAmount PlanRelayPayouts(CAmount reward, std::vector<roster::Payout>& out
         LogPrintf("roster: %s - sharing nothing this block\n", error);
         return 0;
     }
+    // A peer that stopped renewing is not paid. Renewal is manual on purpose,
+    // so not renewing is how a peer leaves, and a relay must not keep paying
+    // someone who has gone.
+    users = roster::LiveUsers(users);
     if (users.empty()) return 0;
 
     // The floor is the real dust threshold for the output shape being created,

@@ -9,6 +9,7 @@
 #include <pubkey.h>
 #include <roster/keystore.h>
 #include <script/standard.h>
+#include <sync.h>
 #include <util/strencodings.h>
 #include <util/system.h>
 
@@ -112,6 +113,33 @@ bool LoadUsers(std::vector<KeyBytes>& out, std::string& error)
         out.push_back(key);
     }
     return true;
+}
+
+namespace {
+Mutex g_liveness_mutex;
+LivenessCheck g_liveness GUARDED_BY(g_liveness_mutex);
+} // namespace
+
+void SetLivenessCheck(LivenessCheck check)
+{
+    LOCK(g_liveness_mutex);
+    g_liveness = std::move(check);
+}
+
+std::vector<KeyBytes> LiveUsers(const std::vector<KeyBytes>& users)
+{
+    LivenessCheck check;
+    {
+        LOCK(g_liveness_mutex);
+        check = g_liveness;
+    }
+    if (!check) return users;
+    std::vector<KeyBytes> live;
+    live.reserve(users.size());
+    for (const KeyBytes& key : users) {
+        if (check(key)) live.push_back(key);
+    }
+    return live;
 }
 
 bool SaveUsers(const std::vector<KeyBytes>& users, std::string& error)

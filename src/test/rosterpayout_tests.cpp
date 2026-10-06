@@ -164,4 +164,28 @@ BOOST_AUTO_TEST_CASE(payout_pays_the_address_the_listing_names)
     BOOST_CHECK(out[0].script == GetScriptForDestination(PKHash(expected)));
 }
 
+BOOST_AUTO_TEST_CASE(payout_skips_peers_that_left)
+{
+    // Renewal is manual, so a peer leaves by not renewing; once its listing
+    // has run out it must stop drawing a share of every block.
+    const std::vector<roster::KeyBytes> users = MakeKeys(3);
+    const roster::KeyBytes gone = users[1];
+
+    // With nothing installed every listed peer counts.
+    BOOST_CHECK_EQUAL(roster::LiveUsers(users).size(), 3U);
+
+    roster::SetLivenessCheck([gone](const roster::KeyBytes& key) { return key != gone; });
+    const std::vector<roster::KeyBytes> live = roster::LiveUsers(users);
+    BOOST_CHECK_EQUAL(live.size(), 2U);
+    BOOST_CHECK(std::find(live.begin(), live.end(), gone) == live.end());
+
+    // Two peers share the pool now, so each gets half rather than a third.
+    std::vector<roster::Payout> out;
+    roster::PlanPayouts(100 * COIN, 10, live, 546, out);
+    BOOST_CHECK_EQUAL(out.size(), 2U);
+    BOOST_CHECK_EQUAL(out[0].amount, 5 * COIN);
+
+    roster::SetLivenessCheck(nullptr);
+}
+
 BOOST_AUTO_TEST_SUITE_END()

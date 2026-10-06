@@ -64,8 +64,9 @@ class RosterPayoutTest(BitcoinTestFramework):
         wallet = node.get_wallet_rpc("relay")
         # Legacy, because a coinstake kernel must be P2PK or P2PKH.
         funds = wallet.getnewaddress("fund", "legacy")
-        node.generatetoaddress(LAST_POW_BLOCK, funds)
-        assert_equal(node.getblockcount(), LAST_POW_BLOCK)
+        # One block short, so the peer's listing can go into the last block
+        # mined: past LAST_POW_BLOCK only staked blocks are valid.
+        node.generatetoaddress(LAST_POW_BLOCK - 1, funds)
 
         self.log.info("nothing is shared until peers are listed")
         empty = node.getrelaypayout()
@@ -81,12 +82,32 @@ class RosterPayoutTest(BitcoinTestFramework):
         # the key names, not who holds it.
         peers = [node.getrosterstaker()["key"]]
 
+        # A relay pays a peer only while its listing is live - a peer leaves by
+        # not renewing - so the peer is listed first.
+        record = node.createannouncement({})
+        assert_equal(record["key"], peers[0])
+        wallet.publishrecord(record["hex"])
+        node.generatetoaddress(1, funds)
+        assert_equal(node.getblockcount(), LAST_POW_BLOCK)
+        # Liveness is read from the roster index, which follows on its own thread.
+        self.wait_until(lambda: node.getrosterinfo()["best_block_height"] == LAST_POW_BLOCK, timeout=30)
+
         added = node.addrosteruser(peers[0])
         assert_equal(added["added"], True)
         assert_equal(added["users"], 1)
         # Listing the same peer twice lists it once.
         assert_equal(node.addrosteruser(peers[0])["added"], False)
         assert_equal(node.getrelaypayout()["users"], 1)
+
+        self.log.info("a peer with no live listing is on the list but not paid")
+        # The x coordinate of the curve's generator: a valid key nobody listed.
+        unlisted = "79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798"
+        node.addrosteruser(unlisted)
+        plan = node.getrelaypayout()
+        assert_equal(plan["users"], 1)
+        assert_equal(plan["lapsed"], 1)
+        assert_equal(len(plan["payouts"]), 1)
+        node.removerosteruser(unlisted)
 
         self.log.info("a key that is not a point on the curve is refused")
         assert_raises_rpc_error(-8, "not a point on the curve",

@@ -197,10 +197,14 @@ BOOST_AUTO_TEST_CASE(refuses_to_pay_twice)
     ListingContext listed = ContextFor(peer);
     listed.live_expiry = NEXT_HEIGHT + MIN_TTL - 100;
     BOOST_CHECK(!CheckListingRequest(SignedAnnounce(peer), listed, rec, reason, needed));
-    BOOST_CHECK(reason.find("Renew in the last half") != std::string::npos);
+    BOOST_CHECK(reason.find("Renew in its last three days") != std::string::npos);
 
-    // In the last half of the month, renewing is what the relay is for.
-    listed.live_expiry = NEXT_HEIGHT + MIN_TTL / 2 - 1;
+    // Four days left is still too early.
+    listed.live_expiry = NEXT_HEIGHT + RENEW_WINDOW + 480;
+    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(peer), listed, rec, reason, needed));
+
+    // In the last three days, renewing is what the relay is for.
+    listed.live_expiry = NEXT_HEIGHT + RENEW_WINDOW;
     BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(peer), listed, rec, reason, needed), reason);
 }
 

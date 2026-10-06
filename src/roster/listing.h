@@ -65,6 +65,13 @@ static const unsigned int DEFAULT_MAX_LISTED_USERS = 100;
 /** A refusal is shown to a person, so it is short and bounded. */
 static constexpr size_t MAX_REFUSAL_LENGTH = 200;
 /**
+ * A listing can be renewed in its last three days and not before: 3 days of
+ * 180-second blocks. Earlier, a renewal buys nothing but a fee and cuts short
+ * a month already paid for. Renewing stays something the peer does by hand,
+ * so a peer that has left stops costing its relay simply by not renewing.
+ */
+static constexpr uint32_t RENEW_WINDOW = 3 * 24 * 60 * 60 / 180;
+/**
  * Blocks a freshly signed record leaves for confirming before it no longer
  * counts: it stays valid for any block up to expiry - MIN_TTL. The default a
  * signer uses; a relay that needs longer says so.
@@ -119,8 +126,7 @@ uint32_t NeededConfirmWindow(uint64_t own_weight, uint64_t network_weight);
  * Decide whether to pay for a peer's record, before any coin is touched.
  *
  * Refuses a record that would not be indexed, one naming a key other than the
- * requester's, a renewal asked for while more than half the current listing is
- * left, a second payment while the first is still confirming, and a new peer
+ * requester's, a renewal asked for before the current listing's last three days, a second payment while the first is still confirming, and a new peer
  * once the relay is full. Each of those would cost the relay a fee and gain
  * nobody anything.
  *
@@ -147,6 +153,9 @@ void SetListingPublisher(ListingPublisher publisher, StakeWeightSource stake_wei
  * listing requests as a relay and collects answers as a requester.
  */
 void HandleOverlayApp(const overlay::Hop& from, std::vector<unsigned char>&& payload);
+
+/** Expiry of a key's live listing at `tip`, or 0 when it has none. Needs the roster index. */
+uint32_t LiveExpiry(const KeyBytes& key, int tip);
 
 /**
  * Where a relay's overlay listens, given the endpoint its record publishes.

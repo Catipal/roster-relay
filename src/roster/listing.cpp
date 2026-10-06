@@ -57,7 +57,8 @@ StakeWeightSource g_stake_weight GUARDED_BY(g_relay_mutex);
 //! the chain answers the question once it confirms.
 std::map<KeyBytes, int> g_paid_at GUARDED_BY(g_relay_mutex);
 
-/** Expiry of a key's live listing at `tip`, or 0 if it has none. */
+} // namespace
+
 uint32_t LiveExpiry(const KeyBytes& key, int tip)
 {
     if (!g_rosterindex) return 0;
@@ -72,6 +73,8 @@ uint32_t LiveExpiry(const KeyBytes& key, int tip)
     }
     return best > (uint32_t)tip ? best : 0;
 }
+
+namespace {
 
 void Answer(const CService& to, uint64_t id, const ListingOutcome& outcome)
 {
@@ -113,6 +116,9 @@ ListingOutcome Decide(const CService& from, const std::vector<unsigned char>& ra
         LogPrintf("roster: cannot read the peers this node lists: %s\n", error);
         return Refused("This relay cannot read its own list of peers.");
     }
+    // Only peers still listed count towards the limit, and a peer that
+    // lapsed and comes back is a new peer: leaving is not renewing.
+    users = LiveUsers(users);
     ctx.listed_users = users.size();
     ctx.already_user = std::find(users.begin(), users.end(), ctx.requester) != users.end();
     ctx.max_users = (size_t)std::max<int64_t>(0, gArgs.GetArg("-maxlistedusers", DEFAULT_MAX_LISTED_USERS));
@@ -157,12 +163,11 @@ ListingOutcome Decide(const CService& from, const std::vector<unsigned char>& ra
         g_paid_at[ctx.requester] = ctx.next_height;
     }
     // Paying for a peer's listing is what makes it one of this relay's users,
-    // and the users are who the relay shares its rewards with (§8).
-    if (!ctx.already_user) {
-        users.push_back(ctx.requester);
-        if (!SaveUsers(users, error)) {
-            LogPrintf("roster: listed peer %s but could not record it: %s\n", HexStr(ctx.requester), error);
-        }
+    // and the users are who the relay shares its rewards with (§8). Saving
+    // the live list also drops the peers that have left.
+    if (!ctx.already_user) users.push_back(ctx.requester);
+    if (!SaveUsers(users, error)) {
+        LogPrintf("roster: listed peer %s but could not record it: %s\n", HexStr(ctx.requester), error);
     }
     LogPrintf("roster: paid to list peer %s until block %u (tx %s)\n",
               HexStr(ctx.requester), rec.expiry_height, outcome.txid.GetHex());
@@ -324,14 +329,14 @@ bool CheckListingRequest(const std::vector<unsigned char>& raw, const ListingCon
                            rec.expiry_height, ctx.next_height);
         return false;
     }
-    // A renewal is welcome in the last half of a listing's month and not
-    // before: earlier, it buys nothing but a fee.
-    const int half = (int)MIN_TTL / 2;
-    if (ctx.live_expiry > 0 && (int64_t)ctx.live_expiry - ctx.next_height > half) {
-        reason = strprintf("You are listed until block %u already. Renew in the last half of the month.",
+    // A renewal is welcome in a listing's last three days and not before:
+    // earlier, it buys nothing but a fee.
+    if (ctx.live_expiry > 0 && (int64_t)ctx.live_expiry - ctx.next_height > RENEW_WINDOW) {
+        reason = strprintf("You are listed until block %u already. Renew in its last three days.",
                            ctx.live_expiry);
         return false;
     }
+    const int half = (int)MIN_TTL / 2;
     if (ctx.pending_height > 0 && ctx.next_height - ctx.pending_height < half) {
         reason = "This relay has already paid for your listing; it is waiting to confirm.";
         return false;

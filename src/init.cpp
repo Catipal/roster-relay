@@ -28,6 +28,7 @@
 #include <overlay/rendezvous.h>
 #include <overlay/select.h>
 #include <roster/listing.h>
+#include <roster/payout.h>
 #include <roster/keystore.h>
 #include <index/txindex.h>
 #include <interfaces/chain.h>
@@ -2164,6 +2165,14 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
         LOCK(overlay::g_selector_mutex);
         overlay::g_selector = MakeUnique<overlay::PathSelector>();
     }
+
+    // Which of the peers this node pays are still listed. Answered from the
+    // index at the height it has reached, so the staker asking needs no chain
+    // lock; with no index, every listed peer counts.
+    roster::SetLivenessCheck([](const roster::KeyBytes& key) {
+        if (!g_rosterindex) return true;
+        return roster::LiveExpiry(key, g_rosterindex->GetSummary().best_block_height) > 0;
+    });
 
     // Offer the roster to peer discovery. Without this the index is a database
     // nothing reads: the node would publish its own record and answer queries

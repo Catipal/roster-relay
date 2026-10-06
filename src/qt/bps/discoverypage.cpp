@@ -24,9 +24,11 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QCursor>
 #include <QSortFilterProxyModel>
 #include <QTableView>
 #include <QTimer>
+#include <QToolTip>
 #include <QVBoxLayout>
 
 namespace {
@@ -41,6 +43,15 @@ const int ROSTER_PAGE = 500;
 
 //! The roster moves at block pace, so polling faster than this buys nothing.
 const int REFRESH_MS = 20000;
+
+//! Peer and address share the spare width equally; the rest fit their contents.
+void SizeColumns(QTableView* table)
+{
+    table->resizeColumnsToContents();
+    QHeaderView* header = table->horizontalHeader();
+    header->setSectionResizeMode(RosterModel::Peer, QHeaderView::Stretch);
+    header->setSectionResizeMode(RosterModel::Where, QHeaderView::Stretch);
+}
 
 QLabel* MakeTile(QGridLayout* grid, int column, const QString& caption)
 {
@@ -138,9 +149,27 @@ DiscoveryPage::DiscoveryPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_
     m_table->setAlternatingRowColors(true);
     m_table->setSortingEnabled(true);
     m_table->verticalHeader()->setVisible(false);
-    m_table->horizontalHeader()->setSectionResizeMode(RosterModel::Where, QHeaderView::Stretch);
+    m_table->setTextElideMode(Qt::ElideMiddle);
+    SizeColumns(m_table);
     m_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
     outer->addWidget(m_table, 1);
+
+    // A key or an address is copied by clicking it: those two are what anyone
+    // wants out of this table, and both are too long to retype.
+    connect(m_table, &QTableView::clicked, this, [this](const QModelIndex& index) {
+        if (!index.isValid()) return;
+        QString text, what;
+        if (index.column() == RosterModel::Peer) {
+            text = index.data(RosterModel::KeyRole).toString();
+            what = tr("Key copied");
+        } else if (index.column() == RosterModel::Where) {
+            text = index.data(RosterModel::AddressRole).toString();
+            what = tr("Address copied");
+        }
+        if (text.isEmpty()) return;
+        QApplication::clipboard()->setText(text);
+        QToolTip::showText(QCursor::pos(), what + "\n" + text, m_table);
+    });
 
     connect(m_copy_key, &QPushButton::clicked, this, &DiscoveryPage::onCopyKey);
     connect(m_publish, &QPushButton::clicked, this, &DiscoveryPage::onPublishClicked);
@@ -305,8 +334,7 @@ void DiscoveryPage::onRpcResult(const QString& tag, const UniValue& value)
 
     if (tag == TAG_ROSTER) {
         m_model->SetRoster(value, m_tip);
-        m_table->resizeColumnsToContents();
-        m_table->horizontalHeader()->setSectionResizeMode(RosterModel::Where, QHeaderView::Stretch);
+        SizeColumns(m_table);
         return;
     }
 }

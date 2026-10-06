@@ -42,8 +42,10 @@ public:
         ColumnCount,
     };
 
-    //! The full key of a row, for copying. Rows show a shortened form.
+    //! The full key of a row, for copying.
     static const int KeyRole = Qt::UserRole + 1;
+    //! The address shown in a row, for copying; empty when none is published.
+    static const int AddressRole = Qt::UserRole + 2;
 
     explicit RosterModel(QObject* parent = nullptr);
 

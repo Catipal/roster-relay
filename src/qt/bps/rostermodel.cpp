@@ -41,16 +41,18 @@ QVariant RosterModel::data(const QModelIndex& index, int role) const
     const RosterRow& row = m_rows.at(index.row());
 
     if (role == KeyRole) return row.key;
+    if (role == AddressRole) return row.endpoints == 0 ? QString() : row.where;
 
     if (role == Qt::ToolTipRole) {
         switch (index.column()) {
-        case Peer: return row.key;
+        case Peer: return row.key + "\n" + tr("Click to copy");
         case Where:
             return row.endpoints == 0
                        ? tr("This peer is listed but publishes no address. It can still be\n"
                             "reached over the overlay, which is the point of allowing it.")
                        : (row.endpoints == 1 ? tr("one address published")
-                                            : tr("%1 addresses published").arg(row.endpoints));
+                                            : tr("%1 addresses published").arg(row.endpoints)) +
+                             "\n" + tr("Click to copy");
         case ListedAt: return tr("Confirmed in block %1").arg(row.height);
         case Until: return tr("Stops counting at block %1").arg(row.expiry);
         default: return QVariant();
@@ -65,7 +67,9 @@ QVariant RosterModel::data(const QModelIndex& index, int role) const
 
     switch (index.column()) {
     case Peer:
-        return BpsUtil::ShortKey(row.key);
+        // In full: the view shortens it in the middle only when the column is
+        // too narrow, so a wide window shows the whole key.
+        return row.key;
     case Where:
         return row.endpoints == 0 ? tr("no address published") : row.where;
     case ListedAt: {

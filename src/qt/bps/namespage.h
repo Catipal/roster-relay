@@ -35,7 +35,8 @@ QT_END_NAMESPACE
  *
  * Everything is an RPC, as on the other pages - registername, buyname,
  * renewname, sellname, cancelnamesale, transfername, setsubname, resolvename,
- * setpetname - so the page and a script see the same names. Its own RPC
+ * setpetname, setnamepayments, sendtoname - so the page and a script see the
+ * same names. Its own RPC
  * thread, because paying waits on the wallet. It is a tab of the Node page.
  */
 class NamesPage : public QWidget
@@ -65,6 +66,8 @@ private Q_SLOTS:
     void onLookup();
     void onAddPetname();
     void onRemovePetname();
+    void onPayments();
+    void onPayPetname();
 
 private:
     void ShowNames();
@@ -76,11 +79,17 @@ private:
     /** The wallet a payment comes from: the only one, or the one chosen. */
     QString WalletUri() const;
     void Pay(const QString& tag, const QString& method, const UniValue& params);
+    /** Ask how much to pay what `resolved` (a resolvename result) names, then pay it by name. */
+    void PayTo(const UniValue& resolved);
 
     std::unique_ptr<BpsRpc> m_rpc;
     ClientModel* m_client_model{nullptr};
     bool m_enabled{false};
     bool m_active{false};
+    //! Whether this node's roster key takes payments by name.
+    bool m_payable{false};
+    int m_height{0};
+    UniValue m_resolved;
     QStringList m_wallets;
     UniValue m_names;
     UniValue m_pending;
@@ -97,13 +106,17 @@ private:
     QPushButton* m_transfer{nullptr};
     QPushButton* m_subname{nullptr};
     QPushButton* m_sell{nullptr};
+    QPushButton* m_payments{nullptr};
+    QLabel* m_payments_state{nullptr};
     QLineEdit* m_lookup{nullptr};
     QPushButton* m_lookup_button{nullptr};
     QLabel* m_lookup_result{nullptr};
     QPushButton* m_copy_resolved{nullptr};
+    QPushButton* m_pay_resolved{nullptr};
     QTableWidget* m_book{nullptr};
     QPushButton* m_add_pet{nullptr};
     QPushButton* m_remove_pet{nullptr};
+    QPushButton* m_pay_pet{nullptr};
     QTimer* m_timer{nullptr};
 };
 

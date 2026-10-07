@@ -60,11 +60,14 @@ up to two weeks until they collect them.
 Names
 -----
 A name points people to your roster key. Get one on the Names tab of the Node
-page. A free name costs its renewal, burned - shorter names cost more - and
-you renew by hand. A name someone holds can be bought if they have put it up
-for sale: the price is the renewal plus what they ask, and it is yours at once,
-in one transaction. Names under yours are free, and so is the address book of
-your own labels for people.
+page. A free name of any length costs only the network fee, and so does
+renewing it, which you do by hand. A name someone holds can be bought if they
+have put it up for sale, for what they ask, and it is yours at once, in one
+transaction. Names under yours are free, and so is the address book of your
+own labels for people.
+
+Turn on "Take payments by name" and people can pay your name: every payment
+lands at an address of its own that only your wallet can spend.
 
 
 Identity

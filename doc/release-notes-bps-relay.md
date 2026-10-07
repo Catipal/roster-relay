@@ -126,28 +126,38 @@ Names
 -----
 
 A tab of the Node page. A name points people to your roster key, so they can
-write to you as `pilot` instead of 64 characters of key.
+write to you, and pay you, as `pilot` instead of 64 characters of key.
 
 - **Getting a name** - Get a name, type it, choose one or two years, and see
-  the price before anything is spent. A free name is registered in two steps:
-  a commitment that hides the name, then, six blocks later (about twenty
-  minutes), the claim, which BPS Relay sends by itself and which burns the
-  price. Nobody watching for new names can take yours in between. Keep BPS
-  Relay running and the wallet unlocked until the claim goes out.
-- **Price** - the renewal, burned, not paid to anyone, so a staker cannot
-  register names for free. Per year: 100 BPS for three letters, 20 for four,
-  5 for five and 1 for six or more. Names of one or two letters are held back
-  for now. A name somebody holds costs the renewal plus whatever they ask
-  for it, if they have put it up for sale.
+  whether it is free before anything is spent. A free name is registered in
+  two steps: a commitment that hides the name, then, six blocks later (about
+  twenty minutes), the claim, which BPS Relay sends by itself. Nobody
+  watching for new names can take yours in between. Keep BPS Relay running
+  and the wallet unlocked until the claim goes out.
+- **Price** - none. Registering and renewing cost only the network fee, for
+  a name of any length from one letter to 32. A name somebody holds costs
+  whatever they ask for it, if they have put it up for sale.
 - **Selling and buying** - Sell a name you hold at your price, and anyone can
   buy it at once, even while your BPS Relay is closed: one transaction pays
-  you, burns the buyer's renewal and moves the name, all or nothing. Two
-  buyers can never both pay, and while the name is for sale you cannot
-  transfer it, so a buyer cannot be outrun by the seller either. Take off
-  sale ends it. The buyer gets the name without its subnames.
-- **Renewing** - by hand, while the name is live and for a month after it
-  ends; after that anyone may register it. A name can be paid at most two
-  years ahead.
+  you and moves the name, all or nothing. Two buyers can never both pay, and
+  while the name is for sale you cannot transfer it, so a buyer cannot be
+  outrun by the seller either. Take off sale ends it. The buyer gets the
+  name without its subnames, and keeps the time left on it, renewed up to
+  two years ahead if they ask.
+- **Renewing** - by hand, for the network fee, while the name is live and for
+  a month after it ends; after that anyone may register it. A name can be
+  renewed at most two years ahead.
+- **Paying by name** - Take payments by name, once, and anyone can pay
+  `pilot`, `shop.pilot`, a petname they keep for you, or your key. A name
+  never points at an address: each payment goes to an address of its own,
+  worked out from a key your wallet published and a one-time key the payment
+  carries, so only your wallet can spend it and nobody watching can tell who
+  was paid or that two payments went to the same person. Payments show in
+  the wallet as "Paid by name". One that arrives while the wallet is locked
+  shows as watch-only and becomes spendable when you unlock. Pay someone
+  from Look up or the address book; a payment cannot be taken back, so a
+  name or key that changed in the last 100 blocks is flagged first, and a
+  key that has been revoked is refused.
 - **Subnames** - free under a name you hold: `alice.pilot` can point to
   anyone's key, and lasts as long as `pilot` does.
 - **Transfer** - give a name to another key.
@@ -258,7 +268,8 @@ mail `sendmail`, `checkmail`, `listmail`, `readmail`, `deletemail` and
 `getmailinfo`; and for names `getnameinfo`, `resolvename`, `listnames`,
 `getnameprice`, `registername`, `renewname`, `transfername`, `setsubname`,
 `listnameregistrations`, `sellname`, `cancelnamesale`, `buyname`,
-`setpetname`, `deletepetname` and `listpetnames`; for identities and
+`setpetname`, `deletepetname`, `listpetnames`, `setnamepayments`,
+`sendtoname` and `listnamepayments`; for identities and
 revocations `getidentity`, `createidentity`, `createdelegation`,
 `createrotation`, `createveto`, `createrevocation`, `sendrevocation`,
 `listrevocations`, `getageproof` and `verifyageproof`; and for the roster's
@@ -297,11 +308,14 @@ Known issues
 - The roster's fingerprint is not active on any network (see above).
 - An age proof does not carry age across an identity's move to a new key:
   that the move was not vetoed cannot be shown to a client with headers only.
-- A name cannot be paid yet. Paying by name needs the sender to derive a fresh
-  address from the name's key for every payment, so that one name never links
-  its payments together; that part is not built.
+- Payments by name are found with the node's roster key. A wallet restored
+  on another node, or after `roster.key` is replaced, does not find them;
+  keep `roster.key` with the wallet backup, as it also holds your names.
+- Paying by name is BPS's own scheme: only this wallet can pay a name or
+  find payments made to one.
 - Nobody settles a disputed name. The first valid registration holds it.
-- There was no auction or early access when names opened on mainnet; the
-  prices are the only protection against a rush.
+- Names cost nothing but the fee, so nothing stops someone registering many
+  of them, short ones included; the commitment step only stops them taking
+  a name someone else is registering.
 - `getmininginfo` and `getstakinginfo` fail when more than one wallet is open.
 - On Linux the window can stay in the process list after quitting.

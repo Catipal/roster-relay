@@ -187,6 +187,14 @@ bool CKey::Negate()
     return secp256k1_ec_seckey_negate(secp256k1_context_sign, keydata.data());
 }
 
+bool CKey::TweakAdd(const unsigned char* tweak32, CKey& out) const
+{
+    assert(fValid);
+    out = *this;
+    out.fValid = secp256k1_ec_seckey_tweak_add(secp256k1_context_sign, out.keydata.data(), tweak32) == 1;
+    return out.fValid;
+}
+
 CPrivKey CKey::GetPrivKey() const {
     assert(fValid);
     CPrivKey seckey;

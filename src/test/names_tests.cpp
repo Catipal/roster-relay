@@ -13,6 +13,7 @@
 
 #include <boost/test/unit_test.hpp>
 
+
 using namespace names;
 
 BOOST_FIXTURE_TEST_SUITE(names_tests, BasicTestingSetup)
@@ -180,8 +181,7 @@ int Register(NameState& state, const std::string& name, const Person& owner, int
     BOOST_REQUIRE_EQUAL(state.Apply(At(at, CommitRecord(name, salt, owner))), "");
     const int claim_at = at + (int)COMMIT_MIN_AGE;
     const uint32_t expiry = claim_at + BLOCKS_PER_YEAR;
-    BOOST_REQUIRE_EQUAL(state.Apply(At(claim_at, ClaimRecord(name, salt, owner, expiry),
-                                       Price(name.size(), BLOCKS_PER_YEAR))), "");
+    BOOST_REQUIRE_EQUAL(state.Apply(At(claim_at, ClaimRecord(name, salt, owner, expiry))), "");
     return claim_at;
 }
 
@@ -202,15 +202,18 @@ BOOST_AUTO_TEST_CASE(names_have_one_spelling)
     BOOST_CHECK(!IsValidLabel("Pilot"));
     BOOST_CHECK(!IsValidLabel("pi_lot"));
     BOOST_CHECK(!IsValidLabel(std::string(MAX_LABEL_LENGTH + 1, 'a')));
-    BOOST_CHECK(!IsValidRoot("ab"));
-    BOOST_CHECK(IsValidRoot("abc"));
+    // One and two letters are names like any other.
+    BOOST_CHECK(IsValidRoot("a"));
+    BOOST_CHECK(IsValidRoot("ab"));
+    BOOST_CHECK(IsValidRoot("7"));
+    BOOST_CHECK(!IsValidRoot(""));
 
     std::string root, label;
     BOOST_CHECK(SplitName("pilot", root, label) && root == "pilot" && label.empty());
     BOOST_CHECK(SplitName("alice.pilot", root, label) && root == "pilot" && label == "alice");
     BOOST_CHECK(SplitName("a.pilot", root, label));
     BOOST_CHECK(!SplitName("a.b.pilot", root, label));
-    BOOST_CHECK(!SplitName("alice.lu", root, label));
+    BOOST_CHECK(SplitName("alice.lu", root, label) && root == "lu" && label == "alice");
     BOOST_CHECK(!SplitName(".pilot", root, label));
 }
 
@@ -225,19 +228,19 @@ BOOST_AUTO_TEST_CASE(look_alikes_share_a_skeleton)
     BOOST_CHECK(Skeleton("my-name") != Skeleton("myname"));
 }
 
-BOOST_AUTO_TEST_CASE(shorter_names_cost_more)
+BOOST_AUTO_TEST_CASE(names_of_any_length_cost_only_the_fee)
 {
-    BOOST_CHECK_EQUAL(PricePerYear(2), 0);
-    BOOST_CHECK_EQUAL(PricePerYear(3), 100 * COIN);
-    BOOST_CHECK_EQUAL(PricePerYear(4), 20 * COIN);
-    BOOST_CHECK_EQUAL(PricePerYear(5), 5 * COIN);
-    BOOST_CHECK_EQUAL(PricePerYear(6), COIN);
-    BOOST_CHECK_EQUAL(PricePerYear(32), COIN);
-    BOOST_CHECK_EQUAL(Price(6, BLOCKS_PER_YEAR), COIN);
-    BOOST_CHECK_EQUAL(Price(6, BLOCKS_PER_YEAR / 2), COIN / 2);
-    BOOST_CHECK_EQUAL(Price(3, 2 * BLOCKS_PER_YEAR), 200 * COIN);
-    // Rounded up, so a fraction of a block is never free.
-    BOOST_CHECK_EQUAL(Price(6, 1), (COIN + BLOCKS_PER_YEAR - 1) / BLOCKS_PER_YEAR);
+    // Nothing is burned to register or renew, whatever the length.
+    NameState state(CHAIN);
+    Person a;
+    for (const std::string& name : {"x", "ab", "q1", "pilot"}) {
+        const int at = Register(state, name, a, 100);
+        BOOST_CHECK(state.StatusOf(name, at) == Status::LIVE);
+        const uint32_t expiry = state.Find(name)->expiry;
+        BOOST_CHECK_EQUAL(state.Apply(At(at + 10, ClaimRecord(name, Salt{}, a, expiry + BLOCKS_PER_YEAR))), "");
+        BOOST_CHECK_EQUAL(state.Find(name)->expiry, expiry + BLOCKS_PER_YEAR);
+    }
+    BOOST_CHECK_EQUAL(state.CountLive(200), 4u);
 }
 
 BOOST_AUTO_TEST_CASE(name_records_round_trip_and_are_signed)
@@ -274,13 +277,13 @@ BOOST_AUTO_TEST_CASE(name_records_round_trip_and_are_signed)
     BOOST_CHECK(!ParseNameRecord(raw, rec));
 }
 
-BOOST_AUTO_TEST_CASE(registering_takes_a_matured_commitment_and_the_price)
+BOOST_AUTO_TEST_CASE(registering_takes_a_matured_commitment)
 {
     NameState state(CHAIN);
     Person a;
     const Salt salt = MakeSalt(3);
     const std::string name = "pilot";
-    const CAmount price = Price(name.size(), BLOCKS_PER_YEAR);
+    const CAmount price = 0;
 
     // A claim with no commitment does not count.
     BOOST_CHECK(state.Apply(At(100, ClaimRecord(name, salt, a, 100 + BLOCKS_PER_YEAR), price)) != "");
@@ -294,8 +297,6 @@ BOOST_AUTO_TEST_CASE(registering_takes_a_matured_commitment_and_the_price)
     BOOST_CHECK(state.StatusOf(name, early) == Status::FREE);
 
     const int at = 100 + (int)COMMIT_MIN_AGE;
-    // Burning too little.
-    BOOST_CHECK(state.Apply(At(at, ClaimRecord(name, salt, a, at + BLOCKS_PER_YEAR), price - 1)) != "");
     // Signed by someone else.
     Person mallory;
     BOOST_CHECK(state.Apply(At(at, ClaimRecord(name, salt, a, at + BLOCKS_PER_YEAR, &mallory), price)) != "");
@@ -324,8 +325,7 @@ BOOST_AUTO_TEST_CASE(a_claim_seen_in_a_mempool_cannot_be_stolen)
     const int at = Register(state, "pilot", a, 100);
     BOOST_CHECK_EQUAL(state.Apply(At(at, CommitRecord("pilot", MakeSalt(9), thief))), "");
     const int later = at + (int)COMMIT_MIN_AGE;
-    BOOST_CHECK(state.Apply(At(later, ClaimRecord("pilot", MakeSalt(9), thief, later + BLOCKS_PER_YEAR),
-                               Price(5, BLOCKS_PER_YEAR))) != "");
+    BOOST_CHECK(state.Apply(At(later, ClaimRecord("pilot", MakeSalt(9), thief, later + BLOCKS_PER_YEAR))) != "");
     Resolution res;
     std::string why;
     BOOST_REQUIRE(state.Resolve("pilot", later, res, why));
@@ -344,11 +344,8 @@ BOOST_AUTO_TEST_CASE(holders_renew_by_hand_and_lapsed_names_come_free)
     BOOST_CHECK(state.Apply(At(mid, ClaimRecord("pilot", Salt{}, b, expiry + BLOCKS_PER_YEAR), 100 * COIN)) != "");
     BOOST_CHECK(state.Apply(At(mid, ClaimRecord("pilot", Salt{}, a, expiry), 100 * COIN)) != "");
     BOOST_CHECK(state.Apply(At(mid, ClaimRecord("pilot", Salt{}, a, mid + MAX_TERM + 1), 100 * COIN)) != "");
-    // Paying for the added year only, not for the time already paid.
-    BOOST_CHECK(state.Apply(At(mid, ClaimRecord("pilot", Salt{}, a, expiry + BLOCKS_PER_YEAR),
-                               Price(5, BLOCKS_PER_YEAR) - 1)) != "");
-    BOOST_CHECK_EQUAL(state.Apply(At(mid, ClaimRecord("pilot", Salt{}, a, expiry + BLOCKS_PER_YEAR),
-                                     Price(5, BLOCKS_PER_YEAR))), "");
+    // For the fee alone.
+    BOOST_CHECK_EQUAL(state.Apply(At(mid, ClaimRecord("pilot", Salt{}, a, expiry + BLOCKS_PER_YEAR))), "");
     const uint32_t renewed = expiry + BLOCKS_PER_YEAR;
     BOOST_CHECK_EQUAL(state.Find("pilot")->expiry, renewed);
 
@@ -488,16 +485,14 @@ BOOST_AUTO_TEST_CASE(a_name_for_sale_is_bought_in_the_transaction_that_spends_it
 
     // A BUY in a transaction that did not spend the coin does nothing.
     const uint32_t expiry = state.BuyExpiry("pilot", 1, h + 2);
-    const CAmount burn = Price(5, expiry - (at + BLOCKS_PER_YEAR));
     BOOST_CHECK_EQUAL(expiry, (uint32_t)(at + 2 * BLOCKS_PER_YEAR));
-    BOOST_CHECK_EQUAL(state.CheckBuy("pilot", buyer.x, expiry, burn, h + 2), "");
-    BOOST_CHECK(state.CheckBuy("pilot", buyer.x, expiry, burn - 1, h + 2) != "");
-    BOOST_CHECK(state.CheckBuy("pilot", seller.x, expiry, burn, h + 2) != "");
+    BOOST_CHECK_EQUAL(state.CheckBuy("pilot", buyer.x, expiry, h + 2), "");
+    BOOST_CHECK(state.CheckBuy("pilot", seller.x, expiry, h + 2) != "");
     const std::vector<unsigned char> buy = BuyRecord("pilot", buyer, expiry);
-    BOOST_CHECK(state.Apply(BuyAt(h + 2, buy, burn, Txid(9))) != "");
+    BOOST_CHECK(state.Apply(BuyAt(h + 2, buy, 0, Txid(9))) != "");
 
     // The one that spends it moves the name, clean of the seller's subnames.
-    state.ApplyBlock(h + 2, {SpendAt(h + 2, sale.coin, Txid(10)), BuyAt(h + 2, buy, burn, Txid(10))});
+    state.ApplyBlock(h + 2, {SpendAt(h + 2, sale.coin, Txid(10)), BuyAt(h + 2, buy, 0, Txid(10))});
     Resolution res;
     std::string why;
     BOOST_REQUIRE(state.Resolve("pilot", h + 2, res, why));
@@ -507,7 +502,7 @@ BOOST_AUTO_TEST_CASE(a_name_for_sale_is_bought_in_the_transaction_that_spends_it
     BOOST_CHECK(state.ActiveOffer("pilot", h + 3) == nullptr);
 
     // The coin is gone, so nobody can buy it again, and the new holder can sell.
-    BOOST_CHECK(state.CheckBuy("pilot", other.x, expiry, burn, h + 3) != "");
+    BOOST_CHECK(state.CheckBuy("pilot", other.x, expiry, h + 3) != "");
     BOOST_CHECK_EQUAL(state.CheckSell("pilot", buyer.x, h + 3), "");
 }
 
@@ -536,7 +531,7 @@ BOOST_AUTO_TEST_CASE(a_sale_ends_when_its_coin_is_spent_without_a_purchase)
     BOOST_CHECK(res.key == friend_.x);
 }
 
-BOOST_AUTO_TEST_CASE(a_purchase_renews_at_least_a_month_up_to_two_years_ahead)
+BOOST_AUTO_TEST_CASE(a_purchase_keeps_or_renews_the_term_up_to_two_years_ahead)
 {
     NameState state(CHAIN);
     Person seller, buyer;
@@ -545,13 +540,70 @@ BOOST_AUTO_TEST_CASE(a_purchase_renews_at_least_a_month_up_to_two_years_ahead)
     const Sale sale = MakeSale("names", seller, COIN, 5);
     BOOST_REQUIRE_EQUAL(state.Apply(SellAt(h, sale)), "");
     const uint32_t from = at + BLOCKS_PER_YEAR;
-    // Not shorter than it is, not less than a month on, not past two years.
-    BOOST_CHECK(state.CheckBuy("names", buyer.x, from - 1, 100 * COIN, h) != "");
-    BOOST_CHECK(state.CheckBuy("names", buyer.x, from + MIN_TERM - 1, 100 * COIN, h) != "");
-    BOOST_CHECK_EQUAL(state.CheckBuy("names", buyer.x, from + MIN_TERM, Price(5, MIN_TERM), h), "");
-    BOOST_CHECK(state.CheckBuy("names", buyer.x, h + MAX_TERM + 1, 100 * COIN, h) != "");
+    // Not shorter than it is, not past two years; keeping it as it is, or
+    // renewing it for nothing, are both fine.
+    BOOST_CHECK(state.CheckBuy("names", buyer.x, from - 1, h) != "");
+    BOOST_CHECK_EQUAL(state.CheckBuy("names", buyer.x, from, h), "");
+    BOOST_CHECK_EQUAL(state.CheckBuy("names", buyer.x, from + MIN_TERM, h), "");
+    BOOST_CHECK(state.CheckBuy("names", buyer.x, h + MAX_TERM + 1, h) != "");
     // Two years asked for stop at the limit.
     BOOST_CHECK_EQUAL(state.BuyExpiry("names", 2, h), (uint32_t)h + MAX_TERM);
+}
+
+BOOST_AUTO_TEST_CASE(only_a_key_itself_says_where_it_is_paid)
+{
+    NameState state(CHAIN);
+    Person a, mallory;
+    CKey spend, other_spend;
+    spend.MakeNewKey(true);
+    other_spend.MakeNewKey(true);
+    NameRecord rec;
+    rec.type = NameRecordType::PAYKEY;
+    rec.key = a.x;
+    rec.point = spend.GetPubKey();
+    std::vector<unsigned char> raw, forged;
+    BOOST_REQUIRE(SignNameRecord(a.key, rec, CHAIN, raw));
+    BOOST_REQUIRE(SignNameRecord(mallory.key, rec, CHAIN, forged));
+    BOOST_CHECK_EQUAL(raw.size(), 133U);
+    NameRecord back;
+    BOOST_REQUIRE(ParseNameRecord(raw, back));
+    BOOST_CHECK(SerializeNameRecord(back) == raw);
+    BOOST_CHECK(back.point == spend.GetPubKey());
+    // A spending key that is not a point on the curve does not parse.
+    std::vector<unsigned char> bad = raw;
+    bad[4 + 32] = 0x05;
+    BOOST_CHECK(!ParseNameRecord(bad, back));
+
+    BOOST_CHECK(!state.PaymentKey(a.x));
+    // Nobody else can point a's payments at their own wallet.
+    BOOST_CHECK(state.Apply(At(100, forged)) != "");
+    BOOST_CHECK(!state.PaymentKey(a.x));
+    BOOST_CHECK_EQUAL(state.Apply(At(101, raw)), "");
+    const PayKey* pk = state.PaymentKey(a.x);
+    BOOST_REQUIRE(pk);
+    BOOST_CHECK(pk->spend == spend.GetPubKey());
+    BOOST_CHECK_EQUAL(pk->height, 101);
+    // A later key takes over, from its own height.
+    rec.point = other_spend.GetPubKey();
+    BOOST_REQUIRE(SignNameRecord(a.key, rec, CHAIN, raw));
+    BOOST_CHECK_EQUAL(state.Apply(At(150, raw)), "");
+    pk = state.PaymentKey(a.x);
+    BOOST_REQUIRE(pk);
+    BOOST_CHECK(pk->spend == other_spend.GetPubKey());
+    BOOST_CHECK_EQUAL(pk->height, 150);
+
+    // A payment's marker says nothing about names, so it changes nothing.
+    CKey e;
+    e.MakeNewKey(true);
+    NameRecord marker;
+    marker.type = NameRecordType::PAYMENT;
+    marker.point = e.GetPubKey();
+    const std::vector<unsigned char> marker_raw = SerializeNameRecord(marker);
+    BOOST_CHECK_EQUAL(marker_raw.size(), 37U);
+    BOOST_REQUIRE(ParseNameRecord(marker_raw, back));
+    BOOST_CHECK(back.point == e.GetPubKey());
+    BOOST_CHECK(state.Apply(At(151, marker_raw)) != "");
+    BOOST_CHECK(!state.PaymentKey(mallory.x));
 }
 
 BOOST_AUTO_TEST_SUITE_END()

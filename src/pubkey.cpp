@@ -282,6 +282,20 @@ bool CPubKey::ECDH(const unsigned char* seckey32, uint256& shared_out) const
     return true;
 }
 
+bool CPubKey::TweakAdd(const unsigned char* tweak32, CPubKey& out) const
+{
+    if (!IsValid()) return false;
+    assert(secp256k1_context_verify && "secp256k1_context_verify must be initialized to use CPubKey.");
+    secp256k1_pubkey pubkey;
+    if (!secp256k1_ec_pubkey_parse(secp256k1_context_verify, &pubkey, vch, size())) return false;
+    if (!secp256k1_ec_pubkey_tweak_add(secp256k1_context_verify, &pubkey, tweak32)) return false;
+    unsigned char point[COMPRESSED_SIZE];
+    size_t pointlen = sizeof(point);
+    secp256k1_ec_pubkey_serialize(secp256k1_context_verify, point, &pointlen, &pubkey, SECP256K1_EC_COMPRESSED);
+    out.Set(point, point + pointlen);
+    return out.IsValid();
+}
+
 bool CPubKey::Decompress() {
     if (!IsValid())
         return false;

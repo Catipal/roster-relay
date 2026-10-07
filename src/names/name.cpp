@@ -79,26 +79,6 @@ std::string Skeleton(const std::string& label)
     return out;
 }
 
-CAmount PricePerYear(size_t length)
-{
-    // Shorter names are scarcer and more fought over; a flat price would hand
-    // them to whoever scripts fastest. Burned, not paid to anyone: a fee would
-    // go to the staker of the block, who could then register for free.
-    if (length < MIN_ROOT_LENGTH || length > MAX_LABEL_LENGTH) return 0;
-    if (length == 3) return 100 * COIN;
-    if (length == 4) return 20 * COIN;
-    if (length == 5) return 5 * COIN;
-    return 1 * COIN;
-}
-
-CAmount Price(size_t length, uint32_t blocks)
-{
-    const CAmount per_year = PricePerYear(length);
-    if (per_year == 0) return 0;
-    // At most 100 coins a year for two years: 2e10 * 350640 fits in 64 bits.
-    return (per_year * (CAmount)blocks + BLOCKS_PER_YEAR - 1) / BLOCKS_PER_YEAR;
-}
-
 int StartHeight(const std::string& chain_id)
 {
     // Opened on 2026-10-06 below that day's tip, so names count at once. No

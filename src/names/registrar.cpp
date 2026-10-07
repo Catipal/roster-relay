@@ -113,7 +113,6 @@ UniValue PendingToJSON(const PendingRegistration& p)
     o.pushKV("status", p.status);
     o.pushKV("note", p.note);
     o.pushKV("years", (int)p.years);
-    o.pushKV("price", ValueFromAmount(Price(p.name.size(), std::min<uint32_t>(p.years * BLOCKS_PER_YEAR, MAX_TERM))));
     o.pushKV("wallet", p.wallet);
     o.pushKV("commit_txid", p.commit_txid.GetHex());
     if (!p.claim_txid.IsNull()) o.pushKV("claim_txid", p.claim_txid.GetHex());
@@ -195,7 +194,7 @@ void Registrar::Process()
                 const std::string why = state->CheckAvailable(p.name, p.owner, next);
                 if (!why.empty()) {
                     p.status = "lost";
-                    p.note = why + " Nothing was burned.";
+                    p.note = why + " Nothing was spent.";
                 } else if (!publisher) {
                     p.note = "Waiting for a wallet to pay with.";
                 } else {

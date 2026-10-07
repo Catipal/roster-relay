@@ -33,6 +33,8 @@
  *   SELL      hdr || len || name || coin(36) || payout_value(8) ||
  *             len || payout || len || coin_sig || sig(64)                     up to 245 B
  *   BUY       hdr || buyer(32) || len || name || expiry(4) || sig(64)         108-137 B
+ *   PAYKEY    hdr || key(32) || spend_key(33) || sig(64)                     133 B
+ *   PAYMENT   hdr || one_time_key(33)                                         37 B
  *
  * A CLAIM both registers (after a COMMIT) and renews. A SUBNAME whose key is
  * all zeros removes that subname. Every record but COMMIT is signed with
@@ -48,6 +50,11 @@
  * transaction, so paying and taking the name are one transaction: either both
  * happen or neither does, and since the coin can be spent once, two buyers
  * cannot both pay.
+ *
+ * PAYKEY and PAYMENT are paying by name (names/payment.h). A key that wants to
+ * be paid publishes, signed, the spending key payments to it are built on; a
+ * payment carries, unsigned, the one-time key its address was derived with.
+ * Neither says who is paid.
  */
 namespace names {
 
@@ -58,6 +65,8 @@ enum class NameRecordType : uint8_t {
     SUBNAME = 0x09,
     SELL = 0x0a,
     BUY = 0x0b,
+    PAYKEY = 0x0c,
+    PAYMENT = 0x0d,
 };
 
 /** Longest payout script a SELL carries: a P2PKH, which is what this wallet hands out. */
@@ -89,6 +98,8 @@ struct NameRecord {
     CScript payout;
     //! SELL: the seller's signature spending `coin`, SIGHASH_SINGLE | ANYONECANPAY.
     std::vector<unsigned char> coin_sig;
+    //! PAYKEY: the spending key payments are built on. PAYMENT: the one-time key.
+    CPubKey point;
     std::array<unsigned char, 64> sig{};
 };
 

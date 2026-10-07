@@ -195,6 +195,9 @@ bool NameIndex::WriteBlock(const CBlock& block, const CBlockIndex* pindex)
             if (!roster::ExtractOpReturnPayload(tx->vout[n].scriptPubKey, payload)) continue;
             names::NameRecord rec;
             if (!names::ParseNameRecord(payload, rec)) continue;
+            // Payment markers say nothing about names, and there is one in
+            // every payment; the wallets that are paid read them from blocks.
+            if (rec.type == names::NameRecordType::PAYMENT) continue;
             DBEntry entry;
             if (rec.type == names::NameRecordType::SELL) {
                 m_sale_coins.insert(rec.coin);

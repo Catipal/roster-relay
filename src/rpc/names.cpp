@@ -131,10 +131,10 @@ UniValue EntryToJSON(const std::string& name, const names::NameEntry& e, const n
 static RPCHelpMan getnameinfo()
 {
     return RPCHelpMan{"getnameinfo",
-        "\nState of names on this node: the index, what names cost, and the rules.\n"
-        "\nA name resolves to a roster key, never to an address. Root names are bought by burning\n"
-        "coins - shorter names cost more - and renewed; subnames under a root are free; petnames\n"
-        "are this user's own labels and cost nothing (design note 001, section 11).\n",
+        "\nState of names on this node: the index and the rules.\n"
+        "\nA name resolves to a roster key, never to an address. Registering and renewing a name cost\n"
+        "only the network fee; a name its holder sells costs what they ask. Subnames under a root are\n"
+        "free, and petnames are this user's own labels (design note 001, section 11).\n",
         {},
         RPCResult{RPCResult::Type::OBJ, "", "", {
             {RPCResult::Type::BOOL, "enabled", "Whether -nameindex is on"},
@@ -142,21 +142,16 @@ static RPCHelpMan getnameinfo()
             {RPCResult::Type::BOOL, "active", /* optional */ true, "Whether names have started on this network"},
             {RPCResult::Type::NUM, "start_height", /* optional */ true, "Height names start at, if they have one"},
             {RPCResult::Type::NUM, "live_names", /* optional */ true, "Names registered and not expired"},
-            {RPCResult::Type::ARR, "prices", "Burned per year, by length", {
-                {RPCResult::Type::OBJ, "", "", {
-                    {RPCResult::Type::STR, "length", "Letters in the name"},
-                    {RPCResult::Type::STR_AMOUNT, "per_year", "Burned per year"},
-                }},
-            }},
             {RPCResult::Type::OBJ, "rules", "", {
                 {RPCResult::Type::NUM, "min_length", "Shortest root name that can be registered"},
                 {RPCResult::Type::NUM, "min_term", "Shortest registration, in blocks"},
-                {RPCResult::Type::NUM, "max_term", "Furthest a name can be paid ahead, in blocks"},
+                {RPCResult::Type::NUM, "max_term", "Furthest a name can be renewed ahead, in blocks"},
                 {RPCResult::Type::NUM, "grace", "Blocks after expiry only the holder may renew in"},
                 {RPCResult::Type::NUM, "commit_min_age", "Blocks between committing and claiming"},
                 {RPCResult::Type::NUM, "settle_depth", "Blocks before a resolution counts as settled"},
             }},
             {RPCResult::Type::NUM, "pending_registrations", /* optional */ true, "Registrations this node is seeing through"},
+            {RPCResult::Type::BOOL, "payable", /* optional */ true, "Whether this node's roster key takes payments by name (setnamepayments)"},
         }},
         RPCExamples{HelpExampleCli("getnameinfo", "")},
         [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
@@ -171,15 +166,14 @@ static RPCHelpMan getnameinfo()
         out.pushKV("active", height >= start);
         if (start != std::numeric_limits<int>::max()) out.pushKV("start_height", start);
         out.pushKV("live_names", (uint64_t)state->CountLive(height));
+        CKey own;
+        if (roster::ReadOperationalKey(own)) {
+            const CPubKey pub = own.GetPubKey();
+            roster::KeyBytes key;
+            std::copy(pub.begin() + 1, pub.begin() + 33, key.begin());
+            out.pushKV("payable", state->PaymentKey(key) != nullptr);
+        }
     }
-    UniValue prices(UniValue::VARR);
-    for (size_t len : {3, 4, 5, 6}) {
-        UniValue p(UniValue::VOBJ);
-        p.pushKV("length", len == 6 ? std::string("6 or more") : std::to_string(len));
-        p.pushKV("per_year", ValueFromAmount(names::PricePerYear(len)));
-        prices.push_back(p);
-    }
-    out.pushKV("prices", prices);
     UniValue rules(UniValue::VOBJ);
     rules.pushKV("min_length", (int)names::MIN_ROOT_LENGTH);
     rules.pushKV("min_term", (int)names::MIN_TERM);
@@ -213,6 +207,8 @@ static RPCHelpMan resolvename()
             {RPCResult::Type::NUM, "depth", /* optional */ true, "Blocks since it last changed hands or terms"},
             {RPCResult::Type::BOOL, "settled", /* optional */ true, "Deep enough to rely on for anything irreversible"},
             {RPCResult::Type::BOOL, "subname", /* optional */ true, "Whether it is a subname"},
+            {RPCResult::Type::BOOL, "payable", /* optional */ true, "Whether its key takes payments by name (sendtoname)"},
+            {RPCResult::Type::NUM, "payable_height", /* optional */ true, "When that key published the spending key it is paid on"},
         }},
         RPCExamples{HelpExampleCli("resolvename", "\"pilot\"") + HelpExampleCli("resolvename", "\"alice.pilot\"")},
         [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
@@ -233,6 +229,15 @@ static RPCHelpMan resolvename()
         out.pushKV("depth", target.depth);
         out.pushKV("settled", target.depth >= (int)names::SETTLE_DEPTH);
         out.pushKV("subname", target.name.subname);
+    }
+    if (g_nameindex) {
+        int height = 0;
+        std::shared_ptr<const names::NameState> state;
+        if (g_nameindex->GetState(state, height)) {
+            const names::PayKey* pay = state->PaymentKey(target.key);
+            out.pushKV("payable", pay != nullptr);
+            if (pay) out.pushKV("payable_height", pay->height);
+        }
     }
     return out;
 },
@@ -262,7 +267,7 @@ static RPCHelpMan listnames()
                     }},
                 }},
                 {RPCResult::Type::OBJ, "for_sale", /* optional */ true, "Present while the name is up for sale", {
-                    {RPCResult::Type::STR_AMOUNT, "price", "What a buyer pays the holder; the renewal is burned on top"},
+                    {RPCResult::Type::STR_AMOUNT, "price", "What a buyer pays the holder"},
                     {RPCResult::Type::STR, "state", "open, pending (a purchase or cancellation is waiting to confirm) or unusable"},
                     {RPCResult::Type::STR, "pay_to", /* optional */ true, "Where the price is paid"},
                     {RPCResult::Type::STR, "coin", "The sale coin"},
@@ -306,22 +311,18 @@ static RPCHelpMan getnameprice()
 {
     return RPCHelpMan{"getnameprice",
         "\nWhat a name costs this node now, and whether it can have it.\n"
-        "\nA free name costs its renewal for the years asked, burned. A name up for sale costs the\n"
-        "renewal too, plus the price its holder asks, paid to the holder; either way the coins move in\n"
-        "one transaction.\n",
+        "\nA free name costs nothing but the network fee. A name up for sale costs the price its holder\n"
+        "asks, paid to the holder in the same transaction that moves the name; the fee is on top.\n",
         {
             {"name", RPCArg::Type::STR, RPCArg::Optional::NO, "The name"},
-            {"years", RPCArg::Type::NUM, /* default */ "1", "1 or 2"},
+            {"years", RPCArg::Type::NUM, /* default */ "1", "Years it would run for, 1 or 2"},
         },
         RPCResult{RPCResult::Type::OBJ, "", "", {
             {RPCResult::Type::STR, "name", "Normalised"},
             {RPCResult::Type::NUM, "length", ""},
-            {RPCResult::Type::STR_AMOUNT, "per_year", "Burned per year"},
             {RPCResult::Type::STR, "status", "free, for sale, held, yours or unavailable"},
-            {RPCResult::Type::STR_AMOUNT, "renewal", "Burned: the years asked, or for a name for sale the renewal that comes with it"},
             {RPCResult::Type::STR_AMOUNT, "asking", /* optional */ true, "For a name for sale, what its holder asks"},
-            {RPCResult::Type::STR_AMOUNT, "total", "Renewal and asking price together; fees are on top"},
-            {RPCResult::Type::STR_AMOUNT, "price", "The same as total"},
+            {RPCResult::Type::STR_AMOUNT, "price", "What it costs beyond the network fee: the asking price, or 0"},
             {RPCResult::Type::BOOL, "available", "Whether this node could have it now"},
             {RPCResult::Type::STR, "action", /* optional */ true, "register or buy, when available"},
             {RPCResult::Type::STR, "reason", /* optional */ true, "Why not, if not"},
@@ -335,8 +336,6 @@ static RPCHelpMan getnameprice()
     UniValue out(UniValue::VOBJ);
     out.pushKV("name", name);
     out.pushKV("length", (int)name.size());
-    out.pushKV("per_year", ValueFromAmount(names::PricePerYear(name.size())));
-    CAmount renewal = names::Price(name.size(), (uint32_t)years * names::BLOCKS_PER_YEAR);
     CAmount asking = -1;
     std::string status = "free";
     std::string action = "register";
@@ -349,15 +348,13 @@ static RPCHelpMan getnameprice()
         const names::NameEntry* entry = state->Find(name);
         const names::Offer* offer = state->ActiveOffer(name, next);
         if (offer && entry->owner != self) {
-            // Bought, not registered: the renewal runs on from the current term.
+            // Bought, not registered.
             status = "for sale";
             action = "buy";
             const uint32_t expiry = state->BuyExpiry(name, years, next);
-            const uint32_t from = std::max<uint32_t>(entry->expiry, (uint32_t)next);
-            renewal = names::Price(name.size(), expiry - from);
             const SaleView sale = ViewSale(*offer, request);
             asking = sale.price;
-            why = state->CheckBuy(name, self, expiry, renewal, next);
+            why = state->CheckBuy(name, self, expiry, next);
             if (why.empty() && sale.state == "pending") why = "Someone is buying it now, or its holder is taking it off sale.";
             if (why.empty() && sale.state != "open") why = "Its sale cannot be used: the coin it sells is gone or the signature does not fit.";
         } else {
@@ -372,11 +369,8 @@ static RPCHelpMan getnameprice()
         status = "unavailable";
     }
     out.pushKV("status", status);
-    out.pushKV("renewal", ValueFromAmount(renewal));
     if (asking >= 0) out.pushKV("asking", ValueFromAmount(asking));
-    const CAmount total = renewal + std::max<CAmount>(asking, 0);
-    out.pushKV("total", ValueFromAmount(total));
-    out.pushKV("price", ValueFromAmount(total));
+    out.pushKV("price", ValueFromAmount(std::max<CAmount>(asking, 0)));
     out.pushKV("available", why.empty());
     if (why.empty()) out.pushKV("action", action);
     if (!why.empty()) out.pushKV("reason", why);

@@ -163,6 +163,7 @@ BITCOIN_CORE_H = \
   mail/mailbox.h \
   mail/protocol.h \
   names/name.h \
+  names/payment.h \
   names/petnames.h \
   names/record.h \
   names/registrar.h \
@@ -290,6 +291,7 @@ BITCOIN_CORE_H = \
   wallet/fees.h \
   wallet/ismine.h \
   wallet/load.h \
+  wallet/namepay.h \
   wallet/rpcnames.h \
   wallet/rpcwallet.h \
   wallet/salvage.h \
@@ -421,6 +423,7 @@ libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_wallet_a_SOURCES = \
   interfaces/wallet.cpp \
   addressbook.cpp \
+  names/payment.cpp \
   wallet/bdb.cpp \
   wallet/coincontrol.cpp \
   wallet/context.cpp \
@@ -429,6 +432,7 @@ libbitcoin_wallet_a_SOURCES = \
   wallet/feebumper.cpp \
   wallet/fees.cpp \
   wallet/load.cpp \
+  wallet/namepay.cpp \
   wallet/rpcdump.cpp \
   wallet/rpcnames.cpp \
   wallet/rpcwallet.cpp \

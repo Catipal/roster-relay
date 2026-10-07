@@ -12,12 +12,17 @@
 #include <string>
 
 /**
- * Names: what a name may be, and what it costs.
+ * Names: what a name may be.
  *
  * Design note 001 section 11. A name resolves to a roster key - never to an
  * address - so one name serves every payment and every letter without linking
- * any of them. Names are the one priced thing in the design, because a name is
- * genuinely scarce in a way a key is not: free plus unique resolves to squatted.
+ * any of them.
+ *
+ * Names cost nothing but the network fee of the transactions that register and
+ * renew them: nothing is burned (the owner's decision, 2026-10-07). A name
+ * someone holds costs what its holder asks for it, if they put it up for sale.
+ * The brakes on squatting are commit-reveal, renewal by hand and the
+ * look-alike rule, not a price.
  *
  * Everything here is a pure function, and every node must compute the same
  * answers: two nodes that disagree about whether a name is valid, or what it
@@ -25,12 +30,12 @@
  */
 namespace names {
 
-/** Root names shorter than this cannot be registered yet; they are held back for a later auction. */
-static constexpr size_t MIN_ROOT_LENGTH = 3;
+/** Shortest root name: one letter or digit. */
+static constexpr size_t MIN_ROOT_LENGTH = 1;
 /** Longest root name or subname label. */
 static constexpr size_t MAX_LABEL_LENGTH = 32;
 
-/** A year at 180-second blocks, the unit prices are quoted in. */
+/** A year at 180-second blocks, the unit terms are chosen in. */
 static constexpr uint32_t BLOCKS_PER_YEAR = 175320;
 /** Shortest registration: a month. */
 static constexpr uint32_t MIN_TERM = 14400;
@@ -88,12 +93,6 @@ bool SplitName(const std::string& full, std::string& root, std::string& label);
  * refuses honest names that merely resemble each other.
  */
 std::string Skeleton(const std::string& label);
-
-/** Coins burned per year to hold a root name of this length. Zero when it cannot be held. */
-CAmount PricePerYear(size_t length);
-
-/** What `blocks` of holding costs, pro rata and rounded up. */
-CAmount Price(size_t length, uint32_t blocks);
 
 /**
  * First height at which names count on this network. Records before it are

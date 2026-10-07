@@ -8,6 +8,7 @@
 #include <amount.h>
 #include <names/record.h>
 #include <primitives/transaction.h>
+#include <pubkey.h>
 #include <roster/record.h>
 #include <uint256.h>
 
@@ -27,18 +28,19 @@
  * functions of the records and their heights.
  *
  *   - A name is registered by a CLAIM that reveals a COMMIT made at least
- *     COMMIT_MIN_AGE blocks earlier, burns its price, and runs MIN_TERM to
- *     MAX_TERM. First valid claim wins; nobody adjudicates.
- *   - The holder renews with a CLAIM (no commit needed), up to a month after
- *     expiry. After that the name is free again.
+ *     COMMIT_MIN_AGE blocks earlier, and runs MIN_TERM to MAX_TERM. Nothing is
+ *     burned: a name costs the network fee. First valid claim wins; nobody
+ *     adjudicates.
+ *   - The holder renews with a CLAIM (no commit needed), for the fee, up to a
+ *     month after expiry. After that the name is free again.
  *   - A name that looks like a live name held by someone else (Skeleton) is
  *     refused.
  *   - The holder may transfer it, and may issue subnames under it for free.
  *   - The holder may put it up for sale (SELL). While the sale coin is
  *     unspent the name cannot be transferred or put up again, so a buyer
  *     cannot be outrun by its own seller. A BUY counts only in the very
- *     transaction that spends the sale coin, which pays the seller; it also
- *     renews the name for the buyer, burning the renewal as a CLAIM would.
+ *     transaction that spends the sale coin, which pays the seller; it may
+ *     also renew the name for the buyer, as a CLAIM would.
  *     The buyer gets the name clean: subnames go with the old holder.
  */
 namespace names {
@@ -59,6 +61,12 @@ struct IndexedRecord {
     //! SELL only: whether its transaction spent an output of the transaction
     //! that made the sale coin, which puts the coin on the chain first.
     bool coin_funded{false};
+};
+
+/** The spending key a roster key takes payments by name on (names/payment.h). */
+struct PayKey {
+    CPubKey spend;
+    int height{0};
 };
 
 /** A name up for sale. */
@@ -130,11 +138,10 @@ public:
 
     /**
      * Whether a CLAIM with these terms would take effect at `height`. A wallet
-     * asks this before burning anything: a claim that does not count burns
-     * its coins all the same.
+     * asks this before paying the fee for one that would not count.
      */
     std::string CheckClaim(const std::string& name, const roster::KeyBytes& owner, const Salt& salt,
-                           uint32_t expiry, CAmount burn, int height) const;
+                           uint32_t expiry, int height) const;
 
     /**
      * Whether `owner` could put `name` up for sale at `height`. Empty when it
@@ -146,11 +153,13 @@ public:
      * Whether a BUY with these terms would count at `height`, in a transaction
      * that spends the name's sale coin. Empty when it would.
      */
-    std::string CheckBuy(const std::string& name, const roster::KeyBytes& buyer, uint32_t expiry, CAmount burn,
-                         int height) const;
+    std::string CheckBuy(const std::string& name, const roster::KeyBytes& buyer, uint32_t expiry, int height) const;
 
     /** The term a buyer gets: `years` from when the name ends now, up to two years ahead. */
     uint32_t BuyExpiry(const std::string& name, int years, int height) const;
+
+    /** The spending key `key` takes payments on, or null when it takes none. */
+    const PayKey* PaymentKey(const roster::KeyBytes& key) const;
 
     /** The sale `name` is under at `height`, or null. */
     const Offer* ActiveOffer(const std::string& name, int height) const;
@@ -176,6 +185,8 @@ private:
     std::map<std::string, std::set<std::string>> m_skeletons;
     std::map<uint256, int> m_commits;
     std::set<uint256> m_used;
+    //! Roster key -> the spending key it published last.
+    std::map<roster::KeyBytes, PayKey> m_paykeys;
     //! Sale coin -> the name it is selling.
     std::map<COutPoint, std::string> m_sale_coins;
     //! Names whose sale coin a transaction of the block being applied spent,

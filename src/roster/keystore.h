@@ -35,6 +35,9 @@ bool GetOperationalKey(CKey& key_out, std::string& error);
 /** Where the key lives, for logging and for error messages. */
 std::string OperationalKeyPath();
 
+/** The operational key if this node has one already. Never creates it. */
+bool ReadOperationalKey(CKey& key_out);
+
 /**
  * The ordinary pubkey behind a published roster key.
  *

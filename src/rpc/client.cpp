@@ -46,6 +46,8 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "getnameprice", 1, "years" },
     { "sellname", 1, "price" },
     { "buyname", 1, "years" },
+    { "sendtoname", 1, "amount" },
+    { "sendtoname", 2, "allow_unsettled" },
     { "utxoupdatepsbt", 1, "descriptors" },
     { "setstaking", 0, "staking" },
     { "generatetoaddress", 0, "nblocks" },

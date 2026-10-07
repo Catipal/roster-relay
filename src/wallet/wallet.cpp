@@ -37,6 +37,7 @@
 #include <util/translation.h>
 #include <wallet/coincontrol.h>
 #include <wallet/fees.h>
+#include <wallet/namepay.h>
 #include <pos.h>
 #include <miner.h>
 
@@ -388,6 +389,8 @@ bool CWallet::Unlock(const SecureString& strWalletPassphrase, bool accept_no_key
             if (Unlock(_vMasterKey, accept_no_keys)) {
                 // Now that we've unlocked, upgrade the key metadata
                 UpgradeKeyMetadata();
+                // And take the keys of payments by name that came in while locked.
+                namepay::ImportPending(*this);
                 return true;
             }
         }
@@ -1300,6 +1303,10 @@ void CWallet::SyncTransaction(const CTransactionRef& ptx, CWalletTx::Confirmatio
             return;
         }
     }
+
+    // A payment by name goes to an address this wallet has never handed out;
+    // learn it first, so the payment counts as ours below.
+    namepay::ScanTransaction(*this, *ptx);
 
     if (!AddToWalletIfInvolvingMe(ptx, confirm, update_tx))
         return; // Not one of ours

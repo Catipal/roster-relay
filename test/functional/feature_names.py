@@ -2,7 +2,7 @@
 # Copyright (c) 2026 The Bitcoin PoS Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
-"""Test names: registering, burning, renewing, subnames, petnames, transfer.
+"""Test names: registering, renewing, selling, subnames, petnames, transfer.
 
 Design note 001 section 11. Two nodes with the name index; node 0 pays.
 
@@ -12,7 +12,8 @@ What the test is really about:
     it, then a claim the node sends on its own once the commitment is old
     enough - so nobody watching the mempool can take it first;
 
-  * its price is burned in the claim itself, where nobody can spend it;
+  * it costs nothing but the network fee, to register or to renew, and a
+    name of one or two letters is a name like any other;
 
   * every node resolves the name to the same roster key, and a subname and a
     petname resolve too, the petname winning over a name spelled the same;
@@ -23,8 +24,8 @@ What the test is really about:
   * a reorg that removes a record takes its effect away with it;
 
   * a holder can put a name up for sale and anyone can buy it at once, the
-    seller offline: one transaction pays the seller, burns the renewal and
-    moves the name, and while it is for sale the seller cannot give it away.
+    seller offline: one transaction pays the seller and moves the name,
+    and while it is for sale the seller cannot give it away.
 """
 
 from decimal import Decimal
@@ -41,11 +42,6 @@ BLOCKS_PER_YEAR = 175320
 MAX_TERM = 2 * BLOCKS_PER_YEAR
 SALE_COIN = Decimal("0.0001")
 
-
-def burn_for(per_year, blocks):
-    """What `blocks` of a name costs, pro rata and rounded up to the satoshi."""
-    sat = int(per_year * 100000000)
-    return Decimal(-(-(sat * blocks) // BLOCKS_PER_YEAR)) / Decimal(100000000)
 
 
 class NamesTest(BitcoinTestFramework):
@@ -81,28 +77,30 @@ class NamesTest(BitcoinTestFramework):
         self.sync_all()
         self.mine(0)
 
-        self.log.info("the rules and prices are published")
+        self.log.info("the rules are published, and a free name costs nothing")
         info = payer.getnameinfo()
         assert_equal(info["enabled"], True)
         assert_equal(info["active"], True)
         assert_equal(info["live_names"], 0)
-        assert_equal([p["per_year"] for p in info["prices"]],
-                     [Decimal("100"), Decimal("20"), Decimal("5"), Decimal("1")])
+        assert_equal(info["rules"]["min_length"], 1)
+        assert "prices" not in info
         price = payer.getnameprice("Pilot")
         assert_equal(price["name"], "pilot")
-        assert_equal(price["price"], Decimal("5"))
+        assert_equal(price["price"], Decimal("0"))
+        assert_equal(price["status"], "free")
         assert_equal(price["available"], True)
 
         self.log.info("names that cannot be registered are refused before anything is spent")
-        assert_raises_rpc_error(-8, "3 to 32", payer.registername, "ab")
+        assert_raises_rpc_error(-8, "1 to 32", payer.registername, "-ab")
         assert_raises_rpc_error(-8, "plain letters", payer.registername, "luigı")
         assert_raises_rpc_error(-8, "years must be 1 or 2", payer.registername, "pilot", 3)
-        assert_raises_rpc_error(-6, "costs", other.registername, "pilot")
+        # A wallet with no coins cannot even pay the fee.
+        assert_raises_rpc_error(-4, "Insufficient funds", other.registername, "pilot")
 
         self.log.info("registering is commit, then claim")
         reg = payer.registername("pilot")
         assert_equal(reg["status"], "committed")
-        assert_equal(reg["price"], Decimal("5"))
+        assert "price" not in reg
         self.mine()
         # Asking again reports progress rather than committing twice.
         assert_equal(self.finish("pilot")["status"], "committed")
@@ -113,13 +111,12 @@ class NamesTest(BitcoinTestFramework):
         self.mine()
         assert_equal(self.finish("pilot")["status"], "done")
 
-        self.log.info("the price is burned in the claim itself")
+        self.log.info("the claim burns nothing: the fee is all it costs")
         wtx = payer.gettransaction(claimed["claim_txid"], False, True)
-        burns = [o for o in wtx["decoded"]["vout"] if o["scriptPubKey"]["type"] == "nulldata"]
-        assert_equal(len(burns), 1)
-        assert_equal(burns[0]["value"], Decimal("5"))
-        # The wallet sees it leave and not come back: an output nobody owns.
-        assert_equal(wtx["amount"], Decimal("-5"))
+        carriers = [o for o in wtx["decoded"]["vout"] if o["scriptPubKey"]["type"] == "nulldata"]
+        assert_equal(len(carriers), 1)
+        assert_equal(carriers[0]["value"], Decimal("0"))
+        assert_equal(wtx["amount"], Decimal("0"))
         assert_greater_than(Decimal("0"), wtx["fee"])
 
         self.log.info("every node resolves it to the holder's roster key")
@@ -142,7 +139,9 @@ class NamesTest(BitcoinTestFramework):
         self.log.info("the holder renews by hand, paying for the added year only")
         renewed = payer.renewname("pilot")
         assert_equal(renewed["expiry_height"], expiry + BLOCKS_PER_YEAR)
-        assert_equal(renewed["burned"], Decimal("5"))
+        assert "burned" not in renewed
+        renew_tx = payer.gettransaction(renewed["txid"])
+        assert_equal(renew_tx["amount"], Decimal("0"))
         self.mine()
         assert_equal(other.resolvename("pilot")["expiry_height"], expiry + BLOCKS_PER_YEAR)
         assert_raises_rpc_error(-8, "at most two years ahead", payer.renewname, "pilot")
@@ -201,19 +200,13 @@ class NamesTest(BitcoinTestFramework):
         assert_equal(listed[0]["for_sale"]["state"], "open")
         assert_equal(listed[0]["for_sale"]["pay_to"], sale["pay_to"])
 
-        self.log.info("its price is the renewal plus what the holder asks")
+        self.log.info("its price is what the holder asks, and nothing more")
         quote = other.getnameprice("pilot")
         assert_equal(quote["status"], "for sale")
         assert_equal(quote["action"], "buy")
         assert_equal(quote["available"], True)
         assert_equal(quote["asking"], Decimal("7"))
-        # pilot is paid almost two years ahead, so the renewal that comes with
-        # it only reaches the two-year limit.
-        held = payer.listnames()[0]
-        nxt = payer.getblockcount() + 1
-        expected = burn_for(5, nxt + MAX_TERM - max(held["expiry_height"], nxt))
-        assert_equal(quote["renewal"], expected)
-        assert_equal(quote["total"], expected + Decimal("7"))
+        assert_equal(quote["price"], Decimal("7"))
 
         self.log.info("while it is for sale the seller cannot give it away or put it up again")
         assert_raises_rpc_error(-8, "up for sale", payer.transfername, "pilot", self.key(1))
@@ -223,7 +216,7 @@ class NamesTest(BitcoinTestFramework):
         self.log.info("anyone buys it at once: paying and taking the name are one transaction")
         bought = other.buyname("pilot")
         assert_equal(bought["paid"], Decimal("7"))
-        assert_equal(bought["burned"], expected)
+        assert "burned" not in bought
         assert_equal(other.listnames("forsale")[0]["for_sale"]["state"], "pending")
         self.mine()
         for node in self.nodes:
@@ -236,8 +229,8 @@ class NamesTest(BitcoinTestFramework):
         # The seller was paid the price, and the coin set aside comes back too.
         assert_equal(payer.getreceivedbyaddress(sale["pay_to"]), Decimal("7") + SALE_COIN)
         txs = other.gettransaction(bought["txid"], False, True)["decoded"]
-        burns = [o for o in txs["vout"] if o["scriptPubKey"]["type"] == "nulldata"]
-        assert_equal(burns[0]["value"], expected)
+        carriers = [o for o in txs["vout"] if o["scriptPubKey"]["type"] == "nulldata"]
+        assert_equal(carriers[0]["value"], Decimal("0"))
         assert_raises_rpc_error(-8, "not for sale", payer.buyname, "pilot")
 
         self.log.info("a sale is taken off by spending its coin; then the name can move again")
@@ -252,6 +245,16 @@ class NamesTest(BitcoinTestFramework):
         other.transfername("pilot", self.key(0))
         self.mine()
         assert_equal(other.resolvename("pilot")["key"], self.key(0))
+
+        self.log.info("one and two letters are names like any other")
+        for short in ("q", "ab"):
+            payer.registername(short)
+        self.mine(COMMIT_MIN_AGE + 1)
+        for short in ("q", "ab"):
+            assert_equal(self.finish(short)["status"], "claimed")
+        self.mine()
+        for short in ("q", "ab"):
+            assert_equal(other.resolvename(short)["key"], self.key(0))
 
 
 if __name__ == '__main__':

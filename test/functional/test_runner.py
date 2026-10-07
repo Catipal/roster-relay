@@ -133,6 +133,7 @@ BASE_SCRIPTS = [
     'feature_roster_listing.py',
     'feature_mail.py',
     'feature_names.py',
+    'feature_name_payments.py',
     'feature_roster_identity.py',
     'feature_roster_commitment.py',
     'feature_reindex.py',

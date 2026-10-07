@@ -20,6 +20,9 @@ RPCHelpMan setsubname();
 RPCHelpMan sellname();
 RPCHelpMan cancelnamesale();
 RPCHelpMan buyname();
+RPCHelpMan setnamepayments();
+RPCHelpMan sendtoname();
+RPCHelpMan listnamepayments();
 
 /** Sends a matured registration's claim. Installed with names::SetClaimPublisher. */
 bool PublishNameClaim(const names::PendingRegistration& pending, uint256& txid_out, std::string& error_out);

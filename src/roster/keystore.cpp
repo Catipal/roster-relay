@@ -96,6 +96,15 @@ KeyBytes KeyBytesOf(const CKey& key)
     return out;
 }
 
+bool ReadOperationalKey(CKey& key_out)
+{
+    const fs::path path = KeyPath();
+    std::string error;
+    if (!fs::exists(path) || !ReadKeyFile(path, key_out, error)) return false;
+    CanonicaliseEvenY(key_out);
+    return true;
+}
+
 bool GetIdentityKey(CKey& key_out, std::string& error)
 {
     error.clear();

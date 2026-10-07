@@ -29,6 +29,8 @@ const char* TagWord(NameRecordType type)
     case NameRecordType::SUBNAME: return "name-subname";
     case NameRecordType::SELL: return "name-sell";
     case NameRecordType::BUY: return "name-buy";
+    case NameRecordType::PAYKEY: return "name-paykey";
+    case NameRecordType::PAYMENT: return "name-payment";
     }
     return "unknown";
 }
@@ -42,6 +44,8 @@ bool KnownType(uint8_t raw, NameRecordType& out)
     case static_cast<uint8_t>(NameRecordType::SUBNAME):
     case static_cast<uint8_t>(NameRecordType::SELL):
     case static_cast<uint8_t>(NameRecordType::BUY):
+    case static_cast<uint8_t>(NameRecordType::PAYKEY):
+    case static_cast<uint8_t>(NameRecordType::PAYMENT):
         out = static_cast<NameRecordType>(raw);
         return true;
     default:
@@ -154,6 +158,21 @@ bool ParseNameRecord(Span<const unsigned char> raw, NameRecord& out)
         rec.expiry_height = ReadLE32(p);
         p += 4;
         break;
+    case NameRecordType::PAYKEY:
+        if (end - p != (ptrdiff_t)(KEY + CPubKey::COMPRESSED_SIZE + SIG)) return false;
+        std::memcpy(rec.key.data(), p, KEY);
+        p += KEY;
+        rec.point.Set(p, p + CPubKey::COMPRESSED_SIZE);
+        p += CPubKey::COMPRESSED_SIZE;
+        if (!rec.point.IsFullyValid()) return false;
+        break;
+    case NameRecordType::PAYMENT:
+        // Unsigned: anyone can pay, and the key is one-time.
+        if (end - p != (ptrdiff_t)CPubKey::COMPRESSED_SIZE) return false;
+        rec.point.Set(p, end);
+        if (!rec.point.IsFullyValid()) return false;
+        out = rec;
+        return true;
     }
     std::memcpy(rec.sig.data(), p, SIG);
     out = rec;
@@ -205,6 +224,13 @@ std::vector<unsigned char> SerializeNameRecord(const NameRecord& rec)
         WriteLE32(b, rec.expiry_height);
         out.insert(out.end(), b, b + 4);
         break;
+    case NameRecordType::PAYKEY:
+        out.insert(out.end(), rec.key.begin(), rec.key.end());
+        out.insert(out.end(), rec.point.begin(), rec.point.end());
+        break;
+    case NameRecordType::PAYMENT:
+        out.insert(out.end(), rec.point.begin(), rec.point.end());
+        return out;
     }
     out.insert(out.end(), rec.sig.begin(), rec.sig.end());
     return out;
@@ -237,7 +263,7 @@ uint256 NameSigHash(Span<const unsigned char> raw, NameRecordType type, const st
 bool SignNameRecord(const CKey& key, NameRecord& rec, const std::string& chain_id,
                     std::vector<unsigned char>& raw_out)
 {
-    if (rec.type == NameRecordType::COMMIT) {
+    if (rec.type == NameRecordType::COMMIT || rec.type == NameRecordType::PAYMENT) {
         raw_out = SerializeNameRecord(rec);
         return true;
     }
@@ -253,7 +279,7 @@ bool SignNameRecord(const CKey& key, NameRecord& rec, const std::string& chain_i
 bool VerifyNameRecord(const NameRecord& rec, Span<const unsigned char> raw,
                       const roster::KeyBytes& signer, const std::string& chain_id)
 {
-    if (rec.type == NameRecordType::COMMIT) return true;
+    if (rec.type == NameRecordType::COMMIT || rec.type == NameRecordType::PAYMENT) return true;
     const XOnlyPubKey key(Span<const unsigned char>(signer.data(), signer.size()));
     return key.VerifySchnorr(NameSigHash(raw, rec.type, chain_id),
                              Span<const unsigned char>(rec.sig.data(), rec.sig.size()));

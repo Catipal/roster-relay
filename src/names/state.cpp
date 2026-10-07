@@ -6,7 +6,6 @@
 
 #include <names/name.h>
 #include <tinyformat.h>
-#include <util/moneystr.h>
 
 #include <algorithm>
 
@@ -17,11 +16,6 @@ namespace {
 bool IsZero(const roster::KeyBytes& k)
 {
     return std::all_of(k.begin(), k.end(), [](unsigned char c) { return c == 0; });
-}
-
-std::string Coins(CAmount amount)
-{
-    return FormatMoney(amount) + " BPS";
 }
 
 } // namespace
@@ -117,18 +111,15 @@ std::string NameState::CheckAvailable(const std::string& name, const roster::Key
 }
 
 std::string NameState::CheckClaim(const std::string& name, const roster::KeyBytes& owner, const Salt& salt,
-                                  uint32_t expiry, CAmount burn, int height) const
+                                  uint32_t expiry, int height) const
 {
     const Status status = StatusOf(name, height);
     const NameEntry* entry = Find(name);
     if (status != Status::FREE) {
-        // A renewal.
+        // A renewal, for the fee alone.
         if (entry->owner != owner) return "This name is held by someone else.";
         if (expiry <= entry->expiry) return "A renewal has to end later than the name ends now.";
-        if ((int64_t)expiry - height > MAX_TERM) return "A name can be paid at most two years ahead.";
-        const uint32_t from = std::max<uint32_t>(entry->expiry, (uint32_t)height);
-        const CAmount price = Price(name.size(), expiry - from);
-        if (burn < price) return strprintf("Renewing costs %s; this burns %s.", Coins(price), Coins(burn));
+        if ((int64_t)expiry - height > MAX_TERM) return "A name can be renewed at most two years ahead.";
         return std::string();
     }
     const std::string fresh = CheckFresh(name, owner, height);
@@ -143,9 +134,7 @@ std::string NameState::CheckClaim(const std::string& name, const roster::KeyByte
     if (height - committed > (int)COMMIT_MAX_AGE) return "The commitment is too old; commit again.";
     if (m_used.count(c)) return "That commitment has been used already.";
     if ((int64_t)expiry <= height || (int64_t)expiry - height < MIN_TERM) return "A name is registered for at least a month.";
-    if ((int64_t)expiry - height > MAX_TERM) return "A name can be paid at most two years ahead.";
-    const CAmount price = Price(name.size(), expiry - height);
-    if (burn < price) return strprintf("Registering costs %s; this burns %s.", Coins(price), Coins(burn));
+    if ((int64_t)expiry - height > MAX_TERM) return "A name can be registered at most two years ahead.";
     return std::string();
 }
 
@@ -169,6 +158,12 @@ void NameState::ApplyBlock(int height, const std::vector<IndexedRecord>& records
         if (rec.height == height) Apply(rec);
     }
     m_sold_in.clear();
+}
+
+const PayKey* NameState::PaymentKey(const roster::KeyBytes& key) const
+{
+    const auto it = m_paykeys.find(key);
+    return it == m_paykeys.end() ? nullptr : &it->second;
 }
 
 const Offer* NameState::ActiveOffer(const std::string& name, int height) const
@@ -196,7 +191,7 @@ uint32_t NameState::BuyExpiry(const std::string& name, int years, int height) co
     return std::min<uint32_t>(from + (uint32_t)years * BLOCKS_PER_YEAR, (uint32_t)height + MAX_TERM);
 }
 
-std::string NameState::CheckBuy(const std::string& name, const roster::KeyBytes& buyer, uint32_t expiry, CAmount burn,
+std::string NameState::CheckBuy(const std::string& name, const roster::KeyBytes& buyer, uint32_t expiry,
                                 int height) const
 {
     if (height < m_start) return "Names have not started on this network yet.";
@@ -204,17 +199,11 @@ std::string NameState::CheckBuy(const std::string& name, const roster::KeyBytes&
     if (!offer) return strprintf("%s is not for sale.", name);
     const NameEntry& entry = *Find(name);
     if (entry.owner == buyer) return strprintf("This key holds %s already.", name);
-    // The buyer renews as the holder would: from when the name ends now, at
-    // least a month unless that would pass two years ahead.
+    // The buyer keeps the term the name has, and may renew it in the same
+    // breath - for nothing, as the holder would - up to two years ahead.
     const uint32_t from = std::max<uint32_t>(entry.expiry, (uint32_t)height);
     if (expiry < from) return "A purchase cannot shorten the name's term.";
-    if ((int64_t)expiry - height > MAX_TERM) return "A name can be paid at most two years ahead.";
-    const uint32_t room = (uint32_t)height + MAX_TERM - from;
-    if (expiry - from < std::min<uint32_t>(MIN_TERM, room)) return "A purchase renews the name for at least a month.";
-    const CAmount price = Price(name.size(), expiry - from);
-    if (burn < price) {
-        return strprintf("The renewal that comes with buying costs %s; this burns %s.", Coins(price), Coins(burn));
-    }
+    if ((int64_t)expiry - height > MAX_TERM) return "A name can be renewed at most two years ahead.";
     return std::string();
 }
 
@@ -249,7 +238,7 @@ std::string NameState::Apply(const IndexedRecord& indexed)
 
     case NameRecordType::CLAIM: {
         if (!VerifyNameRecord(rec, indexed.raw, rec.key, m_chain_id)) return "not signed by the owner it names";
-        const std::string why = CheckClaim(rec.name, rec.key, rec.salt, rec.expiry_height, indexed.burned, h);
+        const std::string why = CheckClaim(rec.name, rec.key, rec.salt, rec.expiry_height, h);
         if (!why.empty()) return why;
         const Status status = StatusOf(rec.name, h);
         if (status != Status::FREE) {
@@ -328,6 +317,19 @@ std::string NameState::Apply(const IndexedRecord& indexed)
         return std::string();
     }
 
+    case NameRecordType::PAYKEY: {
+        // Any roster key may take payments; only it can say on what.
+        if (!VerifyNameRecord(rec, indexed.raw, rec.key, m_chain_id)) return "not signed by the key it is for";
+        if (!rec.point.IsCompressed()) return "a spending key is compressed";
+        PayKey& pk = m_paykeys[rec.key];
+        pk.spend = rec.point;
+        pk.height = h;
+        return std::string();
+    }
+
+    case NameRecordType::PAYMENT:
+        return "a payment marker is not a name record";
+
     case NameRecordType::BUY: {
         const auto sold = m_sold_in.find(indexed.txid);
         if (sold == m_sold_in.end() || !sold->second.count(rec.name)) {
@@ -342,7 +344,7 @@ std::string NameState::Apply(const IndexedRecord& indexed)
         // The sale was closed a moment ago by this same transaction; the terms
         // are checked as they stood with it open.
         entry.for_sale = true;
-        const std::string why = CheckBuy(rec.name, rec.key, rec.expiry_height, indexed.burned, h);
+        const std::string why = CheckBuy(rec.name, rec.key, rec.expiry_height, h);
         entry.for_sale = false;
         if (!why.empty()) return why;
         entry.owner = rec.key;

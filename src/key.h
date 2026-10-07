@@ -101,6 +101,9 @@ public:
     //! Negate private key
     bool Negate();
 
+    /** This key plus `tweak32` (mod the curve order). False when that is not a valid key. */
+    bool TweakAdd(const unsigned char* tweak32, CKey& out) const;
+
     /**
      * Convert the private key to a CPrivKey (serialized OpenSSL private key data).
      * This is expensive.

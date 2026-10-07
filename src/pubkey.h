@@ -225,6 +225,13 @@ public:
      */
     bool ECDH(const unsigned char* seckey32, uint256& shared_out) const;
 
+    /**
+     * This key plus `tweak32` times the generator, compressed: the public half
+     * of CKey::TweakAdd. False for an invalid key or a tweak that lands on the
+     * point at infinity.
+     */
+    bool TweakAdd(const unsigned char* tweak32, CPubKey& out) const;
+
     //! Derive BIP32 child pubkey.
     bool Derive(CPubKey& pubkeyChild, ChainCode &ccChild, unsigned int nChild, const ChainCode& cc) const;
 };

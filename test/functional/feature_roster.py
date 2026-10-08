@@ -32,6 +32,7 @@ to rot without a test watching them:
 from decimal import Decimal
 
 from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_node import ErrorMatch
 from test_framework.util import (
     assert_equal,
     assert_greater_than,
@@ -438,6 +439,18 @@ class RosterTest(BitcoinTestFramework):
         self.restart_node(0, self.extra_args[0])
         self.connect_nodes(0, 1)
 
+    def test_too_small_a_window_is_refused(self):
+        self.log.info("a retention window shorter than a listing's life is refused, pruned or not")
+        self.stop_node(0)
+        self.nodes[0].assert_start_raises_init_error(
+            self.extra_args[0] + ["-rosterindexwindow=1000"],
+            "-rosterindexwindow=1000 is below MAX_TTL",
+            match=ErrorMatch.PARTIAL_REGEX)
+        # A year's worth is accepted.
+        self.start_node(0, self.extra_args[0] + ["-rosterindexwindow=%d" % MAX_TTL])
+        self.restart_node(0, self.extra_args[0])
+        self.connect_nodes(0, 1)
+
     def run_test(self):
         node = self.nodes[0]
         self.sink = node.getnewaddress()
@@ -463,6 +476,7 @@ class RosterTest(BitcoinTestFramework):
         self.test_documentation_addresses_are_not_offered()
         self.test_onion_endpoints_reach_the_address_manager()
         self.test_index_can_be_switched_off()
+        self.test_too_small_a_window_is_refused()
 
 
 if __name__ == "__main__":

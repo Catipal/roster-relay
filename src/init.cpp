@@ -1130,17 +1130,17 @@ bool AppInitParameterInteraction(const ArgsManager& args)
         if (args.GetBoolArg("-rosterindex", DEFAULT_ROSTERINDEX) && !args.IsArgSet("-rosterindexstart")) {
             return InitError(_("Prune mode is incompatible with -rosterindex unless -rosterindexstart is set to a height the node still retains."));
         }
+    }
 
     // A window shorter than the rolling window would leave BuildRoster unable
     // to see records that are still live, so the roster would be wrong rather
     // than merely incomplete. Refuse instead of clamping: silently widening an
-    // operator's number hides the mistake.
+    // operator's number hides the mistake. This holds with or without -prune.
     if (args.IsArgSet("-rosterindexwindow")) {
         const int64_t window = args.GetArg("-rosterindexwindow", 0);
         if (window != 0 && window < (int64_t)roster::MAX_TTL) {
             return InitError(strprintf(_("-rosterindexwindow=%d is below MAX_TTL (%u); the live roster would be incomplete."), window, roster::MAX_TTL));
         }
-    }
     }
 
     // -bind and -whitebind can't be set when not listening

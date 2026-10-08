@@ -59,11 +59,15 @@ static constexpr uint32_t COMMIT_MIN_AGE = 6;
 static constexpr uint32_t COMMIT_MAX_AGE = 4320;
 
 /**
- * Blocks since a name last changed hands or terms before resolution is called
- * settled. A wrong payment is lost for good, so anything that spends on a
- * name's say-so should wait for this; a letter need not.
+ * Blocks since a name last pointed somewhere new - a new holder, or a subname
+ * a new key - before resolution is called settled: 500, about a day. A wrong
+ * payment is lost for good, so anything that spends on a name's say-so waits
+ * for this, and so long that a key stolen and used to move a name is likely
+ * to be revoked first; a letter need not wait. Deeper than AGE_DEPTH on
+ * purpose (design note 001, section 11). A renewal by the same holder does
+ * not restart it: the money would go where it went before.
  */
-static constexpr uint32_t SETTLE_DEPTH = 100;
+static constexpr uint32_t SETTLE_DEPTH = 500;
 
 /**
  * Lowercase ASCII, or nothing. Upper case is folded; anything outside ASCII is

@@ -82,14 +82,14 @@ struct Offer {
 struct Subname {
     roster::KeyBytes key{};
     uint32_t expiry{0};
-    int height{0};
+    int height{0}; //!< when it last pointed to a new key; re-issuing to the same key keeps it
 };
 
 struct NameEntry {
     roster::KeyBytes owner{};
     uint32_t expiry{0};
     int registered{0};  //!< height of the claim that registered it to this holder
-    int changed{0};     //!< last height its holder or term changed
+    int changed{0};     //!< last height its holder changed; renewing does not count
     std::map<std::string, Subname> subnames;
     //! Set from a SELL until its sale coin is spent.
     bool for_sale{false};

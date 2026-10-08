@@ -242,9 +242,9 @@ std::string NameState::Apply(const IndexedRecord& indexed)
         if (!why.empty()) return why;
         const Status status = StatusOf(rec.name, h);
         if (status != Status::FREE) {
+            // A renewal: same holder, so a resolution stays as settled as it was.
             NameEntry& entry = m_names[rec.name];
             entry.expiry = rec.expiry_height;
-            entry.changed = h;
             return std::string();
         }
         NameEntry entry;
@@ -283,7 +283,9 @@ std::string NameState::Apply(const IndexedRecord& indexed)
         Subname sub;
         sub.key = rec.key;
         sub.expiry = rec.expiry_height;
-        sub.height = h;
+        // Extending a subname for the same key is not a change of who it pays.
+        const auto existing = entry.subnames.find(rec.label);
+        sub.height = existing != entry.subnames.end() && existing->second.key == rec.key ? existing->second.height : h;
         entry.subnames[rec.label] = sub;
         return std::string();
     }

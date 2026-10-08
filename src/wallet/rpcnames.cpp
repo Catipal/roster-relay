@@ -802,8 +802,8 @@ RPCHelpMan setnamepayments()
         "\nPublishes a spending key from this wallet, signed by the roster key. Each payment then goes to an\n"
         "address of its own that only this wallet can spend, and nobody watching the chain can tell who was\n"
         "paid, or that two payments went to the same person. Costs only the network fee. Payers wait until\n"
-        "the key is 100 blocks deep. Run it again to move payments to a fresh key; payments made to the old\n"
-        "one still arrive.\n",
+        "the key is " + strprintf("%u", names::SETTLE_DEPTH) + " blocks deep, about a day. Run it again to move payments to a fresh key;\n"
+        "payments made to the old one still arrive.\n",
         {},
         RPCResult{RPCResult::Type::OBJ, "", "", {
             {RPCResult::Type::STR_HEX, "txid", ""},
@@ -863,7 +863,8 @@ RPCHelpMan sendtoname()
         "\nThe payee must have turned on payments by name (setnamepayments). Each payment goes to a fresh\n"
         "address worked out from the payee's published keys and a one-time key, which the transaction\n"
         "carries so the payee can find it. A payment cannot be taken back, so by default this refuses a\n"
-        "name that changed hands or terms in the last 100 blocks, and a spending key published in that time.\n",
+        "name that changed hands in the last " + strprintf("%u", names::SETTLE_DEPTH) + " blocks (about a day), and a spending key published\n"
+        "in that time. Renewing a name does not count as a change.\n",
         {
             {"to", RPCArg::Type::STR, RPCArg::Optional::NO, "A name, label.name, petname or roster key"},
             {"amount", RPCArg::Type::AMOUNT, RPCArg::Optional::NO, "What to send, in " + CURRENCY_UNIT},
@@ -913,7 +914,7 @@ RPCHelpMan sendtoname()
     if (!allow_unsettled) {
         if (target.source == names::Source::NAME && target.depth < (int)names::SETTLE_DEPTH) {
             throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
-                "%s changed hands or terms %d blocks ago. A payment cannot be taken back, so wait until that is "
+                "%s changed hands %d blocks ago. A payment cannot be taken back, so wait until that is "
                 "%u blocks ago, or pass allow_unsettled. Nothing was spent.", who, target.depth, names::SETTLE_DEPTH));
         }
         const int key_depth = (next - 1) - pay->height;

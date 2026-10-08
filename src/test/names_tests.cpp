@@ -365,6 +365,39 @@ BOOST_AUTO_TEST_CASE(holders_renew_by_hand_and_lapsed_names_come_free)
     BOOST_CHECK(res.key == b.x);
 }
 
+BOOST_AUTO_TEST_CASE(renewing_keeps_a_name_settled_and_a_new_holder_does_not)
+{
+    NameState state(CHAIN);
+    Person a, b, alice, bob;
+    const int at = Register(state, "pilot", a, 100);
+    Resolution res;
+    std::string why;
+    BOOST_REQUIRE(state.Resolve("pilot", at, res, why));
+    BOOST_CHECK_EQUAL(res.changed, at);
+
+    // A renewal by the same holder: a payment would go where it went before.
+    const int later = at + 1000;
+    BOOST_CHECK_EQUAL(state.Apply(At(later, ClaimRecord("pilot", Salt{}, a, at + 2 * BLOCKS_PER_YEAR))), "");
+    BOOST_REQUIRE(state.Resolve("pilot", later, res, why));
+    BOOST_CHECK_EQUAL(res.changed, at);
+
+    // A subname extended for the same key keeps its age; pointed elsewhere, it starts again.
+    BOOST_CHECK_EQUAL(state.Apply(At(later + 1, SubnameRecord("pilot", "shop", alice.x, at + BLOCKS_PER_YEAR, a))), "");
+    BOOST_CHECK_EQUAL(state.Apply(At(later + 2, SubnameRecord("pilot", "shop", alice.x, at + 2 * BLOCKS_PER_YEAR, a))), "");
+    BOOST_REQUIRE(state.Resolve("shop.pilot", later + 2, res, why));
+    BOOST_CHECK_EQUAL(res.changed, later + 1);
+    BOOST_CHECK_EQUAL(state.Apply(At(later + 3, SubnameRecord("pilot", "shop", bob.x, at + 2 * BLOCKS_PER_YEAR, a))), "");
+    BOOST_REQUIRE(state.Resolve("shop.pilot", later + 3, res, why));
+    BOOST_CHECK_EQUAL(res.changed, later + 3);
+
+    // A new holder starts it again, for the name and what is under it.
+    BOOST_CHECK_EQUAL(state.Apply(At(later + 4, TransferRecord("pilot", b, a))), "");
+    BOOST_REQUIRE(state.Resolve("pilot", later + 4, res, why));
+    BOOST_CHECK_EQUAL(res.changed, later + 4);
+    BOOST_REQUIRE(state.Resolve("shop.pilot", later + 4, res, why));
+    BOOST_CHECK_EQUAL(res.changed, later + 4);
+}
+
 BOOST_AUTO_TEST_CASE(look_alikes_of_a_held_name_are_refused)
 {
     NameState state(CHAIN);

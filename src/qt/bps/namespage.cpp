@@ -835,7 +835,7 @@ void NamesPage::PayTo(const UniValue& resolved)
     // A payment cannot be taken back, so say so when what it rests on is new.
     QStringList doubts;
     if (source == "name" && !find_value(resolved, "settled").isTrue()) {
-        doubts << tr("%1 changed hands or terms %2 ago.")
+        doubts << tr("%1 changed hands %2 ago.")
                       .arg(shown, BpsUtil::HumanBlocks((int)Num(resolved, "depth")));
     }
     const int key_depth = m_height - (int)Num(resolved, "payable_height");

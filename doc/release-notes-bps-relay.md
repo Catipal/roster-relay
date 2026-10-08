@@ -156,8 +156,9 @@ write to you, and pay you, as `pilot` instead of 64 characters of key.
   the wallet as "Paid by name". One that arrives while the wallet is locked
   shows as watch-only and becomes spendable when you unlock. Pay someone
   from Look up or the address book; a payment cannot be taken back, so a
-  name or key that changed in the last 100 blocks is flagged first, and a
-  key that has been revoked is refused.
+  name that changed hands, or a payment key that changed, in the last 500
+  blocks (about a day) is flagged first, and a key that has been revoked is
+  refused. Renewing a name does not count as a change.
 - **Subnames** - free under a name you hold: `alice.pilot` can point to
   anyone's key, and lasts as long as `pilot` does.
 - **Transfer** - give a name to another key.
@@ -243,7 +244,8 @@ New options
 |---|---|---|
 | `-rosterindex` | on in BPS Relay, off in the node | Keep an index of the roster |
 | `-rosterconnect` | on | Offer roster peers to the address manager |
-| `-rosterindexstart`, `-rosterindexwindow` | | Where the index starts, and how far back it keeps |
+| `-rosterindexstart` | 0 | Height the roster index starts reading from; needed with `-prune` |
+| `-rosterindexwindow` | 0, keep everything | Blocks of roster history to keep; at least 175,320 (a year), or the node refuses to start |
 | `-overlay` | on in BPS Relay, off in the node | Run the encrypted relay network |
 | `-overlayport` | one above this node's peer-to-peer port (48931 on mainnet) | Its UDP port |
 | `-nameindex` | on in BPS Relay, off in the node | Keep an index of names, to look them up, register, sell and buy |

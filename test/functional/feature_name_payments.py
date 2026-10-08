@@ -17,8 +17,9 @@ What the test is really about:
     and only the payee's wallet recognises them - in the mempool already;
 
   * a name, a petname, a subname or the bare key all pay the same payee, and
-    a name or key that changed recently is refused unless the payer says so,
-    because a payment cannot be taken back;
+    a name or key that changed in the last day is refused unless the payer
+    says so, because a payment cannot be taken back - though renewing a name
+    is not a change;
 
   * a payment that arrives while the wallet is locked shows as watch-only and
     becomes spendable when the wallet is unlocked;
@@ -38,7 +39,7 @@ from test_framework.util import (
 )
 
 COMMIT_MIN_AGE = 6
-SETTLE_DEPTH = 100
+SETTLE_DEPTH = 500
 
 
 class NamePaymentsTest(BitcoinTestFramework):
@@ -114,6 +115,14 @@ class NamePaymentsTest(BitcoinTestFramework):
         assert_equal(payer.getaddressinfo(first["address"])["labels"], ["Paid to pilot"])
         assert_equal(payee.getaddressinfo(first["address"])["ismine"], True)
 
+        self.log.info("renewing the name does not make payers wait again")
+        depth = payer.resolvename("pilot")["depth"]
+        payee.renewname("pilot")
+        self.mine()
+        resolved = payer.resolvename("pilot")
+        assert_equal(resolved["settled"], True)
+        assert_equal(resolved["depth"], depth + 1)
+
         self.log.info("a petname, a subname and the bare key pay the same payee, never at the same address")
         payer.setpetname("friend", "pilot")
         by_petname = payer.sendtoname("friend", 2)
@@ -122,7 +131,7 @@ class NamePaymentsTest(BitcoinTestFramework):
         assert_equal(by_key["source"], "key")
         payee.setsubname("shop.pilot", self.key(1))
         self.mine()
-        assert_raises_rpc_error(-8, "shop.pilot changed hands or terms", payer.sendtoname, "shop.pilot", 1)
+        assert_raises_rpc_error(-8, "shop.pilot changed hands", payer.sendtoname, "shop.pilot", 1)
         by_subname = payer.sendtoname("shop.pilot", Decimal("0.25"), True)
         self.mine()
         payments = payee.listnamepayments()

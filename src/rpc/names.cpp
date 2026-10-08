@@ -204,7 +204,7 @@ static RPCHelpMan resolvename()
             {RPCResult::Type::STR_HEX, "owner", /* optional */ true, "Who holds the root name"},
             {RPCResult::Type::NUM, "expiry_height", /* optional */ true, "When it stops resolving unless renewed"},
             {RPCResult::Type::NUM, "registered_height", /* optional */ true, "When its holder registered it"},
-            {RPCResult::Type::NUM, "depth", /* optional */ true, "Blocks since it last changed hands or terms"},
+            {RPCResult::Type::NUM, "depth", /* optional */ true, "Blocks since it last changed hands, or a subname a key; renewing does not count"},
             {RPCResult::Type::BOOL, "settled", /* optional */ true, "Deep enough to rely on for anything irreversible"},
             {RPCResult::Type::BOOL, "subname", /* optional */ true, "Whether it is a subname"},
             {RPCResult::Type::BOOL, "payable", /* optional */ true, "Whether its key takes payments by name (sendtoname)"},

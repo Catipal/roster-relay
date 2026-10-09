@@ -24,6 +24,7 @@
 #include <index/blockfilterindex.h>
 #include <index/rosterindex.h>
 #include <roster/peers.h>
+#include <overlay/radio.h>
 #include <overlay/relay.h>
 #include <overlay/rendezvous.h>
 #include <overlay/select.h>
@@ -251,6 +252,7 @@ void Shutdown(NodeContext& node)
         overlay::g_overlay->Stop();
         overlay::g_overlay.reset();
     }
+    overlay::g_radio.reset();
     // After the overlay, whose receive thread is what serves the mailbox.
     mail::g_mailbox.reset();
     {
@@ -507,6 +509,8 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-mailboxmaxsize=<n>", strprintf("Disk the mailbox may use, in MiB (default: %u)", mail::DEFAULT_MAILBOX_MAX_MB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-mailpoll=<n>", strprintf("Seconds between trips to collect mail, or 0 to collect only when asked (default: %u)", mail::DEFAULT_MAIL_POLL), ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
     argsman.AddArg("-maxlistedusers=<n>", strprintf("Most peers this node keeps listed under -acceptlistings (default: %u)", roster::DEFAULT_MAX_LISTED_USERS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-radio", strprintf("Carry the overlay over radio too, through Reticulum (LoRa via an RNode, packet radio, serial links). Needs -overlay, and contrib/reticulum/bps-rns-bridge.py running beside the node with Reticulum installed (default: %u)", overlay::DEFAULT_RADIO), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-radioentry", strprintf("With -radio, enter the overlay through a radio neighbour whenever one is a listed relay, so mail and listing requests work without the internet; slower (default: %u)", overlay::DEFAULT_RADIO_ENTRY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-overlayport=<port>", strprintf("UDP port the overlay listens on (default: one above the peer-to-peer port: %u, testnet: %u, signet: %u, regtest: %u). Its own socket, separate from the peer-to-peer port, because the overlay is a datagram protocol and the peer-to-peer one is not.", overlay::OverlayPortFor(defaultChainParams->GetDefaultPort()), overlay::OverlayPortFor(testnetChainParams->GetDefaultPort()), overlay::OverlayPortFor(signetChainParams->GetDefaultPort()), overlay::OverlayPortFor(regtestChainParams->GetDefaultPort())), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-rosterconnect", strprintf("Offer peers listed in the roster to the address manager, so the chain is used for discovery rather than only indexed (default: %u). Needs -rosterindex; ignored without it. Addresses are filtered to networks this node can reach and are dated by the block that carried the record, so an old announcement is treated as old.", roster::DEFAULT_ROSTERCONNECT), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-rosterindexstart=<n>", "Height at which -rosterindex begins scanning (default: 0, genesis). Records cannot exist before the roster feature shipped, so on an established chain setting this to that height avoids a long scan of blocks that provably contain none. Setting it above the first record silently misses records, so it is left to the operator rather than guessed.", ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
@@ -2258,6 +2262,33 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             overlay::g_selector = MakeUnique<overlay::PathSelector>(
                 overlay::PathSelector::GUARD_COUNT, chainparams.NetworkIDString() == CBaseChainParams::REGTEST);
             overlay::g_selector->SetSelf(self);
+        }
+
+        // Radio links (overlay/radio.h): tell the bridge where the overlay is,
+        // and read the neighbours it hears every few seconds. A radio
+        // neighbour that is a listed relay becomes the entry of this node's
+        // paths when -radioentry is on.
+        if (args.GetBoolArg("-radio", overlay::DEFAULT_RADIO)) {
+            overlay::g_radio_entry = args.GetBoolArg("-radioentry", overlay::DEFAULT_RADIO_ENTRY);
+            overlay::g_radio = MakeUnique<overlay::Radio>(GetDataDir() / "radio", chainparams.NetworkIDString());
+            std::string radio_error;
+            if (!overlay::g_radio->WriteNodeInfo(overlay::g_overlay->BoundAddress().GetPort(), self, radio_error)) {
+                return InitError(Untranslated(strprintf("radio: %s", radio_error)));
+            }
+            LogPrintf("radio: waiting for the Reticulum bridge in %s\n", overlay::g_radio->Dir().string());
+            node.scheduler->scheduleEvery([] {
+                if (!overlay::g_radio) return;
+                overlay::g_radio->Refresh();
+                // The relays read again whenever the chain moved, so a
+                // neighbour listed a block ago can be entered through now.
+                roster::FreshRelays(600);
+                std::vector<roster::KeyBytes> keys;
+                if (overlay::g_radio_entry) {
+                    for (const overlay::RadioPeer& p : overlay::g_radio->Neighbours(GetTime())) keys.push_back(p.key);
+                }
+                LOCK(overlay::g_selector_mutex);
+                if (overlay::g_selector) overlay::g_selector->SetPreferredEntries(keys);
+            }, std::chrono::seconds{5});
         }
 
         // Which relays this node will dial when a path asks it to reach one:

@@ -265,6 +265,7 @@ BITCOIN_TESTS =\
   test/rosteridentity_tests.cpp \
   test/rosterlisting_tests.cpp \
   test/rosterpayout_tests.cpp \
+  test/radio_tests.cpp \
   test/rpc_tests.cpp \
   test/rpchint_tests.cpp \
   test/sanity_tests.cpp \

@@ -121,9 +121,24 @@ bool PathSelector::Select(size_t hops, std::vector<RelayCandidate>& out,
     for (size_t i = 0; i < m_guards.size(); ++i) {
         if (DistinctOperator(m_guards[i], avoid)) usable_guards.push_back(m_guards[i]);
     }
-    if (usable_guards.empty()) return false;
-
-    out.push_back(usable_guards[m_rng.randrange(usable_guards.size())]);
+    // A listed relay this node reaches over the radio comes first: for a node
+    // without the internet it is the only way in, and like a guard it is the
+    // same few relays every time, not a fresh draw.
+    std::vector<RelayCandidate> preferred;
+    for (const roster::KeyBytes& key : m_preferred) {
+        for (size_t i = 0; i < m_relays.size(); ++i) {
+            if (m_relays[i].key == key && !IsSelf(m_relays[i]) && DistinctOperator(m_relays[i], avoid)) {
+                preferred.push_back(m_relays[i]);
+            }
+        }
+    }
+    if (!preferred.empty()) {
+        out.push_back(preferred[m_rng.randrange(preferred.size())]);
+    } else if (usable_guards.empty()) {
+        return false;
+    } else {
+        out.push_back(usable_guards[m_rng.randrange(usable_guards.size())]);
+    }
 
     // The rest are fresh for every path: rotating these costs nothing, and an
     // adversary who is not the entry learns far less by being a later hop.

@@ -9,6 +9,7 @@
 #include <crypto/sha256.h>
 #include <dbwrapper.h>
 #include <logging.h>
+#include <overlay/radio.h>
 #include <overlay/relay.h>
 #include <overlay/select.h>
 #include <roster/keystore.h>
@@ -459,9 +460,12 @@ bool MailClient::Reach(const roster::RelayInfo& box, Circuit& out, std::string& 
         }
         chosen.push_back(dest);
         std::vector<overlay::Relay::CircuitHop> hops;
+        bool slow = false;
         for (const overlay::RelayCandidate& c : chosen) {
             overlay::Relay::CircuitHop h;
             h.addr = roster::OverlayAddressFor(c.addr);
+            // The first hop may be a radio neighbour (overlay/radio.h).
+            if (hops.empty()) h.addr = overlay::FirstHopAddress(c.key, h.addr, slow);
             if (!roster::StakerPubKeyFromRoster(c.key, h.key)) {
                 error = "a relay's listed key is not a point on the curve";
                 return false;
@@ -469,7 +473,10 @@ bool MailClient::Reach(const roster::RelayInfo& box, Circuit& out, std::string& 
             hops.push_back(h);
         }
         uint64_t path = 0;
-        if (overlay::g_overlay->BuildCircuit(hops, path, error)) {
+        // Every step's answer comes back over the first hop, so a radio one
+        // slows them all.
+        if (overlay::g_overlay->BuildCircuit(hops, path, error,
+                                             slow ? overlay::RADIO_STEP_TIMEOUT : std::chrono::milliseconds{4000})) {
             out.hop = overlay::Hop::Path(path);
             out.legs = overlay::g_overlay->CircuitLegs(path);
             return true;

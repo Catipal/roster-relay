@@ -205,6 +205,7 @@ BITCOIN_CORE_H = \
   overlay/frame.h \
   overlay/handshake.h \
   overlay/path.h \
+  overlay/radio.h \
   overlay/relay.h \
   overlay/rendezvous.h \
   overlay/select.h \
@@ -584,6 +585,7 @@ libbitcoin_common_a_SOURCES = \
   overlay/frame.cpp \
   overlay/handshake.cpp \
   overlay/path.cpp \
+  overlay/radio.cpp \
   overlay/relay.cpp \
   overlay/rendezvous.cpp \
   overlay/select.cpp \

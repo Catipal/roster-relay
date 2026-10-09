@@ -116,6 +116,13 @@ public:
     /** Forget one entry relay, when it has stopped answering. */
     void DropGuard(const roster::KeyBytes& key);
 
+    /**
+     * Relays to enter through ahead of the guards: radio neighbours
+     * (overlay/radio.h). One of them, if any is listed and usable, is the
+     * entry of every path; otherwise the guards are, as before.
+     */
+    void SetPreferredEntries(const std::vector<roster::KeyBytes>& keys) { m_preferred = keys; }
+
     size_t CandidateCount() const { return m_relays.size(); }
 
     /**
@@ -139,6 +146,7 @@ private:
     roster::KeyBytes m_self{};
     std::vector<RelayCandidate> m_relays;
     std::vector<RelayCandidate> m_guards;
+    std::vector<roster::KeyBytes> m_preferred;
     mutable FastRandomContext m_rng;
 };
 

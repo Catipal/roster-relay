@@ -17,6 +17,7 @@
 #include <roster/payout.h>
 #include <roster/record.h>
 #include <roster/view.h>
+#include <overlay/radio.h>
 #include <overlay/relay.h>
 #include <overlay/rendezvous.h>
 #include <overlay/select.h>
@@ -198,6 +199,81 @@ std::vector<unsigned char> ParseEndpointAddress(uint8_t network, const std::stri
 }
 
 } // namespace
+
+static RPCHelpMan getradioinfo()
+{
+    return RPCHelpMan{"getradioinfo",
+                "\nRadio links: the overlay carried over Reticulum (-radio).\n"
+                "\nThe Reticulum bridge (contrib/reticulum/bps-rns-bridge.py) runs beside the node and reports the\n"
+                "BPS nodes it hears on the radio. A neighbour that is a listed relay becomes the entry relay of\n"
+                "this node's paths when -radioentry is on, so mail and listing requests reach the overlay\n"
+                "without the internet.\n",
+                {},
+                RPCResult{
+                    RPCResult::Type::OBJ, "", "",
+                    {
+                        {RPCResult::Type::BOOL, "enabled", "Whether -radio is on"},
+                        {RPCResult::Type::BOOL, "bridge", /* optional */ true, "Whether the bridge has reported in the last minute"},
+                        {RPCResult::Type::STR, "directory", /* optional */ true, "Where the node and the bridge exchange files"},
+                        {RPCResult::Type::STR_HEX, "destination", /* optional */ true, "This node's Reticulum destination"},
+                        {RPCResult::Type::ARR, "interfaces", /* optional */ true, "Reticulum's interfaces", {{RPCResult::Type::STR, "", ""}}},
+                        {RPCResult::Type::BOOL, "entry", /* optional */ true, "Whether paths enter through radio neighbours (-radioentry)"},
+                        {RPCResult::Type::ARR, "neighbours", /* optional */ true, "BPS nodes heard on the radio", {
+                            {RPCResult::Type::OBJ, "", "", {
+                                {RPCResult::Type::STR_HEX, "key", "Its roster key"},
+                                {RPCResult::Type::STR_HEX, "destination", "Its Reticulum destination"},
+                                {RPCResult::Type::STR, "local", "The bridge's port standing for it, which the overlay sends to"},
+                                {RPCResult::Type::NUM, "hops", "Radio hops away, or -1 if unknown"},
+                                {RPCResult::Type::NUM_TIME, "heard", "When it last announced or sent anything"},
+                                {RPCResult::Type::BOOL, "link", "Whether a Reticulum link to it is open"},
+                                {RPCResult::Type::BOOL, "relay", "Whether the roster lists it as a relay, so paths can enter through it"},
+                                {RPCResult::Type::BOOL, "session", "Whether the overlay has a session with it"},
+                            }},
+                        }},
+                    }},
+                RPCExamples{HelpExampleCli("getradioinfo", "")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    UniValue out(UniValue::VOBJ);
+    if (!overlay::g_radio) {
+        out.pushKV("enabled", false);
+        return out;
+    }
+    const int64_t now = GetTime();
+    const overlay::RadioState state = overlay::g_radio->State();
+    out.pushKV("enabled", true);
+    out.pushKV("bridge", overlay::g_radio->BridgeAlive(now));
+    out.pushKV("directory", overlay::g_radio->Dir().string());
+    if (!state.destination.empty()) out.pushKV("destination", state.destination);
+    UniValue interfaces(UniValue::VARR);
+    for (const std::string& i : state.interfaces) interfaces.push_back(i);
+    out.pushKV("interfaces", interfaces);
+    out.pushKV("entry", overlay::g_radio_entry);
+    std::vector<roster::KeyBytes> relays;
+    {
+        LOCK(overlay::g_selector_mutex);
+        if (overlay::g_selector) {
+            for (const overlay::RelayCandidate& c : overlay::g_selector->Candidates()) relays.push_back(c.key);
+        }
+    }
+    UniValue neighbours(UniValue::VARR);
+    for (const overlay::RadioPeer& p : overlay::g_radio->Neighbours(now)) {
+        UniValue n(UniValue::VOBJ);
+        n.pushKV("key", HexStr(p.key));
+        n.pushKV("destination", p.destination);
+        n.pushKV("local", p.local.ToString());
+        n.pushKV("hops", p.hops);
+        n.pushKV("heard", p.heard);
+        n.pushKV("link", p.link_up);
+        n.pushKV("relay", std::find(relays.begin(), relays.end(), p.key) != relays.end());
+        n.pushKV("session", overlay::g_overlay && overlay::g_overlay->HasSession(p.local));
+        neighbours.push_back(n);
+    }
+    out.pushKV("neighbours", neighbours);
+    return out;
+},
+    };
+}
 
 static RPCHelpMan getoverlayinfo()
 {
@@ -756,6 +832,7 @@ static RPCHelpMan requestlisting()
 
     roster::KeyBytes relay_key{};
     CService relay_addr;
+    bool slow = false;
     if (!request.params[1].isNull()) {
         const UniValue& relay = request.params[1].get_obj();
         const std::vector<unsigned char> key = ParseHexV(find_value(relay, "key"), "key");
@@ -779,9 +856,9 @@ static RPCHelpMan requestlisting()
         }
         // The entry relay, which this node keeps rather than rotating. It is the
         // relay that already sees this node's address, so asking it reveals
-        // nothing new.
+        // nothing new. It may be a radio neighbour.
         relay_key = chosen[0].key;
-        relay_addr = roster::OverlayAddressFor(chosen[0].addr);
+        relay_addr = overlay::FirstHopAddress(relay_key, roster::OverlayAddressFor(chosen[0].addr), slow);
     }
 
     CPubKey relay_pubkey;
@@ -794,8 +871,10 @@ static RPCHelpMan requestlisting()
     std::vector<unsigned char> raw = BuildAnnouncement(options, rec, warnings);
 
     bool answered = false;
+    // A radio link moves a few hundred bytes a second: longer waits.
+    const std::chrono::seconds connect_wait{slow ? 90 : 15}, answer_wait{slow ? 240 : 30};
     roster::ListingOutcome outcome = roster::RequestListing(
-        relay_addr, relay_pubkey, raw, std::chrono::seconds{15}, std::chrono::seconds{30}, answered);
+        relay_addr, relay_pubkey, raw, connect_wait, answer_wait, answered);
 
     // The relay stakes too rarely for the window this record left. It knows
     // its own staking rate and this node does not, so take its figure, sign
@@ -810,8 +889,7 @@ static RPCHelpMan requestlisting()
         UniValue longer = options;
         longer.pushKV("expiry_height", tip + (int)roster::MIN_TTL + (int)outcome.needed_window + 6);
         raw = BuildAnnouncement(longer, rec, warnings);
-        outcome = roster::RequestListing(relay_addr, relay_pubkey, raw, std::chrono::seconds{15},
-                                         std::chrono::seconds{30}, answered);
+        outcome = roster::RequestListing(relay_addr, relay_pubkey, raw, connect_wait, answer_wait, answered);
     }
     int tip_now;
     {
@@ -1146,6 +1224,7 @@ static const CRPCCommand commands[] =
 { //  category            name                    actor (function)        argNames
   //  ------------------  ----------------------  ----------------------  ----------
     { "overlay",          "getoverlayinfo",       &getoverlayinfo,        {} },
+    { "overlay",          "getradioinfo",         &getradioinfo,          {} },
     { "roster",           "getrosterinfo",        &getrosterinfo,         {} },
     { "roster",           "getroster",            &getroster,             {"count","skip","hints"} },
     { "roster",           "getrosterhistory",     &getrosterhistory,      {"key"} },

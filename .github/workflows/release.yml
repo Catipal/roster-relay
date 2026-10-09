@@ -163,6 +163,7 @@ jobs:
           cp "src/qt/bps-relay$EXT" "dist/$RDIR/"
           ${{ matrix.host }}-strip dist/$RDIR/* 2>/dev/null || strip dist/$RDIR/* 2>/dev/null || true
           cp doc/README_bps_relay.txt "dist/$RDIR/readme.txt"
+          cp contrib/reticulum/bps-rns-bridge.py "dist/$RDIR/"
           cp doc/release-notes-bps-relay.md "dist/$RDIR/release-notes.md"
           if [ "${{ matrix.windows }}" = "true" ]; then
             ( cd dist && zip -q -r "bps-relay-$VER-${{ matrix.name }}.zip" "$RDIR" )
@@ -239,6 +240,7 @@ jobs:
           cp src/qt/bps-relay "dist/$RDIR/"
           strip dist/$RDIR/bps-relay 2>/dev/null || true
           cp doc/README_bps_relay.txt "dist/$RDIR/readme.txt"
+          cp contrib/reticulum/bps-rns-bridge.py "dist/$RDIR/"
           cp doc/release-notes-bps-relay.md "dist/$RDIR/release-notes.md"
           ( cd dist && tar czf "bps-relay-$VER-osx64.tar.gz" "$RDIR" )
           make deploy

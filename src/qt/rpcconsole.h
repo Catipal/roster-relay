@@ -9,6 +9,7 @@
 #include <qt/peertablemodel.h>
 
 #include <net.h>
+#include <rpc/hint.h>
 
 #include <QWidget>
 #include <QCompleter>
@@ -28,8 +29,10 @@ namespace Ui {
 }
 
 QT_BEGIN_NAMESPACE
+class QLabel;
 class QMenu;
 class QItemSelection;
+class QTimer;
 QT_END_NAMESPACE
 
 /** Local Bitcoin RPC console. */
@@ -94,6 +97,12 @@ private Q_SLOTS:
     void showOrHideBanTableIfRequired();
     /** clear the selected node */
     void clearSelectedNode();
+    /** Suggest commands for what is typed, or show the syntax of the one typed. */
+    void updateHints();
+    /** Put the suggestion clicked into the input line. */
+    void applyHint(const QString& link);
+    /** Read a few more commands' help into the suggestion index. */
+    void indexMoreCommands();
 
 public Q_SLOTS:
     void clear(bool clearHistory = true);
@@ -163,6 +172,13 @@ private:
     QMenu *banTableContextMenu = nullptr;
     int consoleFontSize = 0;
     QCompleter *autoCompleter = nullptr;
+    //! Offline command suggestions (rpc/hint.h), built from each command's help.
+    rpchint::Index m_hints;
+    std::vector<std::string> m_hint_queue;
+    std::vector<rpchint::Suggestion> m_shown_hints;
+    QLabel* m_hint_label = nullptr;
+    QTimer* m_hint_timer = nullptr;
+    QTimer* m_index_timer = nullptr;
     QThread thread;
     WalletModel* m_last_wallet_model{nullptr};
 

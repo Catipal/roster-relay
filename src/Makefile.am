@@ -225,6 +225,7 @@ BITCOIN_CORE_H = \
   rpc/client.h \
   rpc/mining.h \
   rpc/protocol.h \
+  rpc/hint.h \
   rpc/rawtransaction_util.h \
   rpc/register.h \
   rpc/request.h \
@@ -596,6 +597,7 @@ libbitcoin_common_a_SOURCES = \
   roster/payout.cpp \
   roster/peers.cpp \
   roster/record.cpp \
+  rpc/hint.cpp \
   rpc/rawtransaction_util.cpp \
   rpc/util.cpp \
   scheduler.cpp \

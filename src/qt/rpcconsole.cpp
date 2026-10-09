@@ -31,6 +31,7 @@
 
 #include <QFont>
 #include <QKeyEvent>
+#include <QLabel>
 #include <QMenu>
 #include <QMessageBox>
 #include <QScreen>
@@ -470,6 +471,25 @@ RPCConsole::RPCConsole(interfaces::Node& node, const PlatformStyle *_platformSty
     ui->lineEdit->setMaxLength(16 * 1024 * 1024);
     ui->messagesWidget->installEventFilter(this);
 
+    // Suggestions for what is typed, worked out here from the commands' own
+    // help: nothing typed is sent anywhere, and nothing is run until Enter.
+    m_hint_label = new QLabel(this);
+    m_hint_label->setWordWrap(true);
+    m_hint_label->setTextFormat(Qt::RichText);
+    m_hint_label->setTextInteractionFlags(Qt::LinksAccessibleByMouse | Qt::LinksAccessibleByKeyboard);
+    m_hint_label->setContentsMargins(4, 2, 4, 2);
+    m_hint_label->hide();
+    ui->verticalLayout_3->addWidget(m_hint_label);
+    m_hint_timer = new QTimer(this);
+    m_hint_timer->setSingleShot(true);
+    m_hint_timer->setInterval(250);
+    m_index_timer = new QTimer(this);
+    m_index_timer->setInterval(10);
+    connect(m_hint_timer, &QTimer::timeout, this, &RPCConsole::updateHints);
+    connect(m_index_timer, &QTimer::timeout, this, &RPCConsole::indexMoreCommands);
+    connect(ui->lineEdit, &QLineEdit::textEdited, m_hint_timer, static_cast<void (QTimer::*)()>(&QTimer::start));
+    connect(m_hint_label, &QLabel::linkActivated, this, &RPCConsole::applyHint);
+
     connect(ui->clearButton, &QPushButton::clicked, this, &RPCConsole::clear);
     connect(ui->fontBiggerButton, &QPushButton::clicked, this, &RPCConsole::fontBigger);
     connect(ui->fontSmallerButton, &QPushButton::clicked, this, &RPCConsole::fontSmaller);
@@ -679,6 +699,10 @@ void RPCConsole::setClientModel(ClientModel *model, int bestblock_height, int64_
 
         wordList << "help-console";
         wordList.sort();
+        // Read the commands' help for suggestions a few at a time, so the
+        // window stays responsive while it does.
+        m_hint_queue = commandList;
+        m_index_timer->start();
         autoCompleter = new QCompleter(wordList, this);
         autoCompleter->setModelSorting(QCompleter::CaseSensitivelySortedModel);
         // ui->lineEdit is initially disabled because running commands is only
@@ -691,9 +715,76 @@ void RPCConsole::setClientModel(ClientModel *model, int bestblock_height, int64_
     }
     if (!model) {
         // Client model is being set to 0, this means shutdown() is about to be called.
+        m_index_timer->stop();
+        m_hint_timer->stop();
         thread.quit();
         thread.wait();
     }
+}
+
+void RPCConsole::indexMoreCommands()
+{
+    for (int i = 0; i < 12 && !m_hint_queue.empty(); ++i) {
+        const std::string name = m_hint_queue.back();
+        m_hint_queue.pop_back();
+        try {
+            UniValue params(UniValue::VARR);
+            params.push_back(name);
+            const UniValue help = m_node.executeRpc("help", params, "");
+            if (help.isStr()) m_hints.Add(rpchint::ParseHelp(name, help.get_str()));
+        } catch (...) {
+            // A command whose help cannot be read is simply not suggested.
+        }
+    }
+    if (m_hint_queue.empty()) {
+        m_index_timer->stop();
+        if (!ui->lineEdit->text().trimmed().isEmpty()) updateHints();
+    }
+}
+
+void RPCConsole::updateHints()
+{
+    const QString text = ui->lineEdit->text().trimmed();
+    m_shown_hints.clear();
+    if (text.isEmpty() || m_hints.Size() == 0) {
+        m_hint_label->hide();
+        return;
+    }
+    const QString dim = palette().color(QPalette::Disabled, QPalette::Text).name();
+    // A command already typed: show what it takes.
+    if (const rpchint::CommandDoc* doc = m_hints.Find(text.section(' ', 0, 0).toStdString())) {
+        m_hint_label->setText(QString("<span style=\"color:%1\">%2 &mdash; %3</span>")
+                                  .arg(dim, GUIUtil::HtmlEscape(QString::fromStdString(doc->syntax)),
+                                       GUIUtil::HtmlEscape(QString::fromStdString(doc->summary))));
+        m_hint_label->show();
+        return;
+    }
+    m_shown_hints = m_hints.Suggest(text.toStdString(), 3);
+    if (m_shown_hints.empty()) {
+        m_hint_label->hide();
+        return;
+    }
+    QString html = QString("<span style=\"color:%1\">%2</span>").arg(dim, tr("Did you mean:"));
+    for (size_t i = 0; i < m_shown_hints.size(); ++i) {
+        const rpchint::Suggestion& s = m_shown_hints[i];
+        html += QString("<br><a href=\"%1\">%2</a> <span style=\"color:%3\">&mdash; %4</span>")
+                    .arg(QString::number(i), GUIUtil::HtmlEscape(QString::fromStdString(s.line)), dim,
+                         GUIUtil::HtmlEscape(QString::fromStdString(s.complete ? s.summary : s.syntax)));
+    }
+    m_hint_label->setText(html);
+    m_hint_label->show();
+}
+
+void RPCConsole::applyHint(const QString& link)
+{
+    bool ok = false;
+    const int index = link.toInt(&ok);
+    if (!ok || index < 0 || index >= (int)m_shown_hints.size()) return;
+    const rpchint::Suggestion& s = m_shown_hints[index];
+    // Put in the line, never run: the person reads it and presses Enter.
+    ui->lineEdit->setText(QString::fromStdString(s.line) + (s.complete ? "" : " "));
+    ui->lineEdit->setFocus();
+    updateHints();
 }
 
 #ifdef ENABLE_WALLET
@@ -811,7 +902,8 @@ void RPCConsole::clear(bool clearHistory)
     message(CMD_REPLY, (tr("Welcome to the %1 RPC console.").arg(PACKAGE_NAME) + "<br>" +
                         tr("Use up and down arrows to navigate history, and %1 to clear screen.").arg("<b>"+clsKey+"</b>") + "<br>" +
                         tr("Type %1 for an overview of available commands.").arg("<b>help</b>") + "<br>" +
-                        tr("For more information on using this console type %1.").arg("<b>help-console</b>") +
+                        tr("For more information on using this console type %1.").arg("<b>help-console</b>") + "<br>" +
+                        tr("Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.").arg("<b>pay pilot 2</b>") +
                         "<br><span class=\"secwarning\"><br>" +
                         tr("WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramifications of a command.") +
                         "</span>"),
@@ -888,6 +980,8 @@ void RPCConsole::setMempoolSize(long numberOfTxs, size_t dynUsage)
 
 void RPCConsole::on_lineEdit_returnPressed()
 {
+    m_hint_timer->stop();
+    m_hint_label->hide();
     QString cmd = ui->lineEdit->text();
 
     if(!cmd.isEmpty())

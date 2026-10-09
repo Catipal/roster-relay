@@ -66,6 +66,7 @@ private Q_SLOTS:
     void onChanged();
     void onOpenCoreOptions();
     void onDisplayUnitChanged(int index);
+    void onLanguageChanged(int index);
 
 private:
     void Load();
@@ -85,6 +86,7 @@ private:
     QCheckBox* m_radiobridge{nullptr};
     QLineEdit* m_python{nullptr};
     QComboBox* m_unit{nullptr};
+    QComboBox* m_language{nullptr};
     QLabel* m_restart_note{nullptr};
     QPushButton* m_core_options{nullptr};
 };

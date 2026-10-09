@@ -24,6 +24,8 @@
 
 #include <QCheckBox>
 #include <QComboBox>
+#include <QDir>
+#include <QLocale>
 #include <QFont>
 #include <QFormLayout>
 #include <QGroupBox>
@@ -103,9 +105,9 @@ SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
     outer->addWidget(title);
 
     QLabel* subtitle = new QLabel(
-        tr("What this client does that the wallet client does not. Everything else "
-           "\xe2\x80\x94 proxy, ports, pruning, language \xe2\x80\x94 is the same question in both, "
-           "and is asked in one place."),
+        tr("What this client does that the wallet client does not, and the language. Everything else "
+           "\xe2\x80\x94 proxy, ports, pruning \xe2\x80\x94 is the same question in both, and is asked "
+           "in one place."),
         this);
     subtitle->setWordWrap(true);
     subtitle->setEnabled(false);
@@ -185,6 +187,25 @@ SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
     QFormLayout* display_form = new QFormLayout(display);
     m_unit = new QComboBox(display);
     display_form->addRow(tr("Show amounts in"), m_unit);
+    // The same list and the same setting as the wallet client's options:
+    // every translation the client carries, by its own name.
+    m_language = new QComboBox(display);
+    m_language->addItem(tr("The computer's language"), QString());
+    for (const QString& code : QDir(":translations").entryList()) {
+        const QLocale locale(code);
+        QString name = locale.nativeLanguageName();
+        if (name.isEmpty()) name = code;
+        name[0] = name[0].toUpper();
+        if (code.contains('_')) name += QString(" \xe2\x80\x94 ") + locale.nativeCountryName();
+        m_language->addItem(name + QString(" (%1)").arg(code), code);
+    }
+    {
+        const int current = m_language->findData(QSettings().value("language", QString()).toString());
+        m_language->setCurrentIndex(current >= 0 ? current : 0);
+    }
+    m_language->setToolTip(tr("Takes effect when BPS Relay starts again. Texts the node itself sends, such "
+                              "as error messages from commands, stay in English."));
+    display_form->addRow(tr("Language"), m_language);
     outer->addWidget(display);
 
     m_restart_note = new QLabel(this);
@@ -211,6 +232,8 @@ SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
     connect(m_radiobridge, &QCheckBox::toggled, this, &SettingsPage::onChanged);
     connect(m_python, &QLineEdit::editingFinished, this, &SettingsPage::onChanged);
     connect(m_core_options, &QPushButton::clicked, this, &SettingsPage::onOpenCoreOptions);
+    connect(m_language, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            this, &SettingsPage::onLanguageChanged);
 
     Load();
 }
@@ -265,6 +288,21 @@ void SettingsPage::onDisplayUnitChanged(int index)
     // The display unit is the one setting here that takes effect at once,
     // because it is the GUI's own rather than the node's.
     m_options_model->setDisplayUnit(m_unit->itemData(index));
+}
+
+void SettingsPage::onLanguageChanged(int index)
+{
+    if (m_loading || index < 0) return;
+    const QString code = m_language->itemData(index).toString();
+    // Through the options model when there is one, so the wallet client's
+    // options dialog, which reads the same setting, agrees.
+    if (m_options_model) {
+        m_options_model->setData(m_options_model->index(OptionsModel::Language, 0), code);
+    } else {
+        QSettings().setValue("language", code);
+    }
+    m_restart_note->setVisible(true);
+    m_restart_note->setText(tr("Saved. The language changes when BPS Relay starts again."));
 }
 
 void SettingsPage::onChanged()

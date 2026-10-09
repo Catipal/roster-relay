@@ -17,31 +17,32 @@ QString HumanBlocks(int blocks)
     // Written out longhand rather than with Qt's %n plural form. Without a
     // translation loaded %n falls back to the source string, so "%n month(s)"
     // reaches the screen with the brackets still in it.
-    const char* CTX = "BpsUtil";
-    if (blocks <= 0) return QCoreApplication::translate(CTX, "less than a minute");
+    // The context is written out in every call, not kept in a variable:
+    // lupdate reads it from the source and cannot follow a variable.
+    if (blocks <= 0) return QCoreApplication::translate("BpsUtil", "less than a minute");
 
     const qint64 minutes = (qint64)blocks * SECONDS_PER_BLOCK / 60;
     if (minutes < 90) {
-        if (minutes <= 1) return QCoreApplication::translate(CTX, "a minute");
-        return QCoreApplication::translate(CTX, "%1 minutes").arg(minutes);
+        if (minutes <= 1) return QCoreApplication::translate("BpsUtil", "a minute");
+        return QCoreApplication::translate("BpsUtil", "%1 minutes").arg(minutes);
     }
 
     const qint64 hours = minutes / 60;
     if (hours < 48) {
-        if (hours == 1) return QCoreApplication::translate(CTX, "an hour");
-        return QCoreApplication::translate(CTX, "%1 hours").arg(hours);
+        if (hours == 1) return QCoreApplication::translate("BpsUtil", "an hour");
+        return QCoreApplication::translate("BpsUtil", "%1 hours").arg(hours);
     }
 
     const qint64 days = hours / 24;
-    if (days < 60) return QCoreApplication::translate(CTX, "%1 days").arg(days);
+    if (days < 60) return QCoreApplication::translate("BpsUtil", "%1 days").arg(days);
 
     const qint64 months = days / 30;
     if (months < 12) {
-        if (months == 1) return QCoreApplication::translate(CTX, "a month");
-        return QCoreApplication::translate(CTX, "%1 months").arg(months);
+        if (months == 1) return QCoreApplication::translate("BpsUtil", "a month");
+        return QCoreApplication::translate("BpsUtil", "%1 months").arg(months);
     }
-    if (months < 24) return QCoreApplication::translate(CTX, "about a year");
-    return QCoreApplication::translate(CTX, "over a year");
+    if (months < 24) return QCoreApplication::translate("BpsUtil", "about a year");
+    return QCoreApplication::translate("BpsUtil", "over a year");
 }
 
 QString ShortKey(const QString& hex)

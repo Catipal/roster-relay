@@ -57,6 +57,16 @@ them, travel through three relays, and wait at the recipient's mailboxes for
 up to two weeks until they collect them.
 
 
+Radio
+-----
+With a LoRa radio (an RNode) or another radio Reticulum supports, your node
+can reach the overlay without the internet, through a BPS node in radio range
+that has it. Install Reticulum (pip install rns), set up the radio in
+Reticulum's configuration, and turn on Settings, Radio. BPS Relay starts
+bps-rns-bridge.py, which comes with it, by itself. It is slow: a letter takes
+minutes.
+
+
 Names
 -----
 A name points people to your roster key. Get one on the Names tab of the Node

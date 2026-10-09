@@ -122,6 +122,32 @@ protocol in December 2025:
 A letter is signed by the sender's roster key and bound to the recipient, so
 it cannot be passed on to someone else as though it had been written to them.
 
+Radio
+-----
+
+The overlay can run over radio as well as the internet, through Reticulum:
+LoRa with an RNode, packet radio, serial links. A node without the internet
+reaches the overlay through a radio neighbour that is a listed relay, so its
+mail and listing requests still go out.
+
+- **Turning it on** - Settings, Radio: "Carry the overlay over radio too".
+  BPS Relay then starts the Reticulum bridge (`bps-rns-bridge.py`, shipped
+  beside it) by itself. Reticulum is installed separately, with
+  `pip install rns`, and the radio is set up in Reticulum's own
+  configuration. `contrib/reticulum/README.md` walks through it.
+- **Neighbours** - the BPS nodes heard on the radio are on the Overlay page.
+  Each one announces itself every half hour, and again soon after it hears a
+  newcomer.
+- **Entering by radio** - when a neighbour is a listed relay, your paths
+  start there (on by default; Settings, Radio). Everything after that first
+  hop goes over the internet as before.
+- **Private as before** - the bridge carries the overlay's datagrams and
+  never sees inside them; the handshake still proves the neighbour is who it
+  announced.
+
+Radio is slow - a LoRa link moves a few hundred bytes a second - so a letter
+sent this way takes minutes.
+
 Names
 -----
 
@@ -248,6 +274,8 @@ New options
 | `-rosterindexwindow` | 0, keep everything | Blocks of roster history to keep; at least 175,320 (a year), or the node refuses to start |
 | `-overlay` | on in BPS Relay, off in the node | Run the encrypted relay network |
 | `-overlayport` | one above this node's peer-to-peer port (48931 on mainnet) | Its UDP port |
+| `-radio` | off | Carry the overlay over Reticulum too (needs the bridge running) |
+| `-radioentry` | on | With `-radio`, enter the overlay through a radio neighbour that is a listed relay |
 | `-nameindex` | on in BPS Relay, off in the node | Keep an index of names, to look them up, register, sell and buy |
 | `-mail` | on | Send and collect mail (needs the overlay) |
 | `-mailbox` | on | Hold sealed mail for others (needs the overlay) |
@@ -276,8 +304,14 @@ revocations `getidentity`, `createidentity`, `createdelegation`,
 `createrotation`, `createveto`, `createrevocation`, `sendrevocation`,
 `listrevocations`, `getageproof` and `verifyageproof`; and for the roster's
 fingerprint `getrostersnapshot`, `verifyrostersnapshot`,
-`getrostermembership` and `verifyrostermembership`. Each has its full
-description in `help`.
+`getrostermembership` and `verifyrostermembership`; and `getradioinfo` for
+radio links. Each has its full description in `help`.
+
+The console suggests commands from what you type in plain words - "pay pilot
+2", "saldo", "how many blocks" - in English, Italian, Spanish, French, German
+and Portuguese. Suggestions are worked out on this computer from the
+commands' own help; nothing typed is sent anywhere, and a suggestion is only
+put in the input line, never run.
 
 Nodes pass revocations to each other in a new message, `rosterrevoke`, which
 older nodes ignore.
@@ -288,6 +322,12 @@ compact filters that match listings.
 
 Known issues
 ============
+
+- Two nodes with only radio between them cannot mail each other: the radio
+  replaces the first hop of a path, and mailboxes are reached over the
+  internet from there.
+- Radio needs Python and Reticulum installed beside BPS Relay. Ham radio
+  bands do not allow encrypted traffic; use licence-free ones such as LoRa's.
 
 - The relay network's handshake has not been reviewed by anyone who did not
   write it. Do not rely on it for anything that must stay private.

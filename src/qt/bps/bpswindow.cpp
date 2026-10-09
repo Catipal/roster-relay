@@ -10,6 +10,7 @@
 #include <qt/bps/mailpage.h>
 #include <qt/bps/namespage.h>
 #include <qt/bps/overlaypage.h>
+#include <qt/bps/radiobridge.h>
 #include <qt/bps/serverpage.h>
 #include <qt/bps/settingspage.h>
 #ifdef ENABLE_WALLET
@@ -200,6 +201,7 @@ BpsWindow::BpsWindow(interfaces::Node& node, const PlatformStyle* platformStyle,
 
 BpsWindow::~BpsWindow()
 {
+    if (m_radio_bridge) m_radio_bridge->Stop();
     QSettings settings;
     settings.setValue("BpsWindowGeometry", saveGeometry());
     // m_console is a child of the page stack, so Qt owns it from here.
@@ -371,6 +373,14 @@ void BpsWindow::setClientModel(ClientModel* model, interfaces::BlockAndHeaderTip
         } else {
             m_console->setClientModel(model);
         }
+    }
+
+    // The radio bridge runs while the node does (overlay/radio.h).
+    if (model && !m_radio_bridge) {
+        m_radio_bridge = new RadioBridge(this);
+        m_radio_bridge->StartIfWanted();
+    } else if (!model && m_radio_bridge) {
+        m_radio_bridge->Stop();
     }
 
     m_discovery->setClientModel(model);

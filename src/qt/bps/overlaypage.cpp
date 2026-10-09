@@ -34,6 +34,7 @@ const char* TAG_OVERLAY = "ov:info";
 const char* TAG_ROSTER = "ov:roster";
 const char* TAG_SUBSIDY = "ov:subsidy";
 const char* TAG_PAYOUT = "ov:payout";
+const char* TAG_RADIO = "ov:radio";
 const int REFRESH_MS = 5000;
 
 //! Blocks a day at the chain's 180-second spacing.
@@ -162,6 +163,17 @@ OverlayPage::OverlayPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(
     rv_layout->addWidget(m_rendezvous);
     lists->addWidget(rv_box);
 
+    m_radio_box = new QGroupBox(tr("Heard on the radio"), this);
+    QVBoxLayout* radio_layout = new QVBoxLayout(m_radio_box);
+    m_radio_state = new QLabel(m_radio_box);
+    m_radio_state->setWordWrap(true);
+    m_radio_state->setEnabled(false);
+    m_radio = new QListWidget(m_radio_box);
+    radio_layout->addWidget(m_radio_state);
+    radio_layout->addWidget(m_radio);
+    m_radio_box->setVisible(false);
+    lists->addWidget(m_radio_box);
+
     outer->addLayout(lists, 1);
 
     // --- what relaying pays ------------------------------------------------
@@ -244,6 +256,7 @@ void OverlayPage::Refresh()
     m_rpc.Call(TAG_OVERLAY, "getoverlayinfo");
     m_rpc.Call(TAG_ROSTER, "getrosterinfo");
     m_rpc.Call(TAG_PAYOUT, "getrelaypayout");
+    m_rpc.Call(TAG_RADIO, "getradioinfo");
 
     // Not getmininginfo, which would be the obvious source for a block reward:
     // this fork made it ask the wallet for a stake weight through
@@ -301,6 +314,39 @@ void OverlayPage::onRpcResult(const QString& tag, const UniValue& value)
         return;
     }
 
+    if (tag == TAG_RADIO) {
+        const bool on = find_value(value, "enabled").isTrue();
+        m_radio_box->setVisible(on);
+        if (!on) return;
+        const UniValue& neighbours = find_value(value, "neighbours");
+        const size_t count = neighbours.isArray() ? neighbours.size() : 0;
+        if (!find_value(value, "bridge").isTrue()) {
+            m_radio_state->setText(tr("The Reticulum bridge is not reporting. Start it from Settings, Radio, or run "
+                                      "bps-rns-bridge.py yourself."));
+        } else if (count == 0) {
+            m_radio_state->setText(tr("Listening. No BPS node heard on the radio yet; nodes announce themselves "
+                                      "every half hour."));
+        } else {
+            m_radio_state->setText(find_value(value, "entry").isTrue()
+                                       ? tr("Your traffic enters through a radio neighbour when one is a listed relay.")
+                                       : tr("Heard, but your traffic enters over the internet (Settings, Radio)."));
+        }
+        m_radio->clear();
+        const qint64 now = QDateTime::currentSecsSinceEpoch();
+        for (size_t i = 0; i < count; ++i) {
+            const UniValue& n = neighbours[i];
+            const QString key = QString::fromStdString(find_value(n, "key").get_str());
+            const int hops = find_value(n, "hops").isNum() ? find_value(n, "hops").get_int() : -1;
+            const qint64 heard = find_value(n, "heard").isNum() ? find_value(n, "heard").get_int64() : 0;
+            QString details = hops == 1 ? tr("1 hop") : hops > 1 ? tr("%1 hops").arg(hops) : tr("hops unknown");
+            details += ", " + tr("heard %1 ago").arg(BpsUtil::HumanBlocks((int)((now - heard) / BpsUtil::SECONDS_PER_BLOCK)));
+            if (find_value(n, "relay").isTrue()) details += ", " + tr("a relay");
+            QListWidgetItem* item = new QListWidgetItem(BpsUtil::ShortKey(key) + "\n" + details);
+            item->setToolTip(key);
+            m_radio->addItem(item);
+        }
+        return;
+    }
     if (tag == TAG_SUBSIDY) {
         const UniValue& reward = find_value(value, "subsidy");
         m_subsidy = reward.isNum() ? reward.get_int64() : -1;

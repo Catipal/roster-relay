@@ -15,6 +15,7 @@ QT_BEGIN_NAMESPACE
 class QCheckBox;
 class QComboBox;
 class QLabel;
+class QLineEdit;
 class QPushButton;
 class QSpinBox;
 QT_END_NAMESPACE
@@ -53,6 +54,11 @@ public:
      */
     static void ApplyStoredSettings();
 
+    /** Whether BPS Relay should start the Reticulum bridge itself (qt/bps/radiobridge.h). */
+    static bool StartRadioBridge();
+    /** The command that runs Python, for the bridge. */
+    static QString PythonCommand();
+
 Q_SIGNALS:
     void message(const QString& title, const QString& message, unsigned int style);
 
@@ -74,6 +80,10 @@ private:
     QCheckBox* m_rosterconnect{nullptr};
     QCheckBox* m_overlay{nullptr};
     QSpinBox* m_overlayport{nullptr};
+    QCheckBox* m_radio{nullptr};
+    QCheckBox* m_radioentry{nullptr};
+    QCheckBox* m_radiobridge{nullptr};
+    QLineEdit* m_python{nullptr};
     QComboBox* m_unit{nullptr};
     QLabel* m_restart_note{nullptr};
     QPushButton* m_core_options{nullptr};

@@ -12,6 +12,7 @@ class ClientModel;
 class UniValue;
 
 QT_BEGIN_NAMESPACE
+class QGroupBox;
 class QLabel;
 class QListWidget;
 class QTimer;
@@ -77,6 +78,9 @@ private:
     QLabel* m_off_note{nullptr};
     QListWidget* m_guards{nullptr};
     QListWidget* m_rendezvous{nullptr};
+    QGroupBox* m_radio_box{nullptr};
+    QLabel* m_radio_state{nullptr};
+    QListWidget* m_radio{nullptr};
     QTimer* m_timer{nullptr};
 };
 

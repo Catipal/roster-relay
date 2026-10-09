@@ -25,6 +25,7 @@ BPS_QT_H = \
   qt/bps/namespage.h \
   qt/bps/overlaypage.h \
   qt/bps/publishdialog.h \
+  qt/bps/radiobridge.h \
   qt/bps/rostermodel.h \
   qt/bps/serverpage.h \
   qt/bps/settingspage.h
@@ -43,6 +44,7 @@ BPS_QT_CPP = \
   qt/bps/namespage.cpp \
   qt/bps/overlaypage.cpp \
   qt/bps/publishdialog.cpp \
+  qt/bps/radiobridge.cpp \
   qt/bps/rostermodel.cpp \
   qt/bps/serverpage.cpp \
   qt/bps/settingspage.cpp
@@ -60,6 +62,7 @@ BPS_QT_MOC_CPP = \
   qt/bps/moc_namespage.cpp \
   qt/bps/moc_overlaypage.cpp \
   qt/bps/moc_publishdialog.cpp \
+  qt/bps/moc_radiobridge.cpp \
   qt/bps/moc_rostermodel.cpp \
   qt/bps/moc_serverpage.cpp \
   qt/bps/moc_settingspage.cpp

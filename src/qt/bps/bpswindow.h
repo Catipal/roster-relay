@@ -21,6 +21,7 @@ class NetworkStyle;
 class OverlayPage;
 class PlatformStyle;
 class RPCConsole;
+class RadioBridge;
 class MailPage;
 class NamesPage;
 class ServerPage;
@@ -135,6 +136,7 @@ private:
     DiscoveryPage* m_discovery{nullptr};
     OverlayPage* m_overlay{nullptr};
     RPCConsole* m_console{nullptr};
+    RadioBridge* m_radio_bridge{nullptr};
     MailPage* m_mail{nullptr};
     NamesPage* m_names{nullptr};
     ServerPage* m_server{nullptr};

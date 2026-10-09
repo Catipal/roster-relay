@@ -8,6 +8,8 @@
 
 #include <qt/bps/settingspage.h>
 
+#include <qt/bps/radiobridge.h>
+
 #include <qt/bitcoinunits.h>
 #include <qt/clientmodel.h>
 #include <qt/optionsdialog.h>
@@ -15,6 +17,7 @@
 
 #include <chainparams.h>
 #include <index/rosterindex.h>
+#include <overlay/radio.h>
 #include <overlay/socket.h>
 #include <roster/peers.h>
 #include <util/system.h>
@@ -26,6 +29,7 @@
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <QLineEdit>
 #include <QPushButton>
 #include <QSettings>
 #include <QSpinBox>
@@ -39,7 +43,22 @@ const char* KEY_NAMEINDEX = "bps/nameindex";
 const char* KEY_ROSTERCONNECT = "bps/rosterconnect";
 const char* KEY_OVERLAY = "bps/overlay";
 const char* KEY_OVERLAYPORT = "bps/overlayport";
+const char* KEY_RADIO = "bps/radio";
+const char* KEY_RADIOENTRY = "bps/radioentry";
+const char* KEY_RADIOBRIDGE = "bps/radiobridge";
+const char* KEY_PYTHON = "bps/python";
 } // namespace
+
+bool SettingsPage::StartRadioBridge()
+{
+    return QSettings().value(KEY_RADIOBRIDGE, true).toBool();
+}
+
+QString SettingsPage::PythonCommand()
+{
+    const QString stored = QSettings().value(KEY_PYTHON).toString().trimmed();
+    return stored.isEmpty() ? RadioBridge::DefaultPython() : stored;
+}
 
 void SettingsPage::ApplyStoredSettings()
 {
@@ -65,6 +84,8 @@ void SettingsPage::ApplyStoredSettings()
     if (settings.contains(KEY_OVERLAYPORT)) {
         gArgs.SoftSetArg("-overlayport", settings.value(KEY_OVERLAYPORT).toString().toStdString());
     }
+    gArgs.SoftSetBoolArg("-radio", settings.value(KEY_RADIO, overlay::DEFAULT_RADIO).toBool());
+    gArgs.SoftSetBoolArg("-radioentry", settings.value(KEY_RADIOENTRY, overlay::DEFAULT_RADIO_ENTRY).toBool());
 }
 
 SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
@@ -128,6 +149,37 @@ SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
     overlay_layout->addLayout(overlay_form);
     outer->addWidget(overlay_box);
 
+    // --- radio -------------------------------------------------------------
+    QGroupBox* radio_box = new QGroupBox(tr("Radio"), this);
+    QVBoxLayout* radio_layout = new QVBoxLayout(radio_box);
+    m_radio = new QCheckBox(tr("Carry the overlay over radio too, through Reticulum"), radio_box);
+    m_radio->setToolTip(tr("LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up "
+                           "to use. Needs the overlay."));
+    radio_layout->addWidget(m_radio);
+    m_radioentry = new QCheckBox(tr("Enter the overlay through radio neighbours, so mail works without the internet"),
+                                 radio_box);
+    m_radioentry->setToolTip(tr("When a BPS node heard on the radio is a listed relay, your mail and listing "
+                                "requests go through it. A radio link is much slower than the internet."));
+    radio_layout->addWidget(m_radioentry);
+    m_radiobridge = new QCheckBox(tr("Start the Reticulum bridge with BPS Relay"), radio_box);
+    m_radiobridge->setToolTip(tr("Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge "
+                                 "yourself."));
+    radio_layout->addWidget(m_radiobridge);
+    QFormLayout* radio_form = new QFormLayout();
+    m_python = new QLineEdit(radio_box);
+    m_python->setPlaceholderText(RadioBridge::DefaultPython());
+    radio_form->addRow(tr("Python command"), m_python);
+    radio_layout->addLayout(radio_form);
+    QLabel* radio_note = new QLabel(
+        tr("Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio "
+           "in Reticulum's own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted "
+           "traffic, so use licence-free bands such as LoRa's.").arg("<b>pip install rns</b>"),
+        radio_box);
+    radio_note->setWordWrap(true);
+    radio_note->setEnabled(false);
+    radio_layout->addWidget(radio_note);
+    outer->addWidget(radio_box);
+
     // --- display -----------------------------------------------------------
     QGroupBox* display = new QGroupBox(tr("Display"), this);
     QFormLayout* display_form = new QFormLayout(display);
@@ -154,6 +206,10 @@ SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
     connect(m_overlay, &QCheckBox::toggled, this, &SettingsPage::onChanged);
     connect(m_overlayport, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, &SettingsPage::onChanged);
+    connect(m_radio, &QCheckBox::toggled, this, &SettingsPage::onChanged);
+    connect(m_radioentry, &QCheckBox::toggled, this, &SettingsPage::onChanged);
+    connect(m_radiobridge, &QCheckBox::toggled, this, &SettingsPage::onChanged);
+    connect(m_python, &QLineEdit::editingFinished, this, &SettingsPage::onChanged);
     connect(m_core_options, &QPushButton::clicked, this, &SettingsPage::onOpenCoreOptions);
 
     Load();
@@ -168,6 +224,16 @@ void SettingsPage::Load()
     m_rosterconnect->setChecked(settings.value(KEY_ROSTERCONNECT, roster::DEFAULT_ROSTERCONNECT).toBool());
     m_overlay->setChecked(settings.value(KEY_OVERLAY, true).toBool());
     m_overlayport->setValue((int)gArgs.GetArg("-overlayport", overlay::OverlayPortFor((uint16_t)gArgs.GetArg("-port", Params().GetDefaultPort()))));
+    // What the node runs with: the stored choice, unless the command line or
+    // the configuration file said otherwise.
+    m_radio->setChecked(gArgs.GetBoolArg("-radio", settings.value(KEY_RADIO, overlay::DEFAULT_RADIO).toBool()));
+    m_radioentry->setChecked(gArgs.GetBoolArg("-radioentry",
+                                              settings.value(KEY_RADIOENTRY, overlay::DEFAULT_RADIO_ENTRY).toBool()));
+    m_radiobridge->setChecked(settings.value(KEY_RADIOBRIDGE, true).toBool());
+    m_python->setText(settings.value(KEY_PYTHON).toString());
+    m_radioentry->setEnabled(m_radio->isChecked());
+    m_radiobridge->setEnabled(m_radio->isChecked());
+    m_python->setEnabled(m_radio->isChecked());
     m_loading = false;
 }
 
@@ -211,6 +277,13 @@ void SettingsPage::onChanged()
     settings.setValue(KEY_ROSTERCONNECT, m_rosterconnect->isChecked());
     settings.setValue(KEY_OVERLAY, m_overlay->isChecked());
     settings.setValue(KEY_OVERLAYPORT, m_overlayport->value());
+    settings.setValue(KEY_RADIO, m_radio->isChecked());
+    settings.setValue(KEY_RADIOENTRY, m_radioentry->isChecked());
+    settings.setValue(KEY_RADIOBRIDGE, m_radiobridge->isChecked());
+    settings.setValue(KEY_PYTHON, m_python->text().trimmed());
+    m_radioentry->setEnabled(m_radio->isChecked());
+    m_radiobridge->setEnabled(m_radio->isChecked());
+    m_python->setEnabled(m_radio->isChecked());
 
     m_restart_note->setVisible(true);
     m_restart_note->setText(tr("Saved. These are read when the node starts, so restart the "

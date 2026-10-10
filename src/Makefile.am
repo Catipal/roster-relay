@@ -135,6 +135,9 @@ BITCOIN_CORE_H = \
   compat/cpuid.h \
   compat/endian.h \
   compat/sanity.h \
+  companion/policy.h \
+  companion/protocol.h \
+  companion/store.h \
   compressor.h \
   consensus/consensus.h \
   consensus/tx_check.h \
@@ -362,6 +365,7 @@ libbitcoin_server_a_SOURCES = \
   blockfilter.cpp \
   chain.cpp \
   checkpoints.cpp \
+  companion/store.cpp \
   consensus/tx_verify.cpp \
   dbwrapper.cpp \
   flatfile.cpp \
@@ -646,6 +650,8 @@ libbitcoin_common_a_SOURCES = \
   bloom.cpp \
   chainparams.cpp \
   coins.cpp \
+  companion/policy.cpp \
+  companion/protocol.cpp \
   compressor.cpp \
   core_read.cpp \
   core_write.cpp \

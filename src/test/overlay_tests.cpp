@@ -2638,4 +2638,114 @@ BOOST_AUTO_TEST_CASE(select_counts_local_relays_only_when_told_to)
     BOOST_CHECK_EQUAL(path.size(), 3u);
 }
 
+namespace {
+
+/** A relay on 127.0.0.1 that dials whichever stop a path asks for, as a listed relay would. */
+void DialAnything(overlay::Relay& r)
+{
+    r.SetDialPolicy([](const CService&, const CPubKey&) { return true; });
+}
+
+} // namespace
+
+BOOST_AUTO_TEST_CASE(relay_circuit_shows_a_chosen_key_to_its_destination_only)
+{
+    // A phone builds A -> R1 -> R2 -> C and proves its device key to C, its
+    // home node, and to nobody else: the relays on the way still meet a
+    // stranger, and C never sees the key A's sessions run on.
+    CKey ka, k1, k2, kc, device;
+    for (CKey* k : {&ka, &k1, &k2, &kc, &device}) k->MakeNewKey(true);
+
+    overlay::Relay A(ka), R1(k1), R2(k2), C(kc);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    for (overlay::Relay* r : {&A, &R1, &R2, &C}) BOOST_REQUIRE_MESSAGE(r->Bind(any, err), err);
+
+    Mutex m;
+    std::vector<std::pair<overlay::Hop, std::vector<unsigned char>>> at_c;
+    Inbox in_1, in_2;
+    BOOST_REQUIRE(A.Start([](const overlay::Hop&, std::vector<unsigned char>&&) {}));
+    BOOST_REQUIRE(R1.Start(in_1.Handler()));
+    BOOST_REQUIRE(R2.Start(in_2.Handler()));
+    BOOST_REQUIRE(C.Start([&](const overlay::Hop& from, std::vector<unsigned char>&& p) {
+        LOCK(m);
+        at_c.emplace_back(from, std::move(p));
+    }));
+    DialAnything(R1);
+    DialAnything(R2);
+    // The builder being client-only does not stop it building.
+    A.SetClientOnly(true);
+
+    const std::vector<overlay::Relay::CircuitHop> hops{{R1.BoundAddress(), k1.GetPubKey()},
+                                                        {R2.BoundAddress(), k2.GetPubKey()},
+                                                        {C.BoundAddress(), kc.GetPubKey()}};
+    uint64_t path = 0;
+    BOOST_REQUIRE_MESSAGE(A.BuildCircuit(hops, path, err, std::chrono::milliseconds{4000}, false, &device), err);
+
+    BOOST_CHECK(WaitFor([&] { return C.SecretPeerIdentity(path) == device.GetPubKey(); }));
+    BOOST_CHECK(C.SecretPeerIdentity(path) != ka.GetPubKey());
+    // R2, the stop before, was spoken to by a key made for that handshake.
+    const std::vector<uint64_t> legs = A.CircuitLegs(path);
+    BOOST_REQUIRE_EQUAL(legs.size(), 2u);
+    const CPubKey seen_by_r2 = R2.SecretPeerIdentity(legs[0]);
+    BOOST_CHECK(seen_by_r2.IsValid());
+    BOOST_CHECK(seen_by_r2 != device.GetPubKey());
+    BOOST_CHECK(seen_by_r2 != ka.GetPubKey());
+
+    // What A sends reaches C from that path, under the device key.
+    const std::vector<unsigned char> hello{0x11, 0x22, 0x33};
+    BOOST_REQUIRE(WaitFor([&] {
+        {
+            LOCK(m);
+            if (!at_c.empty()) return true;
+        }
+        A.SendSecret(path, hello);
+        LOCK(m);
+        return !at_c.empty();
+    }, 10000));
+    {
+        LOCK(m);
+        BOOST_CHECK(at_c[0].second == hello);
+        BOOST_CHECK(at_c[0].first.via_path);
+        BOOST_CHECK(C.SecretPeerIdentity(at_c[0].first.path) == device.GetPubKey());
+    }
+    BOOST_CHECK_EQUAL(in_1.Count(), 0u);
+    BOOST_CHECK_EQUAL(in_2.Count(), 0u);
+
+    for (overlay::Relay* r : {&A, &R1, &R2, &C}) r->Stop();
+}
+
+BOOST_AUTO_TEST_CASE(relay_client_only_carries_nothing)
+{
+    // A phone on someone's path is no relay: asked to extend it, it stays
+    // silent and keeps no state for it.
+    CKey ka, kp, kc;
+    for (CKey* k : {&ka, &kp, &kc}) k->MakeNewKey(true);
+    overlay::Relay A(ka), P(kp), C(kc);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    for (overlay::Relay* r : {&A, &P, &C}) BOOST_REQUIRE_MESSAGE(r->Bind(any, err), err);
+    Inbox in_a, in_p, in_c;
+    BOOST_REQUIRE(A.Start(in_a.Handler()));
+    BOOST_REQUIRE(P.Start(in_p.Handler()));
+    BOOST_REQUIRE(C.Start(in_c.Handler()));
+    DialAnything(P);
+    P.SetClientOnly(true);
+
+    const std::vector<overlay::Relay::CircuitHop> hops{{P.BoundAddress(), kp.GetPubKey()},
+                                                        {C.BoundAddress(), kc.GetPubKey()}};
+    uint64_t path = 0;
+    BOOST_CHECK(!A.BuildCircuit(hops, path, err, std::chrono::milliseconds{900}));
+    BOOST_CHECK(err.find("did not answer") != std::string::npos);
+    BOOST_CHECK_EQUAL(P.PathCount(), 0u);
+    BOOST_CHECK(!P.HasSession(C.BoundAddress()));
+
+    // The same node, no longer client-only, carries it.
+    P.SetClientOnly(false);
+    BOOST_CHECK_MESSAGE(A.BuildCircuit(hops, path, err, std::chrono::milliseconds{4000}), err);
+    BOOST_CHECK(P.PathCount() > 0);
+
+    for (overlay::Relay* r : {&A, &P, &C}) r->Stop();
+}
+
 BOOST_AUTO_TEST_SUITE_END()

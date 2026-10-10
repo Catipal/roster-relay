@@ -111,6 +111,13 @@ public:
     void SetLimits(uint64_t daily_budget, uint64_t path_rate) { m_limits.Configure(daily_budget, path_rate); }
     TrafficLimits::Stats LimitStats() const;
 
+    /**
+     * Carry nobody's traffic and be nobody's meeting point: requests to extend
+     * a path, register a service or meet one are dropped unanswered. For a
+     * phone, which builds paths of its own and does nothing else.
+     */
+    void SetClientOnly(bool client_only) { m_client_only = client_only; }
+
     bool Connect(const CService& peer, const CPubKey& peer_static);
     CService BoundAddress() const { return m_socket.BoundAddress(); }
     bool HasSession(const CService& peer) { return m_socket.HasSession(peer); }
@@ -156,6 +163,14 @@ public:
      */
     bool ConnectSecret(uint64_t path_id, const CPubKey& far_static, bool anonymous = true);
 
+    /**
+     * The same, proving `as`: for a client the far end has to recognise while
+     * the relays on the way learn nothing about it. A paired phone proves its
+     * device key to its home node this way - a key that names no one on the
+     * roster and opens nothing but that one service.
+     */
+    bool ConnectSecretAs(uint64_t path_id, const CPubKey& far_static, const CKey& as);
+
     /** True once the far end of this path has completed the exchange. */
     bool HasSecretSession(uint64_t path_id);
 
@@ -181,11 +196,13 @@ public:
      *
      * `prove_last` shows the destination this node's roster key instead of a
      * throwaway one, as a service must to register at a meeting point; every
-     * relay before it still sees only throwaway keys.
+     * relay before it still sees only throwaway keys. `prove_as` does the same
+     * with a key of the caller's: a phone shows its device key to its home
+     * node this way, and to nothing else on the path.
      */
     bool BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out, std::string& error,
                       std::chrono::milliseconds step_timeout = std::chrono::milliseconds{4000},
-                      bool prove_last = false);
+                      bool prove_last = false, const CKey* prove_as = nullptr);
 
     /**
      * Whether the sessions this node opens with its neighbours over the
@@ -315,6 +332,7 @@ private:
     AppHandler m_app;
     PathHandler m_path;
     std::atomic<bool> m_interrupted{false};
+    std::atomic<bool> m_client_only{false};
 };
 
 /**

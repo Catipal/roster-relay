@@ -192,21 +192,30 @@ bool Relay::SendOnPath(uint64_t path_id, const std::vector<unsigned char>& inner
 
 bool Relay::ConnectSecret(uint64_t path_id, const CPubKey& far_static, bool anonymous)
 {
+    if (anonymous) {
+        // Made for this handshake and dropped with it. The far end sees a key
+        // it has never seen and never will again.
+        CKey once;
+        once.MakeNewKey(true);
+        return ConnectSecretAs(path_id, far_static, once);
+    }
     std::vector<unsigned char> hello;
     {
         LOCK(m_mutex);
-        if (anonymous) {
-            // Made for this handshake and dropped with it. The far end sees a
-            // key it has never seen and never will again.
-            CKey once;
-            once.MakeNewKey(true);
-            if (!m_secret.ConnectAs(path_id, far_static, once, hello)) return false;
-        } else if (!m_secret.Connect(path_id, far_static, hello)) {
-            return false;
-        }
+        if (!m_secret.Connect(path_id, far_static, hello)) return false;
     }
     // The handshake rides the path as ordinary traffic. Relays forward it and
     // cannot complete it: only the holder of far_static can.
+    return SendOnPath(path_id, hello);
+}
+
+bool Relay::ConnectSecretAs(uint64_t path_id, const CPubKey& far_static, const CKey& as)
+{
+    std::vector<unsigned char> hello;
+    {
+        LOCK(m_mutex);
+        if (!m_secret.ConnectAs(path_id, far_static, as, hello)) return false;
+    }
     return SendOnPath(path_id, hello);
 }
 
@@ -244,7 +253,8 @@ bool Relay::SendSecret(uint64_t path_id, const std::vector<unsigned char>& paylo
 }
 
 bool Relay::BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out,
-                         std::string& error, std::chrono::milliseconds step_timeout, bool prove_last)
+                         std::string& error, std::chrono::milliseconds step_timeout, bool prove_last,
+                         const CKey* prove_as)
 {
     path_out = 0;
     if (hops.size() < 2) {
@@ -306,9 +316,11 @@ bool Relay::BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out
         for (int attempt = 0; !secret && attempt < 3 && !m_interrupted; ++attempt) {
             // Every stop sees a key made for this handshake alone, except, when
             // asked, the last: a meeting point registers a service only over a
-            // session that proved the service's own key.
-            const bool anonymous = !(prove_last && i + 1 == hops.size());
-            if (!ConnectSecret(id, hops[i].key, anonymous)) break;
+            // session that proved the service's own key, and a home node serves
+            // a phone only over one that proved the phone's.
+            const bool last = i + 1 == hops.size();
+            if (!(last && prove_as ? ConnectSecretAs(id, hops[i].key, *prove_as)
+                                   : ConnectSecret(id, hops[i].key, !(last && prove_last)))) break;
             const auto until = std::chrono::steady_clock::now() + attempt_timeout;
             while (std::chrono::steady_clock::now() < until && !HasSecretSession(id) && !m_interrupted) {
                 UninterruptibleSleep(std::chrono::milliseconds{20});
@@ -492,6 +504,9 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
     }
 
     case MessageKind::PATH_BUILD: {
+        // A client carries nobody's traffic. Not refused either: silence says
+        // nothing about what it is.
+        if (m_client_only) return;
         uint64_t path_id = 0;
         CService dest;
         CPubKey dest_key;
@@ -593,6 +608,7 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
     }
 
     case MessageKind::PATH_BIND: {
+        if (m_client_only) return;
         uint64_t path_id = 0;
         if (!DecodePathBind(msg, path_id)) return;
         LOCK(m_mutex);
@@ -602,6 +618,7 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
     }
 
     case MessageKind::INTRODUCE: {
+        if (m_client_only) return;
         roster::KeyBytes service;
         if (!DecodeIntroduce(msg, service)) return;
         // Only over a path: a service registering from an address would have
@@ -645,6 +662,7 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
     }
 
     case MessageKind::MEET: {
+        if (m_client_only) return;
         roster::KeyBytes service;
         uint64_t meet_id = 0;
         if (!DecodeMeet(msg, service, meet_id)) return;

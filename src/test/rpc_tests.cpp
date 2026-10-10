@@ -20,6 +20,9 @@
 
 #include <univalue.h>
 
+#include <algorithm>
+#include <stdexcept>
+
 #include <rpc/blockchain.h>
 
 class RPCTestingSetup : public TestingSetup
@@ -85,6 +88,33 @@ BOOST_AUTO_TEST_CASE(rpc_rawparams)
     BOOST_CHECK_THROW(CallRPC("sendrawtransaction null"), std::runtime_error);
     BOOST_CHECK_THROW(CallRPC("sendrawtransaction DEADBEEF"), std::runtime_error);
     BOOST_CHECK_THROW(CallRPC(std::string("sendrawtransaction ")+rawtx+" extra"), std::runtime_error);
+}
+
+BOOST_AUTO_TEST_CASE(rpc_remove_last_handler)
+{
+    // A wallet client that goes away removes its commands. The names must go
+    // with them, or help reads a handler that is no longer there.
+    CRPCTable table;
+    std::vector<std::string> expected = table.listCommands(); // help, stop and the other built-ins
+    expected.push_back("once");
+    std::sort(expected.begin(), expected.end());
+    const CRPCCommand first{"test", "twice", [](const JSONRPCRequest&, UniValue& result, bool) { result = "first"; return true; }, {}, 1};
+    const CRPCCommand second{"test", "twice", [](const JSONRPCRequest&, UniValue& result, bool) { result = "second"; return true; }, {}, 2};
+    // Help text comes back in an exception; the listing keeps its first line.
+    const CRPCCommand only{"test", "once", [](const JSONRPCRequest&, UniValue&, bool) -> bool { throw std::runtime_error("once\nWhat once does."); }, {}, 3};
+    table.appendCommand("twice", &first);
+    table.appendCommand("twice", &second);
+    table.appendCommand("once", &only);
+
+    BOOST_CHECK(table.removeCommand("twice", &first));
+    BOOST_CHECK_EQUAL(table.listCommands().size(), expected.size() + 1);
+    BOOST_CHECK(table.removeCommand("twice", &second));
+    BOOST_CHECK(!table.removeCommand("twice", &second));
+    BOOST_CHECK(table.listCommands() == expected);
+
+    util::Ref context{m_node};
+    JSONRPCRequest request(context);
+    BOOST_CHECK_EQUAL(table.help("once", request), "once\nWhat once does.");
 }
 
 BOOST_AUTO_TEST_CASE(rpc_togglenetwork)

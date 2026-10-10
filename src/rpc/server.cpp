@@ -275,6 +275,9 @@ bool CRPCTable::removeCommand(const std::string& name, const CRPCCommand* pcmd)
         auto new_end = std::remove(it->second.begin(), it->second.end(), pcmd);
         if (it->second.end() != new_end) {
             it->second.erase(new_end, it->second.end());
+            // A name with no handler left would stay listed, and help() reads
+            // the first handler of every name.
+            if (it->second.empty()) mapCommands.erase(it);
             return true;
         }
     }

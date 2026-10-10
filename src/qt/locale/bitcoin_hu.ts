@@ -1,4 +1,6 @@
-<TS language="hu" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="hu">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -70,9 +72,9 @@
         <translation>Ezek a te  Bitcoin címeid kifizetések küldéséhez. Mindíg ellenőrizd az összeget és a fogadó címet mielőtt coinokat küldenél.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.
-Signing is only possible with addresses of the type 'legacy'.</source>
-        <translation>Ezek a Bitcoin címeid amelyeken fogadni tudsz Bitcoin utalásokat. Az "Új cím létrehozása" gombbal tudsz új címet létrehozni. Aláírni csak korábbi egyessel kezdődő címekkel lehet.</translation>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
+        <translation>Ezek a Bitcoin címeid amelyeken fogadni tudsz Bitcoin utalásokat. Az &quot;Új cím létrehozása&quot; gombbal tudsz új címet létrehozni. Aláírni csak korábbi egyessel kezdődő címekkel lehet.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -240,6 +242,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Vigyázat: a Caps Lock be van kapcsolva!</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>Az egyszerű pénzküldés letiltására szolgál, ha az operációs rendszer fiókja kompromittálódott. Valódi védelmet nem nyújt.</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>Csak stakinghez.</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -250,6 +260,109 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Banned Until</source>
         <translation>Kitiltás vége</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>Kötegelt fizetés</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>Soronként egy fizetés, &quot;cím, összeg&quot; formában. A mezőket vessző, pontosvessző vagy tabulátor választja el, a harmadik mező lesz a címke. A #-tel kezdődő sorokat a program figyelmen kívül hagyja.</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>&amp;Beillesztés</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>Betöltés &amp;fájlból...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>&amp;Törlés</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>Sor</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Cím</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Összeg</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Állapot</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>Fizetési lista betöltése</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>Szöveges és CSV fájlok (*.txt *.csv);;Minden fájl (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>Nem sikerült beolvasni: %1.</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>&quot;cím, összeg&quot; formátum várható</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>nincs cím</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>érvénytelen cím</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>nincs összeg</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>nem sikerült beolvasni az összeget: &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>az összegnek nullánál nagyobbnak kell lennie</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>rendben</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>Illesszen be soronként egy fizetést, &quot;cím, összeg&quot; formában. A harmadik mező címkeként szolgál. A #-tel kezdődő sorokat a program figyelmen kívül hagyja.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>%2 sorból %1 nem használható. A folytatáshoz javítsa vagy törölje őket.</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>%1 címzett több, mint amennyit egy tranzakció elbír (itt a korlát %2). Ossza fel a listát.</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>%1 címzett, összesen %2, díj nélkül.</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>Hozzáadás a küldési űrlaphoz</translation>
     </message>
 </context>
 <context>
@@ -424,7 +537,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Request payments (generates QR codes and bitcoin: URIs)</source>
-        <translation>Fizetési kérelem (QR-kódot és "bitcoin:" URI azonosítót hoz létre)</translation>
+        <translation>Fizetési kérelem (QR-kódot és &quot;bitcoin:&quot; URI azonosítót hoz létre)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -440,7 +553,9 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n aktív kapcsolat a Bitcoin hálózathoz</numerusform><numerusform>%n aktív kapcsolat a Bitcoin hálózathoz</numerusform></translation>
+        <translation>
+            <numerusform>%n aktív kapcsolat a Bitcoin hálózathoz</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -452,7 +567,9 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>%n blokk feldolgozva a tranzakció előzményből.</numerusform><numerusform>%n blokk feldolgozva a tranzakció előzményből.</numerusform></translation>
+        <translation>
+            <numerusform>%n blokk feldolgozva a tranzakció előzményből.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -669,6 +786,327 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
         <translation>Végzetes hiba történt %1 nem tud biztonságban továbblépni így most kilép.</translation>
     </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>A tárca stake-jének megjelenítése</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>A tárca &lt;b&gt;titkosított&lt;/b&gt;, és jelenleg &lt;b&gt;csak stakinghez van feloldva&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>Tárca &amp;visszafejtése...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>A jelmondat eltávolítása, így a privát kulcsok titkosítatlanul tárolódnak</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Nincs staking</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n másodperc</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n perc</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n óra</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n nap</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>Staking folyamatban.&lt;br&gt;Az Ön súlya: %1&lt;br&gt;A hálózat súlya: %2&lt;br&gt;Várható idő a jutalomig: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>Nincs staking, mert a tárca offline</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>Nincs staking, mert a tárca szinkronizál</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>Nincs staking, mert nincsenek érett érméi</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>Nincs staking, mert a tárca zárolva van</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>Ismeretlen hiba</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>kevesebb mint egy perc</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>egy perc</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 perc</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>egy óra</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 óra</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 nap</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>egy hónap</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 hónap</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>körülbelül egy év</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>több mint egy év</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>ismeretlen</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Végzetes hiba történt. A(z) %1 nem tud tovább biztonságosan működni, és kilép.</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Eredeti üzenet:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Felfedezés</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Átfedő hálózat</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>Nevek</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>Partnerek és konzol</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>Csomópont</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Tárca</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>Posta</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>Posta (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>Kiszolgáló</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Beállítások</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>bejegyzés ismeretlen</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>átfedő hálózat ismeretlen</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>csatlakozás…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>A jelenlegi hálózati súly mellett a staking évente körülbelül %1%-ot hoz: évi %2 blokk, egyenként %3 %4, %5 %4 stakingben lévő összegre.</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>Ez azután értendő, hogy ez a csomópont minden blokk %1%-át megosztja a partnereivel.</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>évi %1%</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>leállítás…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>%1 partner: %2 bejövő, %3 kimenő.</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>Kattintson a hálózati tevékenység szüneteltetéséhez.</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>1 partner</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>%1 partner</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>A hálózati tevékenység szünetel.</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>Kattintson a folytatásához.</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>hálózat szüneteltetve</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>%1 blokk feldolgozva az előzményekből.</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>%1. blokk</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>Naprakész.</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>Szinkronizálás a hálózattal…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>A lemezen lévő blokkok feldolgozása…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>A lemezen lévő blokkok újraindexelése…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>Csatlakozás partnerekhez…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>%1 lemaradás</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>Felzárkózás…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>Az utolsó fogadott blokk %1 ezelőtt készült.</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>A(z) &lt;b&gt;%1&lt;/b&gt; tárca titkosított, és csak stakinghez van feloldva</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>A(z) &lt;b&gt;%1&lt;/b&gt; tárca titkosított és feloldott</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>A(z) &lt;b&gt;%1&lt;/b&gt; tárca titkosított és zárolt</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>staking</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>staking, %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; stakinget végez.&lt;br&gt;Súlya: %2&lt;br&gt;A hálózat súlya: %3&lt;br&gt;Várható idő a jutalomig: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>nincs staking</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>nincs staking (fizeti: %1)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>Nincs staking: túl kevés partner</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>Nincs staking: a lánc még felzárkózik</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>Nincs staking: &lt;b&gt;%1&lt;/b&gt; tárcának nincsenek érett érméi</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>Nincs staking: &lt;b&gt;%1&lt;/b&gt; zárolva van</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Nincs staking</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -820,6 +1258,57 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>(change)</source>
         <translation>(visszajáró)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>delegálva neki: %1, hideg stakinghez</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>Levél írása</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>egy név, egy becenév a címjegyzékből vagy egy jegyzékkulcs</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Címzett</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Tárgy</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>Küldés</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>Kinek szól? Egy név, egy becenév vagy egy jegyzékkulcs.</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>A levél %1 KB; egy levél legfeljebb %2 KB lehet.</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>A levél lepecsételve a címzett postafiókjaiba kerül, mindig három továbbítón keresztül. Ez néhány másodpercig tart…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Elküldve</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>A levél a címzett %2 postafiókjából %1-ba került. Egy is elég a kézbesítéshez.</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>Nem lett elküldve: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -882,7 +1371,194 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Create</source>
         <translation>Létrehozás</translation>
     </message>
-    </context>
+    <message>
+        <source>Wallet</source>
+        <translation>Tárca</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>Speciális beállítások</translation>
+    </message>
+    <message>
+        <source>Compiled without sqlite support (required for descriptor wallets)</source>
+        <translation>SQLite-támogatás nélkül fordítva (a leíró tárcákhoz szükséges)</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>Felfedezés</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>A partnerek a láncon jelentik be magukat, nem egy kiszolgálón, így ez a lista mindenkinél ugyanaz, és senki sem szerkesztheti.</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>Jegyzék</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>Az Ön bejegyzése</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>Bejegyzett partnerek</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>Ön</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Másolás</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>Bejegyzés közzététele…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>Identitás</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>Létrehozás…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>Az identitás megőrzi e csomópont előzményét — mióta szerepel a jegyzékben —, ha a kulcsát valaha cserélni kell.</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>Partner vagy cím keresése</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Kulcs másolva</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>Cím másolva</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>indítás…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>Identitás létrehozása</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>Díj fizetése innen</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Az identitás egy második kulcs, amely e csomópont kulcsa mögött áll. Ha e csomópont kulcsa valaha elveszik vagy ellopják, ugyanazon identitás alá új kulcs tehető, és a csomópont megtartja, mióta szerepel a jegyzékben, ahelyett hogy elölről kezdené.
+
+Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja annak, hogy megakadályozza, hogy aki ellopja az identitást, áthelyezze azt. Ezután egy kis tranzakció közzéteszi az identitást, és a bejegyzés következő megújítása ehhez köti e csomópont kulcsát.</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>A továbbítója közzétette a bejegyzését a(z) %1 tranzakcióban. A tranzakció megerősítése után számít.</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Közzétéve a(z) %1 tranzakcióban. A tranzakció megerősítése után számít.</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>ismeretlen</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>jegyzékindex kikapcsolva</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>nincs bejegyezve</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>%1 múlva lejár</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>Bejegyzés megújítása…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>Megújítás az utolsó 3 napban</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>Bejegyzése %1 múlva lejár. Három nappal előtte lehet megújítani.</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>bejegyezve, %1 múlva lejár</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>nincs</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>Ennek a csomópontnak nincs bejelentési kulcsa: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>letiltva</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>A jegyzékindex nem fut, így ez a csomópont nem látja, ki van bejegyezve. A bekapcsolásához indítsa újra -rosterindex kapcsolóval.</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>felzárkózás (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>%1 napos</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>E csomópont legújabb blokkja %1 napos, így az azóta visszavont partnerek még itt lehetnek. A jegyzék továbbra is a partnerek elérésére szolgál, de az átfedő hálózat nem részesíti előnyben a régóta bejegyzett továbbítókat, amíg a lánc fel nem zárkózik.</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>naprakész</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>A jegyzékindex nem fut</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>Helyreállítási kulcsa</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>Írja le, és tartsa biztonságos helyen, távol ettől a számítógéptől. Csak most jelenik meg, és sehol sincs mentve. Érméket nem lehet vele elkölteni; csak az identitás olyan áthelyezését tudja megállítani, amelyet nem Ön végzett.</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>Leírtam</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Identitása közzé lett téve a(z) %1 tranzakcióban. A bejegyzés következő megújítása ehhez köti e csomópont kulcsát.</translation>
+    </message>
+</context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -918,16 +1594,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Küldő cím szerkesztése</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>A megadott "%1" cím nem egy érvényes Bitcoin-cím.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
+        <translation>A megadott &quot;%1&quot; cím nem egy érvényes Bitcoin-cím.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>A(z) "%1" már egy létező fogadó cím "%2" névvel és nem lehet küldő címként hozzáadni.</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>A(z) &quot;%1&quot; már egy létező fogadó cím &quot;%2&quot; névvel és nem lehet küldő címként hozzáadni.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>A megadott "%1" cím már szerepel a címjegyzékben "%2" néven.</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>A megadott &quot;%1&quot; cím már szerepel a címjegyzékben &quot;%2&quot; néven.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -1016,7 +1692,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <translation type="vanished">Bitcoin</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -1039,8 +1715,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>A tárcát is ebben a könyvtárban tároljuk.</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>Hiba: A megadott "%1" adatkönyvtár nem hozható létre.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
+        <translation>Hiba: A megadott &quot;%1&quot; adatkönyvtár nem hozható létre.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1048,15 +1724,180 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>%n GB elérhető szabad hely</numerusform><numerusform>%n GB elérhető szabad hely</numerusform></translation>
+        <translation>
+            <numerusform>%n GB elérhető szabad hely</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(%n GB szükségesnek)</numerusform><numerusform>(%n GB szükségesnek)</numerusform></translation>
+        <translation>
+            <numerusform>(%n GB szükségesnek)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(%n GB szükséges a teljes lánchoz)</numerusform><numerusform>(%n GB szükséges a teljes lánchoz)</numerusform></translation>
+        <translation>
+            <numerusform>(%n GB szükséges a teljes lánchoz)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>Posta</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>Az Ön címe</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Másolás</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>Az Ön jegyzékkulcsa. Bárki, aki szerepel a jegyzékben, írhat Önnek erre.</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>A posta az átfedő hálózaton utazik. A posta küldéséhez és fogadásához kapcsolja be az átfedő hálózatot a Beállításokban, és indítsa újra.</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>Írás</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>Válasz</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>Begyűjtés most</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>Új levelek begyűjtése a postafiókjaiból most. Ez néhány percenként magától is megtörténik.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Törlés</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>Beérkezett</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Elküldve</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>Feladó</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Tárgy</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Dátum</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>A leveleket a címzett heti postakulcsával pecsételjük le, a secp256k1 és az ML-KEM-768 együttes használatával; az Ön kulcsa és aláírása a pecséten belül utazik, és minden út egy postafiókhoz három továbbítón át vezet. A régi postakulcsok törlődnek, így a ma begyűjtött levelet később nem lehet megnyitni e számítógép kulcsaival.</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Címzett</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>Még nincs bejegyzett továbbító, így nincsenek postafiókjai, és senki sem írhat Önnek.</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>%1 továbbító őrzi a postáját; %2 lesz, ha a jegyzékben több szerepel.</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>%1, a kulcsa alapján választott továbbító őrzi a postáját, amíg el nem hozza.</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>%1. postakulcs, hetente megújítva.</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>Utoljára begyűjtve: %1.</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>Még nincs begyűjtve.</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>1 új levél</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>%1 új levél</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>, %2 postafiókból %1 helyről.</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(nincs tárgy)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>A címzett %1 postafiókjába helyezve</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>Feladó: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>Címzett: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>Elküldve: %1, a címzett %2 postafiókjába helyezve</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>Írva: %1, begyűjtve: %2</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>Válasszon ki egy levelet az olvasáshoz.</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>Begyűjtés…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>A postafiókok elérése, mindegyiké három továbbítón át…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>Levél törlése</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>Törli ezt a levelet erről a számítógépről? A postafiókokban lévő másolatait a begyűjtéskor már eltávolították, így nem lehet újra lekérni.</translation>
     </message>
 </context>
 <context>
@@ -1066,7 +1907,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Űrlap</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>A legutóbbi tranzakciók még lehet, hogy nem láthatók, és így előfordulhat, hogy a tárca egyenlege helytelen. A tárca azon nyomban az aktuális egyenleget fogja mutatni, amint befejezte a bitcoin hálózattal történő szinkronizációt, amely alább van részletezve.</translation>
     </message>
     <message>
@@ -1116,6 +1957,409 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>Ismeretlen. Fejlécek szinkronizálása (%1, %2%)...</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>Nevek</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>Egy név az Ön jegyzékkulcsához irányítja az embereket, így kulcs helyett név alapján írhatnak Önnek — és fizethetnek Önnek. Egy szabad név megszerzése és megújítása csak a hálózati díjba kerül; a nevet kézzel kell megújítani. Valaki más birtokában lévő nevet akkor lehet megvenni, ha eladásra kínálja, az általa kért áron. Az Ön neve alatti nevek ingyenesek, és a becenevek is: az Ön saját címkéi emberekhez, ezen a számítógépen tárolva.</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>Az Ön nevei</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>Fizetés innen</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Név</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Állapot</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>Lejár</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>Alnevek</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>Név szerzése…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>Megújítás…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>Alnév hozzáadása…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>Eladás…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>Átruházás…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>Név szerinti fizetések fogadása…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>Keresés</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>név, címke.név vagy becenév</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>Kulcs másolása</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>Fizetés…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>Címjegyzék</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>Becenév</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>Kulcs</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>Valaki hozzáadása…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Eltávolítás</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Kulcs másolva</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>Folyamatban…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>Kivonás az eladásból</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>Előbb vonja ki az eladásból.</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>Új fizetési kulcs…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>A név szerinti fizetések be vannak kapcsolva</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>A nevekhez névindex szükséges. Kapcsolja be a &quot;Nevek indexelése&quot; lehetőséget a Beállításokban, és indítsa újra.</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>A nevek ezen a hálózaton még nem indultak el. Hogy mikor indulnak a fő hálózaton, és hogyan osztják ki az első neveket, még eldöntendő. Addig is kereshet neveket, és vezethet címjegyzéket.</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1 = %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>a címjegyzékéből</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>regisztrált név, foglalt a(z) %1. blokkig</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>állandósult</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>%1 ezelőtt változott, még nem állandósult</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>név szerinti fizetést fogad</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>Eladó: a birtokos %1 összeget kér. A megvásárláshoz használja a Név szerzése lehetőséget.</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>%1 lekötve. A nevet a rendszer %2 blokk múlva (kb. %3) magától igényli - addig tartsa futva a BPS Relay-t és feloldva a tárcát.</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>%1 megvásárlása: %2 kifizetve a birtokosnak. A tranzakció megerősítése után az Öné.</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>%1 eladásra kerül %2 áron. A következő blokktól bárki megveheti, anélkül hogy ez a csomópont online lenne; a vételárat ebbe a tárcába fizetik.</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>%1 kikerül az eladásból. Mostantól senki sem veheti meg.</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>%1 megújítva a(z) %2. blokkig, csupán a hálózati díjért.</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>%1 átruházása folyamatban ide: %2. A tranzakció megerősítése után az övé.</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>%1 beállítva; a tranzakció megerősítése után lesz feloldható.</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>A név szerinti fizetések bekapcsolása folyamatban. A tranzakció megerősítése után kb. %1 elteltével az emberek bármelyik nevére fizethetnek; minden fizetés &quot;Név szerint fizetve&quot; jelöléssel jelenik meg a tárcájában.</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>%1 kifizetve neki: %2, egy csak erre a fizetésre használt címre.</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>Fizetés</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>%1 múlva</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>%1 ezelőtt lejárt</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>lejárt - újítsa meg egy hónapon belül</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>foglalt</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>eladás alatt - egy vásárlás megerősítés alatt</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>eladó %1 áron</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>eladó %1 áron - még nem vásárolható</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>nincs regisztrálva</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>regisztráció alatt</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Kattintson a másoláshoz</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>Név szerzése</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>1–32 betű, számjegy vagy kötőjel</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 év</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>2 év</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>Időtartam</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>A regisztráció két lépésből áll: egy kötelezettségvállalás, amely elrejti a nevet, majd kb. 20 perccel később az igénylés, amelyet a BPS Relay magától küld el. Közben senki sem veheti el a nevet. Mindkét lépés csak a hálózati díjba kerül.</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>A vásárlás egyetlen tranzakció: kifizeti a birtokost, és a nevet az Önévé teszi, mindezt egyszerre vagy egyáltalán nem.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Regisztrálás</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>Egy név 1–32 egyszerű a-z betűből, számjegyből vagy belső kötőjelből áll.</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>%1, %2 időtartamra, csak a hálózati díjba kerül. Ellenőrzés, hogy szabad-e…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>egy év</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>két év</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>%1 kivonása az eladásból</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>Kivonja %1 nevet az eladásból? Attól kezdve senki sem veheti meg, és a megerősítés után átruházhatja vagy újra eladásra kínálhatja.</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>%1 eladása</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>Az Ön ára %1 névért, BPS-ben. Ezután bárki azonnal megveheti, akkor is, ha a BPS Relay be van zárva: ugyanabban a tranzakcióban fizetik ki Önnek, amely nekik adja a nevet. Amíg eladó, nem ruházhatja át.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>&quot;%1&quot; nem BPS-összeg.</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>Eladásra kínálja %1 nevet %2 áron? Két kis tranzakció kerül elküldésre: az egyik félreteszi a vevő által elköltendő érmét, a másik közzéteszi az eladást.</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>%1 megújítása</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>%1 meghosszabbítása a jelenlegi lejárattól. Csak a hálózati díjba kerül. Egy név legfeljebb két évvel előre újítható meg.</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>%1 átruházása</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>%1 átadása ide (jegyzékkulcs, becenév vagy név):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>Átadja %1 nevet neki: %2? Csak az új birtokos adhatja vissza.</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>Alnév ez alatt: %1</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>A .%1 előtti rész, például alice az alice.%1 esetén:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>Kire mutasson %1.%2 (jegyzékkulcs, becenév vagy név), vagy &quot;remove&quot;:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>Keresés…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>Valaki hozzáadása</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>Hogyan nevezi őket (csak Ön látja):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>A jegyzékkulcsuk, vagy egy név, hogy emlékezzen, kié most:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>A név szerinti fizetések be vannak kapcsolva. Áthelyezi őket ennek a tárcának egy új kulcsára? A jelenlegi kulcsra már elküldött fizetések továbbra is megérkeznek. A váltás után a fizetők kb. %1 ideig várnak, mielőtt újra fizetnének.</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>Engedje, hogy név szerint fizessenek Önnek: bármely névvel vagy alnévvel, amely e csomópont kulcsára mutat, egy becenévvel, amelyet Önhöz rendeltek, vagy magával a kulccsal. Minden fizetés saját címre érkezik, amelyet csak ez a tárca költhet el, és egy megfigyelő sem tudja megállapítani, hogy Ön fizetést kapott, vagy hogy két fizetés ugyanahhoz a személyhez ment. A hálózati díjba kerül. Az emberek a megerősítés után kb. %1 elteltével fizethetnek Önnek.</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>Név szerinti fizetések</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>Fizetés neki: %1</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>%1 még nem fogad név szerinti fizetést. Kérje meg, hogy kapcsolja be a Nevek lapon, vagy kérjen egy címet.</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>%1 %2 ezelőtt cserélt gazdát.</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>%1 ezelőtt állították be a kulcsot, amelyre fizetést kapnak.</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>BPS-ben</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Összeg</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>A fizetés egy csak erre használt címre megy, amelyet csak %1 költhet el; senki más nem tudja megállapítani, ki kapta. A fizetést nem lehet visszavonni. A hálózati díj ezen felül értendő.</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>Ha nem ők voltak, a fizetés elveszik. Biztonságosabb megvárni, amíg %1 eltelik.</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>Fizetés mégis</translation>
     </message>
 </context>
 <context>
@@ -1418,6 +2662,213 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>The supplied proxy address is invalid.</source>
         <translation>A megadott proxy cím nem érvényes.</translation>
     </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>Megjelenjenek-e a hideg staking vezérlőfunkciói.</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>Hideg s&amp;taking vezérlőfunkcióinak engedélyezése</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS&amp;5 proxy to reach peers via Tor onion services:</source>
+        <translation>Külön SOCKS&amp;5 proxy használata a partnerek eléréséhez Tor onion szolgáltatásokon keresztül:</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>Átfedő hálózat</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>A BPS saját titkosított rétege, amely más partnereken keresztül viszi a forgalmat, így a túloldal soha nem tudja meg, hol van Ön.</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>kérdezés…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>Fut</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>Figyel itt</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>Nyitott útvonalak</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>Itt találkozó szolgáltatások</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>Elérhető továbbítók</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>A mai kör</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>Az Ön belépési pontja</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>Azok a partnerek, amelyeken át a forgalma mindig belép. Megtartjuk, nem cseréljük őket: ha minden alkalommal újat választanánk, egy megfigyelő előbb-utóbb sorra kerülne.</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>Ahol mások találkozhatnak Önnel</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>A jegyzékből kiszámítva, nem lekérdezve. Aki el akarja érni Önt, ugyanezt a számítást végzi el, és ugyanazt a választ kapja, így nincs kitől kérdezni, és senki sem válaszolhatna mást. Naponta változnak.</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>Rádión hallott</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>Mit hoz a továbbítás</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>Napi kibocsátás</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>Továbbítók</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>Felhasználók</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>Felhasználók továbbítónként</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>Felhasználónkénti rész</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>A továbbító a saját blokkjutalmaiból fizet a bejegyzett partnereinek, így egy felhasználó része egy osztva a továbbítója felhasználóinak számával — ezért kerül a hálózat felhasználóinak egy részének megszerzése a stake egy részébe. Hogy egy továbbító mennyit oszt meg a jutalomból, az a saját döntése, és semmi sem kényszeríti ki: egy továbbító, amely semmit sem fizet, teljesen érvényes blokkot készít. Ami fizetésre készteti, az az, hogy egy felhasználók nélküli továbbító senkit sem véd, önmagát sem.</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>Még senki sem vizsgálta át, aki nem a szerzője, és azt rejti el, hol van, nem azt, mikor beszél: aki mindkét végpontot figyeli, még össze tudja vetni az időzítést. Tekintse befejezetlennek.</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>Ez a csomópont semmit sem oszt meg. Állítsa a -relayshare értékét egy százalékra, és vegyen fel partnereket az addrosteruser paranccsal.</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>Ez a csomópont %1%-ot osztana meg, de %2.</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>Ez a csomópont %1%-ot oszt meg %2 partnerrel: a következő blokk, amelyet készít, %3 összeget fizet, egyenként %4.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>A Reticulum-híd nem jelentkezik. Indítsa el a Beállítások, Rádió menüből, vagy futtassa maga a bps-rns-bridge.py-t.</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>Figyelés. Még nem hallatszott BPS-csomópont a rádión; a csomópontok félóránként jelentik be magukat.</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>A forgalma egy rádiós szomszédon át lép be, ha valamelyikük bejegyzett továbbító.</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>Hallott, de a forgalma az interneten át lép be (Beállítások, Rádió).</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>1 ugrás</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>%1 ugrás</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>ugrások száma ismeretlen</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>%1 ezelőtt hallott</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>egy továbbító</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>igen</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>nem</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>Az átfedő hálózat ki van kapcsolva. Ez a kliens magától bekapcsolja, tehát valami újra kikapcsolta: -overlay=0 a parancssorban vagy a konfigurációs fájlban.</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>semmi, amíg az átfedő hálózat ki van kapcsolva</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>átfedő hálózat ki</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>még egy sem</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>átfedő hálózat be, még nincsenek továbbítók</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>átfedő hálózat be, 1 továbbító</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>átfedő hálózat be, %1 továbbító</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>még nincs kiválasztva</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>egy sem — a jegyzékben nincsenek továbbítók, amelyekből kiszámíthatók lennének</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>átfedő hálózat ismeretlen</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>még nincsenek továbbítók</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1496,6 +2947,30 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
         <translation>Diszkrét mód aktiváva az áttekintés fülün. Az értékek újbóli megjelenítéséhez kapcsold ki a Beállítások-&gt;Értékek maszkolását</translation>
+    </message>
+    <message>
+        <source>Stake</source>
+        <translation>Stake</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>Éretlen stake-ek:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>Éretlen delegálások</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>Éretlen delegálások:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Delegált</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>Delegált:</translation>
     </message>
 </context>
 <context>
@@ -1636,15 +3111,15 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>URI kezelés</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>'bitcoin://' nem érvényes egységes erőforrás azonosító (URI). Használd helyette a 'bitcoin'-t.</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;bitcoin://&apos; nem érvényes egységes erőforrás azonosító (URI). Használd helyette a &apos;bitcoin&apos;-t.</translation>
     </message>
     <message>
         <source>Cannot process payment request because BIP70 is not supported.</source>
         <translation>A fizetési kérelmet nem lehet feldolgozni, mert a BIP70 nem támogatott.</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
         <translation>A BIP70 széleskörű biztonsági hiányosságai következtében határozottan ajánljuk, hogy hagyjon figyelmen kívül bármiféle kereskedelmi utasítást, amely a tárca váltására készteti.</translation>
     </message>
     <message>
@@ -1692,6 +3167,161 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>Bejegyzés megújítása</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>Bejegyzés közzététele</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>A megújítás új rekordot ír a láncra. Amíg ez meg nem erősítődik, a régi érvényes.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>Ez egy rövid rekordot ír a láncra arról, hogy Ön létezik, és ha kívánja, hogy hol található.</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>Hogyan érjék el Önt a partnerek?</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>Az átfedő hálózaton át — cím közzététele nélkül</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>A bejegyzése azt mondja meg, ki Ön, nem azt, hol fut. A partnerek ehelyett az átfedő hálózaton érik el, olyan pontokon találkozva Önnel, amelyeket mindkét fél a jegyzékből számít ki. Ez a kliens alapértelmezésben ezt kapcsolja be.</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>Egy általam közzétett címen</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>cím, amelyen más partnerek elérhetik</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>Bárki láthatja, és a lánc örökre megőrzi. Egy onion cím olyan helyet tesz közzé, amelyet senki sem tud visszavezetni Önhöz, és NAT mögül is működik; egy IP-cím egyikre sem képes. Egy IP-címet közzétevő csomópontot mások továbbítónak választhatnak.</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>Ki fizeti a díjat</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>Egy hónap, utána meg kell újítani</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>Egy év, utána meg kell újítani</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>Meddig érvényes</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>Megújítás</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>Közzététel</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>Egy továbbító fizet — nem kell érme</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>Az átfedő hálózat ki van kapcsolva, így nincs továbbító, akit meg lehetne kérni. Kapcsolja be a Beállításokban, vagy fizessen egy tárcából.</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>A jegyzékben még nincs továbbító, így nincs kit megkérni. Fizessen egy tárcából, vagy próbálja újra, ha egy továbbító bejegyezte magát.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>A csomópontja aláírja a bejegyzést, és az átfedő hálózaton elküldi annak a továbbítónak, amelyen át belép. Egy bejegyzésekért fizető továbbító az Önét egy általa készített blokkba teszi, így akkor is megerősítődik, ha a legtöbb csomópont nem adná tovább, és hozzáadja Önt azokhoz a partnerekhez, akikkel megosztja jutalmait. Ha később abbahagyja a fizetést, a bejegyzése egy hónapon belül lejár; bármikor megújíthatja maga egy fedezettel rendelkező tárcából.</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>Ez a csomópont nem végez stakinget. Egy bejegyzés nagyobb annál, amit a régebbi csomópontok továbbadnak, így amíg a legtöbb staker nem frissít, csak akkor erősítődik meg, ha egy ezt a verziót futtató staker beleteszi, ami eltarthat egy ideig. Stakinggel a saját következő blokkjába kerül; egy fizető továbbító a sajátjába teszi.</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>Ez a tárca csak stakinghez van feloldva. A fizetéshez meg kell adni a jelmondatát, és utána a tárca újra zárolódik, ami leállítja a stakinget, amíg újra fel nem oldja stakinghez.</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>A fizetéshez meg kell adni a tárca jelmondatát.</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>Adjon meg egy címet, vagy válassza, hogy nem tesz közzé címet.</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>A továbbítója megkérése a közzétételre… ez fél percig is eltarthat.</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>Az a tárca már nincs megnyitva.</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>A tárca még zárolva van, így semmi sem lett kifizetve.</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>A rekord aláírása…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>A csomópont olyan rekordot adott vissza, amelyet ez a kliens nem értett.</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>Fizetés a közzétételért…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>A továbbító elutasította: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>Nincs válasz a továbbítótól. %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1699,7 +3329,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>Ad meg egy Bitcoin címet (pl: %1)</translation>
+        <translation type="vanished">Ad meg egy Bitcoin címet (pl: %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1731,23 +3361,33 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n másodperc</numerusform><numerusform>%n másodperc</numerusform></translation>
+        <translation>
+            <numerusform>%n másodperc</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n perc</numerusform><numerusform>%n perc</numerusform></translation>
+        <translation>
+            <numerusform>%n perc</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n óra</numerusform><numerusform>%n óra</numerusform></translation>
+        <translation>
+            <numerusform>%n óra</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n nap</numerusform><numerusform>%n nap</numerusform></translation>
+        <translation>
+            <numerusform>%n nap</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n hét</numerusform><numerusform>%n hét</numerusform></translation>
+        <translation>
+            <numerusform>%n hét</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1755,7 +3395,9 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n év</numerusform><numerusform>%n év</numerusform></translation>
+        <translation>
+            <numerusform>%n év</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1774,8 +3416,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>%1 GB</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>Hiba: A megadott "%1" adatkönyvtár nem létezik.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>Hiba: A megadott &quot;%1&quot; adatkönyvtár nem létezik.</translation>
     </message>
     <message>
         <source>Error: Cannot parse configuration file: %1.</source>
@@ -1790,12 +3432,60 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Beállítások betöltése sikertelen: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1 még nem lépett ki biztonságosan...</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>ismeretlen</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>Kapcsolat</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>Fogadás</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>Rejtett</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Ismeretlen</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Delegált</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>%1 valakinek a birtokában van, aki eladásra kínálta. %2 összeget kér; a hálózati díj ezen felül értendő.</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>Vásárlás</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>Ellenőrzés, hogy szabad-e…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>Szabad.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Regisztrálás</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>még nincs elkészítve</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>Adjon meg egy BitcoinPoS címet (pl. %1)</translation>
     </message>
 </context>
 <context>
@@ -1856,16 +3546,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Adatkönyvtár</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the data directory use the '%1' option.</source>
-        <translation>Az adat könyvárhoz kívánt nem alapértelmezett elérési úthoz használd a '%1' opciót</translation>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>Az adat könyvárhoz kívánt nem alapértelmezett elérési úthoz használd a &apos;%1&apos; opciót</translation>
     </message>
     <message>
         <source>Blocksdir</source>
         <translation>Blokk könyvtár</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>Az blokkk könyvárhoz kívánt nem alapértelmezett elérési úthoz használd a '%1' opciót</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>Az blokkk könyvárhoz kívánt nem alapértelmezett elérési úthoz használd a &apos;%1&apos; opciót</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -1953,7 +3643,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>The mapped Autonomous System used for diversifying peer selection.</source>
-        <translation>A megadott "Önálló rendszer" használom a peer választás diverzifikálásához.</translation>
+        <translation>A megadott &quot;Önálló rendszer&quot; használom a peer választás diverzifikálásához.</translation>
     </message>
     <message>
         <source>Mapped AS</source>
@@ -2116,8 +3806,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Parancs végrehajtása tárca nélkül</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
-        <translation>Parancs végrehajtása a "%1" tárca használatával</translation>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>Parancs végrehajtása a &quot;%1&quot; tárca használatával</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -2142,6 +3832,45 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown</source>
         <translation>Ismeretlen</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>Erre gondolt:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>Nem biztos a parancsban? Írja be egyszerű szavakkal, mit szeretne, például %1, és válasszon egy javaslatot. A javaslatok ezen a számítógépen készülnek; semmi, amit beír, nem kerül sehova.</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>A rádió ki van kapcsolva.</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>A rádió be van kapcsolva; indítsa el maga a Reticulum-hidat (contrib/reticulum/bps-rns-bridge.py).</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>A bps-rns-bridge.py nincs a BPS Relay mellett, így a híd nem indítható.</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>A Python nem indítható &quot;%1&quot; néven. Telepítse a Pythont, vagy állítsa be a parancsot a Beállítások, Rádió alatt.</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>A Reticulum nincs telepítve. Telepítse ezzel: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>A Reticulum-híd leállt (állapot: %1); lásd radio/bridge.log.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>A Reticulum-híd indul.</translation>
     </message>
 </context>
 <context>
@@ -2195,12 +3924,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Törlés</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>Segwit címek (Bech32 vagy BIP-173) csökkentik a tranzakciók díját és jobb védelmet biztosítanak gépelési hibával szemben, de a régi pénztárcák nem támogatják. Ha nincs aktiválva, egy régi pénztárcával is kompatibilis cím lesz létrehozva.</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">Segwit címek (Bech32 vagy BIP-173) csökkentik a tranzakciók díját és jobb védelmet biztosítanak gépelési hibával szemben, de a régi pénztárcák nem támogatják. Ha nincs aktiválva, egy régi pénztárcával is kompatibilis cím lesz létrehozva.</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>Segwit cím (Bech32) létrehozása</translation>
+        <translation type="vanished">Segwit cím (Bech32) létrehozása</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2245,6 +3974,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Could not generate new %1 address</source>
         <translation>Cím generálása sikertelen %1 </translation>
+    </message>
+    <message>
+        <source>(none)</source>
+        <translation>(nincs)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>Ehhez a tárcához nincs staking-cím beállítva, így nincs kinek delegálni. Állítson be egyet a Stake oldalon, a Delegálás -&gt; Automatikus delegálás alatt, és ez a címtípus működni fog.</translation>
     </message>
 </context>
 <context>
@@ -2326,6 +4063,99 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>Partner</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Cím</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>Bejegyezve</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>Bejegyzés lejár</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>Bejegyezve ennyi ideje</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Kattintson a másoláshoz</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>Ez a partner be van jegyezve, de nem tesz közzé címet. Mégis
+elérhető az átfedő hálózaton, és éppen ezért van megengedve.</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>egy cím közzétéve</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>%1 cím közzétéve</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>Megerősítve a(z) %1. blokkban</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>A(z) %1. blokktól nem számít</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>Nincs előzmény e bejegyzés előtt.</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>Megszakítás nélkül bejegyezve a(z) %1. blokk óta.</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>Még túl friss ahhoz, hogy számítson.</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>Nem identitás alatt fut.</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>A(z) %1 identitás alatt fut, amely kulcscsere esetén is megtartja a korát.</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>nincs közzétett cím</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>épp most</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>%1 ezelőtt</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>lejárt</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>%1 múlva</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>új</translation>
+    </message>
+</context>
+<context>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
@@ -2396,12 +4226,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Figyelem: A hozzávetőleges díjszámítás jelenleg nem lehetséges.</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>Add meg a választott tranzakciós díjat kB (1000 bájt) -onként a tranzakció virtuális méretére számolva.
 
-Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB" egy 500 bájtos (fél kB) tranzakciónál  ténylegesen 50 satoshi lesz.</translation>
+Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a &quot;100 satoshi per kB&quot; egy 500 bájtos (fél kB) tranzakciónál  ténylegesen 50 satoshi lesz.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2460,7 +4290,7 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
         <translation>Replace-By-Fee bekapcsolása</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
         <translation>A With Replace-By-Fee (BIP-125) funkciót használva küldés után is megemelheted a tranzakciós díjat. Ha ezt nem használod akkor magasabb díjat érdemes használni, hogy kisebb legyen a késedelem.</translation>
     </message>
     <message>
@@ -2520,12 +4350,12 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
         <translation>Létrehoz egy Részlegesen Aláírt Bitcoin Tranzakciót (PSBT) melyet offline %1 tárcával vagy egy PSBT kompatibilis hardver tárcával használhatsz.</translation>
     </message>
     <message>
-        <source> from wallet '%1'</source>
-        <translation>A "%1" tárcától</translation>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation>A &quot;%1&quot; tárcától</translation>
     </message>
     <message>
-        <source>%1 to '%2'</source>
-        <translation>%1 -től '%2-ig'</translation>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 -től &apos;%2-ig&apos;</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -2584,8 +4414,8 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
         <translation>Teljes összeg</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
-        <translation>A címzett lista ellenőrzéséhez kattintson a "További részletek" gombra.</translation>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>A címzett lista ellenőrzéséhez kattintson a &quot;További részletek&quot; gombra.</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2637,7 +4467,9 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Becsülhetőn %n blokkon belül kerül be.</numerusform><numerusform>Estimated to begin confirmation within %n blocks.</numerusform></translation>
+        <translation>
+            <numerusform>Becsülhetőn %n blokkon belül kerül be.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2658,6 +4490,42 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
     <message>
         <source>(no label)</source>
         <translation>(nincs címke)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>Fizetési lista beillesztése vagy betöltése a fizetések egyenkénti hozzáadása helyett</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>&amp;Köteg...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>Az elérhető egyenleg számításakor a delegálásokat is vegye figyelembe. Ha nincs bejelölve, az elérhető egyenleg csak a tárcában jelenleg lévő érméket mutatja.</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>&amp;Delegálások beszámítása</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>A hideg staking nincs engedélyezve</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>A hideg staking a(z) %1. blokktól engedélyezett</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>Ez a tárca a saját érméit stakeli, így mind delegálva vannak.</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>A megadott tulajdonosi cím nincs ebben a tárcában. FIGYELEM: A delegálás után csak a tulajdonosi cím kulcsának birtokosa költheti el ezeket az érméket.</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>A megadott staker-cím ebben a tárcában van. Már most stakelheti az érméket, nem kell saját magának delegálnia őket.</translation>
     </message>
 </context>
 <context>
@@ -2742,6 +4610,352 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
         <source>Memo:</source>
         <translation>Jegyzet:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>&amp;Tulajdonosi cím:</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>A BitcoinPoS tulajdonosi cím</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>Kiszolgáló</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Amit ez a csomópont másoknak nyújt. A továbbítás és a posta őrzése már működik; a tárhely úton van, és mint itt minden, ugyanúgy található meg, mint a partnerek — a jegyzéken keresztül. A neveknek saját oldaluk van.</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>Tárhely</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>Egy erről a csomópontról kiszolgált webhely vagy szolgáltatás, amely kulcsa vagy neve alapján található meg, és az átfedő hálózaton érhető el, így a gazdagép soha nem teszi közzé, hol fut. A találkozási rész létezik: egy szolgáltatás olyan találkozási pontokon regisztrál, amelyeket mindkét fél a jegyzékből számít ki. Oldalak és alkalmazások kiszolgálása rajta keresztül még nincs elkészítve.</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>Továbbító</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>Más partnerek átfedő forgalmának továbbítása, az e csomópontot használó partnerek havi bejegyzéseinek kifizetése, és minden általa készített blokk egy részének megosztása velük. Egy továbbító az általa fizetett bejegyzéseket a saját blokkjaiba teszi, így erősítődnek meg, miközben a legtöbb csomópont még nem hajlandó rekordokat továbbadni — ezért egy továbbítónak stakingelnie kell.</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>Itt bejegyzett partnerek</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>A következő blokk, amelyet készít</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>Fizetés az átfedő hálózaton kérő partnerek bejegyzéséért</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>Egy érmék nélküli partner megkérheti ezt a csomópontot, hogy tegye közzé a havi bejegyzését. Ez a csomópont kifizeti a díjat, egy blokkba stakeli, és hozzáadja a partnert azokhoz, akikkel jutalmat oszt meg. Alapértelmezésben ki van kapcsolva, mert e csomópont érméit költi.</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>Az e számon felüli partnereket elutasítja. Az itt már bejegyzett partnerek továbbra is megújíthatnak.</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>Legfeljebb ennyi bejegyzett partner</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>az egyetlen nyitott tárca</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>Melyik tárca fizeti a díjakat. Ha több is nyitva van, és itt egyik sincs megnevezve, a kéréseket elutasítja ahelyett, hogy találomra fizetne. A staking ennek a csomópontnak bármelyik tárcájában történhet.</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>Díjak fizetése tárcából</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>Minden blokk egy része, amelyet ez a csomópont saját érméivel készít, egyenlően elosztva az általa bejegyzett partnerek között. 0 esetén nem oszt meg semmit.</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>Részesedés minden készített blokkból</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>Postafiók</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>Lepecsételt posta őrzése azoknak, akiknek a jegyzék ezt a csomópontot postafiókká teszi, amíg el nem hozzák. Hogy mely továbbítók kinek a postáját őrzik, azt a jegyzékből számítjuk ki, így senki sem osztja ki. A feladók és tulajdonosok három továbbítón át érik el ezt a csomópontot, így az soha nem tudja meg, hol vannak; a levelek lepecsételtek, így nem tudja elolvasni őket, és azt sem, ki írta őket. A leveleket két hét után eldobja, és csak bejegyzett embereket szolgál ki.</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>Őrzött</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>Feladók számára őrzött postakulcsok</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>Posta őrzése azoknak, akiket a jegyzék ehhez a csomóponthoz rendel</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>Alapértelmezésben bekapcsolva mindenhol, ahol az átfedő hálózat fut: egy elutasító továbbító eggyel kevesebb postafiókot hagy azoknak, akikhez kiválasztották.</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>Ha ez megtelik, az új leveleket elutasítja, amíg a régieket el nem hozzák vagy el nem dobják. Egyetlen személy sem használhat belőle 8 MiB-nál többet.</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>Használható lemezterület</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Mentve. Ezeket a csomópont induláskor olvassa be, ezért a változás érvényesítéséhez indítsa újra a klienst.</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>nincs nyitott tárca</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>nem — egy stakinget nem végző továbbító elutasítja a bejegyzési kéréseket</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>igen, %1 múlva</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>nem fizet bejegyzésekért</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>fizet, de nem végez stakinget</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>fut</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>ebben a változatban nincs tárca</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>tárca szükséges</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>ki</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>átfedő hálózat szükséges</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>semmi — nem őriz postát</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>nincsenek levelek</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>1 betű</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>%1 betű</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>1 ember</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>%1 ember</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>jelenleg semmi, hely %1 MiB számára</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%1 %2 számára, %4 MiB-ból %3</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>%1%-ot oszt meg: összesen %2 %4, partnerenként %3 %4</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>Beállítások</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>Amit ez a kliens tud, de a tárcakliens nem, valamint a nyelv. Minden más — proxy, portok, nyesés — mindkettőben ugyanaz a kérdés, és egy helyen kérdezzük.</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Felfedezés</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>Jegyzékindex vezetése</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>Enélkül ez a csomópont közzétehet, de nem látja, ki van még bejegyezve.</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>Nevek indexelése</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>Szükséges nevek kereséséhez, nekik küldött postához és a saját név regisztrálásához.</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>Csatlakozási kísérlet a jegyzékben talált partnerekhez</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>A jegyzék címeit átadja a címkezelőnek a szokásos magok és címcsere mellett. Kikapcsolva a jegyzék csak egy lista, amelyet ez a csomópont olvas, de soha nem használ.</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Átfedő hálózat</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>Az átfedő hálózat futtatása</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>Ebben a kliensben alapértelmezésben be van kapcsolva, a csomópontban és a tárcakliensben ki. A kézfogását még senki sem vizsgálta át, aki nem a szerzője.</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>Az átfedő hálózat a saját portján UDP-t használ. A peer-to-peer hálózat külön van, és TCP-n marad.</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>Figyelés ezen a porton</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>Rádió</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>Az átfedő hálózat rádión is, a Reticulumon keresztül</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>LoRa egy RNode-on át, csomagrádió, soros kapcsolatok: bármi, amire a Reticulum be van állítva. Az átfedő hálózat szükséges hozzá.</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>Belépés az átfedő hálózatba rádiós szomszédokon át, hogy a posta internet nélkül is működjön</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>Ha egy rádión hallott BPS-csomópont bejegyzett továbbító, a postája és a bejegyzési kérései rajta keresztül mennek. A rádiókapcsolat sokkal lassabb az internetnél.</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>A Reticulum-híd indítása a BPS Relay-jel</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>A bps-rns-bridge.py futtatása a csomópont mellett. Hagyja kikapcsolva, ha maga futtatja a hidat.</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>Python-parancs</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>A Reticulum nem része a BPS-nek, és saját licence van. Telepítse ezzel: %1, és a rádiót a Reticulum saját konfigurációjában (~/.reticulum/config) állítsa be. A rádióamatőr sávokon nem engedélyezett a titkosított forgalom, ezért használjon licencmentes sávokat, például a LoRa sávjait.</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>Megjelenítés</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>Összegek megjelenítése ebben</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>A számítógép nyelve</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>A BPS Relay következő indításakor lép érvénybe. A csomópont által küldött szövegek, például a parancsok hibaüzenetei, angolul maradnak.</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Nyelv</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>Hálózat, proxy és egyéb alapbeállítások…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>Mentve. A nyelv a BPS Relay következő indításakor változik.</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Mentve. Ezeket a csomópont induláskor olvassa be, ezért a változás érvényesítéséhez indítsa újra a klienst.</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>A csomópont még indul; az alapbeállítások még nem érhetők el.</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2821,7 +5035,7 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
         <translation>Üzenet ellenőrzése</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
         <translation>Da preverite verodostojnost sporočila, spodaj vnesite: prejemnikov naslov, prejeto sporočilo (pazljivo skopirajte vse prelome vrstic, presledke, tabulatorje ipd.,) in prejeti podpis. Da se izognete napadom tipa man-in-the-middle, vedite, da iz veljavnega podpisa ne sledi nič drugega, kot tisto, kar je navedeno v sporočilu. Podpis samo potrjuje dejstvo, da ima podpisnik v lasti prejemni naslov, ne more pa dokazati vira nobene transakcije!</translation>
     </message>
     <message>
@@ -2849,8 +5063,8 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
         <translation>Počisti vsa polja za vnos v oknu za preverjanje</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>Klikkeljen az "Üzenet Aláírása" -ra, hogy aláírást generáljon</translation>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>Klikkeljen az &quot;Üzenet Aláírása&quot; -ra, hogy aláírást generáljon</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2906,6 +5120,209 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
     </message>
 </context>
 <context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>Űrlap</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>Jelenlegi elkölthető egyenlege</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>A tárca saját stakelt eszközei</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>Delegálásokból stakelt eszközök</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>Éretlen:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>Éretlen egyenlege</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>Stakelt eszközök</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>Stake:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>Blokkmagasság:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>Blokkjutalom:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/blokk</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>Hálózati súly:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>Várható éves hozam:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>Stake-rekordok</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>&amp;Delegálás</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>Delegálás típusa:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>Kézi delegálás</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>Automatikus delegálás</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>Staking-címek</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>Összes eltávolítása</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Cím beillesztése a vágólapról</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>&amp;Hozzáadás</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>&amp;Saját delegálások</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>Delegált eszközök</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>Jelenlegi delegált egyenlege</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>Saját delegálások</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>&amp;Kapott delegálások</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>Új staking-cím &amp;létrehozása</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> címkével:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>Az új fogadási címhez társítható opcionális címke (Ön használja egy számla azonosítására). A fizetési kérelemhez is csatolva lesz.</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>ColdStake delegálások</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>A tárca delegálási címeire fizetett érméket ezek a kulcsok megérkezésük pillanatában stakelik, és a saját költéseiből származó visszajáró is delegált marad. Egy staking-kulcs csak olyan coinstake-eket hozhat létre, amelyek Önnek fizetnek vissza, így az azt tároló tárcának nincs szüksége jelmondatra.</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>Soroljon fel egynél többet, hogy érméit több staking-tárca között ossza szét, így ha az egyik offline, nem áll le minden staking.
+
+Minden új delegálás arra a címre megy, amelyet eddig a legkevesebben neveztek meg, beleszámítva a kiadott delegálási címeket és a még el nem költött delegált érméket. Delegálásokat számol, nem összegeket, így egy nagy delegálást tartalmazó cím is előbb kerülhet sorra, mint egy több kisebbet tartalmazó.</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>Az eltávolított címre már delegált érméket nem mozgatja, és az továbbra is stakeli őket. Csak az új delegálások nem nevezik meg többé.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>Nem sikerült feloldani a tárcát.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Nem sikerült új %1 címet létrehozni</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>A hideg staking le van tiltva ezen a csomóponton (-coldstaking=0), így semmi sincs delegálva.</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>Az itteni staking-cím ehhez a tárcához tartozik, amely titkosított, így csak akkor stakel, amikor a tárca fel van oldva. Jelmondat nélküli stakinghez használjon címet egy külön, titkosítatlan staking-tárcából.</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>Delegálás leállítása ide: %1. A neki már delegált érméket nem mozgatja, és továbbra is stakeli őket.</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>Nem sikerült menteni a staking-címeket. Egy delegálás egy kulcshash-hez kötődik, így mindegyiknek legacy címnek kell lennie.</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>Ez a staking-cím már szerepel a listában.</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>Az összes staking-cím eltávolítása</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>Leállítja a delegálást mind a(z) %1 staking-címre?
+
+A már delegált érméket továbbra is ők stakelik, és nem mozdulnak. Az új befizetések és a visszajáró azonban közönséges címekre mennek, amelyek nem stakelnek, és az újbóli bekapcsoláshoz ismét szüksége lesz ezekre a címekre.</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2916,7 +5333,9 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>%n további blokkra megnyitva</numerusform><numerusform>%n további blokkra megnyitva</numerusform></translation>
+        <translation>
+            <numerusform>%n további blokkra megnyitva</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2996,7 +5415,9 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>beérik %n blokk múlva</numerusform><numerusform>beérik %n blokk múlva</numerusform></translation>
+        <translation>
+            <numerusform>beérik %n blokk múlva</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -3055,8 +5476,8 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
         <translation>Kereskedő</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Ustvarjeni kovanci morajo zoreti %1 blokov, preden jih lahko porabite. Ko ste ta blok ustvarili, je bil posredovan v omrežje, da bo dodan v verigo blokov. Če se bloku ni uspelo uvrstiti v verigo, se bo njegovo stanje spremenilo v "ni bilo sprejeto" in kovancev ne bo mogoče porabiti. To se včasih zgodi, če kak drug rudar v roku nekaj sekund hkrati z vami odkrije drug blok.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Ustvarjeni kovanci morajo zoreti %1 blokov, preden jih lahko porabite. Ko ste ta blok ustvarili, je bil posredovan v omrežje, da bo dodan v verigo blokov. Če se bloku ni uspelo uvrstiti v verigo, se bo njegovo stanje spremenilo v &quot;ni bilo sprejeto&quot; in kovancev ne bo mogoče porabiti. To se včasih zgodi, če kak drug rudar v roku nekaj sekund hkrati z vami odkrije drug blok.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -3110,7 +5531,9 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>%n további blokkra megnyitva</numerusform><numerusform>%n további blokkra megnyitva</numerusform></translation>
+        <translation>
+            <numerusform>%n további blokkra megnyitva</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3199,6 +5622,30 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>Znesek spremembe stanja sredstev.</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>Hideg stake</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>Staking más nevében</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>Stake-delegálás</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>Delegálás</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>Stake-delegálást elköltötte</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>Delegált összeg.</translation>
     </message>
 </context>
 <context>
@@ -3359,6 +5806,22 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
         <source>to</source>
         <translation>za</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>Hideg stake-ek</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>Meleg stake-ek</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>El nem költött delegált</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>Delegálások</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3375,7 +5838,7 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a "100 satoshi per kB"
     </message>
     <message>
         <source>Are you sure you wish to close the wallet &lt;i&gt;%1&lt;/i&gt;?</source>
-        <translation>Biztos, hogy bezárja a "%1" tárcát?</translation>
+        <translation>Biztos, hogy bezárja a &quot;%1&quot; tárcát?</translation>
     </message>
     <message>
         <source>Closing the wallet for too long can result in having to resync the entire chain if pruning is enabled.</source>
@@ -3444,7 +5907,7 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
         <translation>Erősitsd meg a díj emelését</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
+        <source>Can&apos;t draft transaction.</source>
         <translation>Sikertelen tranzakciós piszkozat</translation>
     </message>
     <message>
@@ -3452,7 +5915,7 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
         <translation>PSBT másolva</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>Tranzakció aláírása sikertelen.</translation>
     </message>
     <message>
@@ -3462,6 +5925,21 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
     <message>
         <source>default wallet</source>
         <translation>Alapértelmezett tárca</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ ez a csomópont</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● élő</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>A tárcakliens, amely ebben a folyamatban fut ezzel a csomóponttal. Ugyanaz a program, mint a bitcoin-pos-qt, nem annak másolata.</translation>
     </message>
 </context>
 <context>
@@ -3566,7 +6044,7 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
         <translation>Hiba %s beolvasása közben. Az összes kulcs sikeresen beolvasva, de a tranzakciós adatok és a címtár rekordok hiányoznak vagy sérültek.</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation>Opozorilo: Preverite, če sta datum in ura na vašem računalniku točna! %s ne bo deloval pravilno, če je nastavljeni čas nepravilen.</translation>
     </message>
     <message>
@@ -3574,7 +6052,7 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
         <translation>Kérlek támogasd ha hasznásnak találtad a  %s-t. Az alábbi linken találsz bővebb információt a szoftverről %s.</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
         <translation>A blokk adatbázis tartalmaz egy blokkot ami a jövőből érkezettnek látszik. Ennek oka lehet, hogy a számítógéped dátum és idő beállítása helytelen. Csak akkor építsd újra a block adatbázist ha biztos vagy benne, hogy az időbeállítás helyes.</translation>
     </message>
     <message>
@@ -3583,7 +6061,7 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
     </message>
     <message>
         <source>This is the transaction fee you may discard if change is smaller than dust at this level</source>
-        <translation>Ezt a tranzakciós díjat figyelmen kívül hagyhatod ha a visszajáró kisebb mint a "porhintés" összege jelenleg.</translation>
+        <translation>Ezt a tranzakciós díjat figyelmen kívül hagyhatod ha a visszajáró kisebb mint a &quot;porhintés&quot; összege jelenleg.</translation>
     </message>
     <message>
         <source>Unable to replay blocks. You will need to rebuild the database using -reindex-chainstate.</source>
@@ -3606,8 +6084,8 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
         <translation>-maxmempool legalább %d MB kell legyen.</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>Naslova -%s ni mogoče razrešiti: '%s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>Naslova -%s ni mogoče razrešiti: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3690,32 +6168,32 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
         <translation>%s bezárása folyamatban. A kezdeti hibátlansági teszt sikertelen.</translation>
     </message>
     <message>
-        <source>Invalid P2P permission: '%s'</source>
-        <translation>Érvénytelen P2P jog: '%s'</translation>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>Érvénytelen P2P jog: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>Neveljavna količina za -%s=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Neveljavna količina za -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>Neveljavna količina za -discardfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Neveljavna količina za -discardfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>Neveljavna količina za -fallbackfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Neveljavna količina za -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>A megadott blokk "%s" nem létezik.</translation>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>A megadott blokk &quot;%s&quot; nem létezik.</translation>
     </message>
     <message>
-        <source>Unknown address type '%s'</source>
-        <translation>Ismeretlen cím típus '%s'</translation>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>Ismeretlen cím típus &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Unknown change type '%s'</source>
-        <translation>Visszajáró típusa ismeretlen '%s'</translation>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>Visszajáró típusa ismeretlen &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3775,7 +6253,7 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
     </message>
     <message>
         <source>User Agent comment (%s) contains unsafe characters.</source>
-        <translation>Az ügyfélügynök megjegyzésben nem biztonságos karakter van: (%s) </translation>
+        <translation>Az ügyfélügynök megjegyzésben nem biztonságos karakter van: (%s)&#xa0;</translation>
     </message>
     <message>
         <source>Verifying blocks...</source>
@@ -3795,11 +6273,11 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
     </message>
     <message>
         <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use version 169900 or no version specified.</source>
-        <translation>A korábbi (nem HD) tárca nem frissíthető. Először frissíteni kell, hogy támogassa a "pre split keypool"-t. Használd a 169900 verziót vagy olyat amiben egyáltalán nincs verzió megadva.</translation>
+        <translation>A korábbi (nem HD) tárca nem frissíthető. Először frissíteni kell, hogy támogassa a &quot;pre split keypool&quot;-t. Használd a 169900 verziót vagy olyat amiben egyáltalán nincs verzió megadva.</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>Érvénytelen összeg -maxtxfee=&lt;amount&gt;: '%s' (legalább a minrelay összeg azaz %s kell legyen, hogy ne ragadjon be a tranzakció)</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Érvénytelen összeg -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (legalább a minrelay összeg azaz %s kell legyen, hogy ne ragadjon be a tranzakció)</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -3814,7 +6292,7 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
         <translation>Ez a maximum tranzakciós díj amit fizetni fogsz (a normál díj felett), hogy prioritizáld a részleges költés elkerülést a normál coin választás felett.</translation>
     </message>
     <message>
-        <source>Transaction needs a change address, but we can't generate it. Please call keypoolrefill first.</source>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
         <translation>A tranzakcióhoz szükség van egy visszajáró címre de nem tudtam létrehozni. Kérem először töltsd újra a címtárat a keypoolrefill paranccsal.</translation>
     </message>
     <message>
@@ -3854,23 +6332,23 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
         <translation>A választott díj (%s) alacsonyabb mint a beállított minimum díj (%s)</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>Érvénytelen -onion cím vagy hostname: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>Érvénytelen -onion cím vagy hostname: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>Érvénytelen -proxy cím vagy hostname: '%s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>Érvénytelen -proxy cím vagy hostname: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>Érvénytelen tranzakciós díj -paytxfee=&lt;amount&gt;: '%s' (minimum ennyinek kell legyen %s)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>Érvénytelen tranzakciós díj -paytxfee=&lt;amount&gt;: &apos;%s&apos; (minimum ennyinek kell legyen %s)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>Érvénytelen hálózati maszk van megadva itt:  -whitelist: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>Érvénytelen hálózati maszk van megadva itt:  -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
         <translation>Pri opciji -whitebind morate navesti vrata: %s</translation>
     </message>
     <message>
@@ -3894,16 +6372,16 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
         <translation>Tranzakció aláírása sikertelen</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>A megadott "%s" -walletdir nem létezik</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>A megadott &quot;%s&quot; -walletdir nem létezik</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>A megadott "%s" -walletdir relatív elérési út</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>A megadott &quot;%s&quot; -walletdir relatív elérési út</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>A megadott "%s" -walletdir nem könyvtár</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>A megadott &quot;%s&quot; -walletdir nem könyvtár</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3932,8 +6410,8 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
         <translation>Na tem računalniku ni bilo mogoče vezati naslova %s (vrnjena napaka: %s)</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>PID fájl létrehozása sikertelen '%s': %s</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>PID fájl létrehozása sikertelen &apos;%s&apos;: %s</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -3996,8 +6474,8 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
         <translation>Legalább egy címzett kell a tranzakcióhoz</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>Ismeretlen hálózat lett megadva -onlynet: '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>Ismeretlen hálózat lett megadva -onlynet: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -4012,8 +6490,8 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
         <translation>Figyelem: Privát kulcsokat észleltünk a {%s} tárcában, melynél a privát kulcsok le vannak tiltva.</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>Nem tudok írni a '%s' könyvtárba, ellenőrizd a jogosultságokat.</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>Nem tudok írni a &apos;%s&apos; könyvtárba, ellenőrizd a jogosultságokat.</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -4034,6 +6512,54 @@ A Fájl &gt; Megnyitás menüben lehet megnyitni.
     <message>
         <source>Done loading</source>
         <translation>Betöltés befejezve.</translation>
+    </message>
+    <message>
+        <source>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</source>
+        <translation>Több onion kötési cím van megadva. %s használata az automatikusan létrehozott Tor onion szolgáltatáshoz.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Nem sikerült előkészíteni az SQLite-tárca sémaverzióját lekérő utasítást: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Nem sikerült előkészíteni az alkalmazásazonosítót lekérő utasítást: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unknown sqlite wallet schema version %d. Only version %d is supported</source>
+        <translation>SQLiteDatabase: Ismeretlen SQLite-tárca sémaverzió: %d. Csak a(z) %d verzió támogatott</translation>
+    </message>
+    <message>
+        <source>Failed to verify database</source>
+        <translation>Nem sikerült ellenőrizni az adatbázist</translation>
+    </message>
+    <message>
+        <source>Ignoring duplicate -wallet %s.</source>
+        <translation>A duplikált -wallet %s figyelmen kívül hagyva.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Nem sikerült végrehajtani az adatbázis-ellenőrző utasítást: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Nem sikerült lekérni az SQLite-tárca sémaverzióját: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Nem sikerült lekérni az alkalmazásazonosítót: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Nem sikerült előkészíteni az adatbázis-ellenőrző utasítást: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to read database verification error: %s</source>
+        <translation>SQLiteDatabase: Nem sikerült beolvasni az adatbázis-ellenőrzési hibát: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unexpected application id. Expected %u, got %u</source>
+        <translation>SQLiteDatabase: Váratlan alkalmazásazonosító. Várt: %u, kapott: %u</translation>
     </message>
 </context>
 </TS>

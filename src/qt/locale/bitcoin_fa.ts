@@ -1,4 +1,6 @@
-<TS language="fa" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fa">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -70,10 +72,10 @@
         <translation>اینها آدرس‌های شما برای ارسال وجوه هستند. همیشه قبل از ارسال، مقدار و آدرس گیرنده را بررسی کنید.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.
-Signing is only possible with addresses of the type 'legacy'.</source>
-        <translation>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.
-Signing is only possible with addresses of the type 'legacy'.</translation>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
+        <translation>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -242,6 +244,14 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>اخطار: کلید Caps Lock فعال است!</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>برای غیرفعال کردن ارسال ساده پول در صورت به خطر افتادن حساب سیستم‌عامل است. امنیت واقعی فراهم نمی‌کند.</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>فقط برای استیکینگ.</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -252,6 +262,109 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
     <message>
         <source>Banned Until</source>
         <translation>مسدودشده تا</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>پرداخت گروهی</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>هر خط یک پرداخت، به شکل «نشانی, مبلغ». ویرگول، نقطه‌ویرگول یا تب فیلدها را جدا می‌کند و فیلد سوم برچسب می‌شود. خط‌هایی که با # شروع می‌شوند نادیده گرفته می‌شوند.</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>&amp;چسباندن</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>بارگذاری از &amp;فایل...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>&amp;پاک کردن</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>خط</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>نشانی</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>مبلغ</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>وضعیت</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>بارگذاری فهرست پرداخت</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>فایل‌های متنی و CSV (*.txt *.csv);;همه فایل‌ها (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>خواندن %1 ممکن نشد.</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>انتظار می‌رفت «نشانی, مبلغ»</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>بدون نشانی</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>نشانی معتبر نیست</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>بدون مبلغ</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>خواندن مبلغ «%1» ممکن نشد</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>مبلغ باید بیشتر از صفر باشد</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>درست</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>هر خط یک پرداخت به شکل «نشانی, مبلغ» بچسبانید. فیلد سوم به عنوان برچسب به کار می‌رود. خط‌هایی که با # شروع می‌شوند نادیده گرفته می‌شوند.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>%1 از %2 خط قابل استفاده نیستند. برای ادامه آن‌ها را اصلاح یا حذف کنید.</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>%1 گیرنده بیش از ظرفیت یک تراکنش است (محدودیت اینجا %2 است). فهرست را تقسیم کنید.</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>%1 گیرنده، در مجموع %2، پیش از کارمزد.</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>افزودن به فرم ارسال</translation>
     </message>
 </context>
 <context>
@@ -286,7 +399,7 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
     </message>
     <message>
         <source>Quit application</source>
-        <translation>از "درخواست نامه"/ application خارج شو</translation>
+        <translation>از &quot;درخواست نامه&quot;/ application خارج شو</translation>
     </message>
     <message>
         <source>&amp;About %1</source>
@@ -442,7 +555,9 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n ارتباط فعال به شبکه بیت‌کوین</numerusform><numerusform>%n ارتباط فعال به شبکه بیت‌کوین</numerusform></translation>
+        <translation>
+            <numerusform>%n ارتباط فعال به شبکه بیت‌کوین</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -454,7 +569,9 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>%n بلاک از تاریخچه تراکنش، پردازش شد.</numerusform><numerusform>%n بلاک از تاریخچه تراکنش، پردازش شد.</numerusform></translation>
+        <translation>
+            <numerusform>%n بلاک از تاریخچه تراکنش، پردازش شد.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -668,6 +785,331 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
         <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
         <translation>A fatal error occurred. %1 can no longer continue safely and will quit.</translation>
     </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;استیکینگ</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>نمایش استیک کیف پول</translation>
+    </message>
+    <message>
+        <source>Show the %1 help message to get a list with possible Bitcoin command-line options</source>
+        <translation>نمایش پیام راهنمای %1 برای دیدن فهرست گزینه‌های ممکن خط فرمان</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>کیف پول &lt;b&gt;رمزنگاری شده&lt;/b&gt; و اکنون &lt;b&gt;فقط برای استیکینگ باز&lt;/b&gt; است</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>&amp;رمزگشایی کیف پول...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>حذف گذرواژه، به طوری که کلیدهای خصوصی رمزنگاری‌نشده ذخیره شوند</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>استیکینگ انجام نمی‌شود</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n ثانیه</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n دقیقه</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n ساعت</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n روز</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>در حال استیکینگ.&lt;br&gt;وزن شما %1 است&lt;br&gt;وزن شبکه %2 است&lt;br&gt;زمان تقریبی تا پاداش: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>استیکینگ انجام نمی‌شود چون کیف پول آفلاین است</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>استیکینگ انجام نمی‌شود چون کیف پول در حال همگام‌سازی است</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>استیکینگ انجام نمی‌شود چون سکه بالغ ندارید</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>استیکینگ انجام نمی‌شود چون کیف پول قفل است</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>خطای ناشناخته</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>کمتر از یک دقیقه</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>یک دقیقه</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 دقیقه</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>یک ساعت</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 ساعت</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 روز</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>یک ماه</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 ماه</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>حدود یک سال</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>بیش از یک سال</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>ناشناخته</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>خطای مهلکی رخ داد. %1 دیگر نمی‌تواند با اطمینان ادامه دهد و بسته می‌شود.</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>پیام اصلی:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>کاوش</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>شبکه روکش</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>نام‌ها</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>همتاها و کنسول</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>گره</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>کیف پول</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>پست</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>پست (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>سرور</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>تنظیمات</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>ثبت نامشخص</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>شبکه روکش نامشخص</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>در حال اتصال…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>با وزن فعلی شبکه، استیکینگ حدود %1% در سال سود می‌دهد: %2 بلوک در سال، هر کدام %3 %4، روی %5 %4 در استیکینگ.</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>این پس از سهم %1% از هر بلوک است که این گره با همتاهایش تقسیم می‌کند.</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>%1% در سال</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>در حال خاموش شدن…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>%1 همتا: %2 ورودی، %3 خروجی.</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>برای توقف فعالیت شبکه کلیک کنید.</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>۱ همتا</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>%1 همتا</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>فعالیت شبکه متوقف شده است.</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>برای ادامه آن کلیک کنید.</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>شبکه متوقف</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>%1 بلوک از تاریخچه پردازش شد.</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>بلوک %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>به‌روز است.</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>در حال همگام‌سازی با شبکه…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>در حال پردازش بلوک‌های روی دیسک…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>در حال نمایه‌سازی دوباره بلوک‌های روی دیسک…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>در حال اتصال به همتاها…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>%1 عقب</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>در حال رسیدن…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>آخرین بلوک دریافتی %1 پیش ساخته شده است.</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>کیف پول &lt;b&gt;%1&lt;/b&gt; رمزنگاری شده و فقط برای استیکینگ باز است</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>کیف پول &lt;b&gt;%1&lt;/b&gt; رمزنگاری شده و باز است</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>کیف پول &lt;b&gt;%1&lt;/b&gt; رمزنگاری شده و قفل است</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>در حال استیکینگ</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>در حال استیکینگ، %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; در حال استیکینگ است.&lt;br&gt;وزن آن %2 است&lt;br&gt;وزن شبکه %3 است&lt;br&gt;زمان تقریبی تا پاداش: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>بدون استیکینگ</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>بدون استیکینگ (پرداخت %1)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>استیکینگ انجام نمی‌شود: همتاها بسیار کم‌اند</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>استیکینگ انجام نمی‌شود: زنجیره هنوز در حال رسیدن است</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>استیکینگ انجام نمی‌شود: &lt;b&gt;%1&lt;/b&gt; سکه بالغ ندارد</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>استیکینگ انجام نمی‌شود: &lt;b&gt;%1&lt;/b&gt; قفل است</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>استیکینگ انجام نمی‌شود</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -819,6 +1261,57 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
         <source>(change)</source>
         <translation>(تغییر)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>برای استیکینگ سرد به %1 واگذار شده</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>نوشتن نامه</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>یک نام، نام مستعاری از دفترچه نشانی، یا کلید دفتر</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>به</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>موضوع</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>ارسال</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>برای چه کسی است؟ یک نام، نام مستعار یا کلید دفتر.</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>نامه %1 کیلوبایت است؛ یک نامه حداکثر می‌تواند %2 کیلوبایت باشد.</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>نامه مهر و موم می‌شود و در صندوق‌های پستی گیرنده گذاشته می‌شود، هر بار از طریق سه رله. چند ثانیه طول می‌کشد…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>ارسال شد</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>نامه در %1 از %2 صندوق پستی گیرنده گذاشته شد. برای رسیدن، یکی کافی است.</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>ارسال نشد: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -885,6 +1378,189 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
         <source>Compiled without sqlite support (required for descriptor wallets)</source>
         <translation>Compiled without sqlite support (required for descriptor wallets)</translation>
     </message>
+    <message>
+        <source>Wallet</source>
+        <translation>کیف پول</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>گزینه‌های پیشرفته</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>کاوش</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>همتاها خود را روی زنجیره اعلام می‌کنند نه روی یک سرور، بنابراین این فهرست برای همه یکسان است و هیچ‌کس نمی‌تواند آن را ویرایش کند.</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>دفتر</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>ثبت شما</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>همتاهای ثبت‌شده</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>شما</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>کپی</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>در حال انتشار ثبت شما…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>هویت</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>ساختن…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>اگر روزی کلید این گره نیاز به تغییر داشته باشد، هویت تاریخچه این گره، یعنی مدت ثبت آن، را حفظ می‌کند.</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>یافتن همتا یا نشانی</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>کلید کپی شد</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>نشانی کپی شد</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>در حال شروع…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>ساختن هویت</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>پرداخت کارمزد از</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>هویت کلید دومی است که پشت کلید این گره قرار دارد. اگر کلید این گره روزی گم یا دزدیده شود، می‌توان کلید تازه‌ای زیر همان هویت گذاشت و گره مدت ثبت خود را نگه می‌دارد، به جای آنکه از نو شروع کند.
+
+یک کلید بازیابی یک بار به شما نشان داده می‌شود. آن را یادداشت کنید: تنها راه برای جلوگیری از جابه‌جا کردن هویت توسط کسی است که آن را بدزدد. سپس یک تراکنش کوچک هویت را منتشر می‌کند و تمدید بعدی ثبت شما کلید این گره را به آن پیوند می‌دهد.</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>رله شما ثبت شما را در تراکنش %1 منتشر کرد. پس از تأیید تراکنش به حساب می‌آید.</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>در تراکنش %1 منتشر شد. پس از تأیید تراکنش به حساب می‌آید.</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>ناشناخته</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>نمایه دفتر خاموش</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>ثبت نشده</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>%1 دیگر پایان می‌یابد</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>در حال تمدید ثبت شما…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>تمدید در ۳ روز آخر</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>ثبت شما %1 دیگر پایان می‌یابد. تمدید از سه روز پیش از آن ممکن است.</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>ثبت‌شده، %1 دیگر پایان می‌یابد</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>هیچ</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>این گره کلید اعلام ندارد: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>غیرفعال</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>نمایه دفتر اجرا نمی‌شود، بنابراین این گره نمی‌تواند ببیند چه کسی ثبت شده است. برای روشن کردن آن با -rosterindex دوباره راه‌اندازی کنید.</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>در حال رسیدن (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>%1 روز پیش</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>جدیدترین بلوک این گره %1 روز قدمت دارد، بنابراین همتاهایی که از آن زمان لغو شده‌اند ممکن است هنوز اینجا باشند. دفتر همچنان برای رسیدن به همتاها به کار می‌رود، اما شبکه روکش تا رسیدن زنجیره، رله‌های با سابقه ثبت طولانی را ترجیح نمی‌دهد.</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>به‌روز</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>نمایه دفتر اجرا نمی‌شود</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>کلید بازیابی شما</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>آن را یادداشت کنید و در جای امنی دور از این رایانه نگه دارید. فقط اکنون نشان داده می‌شود و هیچ‌جا ذخیره نمی‌شود. با آن نمی‌توان سکه‌ای خرج کرد؛ تنها می‌تواند جابه‌جایی هویت شما را که خودتان انجام نداده‌اید متوقف کند.</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>آن را یادداشت کردم</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>هویت شما در تراکنش %1 منتشر شد. تمدید بعدی ثبت شما کلید این گره را به آن پیوند می‌دهد.</translation>
+    </message>
 </context>
 <context>
     <name>EditAddressDialog</name>
@@ -921,16 +1597,16 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
         <translation>ویرایش آدرس ارسالی</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>آدرس وارد شده "%1" آدرس معتبر بیت کوین نیست.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
+        <translation>آدرس وارد شده &quot;%1&quot; آدرس معتبر بیت کوین نیست.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>آدرس وارد شده "%1" در حال حاظر در دفترچه آدرس ها موجود است با برچسب "%2" .</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>آدرس وارد شده &quot;%1&quot; در حال حاظر در دفترچه آدرس ها موجود است با برچسب &quot;%2&quot; .</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -1019,7 +1695,7 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>بیت کوین</translation>
+        <translation type="vanished">بیت کوین</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -1042,7 +1718,7 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
         <translation>کیف پول هم در همین دایرکتوری ذخیره می‌شود.</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
         <translation>خطا: نمی‌توان پوشه‌ای برای داده‌ها در «%1» ایجاد کرد.</translation>
     </message>
     <message>
@@ -1051,15 +1727,180 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>%n گیگابایت از فضای موچود است</numerusform><numerusform>%n گیگابایت از فضای موچود است</numerusform></translation>
+        <translation>
+            <numerusform>%n گیگابایت از فضای موچود است</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(از %n گیگابایت مورد نیاز)</numerusform><numerusform>(از %n گیگابایت مورد نیاز)</numerusform></translation>
+        <translation>
+            <numerusform>(از %n گیگابایت مورد نیاز)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(%n GB needed for full chain)</numerusform><numerusform>(%n GB needed for full chain)</numerusform></translation>
+        <translation>
+            <numerusform>(%n GB needed for full chain)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>پست</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>نشانی شما</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>کپی</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>کلید دفتر شما. هر کسی که ثبت شده باشد می‌تواند با آن برایتان نامه بنویسد.</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>پست از طریق شبکه روکش سفر می‌کند. برای ارسال و دریافت پست، شبکه روکش را در تنظیمات روشن کنید و دوباره راه‌اندازی کنید.</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>نوشتن</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>پاسخ</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>دریافت اکنون</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>اکنون نامه‌های جدید را از صندوق‌های پستی خود دریافت کنید. این کار هر چند دقیقه هم انجام می‌شود.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>حذف</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>صندوق ورودی</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>ارسال شد</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>از</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>موضوع</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>تاریخ</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>نامه‌ها با کلید پستی هفتگی گیرنده، با secp256k1 و ML-KEM-768 با هم، مهر و موم می‌شوند؛ کلید و امضای شما درون مهر سفر می‌کنند و هر رفت به صندوق پستی از سه رله می‌گذرد. کلیدهای پستی قدیمی حذف می‌شوند، بنابراین نامه‌ای که امروز دریافت شده بعداً با کلیدهای این رایانه باز نمی‌شود.</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>به</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>هنوز هیچ رله‌ای ثبت نشده، بنابراین صندوق پستی ندارید و کسی نمی‌تواند برایتان نامه بنویسد.</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>%1 رله پست شما را نگه می‌دارند؛ وقتی دفتر رله‌های بیشتری داشته باشد %2 خواهند شد.</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>%1 رله که بر اساس کلید شما انتخاب شده‌اند، پست شما را تا وقتی که آن را دریافت کنید نگه می‌دارند.</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>کلید پستی شماره %1، هر هفته تمدید می‌شود.</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>آخرین دریافت %1.</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>هنوز دریافت نشده.</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>۱ نامه جدید</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>%1 نامه جدید</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>، از %1 از %2 صندوق پستی.</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(بدون موضوع)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>در %1 از صندوق‌های پستی گیرنده گذاشته شد</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>از: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>به: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>ارسال در %1، در %2 از صندوق‌های پستی گیرنده گذاشته شد</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>نوشته‌شده %1، دریافت‌شده %2</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>یک نامه را برای خواندن انتخاب کنید.</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>در حال دریافت…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>در حال رسیدن به صندوق‌های پستی شما، هر کدام از طریق سه رله…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>حذف نامه</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>این نامه از این رایانه حذف شود؟ نسخه‌های آن در صندوق‌های پستی هنگام دریافت پاک شده‌اند، بنابراین دیگر نمی‌توان آن را دریافت کرد.</translation>
     </message>
 </context>
 <context>
@@ -1069,8 +1910,8 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
         <translation>فرم</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
-        <translation>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</translation>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <translation>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</translation>
     </message>
     <message>
         <source>Attempting to spend bitcoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
@@ -1119,6 +1960,409 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>Unknown. Syncing Headers (%1, %2%)...</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>نام‌ها</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>نام مردم را به کلید دفتر شما راهنمایی می‌کند تا بتوانند با نام، نه با کلید، برایتان نامه بنویسند و به شما پرداخت کنند. گرفتن یک نام آزاد و تمدید آن فقط کارمزد شبکه هزینه دارد؛ نام به صورت دستی تمدید می‌شود. نامی را که کسی دارد، اگر برای فروش بگذارد، می‌توان با قیمتی که می‌خواهد خرید. نام‌های زیر نام شما رایگان‌اند و نام‌های مستعار هم همین‌طور: برچسب‌های خودتان برای افراد، که روی این رایانه نگه داشته می‌شوند.</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>نام‌های شما</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>پرداخت از</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>نام</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>وضعیت</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>پایان</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>زیرنام‌ها</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>گرفتن نام…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>تمدید…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>افزودن زیرنام…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>فروش…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>انتقال…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>پذیرفتن پرداخت با نام…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>جستجو</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>یک نام، برچسب.نام یا نام مستعار</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>کپی کلید</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>پرداخت…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>دفترچه نشانی</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>نام مستعار</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>کلید</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>افزودن کسی…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>برداشتن</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>کلید کپی شد</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>در حال انجام…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>خارج کردن از فروش</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>ابتدا آن را از فروش خارج کنید.</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>کلید پرداخت جدید…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>پرداخت با نام روشن است</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>نام‌ها به نمایه نام نیاز دارند. «نمایه‌سازی نام‌ها» را در تنظیمات روشن کنید و دوباره راه‌اندازی کنید.</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>نام‌ها هنوز در این شبکه آغاز نشده‌اند. اینکه کی در شبکه اصلی آغاز شوند و نخستین نام‌ها چگونه واگذار شوند، هنوز تصمیم‌گیری نشده است. در این میان می‌توانید نام‌ها را جستجو کنید و دفترچه نشانی داشته باشید.</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1 برابر است با %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>از دفترچه نشانی شما</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>نام ثبت‌شده، در اختیار تا بلوک %1</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>تثبیت‌شده</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>%1 پیش تغییر کرد، هنوز تثبیت نشده</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>پرداخت با نام را می‌پذیرد</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>برای فروش: دارنده %1 می‌خواهد. برای خرید از «گرفتن نام» استفاده کنید.</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>%1 متعهد شد. نام خودبه‌خود پس از %2 بلوک (حدود %3) ادعا می‌شود - تا آن زمان BPS Relay را در حال اجرا و کیف پول را باز نگه دارید.</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>خرید %1: %2 به دارنده پرداخت شد. پس از تأیید تراکنش متعلق به شما می‌شود.</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>%1 با قیمت %2 برای فروش گذاشته می‌شود. از بلوک بعدی هر کسی می‌تواند آن را بخرد، بی‌آنکه این گره آنلاین باشد؛ قیمت به این کیف پول پرداخت می‌شود.</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>%1 از فروش خارج می‌شود. از این پس هیچ‌کس نمی‌تواند آن را بخرد.</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>%1 تا بلوک %2 تمدید شد، فقط با کارمزد شبکه.</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>%1 در حال انتقال به %2 است. پس از تأیید تراکنش متعلق به آن‌ها می‌شود.</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>%1 تنظیم شد؛ پس از تأیید تراکنش قابل یافتن می‌شود.</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>پرداخت با نام در حال روشن شدن است. مردم حدود %1 پس از تأیید تراکنش می‌توانند به هر نام شما پرداخت کنند؛ هر پرداخت در کیف پول شما با عنوان «پرداخت با نام» نشان داده می‌شود.</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>%1 به %2 پرداخت شد، به نشانی‌ای که فقط برای این پرداخت به کار رفت.</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>پرداخت</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>%1 دیگر</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>%1 پیش پایان یافت</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>منقضی شده - ظرف یک ماه تمدید کنید</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>در اختیار</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>در حال فروش - یک خرید در حال تأیید است</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>برای فروش به قیمت %1</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>برای فروش به قیمت %1 - هنوز قابل خرید نیست</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>ثبت نشده</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>در حال ثبت</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>برای کپی کلیک کنید</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>گرفتن نام</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>۱ تا ۳۲ حرف، رقم یا خط تیره</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>۱ سال</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>۲ سال</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>برای</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>ثبت‌نام دو مرحله دارد: تعهدی که نام را پنهان می‌کند، و حدود ۲۰ دقیقه بعد ادعا، که BPS Relay خودش می‌فرستد. در این فاصله هیچ‌کس نمی‌تواند نام را بگیرد. هر مرحله فقط کارمزد شبکه هزینه دارد.</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>خرید یک تراکنش است: به دارنده پرداخت می‌کند و نام را از آن شما می‌کند، همه با هم یا هیچ.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>ثبت‌نام</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>نام از ۱ تا ۳۲ حرف ساده a-z، رقم یا خط تیره درونی تشکیل می‌شود.</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>%1، برای %2، فقط کارمزد شبکه هزینه دارد. در حال بررسی آزاد بودن…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>یک سال</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>دو سال</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>خارج کردن %1 از فروش</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>%1 از فروش خارج شود؟ از آن پس کسی نمی‌تواند آن را بخرد و پس از تأیید می‌توانید آن را منتقل کنید یا دوباره برای فروش بگذارید.</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>فروش %1</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>قیمت شما برای %1، به BPS. آنگاه هر کسی می‌تواند فوراً آن را بخرد، حتی وقتی BPS Relay بسته است: این مبلغ را در همان تراکنشی که نام را به آن‌ها می‌دهد به شما پرداخت می‌کنند. تا وقتی برای فروش است نمی‌توانید آن را منتقل کنید.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>«%1» مبلغی به BPS نیست.</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>%1 با قیمت %2 برای فروش گذاشته شود؟ دو تراکنش کوچک فرستاده می‌شود: یکی سکه‌ای را که خریدار خرج می‌کند کنار می‌گذارد و دیگری فروش را منتشر می‌کند.</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>تمدید %1</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>تمدید %1 از زمان پایان فعلی. فقط کارمزد شبکه هزینه دارد. یک نام حداکثر تا دو سال جلوتر تمدید می‌شود.</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>انتقال %1</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>دادن %1 به (کلید دفتر، نام مستعار یا نام):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>%1 به %2 داده شود؟ فقط دارنده جدید می‌تواند آن را پس بدهد.</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>زیرنام زیر %1</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>بخش پیش از .%1، برای مثال alice برای alice.%1:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>%1.%2 به چه کسی اشاره کند (کلید دفتر، نام مستعار یا نام)، یا «remove»:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>در حال جستجو…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>افزودن کسی</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>آن‌ها را چه می‌نامید (فقط شما این را می‌بینید):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>کلید دفتر آن‌ها، یا یک نام برای به خاطر سپردن اینکه اکنون چه کسی آن را دارد:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>پرداخت با نام روشن است. به یک کلید تازه از این کیف پول منتقل شود؟ پرداخت‌هایی که قبلاً به کلید فعلی انجام شده همچنان می‌رسند. پرداخت‌کنندگان پس از تغییر حدود %1 صبر می‌کنند و سپس دوباره پرداخت می‌کنند.</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>بگذارید مردم با نام به شما پرداخت کنند: هر نام یا زیرنامی که به کلید این گره اشاره کند، نام مستعاری که برای شما نگه داشته‌اند، یا خود کلید. هر پرداخت به نشانی جداگانه‌ای می‌رود که فقط این کیف پول می‌تواند خرج کند، و هیچ ناظری نمی‌تواند بفهمد به شما پرداخت شده یا دو پرداخت به یک نفر رفته است. کارمزد شبکه هزینه دارد. مردم حدود %1 پس از تأیید می‌توانند به شما پرداخت کنند.</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>پرداخت با نام</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>پرداخت به %1</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>%1 هنوز پرداخت با نام را نمی‌پذیرد. از آن‌ها بخواهید آن را در زبانه نام‌ها روشن کنند، یا یک نشانی بخواهید.</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>%1 %2 پیش دست به دست شد.</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>آن‌ها کلیدی را که با آن پرداخت دریافت می‌کنند %1 پیش تنظیم کردند.</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>به BPS</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>مبلغ</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>پرداخت به نشانی‌ای می‌رود که فقط برای آن به کار می‌رود و فقط %1 می‌تواند خرج کند؛ هیچ‌کس دیگری نمی‌تواند بفهمد به چه کسی پرداخت شده است. پرداخت را نمی‌توان پس گرفت. کارمزد شبکه جداگانه است.</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>اگر آن‌ها نبوده‌اند، پرداخت از دست می‌رود. صبر کردن تا گذشت %1 امن‌تر است.</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>به هر حال پرداخت شود</translation>
     </message>
 </context>
 <context>
@@ -1426,6 +2670,209 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
         <source>The supplied proxy address is invalid.</source>
         <translation>آدرس پراکسی ارائه شده نامعتبر است.</translation>
     </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>آیا امکانات کنترل استیکینگ سرد نمایش داده شوند یا نه.</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>فعال کردن امکانات کنترل استیکینگ &amp;سرد</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>شبکه روکش</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>لایه رمزنگاری‌شده خود BPS که ترافیک را از طریق همتاهای دیگر عبور می‌دهد تا طرف مقابل هرگز نفهمد شما کجا هستید.</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>در حال پرسیدن…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>در حال اجرا</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>در حال گوش دادن روی</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>مسیرهای باز</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>سرویس‌هایی که اینجا به هم می‌رسند</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>رله‌های در دسترس</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>دور امروز</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>راه ورود شما</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>همتاهایی که ترافیک شما همیشه از آن‌ها وارد می‌شود. نگه داشته می‌شوند نه عوض: انتخاب یکی تازه در هر بار سرانجام نوبتی به ناظر می‌دهد.</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>جاهایی که مردم می‌توانند شما را ملاقات کنند</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>از دفتر محاسبه می‌شود، نه اینکه جستجو شود. هر کسی که بخواهد به شما برسد همین حساب را انجام می‌دهد و همین پاسخ را می‌گیرد، پس کسی نیست که از او پرسید و کسی نیست که بتواند پاسخ دیگری بدهد. هر روز تغییر می‌کنند.</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>شنیده‌شده از رادیو</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>درآمد رله بودن</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>صادرشده در روز</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>رله‌ها</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>کاربران</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>کاربران هر رله</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>سهم هر کاربر</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>رله از پاداش‌های بلوک خودش به همتاهایی که ثبت می‌کند پرداخت می‌کند، بنابراین سهم هر کاربر برابر یک تقسیم بر تعداد کاربران رله اوست — به همین دلیل گرفتن سهمی از کاربران شبکه به سهمی از استیک نیاز دارد. اینکه رله چه مقدار از پاداش را تقسیم کند انتخاب خودش است و چیزی آن را اجبار نمی‌کند: رله‌ای که هیچ پرداخت نکند بلوکی کاملاً معتبر می‌سازد. آنچه آن را به پرداخت وا می‌دارد این است که رله بدون کاربر از هیچ‌کس محافظت نمی‌کند، حتی از خودش.</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>هنوز کسی جز نویسندگانش آن را بررسی نکرده است، و آنچه پنهان می‌کند جای شماست نه زمان سخن گفتن شما: کسی که هر دو سر را زیر نظر دارد هنوز می‌تواند زمان‌ها را تطبیق دهد. آن را ناتمام بدانید.</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>این گره چیزی تقسیم نمی‌کند. -relayshare را روی یک درصد تنظیم کنید و با addrosteruser همتا بپذیرید.</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>این گره %1% تقسیم می‌کرد، اما %2.</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>این گره %1% را با %2 همتا تقسیم می‌کند: بلوک بعدی که استیک کند %3 می‌پردازد، هر کدام %4.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>پل Reticulum گزارشی نمی‌دهد. آن را از تنظیمات، رادیو، راه‌اندازی کنید یا خودتان bps-rns-bridge.py را اجرا کنید.</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>در حال گوش دادن. هنوز هیچ گره BPS از رادیو شنیده نشده؛ گره‌ها هر نیم ساعت خود را اعلام می‌کنند.</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>وقتی یکی از همسایگان رادیویی رله ثبت‌شده باشد، ترافیک شما از طریق او وارد می‌شود.</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>شنیده شد، اما ترافیک شما از اینترنت وارد می‌شود (تنظیمات، رادیو).</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>۱ گام</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>%1 گام</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>گام‌ها نامشخص</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>%1 پیش شنیده شد</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>یک رله</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>بله</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>خیر</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>شبکه روکش خاموش است. این برنامه خودش آن را روشن می‌کند، پس چیزی دوباره آن را خاموش کرده است: -overlay=0 در خط فرمان یا در فایل پیکربندی.</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>تا وقتی شبکه روکش خاموش است هیچ</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>شبکه روکش خاموش</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>هنوز هیچ</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>شبکه روکش روشن، هنوز رله‌ای نیست</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>شبکه روکش روشن، ۱ رله</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>شبکه روکش روشن، %1 رله</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>هنوز انتخاب نشده</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>هیچ — دفتر رله‌ای ندارد که از آن محاسبه شوند</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>شبکه روکش نامشخص</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>هنوز رله‌ای نیست</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1504,6 +2951,30 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
     <message>
         <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
         <translation>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</translation>
+    </message>
+    <message>
+        <source>Stake</source>
+        <translation>استیک</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>استیک‌های نابالغ:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>واگذاری‌های نابالغ</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>واگذاری‌های نابالغ:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>واگذارشده</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>واگذارشده:</translation>
     </message>
 </context>
 <context>
@@ -1644,16 +3115,16 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
         <translation>مدیریت URI</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</translation>
     </message>
     <message>
         <source>Cannot process payment request because BIP70 is not supported.</source>
         <translation>Cannot process payment request because BIP70 is not supported.</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
-        <translation>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</translation>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <translation>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</translation>
     </message>
     <message>
         <source>If you are receiving this error you should request the merchant provide a BIP21 compatible URI.</source>
@@ -1700,6 +3171,161 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>تمدید ثبت شما</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>انتشار ثبت شما</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>تمدید یک رکورد تازه روی زنجیره می‌نویسد. تا وقتی تأیید نشده، رکورد قدیمی همچنان معتبر است.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>این یک رکورد کوتاه روی زنجیره می‌نویسد که می‌گوید شما وجود دارید، و به دلخواه، کجا می‌توان شما را یافت.</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>همتاها چگونه به شما برسند؟</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>از طریق شبکه روکش — بدون انتشار نشانی</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>ثبت شما می‌گوید شما چه کسی هستید، نه اینکه کجا اجرا می‌شوید. همتاها به جای آن از طریق شبکه روکش به شما می‌رسند و در نقاطی که هر دو طرف از دفتر محاسبه می‌کنند با شما ملاقات می‌کنند. این همان چیزی است که این برنامه به طور پیش‌فرض روشن می‌کند.</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>در نشانی‌ای که منتشر می‌کنم</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>نشانی‌ای که دیگر همتاها می‌توانند به آن برسند</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>هر کسی می‌تواند آن را ببیند و زنجیره آن را برای همیشه نگه می‌دارد. نشانی onion مکانی منتشر می‌کند که هیچ‌کس نمی‌تواند آن را به شما برساند و پشت NAT هم کار می‌کند؛ نشانی IP هیچ‌کدام را ندارد. گرهی که نشانی IP منتشر کند ممکن است از سوی دیگران به عنوان رله انتخاب شود.</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>چه کسی کارمزد را می‌پردازد</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>یک ماه، سپس باید تمدید شود</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>یک سال، سپس باید تمدید شود</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>مدت اعتبار</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>تمدید</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>انتشار</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>رله می‌پردازد — سکه لازم نیست</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>شبکه روکش خاموش است، بنابراین رله‌ای برای پرسیدن نیست. آن را در تنظیمات روشن کنید یا از کیف پول پرداخت کنید.</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>هنوز هیچ رله‌ای در دفتر ثبت نشده، بنابراین کسی برای پرسیدن نیست. از کیف پول پرداخت کنید، یا وقتی رله‌ای ثبت شد دوباره امتحان کنید.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>گره شما ثبت را امضا می‌کند و از طریق شبکه روکش به رله‌ای که از آن وارد می‌شود می‌فرستد. رله‌ای که برای ثبت‌ها پرداخت می‌کند، ثبت شما را در بلوکی که خودش استیک می‌کند می‌گذارد، بنابراین حتی اگر بیشتر گره‌ها آن را منتقل نکنند تأیید می‌شود، و شما را به همتاهایی که پاداش‌هایش را با آن‌ها تقسیم می‌کند می‌افزاید. اگر بعداً پرداخت را متوقف کند، ثبت شما ظرف یک ماه منقضی می‌شود؛ همیشه می‌توانید خودتان از یک کیف پول دارای موجودی تمدید کنید.</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>این گره استیکینگ انجام نمی‌دهد. ثبت از آنچه گره‌های قدیمی‌تر منتقل می‌کنند بزرگ‌تر است، بنابراین تا وقتی بیشتر استیک‌کنندگان به‌روز نشوند، فقط وقتی تأیید می‌شود که یک استیک‌کننده با این نسخه آن را وارد کند، که ممکن است زمان ببرد. استیکینگ آن را در بلوک بعدی خودتان می‌گذارد؛ رله‌ای که پرداخت می‌کند آن را در بلوک خودش استیک می‌کند.</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>این کیف پول فقط برای استیکینگ باز است. پرداخت گذرواژه آن را می‌خواهد و پس از آن کیف پول دوباره قفل می‌شود، که استیکینگ را تا وقتی دوباره آن را برای استیکینگ باز کنید متوقف می‌کند.</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>پرداخت، گذرواژه این کیف پول را می‌خواهد.</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>یک نشانی وارد کنید، یا انتشار ندادن آن را انتخاب کنید.</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>در حال درخواست از رله شما برای انتشار… ممکن است تا نیم دقیقه طول بکشد.</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>آن کیف پول دیگر باز نیست.</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>کیف پول هنوز قفل است، بنابراین چیزی پرداخت نشد.</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>در حال امضای رکورد…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>گره رکوردی برگرداند که این برنامه آن را نفهمید.</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>در حال پرداخت برای انتشار…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>رله نپذیرفت: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>رله پاسخی نداد. %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1707,7 +3333,7 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>آدرس بیت کوین را وارد کنید (به طور مثال %1)</translation>
+        <translation type="vanished">آدرس بیت کوین را وارد کنید (به طور مثال %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1739,23 +3365,33 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n ثانیه</numerusform><numerusform>%n ثانیه</numerusform></translation>
+        <translation>
+            <numerusform>%n ثانیه</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n دقیقه</numerusform><numerusform>%n دقیقه</numerusform></translation>
+        <translation>
+            <numerusform>%n دقیقه</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n ساعت</numerusform><numerusform>%n ساعت</numerusform></translation>
+        <translation>
+            <numerusform>%n ساعت</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n روز</numerusform><numerusform>%n روز</numerusform></translation>
+        <translation>
+            <numerusform>%n روز</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n هفته</numerusform><numerusform>%n هفته</numerusform></translation>
+        <translation>
+            <numerusform>%n هفته</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1763,7 +3399,9 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n سال</numerusform><numerusform>%n سال</numerusform></translation>
+        <translation>
+            <numerusform>%n سال</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1782,7 +3420,7 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
         <translation>%1 گیگابایت</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation>خطا: پوشهٔ مشخص شده برای داده‌ها در «%1» وجود ندارد.</translation>
     </message>
     <message>
@@ -1798,12 +3436,60 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
         <translation>Error initializing settings: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1 به درستی بسته نشد</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>ناشناس</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>مخاطب</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>دریافت</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>پنهان</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>ناشناخته</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>واگذارشده</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>%1 در اختیار کسی است که آن را برای فروش گذاشته است. %2 می‌خواهد؛ کارمزد شبکه جداگانه است.</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>خرید</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>در حال بررسی آزاد بودن…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>آزاد است.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>ثبت‌نام</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>هنوز ساخته نشده</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>یک نشانی BitcoinPoS وارد کنید (مثلاً %1)</translation>
     </message>
 </context>
 <context>
@@ -1864,16 +3550,16 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
         <translation>پوشه داده Datadir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the data directory use the '%1' option.</source>
-        <translation>To specify a non-default location of the data directory use the '%1' option.</translation>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>To specify a non-default location of the data directory use the &apos;%1&apos; option.</translation>
     </message>
     <message>
         <source>Blocksdir</source>
         <translation>فولدر بلاکها</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>To specify a non-default location of the blocks directory use the '%1' option.</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -2124,8 +3810,8 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
         <translation>Executing command without any wallet</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
-        <translation>Executing command using "%1" wallet</translation>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>Executing command using &quot;%1&quot; wallet</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -2150,6 +3836,45 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
     <message>
         <source>Unknown</source>
         <translation>ناشناس یا نامعلوم</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>منظورتان این بود:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>از فرمان مطمئن نیستید؟ آنچه می‌خواهید را با کلمات ساده بنویسید، مثلاً %1، و یک پیشنهاد را انتخاب کنید. پیشنهادها روی همین رایانه محاسبه می‌شوند؛ هیچ چیزی از آنچه می‌نویسید به جایی فرستاده نمی‌شود.</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>رادیو خاموش است.</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>رادیو روشن است؛ پل Reticulum را خودتان راه‌اندازی کنید (contrib/reticulum/bps-rns-bridge.py).</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>bps-rns-bridge.py کنار BPS Relay نیست، بنابراین پل راه‌اندازی نمی‌شود.</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>Python با «%1» اجرا نشد. Python را نصب کنید یا فرمان را در تنظیمات، رادیو، تنظیم کنید.</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Reticulum نصب نیست. آن را با این فرمان نصب کنید: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>پل Reticulum متوقف شد (وضعیت %1)؛ radio/bridge.log را ببینید.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>پل Reticulum در حال راه‌اندازی است.</translation>
     </message>
 </context>
 <context>
@@ -2203,12 +3928,12 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
         <translation>پاک کردن</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>Generate native segwit (Bech32) address</translation>
+        <translation type="vanished">Generate native segwit (Bech32) address</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2253,6 +3978,14 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
     <message>
         <source>Could not generate new %1 address</source>
         <translation>Could not generate new %1 address</translation>
+    </message>
+    <message>
+        <source>(none)</source>
+        <translation>(هیچ)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>برای این کیف پول نشانی استیکینگ تنظیم نشده، بنابراین چیزی برای واگذاری نیست. در صفحه استیک، زیر واگذاری -&gt; واگذاری خودکار، یکی تنظیم کنید تا این نوع نشانی کار کند.</translation>
     </message>
 </context>
 <context>
@@ -2334,6 +4067,99 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
     </message>
 </context>
 <context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>همتا</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>نشانی</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>ثبت‌شده</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>پایان ثبت</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>مدت ثبت</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>برای کپی کلیک کنید</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>این همتا ثبت شده اما نشانی منتشر نمی‌کند. همچنان می‌توان
+از طریق شبکه روکش به آن رسید، و هدف از اجازه دادن به آن همین است.</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>یک نشانی منتشر شده</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>%1 نشانی منتشر شده</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>تأییدشده در بلوک %1</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>از بلوک %1 دیگر حساب نمی‌شود</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>پیش از این ثبت تاریخچه‌ای نیست.</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>بدون وقفه از بلوک %1 ثبت شده است.</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>هنوز آن‌قدر تازه است که حساب نمی‌شود.</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>زیر هیچ هویتی اجرا نمی‌شود.</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>زیر هویت %1 اجرا می‌شود، که اگر کلیدش را عوض کند سابقه‌اش را نگه می‌دارد.</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>نشانی‌ای منتشر نشده</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>همین الان</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>%1 پیش</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>منقضی</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>%1 دیگر</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>جدید</translation>
+    </message>
+</context>
+<context>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
@@ -2404,12 +4230,12 @@ Signing is only possible with addresses of the type 'legacy'.</translation>
         <translation>هشدار:تخمین کارمزد در حال حاضر امکان پذیر نیست.</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>مشخص کردن هزینه کارمزد مخصوص به ازاری کیلوبایت(1,000 بایت) حجم مجازی تراکنش
 
-توجه: از آن جایی که کارمزد بر اساس هر بایت محاسبه میشود,هزینه کارمزد"100 ساتوشی بر کیلو بایت"برای تراکنش با حجم 500 بایت(نصف 1 کیلوبایت) کارمزد فقط اندازه 50 ساتوشی خواهد بود.</translation>
+توجه: از آن جایی که کارمزد بر اساس هر بایت محاسبه میشود,هزینه کارمزد&quot;100 ساتوشی بر کیلو بایت&quot;برای تراکنش با حجم 500 بایت(نصف 1 کیلوبایت) کارمزد فقط اندازه 50 ساتوشی خواهد بود.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2468,8 +4294,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>فعال کردن جایگذاری دوباره از کارمزد</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
-        <translation>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</translation>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <translation>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</translation>
     </message>
     <message>
         <source>Clear &amp;All</source>
@@ -2528,12 +4354,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Creates a Partially Signed Bitcoin Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</translation>
     </message>
     <message>
-        <source> from wallet '%1'</source>
-        <translation> from wallet '%1'</translation>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation> from wallet &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>%1 to '%2'</source>
-        <translation>%1 to '%2'</translation>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 to &apos;%2&apos;</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -2592,8 +4418,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>میزان کل</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
-        <translation>To review recipient list click "Show Details..."</translation>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>To review recipient list click &quot;Show Details...&quot;</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2645,7 +4471,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>تایید شدن تخمین زده شده تراکنش برابر است با: %n بلاک.</numerusform><numerusform>تایید شدن تخمین زده شده تراکنش برابر است با: %n بلاک.</numerusform></translation>
+        <translation>
+            <numerusform>تایید شدن تخمین زده شده تراکنش برابر است با: %n بلاک.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2666,6 +4494,42 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>(no label)</source>
         <translation>(برچسب ندارد)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>چسباندن یا بارگذاری فهرستی از پرداخت‌ها به جای افزودن یکی‌یکی</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>&amp;گروهی...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>هنگام محاسبه موجودی در دسترس، واگذاری‌ها را هم در نظر بگیر. اگر علامت نخورد، موجودی در دسترس فقط سکه‌هایی را نشان می‌دهد که اکنون در کیف پول هستند.</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>&amp;شامل واگذاری‌ها</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>استیکینگ سرد فعال نیست</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>استیکینگ سرد از بلوک %1 فعال است</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>این کیف پول سکه‌های خودش را استیک می‌کند، بنابراین همه واگذار شده‌اند.</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>نشانی مالک داده‌شده در این کیف پول نیست. هشدار: پس از واگذاری فقط دارنده کلید نشانی مالک می‌تواند این سکه‌ها را خرج کند.</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>نشانی استیک‌کننده داده‌شده در این کیف پول است. شما همین حالا می‌توانید این سکه‌ها را استیک کنید و نیازی به واگذاری به خودتان نیست.</translation>
     </message>
 </context>
 <context>
@@ -2750,6 +4614,352 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>Memo:</source>
         <translation>یادداشت:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>نشانی &amp;مالک:</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>نشانی مالک BitcoinPoS</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>سرور</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>آنچه این گره به دیگران ارائه می‌دهد. رله کردن و نگهداری پست امروز کار می‌کنند؛ میزبانی در راه است و مانند همه چیز اینجا به همان روشی یافته می‌شود که همتاها — از طریق دفتر. نام‌ها صفحه جداگانه‌ای دارند.</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>میزبانی</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>سایت یا سرویسی که از این گره ارائه می‌شود، با کلید یا نامش یافته و از طریق شبکه روکش به آن رسیده می‌شود، بنابراین میزبان هرگز منتشر نمی‌کند کجا اجرا می‌شود. بخش ملاقات وجود دارد: سرویس در نقاط ملاقاتی که هر دو طرف از دفتر محاسبه می‌کنند ثبت می‌شود. ارائه صفحه‌ها و برنامه‌ها از این طریق هنوز ساخته نشده است.</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>رله</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>ترافیک شبکه روکش همتاهای دیگر را حمل کن، هزینه ثبت‌های ماهانه همتاهایی که از این گره استفاده می‌کنند را بپرداز و بخشی از هر بلوکی که استیک می‌کند را با آن‌ها تقسیم کن. رله ثبت‌هایی را که برایشان پرداخت می‌کند در بلوک‌هایی که خودش استیک می‌کند می‌گذارد، و این گونه تأیید می‌شوند در حالی که بیشتر گره‌ها هنوز از انتقال رکوردها سر باز می‌زنند — پس رله باید استیکینگ انجام دهد.</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>استیکینگ</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>همتاهای ثبت‌شده اینجا</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>بلوک بعدی که استیک می‌کند</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>پرداخت برای ثبت همتاهایی که از طریق شبکه روکش درخواست می‌کنند</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>همتایی که سکه ندارد می‌تواند از این گره بخواهد ثبت ماهانه‌اش را منتشر کند. این گره کارمزد را می‌پردازد، آن را در یک بلوک استیک می‌کند و همتا را به کسانی که پاداش را با آن‌ها تقسیم می‌کند می‌افزاید. به طور پیش‌فرض خاموش است، چون سکه‌های این گره را خرج می‌کند.</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>همتاهای بیش از این تعداد رد می‌شوند. همتاهایی که از قبل اینجا ثبت شده‌اند هنوز می‌توانند تمدید کنند.</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>حداکثر همتاهایی که ثبت نگه داشته شوند</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>تنها کیف پول باز</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>کدام کیف پول کارمزدها را می‌پردازد. اگر چند کیف پول باز باشد و هیچ‌کدام اینجا نام برده نشود، درخواست‌ها رد می‌شوند به جای آنکه با حدس پرداخت شوند. استیکینگ می‌تواند در هر کیف پولی روی این گره انجام شود.</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>پرداخت کارمزدها از کیف پول</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>بخشی از هر بلوکی که این گره با سکه‌های خودش استیک می‌کند، که به طور مساوی میان همتاهای ثبت‌شده‌اش تقسیم می‌شود. 0 یعنی هیچ تقسیم نکند.</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>سهم از هر بلوک استیک‌شده</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>صندوق پستی</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>نگهداری پست مهر و موم‌شده برای کسانی که دفتر این گره را صندوق پستی آن‌ها قرار می‌دهد، تا وقتی آن را دریافت کنند. اینکه کدام رله‌ها پست چه کسی را نگه دارند از دفتر محاسبه می‌شود، بنابراین هیچ‌کس آن را تعیین نمی‌کند. فرستندگان و صاحبان از طریق سه رله به این گره می‌رسند، بنابراین هرگز نمی‌فهمد آن‌ها کجا هستند؛ نامه‌ها مهر و موم شده‌اند، بنابراین نمی‌تواند آن‌ها را بخواند یا بفهمد چه کسی آن‌ها را نوشته است. نامه‌ها پس از دو هفته پاک می‌شوند و فقط به افراد ثبت‌شده خدمت داده می‌شود.</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>نگهداری</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>کلیدهای پستی نگه‌داشته‌شده برای فرستندگان</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>نگهداری پست برای کسانی که دفتر به این گره سپرده است</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>هر جا شبکه روکش اجرا شود به طور پیش‌فرض روشن است: رله‌ای که نپذیرد، کسانی را که برایشان انتخاب شده با یک صندوق پستی کمتر رها می‌کند.</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>وقتی این پر شود، نامه‌های جدید تا وقتی نامه‌های قدیمی دریافت یا پاک شوند رد می‌شوند. هیچ فردی نمی‌تواند بیش از ۸ MiB از آن استفاده کند.</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>فضای دیسکی که می‌تواند استفاده کند</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>ذخیره شد. این‌ها هنگام شروع گره خوانده می‌شوند، بنابراین برای اعمال تغییر برنامه را دوباره راه‌اندازی کنید.</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>کیف پولی باز نیست</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>خیر — رله‌ای که استیکینگ نمی‌کند درخواست‌های ثبت را رد می‌کند</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>بله، %1 دیگر</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>برای ثبت‌ها پرداخت نمی‌کند</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>پرداخت می‌کند، اما استیکینگ نمی‌کند</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>در حال اجرا</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>این ساخت کیف پول ندارد</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>به کیف پول نیاز دارد</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>خاموش</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>به شبکه روکش نیاز دارد</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>هیچ — پست نگه نمی‌دارد</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>نامه‌ای نیست</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>۱ حرف</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>%1 حرف</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>۱ نفر</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>%1 نفر</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>در حال حاضر هیچ، جا برای %1 MiB</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%1 برای %2، %3 از %4 MiB</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>%1% تقسیم می‌کند: در مجموع %2 %4، به هر همتا %3 %4</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>تنظیمات</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>آنچه این برنامه انجام می‌دهد و برنامه کیف پول نه، و زبان. همه چیز دیگر — پراکسی، درگاه‌ها، هرس — در هر دو همان پرسش است و در یک جا پرسیده می‌شود.</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>کاوش</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>نگهداری نمایه دفتر</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>بدون آن این گره می‌تواند منتشر کند اما نمی‌تواند ببیند چه کسان دیگری ثبت شده‌اند.</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>نمایه‌سازی نام‌ها</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>برای جستجوی نام‌ها، فرستادن پست به آن‌ها و ثبت نام خودتان لازم است.</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>تلاش برای اتصال به همتاهای یافته‌شده در دفتر</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>نشانی‌های دفتر را در کنار بذرها و تبادل نشانی معمول به مدیر نشانی می‌دهد. خاموش کردن آن دفتر را به فهرستی تبدیل می‌کند که این گره می‌خواند اما هرگز بر اساس آن عمل نمی‌کند.</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>شبکه روکش</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>اجرای شبکه روکش</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>در این برنامه به طور پیش‌فرض روشن و در گره و برنامه کیف پول خاموش است. دست‌دهی آن هنوز توسط کسی جز نویسندگانش بررسی نشده است.</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>شبکه روکش روی درگاه خودش با UDP کار می‌کند. شبکه همتا به همتا جداست و روی TCP می‌ماند.</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>گوش دادن روی درگاه</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>رادیو</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>حمل شبکه روکش از طریق رادیو هم، با Reticulum</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>LoRa از طریق RNode، رادیو بسته‌ای، پیوندهای سریال: هر آنچه Reticulum برای استفاده تنظیم شده باشد. به شبکه روکش نیاز دارد.</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>ورود به شبکه روکش از طریق همسایگان رادیویی، تا پست بدون اینترنت کار کند</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>وقتی گره BPS که از رادیو شنیده شده رله ثبت‌شده باشد، پست و درخواست‌های ثبت شما از طریق آن می‌روند. پیوند رادیویی بسیار کندتر از اینترنت است.</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>راه‌اندازی پل Reticulum همراه با BPS Relay</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>bps-rns-bridge.py را کنار گره اجرا می‌کند. اگر پل را خودتان اجرا می‌کنید آن را خاموش بگذارید.</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>فرمان Python</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Reticulum بخشی از BPS نیست و مجوز خودش را دارد. آن را با %1 نصب کنید و رادیو را در پیکربندی خود Reticulum (~/.reticulum/config) تنظیم کنید. باندهای رادیو آماتوری ترافیک رمزنگاری‌شده را مجاز نمی‌دانند، پس از باندهای بدون مجوز مانند باندهای LoRa استفاده کنید.</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>نمایش</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>نمایش مبالغ به</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>زبان رایانه</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>با شروع دوباره BPS Relay اعمال می‌شود. متن‌هایی که خود گره می‌فرستد، مانند پیام‌های خطای فرمان‌ها، انگلیسی می‌مانند.</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>زبان</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>شبکه، پراکسی و دیگر تنظیمات اصلی…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>ذخیره شد. زبان با شروع دوباره BPS Relay تغییر می‌کند.</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>ذخیره شد. این‌ها هنگام شروع گره خوانده می‌شوند، بنابراین برای اعمال تغییر برنامه را دوباره راه‌اندازی کنید.</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>گره هنوز در حال شروع است؛ تنظیمات اصلی هنوز در دسترس نیستند.</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2829,8 +5039,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>تایید پیام</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
-        <translation>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</translation>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <translation>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</translation>
     </message>
     <message>
         <source>The Bitcoin address the message was signed with</source>
@@ -2857,8 +5067,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>بازنشانی تمام فیلدهای پیام</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>برای تولید امضا "Sign Message" و یا "ثبت پیام" را کلیک کنید</translation>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>برای تولید امضا &quot;Sign Message&quot; و یا &quot;ثبت پیام&quot; را کلیک کنید</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2915,6 +5125,209 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
 </context>
 <context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>فرم</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;استیکینگ</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>موجودی قابل خرج فعلی شما</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>دارایی‌های در استیکینگ متعلق به این کیف پول</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>دارایی‌های در استیکینگ از واگذاری‌ها</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>نابالغ:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>موجودی نابالغ شما</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>دارایی‌های در استیکینگ</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>استیک:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>استیکینگ</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>ارتفاع بلوک:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>پاداش بلوک:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/بلوک</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>وزن شبکه:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>بازده سالانه مورد انتظار:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>سوابق استیک</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>&amp;واگذاری</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>نوع واگذاری:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>واگذاری دستی</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>واگذاری خودکار</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>نشانی‌های استیکینگ</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>حذف همه</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>چسباندن نشانی از کلیپ‌بورد</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>&amp;افزودن</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>واگذاری‌های &amp;من</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>دارایی‌های واگذارشده</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>موجودی واگذارشده فعلی شما</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>واگذاری‌های من</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>واگذاری‌های &amp;دریافتی</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>&amp;ساختن نشانی استیکینگ جدید</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> با برچسب:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>برچسبی اختیاری برای پیوند با نشانی دریافت جدید (برای اینکه شما صورت‌حساب را بشناسید). به درخواست پرداخت هم پیوست می‌شود.</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>واگذاری‌های ColdStake</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>سکه‌هایی که به نشانی‌های واگذاری این کیف پول پرداخت می‌شوند، به محض رسیدن توسط این کلیدها استیک می‌شوند و باقی‌مانده خرج‌های خودتان واگذارشده می‌ماند. کلید استیکینگ فقط می‌تواند coinstakeهایی بسازد که به خود شما برمی‌گردند، بنابراین کیف پولی که آن را نگه می‌دارد به گذرواژه نیاز ندارد.</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>بیش از یکی فهرست کنید تا سکه‌هایتان میان چند کیف پول استیکینگ پخش شود و آفلاین بودن یکی از آن‌ها همه استیکینگ را متوقف نکند.
+
+هر واگذاری جدید به نشانی‌ای می‌رود که تا کنون کمتر از همه نام برده شده، با شمردن نشانی‌های واگذاری داده‌شده و سکه‌های واگذارشده هنوز خرج‌نشده. واگذاری‌ها را می‌شمارد نه مبالغ را، بنابراین نشانی‌ای با یک واگذاری بزرگ ممکن است پیش از نشانی‌ای با چند واگذاری کوچک انتخاب شود.</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>سکه‌هایی که قبلاً به نشانی حذف‌شده واگذار شده‌اند جابه‌جا نمی‌شوند و آن نشانی همچنان آن‌ها را استیک می‌کند. فقط واگذاری‌های جدید دیگر به آن اشاره نمی‌کنند.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>باز کردن کیف پول ممکن نشد.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>ساخت نشانی %1 جدید ممکن نشد</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>استیکینگ سرد روی این گره غیرفعال است (-coldstaking=0)، بنابراین چیزی واگذار نمی‌شود.</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>نشانی استیکینگ اینجا متعلق به این کیف پول است که رمزنگاری شده، بنابراین فقط وقتی کیف پول باز است استیک می‌کند. برای استیکینگ بدون گذرواژه، از نشانی یک کیف پول استیکینگ جداگانه و رمزنگاری‌نشده استفاده کنید.</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>توقف واگذاری به %1. سکه‌هایی که قبلاً به آن واگذار شده‌اند جابه‌جا نمی‌شوند و همچنان استیک می‌شوند.</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>ذخیره نشانی‌های استیکینگ ممکن نشد. واگذاری به هش کلید متعهد می‌شود، بنابراین هر کدام باید نشانی قدیمی (legacy) باشد.</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>آن نشانی استیکینگ از قبل در فهرست است.</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>حذف همه نشانی‌های استیکینگ</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>واگذاری به همه %1 نشانی استیکینگ متوقف شود؟
+
+سکه‌های واگذارشده همچنان توسط آن‌ها استیک می‌شوند و جابه‌جا نمی‌شوند. اما واریزهای جدید و باقی‌مانده‌ها به نشانی‌های معمولی می‌روند که استیک نمی‌کنند، و برای روشن کردن دوباره به این نشانی‌ها نیاز خواهید داشت.</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2925,7 +5338,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Open for %n more block</numerusform><numerusform>Open for %n more blocks</numerusform></translation>
+        <translation>
+            <numerusform>Open for %n more block</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3005,7 +5420,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>matures in %n more block</numerusform><numerusform>matures in %n more blocks</numerusform></translation>
+        <translation>
+            <numerusform>matures in %n more block</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -3064,8 +5481,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>بازرگان</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -3119,7 +5536,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Open for %n more block</numerusform><numerusform>Open for %n more blocks</numerusform></translation>
+        <translation>
+            <numerusform>Open for %n more block</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3208,6 +5627,30 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>میزان وجه کم شده یا اضافه شده به حساب</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>استیک سرد</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>استیک از طرف</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>واگذاری استیک</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>واگذاری</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>واگذاری استیک خرج‌شده توسط</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>مبلغ واگذارشده.</translation>
     </message>
 </context>
 <context>
@@ -3368,6 +5811,22 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>to</source>
         <translation>به</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>استیک‌های سرد</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>استیک‌های گرم</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>واگذارشده خرج‌نشده</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>واگذاری‌ها</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3453,15 +5912,15 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>Confirm fee bump</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
-        <translation>Can't draft transaction.</translation>
+        <source>Can&apos;t draft transaction.</source>
+        <translation>Can&apos;t draft transaction.</translation>
     </message>
     <message>
         <source>PSBT copied</source>
         <translation>PSBT کپی شد</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>نمیتوان تراکنش را ثبت کرد</translation>
     </message>
     <message>
@@ -3471,6 +5930,21 @@ Go to File &gt; Open Wallet to load a wallet.
     <message>
         <source>default wallet</source>
         <translation>کیف پول پیش‌فرض</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ این گره</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● زنده</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>برنامه کیف پول، که در همین فرایند روی این گره اجرا می‌شود. همان برنامه bitcoin-pos-qt است، نه نسخه‌ای از آن.</translation>
     </message>
 </context>
 <context>
@@ -3579,8 +6053,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
-        <translation>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</translation>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</translation>
     </message>
     <message>
         <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
@@ -3599,8 +6073,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>SQLiteDatabase: Unknown sqlite wallet schema version %d. Only version %d is supported</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
-        <translation>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</translation>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
+        <translation>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</translation>
     </message>
     <message>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
@@ -3631,8 +6105,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>-maxmempool must be at least %d MB</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>Cannot resolve -%s address: '%s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>Cannot resolve -%s address: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3723,20 +6197,20 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>Initialization sanity check failed. %s is shutting down.</translation>
     </message>
     <message>
-        <source>Invalid P2P permission: '%s'</source>
-        <translation>Invalid P2P permission: '%s'</translation>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>Invalid P2P permission: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>میزان نامعتبر برای  -%s=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>میزان نامعتبر برای  -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
@@ -3763,16 +6237,16 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>SQLiteDatabase: Unexpected application id. Expected %u, got %u</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>Specified blocks directory "%s" does not exist.</translation>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>Specified blocks directory &quot;%s&quot; does not exist.</translation>
     </message>
     <message>
-        <source>Unknown address type '%s'</source>
-        <translation>Unknown address type '%s'</translation>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>Unknown address type &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Unknown change type '%s'</source>
-        <translation>Unknown change type '%s'</translation>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>Unknown change type &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3851,8 +6325,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use version 169900 or no version specified.</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -3867,8 +6341,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>This is the maximum transaction fee you pay (in addition to the normal fee) to prioritize partial spend avoidance over regular coin selection.</translation>
     </message>
     <message>
-        <source>Transaction needs a change address, but we can't generate it. Please call keypoolrefill first.</source>
-        <translation>Transaction needs a change address, but we can't generate it. Please call keypoolrefill first.</translation>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
+        <translation>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</translation>
     </message>
     <message>
         <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
@@ -3903,24 +6377,24 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>Fee rate (%s) is lower than the minimum fee rate setting (%s)</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>Invalid -onion address or hostname: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>Invalid -onion address or hostname: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>آدرس پراکسی یا هاست نامعتبر: ' %s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>آدرس پراکسی یا هاست نامعتبر: &apos; %s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>Invalid netmask specified in -whitelist: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>Invalid netmask specified in -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>Need to specify a port with -whitebind: '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>Need to specify a port with -whitebind: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
@@ -3943,16 +6417,16 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>ثبت تراکنش با خطا مواجه شد</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>Specified -walletdir "%s" does not exist</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>Specified -walletdir &quot;%s&quot; does not exist</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>Specified -walletdir "%s" is a relative path</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>Specified -walletdir &quot;%s&quot; is a relative path</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>Specified -walletdir "%s" is not a directory</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>Specified -walletdir &quot;%s&quot; is not a directory</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3981,8 +6455,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>Unable to bind to %s on this computer (bind returned error %s)</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>Unable to create the PID file '%s': %s</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>Unable to create the PID file &apos;%s&apos;: %s</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -4046,8 +6520,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>تراکنش باید حداقل یک دریافت کننده داشته باشد</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>شبکه مشخص شده غیرقابل شناسایی در onlynet: '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>شبکه مشخص شده غیرقابل شناسایی در onlynet: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -4062,8 +6536,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>هشدار: کلید های خصوصی در کیف پول شما شناسایی شده است { %s} به همراه کلید های خصوصی غیر فعال</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>نمیتواند پوشه داده ها را بنویسد ' %s';دسترسی ها را بررسی کنید.</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>نمیتواند پوشه داده ها را بنویسد &apos; %s&apos;;دسترسی ها را بررسی کنید.</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -4084,6 +6558,14 @@ Go to File &gt; Open Wallet to load a wallet.
     <message>
         <source>Done loading</source>
         <translation>اتمام لود شدن</translation>
+    </message>
+    <message>
+        <source>Error: Disk space is low for %s</source>
+        <translation>خطا: فضای دیسک برای %s کم است</translation>
+    </message>
+    <message>
+        <source>Wallet needed to be rewritten: restart %s to complete</source>
+        <translation>کیف پول باید بازنویسی می‌شد: برای تکمیل، %s را دوباره راه‌اندازی کنید</translation>
     </message>
 </context>
 </TS>

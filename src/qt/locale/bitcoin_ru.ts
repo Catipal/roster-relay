@@ -1,4 +1,6 @@
-<TS language="ru" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ru">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -70,10 +72,10 @@
         <translation>Это ваши Биткойн-адреса для отправки платежей. Всегда проверяйте количество и адрес получателя перед отправкой перевода.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.
-Signing is only possible with addresses of the type 'legacy'.</source>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <translation>Это ваши Биткойн адреса для получения платежей. Используйте кнопку «Создать новый адрес для получения» на вкладке Получить, чтобы создать новые адреса.
-Подписание возможно только с адресами типа "legacy".</translation>
+Подписание возможно только с адресами типа &quot;legacy&quot;.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -241,6 +243,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Внимание: Caps Lock включен!</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>Служит для отключения простой отправки денег, если учётная запись ОС скомпрометирована. Настоящей защиты не даёт.</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>Только для стейкинга.</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -251,6 +261,109 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Banned Until</source>
         <translation>Заблокировано до</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>Пакетный платёж</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>Один платёж на строку, в виде «адрес, сумма». Поля разделяются запятой, точкой с запятой или табуляцией, а третье поле становится меткой. Строки, начинающиеся с #, пропускаются.</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>&amp;Вставить</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>Загрузить из &amp;файла...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>&amp;Очистить</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>Строка</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Адрес</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Сумма</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Состояние</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>Загрузить список платежей</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>Текстовые и CSV-файлы (*.txt *.csv);;Все файлы (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>Не удалось прочитать %1.</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>ожидалось «адрес, сумма»</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>нет адреса</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>недействительный адрес</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>нет суммы</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>не удалось прочитать сумму «%1»</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>сумма должна быть больше нуля</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>ок</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>Вставьте по одному платежу на строку, в виде «адрес, сумма». Третье поле используется как метка. Строки, начинающиеся с #, пропускаются.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>%1 из %2 строк нельзя использовать. Исправьте или удалите их, чтобы продолжить.</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>%1 получателей — больше, чем вмещает одна транзакция (здесь предел %2). Разделите список.</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>Получателей: %1, всего %2, без учёта комиссии.</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>Добавить в форму отправки</translation>
     </message>
 </context>
 <context>
@@ -441,7 +554,11 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n активное подключение к сети Bitcoin</numerusform><numerusform>%n активных подключения к сети Bitcoin</numerusform><numerusform>%n активных подключений к сети Bitcoin</numerusform><numerusform>%n активных подключений к сети Биткойн</numerusform></translation>
+        <translation>
+            <numerusform>%n активное подключение к сети Bitcoin</numerusform>
+            <numerusform>%n активных подключения к сети Bitcoin</numerusform>
+            <numerusform>%n активных подключений к сети Bitcoin</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -453,7 +570,11 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>Обработан %n блок истории транзакций.</numerusform><numerusform>Обработано %n блока истории транзакций.</numerusform><numerusform>Обработано %n блоков истории транзакций.</numerusform><numerusform>Обработано %n блоков истории транзакций.</numerusform></translation>
+        <translation>
+            <numerusform>Обработан %n блок истории транзакций.</numerusform>
+            <numerusform>Обработано %n блока истории транзакций.</numerusform>
+            <numerusform>Обработано %n блоков истории транзакций.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -670,7 +791,336 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
         <translation>Произошла критическая ошибка. %1 больше не может продолжать безопасную работу и будет закрыт.
- </translation>
+&#xa0;</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Стейкинг</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>Показать стейк кошелька</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>Кошелёк &lt;b&gt;зашифрован&lt;/b&gt; и сейчас &lt;b&gt;разблокирован только для стейкинга&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>&amp;Расшифровать кошелёк...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>Удалить пароль, оставив закрытые ключи храниться незашифрованными</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Стейкинг не идёт</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n секунда</numerusform>
+            <numerusform>%n секунды</numerusform>
+            <numerusform>%n секунд</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n минута</numerusform>
+            <numerusform>%n минуты</numerusform>
+            <numerusform>%n минут</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n час</numerusform>
+            <numerusform>%n часа</numerusform>
+            <numerusform>%n часов</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n день</numerusform>
+            <numerusform>%n дня</numerusform>
+            <numerusform>%n дней</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>Стейкинг идёт.&lt;br&gt;Ваш вес: %1&lt;br&gt;Вес сети: %2&lt;br&gt;Ожидаемое время до награды: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>Стейкинг не идёт: кошелёк не в сети</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>Стейкинг не идёт: кошелёк синхронизируется</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>Стейкинг не идёт: у вас нет созревших монет</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>Стейкинг не идёт: кошелёк заблокирован</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>Неизвестная ошибка</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>меньше минуты</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>минута</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 мин</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>час</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 ч</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 дн.</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>месяц</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 мес.</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>около года</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>больше года</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>неизвестно</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Произошла критическая ошибка. %1 больше не может безопасно продолжать работу и будет закрыт.</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Исходное сообщение:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Обзор</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Оверлей</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>Имена</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>Пиры и консоль</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>Узел</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Кошелёк</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>Почта</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>Почта (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>Сервер</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Настройки</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>запись неизвестна</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>оверлей неизвестен</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>подключение…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>При текущем весе сети стейкинг приносит около %1% в год: %2 блоков в год по %3 %4, на %5 %4 в стейкинге.</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>Это после доли %1% каждого блока, которой этот узел делится со своими пирами.</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>%1% в год</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>завершение работы…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>Пиров: %1 — входящих %2, исходящих %3.</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>Нажмите, чтобы приостановить сетевую активность.</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>1 пир</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>пиров: %1</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>Сетевая активность приостановлена.</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>Нажмите, чтобы возобновить её.</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>сеть приостановлена</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>Обработано блоков истории: %1.</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>блок %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>Синхронизировано.</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>Синхронизация с сетью…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>Обработка блоков на диске…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>Переиндексация блоков на диске…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>Подключение к пирам…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>отставание %1</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>Догоняем…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>Последний полученный блок создан %1 назад.</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>Кошелёк &lt;b&gt;%1&lt;/b&gt; зашифрован и разблокирован только для стейкинга</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>Кошелёк &lt;b&gt;%1&lt;/b&gt; зашифрован и разблокирован</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>Кошелёк &lt;b&gt;%1&lt;/b&gt; зашифрован и заблокирован</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>стейкинг</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>стейкинг, %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; ведёт стейкинг.&lt;br&gt;Его вес: %2&lt;br&gt;Вес сети: %3&lt;br&gt;Ожидаемое время до награды: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>стейкинг не идёт</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>стейкинг не идёт (платит %1)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>Стейкинг не идёт: слишком мало пиров</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>Стейкинг не идёт: цепочка ещё догоняет</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>Стейкинг не идёт: у &lt;b&gt;%1&lt;/b&gt; нет созревших монет</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>Стейкинг не идёт: &lt;b&gt;%1&lt;/b&gt; заблокирован</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Стейкинг не идёт</translation>
     </message>
 </context>
 <context>
@@ -823,6 +1273,57 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>(change)</source>
         <translation>(сдача)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>делегировано %1 для холодного стейкинга</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>Написать письмо</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>имя, прозвище из адресной книги или ключ реестра</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Кому</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Тема</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>Отправить</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>Кому оно? Имя, прозвище или ключ реестра.</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>Письмо занимает %1 КБ; письмо может быть не больше %2 КБ.</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>Письмо запечатывается и кладётся в почтовые ящики получателя, каждый раз через три ретранслятора. Это займёт несколько секунд…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Отправлено</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>Письмо положено в %1 из %2 почтовых ящиков получателя. Чтобы оно дошло, достаточно одного.</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>Не отправлено: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -889,6 +1390,189 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Compiled without sqlite support (required for descriptor wallets)</source>
         <translation>Скомпилирован без поддержки sqlite (необходимо для кошельков с дескриптором)</translation>
     </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Кошелёк</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>Дополнительные параметры</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>Обзор</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>Пиры объявляют о себе в цепочке, а не на сервере, поэтому этот список у всех одинаков и никто не может его изменить.</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>Реестр</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>Ваша запись</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>Пиры в реестре</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>Вы</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Копировать</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>Публикация записи…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>Личность</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>Создать…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>Личность сохраняет историю этого узла — как долго он в реестре, — если его ключ когда-нибудь придётся сменить.</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>Найти пира или адрес</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Ключ скопирован</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>Адрес скопирован</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>запуск…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>Создать личность</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>Платить комиссию из</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Личность — это второй ключ, стоящий за ключом этого узла. Если ключ узла когда-нибудь будет утерян или украден, новый ключ можно поставить под той же личностью, и узел сохранит срок своей записи, а не начнёт с нуля.
+
+Вам один раз покажут ключ восстановления. Запишите его: это единственный способ помешать тому, кто украдёт личность, перенести её. Затем небольшая транзакция опубликует личность, а при следующем продлении записи ключ этого узла будет к ней привязан.</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Ваш ретранслятор опубликовал вашу запись в транзакции %1. Учитывается после подтверждения транзакции.</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Опубликовано в транзакции %1. Учитывается после подтверждения транзакции.</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>неизвестно</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>индекс реестра выключен</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>нет в реестре</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>истекает через %1</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>Продление записи…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>Продлить можно в последние 3 дня</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>Ваша запись истекает через %1. Продлить можно начиная за три дня до этого.</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>в реестре, истекает через %1</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>нет</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>У этого узла нет ключа объявления: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>выключено</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>Индекс реестра не запущен, поэтому этот узел не видит, кто записан. Перезапустите с -rosterindex, чтобы включить его.</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>догоняем (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>%1 дн. назад</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>Новейшему блоку этого узла %1 дн., поэтому пиры, отозванные с тех пор, могут ещё быть здесь. Реестр по-прежнему используется для связи с пирами, но оверлей перестаёт отдавать предпочтение давно записанным ретрансляторам, пока цепочка не догонит.</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>синхронизировано</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>Индекс реестра не запущен</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>Ваш ключ восстановления</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>Запишите его и храните в надёжном месте, подальше от этого компьютера. Он показывается только сейчас и нигде не сохраняется. Потратить монеты им нельзя; он может только остановить перенос вашей личности, который сделали не вы.</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>Я его записал</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Ваша личность опубликована в транзакции %1. При следующем продлении записи ключ этого узла будет к ней привязан.</translation>
+    </message>
 </context>
 <context>
     <name>EditAddressDialog</name>
@@ -925,16 +1609,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Изменить адрес отправки</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>Введенный адрес "%1" не является действительным Биткойн-адресом.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
+        <translation>Введенный адрес &quot;%1&quot; не является действительным Биткойн-адресом.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>Адрес "%1" уже существует в качестве адреса получения с меткой "%2" и поэтому не может быть добавлен в качестве адреса отправки.</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>Адрес &quot;%1&quot; уже существует в качестве адреса получения с меткой &quot;%2&quot; и поэтому не может быть добавлен в качестве адреса отправки.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>Введённый адрес "%1" уже существует в адресной книге с меткой "%2".</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>Введённый адрес &quot;%1&quot; уже существует в адресной книге с меткой &quot;%2&quot;.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -1023,7 +1707,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>Bitcoin Core</translation>
+        <translation type="vanished">Bitcoin Core</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -1046,8 +1730,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Кошелёк также будет сохранен в эту директорию.</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>Ошибка: невозможно создать указанную директорию данных "%1".</translation>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
+        <translation>Ошибка: невозможно создать указанную директорию данных &quot;%1&quot;.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1055,15 +1739,186 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>%n ГБ свободного места</numerusform><numerusform>%n ГБ свободного места</numerusform><numerusform>%n ГБ свободного места</numerusform><numerusform>%n ГБ свободного места</numerusform></translation>
+        <translation>
+            <numerusform>%n ГБ свободного места</numerusform>
+            <numerusform>%n ГБ свободного места</numerusform>
+            <numerusform>%n ГБ свободного места</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(требуется %n ГБ)</numerusform><numerusform>(%n ГБ требуется)</numerusform><numerusform>(%n ГБ требуется)</numerusform><numerusform>(%n ГБ требуется)</numerusform></translation>
+        <translation>
+            <numerusform>(требуется %n ГБ)</numerusform>
+            <numerusform>(%n ГБ требуется)</numerusform>
+            <numerusform>(%n ГБ требуется)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(%n ГБ необходимо для полного блокчейна)</numerusform><numerusform>(%n ГБ необходимо для полного блокчейна)</numerusform><numerusform>(%n ГБ необходимо для полного блокчейна)</numerusform><numerusform>(%n ГБ необходимо для полного блокчейна)</numerusform></translation>
+        <translation>
+            <numerusform>(%n ГБ необходимо для полного блокчейна)</numerusform>
+            <numerusform>(%n ГБ необходимо для полного блокчейна)</numerusform>
+            <numerusform>(%n ГБ необходимо для полного блокчейна)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>Почта</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>Ваш адрес</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Копировать</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>Ваш ключ реестра. Любой, кто записан, может писать вам на него.</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>Почта идёт через оверлей. Включите оверлей в Настройках и перезапустите, чтобы отправлять и получать почту.</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>Написать</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>Ответить</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>Забрать сейчас</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>Забрать новые письма из ваших почтовых ящиков сейчас. Это также происходит каждые несколько минут.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Удалить</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>Входящие</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Отправлено</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>От</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Тема</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Дата</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>Письма запечатываются еженедельным почтовым ключом получателя с помощью secp256k1 и ML-KEM-768 вместе; ваш ключ и подпись едут внутри печати, и каждый путь к почтовому ящику проходит через три ретранслятора. Старые почтовые ключи удаляются, поэтому письмо, полученное сегодня, нельзя будет потом открыть ключами этого компьютера.</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Кому</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>Ни один ретранслятор ещё не записан, поэтому у вас нет почтовых ящиков и никто не может вам написать.</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>Вашу почту хранят %1 ретрансляторов; их станет %2, когда в реестре появится больше.</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>%1 ретрансляторов, выбранных по вашему ключу, хранят вашу почту, пока вы её не заберёте.</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>Почтовый ключ №%1, обновляется еженедельно.</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>Последний раз забрано %1.</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>Ещё не забрано.</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>1 новое письмо</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>Новых писем: %1</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>, из %1 из %2 почтовых ящиков.</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(без темы)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>Положено в %1 почтовых ящиков получателя</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>От: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>Кому: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>Отправлено %1, положено в %2 почтовых ящиков получателя</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>Написано %1, забрано %2</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>Выберите письмо, чтобы прочитать его.</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>Забираем…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>Связь с вашими почтовыми ящиками, каждый раз через три ретранслятора…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>Удалить письмо</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>Удалить это письмо с этого компьютера? Его копии в почтовых ящиках уже удалены при получении, поэтому забрать его снова нельзя.</translation>
     </message>
 </context>
 <context>
@@ -1073,7 +1928,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Форма</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>Последние транзакции пока могут быть не видны, поэтому вы можете видеть некорректный баланс ваших кошельков. Отображаемая информация будет верна после завершения синхронизации. Прогресс синхронизации вы можете видеть ниже.</translation>
     </message>
     <message>
@@ -1123,6 +1978,409 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>Неизвестно. Синхронизация заголовков (%1, %2%)...</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>Имена</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>Имя указывает людям на ваш ключ реестра, чтобы они могли писать вам — и платить — по имени, а не по ключу. Получение свободного имени и его продление стоят только сетевую комиссию; имя продлевается вручную. Имя, которым кто-то владеет, можно купить, если владелец выставит его на продажу, за цену, которую он просит. Имена под вашим бесплатны, как и прозвища: ваши собственные метки для людей, которые хранятся на этом компьютере.</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>Ваши имена</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>Платить из</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Имя</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Состояние</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>Истекает</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>Подимена</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>Получить имя…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>Продлить…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>Добавить подимя…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>Продать…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>Передать…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>Принимать платежи по имени…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>Найти</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>имя, метка.имя или прозвище</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>Копировать ключ</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>Заплатить…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>Адресная книга</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>Прозвище</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>Ключ</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>Добавить человека…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Убрать</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Ключ скопирован</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>Выполняется…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>Снять с продажи</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>Сначала снимите его с продажи.</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>Новый ключ платежей…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>Платежи по имени включены</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>Для имён нужен индекс имён. Включите «Индексировать имена» в Настройках и перезапустите.</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>Имена в этой сети ещё не запущены. Когда они начнутся в основной сети и как будут розданы первые имена, ещё предстоит решить. А пока можно искать имена и вести адресную книгу.</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1 — это %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>из вашей адресной книги</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>зарегистрированное имя, занято до блока %1</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>устоялось</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>изменено %1 назад, ещё не устоялось</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>принимает платежи по имени</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>Продаётся: владелец просит %1. Купите его через «Получить имя».</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>%1 зафиксировано. Имя будет заявлено само через %2 блоков (примерно %3) — до тех пор держите BPS Relay запущенным, а кошелёк разблокированным.</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>Покупка %1: %2 выплачено владельцу. Оно станет вашим после подтверждения транзакции.</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>%1 выставляется на продажу за %2. Любой сможет купить его начиная со следующего блока, даже если этот узел не в сети; цена выплачивается этому кошельку.</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>%1 снимается с продажи. С этого момента его никто не сможет купить.</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>%1 продлено до блока %2 только за сетевую комиссию.</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>%1 передаётся %2. Оно станет их после подтверждения транзакции.</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>%1 задано; заработает после подтверждения транзакции.</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>Платежи по имени включаются. Люди смогут платить на любое ваше имя примерно через %1 после подтверждения транзакции; каждый платёж будет отображаться в кошельке как «Оплачено по имени».</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>%1 выплачено %2 на адрес, использованный только для этого платежа.</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>Оплатить</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>через %1</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>истекло %1 назад</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>истекло — продлите в течение месяца</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>занято</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>продаётся — покупка подтверждается</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>продаётся за %1</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>продаётся за %1 — купить пока нельзя</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>не зарегистрировано</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>регистрируется</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Нажмите, чтобы скопировать</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>Получить имя</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>от 1 до 32 букв, цифр или дефисов</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 год</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>2 года</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>На</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>Регистрация проходит в два шага: обязательство, скрывающее имя, и примерно через 20 минут заявка, которую BPS Relay отправит сам. Никто не сможет перехватить имя в промежутке. Каждый шаг стоит только сетевую комиссию.</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>Покупка — это одна транзакция: она платит владельцу и делает имя вашим, всё сразу или ничего.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Зарегистрировать</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>Имя — это от 1 до 32 простых латинских букв a-z, цифр или дефисов внутри.</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>%1 на %2 стоит только сетевую комиссию. Проверяем, свободно ли оно…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>один год</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>два года</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>Снять %1 с продажи</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>Снять %1 с продажи? С этого момента его никто не сможет купить, а после подтверждения вы сможете передать его или снова выставить.</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>Продать %1</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>Ваша цена за %1 в BPS. После этого любой сможет сразу купить его, даже когда BPS Relay закрыт: вам заплатят эту сумму в той же транзакции, которая отдаёт им имя. Пока оно продаётся, передать его нельзя.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>«%1» — это не сумма в BPS.</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>Выставить %1 на продажу за %2? Будут отправлены две небольшие транзакции: одна откладывает монету, которую тратит покупатель, другая публикует продажу.</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>Продлить %1</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>Продлить %1 от текущего срока окончания. Стоит только сетевую комиссию. Имя можно продлить не более чем на два года вперёд.</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>Передать %1</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>Кому отдать %1 (ключ реестра, прозвище или имя):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>Отдать %1 — %2? Вернуть его сможет только новый владелец.</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>Подимя под %1</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>Часть перед .%1, например alice для alice.%1:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>На кого указывает %1.%2 (ключ реестра, прозвище или имя), или «remove»:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>Поиск…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>Добавить человека</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>Как вы их называете (видите только вы):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>Их ключ реестра или имя, чтобы помнить, кто сейчас им владеет:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>Платежи по имени включены. Перевести их на новый ключ из этого кошелька? Платежи, уже сделанные на текущий ключ, всё равно дойдут. После смены плательщики ждут примерно %1, прежде чем снова платить.</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>Позвольте людям платить вам по имени: по любому имени или подимени, указывающему на ключ этого узла, по прозвищу, которое они для вас хранят, или по самому ключу. Каждый платёж приходит на отдельный адрес, потратить который может только этот кошелёк, и никто со стороны не узнает, что вам заплатили или что два платежа ушли одному человеку. Стоит сетевую комиссию. Вам смогут платить примерно через %1 после подтверждения.</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>Платежи по имени</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>Заплатить %1</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>%1 пока не принимает платежи по имени. Попросите включить их на вкладке «Имена» или дать адрес.</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>%1 сменило владельца %2 назад.</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>Они задали ключ, на который им платят, %1 назад.</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>в BPS</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Сумма</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>Платёж уходит на адрес, используемый только для него, потратить который может только %1; никто другой не узнает, кому заплатили. Платёж нельзя отменить. Сетевая комиссия добавляется сверху.</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>Если это были не они, платёж пропадёт. Безопаснее подождать, пока пройдёт %1.</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>Всё равно заплатить</translation>
     </message>
 </context>
 <context>
@@ -1429,6 +2687,209 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>The supplied proxy address is invalid.</source>
         <translation>Указанный прокси-адрес недействителен.</translation>
     </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>Показывать ли функции управления холодным стейкингом.</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>Включить функции управления холодным с&amp;тейкингом</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>Оверлей</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>Собственный зашифрованный слой BPS, который передаёт трафик через других пиров, так что другая сторона никогда не узнаёт, где вы.</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>спрашиваем…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>Работает</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>Слушает на</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>Открыто маршрутов</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>Сервисов встречается здесь</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>Доступно ретрансляторов</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>Сегодняшний раунд</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>Ваш вход</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>Пиры, через которых всегда входит ваш трафик. Их сохраняют, а не меняют: если каждый раз выбирать нового, наблюдатель рано или поздно получит свою очередь.</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>Где с вами могут встретиться</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>Вычисляется из реестра, а не запрашивается. Любой, кто пытается до вас достучаться, делает тот же расчёт и получает тот же ответ, поэтому спрашивать некого и никто не может ответить иначе. Они меняются каждый день.</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>Слышно по радио</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>Что даёт ретрансляция</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>Выпущено в день</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>Ретрансляторы</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>Пользователи</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>Пользователей на ретранслятор</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>Доля на пользователя</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>Ретранслятор платит пирам из своего списка из собственных наград за блоки, поэтому доля пользователя равна единице, делённой на число пользователей его ретранслятора, — вот почему, чтобы взять долю пользователей сети, нужна доля стейка. Сколько награды отдавать, ретранслятор решает сам, и ничто этого не навязывает: ретранслятор, который ничего не платит, создаёт вполне допустимый блок. Платить его заставляет то, что ретранслятор без пользователей никого не защищает, включая себя.</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>Ещё не проверено никем, кроме авторов, и скрывает, где вы, а не когда вы говорите: тот, кто наблюдает за обоими концами, всё ещё может сопоставить время. Считайте это незавершённым.</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>Этот узел ничем не делится. Задайте -relayshare в процентах и добавляйте пиров через addrosteruser.</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>Этот узел делился бы %1%, но %2.</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>Этот узел делится %1% с пирами (%2): следующий созданный им блок выплатит %3, по %4 каждому.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>Мост Reticulum не отвечает. Запустите его в Настройках, Радио, или запустите bps-rns-bridge.py сами.</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>Слушаем. По радио ещё не слышно ни одного узла BPS; узлы объявляют о себе каждые полчаса.</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>Ваш трафик входит через радиососеда, если один из них — записанный ретранслятор.</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>Слышно, но ваш трафик входит через интернет (Настройки, Радио).</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>1 переход</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>переходов: %1</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>переходы неизвестны</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>слышно %1 назад</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>ретранслятор</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>да</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>нет</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>Оверлей выключен. Этот клиент включает его сам, значит, что-то выключило его снова — -overlay=0 в командной строке или в файле конфигурации.</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>ничего, пока оверлей выключен</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>оверлей выключен</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>пока нет</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>оверлей включён, ретрансляторов пока нет</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>оверлей включён, 1 ретранслятор</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>оверлей включён, ретрансляторов: %1</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>ещё не выбраны</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>нет — в реестре нет ретрансляторов, из которых их вычислить</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>оверлей неизвестен</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>ретрансляторов пока нет</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1507,6 +2968,30 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
         <translation>Режим приватности включен для вкладки обзора. Чтобы показать данные, отключите настройку Скрыть Значения.</translation>
+    </message>
+    <message>
+        <source>Stake</source>
+        <translation>Стейк</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>Несозревшие стейки:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>Несозревшие делегирования</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>Несозревшие делегирования:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Делегировано</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>Делегировано:</translation>
     </message>
 </context>
 <context>
@@ -1647,15 +3132,15 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Обработка идентификатора</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>'bitcoin://' неверный URI. Используйте 'bitcoin:' вместо этого.</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;bitcoin://&apos; неверный URI. Используйте &apos;bitcoin:&apos; вместо этого.</translation>
     </message>
     <message>
         <source>Cannot process payment request because BIP70 is not supported.</source>
         <translation>Невозможно обработать запрос платежа, потому что BIP70 не поддерживается.</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
         <translation>Из-за широко распространенных недостатков безопасности в BIP70 настоятельно рекомендуется игнорировать любые торговые инструкции по переключению кошельков.</translation>
     </message>
     <message>
@@ -1703,6 +3188,161 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>Продлить запись</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>Опубликовать запись</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>Продление пишет в цепочку новую запись. Пока она не подтверждена, действует старая.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>Это пишет в цепочку короткую запись о том, что вы существуете, и, по желанию, где вас найти.</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>Как пирам связаться с вами?</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>Через оверлей — не публиковать адрес</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>Ваша запись говорит, кто вы, а не где вы работаете. Пиры связываются с вами через оверлей, встречая вас в точках, которые обе стороны вычисляют из реестра. Именно это клиент включает по умолчанию.</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>По адресу, который я публикую</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>адрес, доступный другим пирам</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>Её может увидеть любой, и цепочка хранит её навсегда. Onion-адрес публикует местоположение, которое никто не сможет связать с вами, и работает из-за NAT; IP-адрес не даёт ни того, ни другого. Узел, публикующий IP-адрес, могут выбрать ретранслятором другие.</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>Кто платит комиссию</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>Месяц, затем нужно продлить</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>Год, затем нужно продлить</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>Срок действия</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>Продлить</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>Опубликовать</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>Платит ретранслятор — монеты не нужны</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>Оверлей выключен, поэтому нет ретранслятора, которого можно попросить. Включите его в Настройках или заплатите из кошелька.</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>В реестре ещё нет ни одного ретранслятора, поэтому просить некого. Заплатите из кошелька или попробуйте снова, когда какой-нибудь ретранслятор запишется.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Ваш узел подписывает запись и отправляет её через оверлей ретранслятору, через который он входит. Ретранслятор, оплачивающий записи, включает вашу в блок, который создаёт сам, так что она подтверждается, даже если большинство узлов её не передают, и добавляет вас к пирам, с которыми делит награды. Если он потом перестанет платить, ваша запись истечёт в течение месяца; вы всегда можете продлить её сами из кошелька со средствами.</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>Этот узел не ведёт стейкинг. Запись больше, чем передают старые узлы, поэтому, пока большинство стейкеров не обновится, она подтверждается только когда её включает стейкер с этой версией, а это может занять время. При стейкинге она попадёт в ваш собственный следующий блок; платящий ретранслятор включает её в свой.</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>Этот кошелёк разблокирован только для стейкинга. Для оплаты понадобится его пароль, а после этого кошелёк снова заблокируется, что остановит стейкинг, пока вы снова не разблокируете его для стейкинга.</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>Для оплаты понадобится пароль этого кошелька.</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>Введите адрес или выберите не публиковать его.</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>Просим ваш ретранслятор опубликовать её… это может занять до полуминуты.</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>Этот кошелёк больше не открыт.</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>Кошелёк всё ещё заблокирован, поэтому ничего не оплачено.</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>Подписываем запись…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>Узел вернул запись, которую этот клиент не понял.</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>Оплата публикации…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>Ретранслятор отказал: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>Ретранслятор не ответил. %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1710,7 +3350,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>Введите биткойн-адрес (напр. %1)</translation>
+        <translation type="vanished">Введите биткойн-адрес (напр. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1742,23 +3382,43 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n секунда</numerusform><numerusform>%n секунд</numerusform><numerusform>%n секунд</numerusform><numerusform>%n секунд</numerusform></translation>
+        <translation>
+            <numerusform>%n секунда</numerusform>
+            <numerusform>%n секунд</numerusform>
+            <numerusform>%n секунд</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n минута</numerusform><numerusform>%n минут</numerusform><numerusform>%n минут</numerusform><numerusform>%n минут</numerusform></translation>
+        <translation>
+            <numerusform>%n минута</numerusform>
+            <numerusform>%n минут</numerusform>
+            <numerusform>%n минут</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n час</numerusform><numerusform>%n часа</numerusform><numerusform>%n часов</numerusform><numerusform>%n часов</numerusform></translation>
+        <translation>
+            <numerusform>%n час</numerusform>
+            <numerusform>%n часа</numerusform>
+            <numerusform>%n часов</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n день</numerusform><numerusform>%n дней</numerusform><numerusform>%n дней</numerusform><numerusform>%n дней</numerusform></translation>
+        <translation>
+            <numerusform>%n день</numerusform>
+            <numerusform>%n дней</numerusform>
+            <numerusform>%n дней</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n неделя</numerusform><numerusform>%n недель</numerusform><numerusform>%n недель</numerusform><numerusform>%n недель</numerusform></translation>
+        <translation>
+            <numerusform>%n неделя</numerusform>
+            <numerusform>%n недель</numerusform>
+            <numerusform>%n недель</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1766,7 +3426,11 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n год</numerusform><numerusform>%n года</numerusform><numerusform>%n лет</numerusform><numerusform>%n лет</numerusform></translation>
+        <translation>
+            <numerusform>%n год</numerusform>
+            <numerusform>%n года</numerusform>
+            <numerusform>%n лет</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1785,8 +3449,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>%1 ГБ</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>Ошибка: указанная директория данных "%1" не существует.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>Ошибка: указанная директория данных &quot;%1&quot; не существует.</translation>
     </message>
     <message>
         <source>Error: Cannot parse configuration file: %1.</source>
@@ -1801,12 +3465,60 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Ошибка инициализации настроек: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1 ещё не завершился безопасно...</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>неизвестно</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>Контакт</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>Получение</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>Скрыто</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Неизвестно</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Делегировано</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>%1 принадлежит человеку, который выставил его на продажу. Он просит %2; сетевая комиссия добавляется сверху.</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>Купить</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>Проверяем, свободно ли…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>Свободно.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Зарегистрировать</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>ещё не сделано</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>Введите адрес BitcoinPoS (например, %1)</translation>
     </message>
 </context>
 <context>
@@ -1867,16 +3579,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Директория данных</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the data directory use the '%1' option.</source>
-        <translation>Чтобы указать нестандартное расположение каталога данных, используйте этот параметр '%1'.</translation>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>Чтобы указать нестандартное расположение каталога данных, используйте этот параметр &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Blocksdir</source>
         <translation>Директория блоков</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>Чтобы указать нестандартное расположение каталога данных с блоками, используйте этот параметр '%1'.</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>Чтобы указать нестандартное расположение каталога данных с блоками, используйте этот параметр &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -2127,8 +3839,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Выполнение команды без кошелька</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
-        <translation>Выполнение команды с помощью "%1" кошелька</translation>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>Выполнение команды с помощью &quot;%1&quot; кошелька</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -2153,6 +3865,45 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown</source>
         <translation>Неизвестно</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>Возможно, вы имели в виду:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>Не уверены в команде? Напишите обычными словами, что хотите, например %1, и выберите подсказку. Подсказки вычисляются на этом компьютере; ничего из того, что вы вводите, никуда не отправляется.</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>Радио выключено.</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>Радио включено; запустите мост Reticulum сами (contrib/reticulum/bps-rns-bridge.py).</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>bps-rns-bridge.py не лежит рядом с BPS Relay, поэтому мост нельзя запустить.</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>Не удалось запустить Python как «%1». Установите Python или задайте команду в Настройках, Радио.</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Reticulum не установлен. Установите его командой: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>Мост Reticulum остановился (статус %1); см. radio/bridge.log.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>Мост Reticulum запускается.</translation>
     </message>
 </context>
 <context>
@@ -2206,12 +3957,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Очистить</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>"Родные" segwit-адреса (Bech32 или BIP-173) в дальнейшем уменьшат комиссии ваших транзакций и предоставят улучшенную защиту от опечаток, однако старые кошельки не поддерживают эти адреса. Если не выбрано, будет создан совместимый со старыми кошелёк.</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">&quot;Родные&quot; segwit-адреса (Bech32 или BIP-173) в дальнейшем уменьшат комиссии ваших транзакций и предоставят улучшенную защиту от опечаток, однако старые кошельки не поддерживают эти адреса. Если не выбрано, будет создан совместимый со старыми кошелёк.</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>Создать "родной" segwit (Bech32) адрес</translation>
+        <translation type="vanished">Создать &quot;родной&quot; segwit (Bech32) адрес</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2256,6 +4007,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Could not generate new %1 address</source>
         <translation>Не удалось сгенерировать новый %1 адрес</translation>
+    </message>
+    <message>
+        <source>(none)</source>
+        <translation>(нет)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>Для этого кошелька не задан адрес стейкинга, поэтому делегировать некому. Задайте его на странице «Стейк», в разделе Делегировать -&gt; Автоматическое делегирование, и этот тип адреса заработает.</translation>
     </message>
 </context>
 <context>
@@ -2337,6 +4096,99 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>Пир</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Адрес</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>В реестре</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>Запись истекает</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>В реестре уже</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Нажмите, чтобы скопировать</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>Этот пир записан, но не публикует адрес. С ним всё равно
+можно связаться через оверлей — для этого это и разрешено.</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>опубликован один адрес</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>Опубликовано адресов: %1</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>Подтверждено в блоке %1</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>Перестаёт учитываться с блока %1</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>До этой записи истории нет.</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>В реестре без перерыва с блока %1.</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>Слишком недавно, чтобы учитываться.</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>Работает не под личностью.</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>Работает под личностью %1, которая сохраняет свой срок при смене ключей.</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>адрес не опубликован</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>только что</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>%1 назад</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>истекло</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>через %1</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>новый</translation>
+    </message>
+</context>
+<context>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
@@ -2407,12 +4259,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Предупреждение: оценка комиссии в данный момент невозможна.</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>Укажите пользовательскую плату за килобайт (1000 байт) виртуального размера транзакции.
 
-Примечание: Так как комиссия рассчитывается на основе каждого байта, комиссия  "100 сатошей за КБ " для транзакции размером 500 байт (половина 1 КБ) в конечном счете приведет к сбору только 50 сатошей.</translation>
+Примечание: Так как комиссия рассчитывается на основе каждого байта, комиссия  &quot;100 сатошей за КБ &quot; для транзакции размером 500 байт (половина 1 КБ) в конечном счете приведет к сбору только 50 сатошей.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2471,7 +4323,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Включить Replace-By-Fee</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
         <translation>С помощью Replace-By-Fee (BIP-125) вы можете увеличить комиссию за транзакцию после ее отправки. Без этого может быть рекомендована более высокая комиссия для компенсации повышенного риска задержки транзакции.</translation>
     </message>
     <message>
@@ -2531,12 +4383,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Создает Частично Подписанную Биткойн Транзакцию (PSBT), чтобы использовать её, например, с оффлайн %1 кошельком, или PSBT-совместимым аппаратным кошельком.</translation>
     </message>
     <message>
-        <source> from wallet '%1'</source>
-        <translation>с кошелька '%1'</translation>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation>с кошелька &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>%1 to '%2'</source>
-        <translation>%1 на '%2'</translation>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 на &apos;%2&apos;</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -2595,7 +4447,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Общая сумма</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
         <translation>Чтобы просмотреть список получателей, нажмите «Показать подробно...»</translation>
     </message>
     <message>
@@ -2648,7 +4500,11 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Предполагаемое подтверждение в течение %n блока.</numerusform><numerusform>Предполагаемое подтверждение в течение %n блоков.</numerusform><numerusform>Предполагаемое подтверждение в течение %n блоков.</numerusform><numerusform>Предполагаемое подтверждение в течение %n блоков.</numerusform></translation>
+        <translation>
+            <numerusform>Предполагаемое подтверждение в течение %n блока.</numerusform>
+            <numerusform>Предполагаемое подтверждение в течение %n блоков.</numerusform>
+            <numerusform>Предполагаемое подтверждение в течение %n блоков.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2669,6 +4525,42 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>(no label)</source>
         <translation>(нет метки)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>Вставить или загрузить список платежей вместо того, чтобы добавлять их по одному</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>&amp;Пакет...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>При расчёте доступного баланса учитывать и делегирования. Если не отмечено, доступный баланс покажет только монеты, которые сейчас в кошельке.</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>&amp;Учитывать делегирования</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>Холодный стейкинг не включён</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>Холодный стейкинг включается с блока %1</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>Этот кошелёк сам ведёт стейкинг своих монет, поэтому все они делегированы.</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>Указанный адрес владельца отсутствует в этом кошельке. ВНИМАНИЕ: после делегирования тратить эти монеты сможет только владелец ключа адреса владельца.</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>Указанный адрес стейкера есть в этом кошельке. Вы уже можете вести стейкинг этих монет, делегировать их самому себе не нужно.</translation>
     </message>
 </context>
 <context>
@@ -2753,6 +4645,352 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>Memo:</source>
         <translation>Примечание:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>&amp;Адрес владельца:</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>Адрес владельца BitcoinPoS</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>Сервер</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Что этот узел предлагает другим. Ретрансляция и хранение почты работают уже сегодня; хостинг на подходе, и, как всё здесь, находится так же, как пиры, — через реестр. У имён своя страница.</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>Хостинг</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>Сайт или сервис, работающий на этом узле, находимый по ключу или имени и доступный через оверлей, так что хост никогда не публикует, где работает. Часть с встречей уже есть: сервис регистрируется в точках встречи, которые обе стороны вычисляют из реестра. Отдача страниц и приложений через это ещё не сделана.</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>Ретранслятор</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>Передавать оверлейный трафик других пиров, оплачивать ежемесячные записи пиров, пользующихся этим узлом, и делиться с ними частью каждого созданного блока. Ретранслятор включает оплаченные записи в блоки, которые создаёт сам, — так они подтверждаются, пока большинство узлов ещё отказываются передавать такие записи, — поэтому ретранслятор должен вести стейкинг.</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Стейкинг</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>Пиров в списке здесь</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>Следующий блок, который он создаст</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>Оплачивать записи пиров, которые просят об этом через оверлей</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>Пир без монет может попросить этот узел опубликовать его ежемесячную запись. Этот узел платит комиссию, включает её в блок и добавляет пира к тем, с кем делит награды. По умолчанию выключено, потому что тратит монеты этого узла.</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>Пирам сверх этого числа отказывают. Пиры, уже записанные здесь, могут продлевать запись.</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>Сколько пиров держать в списке максимум</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>единственный открытый кошелёк</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>Какой кошелёк платит комиссии. Если открыто несколько и здесь ни один не указан, запросы отклоняются, а не оплачиваются наугад. Стейкинг может идти в любом кошельке этого узла.</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>Платить комиссии из кошелька</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>Часть каждого блока, который этот узел создаёт своими монетами, поровну делится между пирами из его списка. 0 — ничего не делить.</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>Доля каждого созданного блока</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>Почтовый ящик</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>Хранить запечатанную почту людей, для которых реестр делает этот узел почтовым ящиком, пока они её не заберут. Какие ретрансляторы хранят чью почту, вычисляется из реестра, поэтому никто это не назначает. Отправители и владельцы связываются с этим узлом через три ретранслятора, так что он никогда не узнаёт, где они; письма запечатаны, поэтому он не может их прочитать или узнать, кто их написал. Письма удаляются через две недели, и обслуживаются только люди из реестра.</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>Хранится</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>Почтовых ключей хранится для отправителей</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>Хранить почту людей, которых реестр закрепляет за этим узлом</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>Включено по умолчанию везде, где работает оверлей: ретранслятор, который отказывается, оставляет людей, для которых его выбрали, с одним почтовым ящиком меньше.</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> МиБ</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>Когда место заканчивается, новые письма не принимаются, пока старые не заберут или не удалят. Ни один человек не может занять больше 8 МиБ.</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>Сколько диска можно использовать</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Сохранено. Это читается при запуске узла, поэтому перезапустите клиент, чтобы изменение вступило в силу.</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>нет открытого кошелька</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>нет — ретранслятор, не ведущий стейкинг, отклоняет запросы на запись</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>да, через %1</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>не оплачивает записи</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>оплачивает, но не ведёт стейкинг</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>работает</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>в этой сборке нет кошелька</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>нужен кошелёк</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>выключено</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>нужен оверлей</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>ничего — почта не хранится</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>писем нет</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>1 буква</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>букв: %1</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>1 человек</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>человек: %1</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 КиБ</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 МиБ</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>сейчас ничего, место для %1 МиБ</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%1 для %2, %3 из %4 МиБ</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>делится %1%: всего %2 %4, по %3 %4 каждому пиру</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>Настройки</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>Что умеет этот клиент, чего не умеет клиент кошелька, и язык. Всё остальное — прокси, порты, обрезка — один и тот же вопрос для обоих и задаётся в одном месте.</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Обзор</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>Вести индекс реестра</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>Без этого узел может публиковать, но не видит, кто ещё записан.</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>Индексировать имена</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>Нужно, чтобы искать имена, отправлять им почту и регистрировать своё.</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>Пытаться подключиться к пирам из реестра</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>Передаёт адреса из реестра менеджеру адресов вместе с обычными сидами и обменом адресами. Если выключить, реестр станет списком, который этот узел читает, но никак не использует.</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Оверлей</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>Запускать оверлей</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>По умолчанию включено в этом клиенте и выключено в узле и в клиенте кошелька. Его рукопожатие ещё не проверял никто, кроме авторов.</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>Оверлей работает по UDP на своём порту. Одноранговая сеть отдельна и остаётся на TCP.</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>Слушать порт</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>Радио</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>Передавать оверлей также по радио, через Reticulum</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>LoRa через RNode, пакетное радио, последовательные линии — всё, что настроено в Reticulum. Нужен оверлей.</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>Входить в оверлей через радиососедей, чтобы почта работала без интернета</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>Если узел BPS, слышимый по радио, — записанный ретранслятор, ваша почта и запросы на запись идут через него. Радиосвязь намного медленнее интернета.</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>Запускать мост Reticulum вместе с BPS Relay</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>Запускает bps-rns-bridge.py рядом с узлом. Оставьте выключенным, если запускаете мост сами.</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>Команда Python</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Reticulum не входит в BPS и имеет собственную лицензию. Установите его командой %1 и настройте радио в собственной конфигурации Reticulum (~/.reticulum/config). Любительские диапазоны не допускают шифрованный трафик, поэтому используйте безлицензионные диапазоны, например LoRa.</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>Отображение</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>Показывать суммы в</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>Язык компьютера</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>Вступит в силу при следующем запуске BPS Relay. Тексты, которые отправляет сам узел, например сообщения об ошибках команд, остаются на английском.</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Язык</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>Сеть, прокси и другие основные настройки…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>Сохранено. Язык сменится при следующем запуске BPS Relay.</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Сохранено. Это читается при запуске узла, поэтому перезапустите клиент, чтобы изменение вступило в силу.</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>Узел ещё запускается; основные настройки пока недоступны.</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2832,8 +5070,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>&amp;Проверить Сообщение</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
-        <translation>Введите ниже адрес получателя, сообщение (убедитесь, что переводы строк, пробелы, табы и т.п. в точности скопированы) и подпись, чтобы проверить сообщение. Убедитесь, что не скопировали лишнего в подпись, сравнив с самим подписываемым сообщением, чтобы не стать жертвой атаки "man-in-the-middle". Заметьте, что эта операция удостоверяет лишь авторство подписавшего, но не может удостоверить отправителя транзакции.</translation>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <translation>Введите ниже адрес получателя, сообщение (убедитесь, что переводы строк, пробелы, табы и т.п. в точности скопированы) и подпись, чтобы проверить сообщение. Убедитесь, что не скопировали лишнего в подпись, сравнив с самим подписываемым сообщением, чтобы не стать жертвой атаки &quot;man-in-the-middle&quot;. Заметьте, что эта операция удостоверяет лишь авторство подписавшего, но не может удостоверить отправителя транзакции.</translation>
     </message>
     <message>
         <source>The Bitcoin address the message was signed with</source>
@@ -2860,8 +5098,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Сбросить все поля проверки сообщения</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>Нажмите "Подписать сообщение" для создания подписи</translation>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>Нажмите &quot;Подписать сообщение&quot; для создания подписи</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2917,6 +5155,209 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
 </context>
 <context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>Форма</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Стейкинг</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>Ваш текущий доступный баланс</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>Активы в стейкинге, принадлежащие этому кошельку</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>Активы в стейкинге из делегирований</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>Несозревшие:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>Ваш несозревший баланс</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>Активы в стейкинге</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>Стейк:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Стейкинг</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>Высота блока:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>Награда за блок:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/блок</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>Вес сети:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>Ожидаемая годовая доходность:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>Записи о стейках</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>&amp;Делегировать</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>Тип делегирования:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>Ручное делегирование</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>Автоматическое делегирование</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>Адреса стейкинга</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>Удалить все</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Вставить адрес из буфера обмена</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>&amp;Добавить</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>&amp;Мои делегирования</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>Делегированные активы</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>Ваш текущий делегированный баланс</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>Мои делегирования</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>&amp;Полученные делегирования</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>&amp;Создать новый адрес стейкинга</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> с меткой:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>Необязательная метка для нового адреса получения (чтобы вы могли узнать счёт). Она также прикрепляется к запросу платежа.</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>Делегирования ColdStake</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>Монеты, поступающие на адреса делегирования этого кошелька, стейкаются этими ключами сразу по прибытии, а сдача с ваших трат остаётся делегированной. Ключ стейкинга может создавать только coinstake, которые платят обратно вам, поэтому кошельку, где он хранится, пароль не нужен.</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>Укажите больше одного, чтобы распределить монеты по нескольким кошелькам для стейкинга: тогда, если один не в сети, стейкинг не остановится целиком.
+
+Каждое новое делегирование идёт на тот адрес, который пока указан реже всех, считая выданные адреса делегирования и ещё не потраченные делегированные монеты. Считаются делегирования, а не суммы, поэтому адрес с одним крупным делегированием может быть выбран раньше адреса с несколькими мелкими.</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>Монеты, уже делегированные удалённому адресу, не перемещаются, и он продолжает их стейкать. Только новые делегирования перестают его указывать.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>Не удалось разблокировать кошелёк.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Не удалось создать новый адрес %1</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>Холодный стейкинг на этом узле отключён (-coldstaking=0), поэтому ничего не делегируется.</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>Адрес стейкинга здесь принадлежит этому кошельку, который зашифрован, поэтому стейкинг идёт, только пока кошелёк разблокирован. Чтобы вести стейкинг без пароля, используйте адрес из отдельного незашифрованного кошелька для стейкинга.</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>Перестать делегировать %1. Монеты, уже делегированные ему, не перемещаются, и он продолжает их стейкать.</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>Не удалось сохранить адреса стейкинга. Делегирование привязывается к хешу ключа, поэтому каждый адрес должен быть legacy-адресом.</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>Этот адрес стейкинга уже есть в списке.</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>Удалить все адреса стейкинга</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>Перестать делегировать всем адресам стейкинга (%1)?
+
+Уже делегированные монеты продолжают стейкаться ими и не перемещаются. Но новые поступления и сдача пойдут на обычные адреса, которые не стейкают, и чтобы снова это включить, вам понадобятся эти адреса.</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2927,7 +5368,11 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Открыть еще на %n блок</numerusform><numerusform>Открыть еще на %n блоков</numerusform><numerusform>Открыть еще на %n блоков</numerusform><numerusform>Открыть еще на %n блоков</numerusform></translation>
+        <translation>
+            <numerusform>Открыть еще на %n блок</numerusform>
+            <numerusform>Открыть еще на %n блоков</numerusform>
+            <numerusform>Открыть еще на %n блоков</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3007,7 +5452,11 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>созревает еще в %n блоках</numerusform><numerusform>созревает еще в %n блоках</numerusform><numerusform>созревает еще в %n блоках</numerusform><numerusform>созревает еще в %n блоках</numerusform></translation>
+        <translation>
+            <numerusform>созревает еще в %n блоках</numerusform>
+            <numerusform>созревает еще в %n блоках</numerusform>
+            <numerusform>созревает еще в %n блоках</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -3066,8 +5515,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Мерчант</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Созданные автоматически монеты должны подождать %1 блоков, прежде чем они могут быть потрачены. Когда вы создали автоматически этот блок, он был отправлен в сеть для добавления в цепочку блоков. Если он не попадёт в цепь, его статус изменится на "не принят", и монеты будут недействительны. Это иногда происходит в случае, если другой узел создаст автоматически блок на несколько секунд раньше вас.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Созданные автоматически монеты должны подождать %1 блоков, прежде чем они могут быть потрачены. Когда вы создали автоматически этот блок, он был отправлен в сеть для добавления в цепочку блоков. Если он не попадёт в цепь, его статус изменится на &quot;не принят&quot;, и монеты будут недействительны. Это иногда происходит в случае, если другой узел создаст автоматически блок на несколько секунд раньше вас.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -3121,7 +5570,11 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Открыть еще на %n блок</numerusform><numerusform>Открыть еще на %n блоков</numerusform><numerusform>Открыть еще на %n блоков</numerusform><numerusform>Открыть еще на %n блоков</numerusform></translation>
+        <translation>
+            <numerusform>Открыть еще на %n блок</numerusform>
+            <numerusform>Открыть еще на %n блоков</numerusform>
+            <numerusform>Открыть еще на %n блоков</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3210,6 +5663,30 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>Снятая или добавленная к балансу сумма.</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>Холодный стейк</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>Стейкинг от имени</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>Делегирование стейка</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>Делегирование</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>Делегирование стейка потрачено</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>Делегированная сумма.</translation>
     </message>
 </context>
 <context>
@@ -3370,6 +5847,22 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>to</source>
         <translation>для</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>Холодные стейки</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>Горячие стейки</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>Непотраченные делегированные</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>Делегирования</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3455,7 +5948,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>Подтвердите оплату</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
+        <source>Can&apos;t draft transaction.</source>
         <translation>Невозможно подготовить черновик транзакции.</translation>
     </message>
     <message>
@@ -3463,7 +5956,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>PSBT скопирована</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>Невозможно подписать транзакцию</translation>
     </message>
     <message>
@@ -3473,6 +5966,21 @@ Go to File &gt; Open Wallet to load a wallet.
     <message>
         <source>default wallet</source>
         <translation>Кошелёк по умолчанию</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ этот узел</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● в работе</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>Клиент кошелька, работающий в этом процессе с этим узлом. Это та же программа, что и bitcoin-pos-qt, а не её копия.</translation>
     </message>
 </context>
 <context>
@@ -3581,7 +6089,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>Предоставлен более чем один адрес подключения к скрытым сервисам. %s используется для подключения к автоматически созданному сервису Tor.</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation>Пожалуйста, убедитесь в корректности установки времени и даты на вашем компьютере! Если время установлено неверно, %s не будет работать правильно.</translation>
     </message>
     <message>
@@ -3601,7 +6109,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>SQLiteDatabase: Кошелёк sqlite имеет неизвестную версию %d. Поддерживается только версия %d</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
         <translation>База данных блоков содержит блок, который появляется из будущего. Это может произойти из-за некорректно установленных даты и времени на вашем компьютере. Остается только перестраивать базу блоков, если вы уверены, что дата и время корректны.</translation>
     </message>
     <message>
@@ -3633,8 +6141,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>-maxmempool должен быть как минимум %d Мб</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>Не удается разрешить -%s адрес: '%s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>Не удается разрешить -%s адрес: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3725,20 +6233,20 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>Начальная проверка исправности не удалась. %s завершает работу.</translation>
     </message>
     <message>
-        <source>Invalid P2P permission: '%s'</source>
-        <translation>Неверные разрешение для P2P: '%s'</translation>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>Неверные разрешение для P2P: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>Неверная сумма для -%s=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Неверная сумма для -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>Недопустимая сумма для -discardfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Недопустимая сумма для -discardfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>Недопустимая сумма для -fallbackfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Недопустимая сумма для -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
@@ -3765,16 +6273,16 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>SQLiteDatabase: Неожиданный id приложения. Ожидалось %u, а получено %u</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>Указанная директория с блоками "%s" не существует.</translation>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>Указанная директория с блоками &quot;%s&quot; не существует.</translation>
     </message>
     <message>
-        <source>Unknown address type '%s'</source>
-        <translation>Адрес неизвестного типа '%s'</translation>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>Адрес неизвестного типа &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Unknown change type '%s'</source>
-        <translation>Неизвестный тип адреса для сдачи '%s'</translation>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>Неизвестный тип адреса для сдачи &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3857,8 +6365,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>Невозможно обновить не разделенный HD кошелёк без обновления для поддержки предварительно разделенного пула ключей. Пожалуйста, используйте версию 169900 или повторите без указания версии.</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>Неверное значение для -maxtxfee=&lt;amount&gt;: '%s' (минимальная комиссия трансляции %s для предотвращения зависания транзакций)</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Неверное значение для -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (минимальная комиссия трансляции %s для предотвращения зависания транзакций)</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -3873,7 +6381,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>Это максимальная транзакция, которую вы заплатите (в добавок к обычной плате) для избежания затрат по причине отбора монет.</translation>
     </message>
     <message>
-        <source>Transaction needs a change address, but we can't generate it. Please call keypoolrefill first.</source>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
         <translation>Для транзакции требуется адрес сдачи, но сгенерировать его не удалось. Пожалуйста, сначала выполните keypoolrefill.</translation>
     </message>
     <message>
@@ -3913,24 +6421,24 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>Количество комисии (%s) меньше чем настроенное минимальное количество комисии (%s).</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>Неверный -onion адрес или имя хоста: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>Неверный -onion адрес или имя хоста: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>Неверный адрес -proxy или имя хоста: '%s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>Неверный адрес -proxy или имя хоста: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>Неверное количество в параметре -paytxfee=&lt;amount&gt;: '%s' (должно быть как минимум %s)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>Неверное количество в параметре -paytxfee=&lt;amount&gt;: &apos;%s&apos; (должно быть как минимум %s)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>Указана неверная сетевая маска в -whitelist: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>Указана неверная сетевая маска в -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>Необходимо указать порт с -whitebind: '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>Необходимо указать порт с -whitebind: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
@@ -3953,16 +6461,16 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>Подписание транзакции завершилось неудачей</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>Указанный -walletdir "%s" не существует</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>Указанный -walletdir &quot;%s&quot; не существует</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>Указанный -walletdir "%s" является относительным путем</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>Указанный -walletdir &quot;%s&quot; является относительным путем</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>Указанный -walletdir "%s" не является каталогом</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>Указанный -walletdir &quot;%s&quot; не является каталогом</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3991,8 +6499,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>Невозможно привязаться к %s на этом компьютере (bind вернул ошибку %s)</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>Невозможно создать файл PID '%s': %s</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>Невозможно создать файл PID &apos;%s&apos;: %s</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -4055,8 +6563,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>Транзакция должна иметь хотя бы одного получателя</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>Неизвестная сеть, указанная в -onlynet: '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>Неизвестная сеть, указанная в -onlynet: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -4071,8 +6579,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>Предупреждение: Приватные ключи обнаружены в кошельке {%s} с отключенными приватными ключами</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>Не удается выполнить запись в каталог данных '%s'; проверьте разрешения.</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>Не удается выполнить запись в каталог данных &apos;%s&apos;; проверьте разрешения.</translation>
     </message>
     <message>
         <source>Loading block index...</source>

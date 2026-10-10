@@ -1,4 +1,6 @@
-<TS language="bn" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="bn">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -96,6 +98,12 @@
     <message>
         <source>There was an error trying to save the address list to %1. Please try again.</source>
         <translation>There was an error trying to save the address list to %1. Please try again.</translation>
+    </message>
+    <message>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
+        <translation>এগুলো পেমেন্ট গ্রহণের জন্য আপনার Bitcoin ঠিকানা। নতুন ঠিকানা তৈরি করতে গ্রহণ ট্যাবের &apos;নতুন গ্রহণ ঠিকানা তৈরি করুন&apos; বোতাম ব্যবহার করুন।
+শুধু &apos;legacy&apos; ধরনের ঠিকানা দিয়েই স্বাক্ষর করা সম্ভব।</translation>
     </message>
 </context>
 <context>
@@ -235,6 +243,14 @@
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Warning: The Caps Lock key is on!</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>অপারেটিং সিস্টেমের অ্যাকাউন্ট বেহাত হলে সাধারণ টাকা পাঠানো বন্ধ রাখতে কাজে লাগে। এটি প্রকৃত নিরাপত্তা দেয় না।</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>শুধু স্টেকিংয়ের জন্য।</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -245,6 +261,109 @@
     <message>
         <source>Banned Until</source>
         <translation>Banned Until</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>একসাথে পেমেন্ট</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>প্রতি লাইনে একটি পেমেন্ট, &quot;ঠিকানা, পরিমাণ&quot; আকারে। কমা, সেমিকোলন বা ট্যাব দিয়ে ঘরগুলো আলাদা হয়, আর তৃতীয় ঘরটি লেবেল হয়। # দিয়ে শুরু হওয়া লাইন উপেক্ষা করা হয়।</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>&amp;পেস্ট করুন</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>&amp;ফাইল থেকে লোড করুন...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>&amp;মুছুন</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>লাইন</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>ঠিকানা</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>পরিমাণ</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>অবস্থা</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>পেমেন্টের তালিকা লোড করুন</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>টেক্সট ও CSV ফাইল (*.txt *.csv);;সব ফাইল (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>%1 পড়া যায়নি।</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>&quot;ঠিকানা, পরিমাণ&quot; প্রত্যাশিত</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>কোনো ঠিকানা নেই</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>বৈধ ঠিকানা নয়</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>কোনো পরিমাণ নেই</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>&quot;%1&quot; পরিমাণটি পড়া যায়নি</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>পরিমাণ অবশ্যই শূন্যের চেয়ে বেশি হতে হবে</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>ঠিক আছে</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>প্রতি লাইনে একটি পেমেন্ট পেস্ট করুন, &quot;ঠিকানা, পরিমাণ&quot; আকারে। তৃতীয় ঘরটি লেবেল হিসেবে ব্যবহৃত হয়। # দিয়ে শুরু হওয়া লাইন উপেক্ষা করা হয়।</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>%2টি লাইনের মধ্যে %1টি ব্যবহার করা যাচ্ছে না। চালিয়ে যেতে সেগুলো ঠিক করুন বা মুছে ফেলুন।</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>%1 জন প্রাপক একটি লেনদেনে যতজন ধরে তার চেয়ে বেশি (এখানে সীমা %2)। তালিকাটি ভাগ করুন।</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>%1 জন প্রাপক, মোট %2, ফি বাদে।</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>পাঠানোর ফর্মে যোগ করুন</translation>
     </message>
 </context>
 <context>
@@ -435,7 +554,10 @@
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n active connection to Bitcoin network</numerusform><numerusform>%n active connections to Bitcoin network</numerusform></translation>
+        <translation>
+            <numerusform>%n active connection to Bitcoin network</numerusform>
+            <numerusform>%n active connections to Bitcoin network</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -447,7 +569,10 @@
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>Processed %n block of transaction history.</numerusform><numerusform>Processed %n blocks of transaction history.</numerusform></translation>
+        <translation>
+            <numerusform>Processed %n block of transaction history.</numerusform>
+            <numerusform>Processed %n blocks of transaction history.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -625,7 +750,372 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</translation>
     </message>
-    </context>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>একটি গুরুতর ত্রুটি ঘটেছে। %1 আর নিরাপদে চলতে পারবে না এবং বন্ধ হয়ে যাবে।</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;স্টেকিং</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>ওয়ালেটের স্টেক দেখান</translation>
+    </message>
+    <message>
+        <source>&amp;Load PSBT from file...</source>
+        <translation>ফাইল থেকে PSBT লোড করুন(&amp;L)...</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction</source>
+        <translation>আংশিক স্বাক্ষরিত Bitcoin লেনদেন লোড করুন</translation>
+    </message>
+    <message>
+        <source>Load PSBT from clipboard...</source>
+        <translation>ক্লিপবোর্ড থেকে PSBT লোড করুন...</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction from clipboard</source>
+        <translation>ক্লিপবোর্ড থেকে আংশিক স্বাক্ষরিত Bitcoin লেনদেন লোড করুন</translation>
+    </message>
+    <message>
+        <source>Close All Wallets...</source>
+        <translation>সব ওয়ালেট বন্ধ করুন...</translation>
+    </message>
+    <message>
+        <source>Close all wallets</source>
+        <translation>সব ওয়ালেট বন্ধ করুন</translation>
+    </message>
+    <message>
+        <source>&amp;Mask values</source>
+        <translation>মান লুকান(&amp;M)</translation>
+    </message>
+    <message>
+        <source>Mask the values in the Overview tab</source>
+        <translation>সংক্ষিপ্ত বিবরণ ট্যাবে মান লুকান</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>ওয়ালেটটি &lt;b&gt;এনক্রিপ্ট করা&lt;/b&gt; এবং বর্তমানে &lt;b&gt;শুধু স্টেকিংয়ের জন্য আনলক করা&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>ওয়ালেট &amp;ডিক্রিপ্ট করুন...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>পাসফ্রেজ সরিয়ে দিন, যাতে প্রাইভেট কি এনক্রিপশন ছাড়া সংরক্ষিত থাকে</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>স্টেকিং হচ্ছে না</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n সেকেন্ড</numerusform>
+            <numerusform>%n সেকেন্ড</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n মিনিট</numerusform>
+            <numerusform>%n মিনিট</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n ঘণ্টা</numerusform>
+            <numerusform>%n ঘণ্টা</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n দিন</numerusform>
+            <numerusform>%n দিন</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>স্টেকিং চলছে।&lt;br&gt;আপনার ওজন %1&lt;br&gt;নেটওয়ার্কের ওজন %2&lt;br&gt;পুরস্কার পাওয়ার আনুমানিক সময়: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>ওয়ালেট অফলাইন থাকায় স্টেকিং হচ্ছে না</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>ওয়ালেট সিঙ্ক হচ্ছে বলে স্টেকিং হচ্ছে না</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>আপনার কোনো পরিপক্ব কয়েন না থাকায় স্টেকিং হচ্ছে না</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>ওয়ালেট লক থাকায় স্টেকিং হচ্ছে না</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>মূল বার্তা:</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>অজানা ত্রুটি</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>এক মিনিটের কম</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>এক মিনিট</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 মিনিট</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>এক ঘণ্টা</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 ঘণ্টা</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 দিন</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>এক মাস</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 মাস</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>প্রায় এক বছর</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>এক বছরের বেশি</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>অজানা</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>একটি গুরুতর ত্রুটি ঘটেছে। %1 আর নিরাপদে চলতে পারবে না এবং বন্ধ হয়ে যাবে।</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>মূল বার্তা:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>খুঁজুন</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>ওভারলে</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>নাম</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>পিয়ার ও কনসোল</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>নোড</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>ওয়ালেট</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>মেইল</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>মেইল (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>সার্ভার</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>সেটিংস</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>তালিকাভুক্তি অজানা</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>ওভারলে অজানা</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>সংযোগ হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>বর্তমান নেটওয়ার্ক ওজনে স্টেকিং থেকে বছরে প্রায় %1% আয় হয়: বছরে %2টি ব্লক, প্রতিটি %3 %4, স্টেকিংয়ে থাকা %5 %4-এর উপর।</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>এটি প্রতিটি ব্লকের %1% অংশ বাদ দেওয়ার পরের হিসাব, যা এই নোড তার পিয়ারদের সাথে ভাগ করে।</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>বছরে %1%</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>বন্ধ হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>%1টি পিয়ার: %2টি আগত, %3টি বহির্গামী।</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>নেটওয়ার্ক কার্যক্রম থামাতে ক্লিক করুন।</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>১টি পিয়ার</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>%1টি পিয়ার</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>নেটওয়ার্ক কার্যক্রম থামানো আছে।</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>আবার চালু করতে ক্লিক করুন।</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>নেটওয়ার্ক থামানো</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>ইতিহাসের %1টি ব্লক প্রক্রিয়া করা হয়েছে।</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>ব্লক %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>হালনাগাদ।</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>নেটওয়ার্কের সাথে সিঙ্ক হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>ডিস্কের ব্লক প্রক্রিয়া করা হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>ডিস্কের ব্লক পুনরায় ইনডেক্স করা হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>পিয়ারদের সাথে সংযোগ হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>%1 পিছিয়ে</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>হালনাগাদ হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>সর্বশেষ প্রাপ্ত ব্লকটি %1 আগে তৈরি হয়েছিল।</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>ওয়ালেট &lt;b&gt;%1&lt;/b&gt; এনক্রিপ্ট করা এবং শুধু স্টেকিংয়ের জন্য আনলক করা</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>ওয়ালেট &lt;b&gt;%1&lt;/b&gt; এনক্রিপ্ট করা এবং আনলক করা</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>ওয়ালেট &lt;b&gt;%1&lt;/b&gt; এনক্রিপ্ট করা এবং লক করা</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>স্টেকিং চলছে</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>স্টেকিং চলছে, %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; স্টেকিং করছে।&lt;br&gt;এর ওজন %2&lt;br&gt;নেটওয়ার্কের ওজন %3&lt;br&gt;পুরস্কার পাওয়ার আনুমানিক সময়: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>স্টেকিং নেই</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>স্টেকিং নেই (%1 পরিশোধ করছে)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>স্টেকিং হচ্ছে না: পিয়ার খুব কম</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>স্টেকিং হচ্ছে না: চেইন এখনো হালনাগাদ হচ্ছে</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>স্টেকিং হচ্ছে না: &lt;b&gt;%1&lt;/b&gt;-এর কোনো পরিপক্ব কয়েন নেই</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>স্টেকিং হচ্ছে না: &lt;b&gt;%1&lt;/b&gt; লক করা</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>স্টেকিং হচ্ছে না</translation>
+    </message>
+</context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -776,6 +1266,57 @@
         <source>(change)</source>
         <translation>(change)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>কোল্ড স্টেকিংয়ের জন্য %1-কে অর্পণ করা হয়েছে</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>চিঠি লিখুন</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>একটি নাম, ঠিকানা বইয়ের ডাকনাম বা রেজিস্টার কি</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>প্রাপক</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>বিষয়</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>পাঠান</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>এটি কার জন্য? একটি নাম, ডাকনাম বা রেজিস্টার কি।</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>চিঠিটি %1 KB; একটি চিঠি সর্বোচ্চ %2 KB হতে পারে।</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>চিঠিটি সিল করে প্রাপকের মেইলবক্সগুলোতে রাখা হচ্ছে, প্রতিবার তিনটি রিলের মাধ্যমে। এতে কয়েক সেকেন্ড লাগে…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>পাঠানো হয়েছে</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>চিঠিটি প্রাপকের %2টি মেইলবক্সের মধ্যে %1টিতে রাখা হয়েছে। পৌঁছানোর জন্য একটিই যথেষ্ট।</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>পাঠানো হয়নি: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -830,7 +1371,202 @@
         <source>Create</source>
         <translation>Create</translation>
     </message>
-    </context>
+    <message>
+        <source>Wallet</source>
+        <translation>ওয়ালেট</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>উন্নত বিকল্প</translation>
+    </message>
+    <message>
+        <source>Use descriptors for scriptPubKey management</source>
+        <translation>scriptPubKey ব্যবস্থাপনার জন্য ডেসক্রিপ্টর ব্যবহার করুন</translation>
+    </message>
+    <message>
+        <source>Descriptor Wallet</source>
+        <translation>ডেসক্রিপ্টর ওয়ালেট</translation>
+    </message>
+    <message>
+        <source>Compiled without sqlite support (required for descriptor wallets)</source>
+        <translation>sqlite সমর্থন ছাড়া কম্পাইল করা হয়েছে (ডেসক্রিপ্টর ওয়ালেটের জন্য প্রয়োজন)</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>খুঁজুন</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>পিয়াররা সার্ভারে নয়, চেইনে নিজেদের ঘোষণা করে, তাই এই তালিকা সবার জন্য একই এবং কেউ এটি সম্পাদনা করতে পারে না।</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>রেজিস্টার</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>আপনার তালিকাভুক্তি</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>তালিকাভুক্ত পিয়ার</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>আপনি</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>কপি</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>আপনার তালিকাভুক্তি প্রকাশ করা হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>পরিচয়</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>তৈরি করুন…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>এই নোডের কি কখনো বদলাতে হলে, পরিচয় এই নোডের ইতিহাস, অর্থাৎ এটি কতদিন তালিকাভুক্ত, ধরে রাখে।</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>একটি পিয়ার বা ঠিকানা খুঁজুন</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>কি কপি হয়েছে</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>ঠিকানা কপি হয়েছে</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>শুরু হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>একটি পরিচয় তৈরি করুন</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>ফি পরিশোধের উৎস</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>পরিচয় হলো এই নোডের কি-এর পেছনে থাকা দ্বিতীয় একটি কি। এই নোডের কি কখনো হারিয়ে গেলে বা চুরি হলে, একই পরিচয়ের অধীনে নতুন কি বসানো যায়, এবং নোডটি নতুন করে শুরু না করে কতদিন ধরে তালিকাভুক্ত তা বজায় রাখে।
+
+আপনাকে একবার একটি পুনরুদ্ধার কি দেখানো হবে। এটি লিখে রাখুন: পরিচয় চুরি করা ব্যক্তিকে এটি সরাতে বাধা দেওয়ার এটিই একমাত্র উপায়। এরপর একটি ছোট লেনদেন পরিচয়টি প্রকাশ করে, এবং আপনার পরবর্তী তালিকাভুক্তি নবায়ন এই নোডের কি এর সাথে যুক্ত করে।</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>আপনার রিলে লেনদেন %1-এ আপনার তালিকাভুক্তি প্রকাশ করেছে। লেনদেন নিশ্চিত হলে গণনা হবে।</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>লেনদেন %1-এ প্রকাশিত। লেনদেন নিশ্চিত হলে গণনা হবে।</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>অজানা</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>রেজিস্টার ইনডেক্স বন্ধ</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>তালিকাভুক্ত নয়</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>%1 পরে শেষ</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>আপনার তালিকাভুক্তি নবায়ন করা হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>শেষ ৩ দিনের মধ্যে নবায়ন করুন</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>আপনার তালিকাভুক্তি %1 পরে শেষ হবে। তার তিন দিন আগে থেকে নবায়ন করা যায়।</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>তালিকাভুক্ত, %1 পরে শেষ</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>কিছু নেই</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>এই নোডের কোনো ঘোষণা কি নেই: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>নিষ্ক্রিয়</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>রেজিস্টার ইনডেক্স চলছে না, তাই এই নোড দেখতে পারে না কে তালিকাভুক্ত। এটি চালু করতে -rosterindex দিয়ে আবার চালু করুন।</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>হালনাগাদ হচ্ছে (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>%1 দিন আগের</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>এই নোডের সর্বশেষ ব্লকটি %1 দিন পুরনো, তাই এর পর বাতিল হওয়া পিয়াররা এখনো এখানে থাকতে পারে। রেজিস্টার এখনো পিয়ারদের কাছে পৌঁছাতে ব্যবহৃত হয়, তবে চেইন হালনাগাদ না হওয়া পর্যন্ত ওভারলে দীর্ঘদিন তালিকাভুক্ত রিলেগুলোকে অগ্রাধিকার দেওয়া বন্ধ রাখে।</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>হালনাগাদ</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>রেজিস্টার ইনডেক্স চলছে না</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>আপনার পুনরুদ্ধার কি</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>এটি লিখে এই কম্পিউটার থেকে দূরে কোনো নিরাপদ জায়গায় রাখুন। এটি শুধু এখন দেখানো হচ্ছে এবং কোথাও সংরক্ষিত হয় না। এটি দিয়ে কয়েন খরচ করা যায় না; এটি শুধু আপনার না করা পরিচয় স্থানান্তর থামাতে পারে।</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>আমি এটি লিখে রেখেছি</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>আপনার পরিচয় লেনদেন %1-এ প্রকাশিত হয়েছে। আপনার পরবর্তী তালিকাভুক্তি নবায়ন এই নোডের কি এর সাথে যুক্ত করে।</translation>
+    </message>
+</context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -866,16 +1602,16 @@
         <translation>Edit sending address</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>The entered address "%1" is not a valid Bitcoin address.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
+        <translation>The entered address &quot;%1&quot; is not a valid Bitcoin address.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>The entered address "%1" is already in the address book with label "%2".</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -964,7 +1700,7 @@
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <translation type="vanished">Bitcoin</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -987,8 +1723,8 @@
         <translation>The wallet will also be stored in this directory.</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>Error: Specified data directory "%1" cannot be created.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
+        <translation>Error: Specified data directory &quot;%1&quot; cannot be created.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -996,15 +1732,183 @@
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>%n GB of free space available</numerusform><numerusform>%n GB of free space available</numerusform></translation>
+        <translation>
+            <numerusform>%n GB of free space available</numerusform>
+            <numerusform>%n GB of free space available</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(of %n GB needed)</numerusform><numerusform>(of %n GB needed)</numerusform></translation>
+        <translation>
+            <numerusform>(of %n GB needed)</numerusform>
+            <numerusform>(of %n GB needed)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(%n GB needed for full chain)</numerusform><numerusform>(%n GB needed for full chain)</numerusform></translation>
+        <translation>
+            <numerusform>(%n GB needed for full chain)</numerusform>
+            <numerusform>(%n GB needed for full chain)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>মেইল</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>আপনার ঠিকানা</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>কপি</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>আপনার রেজিস্টার কি। তালিকাভুক্ত যে কেউ এতে আপনাকে লিখতে পারে।</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>মেইল ওভারলে দিয়ে চলাচল করে। মেইল পাঠাতে ও পেতে সেটিংসে ওভারলে চালু করে আবার চালু করুন।</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>লিখুন</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>উত্তর দিন</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>এখন সংগ্রহ করুন</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>এখনই আপনার মেইলবক্স থেকে নতুন চিঠি সংগ্রহ করুন। এটি কয়েক মিনিট পরপরও হয়।</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>মুছুন</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>ইনবক্স</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>পাঠানো হয়েছে</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>প্রেরক</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>বিষয়</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>তারিখ</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>চিঠিগুলো প্রাপকের সাপ্তাহিক মেইল কি দিয়ে secp256k1 ও ML-KEM-768 একসাথে ব্যবহার করে সিল করা হয়; আপনার কি ও স্বাক্ষর সিলের ভেতরে যায়, এবং মেইলবক্সে প্রতিটি যাত্রা তিনটি রিলের মধ্য দিয়ে যায়। পুরনো মেইল কি মুছে ফেলা হয়, তাই আজ সংগ্রহ করা চিঠি পরে এই কম্পিউটারের কি দিয়ে খোলা যাবে না।</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>প্রাপক</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>এখনো কোনো রিলে তালিকাভুক্ত নয়, তাই আপনার কোনো মেইলবক্স নেই এবং কেউ আপনাকে লিখতে পারবে না।</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>%1টি রিলে আপনার মেইল রাখে; রেজিস্টারে আরও তালিকাভুক্ত হলে সংখ্যাটি %2 হবে।</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>আপনার কি থেকে বেছে নেওয়া %1টি রিলে আপনার মেইল রাখে যতক্ষণ না আপনি তা সংগ্রহ করেন।</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>মেইল কি #%1, প্রতি সপ্তাহে নবায়ন হয়।</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>সর্বশেষ সংগ্রহ %1।</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>এখনো সংগ্রহ করা হয়নি।</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>১টি নতুন চিঠি</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>%1টি নতুন চিঠি</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>, %2টি মেইলবক্সের মধ্যে %1টি থেকে।</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(কোনো বিষয় নেই)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>প্রাপকের %1টি মেইলবক্সে রাখা হয়েছে</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>প্রেরক: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>প্রাপক: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>%1 পাঠানো হয়েছে, প্রাপকের %2টি মেইলবক্সে রাখা হয়েছে</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>%1 লেখা, %2 সংগ্রহ</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>পড়ার জন্য একটি চিঠি বেছে নিন।</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>সংগ্রহ করা হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>আপনার মেইলবক্সে পৌঁছানো হচ্ছে, প্রতিটিতে তিনটি রিলের মাধ্যমে…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>চিঠি মুছুন</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>এই কম্পিউটার থেকে এই চিঠিটি মুছবেন? সংগ্রহের সময়েই মেইলবক্সে থাকা এর কপিগুলো সরানো হয়েছে, তাই এটি আর আনা যাবে না।</translation>
     </message>
 </context>
 <context>
@@ -1014,8 +1918,8 @@
         <translation>Form</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
-        <translation>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</translation>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <translation>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</translation>
     </message>
     <message>
         <source>Attempting to spend bitcoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
@@ -1064,6 +1968,409 @@
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>Unknown. Syncing Headers (%1, %2%)...</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>নাম</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>একটি নাম মানুষকে আপনার রেজিস্টার কি-এর দিকে নির্দেশ করে, যাতে তারা কি-এর বদলে নাম দিয়ে আপনাকে লিখতে — এবং পেমেন্ট করতে — পারে। খালি নাম পাওয়া ও নবায়ন করতে শুধু নেটওয়ার্ক ফি লাগে; নাম হাতে নবায়ন করতে হয়। কারো কাছে থাকা নাম কেনা যায় যদি সে তা বিক্রির জন্য দেয়, তার চাওয়া দামে। আপনার নামের নিচের নামগুলো বিনামূল্যে, ডাকনামও: মানুষের জন্য আপনার নিজের লেবেল, এই কম্পিউটারে রাখা।</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>আপনার নাম</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>পরিশোধের উৎস</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>নাম</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>অবস্থা</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>শেষ</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>উপনাম</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>নাম নিন…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>নবায়ন করুন…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>একটি উপনাম যোগ করুন…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>বিক্রি করুন…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>হস্তান্তর করুন…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>নামে পেমেন্ট নিন…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>খুঁজুন</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>একটি নাম, লেবেল.নাম বা ডাকনাম</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>কি কপি করুন</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>পরিশোধ করুন…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>ঠিকানা বই</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>ডাকনাম</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>কি</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>কাউকে যোগ করুন…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>সরান</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>কি কপি হয়েছে</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>কাজ চলছে…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>বিক্রি থেকে সরান</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>আগে এটি বিক্রি থেকে সরান।</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>নতুন পেমেন্ট কি…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>নামে পেমেন্ট চালু আছে</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>নামের জন্য নাম ইনডেক্স প্রয়োজন। সেটিংসে &quot;নাম ইনডেক্স করুন&quot; চালু করে আবার চালু করুন।</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>এই নেটওয়ার্কে নাম এখনো শুরু হয়নি। মেইননেটে কখন শুরু হবে এবং প্রথম নামগুলো কীভাবে বিতরণ হবে, তা এখনো ঠিক হয়নি। এর মধ্যে আপনি নাম খুঁজতে এবং ঠিকানা বই রাখতে পারেন।</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1 হলো %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>আপনার ঠিকানা বই থেকে</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>নিবন্ধিত নাম, ব্লক %1 পর্যন্ত অধিকৃত</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>স্থির</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>%1 আগে পরিবর্তিত, এখনো স্থির হয়নি</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>নামে পেমেন্ট নেয়</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>বিক্রির জন্য: ধারক %1 চাইছে। কিনতে &apos;নাম নিন&apos; ব্যবহার করুন।</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>%1 প্রতিশ্রুত। নামটি %2টি ব্লক পরে (প্রায় %3) নিজে থেকেই দাবি করা হবে - ততক্ষণ BPS Relay চালু রাখুন এবং ওয়ালেট আনলক রাখুন।</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>%1 কেনা হচ্ছে: ধারককে %2 পরিশোধ করা হয়েছে। লেনদেন নিশ্চিত হলে এটি আপনার হবে।</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>%1 %2-তে বিক্রির জন্য দেওয়া হচ্ছে। পরের ব্লক থেকে যে কেউ এটি কিনতে পারবে, এই নোড অনলাইনে না থাকলেও; দাম এই ওয়ালেটে পরিশোধ হয়।</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>%1 বিক্রি থেকে সরানো হচ্ছে। এখন থেকে কেউ এটি কিনতে পারবে না।</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>শুধু নেটওয়ার্ক ফি দিয়ে %1 ব্লক %2 পর্যন্ত নবায়ন হয়েছে।</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>%1 %2-এর কাছে হস্তান্তর হচ্ছে। লেনদেন নিশ্চিত হলে এটি তাদের হবে।</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>%1 সেট করা হয়েছে; লেনদেন নিশ্চিত হলে এটি কার্যকর হবে।</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>নামে পেমেন্ট চালু করা হচ্ছে। লেনদেন নিশ্চিত হওয়ার প্রায় %1 পরে মানুষ আপনার যেকোনো নামে পেমেন্ট করতে পারবে; প্রতিটি পেমেন্ট আপনার ওয়ালেটে &quot;নামে পরিশোধিত&quot; হিসেবে দেখাবে।</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>%2-কে %1 পরিশোধ করা হয়েছে, শুধু এই পেমেন্টের জন্য ব্যবহৃত একটি ঠিকানায়।</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>পরিশোধ করুন</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>%1 পরে</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>%1 আগে শেষ হয়েছে</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>মেয়াদ শেষ - মাসের মধ্যে নবায়ন করুন</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>অধিকৃত</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>বিক্রি হচ্ছে - একটি ক্রয় নিশ্চিত হচ্ছে</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>%1-তে বিক্রির জন্য</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>%1-তে বিক্রির জন্য - এখনো কেনা যাবে না</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>নিবন্ধিত নয়</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>নিবন্ধন হচ্ছে</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>কপি করতে ক্লিক করুন</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>নাম নিন</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>১ থেকে ৩২টি অক্ষর, অঙ্ক বা হাইফেন</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>১ বছর</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>২ বছর</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>মেয়াদ</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>নিবন্ধনের দুটি ধাপ: নাম লুকানো একটি প্রতিশ্রুতি, এবং প্রায় ২০ মিনিট পরে দাবি, যা BPS Relay নিজেই পাঠায়। এর মাঝে কেউ নামটি নিতে পারে না। প্রতিটি ধাপে শুধু নেটওয়ার্ক ফি লাগে।</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>কেনা একটিই লেনদেন: এটি ধারককে পরিশোধ করে এবং নামটি আপনার করে দেয়, সব একসাথে অথবা কিছুই না।</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>নিবন্ধন করুন</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>একটি নাম ১ থেকে ৩২টি সাধারণ অক্ষর a-z, অঙ্ক বা ভেতরের হাইফেন দিয়ে গঠিত।</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>%1, %2-এর জন্য, শুধু নেটওয়ার্ক ফি লাগে। এটি খালি কি না দেখা হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>এক বছর</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>দুই বছর</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>%1 বিক্রি থেকে সরান</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>%1 বিক্রি থেকে সরাবেন? তখন থেকে কেউ এটি কিনতে পারবে না, এবং নিশ্চিত হলে আপনি এটি হস্তান্তর করতে বা আবার বিক্রির জন্য দিতে পারবেন।</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>%1 বিক্রি করুন</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>%1-এর জন্য আপনার দাম, BPS-এ। তখন যে কেউ তা সাথে সাথে কিনতে পারবে, BPS Relay বন্ধ থাকলেও: যে লেনদেনে তারা নামটি পায়, সেই লেনদেনেই তারা আপনাকে এটি পরিশোধ করে। বিক্রির জন্য থাকাকালীন আপনি এটি হস্তান্তর করতে পারবেন না।</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>&quot;%1&quot; BPS-এর পরিমাণ নয়।</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>%1 %2-তে বিক্রির জন্য দেবেন? দুটি ছোট লেনদেন পাঠানো হবে: একটি ক্রেতার খরচ করা কয়েনটি আলাদা করে রাখে, অন্যটি বিক্রি প্রকাশ করে।</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>%1 নবায়ন করুন</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>এখনকার শেষ সময় থেকে %1 বাড়ান। এতে শুধু নেটওয়ার্ক ফি লাগে। একটি নাম সর্বোচ্চ দুই বছর আগে পর্যন্ত নবায়ন করা যায়।</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>%1 হস্তান্তর করুন</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>%1 দিন (রেজিস্টার কি, ডাকনাম বা নাম):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>%1 %2-কে দেবেন? শুধু নতুন ধারকই এটি ফেরত দিতে পারে।</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>%1-এর অধীনে উপনাম</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>.%1-এর আগের অংশ, যেমন alice.%1-এর জন্য alice:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>%1.%2 কার দিকে নির্দেশ করে (রেজিস্টার কি, ডাকনাম বা নাম), অথবা &quot;remove&quot;:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>খোঁজা হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>কাউকে যোগ করুন</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>আপনি তাদের কী নামে ডাকেন (শুধু আপনি দেখতে পান):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>তাদের রেজিস্টার কি, অথবা এখন এটি কার কাছে আছে মনে রাখার জন্য একটি নাম:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>নামে পেমেন্ট চালু আছে। এগুলো এই ওয়ালেটের একটি নতুন কি-তে সরাবেন? বর্তমান কি-তে ইতিমধ্যে করা পেমেন্ট এখনো পৌঁছাবে। পরিবর্তনের পর পরিশোধকারীরা আবার পরিশোধের আগে প্রায় %1 অপেক্ষা করে।</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>মানুষকে নাম দিয়ে আপনাকে পেমেন্ট করতে দিন: এই নোডের কি-এর দিকে নির্দেশ করা যেকোনো নাম বা উপনাম, তাদের রাখা আপনার ডাকনাম, বা কি নিজেই। প্রতিটি পেমেন্ট একটি আলাদা ঠিকানায় যায় যা শুধু এই ওয়ালেট খরচ করতে পারে, এবং কেউ দেখে বুঝতে পারবে না যে আপনি পেমেন্ট পেয়েছেন, বা দুটি পেমেন্ট একই ব্যক্তির কাছে গেছে। নেটওয়ার্ক ফি লাগে। নিশ্চিত হওয়ার প্রায় %1 পরে মানুষ আপনাকে পেমেন্ট করতে পারবে।</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>নামে পেমেন্ট</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>%1-কে পরিশোধ করুন</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>%1 এখনো নামে পেমেন্ট নেয় না। তাদের নাম ট্যাবে এটি চালু করতে বলুন, অথবা একটি ঠিকানা চান।</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>%1 %2 আগে হাতবদল হয়েছে।</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>তারা যে কি-তে পেমেন্ট পায় তা %1 আগে সেট করেছে।</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>BPS-এ</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>পরিমাণ</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>পেমেন্টটি শুধু এর জন্য ব্যবহৃত একটি ঠিকানায় যায়, যা শুধু %1 খরচ করতে পারে; অন্য কেউ বুঝতে পারবে না কাকে পরিশোধ করা হয়েছে। পেমেন্ট ফেরত নেওয়া যায় না। নেটওয়ার্ক ফি আলাদা।</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>যদি সেটি তারা না হয়ে থাকে, পেমেন্ট হারিয়ে যাবে। এটি %1 পুরনো হওয়া পর্যন্ত অপেক্ষা করা নিরাপদ।</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>তবুও পরিশোধ করুন</translation>
     </message>
 </context>
 <context>
@@ -1362,6 +2669,217 @@
         <source>The supplied proxy address is invalid.</source>
         <translation>The supplied proxy address is invalid.</translation>
     </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>কোল্ড স্টেকিং নিয়ন্ত্রণ বৈশিষ্ট্য দেখানো হবে কি না।</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>কোল্ড স্টেকিং নিয়ন্ত্রণ বৈশিষ্ট্য সক্রিয় করুন(&amp;T)</translation>
+    </message>
+    <message>
+        <source>Connect to the Bitcoin network through a separate SOCKS5 proxy for Tor onion services.</source>
+        <translation>Tor onion সেবার জন্য একটি আলাদা SOCKS5 প্রক্সির মাধ্যমে Bitcoin নেটওয়ার্কে সংযোগ করুন।</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS&amp;5 proxy to reach peers via Tor onion services:</source>
+        <translation>Tor onion সেবার মাধ্যমে পিয়ারদের কাছে পৌঁছাতে আলাদা SOCKS5 প্রক্সি ব্যবহার করুন(&amp;5):</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>ওভারলে</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>BPS-এর নিজস্ব এনক্রিপ্ট করা স্তর, যা অন্য পিয়ারদের মাধ্যমে ট্রাফিক বহন করে যাতে অপর প্রান্ত কখনো জানতে না পারে আপনি কোথায়।</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>জিজ্ঞাসা করা হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>চলছে</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>শোনা হচ্ছে</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>খোলা রুট</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>এখানে মিলিত হওয়া সেবা</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>উপলব্ধ রিলে</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>আজকের রাউন্ড</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>আপনার প্রবেশপথ</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>যে পিয়ারদের মাধ্যমে আপনার ট্রাফিক সবসময় প্রবেশ করে। তাদের বদলানো হয় না, রেখে দেওয়া হয়: প্রতিবার নতুন একজন বেছে নিলে শেষ পর্যন্ত একজন নজরদারকে সুযোগ দেওয়া হতো।</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>মানুষ কোথায় আপনার সাথে দেখা করতে পারে</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>রেজিস্টার থেকে হিসাব করা, খুঁজে বের করা নয়। যে কেউ আপনার কাছে পৌঁছাতে চায় সে একই হিসাব করে একই উত্তর পায়, তাই জিজ্ঞেস করার কেউ নেই এবং ভিন্ন উত্তর দেওয়ার মতোও কেউ নেই। এগুলো প্রতিদিন বদলায়।</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>রেডিওতে শোনা গেছে</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>রিলে হয়ে কী পাওয়া যায়</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>প্রতিদিন ইস্যু</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>রিলে</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>ব্যবহারকারী</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>প্রতি রিলেতে ব্যবহারকারী</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>প্রতি ব্যবহারকারীর অংশ</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>একটি রিলে তার তালিকাভুক্ত পিয়ারদের নিজের ব্লক পুরস্কার থেকে পরিশোধ করে, তাই একজন ব্যবহারকারীর অংশ হলো এক ভাগ তার রিলের ব্যবহারকারীর সংখ্যা — এই কারণেই নেটওয়ার্কের ব্যবহারকারীদের একটি অংশ নিতে স্টেকের একটি অংশ লাগে। পুরস্কারের কতটা রিলে ভাগ করবে তা তার নিজের পছন্দ এবং কিছুই তা বাধ্য করে না: কিছুই না দেওয়া রিলেও সম্পূর্ণ বৈধ ব্লক তৈরি করে। তাকে পরিশোধে বাধ্য করে এই বিষয় যে ব্যবহারকারীহীন রিলে কাউকেই রক্ষা করে না, নিজেকেও না।</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>যিনি লিখেছেন তিনি ছাড়া এখনো কেউ এটি পর্যালোচনা করেননি, এবং এটি লুকায় আপনি কোথায়, কখন কথা বলছেন তা নয়: দুই প্রান্ত দেখছে এমন কেউ এখনো সময় মিলিয়ে দেখতে পারে। এটিকে অসম্পূর্ণ বলে ধরুন।</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>এই নোড কিছুই ভাগ করে না। -relayshare একটি শতাংশে সেট করুন, এবং addrosteruser দিয়ে পিয়ার নিন।</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>এই নোড %1% ভাগ করত, কিন্তু %2।</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>এই নোড %2টি পিয়ারের সাথে %1% ভাগ করে: এর তৈরি পরবর্তী ব্লক %3 পরিশোধ করে, প্রত্যেককে %4।</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>Reticulum ব্রিজ সাড়া দিচ্ছে না। সেটিংস, রেডিও থেকে এটি চালু করুন, অথবা নিজে bps-rns-bridge.py চালান।</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>শোনা হচ্ছে। এখনো রেডিওতে কোনো BPS নোড শোনা যায়নি; নোডগুলো প্রতি আধা ঘণ্টায় নিজেদের ঘোষণা করে।</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>আপনার ট্রাফিক একটি রেডিও প্রতিবেশীর মাধ্যমে প্রবেশ করে যখন তাদের একজন তালিকাভুক্ত রিলে।</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>শোনা গেছে, কিন্তু আপনার ট্রাফিক ইন্টারনেট দিয়ে প্রবেশ করে (সেটিংস, রেডিও)।</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>১ হপ</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>%1 হপ</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>হপ অজানা</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>%1 আগে শোনা গেছে</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>একটি রিলে</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>হ্যাঁ</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>না</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>ওভারলে বন্ধ আছে। এই ক্লায়েন্ট নিজেই এটি চালু করে, তাই কিছু একটা এটিকে আবার বন্ধ করেছে, কমান্ড লাইনে বা কনফিগারেশন ফাইলে -overlay=0 দিয়ে।</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>ওভারলে বন্ধ থাকাকালীন কিছু নেই</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>ওভারলে বন্ধ</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>এখনো নেই</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>ওভারলে চালু, এখনো কোনো রিলে নেই</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>ওভারলে চালু, ১টি রিলে</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>ওভারলে চালু, %1টি রিলে</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>এখনো বাছাই হয়নি</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>নেই — রেজিস্টারে হিসাব করার মতো কোনো রিলে নেই</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>ওভারলে অজানা</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>এখনো কোনো রিলে নেই</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1437,7 +2955,35 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>Current total balance in watch-only addresses</translation>
     </message>
-    </context>
+    <message>
+        <source>Stake</source>
+        <translation>স্টেক</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>অপরিপক্ব স্টেক:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>অপরিপক্ব অর্পণ</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>অপরিপক্ব অর্পণ:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>অর্পিত</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>অর্পিত:</translation>
+    </message>
+    <message>
+        <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
+        <translation>সংক্ষিপ্ত বিবরণ ট্যাবের জন্য গোপনীয়তা মোড চালু। মানগুলো দেখাতে সেটিংস-&gt;মান লুকান থেকে টিক তুলে দিন।</translation>
+    </message>
+</context>
 <context>
     <name>PSBTOperationsDialog</name>
     <message>
@@ -1448,7 +2994,119 @@
         <source>or</source>
         <translation>or</translation>
     </message>
-    </context>
+    <message>
+        <source>Dialog</source>
+        <translation>ডায়ালগ</translation>
+    </message>
+    <message>
+        <source>Sign Tx</source>
+        <translation>লেনদেন স্বাক্ষর করুন</translation>
+    </message>
+    <message>
+        <source>Broadcast Tx</source>
+        <translation>লেনদেন সম্প্রচার করুন</translation>
+    </message>
+    <message>
+        <source>Copy to Clipboard</source>
+        <translation>ক্লিপবোর্ডে কপি করুন</translation>
+    </message>
+    <message>
+        <source>Save...</source>
+        <translation>সংরক্ষণ করুন...</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>বন্ধ করুন</translation>
+    </message>
+    <message>
+        <source>Failed to load transaction: %1</source>
+        <translation>লেনদেন লোড করতে ব্যর্থ: %1</translation>
+    </message>
+    <message>
+        <source>Failed to sign transaction: %1</source>
+        <translation>লেনদেন স্বাক্ষর করতে ব্যর্থ: %1</translation>
+    </message>
+    <message>
+        <source>Could not sign any more inputs.</source>
+        <translation>আর কোনো ইনপুট স্বাক্ষর করা যায়নি।</translation>
+    </message>
+    <message>
+        <source>Signed %1 inputs, but more signatures are still required.</source>
+        <translation>%1টি ইনপুট স্বাক্ষর করা হয়েছে, কিন্তু আরও স্বাক্ষর প্রয়োজন।</translation>
+    </message>
+    <message>
+        <source>Signed transaction successfully. Transaction is ready to broadcast.</source>
+        <translation>লেনদেন সফলভাবে স্বাক্ষরিত হয়েছে। লেনদেন সম্প্রচারের জন্য প্রস্তুত।</translation>
+    </message>
+    <message>
+        <source>Unknown error processing transaction.</source>
+        <translation>লেনদেন প্রক্রিয়াকরণে অজানা ত্রুটি।</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast successfully! Transaction ID: %1</source>
+        <translation>লেনদেন সফলভাবে সম্প্রচারিত হয়েছে! লেনদেন আইডি: %1</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast failed: %1</source>
+        <translation>লেনদেন সম্প্রচার ব্যর্থ: %1</translation>
+    </message>
+    <message>
+        <source>PSBT copied to clipboard.</source>
+        <translation>PSBT ক্লিপবোর্ডে কপি হয়েছে।</translation>
+    </message>
+    <message>
+        <source>Save Transaction Data</source>
+        <translation>লেনদেনের ডেটা সংরক্ষণ করুন</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation>আংশিক স্বাক্ষরিত লেনদেন (বাইনারি) (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT saved to disk.</source>
+        <translation>PSBT ডিস্কে সংরক্ষিত হয়েছে।</translation>
+    </message>
+    <message>
+        <source> * Sends %1 to %2</source>
+        <translation> * %1 পাঠাচ্ছে %2-এ</translation>
+    </message>
+    <message>
+        <source>Unable to calculate transaction fee or total transaction amount.</source>
+        <translation>লেনদেন ফি বা মোট লেনদেনের পরিমাণ হিসাব করা যাচ্ছে না।</translation>
+    </message>
+    <message>
+        <source>Pays transaction fee: </source>
+        <translation>লেনদেন ফি পরিশোধ করে: </translation>
+    </message>
+    <message>
+        <source>Transaction has %1 unsigned inputs.</source>
+        <translation>লেনদেনে %1টি স্বাক্ষরহীন ইনপুট আছে।</translation>
+    </message>
+    <message>
+        <source>Transaction is missing some information about inputs.</source>
+        <translation>লেনদেনে ইনপুট সম্পর্কে কিছু তথ্য অনুপস্থিত।</translation>
+    </message>
+    <message>
+        <source>Transaction still needs signature(s).</source>
+        <translation>লেনদেনে এখনো স্বাক্ষর প্রয়োজন।</translation>
+    </message>
+    <message>
+        <source>(But this wallet cannot sign transactions.)</source>
+        <translation>(কিন্তু এই ওয়ালেট লেনদেন স্বাক্ষর করতে পারে না।)</translation>
+    </message>
+    <message>
+        <source>(But this wallet does not have the right keys.)</source>
+        <translation>(কিন্তু এই ওয়ালেটে সঠিক কি নেই।)</translation>
+    </message>
+    <message>
+        <source>Transaction is fully signed and ready for broadcast.</source>
+        <translation>লেনদেন সম্পূর্ণ স্বাক্ষরিত এবং সম্প্রচারের জন্য প্রস্তুত।</translation>
+    </message>
+    <message>
+        <source>Transaction status is unknown.</source>
+        <translation>লেনদেনের অবস্থা অজানা।</translation>
+    </message>
+</context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1464,16 +3122,16 @@
         <translation>URI handling</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</translation>
     </message>
     <message>
         <source>Cannot process payment request because BIP70 is not supported.</source>
         <translation>Cannot process payment request because BIP70 is not supported.</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
-        <translation>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</translation>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <translation>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</translation>
     </message>
     <message>
         <source>If you are receiving this error you should request the merchant provide a BIP21 compatible URI.</source>
@@ -1520,6 +3178,161 @@
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>আপনার তালিকাভুক্তি নবায়ন করুন</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>আপনার তালিকাভুক্তি প্রকাশ করুন</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>নবায়ন চেইনে একটি নতুন রেকর্ড লেখে। এটি নিশ্চিত না হওয়া পর্যন্ত পুরনোটিই গণ্য হয়।</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>এটি চেইনে একটি সংক্ষিপ্ত রেকর্ড লেখে যা বলে যে আপনি আছেন, এবং ইচ্ছা হলে আপনাকে কোথায় পাওয়া যাবে।</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>পিয়াররা কীভাবে আপনার কাছে পৌঁছাবে?</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>ওভারলের মাধ্যমে — কোনো ঠিকানা প্রকাশ না করে</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>আপনার তালিকাভুক্তি বলে আপনি কে, আপনি কোথায় চলছেন তা নয়। পিয়াররা এর বদলে ওভারলের মাধ্যমে আপনার কাছে পৌঁছায়, এমন বিন্দুতে আপনার সাথে মিলিত হয় যা উভয় পক্ষ রেজিস্টার থেকে হিসাব করে। এই ক্লায়েন্ট ডিফল্টভাবে এটিই চালু করে।</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>আমার প্রকাশ করা একটি ঠিকানায়</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>অন্য পিয়াররা যে ঠিকানায় পৌঁছাতে পারে</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>যে কেউ এটি দেখতে পারে, এবং চেইন এটি চিরকাল রাখে। একটি onion ঠিকানা এমন একটি অবস্থান প্রকাশ করে যা কেউ আপনার কাছে খুঁজে আনতে পারে না এবং NAT-এর পেছন থেকে কাজ করে; একটি IP ঠিকানা এর কোনোটিই করে না। IP ঠিকানা প্রকাশকারী নোডকে অন্যরা রিলে হিসেবে বেছে নিতে পারে।</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>ফি কে দেবে</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>এক মাস, তারপর নবায়ন করতে হবে</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>এক বছর, তারপর নবায়ন করতে হবে</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>কতদিন চলবে</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>নবায়ন করুন</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>প্রকাশ করুন</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>একটি রিলে পরিশোধ করে — কোনো কয়েন লাগে না</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>ওভারলে বন্ধ, তাই অনুরোধ করার মতো কোনো রিলে নেই। সেটিংসে এটি চালু করুন, অথবা একটি ওয়ালেট থেকে পরিশোধ করুন।</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>রেজিস্টারে এখনো কোনো রিলে তালিকাভুক্ত নয়, তাই অনুরোধ করার কেউ নেই। একটি ওয়ালেট থেকে পরিশোধ করুন, অথবা কোনো রিলে তালিকাভুক্ত হলে আবার চেষ্টা করুন।</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>আপনার নোড তালিকাভুক্তিতে স্বাক্ষর করে এবং ওভারলের মাধ্যমে যে রিলে দিয়ে এটি প্রবেশ করে সেখানে পাঠায়। তালিকাভুক্তির জন্য পরিশোধকারী রিলে আপনারটি তার নিজের তৈরি ব্লকে রাখে, তাই বেশিরভাগ নোড ফরোয়ার্ড না করলেও এটি নিশ্চিত হয়, এবং যে পিয়ারদের সাথে এটি পুরস্কার ভাগ করে তাদের মধ্যে আপনাকে যোগ করে। পরে যদি এটি পরিশোধ বন্ধ করে, আপনার তালিকাভুক্তি মাসের মধ্যে শেষ হয়ে যায়; তহবিলসহ ওয়ালেট থেকে আপনি সবসময় নিজে নবায়ন করতে পারেন।</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>এই নোড স্টেকিং করছে না। একটি তালিকাভুক্তি পুরনো নোডগুলো যতটা ফরোয়ার্ড করে তার চেয়ে বড়, তাই বেশিরভাগ স্টেকার আপগ্রেড না করা পর্যন্ত এটি শুধু তখনই নিশ্চিত হয় যখন এই সংস্করণ চালানো কোনো স্টেকার এটি অন্তর্ভুক্ত করে, যাতে কিছুটা সময় লাগতে পারে। স্টেকিং করলে এটি আপনার নিজের পরবর্তী ব্লকে যায়; পরিশোধকারী রিলে এটি নিজের ব্লকে রাখে।</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>এই ওয়ালেট শুধু স্টেকিংয়ের জন্য আনলক করা। পরিশোধের জন্য এর পাসফ্রেজ চাওয়া হয়, এবং পরে ওয়ালেট আবার লক হয়ে যায়, যা আপনি আবার স্টেকিংয়ের জন্য আনলক না করা পর্যন্ত স্টেকিং বন্ধ রাখে।</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>পরিশোধের জন্য এই ওয়ালেটের পাসফ্রেজ চাওয়া হয়।</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>একটি ঠিকানা লিখুন, অথবা কোনোটি প্রকাশ না করা বেছে নিন।</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>আপনার রিলেকে এটি প্রকাশ করতে বলা হচ্ছে… এতে আধা মিনিট পর্যন্ত লাগতে পারে।</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>সেই ওয়ালেট আর খোলা নেই।</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>ওয়ালেট এখনো লক করা, তাই কিছুই পরিশোধ হয়নি।</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>রেকর্ড স্বাক্ষর করা হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>নোড এমন একটি রেকর্ড ফেরত দিয়েছে যা এই ক্লায়েন্ট বোঝেনি।</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>প্রকাশের জন্য পরিশোধ করা হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>রিলে প্রত্যাখ্যান করেছে: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>রিলে থেকে কোনো উত্তর নেই। %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1527,7 +3340,7 @@
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>Enter a Bitcoin address (e.g. %1)</translation>
+        <translation type="vanished">Enter a Bitcoin address (e.g. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1559,23 +3372,38 @@
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n second</numerusform><numerusform>%n seconds</numerusform></translation>
+        <translation>
+            <numerusform>%n second</numerusform>
+            <numerusform>%n seconds</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minute</numerusform><numerusform>%n minutes</numerusform></translation>
+        <translation>
+            <numerusform>%n minute</numerusform>
+            <numerusform>%n minutes</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n hour</numerusform><numerusform>%n hours</numerusform></translation>
+        <translation>
+            <numerusform>%n hour</numerusform>
+            <numerusform>%n hours</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n day</numerusform><numerusform>%n days</numerusform></translation>
+        <translation>
+            <numerusform>%n day</numerusform>
+            <numerusform>%n days</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n week</numerusform><numerusform>%n weeks</numerusform></translation>
+        <translation>
+            <numerusform>%n week</numerusform>
+            <numerusform>%n weeks</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1583,7 +3411,10 @@
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n year</numerusform><numerusform>%n years</numerusform></translation>
+        <translation>
+            <numerusform>%n year</numerusform>
+            <numerusform>%n years</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1602,8 +3433,8 @@
         <translation>%1 GB</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>Error: Specified data directory "%1" does not exist.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>Error: Specified data directory &quot;%1&quot; does not exist.</translation>
     </message>
     <message>
         <source>Error: Cannot parse configuration file: %1.</source>
@@ -1614,12 +3445,64 @@
         <translation>Error: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
-        <translation>%1 didn't yet exit safely...</translation>
+        <source>%1 didn&apos;t yet exit safely...</source>
+        <translation>%1 didn&apos;t yet exit safely...</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>unknown</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>পরিচিতি</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>গ্রহণ</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>লুকানো</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>অজানা</translation>
+    </message>
+    <message>
+        <source>Error initializing settings: %1</source>
+        <translation>সেটিংস চালু করতে ত্রুটি: %1</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>অর্পিত</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>%1 এমন একজনের কাছে আছে যিনি এটি বিক্রির জন্য দিয়েছেন। তিনি %2 চান; নেটওয়ার্ক ফি আলাদা।</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>কিনুন</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>এটি খালি কি না দেখা হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>এটি খালি।</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>নিবন্ধন করুন</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>এখনো তৈরি হয়নি</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>একটি BitcoinPoS ঠিকানা লিখুন (যেমন %1)</translation>
     </message>
 </context>
 <context>
@@ -1680,16 +3563,16 @@
         <translation>Datadir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the data directory use the '%1' option.</source>
-        <translation>To specify a non-default location of the data directory use the '%1' option.</translation>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>To specify a non-default location of the data directory use the &apos;%1&apos; option.</translation>
     </message>
     <message>
         <source>Blocksdir</source>
         <translation>Blocksdir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>To specify a non-default location of the blocks directory use the '%1' option.</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -1932,8 +3815,8 @@
         <translation>Executing command without any wallet</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
-        <translation>Executing command using "%1" wallet</translation>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>Executing command using &quot;%1&quot; wallet</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -1958,6 +3841,53 @@
     <message>
         <source>Unknown</source>
         <translation>Unknown</translation>
+    </message>
+    <message>
+        <source>Current block height</source>
+        <translation>বর্তমান ব্লক উচ্চতা</translation>
+    </message>
+    <message>
+        <source>Permissions</source>
+        <translation>অনুমতি</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>আপনি কি এটি বোঝাতে চেয়েছেন:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>কোনো কমান্ড নিয়ে নিশ্চিত নন? আপনি যা চান তা সাধারণ ভাষায় লিখুন, যেমন %1, এবং একটি পরামর্শ বেছে নিন। পরামর্শগুলো এই কম্পিউটারেই হিসাব করা হয়; আপনি যা লেখেন তার কিছুই কোথাও পাঠানো হয় না।</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>রেডিও বন্ধ।</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>রেডিও চালু; Reticulum ব্রিজ নিজে চালু করুন (contrib/reticulum/bps-rns-bridge.py)।</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>bps-rns-bridge.py BPS Relay-এর পাশে নেই, তাই ব্রিজ চালু করা যাচ্ছে না।</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>Python &quot;%1&quot; হিসেবে চালু করা যায়নি। Python ইনস্টল করুন, অথবা সেটিংস, রেডিওতে কমান্ডটি সেট করুন।</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Reticulum ইনস্টল করা নেই। এটি ইনস্টল করুন: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>Reticulum ব্রিজ থেমে গেছে (অবস্থা %1); radio/bridge.log দেখুন।</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>Reticulum ব্রিজ চালু হচ্ছে।</translation>
     </message>
 </context>
 <context>
@@ -2011,12 +3941,12 @@
         <translation>Clear</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>Generate native segwit (Bech32) address</translation>
+        <translation type="vanished">Generate native segwit (Bech32) address</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2058,7 +3988,19 @@
         <source>Could not unlock wallet.</source>
         <translation>Could not unlock wallet.</translation>
     </message>
-    </context>
+    <message>
+        <source>(none)</source>
+        <translation>(কিছু নেই)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>এই ওয়ালেটের জন্য কোনো স্টেকিং ঠিকানা সেট করা নেই, তাই অর্পণ করার কিছু নেই। স্টেক পাতায়, অর্পণ -&gt; স্বয়ংক্রিয় অর্পণের অধীনে একটি সেট করুন, তাহলে এই ঠিকানার ধরন কাজ করবে।</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>নতুন %1 ঠিকানা তৈরি করা যায়নি</translation>
+    </message>
+</context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
@@ -2093,6 +4035,18 @@
         <source>Payment information</source>
         <translation>Payment information</translation>
     </message>
+    <message>
+        <source>Request payment to ...</source>
+        <translation>পেমেন্টের অনুরোধ ...</translation>
+    </message>
+    <message>
+        <source>Address:</source>
+        <translation>ঠিকানা:</translation>
+    </message>
+    <message>
+        <source>Label:</source>
+        <translation>লেবেল:</translation>
+    </message>
 </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -2123,6 +4077,99 @@
     <message>
         <source>Requested</source>
         <translation>Requested</translation>
+    </message>
+</context>
+<context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>পিয়ার</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>ঠিকানা</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>তালিকাভুক্ত</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>তালিকাভুক্তি শেষ</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>তালিকাভুক্ত সময়কাল</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>কপি করতে ক্লিক করুন</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>এই পিয়ার তালিকাভুক্ত কিন্তু কোনো ঠিকানা প্রকাশ করে না। এখনো
+ওভারলের মাধ্যমে এর কাছে পৌঁছানো যায়, আর এটিই অনুমতি দেওয়ার উদ্দেশ্য।</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>একটি ঠিকানা প্রকাশিত</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>%1টি ঠিকানা প্রকাশিত</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>ব্লক %1-এ নিশ্চিত</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>ব্লক %1 থেকে গণনা বন্ধ</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>এই তালিকাভুক্তির আগে কোনো ইতিহাস নেই।</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>ব্লক %1 থেকে বিরতিহীনভাবে তালিকাভুক্ত।</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>গণনার জন্য খুব সাম্প্রতিক।</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>কোনো পরিচয়ের অধীনে চলছে না।</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>পরিচয় %1-এর অধীনে চলছে, যা কি বদলালেও তার বয়স বজায় রাখে।</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>কোনো ঠিকানা প্রকাশিত নয়</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>এইমাত্র</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>%1 আগে</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>মেয়াদোত্তীর্ণ</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>%1 পরে</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>নতুন</translation>
     </message>
 </context>
 <context>
@@ -2196,12 +4243,12 @@
         <translation>Warning: Fee estimation is currently not possible.</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
-        <translation>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+        <translation>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</translation>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2260,8 +4307,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Enable Replace-By-Fee</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
-        <translation>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</translation>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <translation>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</translation>
     </message>
     <message>
         <source>Clear &amp;All</source>
@@ -2320,12 +4367,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Creates a Partially Signed Bitcoin Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</translation>
     </message>
     <message>
-        <source> from wallet '%1'</source>
-        <translation> from wallet '%1'</translation>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation> from wallet &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>%1 to '%2'</source>
-        <translation>%1 to '%2'</translation>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 to &apos;%2&apos;</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -2364,8 +4411,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Total Amount</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
-        <translation>To review recipient list click "Show Details..."</translation>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>To review recipient list click &quot;Show Details...&quot;</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2417,7 +4464,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Estimated to begin confirmation within %n block.</numerusform><numerusform>Estimated to begin confirmation within %n blocks.</numerusform></translation>
+        <translation>
+            <numerusform>Estimated to begin confirmation within %n block.</numerusform>
+            <numerusform>Estimated to begin confirmation within %n blocks.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2438,6 +4488,62 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>(no label)</source>
         <translation>(no label)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>একটি একটি করে যোগ না করে পেমেন্টের একটি তালিকা পেস্ট বা লোড করুন</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>একসাথে(&amp;B)...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>উপলব্ধ ব্যালেন্স হিসাব করার সময় অর্পণগুলোও বিবেচনা করুন। চেক না করলে, উপলব্ধ ব্যালেন্স শুধু বর্তমানে ওয়ালেটে থাকা কয়েন দেখাবে।</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>অর্পণ অন্তর্ভুক্ত করুন(&amp;N)</translation>
+    </message>
+    <message>
+        <source>Please, review your transaction proposal. This will produce a Partially Signed Bitcoin Transaction (PSBT) which you can save or copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>অনুগ্রহ করে আপনার লেনদেন প্রস্তাব পর্যালোচনা করুন। এটি একটি আংশিক স্বাক্ষরিত Bitcoin লেনদেন (PSBT) তৈরি করবে যা আপনি সংরক্ষণ বা কপি করে পরে যেমন একটি অফলাইন %1 ওয়ালেট বা PSBT-সামঞ্জস্যপূর্ণ হার্ডওয়্যার ওয়ালেট দিয়ে স্বাক্ষর করতে পারবেন।</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>কোল্ড স্টেকিং সক্রিয় নয়</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>ব্লক %1-এ কোল্ড স্টেকিং সক্রিয় হয়</translation>
+    </message>
+    <message>
+        <source>Create Unsigned</source>
+        <translation>স্বাক্ষর ছাড়া তৈরি করুন</translation>
+    </message>
+    <message>
+        <source>Save Transaction Data</source>
+        <translation>লেনদেনের ডেটা সংরক্ষণ করুন</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation>আংশিক স্বাক্ষরিত লেনদেন (বাইনারি) (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT saved</source>
+        <translation>PSBT সংরক্ষিত</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>এই ওয়ালেট নিজের কয়েন দিয়ে স্টেকিং করে, তাই সবগুলো অর্পিত।</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>প্রদত্ত মালিকের ঠিকানাটি এই ওয়ালেটে নেই। সতর্কতা: অর্পণের পরে শুধু মালিকের ঠিকানার কি-এর মালিকই এই কয়েনগুলো খরচ করতে পারবে।</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>প্রদত্ত স্টেকার ঠিকানাটি এই ওয়ালেটে আছে। আপনি ইতিমধ্যে এই কয়েন দিয়ে স্টেকিং করতে পারেন, নিজেকে অর্পণ করার প্রয়োজন নেই।</translation>
     </message>
 </context>
 <context>
@@ -2522,6 +4628,352 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>Memo:</source>
         <translation>Memo:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>মালিকের ঠিকানা(&amp;O):</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>BitcoinPoS মালিকের ঠিকানা</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>সার্ভার</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>এই নোড অন্যদের যা দেয়। রিলে ও মেইল রাখা আজই চলছে; হোস্টিং আসছে, এবং এখানকার সবকিছুর মতো এটিও পিয়ারদের মতো একইভাবে খুঁজে পাওয়া যায় — রেজিস্টারের মাধ্যমে। নামের নিজস্ব পাতা আছে।</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>হোস্টিং</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>এই নোড থেকে পরিবেশিত একটি সাইট বা সেবা, যা তার কি বা নাম দিয়ে খুঁজে পাওয়া যায় এবং ওভারলের মাধ্যমে পৌঁছানো যায়, তাই হোস্ট কখনো প্রকাশ করে না এটি কোথায় চলছে। মিলনের অংশটি আছে: একটি সেবা এমন মিলনবিন্দুতে নিবন্ধন করে যা উভয় পক্ষ রেজিস্টার থেকে হিসাব করে। এর মাধ্যমে পাতা ও অ্যাপ পরিবেশন এখনো তৈরি হয়নি।</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>রিলে</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>অন্য পিয়ারদের ওভারলে ট্রাফিক বহন করা, এই নোড ব্যবহারকারী পিয়ারদের মাসিক তালিকাভুক্তির খরচ দেওয়া, এবং এর তৈরি প্রতিটি ব্লকের একটি অংশ তাদের সাথে ভাগ করা। রিলে যে তালিকাভুক্তির জন্য পরিশোধ করে তা নিজের তৈরি ব্লকে রাখে; এভাবেই সেগুলো নিশ্চিত হয় যখন বেশিরভাগ নোড এখনো রেকর্ড ফরোয়ার্ড করতে অস্বীকার করে — তাই রিলেকে স্টেকিং করতেই হবে।</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>স্টেকিং</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>এখানে তালিকাভুক্ত পিয়ার</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>এর তৈরি পরবর্তী ব্লক</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>ওভারলের মাধ্যমে অনুরোধকারী পিয়ারদের তালিকাভুক্তির জন্য পরিশোধ করুন</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>কয়েন ছাড়া একটি পিয়ার এই নোডকে তার মাসিক তালিকাভুক্তি প্রকাশ করতে বলতে পারে। এই নোড ফি পরিশোধ করে, এটি একটি ব্লকে রাখে, এবং পিয়ারকে যাদের সাথে পুরস্কার ভাগ করে তাদের মধ্যে যোগ করে। ডিফল্টভাবে বন্ধ, কারণ এটি এই নোডের কয়েন খরচ করে।</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>এই সংখ্যার বেশি পিয়ারকে ফিরিয়ে দেওয়া হয়। এখানে ইতিমধ্যে তালিকাভুক্ত পিয়াররা এখনো নবায়ন করতে পারে।</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>সর্বোচ্চ যত পিয়ার তালিকাভুক্ত রাখা হবে</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>একমাত্র খোলা ওয়ালেট</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>কোন ওয়ালেট ফি পরিশোধ করে। একাধিক খোলা থাকলে এবং এখানে কোনোটির নাম না থাকলে, অনুমানে পরিশোধ না করে অনুরোধগুলো প্রত্যাখ্যান করা হয়। এই নোডের যেকোনো ওয়ালেটে স্টেকিং হতে পারে।</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>ওয়ালেট থেকে ফি পরিশোধ করুন</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>এই নোড নিজের কয়েন দিয়ে তৈরি করা প্রতিটি ব্লকের অংশ, যা এটির তালিকাভুক্ত পিয়ারদের মধ্যে সমানভাবে ভাগ হয়। 0 মানে কিছুই ভাগ হয় না।</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>প্রতিটি তৈরি ব্লকের অংশ</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>মেইলবক্স</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>রেজিস্টার যাদের জন্য এই নোডকে মেইলবক্স বানায় তাদের সিল করা মেইল রাখুন, যতক্ষণ না তারা সংগ্রহ করে। কোন রিলে কার মেইল রাখবে তা রেজিস্টার থেকে হিসাব করা হয়, তাই কেউ তা নির্ধারণ করে না। প্রেরক ও মালিকরা তিনটি রিলের মাধ্যমে এই নোডে পৌঁছায়, তাই এটি কখনো জানে না তারা কোথায়; চিঠিগুলো সিল করা, তাই এটি সেগুলো পড়তে বা কে লিখেছে জানতে পারে না। দুই সপ্তাহ পরে চিঠিগুলো মুছে ফেলা হয়, এবং শুধু তালিকাভুক্ত ব্যক্তিদের সেবা দেওয়া হয়।</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>রাখা হচ্ছে</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>প্রেরকদের জন্য রাখা মেইল কি</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>রেজিস্টার এই নোডের জন্য যাদের নির্ধারণ করে তাদের মেইল রাখুন</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>যেখানে ওভারলে চলে সেখানে ডিফল্টভাবে চালু: যে রিলে প্রত্যাখ্যান করে সে যাদের জন্য বাছাই হয়েছিল তাদের একটি মেইলবক্স কমিয়ে দেয়।</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>এটি পূর্ণ হলে, পুরনো চিঠি সংগ্রহ বা মুছে ফেলা না হওয়া পর্যন্ত নতুন চিঠি প্রত্যাখ্যান করা হয়। কোনো একজন ব্যক্তি এর ৮ MiB-এর বেশি ব্যবহার করতে পারে না।</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>যতটা ডিস্ক ব্যবহার করতে পারে</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>সংরক্ষিত। নোড শুরু হওয়ার সময় এগুলো পড়া হয়, তাই পরিবর্তন কার্যকর করতে ক্লায়েন্টটি আবার চালু করুন।</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>কোনো ওয়ালেট খোলা নেই</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>না — স্টেকিং না করা রিলে তালিকাভুক্তির অনুরোধ প্রত্যাখ্যান করে</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>হ্যাঁ, %1 পরে</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>তালিকাভুক্তির জন্য পরিশোধ করছে না</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>পরিশোধ করছে, কিন্তু স্টেকিং করছে না</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>চলছে</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>এই বিল্ডে কোনো ওয়ালেট নেই</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>একটি ওয়ালেট প্রয়োজন</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>বন্ধ</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>ওভারলে প্রয়োজন</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>কিছু নেই — মেইল রাখছে না</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>কোনো চিঠি নেই</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>১টি অক্ষর</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>%1টি অক্ষর</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>১ জন</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>%1 জন</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>এই মুহূর্তে কিছু নেই, %1 MiB-এর জায়গা আছে</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%2-এর জন্য %1, %4 MiB-এর মধ্যে %3</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>%1% ভাগ করে: মোট %2 %4, প্রতিটি পিয়ারকে %3 %4</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>সেটিংস</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>এই ক্লায়েন্ট যা করে কিন্তু ওয়ালেট ক্লায়েন্ট করে না, এবং ভাষা। বাকি সবকিছু — প্রক্সি, পোর্ট, প্রুনিং — দুটোতেই একই প্রশ্ন, এবং এক জায়গায় জিজ্ঞাসা করা হয়।</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>খুঁজুন</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>রেজিস্টারের একটি ইনডেক্স রাখুন</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>এটি ছাড়া এই নোড প্রকাশ করতে পারে কিন্তু আর কে তালিকাভুক্ত তা দেখতে পারে না।</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>নাম ইনডেক্স করুন</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>নাম খুঁজতে, নামে মেইল পাঠাতে এবং নিজের নাম নিবন্ধন করতে প্রয়োজন।</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>রেজিস্টারে পাওয়া পিয়ারদের সাথে সংযোগের চেষ্টা করুন</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>সাধারণ সিড ও ঠিকানা আদান-প্রদানের পাশাপাশি রেজিস্টারের ঠিকানাগুলো ঠিকানা ব্যবস্থাপকে দেয়। এটি বন্ধ করলে রেজিস্টার এমন একটি তালিকা হয়ে থাকে যা এই নোড পড়ে কিন্তু কখনো ব্যবহার করে না।</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>ওভারলে</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>ওভারলে চালান</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>এই ক্লায়েন্টে ডিফল্টভাবে চালু, নোড ও ওয়ালেট ক্লায়েন্টে বন্ধ। যিনি লিখেছেন তিনি ছাড়া এখনো কেউ এর হ্যান্ডশেক পর্যালোচনা করেননি।</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>ওভারলে নিজের পোর্টে UDP ব্যবহার করে। পিয়ার-টু-পিয়ার নেটওয়ার্ক আলাদা এবং TCP-তেই থাকে।</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>যে পোর্টে শোনা হবে</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>রেডিও</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>Reticulum-এর মাধ্যমে রেডিওতেও ওভারলে বহন করুন</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>RNode-এর মাধ্যমে LoRa, প্যাকেট রেডিও, সিরিয়াল লিংক: Reticulum যা ব্যবহারের জন্য সেট করা আছে তা-ই। ওভারলে প্রয়োজন।</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>রেডিও প্রতিবেশীদের মাধ্যমে ওভারলেতে প্রবেশ করুন, যাতে ইন্টারনেট ছাড়াও মেইল কাজ করে</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>রেডিওতে শোনা একটি BPS নোড তালিকাভুক্ত রিলে হলে, আপনার মেইল ও তালিকাভুক্তির অনুরোধ তার মাধ্যমে যায়। রেডিও লিংক ইন্টারনেটের চেয়ে অনেক ধীর।</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>BPS Relay-এর সাথে Reticulum ব্রিজ চালু করুন</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>নোডের পাশে bps-rns-bridge.py চালায়। আপনি নিজে ব্রিজ চালালে এটি বন্ধ রাখুন।</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>Python কমান্ড</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Reticulum BPS-এর অংশ নয় এবং এর নিজস্ব লাইসেন্স আছে। %1 দিয়ে এটি ইনস্টল করুন, এবং Reticulum-এর নিজস্ব কনফিগারেশনে (~/.reticulum/config) আপনার রেডিও সেট আপ করুন। অ্যামেচার রেডিও ব্যান্ডে এনক্রিপ্ট করা ট্রাফিক অনুমোদিত নয়, তাই LoRa-র মতো লাইসেন্সমুক্ত ব্যান্ড ব্যবহার করুন।</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>প্রদর্শন</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>পরিমাণ দেখানোর একক</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>কম্পিউটারের ভাষা</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>BPS Relay আবার চালু হলে কার্যকর হবে। নোড নিজে যে লেখা পাঠায়, যেমন কমান্ডের ত্রুটি বার্তা, তা ইংরেজিতেই থাকে।</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>ভাষা</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>নেটওয়ার্ক, প্রক্সি ও অন্যান্য মূল সেটিংস…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>সংরক্ষিত। BPS Relay আবার চালু হলে ভাষা বদলাবে।</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>সংরক্ষিত। নোড শুরু হওয়ার সময় এগুলো পড়া হয়, তাই পরিবর্তন কার্যকর করতে ক্লায়েন্টটি আবার চালু করুন।</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>নোড এখনো চালু হচ্ছে; মূল সেটিংস এখনো পাওয়া যাচ্ছে না।</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2601,8 +5053,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>&amp;Verify Message</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
-        <translation>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</translation>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <translation>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</translation>
     </message>
     <message>
         <source>The Bitcoin address the message was signed with</source>
@@ -2629,8 +5081,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Reset all verify message fields</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>Click "Sign Message" to generate signature</translation>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>Click &quot;Sign Message&quot; to generate signature</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2686,6 +5138,209 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
 </context>
 <context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>ফর্ম</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;স্টেকিং</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>আপনার বর্তমান খরচযোগ্য ব্যালেন্স</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>এই ওয়ালেটের মালিকানাধীন স্টেকিংয়ে থাকা সম্পদ</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>অর্পণ থেকে স্টেকিংয়ে থাকা সম্পদ</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>অপরিপক্ব:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>আপনার অপরিপক্ব ব্যালেন্স</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>স্টেকিংয়ে থাকা সম্পদ</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>স্টেক:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>স্টেকিং</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>ব্লক উচ্চতা:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>ব্লক পুরস্কার:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/ব্লক</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>নেটওয়ার্কের ওজন:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>প্রত্যাশিত বার্ষিক আয়:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>স্টেক রেকর্ড</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>অর্পণ করুন(&amp;D)</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>অর্পণের ধরন:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>ম্যানুয়াল অর্পণ</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>স্বয়ংক্রিয় অর্পণ</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>স্টেকিং ঠিকানা</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>সব সরান</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>ক্লিপবোর্ড থেকে ঠিকানা পেস্ট করুন</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>যোগ করুন(&amp;A)</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>আমার অর্পণ(&amp;M)</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>অর্পিত সম্পদ</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>আপনার বর্তমান অর্পিত ব্যালেন্স</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>আমার অর্পণ</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>প্রাপ্ত অর্পণ(&amp;R)</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>নতুন স্টেকিং ঠিকানা তৈরি করুন(&amp;C)</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> লেবেলসহ:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>নতুন গ্রহণ ঠিকানার সাথে যুক্ত করার জন্য একটি ঐচ্ছিক লেবেল (আপনি একটি ইনভয়েস চিনতে এটি ব্যবহার করেন)। এটি পেমেন্ট অনুরোধের সাথেও যুক্ত হয়।</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>ColdStake অর্পণ</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>এই ওয়ালেটের অর্পণ ঠিকানায় পাঠানো কয়েন পৌঁছানোর সাথে সাথে এই কি-গুলো দিয়ে স্টেকিং হয়, এবং আপনার নিজের খরচের অবশিষ্ট অর্পিতই থাকে। একটি স্টেকিং কি শুধু আপনাকে ফেরত দেওয়া coinstake তৈরি করতে পারে, তাই যে ওয়ালেট এটি রাখে তার পাসফ্রেজ লাগে না।</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>একাধিক তালিকাভুক্ত করুন যাতে আপনার কয়েন কয়েকটি স্টেকিং ওয়ালেটে ছড়িয়ে থাকে, ফলে একটি অফলাইন হলে সব স্টেকিং থেমে না যায়।
+
+প্রতিটি নতুন অর্পণ এখন পর্যন্ত সবচেয়ে কম উল্লিখিত ঠিকানায় যায়, বিতরণ করা অর্পণ ঠিকানা এবং এখনো খরচ না হওয়া অর্পিত কয়েন গণনা করে। এটি পরিমাণ নয়, অর্পণের সংখ্যা গণনা করে, তাই একটি বড় অর্পণসহ ঠিকানা কয়েকটি ছোট অর্পণসহ ঠিকানার আগেও বাছাই হতে পারে।</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>সরানো ঠিকানায় ইতিমধ্যে অর্পিত কয়েন সরানো হয় না এবং সেটি তা দিয়ে স্টেকিং চালিয়ে যায়। শুধু নতুন অর্পণগুলো আর এর নাম নেয় না।</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>ওয়ালেট আনলক করা যায়নি।</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>নতুন %1 ঠিকানা তৈরি করা যায়নি</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>এই নোডে কোল্ড স্টেকিং নিষ্ক্রিয় (-coldstaking=0), তাই কিছুই অর্পণ করা হচ্ছে না।</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>এখানকার একটি স্টেকিং ঠিকানা এই ওয়ালেটের, যা এনক্রিপ্ট করা, তাই ওয়ালেট আনলক থাকলেই শুধু এটি স্টেকিং করে। পাসফ্রেজ ছাড়া স্টেকিং করতে, একটি আলাদা এনক্রিপশনহীন স্টেকিং ওয়ালেটের ঠিকানা ব্যবহার করুন।</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>%1-এ অর্পণ বন্ধ করুন। এতে ইতিমধ্যে অর্পিত কয়েন সরানো হয় না এবং এটি সেগুলো দিয়ে স্টেকিং চালিয়ে যায়।</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>স্টেকিং ঠিকানাগুলো সংরক্ষণ করা যায়নি। একটি অর্পণ একটি কি হ্যাশের সাথে বাঁধা থাকে, তাই প্রতিটিকে legacy ঠিকানা হতে হবে।</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>সেই স্টেকিং ঠিকানা ইতিমধ্যে তালিকায় আছে।</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>সব স্টেকিং ঠিকানা সরান</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>সব %1টি স্টেকিং ঠিকানায় অর্পণ বন্ধ করবেন?
+
+ইতিমধ্যে অর্পিত কয়েন সেগুলো দিয়েই স্টেকিং হতে থাকবে এবং সরানো হবে না। কিন্তু নতুন জমা ও অবশিষ্ট সাধারণ ঠিকানায় যাবে, যেগুলো স্টেকিং করে না, এবং এটি আবার চালু করতে আপনার এই ঠিকানাগুলো আবার লাগবে।</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2696,7 +5351,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Open for %n more block</numerusform><numerusform>Open for %n more blocks</numerusform></translation>
+        <translation>
+            <numerusform>Open for %n more block</numerusform>
+            <numerusform>Open for %n more blocks</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2776,7 +5434,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>matures in %n more block</numerusform><numerusform>matures in %n more blocks</numerusform></translation>
+        <translation>
+            <numerusform>matures in %n more block</numerusform>
+            <numerusform>matures in %n more blocks</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -2835,8 +5496,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Merchant</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -2890,7 +5551,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Open for %n more block</numerusform><numerusform>Open for %n more blocks</numerusform></translation>
+        <translation>
+            <numerusform>Open for %n more block</numerusform>
+            <numerusform>Open for %n more blocks</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2979,6 +5643,30 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>Amount removed from or added to balance.</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>কোল্ড স্টেক</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>যার পক্ষে স্টেকিং</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>স্টেক অর্পণ</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>অর্পণ</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>স্টেক অর্পণ খরচ করেছে</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>অর্পিত পরিমাণ।</translation>
     </message>
 </context>
 <context>
@@ -3139,6 +5827,22 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>to</source>
         <translation>to</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>কোল্ড স্টেক</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>হট স্টেক</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>খরচ না হওয়া অর্পিত</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>অর্পণ</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3161,12 +5865,28 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>Closing the wallet for too long can result in having to resync the entire chain if pruning is enabled.</source>
         <translation>Closing the wallet for too long can result in having to resync the entire chain if pruning is enabled.</translation>
     </message>
-    </context>
+    <message>
+        <source>Close all wallets</source>
+        <translation>সব ওয়ালেট বন্ধ করুন</translation>
+    </message>
+    <message>
+        <source>Are you sure you wish to close all wallets?</source>
+        <translation>আপনি কি নিশ্চিত যে সব ওয়ালেট বন্ধ করতে চান?</translation>
+    </message>
+</context>
 <context>
     <name>WalletFrame</name>
     <message>
         <source>Create a new wallet</source>
         <translation>Create a new wallet</translation>
+    </message>
+    <message>
+        <source>No wallet has been loaded.
+Go to File &gt; Open Wallet to load a wallet.
+- OR -</source>
+        <translation>কোনো ওয়ালেট লোড করা হয়নি।
+ওয়ালেট লোড করতে ফাইল &gt; ওয়ালেট খুলুন-এ যান।
+- অথবা -</translation>
     </message>
 </context>
 <context>
@@ -3208,16 +5928,16 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Confirm fee bump</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
-        <translation>Can't draft transaction.</translation>
+        <source>Can&apos;t draft transaction.</source>
+        <translation>Can&apos;t draft transaction.</translation>
     </message>
     <message>
         <source>PSBT copied</source>
         <translation>PSBT copied</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
-        <translation>Can't sign transaction.</translation>
+        <source>Can&apos;t sign transaction.</source>
+        <translation>Can&apos;t sign transaction.</translation>
     </message>
     <message>
         <source>Could not commit transaction</source>
@@ -3226,6 +5946,21 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>default wallet</source>
         <translation>default wallet</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ এই নোড</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● সরাসরি</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>ওয়ালেট ক্লায়েন্ট, যা এই প্রক্রিয়ায় এই নোডের সাথে চলছে। এটি bitcoin-pos-qt-এর মতোই একই প্রোগ্রাম, এর কোনো অনুলিপি নয়।</translation>
     </message>
 </context>
 <context>
@@ -3270,6 +6005,26 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>Cancel</source>
         <translation>Cancel</translation>
     </message>
+    <message>
+        <source>Unable to decode PSBT from clipboard (invalid base64)</source>
+        <translation>ক্লিপবোর্ড থেকে PSBT ডিকোড করা যাচ্ছে না (অবৈধ base64)</translation>
+    </message>
+    <message>
+        <source>Load Transaction Data</source>
+        <translation>লেনদেনের ডেটা লোড করুন</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (*.psbt)</source>
+        <translation>আংশিক স্বাক্ষরিত লেনদেন (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT file must be smaller than 100 MiB</source>
+        <translation>PSBT ফাইল অবশ্যই 100 MiB-এর চেয়ে ছোট হতে হবে</translation>
+    </message>
+    <message>
+        <source>Unable to decode PSBT</source>
+        <translation>PSBT ডিকোড করা যাচ্ছে না</translation>
+    </message>
 </context>
 <context>
     <name>bitcoin-core</name>
@@ -3310,16 +6065,16 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
-        <translation>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</translation>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</translation>
     </message>
     <message>
         <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
         <translation>Please contribute if you find %s useful. Visit %s for further information about the software.</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
-        <translation>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</translation>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
+        <translation>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</translation>
     </message>
     <message>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
@@ -3350,8 +6105,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>-maxmempool must be at least %d MB</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>Cannot resolve -%s address: '%s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>Cannot resolve -%s address: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3434,32 +6189,32 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Initialization sanity check failed. %s is shutting down.</translation>
     </message>
     <message>
-        <source>Invalid P2P permission: '%s'</source>
-        <translation>Invalid P2P permission: '%s'</translation>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>Invalid P2P permission: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>Invalid amount for -%s=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>Specified blocks directory "%s" does not exist.</translation>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>Specified blocks directory &quot;%s&quot; does not exist.</translation>
     </message>
     <message>
-        <source>Unknown address type '%s'</source>
-        <translation>Unknown address type '%s'</translation>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>Unknown address type &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Unknown change type '%s'</source>
-        <translation>Unknown change type '%s'</translation>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>Unknown change type &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3534,8 +6289,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Error: Listening for incoming connections failed (listen returned error %s)</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -3558,24 +6313,24 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Error: Disk space is low for %s</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>Invalid -onion address or hostname: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>Invalid -onion address or hostname: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>Invalid -proxy address or hostname: '%s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>Invalid -proxy address or hostname: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>Invalid netmask specified in -whitelist: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>Invalid netmask specified in -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>Need to specify a port with -whitebind: '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>Need to specify a port with -whitebind: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Prune mode is incompatible with -blockfilterindex.</source>
@@ -3594,16 +6349,16 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Signing transaction failed</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>Specified -walletdir "%s" does not exist</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>Specified -walletdir &quot;%s&quot; does not exist</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>Specified -walletdir "%s" is a relative path</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>Specified -walletdir &quot;%s&quot; is a relative path</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>Specified -walletdir "%s" is not a directory</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>Specified -walletdir &quot;%s&quot; is not a directory</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3632,8 +6387,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Unable to bind to %s on this computer (bind returned error %s)</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>Unable to create the PID file '%s': %s</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>Unable to create the PID file &apos;%s&apos;: %s</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -3696,8 +6451,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Transaction must have at least one recipient</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>Unknown network specified in -onlynet: '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>Unknown network specified in -onlynet: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -3712,8 +6467,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Warning: Private keys detected in wallet {%s} with disabled private keys</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>Cannot write to data directory '%s'; check permissions.</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>Cannot write to data directory &apos;%s&apos;; check permissions.</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -3734,6 +6489,98 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Done loading</source>
         <translation>Done loading</translation>
+    </message>
+    <message>
+        <source>%s corrupt. Try using the wallet tool bitcoin-wallet to salvage or restoring a backup.</source>
+        <translation>%s নষ্ট হয়ে গেছে। উদ্ধারের জন্য ওয়ালেট টুল bitcoin-wallet ব্যবহার করে দেখুন অথবা একটি ব্যাকআপ পুনরুদ্ধার করুন।</translation>
+    </message>
+    <message>
+        <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use version 169900 or no version specified.</source>
+        <translation>বিভাজনের আগের কিপুল সমর্থনে আপগ্রেড না করে নন-HD বিভক্ত ওয়ালেট আপগ্রেড করা যায় না। সংস্করণ 169900 ব্যবহার করুন অথবা কোনো সংস্করণ উল্লেখ করবেন না।</translation>
+    </message>
+    <message>
+        <source>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</source>
+        <translation>একাধিক onion বাইন্ড ঠিকানা দেওয়া হয়েছে। স্বয়ংক্রিয়ভাবে তৈরি Tor onion সেবার জন্য %s ব্যবহার করা হচ্ছে।</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: sqlite ওয়ালেটের স্কিমা সংস্করণ আনার স্টেটমেন্ট প্রস্তুত করতে ব্যর্থ: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: অ্যাপ্লিকেশন আইডি আনার স্টেটমেন্ট প্রস্তুত করতে ব্যর্থ: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unknown sqlite wallet schema version %d. Only version %d is supported</source>
+        <translation>SQLiteDatabase: অজানা sqlite ওয়ালেট স্কিমা সংস্করণ %d। শুধু সংস্করণ %d সমর্থিত</translation>
+    </message>
+    <message>
+        <source>This error could occur if this wallet was not shutdown cleanly and was last loaded using a build with a newer version of Berkeley DB. If so, please use the software that last loaded this wallet</source>
+        <translation>এই ওয়ালেট সঠিকভাবে বন্ধ না হলে এবং সর্বশেষ Berkeley DB-এর নতুন সংস্করণসহ একটি বিল্ড দিয়ে লোড হলে এই ত্রুটি ঘটতে পারে। সেক্ষেত্রে, যে সফটওয়্যার সর্বশেষ এই ওয়ালেট লোড করেছিল সেটি ব্যবহার করুন</translation>
+    </message>
+    <message>
+        <source>This is the maximum transaction fee you pay (in addition to the normal fee) to prioritize partial spend avoidance over regular coin selection.</source>
+        <translation>এটি সর্বোচ্চ লেনদেন ফি যা আপনি দেন (সাধারণ ফি-এর অতিরিক্ত) সাধারণ কয়েন বাছাইয়ের চেয়ে আংশিক খরচ এড়ানোকে অগ্রাধিকার দিতে।</translation>
+    </message>
+    <message>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
+        <translation>লেনদেনের একটি অবশিষ্ট ঠিকানা প্রয়োজন, কিন্তু আমরা তা তৈরি করতে পারছি না। প্রথমে keypoolrefill কল করুন।</translation>
+    </message>
+    <message>
+        <source>A fatal internal error occurred, see debug.log for details</source>
+        <translation>একটি গুরুতর অভ্যন্তরীণ ত্রুটি ঘটেছে, বিস্তারিত জানতে debug.log দেখুন</translation>
+    </message>
+    <message>
+        <source>Cannot set -peerblockfilters without -blockfilterindex.</source>
+        <translation>-blockfilterindex ছাড়া -peerblockfilters সেট করা যায় না।</translation>
+    </message>
+    <message>
+        <source>Disk space is too low!</source>
+        <translation>ডিস্কের জায়গা খুব কম!</translation>
+    </message>
+    <message>
+        <source>Error: Keypool ran out, please call keypoolrefill first</source>
+        <translation>ত্রুটি: কিপুল শেষ হয়ে গেছে, প্রথমে keypoolrefill কল করুন</translation>
+    </message>
+    <message>
+        <source>Failed to verify database</source>
+        <translation>ডেটাবেস যাচাই করতে ব্যর্থ</translation>
+    </message>
+    <message>
+        <source>Fee rate (%s) is lower than the minimum fee rate setting (%s)</source>
+        <translation>ফি হার (%s) সর্বনিম্ন ফি হার সেটিং (%s)-এর চেয়ে কম</translation>
+    </message>
+    <message>
+        <source>Ignoring duplicate -wallet %s.</source>
+        <translation>নকল -wallet %s উপেক্ষা করা হচ্ছে।</translation>
+    </message>
+    <message>
+        <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
+        <translation>কোনো প্রক্সি সার্ভার উল্লেখ করা হয়নি। -proxy=&lt;ip&gt; অথবা -proxy=&lt;ip:port&gt; ব্যবহার করুন।</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
+        <translation>SQLiteDatabase: ডেটাবেস যাচাইয়ের স্টেটমেন্ট চালাতে ব্যর্থ: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: sqlite ওয়ালেটের স্কিমা সংস্করণ আনতে ব্যর্থ: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: অ্যাপ্লিকেশন আইডি আনতে ব্যর্থ: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare statement to verify database: %s</source>
+        <translation>SQLiteDatabase: ডেটাবেস যাচাইয়ের স্টেটমেন্ট প্রস্তুত করতে ব্যর্থ: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to read database verification error: %s</source>
+        <translation>SQLiteDatabase: ডেটাবেস যাচাইয়ের ত্রুটি পড়তে ব্যর্থ: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unexpected application id. Expected %u, got %u</source>
+        <translation>SQLiteDatabase: অপ্রত্যাশিত অ্যাপ্লিকেশন আইডি। প্রত্যাশিত %u, পাওয়া গেছে %u</translation>
     </message>
 </context>
 </TS>

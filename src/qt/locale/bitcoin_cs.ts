@@ -1,4 +1,6 @@
-<TS language="cs" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="cs">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -70,9 +72,9 @@
         <translation>Tohle jsou tvé bitcoinové adresy pro posílání plateb. Před odesláním mincí si vždy zkontroluj částku a cílovou adresu.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.
-Signing is only possible with addresses of the type 'legacy'.</source>
-        <translation>Tohle jsou tvé bitcoinové adresy pro přijmaní plateb. Použij "Vytvoř novou přijimací adresu" pro vytvoření nových adres. Přihlašování je povoleno jen s adresami typu "Legacy"</translation>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
+        <translation>Tohle jsou tvé bitcoinové adresy pro přijmaní plateb. Použij &quot;Vytvoř novou přijimací adresu&quot; pro vytvoření nových adres. Přihlašování je povoleno jen s adresami typu &quot;Legacy&quot;</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -240,6 +242,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Upozornění: Caps Lock je zapnutý!</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>Slouží k vypnutí jednoduchého odesílání peněz, pokud je účet operačního systému napaden. Neposkytuje skutečné zabezpečení.</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>Pouze pro staking.</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -250,6 +260,109 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Banned Until</source>
         <translation>Blokován do</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>Hromadná platba</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>Jedna platba na řádek, ve tvaru &quot;adresa, částka&quot;. Pole odděluje čárka, středník nebo tabulátor a třetí pole se stane popiskem. Řádky začínající znakem # se ignorují.</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>&amp;Vložit</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>Načíst ze &amp;souboru...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>&amp;Vymazat</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>Řádek</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Adresa</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Částka</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Stav</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>Načíst seznam plateb</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>Textové soubory a CSV (*.txt *.csv);;Všechny soubory (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>Nelze přečíst %1.</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>očekáváno &quot;adresa, částka&quot;</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>chybí adresa</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>neplatná adresa</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>chybí částka</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>nelze přečíst částku &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>částka musí být větší než nula</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>ok</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>Vložte jednu platbu na řádek, ve tvaru &quot;adresa, částka&quot;. Třetí pole se použije jako popisek. Řádky začínající znakem # se ignorují.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>%1 z %2 řádků nelze použít. Opravte je nebo je smažte, abyste mohli pokračovat.</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>%1 příjemců je víc, než unese jedna transakce (zde je limit %2). Rozdělte seznam.</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>Příjemců: %1, celkem %2, před poplatkem.</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>Přidat do formuláře odeslání</translation>
     </message>
 </context>
 <context>
@@ -440,7 +553,11 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n aktivní spojení do bitcoinové sítě</numerusform><numerusform>%n aktivní spojení do bitcoinové sítě</numerusform><numerusform>%n aktivních spojení do bitcoinové sítě</numerusform><numerusform>%n aktivních spojení do bitcoinové sítě</numerusform></translation>
+        <translation>
+            <numerusform>%n aktivní spojení do bitcoinové sítě</numerusform>
+            <numerusform>%n aktivní spojení do bitcoinové sítě</numerusform>
+            <numerusform>%n aktivních spojení do bitcoinové sítě</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -452,7 +569,11 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>Zpracován %n blok transakční historie.</numerusform><numerusform>Zpracovány %n bloky transakční historie.</numerusform><numerusform>Zpracováno %n bloků transakční historie.</numerusform><numerusform>Zpracováno %n bloků transakční historie.</numerusform></translation>
+        <translation>
+            <numerusform>Zpracován %n blok transakční historie.</numerusform>
+            <numerusform>Zpracovány %n bloky transakční historie.</numerusform>
+            <numerusform>Zpracováno %n bloků transakční historie.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -634,7 +755,372 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Peněženka je &lt;b&gt;zašifrovaná&lt;/b&gt; a momentálně &lt;b&gt;zamčená&lt;/b&gt;</translation>
     </message>
-    </context>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Došlo k závažné chybě. %1 už nemůže bezpečně pokračovat a bude ukončen.</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>Zobrazit stake peněženky</translation>
+    </message>
+    <message>
+        <source>&amp;Load PSBT from file...</source>
+        <translation>&amp;Načíst PSBT ze souboru...</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction</source>
+        <translation>Načíst částečně podepsanou Bitcoin transakci</translation>
+    </message>
+    <message>
+        <source>Load PSBT from clipboard...</source>
+        <translation>Načíst PSBT ze schránky...</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction from clipboard</source>
+        <translation>Načíst částečně podepsanou Bitcoin transakci ze schránky</translation>
+    </message>
+    <message>
+        <source>Close All Wallets...</source>
+        <translation>Zavřít všechny peněženky...</translation>
+    </message>
+    <message>
+        <source>&amp;Mask values</source>
+        <translation>&amp;Maskovat hodnoty</translation>
+    </message>
+    <message>
+        <source>Mask the values in the Overview tab</source>
+        <translation>Maskovat hodnoty na kartě Přehled</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>Peněženka je &lt;b&gt;šifrovaná&lt;/b&gt; a momentálně &lt;b&gt;odemčená pouze pro staking&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>&amp;Dešifrovat peněženku...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>Odstranit heslo, takže soukromé klíče zůstanou uložené nešifrované</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Bez stakingu</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n sekunda</numerusform>
+            <numerusform>%n sekundy</numerusform>
+            <numerusform>%n sekund</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n minuta</numerusform>
+            <numerusform>%n minuty</numerusform>
+            <numerusform>%n minut</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n hodina</numerusform>
+            <numerusform>%n hodiny</numerusform>
+            <numerusform>%n hodin</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n den</numerusform>
+            <numerusform>%n dny</numerusform>
+            <numerusform>%n dní</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>Staking probíhá.&lt;br&gt;Vaše váha je %1&lt;br&gt;Váha sítě je %2&lt;br&gt;Očekávaná doba do odměny: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>Bez stakingu, protože peněženka je offline</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>Bez stakingu, protože se peněženka synchronizuje</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>Bez stakingu, protože nemáte žádné zralé mince</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>Bez stakingu, protože peněženka je zamčená</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Původní zpráva:</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>Neznámá chyba</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>méně než minuta</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>minuta</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 minut</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>hodina</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 hodin</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 dní</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>měsíc</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 měsíců</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>asi rok</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>více než rok</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>neznámé</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Došlo k závažné chybě. %1 už nemůže bezpečně pokračovat a bude ukončen.</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Původní zpráva:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Objevovat</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Překryvná síť</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>Jména</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>Protějšky a konzole</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>Uzel</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Peněženka</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>Pošta</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>Pošta (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>Server</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Nastavení</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>zápis neznámý</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>překryvná síť neznámá</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>připojování…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>Při současné váze sítě vynáší staking přibližně %1 % ročně: %2 bloků ročně, každý %3 %4, při %5 %4 ve stakingu.</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>To je po odečtení podílu %1 % z každého bloku, který tento uzel sdílí se svými protějšky.</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>%1 % ročně</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>vypínání…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>Protějšků: %1 — příchozích %2, odchozích %3.</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>Kliknutím pozastavíte síťovou aktivitu.</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>1 protějšek</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>protějšků: %1</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>Síťová aktivita je pozastavena.</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>Kliknutím ji obnovíte.</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>síť pozastavena</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>Zpracováno bloků historie: %1.</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>blok %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>Aktuální.</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>Synchronizace se sítí…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>Zpracování bloků na disku…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>Přeindexování bloků na disku…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>Připojování k protějškům…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>zpoždění %1</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>Dohánění…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>Poslední přijatý blok byl vytvořen před %1.</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>Peněženka &lt;b&gt;%1&lt;/b&gt; je šifrovaná a odemčená pouze pro staking</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>Peněženka &lt;b&gt;%1&lt;/b&gt; je šifrovaná a odemčená</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>Peněženka &lt;b&gt;%1&lt;/b&gt; je šifrovaná a zamčená</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>staking</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>staking, %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; provádí staking.&lt;br&gt;Její váha je %2&lt;br&gt;Váha sítě je %3&lt;br&gt;Očekávaná doba do odměny: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>bez stakingu</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>bez stakingu (platí %1)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>Bez stakingu: příliš málo protějšků</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>Bez stakingu: řetězec stále dohání</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>Bez stakingu: &lt;b&gt;%1&lt;/b&gt; nemá žádné zralé mince</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>Bez stakingu: &lt;b&gt;%1&lt;/b&gt; je zamčená</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Bez stakingu</translation>
+    </message>
+</context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -785,6 +1271,57 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>(change)</source>
         <translation>(drobné)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>delegováno na %1 pro studený staking</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>Napsat dopis</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>jméno, přezdívka z adresáře nebo klíč rejstříku</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Komu</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Předmět</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>Odeslat</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>Pro koho je? Jméno, přezdívka nebo klíč rejstříku.</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>Dopis má %1 KB; dopis může mít nejvýše %2 KB.</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>Dopis se zapečetí a vloží do poštovních schránek příjemce, pokaždé přes tři relé. Bude to trvat několik sekund…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Odesláno</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>Dopis byl vložen do %1 z %2 poštovních schránek příjemce. K doručení stačí jedna.</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>Neodesláno: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -839,7 +1376,202 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Create</source>
         <translation>Vytvořit</translation>
     </message>
-    </context>
+    <message>
+        <source>Wallet</source>
+        <translation>Peněženka</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>Pokročilé možnosti</translation>
+    </message>
+    <message>
+        <source>Use descriptors for scriptPubKey management</source>
+        <translation>Používat deskriptory pro správu scriptPubKey</translation>
+    </message>
+    <message>
+        <source>Descriptor Wallet</source>
+        <translation>Peněženka s deskriptory</translation>
+    </message>
+    <message>
+        <source>Compiled without sqlite support (required for descriptor wallets)</source>
+        <translation>Sestaveno bez podpory sqlite (vyžadována pro peněženky s deskriptory)</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>Objevovat</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>Protějšky se ohlašují v řetězci, ne na serveru, takže tento seznam je pro všechny stejný a nikdo ho nemůže upravit.</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>Rejstřík</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>Váš zápis</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>Zapsané protějšky</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>Jste</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Kopírovat</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>Zveřejňování vašeho zápisu…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>Identita</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>Vytvořit…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>Identita uchová historii tohoto uzlu, jak dlouho je zapsán, pokud bude někdy nutné jeho klíč změnit.</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>Najít protějšek nebo adresu</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Klíč zkopírován</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>Adresa zkopírována</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>spouštění…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>Vytvořit identitu</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>Zaplatit poplatek z</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Identita je druhý klíč, který stojí za klíčem tohoto uzlu. Pokud se klíč tohoto uzlu někdy ztratí nebo bude ukraden, lze pod stejnou identitu umístit nový klíč a uzel si ponechá dobu svého zápisu místo toho, aby začínal znovu.
+
+Klíč pro obnovení se vám zobrazí jednou. Zapište si ho: je to jediný způsob, jak zabránit tomu, kdo identitu ukradne, aby ji přesunul. Poté malá transakce identitu zveřejní a vaše příští obnovení zápisu k ní připojí klíč tohoto uzlu.</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Vaše relé zveřejnilo váš zápis v transakci %1. Platí po potvrzení transakce.</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Zveřejněno v transakci %1. Platí po potvrzení transakce.</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>neznámé</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>index rejstříku vypnut</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>nezapsáno</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>končí za %1</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>Obnovování vašeho zápisu…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>Obnovit během posledních 3 dnů</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>Váš zápis končí za %1. Obnovit ho lze od tří dnů předem.</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>zapsáno, končí za %1</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>žádné</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>Tento uzel nemá ohlašovací klíč: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>vypnuto</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>Index rejstříku neběží, takže tento uzel nevidí, kdo je zapsán. Spusťte znovu s -rosterindex, abyste ho zapnuli.</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>dohánění (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>starý %1 dní</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>Nejnovější blok tohoto uzlu je %1 dní starý, takže protějšky odvolané od té doby zde mohou stále být. Rejstřík se stále používá k dosažení protějšků, ale překryvná síť přestane upřednostňovat dlouho zapsaná relé, dokud řetězec nedohoní.</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>aktuální</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>Index rejstříku neběží</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>Váš klíč pro obnovení</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>Zapište si ho a uložte na bezpečném místě, mimo tento počítač. Zobrazuje se jen teď a nikde se neukládá. Nelze s ním utratit mince; může jen zastavit přesun vaší identity, který jste neprovedli vy.</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>Zapsal jsem si ho</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Vaše identita byla zveřejněna v transakci %1. Vaše příští obnovení zápisu k ní připojí klíč tohoto uzlu.</translation>
+    </message>
+</context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -875,16 +1607,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Uprav odesílací adresu</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
         <translation>Zadaná adresa „%1“ není platná bitcoinová adresa.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>Adresa "%1" již existuje jako přijímací adresa s označením "%2" a proto nemůže být přidána jako odesílací adresa.</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>Adresa &quot;%1&quot; již existuje jako přijímací adresa s označením &quot;%2&quot; a proto nemůže být přidána jako odesílací adresa.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>Zadaná adresa „%1“ už v adresáři je s označením "%2".</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>Zadaná adresa „%1“ už v adresáři je s označením &quot;%2&quot;.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -973,7 +1705,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <translation type="vanished">Bitcoin</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -996,7 +1728,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Tvá peněženka bude uložena rovněž v tomto adresáři.</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
         <translation>Chyba: Nejde vytvořit požadovaný adresář pro data „%1“.</translation>
     </message>
     <message>
@@ -1005,15 +1737,186 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>%n GB volného místa</numerusform><numerusform>%n GB volného místa</numerusform><numerusform>%n GB volného místa</numerusform><numerusform>%n GB volného místa</numerusform></translation>
+        <translation>
+            <numerusform>%n GB volného místa</numerusform>
+            <numerusform>%n GB volného místa</numerusform>
+            <numerusform>%n GB volného místa</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(z potřebného %n GB)</numerusform><numerusform>(z potřebných %n GB)</numerusform><numerusform>(z potřebných %n GB)</numerusform><numerusform>(z potřebných %n GB)</numerusform></translation>
+        <translation>
+            <numerusform>(z potřebného %n GB)</numerusform>
+            <numerusform>(z potřebných %n GB)</numerusform>
+            <numerusform>(z potřebných %n GB)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(%n GB potřeba pre plný řetězec)</numerusform><numerusform>(%n GB potřeba pre plný řetězec) </numerusform><numerusform>(%n GB potřeba pre plný řetězec) </numerusform><numerusform>(%n GB potřeba pre plný řetězec) </numerusform></translation>
+        <translation>
+            <numerusform>(%n GB potřeba pre plný řetězec)</numerusform>
+            <numerusform>(%n GB potřeba pre plný řetězec) </numerusform>
+            <numerusform>(%n GB potřeba pre plný řetězec) </numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>Pošta</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>Vaše adresa</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Kopírovat</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>Váš klíč rejstříku. Kdokoli zapsaný vám na něj může psát.</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>Pošta putuje překryvnou sítí. Pro odesílání a přijímání pošty zapněte překryvnou síť v Nastavení a restartujte.</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>Psát</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>Odpovědět</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>Vyzvednout nyní</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>Vyzvednout nové dopisy z vašich schránek nyní. Děje se to také každých pár minut.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Smazat</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>Doručená pošta</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Odesláno</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>Od</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Předmět</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Datum</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>Dopisy se pečetí týdenním poštovním klíčem příjemce pomocí secp256k1 a ML-KEM-768 společně; váš klíč a podpis cestují uvnitř pečeti a každá cesta ke schránce vede přes tři relé. Staré poštovní klíče se mažou, takže dopis vyzvednutý dnes nelze později otevřít klíči tohoto počítače.</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Komu</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>Zatím není zapsáno žádné relé, takže nemáte schránky a nikdo vám nemůže psát.</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>Vaši poštu uchovává %1 relé; až bude rejstřík obsahovat víc, bude jich %2.</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>%1 relé vybraných podle vašeho klíče uchovává vaši poštu, dokud si ji nevyzvednete.</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>Poštovní klíč č. %1, obnovovaný každý týden.</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>Naposledy vyzvednuto %1.</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>Zatím nevyzvednuto.</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>1 nový dopis</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>Nových dopisů: %1</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>, z %1 z %2 schránek.</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(bez předmětu)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>Vloženo do %1 schránek příjemce</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>Od: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>Komu: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>Odesláno %1, vloženo do %2 schránek příjemce</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>Napsáno %1, vyzvednuto %2</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>Vyberte dopis, který chcete číst.</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>Vyzvedávání…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>Připojování k vašim schránkám, ke každé přes tři relé…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>Smazat dopis</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>Smazat tento dopis z tohoto počítače? Jeho kopie ve schránkách byly odstraněny už při vyzvednutí, takže ho nelze znovu získat.</translation>
     </message>
 </context>
 <context>
@@ -1023,7 +1926,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Formulář</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>Nedávné transakce ještě nemusí být vidět, takže stav tvého účtu nemusí být platný. Jakmile se však tvá peněženka dosynchronizuje s bitcoinovou sítí (viz informace níže), tak už bude stav správně.</translation>
     </message>
     <message>
@@ -1073,6 +1976,409 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>Neznámé. Synchronizace hlaviček (%1, %2)...</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>Jména</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>Jméno odkazuje lidi na váš klíč rejstříku, takže vám mohou psát — a platit — podle jména místo podle klíče. Získání volného jména a jeho obnovení stojí jen síťový poplatek; jméno se obnovuje ručně. Jméno, které někdo drží, lze koupit, pokud ho dá do prodeje, za cenu, kterou požaduje. Jména pod vaším jsou zdarma, stejně jako přezdívky: vaše vlastní popisky pro lidi, uložené v tomto počítači.</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>Vaše jména</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>Zaplatit z</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Jméno</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Stav</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>Konec</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>Podjména</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>Získat jméno…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>Obnovit…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>Přidat podjméno…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>Prodat…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>Převést…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>Přijímat platby podle jména…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>Vyhledat</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>jméno, popisek.jméno nebo přezdívka</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>Kopírovat klíč</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>Zaplatit…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>Adresář</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>Přezdívka</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>Klíč</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>Přidat někoho…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Odebrat</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Klíč zkopírován</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>Pracuji…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>Stáhnout z prodeje</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>Nejdřív ho stáhněte z prodeje.</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>Nový platební klíč…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>Platby podle jména jsou zapnuté</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>Jména potřebují index jmen. Zapněte &quot;Indexovat jména&quot; v Nastavení a restartujte.</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>Jména v této síti ještě nezačala. Kdy začnou v hlavní síti a jak se rozdají první jména, se teprve rozhodne. Mezitím můžete jména vyhledávat a vést adresář.</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1 je %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>z vašeho adresáře</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>registrované jméno, drženo do bloku %1</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>ustálené</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>změněno před %1, ještě neustálené</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>přijímá platby podle jména</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>Na prodej: držitel žádá %1. Ke koupi použijte Získat jméno.</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>%1 zavázáno. Jméno se samo převezme za %2 bloků (asi %3) - do té doby nechte BPS Relay běžet a peněženku odemčenou.</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>Nákup %1: %2 zaplaceno držiteli. Bude vaše po potvrzení transakce.</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>%1 jde do prodeje za %2. Kdokoli ho může koupit od příštího bloku, aniž by tento uzel musel být online; cena se zaplatí do této peněženky.</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>%1 se stahuje z prodeje. Od teď ho nikdo nemůže koupit.</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>%1 obnoveno do bloku %2, jen za síťový poplatek.</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>%1 se převádí na %2. Bude jejich po potvrzení transakce.</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>%1 je nastaveno; začne platit po potvrzení transakce.</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>Platby podle jména se zapínají. Lidé budou moci platit na kterékoli vaše jméno asi %1 po potvrzení transakce; každá platba se ve vaší peněžence zobrazí jako &quot;Zaplaceno podle jména&quot;.</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>Zaplaceno %1 příjemci %2 na adresu použitou jen pro tuto platbu.</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>Zaplatit</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>za %1</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>skončilo před %1</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>vypršelo - obnovte do měsíce</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>obsazeno</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>prodává se - nákup se potvrzuje</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>na prodej za %1</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>na prodej za %1 - zatím nelze koupit</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>neregistrováno</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>registruje se</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Kliknutím zkopírujete</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>Získat jméno</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>1 až 32 písmen, číslic nebo pomlček</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 rok</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>2 roky</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>Na</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>Registrace má dva kroky: závazek, který jméno skryje, a asi o 20 minut později nárok, který BPS Relay odešle sám. Mezitím nikdo jméno nemůže vzít. Každý krok stojí jen síťový poplatek.</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>Nákup je jediná transakce: zaplatí držiteli a udělá jméno vaším, všechno najednou, nebo vůbec.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Registrovat</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>Jméno tvoří 1 až 32 obyčejných písmen a-z, číslic nebo vnitřních pomlček.</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>%1 na %2 stojí jen síťový poplatek. Ověřování, zda je volné…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>jeden rok</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>dva roky</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>Stáhnout %1 z prodeje</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>Stáhnout %1 z prodeje? Od té chvíle ho nikdo nemůže koupit a po potvrzení ho můžete převést nebo znovu dát do prodeje.</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>Prodat %1</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>Vaše cena za %1 v BPS. Pak ho kdokoli může hned koupit, i když je BPS Relay zavřený: zaplatí vám to ve stejné transakci, která jim jméno předá. Dokud je na prodej, nemůžete ho převést.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>&quot;%1&quot; není částka v BPS.</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>Dát %1 do prodeje za %2? Odešlou se dvě malé transakce: jedna odloží minci, kterou kupující utratí, druhá zveřejní prodej.</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>Obnovit %1</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>Prodloužit %1 od současného konce. Stojí jen síťový poplatek. Jméno lze obnovit nejvýše dva roky dopředu.</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>Převést %1</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>Dát %1 (klíč rejstříku, přezdívka nebo jméno):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>Dát %1 příjemci %2? Vrátit ho může jen nový držitel.</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>Podjméno pod %1</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>Část před .%1, například alice pro alice.%1:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>Na koho ukazuje %1.%2 (klíč rejstříku, přezdívka nebo jméno), nebo &quot;remove&quot;:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>Vyhledávání…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>Přidat někoho</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>Jak jim říkáte (vidíte jen vy):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>Jejich klíč rejstříku, nebo jméno, abyste si pamatovali, kdo ho teď drží:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>Platby podle jména jsou zapnuté. Přesunout je na nový klíč z této peněženky? Platby již odeslané na současný klíč stále dorazí. Plátci po změně počkají asi %1, než znovu zaplatí.</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>Nechte lidi platit vám podle jména: jakýmkoli jménem nebo podjménem, které ukazuje na klíč tohoto uzlu, přezdívkou, kterou pro vás mají, nebo samotným klíčem. Každá platba jde na vlastní adresu, kterou může utratit jen tato peněženka, a nikdo přihlížející nepozná, že jste dostali zaplaceno, ani že dvě platby šly stejné osobě. Stojí síťový poplatek. Lidé vám mohou platit asi %1 po potvrzení.</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>Platby podle jména</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>Zaplatit %1</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>%1 zatím nepřijímá platby podle jména. Požádejte je, aby je zapnuli na kartě Jména, nebo je požádejte o adresu.</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>%1 změnilo majitele před %2.</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>Klíč, na který dostávají platby, nastavili před %1.</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>v BPS</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Částka</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>Platba jde na adresu použitou jen pro ni, kterou může utratit jen %1; nikdo jiný nepozná, komu bylo zaplaceno. Platbu nelze vzít zpět. Síťový poplatek se připočítává.</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>Pokud to nebyli oni, platba je ztracena. Bezpečnější je počkat, až uplyne %1.</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>Přesto zaplatit</translation>
     </message>
 </context>
 <context>
@@ -1371,6 +2677,217 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>The supplied proxy address is invalid.</source>
         <translation>Zadaná adresa proxy je neplatná.</translation>
     </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>Zda zobrazit funkce ovládání studeného stakingu.</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>Povolit funkce ovládání studeného s&amp;takingu</translation>
+    </message>
+    <message>
+        <source>Connect to the Bitcoin network through a separate SOCKS5 proxy for Tor onion services.</source>
+        <translation>Připojit se k síti Bitcoin přes samostatnou proxy SOCKS5 pro onion služby Tor.</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS&amp;5 proxy to reach peers via Tor onion services:</source>
+        <translation>Používat samostatnou proxy SOCKS&amp;5 k dosažení protějšků přes onion služby Tor:</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>Překryvná síť</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>Vlastní šifrovaná vrstva BPS, která přenáší provoz přes jiné protějšky, takže druhá strana se nikdy nedozví, kde jste.</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>dotazování…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>Běží</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>Naslouchá na</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>Otevřené trasy</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>Služby, které se zde setkávají</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>Dostupná relé</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>Dnešní kolo</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>Váš vstup</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>Protějšky, přes které váš provoz vždy vstupuje. Ponechávají se, místo aby se střídaly: volba nového pokaždé by nakonec dala na řadu pozorovatele.</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>Kde se s vámi lidé mohou setkat</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>Vypočteno z rejstříku, nikoli vyhledáno. Kdokoli se vás snaží zastihnout, provede stejný výpočet a dostane stejnou odpověď, takže není koho se ptát a nikdo nemůže odpovědět jinak. Mění se každý den.</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>Slyšeno rádiem</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>Co vynáší provozování relé</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>Vydáno za den</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>Relé</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>Uživatelé</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>Uživatelů na relé</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>Podíl na uživatele</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>Relé platí protějškům, které zapisuje, ze svých vlastních odměn za bloky, takže podíl uživatele je jedna dělená počtem uživatelů jeho relé — proto převzetí podílu uživatelů sítě stojí podíl stake. Kolik z odměny relé sdílí, je jeho vlastní volba a nic to nevynucuje: relé, které nic neplatí, vytvoří zcela platný blok. K placení ho vede to, že relé bez uživatelů nikoho nechrání, ani samo sebe.</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>Zatím ho neposoudil nikdo, kdo ho nenapsal, a skrývá, kde jste, ne kdy mluvíte: někdo, kdo sleduje oba konce, stále může porovnat časy. Považujte ho za nedokončený.</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>Tento uzel nic nesdílí. Nastavte -relayshare na procento a přijímejte protějšky pomocí addrosteruser.</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>Tento uzel by sdílel %1 %, ale %2.</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>Tento uzel sdílí %1 % s protějšky (%2): příští blok, který vytvoří, vyplatí %3, každému %4.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>Most Reticulum se nehlásí. Spusťte ho z Nastavení, Rádio, nebo spusťte bps-rns-bridge.py sami.</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>Naslouchání. Zatím nebyl rádiem slyšet žádný uzel BPS; uzly se ohlašují každou půlhodinu.</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>Váš provoz vstupuje přes rádiového souseda, když je některý z nich zapsané relé.</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>Slyšeno, ale váš provoz vstupuje přes internet (Nastavení, Rádio).</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>1 skok</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>skoků: %1</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>skoky neznámé</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>slyšeno před %1</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>relé</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>ano</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>ne</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>Překryvná síť je vypnutá. Tento klient ji zapíná sám, takže ji něco znovu vypnulo, pomocí -overlay=0 na příkazové řádce nebo v konfiguračním souboru.</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>nic, dokud je překryvná síť vypnutá</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>překryvná síť vypnuta</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>zatím žádné</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>překryvná síť zapnuta, zatím žádná relé</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>překryvná síť zapnuta, 1 relé</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>překryvná síť zapnuta, relé: %1</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>zatím nevybráno</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>žádné — rejstřík nemá relé, ze kterých by se odvodily</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>překryvná síť neznámá</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>zatím žádná relé</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1446,7 +2963,35 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Current total balance in watch-only addresses</source>
         <translation>Aktuální stav účtu sledovaných adres</translation>
     </message>
-    </context>
+    <message>
+        <source>Stake</source>
+        <translation>Stake</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>Nezralé stakes:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>Nezralé delegace</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>Nezralé delegace:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Delegováno</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>Delegováno:</translation>
+    </message>
+    <message>
+        <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
+        <translation>Pro kartu Přehled je zapnutý režim soukromí. Hodnoty zobrazíte zrušením zaškrtnutí Nastavení-&gt;Maskovat hodnoty.</translation>
+    </message>
+</context>
 <context>
     <name>PSBTOperationsDialog</name>
     <message>
@@ -1469,7 +3014,107 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>(But this wallet does not have the right keys.)</source>
         <translation>Ale tenhle vstup nemá správné klíče</translation>
     </message>
-    </context>
+    <message>
+        <source>Sign Tx</source>
+        <translation>Podepsat transakci</translation>
+    </message>
+    <message>
+        <source>Broadcast Tx</source>
+        <translation>Odvysílat transakci</translation>
+    </message>
+    <message>
+        <source>Copy to Clipboard</source>
+        <translation>Kopírovat do schránky</translation>
+    </message>
+    <message>
+        <source>Save...</source>
+        <translation>Uložit...</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Zavřít</translation>
+    </message>
+    <message>
+        <source>Failed to load transaction: %1</source>
+        <translation>Načtení transakce se nezdařilo: %1</translation>
+    </message>
+    <message>
+        <source>Failed to sign transaction: %1</source>
+        <translation>Podepsání transakce se nezdařilo: %1</translation>
+    </message>
+    <message>
+        <source>Could not sign any more inputs.</source>
+        <translation>Nelze podepsat další vstupy.</translation>
+    </message>
+    <message>
+        <source>Signed %1 inputs, but more signatures are still required.</source>
+        <translation>Podepsáno %1 vstupů, ale stále jsou potřeba další podpisy.</translation>
+    </message>
+    <message>
+        <source>Signed transaction successfully. Transaction is ready to broadcast.</source>
+        <translation>Transakce byla úspěšně podepsána. Transakce je připravena k odvysílání.</translation>
+    </message>
+    <message>
+        <source>Unknown error processing transaction.</source>
+        <translation>Neznámá chyba při zpracování transakce.</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast successfully! Transaction ID: %1</source>
+        <translation>Transakce byla úspěšně odvysílána! ID transakce: %1</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast failed: %1</source>
+        <translation>Odvysílání transakce se nezdařilo: %1</translation>
+    </message>
+    <message>
+        <source>PSBT copied to clipboard.</source>
+        <translation>PSBT zkopírováno do schránky.</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation>Částečně podepsaná transakce (binární) (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT saved to disk.</source>
+        <translation>PSBT uloženo na disk.</translation>
+    </message>
+    <message>
+        <source> * Sends %1 to %2</source>
+        <translation> * Odesílá %1 na %2</translation>
+    </message>
+    <message>
+        <source>Unable to calculate transaction fee or total transaction amount.</source>
+        <translation>Nelze vypočítat poplatek za transakci ani celkovou částku transakce.</translation>
+    </message>
+    <message>
+        <source>Pays transaction fee: </source>
+        <translation>Platí poplatek za transakci: </translation>
+    </message>
+    <message>
+        <source>Transaction has %1 unsigned inputs.</source>
+        <translation>Transakce má %1 nepodepsaných vstupů.</translation>
+    </message>
+    <message>
+        <source>Transaction is missing some information about inputs.</source>
+        <translation>Transakci chybějí některé informace o vstupech.</translation>
+    </message>
+    <message>
+        <source>Transaction still needs signature(s).</source>
+        <translation>Transakce stále potřebuje podpis(y).</translation>
+    </message>
+    <message>
+        <source>(But this wallet cannot sign transactions.)</source>
+        <translation>(Tato peněženka ale nemůže podepisovat transakce.)</translation>
+    </message>
+    <message>
+        <source>Transaction is fully signed and ready for broadcast.</source>
+        <translation>Transakce je plně podepsaná a připravená k odvysílání.</translation>
+    </message>
+    <message>
+        <source>Transaction status is unknown.</source>
+        <translation>Stav transakce je neznámý.</translation>
+    </message>
+</context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1485,15 +3130,15 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Zpracování URI</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>'bitcoin://' není platné URI. Místo toho použij 'bitcoin:'.</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;bitcoin://&apos; není platné URI. Místo toho použij &apos;bitcoin:&apos;.</translation>
     </message>
     <message>
         <source>Cannot process payment request because BIP70 is not supported.</source>
         <translation>Nelze zpracovat žádost o platbu, protože podpora pro BIP70 není podporována.</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
         <translation>Vzhledem k rozšířeným bezpečnostním nedostatkům v BIP70 se důrazně doporučuje, aby byly ignorovány veškeré obchodní pokyny pro přepínání peněženek.</translation>
     </message>
     <message>
@@ -1541,6 +3186,161 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>Obnovit zápis</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>Zveřejnit zápis</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>Obnovení zapíše do řetězce nový záznam. Dokud není potvrzen, platí ten starý.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>Tímto se do řetězce zapíše krátký záznam, který říká, že existujete, a volitelně, kde vás najít.</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>Jak vás mají protějšky zastihnout?</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>Přes překryvnou síť — bez zveřejnění adresy</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>Váš zápis říká, kdo jste, ne kde běžíte. Protějšky vás místo toho zastihnou přes překryvnou síť a setkají se s vámi v bodech, které obě strany vypočítají z rejstříku. Právě to tento klient ve výchozím stavu zapíná.</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>Na adrese, kterou zveřejním</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>adresa, na které vás zastihnou jiné protějšky</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>Kdokoli ho uvidí a řetězec ho uchová navždy. Onion adresa zveřejní umístění, které k vám nikdo nevystopuje, a funguje za NAT; IP adresa nedělá ani jedno. Uzel, který zveřejní IP adresu, si ostatní mohou vybrat jako relé.</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>Kdo platí poplatek</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>Měsíc, pak je třeba obnovit</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>Rok, pak je třeba obnovit</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>Jak dlouho platí</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>Obnovit</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>Zveřejnit</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>Platí relé — mince nejsou potřeba</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>Překryvná síť je vypnutá, takže není žádné relé, které by šlo požádat. Zapněte ji v Nastavení, nebo zaplaťte z peněženky.</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>V rejstříku zatím není zapsáno žádné relé, takže není koho požádat. Zaplaťte z peněženky, nebo to zkuste znovu, až se nějaké relé zapíše.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Váš uzel zápis podepíše a pošle ho přes překryvnou síť relé, přes které vstupuje. Relé, které platí za zápisy, vloží ten váš do bloku, který samo vytvoří, takže se potvrdí, i když by ho většina uzlů nepřeposlala, a přidá vás k protějškům, se kterými sdílí odměny. Pokud později přestane platit, váš zápis do měsíce vyprší; vždy ho můžete obnovit sami z peněženky s prostředky.</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>Tento uzel neprovádí staking. Zápis je větší, než starší uzly přeposílají, takže dokud většina stakerů neaktualizuje, potvrdí se jen tehdy, když ho zahrne staker s touto verzí, což může chvíli trvat. Staking ho vloží do vašeho vlastního příštího bloku; relé, které platí, ho vloží do svého.</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>Tato peněženka je odemčená pouze pro staking. Platba si vyžádá její heslo a peněženka se poté znovu zamkne, což zastaví staking, dokud ji znovu neodemknete pro staking.</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>Platba si vyžádá heslo této peněženky.</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>Zadejte adresu, nebo zvolte, že žádnou nezveřejníte.</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>Žádáme vaše relé o zveřejnění… může to trvat až půl minuty.</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>Tato peněženka už není otevřená.</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>Peněženka je stále zamčená, takže nic nebylo zaplaceno.</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>Podepisování záznamu…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>Uzel vrátil záznam, kterému tento klient nerozuměl.</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>Platba za zveřejnění…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>Relé odmítlo: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>Relé neodpovídá. %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1548,7 +3348,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>Zadej bitcoinovou adresu (např. %1)</translation>
+        <translation type="vanished">Zadej bitcoinovou adresu (např. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1580,23 +3380,43 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n vteřinu</numerusform><numerusform>%n vteřiny</numerusform><numerusform>%n vteřin</numerusform><numerusform>%n vteřin</numerusform></translation>
+        <translation>
+            <numerusform>%n vteřinu</numerusform>
+            <numerusform>%n vteřiny</numerusform>
+            <numerusform>%n vteřin</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minutu</numerusform><numerusform>%n minuty</numerusform><numerusform>%n minut</numerusform><numerusform>%n minut</numerusform></translation>
+        <translation>
+            <numerusform>%n minutu</numerusform>
+            <numerusform>%n minuty</numerusform>
+            <numerusform>%n minut</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n hodinu</numerusform><numerusform>%n hodiny</numerusform><numerusform>%n hodin</numerusform><numerusform>%n hodin</numerusform></translation>
+        <translation>
+            <numerusform>%n hodinu</numerusform>
+            <numerusform>%n hodiny</numerusform>
+            <numerusform>%n hodin</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n den</numerusform><numerusform>%n dny</numerusform><numerusform>%n dnů</numerusform><numerusform>%n dnů</numerusform></translation>
+        <translation>
+            <numerusform>%n den</numerusform>
+            <numerusform>%n dny</numerusform>
+            <numerusform>%n dnů</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n týden</numerusform><numerusform>%n týdny</numerusform><numerusform>%n týdnů</numerusform><numerusform>%n týdnů</numerusform></translation>
+        <translation>
+            <numerusform>%n týden</numerusform>
+            <numerusform>%n týdny</numerusform>
+            <numerusform>%n týdnů</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1604,7 +3424,11 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n rok</numerusform><numerusform>%n roky</numerusform><numerusform>%n roků</numerusform><numerusform>%n roků</numerusform></translation>
+        <translation>
+            <numerusform>%n rok</numerusform>
+            <numerusform>%n roky</numerusform>
+            <numerusform>%n roků</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1623,7 +3447,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>%1 GB</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation>Chyba: Zadaný adresář pro data „%1“ neexistuje.</translation>
     </message>
     <message>
@@ -1639,12 +3463,60 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Zjišťování neshod: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1 ještě bezpečně neskončil…</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>neznámo</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>Kontakt</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>Příjem</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>Skryté</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Neznámé</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Delegováno</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>%1 drží někdo, kdo ho dal do prodeje. Žádá %2; síťový poplatek se připočítává.</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>Koupit</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>Ověřování, zda je volné…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>Je volné.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Registrovat</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>zatím nevytvořeno</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>Zadejte adresu BitcoinPoS (např. %1)</translation>
     </message>
 </context>
 <context>
@@ -1705,16 +3577,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Adresář s daty</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the data directory use the '%1' option.</source>
-        <translation>Pro specifikaci neklasické lokace pro data použij možnost '%1'</translation>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>Pro specifikaci neklasické lokace pro data použij možnost &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Blocksdir</source>
         <translation>Blocksdir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>Pro specifikaci neklasické lokace pro data použij možnost '%1'</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>Pro specifikaci neklasické lokace pro data použij možnost &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -1957,8 +3829,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Spouštění příkazu bez jakékoliv peněženky</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
-        <translation>Příkaz se vykonává s použitím peněženky "%1"</translation>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>Příkaz se vykonává s použitím peněženky &quot;%1&quot;</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -1983,6 +3855,53 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown</source>
         <translation>Neznámá</translation>
+    </message>
+    <message>
+        <source>Current block height</source>
+        <translation>Aktuální výška bloku</translation>
+    </message>
+    <message>
+        <source>Permissions</source>
+        <translation>Oprávnění</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>Mysleli jste:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>Nejste si jisti příkazem? Napište běžnými slovy, co chcete, například %1, a vyberte návrh. Návrhy se počítají na tomto počítači; nic z toho, co napíšete, se nikam neodesílá.</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>Rádio je vypnuté.</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>Rádio je zapnuté; spusťte most Reticulum sami (contrib/reticulum/bps-rns-bridge.py).</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>bps-rns-bridge.py není vedle BPS Relay, takže most nelze spustit.</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>Python se nepodařilo spustit jako &quot;%1&quot;. Nainstalujte Python, nebo nastavte příkaz v Nastavení, Rádio.</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Reticulum není nainstalován. Nainstalujte ho pomocí: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>Most Reticulum se zastavil (stav %1); viz radio/bridge.log.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>Most Reticulum se spouští.</translation>
     </message>
 </context>
 <context>
@@ -2036,12 +3955,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Vyčistit</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>Nativní segwit adresy (Bech32 nebo BIP-173) snižují Vaše budoucí transakční poplatky a nabízejí lepší ochranu před překlepy, avšak staré peněženky je nepodporují. Pokud je toto pole nezaškrtnuté, bude vytvořena adresa kompatibilní se staršími peněženkami.</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">Nativní segwit adresy (Bech32 nebo BIP-173) snižují Vaše budoucí transakční poplatky a nabízejí lepší ochranu před překlepy, avšak staré peněženky je nepodporují. Pokud je toto pole nezaškrtnuté, bude vytvořena adresa kompatibilní se staršími peněženkami.</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>Generovat nativní segwit adresu (Bech32)</translation>
+        <translation type="vanished">Generovat nativní segwit adresu (Bech32)</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2083,7 +4002,19 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Could not unlock wallet.</source>
         <translation>Nemohu odemknout peněženku.</translation>
     </message>
-    </context>
+    <message>
+        <source>(none)</source>
+        <translation>(žádné)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>Pro tuto peněženku není nastavena adresa pro staking, takže není na co delegovat. Nastavte ji na stránce Stake v Delegovat -&gt; Automatická delegace a tento typ adresy začne fungovat.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Nelze vytvořit novou adresu %1</translation>
+    </message>
+</context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
@@ -2122,6 +4053,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Payment information</source>
         <translation>Informace o platbě</translation>
     </message>
+    <message>
+        <source>Request payment to ...</source>
+        <translation>Požádat o platbu na ...</translation>
+    </message>
+    <message>
+        <source>Address:</source>
+        <translation>Adresa:</translation>
+    </message>
 </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -2152,6 +4091,99 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Requested</source>
         <translation>Požádáno</translation>
+    </message>
+</context>
+<context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>Protějšek</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Adresa</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>Zapsáno</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>Zápis končí</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>Zapsáno po dobu</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Kliknutím zkopírujete</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>Tento protějšek je zapsán, ale nezveřejňuje adresu. Stále ho lze
+zastihnout přes překryvnou síť, a proto je to povoleno.</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>zveřejněna jedna adresa</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>Zveřejněno adres: %1</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>Potvrzeno v bloku %1</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>Přestane se započítávat od bloku %1</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>Před tímto zápisem není žádná historie.</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>Zapsáno bez přerušení od bloku %1.</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>Příliš nedávné, aby se už započítávalo.</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>Neběží pod identitou.</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>Běží pod identitou %1, která si při změně klíčů ponechá stáří.</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>žádná zveřejněná adresa</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>právě teď</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>před %1</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>vypršelo</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>za %1</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>nové</translation>
     </message>
 </context>
 <context>
@@ -2225,12 +4257,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Upozornění: teď není možné poplatek odhadnout.</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>Specifikujte vlastní poplatek za kB (1000 bajtů) virtuální velikosti transakce.
 
-Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 satoshi za kB" a velikost transakce 500 bajtů (polovina z 1 kB) by stál jen 50 satoshi.</translation>
+Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě &quot;100 satoshi za kB&quot; a velikost transakce 500 bajtů (polovina z 1 kB) by stál jen 50 satoshi.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2289,7 +4321,7 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Povolit možnost dodatečně transakci navýšit poplatek (tzv. „replace-by-fee“)</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
         <translation>S dodatečným navýšením poplatku (BIP-125, tzv. „Replace-By-Fee“) můžete zvýšit poplatek i po odeslání. Bez dodatečného navýšení bude navrhnut vyšší transakční poplatek, tak aby kompenzoval zvýšené riziko prodlení transakce.</translation>
     </message>
     <message>
@@ -2349,12 +4381,12 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Vytvořit částečně podepsanou Bitcoin transakci (Partially Signed Bitcoin Transaction - PSBT) k použtí kupříkladu s offline %1 peněženkou nebo s jinou kompatibilní PSBT hardware peněženkou.</translation>
     </message>
     <message>
-        <source> from wallet '%1'</source>
-        <translation>z peněženky '%1'</translation>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation>z peněženky &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>%1 to '%2'</source>
-        <translation>%1 do '%2'</translation>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 do &apos;%2&apos;</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -2378,7 +4410,7 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
     </message>
     <message>
         <source>You can increase the fee later (signals Replace-By-Fee, BIP-125).</source>
-        <translation>Poplatek můžete navýšit později (vysílá se "Replace-By-Fee" - nahrazení poplatkem, BIP-125).</translation>
+        <translation>Poplatek můžete navýšit později (vysílá se &quot;Replace-By-Fee&quot; - nahrazení poplatkem, BIP-125).</translation>
     </message>
     <message>
         <source>Please, review your transaction.</source>
@@ -2390,14 +4422,14 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
     </message>
     <message>
         <source>Not signalling Replace-By-Fee, BIP-125.</source>
-        <translation>Nevysílá se "Replace-By-Fee" - nahrazení poplatkem, BIP-125.</translation>
+        <translation>Nevysílá se &quot;Replace-By-Fee&quot; - nahrazení poplatkem, BIP-125.</translation>
     </message>
     <message>
         <source>Total Amount</source>
         <translation>Celková částka</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
         <translation>Chcete-li zkontrolovat seznam příjemců, klikněte na „Zobrazit podrobnosti ...“</translation>
     </message>
     <message>
@@ -2450,7 +4482,11 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Potvrzování by podle odhadu mělo začít během %n bloku.</numerusform><numerusform>Potvrzování by podle odhadu mělo začít během %n bloků.</numerusform><numerusform>Potvrzování by podle odhadu mělo začít během %n bloků.</numerusform><numerusform>Potvrzování by podle odhadu mělo začít během %n bloků.</numerusform></translation>
+        <translation>
+            <numerusform>Potvrzování by podle odhadu mělo začít během %n bloku.</numerusform>
+            <numerusform>Potvrzování by podle odhadu mělo začít během %n bloků.</numerusform>
+            <numerusform>Potvrzování by podle odhadu mělo začít během %n bloků.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2471,6 +4507,58 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
     <message>
         <source>(no label)</source>
         <translation>(bez označení)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>Vložit nebo načíst seznam plateb místo jejich přidávání po jedné</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>&amp;Hromadně...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>Při výpočtu dostupného zůstatku zohlednit i delegace. Pokud není zaškrtnuto, dostupný zůstatek bude odrážet jen mince, které jsou momentálně v peněžence.</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>&amp;Zahrnout delegace</translation>
+    </message>
+    <message>
+        <source>Please, review your transaction proposal. This will produce a Partially Signed Bitcoin Transaction (PSBT) which you can save or copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>Zkontrolujte prosím návrh transakce. Vytvoří se částečně podepsaná Bitcoin transakce (PSBT), kterou můžete uložit nebo zkopírovat a pak podepsat např. offline peněženkou %1 nebo hardwarovou peněženkou kompatibilní s PSBT.</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>Studený staking není povolen</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>Studený staking je povolen od bloku %1</translation>
+    </message>
+    <message>
+        <source>Create Unsigned</source>
+        <translation>Vytvořit nepodepsanou</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation>Částečně podepsaná transakce (binární) (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT saved</source>
+        <translation>PSBT uloženo</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>Tato peněženka provádí staking s vlastními mincemi, takže jsou všechny delegované.</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>Zadaná adresa vlastníka v této peněžence není. VAROVÁNÍ: Po delegaci bude moci tyto mince utratit jen vlastník klíče k adrese vlastníka.</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>Zadaná adresa stakera v této peněžence je. Už můžete s těmito mincemi provádět staking, nemusíte je delegovat sami sobě.</translation>
     </message>
 </context>
 <context>
@@ -2555,6 +4643,352 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <source>Memo:</source>
         <translation>Poznámka:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>Adresa &amp;vlastníka:</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>Adresa vlastníka BitcoinPoS</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>Server</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Co tento uzel nabízí ostatním. Provozování relé a uchovávání pošty běží už dnes; hostování se připravuje a jako vše zde se hledá stejně jako protějšky — přes rejstřík. Jména mají vlastní stránku.</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>Hostování</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>Web nebo služba poskytovaná z tohoto uzlu, nalezená podle klíče nebo jména a dosažitelná přes překryvnou síť, takže hostitel nikdy nezveřejní, kde běží. Část pro setkávání existuje: služba se registruje v bodech setkání, které obě strany vypočítají z rejstříku. Poskytování stránek a aplikací přes ni zatím není hotové.</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>Relé</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>Přenášet provoz překryvné sítě jiných protějšků, platit měsíční zápisy protějšků, které tento uzel používají, a sdílet s nimi část každého vytvořeného bloku. Relé vkládá zápisy, za které platí, do bloků, které samo vytváří, a tak se potvrzují, zatímco většina uzlů stále odmítá záznamy přeposílat — proto relé musí provádět staking.</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>Zde zapsané protějšky</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>Příští blok, který vytvoří</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>Platit za zápis protějšků, kteří o to požádají přes překryvnou síť</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>Protějšek bez mincí může požádat tento uzel o zveřejnění svého měsíčního zápisu. Tento uzel zaplatí poplatek, vloží ho do bloku a přidá protějšek k těm, se kterými sdílí odměny. Ve výchozím stavu vypnuto, protože to utrácí mince tohoto uzlu.</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>Protějšky nad tento počet jsou odmítnuty. Protějšky již zde zapsané mohou stále obnovovat.</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>Nejvíce zapsaných protějšků</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>jediná otevřená peněženka</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>Která peněženka platí poplatky. Pokud je otevřeno několik a žádná zde není uvedena, požadavky se odmítnou místo placení naslepo. Staking může probíhat v kterékoli peněžence tohoto uzlu.</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>Platit poplatky z peněženky</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>Část každého bloku, který tento uzel vytvoří z vlastních mincí, rovnoměrně rozdělená mezi protějšky, které zapisuje. 0 nesdílí nic.</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>Podíl z každého vytvořeného bloku</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>Poštovní schránka</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>Uchovávat zapečetěnou poštu pro lidi, pro které rejstřík určí tento uzel jako schránku, dokud si ji nevyzvednou. Která relé uchovávají čí poštu, se vypočítá z rejstříku, takže to nikdo nepřiděluje. Odesílatelé a vlastníci se k tomuto uzlu dostanou přes tři relé, takže se nikdy nedozví, kde jsou; dopisy jsou zapečetěné, takže je nemůže číst ani zjistit, kdo je napsal. Dopisy se mažou po dvou týdnech a obsluhují se jen zapsaní lidé.</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>Uchováváno</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>Poštovní klíče uchovávané pro odesílatele</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>Uchovávat poštu pro lidi, které rejstřík přiřadí tomuto uzlu</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>Ve výchozím stavu zapnuto všude, kde běží překryvná síť: relé, které odmítne, nechá lidi, pro které bylo vybráno, s jednou schránkou méně.</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>Když je plno, nové dopisy se odmítají, dokud nebudou staré vyzvednuty nebo smazány. Žádná jednotlivá osoba nemůže použít víc než 8 MiB.</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>Místo na disku, které smí použít</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Uloženo. Tato nastavení se čtou při spuštění uzlu, takže pro uplatnění změny restartujte klienta.</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>žádná otevřená peněženka</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>ne — relé, které neprovádí staking, odmítá žádosti o zápis</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>ano, za %1</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>neplatí za zápisy</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>platí, ale neprovádí staking</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>běží</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>toto sestavení nemá peněženku</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>vyžaduje peněženku</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>vypnuto</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>vyžaduje překryvnou síť</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>nic — neuchovává poštu</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>žádné dopisy</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>1 písmeno</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>písmen: %1</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>1 člověk</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>lidí: %1</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>momentálně nic, místo pro %1 MiB</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%1 pro %2, %3 z %4 MiB</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>sdílí %1 %: celkem %2 %4, každému protějšku %3 %4</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>Nastavení</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>Co tento klient dělá a klient peněženky ne, a jazyk. Vše ostatní — proxy, porty, prořezávání — je v obou stejná otázka a nastavuje se na jednom místě.</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Objevovat</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>Vést index rejstříku</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>Bez toho může tento uzel zveřejňovat, ale nevidí, kdo další je zapsán.</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>Indexovat jména</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>Potřebné k vyhledávání jmen, posílání pošty na ně a registraci vlastního.</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>Zkoušet se připojit k protějškům nalezeným v rejstříku</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>Předává adresy z rejstříku správci adres spolu s obvyklými seedy a výměnou adres. Vypnutím se z rejstříku stane seznam, který tento uzel čte, ale nikdy podle něj nejedná.</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Překryvná síť</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>Spouštět překryvnou síť</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>Ve výchozím stavu zapnuto v tomto klientovi, vypnuto v uzlu a v klientovi peněženky. Jeho handshake zatím neposoudil nikdo, kdo ho nenapsal.</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>Překryvná síť používá UDP na vlastním portu. Síť peer-to-peer je oddělená a zůstává na TCP.</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>Naslouchat na portu</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>Rádio</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>Přenášet překryvnou síť i rádiem, přes Reticulum</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>LoRa přes RNode, paketové rádio, sériové linky: cokoli, co má Reticulum nastaveno. Vyžaduje překryvnou síť.</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>Vstupovat do překryvné sítě přes rádiové sousedy, aby pošta fungovala bez internetu</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>Když je uzel BPS slyšený rádiem zapsané relé, vaše pošta a žádosti o zápis jdou přes něj. Rádiové spojení je mnohem pomalejší než internet.</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>Spouštět most Reticulum s BPS Relay</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>Spouští bps-rns-bridge.py vedle uzlu. Nechte vypnuté, pokud most spouštíte sami.</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>Příkaz Python</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Reticulum není součástí BPS a má vlastní licenci. Nainstalujte ho pomocí %1 a rádio nastavte ve vlastní konfiguraci Reticulum (~/.reticulum/config). Radioamatérská pásma nepovolují šifrovaný provoz, takže používejte pásma bez licence, například pásma LoRa.</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>Zobrazení</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>Zobrazovat částky v</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>Jazyk počítače</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>Projeví se po příštím spuštění BPS Relay. Texty, které posílá samotný uzel, například chybové zprávy příkazů, zůstávají v angličtině.</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Jazyk</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>Síť, proxy a další základní nastavení…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>Uloženo. Jazyk se změní po příštím spuštění BPS Relay.</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Uloženo. Tato nastavení se čtou při spuštění uzlu, takže pro uplatnění změny restartujte klienta.</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>Uzel se stále spouští; základní nastavení zatím nejsou k dispozici.</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2634,7 +5068,7 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>&amp;Ověř zprávu</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
         <translation>K ověření podpisu zprávy zadej adresu příjemce, zprávu (ověř si, že správně kopíruješ zalomení řádků, mezery, tabulátory apod.) a podpis. Dávej pozor na to, abys nezkopíroval do podpisu víc, než co je v samotné podepsané zprávě, abys nebyl napálen man-in-the-middle útokem. Poznamenejme však, že takto lze pouze prokázat, že podepisující je schopný na dané adrese přijmout platbu, ale není možnéprokázat, že odeslal jakoukoli transakci!</translation>
     </message>
     <message>
@@ -2662,7 +5096,7 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Vymaž všechna pole formuláře pro ověření zrávy</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
         <translation>Kliknutím na „Podepiš zprávu“ vygeneruješ podpis</translation>
     </message>
     <message>
@@ -2719,6 +5153,209 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
     </message>
 </context>
 <context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>Formulář</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>Váš aktuální disponibilní zůstatek</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>Aktiva ve stakingu vlastněná touto peněženkou</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>Aktiva ve stakingu z delegací</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>Nezralé:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>Váš nezralý zůstatek</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>Aktiva ve stakingu</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>Stake:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>Výška bloku:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>Odměna za blok:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/blok</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>Váha sítě:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>Očekávaný roční výnos:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>Záznamy o stake</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>&amp;Delegovat</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>Typ delegace:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>Ruční delegace</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>Automatická delegace</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>Adresy pro staking</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>Odebrat vše</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Vložit adresu ze schránky</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>&amp;Přidat</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>&amp;Moje delegace</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>Delegovaná aktiva</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>Váš aktuální delegovaný zůstatek</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>Moje delegace</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>&amp;Přijaté delegace</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>&amp;Vytvořit novou adresu pro staking</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> s popiskem:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>Volitelný popisek, který se přiřadí k nové přijímací adrese (slouží vám k rozpoznání faktury). Připojí se také k žádosti o platbu.</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>Delegace ColdStake</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>Mince zaplacené na delegační adresy této peněženky tyto klíče vloží do stakingu hned, jak dorazí, a drobné z vašich vlastních útrat zůstávají delegované. Klíč pro staking může vytvářet jen coinstake, které platí zpět vám, takže peněženka, která ho drží, nepotřebuje heslo.</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>Uveďte víc než jednu, abyste rozložili mince do několika peněženek pro staking, takže výpadek jedné nezastaví veškerý staking.
+
+Každá nová delegace jde na adresu, kterou dosud uvedlo nejméně z nich, počítají se vydané delegační adresy a dosud neutracené delegované mince. Počítají se delegace, ne částky, takže adresa s jednou velkou delegací může být vybrána dřív než adresa s několika malými.</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>Mince již delegované na odebranou adresu se nepřesouvají a ta s nimi dál provádí staking. Jen nové delegace ji přestanou uvádět.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>Peněženku nelze odemknout.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Nelze vytvořit novou adresu %1</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>Studený staking je na tomto uzlu vypnutý (-coldstaking=0), takže se nic nedeleguje.</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>Adresa pro staking zde patří této peněžence, která je šifrovaná, takže staking provádí jen tehdy, když je peněženka odemčená. Pro staking bez hesla použijte adresu ze samostatné nešifrované peněženky pro staking.</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>Přestat delegovat na %1. Mince na ni již delegované se nepřesouvají a ta s nimi dál provádí staking.</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>Adresy pro staking nelze uložit. Delegace se váže k hashi klíče, takže každá musí být legacy adresa.</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>Tato adresa pro staking už je v seznamu.</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>Odebrat všechny adresy pro staking</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>Přestat delegovat na všech %1 adres pro staking?
+
+Již delegované mince s nimi zůstávají ve stakingu a nepřesouvají se. Nové vklady a drobné však půjdou na běžné adresy, které staking neprovádějí, a pro opětovné zapnutí budete tyto adresy znovu potřebovat.</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2729,7 +5366,11 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Otevřeno pro %n další blok</numerusform><numerusform>Otevřeno pro %n další bloky</numerusform><numerusform>Otevřeno pro %n dalších bloků</numerusform><numerusform>Otevřeno pro %n dalších bloků</numerusform></translation>
+        <translation>
+            <numerusform>Otevřeno pro %n další blok</numerusform>
+            <numerusform>Otevřeno pro %n další bloky</numerusform>
+            <numerusform>Otevřeno pro %n dalších bloků</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2809,7 +5450,11 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>dozraje po %n bloku</numerusform><numerusform>dozraje po %n blocích</numerusform><numerusform>dozraje po %n blocích</numerusform><numerusform>dozraje po %n blocích</numerusform></translation>
+        <translation>
+            <numerusform>dozraje po %n bloku</numerusform>
+            <numerusform>dozraje po %n blocích</numerusform>
+            <numerusform>dozraje po %n blocích</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -2868,7 +5513,7 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Obchodník</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
         <translation>Vygenerované mince musí čekat %1 bloků, než mohou být utraceny. Když jsi vygeneroval tenhle blok, tak byl rozposlán do sítě, aby byl přidán do blockchainu. Pokud se mu nepodaří dostat se do blockchainu, změní se na „neakceptovaný“ a nepůjde utratit. To se občas může stát, pokud jiný uzel vygeneruje blok zhruba ve stejném okamžiku jako ty.</translation>
     </message>
     <message>
@@ -2923,7 +5568,11 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Otevřeno pro %n další blok</numerusform><numerusform>Otevřeno pro %n další bloky</numerusform><numerusform>Otevřeno pro %n dalších bloků</numerusform><numerusform>Otevřeno pro %n dalších bloků</numerusform></translation>
+        <translation>
+            <numerusform>Otevřeno pro %n další blok</numerusform>
+            <numerusform>Otevřeno pro %n další bloky</numerusform>
+            <numerusform>Otevřeno pro %n dalších bloků</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3012,6 +5661,30 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>Částka odečtená z nebo přičtená k účtu.</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>Studený stake</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>Staking jménem</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>Delegace stake</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>Delegace</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>Delegaci stake utratil</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>Delegovaná částka.</translation>
     </message>
 </context>
 <context>
@@ -3172,6 +5845,22 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <source>to</source>
         <translation>až</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>Studené stakes</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>Horké stakes</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>Neutracené delegované</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>Delegace</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3198,12 +5887,24 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <source>Close all wallets</source>
         <translation>Zavřít všechny peněženky</translation>
     </message>
-    </context>
+    <message>
+        <source>Are you sure you wish to close all wallets?</source>
+        <translation>Opravdu chcete zavřít všechny peněženky?</translation>
+    </message>
+</context>
 <context>
     <name>WalletFrame</name>
     <message>
         <source>Create a new wallet</source>
         <translation>Vytvoř novou peněženku</translation>
+    </message>
+    <message>
+        <source>No wallet has been loaded.
+Go to File &gt; Open Wallet to load a wallet.
+- OR -</source>
+        <translation>Není načtena žádná peněženka.
+Peněženku načtete v nabídce Soubor &gt; Otevřít peněženku.
+- NEBO -</translation>
     </message>
 </context>
 <context>
@@ -3245,7 +5946,7 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Potvrď navýšení poplatku</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
+        <source>Can&apos;t draft transaction.</source>
         <translation>Nelze navrhnout transakci.</translation>
     </message>
     <message>
@@ -3253,7 +5954,7 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>PSBT zkopírováno</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>Nemůžu podepsat transakci.</translation>
     </message>
     <message>
@@ -3263,6 +5964,21 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
     <message>
         <source>default wallet</source>
         <translation>výchozí peněženka</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ tento uzel</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● živě</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>Klient peněženky, který běží v tomto procesu s tímto uzlem. Je to stejný program jako bitcoin-pos-qt, ne jeho kopie.</translation>
     </message>
 </context>
 <context>
@@ -3307,6 +6023,26 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <source>Cancel</source>
         <translation>Zrušit</translation>
     </message>
+    <message>
+        <source>Unable to decode PSBT from clipboard (invalid base64)</source>
+        <translation>PSBT ze schránky nelze dekódovat (neplatné base64)</translation>
+    </message>
+    <message>
+        <source>Load Transaction Data</source>
+        <translation>Načíst data transakce</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (*.psbt)</source>
+        <translation>Částečně podepsaná transakce (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT file must be smaller than 100 MiB</source>
+        <translation>Soubor PSBT musí být menší než 100 MiB</translation>
+    </message>
+    <message>
+        <source>Unable to decode PSBT</source>
+        <translation>PSBT nelze dekódovat</translation>
+    </message>
 </context>
 <context>
     <name>bitcoin-core</name>
@@ -3347,7 +6083,7 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Nastala chyba při čtení souboru %s! Všechny klíče se přečetly správně, ale data o transakcích nebo záznamy v adresáři mohou chybět či být nesprávné.</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation>Zkontroluj, že máš v počítači správně nastavený datum a čas! Pokud jsou nastaveny špatně, %s nebude fungovat správně.</translation>
     </message>
     <message>
@@ -3355,7 +6091,7 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Prosíme, zapoj se nebo přispěj, pokud ti %s přijde užitečný. Více informací o programu je na %s.</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
         <translation>Databáze bloků obsahuje blok, který vypadá jako z budoucnosti, což může být kvůli špatně nastavenému datu a času na tvém počítači. Nech databázi bloků přestavět pouze v případě, že si jsi jistý, že máš na počítači správný datum a čas</translation>
     </message>
     <message>
@@ -3387,8 +6123,8 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>-maxmempool musí být alespoň %d MB</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>Nemohu přeložit -%s adresu: '%s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>Nemohu přeložit -%s adresu: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3475,32 +6211,32 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Selhala úvodní zevrubná prověrka. %s se ukončuje.</translation>
     </message>
     <message>
-        <source>Invalid P2P permission: '%s'</source>
-        <translation>Neplatné oprávnenie P2P: '%s'</translation>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>Neplatné oprávnenie P2P: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>Neplatná částka pro -%s=&lt;částka&gt;: '%s'</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Neplatná částka pro -%s=&lt;částka&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>Neplatná částka pro -discardfee=&lt;částka&gt;: '%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Neplatná částka pro -discardfee=&lt;částka&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>Neplatná částka pro -fallbackfee=&lt;částka&gt;: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Neplatná částka pro -fallbackfee=&lt;částka&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>Zadaný adresář bloků "%s" neexistuje.</translation>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>Zadaný adresář bloků &quot;%s&quot; neexistuje.</translation>
     </message>
     <message>
-        <source>Unknown address type '%s'</source>
-        <translation>Neznámý typ adresy '%s'</translation>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>Neznámý typ adresy &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Unknown change type '%s'</source>
-        <translation>Neznámý typ změny '%s'</translation>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>Neznámý typ změny &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3575,8 +6311,8 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Chyba: Nelze naslouchat příchozí spojení (listen vrátil chybu %s)</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>Neplatná částka pro -maxtxfee=&lt;amount&gt;: '%s' (musí být alespoň jako poplatek minrelay %s, aby transakce nezůstávaly trčet)</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Neplatná částka pro -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (musí být alespoň jako poplatek minrelay %s, aby transakce nezůstávaly trčet)</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -3599,24 +6335,24 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Chyba: Málo místa na disku pro %s</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>Neplatná -onion adresa či hostitel: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>Neplatná -onion adresa či hostitel: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>Neplatná -proxy adresa či hostitel: '%s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>Neplatná -proxy adresa či hostitel: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>Neplatná částka pro -paytxfee=&lt;částka&gt;: '%s' (musí být alespoň %s)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>Neplatná částka pro -paytxfee=&lt;částka&gt;: &apos;%s&apos; (musí být alespoň %s)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>Ve -whitelist byla zadána neplatná podsíť: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>Ve -whitelist byla zadána neplatná podsíť: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>V rámci -whitebind je třeba specifikovat i port: '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>V rámci -whitebind je třeba specifikovat i port: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Prune mode is incompatible with -blockfilterindex.</source>
@@ -3635,16 +6371,16 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Nepodařilo se podepsat transakci</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>Uvedená -walletdir "%s" neexistuje</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>Uvedená -walletdir &quot;%s&quot; neexistuje</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>Uvedená -walletdir "%s" je relatívna cesta</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>Uvedená -walletdir &quot;%s&quot; je relatívna cesta</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>Uvedená -walletdir "%s" není složkou</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>Uvedená -walletdir &quot;%s&quot; není složkou</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3673,8 +6409,8 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Nedaří se mi připojit na %s na tomhle počítači (operace bind vrátila chybu %s)</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>Nebylo možné vytvořit soubor PID '%s': %s</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>Nebylo možné vytvořit soubor PID &apos;%s&apos;: %s</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -3737,8 +6473,8 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Transakce musí mít alespoň jednoho příjemce</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>V -onlynet byla uvedena neznámá síť: '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>V -onlynet byla uvedena neznámá síť: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -3753,8 +6489,8 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
         <translation>Upozornění: Byly zjištěné soukromé klíče v peněžence {%s} se zakázanými soukromými klíči.</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>Není možné zapisovat do adresáře ' %s'; zkontrolujte oprávnění.</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>Není možné zapisovat do adresáře &apos; %s&apos;; zkontrolujte oprávnění.</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -3775,6 +6511,94 @@ Poznámka: Jelikož je poplatek počítaný za bajt, poplatek o hodnotě "100 sa
     <message>
         <source>Done loading</source>
         <translation>Načítání dokončeno</translation>
+    </message>
+    <message>
+        <source>%s corrupt. Try using the wallet tool bitcoin-wallet to salvage or restoring a backup.</source>
+        <translation>%s je poškozen. Zkuste ho zachránit nástrojem peněženky bitcoin-wallet, nebo obnovte zálohu.</translation>
+    </message>
+    <message>
+        <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use version 169900 or no version specified.</source>
+        <translation>Nelze aktualizovat ne-HD rozdělenou peněženku bez aktualizace na podporu zásoby klíčů před rozdělením. Použijte verzi 169900 nebo neuvádějte verzi.</translation>
+    </message>
+    <message>
+        <source>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</source>
+        <translation>Bylo zadáno více než jedna adresa pro navázání onion. Pro automaticky vytvořenou onion službu Tor se použije %s.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Nepodařilo se připravit příkaz k získání verze schématu peněženky sqlite: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Nepodařilo se připravit příkaz k získání ID aplikace: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unknown sqlite wallet schema version %d. Only version %d is supported</source>
+        <translation>SQLiteDatabase: Neznámá verze schématu peněženky sqlite %d. Podporována je pouze verze %d</translation>
+    </message>
+    <message>
+        <source>This error could occur if this wallet was not shutdown cleanly and was last loaded using a build with a newer version of Berkeley DB. If so, please use the software that last loaded this wallet</source>
+        <translation>Tato chyba může nastat, pokud peněženka nebyla řádně ukončena a naposledy byla načtena sestavením s novější verzí Berkeley DB. V takovém případě použijte software, který tuto peněženku načetl naposledy</translation>
+    </message>
+    <message>
+        <source>This is the maximum transaction fee you pay (in addition to the normal fee) to prioritize partial spend avoidance over regular coin selection.</source>
+        <translation>Toto je maximální poplatek za transakci, který zaplatíte (navíc k běžnému poplatku), aby se vyhýbání částečné útratě upřednostnilo před běžným výběrem mincí.</translation>
+    </message>
+    <message>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
+        <translation>Transakce potřebuje adresu pro drobné, ale nemůžeme ji vytvořit. Nejprve zavolejte keypoolrefill.</translation>
+    </message>
+    <message>
+        <source>A fatal internal error occurred, see debug.log for details</source>
+        <translation>Došlo k závažné vnitřní chybě, podrobnosti najdete v debug.log</translation>
+    </message>
+    <message>
+        <source>Cannot set -peerblockfilters without -blockfilterindex.</source>
+        <translation>Nelze nastavit -peerblockfilters bez -blockfilterindex.</translation>
+    </message>
+    <message>
+        <source>Disk space is too low!</source>
+        <translation>Na disku je příliš málo místa!</translation>
+    </message>
+    <message>
+        <source>Error: Keypool ran out, please call keypoolrefill first</source>
+        <translation>Chyba: Zásoba klíčů došla, nejprve zavolejte keypoolrefill</translation>
+    </message>
+    <message>
+        <source>Fee rate (%s) is lower than the minimum fee rate setting (%s)</source>
+        <translation>Sazba poplatku (%s) je nižší než nastavená minimální sazba poplatku (%s)</translation>
+    </message>
+    <message>
+        <source>Ignoring duplicate -wallet %s.</source>
+        <translation>Ignoruje se duplicitní -wallet %s.</translation>
+    </message>
+    <message>
+        <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
+        <translation>Nebyl zadán proxy server. Použijte -proxy=&lt;ip&gt; nebo -proxy=&lt;ip:port&gt;.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Nepodařilo se provést příkaz k ověření databáze: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Nepodařilo se získat verzi schématu peněženky sqlite: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Nepodařilo se získat ID aplikace: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Nepodařilo se připravit příkaz k ověření databáze: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to read database verification error: %s</source>
+        <translation>SQLiteDatabase: Nepodařilo se přečíst chybu ověření databáze: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unexpected application id. Expected %u, got %u</source>
+        <translation>SQLiteDatabase: Neočekávané ID aplikace. Očekáváno %u, obdrženo %u</translation>
     </message>
 </context>
 </TS>

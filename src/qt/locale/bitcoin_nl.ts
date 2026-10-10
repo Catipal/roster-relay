@@ -1,4 +1,6 @@
-<TS language="nl" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="nl">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -70,10 +72,10 @@
         <translation>Dit zijn uw Bitcoinadressen om betalingen mee te verzenden. Controleer altijd het bedrag en het ontvangstadres voordat u uw bitcoins verzendt.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.
-Signing is only possible with addresses of the type 'legacy'.</source>
-        <translation>Dit zijn uw Bitcoin adressen voor het ontvangen van betalingen. Gebruik de 'Nieuw ontvangst adres maken' knop in de ontvangst tab om een nieuwe adres te maken.
-Ondertekenen is alleen mogelijk met adressen van het type 'legacy'.</translation>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
+        <translation>Dit zijn uw Bitcoin adressen voor het ontvangen van betalingen. Gebruik de &apos;Nieuw ontvangst adres maken&apos; knop in de ontvangst tab om een nieuwe adres te maken.
+Ondertekenen is alleen mogelijk met adressen van het type &apos;legacy&apos;.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -241,6 +243,14 @@ Ondertekenen is alleen mogelijk met adressen van het type 'legacy'.</translation
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Waarschuwing: De Caps-Lock-toets staat aan!</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>Dient om het simpelweg versturen van geld uit te schakelen als het besturingssysteemaccount is gecompromitteerd. Biedt geen echte beveiliging.</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>Alleen voor staking.</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -251,6 +261,109 @@ Ondertekenen is alleen mogelijk met adressen van het type 'legacy'.</translation
     <message>
         <source>Banned Until</source>
         <translation>Geband tot</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>Bulkbetaling</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>Eén betaling per regel, als &quot;adres, bedrag&quot;. Een komma, puntkomma of tab scheidt de velden, en een derde veld wordt het label. Regels die met # beginnen worden genegeerd.</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>&amp;Plakken</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>Uit &amp;bestand laden...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>&amp;Wissen</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>Regel</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Adres</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Bedrag</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>Betalingslijst laden</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>Tekst- en CSV-bestanden (*.txt *.csv);;Alle bestanden (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>Kon %1 niet lezen.</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>&quot;adres, bedrag&quot; verwacht</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>geen adres</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>geen geldig adres</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>geen bedrag</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>kon het bedrag &quot;%1&quot; niet lezen</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>het bedrag moet groter dan nul zijn</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>ok</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>Plak één betaling per regel, als &quot;adres, bedrag&quot;. Een derde veld wordt als label gebruikt. Regels die met # beginnen worden genegeerd.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>%1 van %2 regels zijn niet bruikbaar. Herstel of verwijder ze om door te gaan.</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>%1 ontvangers is meer dan één transactie kan bevatten (de limiet is hier %2). Splits de lijst.</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>%1 ontvangers, %2 in totaal, vóór de vergoeding.</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>Aan het verzendformulier toevoegen</translation>
     </message>
 </context>
 <context>
@@ -425,7 +538,7 @@ Ondertekenen is alleen mogelijk met adressen van het type 'legacy'.</translation
     </message>
     <message>
         <source>Request payments (generates QR codes and bitcoin: URIs)</source>
-        <translation>Vraag betaling aan (genereert QR-codes en bitcoin: URI's)</translation>
+        <translation>Vraag betaling aan (genereert QR-codes en bitcoin: URI&apos;s)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -441,7 +554,10 @@ Ondertekenen is alleen mogelijk met adressen van het type 'legacy'.</translation
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n actieve verbinding met Bitcoinnetwerk</numerusform><numerusform>%n actieve verbindingen met Bitcoinnetwerk</numerusform></translation>
+        <translation>
+            <numerusform>%n actieve verbinding met Bitcoinnetwerk</numerusform>
+            <numerusform>%n actieve verbindingen met Bitcoinnetwerk</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -453,7 +569,10 @@ Ondertekenen is alleen mogelijk met adressen van het type 'legacy'.</translation
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>%n blok aan transactiegeschiedenis verwerkt.</numerusform><numerusform>%n blokken aan transactiegeschiedenis verwerkt.</numerusform></translation>
+        <translation>
+            <numerusform>%n blok aan transactiegeschiedenis verwerkt.</numerusform>
+            <numerusform>%n blokken aan transactiegeschiedenis verwerkt.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -671,6 +790,331 @@ Ondertekenen is alleen mogelijk met adressen van het type 'legacy'.</translation
         <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
         <translation>Er is een fatale fout opgetreden. %1 kan niet langer veilig doorgaan en wordt afgesloten.</translation>
     </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>Staking van de portemonnee tonen</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>De portemonnee is &lt;b&gt;versleuteld&lt;/b&gt; en momenteel &lt;b&gt;alleen voor staking ontgrendeld&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>Portemonnee &amp;ontsleutelen...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>De wachtwoordzin verwijderen, zodat de privésleutels onversleuteld bewaard blijven</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Geen staking</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n seconde</numerusform>
+            <numerusform>%n seconden</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n minuut</numerusform>
+            <numerusform>%n minuten</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n uur</numerusform>
+            <numerusform>%n uur</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n dag</numerusform>
+            <numerusform>%n dagen</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>Staking actief.&lt;br&gt;Je gewicht is %1&lt;br&gt;Het netwerkgewicht is %2&lt;br&gt;Verwachte tijd tot een beloning: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>Geen staking omdat de portemonnee offline is</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>Geen staking omdat de portemonnee synchroniseert</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>Geen staking omdat je geen volgroeide munten hebt</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>Geen staking omdat de portemonnee vergrendeld is</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>Onbekende fout</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>minder dan een minuut</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>een minuut</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 minuten</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>een uur</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 uur</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 dagen</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>een maand</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 maanden</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>ongeveer een jaar</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>meer dan een jaar</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>onbekend</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Er is een fatale fout opgetreden. %1 kan niet meer veilig verder en wordt afgesloten.</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Oorspronkelijk bericht:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Ontdekken</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Overlay</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>Namen</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>Peers en console</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>Node</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Portemonnee</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>Post</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>Post (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>Server</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Instellingen</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>vermelding onbekend</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>overlay onbekend</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>verbinden…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>Bij het huidige netwerkgewicht levert staking ongeveer %1% per jaar op: %2 blokken per jaar, elk %3 %4, over %5 %4 in staking.</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>Dat is na het deel van %1% van elk blok dat deze node met zijn peers deelt.</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>%1% per jaar</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>afsluiten…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>%1 peers: %2 inkomend, %3 uitgaand.</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>Klik om de netwerkactiviteit te pauzeren.</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>1 peer</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>%1 peers</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>Netwerkactiviteit is gepauzeerd.</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>Klik om haar te hervatten.</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>netwerk gepauzeerd</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>%1 blokken van de geschiedenis verwerkt.</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>blok %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>Bijgewerkt.</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>Synchroniseren met het netwerk…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>Blokken op schijf verwerken…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>Blokken op schijf herindexeren…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>Verbinden met peers…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>%1 achter</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>Bijwerken…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>Het laatst ontvangen blok is %1 geleden gemaakt.</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>Portemonnee &lt;b&gt;%1&lt;/b&gt; is versleuteld en alleen voor staking ontgrendeld</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>Portemonnee &lt;b&gt;%1&lt;/b&gt; is versleuteld en ontgrendeld</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>Portemonnee &lt;b&gt;%1&lt;/b&gt; is versleuteld en vergrendeld</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>staking</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>staking, %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; doet aan staking.&lt;br&gt;Zijn gewicht is %2&lt;br&gt;Het netwerkgewicht is %3&lt;br&gt;Verwachte tijd tot een beloning: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>geen staking</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>geen staking (betaalt %1)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>Geen staking: te weinig peers</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>Geen staking: de keten wordt nog bijgewerkt</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>Geen staking: &lt;b&gt;%1&lt;/b&gt; heeft geen volgroeide munten</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>Geen staking: &lt;b&gt;%1&lt;/b&gt; is vergrendeld</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Geen staking</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -822,6 +1266,57 @@ Ondertekenen is alleen mogelijk met adressen van het type 'legacy'.</translation
         <source>(change)</source>
         <translation>(wijzig)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>gedelegeerd aan %1 voor cold staking</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>Een brief schrijven</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>een naam, een bijnaam uit je adresboek of een registersleutel</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Aan</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Onderwerp</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>Verzenden</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>Voor wie is het? Een naam, een bijnaam of een registersleutel.</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>De brief is %1 KB; een brief mag hoogstens %2 KB zijn.</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>De brief wordt verzegeld en in de postbussen van de ontvanger gelegd, telkens via drie relays. Dit duurt een paar seconden…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Verzonden</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>De brief is in %1 van de %2 postbussen van de ontvanger gelegd. Eén is genoeg om aan te komen.</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>Niet verzonden: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -889,6 +1384,189 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
         <source>Compiled without sqlite support (required for descriptor wallets)</source>
         <translation>Gecompileerd zonder ondersteuning van sqlite (noodzakelijk voor beschrijvende portemonees)</translation>
     </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Portemonnee</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>Geavanceerde opties</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>Ontdekken</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>Peers kondigen zich aan op de keten in plaats van bij een server, dus deze lijst is voor iedereen gelijk en niemand kan hem bewerken.</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>Register</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>Je vermelding</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>Vermelde peers</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>Jij bent</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Kopiëren</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>Je vermelding publiceren…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>Identiteit</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>Er een maken…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>Een identiteit bewaart de geschiedenis van deze node, hoe lang hij vermeld staat, als zijn sleutel ooit moet veranderen.</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>Een peer of een adres zoeken</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Sleutel gekopieerd</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>Adres gekopieerd</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>starten…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>Een identiteit maken</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>Vergoeding betalen uit</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Een identiteit is een tweede sleutel die achter de sleutel van deze node staat. Als de sleutel van deze node ooit verloren gaat of gestolen wordt, kan een nieuwe sleutel onder dezelfde identiteit worden geplaatst, en behoudt de node hoe lang hij al vermeld staat in plaats van opnieuw te beginnen.
+
+Je krijgt één keer een herstelsleutel te zien. Schrijf hem op: het is de enige manier om iemand die de identiteit steelt te stoppen haar te verplaatsen. Daarna publiceert een kleine transactie de identiteit, en je volgende vernieuwing van de vermelding koppelt de sleutel van deze node eraan.</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Je relay heeft je vermelding gepubliceerd in transactie %1. Telt zodra de transactie is bevestigd.</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Gepubliceerd in transactie %1. Telt zodra de transactie is bevestigd.</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>onbekend</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>registerindex uit</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>niet vermeld</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>eindigt over %1</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>Je vermelding vernieuwen…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>Vernieuwen in de laatste 3 dagen</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>Je vermelding eindigt over %1. Vernieuwen kan vanaf drie dagen daarvoor.</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>vermeld, eindigt over %1</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>geen</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>Deze node heeft geen aankondigingssleutel: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>uitgeschakeld</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>De registerindex draait niet, dus deze node kan niet zien wie vermeld staat. Herstart met -rosterindex om hem aan te zetten.</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>bijwerken (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>%1 dagen oud</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>Het nieuwste blok van deze node is %1 dagen oud, dus peers die sindsdien zijn ingetrokken kunnen hier nog staan. Het register wordt nog gebruikt om peers te bereiken, maar de overlay geeft geen voorkeur meer aan lang vermelde relays tot de keten is bijgewerkt.</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>bijgewerkt</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>De registerindex draait niet</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>Je herstelsleutel</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>Schrijf hem op en bewaar hem op een veilige plek, weg van deze computer. Hij wordt alleen nu getoond en nergens bewaard. Niemand kan er munten mee uitgeven; hij kan alleen een verplaatsing van je identiteit stoppen die jij niet hebt gedaan.</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>Ik heb hem opgeschreven</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Je identiteit is gepubliceerd in transactie %1. Je volgende vernieuwing van de vermelding koppelt de sleutel van deze node eraan.</translation>
+    </message>
 </context>
 <context>
     <name>EditAddressDialog</name>
@@ -925,16 +1603,16 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
         <translation>Bewerk verzendadres</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>Het opgegeven adres "%1" is een ongeldig Bitcoinadres.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
+        <translation>Het opgegeven adres &quot;%1&quot; is een ongeldig Bitcoinadres.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>Adres "%1" bestaat al als ontvang adres met label "%2" en kan dus niet toegevoegd worden als verzend adres.</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>Adres &quot;%1&quot; bestaat al als ontvang adres met label &quot;%2&quot; en kan dus niet toegevoegd worden als verzend adres.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>Het opgegeven adres "%1" bestaat al in uw adresboek onder label "%2".</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>Het opgegeven adres &quot;%1&quot; bestaat al in uw adresboek onder label &quot;%2&quot;.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -1023,7 +1701,7 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <translation type="vanished">Bitcoin</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -1046,8 +1724,8 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
         <translation>De portemonnee wordt ook in deze map opgeslagen.</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>Fout: De gespecificeerde map "%1" kan niet worden gecreëerd.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
+        <translation>Fout: De gespecificeerde map &quot;%1&quot; kan niet worden gecreëerd.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1055,15 +1733,183 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>%n GB aan vrije opslagruimte beschikbaar</numerusform><numerusform>%n GB aan vrije opslagruimte beschikbaar</numerusform></translation>
+        <translation>
+            <numerusform>%n GB aan vrije opslagruimte beschikbaar</numerusform>
+            <numerusform>%n GB aan vrije opslagruimte beschikbaar</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(van %n GB nodig)</numerusform><numerusform>(van %n GB nodig)</numerusform></translation>
+        <translation>
+            <numerusform>(van %n GB nodig)</numerusform>
+            <numerusform>(van %n GB nodig)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(%n GB nodig voor volledige keten)</numerusform><numerusform>(%n GB nodig voor volledige keten)</numerusform></translation>
+        <translation>
+            <numerusform>(%n GB nodig voor volledige keten)</numerusform>
+            <numerusform>(%n GB nodig voor volledige keten)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>Post</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>Je adres</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Kopiëren</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>Je registersleutel. Iedereen die vermeld staat, kan je daarop schrijven.</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>Post reist via de overlay. Zet de overlay aan bij Instellingen en herstart om post te verzenden en te ontvangen.</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>Schrijven</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>Beantwoorden</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>Nu ophalen</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>Nu nieuwe brieven uit je postbussen halen. Dit gebeurt ook om de paar minuten.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Verwijderen</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>Postvak IN</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Verzonden</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>Van</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Onderwerp</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Datum</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>Brieven worden verzegeld met de wekelijkse postsleutel van de ontvanger, met secp256k1 en ML-KEM-768 samen; je sleutel en handtekening reizen mee in het zegel, en elke tocht naar een postbus gaat via drie relays. Oude postsleutels worden verwijderd, dus een brief die vandaag is opgehaald, kan later niet met de sleutels van deze computer worden geopend.</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Aan</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>Er is nog geen relay vermeld, dus je hebt geen postbussen en niemand kan je schrijven.</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>%1 relays bewaren je post; het worden er %2 zodra het register er meer bevat.</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>%1 relays die op basis van je sleutel zijn gekozen, bewaren je post tot je die ophaalt.</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>Postsleutel nr. %1, wekelijks vernieuwd.</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>Laatst opgehaald %1.</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>Nog niet opgehaald.</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>1 nieuwe brief</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>%1 nieuwe brieven</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>, uit %1 van %2 postbussen.</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(geen onderwerp)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>In %1 van de postbussen van de ontvanger gelegd</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>Van: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>Aan: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>Verzonden %1, in %2 van de postbussen van de ontvanger gelegd</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>Geschreven %1, opgehaald %2</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>Selecteer een brief om hem te lezen.</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>Ophalen…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>Je postbussen bereiken, telkens via drie relays…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>Brief verwijderen</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>Deze brief van deze computer verwijderen? De kopieën in de postbussen zijn bij het ophalen al verwijderd, dus hij kan niet opnieuw worden opgehaald.</translation>
     </message>
 </context>
 <context>
@@ -1073,12 +1919,12 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
         <translation>Vorm</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>Recente transacties zijn mogelijk nog niet zichtbaar. De balans van de portemonnee is daarom mogelijk niet correct. Deze informatie is correct zodra de synchronisatie met het Bitcoin-netwerk is voltooid, zoals onderaan beschreven.</translation>
     </message>
     <message>
         <source>Attempting to spend bitcoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
-        <translation>Poging om bitcoins te besteden die door "nog niet weergegeven" transacties worden beïnvloed, worden niet door het netwerk geaccepteerd.</translation>
+        <translation>Poging om bitcoins te besteden die door &quot;nog niet weergegeven&quot; transacties worden beïnvloed, worden niet door het netwerk geaccepteerd.</translation>
     </message>
     <message>
         <source>Number of blocks left</source>
@@ -1123,6 +1969,409 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>Onbekend. Blockheaders synchroniseren (%1, %2%)...</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>Namen</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>Een naam wijst mensen naar je registersleutel, zodat ze je met een naam in plaats van een sleutel kunnen schrijven en betalen. Een vrije naam krijgen en vernieuwen kost alleen de netwerkvergoeding; een naam vernieuw je met de hand. Een naam die iemand heeft, kun je kopen als die hem te koop zet, voor wat die vraagt. Namen onder de jouwe zijn gratis, net als bijnamen: je eigen labels voor mensen, bewaard op deze computer.</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>Je namen</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>Betalen uit</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Naam</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>Eindigt</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>Subnamen</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>Een naam krijgen…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>Vernieuwen…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>Een subnaam toevoegen…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>Verkopen…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>Overdragen…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>Betalingen per naam aannemen…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>Opzoeken</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>een naam, label.naam of bijnaam</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>Sleutel kopiëren</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>Betalen…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>Adresboek</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>Bijnaam</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>Sleutel</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>Iemand toevoegen…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Verwijderen</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Sleutel gekopieerd</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>Bezig…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>Uit de verkoop halen</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>Haal hem eerst uit de verkoop.</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>Nieuwe betaalsleutel…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>Betalingen per naam staan aan</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>Namen hebben de namenindex nodig. Zet &quot;Namen indexeren&quot; aan bij Instellingen en herstart.</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>Namen zijn op dit netwerk nog niet begonnen. Wanneer ze op het hoofdnetwerk beginnen, en hoe de eerste namen worden uitgedeeld, moet nog worden besloten. Intussen kun je namen opzoeken en een adresboek bijhouden.</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1 is %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>uit je adresboek</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>geregistreerde naam, in bezit tot blok %1</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>bestendig</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>%1 geleden gewijzigd, nog niet bestendig</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>neemt betalingen per naam aan</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>Te koop: de eigenaar vraagt %1. Gebruik Een naam krijgen om hem te kopen.</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>%1 vastgelegd. De naam wordt over %2 blokken (ongeveer %3) vanzelf geclaimd - laat BPS Relay draaien en de portemonnee ontgrendeld tot dan.</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>%1 kopen: %2 betaald aan de eigenaar. Hij is van jou zodra de transactie is bevestigd.</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>%1 wordt te koop gezet voor %2. Iedereen kan hem vanaf het volgende blok kopen, zonder dat deze node online is; de prijs wordt aan deze portemonnee betaald.</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>%1 wordt uit de verkoop gehaald. Niemand kan hem nu nog kopen.</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>%1 vernieuwd tot blok %2, voor alleen de netwerkvergoeding.</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>%1 wordt overgedragen aan %2. Hij is van hen zodra de transactie is bevestigd.</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>%1 is ingesteld; hij wordt opgelost zodra de transactie is bevestigd.</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>Betalingen per naam worden aangezet. Mensen kunnen elke naam van je ongeveer %1 na bevestiging van de transactie betalen; elke betaling verschijnt in je portemonnee als &quot;Betaald per naam&quot;.</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>%1 betaald aan %2, op een adres dat alleen voor deze betaling is gebruikt.</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>Betalen</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>over %1</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>%1 geleden geëindigd</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>verlopen - vernieuw binnen de maand</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>in bezit</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>wordt verkocht - een aankoop wordt bevestigd</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>te koop voor %1</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>te koop voor %1 - nog niet koopbaar</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>niet geregistreerd</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>wordt geregistreerd</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Klik om te kopiëren</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>Een naam krijgen</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>1 tot 32 letters, cijfers of koppeltekens</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 jaar</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>2 jaar</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>Voor</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>Registreren gaat in twee stappen: een toezegging die de naam verbergt, en ongeveer 20 minuten later de claim, die BPS Relay zelf verstuurt. Niemand kan de naam ertussen afpakken. Elke stap kost alleen de netwerkvergoeding.</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>Kopen is één transactie: ze betaalt de eigenaar en maakt de naam van jou, alles tegelijk of helemaal niet.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Registreren</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>Een naam bestaat uit 1 tot 32 gewone letters a-z, cijfers of koppeltekens binnenin.</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>%1 kost voor %2 alleen de netwerkvergoeding. Controleren of hij vrij is…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>één jaar</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>twee jaar</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>%1 uit de verkoop halen</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>%1 uit de verkoop halen? Niemand kan hem vanaf dan kopen, en zodra dat is bevestigd, kun je hem overdragen of opnieuw te koop zetten.</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>%1 verkopen</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>Je prijs voor %1, in BPS. Iedereen kan hem dan meteen kopen, zelfs als BPS Relay gesloten is: ze betalen je dit in dezelfde transactie die hun de naam geeft. Zolang hij te koop staat, kun je hem niet overdragen.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>&quot;%1&quot; is geen bedrag in BPS.</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>%1 te koop zetten voor %2? Er worden twee kleine transacties verzonden: één zet de munt opzij die een koper uitgeeft, de andere publiceert de verkoop.</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>%1 vernieuwen</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>%1 verlengen vanaf het huidige einde. Het kost alleen de netwerkvergoeding. Een naam kan hoogstens twee jaar vooruit worden vernieuwd.</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>%1 overdragen</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>%1 geven aan (een registersleutel, een bijnaam of een naam):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>%1 aan %2 geven? Alleen de nieuwe eigenaar kan hem teruggeven.</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>Subnaam onder %1</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>Het deel vóór .%1, bijvoorbeeld alice voor alice.%1:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>Waarnaar %1.%2 wijst (een registersleutel, bijnaam of naam), of &quot;remove&quot;:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>Opzoeken…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>Iemand toevoegen</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>Hoe je hen noemt (alleen jij ziet dit):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>Hun registersleutel, of een naam om te onthouden wie hem nu heeft:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>Betalingen per naam staan aan. Ze naar een nieuwe sleutel van deze portemonnee verplaatsen? Betalingen die al naar de huidige sleutel zijn gedaan, komen nog steeds aan. Betalers wachten na de wijziging ongeveer %1 voordat ze weer betalen.</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>Laat mensen je per naam betalen: met elke naam of subnaam die naar de sleutel van deze node wijst, een bijnaam die ze voor je hebben, of de sleutel zelf. Elke betaling gaat naar een eigen adres dat alleen deze portemonnee kan uitgeven, en niemand die meekijkt kan zien dat jij betaald bent, of dat twee betalingen naar dezelfde persoon gingen. Het kost de netwerkvergoeding. Mensen kunnen je ongeveer %1 na de bevestiging betalen.</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>Betalingen per naam</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>%1 betalen</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>%1 neemt nog geen betalingen per naam aan. Vraag of ze die aanzetten op hun tabblad Namen, of vraag om een adres.</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>%1 is %2 geleden van eigenaar gewisseld.</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>Ze hebben de sleutel waarop ze betaald worden %1 geleden ingesteld.</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>in BPS</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Bedrag</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>De betaling gaat naar een adres dat alleen ervoor wordt gebruikt en dat alleen %1 kan uitgeven; niemand anders kan zien wie er betaald is. Een betaling kan niet worden teruggedraaid. De netwerkvergoeding komt erbovenop.</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>Als zij het niet waren, is de betaling verloren. Wachten tot het %1 oud is, is veiliger.</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>Toch betalen</translation>
     </message>
 </context>
 <context>
@@ -1203,7 +2452,7 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     </message>
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
-        <translation>URL's van derden (bijvoorbeeld blokexplorer) die in de transacties tab verschijnen als contextmenuelementen. %s in de URL is vervangen door transactiehash. Verscheidene URL's zijn gescheiden door een verticale streep |.</translation>
+        <translation>URL&apos;s van derden (bijvoorbeeld blokexplorer) die in de transacties tab verschijnen als contextmenuelementen. %s in de URL is vervangen door transactiehash. Verscheidene URL&apos;s zijn gescheiden door een verticale streep |.</translation>
     </message>
     <message>
         <source>Open the %1 configuration file from the working directory.</source>
@@ -1371,7 +2620,7 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     </message>
     <message>
         <source>&amp;Third party transaction URLs</source>
-        <translation>Transactie-URL's van &amp;derden</translation>
+        <translation>Transactie-URL&apos;s van &amp;derden</translation>
     </message>
     <message>
         <source>Options set in this dialog are overridden by the command line or in the configuration file:</source>
@@ -1428,6 +2677,209 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     <message>
         <source>The supplied proxy address is invalid.</source>
         <translation>Het opgegeven proxyadres is ongeldig.</translation>
+    </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>Of de cold staker-bedieningsfuncties worden getoond.</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>Cold s&amp;taker-bedieningsfuncties inschakelen</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>Overlay</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>Een versleutelde laag van BPS zelf, die verkeer via andere peers leidt zodat de andere kant nooit weet waar je bent.</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>vragen…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>Actief</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>Luistert op</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>Open routes</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>Diensten die hier samenkomen</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>Beschikbare relays</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>Ronde van vandaag</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>Jouw ingang</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>De peers waarlangs je verkeer altijd binnenkomt. Ze worden behouden in plaats van gewisseld: telkens een nieuwe kiezen zou een meekijker uiteindelijk een beurt geven.</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>Waar mensen je kunnen ontmoeten</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>Berekend uit het register, niet opgezocht. Wie je probeert te bereiken, maakt dezelfde som en krijgt hetzelfde antwoord, dus er is niemand om te vragen en niemand die anders zou kunnen antwoorden. Ze veranderen elke dag.</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>Via radio gehoord</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>Wat relayen oplevert</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>Uitgegeven per dag</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>Relays</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>Gebruikers</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>Gebruikers per relay</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>Deel per gebruiker</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>Een relay betaalt de peers die hij vermeldt uit zijn eigen blokbeloningen, dus het deel van een gebruiker is één gedeeld door het aantal gebruikers van zijn relay — daarom kost een deel van de gebruikers van het netwerk een deel van de stake. Hoeveel van een beloning een relay deelt, is zijn eigen keuze en niets dwingt het af: een relay die niets betaalt, maakt een volkomen geldig blok. Wat hem doet betalen, is dat een relay zonder gebruikers niemand beschermt, zichzelf inbegrepen.</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>Nog niet beoordeeld door iemand die het niet schreef, en het verbergt waar je bent, niet wanneer je spreekt: iemand die beide kanten bekijkt, kan de tijdstippen nog naast elkaar leggen. Beschouw het als onaf.</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>Deze node deelt niets. Zet -relayshare op een percentage en neem peers aan met addrosteruser.</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>Deze node zou %1% delen, maar %2.</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>Deze node deelt %1% met %2 peer(s): het volgende blok dat hij maakt betaalt %3, elk %4.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>De Reticulum-brug meldt zich niet. Start hem vanuit Instellingen, Radio, of draai bps-rns-bridge.py zelf.</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>Luistert. Nog geen BPS-node via radio gehoord; nodes kondigen zich elk halfuur aan.</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>Je verkeer komt binnen via een radiobuur als een van hen een vermelde relay is.</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>Gehoord, maar je verkeer komt via internet binnen (Instellingen, Radio).</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>1 hop</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>%1 hops</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>hops onbekend</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>%1 geleden gehoord</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>een relay</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>ja</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>nee</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>De overlay staat uit. Deze client zet hem zelf aan, dus iets heeft hem weer uitgezet, met -overlay=0 op de opdrachtregel of in het configuratiebestand.</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>niets zolang de overlay uit staat</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>overlay uit</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>nog geen</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>overlay aan, nog geen relays</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>overlay aan, 1 relay</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>overlay aan, %1 relays</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>nog geen gekozen</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>geen — het register heeft geen relays om ze uit te berekenen</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>overlay onbekend</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>nog geen relays</translation>
     </message>
 </context>
 <context>
@@ -1507,6 +2959,30 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     <message>
         <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
         <translation>Privacymodus geactiveerd voor het tabblad Overzicht. Om de waarden te ontmaskeren, schakelt u Instellingen -&gt; Maskeer waarden uit.</translation>
+    </message>
+    <message>
+        <source>Stake</source>
+        <translation>Stake</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>Onvolgroeide stakes:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>Onvolgroeide delegaties</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>Onvolgroeide delegaties:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Gedelegeerd</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>Gedelegeerd:</translation>
     </message>
 </context>
 <context>
@@ -1627,6 +3103,10 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
         <source>Transaction status is unknown.</source>
         <translation>Transactie status is onbekend</translation>
     </message>
+    <message>
+        <source>Signed %1 inputs, but more signatures are still required.</source>
+        <translation>%1 invoer(en) ondertekend, maar er zijn nog meer handtekeningen nodig.</translation>
+    </message>
 </context>
 <context>
     <name>PaymentServer</name>
@@ -1643,15 +3123,15 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
         <translation>URI-behandeling</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>'bitcoin://' is niet een geldige URI. Gebruik 'bitcoin:' in plaats daarvan.</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;bitcoin://&apos; is niet een geldige URI. Gebruik &apos;bitcoin:&apos; in plaats daarvan.</translation>
     </message>
     <message>
         <source>Cannot process payment request because BIP70 is not supported.</source>
         <translation>Kan het betalingsverzoek niet verwerken omdat BIP70 niet ondersteund is.</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
         <translation>Gezien de wijdverspreide beveiligingsproblemen in BIP70 is het sterk aanbevolen dat iedere instructie om van portemonnee te wisselen wordt genegeerd.</translation>
     </message>
     <message>
@@ -1699,6 +3179,161 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>Je vermelding vernieuwen</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>Je vermelding publiceren</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>Vernieuwen schrijft een nieuw record naar de keten. Tot dat is bevestigd, telt het oude nog.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>Dit schrijft een kort record naar de keten dat zegt dat je bestaat, en eventueel waar je te vinden bent.</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>Hoe moeten peers je bereiken?</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>Via de overlay — geen adres publiceren</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>Je vermelding zegt wie je bent en niet waar je draait. Peers bereiken je in plaats daarvan via de overlay, en ontmoeten je op punten die beide kanten uit het register berekenen. Dit zet deze client standaard aan.</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>Op een adres dat ik publiceer</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>adres dat andere peers kunnen bereiken</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>Iedereen kan hem zien, en de keten bewaart hem voorgoed. Een onion-adres publiceert een locatie die niemand naar jou kan herleiden en werkt achter NAT; een IP-adres doet geen van beide. Een node die een IP-adres publiceert, kan door anderen als relay worden gekozen.</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>Wie de vergoeding betaalt</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>Een maand, daarna moet hij worden vernieuwd</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>Een jaar, daarna moet hij worden vernieuwd</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>Hoe lang hij geldt</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>Vernieuwen</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>Publiceren</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>Een relay betaalt — geen munten nodig</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>De overlay staat uit, dus er is geen relay om het te vragen. Zet hem aan bij Instellingen, of betaal uit een portemonnee.</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>Er is nog geen relay in het register vermeld, dus er is niemand om het te vragen. Betaal uit een portemonnee, of probeer het opnieuw zodra een relay zich heeft vermeld.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Je node ondertekent de vermelding en stuurt hem via de overlay naar de relay waarlangs hij binnenkomt. Een relay die voor vermeldingen betaalt, zet de jouwe in een blok dat hij zelf maakt, zodat hij wordt bevestigd ook al zouden de meeste nodes hem niet doorgeven, en voegt je toe aan de peers met wie hij zijn beloningen deelt. Als hij later stopt met betalen, vervalt je vermelding binnen de maand; je kunt altijd zelf vernieuwen vanuit een portemonnee met saldo.</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>Deze node doet niet aan staking. Een vermelding is groter dan oudere nodes doorgeven, dus tot de meeste stakers zijn bijgewerkt, wordt hij alleen bevestigd als een staker met deze versie hem opneemt, wat een tijd kan duren. Met staking komt hij in je eigen volgende blok; een relay die betaalt, neemt hem op in een blok dat hij zelf maakt.</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>Deze portemonnee is alleen voor staking ontgrendeld. Betalen vraagt om de wachtwoordzin, en daarna wordt de portemonnee weer vergrendeld, wat staking stopt tot je hem weer voor staking ontgrendelt.</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>Betalen vraagt om de wachtwoordzin van deze portemonnee.</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>Voer een adres in, of kies ervoor er geen te publiceren.</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>Je relay vragen hem te publiceren… dit kan tot een halve minuut duren.</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>Die portemonnee is niet meer open.</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>De portemonnee is nog vergrendeld, dus er is niets betaald.</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>Het record ondertekenen…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>De node gaf een record terug dat deze client niet begreep.</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>Betalen om hem te publiceren…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>De relay weigerde: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>Geen antwoord van de relay. %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1706,7 +3341,7 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>Voer een Bitcoinadres in (bijv. %1)</translation>
+        <translation type="vanished">Voer een Bitcoinadres in (bijv. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1738,23 +3373,38 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n seconde</numerusform><numerusform>%n seconden</numerusform></translation>
+        <translation>
+            <numerusform>%n seconde</numerusform>
+            <numerusform>%n seconden</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minuut</numerusform><numerusform>%n minuten</numerusform></translation>
+        <translation>
+            <numerusform>%n minuut</numerusform>
+            <numerusform>%n minuten</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n uur</numerusform><numerusform>%n uren</numerusform></translation>
+        <translation>
+            <numerusform>%n uur</numerusform>
+            <numerusform>%n uren</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n dag</numerusform><numerusform>%n dagen</numerusform></translation>
+        <translation>
+            <numerusform>%n dag</numerusform>
+            <numerusform>%n dagen</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n week</numerusform><numerusform>%n weken</numerusform></translation>
+        <translation>
+            <numerusform>%n week</numerusform>
+            <numerusform>%n weken</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1762,7 +3412,10 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n jaar</numerusform><numerusform>%n jaren</numerusform></translation>
+        <translation>
+            <numerusform>%n jaar</numerusform>
+            <numerusform>%n jaren</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1781,8 +3434,8 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
         <translation>%1 Gb</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>Fout: Opgegeven gegevensmap "%1" bestaat niet.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>Fout: Opgegeven gegevensmap &quot;%1&quot; bestaat niet.</translation>
     </message>
     <message>
         <source>Error: Cannot parse configuration file: %1.</source>
@@ -1797,12 +3450,60 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
         <translation>Fout bij het initializeren van de gegevens: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1 sloot nog niet veilig af...</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>onbekend</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>Contact</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>Ontvangen</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>Verborgen</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Onbekend</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Gedelegeerd</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>%1 is van iemand die hem te koop heeft gezet. Die vraagt %2; de netwerkvergoeding komt erbovenop.</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>Kopen</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>Controleren of hij vrij is…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>Hij is vrij.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Registreren</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>nog niet gebouwd</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>Voer een BitcoinPoS-adres in (bijv. %1)</translation>
     </message>
 </context>
 <context>
@@ -1863,16 +3564,16 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
         <translation>Gegevensmap</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the data directory use the '%1' option.</source>
-        <translation>Om een niet-standaard locatie in te stellen voor de gegevensmap, gebruik de '%1' optie.</translation>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>Om een niet-standaard locatie in te stellen voor de gegevensmap, gebruik de &apos;%1&apos; optie.</translation>
     </message>
     <message>
         <source>Blocksdir</source>
         <translation>Blocksdir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>Om een niet-standaard locatie in te stellen voor de blocks directory, gebruik de '%1' optie.</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>Om een niet-standaard locatie in te stellen voor de blocks directory, gebruik de &apos;%1&apos; optie.</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -2104,7 +3805,7 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     </message>
     <message>
         <source>Type %1 for an overview of available commands.</source>
-        <translation>Typ %1  voor een overzicht van de beschikbare commando's.</translation>
+        <translation>Typ %1  voor een overzicht van de beschikbare commando&apos;s.</translation>
     </message>
     <message>
         <source>For more information on using this console type %1.</source>
@@ -2112,7 +3813,7 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     </message>
     <message>
         <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramifications of a command.</source>
-        <translation>WAARSCHUWING: Er zijn Scammers actief geweest, die gebruikers vragen om hier commando's te typen, waardoor de inhoud van hun portemonnee werd gestolen. Gebruik deze console niet zonder de gevolgen van een commando volledig te begrijpen.</translation>
+        <translation>WAARSCHUWING: Er zijn Scammers actief geweest, die gebruikers vragen om hier commando&apos;s te typen, waardoor de inhoud van hun portemonnee werd gestolen. Gebruik deze console niet zonder de gevolgen van een commando volledig te begrijpen.</translation>
     </message>
     <message>
         <source>Network activity disabled</source>
@@ -2123,8 +3824,8 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
         <translation>Uitvoeren van commando zonder gebruik van een portemonnee</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
-        <translation>Uitvoeren van commando met portemonnee "%1"</translation>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>Uitvoeren van commando met portemonnee &quot;%1&quot;</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -2149,6 +3850,45 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     <message>
         <source>Unknown</source>
         <translation>Onbekend</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>Bedoelde je:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>Weet je een opdracht niet zeker? Typ in gewone woorden wat je wilt, zoals %1, en kies een suggestie. Suggesties worden op deze computer bepaald; niets wat je typt wordt ergens heen gestuurd.</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>Radio staat uit.</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>Radio staat aan; start de Reticulum-brug zelf (contrib/reticulum/bps-rns-bridge.py).</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>bps-rns-bridge.py staat niet naast BPS Relay, dus de brug kan niet worden gestart.</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>Python kon niet worden gestart als &quot;%1&quot;. Installeer Python, of stel de opdracht in bij Instellingen, Radio.</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Reticulum is niet geïnstalleerd. Installeer het met: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>De Reticulum-brug is gestopt (status %1); zie radio/bridge.log.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>De Reticulum-brug start.</translation>
     </message>
 </context>
 <context>
@@ -2202,12 +3942,12 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
         <translation>Wissen</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>Native segwit-adressen (Bech32 of BIP-173) reduceren later je transactiekosten en bieden een betere bescherming tegen typefouten, maar oude portemonnees ondersteunen deze niet. Een adres dat is compatibel met oudere portemonnees zal worden gecreëerd indien dit niet is aangevinkt.</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">Native segwit-adressen (Bech32 of BIP-173) reduceren later je transactiekosten en bieden een betere bescherming tegen typefouten, maar oude portemonnees ondersteunen deze niet. Een adres dat is compatibel met oudere portemonnees zal worden gecreëerd indien dit niet is aangevinkt.</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>Genereer native segwit-adres (Bech32)</translation>
+        <translation type="vanished">Genereer native segwit-adres (Bech32)</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2252,6 +3992,14 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     <message>
         <source>Could not generate new %1 address</source>
         <translation>Kan geen nieuw %1 adres genereren</translation>
+    </message>
+    <message>
+        <source>(none)</source>
+        <translation>(geen)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>Voor deze portemonnee is geen staking-adres ingesteld, dus er is niets om aan te delegeren. Stel er een in op de pagina Stake, onder Delegeren -&gt; Automatische delegatie, en dan werkt dit adrestype.</translation>
     </message>
 </context>
 <context>
@@ -2333,6 +4081,99 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     </message>
 </context>
 <context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>Peer</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Adres</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>Vermeld</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>Vermelding eindigt</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>Vermeld sinds</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Klik om te kopiëren</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>Deze peer is vermeld maar publiceert geen adres. Hij is nog
+bereikbaar via de overlay, en daarom is dit toegestaan.</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>één adres gepubliceerd</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>%1 adressen gepubliceerd</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>Bevestigd in blok %1</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>Telt niet meer vanaf blok %1</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>Geen geschiedenis vóór deze vermelding.</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>Zonder onderbreking vermeld sinds blok %1.</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>Te recent om al mee te tellen.</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>Draait niet onder een identiteit.</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>Draait onder identiteit %1, die haar leeftijd behoudt als ze van sleutel verandert.</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>geen adres gepubliceerd</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>zojuist</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>%1 geleden</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>verlopen</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>over %1</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>nieuw</translation>
+    </message>
+</context>
+<context>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
@@ -2403,12 +4244,12 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
         <translation>Waarschuwing: Schatting van de vergoeding is momenteel niet mogelijk.</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>Specificeer handmatig een vergoeding per kB (1,000 bytes) voor de virtuele grootte van de transactie.
 
-Notitie: Omdat de vergoeding per byte wordt gerekend, zal een vergoeding van "100 satoshis per kB" voor een transactie ten grootte van 500 bytes (de helft van 1 kB) uiteindelijk een vergoeding van maar liefst 50 satoshis betekenen.</translation>
+Notitie: Omdat de vergoeding per byte wordt gerekend, zal een vergoeding van &quot;100 satoshis per kB&quot; voor een transactie ten grootte van 500 bytes (de helft van 1 kB) uiteindelijk een vergoeding van maar liefst 50 satoshis betekenen.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2467,7 +4308,7 @@ Notitie: Omdat de vergoeding per byte wordt gerekend, zal een vergoeding van "10
         <translation>Activeer Replace-By-Fee</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
         <translation>Met Replace-By-Fee (BIP-125) kun je de vergoeding voor een transactie verhogen na dat deze verstuurd is. Zonder dit kan een hogere vergoeding aangeraden worden om te compenseren voor de hogere kans op transactie vertragingen.</translation>
     </message>
     <message>
@@ -2527,11 +4368,11 @@ Notitie: Omdat de vergoeding per byte wordt gerekend, zal een vergoeding van "10
         <translation>Creëert een Partially Signed Bitcoin Transaction (PSBT) om te gebruiken met b.v. een offline %1 wallet, of een PSBT-compatibele hardware wallet.</translation>
     </message>
     <message>
-        <source> from wallet '%1'</source>
-        <translation>van portemonnee '%1'</translation>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation>van portemonnee &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>%1 to '%2'</source>
+        <source>%1 to &apos;%2&apos;</source>
         <translation>%1 naar %2</translation>
     </message>
     <message>
@@ -2592,8 +4433,8 @@ Vb. een offline %1 portemonee, of een PSBT-combatiebele hardware portemonee.</tr
         <translation>Totaalbedrag</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
-        <translation>Om de lijst van ontvangers te vernieuwe klik "Bekijk details..."</translation>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>Om de lijst van ontvangers te vernieuwe klik &quot;Bekijk details...&quot;</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2645,7 +4486,10 @@ Vb. een offline %1 portemonee, of een PSBT-combatiebele hardware portemonee.</tr
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Schatting is dat bevestiging begint over %n blok.</numerusform><numerusform>Schatting is dat bevestiging begint over %n blokken.</numerusform></translation>
+        <translation>
+            <numerusform>Schatting is dat bevestiging begint over %n blok.</numerusform>
+            <numerusform>Schatting is dat bevestiging begint over %n blokken.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2666,6 +4510,42 @@ Vb. een offline %1 portemonee, of een PSBT-combatiebele hardware portemonee.</tr
     <message>
         <source>(no label)</source>
         <translation>(geen label)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>Een lijst met betalingen plakken of laden in plaats van ze één voor één toe te voegen</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>&amp;Bulk...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>Houd bij het berekenen van het beschikbare saldo ook rekening met delegaties. Zonder vinkje toont het beschikbare saldo alleen de munten die nu in de portemonnee zitten.</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>Delegaties mee&amp;rekenen</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>Cold staking niet ingeschakeld</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>Cold staking is ingeschakeld vanaf blok %1</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>Deze portemonnee zet haar eigen munten in, dus ze zijn allemaal gedelegeerd.</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>Het opgegeven eigenaarsadres staat niet in deze portemonnee. WAARSCHUWING: Na de delegatie kan alleen de eigenaar van de sleutel van het eigenaarsadres deze munten uitgeven.</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>Het opgegeven staker-adres staat in deze portemonnee. Je kunt de munten al zelf inzetten; je hoeft ze niet aan jezelf te delegeren.</translation>
     </message>
 </context>
 <context>
@@ -2750,6 +4630,352 @@ Vb. een offline %1 portemonee, of een PSBT-combatiebele hardware portemonee.</tr
         <source>Memo:</source>
         <translation>Memo:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>&amp;Eigenaarsadres:</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>Het BitcoinPoS-eigenaarsadres</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>Server</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Wat deze node anderen biedt. Relayen en post bewaren werken nu; hosting komt eraan, en zoals alles hier wordt het op dezelfde manier gevonden als peers — via het register. Namen hebben een eigen pagina.</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>Hosting</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>Een site of dienst die vanaf deze node wordt aangeboden, gevonden via zijn sleutel of naam en bereikt via de overlay, zodat de host nooit publiceert waar hij draait. Het ontmoetingsdeel bestaat al: een dienst meldt zich aan op ontmoetingspunten die beide kanten uit het register berekenen. Pagina&apos;s en apps erdoor aanbieden is nog niet gebouwd.</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>Relay</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>Het overlayverkeer van andere peers doorgeven, de maandelijkse vermeldingen betalen van de peers die deze node gebruiken, en een deel van elk blok dat hij maakt met hen delen. Een relay zet de vermeldingen die hij betaalt in blokken die hij zelf maakt; zo worden ze bevestigd terwijl de meeste nodes nog weigeren records door te geven — dus een relay moet aan staking doen.</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>Hier vermelde peers</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>Volgende blok dat hij maakt</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>Betalen om peers te vermelden die het via de overlay vragen</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>Een peer zonder munten kan deze node vragen zijn maandelijkse vermelding te publiceren. Deze node betaalt de vergoeding, neemt hem op in een blok en voegt de peer toe aan wie hij beloningen mee deelt. Standaard uit, omdat het munten van deze node uitgeeft.</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>Peers boven dit aantal worden geweigerd. Peers die hier al vermeld staan, kunnen nog vernieuwen.</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>Hoogstens zoveel peers vermeld houden</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>de enige open portemonnee</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>Welke portemonnee de vergoedingen betaalt. Als er meerdere open zijn en hier geen is genoemd, worden verzoeken geweigerd in plaats van op de gok betaald. Staking kan in elke portemonnee op deze node.</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>Vergoedingen betalen uit portemonnee</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>Deel van elk blok dat deze node met zijn eigen munten maakt, gelijk verdeeld over de peers die hij vermeldt. 0 deelt niets.</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>Deel van elk gemaakt blok</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>Postbus</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>Verzegelde post bewaren voor de mensen voor wie het register deze node tot postbus maakt, tot ze die ophalen. Welke relays wiens post bewaren, wordt uit het register berekend, dus niemand wijst het toe. Afzenders en eigenaars bereiken deze node via drie relays, dus hij komt nooit te weten waar ze zijn; brieven zijn verzegeld, dus hij kan ze niet lezen en niet zien wie ze schreef. Brieven worden na twee weken verwijderd, en alleen vermelde mensen worden bediend.</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>Bewaren</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>Postsleutels bewaard voor afzenders</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>Post bewaren voor de mensen die het register aan deze node toewijst</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>Standaard aan overal waar de overlay draait: een relay die weigert, laat de mensen voor wie hij gekozen is met één postbus minder.</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>Als dit vol is, worden nieuwe brieven geweigerd tot oude zijn opgehaald of verwijderd. Niemand kan er meer dan 8 MiB van gebruiken.</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>Schijfruimte die hij mag gebruiken</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Opgeslagen. Deze worden gelezen als de node start, dus herstart de client om de wijziging te laten ingaan.</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>geen portemonnee open</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>nee — een relay die niet aan staking doet, weigert vermeldingsverzoeken</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>ja, over %1</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>betaalt niet voor vermeldingen</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>betaalt, maar doet niet aan staking</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>actief</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>deze build heeft geen portemonnee</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>heeft een portemonnee nodig</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>uit</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>heeft de overlay nodig</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>niets — bewaart geen post</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>geen brieven</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>1 letter</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>%1 letters</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>1 persoon</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>%1 personen</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>op dit moment niets, ruimte voor %1 MiB</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%1 voor %2, %3 van %4 MiB</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>deelt %1%: %2 %4 in totaal, %3 %4 per peer</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>Instellingen</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>Wat deze client doet en de portemonneeclient niet, en de taal. Al het andere — proxy, poorten, pruning — is in beide dezelfde vraag, en wordt op één plek gesteld.</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Ontdekken</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>Een index van het register bijhouden</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>Zonder dit kan deze node publiceren maar niet zien wie er nog meer vermeld staat.</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>Namen indexeren</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>Nodig om namen op te zoeken, ze post te sturen en je eigen naam te registreren.</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>Proberen verbinding te maken met peers uit het register</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>Geeft registeradressen aan het adresbeheer, naast de gebruikelijke seeds en gossip. Uitzetten maakt van het register een lijst die deze node leest maar nooit gebruikt.</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Overlay</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>De overlay draaien</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>Standaard aan in deze client, uit in de node en in de portemonneeclient. De handshake is nog door niemand beoordeeld die hem niet schreef.</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>De overlay gebruikt UDP op een eigen poort. Het peer-to-peernetwerk staat daar los van en blijft op TCP.</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>Luisteren op poort</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>Radio</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>De overlay ook via radio doorgeven, met Reticulum</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>LoRa via een RNode, packet radio, seriële verbindingen: wat Reticulum ook is ingesteld te gebruiken. Heeft de overlay nodig.</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>De overlay binnenkomen via radioburen, zodat post zonder internet werkt</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>Als een BPS-node die via radio wordt gehoord een vermelde relay is, gaan je post en vermeldingsverzoeken via hem. Een radioverbinding is veel trager dan internet.</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>De Reticulum-brug met BPS Relay starten</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>Draait bps-rns-bridge.py naast de node. Laat dit uit als je de brug zelf draait.</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>Python-opdracht</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Reticulum is geen onderdeel van BPS en heeft een eigen licentie. Installeer het met %1, en stel je radio in via de eigen configuratie van Reticulum (~/.reticulum/config). Op zendamateurbanden is versleuteld verkeer niet toegestaan, dus gebruik licentievrije banden zoals die van LoRa.</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>Weergave</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>Bedragen tonen in</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>De taal van de computer</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>Wordt van kracht als BPS Relay opnieuw start. Teksten die de node zelf stuurt, zoals foutmeldingen van opdrachten, blijven in het Engels.</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Taal</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>Netwerk, proxy en andere basisinstellingen…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>Opgeslagen. De taal verandert als BPS Relay opnieuw start.</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Opgeslagen. Deze worden gelezen als de node start, dus herstart de client om de wijziging te laten ingaan.</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>De node start nog; basisinstellingen zijn nog niet beschikbaar.</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2829,7 +5055,7 @@ Vb. een offline %1 portemonee, of een PSBT-combatiebele hardware portemonee.</tr
         <translation>&amp;Verifiëer bericht</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
         <translation>Voer het adres van de ontvanger in, bericht (zorg ervoor dat de regeleinden, spaties, tabs etc. precies kloppen) en onderteken onderaan om het bericht te verifiëren. Wees voorzicht om niet meer in de ondertekening te lezen dan in het getekende bericht zelf, om te voorkomen dat je wordt aangevallen met een man-in-the-middle attack. Houd er mee rekening dat dit alleen de ondertekende partij bewijst met het ontvangen adres, er kan niet bewezen worden dat er een transactie heeft plaatsgevonden!</translation>
     </message>
     <message>
@@ -2857,8 +5083,8 @@ Vb. een offline %1 portemonee, of een PSBT-combatiebele hardware portemonee.</tr
         <translation>Verwijder alles in de invulvelden</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>Klik op "Onderteken Bericht" om de handtekening te genereren</translation>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>Klik op &quot;Onderteken Bericht&quot; om de handtekening te genereren</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2914,6 +5140,209 @@ Vb. een offline %1 portemonee, of een PSBT-combatiebele hardware portemonee.</tr
     </message>
 </context>
 <context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>Formulier</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>Je huidige besteedbare saldo</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>Ingezette tegoeden van deze portemonnee</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>Ingezette tegoeden uit delegaties</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>Onvolgroeid:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>Je onvolgroeide saldo</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>Ingezette tegoeden</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>Stake:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>Blokhoogte:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>Blokbeloning:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/blok</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>Netwerkgewicht:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>Verwacht jaarlijks rendement:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>Stake-records</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>&amp;Delegeren</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>Delegatietype:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>Handmatige delegatie</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>Automatische delegatie</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>Staking-adressen</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>Alles verwijderen</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Adres van klembord plakken</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>&amp;Toevoegen</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>&amp;Mijn delegaties</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>Gedelegeerde tegoeden</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>Je huidige gedelegeerde saldo</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>Mijn delegaties</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>&amp;Ontvangen delegaties</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>Nieuw staking-adres &amp;maken</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> met label:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>Een optioneel label om aan het nieuwe ontvangstadres te koppelen (door jou gebruikt om een factuur te herkennen). Het wordt ook aan het betalingsverzoek toegevoegd.</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>ColdStake-delegaties</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>Munten die op de delegatieadressen van deze portemonnee worden betaald, worden door deze sleutels ingezet zodra ze aankomen, en wisselgeld van je eigen uitgaven blijft gedelegeerd. Een staking-sleutel kan alleen coinstakes maken die aan jou terugbetalen, dus de portemonnee die hem bewaart heeft geen wachtwoordzin nodig.</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>Vermeld er meer dan één om je munten over meerdere staking-portemonnees te verdelen, zodat niet alles stopt als er één offline is.
+
+Elke nieuwe delegatie gaat naar het adres dat tot nu toe het minst is genoemd, waarbij de uitgedeelde delegatieadressen en de nog niet uitgegeven gedelegeerde munten worden geteld. Het telt delegaties, geen bedragen, dus een adres met één grote delegatie kan nog worden gekozen vóór een adres met meerdere kleine.</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>Munten die al aan een verwijderd adres zijn gedelegeerd, worden niet verplaatst en dat adres blijft ze inzetten. Alleen nieuwe delegaties noemen het niet meer.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>Kon de portemonnee niet ontgrendelen.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Kon geen nieuw %1-adres maken</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>Cold staking is uitgeschakeld op deze node (-coldstaking=0), dus er wordt niets gedelegeerd.</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>Een staking-adres hier hoort bij deze portemonnee, die versleuteld is, dus hij doet alleen aan staking terwijl de portemonnee ontgrendeld is. Om zonder wachtwoordzin aan staking te doen, gebruik je een adres uit een aparte, onversleutelde staking-portemonnee.</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>Stoppen met delegeren aan %1. Munten die er al aan zijn gedelegeerd, worden niet verplaatst en het adres blijft ze inzetten.</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>Kon de staking-adressen niet opslaan. Een delegatie legt zich vast op een sleutelhash, dus elk adres moet een legacy-adres zijn.</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>Dat staking-adres staat al in de lijst.</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>Alle staking-adressen verwijderen</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>Stoppen met delegeren aan alle %1 staking-adressen?
+
+Munten die al zijn gedelegeerd, worden door hen ingezet en niet verplaatst. Maar nieuwe stortingen en wisselgeld gaan naar gewone adressen, die niet aan staking doen, en je hebt deze adressen weer nodig om dit opnieuw aan te zetten.</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2924,7 +5353,10 @@ Vb. een offline %1 portemonee, of een PSBT-combatiebele hardware portemonee.</tr
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Open voor nog %n blok</numerusform><numerusform>Open voor nog %n blokken</numerusform></translation>
+        <translation>
+            <numerusform>Open voor nog %n blok</numerusform>
+            <numerusform>Open voor nog %n blokken</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3004,7 +5436,10 @@ Vb. een offline %1 portemonee, of een PSBT-combatiebele hardware portemonee.</tr
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>komt beschikbaar na %n nieuwe blok</numerusform><numerusform>komt beschikbaar na %n nieuwe blokken</numerusform></translation>
+        <translation>
+            <numerusform>komt beschikbaar na %n nieuwe blok</numerusform>
+            <numerusform>komt beschikbaar na %n nieuwe blokken</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -3063,8 +5498,8 @@ Vb. een offline %1 portemonee, of een PSBT-combatiebele hardware portemonee.</tr
         <translation>Handelaar</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Gegenereerde munten moeten %1 blokken rijpen voordat ze kunnen worden besteed. Toen dit blok gegenereerd werd, werd het uitgezonden naar het netwerk om aan de blokketen toegevoegd te worden. Als het niet lukt om in de keten toegevoegd te worden, zal de status te veranderen naar "niet geaccepteerd" en zal het niet besteedbaar zijn. Dit kan soms gebeuren als een ander node een blok genereert binnen een paar seconden na die van u.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Gegenereerde munten moeten %1 blokken rijpen voordat ze kunnen worden besteed. Toen dit blok gegenereerd werd, werd het uitgezonden naar het netwerk om aan de blokketen toegevoegd te worden. Als het niet lukt om in de keten toegevoegd te worden, zal de status te veranderen naar &quot;niet geaccepteerd&quot; en zal het niet besteedbaar zijn. Dit kan soms gebeuren als een ander node een blok genereert binnen een paar seconden na die van u.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -3118,7 +5553,10 @@ Vb. een offline %1 portemonee, of een PSBT-combatiebele hardware portemonee.</tr
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Open voor nog %n blok</numerusform><numerusform>Open voor nog %n blokken</numerusform></translation>
+        <translation>
+            <numerusform>Open voor nog %n blok</numerusform>
+            <numerusform>Open voor nog %n blokken</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3207,6 +5645,30 @@ Vb. een offline %1 portemonee, of een PSBT-combatiebele hardware portemonee.</tr
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>Bedrag verwijderd van of toegevoegd aan saldo.</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>Cold stake</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>Inzetten namens</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>Stake-delegatie</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>Delegatie</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>Stake-delegatie uitgegeven door</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>Gedelegeerd bedrag.</translation>
     </message>
 </context>
 <context>
@@ -3367,6 +5829,22 @@ Vb. een offline %1 portemonee, of een PSBT-combatiebele hardware portemonee.</tr
         <source>to</source>
         <translation>naar</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>Cold stakes</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>Hot stakes</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>Niet uitgegeven gedelegeerd</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>Delegaties</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3452,7 +5930,7 @@ Ga naar Bestand &gt; Open portemonee om er één te openen.
         <translation>Bevestig vergoedingsaanpassing</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
+        <source>Can&apos;t draft transaction.</source>
         <translation>Kan geen transactievoorstel aanmaken.</translation>
     </message>
     <message>
@@ -3460,7 +5938,7 @@ Ga naar Bestand &gt; Open portemonee om er één te openen.
         <translation>PSBT is gekopieerd</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>Kan transactie niet ondertekenen.</translation>
     </message>
     <message>
@@ -3470,6 +5948,21 @@ Ga naar Bestand &gt; Open portemonee om er één te openen.
     <message>
         <source>default wallet</source>
         <translation>standaard portemonnee</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ deze node</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● live</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>De portemonneeclient, die in dit proces tegen deze node draait. Het is hetzelfde programma als bitcoin-pos-qt, geen kopie ervan.</translation>
     </message>
 </context>
 <context>
@@ -3571,14 +6064,14 @@ Ga naar Bestand &gt; Open portemonee om er één te openen.
     </message>
     <message>
         <source>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
-        <translation>Waarschuwing: Fout bij het lezen van %s! Alle sleutels zijn in goede orde uitgelezen, maar transactiedata of adresboeklemma's zouden kunnen ontbreken of fouten bevatten.</translation>
+        <translation>Waarschuwing: Fout bij het lezen van %s! Alle sleutels zijn in goede orde uitgelezen, maar transactiedata of adresboeklemma&apos;s zouden kunnen ontbreken of fouten bevatten.</translation>
     </message>
     <message>
         <source>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</source>
         <translation>Meer dan één onion bind adres is voorzien. %s wordt gebruik voor het automatisch gecreëerde Tor onion service.</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation>Waarschuwing: Controleer dat de datum en tijd van uw computer correct zijn ingesteld! Bij een onjuist ingestelde klok zal %s niet goed werken.</translation>
     </message>
     <message>
@@ -3598,7 +6091,7 @@ Ga naar Bestand &gt; Open portemonee om er één te openen.
         <translation>SQLite Databank: Onbekende sqlite portemonee schema versie %d. Enkel %d wordt ondersteund.</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
         <translation>De blokdatabase bevat een blok dat lijkt uit de toekomst te komen. Dit kan gebeuren omdat de datum en tijd van uw computer niet goed staat. Herbouw de blokdatabase pas nadat u de datum en tijd van uw computer correct heeft ingesteld.</translation>
     </message>
     <message>
@@ -3630,8 +6123,8 @@ Ga naar Bestand &gt; Open portemonee om er één te openen.
         <translation>-maxmempool moet minstens %d MB zijn</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>Kan -%s adres niet herleiden: '%s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>Kan -%s adres niet herleiden: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3722,20 +6215,20 @@ Ga naar Bestand &gt; Open portemonee om er één te openen.
         <translation>Initialisatie sanity check mislukt. %s is aan het afsluiten.</translation>
     </message>
     <message>
-        <source>Invalid P2P permission: '%s'</source>
-        <translation>Ongeldige P2P-rechten: '%s'</translation>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>Ongeldige P2P-rechten: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>Ongeldig bedrag voor -%s=&lt;bedrag&gt;: '%s'</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Ongeldig bedrag voor -%s=&lt;bedrag&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>Ongeldig bedrag for -discardfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Ongeldig bedrag for -discardfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>Ongeldig bedrag voor -fallbackfee=&lt;bedrag&gt;: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Ongeldig bedrag voor -fallbackfee=&lt;bedrag&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
@@ -3762,16 +6255,16 @@ Ga naar Bestand &gt; Open portemonee om er één te openen.
         <translation>SQLite Databank: Onverwachte applicatie id. Verwacht werd %u, maar kreeg %u</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>Opgegeven blocks map "%s" bestaat niet.</translation>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>Opgegeven blocks map &quot;%s&quot; bestaat niet.</translation>
     </message>
     <message>
-        <source>Unknown address type '%s'</source>
-        <translation>Onbekend adrestype '%s'</translation>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>Onbekend adrestype &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Unknown change type '%s'</source>
-        <translation>Onbekend wijzigingstype '%s'</translation>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>Onbekend wijzigingstype &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3851,11 +6344,11 @@ Ga naar Bestand &gt; Open portemonee om er één te openen.
     </message>
     <message>
         <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use version 169900 or no version specified.</source>
-        <translation>Niet mogelijk om een niet HD gesplitste portefeuille up te daten, zonder de pre split keypool te ondersteunen. Gelieve versie 1699000 of 'geen versie gespecifieerd' te gebruiken.</translation>
+        <translation>Niet mogelijk om een niet HD gesplitste portefeuille up te daten, zonder de pre split keypool te ondersteunen. Gelieve versie 1699000 of &apos;geen versie gespecifieerd&apos; te gebruiken.</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>ongeldig bedrag voor -maxtxfee=&lt;bedrag&gt;: '%s' (moet ten minste de minimale doorgeefvergoeding van %s zijn om vastgelopen transacties te voorkomen)</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>ongeldig bedrag voor -maxtxfee=&lt;bedrag&gt;: &apos;%s&apos; (moet ten minste de minimale doorgeefvergoeding van %s zijn om vastgelopen transacties te voorkomen)</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -3871,8 +6364,8 @@ Indien dit het geval is, gelieve de software te gebruiken waarmee deze portefeui
         <translation>Dit is de maximale transactie kost die je betaalt (bovenop de normale kosten) om een hogere prioriteit te geven aan het vermijden van gedeeltelijke uitgaven dan de reguliere munt selectie.</translation>
     </message>
     <message>
-        <source>Transaction needs a change address, but we can't generate it. Please call keypoolrefill first.</source>
-        <translation>De transactie heeft een 'change' adres nodig, maar we kunnen er geen genereren. Gelieve eest keypoolrefill op te roepen.</translation>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
+        <translation>De transactie heeft een &apos;change&apos; adres nodig, maar we kunnen er geen genereren. Gelieve eest keypoolrefill op te roepen.</translation>
     </message>
     <message>
         <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
@@ -3911,24 +6404,24 @@ Indien dit het geval is, gelieve de software te gebruiken waarmee deze portefeui
         <translation>Tarief (%s) is lager dan het minimum tarief (%s)</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>Ongeldig -onion adress of hostnaam: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>Ongeldig -onion adress of hostnaam: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>Ongeldig -proxy adress of hostnaam: '%s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>Ongeldig -proxy adress of hostnaam: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>Ongeldig bedrag voor -paytxfee=&lt;bedrag&gt;: '%s' (Minimum %s)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>Ongeldig bedrag voor -paytxfee=&lt;bedrag&gt;: &apos;%s&apos; (Minimum %s)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>Ongeldig netmask gespecificeerd in -whitelist: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>Ongeldig netmask gespecificeerd in -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>Verplicht een poort met -whitebind op te geven: '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>Verplicht een poort met -whitebind op te geven: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
@@ -3951,16 +6444,16 @@ Indien dit het geval is, gelieve de software te gebruiken waarmee deze portefeui
         <translation>Ondertekenen van transactie mislukt</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>Opgegeven -walletdir "%s" bestaat niet</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>Opgegeven -walletdir &quot;%s&quot; bestaat niet</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>Opgegeven -walletdir "%s" is een relatief pad</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>Opgegeven -walletdir &quot;%s&quot; is een relatief pad</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>Opgegeven -walletdir "%s" is geen map</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>Opgegeven -walletdir &quot;%s&quot; is geen map</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3989,8 +6482,8 @@ Indien dit het geval is, gelieve de software te gebruiken waarmee deze portefeui
         <translation>Niet in staat om aan %s te binden op deze computer (bind gaf error %s)</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>Kan de PID file niet creëren. '%s': %s</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>Kan de PID file niet creëren. &apos;%s&apos;: %s</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -4053,8 +6546,8 @@ Indien dit het geval is, gelieve de software te gebruiken waarmee deze portefeui
         <translation>Transactie moet ten minste één ontvanger hebben</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>Onbekend netwerk gespecificeerd in -onlynet: '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>Onbekend netwerk gespecificeerd in -onlynet: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -4069,8 +6562,8 @@ Indien dit het geval is, gelieve de software te gebruiken waarmee deze portefeui
         <translation>Waarschuwing: Geheime sleutels gedetecteerd in portemonnee {%s} met uitgeschakelde geheime sleutels</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>Mag niet schrijven naar gegevensmap '%s'; controleer bestandsrechten.</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>Mag niet schrijven naar gegevensmap &apos;%s&apos;; controleer bestandsrechten.</translation>
     </message>
     <message>
         <source>Loading block index...</source>

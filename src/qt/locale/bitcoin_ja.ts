@@ -1,4 +1,6 @@
-<TS language="ja" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ja">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -70,8 +72,8 @@
         <translation>これらは、あなたが知っている送信先の Bitcoin アドレスです。コインを送る前に必ず、金額と受取用アドレスを確認してください。</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.
-Signing is only possible with addresses of the type 'legacy'.</source>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <translation>これらは支払いを受け取るための、あなたの Bitcoin アドレスです。新しいアドレスを作成するには受取タブ内の「新しい受取用アドレスを作成」ボタンを使用します。</translation>
     </message>
     <message>
@@ -241,6 +243,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>警告: Caps Lock キーがオンになっています！</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>OS のアカウントが侵害された場合に、単純な送金を無効にするためのものです。実質的なセキュリティは提供しません。</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>ステーキング専用。</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -251,6 +261,109 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Banned Until</source>
         <translation>Ban 解除予定時刻</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>一括支払い</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>1 行に 1 件の支払いを「アドレス, 金額」の形式で記述します。フィールドはカンマ、セミコロン、またはタブで区切り、3 番目のフィールドはラベルになります。# で始まる行は無視されます。</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>貼り付け(&amp;P)</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>ファイルから読み込む(&amp;F)...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>クリア(&amp;C)</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>行</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>アドレス</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>金額</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>状態</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>支払いリストを読み込む</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>テキストおよび CSV ファイル (*.txt *.csv);;すべてのファイル (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>%1 を読み込めませんでした。</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>「アドレス, 金額」の形式が必要です</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>アドレスがありません</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>有効なアドレスではありません</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>金額がありません</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>金額「%1」を読み取れませんでした</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>金額は 0 より大きくなければなりません</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>1 行に 1 件の支払いを「アドレス, 金額」の形式で貼り付けてください。3 番目のフィールドはラベルとして使われます。# で始まる行は無視されます。</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>%2 行のうち %1 行は使用できません。続行するには修正するか削除してください。</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>受取人 %1 件は 1 つのトランザクションに含められる数を超えています（ここでの上限は %2）。リストを分割してください。</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>受取人 %1 件、合計 %2（手数料別）。</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>送金フォームに追加</translation>
     </message>
 </context>
 <context>
@@ -441,7 +554,9 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>Bitcoin ネットワークへのアクティブな接続は %n 個</numerusform></translation>
+        <translation>
+            <numerusform>Bitcoin ネットワークへのアクティブな接続は %n 個</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -453,7 +568,9 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>%n ブロックの取引履歴を処理済み。</numerusform></translation>
+        <translation>
+            <numerusform>%n ブロックの取引履歴を処理済み。</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -655,7 +772,344 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Original message:</source>
         <translation>オリジナルメッセージ：</translation>
     </message>
-    </context>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>致命的なエラーが発生しました。%1 は安全に続行できないため終了します。</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>ステーキング(&amp;S)</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>ウォレットのステークを表示</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction</source>
+        <translation>部分署名済みビットコイントランザクションを読み込む</translation>
+    </message>
+    <message>
+        <source>&amp;Mask values</source>
+        <translation>値を隠す(&amp;M)</translation>
+    </message>
+    <message>
+        <source>Mask the values in the Overview tab</source>
+        <translation>概要タブの値を隠す</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>ウォレットは&lt;b&gt;暗号化&lt;/b&gt;されており、現在&lt;b&gt;ステーキング専用でロック解除&lt;/b&gt;されています</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>ウォレットの暗号化を解除(&amp;D)...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>パスフレーズを削除し、秘密鍵を暗号化せずに保存する</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>ステーキングしていません</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n 秒</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n 分</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n 時間</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n 日</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>ステーキング中。&lt;br&gt;あなたの重み: %1&lt;br&gt;ネットワークの重み: %2&lt;br&gt;報酬までの予想時間: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>ウォレットがオフラインのため、ステーキングしていません</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>ウォレットが同期中のため、ステーキングしていません</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>成熟したコインがないため、ステーキングしていません</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>ウォレットがロックされているため、ステーキングしていません</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>不明なエラー</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>1 分未満</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>1 分</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 分</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>1 時間</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 時間</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 日</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>1 か月</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 か月</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>約 1 年</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>1 年以上</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>不明</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>致命的なエラーが発生しました。%1 は安全に続行できないため終了します。</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>元のメッセージ:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>発見</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>オーバーレイ</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>名前</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>ピアとコンソール</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>ノード</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>ウォレット</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>メール</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>メール (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>サーバー</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>設定</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>登録状態不明</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>オーバーレイ状態不明</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>接続しています…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>現在のネットワークの重みでは、ステーキングで年に約 %1% を得られます: 年間 %2 ブロック、各 %3 %4、ステーキング中の %5 %4 に対して。</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>これは、このノードが各ブロックからピアと分け合う %1% を差し引いた後の値です。</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>年 %1%</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>終了しています…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>ピア %1 件: 受信 %2、送信 %3。</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>クリックするとネットワーク活動を一時停止します。</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>ピア 1 件</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>ピア %1 件</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>ネットワーク活動は一時停止中です。</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>クリックすると再開します。</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>ネットワーク一時停止中</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>履歴のブロックを %1 個処理しました。</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>ブロック %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>最新です。</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>ネットワークと同期しています…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>ディスク上のブロックを処理しています…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>ディスク上のブロックを再インデックスしています…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>ピアに接続しています…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>%1 遅れ</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>追いついています…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>最後に受信したブロックは %1 前に作成されました。</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>ウォレット &lt;b&gt;%1&lt;/b&gt; は暗号化され、ステーキング専用でロック解除されています</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>ウォレット &lt;b&gt;%1&lt;/b&gt; は暗号化され、ロック解除されています</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>ウォレット &lt;b&gt;%1&lt;/b&gt; は暗号化され、ロックされています</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>ステーキング中</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>ステーキング中、%1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; はステーキング中です。&lt;br&gt;重み: %2&lt;br&gt;ネットワークの重み: %3&lt;br&gt;報酬までの予想時間: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>ステーキングなし</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>ステーキングなし（%1 が支払い）</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>ステーキングしていません: ピアが少なすぎます</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>ステーキングしていません: チェーンがまだ追いついていません</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>ステーキングしていません: &lt;b&gt;%1&lt;/b&gt; に成熟したコインがありません</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>ステーキングしていません: &lt;b&gt;%1&lt;/b&gt; はロックされています</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>ステーキングしていません</translation>
+    </message>
+</context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -806,6 +1260,57 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>(change)</source>
         <translation>（おつり）</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>コールドステーキングのため %1 に委任済み</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>手紙を書く</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>名前、アドレス帳のニックネーム、または名簿キー</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>宛先</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>件名</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>送信</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>誰宛てですか？名前、ニックネーム、または名簿キー。</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>この手紙は %1 KB です。手紙は最大 %2 KB までです。</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>手紙は封印され、受取人のメールボックスに置かれます。毎回 3 つのリレーを経由します。数秒かかります…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>送信済み</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>手紙は受取人の %2 個のメールボックスのうち %1 個に置かれました。届くには 1 つで十分です。</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>送信されませんでした: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -860,7 +1365,202 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Create</source>
         <translation>作成</translation>
     </message>
-    </context>
+    <message>
+        <source>Wallet</source>
+        <translation>ウォレット</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>詳細オプション</translation>
+    </message>
+    <message>
+        <source>Use descriptors for scriptPubKey management</source>
+        <translation>scriptPubKey の管理にディスクリプタを使用する</translation>
+    </message>
+    <message>
+        <source>Descriptor Wallet</source>
+        <translation>ディスクリプタウォレット</translation>
+    </message>
+    <message>
+        <source>Compiled without sqlite support (required for descriptor wallets)</source>
+        <translation>sqlite サポートなしでコンパイルされています（ディスクリプタウォレットに必要）</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>発見</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>ピアはサーバーではなくチェーン上で自らを告知するため、このリストは誰にとっても同じで、誰も編集できません。</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>名簿</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>あなたの登録</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>登録済みのピア</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>あなた</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>コピー</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>登録を公開しています…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>アイデンティティ</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>作成…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>このノードの鍵を変更する必要が生じたとき、アイデンティティがこのノードの履歴、つまり登録されている期間を保ちます。</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>ピアまたはアドレスを検索</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>キーをコピーしました</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>アドレスをコピーしました</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>起動しています…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>アイデンティティを作成</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>手数料の支払元</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>アイデンティティは、このノードの鍵の背後にある 2 つ目の鍵です。このノードの鍵がいつか失われたり盗まれたりした場合、同じアイデンティティの下に新しい鍵を置くことができ、ノードは最初からやり直す代わりに登録期間を保ちます。
+
+復旧キーが一度だけ表示されます。書き留めてください。アイデンティティを盗んだ人がそれを移すのを止める唯一の方法です。その後、小さなトランザクションがアイデンティティを公開し、次回の登録更新でこのノードの鍵がそれに結び付けられます。</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>あなたのリレーがトランザクション %1 であなたの登録を公開しました。トランザクションが承認されると有効になります。</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>トランザクション %1 で公開しました。トランザクションが承認されると有効になります。</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>不明</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>名簿インデックス無効</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>未登録</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>%1 後に終了</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>登録を更新しています…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>最後の 3 日間に更新</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>あなたの登録は %1 後に終了します。その 3 日前から更新できます。</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>登録済み、%1 後に終了</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>なし</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>このノードには告知キーがありません: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>無効</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>名簿インデックスが実行されていないため、このノードは誰が登録されているかを確認できません。有効にするには -rosterindex を付けて再起動してください。</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>追いついています (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>%1 日前</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>このノードの最新ブロックは %1 日前のものなので、その後に取り消されたピアがまだここに表示されている可能性があります。名簿はピアへの接続には引き続き使われますが、チェーンが追いつくまで、オーバーレイは長く登録されているリレーを優先しなくなります。</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>最新</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>名簿インデックスが実行されていません</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>あなたの復旧キー</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>書き留めて、このコンピューターから離れた安全な場所に保管してください。表示されるのは今だけで、どこにも保存されません。これでコインを使うことはできません。あなた自身が行っていないアイデンティティの移動を止めることだけができます。</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>書き留めました</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>あなたのアイデンティティはトランザクション %1 で公開されました。次回の登録更新でこのノードの鍵がそれに結び付けられます。</translation>
+    </message>
+</context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -896,16 +1596,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>送金先アドレスを編集</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>入力されたアドレス "%1" は無効な Bitcoin アドレスです。</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
+        <translation>入力されたアドレス &quot;%1&quot; は無効な Bitcoin アドレスです。</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>アドレス "%1" は既に受取用アドレスにラベル "%2" として存在するので、送金先アドレスとしては追加できません。</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>アドレス &quot;%1&quot; は既に受取用アドレスにラベル &quot;%2&quot; として存在するので、送金先アドレスとしては追加できません。</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>入力されたアドレス "%1" は既にラベル "%2" としてアドレス帳に存在します｡</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>入力されたアドレス &quot;%1&quot; は既にラベル &quot;%2&quot; としてアドレス帳に存在します｡</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -994,7 +1694,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <translation type="vanished">Bitcoin</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -1017,8 +1717,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>ウォレットもこのディレクトリに保存されます。</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>エラー: 指定のデータディレクトリ "%1" を作成できません。</translation>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
+        <translation>エラー: 指定のデータディレクトリ &quot;%1&quot; を作成できません。</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1026,15 +1726,180 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>利用可能な空き容量 %n GB</numerusform></translation>
+        <translation>
+            <numerusform>利用可能な空き容量 %n GB</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(%n GB必要)</numerusform></translation>
+        <translation>
+            <numerusform>(%n GB必要)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(完全なチェーンには%n GB必要です)</numerusform></translation>
+        <translation>
+            <numerusform>(完全なチェーンには%n GB必要です)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>メール</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>あなたのアドレス</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>コピー</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>あなたの名簿キー。登録されている人は誰でも、これを使ってあなたに手紙を書けます。</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>メールはオーバーレイを通って届きます。メールを送受信するには、設定でオーバーレイを有効にして再起動してください。</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>書く</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>返信</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>今すぐ受け取る</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>今すぐメールボックスから新しい手紙を受け取ります。これは数分ごとにも自動で行われます。</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>削除</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>受信箱</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>送信済み</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>差出人</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>件名</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>日付</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>手紙は受取人の週替わりのメールキーで、secp256k1 と ML-KEM-768 を組み合わせて封印されます。あなたの鍵と署名は封印の中に入って運ばれ、メールボックスへの往来はすべて 3 つのリレーを経由します。古いメールキーは削除されるため、今日受け取った手紙を後でこのコンピューターの鍵で開くことはできません。</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>宛先</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>まだ登録されたリレーがないため、あなたにはメールボックスがなく、誰もあなたに手紙を書けません。</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>%1 個のリレーがあなたのメールを保管しています。名簿の登録が増えれば %2 個になります。</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>あなたの鍵から選ばれた %1 個のリレーが、あなたが受け取るまでメールを保管します。</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>メールキー #%1、毎週更新。</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>最終受信 %1。</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>まだ受け取っていません。</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>新しい手紙 1 通</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>新しい手紙 %1 通</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>、%2 個のメールボックスのうち %1 個から。</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>（件名なし）</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>受取人のメールボックス %1 個に配置</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>差出人: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>宛先: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>%1 に送信、受取人のメールボックス %2 個に配置</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>%1 に作成、%2 に受信</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>読む手紙を選択してください。</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>受け取っています…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>メールボックスに接続しています。それぞれ 3 つのリレーを経由…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>手紙を削除</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>この手紙をこのコンピューターから削除しますか？メールボックスにあったコピーは受け取った時点で既に削除されているため、もう一度取得することはできません。</translation>
     </message>
 </context>
 <context>
@@ -1044,7 +1909,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>フォーム</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>最近の取引がまだ表示されていない可能性があります。そのため、ウォレットの残高が正しく表示されていないかもしれません。この情報は、ウォレットが Bitcoin ネットワークへの同期が完了すると正確なものとなります。詳細は下記を参照してください。</translation>
     </message>
     <message>
@@ -1094,6 +1959,409 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>不明。ヘッダ (%1, %2%) の同期中...</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>名前</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>名前は人々をあなたの名簿キーへ導くので、鍵の代わりに名前であなたに手紙を書いたり支払ったりできます。空いている名前の取得と更新はネットワーク手数料だけで済み、名前の更新は手動で行います。誰かが持っている名前は、持ち主が販売に出していれば、その希望価格で購入できます。あなたの名前の下の名前は無料で、ニックネームも無料です。ニックネームは、このコンピューターに保存される、人に付けるあなた自身のラベルです。</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>あなたの名前</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>支払元</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>名前</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>状態</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>終了</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>サブネーム</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>名前を取得…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>更新…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>サブネームを追加…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>販売…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>移転…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>名前での支払いを受け付ける…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>検索</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>名前、ラベル.名前、またはニックネーム</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>キーをコピー</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>支払う…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>アドレス帳</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>ニックネーム</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>キー</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>人を追加…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>削除</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>キーをコピーしました</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>処理中…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>販売を取り下げる</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>まず販売を取り下げてください。</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>新しい支払いキー…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>名前での支払いは有効です</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>名前には名前インデックスが必要です。設定で「名前をインデックス」を有効にして再起動してください。</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>このネットワークでは名前はまだ開始されていません。メインネットでいつ開始するか、最初の名前をどう配るかはまだ決まっていません。それまでの間も名前の検索やアドレス帳の管理はできます。</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1 は %2 です</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>あなたのアドレス帳から</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>登録済みの名前、ブロック %1 まで保持</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>確定済み</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>%1 前に変更、まだ確定していません</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>名前での支払いを受け付けています</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>販売中: 持ち主は %1 を希望しています。購入するには「名前を取得」を使ってください。</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>%1 をコミットしました。名前は %2 ブロック後（約 %3）に自動的に取得されます - それまで BPS Relay を起動したまま、ウォレットをロック解除しておいてください。</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>%1 を購入中: 持ち主に %2 を支払いました。トランザクションが承認されるとあなたのものになります。</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>%1 を %2 で販売します。次のブロックから、このノードがオンラインでなくても誰でも購入でき、代金はこのウォレットに支払われます。</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>%1 の販売を取り下げています。今後は誰も購入できません。</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>ネットワーク手数料だけで %1 をブロック %2 まで更新しました。</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>%1 を %2 に移転しています。トランザクションが承認されると相手のものになります。</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>%1 を設定しました。トランザクションが承認されると解決されます。</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>名前での支払いを有効にしています。トランザクションの承認から約 %1 後、人々はあなたのどの名前にも支払えるようになります。各支払いはウォレットに「名前での支払い」として表示されます。</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>この支払い専用のアドレスで %2 に %1 を支払いました。</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>支払う</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>%1 後</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>%1 前に終了</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>期限切れ - 1 か月以内に更新してください</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>取得済み</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>販売中 - 購入が承認待ちです</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>%1 で販売中</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>%1 で販売中 - まだ購入できません</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>未登録</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>登録中</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>クリックしてコピー</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>名前を取得</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>1 〜 32 文字の英字、数字、またはハイフン</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 年</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>2 年</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>期間</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>登録は 2 段階です。名前を隠すコミットメントと、約 20 分後に BPS Relay が自動で送信する取得です。その間に誰も名前を奪うことはできません。どちらもネットワーク手数料だけで済みます。</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>購入は 1 つのトランザクションです。持ち主への支払いと名前の取得が、すべて同時に行われるか、まったく行われないかのどちらかです。</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>登録</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>名前は 1 〜 32 文字の英小文字 a-z、数字、または途中のハイフンで構成されます。</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>%1（%2）はネットワーク手数料だけで取得できます。空いているか確認しています…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>1 年</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>2 年</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>%1 の販売を取り下げる</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>%1 の販売を取り下げますか？その時点から誰も購入できなくなり、承認されれば移転したり再び販売に出したりできます。</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>%1 を販売</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>%1 のあなたの価格（BPS）。その後は BPS Relay が閉じていても誰でもすぐに購入できます。名前を渡すのと同じトランザクションで、この金額があなたに支払われます。販売中は移転できません。</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>「%1」は BPS の金額ではありません。</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>%1 を %2 で販売しますか？小さなトランザクションが 2 つ送信されます。1 つは購入者が使うコインを取り置き、もう 1 つは販売を公開します。</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>%1 を更新</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>%1 を現在の終了時点から延長します。費用はネットワーク手数料だけです。名前は最大 2 年先まで更新できます。</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>%1 を移転</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>%1 の譲渡先（名簿キー、ニックネーム、または名前）:</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>%1 を %2 に譲りますか？取り戻せるのは新しい持ち主だけです。</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>%1 の下のサブネーム</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>.%1 の前の部分。例えば alice.%1 なら alice:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>%1.%2 が指す相手（名簿キー、ニックネーム、または名前）、または「remove」:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>検索しています…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>人を追加</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>あなたが相手を呼ぶ名前（あなたにしか見えません）:</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>相手の名簿キー、または現在の持ち主を覚えておくための名前:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>名前での支払いは有効です。このウォレットの新しいキーに移しますか？現在のキーに既に行われた支払いは引き続き届きます。変更後、支払う側は約 %1 待ってから再び支払います。</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>名前で支払ってもらえるようにします: このノードの鍵を指す任意の名前やサブネーム、相手があなたに付けたニックネーム、または鍵そのもので支払えます。各支払いは、このウォレットだけが使える専用のアドレスに届き、見ている人には、あなたが支払いを受けたことも、2 つの支払いが同じ人に送られたことも分かりません。ネットワーク手数料がかかります。承認から約 %1 後に支払いを受けられるようになります。</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>名前での支払い</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>%1 に支払う</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>%1 はまだ名前での支払いを受け付けていません。相手に「名前」タブで有効にしてもらうか、アドレスを尋ねてください。</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>%1 は %2 前に持ち主が変わりました。</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>相手は %1 前に支払いを受けるキーを設定しました。</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>BPS 建て</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>金額</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>支払いは、この支払いのためだけに使われ %1 だけが使えるアドレスに送られます。誰に支払われたかは他の誰にも分かりません。支払いは取り消せません。ネットワーク手数料が別途かかります。</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>それが本人でなければ、支払いは失われます。%1 経つまで待つ方が安全です。</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>それでも支払う</translation>
     </message>
 </context>
 <context>
@@ -1392,6 +2660,217 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>The supplied proxy address is invalid.</source>
         <translation>プロキシアドレスが無効です。</translation>
     </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>コールドステーキングの制御機能を表示するかどうか。</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>コールドステーキングの制御機能を有効にする(&amp;T)</translation>
+    </message>
+    <message>
+        <source>Connect to the Bitcoin network through a separate SOCKS5 proxy for Tor onion services.</source>
+        <translation>Tor onion サービス用の別の SOCKS5 プロキシ経由でビットコインネットワークに接続します。</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS&amp;5 proxy to reach peers via Tor onion services:</source>
+        <translation>Tor onion サービス経由でピアに接続するために別の SOCKS&amp;5 プロキシを使用する:</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>オーバーレイ</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>BPS 独自の暗号化されたレイヤーで、トラフィックを他のピアを経由して運ぶため、相手側はあなたの居場所を知ることがありません。</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>問い合わせ中…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>実行中</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>待ち受け先</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>開いている経路</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>ここで落ち合うサービス</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>利用可能なリレー</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>今日のラウンド</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>あなたの入口</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>あなたのトラフィックが常に入っていくピアです。入れ替えずに保持されます。毎回新しいものを選ぶと、いずれ監視者に順番が回ってくるからです。</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>人々があなたと落ち合える場所</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>名簿から計算されたもので、問い合わせたものではありません。あなたに連絡しようとする人は皆同じ計算をして同じ答えを得るので、尋ねる相手もいなければ、違う答えを返せる人もいません。毎日変わります。</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>無線で受信</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>リレーの見返り</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>1 日あたりの発行量</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>リレー</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>利用者</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>リレーあたりの利用者</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>利用者 1 人あたりの取り分</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>リレーは自分のブロック報酬から、登録したピアに支払います。そのため利用者 1 人の取り分は、そのリレーの利用者数分の 1 になります。だからこそ、ネットワークの利用者の一部を担うにはステークの一部が必要になります。報酬をどれだけ分けるかはリレー自身の選択で、何も強制しません。何も支払わないリレーも完全に有効なブロックを作ります。リレーに支払わせるのは、利用者のいないリレーは誰も守らない、自分自身さえも守らないという事実です。</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>作者以外の誰にもまだレビューされておらず、隠すのはあなたが話す時ではなく居場所です。両端を監視する者は、まだタイミングを照合できます。未完成のものとして扱ってください。</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>このノードは何も分け合っていません。-relayshare に割合を設定し、addrosteruser でピアを受け入れてください。</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>このノードは %1% を分け合うはずですが、%2。</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>このノードは %2 件のピアと %1% を分け合っています。次に作るブロックは %3 を支払い、それぞれ %4 です。</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>Reticulum ブリッジから応答がありません。設定の「無線」から起動するか、bps-rns-bridge.py を自分で実行してください。</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>待ち受け中。まだ無線で BPS ノードを受信していません。ノードは 30 分ごとに自らを告知します。</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>無線の隣接ノードの中に登録済みのリレーがあれば、トラフィックはそれを通って入ります。</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>受信していますが、トラフィックはインターネット経由で入ります（設定、無線）。</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>1 ホップ</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>%1 ホップ</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>ホップ数不明</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>%1 前に受信</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>リレー</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>はい</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>いいえ</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>オーバーレイは無効になっています。このクライアントは自動で有効にするので、コマンドラインまたは設定ファイルの -overlay=0 によって再び無効にされています。</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>オーバーレイが無効の間はなし</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>オーバーレイ無効</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>まだありません</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>オーバーレイ有効、まだリレーなし</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>オーバーレイ有効、リレー 1 個</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>オーバーレイ有効、リレー %1 個</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>まだ選ばれていません</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>なし — 名簿に計算元となるリレーがありません</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>オーバーレイ状態不明</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>まだリレーがありません</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1467,7 +2946,35 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Current total balance in watch-only addresses</source>
         <translation>ウォッチ限定アドレスの現在の残高の総計</translation>
     </message>
-    </context>
+    <message>
+        <source>Stake</source>
+        <translation>ステーク</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>未成熟のステーク:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>未成熟の委任</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>未成熟の委任:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>委任済み</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>委任済み:</translation>
+    </message>
+    <message>
+        <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
+        <translation>概要タブのプライバシーモードが有効です。値を表示するには、設定-&gt;値を隠す のチェックを外してください。</translation>
+    </message>
+</context>
 <context>
     <name>PSBTOperationsDialog</name>
     <message>
@@ -1538,6 +3045,58 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Transaction status is unknown.</source>
         <translation>トランザクションの状態が不明です.</translation>
     </message>
+    <message>
+        <source>Broadcast Tx</source>
+        <translation>トランザクションをブロードキャスト</translation>
+    </message>
+    <message>
+        <source>Could not sign any more inputs.</source>
+        <translation>これ以上の入力に署名できませんでした。</translation>
+    </message>
+    <message>
+        <source>Signed %1 inputs, but more signatures are still required.</source>
+        <translation>%1 個の入力に署名しましたが、まだ署名が必要です。</translation>
+    </message>
+    <message>
+        <source>Unknown error processing transaction.</source>
+        <translation>トランザクションの処理中に不明なエラーが発生しました。</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast successfully! Transaction ID: %1</source>
+        <translation>トランザクションのブロードキャストに成功しました！トランザクション ID: %1</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast failed: %1</source>
+        <translation>トランザクションのブロードキャストに失敗しました: %1</translation>
+    </message>
+    <message>
+        <source>Unable to calculate transaction fee or total transaction amount.</source>
+        <translation>トランザクション手数料または合計金額を計算できません。</translation>
+    </message>
+    <message>
+        <source>Transaction has %1 unsigned inputs.</source>
+        <translation>トランザクションには未署名の入力が %1 個あります。</translation>
+    </message>
+    <message>
+        <source>Transaction is missing some information about inputs.</source>
+        <translation>トランザクションに入力に関する情報が一部欠けています。</translation>
+    </message>
+    <message>
+        <source>Transaction still needs signature(s).</source>
+        <translation>トランザクションにはまだ署名が必要です。</translation>
+    </message>
+    <message>
+        <source>(But this wallet cannot sign transactions.)</source>
+        <translation>（ただし、このウォレットはトランザクションに署名できません。）</translation>
+    </message>
+    <message>
+        <source>(But this wallet does not have the right keys.)</source>
+        <translation>（ただし、このウォレットには正しい鍵がありません。）</translation>
+    </message>
+    <message>
+        <source>Transaction is fully signed and ready for broadcast.</source>
+        <translation>トランザクションは完全に署名され、ブロードキャストの準備ができています。</translation>
+    </message>
 </context>
 <context>
     <name>PaymentServer</name>
@@ -1554,15 +3113,15 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>URIの処理</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>'bitcoin://' は正しいURIではありません｡ 'bitcoin:'を使用してください｡</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;bitcoin://&apos; は正しいURIではありません｡ &apos;bitcoin:&apos;を使用してください｡</translation>
     </message>
     <message>
         <source>Cannot process payment request because BIP70 is not supported.</source>
         <translation>BIP70がサポートされていないため、支払いリクエストを処理することができません。</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
         <translation>BIP70 に内在する広く知られたセキュリティ上の欠陥がるため、ウォレットを切り替えるというマーチャントからの指示については無視することが強く推奨されます。</translation>
     </message>
     <message>
@@ -1610,6 +3169,161 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>登録を更新</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>登録を公開</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>更新するとチェーンに新しい記録が書き込まれます。承認されるまでは古い記録が有効です。</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>あなたが存在すること、そして任意で、どこで見つけられるかを示す短い記録をチェーンに書き込みます。</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>ピアはどのようにあなたに接続しますか？</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>オーバーレイ経由 — アドレスは公開しない</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>登録はあなたが誰であるかを示し、どこで動いているかは示しません。ピアは代わりにオーバーレイ経由で、双方が名簿から計算した地点であなたと落ち合います。これがこのクライアントの既定の設定です。</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>私が公開するアドレスで</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>他のピアが接続できるアドレス</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>誰でも見ることができ、チェーンに永久に残ります。onion アドレスは誰にもあなたまでたどれない場所を公開し、NAT の内側からでも機能します。IP アドレスはそのどちらもできません。IP アドレスを公開したノードは、他の人からリレーとして選ばれることがあります。</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>手数料を支払う人</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>1 か月、その後は更新が必要</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>1 年、その後は更新が必要</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>有効期間</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>更新</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>公開</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>リレーが支払う — コイン不要</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>オーバーレイが無効なため、依頼できるリレーがありません。設定で有効にするか、ウォレットから支払ってください。</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>名簿にはまだリレーが登録されていないため、依頼できる相手がいません。ウォレットから支払うか、リレーが登録されてから再試行してください。</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>あなたのノードは登録に署名し、オーバーレイ経由で入口のリレーに送ります。登録料を支払うリレーは、あなたの登録を自分がステーキングで作るブロックに入れるので、大半のノードが中継しなくても承認され、報酬を分け合うピアにあなたを加えます。後でリレーが支払いをやめた場合、あなたの登録は 1 か月以内に失効します。残高のあるウォレットからいつでも自分で更新できます。</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>このノードはステーキングしていません。登録の記録は古いノードが中継するサイズより大きいため、大半のステーカーがアップグレードするまでは、このバージョンを実行するステーカーが取り込んだときにだけ承認され、時間がかかることがあります。ステーキングしていれば自分の次のブロックに入り、支払うリレーは自分のブロックに入れます。</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>このウォレットはステーキング専用でロック解除されています。支払いにはパスフレーズが必要で、その後ウォレットは再びロックされ、再度ステーキング用にロック解除するまでステーキングが止まります。</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>支払いにはこのウォレットのパスフレーズが必要です。</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>アドレスを入力するか、公開しないことを選んでください。</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>リレーに公開を依頼しています… 最大 30 秒ほどかかることがあります。</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>そのウォレットはもう開かれていません。</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>ウォレットがまだロックされているため、何も支払われていません。</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>記録に署名しています…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>ノードが、このクライアントには理解できない記録を返しました。</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>公開のために支払っています…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>リレーが拒否しました: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>リレーから応答がありません。%1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1617,7 +3331,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>Bitcoin アドレスを入力してください (例: %1)</translation>
+        <translation type="vanished">Bitcoin アドレスを入力してください (例: %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1649,23 +3363,33 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n 秒</numerusform></translation>
+        <translation>
+            <numerusform>%n 秒</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n分</numerusform></translation>
+        <translation>
+            <numerusform>%n分</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n時間</numerusform></translation>
+        <translation>
+            <numerusform>%n時間</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n日</numerusform></translation>
+        <translation>
+            <numerusform>%n日</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n週間</numerusform></translation>
+        <translation>
+            <numerusform>%n週間</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1673,7 +3397,9 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n年</numerusform></translation>
+        <translation>
+            <numerusform>%n年</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1692,8 +3418,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>%1 GB</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>エラー: 指定されたデータ ディレクトリ "%1" は存在しません。</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>エラー: 指定されたデータ ディレクトリ &quot;%1&quot; は存在しません。</translation>
     </message>
     <message>
         <source>Error: Cannot parse configuration file: %1.</source>
@@ -1704,12 +3430,64 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>エラー: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1 はまだ安全に終了していません...</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>不明</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>連絡先</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>受取</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>非表示</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>不明</translation>
+    </message>
+    <message>
+        <source>Error initializing settings: %1</source>
+        <translation>設定の初期化中にエラーが発生しました: %1</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>委任済み</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>%1 は販売に出している人が持っています。希望価格は %2 で、ネットワーク手数料が別途かかります。</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>購入</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>空いているか確認しています…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>空いています。</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>登録</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>未実装</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>BitcoinPoS アドレスを入力（例: %1）</translation>
     </message>
 </context>
 <context>
@@ -1770,16 +3548,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>データ ディレクトリ</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the data directory use the '%1' option.</source>
-        <translation>データディレクトリを初期値以外にするには '%1' オプションを使用します。</translation>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>データディレクトリを初期値以外にするには &apos;%1&apos; オプションを使用します。</translation>
     </message>
     <message>
         <source>Blocksdir</source>
         <translation>ブロックディレクトリ</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>ブロックディレクトリを初期値以外にするには '%1' オプションを使用します。</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>ブロックディレクトリを初期値以外にするには &apos;%1&apos; オプションを使用します。</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -2026,8 +3804,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>どのウォレットも使わずにコマンドを実行します</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
-        <translation>"%1" ウォレットを使ってコマンドを実行します</translation>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>&quot;%1&quot; ウォレットを使ってコマンドを実行します</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -2052,6 +3830,49 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown</source>
         <translation>不明</translation>
+    </message>
+    <message>
+        <source>Current block height</source>
+        <translation>現在のブロック高</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>もしかして:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>コマンドが分からない場合は、%1 のように、やりたいことを普通の言葉で入力し、候補を選んでください。候補はこのコンピューター上で計算され、入力内容はどこにも送信されません。</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>無線は無効です。</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>無線は有効です。Reticulum ブリッジを自分で起動してください（contrib/reticulum/bps-rns-bridge.py）。</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>bps-rns-bridge.py が BPS Relay の横にないため、ブリッジを起動できません。</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>Python を「%1」として起動できませんでした。Python をインストールするか、設定の「無線」でコマンドを指定してください。</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Reticulum がインストールされていません。次のコマンドでインストールしてください: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>Reticulum ブリッジが停止しました（状態 %1）。radio/bridge.log を確認してください。</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>Reticulum ブリッジを起動しています。</translation>
     </message>
 </context>
 <context>
@@ -2105,12 +3926,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>クリア</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>ネイティブ Segwit アドレス(別名: Bech32 アドレス・ BIP-173 アドレス)を利用することで、取引手数料が安くなり、誤入力防止機能も強化されますが、Segwit アドレスをサポートしない古いウォレットとは取引できません。チェックを外すと、古いウォレットとの互換性を保ったアドレスが代わりに生成されます。</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">ネイティブ Segwit アドレス(別名: Bech32 アドレス・ BIP-173 アドレス)を利用することで、取引手数料が安くなり、誤入力防止機能も強化されますが、Segwit アドレスをサポートしない古いウォレットとは取引できません。チェックを外すと、古いウォレットとの互換性を保ったアドレスが代わりに生成されます。</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>Segwit アドレス（Bech32 アドレス）を生成</translation>
+        <translation type="vanished">Segwit アドレス（Bech32 アドレス）を生成</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2152,7 +3973,19 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Could not unlock wallet.</source>
         <translation>ウォレットをアンロックできませんでした。</translation>
     </message>
-    </context>
+    <message>
+        <source>(none)</source>
+        <translation>（なし）</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>このウォレットにはステーキングアドレスが設定されていないため、委任先がありません。「ステーク」ページの 委任 -&gt; 自動委任 で設定すると、このアドレスタイプが使えるようになります。</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>新しい %1 アドレスを生成できませんでした</translation>
+    </message>
+</context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
@@ -2195,6 +4028,10 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Payment information</source>
         <translation>支払い情報</translation>
     </message>
+    <message>
+        <source>Request payment to ...</source>
+        <translation>支払いをリクエスト ...</translation>
+    </message>
 </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -2225,6 +4062,99 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Requested</source>
         <translation>リクエストされた金額</translation>
+    </message>
+</context>
+<context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>ピア</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>アドレス</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>登録済み</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>登録終了</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>登録期間</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>クリックしてコピー</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>このピアは登録されていますが、アドレスを公開していません。
+それでもオーバーレイ経由で接続でき、それがこれを許可する理由です。</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>アドレスを 1 件公開</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>%1 件のアドレスを公開</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>ブロック %1 で承認</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>ブロック %1 から計算対象外</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>この登録より前の履歴はありません。</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>ブロック %1 から途切れず登録されています。</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>新しすぎてまだ計算に入りません。</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>アイデンティティなしで動作しています。</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>アイデンティティ %1 の下で動作しています。鍵を変えても期間は保たれます。</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>アドレス未公開</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>たった今</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>%1 前</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>期限切れ</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>%1 後</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>新規</translation>
     </message>
 </context>
 <context>
@@ -2298,9 +4228,9 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>警告: 手数料推定機能は現在利用できません。</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>トランザクションの仮想サイズの1 kB(1,000 バイト)あたりのカスタム手数料を指定する。
 
 注: 手数料はバイト単位で計算されるので、500 バイト(1 kBの半分)のトランザクションサイズに対する「1 kBあたり 100 satoshi」の手数料は、最終的にはわずか 50 satoshi となります。</translation>
@@ -2362,7 +4292,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Replace-By-Fee を有効化する</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
         <translation>Replace-By-Fee(手数料の上乗せ: BIP-125)機能を有効にすることで、トランザクション送信後でも手数料を上乗せすることができます。この機能を利用しない場合、予め手数料を多めに見積もっておかないと取引が遅れる可能性があります。</translation>
     </message>
     <message>
@@ -2422,12 +4352,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>オフライン%1ウォレットまたはPSBTに対応したハードウェアウォレットと合わせて使用するためのPSBT(部分的に署名されたトランザクション)を作成します。</translation>
     </message>
     <message>
-        <source> from wallet '%1'</source>
-        <translation>ウォレット '%1' から</translation>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation>ウォレット &apos;%1&apos; から</translation>
     </message>
     <message>
-        <source>%1 to '%2'</source>
-        <translation>%1 から '%2'</translation>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 から &apos;%2&apos;</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -2482,8 +4412,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>合計</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
-        <translation>受信者の一覧を確認するには "詳細を表示..." をクリック</translation>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>受信者の一覧を確認するには &quot;詳細を表示...&quot; をクリック</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2535,7 +4465,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>予想される承認開始ブロック: %n ブロック以内</numerusform></translation>
+        <translation>
+            <numerusform>予想される承認開始ブロック: %n ブロック以内</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2556,6 +4488,46 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>(no label)</source>
         <translation>(ラベル無し)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>支払いを 1 件ずつ追加する代わりに、支払いリストを貼り付けるか読み込みます</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>一括(&amp;B)...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>利用可能残高の計算に委任も含めます。チェックしない場合、利用可能残高には現在ウォレットにあるコインだけが反映されます。</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>委任を含める(&amp;N)</translation>
+    </message>
+    <message>
+        <source>Please, review your transaction proposal. This will produce a Partially Signed Bitcoin Transaction (PSBT) which you can save or copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>トランザクションの提案を確認してください。これにより部分署名済みビットコイントランザクション (PSBT) が作成され、保存またはコピーしてから、オフラインの %1 ウォレットや PSBT 対応のハードウェアウォレットなどで署名できます。</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>コールドステーキングは有効になっていません</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>コールドステーキングはブロック %1 で有効になります</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>このウォレットは自分のコインでステーキングしているため、すべて委任済みです。</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>指定された所有者アドレスはこのウォレットにありません。警告: 委任後、これらのコインを使えるのは所有者アドレスの鍵を持つ人だけです。</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>指定されたステーカーアドレスはこのウォレットにあります。既にこのコインでステーキングできるので、自分自身に委任する必要はありません。</translation>
     </message>
 </context>
 <context>
@@ -2640,6 +4612,352 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>Memo:</source>
         <translation>メモ:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>所有者アドレス(&amp;O):</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>BitcoinPoS 所有者アドレス</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>サーバー</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>このノードが他の人に提供するもの。リレーとメールの保管は既に動作しています。ホスティングは準備中で、ここにあるすべてと同様、ピアと同じ方法 — 名簿を通じて — 見つけられます。名前には専用のページがあります。</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>ホスティング</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>このノードから提供されるサイトやサービスで、鍵や名前で見つけてオーバーレイ経由でアクセスするため、ホストは自分の居場所を公開しません。落ち合う部分は既にあります。サービスは、双方が名簿から計算する落ち合い地点に登録します。これを通じたページやアプリの提供はまだ実装されていません。</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>リレー</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>他のピアのオーバーレイトラフィックを運び、このノードを使うピアの毎月の登録料を支払い、作成する各ブロックの一部を彼らと分け合います。リレーは支払った登録を自分がステーキングで作るブロックに入れます。大半のノードがまだ記録の中継を拒んでいる間は、そうして承認されます。だからリレーはステーキングしている必要があります。</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>ステーキング</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>ここに登録されたピア</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>次に作るブロック</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>オーバーレイ経由で依頼してきたピアの登録料を支払う</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>コインを持たないピアは、このノードに毎月の登録の公開を依頼できます。このノードが手数料を支払い、ブロックに入れて、そのピアを報酬を分け合う相手に加えます。このノードのコインを使うため、既定では無効です。</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>この数を超えるピアは断られます。既にここに登録されているピアは引き続き更新できます。</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>登録を維持するピアの最大数</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>唯一開いているウォレット</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>手数料を支払うウォレット。複数開いていてここで指定がない場合、推測で支払う代わりにリクエストを断ります。ステーキングはこのノードのどのウォレットでも行えます。</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>手数料をウォレットから支払う</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>このノードが自分のコインで作る各ブロックのうち、登録したピアに均等に分ける部分。0 なら何も分けません。</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>作成した各ブロックの取り分</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>メールボックス</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>名簿がこのノードをメールボックスとして割り当てた人たちの封印されたメールを、受け取られるまで保管します。どのリレーが誰のメールを保管するかは名簿から計算されるので、誰も割り当てません。送信者や持ち主は 3 つのリレーを経由してこのノードに接続するため、このノードは彼らの居場所を知ることがありません。手紙は封印されているので、読むことも誰が書いたかを知ることもできません。手紙は 2 週間後に削除され、登録された人だけが利用できます。</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>保管中</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>送信者のために保管しているメールキー</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>名簿がこのノードに割り当てた人たちのメールを保管する</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>オーバーレイが動作するところでは既定で有効: 拒否するリレーは、それが選ばれた人たちのメールボックスを 1 つ減らします。</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>いっぱいになると、古い手紙が受け取られるか削除されるまで新しい手紙は拒否されます。1 人あたり 8 MiB を超えて使うことはできません。</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>使用できるディスク容量</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>保存しました。これらはノードの起動時に読み込まれるので、変更を反映するにはクライアントを再起動してください。</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>開いているウォレットなし</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>いいえ — ステーキングしていないリレーは登録の依頼を断ります</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>はい、%1 後</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>登録料を支払っていません</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>支払っていますが、ステーキングしていません</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>実行中</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>このビルドにはウォレットがありません</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>ウォレットが必要</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>無効</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>オーバーレイが必要</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>なし — メールを保管していません</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>手紙なし</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>1 文字</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>%1 文字</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>1 人</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>%1 人</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>現在は空、%1 MiB の空き</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%2 向け %1、%4 MiB 中 %3</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>%1% を分配: 合計 %2 %4、ピアごとに %3 %4</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>設定</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>このクライアントにできてウォレットクライアントにはできないこと、そして言語。それ以外 — プロキシ、ポート、剪定 — はどちらでも同じ設定で、1 か所で行います。</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>発見</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>名簿のインデックスを維持する</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>これがないと、このノードは公開はできますが、他に誰が登録されているかは分かりません。</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>名前をインデックス</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>名前の検索、名前へのメール送信、自分の名前の登録に必要です。</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>名簿で見つかったピアへの接続を試みる</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>名簿のアドレスを、通常のシードやアドレス共有と並べてアドレスマネージャーに渡します。無効にすると、名簿はこのノードが読むだけで決して使わないリストになります。</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>オーバーレイ</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>オーバーレイを実行</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>このクライアントでは既定で有効、ノードとウォレットクライアントでは無効です。そのハンドシェイクは、作者以外の誰にもまだレビューされていません。</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>オーバーレイは専用のポートで UDP を使います。ピアツーピアネットワークは別で、TCP のままです。</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>待ち受けポート</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>無線</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>Reticulum を通じて無線でもオーバーレイを運ぶ</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>RNode 経由の LoRa、パケット無線、シリアル接続など、Reticulum で設定したものなら何でも。オーバーレイが必要です。</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>無線の隣接ノード経由でオーバーレイに入り、インターネットなしでもメールが使えるようにする</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>無線で受信した BPS ノードが登録済みのリレーなら、あなたのメールと登録の依頼はそれを経由します。無線リンクはインターネットよりはるかに低速です。</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>BPS Relay と一緒に Reticulum ブリッジを起動</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>ノードと並行して bps-rns-bridge.py を実行します。ブリッジを自分で実行する場合は無効のままにしてください。</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>Python コマンド</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Reticulum は BPS の一部ではなく、独自のライセンスがあります。%1 でインストールし、無線は Reticulum 自身の設定（~/.reticulum/config）で設定してください。アマチュア無線の周波数帯では暗号化された通信が認められないため、LoRa のような免許不要の帯域を使ってください。</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>表示</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>金額の表示単位</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>コンピューターの言語</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>BPS Relay を次に起動したときに反映されます。コマンドのエラーメッセージなど、ノード自体が送るテキストは英語のままです。</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>言語</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>ネットワーク、プロキシ、その他の基本設定…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>保存しました。言語は BPS Relay を次に起動したときに変わります。</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>保存しました。これらはノードの起動時に読み込まれるので、変更を反映するにはクライアントを再起動してください。</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>ノードはまだ起動中です。基本設定はまだ利用できません。</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2719,7 +5037,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>メッセージの検証(&amp;V)</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
         <translation>送金先のアドレスと、メッセージ（改行やスペース、タブなども完全に一致させること）および署名を以下に入力し、メッセージを検証します。中間者攻撃により騙されるのを防ぐため、署名対象のメッセージから書かれていること以上の意味を読み取ろうとしないでください。また、これは署名作成者がこのアドレスで受け取れることを証明するだけであり、取引の送信権限を証明するものではありません！</translation>
     </message>
     <message>
@@ -2747,7 +5065,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>入力欄の内容を全て消去</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
         <translation>「メッセージを署名」をクリックして署名を生成</translation>
     </message>
     <message>
@@ -2804,6 +5122,209 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
 </context>
 <context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>フォーム</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>ステーキング(&amp;S)</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>現在の利用可能残高</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>このウォレットが所有するステーキング中の資産</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>委任によるステーキング中の資産</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>未成熟:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>未成熟の残高</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>ステーキング中の資産</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>ステーク:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>ステーキング</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>ブロック高:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>ブロック報酬:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/ブロック</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>ネットワークの重み:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>予想年間利回り:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>ステークの記録</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>委任(&amp;D)</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>委任の種類:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>手動委任</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>自動委任</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>ステーキングアドレス</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>すべて削除</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>クリップボードからアドレスを貼り付け</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>追加(&amp;A)</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>自分の委任(&amp;M)</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>委任された資産</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>現在の委任残高</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>自分の委任</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>受け取った委任(&amp;R)</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>新しいステーキングアドレスを作成(&amp;C)</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> ラベル:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>新しい受取アドレスに関連付ける任意のラベル（請求書を識別するために使います）。支払いリクエストにも添付されます。</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>ColdStake の委任</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>このウォレットの委任アドレスに支払われたコインは、届いた時点でこれらの鍵によってステーキングされ、自分の支出のおつりも委任されたままになります。ステーキングキーは、あなたに支払い戻す coinstake しか作れないため、それを保持するウォレットにパスフレーズは不要です。</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>複数指定すると、コインを複数のステーキング用ウォレットに分散でき、そのうち 1 つがオフラインでもステーキング全体が止まりません。
+
+新しい委任はそれぞれ、これまで指定された回数が最も少ないアドレスに割り当てられます。数えるのは、配布済みの委任アドレスとまだ使われていない委任済みコインです。金額ではなく委任の件数を数えるため、大きな委任を 1 件持つアドレスが、小さな委任を複数持つアドレスより先に選ばれることもあります。</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>削除したアドレスに既に委任されたコインは移動されず、そのアドレスが引き続きステーキングします。新しい委任だけがそのアドレスを指定しなくなります。</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>ウォレットのロックを解除できませんでした。</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>新しい %1 アドレスを生成できませんでした</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>このノードではコールドステーキングが無効になっている（-coldstaking=0）ため、何も委任されていません。</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>ここのステーキングアドレスは暗号化されたこのウォレットのものなので、ウォレットがロック解除されている間だけステーキングします。パスフレーズなしでステーキングするには、暗号化されていない別のステーキング用ウォレットのアドレスを使ってください。</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>%1 への委任を停止します。既に委任されたコインは移動されず、引き続きステーキングされます。</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>ステーキングアドレスを保存できませんでした。委任は鍵のハッシュに結び付くため、それぞれがレガシーアドレスである必要があります。</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>そのステーキングアドレスは既にリストにあります。</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>すべてのステーキングアドレスを削除</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>%1 件のステーキングアドレスすべてへの委任を停止しますか？
+
+既に委任されたコインは引き続きそれらでステーキングされ、移動されません。ただし、新しい入金とおつりはステーキングしない通常のアドレスに送られ、再び有効にするにはこれらのアドレスが再度必要になります。</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2814,7 +5335,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>あと %n ブロックは未承認の予定</numerusform></translation>
+        <translation>
+            <numerusform>あと %n ブロックは未承認の予定</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2894,7 +5417,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>あと %n ブロックで成熟</numerusform></translation>
+        <translation>
+            <numerusform>あと %n ブロックで成熟</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -2953,7 +5478,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>リクエスト元</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
         <translation>生成されたコインは、%1 ブロックの間成熟させたあとに使用可能になります。このブロックは生成された際、ブロックチェーンに取り込まれるためにネットワークに放流されました。ブロックチェーンに取り込まれられなかった場合、取引状態が「承認されていない」に変更され、コインは使用不能になります。これは、別のノードがあなたの数秒前にブロックを生成した場合に時々起こる場合があります。</translation>
     </message>
     <message>
@@ -3008,7 +5533,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>あと %n ブロックは未承認の予定</numerusform></translation>
+        <translation>
+            <numerusform>あと %n ブロックは未承認の予定</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3097,6 +5624,30 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>残高から増えた又は減った総額。</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>コールドステーク</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>代理ステーキング</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>ステークの委任</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>委任</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>ステークの委任の使用者</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>委任額。</translation>
     </message>
 </context>
 <context>
@@ -3257,6 +5808,22 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>to</source>
         <translation>〜</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>コールドステーク</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>ホットステーク</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>未使用の委任</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>委任</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3293,6 +5860,14 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Create a new wallet</source>
         <translation>新しいウォレットを作成</translation>
+    </message>
+    <message>
+        <source>No wallet has been loaded.
+Go to File &gt; Open Wallet to load a wallet.
+- OR -</source>
+        <translation>ウォレットが読み込まれていません。
+ファイル &gt; ウォレットを開く でウォレットを読み込んでください。
+- または -</translation>
     </message>
 </context>
 <context>
@@ -3334,7 +5909,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>手数料上乗せの確認</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
+        <source>Can&apos;t draft transaction.</source>
         <translation>トランザクションのひな型を作成できませんでした。</translation>
     </message>
     <message>
@@ -3342,7 +5917,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>PSBTがコピーされました</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>トランザクションを署名できませんでした。</translation>
     </message>
     <message>
@@ -3352,6 +5927,21 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>default wallet</source>
         <translation>デフォルトウォレット</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ このノード</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● 稼働中</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>このプロセス内でこのノードに対して動作するウォレットクライアントです。bitcoin-pos-qt と同じプログラムで、そのコピーではありません。</translation>
     </message>
 </context>
 <context>
@@ -3412,6 +6002,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>Cancel</source>
         <translation>キャンセル</translation>
     </message>
+    <message>
+        <source>Unable to decode PSBT from clipboard (invalid base64)</source>
+        <translation>クリップボードの PSBT をデコードできません（無効な base64）</translation>
+    </message>
 </context>
 <context>
     <name>bitcoin-core</name>
@@ -3452,7 +6046,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>%s の読み込み中にエラーが発生しました！ 全ての鍵は正しく読み込めましたが、取引データやアドレス帳の項目が失われたか、正しくない可能性があります。</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation>お使いのコンピューターの日付と時刻が正しいことを確認してください！ PCの時計が正しくない場合 %s は正確に動作しません。</translation>
     </message>
     <message>
@@ -3460,7 +6054,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>%s が有用だと感じられた方はぜひプロジェクトへの貢献をお願いします。ソフトウェアのより詳細な情報については %s をご覧ください。</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
         <translation>ブロックデータベースに未来の時刻のブロックが含まれています。お使いのコンピューターの日付と時刻が間違っている可能性があります。コンピュータの日付と時刻が本当に正しい場合にのみ、ブロックデータベースの再構築を実行してください。</translation>
     </message>
     <message>
@@ -3492,8 +6086,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>-maxmempoolは最低でも %d MB必要です</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>-%s アドレス '%s' を解決できません</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>-%s アドレス &apos;%s&apos; を解決できません</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3580,32 +6174,32 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>初期化時の健全性検査に失敗しました。%s を終了します。</translation>
     </message>
     <message>
-        <source>Invalid P2P permission: '%s'</source>
-        <translation>無効なP2Pアクセス権: '%s'</translation>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>無効なP2Pアクセス権: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>-%s=&lt;amount&gt; オプションに対する不正な amount: '%s'</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>-%s=&lt;amount&gt; オプションに対する不正な amount: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>-discardfee=&lt;amount&gt; オプションに対する不正な amount: '%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>-discardfee=&lt;amount&gt; オプションに対する不正な amount: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>-fallbackfee=&lt;amount&gt; オプションに対する不正な amount: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>-fallbackfee=&lt;amount&gt; オプションに対する不正な amount: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>指定されたブロックディレクトリ "%s" は存在しません｡</translation>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>指定されたブロックディレクトリ &quot;%s&quot; は存在しません｡</translation>
     </message>
     <message>
-        <source>Unknown address type '%s'</source>
-        <translation>未知のアドレス形式 '%s' です</translation>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>未知のアドレス形式 &apos;%s&apos; です</translation>
     </message>
     <message>
-        <source>Unknown change type '%s'</source>
-        <translation>未知のおつり用アドレス形式 '%s' です</translation>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>未知のおつり用アドレス形式 &apos;%s&apos; です</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3680,8 +6274,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>エラー: 内向きの接続をリッスンするのに失敗しました（%s エラーが返却されました）</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>-maxtxfee=&lt;amount&gt; オプションに対する不正な amount: '%s'（トランザクション詰まり防止のため、最小中継手数料の %s より大きくする必要があります）</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>-maxtxfee=&lt;amount&gt; オプションに対する不正な amount: &apos;%s&apos;（トランザクション詰まり防止のため、最小中継手数料の %s より大きくする必要があります）</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -3708,24 +6302,24 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>エラー: %s 用のディスク容量が不足しています</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>-onion オプションに対する不正なアドレスまたはホスト名: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>-onion オプションに対する不正なアドレスまたはホスト名: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>-proxy オプションに対する不正なアドレスまたはホスト名: '%s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>-proxy オプションに対する不正なアドレスまたはホスト名: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>-paytxfee=&lt;amount&gt; オプションにに対する不正な amount: '%s'（最低でも %s である必要があります）</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>-paytxfee=&lt;amount&gt; オプションにに対する不正な amount: &apos;%s&apos;（最低でも %s である必要があります）</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>-whitelist オプションに対する不正なネットマスク: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>-whitelist オプションに対する不正なネットマスク: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>-whitebind オプションでポートを指定する必要があります: '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>-whitebind オプションでポートを指定する必要があります: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
@@ -3748,16 +6342,16 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>取引の署名に失敗しました</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>指定された -walletdir "%s" は存在しません。</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>指定された -walletdir &quot;%s&quot; は存在しません。</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>指定された -walletdir "%s" は相対パスです。</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>指定された -walletdir &quot;%s&quot; は相対パスです。</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>指定された-walletdir "%s" はディレクトリではありません。</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>指定された-walletdir &quot;%s&quot; はディレクトリではありません。</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3786,8 +6380,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>このコンピュータの %s にバインドすることができません（%s エラーが返却されました）</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>PIDファイルの作成に失敗しました ('%s': %s)</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>PIDファイルの作成に失敗しました (&apos;%s&apos;: %s)</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -3850,8 +6444,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>トランザクションは最低ひとつの受取先が必要です</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>-onlynet オプションに対する不明なネットワーク: '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>-onlynet オプションに対する不明なネットワーク: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -3866,8 +6460,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>警告: 秘密鍵が無効なウォレット {%s} で秘密鍵を検出しました。</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>データディレクトリ '%s' に書き込むことができません。アクセス権を確認してください。</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>データディレクトリ &apos;%s&apos; に書き込むことができません。アクセス権を確認してください。</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -3888,6 +6482,86 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Done loading</source>
         <translation>読み込み完了</translation>
+    </message>
+    <message>
+        <source>%s corrupt. Try using the wallet tool bitcoin-wallet to salvage or restoring a backup.</source>
+        <translation>%s は破損しています。ウォレットツール bitcoin-wallet で復旧を試みるか、バックアップから復元してください。</translation>
+    </message>
+    <message>
+        <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use version 169900 or no version specified.</source>
+        <translation>分割前のキープールをサポートするようにアップグレードしない限り、非 HD の分割ウォレットはアップグレードできません。バージョン 169900 を使うか、バージョンを指定しないでください。</translation>
+    </message>
+    <message>
+        <source>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</source>
+        <translation>複数の onion バインドアドレスが指定されています。自動作成される Tor onion サービスには %s を使用します。</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: sqlite ウォレットのスキーマバージョンを取得するステートメントを準備できませんでした: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: アプリケーション ID を取得するステートメントを準備できませんでした: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unknown sqlite wallet schema version %d. Only version %d is supported</source>
+        <translation>SQLiteDatabase: 不明な sqlite ウォレットのスキーマバージョン %d です。サポートされているのはバージョン %d のみです</translation>
+    </message>
+    <message>
+        <source>This error could occur if this wallet was not shutdown cleanly and was last loaded using a build with a newer version of Berkeley DB. If so, please use the software that last loaded this wallet</source>
+        <translation>このエラーは、このウォレットが正常に終了されず、最後により新しいバージョンの Berkeley DB を使ったビルドで読み込まれた場合に起こることがあります。その場合は、最後にこのウォレットを読み込んだソフトウェアを使ってください</translation>
+    </message>
+    <message>
+        <source>This is the maximum transaction fee you pay (in addition to the normal fee) to prioritize partial spend avoidance over regular coin selection.</source>
+        <translation>これは、通常のコイン選択よりも部分的な支出の回避を優先するために（通常の手数料に加えて）支払う最大のトランザクション手数料です。</translation>
+    </message>
+    <message>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
+        <translation>トランザクションにはおつり用アドレスが必要ですが、生成できません。先に keypoolrefill を呼び出してください。</translation>
+    </message>
+    <message>
+        <source>A fatal internal error occurred, see debug.log for details</source>
+        <translation>致命的な内部エラーが発生しました。詳細は debug.log を参照してください</translation>
+    </message>
+    <message>
+        <source>Cannot set -peerblockfilters without -blockfilterindex.</source>
+        <translation>-blockfilterindex なしで -peerblockfilters を設定することはできません。</translation>
+    </message>
+    <message>
+        <source>Error: Keypool ran out, please call keypoolrefill first</source>
+        <translation>エラー: キープールが尽きました。先に keypoolrefill を呼び出してください</translation>
+    </message>
+    <message>
+        <source>Fee rate (%s) is lower than the minimum fee rate setting (%s)</source>
+        <translation>手数料率（%s）が最低手数料率の設定（%s）より低くなっています</translation>
+    </message>
+    <message>
+        <source>Ignoring duplicate -wallet %s.</source>
+        <translation>重複した -wallet %s を無視します。</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
+        <translation>SQLiteDatabase: データベースを検証するステートメントを実行できませんでした: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: sqlite ウォレットのスキーマバージョンを取得できませんでした: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: アプリケーション ID を取得できませんでした: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare statement to verify database: %s</source>
+        <translation>SQLiteDatabase: データベースを検証するステートメントを準備できませんでした: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to read database verification error: %s</source>
+        <translation>SQLiteDatabase: データベースの検証エラーを読み取れませんでした: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unexpected application id. Expected %u, got %u</source>
+        <translation>SQLiteDatabase: 予期しないアプリケーション ID です。期待値 %u、実際の値 %u</translation>
     </message>
 </context>
 </TS>

@@ -1,4 +1,6 @@
-<TS language="ar" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ar">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -70,10 +72,10 @@
         <translation>هذه هي عناوين البيتكوين لإرسال المدفوعات. دائما تحقق من المبلغ وعنوان المستلم قبل الإرسال.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.
-Signing is only possible with addresses of the type 'legacy'.</source>
-        <translation>هذه هي عناوين بتكوين الخاصة بك لتلقي المدفوعات. استخدم الزر "إنشاء عنوان استلام جديد" في علامة تبويب الاستلام لإنشاء عناوين جديدة.
-التوقيع ممكن فقط مع عناوين من النوع "قديم".</translation>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
+        <translation>هذه هي عناوين بتكوين الخاصة بك لتلقي المدفوعات. استخدم الزر &quot;إنشاء عنوان استلام جديد&quot; في علامة تبويب الاستلام لإنشاء عناوين جديدة.
+التوقيع ممكن فقط مع عناوين من النوع &quot;قديم&quot;.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -99,7 +101,11 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Exporting Failed</source>
         <translation>لقد فشل التصدير</translation>
     </message>
-    </context>
+    <message>
+        <source>There was an error trying to save the address list to %1. Please try again.</source>
+        <translation>حدث خطأ أثناء محاولة حفظ قائمة العناوين في %1. يُرجى المحاولة مرة أخرى.</translation>
+    </message>
+</context>
 <context>
     <name>AddressTableModel</name>
     <message>
@@ -237,6 +243,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>تحذير: مفتاح الحروف الكبيرة مفعل</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>يُستخدم لتعطيل إرسال الأموال البسيط إذا اختُرق حساب نظام التشغيل. لا يوفر أمانًا حقيقيًا.</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>للتخزين فقط.</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -247,6 +261,109 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Banned Until</source>
         <translation>محظور حتى</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>دفعة مجمّعة</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>دفعة واحدة في كل سطر، بالصيغة &quot;العنوان, المبلغ&quot;. تفصل الفاصلة أو الفاصلة المنقوطة أو علامة الجدولة بين الحقول، ويصبح الحقل الثالث هو التسمية. تُتجاهل الأسطر التي تبدأ بـ #.</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>لصق(&amp;P)</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>تحميل من ملف(&amp;F)...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>مسح(&amp;C)</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>السطر</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>العنوان</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>المبلغ</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>الحالة</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>تحميل قائمة المدفوعات</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>ملفات نصية وCSV (*.txt *.csv);;كل الملفات (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>تعذّرت قراءة %1.</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>المتوقع &quot;العنوان, المبلغ&quot;</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>لا يوجد عنوان</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>ليس عنوانًا صالحًا</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>لا يوجد مبلغ</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>تعذّرت قراءة المبلغ &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>يجب أن يكون المبلغ أكبر من صفر</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>حسنًا</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>الصق دفعة واحدة في كل سطر، بالصيغة &quot;العنوان, المبلغ&quot;. يُستخدم الحقل الثالث كتسمية. تُتجاهل الأسطر التي تبدأ بـ #.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>لا يمكن استخدام %1 من %2 سطرًا. صحّحها أو احذفها للمتابعة.</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>%1 مستلمين أكثر مما تستطيع معاملة واحدة حمله (الحد هنا %2). قسّم القائمة.</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>%1 مستلمين، بإجمالي %2، قبل الرسوم.</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>إضافة إلى نموذج الإرسال</translation>
     </message>
 </context>
 <context>
@@ -445,7 +562,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>Processed %n blocks of transaction history.</numerusform><numerusform>Processed %n block of transaction history.</numerusform><numerusform>Processed %n blocks of transaction history.</numerusform><numerusform>Processed %n blocks of transaction history.</numerusform><numerusform>Processed %n blocks of transaction history.</numerusform><numerusform>تمت معالجة٪ n من كتل سجل المعاملات.</numerusform></translation>
+        <translation>
+            <numerusform>Processed %n blocks of transaction history.</numerusform>
+            <numerusform>Processed %n block of transaction history.</numerusform>
+            <numerusform>Processed %n blocks of transaction history.</numerusform>
+            <numerusform>Processed %n blocks of transaction history.</numerusform>
+            <numerusform>Processed %n blocks of transaction history.</numerusform>
+            <numerusform>تمت معالجة٪ n من كتل سجل المعاملات.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -664,6 +788,358 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
         <translation>حدث خطأ فادح. لم يعد بإمكان %1 المتابعة بأمان وسيتم الإنهاء.</translation>
     </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>التخزين(&amp;S)</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>إظهار حصة المحفظة</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n active connection(s) to Bitcoin network</source>
+        <translation>
+            <numerusform>%n اتصال نشط بشبكة Bitcoin</numerusform>
+            <numerusform>اتصال نشط واحد (%n) بشبكة Bitcoin</numerusform>
+            <numerusform>%n اتصالان نشطان بشبكة Bitcoin</numerusform>
+            <numerusform>%n اتصالات نشطة بشبكة Bitcoin</numerusform>
+            <numerusform>%n اتصالًا نشطًا بشبكة Bitcoin</numerusform>
+            <numerusform>%n اتصال نشط بشبكة Bitcoin</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>المحفظة &lt;b&gt;مشفّرة&lt;/b&gt; و&lt;b&gt;مفتوحة للتخزين فقط&lt;/b&gt; حاليًا</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>فك تشفير المحفظة(&amp;D)...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>إزالة عبارة المرور، بحيث تبقى المفاتيح الخاصة مخزنة دون تشفير</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>لا يوجد تخزين</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n ثانية</numerusform>
+            <numerusform>%n ثانية</numerusform>
+            <numerusform>%n ثانيتان</numerusform>
+            <numerusform>%n ثوانٍ</numerusform>
+            <numerusform>%n ثانية</numerusform>
+            <numerusform>%n ثانية</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n دقيقة</numerusform>
+            <numerusform>%n دقيقة</numerusform>
+            <numerusform>%n دقيقتان</numerusform>
+            <numerusform>%n دقائق</numerusform>
+            <numerusform>%n دقيقة</numerusform>
+            <numerusform>%n دقيقة</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n ساعة</numerusform>
+            <numerusform>%n ساعة</numerusform>
+            <numerusform>%n ساعتان</numerusform>
+            <numerusform>%n ساعات</numerusform>
+            <numerusform>%n ساعة</numerusform>
+            <numerusform>%n ساعة</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n يوم</numerusform>
+            <numerusform>%n يوم</numerusform>
+            <numerusform>%n يومان</numerusform>
+            <numerusform>%n أيام</numerusform>
+            <numerusform>%n يومًا</numerusform>
+            <numerusform>%n يوم</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>التخزين جارٍ.&lt;br&gt;وزنك %1&lt;br&gt;وزن الشبكة %2&lt;br&gt;الوقت المتوقع حتى المكافأة: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>لا يوجد تخزين لأن المحفظة غير متصلة</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>لا يوجد تخزين لأن المحفظة تتزامن</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>لا يوجد تخزين لأنه ليست لديك عملات ناضجة</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>لا يوجد تخزين لأن المحفظة مقفلة</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>خطأ غير معروف</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>أقل من دقيقة</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>دقيقة</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 دقائق</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>ساعة</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 ساعات</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 أيام</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>شهر</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 أشهر</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>نحو سنة</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>أكثر من سنة</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>غير معروف</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>حدث خطأ فادح. لم يعد بإمكان %1 المتابعة بأمان وسيُغلق.</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>الرسالة الأصلية:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>استكشاف</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>الشبكة المتراكبة</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>الأسماء</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>النظراء ووحدة التحكم</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>العقدة</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>المحفظة</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>البريد</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>البريد (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>الخادم</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>الإعدادات</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>الإدراج غير معروف</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>الشبكة المتراكبة غير معروفة</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>جارٍ الاتصال…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>بوزن الشبكة الحالي يدرّ التخزين نحو %1% سنويًا: %2 كتلة في السنة، %3 %4 لكل منها، على %5 %4 قيد التخزين.</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>هذا بعد حصة %1% من كل كتلة تتقاسمها هذه العقدة مع نظرائها.</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>%1% سنويًا</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>جارٍ الإغلاق…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>%1 نظراء: %2 واردون، %3 صادرون.</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>انقر لإيقاف نشاط الشبكة مؤقتًا.</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>نظير واحد</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>%1 نظراء</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>نشاط الشبكة متوقف مؤقتًا.</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>انقر لاستئنافه.</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>الشبكة متوقفة</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>تمت معالجة %1 كتلة من السجل.</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>الكتلة %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>محدّث.</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>جارٍ المزامنة مع الشبكة…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>جارٍ معالجة الكتل على القرص…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>جارٍ إعادة فهرسة الكتل على القرص…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>جارٍ الاتصال بالنظراء…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>متأخر %1</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>جارٍ اللحاق…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>أُنشئت آخر كتلة مستلمة قبل %1.</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>المحفظة &lt;b&gt;%1&lt;/b&gt; مشفّرة ومفتوحة للتخزين فقط</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>المحفظة &lt;b&gt;%1&lt;/b&gt; مشفّرة ومفتوحة</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>المحفظة &lt;b&gt;%1&lt;/b&gt; مشفّرة ومقفلة</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>تخزين</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>تخزين، %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; يقوم بالتخزين.&lt;br&gt;وزنه %2&lt;br&gt;وزن الشبكة %3&lt;br&gt;الوقت المتوقع حتى المكافأة: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>لا تخزين</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>لا تخزين (يدفع %1)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>لا يوجد تخزين: النظراء قليلون جدًا</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>لا يوجد تخزين: السلسلة ما زالت تلحق</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>لا يوجد تخزين: لا توجد عملات ناضجة في &lt;b&gt;%1&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>لا يوجد تخزين: &lt;b&gt;%1&lt;/b&gt; مقفلة</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>لا يوجد تخزين</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -815,6 +1291,57 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>(change)</source>
         <translation>(تغير)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>مفوَّض إلى %1 للتخزين البارد</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>اكتب رسالة</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>اسم، أو اسم مستعار من دفتر العناوين، أو مفتاح سجل</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>إلى</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>الموضوع</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>إرسال</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>لمن هي؟ اسم أو اسم مستعار أو مفتاح سجل.</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>حجم الرسالة %1 كيلوبايت؛ يمكن أن تكون الرسالة %2 كيلوبايت على الأكثر.</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>تُختم الرسالة وتُترك في صناديق بريد المستلم، في كل مرة عبر ثلاثة مرحِّلات. يستغرق هذا بضع ثوانٍ…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>أُرسل</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>تُركت الرسالة في %1 من %2 صناديق بريد للمستلم. يكفي صندوق واحد لتصل.</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>لم يُرسل: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -877,7 +1404,194 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Create</source>
         <translation>إنشاء</translation>
     </message>
-    </context>
+    <message>
+        <source>Wallet</source>
+        <translation>المحفظة</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>خيارات متقدمة</translation>
+    </message>
+    <message>
+        <source>Compiled without sqlite support (required for descriptor wallets)</source>
+        <translation>مُجمَّع دون دعم sqlite (مطلوب لمحافظ الواصفات)</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>استكشاف</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>يعلن النظراء عن أنفسهم على السلسلة لا على خادم، لذا فهذه القائمة واحدة للجميع ولا يستطيع أحد تعديلها.</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>السجل</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>إدراجك</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>النظراء المُدرَجون</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>أنت</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>نسخ</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>جارٍ نشر إدراجك…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>الهوية</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>إنشاء…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>تحفظ الهوية تاريخ هذه العقدة، أي مدة إدراجها، إذا اضطُر يومًا إلى تغيير مفتاحها.</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>البحث عن نظير أو عنوان</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>نُسخ المفتاح</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>نُسخ العنوان</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>جارٍ البدء…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>إنشاء هوية</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>دفع الرسوم من</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>الهوية مفتاح ثانٍ يقف خلف مفتاح هذه العقدة. إذا فُقد مفتاح هذه العقدة أو سُرق يومًا، يمكن وضع مفتاح جديد تحت الهوية نفسها، وتحتفظ العقدة بمدة إدراجها بدلًا من البدء من جديد.
+
+سيُعرض عليك مفتاح استرداد مرة واحدة. اكتبه: إنه السبيل الوحيد لمنع من يسرق الهوية من نقلها. بعد ذلك تنشر معاملة صغيرة الهوية، ويربط تجديدك التالي للإدراج مفتاح هذه العقدة بها.</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>نشر مرحِّلك إدراجك في المعاملة %1. يُحتسب بعد تأكيد المعاملة.</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>نُشر في المعاملة %1. يُحتسب بعد تأكيد المعاملة.</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>غير معروف</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>فهرس السجل متوقف</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>غير مُدرَج</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>ينتهي خلال %1</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>جارٍ تجديد إدراجك…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>جدّد خلال آخر 3 أيام</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>ينتهي إدراجك خلال %1. يمكن التجديد ابتداءً من ثلاثة أيام قبل ذلك.</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>مُدرَج، ينتهي خلال %1</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>لا شيء</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>لا يوجد مفتاح إعلان لهذه العقدة: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>معطّل</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>فهرس السجل لا يعمل، لذا لا ترى هذه العقدة من هو مُدرَج. أعد التشغيل مع -rosterindex لتفعيله.</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>جارٍ اللحاق (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>عمره %1 يومًا</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>عمر أحدث كتلة لدى هذه العقدة %1 يومًا، لذا قد يظهر هنا نظراء أُلغوا منذ ذلك الحين. ما زال السجل يُستخدم للوصول إلى النظراء، لكن الشبكة المتراكبة تتوقف عن تفضيل المرحِّلات المدرجة منذ زمن طويل حتى تلحق السلسلة.</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>محدّث</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>فهرس السجل لا يعمل</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>مفتاح الاسترداد الخاص بك</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>اكتبه واحفظه في مكان آمن بعيدًا عن هذا الحاسوب. يُعرض الآن فقط ولا يُحفظ في أي مكان. لا يمكن إنفاق العملات به؛ يمكنه فقط إيقاف نقل لهويتك لم تقم به أنت.</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>لقد كتبته</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>نُشرت هويتك في المعاملة %1. يربط تجديدك التالي للإدراج مفتاح هذه العقدة بها.</translation>
+    </message>
+</context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -913,16 +1627,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>تعديل عنوان الارسال</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>العنوان المدخل "%1" ليس عنوان بيت كوين صحيح.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
+        <translation>العنوان المدخل &quot;%1&quot; ليس عنوان بيت كوين صحيح.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>العنوان "%1" موجود بالفعل كعنوان إستقبال تحت مسمى "%2" ولذلك لا يمكن إضافته كعنوان إرسال.</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>العنوان &quot;%1&quot; موجود بالفعل كعنوان إستقبال تحت مسمى &quot;%2&quot; ولذلك لا يمكن إضافته كعنوان إرسال.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>العنوان المدخل  "%1" موجود بالفعل في سجل العناوين تحت مسمى " "%2".</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>العنوان المدخل  &quot;%1&quot; موجود بالفعل في سجل العناوين تحت مسمى &quot; &quot;%2&quot;.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -987,7 +1701,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</source>
-        <translation>عند النقر على "موافق" ، سيبدأ %1 في تنزيل ومعالجة سلسلة الكتل %4 الكاملة (%2 جيجابايت) بدءًا من المعاملات الأقدم في %3 عند تشغيل %4 في البداية.</translation>
+        <translation>عند النقر على &quot;موافق&quot; ، سيبدأ %1 في تنزيل ومعالجة سلسلة الكتل %4 الكاملة (%2 جيجابايت) بدءًا من المعاملات الأقدم في %3 عند تشغيل %4 في البداية.</translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain. It is faster to download the full chain first and prune it later. Disables some advanced features.</source>
@@ -1011,7 +1725,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>بتكوين</translation>
+        <translation type="vanished">بتكوين</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -1034,14 +1748,206 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>سوف يتم تخزين المحفظة في هذا الدليل.</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
         <translation>خطأ: لا يمكن تكوين دليل بيانات مخصص ل %1</translation>
     </message>
     <message>
         <source>Error</source>
         <translation>خطأ</translation>
     </message>
-    </context>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n GB of free space available</source>
+        <translation>
+            <numerusform>%n غيغابايت من المساحة الحرة متاحة</numerusform>
+            <numerusform>%n غيغابايت من المساحة الحرة متاح</numerusform>
+            <numerusform>%n غيغابايت من المساحة الحرة متاحة</numerusform>
+            <numerusform>%n غيغابايت من المساحة الحرة متاحة</numerusform>
+            <numerusform>%n غيغابايت من المساحة الحرة متاحة</numerusform>
+            <numerusform>%n غيغابايت من المساحة الحرة متاحة</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>(of %n GB needed)</source>
+        <translation>
+            <numerusform>(من أصل %n غيغابايت مطلوبة)</numerusform>
+            <numerusform>(من أصل %n غيغابايت مطلوبة)</numerusform>
+            <numerusform>(من أصل %n غيغابايت مطلوبة)</numerusform>
+            <numerusform>(من أصل %n غيغابايت مطلوبة)</numerusform>
+            <numerusform>(من أصل %n غيغابايت مطلوبة)</numerusform>
+            <numerusform>(من أصل %n غيغابايت مطلوبة)</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>(%n GB needed for full chain)</source>
+        <translation>
+            <numerusform>(يلزم %n غيغابايت للسلسلة الكاملة)</numerusform>
+            <numerusform>(يلزم %n غيغابايت للسلسلة الكاملة)</numerusform>
+            <numerusform>(يلزم %n غيغابايت للسلسلة الكاملة)</numerusform>
+            <numerusform>(يلزم %n غيغابايت للسلسلة الكاملة)</numerusform>
+            <numerusform>(يلزم %n غيغابايت للسلسلة الكاملة)</numerusform>
+            <numerusform>(يلزم %n غيغابايت للسلسلة الكاملة)</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>البريد</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>عنوانك</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>نسخ</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>مفتاح سجلك. يمكن لأي شخص مُدرَج مراسلتك عليه.</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>ينتقل البريد عبر الشبكة المتراكبة. فعّل الشبكة المتراكبة من الإعدادات وأعد التشغيل لإرسال البريد واستلامه.</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>كتابة</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>رد</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>استلم الآن</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>استلم الرسائل الجديدة من صناديق بريدك الآن. يحدث هذا أيضًا كل بضع دقائق.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>حذف</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>الوارد</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>أُرسل</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>من</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>الموضوع</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>التاريخ</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>تُختم الرسائل بمفتاح البريد الأسبوعي للمستلم باستخدام secp256k1 وML-KEM-768 معًا؛ ينتقل مفتاحك وتوقيعك داخل الختم، وتمر كل رحلة إلى صندوق بريد عبر ثلاثة مرحِّلات. تُحذف مفاتيح البريد القديمة، لذا لا يمكن فتح رسالة استُلمت اليوم لاحقًا بمفاتيح هذا الحاسوب.</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>إلى</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>لا يوجد مرحِّل مُدرَج بعد، لذا ليست لديك صناديق بريد ولا يستطيع أحد مراسلتك.</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>يحتفظ %1 مرحِّلات ببريدك؛ سيصبح عددها %2 حين يضم السجل المزيد.</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>يحتفظ %1 مرحِّلات مختارة بناءً على مفتاحك ببريدك حتى تستلمه.</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>مفتاح البريد رقم %1، يُجدَّد أسبوعيًا.</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>آخر استلام %1.</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>لم يُستلم بعد.</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>رسالة جديدة واحدة</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>%1 رسائل جديدة</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>، من %1 من %2 صناديق بريد.</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(بلا موضوع)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>تُركت في %1 من صناديق بريد المستلم</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>من: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>إلى: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>أُرسلت %1، وتُركت في %2 من صناديق بريد المستلم</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>كُتبت %1، واستُلمت %2</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>اختر رسالة لقراءتها.</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>جارٍ الاستلام…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>جارٍ الوصول إلى صناديق بريدك، كلٌّ عبر ثلاثة مرحِّلات…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>حذف الرسالة</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>أتحذف هذه الرسالة من هذا الحاسوب؟ أُزيلت نسخها في صناديق البريد عند استلامها، لذا لا يمكن جلبها مجددًا.</translation>
+    </message>
+</context>
 <context>
     <name>ModalOverlay</name>
     <message>
@@ -1049,7 +1955,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>نمودج</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>قد لا تكون المعاملات الأخيرة مرئية بعد، وبالتالي قد يكون رصيد محفظتك غير صحيح. ستكون هذه المعلومات صحيحة بمجرد الانتهاء من محفظتك مع شبكة البيتكوين، كما هو مفصل أدناه.</translation>
     </message>
     <message>
@@ -1091,6 +1997,417 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>مجهول. مزامنة الرؤوس (%1, %2%)...</translation>
+    </message>
+    <message>
+        <source>Esc</source>
+        <translation>Esc</translation>
+    </message>
+    <message>
+        <source>%1 is currently syncing.  It will download headers and blocks from peers and validate them until reaching the tip of the block chain.</source>
+        <translation>يجري %1 المزامنة حاليًا. سينزّل الترويسات والكتل من النظراء ويتحقق منها حتى يصل إلى قمة سلسلة الكتل.</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>الأسماء</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>يوجّه الاسم الناس إلى مفتاح سجلك، فيستطيعون مراسلتك — والدفع لك — بالاسم بدلًا من المفتاح. الحصول على اسم متاح وتجديده لا يكلّف سوى رسوم الشبكة؛ ويُجدَّد الاسم يدويًا. يمكن شراء اسم يملكه شخص ما إذا عرضه للبيع، بالسعر الذي يطلبه. الأسماء الواقعة تحت اسمك مجانية، وكذلك الأسماء المستعارة: تسمياتك الخاصة للأشخاص، المحفوظة على هذا الحاسوب.</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>أسماؤك</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>الدفع من</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>الاسم</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>الحالة</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>ينتهي</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>الأسماء الفرعية</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>احصل على اسم…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>تجديد…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>إضافة اسم فرعي…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>بيع…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>نقل…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>قبول المدفوعات بالاسم…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>بحث</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>اسم، أو تسمية.اسم، أو اسم مستعار</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>نسخ المفتاح</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>دفع…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>دفتر العناوين</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>الاسم المستعار</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>المفتاح</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>إضافة شخص…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>إزالة</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>نُسخ المفتاح</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>جارٍ العمل…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>سحب من البيع</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>اسحبه من البيع أولًا.</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>مفتاح دفع جديد…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>المدفوعات بالاسم مفعّلة</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>تحتاج الأسماء إلى فهرس الأسماء. فعّل «فهرسة الأسماء» من الإعدادات وأعد التشغيل.</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>لم تبدأ الأسماء على هذه الشبكة بعد. لم يُحسم بعد متى ستبدأ على الشبكة الرئيسية ولا كيف ستُوزَّع الأسماء الأولى. في الأثناء يمكنك البحث عن الأسماء والاحتفاظ بدفتر عناوين.</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1 هو %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>من دفتر عناوينك</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>اسم مسجَّل، مملوك حتى الكتلة %1</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>مستقر</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>تغيّر قبل %1، لم يستقر بعد</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>يقبل المدفوعات بالاسم</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>للبيع: يطلب المالك %1. استخدم «احصل على اسم» لشرائه.</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>تم الالتزام بـ %1. سيُطالَب بالاسم تلقائيًا بعد %2 كتلة (نحو %3) - أبقِ BPS Relay يعمل والمحفظة مفتوحة حتى ذلك الحين.</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>شراء %1: دُفع %2 لمالكه. سيصبح لك بعد تأكيد المعاملة.</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>يُعرض %1 للبيع مقابل %2. يمكن لأي شخص شراؤه ابتداءً من الكتلة التالية، دون أن تكون هذه العقدة متصلة؛ يُدفع الثمن إلى هذه المحفظة.</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>يُسحب %1 من البيع. لا يستطيع أحد شراءه من الآن.</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>جُدِّد %1 حتى الكتلة %2، مقابل رسوم الشبكة فقط.</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>يجري نقل %1 إلى %2. سيصبح لهم بعد تأكيد المعاملة.</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>تم ضبط %1؛ سيعمل بعد تأكيد المعاملة.</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>يجري تفعيل المدفوعات بالاسم. يمكن للناس الدفع لأي من أسمائك بعد نحو %1 من تأكيد المعاملة؛ تظهر كل دفعة في محفظتك بوصف «مدفوع بالاسم».</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>دُفع %1 إلى %2، على عنوان استُخدم لهذه الدفعة فقط.</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>دفع</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>خلال %1</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>انتهى قبل %1</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>منتهي الصلاحية - جدّده خلال الشهر</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>مملوك</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>قيد البيع - عملية شراء قيد التأكيد</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>معروض للبيع مقابل %1</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>معروض للبيع مقابل %1 - لا يمكن شراؤه بعد</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>غير مسجَّل</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>قيد التسجيل</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>انقر للنسخ</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>احصل على اسم</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>من 1 إلى 32 حرفًا أو رقمًا أو شرطة</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>سنة واحدة</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>سنتان</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>المدة</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>يتم التسجيل على خطوتين: التزام يخفي الاسم، وبعد نحو 20 دقيقة المطالبة، التي يرسلها BPS Relay بنفسه. لا يستطيع أحد أخذ الاسم في الأثناء. كل خطوة لا تكلّف سوى رسوم الشبكة.</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>الشراء معاملة واحدة: تدفع للمالك وتجعل الاسم لك، كل ذلك دفعة واحدة أو لا شيء.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>تسجيل</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>يتكون الاسم من 1 إلى 32 حرفًا لاتينيًا بسيطًا a-z أو أرقامًا أو شرطات داخلية.</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>لا يكلّف %1، لمدة %2، سوى رسوم الشبكة. جارٍ التحقق من توفره…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>سنة واحدة</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>سنتان</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>سحب %1 من البيع</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>أتسحب %1 من البيع؟ لن يستطيع أحد شراءه بعد ذلك، وبعد التأكيد يمكنك نقله أو عرضه للبيع مجددًا.</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>بيع %1</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>سعرك لـ %1 بعملة BPS. عندها يستطيع أي شخص شراءه فورًا، حتى وBPS Relay مغلق: يدفعون لك هذا المبلغ في المعاملة نفسها التي تمنحهم الاسم. ما دام معروضًا للبيع فلا يمكنك نقله.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>&quot;%1&quot; ليس مبلغًا بعملة BPS.</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>أتعرض %1 للبيع مقابل %2؟ تُرسل معاملتان صغيرتان: واحدة تحجز العملة التي ينفقها المشتري، والأخرى تنشر البيع.</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>تجديد %1</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>مدّد %1 من موعد انتهائه الحالي. لا يكلّف سوى رسوم الشبكة. يمكن تجديد الاسم لعامين مقدمًا على الأكثر.</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>نقل %1</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>أعطِ %1 إلى (مفتاح سجل أو اسم مستعار أو اسم):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>أتعطي %1 إلى %2؟ وحده المالك الجديد يستطيع إعادته.</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>اسم فرعي تحت %1</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>الجزء الذي يسبق .%1، مثل alice في alice.%1:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>إلى من يشير %1.%2 (مفتاح سجل أو اسم مستعار أو اسم)، أو &quot;remove&quot;:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>جارٍ البحث…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>إضافة شخص</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>ما تسمّيهم به (لا يراه غيرك):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>مفتاح سجلهم، أو اسم لتتذكر من يملكه الآن:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>المدفوعات بالاسم مفعّلة. أتنقلها إلى مفتاح جديد من هذه المحفظة؟ ستظل الدفعات المرسلة إلى المفتاح الحالي تصل. ينتظر الدافعون نحو %1 بعد التغيير قبل الدفع مجددًا.</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>دع الناس يدفعون لك بالاسم: أي اسم أو اسم فرعي يشير إلى مفتاح هذه العقدة، أو اسم مستعار يحفظونه لك، أو المفتاح نفسه. تذهب كل دفعة إلى عنوان خاص بها لا تستطيع إنفاقه إلا هذه المحفظة، ولا يستطيع أي مراقب معرفة أنك تلقيت دفعة، أو أن دفعتين ذهبتا إلى الشخص نفسه. يكلّف رسوم الشبكة. يمكن للناس الدفع لك بعد نحو %1 من التأكيد.</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>المدفوعات بالاسم</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>ادفع إلى %1</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>لا يقبل %1 المدفوعات بالاسم بعد. اطلب منهم تفعيلها من تبويب الأسماء، أو اطلب عنوانًا.</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>انتقلت ملكية %1 قبل %2.</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>ضبطوا المفتاح الذي يتلقون عليه المدفوعات قبل %1.</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>بعملة BPS</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>المبلغ</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>تذهب الدفعة إلى عنوان مخصص لها وحدها، لا يستطيع إنفاقه إلا %1؛ ولا يستطيع أحد غيره معرفة من تلقى الدفعة. لا يمكن استرجاع الدفعة. تُضاف رسوم الشبكة.</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>إذا لم يكونوا هم، فستضيع الدفعة. الأكثر أمانًا الانتظار حتى يمضي %1.</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>ادفع على أي حال</translation>
     </message>
 </context>
 <context>
@@ -1381,6 +2698,225 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>The supplied proxy address is invalid.</source>
         <translation>عنوان الوكيل توفيره غير صالح.</translation>
     </message>
+    <message>
+        <source>(0 = auto, &lt;0 = leave that many cores free)</source>
+        <translation>(0 = تلقائي، &lt;0 = اترك هذا العدد من الأنوية حرًا)</translation>
+    </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>ما إذا كانت ميزات التحكم في التخزين البارد تُعرض.</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>تفعيل ميزات التحكم في التخزين البارد(&amp;T)</translation>
+    </message>
+    <message>
+        <source>If you disable the spending of unconfirmed change, the change from a transaction cannot be used until that transaction has at least one confirmation. This also affects how your balance is computed.</source>
+        <translation>إذا عطّلت إنفاق الباقي غير المؤكد، فلن يمكن استخدام الباقي من معاملة حتى تحصل تلك المعاملة على تأكيد واحد على الأقل. يؤثر هذا أيضًا في طريقة حساب رصيدك.</translation>
+    </message>
+    <message>
+        <source>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>فتح منفذ عميل Bitcoin تلقائيًا على الموجّه. يعمل هذا فقط إذا كان موجّهك يدعم UPnP وكان مفعّلًا.</translation>
+    </message>
+    <message>
+        <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
+        <translation>عناوين URL لجهات خارجية (مثل مستكشف كتل) تظهر في تبويب المعاملات كعناصر في قائمة السياق. يُستبدل %s في العنوان بتجزئة المعاملة. تُفصل العناوين المتعددة بخط عمودي |.</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>الشبكة المتراكبة</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>طبقة مشفّرة خاصة بـ BPS، تنقل حركة المرور عبر نظراء آخرين بحيث لا يعرف الطرف الآخر أبدًا مكانك.</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>جارٍ السؤال…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>يعمل</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>يستمع على</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>المسارات المفتوحة</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>الخدمات التي تلتقي هنا</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>المرحِّلات المتاحة</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>جولة اليوم</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>مدخلك</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>النظراء الذين تدخل عبرهم حركة مرورك دائمًا. يُحتفظ بهم بدلًا من تبديلهم: اختيار نظير جديد في كل مرة سيمنح المراقب دورًا في النهاية.</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>أين يمكن للناس ملاقاتك</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>محسوب من السجل لا مُستعلَم عنه. كل من يحاول الوصول إليك يجري الحساب نفسه ويحصل على الجواب نفسه، فلا أحد يُسأل ولا أحد يستطيع أن يجيب بغير ذلك. تتغير كل يوم.</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>سُمع عبر الراديو</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>ما يدرّه الترحيل</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>المُصدَر يوميًا</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>المرحِّلات</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>المستخدمون</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>المستخدمون لكل مرحِّل</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>الحصة لكل مستخدم</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>يدفع المرحِّل للنظراء الذين يدرجهم من مكافآت كتله الخاصة، لذا فحصة المستخدم هي واحد مقسومًا على عدد مستخدمي مرحِّله — ولهذا فإن الاستحواذ على حصة من مستخدمي الشبكة يكلّف حصة من التخزين. مقدار ما يتقاسمه المرحِّل من المكافأة اختياره الخاص ولا شيء يفرضه: المرحِّل الذي لا يدفع شيئًا ينتج كتلة صالحة تمامًا. ما يدفعه إلى الدفع هو أن مرحِّلًا بلا مستخدمين لا يحمي أحدًا، ولا حتى نفسه.</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>لم يراجعه بعد أحد غير من كتبه، وهو يخفي مكانك لا توقيت حديثك: من يراقب الطرفين ما زال يستطيع مطابقة التوقيت. اعتبره غير مكتمل.</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>لا تتقاسم هذه العقدة شيئًا. اضبط -relayshare على نسبة مئوية، واقبل النظراء بالأمر addrosteruser.</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>كانت هذه العقدة ستتقاسم %1%، لكن %2.</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>تتقاسم هذه العقدة %1% مع %2 نظراء: الكتلة التالية التي تنشئها تدفع %3، %4 لكل منهم.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>جسر Reticulum لا يستجيب. شغّله من الإعدادات، الراديو، أو شغّل bps-rns-bridge.py بنفسك.</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>جارٍ الاستماع. لم تُسمع أي عقدة BPS عبر الراديو بعد؛ تعلن العقد عن نفسها كل نصف ساعة.</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>تدخل حركة مرورك عبر جار راديو حين يكون أحدهم مرحِّلًا مُدرَجًا.</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>سُمع، لكن حركة مرورك تدخل عبر الإنترنت (الإعدادات، الراديو).</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>قفزة واحدة</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>%1 قفزات</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>القفزات غير معروفة</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>سُمع قبل %1</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>مرحِّل</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>نعم</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>لا</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>الشبكة المتراكبة متوقفة. يشغّلها هذا العميل بنفسه، لذا فقد أوقفها شيء ما مجددًا، بالخيار -overlay=0 في سطر الأوامر أو في ملف الإعدادات.</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>لا شيء ما دامت الشبكة المتراكبة متوقفة</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>الشبكة المتراكبة متوقفة</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>لا شيء بعد</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>الشبكة المتراكبة تعمل، لا مرحِّلات بعد</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>الشبكة المتراكبة تعمل، مرحِّل واحد</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>الشبكة المتراكبة تعمل، %1 مرحِّلات</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>لم يُختر أي منها بعد</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>لا شيء — لا يحتوي السجل على مرحِّلات لاشتقاقها منها</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>الشبكة المتراكبة غير معروفة</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>لا مرحِّلات بعد</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1458,7 +2994,31 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
-        <translation>تم تنشيط وضع الخصوصية لعلامة التبويب "نظرة عامة". للكشف عن القيم ، قم بإلغاء تحديد الإعدادات-&gt; إخفاء القيم.</translation>
+        <translation>تم تنشيط وضع الخصوصية لعلامة التبويب &quot;نظرة عامة&quot;. للكشف عن القيم ، قم بإلغاء تحديد الإعدادات-&gt; إخفاء القيم.</translation>
+    </message>
+    <message>
+        <source>Stake</source>
+        <translation>الحصة</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>حصص غير ناضجة:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>تفويضات غير ناضجة</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>تفويضات غير ناضجة:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>مفوَّض</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>مفوَّض:</translation>
     </message>
 </context>
 <context>
@@ -1559,7 +3119,31 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Transaction is fully signed and ready for broadcast.</source>
         <translation> الصفقة موقعة بالكامل وجاهزة للبث</translation>
     </message>
-    </context>
+    <message>
+        <source>Unable to calculate transaction fee or total transaction amount.</source>
+        <translation>تعذّر حساب رسوم المعاملة أو المبلغ الإجمالي للمعاملة.</translation>
+    </message>
+    <message>
+        <source>Pays transaction fee: </source>
+        <translation>يدفع رسوم المعاملة: </translation>
+    </message>
+    <message>
+        <source>Transaction has %1 unsigned inputs.</source>
+        <translation>المعاملة تحتوي على %1 مدخلات غير موقّعة.</translation>
+    </message>
+    <message>
+        <source>Transaction still needs signature(s).</source>
+        <translation>المعاملة ما زالت تحتاج إلى توقيع (توقيعات).</translation>
+    </message>
+    <message>
+        <source>(But this wallet does not have the right keys.)</source>
+        <translation>(لكن هذه المحفظة لا تملك المفاتيح الصحيحة.)</translation>
+    </message>
+    <message>
+        <source>Transaction status is unknown.</source>
+        <translation>حالة المعاملة غير معروفة.</translation>
+    </message>
+</context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1590,6 +3174,18 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Payment request file handling</source>
         <translation>التعامل مع ملف طلب الدفع</translation>
     </message>
+    <message>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;bitcoin://&apos; ليس URI صالحًا. استخدم &apos;bitcoin:&apos; بدلًا منه.</translation>
+    </message>
+    <message>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <translation>بسبب ثغرات أمنية واسعة الانتشار في BIP70، يُنصح بشدة بتجاهل أي تعليمات من التاجر بتبديل المحفظة.</translation>
+    </message>
+    <message>
+        <source>If you are receiving this error you should request the merchant provide a BIP21 compatible URI.</source>
+        <translation>إذا تلقيت هذا الخطأ فاطلب من التاجر توفير URI متوافق مع BIP21.</translation>
+    </message>
 </context>
 <context>
     <name>PeerTableModel</name>
@@ -1619,6 +3215,161 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>جدّد إدراجك</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>انشر إدراجك</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>يكتب التجديد سجلًا جديدًا على السلسلة. وحتى يتأكد، يظل القديم معتمدًا.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>يكتب هذا سجلًا قصيرًا على السلسلة يقول إنك موجود، واختياريًا أين يمكن العثور عليك.</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>كيف يصل إليك النظراء؟</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>عبر الشبكة المتراكبة — دون نشر عنوان</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>يقول إدراجك من أنت لا أين تعمل. يصل إليك النظراء بدلًا من ذلك عبر الشبكة المتراكبة، ويلتقونك عند نقاط يحسبها الطرفان من السجل. هذا ما يفعّله هذا العميل افتراضيًا.</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>على عنوان أنشره</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>عنوان يمكن للنظراء الآخرين الوصول إليه</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>يستطيع أي شخص رؤيته، وتحتفظ به السلسلة إلى الأبد. ينشر عنوان onion موقعًا لا يستطيع أحد تتبعه إليك ويعمل من خلف NAT؛ أما عنوان IP فلا يفعل أيًّا من ذلك. العقدة التي تنشر عنوان IP قد يختارها الآخرون مرحِّلًا.</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>من يدفع الرسوم</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>شهر، ثم يلزم تجديده</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>سنة، ثم يلزم تجديده</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>مدة صلاحيته</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>تجديد</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>نشر</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>يدفع مرحِّل — لا حاجة إلى عملات</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>الشبكة المتراكبة متوقفة، لذا لا يوجد مرحِّل يُطلب منه. فعّلها من الإعدادات، أو ادفع من محفظة.</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>لا يوجد مرحِّل مُدرَج في السجل بعد، لذا لا أحد يُطلب منه. ادفع من محفظة، أو حاول مجددًا بعد أن يُدرج مرحِّل نفسه.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>توقّع عقدتك الإدراج وترسله عبر الشبكة المتراكبة إلى المرحِّل الذي تدخل منه. المرحِّل الذي يدفع مقابل الإدراجات يضع إدراجك في كتلة ينشئها بنفسه، فيتأكد حتى لو لم تمرره معظم العقد، ويضيفك إلى النظراء الذين يتقاسم معهم مكافآته. إذا توقف عن الدفع لاحقًا، ينتهي إدراجك خلال الشهر؛ ويمكنك دائمًا تجديده بنفسك من محفظة فيها رصيد.</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>هذه العقدة لا تقوم بالتخزين. الإدراج أكبر مما تمرره العقد الأقدم، لذا وحتى يرقّي معظم المخزِّنين، لا يتأكد إلا حين يضمّنه مخزِّن يشغّل هذا الإصدار، وقد يستغرق ذلك وقتًا. التخزين يضعه في كتلتك التالية؛ والمرحِّل الذي يدفع يضعه في كتلته.</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>هذه المحفظة مفتوحة للتخزين فقط. يطلب الدفع عبارة مرورها، ثم تُقفل المحفظة مجددًا، مما يوقف التخزين حتى تفتحها للتخزين من جديد.</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>يطلب الدفع عبارة مرور هذه المحفظة.</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>أدخل عنوانًا، أو اختر عدم نشر أي عنوان.</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>جارٍ طلب النشر من مرحِّلك… قد يستغرق ذلك حتى نصف دقيقة.</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>تلك المحفظة لم تعد مفتوحة.</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>المحفظة ما زالت مقفلة، لذا لم يُدفع شيء.</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>جارٍ توقيع السجل…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>أعادت العقدة سجلًا لم يفهمه هذا العميل.</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>جارٍ الدفع لنشره…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>رفض المرحِّل: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>لا رد من المرحِّل. %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1626,7 +3377,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>ادخل عنوان محفطة البتكوين (مثال %1)</translation>
+        <translation type="vanished">ادخل عنوان محفطة البتكوين (مثال %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1677,20 +3428,142 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>%1 قيقا بايت</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>خطأ: دليل البيانات المحدد "%1" غير موجود.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>خطأ: دليل البيانات المحدد &quot;%1&quot; غير موجود.</translation>
     </message>
     <message>
         <source>Error: %1</source>
         <translation>خطأ: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1 لم يخرج بعد بأمان...</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>غير معروف</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>جهة اتصال</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>الاستلام</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>مخفي</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>غير معروف</translation>
+    </message>
+    <message>
+        <source>Error: Cannot parse configuration file: %1.</source>
+        <translation>خطأ: تعذّر تحليل ملف الإعدادات: %1.</translation>
+    </message>
+    <message>
+        <source>Error initializing settings: %1</source>
+        <translation>خطأ في تهيئة الإعدادات: %1</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>مفوَّض</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>يملك %1 شخصٌ عرضه للبيع. يطلب %2؛ تُضاف رسوم الشبكة.</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>شراء</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>جارٍ التحقق من توفره…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>إنه متاح.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>تسجيل</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>لم يُنجز بعد</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>أدخل عنوان BitcoinPoS (مثل %1)</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n ثانية</numerusform>
+            <numerusform>%n ثانية</numerusform>
+            <numerusform>%n ثانيتان</numerusform>
+            <numerusform>%n ثوانٍ</numerusform>
+            <numerusform>%n ثانية</numerusform>
+            <numerusform>%n ثانية</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n دقيقة</numerusform>
+            <numerusform>%n دقيقة</numerusform>
+            <numerusform>%n دقيقتان</numerusform>
+            <numerusform>%n دقائق</numerusform>
+            <numerusform>%n دقيقة</numerusform>
+            <numerusform>%n دقيقة</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n ساعة</numerusform>
+            <numerusform>%n ساعة</numerusform>
+            <numerusform>%n ساعتان</numerusform>
+            <numerusform>%n ساعات</numerusform>
+            <numerusform>%n ساعة</numerusform>
+            <numerusform>%n ساعة</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n يوم</numerusform>
+            <numerusform>%n يوم</numerusform>
+            <numerusform>%n يومان</numerusform>
+            <numerusform>%n أيام</numerusform>
+            <numerusform>%n يومًا</numerusform>
+            <numerusform>%n يوم</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n week(s)</source>
+        <translation>
+            <numerusform>%n أسبوع</numerusform>
+            <numerusform>%n أسبوع</numerusform>
+            <numerusform>%n أسبوعان</numerusform>
+            <numerusform>%n أسابيع</numerusform>
+            <numerusform>%n أسبوعًا</numerusform>
+            <numerusform>%n أسبوع</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n year(s)</source>
+        <translation>
+            <numerusform>%n سنة</numerusform>
+            <numerusform>%n سنة</numerusform>
+            <numerusform>%n سنتان</numerusform>
+            <numerusform>%n سنوات</numerusform>
+            <numerusform>%n سنة</numerusform>
+            <numerusform>%n سنة</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -1718,6 +3591,10 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>PNG Image (*.png)</source>
         <translation>صورة PNG (*.png)</translation>
+    </message>
+    <message>
+        <source>QR code support not available.</source>
+        <translation>دعم رمز QR غير متاح.</translation>
     </message>
 </context>
 <context>
@@ -2002,6 +3879,77 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Unknown</source>
         <translation>غير معرف</translation>
     </message>
+    <message>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>لتحديد موقع غير افتراضي لمجلد البيانات استخدم الخيار &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Blocksdir</source>
+        <translation>مجلد الكتل</translation>
+    </message>
+    <message>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>لتحديد موقع غير افتراضي لمجلد الكتل استخدم الخيار &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Current block height</source>
+        <translation>ارتفاع الكتلة الحالي</translation>
+    </message>
+    <message>
+        <source>Open the %1 debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>فتح ملف سجل تصحيح %1 من مجلد البيانات الحالي. قد يستغرق هذا بضع ثوانٍ لملفات السجل الكبيرة.</translation>
+    </message>
+    <message>
+        <source>The mapped Autonomous System used for diversifying peer selection.</source>
+        <translation>النظام المستقل المعيَّن المستخدم لتنويع اختيار النظراء.</translation>
+    </message>
+    <message>
+        <source>Mapped AS</source>
+        <translation>AS المعيَّن</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>هل تقصد:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>لست متأكدًا من الأمر؟ اكتب ما تريده بكلمات بسيطة، مثل %1، واختر اقتراحًا. تُحسب الاقتراحات على هذا الحاسوب؛ لا يُرسل أي شيء تكتبه إلى أي مكان.</translation>
+    </message>
+    <message>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>تنفيذ الأمر باستخدام المحفظة &quot;%1&quot;</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>الراديو متوقف.</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>الراديو يعمل؛ شغّل جسر Reticulum بنفسك (contrib/reticulum/bps-rns-bridge.py).</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>الملف bps-rns-bridge.py ليس بجوار BPS Relay، لذا لا يمكن تشغيل الجسر.</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>تعذّر تشغيل Python باسم &quot;%1&quot;. ثبّت Python، أو اضبط الأمر من الإعدادات، الراديو.</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Reticulum غير مثبّت. ثبّته بالأمر: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>توقف جسر Reticulum (الحالة %1)؛ راجع radio/bridge.log.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>جسر Reticulum قيد التشغيل.</translation>
+    </message>
 </context>
 <context>
     <name>ReceiveCoinsDialog</name>
@@ -2085,7 +4033,27 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Could not unlock wallet.</source>
         <translation> يمكن فتح المحفظة.</translation>
     </message>
-    </context>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>تسمية اختيارية تُربط بعنوان الاستلام الجديد (تستخدمها لتمييز فاتورة). تُرفق أيضًا بطلب الدفع.</translation>
+    </message>
+    <message>
+        <source>An optional message that is attached to the payment request and may be displayed to the sender.</source>
+        <translation>رسالة اختيارية تُرفق بطلب الدفع وقد تُعرض على المرسل.</translation>
+    </message>
+    <message>
+        <source>(none)</source>
+        <translation>(لا شيء)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>لم يُضبط عنوان تخزين لهذه المحفظة، لذا لا يوجد ما يُفوَّض إليه. اضبط واحدًا في صفحة الحصة، ضمن التفويض -&gt; التفويض التلقائي، وسيعمل نوع العنوان هذا.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>تعذّر إنشاء عنوان %1 جديد</translation>
+    </message>
+</context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
@@ -2128,6 +4096,10 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Payment information</source>
         <translation>معلومات الدفع</translation>
     </message>
+    <message>
+        <source>Label:</source>
+        <translation>التسمية:</translation>
+    </message>
 </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -2158,6 +4130,99 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Requested</source>
         <translation>تم الطلب</translation>
+    </message>
+</context>
+<context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>النظير</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>العنوان</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>مُدرَج</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>ينتهي الإدراج</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>مُدرَج منذ</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>انقر للنسخ</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>هذا النظير مُدرَج لكنه لا ينشر عنوانًا. ما زال يمكن
+الوصول إليه عبر الشبكة المتراكبة، وهذا هو الغرض من السماح بذلك.</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>نُشر عنوان واحد</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>نُشر %1 عناوين</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>تأكد في الكتلة %1</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>يتوقف احتسابه عند الكتلة %1</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>لا يوجد تاريخ قبل هذا الإدراج.</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>مُدرَج دون انقطاع منذ الكتلة %1.</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>حديث جدًا ليُحتسب بعد.</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>لا يعمل تحت هوية.</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>يعمل تحت الهوية %1، التي تحتفظ بعمرها إذا غيّرت المفاتيح.</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>لم يُنشر أي عنوان</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>الآن</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>قبل %1</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>منتهي الصلاحية</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>خلال %1</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>جديد</translation>
     </message>
 </context>
 <context>
@@ -2271,7 +4336,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>تفعيل الإستبدال بواسطة الرسوم</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
         <translation>مع الإستبدال بواسطة الرسوم (BIP-125) يمكنك زيادة رسوم المعاملة بعد إرسالها. وبدون ذلك، قد نوصي برسوم أعلى للتعويض عن مخاطر تأخير المعاملة المتزايدة.</translation>
     </message>
     <message>
@@ -2418,6 +4483,125 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>(no label)</source>
         <translation>(بدون وسم)</translation>
     </message>
+    <message>
+        <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until you have validated the complete chain.</source>
+        <translation>قد يؤدي استخدام fallbackfee إلى إرسال معاملة تستغرق عدة ساعات أو أيام (أو لا تتأكد أبدًا). فكّر في اختيار الرسوم يدويًا أو انتظر حتى تتحقق من السلسلة كاملة.</translation>
+    </message>
+    <message>
+        <source>Hide transaction fee settings</source>
+        <translation>إخفاء إعدادات رسوم المعاملة</translation>
+    </message>
+    <message>
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
+
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+        <translation>حدّد رسومًا مخصصة لكل كيلوبايت (1,000 بايت) من الحجم الافتراضي للمعاملة.
+
+ملاحظة: بما أن الرسوم تُحسب لكل بايت، فإن رسومًا قدرها &quot;100 ساتوشي لكل كيلوبايت&quot; لمعاملة حجمها 500 بايت (نصف كيلوبايت) ستنتج في النهاية رسومًا قدرها 50 ساتوشي فقط.</translation>
+    </message>
+    <message>
+        <source>When there is less transaction volume than space in the blocks, miners as well as relaying nodes may enforce a minimum fee. Paying only this minimum fee is just fine, but be aware that this can result in a never confirming transaction once there is more demand for bitcoin transactions than the network can process.</source>
+        <translation>حين يكون حجم المعاملات أقل من المساحة في الكتل، قد يفرض المعدّنون وعقد الترحيل حدًا أدنى للرسوم. لا بأس بدفع هذا الحد الأدنى فقط، لكن انتبه إلى أن ذلك قد يؤدي إلى معاملة لا تتأكد أبدًا عندما يتجاوز الطلب على معاملات bitcoin ما تستطيع الشبكة معالجته.</translation>
+    </message>
+    <message>
+        <source>A too low fee might result in a never confirming transaction (read the tooltip)</source>
+        <translation>قد تؤدي الرسوم المنخفضة جدًا إلى معاملة لا تتأكد أبدًا (اقرأ التلميح)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>الصق أو حمّل قائمة مدفوعات بدلًا من إضافتها واحدة واحدة</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>مجمّع(&amp;B)...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>عند حساب الرصيد المتاح، احتسب التفويضات أيضًا. إذا لم يُحدَّد، فسيعكس الرصيد المتاح العملات الموجودة حاليًا في المحفظة فقط.</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>تضمين التفويضات(&amp;N)</translation>
+    </message>
+    <message>
+        <source>Cr&amp;eate Unsigned</source>
+        <translation>إنشاء دون توقيع(&amp;E)</translation>
+    </message>
+    <message>
+        <source>Creates a Partially Signed Bitcoin Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>ينشئ معاملة Bitcoin موقّعة جزئيًا (PSBT) لاستخدامها مثلًا مع محفظة %1 غير متصلة، أو محفظة عتادية متوافقة مع PSBT.</translation>
+    </message>
+    <message>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation> من المحفظة &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 إلى &apos;%2&apos;</translation>
+    </message>
+    <message>
+        <source>Do you want to draft this transaction?</source>
+        <translation>هل تريد إنشاء مسودة لهذه المعاملة؟</translation>
+    </message>
+    <message>
+        <source>Please, review your transaction proposal. This will produce a Partially Signed Bitcoin Transaction (PSBT) which you can save or copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>يُرجى مراجعة مقترح معاملتك. سينتج هذا معاملة Bitcoin موقّعة جزئيًا (PSBT) يمكنك حفظها أو نسخها ثم توقيعها مثلًا بمحفظة %1 غير متصلة، أو بمحفظة عتادية متوافقة مع PSBT.</translation>
+    </message>
+    <message>
+        <source>Please, review your transaction.</source>
+        <translation>يُرجى مراجعة معاملتك.</translation>
+    </message>
+    <message>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>لمراجعة قائمة المستلمين انقر &quot;إظهار التفاصيل...&quot;</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>التخزين البارد غير مفعّل</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>يُفعَّل التخزين البارد عند الكتلة %1</translation>
+    </message>
+    <message>
+        <source>Confirm transaction proposal</source>
+        <translation>تأكيد مقترح المعاملة</translation>
+    </message>
+    <message>
+        <source>PSBT saved</source>
+        <translation>حُفظت PSBT</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>تقوم هذه المحفظة بتخزين عملاتها، لذا فجميعها مفوَّضة.</translation>
+    </message>
+    <message>
+        <source>Watch-only balance:</source>
+        <translation>رصيد المراقبة فقط:</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>عنوان المالك المُدخل غير موجود في هذه المحفظة. تحذير: بعد التفويض لن يستطيع إنفاق هذه العملات إلا مالك مفتاح عنوان المالك.</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>عنوان المخزِّن المُدخل موجود في هذه المحفظة. يمكنك تخزين العملات بالفعل، فلا حاجة إلى تفويضها لنفسك.</translation>
+    </message>
+    <message numerus="yes">
+        <source>Estimated to begin confirmation within %n block(s).</source>
+        <translation>
+            <numerusform>يُتوقع أن يبدأ التأكيد خلال %n كتلة.</numerusform>
+            <numerusform>يُتوقع أن يبدأ التأكيد خلال %n كتلة.</numerusform>
+            <numerusform>يُتوقع أن يبدأ التأكيد خلال %n كتلتين.</numerusform>
+            <numerusform>يُتوقع أن يبدأ التأكيد خلال %n كتل.</numerusform>
+            <numerusform>يُتوقع أن يبدأ التأكيد خلال %n كتلة.</numerusform>
+            <numerusform>يُتوقع أن يبدأ التأكيد خلال %n كتلة.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>The address you selected for change is not part of this wallet. Any or all funds in your wallet may be sent to this address. Are you sure?</source>
+        <translation>العنوان الذي اخترته للباقي ليس جزءًا من هذه المحفظة. قد تُرسل بعض أموال محفظتك أو كلها إلى هذا العنوان. هل أنت متأكد؟</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsEntry</name>
@@ -2496,6 +4680,356 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Memo:</source>
         <translation>مذكرة:</translation>
+    </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>عنوان المالك(&amp;O):</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>عنوان مالك BitcoinPoS</translation>
+    </message>
+    <message>
+        <source>The amount to send in the selected unit</source>
+        <translation>المبلغ المراد إرساله بالوحدة المختارة</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>الخادم</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>ما تقدمه هذه العقدة للآخرين. الترحيل والاحتفاظ بالبريد يعملان اليوم؛ الاستضافة قادمة، ومثل كل شيء هنا يُعثر عليها بالطريقة نفسها التي يُعثر بها على النظراء — عبر السجل. للأسماء صفحة خاصة بها.</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>الاستضافة</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>موقع أو خدمة تُقدَّم من هذه العقدة، يُعثر عليها بمفتاحها أو اسمها ويُوصل إليها عبر الشبكة المتراكبة، فلا ينشر المضيف أبدًا مكان عمله. جزء الالتقاء موجود: تسجّل الخدمة عند نقاط التقاء يحسبها الطرفان من السجل. لم يُنجز بعد تقديم الصفحات والتطبيقات عبرها.</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>المرحِّل</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>نقل حركة مرور الشبكة المتراكبة للنظراء الآخرين، ودفع رسوم الإدراجات الشهرية للنظراء الذين يستخدمون هذه العقدة، وتقاسم جزء من كل كتلة تنشئها معهم. يضع المرحِّل الإدراجات التي يدفع مقابلها في كتل ينشئها بنفسه، وبهذا تتأكد بينما ما زالت معظم العقد ترفض تمرير السجلات — لذا يجب أن يقوم المرحِّل بالتخزين.</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>التخزين</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>النظراء المُدرَجون هنا</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>الكتلة التالية التي تنشئها</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>الدفع لإدراج النظراء الذين يطلبون ذلك عبر الشبكة المتراكبة</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>يمكن لنظير لا يملك عملات أن يطلب من هذه العقدة نشر إدراجه الشهري. تدفع هذه العقدة الرسوم، وتضعه في كتلة، وتضيف النظير إلى من تتقاسم معهم المكافآت. متوقف افتراضيًا، لأنه ينفق عملات هذه العقدة.</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>يُرفض النظراء الذين يتجاوزون هذا العدد. يمكن للنظراء المدرجين هنا بالفعل التجديد.</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>الحد الأقصى للنظراء المُدرَجين</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>المحفظة الوحيدة المفتوحة</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>المحفظة التي تدفع الرسوم. إذا كانت عدة محافظ مفتوحة ولم تُسمَّ أي منها هنا، تُرفض الطلبات بدلًا من الدفع تخمينًا. يمكن أن يجري التخزين في أي محفظة على هذه العقدة.</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>دفع الرسوم من المحفظة</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>جزء من كل كتلة تنشئها هذه العقدة من عملاتها، يُقسَّم بالتساوي بين النظراء الذين تدرجهم. 0 لا يتقاسم شيئًا.</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>الحصة من كل كتلة منشأة</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>صندوق البريد</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>احتفظ بالبريد المختوم للأشخاص الذين يجعل السجل هذه العقدة صندوق بريد لهم، حتى يستلموه. تُحسب المرحِّلات التي تحتفظ ببريد كل شخص من السجل، فلا أحد يسندها. يصل المرسلون والمالكون إلى هذه العقدة عبر ثلاثة مرحِّلات، فلا تعرف أبدًا أين هم؛ والرسائل مختومة، فلا تستطيع قراءتها ولا معرفة كاتبها. تُحذف الرسائل بعد أسبوعين، ولا يُخدم إلا الأشخاص المُدرَجون.</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>الاحتفاظ</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>مفاتيح البريد المحفوظة للمرسلين</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>احتفظ بالبريد للأشخاص الذين يسندهم السجل إلى هذه العقدة</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>مفعّل افتراضيًا أينما تعمل الشبكة المتراكبة: المرحِّل الذي يرفض يترك من اختير لهم بصندوق بريد أقل.</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> ميبيبايت</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>عند امتلائه، تُرفض الرسائل الجديدة حتى تُستلم القديمة أو تُحذف. لا يستطيع أي شخص استخدام أكثر من 8 ميبيبايت منه.</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>مساحة القرص المسموح باستخدامها</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>تم الحفظ. تُقرأ هذه عند بدء العقدة، لذا أعد تشغيل العميل ليسري التغيير.</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>لا محفظة مفتوحة</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>لا — المرحِّل الذي لا يقوم بالتخزين يرفض طلبات الإدراج</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>نعم، خلال %1</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>لا يدفع مقابل الإدراجات</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>يدفع، لكنه لا يقوم بالتخزين</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>يعمل</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>هذا الإصدار بلا محفظة</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>يحتاج إلى محفظة</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>متوقف</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>يحتاج إلى الشبكة المتراكبة</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>لا شيء — لا يحتفظ بالبريد</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>لا رسائل</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>حرف واحد</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>%1 أحرف</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>شخص واحد</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>%1 أشخاص</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 كيبيبايت</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 ميبيبايت</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>لا شيء حاليًا، مساحة لـ %1 ميبيبايت</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%1 لـ %2، %3 من %4 ميبيبايت</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>يتقاسم %1%: %2 %4 إجمالًا، %3 %4 لكل نظير</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>الإعدادات</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>ما يفعله هذا العميل ولا يفعله عميل المحفظة، واللغة. كل ما عدا ذلك — الوكيل والمنافذ والتقليم — هو السؤال نفسه في كليهما، ويُطرح في مكان واحد.</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>استكشاف</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>الاحتفاظ بفهرس للسجل</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>من دونه تستطيع هذه العقدة النشر لكنها لا ترى من غيرها مُدرَج.</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>فهرسة الأسماء</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>مطلوب للبحث عن الأسماء، وإرسال البريد إليها، وتسجيل اسمك.</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>محاولة الاتصال بالنظراء الموجودين في السجل</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>يسلّم عناوين السجل إلى مدير العناوين، إلى جانب البذور وتبادل العناوين المعتادين. إيقافه يجعل السجل قائمة تقرؤها هذه العقدة لكنها لا تعمل بها أبدًا.</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>الشبكة المتراكبة</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>تشغيل الشبكة المتراكبة</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>مفعّل افتراضيًا في هذا العميل، ومتوقف في العقدة وفي عميل المحفظة. لم يراجع مصافحته بعد أحد غير من كتبها.</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>تستخدم الشبكة المتراكبة UDP على منفذها الخاص. الشبكة من نظير إلى نظير منفصلة وتبقى على TCP.</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>الاستماع على المنفذ</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>الراديو</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>نقل الشبكة المتراكبة عبر الراديو أيضًا، من خلال Reticulum</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>LoRa عبر RNode، أو راديو الحزم، أو الوصلات التسلسلية: أي ما أُعِدّ Reticulum لاستخدامه. يحتاج إلى الشبكة المتراكبة.</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>الدخول إلى الشبكة المتراكبة عبر جيران الراديو، ليعمل البريد دون إنترنت</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>حين تكون عقدة BPS المسموعة عبر الراديو مرحِّلًا مُدرَجًا، يمر بريدك وطلبات إدراجك عبرها. وصلة الراديو أبطأ بكثير من الإنترنت.</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>تشغيل جسر Reticulum مع BPS Relay</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>يشغّل bps-rns-bridge.py بجوار العقدة. اتركه متوقفًا إذا كنت تشغّل الجسر بنفسك.</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>أمر Python</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Reticulum ليس جزءًا من BPS وله ترخيصه الخاص. ثبّته بالأمر %1، واضبط الراديو في إعدادات Reticulum الخاصة (~/.reticulum/config). نطاقات راديو الهواة لا تسمح بحركة مرور مشفرة، لذا استخدم نطاقات لا تتطلب ترخيصًا مثل نطاقات LoRa.</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>العرض</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>عرض المبالغ بـ</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>لغة الحاسوب</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>يسري عند تشغيل BPS Relay مجددًا. النصوص التي ترسلها العقدة نفسها، مثل رسائل أخطاء الأوامر، تبقى بالإنجليزية.</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>اللغة</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>الشبكة والوكيل وإعدادات أساسية أخرى…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>تم الحفظ. تتغير اللغة عند تشغيل BPS Relay مجددًا.</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>تم الحفظ. تُقرأ هذه عند بدء العقدة، لذا أعد تشغيل العميل ليسري التغيير.</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>العقدة ما زالت تبدأ؛ الإعدادات الأساسية غير متاحة بعد.</translation>
     </message>
 </context>
 <context>
@@ -2588,8 +5122,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>إعادة تعيين جميع حقول التحقق من الرسالة</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>اضغط  "توقيع الرسالة" لتوليد التوقيع</translation>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>اضغط  &quot;توقيع الرسالة&quot; لتوليد التوقيع</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2638,6 +5172,229 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Message verified.</source>
         <translation>تم تأكيد الرسالة.</translation>
+    </message>
+    <message>
+        <source>You can sign messages/agreements with your addresses to prove you can receive bitcoins sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+        <translation>يمكنك توقيع رسائل/اتفاقيات بعناوينك لإثبات أنك تستطيع استلام عملات bitcoin المرسلة إليها. احذر من توقيع أي شيء غامض أو عشوائي، فقد تحاول هجمات التصيّد خداعك لتوقيع هويتك لصالحهم. لا توقّع إلا على بيانات مفصّلة بالكامل توافق عليها.</translation>
+    </message>
+    <message>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <translation>أدخل عنوان المستلم والرسالة (احرص على نسخ فواصل الأسطر والمسافات وعلامات الجدولة وغيرها كما هي تمامًا) والتوقيع أدناه للتحقق من الرسالة. احذر من أن تقرأ في التوقيع أكثر مما في الرسالة الموقّعة نفسها، كي لا تنخدع بهجوم الوسيط. لاحظ أن هذا يثبت فقط أن الطرف الموقّع يستلم على هذا العنوان، ولا يمكنه إثبات إرسال أي معاملة!</translation>
+    </message>
+    <message>
+        <source>The signed message to verify</source>
+        <translation>الرسالة الموقّعة المراد التحقق منها</translation>
+    </message>
+    <message>
+        <source>The signature given when the message was signed</source>
+        <translation>التوقيع المُعطى عند توقيع الرسالة</translation>
+    </message>
+    <message>
+        <source>No error</source>
+        <translation>لا خطأ</translation>
+    </message>
+</context>
+<context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>النموذج</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>التخزين(&amp;S)</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>رصيدك القابل للإنفاق الحالي</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>الأصول قيد التخزين التي تملكها هذه المحفظة</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>الأصول قيد التخزين من التفويضات</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>غير ناضج:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>رصيدك غير الناضج</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>الأصول قيد التخزين</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>الحصة:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>التخزين</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>ارتفاع الكتلة:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>مكافأة الكتلة:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/كتلة</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>وزن الشبكة:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>العائد السنوي المتوقع:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>سجلات الحصص</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>تفويض(&amp;D)</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>نوع التفويض:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>التفويض اليدوي</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>التفويض التلقائي</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>عناوين التخزين</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>إزالة الكل</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>لصق العنوان من الحافظة</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>إضافة(&amp;A)</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>تفويضاتي(&amp;M)</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>الأصول المفوَّضة</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>رصيدك المفوَّض الحالي</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>تفويضاتي</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>التفويضات المستلمة(&amp;R)</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>إنشاء عنوان تخزين جديد(&amp;C)</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> بالتسمية:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>تسمية اختيارية تُربط بعنوان الاستلام الجديد (تستخدمها لتمييز فاتورة). تُرفق أيضًا بطلب الدفع.</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>تفويضات ColdStake</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>العملات المدفوعة إلى عناوين التفويض في هذه المحفظة تخزّنها هذه المفاتيح فور وصولها، ويبقى الباقي من نفقاتك مفوَّضًا. لا يستطيع مفتاح التخزين إنتاج إلا coinstakes تدفع إليك، لذا لا تحتاج المحفظة التي تحمله إلى عبارة مرور.</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>أدرج أكثر من عنوان لتوزيع عملاتك على عدة محافظ تخزين، حتى لا يتوقف كل التخزين إذا انقطع اتصال إحداها.
+
+يذهب كل تفويض جديد إلى العنوان الأقل ذكرًا حتى الآن، باحتساب عناوين التفويض الموزعة والعملات المفوَّضة غير المنفقة بعد. يحصي التفويضات لا المبالغ، لذا قد يُختار عنوان فيه تفويض كبير واحد قبل عنوان فيه عدة تفويضات صغيرة.</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>العملات المفوَّضة بالفعل إلى عنوان أُزيل لا تُنقل، ويستمر في تخزينها. التفويضات الجديدة وحدها تتوقف عن ذكره.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>تعذّر فتح المحفظة.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>تعذّر إنشاء عنوان %1 جديد</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>التخزين البارد معطّل على هذه العقدة (-coldstaking=0)، لذا لا يُفوَّض شيء.</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>عنوان التخزين هنا يتبع هذه المحفظة المشفّرة، لذا لا يقوم بالتخزين إلا وهي مفتوحة. للتخزين دون عبارة مرور، استخدم عنوانًا من محفظة تخزين منفصلة غير مشفّرة.</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>إيقاف التفويض إلى %1. العملات المفوَّضة إليه بالفعل لا تُنقل ويستمر في تخزينها.</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>تعذّر حفظ عناوين التخزين. يرتبط التفويض بتجزئة مفتاح، لذا يجب أن يكون كل منها عنوان legacy.</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>عنوان التخزين هذا موجود في القائمة بالفعل.</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>إزالة جميع عناوين التخزين</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>أتوقف التفويض إلى جميع عناوين التخزين البالغ عددها %1؟
+
+تبقى العملات المفوَّضة بالفعل قيد التخزين لديها ولا تُنقل. لكن الإيداعات الجديدة والباقي ستذهب إلى عناوين عادية لا تقوم بالتخزين، وستحتاج إلى هذه العناوين مجددًا لإعادة تفعيل ذلك.</translation>
     </message>
 </context>
 <context>
@@ -2793,6 +5550,44 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>false</source>
         <translation>خاطئ</translation>
     </message>
+    <message numerus="yes">
+        <source>Open for %n more block(s)</source>
+        <translation>
+            <numerusform>مفتوحة لـ %n كتلة أخرى</numerusform>
+            <numerusform>مفتوحة لـ %n كتلة أخرى</numerusform>
+            <numerusform>مفتوحة لـ %n كتلتين أخريين</numerusform>
+            <numerusform>مفتوحة لـ %n كتل أخرى</numerusform>
+            <numerusform>مفتوحة لـ %n كتلة أخرى</numerusform>
+            <numerusform>مفتوحة لـ %n كتلة أخرى</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>0/unconfirmed, %1</source>
+        <translation>0/غير مؤكدة، %1</translation>
+    </message>
+    <message numerus="yes">
+        <source>matures in %n more block(s)</source>
+        <translation>
+            <numerusform>تنضج بعد %n كتلة أخرى</numerusform>
+            <numerusform>تنضج بعد %n كتلة أخرى</numerusform>
+            <numerusform>تنضج بعد %n كتلتين أخريين</numerusform>
+            <numerusform>تنضج بعد %n كتل أخرى</numerusform>
+            <numerusform>تنضج بعد %n كتلة أخرى</numerusform>
+            <numerusform>تنضج بعد %n كتلة أخرى</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Transaction virtual size</source>
+        <translation>الحجم الافتراضي للمعاملة</translation>
+    </message>
+    <message>
+        <source> (Certificate was not verified)</source>
+        <translation> (لم يُتحقق من الشهادة)</translation>
+    </message>
+    <message>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>يجب أن تنضج العملات المُولَّدة %1 كتلة قبل أن يمكن إنفاقها. عندما ولّدت هذه الكتلة، بُثت إلى الشبكة لإضافتها إلى سلسلة الكتل. إذا فشلت في دخول السلسلة، ستتغير حالتها إلى &quot;غير مقبولة&quot; ولن يمكن إنفاقها. قد يحدث هذا أحيانًا إذا ولّدت عقدة أخرى كتلة في غضون ثوانٍ من كتلتك.</translation>
+    </message>
 </context>
 <context>
     <name>TransactionDescDialog</name>
@@ -2902,6 +5697,45 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>المبلغ الذي أزيل أو أضيف الى الرصيد</translation>
+    </message>
+    <message numerus="yes">
+        <source>Open for %n more block(s)</source>
+        <translation>
+            <numerusform>مفتوحة لـ %n كتلة أخرى</numerusform>
+            <numerusform>مفتوحة لـ %n كتلة أخرى</numerusform>
+            <numerusform>مفتوحة لـ %n كتلتين أخريين</numerusform>
+            <numerusform>مفتوحة لـ %n كتل أخرى</numerusform>
+            <numerusform>مفتوحة لـ %n كتلة أخرى</numerusform>
+            <numerusform>مفتوحة لـ %n كتلة أخرى</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>حصة باردة</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>التخزين نيابةً عن</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>تفويض الحصة</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>التفويض</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>تفويض حصة أنفقه</translation>
+    </message>
+    <message>
+        <source>User-defined intent/purpose of the transaction.</source>
+        <translation>الغرض من المعاملة كما يحدده المستخدم.</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>المبلغ المفوَّض.</translation>
     </message>
 </context>
 <context>
@@ -3062,6 +5896,22 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>to</source>
         <translation>إلى</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>الحصص الباردة</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>الحصص الساخنة</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>مفوَّض غير منفق</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>التفويضات</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3080,12 +5930,32 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Close all wallets</source>
         <translation>إغلاق جميع المحافظ ...</translation>
     </message>
-    </context>
+    <message>
+        <source>Are you sure you wish to close the wallet &lt;i&gt;%1&lt;/i&gt;?</source>
+        <translation>هل أنت متأكد من رغبتك في إغلاق المحفظة &lt;i&gt;%1&lt;/i&gt;؟</translation>
+    </message>
+    <message>
+        <source>Closing the wallet for too long can result in having to resync the entire chain if pruning is enabled.</source>
+        <translation>إغلاق المحفظة لفترة طويلة جدًا قد يستلزم إعادة مزامنة السلسلة كاملة إذا كان التقليم مفعّلًا.</translation>
+    </message>
+    <message>
+        <source>Are you sure you wish to close all wallets?</source>
+        <translation>هل أنت متأكد من رغبتك في إغلاق كل المحافظ؟</translation>
+    </message>
+</context>
 <context>
     <name>WalletFrame</name>
     <message>
         <source>Create a new wallet</source>
         <translation>إنشاء محفظة جديدة</translation>
+    </message>
+    <message>
+        <source>No wallet has been loaded.
+Go to File &gt; Open Wallet to load a wallet.
+- OR -</source>
+        <translation>لم تُحمَّل أي محفظة.
+انتقل إلى ملف &gt; فتح محفظة لتحميل محفظة.
+- أو -</translation>
     </message>
 </context>
 <context>
@@ -3123,7 +5993,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>تأكيد زيادة الرسوم</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>لا يمكن توقيع المعاملة.</translation>
     </message>
     <message>
@@ -3133,6 +6003,33 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>default wallet</source>
         <translation>المحفظة إفتراضية</translation>
+    </message>
+    <message>
+        <source>Do you want to draft a transaction with fee increase?</source>
+        <translation>هل تريد إنشاء مسودة معاملة برسوم أعلى؟</translation>
+    </message>
+    <message>
+        <source>Can&apos;t draft transaction.</source>
+        <translation>تعذّر إنشاء مسودة المعاملة.</translation>
+    </message>
+    <message>
+        <source>PSBT copied</source>
+        <translation>نُسخت PSBT</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ هذه العقدة</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● مباشر</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>عميل المحفظة، يعمل في هذه العملية مع هذه العقدة. إنه البرنامج نفسه مثل bitcoin-pos-qt، وليس نسخة منه.</translation>
     </message>
 </context>
 <context>
@@ -3172,6 +6069,30 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Cancel</source>
         <translation>إلغاء</translation>
+    </message>
+    <message>
+        <source>Unable to decode PSBT from clipboard (invalid base64)</source>
+        <translation>تعذّر فك ترميز PSBT من الحافظة (base64 غير صالح)</translation>
+    </message>
+    <message>
+        <source>Load Transaction Data</source>
+        <translation>تحميل بيانات المعاملة</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (*.psbt)</source>
+        <translation>معاملة موقّعة جزئيًا (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT file must be smaller than 100 MiB</source>
+        <translation>يجب أن يكون ملف PSBT أصغر من 100 ميبيبايت</translation>
+    </message>
+    <message>
+        <source>Unable to decode PSBT</source>
+        <translation>تعذّر فك ترميز PSBT</translation>
+    </message>
+    <message>
+        <source>There was an error trying to save the wallet data to %1.</source>
+        <translation>حدث خطأ أثناء محاولة حفظ بيانات المحفظة في %1.</translation>
     </message>
 </context>
 <context>
@@ -3393,8 +6314,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>الرصيد غير كافي</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>لايمكن الكتابة على دليل البيانات '%s'؛ تحقق من السماحيات.</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>لايمكن الكتابة على دليل البيانات &apos;%s&apos;؛ تحقق من السماحيات.</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -3415,6 +6336,320 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Done loading</source>
         <translation>إنتهاء التحميل</translation>
+    </message>
+    <message>
+        <source>%s corrupt. Try using the wallet tool bitcoin-wallet to salvage or restoring a backup.</source>
+        <translation>%s تالف. جرّب أداة المحفظة bitcoin-wallet لإنقاذه أو استعد نسخة احتياطية.</translation>
+    </message>
+    <message>
+        <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
+        <translation>قيمة -maxtxfee مرتفعة جدًا! قد تُدفع رسوم بهذا الحجم على معاملة واحدة.</translation>
+    </message>
+    <message>
+        <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use version 169900 or no version specified.</source>
+        <translation>لا يمكن ترقية محفظة مقسّمة غير HD دون الترقية لدعم مجمع المفاتيح السابق للتقسيم. استخدم الإصدار 169900 أو لا تحدد إصدارًا.</translation>
+    </message>
+    <message>
+        <source>Distributed under the MIT software license, see the accompanying file %s or %s</source>
+        <translation>موزَّع بموجب رخصة MIT للبرمجيات، راجع الملف المرفق %s أو %s</translation>
+    </message>
+    <message>
+        <source>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
+        <translation>خطأ في قراءة %s! قُرئت كل المفاتيح بشكل صحيح، لكن بيانات المعاملات أو إدخالات دفتر العناوين قد تكون مفقودة أو غير صحيحة.</translation>
+    </message>
+    <message>
+        <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
+        <translation>خطأ: فشل الاستماع للاتصالات الواردة (أعاد listen الخطأ %s)</translation>
+    </message>
+    <message>
+        <source>Fee estimation failed. Fallbackfee is disabled. Wait a few blocks or enable -fallbackfee.</source>
+        <translation>فشل تقدير الرسوم. Fallbackfee معطّل. انتظر بضع كتل أو فعّل -fallbackfee.</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>مبلغ غير صالح لـ -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (يجب ألا يقل عن رسوم الترحيل الدنيا %s لتجنب المعاملات العالقة)</translation>
+    </message>
+    <message>
+        <source>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</source>
+        <translation>قُدّم أكثر من عنوان ربط onion. يُستخدم %s لخدمة Tor onion المنشأة تلقائيًا.</translation>
+    </message>
+    <message>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation>يُرجى التحقق من صحة تاريخ حاسوبك ووقته! إذا كانت ساعتك خاطئة فلن يعمل %s بشكل صحيح.</translation>
+    </message>
+    <message>
+        <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
+        <translation>التقليم مضبوط دون الحد الأدنى البالغ %d ميبيبايت. يُرجى استخدام رقم أعلى.</translation>
+    </message>
+    <message>
+        <source>Prune: last wallet synchronisation goes beyond pruned data. You need to -reindex (download the whole blockchain again in case of pruned node)</source>
+        <translation>التقليم: آخر مزامنة للمحفظة تتجاوز البيانات المقلّمة. تحتاج إلى -reindex (تنزيل سلسلة الكتل كاملة مجددًا في حالة العقدة المقلّمة)</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: فشل إعداد العبارة لجلب إصدار مخطط محفظة sqlite: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: فشل إعداد العبارة لجلب معرّف التطبيق: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unknown sqlite wallet schema version %d. Only version %d is supported</source>
+        <translation>SQLiteDatabase: إصدار مخطط محفظة sqlite غير معروف %d. الإصدار %d فقط مدعوم</translation>
+    </message>
+    <message>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
+        <translation>تحتوي قاعدة بيانات الكتل على كتلة يبدو أنها من المستقبل. قد يكون ذلك بسبب ضبط تاريخ حاسوبك ووقته بشكل غير صحيح. لا تُعد بناء قاعدة بيانات الكتل إلا إذا كنت متأكدًا من صحة تاريخ حاسوبك ووقته</translation>
+    </message>
+    <message>
+        <source>This error could occur if this wallet was not shutdown cleanly and was last loaded using a build with a newer version of Berkeley DB. If so, please use the software that last loaded this wallet</source>
+        <translation>قد يحدث هذا الخطأ إذا لم تُغلق هذه المحفظة بشكل سليم وكان آخر تحميل لها بإصدار يستخدم نسخة أحدث من Berkeley DB. في هذه الحالة استخدم البرنامج الذي حمّل هذه المحفظة آخر مرة</translation>
+    </message>
+    <message>
+        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
+        <translation>هذا إصدار تجريبي قبل الإطلاق - استخدمه على مسؤوليتك - لا تستخدمه للتعدين أو التطبيقات التجارية</translation>
+    </message>
+    <message>
+        <source>This is the maximum transaction fee you pay (in addition to the normal fee) to prioritize partial spend avoidance over regular coin selection.</source>
+        <translation>هذه أقصى رسوم معاملة تدفعها (إضافة إلى الرسوم العادية) لإعطاء الأولوية لتجنب الإنفاق الجزئي على اختيار العملات المعتاد.</translation>
+    </message>
+    <message>
+        <source>This is the transaction fee you may discard if change is smaller than dust at this level</source>
+        <translation>هذه رسوم المعاملة التي قد تتخلى عنها إذا كان الباقي أصغر من حد الغبار عند هذا المستوى</translation>
+    </message>
+    <message>
+        <source>This is the transaction fee you may pay when fee estimates are not available.</source>
+        <translation>هذه رسوم المعاملة التي قد تدفعها حين لا تتوفر تقديرات للرسوم.</translation>
+    </message>
+    <message>
+        <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
+        <translation>الطول الإجمالي لسلسلة إصدار الشبكة (%i) يتجاوز الحد الأقصى (%i). قلّل عدد uacomments أو حجمها.</translation>
+    </message>
+    <message>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
+        <translation>تحتاج المعاملة إلى عنوان للباقي، لكن تعذّر علينا إنشاؤه. استدعِ keypoolrefill أولًا.</translation>
+    </message>
+    <message>
+        <source>Unable to replay blocks. You will need to rebuild the database using -reindex-chainstate.</source>
+        <translation>تعذّرت إعادة تشغيل الكتل. ستحتاج إلى إعادة بناء قاعدة البيانات باستخدام -reindex-chainstate.</translation>
+    </message>
+    <message>
+        <source>Unable to rewind the database to a pre-fork state. You will need to redownload the blockchain</source>
+        <translation>تعذّرت إعادة قاعدة البيانات إلى حالة ما قبل التفرّع. ستحتاج إلى تنزيل سلسلة الكتل مجددًا</translation>
+    </message>
+    <message>
+        <source>Warning: Private keys detected in wallet {%s} with disabled private keys</source>
+        <translation>تحذير: اكتُشفت مفاتيح خاصة في المحفظة {%s} التي عُطّلت فيها المفاتيح الخاصة</translation>
+    </message>
+    <message>
+        <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
+        <translation>تحذير: يبدو أن الشبكة ليست متفقة تمامًا! يبدو أن بعض المعدّنين يواجهون مشكلات.</translation>
+    </message>
+    <message>
+        <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
+        <translation>تحذير: يبدو أننا لسنا متفقين تمامًا مع نظرائنا! قد تحتاج إلى الترقية، أو قد تحتاج عقد أخرى إلى الترقية.</translation>
+    </message>
+    <message>
+        <source>A fatal internal error occurred, see debug.log for details</source>
+        <translation>حدث خطأ داخلي فادح، راجع debug.log للتفاصيل</translation>
+    </message>
+    <message>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>تعذّر حل عنوان -%s: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>Cannot set -peerblockfilters without -blockfilterindex.</source>
+        <translation>لا يمكن ضبط -peerblockfilters دون -blockfilterindex.</translation>
+    </message>
+    <message>
+        <source>Config setting for %s only applied on %s network when in [%s] section.</source>
+        <translation>إعداد %s يُطبَّق فقط على شبكة %s عندما يكون في القسم [%s].</translation>
+    </message>
+    <message>
+        <source>Could not find asmap file %s</source>
+        <translation>تعذّر العثور على ملف asmap %s</translation>
+    </message>
+    <message>
+        <source>Could not parse asmap file %s</source>
+        <translation>تعذّر تحليل ملف asmap %s</translation>
+    </message>
+    <message>
+        <source>Disk space is too low!</source>
+        <translation>مساحة القرص منخفضة جدًا!</translation>
+    </message>
+    <message>
+        <source>Error initializing block database</source>
+        <translation>خطأ في تهيئة قاعدة بيانات الكتل</translation>
+    </message>
+    <message>
+        <source>Error initializing wallet database environment %s!</source>
+        <translation>خطأ في تهيئة بيئة قاعدة بيانات المحفظة %s!</translation>
+    </message>
+    <message>
+        <source>Error: Disk space is low for %s</source>
+        <translation>خطأ: مساحة القرص منخفضة لـ %s</translation>
+    </message>
+    <message>
+        <source>Error: Keypool ran out, please call keypoolrefill first</source>
+        <translation>خطأ: نفد مجمع المفاتيح، استدعِ keypoolrefill أولًا</translation>
+    </message>
+    <message>
+        <source>Failed to verify database</source>
+        <translation>فشل التحقق من قاعدة البيانات</translation>
+    </message>
+    <message>
+        <source>Fee rate (%s) is lower than the minimum fee rate setting (%s)</source>
+        <translation>معدل الرسوم (%s) أقل من إعداد الحد الأدنى لمعدل الرسوم (%s)</translation>
+    </message>
+    <message>
+        <source>Ignoring duplicate -wallet %s.</source>
+        <translation>تجاهل -wallet %s المكرر.</translation>
+    </message>
+    <message>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>عنوان أو اسم مضيف -onion غير صالح: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>عنوان أو اسم مضيف -proxy غير صالح: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>إذن P2P غير صالح: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>مبلغ غير صالح لـ -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>مبلغ غير صالح لـ -discardfee=&lt;amount&gt;: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>مبلغ غير صالح لـ -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>مبلغ غير صالح لـ -paytxfee=&lt;amount&gt;: &apos;%s&apos; (يجب ألا يقل عن %s)</translation>
+    </message>
+    <message>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>قناع شبكة غير صالح محدد في -whitelist: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>يجب تحديد منفذ مع -whitebind: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
+        <translation>لم يُحدد خادم وكيل. استخدم -proxy=&lt;ip&gt; أو -proxy=&lt;ip:port&gt;.</translation>
+    </message>
+    <message>
+        <source>Prune mode is incompatible with -blockfilterindex.</source>
+        <translation>وضع التقليم غير متوافق مع -blockfilterindex.</translation>
+    </message>
+    <message>
+        <source>Reducing -maxconnections from %d to %d, because of system limitations.</source>
+        <translation>تخفيض -maxconnections من %d إلى %d بسبب قيود النظام.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
+        <translation>SQLiteDatabase: فشل تنفيذ العبارة للتحقق من قاعدة البيانات: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: فشل جلب إصدار مخطط محفظة sqlite: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: فشل جلب معرّف التطبيق: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare statement to verify database: %s</source>
+        <translation>SQLiteDatabase: فشل إعداد العبارة للتحقق من قاعدة البيانات: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to read database verification error: %s</source>
+        <translation>SQLiteDatabase: فشل قراءة خطأ التحقق من قاعدة البيانات: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unexpected application id. Expected %u, got %u</source>
+        <translation>SQLiteDatabase: معرّف تطبيق غير متوقع. المتوقع %u، والمستلم %u</translation>
+    </message>
+    <message>
+        <source>Section [%s] is not recognized.</source>
+        <translation>القسم [%s] غير معروف.</translation>
+    </message>
+    <message>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>مجلد -walletdir المحدد &quot;%s&quot; غير موجود</translation>
+    </message>
+    <message>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>مجلد -walletdir المحدد &quot;%s&quot; مسار نسبي</translation>
+    </message>
+    <message>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>مجلد -walletdir المحدد &quot;%s&quot; ليس مجلدًا</translation>
+    </message>
+    <message>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>مجلد الكتل المحدد &quot;%s&quot; غير موجود.</translation>
+    </message>
+    <message>
+        <source>The specified config file %s does not exist
+</source>
+        <translation>ملف الإعدادات المحدد %s غير موجود
+</translation>
+    </message>
+    <message>
+        <source>This is the transaction fee you will pay if you send a transaction.</source>
+        <translation>هذه رسوم المعاملة التي ستدفعها إذا أرسلت معاملة.</translation>
+    </message>
+    <message>
+        <source>Transaction fee and change calculation failed</source>
+        <translation>فشل حساب رسوم المعاملة والباقي</translation>
+    </message>
+    <message>
+        <source>Unable to bind to %s on this computer. %s is probably already running.</source>
+        <translation>تعذّر الربط بـ %s على هذا الحاسوب. على الأرجح أن %s يعمل بالفعل.</translation>
+    </message>
+    <message>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>تعذّر إنشاء ملف PID &apos;%s&apos;: %s</translation>
+    </message>
+    <message>
+        <source>Unknown -blockfilterindex value %s.</source>
+        <translation>قيمة -blockfilterindex غير معروفة %s.</translation>
+    </message>
+    <message>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>نوع عنوان غير معروف &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>نوع باقٍ غير معروف &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>شبكة غير معروفة محددة في -onlynet: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>Unsupported logging category %s=%s.</source>
+        <translation>فئة تسجيل غير مدعومة %s=%s.</translation>
+    </message>
+    <message>
+        <source>Upgrading txindex database</source>
+        <translation>ترقية قاعدة بيانات txindex</translation>
+    </message>
+    <message>
+        <source>User Agent comment (%s) contains unsafe characters.</source>
+        <translation>تعليق وكيل المستخدم (%s) يحتوي على أحرف غير آمنة.</translation>
+    </message>
+    <message>
+        <source>Warning: unknown new rules activated (versionbit %i)</source>
+        <translation>تحذير: فُعّلت قواعد جديدة غير معروفة (versionbit %i)</translation>
     </message>
 </context>
 </TS>

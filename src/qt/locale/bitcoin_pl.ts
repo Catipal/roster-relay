@@ -1,4 +1,6 @@
-<TS language="pl" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="pl">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -70,8 +72,8 @@
         <translation>To są twoje adresy Bitcoin do wysyłania płatności. Zawsze sprawdź kwotę i adres odbiorcy przed wysłaniem monet.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.
-Signing is only possible with addresses of the type 'legacy'.</source>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <translation>To są twoje adresy Bitcoin do otrzymywania płatności. Użyj przycisku „Utwórz nowy adres odbiorcy” na karcie odbioru, aby utworzyć nowe adresy.
 Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
     </message>
@@ -241,6 +243,14 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Ostrzeżenie: Caps Lock jest włączony!</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>Służy do wyłączenia prostego wysyłania pieniędzy, gdy konto systemu operacyjnego zostało przejęte. Nie zapewnia prawdziwego bezpieczeństwa.</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>Tylko do stakingu.</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -251,6 +261,109 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
     <message>
         <source>Banned Until</source>
         <translation>Blokada do</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>Płatność zbiorcza</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>Jedna płatność w wierszu, jako &quot;adres, kwota&quot;. Pola rozdziela przecinek, średnik lub tabulator, a trzecie pole staje się etykietą. Wiersze zaczynające się od # są pomijane.</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>&amp;Wklej</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>Wczytaj z &amp;pliku...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>&amp;Wyczyść</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>Wiersz</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Adres</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Kwota</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Stan</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>Wczytaj listę płatności</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>Pliki tekstowe i CSV (*.txt *.csv);;Wszystkie pliki (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>Nie można odczytać %1.</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>oczekiwano &quot;adres, kwota&quot;</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>brak adresu</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>nieprawidłowy adres</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>brak kwoty</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>nie można odczytać kwoty &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>kwota musi być większa od zera</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>ok</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>Wklej jedną płatność w wierszu, jako &quot;adres, kwota&quot;. Trzecie pole jest używane jako etykieta. Wiersze zaczynające się od # są pomijane.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>Nie można użyć %1 z %2 wierszy. Popraw je lub usuń, aby kontynuować.</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>%1 odbiorców to więcej, niż może zmieścić jedna transakcja (tutaj limit wynosi %2). Podziel listę.</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>Odbiorców: %1, łącznie %2, przed opłatą.</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>Dodaj do formularza wysyłki</translation>
     </message>
 </context>
 <context>
@@ -441,7 +554,11 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n aktywnych połączeń do sieci Bitcoin</numerusform><numerusform>%n aktywnych połączeń do sieci Bitcoin</numerusform><numerusform>%n aktywnych połączeń do sieci Bitcoin</numerusform><numerusform>%n aktywnych połączeń do sieci Bitcoin</numerusform></translation>
+        <translation>
+            <numerusform>%n aktywnych połączeń do sieci Bitcoin</numerusform>
+            <numerusform>%n aktywnych połączeń do sieci Bitcoin</numerusform>
+            <numerusform>%n aktywnych połączeń do sieci Bitcoin</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -453,7 +570,11 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>Przetworzono %n bloków historii transakcji.</numerusform><numerusform>Przetworzono %n bloków historii transakcji.</numerusform><numerusform>Przetworzono %n bloków historii transakcji.</numerusform><numerusform>Przetworzono %n bloków historii transakcji.</numerusform></translation>
+        <translation>
+            <numerusform>Przetworzono %n bloków historii transakcji.</numerusform>
+            <numerusform>Przetworzono %n bloków historii transakcji.</numerusform>
+            <numerusform>Przetworzono %n bloków historii transakcji.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -659,7 +780,348 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <source>Original message:</source>
         <translation>Wiadomość oryginalna:</translation>
     </message>
-    </context>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Wystąpił błąd krytyczny. %1 nie może dalej bezpiecznie działać i zostanie zamknięty.</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>Pokaż stake portfela</translation>
+    </message>
+    <message>
+        <source>&amp;Mask values</source>
+        <translation>&amp;Maskuj wartości</translation>
+    </message>
+    <message>
+        <source>Mask the values in the Overview tab</source>
+        <translation>Maskuj wartości na karcie Przegląd</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>Portfel jest &lt;b&gt;zaszyfrowany&lt;/b&gt; i obecnie &lt;b&gt;odblokowany tylko do stakingu&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>&amp;Odszyfruj portfel...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>Usuń hasło, pozostawiając klucze prywatne zapisane bez szyfrowania</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Brak stakingu</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n sekunda</numerusform>
+            <numerusform>%n sekundy</numerusform>
+            <numerusform>%n sekund</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n minuta</numerusform>
+            <numerusform>%n minuty</numerusform>
+            <numerusform>%n minut</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n godzina</numerusform>
+            <numerusform>%n godziny</numerusform>
+            <numerusform>%n godzin</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n dzień</numerusform>
+            <numerusform>%n dni</numerusform>
+            <numerusform>%n dni</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>Staking trwa.&lt;br&gt;Twoja waga to %1&lt;br&gt;Waga sieci to %2&lt;br&gt;Szacowany czas do nagrody: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>Brak stakingu, ponieważ portfel jest offline</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>Brak stakingu, ponieważ portfel się synchronizuje</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>Brak stakingu, ponieważ nie masz dojrzałych monet</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>Brak stakingu, ponieważ portfel jest zablokowany</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>Nieznany błąd</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>mniej niż minuta</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>minuta</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 min</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>godzina</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 godz.</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 dni</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>miesiąc</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 mies.</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>około roku</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>ponad rok</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>nieznane</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Wystąpił błąd krytyczny. %1 nie może dalej bezpiecznie działać i zostanie zamknięty.</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Oryginalna wiadomość:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Odkrywanie</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Sieć nakładkowa</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>Nazwy</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>Peery i konsola</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>Węzeł</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Portfel</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>Poczta</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>Poczta (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>Serwer</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Ustawienia</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>wpis nieznany</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>sieć nakładkowa nieznana</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>łączenie…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>Przy obecnej wadze sieci staking przynosi około %1% rocznie: %2 bloków rocznie, po %3 %4 każdy, przy %5 %4 w stakingu.</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>To po odliczeniu udziału %1% każdego bloku, którym ten węzeł dzieli się ze swoimi peerami.</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>%1% rocznie</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>zamykanie…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>Peerów: %1 — przychodzących %2, wychodzących %3.</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>Kliknij, aby wstrzymać aktywność sieciową.</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>1 peer</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>peerów: %1</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>Aktywność sieciowa jest wstrzymana.</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>Kliknij, aby ją wznowić.</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>sieć wstrzymana</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>Przetworzono bloków historii: %1.</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>blok %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>Aktualny.</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>Synchronizacja z siecią…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>Przetwarzanie bloków na dysku…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>Ponowne indeksowanie bloków na dysku…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>Łączenie z peerami…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>%1 opóźnienia</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>Nadrabianie…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>Ostatni otrzymany blok został utworzony %1 temu.</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>Portfel &lt;b&gt;%1&lt;/b&gt; jest zaszyfrowany i odblokowany tylko do stakingu</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>Portfel &lt;b&gt;%1&lt;/b&gt; jest zaszyfrowany i odblokowany</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>Portfel &lt;b&gt;%1&lt;/b&gt; jest zaszyfrowany i zablokowany</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>staking</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>staking, %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; prowadzi staking.&lt;br&gt;Jego waga to %2&lt;br&gt;Waga sieci to %3&lt;br&gt;Szacowany czas do nagrody: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>brak stakingu</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>brak stakingu (płaci %1)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>Brak stakingu: za mało peerów</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>Brak stakingu: łańcuch wciąż nadrabia</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>Brak stakingu: &lt;b&gt;%1&lt;/b&gt; nie ma dojrzałych monet</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>Brak stakingu: &lt;b&gt;%1&lt;/b&gt; jest zablokowany</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Brak stakingu</translation>
+    </message>
+</context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -810,6 +1272,57 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <source>(change)</source>
         <translation>(reszta)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>delegowano do %1 dla zimnego stakingu</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>Napisz list</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>nazwa, przydomek z książki adresowej lub klucz rejestru</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Do</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Temat</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>Wyślij</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>Do kogo? Nazwa, przydomek lub klucz rejestru.</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>List ma %1 KB; list może mieć najwyżej %2 KB.</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>List jest pieczętowany i zostawiany w skrzynkach pocztowych odbiorcy, za każdym razem przez trzy przekaźniki. To potrwa kilka sekund…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Wysłano</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>List zostawiono w %1 z %2 skrzynek pocztowych odbiorcy. Wystarczy jedna, by dotarł.</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>Nie wysłano: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -868,7 +1381,198 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <source>Create</source>
         <translation>Stwórz</translation>
     </message>
-    </context>
+    <message>
+        <source>Wallet</source>
+        <translation>Portfel</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>Opcje zaawansowane</translation>
+    </message>
+    <message>
+        <source>Use descriptors for scriptPubKey management</source>
+        <translation>Używaj deskryptorów do zarządzania scriptPubKey</translation>
+    </message>
+    <message>
+        <source>Compiled without sqlite support (required for descriptor wallets)</source>
+        <translation>Skompilowano bez obsługi sqlite (wymaganej dla portfeli z deskryptorami)</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>Odkrywanie</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>Peery ogłaszają się w łańcuchu, a nie na serwerze, więc ta lista jest dla wszystkich taka sama i nikt nie może jej edytować.</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>Rejestr</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>Twój wpis</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>Wpisane peery</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>Jesteś</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Kopiuj</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>Publikowanie wpisu…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>Tożsamość</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>Utwórz…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>Tożsamość zachowuje historię tego węzła — jak długo jest wpisany — jeśli jego klucz kiedyś trzeba będzie zmienić.</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>Znajdź peera lub adres</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Skopiowano klucz</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>Skopiowano adres</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>uruchamianie…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>Utwórz tożsamość</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>Opłatę zapłać z</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Tożsamość to drugi klucz, który stoi za kluczem tego węzła. Jeśli klucz tego węzła kiedyś zginie lub zostanie skradziony, pod tą samą tożsamością można umieścić nowy klucz, a węzeł zachowa staż wpisu zamiast zaczynać od nowa.
+
+Klucz odzyskiwania zostanie pokazany raz. Zapisz go: to jedyny sposób, by powstrzymać kogoś, kto ukradnie tożsamość, przed jej przeniesieniem. Następnie mała transakcja opublikuje tożsamość, a kolejne odnowienie wpisu powiąże z nią klucz tego węzła.</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Twój przekaźnik opublikował Twój wpis w transakcji %1. Liczy się po potwierdzeniu transakcji.</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Opublikowano w transakcji %1. Liczy się po potwierdzeniu transakcji.</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>nieznane</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>indeks rejestru wyłączony</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>niewpisany</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>kończy się za %1</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>Odnawianie wpisu…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>Odnów w ciągu ostatnich 3 dni</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>Twój wpis kończy się za %1. Odnowić można od trzech dni wcześniej.</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>wpisany, kończy się za %1</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>brak</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>Ten węzeł nie ma klucza ogłoszeń: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>wyłączone</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>Indeks rejestru nie działa, więc ten węzeł nie widzi, kto jest wpisany. Uruchom ponownie z -rosterindex, aby go włączyć.</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>nadrabianie (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>sprzed %1 dni</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>Najnowszy blok tego węzła ma %1 dni, więc peery odwołane od tego czasu mogą wciąż tu być. Rejestr jest nadal używany do docierania do peerów, ale sieć nakładkowa przestaje preferować długo wpisane przekaźniki, dopóki łańcuch nie nadrobi.</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>aktualny</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>Indeks rejestru nie działa</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>Twój klucz odzyskiwania</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>Zapisz go i przechowuj w bezpiecznym miejscu, z dala od tego komputera. Jest pokazywany tylko teraz i nigdzie nie jest zapisywany. Nie da się nim wydać monet; może jedynie zatrzymać przeniesienie Twojej tożsamości, którego nie dokonałeś.</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>Zapisałem go</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Twoja tożsamość została opublikowana w transakcji %1. Kolejne odnowienie wpisu powiąże z nią klucz tego węzła.</translation>
+    </message>
+</context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -904,16 +1608,16 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <translation>Zmień adres wysyłania</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>Wprowadzony adres "%1" nie jest prawidłowym adresem Bitcoin.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
+        <translation>Wprowadzony adres &quot;%1&quot; nie jest prawidłowym adresem Bitcoin.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>Adres "%1" już istnieje jako adres odbiorczy z etykietą "%2" i dlatego nie można go dodać jako adresu nadawcy.</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>Adres &quot;%1&quot; już istnieje jako adres odbiorczy z etykietą &quot;%2&quot; i dlatego nie można go dodać jako adresu nadawcy.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>Wprowadzony adres "%1" już istnieje w książce adresowej z opisem "%2".</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>Wprowadzony adres &quot;%1&quot; już istnieje w książce adresowej z opisem &quot;%2&quot;.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -1002,7 +1706,7 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <translation type="vanished">Bitcoin</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -1025,7 +1729,7 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <translation>Portfel również zostanie zapisany w tym katalogu.</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
         <translation>Błąd: podany folder danych «%1» nie mógł zostać utworzony.</translation>
     </message>
     <message>
@@ -1034,15 +1738,186 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>%n GB dostępnego wolnego miejsca</numerusform><numerusform>%n GB dostępnego wolnego miejsca</numerusform><numerusform>%n GB dostępnego wolnego miejsca</numerusform><numerusform>%n GB dostępnego wolnego miejsca</numerusform></translation>
+        <translation>
+            <numerusform>%n GB dostępnego wolnego miejsca</numerusform>
+            <numerusform>%n GB dostępnego wolnego miejsca</numerusform>
+            <numerusform>%n GB dostępnego wolnego miejsca</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(z %n GB potrzebnych)</numerusform><numerusform>(z %n GB potrzebnych)</numerusform><numerusform>(z %n GB potrzebnych)</numerusform><numerusform>(z %n GB potrzebnych)</numerusform></translation>
+        <translation>
+            <numerusform>(z %n GB potrzebnych)</numerusform>
+            <numerusform>(z %n GB potrzebnych)</numerusform>
+            <numerusform>(z %n GB potrzebnych)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(%n GB potrzebny na pełny łańcuch)</numerusform><numerusform>(%n GB potrzebne na pełny łańcuch)</numerusform><numerusform>(%n GB potrzebnych na pełny łańcuch)</numerusform><numerusform>(%n GB potrzebnych na pełny łańcuch)</numerusform></translation>
+        <translation>
+            <numerusform>(%n GB potrzebny na pełny łańcuch)</numerusform>
+            <numerusform>(%n GB potrzebne na pełny łańcuch)</numerusform>
+            <numerusform>(%n GB potrzebnych na pełny łańcuch)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>Poczta</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>Twój adres</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Kopiuj</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>Twój klucz rejestru. Każdy wpisany może do Ciebie na niego pisać.</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>Poczta podróżuje przez sieć nakładkową. Włącz sieć nakładkową w Ustawieniach i uruchom ponownie, aby wysyłać i odbierać pocztę.</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>Napisz</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>Odpowiedz</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>Odbierz teraz</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>Odbierz teraz nowe listy ze swoich skrzynek. Dzieje się to też co kilka minut.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Usuń</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>Odebrane</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Wysłano</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>Od</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Temat</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Data</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>Listy są pieczętowane cotygodniowym kluczem pocztowym odbiorcy, przy użyciu secp256k1 i ML-KEM-768 razem; Twój klucz i podpis podróżują wewnątrz pieczęci, a każda droga do skrzynki prowadzi przez trzy przekaźniki. Stare klucze pocztowe są usuwane, więc listu odebranego dziś nie da się później otworzyć kluczami tego komputera.</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Do</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>Nie ma jeszcze wpisanego przekaźnika, więc nie masz skrzynek i nikt nie może do Ciebie napisać.</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>Twoją pocztę przechowuje %1 przekaźników; będzie ich %2, gdy w rejestrze będzie ich więcej.</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>%1 przekaźników wybranych na podstawie Twojego klucza przechowuje Twoją pocztę, dopóki jej nie odbierzesz.</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>Klucz pocztowy nr %1, odnawiany co tydzień.</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>Ostatnio odebrano %1.</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>Jeszcze nie odebrano.</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>1 nowy list</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>Nowych listów: %1</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>, z %1 z %2 skrzynek.</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(bez tematu)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>Zostawiono w %1 skrzynkach odbiorcy</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>Od: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>Do: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>Wysłano %1, zostawiono w %2 skrzynkach odbiorcy</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>Napisano %1, odebrano %2</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>Wybierz list, aby go przeczytać.</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>Odbieranie…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>Docieranie do Twoich skrzynek, za każdym razem przez trzy przekaźniki…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>Usuń list</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>Usunąć ten list z tego komputera? Jego kopie w skrzynkach zostały usunięte już przy odbiorze, więc nie można go pobrać ponownie.</translation>
     </message>
 </context>
 <context>
@@ -1052,7 +1927,7 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <translation>Formularz</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>Świeże transakcje mogą nie być jeszcze widoczne, a zatem saldo portfela może być nieprawidłowe. Te detale będą poprawne, gdy portfel zakończy synchronizację z siecią bitcoin, zgodnie z poniższym opisem.</translation>
     </message>
     <message>
@@ -1102,6 +1977,409 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>Nieznane. Synchronizowanie nagłówków (%1, %2%)...</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>Nazwy</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>Nazwa kieruje ludzi do Twojego klucza rejestru, żeby mogli pisać do Ciebie — i płacić Ci — po nazwie zamiast po kluczu. Uzyskanie wolnej nazwy i jej odnowienie kosztuje tylko opłatę sieciową; nazwę odnawia się ręcznie. Nazwę, którą ktoś posiada, można kupić, jeśli wystawi ją na sprzedaż, za cenę, jakiej żąda. Nazwy pod Twoją są darmowe, podobnie jak przydomki: Twoje własne etykiety dla ludzi, przechowywane na tym komputerze.</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>Twoje nazwy</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>Zapłać z</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nazwa</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Stan</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>Koniec</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>Podnazwy</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>Uzyskaj nazwę…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>Odnów…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>Dodaj podnazwę…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>Sprzedaj…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>Przekaż…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>Przyjmuj płatności po nazwie…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>Wyszukaj</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>nazwa, etykieta.nazwa lub przydomek</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>Kopiuj klucz</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>Zapłać…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>Książka adresowa</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>Przydomek</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>Klucz</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>Dodaj osobę…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Usuń</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Skopiowano klucz</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>Pracuję…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>Wycofaj ze sprzedaży</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>Najpierw wycofaj ją ze sprzedaży.</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>Nowy klucz płatności…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>Płatności po nazwie są włączone</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>Nazwy wymagają indeksu nazw. Włącz &quot;Indeksuj nazwy&quot; w Ustawieniach i uruchom ponownie.</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>Nazwy w tej sieci jeszcze nie wystartowały. Kiedy wystartują w sieci głównej i jak zostaną rozdane pierwsze nazwy, nie zostało jeszcze ustalone. Tymczasem możesz wyszukiwać nazwy i prowadzić książkę adresową.</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1 to %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>z Twojej książki adresowej</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>zarejestrowana nazwa, zajęta do bloku %1</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>ustalona</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>zmieniona %1 temu, jeszcze nieustalona</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>przyjmuje płatności po nazwie</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>Na sprzedaż: właściciel żąda %1. Użyj Uzyskaj nazwę, aby ją kupić.</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>Zobowiązano %1. Nazwa zostanie zgłoszona sama za %2 bloków (około %3) - do tego czasu trzymaj BPS Relay uruchomiony, a portfel odblokowany.</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>Kupno %1: %2 zapłacono właścicielowi. Będzie Twoja po potwierdzeniu transakcji.</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>%1 trafia na sprzedaż za %2. Każdy może ją kupić od następnego bloku, bez potrzeby, by ten węzeł był online; cena trafia do tego portfela.</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>%1 jest wycofywana ze sprzedaży. Od teraz nikt nie może jej kupić.</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>Odnowiono %1 do bloku %2, tylko za opłatę sieciową.</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>%1 jest przekazywana do %2. Będzie ich po potwierdzeniu transakcji.</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>%1 ustawiono; zacznie działać po potwierdzeniu transakcji.</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>Płatności po nazwie są włączane. Ludzie będą mogli płacić na dowolną Twoją nazwę około %1 po potwierdzeniu transakcji; każda płatność pojawi się w portfelu jako &quot;Zapłacono po nazwie&quot;.</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>Zapłacono %1 do %2, na adres użyty tylko do tej płatności.</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>Zapłać</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>za %1</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>zakończona %1 temu</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>wygasła - odnów w ciągu miesiąca</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>zajęta</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>w sprzedaży - zakup jest potwierdzany</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>na sprzedaż za %1</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>na sprzedaż za %1 - jeszcze nie do kupienia</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>niezarejestrowana</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>w trakcie rejestracji</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Kliknij, aby skopiować</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>Uzyskaj nazwę</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>od 1 do 32 liter, cyfr lub łączników</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 rok</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>2 lata</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>Na</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>Rejestracja ma dwa kroki: zobowiązanie, które ukrywa nazwę, i około 20 minut później zgłoszenie, które BPS Relay wysyła sam. Nikt nie może w międzyczasie zabrać nazwy. Każdy krok kosztuje tylko opłatę sieciową.</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>Kupno to jedna transakcja: płaci właścicielowi i czyni nazwę Twoją, wszystko naraz albo wcale.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Zarejestruj</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>Nazwa to od 1 do 32 zwykłych liter a-z, cyfr lub łączników wewnątrz.</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>%1 na %2 kosztuje tylko opłatę sieciową. Sprawdzanie, czy jest wolna…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>jeden rok</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>dwa lata</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>Wycofaj %1 ze sprzedaży</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>Wycofać %1 ze sprzedaży? Od tej chwili nikt nie może jej kupić, a po potwierdzeniu możesz ją przekazać albo wystawić ponownie.</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>Sprzedaj %1</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>Twoja cena za %1, w BPS. Wtedy każdy może ją od razu kupić, nawet gdy BPS Relay jest zamknięty: płacą Ci tę kwotę w tej samej transakcji, która daje im nazwę. Dopóki jest na sprzedaż, nie możesz jej przekazać.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>&quot;%1&quot; nie jest kwotą w BPS.</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>Wystawić %1 na sprzedaż za %2? Zostaną wysłane dwie małe transakcje: jedna odkłada monetę, którą wyda kupujący, druga publikuje sprzedaż.</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>Odnów %1</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>Przedłuż %1 od obecnego końca. Kosztuje tylko opłatę sieciową. Nazwę można odnowić najwyżej dwa lata naprzód.</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>Przekaż %1</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>Przekaż %1 do (klucz rejestru, przydomek lub nazwa):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>Przekazać %1 do %2? Tylko nowy właściciel może ją oddać.</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>Podnazwa pod %1</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>Część przed .%1, na przykład alice dla alice.%1:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>Na kogo wskazuje %1.%2 (klucz rejestru, przydomek lub nazwa) albo &quot;remove&quot;:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>Wyszukiwanie…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>Dodaj osobę</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>Jak ich nazywasz (widzisz to tylko Ty):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>Ich klucz rejestru albo nazwa, by pamiętać, kto ją teraz posiada:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>Płatności po nazwie są włączone. Przenieść je na nowy klucz z tego portfela? Płatności już wysłane na obecny klucz nadal dotrą. Po zmianie płacący odczekają około %1, zanim znów zapłacą.</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>Pozwól ludziom płacić Ci po nazwie: dowolną nazwą lub podnazwą wskazującą na klucz tego węzła, przydomkiem, który dla Ciebie mają, albo samym kluczem. Każda płatność trafia na osobny adres, który może wydać tylko ten portfel, i nikt obserwujący nie może stwierdzić, że otrzymałeś płatność ani że dwie płatności trafiły do tej samej osoby. Kosztuje opłatę sieciową. Ludzie mogą Ci płacić około %1 po potwierdzeniu.</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>Płatności po nazwie</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>Zapłać %1</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>%1 jeszcze nie przyjmuje płatności po nazwie. Poproś o włączenie ich na karcie Nazwy albo o adres.</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>%1 zmieniła właściciela %2 temu.</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>Ustawili klucz, na który otrzymują płatności, %1 temu.</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>w BPS</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Kwota</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>Płatność trafia na adres użyty tylko dla niej, który może wydać tylko %1; nikt inny nie może stwierdzić, komu zapłacono. Płatności nie można cofnąć. Opłata sieciowa jest doliczana.</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>Jeśli to nie byli oni, płatność przepadnie. Bezpieczniej poczekać, aż minie %1.</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>Zapłać mimo to</translation>
     </message>
 </context>
 <context>
@@ -1408,6 +2686,209 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <source>The supplied proxy address is invalid.</source>
         <translation>Adres podanego proxy jest nieprawidłowy</translation>
     </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>Czy pokazywać funkcje sterowania zimnym stakingiem.</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>Włącz funkcje sterowania zimnym s&amp;takingiem</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>Sieć nakładkowa</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>Własna szyfrowana warstwa BPS, która przenosi ruch przez innych peerów, tak że druga strona nigdy nie wie, gdzie jesteś.</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>pytanie…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>Działa</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>Nasłuchuje na</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>Otwarte trasy</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>Usługi spotykające się tutaj</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>Dostępne przekaźniki</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>Dzisiejsza runda</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>Twoje wejście</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>Peery, przez które Twój ruch zawsze wchodzi. Są zachowywane, a nie wymieniane: wybieranie za każdym razem nowego w końcu dałoby kolejkę obserwatorowi.</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>Gdzie ludzie mogą Cię spotkać</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>Wyliczone z rejestru, a nie wyszukane. Każdy, kto próbuje do Ciebie dotrzeć, wykonuje to samo obliczenie i dostaje tę samą odpowiedź, więc nie ma kogo pytać i nikt nie mógłby odpowiedzieć inaczej. Zmieniają się codziennie.</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>Słyszany przez radio</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>Co daje przekazywanie</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>Emisja dziennie</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>Przekaźniki</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>Użytkownicy</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>Użytkowników na przekaźnik</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>Udział na użytkownika</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>Przekaźnik płaci peerom, których wpisuje, z własnych nagród za bloki, więc udział użytkownika to jeden podzielony przez liczbę użytkowników jego przekaźnika — dlatego przejęcie części użytkowników sieci kosztuje część stake&apos;u. Ile nagrody przekaźnik dzieli, to jego wybór i nic tego nie wymusza: przekaźnik, który nic nie płaci, tworzy całkowicie prawidłowy blok. Do płacenia skłania go to, że przekaźnik bez użytkowników nikogo nie chroni, łącznie z nim samym.</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>Nie zostało jeszcze sprawdzone przez nikogo poza autorami i ukrywa, gdzie jesteś, a nie kiedy mówisz: ktoś obserwujący oba końce wciąż może dopasować czasy. Traktuj to jako niedokończone.</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>Ten węzeł niczym się nie dzieli. Ustaw -relayshare na procent i przyjmuj peerów przez addrosteruser.</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>Ten węzeł dzieliłby się %1%, ale %2.</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>Ten węzeł dzieli się %1% z peerami (%2): następny blok, który utworzy, wypłaci %3, po %4 każdemu.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>Most Reticulum nie zgłasza się. Uruchom go w Ustawieniach, Radio, albo uruchom samodzielnie bps-rns-bridge.py.</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>Nasłuchiwanie. Przez radio nie słychać jeszcze żadnego węzła BPS; węzły ogłaszają się co pół godziny.</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>Twój ruch wchodzi przez radiowego sąsiada, gdy któryś z nich jest wpisanym przekaźnikiem.</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>Słyszany, ale Twój ruch wchodzi przez internet (Ustawienia, Radio).</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>1 skok</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>skoków: %1</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>skoki nieznane</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>słyszany %1 temu</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>przekaźnik</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>tak</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>nie</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>Sieć nakładkowa jest wyłączona. Ten klient sam ją włącza, więc coś ją ponownie wyłączyło: -overlay=0 w wierszu poleceń lub w pliku konfiguracyjnym.</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>nic, dopóki sieć nakładkowa jest wyłączona</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>sieć nakładkowa wyłączona</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>jeszcze brak</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>sieć nakładkowa włączona, jeszcze brak przekaźników</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>sieć nakładkowa włączona, 1 przekaźnik</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>sieć nakładkowa włączona, przekaźników: %1</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>jeszcze nie wybrano</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>brak — rejestr nie ma przekaźników, z których można je wyliczyć</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>sieć nakładkowa nieznana</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>jeszcze brak przekaźników</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1483,7 +2964,35 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <source>Current total balance in watch-only addresses</source>
         <translation>Łączna kwota na podglądanych adresach</translation>
     </message>
-    </context>
+    <message>
+        <source>Stake</source>
+        <translation>Stake</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>Niedojrzałe stake&apos;i:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>Niedojrzałe delegacje</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>Niedojrzałe delegacje:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Delegowane</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>Delegowane:</translation>
+    </message>
+    <message>
+        <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
+        <translation>Tryb prywatności włączony dla karty Przegląd. Aby odsłonić wartości, odznacz Ustawienia-&gt;Maskuj wartości.</translation>
+    </message>
+</context>
 <context>
     <name>PSBTOperationsDialog</name>
     <message>
@@ -1590,6 +3099,22 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <source>Transaction status is unknown.</source>
         <translation>Status transakcji nie jest znany.</translation>
     </message>
+    <message>
+        <source>Sign Tx</source>
+        <translation>Podpisz transakcję</translation>
+    </message>
+    <message>
+        <source>Broadcast Tx</source>
+        <translation>Rozgłoś transakcję</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast successfully! Transaction ID: %1</source>
+        <translation>Transakcja została rozgłoszona! ID transakcji: %1</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation>Częściowo podpisana transakcja (binarna) (*.psbt)</translation>
+    </message>
 </context>
 <context>
     <name>PaymentServer</name>
@@ -1606,15 +3131,15 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <translation>Obsługa URI</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>'bitcoin://' nie jest poprawnym URI. Użyj 'bitcoin:'.</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;bitcoin://&apos; nie jest poprawnym URI. Użyj &apos;bitcoin:&apos;.</translation>
     </message>
     <message>
         <source>Cannot process payment request because BIP70 is not supported.</source>
         <translation>Nie można przetworzyć żądania zapłaty z powodu braku wsparcia BIP70.</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
         <translation>Z powodu znanych błędów bezpieczeństwa w BIP70 zaleca się ignorować wszelkie polecenie od sprzedawcy dotyczące zmiany portfela.</translation>
     </message>
     <message>
@@ -1662,6 +3187,161 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>Odnów swój wpis</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>Opublikuj swój wpis</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>Odnowienie zapisuje w łańcuchu nowy rekord. Dopóki nie zostanie potwierdzony, obowiązuje stary.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>To zapisuje w łańcuchu krótki rekord, że istniejesz, i opcjonalnie, gdzie Cię znaleźć.</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>Jak peery mają do Ciebie docierać?</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>Przez sieć nakładkową — bez publikowania adresu</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>Twój wpis mówi, kim jesteś, a nie gdzie działasz. Peery docierają do Ciebie przez sieć nakładkową, spotykając Cię w punktach, które obie strony wyliczają z rejestru. To ten klient włącza domyślnie.</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>Pod adresem, który publikuję</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>adres, pod którym mogą dotrzeć inne peery</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>Każdy może go zobaczyć, a łańcuch przechowuje go na zawsze. Adres onion publikuje lokalizację, której nikt nie powiąże z Tobą, i działa zza NAT; adres IP nie robi ani jednego, ani drugiego. Węzeł publikujący adres IP może zostać wybrany przez innych jako przekaźnik.</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>Kto płaci opłatę</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>Miesiąc, potem trzeba odnowić</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>Rok, potem trzeba odnowić</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>Jak długo obowiązuje</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>Odnów</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>Opublikuj</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>Płaci przekaźnik — monety niepotrzebne</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>Sieć nakładkowa jest wyłączona, więc nie ma przekaźnika, którego można poprosić. Włącz ją w Ustawieniach albo zapłać z portfela.</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>W rejestrze nie ma jeszcze żadnego przekaźnika, więc nie ma kogo poprosić. Zapłać z portfela albo spróbuj ponownie, gdy jakiś przekaźnik się wpisze.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Twój węzeł podpisuje wpis i wysyła go przez sieć nakładkową do przekaźnika, przez który wchodzi. Przekaźnik płacący za wpisy umieszcza Twój w bloku, który sam tworzy, więc zostaje potwierdzony, nawet jeśli większość węzłów by go nie przekazała, i dodaje Cię do peerów, z którymi dzieli się nagrodami. Jeśli później przestanie płacić, Twój wpis wygaśnie w ciągu miesiąca; zawsze możesz odnowić go sam z portfela ze środkami.</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>Ten węzeł nie prowadzi stakingu. Wpis jest większy, niż przekazują starsze węzły, więc dopóki większość stakerów się nie zaktualizuje, zostanie potwierdzony tylko wtedy, gdy uwzględni go staker z tą wersją, co może potrwać. Przy stakingu trafi do Twojego następnego bloku; płacący przekaźnik umieszcza go we własnym.</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>Ten portfel jest odblokowany tylko do stakingu. Płatność wymaga jego hasła, a potem portfel zablokuje się ponownie, co zatrzyma staking, dopóki znów nie odblokujesz go do stakingu.</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>Płatność wymaga hasła tego portfela.</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>Wpisz adres albo wybierz, żeby żadnego nie publikować.</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>Prośba do Twojego przekaźnika o publikację… to może potrwać do pół minuty.</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>Ten portfel nie jest już otwarty.</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>Portfel jest wciąż zablokowany, więc nic nie zapłacono.</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>Podpisywanie rekordu…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>Węzeł zwrócił rekord, którego ten klient nie zrozumiał.</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>Płacenie za publikację…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>Przekaźnik odmówił: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>Brak odpowiedzi od przekaźnika. %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1669,7 +3349,7 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>Wprowadź adres bitcoinowy (np. %1)</translation>
+        <translation type="vanished">Wprowadź adres bitcoinowy (np. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1701,23 +3381,43 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n sekunda</numerusform><numerusform>%n sekund</numerusform><numerusform>%n sekund</numerusform><numerusform>%n sekund</numerusform></translation>
+        <translation>
+            <numerusform>%n sekunda</numerusform>
+            <numerusform>%n sekund</numerusform>
+            <numerusform>%n sekund</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minuta</numerusform><numerusform>%n minut</numerusform><numerusform>%n minut</numerusform><numerusform>%n minut</numerusform></translation>
+        <translation>
+            <numerusform>%n minuta</numerusform>
+            <numerusform>%n minut</numerusform>
+            <numerusform>%n minut</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n godzina</numerusform><numerusform>%n godziny</numerusform><numerusform>%n godzin</numerusform><numerusform>%n godzin</numerusform></translation>
+        <translation>
+            <numerusform>%n godzina</numerusform>
+            <numerusform>%n godziny</numerusform>
+            <numerusform>%n godzin</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n dzień</numerusform><numerusform>%n dni</numerusform><numerusform>%n dni</numerusform><numerusform>%n dni</numerusform></translation>
+        <translation>
+            <numerusform>%n dzień</numerusform>
+            <numerusform>%n dni</numerusform>
+            <numerusform>%n dni</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n tydzień</numerusform><numerusform>%n tygodnie</numerusform><numerusform>%n tygodni</numerusform><numerusform>%n tygodni</numerusform></translation>
+        <translation>
+            <numerusform>%n tydzień</numerusform>
+            <numerusform>%n tygodnie</numerusform>
+            <numerusform>%n tygodni</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1725,7 +3425,11 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n rok</numerusform><numerusform>%n lata</numerusform><numerusform>%n lat</numerusform><numerusform>%n lat</numerusform></translation>
+        <translation>
+            <numerusform>%n rok</numerusform>
+            <numerusform>%n lata</numerusform>
+            <numerusform>%n lat</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1744,8 +3448,8 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <translation>%1 GB</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>Błąd: Określony folder danych "%1" nie istnieje.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>Błąd: Określony folder danych &quot;%1&quot; nie istnieje.</translation>
     </message>
     <message>
         <source>Error: Cannot parse configuration file: %1.</source>
@@ -1760,12 +3464,60 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <translation>Błąd inicjowania ustawień: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1 jeszcze się bezpiecznie nie zamknął...</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>nieznane</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>Kontakt</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>Odbieranie</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>Ukryte</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Nieznane</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Delegowane</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>%1 należy do kogoś, kto wystawił ją na sprzedaż. Żąda %2; opłata sieciowa jest doliczana.</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>Kup</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>Sprawdzanie, czy jest wolna…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>Jest wolna.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Zarejestruj</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>jeszcze nie zbudowane</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>Wpisz adres BitcoinPoS (np. %1)</translation>
     </message>
 </context>
 <context>
@@ -1826,16 +3578,16 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <translation>Katalog danych</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the data directory use the '%1' option.</source>
-        <translation>Użyj opcji '%1' aby wskazać niestandardową lokalizację katalogu danych.</translation>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>Użyj opcji &apos;%1&apos; aby wskazać niestandardową lokalizację katalogu danych.</translation>
     </message>
     <message>
         <source>Blocksdir</source>
         <translation>Blocksdir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>Użyj opcji '%1' aby wskazać niestandardową lokalizację katalogu bloków.</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>Użyj opcji &apos;%1&apos; aby wskazać niestandardową lokalizację katalogu bloków.</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -2086,8 +3838,8 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <translation>Wykonuję komendę bez portfela</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
-        <translation>Wykonuję komendę używając portfela "%1"</translation>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>Wykonuję komendę używając portfela &quot;%1&quot;</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -2112,6 +3864,45 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
     <message>
         <source>Unknown</source>
         <translation>Nieznany</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>Czy chodziło o:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>Nie znasz polecenia? Wpisz zwykłymi słowami, czego chcesz, na przykład %1, i wybierz podpowiedź. Podpowiedzi są wyliczane na tym komputerze; nic, co wpiszesz, nie jest nigdzie wysyłane.</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>Radio jest wyłączone.</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>Radio jest włączone; uruchom most Reticulum samodzielnie (contrib/reticulum/bps-rns-bridge.py).</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>bps-rns-bridge.py nie leży obok BPS Relay, więc nie można uruchomić mostu.</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>Nie można uruchomić Pythona jako &quot;%1&quot;. Zainstaluj Pythona albo ustaw polecenie w Ustawienia, Radio.</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Reticulum nie jest zainstalowany. Zainstaluj go poleceniem: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>Most Reticulum się zatrzymał (stan %1); zobacz radio/bridge.log.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>Most Reticulum się uruchamia.</translation>
     </message>
 </context>
 <context>
@@ -2165,12 +3956,12 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
         <translation>Wyczyść</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>Natywne adresy segwit (aka Bech32 lub BIP-173) zmniejszają później twoje opłaty transakcyjne i dają lepsze zabezpieczenie przed literówkami, ale stare portfele ich nie obsługują. Jeżeli odznaczone, stworzony zostanie adres kompatybilny ze starszymi portfelami.</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">Natywne adresy segwit (aka Bech32 lub BIP-173) zmniejszają później twoje opłaty transakcyjne i dają lepsze zabezpieczenie przed literówkami, ale stare portfele ich nie obsługują. Jeżeli odznaczone, stworzony zostanie adres kompatybilny ze starszymi portfelami.</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>Wygeneruj natywny adres segwit (Bech32)</translation>
+        <translation type="vanished">Wygeneruj natywny adres segwit (Bech32)</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2215,6 +4006,14 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
     <message>
         <source>Could not generate new %1 address</source>
         <translation>Nie udało się wygenerować nowego adresu %1</translation>
+    </message>
+    <message>
+        <source>(none)</source>
+        <translation>(brak)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>Dla tego portfela nie ustawiono adresu stakingowego, więc nie ma komu delegować. Ustaw go na stronie Stake, w Deleguj -&gt; Automatyczna delegacja, a ten typ adresu zacznie działać.</translation>
     </message>
 </context>
 <context>
@@ -2296,6 +4095,99 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
     </message>
 </context>
 <context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>Peer</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Adres</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>Wpisany</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>Wpis kończy się</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>Wpisany od</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Kliknij, aby skopiować</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>Ten peer jest wpisany, ale nie publikuje adresu. Wciąż można
+do niego dotrzeć przez sieć nakładkową i właśnie po to jest to dozwolone.</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>opublikowano jeden adres</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>Opublikowanych adresów: %1</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>Potwierdzono w bloku %1</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>Przestaje się liczyć od bloku %1</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>Brak historii przed tym wpisem.</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>Wpisany bez przerwy od bloku %1.</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>Zbyt świeży, by już się liczyć.</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>Nie działa pod tożsamością.</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>Działa pod tożsamością %1, która zachowuje staż przy zmianie kluczy.</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>brak opublikowanego adresu</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>przed chwilą</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>%1 temu</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>wygasły</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>za %1</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>nowy</translation>
+    </message>
+</context>
+<context>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
@@ -2367,12 +4259,12 @@ Korzystanie z opłaty domyślnej może skutkować wysłaniem transakcji, która 
         <translation>Uwaga: Oszacowanie opłaty za transakcje jest aktualnie niemożliwe.</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>Określ niestandardową opłatę za kB (1000 bajtów) wirtualnego rozmiaru transakcji.
 
-Uwaga: Ponieważ opłata jest naliczana za każdy bajt, opłata "100 satoshi za kB" w przypadku transakcji o wielkości 500 bajtów (połowa 1 kB) ostatecznie da opłatę w wysokości tylko 50 satoshi.</translation>
+Uwaga: Ponieważ opłata jest naliczana za każdy bajt, opłata &quot;100 satoshi za kB&quot; w przypadku transakcji o wielkości 500 bajtów (połowa 1 kB) ostatecznie da opłatę w wysokości tylko 50 satoshi.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2431,7 +4323,7 @@ Uwaga: Ponieważ opłata jest naliczana za każdy bajt, opłata "100 satoshi za 
         <translation>Włącz RBF (podmiana transakcji przez podniesienie opłaty)</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
         <translation>Dzięki podmień-przez-opłatę (RBF, BIP-125) możesz podnieść opłatę transakcyjną już wysłanej transakcji. Bez tego, może być rekomendowana większa opłata aby zmniejszyć ryzyko opóźnienia zatwierdzenia transakcji.</translation>
     </message>
     <message>
@@ -2491,12 +4383,12 @@ Uwaga: Ponieważ opłata jest naliczana za każdy bajt, opłata "100 satoshi za 
         <translation>Tworzy częściowo podpisaną transakcję (ang. PSBT) używaną np. offline z portfelem %1 lub z innym portfelem zgodnym z PSBT.</translation>
     </message>
     <message>
-        <source> from wallet '%1'</source>
-        <translation>z portfela '%1'</translation>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation>z portfela &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>%1 to '%2'</source>
-        <translation>%1 do '%2'</translation>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 do &apos;%2&apos;</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -2551,8 +4443,8 @@ Uwaga: Ponieważ opłata jest naliczana za każdy bajt, opłata "100 satoshi za 
         <translation>Łączna wartość</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
-        <translation>Aby przejrzeć listę odbiorców kliknij "Pokaż szczegóły..."</translation>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>Aby przejrzeć listę odbiorców kliknij &quot;Pokaż szczegóły...&quot;</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2604,7 +4496,11 @@ Uwaga: Ponieważ opłata jest naliczana za każdy bajt, opłata "100 satoshi za 
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Przybliżony czas rozpoczęcia zatwierdzenia: %n blok.</numerusform><numerusform>Przybliżony czas rozpoczęcia zatwierdzenia: %n bloki.</numerusform><numerusform>Przybliżony czas rozpoczęcia zatwierdzenia: %n bloków.</numerusform><numerusform>Przybliżony czas rozpoczęcia zatwierdzenia: %n bloków.</numerusform></translation>
+        <translation>
+            <numerusform>Przybliżony czas rozpoczęcia zatwierdzenia: %n blok.</numerusform>
+            <numerusform>Przybliżony czas rozpoczęcia zatwierdzenia: %n bloki.</numerusform>
+            <numerusform>Przybliżony czas rozpoczęcia zatwierdzenia: %n bloków.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2625,6 +4521,46 @@ Uwaga: Ponieważ opłata jest naliczana za każdy bajt, opłata "100 satoshi za 
     <message>
         <source>(no label)</source>
         <translation>(brak etykiety)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>Wklej lub wczytaj listę płatności zamiast dodawać je pojedynczo</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>&amp;Zbiorczo...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>Przy obliczaniu dostępnego salda uwzględniaj też delegacje. Jeśli nie zaznaczono, dostępne saldo pokaże tylko monety znajdujące się obecnie w portfelu.</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>&amp;Uwzględnij delegacje</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>Zimny staking nie jest włączony</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>Zimny staking jest włączony od bloku %1</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation>Częściowo podpisana transakcja (binarna) (*.psbt)</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>Ten portfel prowadzi staking własnymi monetami, więc wszystkie są delegowane.</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>Podanego adresu właściciela nie ma w tym portfelu. OSTRZEŻENIE: Po delegacji tylko właściciel klucza adresu właściciela będzie mógł wydać te monety.</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>Podany adres stakera jest w tym portfelu. Możesz już prowadzić staking tymi monetami, nie musisz delegować ich do siebie.</translation>
     </message>
 </context>
 <context>
@@ -2709,6 +4645,352 @@ Uwaga: Ponieważ opłata jest naliczana za każdy bajt, opłata "100 satoshi za 
         <source>Memo:</source>
         <translation>Notatka:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>Adres &amp;właściciela:</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>Adres właściciela BitcoinPoS</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>Serwer</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Co ten węzeł oferuje innym. Przekazywanie i przechowywanie poczty działają już dziś; hosting jest w drodze i, jak wszystko tutaj, znajduje się go w ten sam sposób co peery — przez rejestr. Nazwy mają własną stronę.</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>Hosting</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>Strona lub usługa udostępniana z tego węzła, znajdowana po kluczu lub nazwie i osiągalna przez sieć nakładkową, więc host nigdy nie publikuje, gdzie działa. Część dotycząca spotkań istnieje: usługa rejestruje się w punktach spotkań, które obie strony wyliczają z rejestru. Udostępnianie przez to stron i aplikacji nie zostało jeszcze zbudowane.</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>Przekaźnik</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>Przenoś ruch sieci nakładkowej innych peerów, płać za miesięczne wpisy peerów korzystających z tego węzła i dziel się z nimi częścią każdego tworzonego bloku. Przekaźnik umieszcza opłacone wpisy w blokach, które sam tworzy — tak zostają potwierdzone, gdy większość węzłów wciąż odmawia przekazywania rekordów — dlatego przekaźnik musi prowadzić staking.</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>Peery wpisane tutaj</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>Następny blok, który utworzy</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>Płać za wpisy peerów, które proszą przez sieć nakładkową</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>Peer bez monet może poprosić ten węzeł o opublikowanie swojego miesięcznego wpisu. Ten węzeł płaci opłatę, umieszcza go w bloku i dodaje peera do tych, z którymi dzieli nagrody. Domyślnie wyłączone, bo wydaje monety tego węzła.</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>Peery powyżej tej liczby są odrzucane. Peery już tu wpisane mogą nadal odnawiać.</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>Maksymalna liczba wpisanych peerów</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>jedyny otwarty portfel</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>Który portfel płaci opłaty. Gdy otwartych jest kilka, a żaden nie jest tu wskazany, żądania są odrzucane zamiast płacone na chybił trafił. Staking może odbywać się w dowolnym portfelu na tym węźle.</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>Płać opłaty z portfela</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>Część każdego bloku, który ten węzeł tworzy własnymi monetami, dzielona równo między wpisane przez niego peery. 0 nie dzieli niczego.</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>Udział w każdym utworzonym bloku</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>Skrzynka pocztowa</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>Przechowuj zapieczętowaną pocztę ludzi, dla których rejestr czyni ten węzeł skrzynką pocztową, dopóki jej nie odbiorą. Które przekaźniki przechowują czyją pocztę, wylicza się z rejestru, więc nikt tego nie przydziela. Nadawcy i właściciele docierają do tego węzła przez trzy przekaźniki, więc nigdy nie wie, gdzie są; listy są zapieczętowane, więc nie może ich przeczytać ani ustalić, kto je napisał. Listy są usuwane po dwóch tygodniach i obsługiwane są tylko wpisane osoby.</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>Przechowywane</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>Klucze pocztowe przechowywane dla nadawców</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>Przechowuj pocztę ludzi, których rejestr przypisuje temu węzłowi</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>Domyślnie włączone wszędzie, gdzie działa sieć nakładkowa: przekaźnik, który odmawia, zostawia ludzi, dla których został wybrany, z jedną skrzynką mniej.</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>Gdy to się zapełni, nowe listy są odrzucane, dopóki stare nie zostaną odebrane lub usunięte. Żadna osoba nie może użyć więcej niż 8 MiB.</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>Miejsce na dysku, którego może używać</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Zapisano. Te ustawienia są odczytywane przy starcie węzła, więc uruchom klienta ponownie, aby zmiana zaczęła działać.</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>brak otwartego portfela</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>nie — przekaźnik bez stakingu odrzuca prośby o wpis</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>tak, za %1</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>nie płaci za wpisy</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>płaci, ale nie prowadzi stakingu</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>działa</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>ta kompilacja nie ma portfela</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>wymaga portfela</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>wyłączone</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>wymaga sieci nakładkowej</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>nic — nie przechowuje poczty</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>brak listów</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>1 litera</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>liter: %1</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>1 osoba</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>osób: %1</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>obecnie nic, miejsce na %1 MiB</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%1 dla %2, %3 z %4 MiB</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>dzieli się %1%: łącznie %2 %4, po %3 %4 na peera</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>Ustawienia</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>To, co robi ten klient, a czego nie robi klient portfela, oraz język. Wszystko inne — proxy, porty, przycinanie — to w obu to samo pytanie i jest zadawane w jednym miejscu.</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Odkrywanie</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>Prowadź indeks rejestru</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>Bez tego ten węzeł może publikować, ale nie widzi, kto jeszcze jest wpisany.</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>Indeksuj nazwy</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>Potrzebne do wyszukiwania nazw, wysyłania do nich poczty i rejestrowania własnej.</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>Próbuj łączyć się z peerami znalezionymi w rejestrze</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>Przekazuje adresy z rejestru menedżerowi adresów, obok zwykłych seedów i wymiany adresów. Wyłączenie zostawia rejestr jako listę, którą ten węzeł czyta, ale nigdy z niej nie korzysta.</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Sieć nakładkowa</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>Uruchamiaj sieć nakładkową</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>Domyślnie włączone w tym kliencie, wyłączone w węźle i w kliencie portfela. Jego uzgadnianie nie zostało jeszcze sprawdzone przez nikogo poza autorami.</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>Sieć nakładkowa używa UDP na własnym porcie. Sieć peer-to-peer jest osobna i pozostaje na TCP.</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>Nasłuchuj na porcie</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>Radio</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>Przenoś sieć nakładkową także przez radio, za pomocą Reticulum</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>LoRa przez RNode, packet radio, łącza szeregowe: cokolwiek Reticulum ma skonfigurowane. Wymaga sieci nakładkowej.</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>Wchodź do sieci nakładkowej przez radiowych sąsiadów, aby poczta działała bez internetu</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>Gdy węzeł BPS słyszany przez radio jest wpisanym przekaźnikiem, Twoja poczta i prośby o wpis idą przez niego. Łącze radiowe jest dużo wolniejsze niż internet.</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>Uruchamiaj most Reticulum razem z BPS Relay</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>Uruchamia bps-rns-bridge.py obok węzła. Zostaw wyłączone, jeśli uruchamiasz most samodzielnie.</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>Polecenie Python</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Reticulum nie jest częścią BPS i ma własną licencję. Zainstaluj go poleceniem %1 i skonfiguruj radio we własnej konfiguracji Reticulum (~/.reticulum/config). Pasma krótkofalarskie nie dopuszczają ruchu szyfrowanego, więc używaj pasm niewymagających licencji, takich jak pasma LoRa.</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>Wyświetlanie</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>Pokazuj kwoty w</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>Język komputera</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>Zacznie działać po ponownym uruchomieniu BPS Relay. Teksty wysyłane przez sam węzeł, takie jak komunikaty błędów poleceń, pozostają po angielsku.</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Język</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>Sieć, proxy i inne podstawowe ustawienia…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>Zapisano. Język zmieni się po ponownym uruchomieniu BPS Relay.</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Zapisano. Te ustawienia są odczytywane przy starcie węzła, więc uruchom klienta ponownie, aby zmiana zaczęła działać.</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>Węzeł wciąż się uruchamia; podstawowe ustawienia nie są jeszcze dostępne.</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2788,7 +5070,7 @@ Uwaga: Ponieważ opłata jest naliczana za każdy bajt, opłata "100 satoshi za 
         <translation>&amp;Zweryfikuj wiadomość</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
         <translation>Wpisz adres, wiadomość oraz sygnaturę (podpis) odbiorcy (upewnij się, że dokładnie skopiujesz wszystkie zakończenia linii, spacje, tabulacje itp.).  Uważaj by nie dodać więcej do podpisu niż do samej podpisywanej wiadomości by uniknąć ataku man-in-the-middle. 
 Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadawca posiada klucz do adresu, natomiast nie potwierdza to, że poprawne wysłanie jakiejkolwiek transakcji!</translation>
     </message>
@@ -2817,8 +5099,8 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <translation>Resetuje wszystkie pola weryfikacji wiadomości</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>Kliknij "Podpisz Wiadomość" żeby uzyskać podpis</translation>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>Kliknij &quot;Podpisz Wiadomość&quot; żeby uzyskać podpis</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2874,6 +5156,209 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
     </message>
 </context>
 <context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>Formularz</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>Twoje obecne saldo do wydania</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>Aktywa w stakingu należące do tego portfela</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>Aktywa w stakingu z delegacji</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>Niedojrzałe:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>Twoje niedojrzałe saldo</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>Aktywa w stakingu</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>Stake:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>Wysokość bloku:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>Nagroda za blok:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/blok</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>Waga sieci:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>Oczekiwany roczny zwrot:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>Zapisy stake&apos;ów</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>&amp;Deleguj</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>Typ delegacji:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>Ręczna delegacja</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>Automatyczna delegacja</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>Adresy stakingowe</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>Usuń wszystkie</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Wklej adres ze schowka</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>&amp;Dodaj</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>&amp;Moje delegacje</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>Aktywa delegowane</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>Twoje obecne saldo delegowane</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>Moje delegacje</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>&amp;Otrzymane delegacje</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>&amp;Utwórz nowy adres stakingowy</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> z etykietą:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>Opcjonalna etykieta do powiązania z nowym adresem odbiorczym (używana przez Ciebie do rozpoznania faktury). Jest też dołączana do żądania płatności.</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>Delegacje ColdStake</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>Monety wpłacone na adresy delegacji tego portfela są stakowane przez te klucze od razu po nadejściu, a reszta z Twoich wydatków pozostaje delegowana. Klucz stakingowy może tworzyć tylko coinstake&apos;i, które płacą z powrotem Tobie, więc portfel, który go przechowuje, nie potrzebuje hasła.</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>Podaj więcej niż jeden, aby rozłożyć monety na kilka portfeli stakingowych, tak żeby wyłączenie jednego nie zatrzymało całego stakingu.
+
+Każda nowa delegacja trafia na adres wskazany dotąd najrzadziej, licząc wydane adresy delegacji i jeszcze niewydane delegowane monety. Liczy delegacje, nie kwoty, więc adres z jedną dużą delegacją wciąż może zostać wybrany przed adresem z kilkoma małymi.</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>Monety już delegowane na usunięty adres nie są przenoszone i ten adres nadal prowadzi nimi staking. Tylko nowe delegacje przestają go wskazywać.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>Nie można odblokować portfela.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Nie można wygenerować nowego adresu %1</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>Zimny staking jest wyłączony na tym węźle (-coldstaking=0), więc nic nie jest delegowane.</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>Adres stakingowy tutaj należy do tego portfela, który jest zaszyfrowany, więc prowadzi staking tylko wtedy, gdy portfel jest odblokowany. Aby prowadzić staking bez hasła, użyj adresu z osobnego, niezaszyfrowanego portfela stakingowego.</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>Przestań delegować do %1. Monety już do niego delegowane nie są przenoszone i nadal prowadzi nimi staking.</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>Nie można zapisać adresów stakingowych. Delegacja wiąże się z hashem klucza, więc każdy musi być adresem typu legacy.</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>Ten adres stakingowy jest już na liście.</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>Usuń wszystkie adresy stakingowe</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>Przestać delegować do wszystkich adresów stakingowych (%1)?
+
+Monety już delegowane pozostają przez nie stakowane i nie są przenoszone. Ale nowe wpłaty i reszta trafią na zwykłe adresy, które nie prowadzą stakingu, i do ponownego włączenia będziesz znów potrzebować tych adresów.</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2884,7 +5369,11 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Otwórz dla %n kolejnego bloku</numerusform><numerusform>Otwórz dla %n kolejnych bloków</numerusform><numerusform>Otwórz dla %n kolejnych bloków</numerusform><numerusform>Otwórz dla %n kolejnych bloków</numerusform></translation>
+        <translation>
+            <numerusform>Otwórz dla %n kolejnego bloku</numerusform>
+            <numerusform>Otwórz dla %n kolejnych bloków</numerusform>
+            <numerusform>Otwórz dla %n kolejnych bloków</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2964,7 +5453,11 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>dojrzeje po %n kolejnym bloku</numerusform><numerusform>dojrzeje po %n kolejnych blokach</numerusform><numerusform>dojrzeje po %n kolejnych blokach</numerusform><numerusform>dojrzeje po %n kolejnych blokach</numerusform></translation>
+        <translation>
+            <numerusform>dojrzeje po %n kolejnym bloku</numerusform>
+            <numerusform>dojrzeje po %n kolejnych blokach</numerusform>
+            <numerusform>dojrzeje po %n kolejnych blokach</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -3023,8 +5516,8 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <translation>Kupiec</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Wygenerowane monety muszą dojrzeć przez %1 bloków zanim będzie można je wydać. Gdy wygenerowałeś blok, został on rozgłoszony w sieci w celu dodania do łańcucha bloków. Jeżeli nie uda mu się wejść do łańcucha jego status zostanie zmieniony na "nie zaakceptowano" i nie będzie można go wydać. To czasem zdarza się gdy inny węzeł wygeneruje blok w kilka sekund od twojego.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Wygenerowane monety muszą dojrzeć przez %1 bloków zanim będzie można je wydać. Gdy wygenerowałeś blok, został on rozgłoszony w sieci w celu dodania do łańcucha bloków. Jeżeli nie uda mu się wejść do łańcucha jego status zostanie zmieniony na &quot;nie zaakceptowano&quot; i nie będzie można go wydać. To czasem zdarza się gdy inny węzeł wygeneruje blok w kilka sekund od twojego.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -3078,7 +5571,11 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Otwórz dla %n kolejny blok</numerusform><numerusform>Otwórz dla %n kolejne bloki</numerusform><numerusform>Otwórz dla %n kolejnych bloków</numerusform><numerusform>Otwórz dla %n kolejnych bloków</numerusform></translation>
+        <translation>
+            <numerusform>Otwórz dla %n kolejny blok</numerusform>
+            <numerusform>Otwórz dla %n kolejne bloki</numerusform>
+            <numerusform>Otwórz dla %n kolejnych bloków</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3167,6 +5664,30 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>Kwota odjęta z lub dodana do konta.</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>Zimny stake</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>Staking w imieniu</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>Delegacja stake&apos;u</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>Delegacja</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>Delegacja stake&apos;u wydana przez</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>Kwota delegowana.</translation>
     </message>
 </context>
 <context>
@@ -3327,6 +5848,22 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <source>to</source>
         <translation>do</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>Zimne stake&apos;i</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>Gorące stake&apos;i</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>Niewydane delegowane</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>Delegacje</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3363,6 +5900,14 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
     <message>
         <source>Create a new wallet</source>
         <translation>Stwórz nowy portfel</translation>
+    </message>
+    <message>
+        <source>No wallet has been loaded.
+Go to File &gt; Open Wallet to load a wallet.
+- OR -</source>
+        <translation>Nie wczytano żadnego portfela.
+Przejdź do Plik &gt; Otwórz portfel, aby wczytać portfel.
+- LUB -</translation>
     </message>
 </context>
 <context>
@@ -3404,7 +5949,7 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <translation>Potwierdź zwiększenie opłaty</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
+        <source>Can&apos;t draft transaction.</source>
         <translation>Nie można zapisać szkicu transakcji.</translation>
     </message>
     <message>
@@ -3412,7 +5957,7 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <translation>Skopiowano PSBT</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>Nie można podpisać transakcji.</translation>
     </message>
     <message>
@@ -3422,6 +5967,21 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
     <message>
         <source>default wallet</source>
         <translation>domyślny portfel</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ ten węzeł</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● na żywo</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>Klient portfela działający w tym procesie z tym węzłem. To ten sam program co bitcoin-pos-qt, a nie jego kopia.</translation>
     </message>
 </context>
 <context>
@@ -3526,7 +6086,7 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <translation>Błąd odczytu %s! Wszystkie klucze zostały odczytane poprawnie, ale może brakować  danych transakcji lub wpisów w książce adresowej, lub mogą one być nieprawidłowe.</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation>Proszę sprawdzić czy data i czas na Twoim komputerze są poprawne! Jeżeli ustawienia zegara będą złe, %s nie będzie działał prawidłowo.</translation>
     </message>
     <message>
@@ -3534,7 +6094,7 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <translation>Wspomóż proszę, jeśli uznasz %s za użyteczne. Odwiedź  %s, aby uzyskać więcej informacji o tym oprogramowaniu.</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
         <translation>Baza bloków zawiera blok, który wydaje się pochodzić z przyszłości. Może to wynikać z nieprawidłowego ustawienia daty i godziny Twojego komputera. Bazę danych bloków dobuduj tylko, jeśli masz pewność, że data i godzina twojego komputera są poprawne</translation>
     </message>
     <message>
@@ -3543,7 +6103,7 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
     </message>
     <message>
         <source>This is the transaction fee you may discard if change is smaller than dust at this level</source>
-        <translation>To jest opłata transakcyjna jaką odrzucisz, jeżeli reszta jest mniejsza niż "dust" na tym poziomie</translation>
+        <translation>To jest opłata transakcyjna jaką odrzucisz, jeżeli reszta jest mniejsza niż &quot;dust&quot; na tym poziomie</translation>
     </message>
     <message>
         <source>Unable to replay blocks. You will need to rebuild the database using -reindex-chainstate.</source>
@@ -3566,8 +6126,8 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <translation>-maxmempool musi być przynajmniej %d MB</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>Nie można rozpoznać -%s adresu: '%s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>Nie można rozpoznać -%s adresu: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3654,20 +6214,20 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <translation>Wstępna kontrola poprawności nie powiodła się. %s wyłącza się.</translation>
     </message>
     <message>
-        <source>Invalid P2P permission: '%s'</source>
-        <translation>Nieprawidłowe uprawnienia P2P: '%s'</translation>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>Nieprawidłowe uprawnienia P2P: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>Nieprawidłowa kwota dla -%s=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Nieprawidłowa kwota dla -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>Nieprawidłowa kwota dla -discardfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Nieprawidłowa kwota dla -discardfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>Nieprawidłowa kwota dla -fallbackfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Nieprawidłowa kwota dla -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
@@ -3694,17 +6254,17 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <translation>SQLiteDatabase: nieoczekiwany identyfikator aplikacji. Oczekiwano %u, otrzymano %u</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>Podany folder bloków "%s" nie istnieje.
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>Podany folder bloków &quot;%s&quot; nie istnieje.
 </translation>
     </message>
     <message>
-        <source>Unknown address type '%s'</source>
-        <translation>Nieznany typ adresu '%s'</translation>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>Nieznany typ adresu &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Unknown change type '%s'</source>
-        <translation>Nieznany typ reszty '%s'</translation>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>Nieznany typ reszty &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3779,8 +6339,8 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <translation>Błąd: Nasłuchiwanie połączeń przychodzących nie powiodło się (nasłuch zwrócił błąd %s)</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>Niewłaściwa ilość dla -maxtxfee=&lt;ilość&gt;: '%s' (musi wynosić przynajmniej minimalną wielkość %s aby zapobiec utknięciu transakcji)</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Niewłaściwa ilość dla -maxtxfee=&lt;ilość&gt;: &apos;%s&apos; (musi wynosić przynajmniej minimalną wielkość %s aby zapobiec utknięciu transakcji)</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -3815,24 +6375,24 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <translation>Błąd: Pula kluczy jest pusta, odwołaj się do puli kluczy.</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>Niewłaściwy adres -onion lub nazwa hosta: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>Niewłaściwy adres -onion lub nazwa hosta: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>Nieprawidłowy adres -proxy lub nazwa hosta: '%s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>Nieprawidłowy adres -proxy lub nazwa hosta: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>Nieprawidłowa kwota dla -paytxfee=&lt;amount&gt;: '%s' (musi być co najmniej %s)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>Nieprawidłowa kwota dla -paytxfee=&lt;amount&gt;: &apos;%s&apos; (musi być co najmniej %s)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>Nieprawidłowa maska sieci określona w -whitelist: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>Nieprawidłowa maska sieci określona w -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>Musisz określić port z -whitebind: '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>Musisz określić port z -whitebind: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Prune mode is incompatible with -blockfilterindex.</source>
@@ -3851,16 +6411,16 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <translation>Podpisywanie transakcji nie powiodło się</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>Podany -walletdir "%s" nie istnieje</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>Podany -walletdir &quot;%s&quot; nie istnieje</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>Podany -walletdir "%s" jest ścieżką względną</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>Podany -walletdir &quot;%s&quot; jest ścieżką względną</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>Podany -walletdir "%s" nie jest katalogiem</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>Podany -walletdir &quot;%s&quot; nie jest katalogiem</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3889,8 +6449,8 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <translation>Nie można przywiązać do %s na tym komputerze (bind zwrócił błąd %s)</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>Nie można stworzyć pliku PID '%s': %s</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>Nie można stworzyć pliku PID &apos;%s&apos;: %s</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -3953,8 +6513,8 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <translation>Transakcja wymaga co najmniej jednego odbiorcy</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>Nieznana sieć w -onlynet: '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>Nieznana sieć w -onlynet: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -3969,8 +6529,8 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
         <translation>Uwaga: Wykryto klucze prywatne w portfelu [%s] który ma wyłączone klucze prywatne</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>Nie mogę zapisać do katalogu danych '%s'; sprawdź uprawnienia.</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>Nie mogę zapisać do katalogu danych &apos;%s&apos;; sprawdź uprawnienia.</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -3991,6 +6551,58 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
     <message>
         <source>Done loading</source>
         <translation>Wczytywanie zakończone</translation>
+    </message>
+    <message>
+        <source>%s corrupt. Try using the wallet tool bitcoin-wallet to salvage or restoring a backup.</source>
+        <translation>%s jest uszkodzony. Spróbuj użyć narzędzia portfela bitcoin-wallet do odzyskania danych lub przywróć kopię zapasową.</translation>
+    </message>
+    <message>
+        <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use version 169900 or no version specified.</source>
+        <translation>Nie można zaktualizować portfela dzielonego bez HD bez aktualizacji do obsługi puli kluczy sprzed podziału. Użyj wersji 169900 lub nie podawaj wersji.</translation>
+    </message>
+    <message>
+        <source>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</source>
+        <translation>Podano więcej niż jeden adres powiązania onion. Używanie %s dla automatycznie utworzonej usługi Tor onion.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: nie udało się przygotować instrukcji pobierania wersji schematu portfela sqlite: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: nie udało się przygotować instrukcji pobierania identyfikatora aplikacji: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unknown sqlite wallet schema version %d. Only version %d is supported</source>
+        <translation>SQLiteDatabase: nieznana wersja schematu portfela sqlite %d. Obsługiwana jest tylko wersja %d</translation>
+    </message>
+    <message>
+        <source>This error could occur if this wallet was not shutdown cleanly and was last loaded using a build with a newer version of Berkeley DB. If so, please use the software that last loaded this wallet</source>
+        <translation>Ten błąd może wystąpić, jeśli portfel nie został poprawnie zamknięty i był ostatnio wczytany przez kompilację z nowszą wersją Berkeley DB. Jeśli tak, użyj oprogramowania, które ostatnio wczytało ten portfel</translation>
+    </message>
+    <message>
+        <source>This is the maximum transaction fee you pay (in addition to the normal fee) to prioritize partial spend avoidance over regular coin selection.</source>
+        <translation>To maksymalna opłata transakcyjna, jaką płacisz (oprócz zwykłej opłaty), aby przedkładać unikanie częściowego wydawania nad zwykły wybór monet.</translation>
+    </message>
+    <message>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
+        <translation>Transakcja wymaga adresu reszty, ale nie możemy go wygenerować. Najpierw wywołaj keypoolrefill.</translation>
+    </message>
+    <message>
+        <source>Cannot set -peerblockfilters without -blockfilterindex.</source>
+        <translation>Nie można ustawić -peerblockfilters bez -blockfilterindex.</translation>
+    </message>
+    <message>
+        <source>Fee rate (%s) is lower than the minimum fee rate setting (%s)</source>
+        <translation>Stawka opłaty (%s) jest niższa niż ustawienie minimalnej stawki opłaty (%s)</translation>
+    </message>
+    <message>
+        <source>Ignoring duplicate -wallet %s.</source>
+        <translation>Pomijanie zduplikowanego -wallet %s.</translation>
+    </message>
+    <message>
+        <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
+        <translation>Nie podano serwera proxy. Użyj -proxy=&lt;ip&gt; lub -proxy=&lt;ip:port&gt;.</translation>
     </message>
 </context>
 </TS>

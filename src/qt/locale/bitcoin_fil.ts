@@ -1,4 +1,6 @@
-<TS language="fil" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fil">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -96,6 +98,12 @@
     <message>
         <source>There was an error trying to save the address list to %1. Please try again.</source>
         <translation>Mayroong error sa pag-save ng listahan ng address sa %1. Subukang muli.</translation>
+    </message>
+    <message>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
+        <translation>Ito ang iyong mga Bitcoin address para sa pagtanggap ng bayad. Gamitin ang button na &apos;Gumawa ng bagong address ng pagtanggap&apos; sa tab na Tumanggap upang gumawa ng mga bagong address.
+Maaari lamang pumirma gamit ang mga address na uri ng &apos;legacy&apos;.</translation>
     </message>
 </context>
 <context>
@@ -235,6 +243,14 @@
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Babala: Ang Caps Lock key ay nakabukas!</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>Ginagamit upang i-disable ang simpleng pagpapadala ng pera kapag nakompromiso ang account ng operating system. Hindi ito nagbibigay ng tunay na seguridad.</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>Para sa staking lamang.</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -245,6 +261,109 @@
     <message>
         <source>Banned Until</source>
         <translation>Bawal Hanggang</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>Maramihang bayad</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>Isang bayad bawat linya, bilang &quot;address, halaga&quot;. Pinaghihiwalay ng kuwit, semicolon o tab ang mga field, at ang ikatlong field ang nagiging label. Hindi pinapansin ang mga linyang nagsisimula sa #.</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>&amp;Idikit</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>I-load mula sa &amp;file...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>&amp;Linisin</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>Linya</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Address</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Halaga</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Katayuan</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>I-load ang listahan ng bayad</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>Mga text at CSV file (*.txt *.csv);;Lahat ng file (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>Hindi mabasa ang %1.</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>inaasahan ang &quot;address, halaga&quot;</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>walang address</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>hindi wastong address</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>walang halaga</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>hindi mabasa ang halagang &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>ang halaga ay dapat higit sa zero</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>ok</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>Magdikit ng isang bayad bawat linya, bilang &quot;address, halaga&quot;. Ginagamit ang ikatlong field bilang label. Hindi pinapansin ang mga linyang nagsisimula sa #.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>%1 sa %2 linya ay hindi magagamit. Ayusin o burahin ang mga ito upang magpatuloy.</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>Ang %1 tatanggap ay higit sa kayang dalhin ng isang transaksyon (ang limitasyon dito ay %2). Hatiin ang listahan.</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>%1 tatanggap, %2 lahat-lahat, bago ang bayarin.</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>Idagdag sa form ng pagpapadala</translation>
     </message>
 </context>
 <context>
@@ -605,7 +724,398 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Walet ay na-encrypt at kasalukuyang naka-lock.</translation>
     </message>
-    </context>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Nagkaroon ng malubhang error. Hindi na ligtas na makapagpapatuloy ang %1 at ito ay magsasara.</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>Ipakita ang stake ng wallet</translation>
+    </message>
+    <message>
+        <source>&amp;Load PSBT from file...</source>
+        <translation>&amp;I-load ang PSBT mula sa file...</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction</source>
+        <translation>I-load ang bahagyang napirmahang Bitcoin transaction</translation>
+    </message>
+    <message>
+        <source>Load PSBT from clipboard...</source>
+        <translation>I-load ang PSBT mula sa clipboard...</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction from clipboard</source>
+        <translation>I-load ang bahagyang napirmahang Bitcoin transaction mula sa clipboard</translation>
+    </message>
+    <message>
+        <source>Open node debugging and diagnostic console</source>
+        <translation>Buksan ang console para sa pag-debug at pagsusuri ng node</translation>
+    </message>
+    <message>
+        <source>Open a bitcoin: URI</source>
+        <translation>Magbukas ng bitcoin: URI</translation>
+    </message>
+    <message>
+        <source>Close All Wallets...</source>
+        <translation>Isara ang lahat ng wallet...</translation>
+    </message>
+    <message>
+        <source>Close all wallets</source>
+        <translation>Isara ang lahat ng wallet</translation>
+    </message>
+    <message>
+        <source>&amp;Mask values</source>
+        <translation>&amp;Itago ang mga halaga</translation>
+    </message>
+    <message>
+        <source>Mask the values in the Overview tab</source>
+        <translation>Itago ang mga halaga sa tab na Pangkalahatang-tanaw</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n active connection(s) to Bitcoin network</source>
+        <translation>
+            <numerusform>%n aktibong koneksyon sa Bitcoin network</numerusform>
+            <numerusform>%n aktibong koneksyon sa Bitcoin network</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>Processed %n block(s) of transaction history.</source>
+        <translation>
+            <numerusform>Naproseso ang %n block ng kasaysayan ng transaksyon.</numerusform>
+            <numerusform>Naproseso ang %n block ng kasaysayan ng transaksyon.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Warning: %1</source>
+        <translation>Babala: %1</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>Ang wallet ay &lt;b&gt;naka-encrypt&lt;/b&gt; at kasalukuyang &lt;b&gt;naka-unlock para sa staking lamang&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>&amp;I-decrypt ang wallet...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>Alisin ang passphrase, upang manatiling hindi naka-encrypt ang mga private key</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Hindi nag-i-stake</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n segundo</numerusform>
+            <numerusform>%n segundo</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n minuto</numerusform>
+            <numerusform>%n minuto</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n oras</numerusform>
+            <numerusform>%n oras</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n araw</numerusform>
+            <numerusform>%n araw</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>Nag-i-stake.&lt;br&gt;Ang bigat mo ay %1&lt;br&gt;Ang bigat ng network ay %2&lt;br&gt;Inaasahang tagal bago ang gantimpala: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>Hindi nag-i-stake dahil offline ang wallet</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>Hindi nag-i-stake dahil nagsi-sync ang wallet</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>Hindi nag-i-stake dahil wala kang mature na coin</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>Hindi nag-i-stake dahil naka-lock ang wallet</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Orihinal na mensahe:</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>Hindi kilalang error</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>wala pang isang minuto</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>isang minuto</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 minuto</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>isang oras</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 oras</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 araw</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>isang buwan</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 buwan</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>mga isang taon</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>mahigit isang taon</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>hindi alam</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Nagkaroon ng malubhang error. Hindi na ligtas na makapagpapatuloy ang %1 at ito ay magsasara.</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Orihinal na mensahe:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Tuklasin</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Overlay</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>Mga Pangalan</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>Mga peer at console</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>Node</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Wallet</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>Liham</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>Liham (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>Server</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Mga Setting</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>hindi alam ang pagkakalista</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>hindi alam ang overlay</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>kumokonekta…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>Sa kasalukuyang bigat ng network, kumikita ang staking ng humigit-kumulang %1% bawat taon: %2 block bawat taon, %3 %4 bawat isa, sa %5 %4 na naka-stake.</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>Iyan ay pagkatapos ng bahaging %1% ng bawat block na ibinabahagi ng node na ito sa mga peer nito.</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>%1% bawat taon</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>nagsasara…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>%1 peer: %2 papasok, %3 palabas.</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>I-click upang ihinto pansamantala ang aktibidad ng network.</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>1 peer</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>%1 peer</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>Pansamantalang nakahinto ang aktibidad ng network.</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>I-click upang ituloy ito.</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>nakahinto ang network</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>Naproseso ang %1 block ng kasaysayan.</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>block %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>Napapanahon.</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>Nagsi-sync sa network…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>Pinoproseso ang mga block sa disk…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>Muling ini-index ang mga block sa disk…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>Kumokonekta sa mga peer…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>%1 ang pagkahuli</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>Humahabol…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>Ang huling natanggap na block ay ginawa %1 na ang nakalipas.</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>Ang wallet na &lt;b&gt;%1&lt;/b&gt; ay naka-encrypt at naka-unlock para sa staking lamang</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>Ang wallet na &lt;b&gt;%1&lt;/b&gt; ay naka-encrypt at naka-unlock</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>Ang wallet na &lt;b&gt;%1&lt;/b&gt; ay naka-encrypt at naka-lock</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>nag-i-stake</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>nag-i-stake, %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>Nag-i-stake ang &lt;b&gt;%1&lt;/b&gt;.&lt;br&gt;Ang bigat nito ay %2&lt;br&gt;Ang bigat ng network ay %3&lt;br&gt;Inaasahang tagal bago ang gantimpala: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>hindi nag-i-stake</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>hindi nag-i-stake (nagbabayad ng %1)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>Hindi nag-i-stake: masyadong kaunti ang peer</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>Hindi nag-i-stake: humahabol pa ang chain</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>Hindi nag-i-stake: walang mature na coin ang &lt;b&gt;%1&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>Hindi nag-i-stake: naka-lock ang &lt;b&gt;%1&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Hindi nag-i-stake</translation>
+    </message>
+</context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -756,6 +1266,57 @@
         <source>(change)</source>
         <translation>(sukli)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>ipinagkatiwala kay %1 para sa cold staking</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>Sumulat ng liham</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>isang pangalan, palayaw mula sa address book o susi ng talaan</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Para kay</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Paksa</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>Ipadala</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>Para kanino ito? Isang pangalan, palayaw o susi ng talaan.</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>Ang liham ay %1 KB; ang isang liham ay hanggang %2 KB lamang.</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>Sinasarhan ang liham at iniiwan sa mga mailbox ng tatanggap, sa bawat pagkakataon ay dumaraan sa tatlong relay. Aabutin ito ng ilang segundo…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Naipadala</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>Naiwan ang liham sa %1 sa %2 mailbox ng tatanggap. Sapat na ang isa para makarating ito.</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>Hindi naipadala: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -766,6 +1327,10 @@
     <message>
         <source>Create wallet warning</source>
         <translation>Gumawa ng Babala ng Pitaka</translation>
+    </message>
+    <message>
+        <source>Creating Wallet &lt;b&gt;%1&lt;/b&gt;...</source>
+        <translation>Ginagawa ang wallet na &lt;b&gt;%1&lt;/b&gt;...</translation>
     </message>
 </context>
 <context>
@@ -790,7 +1355,218 @@
         <source>Create</source>
         <translation>Gumawa</translation>
     </message>
-    </context>
+    <message>
+        <source>Wallet</source>
+        <translation>Wallet</translation>
+    </message>
+    <message>
+        <source>Encrypt the wallet. The wallet will be encrypted with a passphrase of your choice.</source>
+        <translation>I-encrypt ang wallet. Ie-encrypt ang wallet gamit ang passphrase na pipiliin mo.</translation>
+    </message>
+    <message>
+        <source>Encrypt Wallet</source>
+        <translation>I-encrypt ang wallet</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>Mga advanced na opsyon</translation>
+    </message>
+    <message>
+        <source>Disable private keys for this wallet. Wallets with private keys disabled will have no private keys and cannot have an HD seed or imported private keys. This is ideal for watch-only wallets.</source>
+        <translation>I-disable ang mga private key para sa wallet na ito. Ang mga wallet na naka-disable ang private key ay walang private key at hindi maaaring magkaroon ng HD seed o mga in-import na private key. Mainam ito para sa mga watch-only wallet.</translation>
+    </message>
+    <message>
+        <source>Make a blank wallet. Blank wallets do not initially have private keys or scripts. Private keys and addresses can be imported, or an HD seed can be set, at a later time.</source>
+        <translation>Gumawa ng blangkong wallet. Walang private key o script sa simula ang mga blangkong wallet. Maaaring mag-import ng mga private key at address, o magtakda ng HD seed, sa ibang pagkakataon.</translation>
+    </message>
+    <message>
+        <source>Use descriptors for scriptPubKey management</source>
+        <translation>Gumamit ng mga descriptor para sa pamamahala ng scriptPubKey</translation>
+    </message>
+    <message>
+        <source>Descriptor Wallet</source>
+        <translation>Descriptor wallet</translation>
+    </message>
+    <message>
+        <source>Compiled without sqlite support (required for descriptor wallets)</source>
+        <translation>Na-compile nang walang suporta sa sqlite (kailangan para sa mga descriptor wallet)</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>Tuklasin</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>Inaanunsyo ng mga peer ang kanilang sarili sa chain at hindi sa isang server, kaya pareho ang listahang ito para sa lahat at walang makapag-e-edit nito.</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>Talaan</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>Ang iyong pagkakalista</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>Mga nakalistang peer</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>Ikaw ay</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Kopyahin</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>Inilalathala ang iyong pagkakalista…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>Pagkakakilanlan</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>Gumawa…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>Pinapanatili ng pagkakakilanlan ang kasaysayan ng node na ito, kung gaano na ito katagal nakalista, kung sakaling kailangang palitan ang susi nito.</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>Maghanap ng peer o address</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Nakopya ang susi</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>Nakopya ang address</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>nagsisimula…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>Gumawa ng pagkakakilanlan</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>Bayaran ang bayarin mula sa</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Ang pagkakakilanlan ay pangalawang susi na nasa likod ng susi ng node na ito. Kung mawala o manakaw ang susi ng node na ito, maaaring maglagay ng bagong susi sa ilalim ng parehong pagkakakilanlan, at mapapanatili ng node kung gaano na ito katagal nakalista sa halip na magsimula muli.
+
+Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang paraan para mapigilan ang sinumang magnanakaw ng pagkakakilanlan na ilipat ito. Pagkatapos ay ilalathala ng isang maliit na transaksyon ang pagkakakilanlan, at itatali ng susunod mong pag-renew ng pagkakalista ang susi ng node na ito rito.</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Nailathala ng iyong relay ang iyong pagkakalista sa transaksyon %1. Bibilangin kapag nakumpirma na ang transaksyon.</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Nailathala sa transaksyon %1. Bibilangin kapag nakumpirma na ang transaksyon.</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>hindi alam</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>naka-off ang index ng talaan</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>hindi nakalista</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>matatapos sa loob ng %1</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>Nire-renew ang iyong pagkakalista…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>I-renew sa huling 3 araw</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>Matatapos ang iyong pagkakalista sa loob ng %1. Maaaring mag-renew simula tatlong araw bago iyon.</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>nakalista, matatapos sa loob ng %1</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>wala</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>Walang announce key ang node na ito: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>naka-disable</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>Hindi tumatakbo ang index ng talaan, kaya hindi makita ng node na ito kung sino ang nakalista. I-restart gamit ang -rosterindex upang i-on ito.</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>humahabol (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>%1 araw na ang nakalipas</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>Ang pinakabagong block ng node na ito ay %1 araw na, kaya maaaring nandito pa ang mga peer na binawi mula noon. Ginagamit pa rin ang talaan para maabot ang mga peer, ngunit hihinto ang overlay sa pagbibigay-priyoridad sa matagal nang nakalistang relay hanggang makahabol ang chain.</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>napapanahon</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>Hindi tumatakbo ang index ng talaan</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>Ang iyong recovery key</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>Isulat ito at itago sa ligtas na lugar, malayo sa computer na ito. Ngayon lamang ito ipinapakita at hindi ito naka-save kahit saan. Hindi ito magagamit para gumastos ng coin; mapipigilan lamang nito ang paglipat ng iyong pagkakakilanlan na hindi ikaw ang gumawa.</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>Naisulat ko na ito</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Nailathala ang iyong pagkakakilanlan sa transaksyon %1. Itatali ng susunod mong pag-renew ng pagkakalista ang susi ng node na ito rito.</translation>
+    </message>
+</context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -826,16 +1602,16 @@
         <translation>Baguhin ang address para sa pagpapadala</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>Ang address na in-enter "%1" ay hindi isang wastong Bitcoin address.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
+        <translation>Ang address na in-enter &quot;%1&quot; ay hindi isang wastong Bitcoin address.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>Ang address "%1" ay ginagamit bilang address na pagtanggap na may label "%2" kaya hindi ito maaaring gamitin bilang address na pagpapadala.</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>Ang address &quot;%1&quot; ay ginagamit bilang address na pagtanggap na may label &quot;%2&quot; kaya hindi ito maaaring gamitin bilang address na pagpapadala.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>Ang address na in-enter "%1" ay nasa address book na may label "%2".</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>Ang address na in-enter &quot;%1&quot; ay nasa address book na may label &quot;%2&quot;.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -904,7 +1680,7 @@
     </message>
     <message>
         <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
-        <translation>Maraming pangangailangan ang itong paunang sinkronisasyon at maaaring ilantad ang mga problema sa hardware ng iyong computer na hindi dating napansin. Tuwing pagaganahin mo ang %1, ito'y magpapatuloy mag-download kung saan ito tumigil.</translation>
+        <translation>Maraming pangangailangan ang itong paunang sinkronisasyon at maaaring ilantad ang mga problema sa hardware ng iyong computer na hindi dating napansin. Tuwing pagaganahin mo ang %1, ito&apos;y magpapatuloy mag-download kung saan ito tumigil.</translation>
     </message>
     <message>
         <source>If you have chosen to limit block chain storage (pruning), the historical data must still be downloaded and processed, but will be deleted afterward to keep your disk usage low.</source>
@@ -920,7 +1696,7 @@
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <translation type="vanished">Bitcoin</translation>
     </message>
     <message>
         <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
@@ -939,8 +1715,8 @@
         <translation>Ang walet ay maiimbak din sa direktoryong ito.</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>Kamalian: Ang tinukoy na direktoyo ng datos "%1" ay hindi magawa.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
+        <translation>Kamalian: Ang tinukoy na direktoyo ng datos &quot;%1&quot; ay hindi magawa.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -948,9 +1724,193 @@
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>Mayroong %n GB na libreng lugar</numerusform><numerusform>Mayroong %n GB na libreng lugar</numerusform></translation>
+        <translation>
+            <numerusform>Mayroong %n GB na libreng lugar</numerusform>
+            <numerusform>Mayroong %n GB na libreng lugar</numerusform>
+        </translation>
     </message>
-    </context>
+    <message>
+        <source>Reverting this setting requires re-downloading the entire blockchain. It is faster to download the full chain first and prune it later. Disables some advanced features.</source>
+        <translation>Ang pagbabalik sa setting na ito ay nangangailangan ng muling pag-download ng buong blockchain. Mas mabilis na i-download muna ang buong chain at i-prune ito sa ibang pagkakataon. Dini-disable nito ang ilang advanced na feature.</translation>
+    </message>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+    <message>
+        <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
+        <translation>Itapon ang mga block pagkatapos ng beripikasyon, maliban sa pinakabagong %1 GB (prune)</translation>
+    </message>
+    <message numerus="yes">
+        <source>(of %n GB needed)</source>
+        <translation>
+            <numerusform>(sa %n GB na kailangan)</numerusform>
+            <numerusform>(sa %n GB na kailangan)</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>(%n GB needed for full chain)</source>
+        <translation>
+            <numerusform>(%n GB ang kailangan para sa buong chain)</numerusform>
+            <numerusform>(%n GB ang kailangan para sa buong chain)</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>Liham</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>Ang iyong address</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Kopyahin</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>Ang iyong susi ng talaan. Sinumang nakalista ay maaaring sumulat sa iyo gamit ito.</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>Dumaraan ang liham sa overlay. I-on ang overlay sa Mga Setting at i-restart upang makapagpadala at makatanggap ng liham.</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>Sumulat</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>Sumagot</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>Kunin ngayon</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>Kunin ngayon ang mga bagong liham mula sa iyong mga mailbox. Nangyayari rin ito tuwing ilang minuto.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Burahin</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>Inbox</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Naipadala</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>Mula kay</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Paksa</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Petsa</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>Sinasarhan ang mga liham gamit ang lingguhang mail key ng tatanggap, gamit ang secp256k1 at ML-KEM-768 nang sabay; ang iyong susi at lagda ay nasa loob ng selyo, at bawat biyahe papunta sa mailbox ay dumaraan sa tatlong relay. Binubura ang mga lumang mail key, kaya ang liham na kinuha ngayon ay hindi na mabubuksan sa susunod gamit ang mga susi ng computer na ito.</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Para kay</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>Wala pang nakalistang relay, kaya wala ka pang mailbox at walang makasusulat sa iyo.</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>%1 relay ang nag-iingat ng iyong liham; magiging %2 ito kapag mas marami na ang nakalista sa talaan.</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>%1 relay na pinili mula sa iyong susi ang nag-iingat ng iyong liham hanggang kunin mo ito.</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>Mail key #%1, nire-renew linggu-linggo.</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>Huling kinuha %1.</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>Hindi pa nakukuha.</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>1 bagong liham</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>%1 bagong liham</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>, mula sa %1 sa %2 mailbox.</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(walang paksa)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>Naiwan sa %1 mailbox ng tatanggap</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>Mula kay: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>Para kay: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>Naipadala %1, naiwan sa %2 mailbox ng tatanggap</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>Isinulat %1, kinuha %2</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>Pumili ng liham upang basahin ito.</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>Kinukuha…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>Inaabot ang iyong mga mailbox, bawat isa ay sa pamamagitan ng tatlong relay…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>Burahin ang liham</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>Burahin ang liham na ito sa computer na ito? Natanggal na ang mga kopya nito sa mga mailbox nang kunin ito, kaya hindi na ito makukuha muli.</translation>
+    </message>
+</context>
 <context>
     <name>ModalOverlay</name>
     <message>
@@ -958,7 +1918,7 @@
         <translation>Anyo</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>Ang mga bagong transaksyon ay hindi pa makikita kaya ang balanse ng iyong walet ay maaaring hindi tama. Ang impormasyong ito ay maiitama pagkatapos ma-synchronize ng iyong walet sa bitcoin network, ayon sa ibaba.</translation>
     </message>
     <message>
@@ -1005,12 +1965,423 @@
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>Hindi alam. S-in-i-sync ang mga Header (%1, %2%)...</translation>
     </message>
+    <message>
+        <source>%1 is currently syncing.  It will download headers and blocks from peers and validate them until reaching the tip of the block chain.</source>
+        <translation>Kasalukuyang nagsi-sync ang %1. Magda-download ito ng mga header at block mula sa mga peer at ibe-beripika ang mga ito hanggang maabot ang dulo ng block chain.</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>Mga Pangalan</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>Itinuturo ng pangalan ang mga tao sa iyong susi ng talaan, para makasulat sila sa iyo — at makabayad sa iyo — gamit ang pangalan sa halip na susi. Ang pagkuha ng bakanteng pangalan at pag-renew nito ay network fee lamang ang gastos; mano-mano ang pag-renew ng pangalan. Ang pangalang hawak ng iba ay mabibili kung ibebenta nila ito, sa halagang hinihingi nila. Libre ang mga pangalan sa ilalim ng iyo, gayundin ang mga palayaw: ang sarili mong mga label para sa mga tao, na nakaimbak sa computer na ito.</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>Iyong mga pangalan</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>Magbayad mula sa</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Pangalan</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Katayuan</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>Matatapos</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>Mga subname</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>Kumuha ng pangalan…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>I-renew…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>Magdagdag ng subname…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>Ibenta…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>Ilipat…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>Tumanggap ng bayad ayon sa pangalan…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>Hanapin</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>isang pangalan, label.pangalan o palayaw</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>Kopyahin ang susi</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>Magbayad…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>Address book</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>Palayaw</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>Susi</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>Magdagdag ng tao…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Alisin</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Nakopya ang susi</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>Ginagawa…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>Alisin sa bentahan</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>Alisin muna ito sa bentahan.</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>Bagong payment key…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>Naka-on ang mga bayad ayon sa pangalan</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>Kailangan ng mga pangalan ang name index. I-on ang &quot;I-index ang mga pangalan&quot; sa Mga Setting at i-restart.</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>Hindi pa nagsisimula ang mga pangalan sa network na ito. Kung kailan magsisimula ang mga ito sa mainnet, at kung paano ipamimigay ang mga unang pangalan, ay pagpapasyahan pa. Samantala, maaari kang maghanap ng mga pangalan at mag-ingat ng address book.</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>Ang %1 ay %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>mula sa iyong address book</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>nakarehistrong pangalan, hawak hanggang block %1</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>matatag</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>binago %1 na ang nakalipas, hindi pa matatag</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>tumatanggap ng bayad ayon sa pangalan</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>Ibinebenta: humihingi ang may-hawak ng %1. Gamitin ang Kumuha ng pangalan upang bilhin ito.</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>Na-commit ang %1. Kusang kukunin ang pangalan sa loob ng %2 block (mga %3) - panatilihing tumatakbo ang BPS Relay at naka-unlock ang wallet hanggang noon.</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>Binibili ang %1: %2 ang ibinayad sa may-hawak. Magiging iyo ito kapag nakumpirma na ang transaksyon.</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>Ibinebenta ang %1 sa halagang %2. Maaaring bilhin ito ng sinuman simula sa susunod na block, kahit hindi online ang node na ito; ang presyo ay binabayaran sa wallet na ito.</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>Inaalis sa bentahan ang %1. Mula ngayon, wala nang makabibili nito.</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>Na-renew ang %1 hanggang block %2, sa network fee lamang.</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>Inililipat ang %1 kay %2. Magiging kanila ito kapag nakumpirma na ang transaksyon.</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>Naitakda ang %1; mareresolba ito kapag nakumpirma na ang transaksyon.</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>Ino-on ang mga bayad ayon sa pangalan. Makababayad ang mga tao sa alinman sa iyong mga pangalan mga %1 pagkatapos makumpirma ang transaksyon; bawat bayad ay lalabas sa iyong wallet bilang &quot;Binayaran ayon sa pangalan&quot;.</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>Nagbayad ng %1 kay %2, sa address na ginamit para sa bayad na ito lamang.</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>Magbayad</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>sa loob ng %1</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>natapos %1 na ang nakalipas</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>nag-expire - i-renew sa loob ng buwan</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>hawak</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>ibinebenta - kinukumpirma ang isang pagbili</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>ibinebenta sa %1</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>ibinebenta sa %1 - hindi pa mabibili</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>hindi nakarehistro</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>nirerehistro</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>I-click upang kopyahin</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>Kumuha ng pangalan</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>1 hanggang 32 titik, digit o gitling</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 taon</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>2 taon</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>Para sa</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>Dalawang hakbang ang pagrerehistro: isang commitment na nagtatago ng pangalan, at mga 20 minuto pagkatapos ay ang pag-claim, na kusang ipinapadala ng BPS Relay. Walang makakukuha ng pangalan sa pagitan nito. Network fee lamang ang gastos ng bawat hakbang.</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>Ang pagbili ay iisang transaksyon: binabayaran nito ang may-hawak at ginagawang iyo ang pangalan, sabay-sabay o wala.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Irehistro</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>Ang pangalan ay binubuo ng 1 hanggang 32 simpleng titik a-z, digit o gitling sa loob.</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>Ang %1, para sa %2, ay network fee lamang ang gastos. Tinitingnan kung bakante ito…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>isang taon</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>dalawang taon</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>Alisin sa bentahan ang %1</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>Alisin sa bentahan ang %1? Mula noon ay walang makabibili nito, at kapag nakumpirma na ay maaari mo itong ilipat o ibenta muli.</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>Ibenta ang %1</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>Ang presyo mo para sa %1, sa BPS. Maaari na itong bilhin ng sinuman agad, kahit nakasara ang BPS Relay: babayaran ka nila nito sa parehong transaksyong nagbibigay sa kanila ng pangalan. Habang ibinebenta, hindi mo ito mailipat.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>Ang &quot;%1&quot; ay hindi halaga ng BPS.</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>Ibenta ang %1 sa halagang %2? Dalawang maliit na transaksyon ang ipapadala: ang isa ay nagtatabi ng coin na gagastusin ng mamimili, ang isa ay naglalathala ng bentahan.</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>I-renew ang %1</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>Pahabain ang %1 mula sa kasalukuyang pagtatapos nito. Network fee lamang ang gastos. Ang pangalan ay maaaring i-renew nang hanggang dalawang taon nang maaga.</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>Ilipat ang %1</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>Ibigay ang %1 kay (susi ng talaan, palayaw o pangalan):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>Ibigay ang %1 kay %2? Ang bagong may-hawak lamang ang makapagbabalik nito.</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>Subname sa ilalim ng %1</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>Ang bahagi bago ang .%1, halimbawa alice para sa alice.%1:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>Kanino tumuturo ang %1.%2 (susi ng talaan, palayaw o pangalan), o &quot;remove&quot;:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>Hinahanap…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>Magdagdag ng tao</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>Ang tawag mo sa kanila (ikaw lamang ang nakakakita nito):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>Ang kanilang susi ng talaan, o isang pangalan para maalala kung sino ang may hawak nito ngayon:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>Naka-on ang mga bayad ayon sa pangalan. Ilipat ang mga ito sa bagong susi mula sa wallet na ito? Darating pa rin ang mga bayad na naipadala na sa kasalukuyang susi. Maghihintay ang mga nagbabayad nang mga %1 pagkatapos ng pagbabago bago magbayad muli.</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>Hayaang magbayad sa iyo ang mga tao ayon sa pangalan: anumang pangalan o subname na tumuturo sa susi ng node na ito, palayaw na itinatago nila para sa iyo, o ang susi mismo. Bawat bayad ay napupunta sa sariling address na wallet na ito lamang ang makagagastos, at walang nagmamasid ang makaaalam na nabayaran ka, o na dalawang bayad ang napunta sa iisang tao. Network fee ang gastos. Makababayad sa iyo ang mga tao mga %1 pagkatapos itong makumpirma.</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>Mga bayad ayon sa pangalan</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>Bayaran si %1</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>Hindi pa tumatanggap ang %1 ng bayad ayon sa pangalan. Hilingin sa kanila na i-on ito sa kanilang tab na Mga Pangalan, o humingi ng address.</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>Nagpalit ng may-ari ang %1 %2 na ang nakalipas.</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>Itinakda nila ang susing pinagbabayaran sa kanila %1 na ang nakalipas.</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>sa BPS</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Halaga</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>Ang bayad ay napupunta sa address na ginamit para rito lamang, na si %1 lamang ang makagagastos; walang ibang makaaalam kung sino ang binayaran. Hindi na mababawi ang bayad. Dagdag pa ang network fee.</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>Kung hindi sila iyon, mawawala ang bayad. Mas ligtas na maghintay hanggang %1 na ang edad nito.</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>Magbayad pa rin</translation>
+    </message>
 </context>
 <context>
     <name>OpenURIDialog</name>
     <message>
         <source>URI:</source>
         <translation>URI:</translation>
+    </message>
+    <message>
+        <source>Open bitcoin URI</source>
+        <translation>Buksan ang bitcoin URI</translation>
     </message>
 </context>
 <context>
@@ -1294,6 +2665,221 @@
         <source>The supplied proxy address is invalid.</source>
         <translation>Ang binigay na proxy address ay hindi wasto.</translation>
     </message>
+    <message>
+        <source>(0 = auto, &lt;0 = leave that many cores free)</source>
+        <translation>(0 = awtomatiko, &lt;0 = mag-iwan ng ganoong karaming core na bakante)</translation>
+    </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>Kung ipapakita o hindi ang mga kontrol para sa cold staking.</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>I-enable ang mga kontrol para sa cold s&amp;taking</translation>
+    </message>
+    <message>
+        <source>Connect to the Bitcoin network through a separate SOCKS5 proxy for Tor onion services.</source>
+        <translation>Kumonekta sa Bitcoin network sa pamamagitan ng hiwalay na SOCKS5 proxy para sa mga Tor onion service.</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS&amp;5 proxy to reach peers via Tor onion services:</source>
+        <translation>Gumamit ng hiwalay na SOCKS&amp;5 proxy upang maabot ang mga peer sa pamamagitan ng mga Tor onion service:</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>Overlay</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>Sariling naka-encrypt na layer ng BPS, na nagdadala ng trapiko sa pamamagitan ng ibang peer upang hindi kailanman malaman ng kabilang dulo kung nasaan ka.</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>nagtatanong…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>Tumatakbo</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>Nakikinig sa</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>Mga bukas na ruta</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>Mga serbisyong nagtatagpo rito</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>Mga available na relay</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>Ang round ngayong araw</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>Ang iyong daan papasok</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>Ang mga peer na laging dinaraanan ng iyong trapiko papasok. Pinapanatili sila sa halip na palitan: ang pagpili ng bago sa bawat pagkakataon ay sa huli&apos;y magbibigay ng pagkakataon sa isang nagmamasid.</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>Kung saan ka makikita ng mga tao</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>Kinuwenta mula sa talaan, hindi hinanap. Ang sinumang sumusubok na maabot ka ay gumagawa ng parehong kuwenta at nakakakuha ng parehong sagot, kaya walang tatanungin at walang makasasagot nang iba. Nagbabago ang mga ito araw-araw.</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>Narinig sa radyo</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>Ang kinikita ng pagre-relay</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>Inilalabas bawat araw</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>Mga relay</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>Mga user</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>Mga user bawat relay</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>Bahagi bawat user</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>Binabayaran ng relay ang mga peer na inililista nito mula sa sarili nitong gantimpala ng block, kaya ang bahagi ng isang user ay isa na hinati sa dami ng user ng relay nito — kaya ang pagkuha ng bahagi ng mga user ng network ay nangangailangan ng bahagi ng stake. Kung gaano kalaki ng gantimpala ang ibinabahagi ng relay ay sarili nitong pasya at walang pumipilit dito: ang relay na walang ibinabayad ay gumagawa pa rin ng ganap na wastong block. Ang nagtutulak dito na magbayad ay ang katotohanang ang relay na walang user ay walang napoprotektahan, pati na ang sarili nito.</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>Hindi pa ito nasusuri ng sinumang hindi sumulat nito, at itinatago nito kung nasaan ka, hindi kung kailan ka nagsasalita: maaari pa ring itugma ng nagmamasid sa magkabilang dulo ang oras. Ituring itong hindi pa tapos.</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>Walang ibinabahagi ang node na ito. Itakda ang -relayshare sa isang porsyento, at tumanggap ng peer gamit ang addrosteruser.</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>Magbabahagi sana ang node na ito ng %1%, ngunit %2.</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>Nagbabahagi ang node na ito ng %1% sa %2 peer: ang susunod na block na gagawin nito ay magbabayad ng %3, %4 bawat isa.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>Hindi nag-uulat ang Reticulum bridge. Simulan ito mula sa Mga Setting, Radyo, o patakbuhin mo mismo ang bps-rns-bridge.py.</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>Nakikinig. Wala pang BPS node na narinig sa radyo; nag-aanunsyo ang mga node tuwing kalahating oras.</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>Pumapasok ang iyong trapiko sa pamamagitan ng kapitbahay sa radyo kapag isa sa kanila ay nakalistang relay.</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>Narinig, pero pumapasok ang iyong trapiko sa pamamagitan ng internet (Mga Setting, Radyo).</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>1 hop</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>%1 hop</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>hindi alam ang mga hop</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>narinig %1 na ang nakalipas</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>isang relay</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>oo</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>hindi</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>Naka-off ang overlay. Kusang ino-on ito ng client na ito, kaya may nag-off nito muli, gamit ang -overlay=0 sa command line o sa configuration file.</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>wala habang naka-off ang overlay</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>naka-off ang overlay</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>wala pa</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>naka-on ang overlay, wala pang relay</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>naka-on ang overlay, 1 relay</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>naka-on ang overlay, %1 relay</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>wala pang napili</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>wala — walang relay sa talaan na mapagkukunan</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>hindi alam ang overlay</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>wala pang relay</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1369,7 +2955,35 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>Kasalukuyang kabuuan ng balanse sa mga watch-only address</translation>
     </message>
-    </context>
+    <message>
+        <source>Stake</source>
+        <translation>Stake</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>Mga hindi pa mature na stake:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>Mga hindi pa mature na delegasyon</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>Mga hindi pa mature na delegasyon:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Ipinagkatiwala</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>Ipinagkatiwala:</translation>
+    </message>
+    <message>
+        <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
+        <translation>Naka-activate ang privacy mode para sa tab na Pangkalahatang-tanaw. Upang ipakita ang mga halaga, i-uncheck ang Mga Setting-&gt;Itago ang mga halaga.</translation>
+    </message>
+</context>
 <context>
     <name>PSBTOperationsDialog</name>
     <message>
@@ -1380,7 +2994,119 @@
         <source>or</source>
         <translation>o</translation>
     </message>
-    </context>
+    <message>
+        <source>Dialog</source>
+        <translation>Dialog</translation>
+    </message>
+    <message>
+        <source>Sign Tx</source>
+        <translation>Pirmahan ang transaksyon</translation>
+    </message>
+    <message>
+        <source>Broadcast Tx</source>
+        <translation>I-broadcast ang transaksyon</translation>
+    </message>
+    <message>
+        <source>Copy to Clipboard</source>
+        <translation>Kopyahin sa clipboard</translation>
+    </message>
+    <message>
+        <source>Save...</source>
+        <translation>I-save...</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Isara</translation>
+    </message>
+    <message>
+        <source>Failed to load transaction: %1</source>
+        <translation>Nabigong i-load ang transaksyon: %1</translation>
+    </message>
+    <message>
+        <source>Failed to sign transaction: %1</source>
+        <translation>Nabigong pirmahan ang transaksyon: %1</translation>
+    </message>
+    <message>
+        <source>Could not sign any more inputs.</source>
+        <translation>Hindi na makapirma ng iba pang input.</translation>
+    </message>
+    <message>
+        <source>Signed %1 inputs, but more signatures are still required.</source>
+        <translation>Napirmahan ang %1 input, pero kailangan pa ng mas maraming pirma.</translation>
+    </message>
+    <message>
+        <source>Signed transaction successfully. Transaction is ready to broadcast.</source>
+        <translation>Matagumpay na napirmahan ang transaksyon. Handa nang i-broadcast ang transaksyon.</translation>
+    </message>
+    <message>
+        <source>Unknown error processing transaction.</source>
+        <translation>Hindi kilalang error habang pinoproseso ang transaksyon.</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast successfully! Transaction ID: %1</source>
+        <translation>Matagumpay na na-broadcast ang transaksyon! Transaction ID: %1</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast failed: %1</source>
+        <translation>Nabigo ang pag-broadcast ng transaksyon: %1</translation>
+    </message>
+    <message>
+        <source>PSBT copied to clipboard.</source>
+        <translation>Nakopya ang PSBT sa clipboard.</translation>
+    </message>
+    <message>
+        <source>Save Transaction Data</source>
+        <translation>I-save ang data ng transaksyon</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation>Bahagyang napirmahang transaksyon (binary) (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT saved to disk.</source>
+        <translation>Na-save ang PSBT sa disk.</translation>
+    </message>
+    <message>
+        <source> * Sends %1 to %2</source>
+        <translation> * Nagpapadala ng %1 kay %2</translation>
+    </message>
+    <message>
+        <source>Unable to calculate transaction fee or total transaction amount.</source>
+        <translation>Hindi makuwenta ang transaction fee o ang kabuuang halaga ng transaksyon.</translation>
+    </message>
+    <message>
+        <source>Pays transaction fee: </source>
+        <translation>Nagbabayad ng transaction fee: </translation>
+    </message>
+    <message>
+        <source>Transaction has %1 unsigned inputs.</source>
+        <translation>May %1 hindi pa napirmahang input ang transaksyon.</translation>
+    </message>
+    <message>
+        <source>Transaction is missing some information about inputs.</source>
+        <translation>Kulang ang transaksyon ng ilang impormasyon tungkol sa mga input.</translation>
+    </message>
+    <message>
+        <source>Transaction still needs signature(s).</source>
+        <translation>Kailangan pa ng transaksyon ng (mga) pirma.</translation>
+    </message>
+    <message>
+        <source>(But this wallet cannot sign transactions.)</source>
+        <translation>(Pero hindi makapipirma ng mga transaksyon ang wallet na ito.)</translation>
+    </message>
+    <message>
+        <source>(But this wallet does not have the right keys.)</source>
+        <translation>(Pero wala sa wallet na ito ang tamang mga susi.)</translation>
+    </message>
+    <message>
+        <source>Transaction is fully signed and ready for broadcast.</source>
+        <translation>Ganap nang napirmahan ang transaksyon at handa nang i-broadcast.</translation>
+    </message>
+    <message>
+        <source>Transaction status is unknown.</source>
+        <translation>Hindi alam ang katayuan ng transaksyon.</translation>
+    </message>
+</context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1396,8 +3122,8 @@
         <translation>URI handling</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>Ang 'bitcoin://' ay hindi wastong URI. Sa halip, gamitin ang 'bitcoin:'.</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>Ang &apos;bitcoin://&apos; ay hindi wastong URI. Sa halip, gamitin ang &apos;bitcoin:&apos;.</translation>
     </message>
     <message>
         <source>Invalid payment address %1</source>
@@ -1410,6 +3136,18 @@
     <message>
         <source>Payment request file handling</source>
         <translation>File handling ng hiling ng bayad</translation>
+    </message>
+    <message>
+        <source>Cannot process payment request because BIP70 is not supported.</source>
+        <translation>Hindi maproseso ang kahilingan sa pagbabayad dahil hindi sinusuportahan ang BIP70.</translation>
+    </message>
+    <message>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <translation>Dahil sa malawakang kahinaan sa seguridad ng BIP70, mariing inirerekomendang huwag pansinin ang anumang tagubilin ng merchant na magpalit ng wallet.</translation>
+    </message>
+    <message>
+        <source>If you are receiving this error you should request the merchant provide a BIP21 compatible URI.</source>
+        <translation>Kung natatanggap mo ang error na ito, dapat mong hilingin sa merchant na magbigay ng URI na tugma sa BIP21.</translation>
     </message>
 </context>
 <context>
@@ -1440,6 +3178,161 @@
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>I-renew ang iyong pagkakalista</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>Ilathala ang iyong pagkakalista</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>Ang pag-renew ay nagsusulat ng bagong record sa chain. Hangga&apos;t hindi ito nakukumpirma, ang luma pa rin ang may bisa.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>Nagsusulat ito ng maikling record sa chain na nagsasabing umiiral ka, at kung nais mo, kung saan ka matatagpuan.</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>Paano ka dapat maabot ng mga peer?</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>Sa pamamagitan ng overlay — walang ilalathalang address</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>Sinasabi ng iyong pagkakalista kung sino ka at hindi kung saan ka tumatakbo. Inaabot ka ng mga peer sa pamamagitan ng overlay, at nakikipagtagpo sa iyo sa mga puntong kinukuwenta ng magkabilang panig mula sa talaan. Ito ang ino-on ng client na ito bilang default.</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>Sa address na inilalathala ko</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>address na maaabot ng ibang peer</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>Makikita ito ng sinuman, at iniingatan ito ng chain magpakailanman. Ang onion address ay naglalathala ng lokasyong walang makapagtuturo pabalik sa iyo at gumagana mula sa likod ng NAT; ang IP address ay walang nagagawa sa dalawang iyon. Ang node na naglalathala ng IP address ay maaaring piliin ng iba bilang relay.</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>Sino ang magbabayad ng bayarin</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>Isang buwan, pagkatapos ay kailangang i-renew</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>Isang taon, pagkatapos ay kailangang i-renew</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>Gaano ito katagal</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>I-renew</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>Ilathala</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>Relay ang nagbabayad — hindi kailangan ng coin</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>Naka-off ang overlay, kaya walang relay na mapakikiusapan. I-on ito sa Mga Setting, o magbayad mula sa wallet.</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>Wala pang relay na nakalista sa talaan, kaya walang mapakikiusapan. Magbayad mula sa wallet, o subukan muli kapag may relay nang naglista ng sarili.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Pinipirmahan ng iyong node ang pagkakalista at ipinapadala ito sa pamamagitan ng overlay sa relay na pinapasukan nito. Ang relay na nagbabayad para sa mga pagkakalista ay inilalagay ang iyo sa block na ito mismo ang gumawa, kaya makukumpirma ito kahit hindi ito ipapasa ng karamihan ng node, at idinadagdag ka sa mga peer na binabahaginan nito ng gantimpala. Kung titigil itong magbayad sa hinaharap, mag-e-expire ang iyong pagkakalista sa loob ng buwan; maaari mo itong i-renew anumang oras mula sa wallet na may pondo.</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>Hindi nag-i-stake ang node na ito. Mas malaki ang pagkakalista kaysa sa ipinapasa ng mga lumang node, kaya hangga&apos;t hindi nag-a-upgrade ang karamihan ng staker, makukumpirma lamang ito kapag isinama ng isang staker na may bersyong ito, na maaaring matagalan. Sa staking, papasok ito sa sarili mong susunod na block; isasama ito ng relay na nagbabayad sa sarili nitong block.</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>Naka-unlock ang wallet na ito para sa staking lamang. Hinihingi ng pagbabayad ang passphrase nito, at muling magla-lock ang wallet pagkatapos, na magpapahinto sa staking hanggang i-unlock mo itong muli para sa staking.</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>Hinihingi ng pagbabayad ang passphrase ng wallet na ito.</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>Maglagay ng address, o piliing huwag maglathala.</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>Hinihiling sa iyong relay na ilathala ito… maaari itong umabot nang hanggang kalahating minuto.</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>Hindi na bukas ang wallet na iyon.</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>Naka-lock pa rin ang wallet, kaya walang naibayad.</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>Pinipirmahan ang record…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>Nagbalik ang node ng record na hindi naunawaan ng client na ito.</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>Nagbabayad upang ilathala ito…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>Tumanggi ang relay: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>Walang sagot mula sa relay. %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1447,7 +3340,7 @@
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>I-enter ang Bitcoin address (e.g. %1)</translation>
+        <translation type="vanished">I-enter ang Bitcoin address (e.g. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1479,23 +3372,38 @@
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n segundo</numerusform><numerusform>%n segundo</numerusform></translation>
+        <translation>
+            <numerusform>%n segundo</numerusform>
+            <numerusform>%n segundo</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minuto</numerusform><numerusform>%n minuto</numerusform></translation>
+        <translation>
+            <numerusform>%n minuto</numerusform>
+            <numerusform>%n minuto</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n oras</numerusform><numerusform>%n oras</numerusform></translation>
+        <translation>
+            <numerusform>%n oras</numerusform>
+            <numerusform>%n oras</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n araw</numerusform><numerusform>%n araw</numerusform></translation>
+        <translation>
+            <numerusform>%n araw</numerusform>
+            <numerusform>%n araw</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n linggo</numerusform><numerusform>%n linggo</numerusform></translation>
+        <translation>
+            <numerusform>%n linggo</numerusform>
+            <numerusform>%n linggo</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1503,7 +3411,10 @@
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n taon</numerusform><numerusform>%n taon</numerusform></translation>
+        <translation>
+            <numerusform>%n taon</numerusform>
+            <numerusform>%n taon</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1522,8 +3433,8 @@
         <translation>%1 GB</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>Kamalian: Wala ang tinukoy na direktoryo ng datos "%1".</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>Kamalian: Wala ang tinukoy na direktoryo ng datos &quot;%1&quot;.</translation>
     </message>
     <message>
         <source>Error: Cannot parse configuration file: %1.</source>
@@ -1534,12 +3445,64 @@
         <translation>Kamalian: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1 ay hindi pa ligtas na nagsara...</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>hindi alam</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>Contact</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>Pagtanggap</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>Nakatago</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Hindi alam</translation>
+    </message>
+    <message>
+        <source>Error initializing settings: %1</source>
+        <translation>Error sa pag-initialize ng mga setting: %1</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Ipinagkatiwala</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>Ang %1 ay hawak ng isang taong nagbebenta nito. Humihingi sila ng %2; dagdag pa ang network fee.</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>Bilhin</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>Tinitingnan kung bakante…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>Bakante ito.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Irehistro</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>hindi pa nagagawa</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>Maglagay ng BitcoinPoS address (hal. %1)</translation>
     </message>
 </context>
 <context>
@@ -1600,16 +3563,16 @@
         <translation>Datadir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the data directory use the '%1' option.</source>
-        <translation>Upang tukuyin ang non-default na lokasyon ng direktoryo ng datos, gamitin ang '%1' na opsyon.</translation>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>Upang tukuyin ang non-default na lokasyon ng direktoryo ng datos, gamitin ang &apos;%1&apos; na opsyon.</translation>
     </message>
     <message>
         <source>Blocksdir</source>
         <translation>Blocksdir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>Upang tukuyin and non-default na lokasyon ng direktoryo ng mga block, gamitin ang '%1' na opsyon.</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>Upang tukuyin and non-default na lokasyon ng direktoryo ng mga block, gamitin ang &apos;%1&apos; na opsyon.</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -1853,8 +3816,8 @@
         <translation>Isinasagawa ang command nang walang anumang walet.</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
-        <translation>Isinasagawa ang command gamit ang "%1" walet</translation>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>Isinasagawa ang command gamit ang &quot;%1&quot; walet</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -1879,6 +3842,53 @@
     <message>
         <source>Unknown</source>
         <translation>Hindi alam</translation>
+    </message>
+    <message>
+        <source>Current block height</source>
+        <translation>Kasalukuyang taas ng block</translation>
+    </message>
+    <message>
+        <source>Permissions</source>
+        <translation>Mga pahintulot</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>Ito ba ang ibig mong sabihin:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>Hindi sigurado sa command? I-type sa karaniwang salita ang gusto mo, gaya ng %1, at pumili ng mungkahi. Kinukuwenta ang mga mungkahi sa computer na ito; walang anumang tina-type mo ang ipinapadala kahit saan.</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>Naka-off ang radyo.</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>Naka-on ang radyo; ikaw mismo ang magsimula ng Reticulum bridge (contrib/reticulum/bps-rns-bridge.py).</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>Wala ang bps-rns-bridge.py sa tabi ng BPS Relay, kaya hindi masimulan ang bridge.</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>Hindi masimulan ang Python bilang &quot;%1&quot;. Mag-install ng Python, o itakda ang command sa Mga Setting, Radyo.</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Hindi naka-install ang Reticulum. I-install ito gamit ang: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>Huminto ang Reticulum bridge (status %1); tingnan ang radio/bridge.log.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>Nagsisimula ang Reticulum bridge.</translation>
     </message>
 </context>
 <context>
@@ -1932,12 +3942,12 @@
         <translation>Burahin</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>Ang mga native segwit address (aka Bech32 o BIP-173) ay makakabawas ng iyong mga bayad sa transaksyon at nagaalok ng mas mahusay na proteksyon laban sa mga typo, ngunit ang mga lumang walet ay hindi sumusuporta nito. Kapag hindi ch-in-eck, gagawa ng mga address na katugma sa mga lumang walet sa halip.</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">Ang mga native segwit address (aka Bech32 o BIP-173) ay makakabawas ng iyong mga bayad sa transaksyon at nagaalok ng mas mahusay na proteksyon laban sa mga typo, ngunit ang mga lumang walet ay hindi sumusuporta nito. Kapag hindi ch-in-eck, gagawa ng mga address na katugma sa mga lumang walet sa halip.</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>Gumawa ng native segwit (Bech32) address</translation>
+        <translation type="vanished">Gumawa ng native segwit (Bech32) address</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -1979,7 +3989,19 @@
         <source>Could not unlock wallet.</source>
         <translation>Hindi magawang ma-unlock ang walet.</translation>
     </message>
-    </context>
+    <message>
+        <source>(none)</source>
+        <translation>(wala)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>Walang nakatakdang staking address para sa wallet na ito, kaya walang mapagkakatiwalaan. Magtakda ng isa sa pahinang Stake, sa ilalim ng Ipagkatiwala -&gt; Awtomatikong pagkakatiwala, at gagana ang uri ng address na ito.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Hindi makagawa ng bagong %1 address</translation>
+    </message>
+</context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
@@ -2014,6 +4036,18 @@
         <source>Payment information</source>
         <translation>Impormasyon sa pagbabayad</translation>
     </message>
+    <message>
+        <source>Request payment to ...</source>
+        <translation>Humiling ng bayad sa ...</translation>
+    </message>
+    <message>
+        <source>Address:</source>
+        <translation>Address:</translation>
+    </message>
+    <message>
+        <source>Label:</source>
+        <translation>Label:</translation>
+    </message>
 </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -2044,6 +4078,99 @@
     <message>
         <source>Requested</source>
         <translation>Hiniling</translation>
+    </message>
+</context>
+<context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>Peer</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Address</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>Nakalista</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>Matatapos ang pagkakalista</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>Nakalista nang</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>I-click upang kopyahin</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>Nakalista ang peer na ito pero walang inilalathalang address. Maaari pa rin
+itong maabot sa pamamagitan ng overlay, na siyang dahilan kung bakit ito pinapayagan.</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>isang address ang nailathala</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>%1 address ang nailathala</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>Nakumpirma sa block %1</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>Hihinto sa pagbilang sa block %1</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>Walang kasaysayan bago ang pagkakalistang ito.</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>Nakalista nang walang patid mula block %1.</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>Masyadong bago para mabilang.</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>Hindi tumatakbo sa ilalim ng pagkakakilanlan.</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>Tumatakbo sa ilalim ng pagkakakilanlang %1, na pinapanatili ang edad nito kung magpalit ng susi.</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>walang nailathalang address</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>ngayon lang</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>%1 na ang nakalipas</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>nag-expire</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>sa loob ng %1</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>bago</translation>
     </message>
 </context>
 <context>
@@ -2117,12 +4244,12 @@
         <translation>Babala: Kasalukuyang hindi posible ang pagtatantiya sa bayarin.</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>Tumukoy ng custom fee kada kB (1,000 bytes) ng virtual size ng transaksyon.
 
-Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng "100 satoshis kada kB" para sa transaksyon na 500 bytes (kalahati ng 1 kB) ay magkakaroon ng bayad na 50 lamang na satoshi.</translation>
+Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng &quot;100 satoshis kada kB&quot; para sa transaksyon na 500 bytes (kalahati ng 1 kB) ay magkakaroon ng bayad na 50 lamang na satoshi.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2181,7 +4308,7 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Paganahin ang Replace-By-Fee</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
         <translation>Sa Replace-By-Fee (BIP-125) maaari kang magpataas ng bayad sa transaksyon pagkatapos na maipadala ito. Nang wala ito, maaaring irekumenda ang mas mataas na bayad upang mabawi ang mas mataas na transaction delay risk.</translation>
     </message>
     <message>
@@ -2273,8 +4400,8 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Kabuuang Halaga</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
-        <translation>Upang suriin ang listahan ng tatanggap i-click ang "Ipakita ang Mga Detalye ..."</translation>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>Upang suriin ang listahan ng tatanggap i-click ang &quot;Ipakita ang Mga Detalye ...&quot;</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2326,7 +4453,10 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Tinatayang magsimula ng kumpirmasyon sa loob ng %n na mga block.</numerusform><numerusform>Tinatayang magsimula ng kumpirmasyon sa loob ng %n na mga block.</numerusform></translation>
+        <translation>
+            <numerusform>Tinatayang magsimula ng kumpirmasyon sa loob ng %n na mga block.</numerusform>
+            <numerusform>Tinatayang magsimula ng kumpirmasyon sa loob ng %n na mga block.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2347,6 +4477,74 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     <message>
         <source>(no label)</source>
         <translation>(walang label)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>Magdikit o mag-load ng listahan ng mga bayad sa halip na idagdag ang mga ito nang isa-isa</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>&amp;Maramihan...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>Sa pagkuwenta ng available na balanse, isaalang-alang din ang mga delegasyon. Kung hindi naka-check, ipapakita lamang ng available na balanse ang mga coin na kasalukuyang nasa wallet.</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>Isama ang mga &amp;delegasyon</translation>
+    </message>
+    <message>
+        <source>Creates a Partially Signed Bitcoin Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>Gumagawa ng bahagyang napirmahang Bitcoin transaction (PSBT) para gamitin sa hal. offline na %1 wallet, o hardware wallet na tugma sa PSBT.</translation>
+    </message>
+    <message>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation> mula sa wallet na &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 kay &apos;%2&apos;</translation>
+    </message>
+    <message>
+        <source>Please, review your transaction proposal. This will produce a Partially Signed Bitcoin Transaction (PSBT) which you can save or copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>Pakisuri ang iyong panukalang transaksyon. Gagawa ito ng bahagyang napirmahang Bitcoin transaction (PSBT) na maaari mong i-save o kopyahin at pagkatapos ay pirmahan gamit ang hal. offline na %1 wallet, o hardware wallet na tugma sa PSBT.</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>Hindi naka-enable ang cold staking</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>Naka-enable ang cold staking sa block %1</translation>
+    </message>
+    <message>
+        <source>Create Unsigned</source>
+        <translation>Gumawa nang hindi pinipirmahan</translation>
+    </message>
+    <message>
+        <source>Save Transaction Data</source>
+        <translation>I-save ang data ng transaksyon</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation>Bahagyang napirmahang transaksyon (binary) (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT saved</source>
+        <translation>Na-save ang PSBT</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>Ini-stake ng wallet na ito ang sarili nitong mga coin, kaya lahat ay ipinagkatiwala.</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>Wala sa wallet na ito ang ibinigay na owner address. BABALA: Ang may-ari lamang ng susi ng owner address ang makagagastos ng mga coin na ito pagkatapos ng delegasyon.</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>Nasa wallet na ito ang ibinigay na staker address. Maaari mo nang i-stake ang mga coin, hindi na kailangang ipagkatiwala ang mga ito sa iyong sarili.</translation>
     </message>
 </context>
 <context>
@@ -2427,6 +4625,356 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <source>Memo:</source>
         <translation>Memo:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>&amp;Owner Address:</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>Ang BitcoinPoS owner address</translation>
+    </message>
+    <message>
+        <source>The amount to send in the selected unit</source>
+        <translation>Ang halagang ipapadala sa napiling unit</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>Server</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Ang iniaalok ng node na ito sa ibang tao. Tumatakbo na ngayon ang pagre-relay at pag-iingat ng liham; paparating ang hosting, at gaya ng lahat dito, natatagpuan ito sa parehong paraan ng mga peer — sa pamamagitan ng talaan. May sariling pahina ang mga pangalan.</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>Hosting</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>Isang site o serbisyong inihahain mula sa node na ito, natatagpuan sa pamamagitan ng susi o pangalan nito at naaabot sa pamamagitan ng overlay, kaya hindi kailanman inilalathala ng host kung saan ito tumatakbo. Mayroon na ang bahaging pagtatagpo: nagpaparehistro ang serbisyo sa mga tagpuang kinukuwenta ng magkabilang panig mula sa talaan. Hindi pa nagagawa ang paghahain ng mga pahina at app sa pamamagitan nito.</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>Relay</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>Dalhin ang overlay traffic ng ibang peer, bayaran ang buwanang pagkakalista ng mga peer na gumagamit sa node na ito, at ibahagi sa kanila ang bahagi ng bawat block na ginagawa nito. Inilalagay ng relay ang mga pagkakalistang binabayaran nito sa mga block na ito mismo ang gumawa; ganito ito nakukumpirma habang tumatanggi pa ang karamihan ng node na magpasa ng mga record — kaya kailangang nag-i-stake ang relay.</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>Mga peer na nakalista rito</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>Susunod na block na gagawin nito</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>Bayaran ang pagkakalista ng mga peer na humihiling sa pamamagitan ng overlay</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>Ang peer na walang coin ay maaaring humiling sa node na ito na ilathala ang buwanang pagkakalista nito. Babayaran ng node na ito ang bayarin, isasama ito sa isang block, at idaragdag ang peer sa mga binabahaginan nito ng gantimpala. Naka-off bilang default, dahil gumagastos ito ng coin ng node na ito.</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>Tinatanggihan ang mga peer na lampas sa bilang na ito. Maaari pa ring mag-renew ang mga peer na nakalista na rito.</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>Pinakamaraming peer na pananatilihing nakalista</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>ang tanging bukas na wallet</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>Kung aling wallet ang nagbabayad ng mga bayarin. Kapag maraming bukas at walang pinangalanan dito, tatanggihan ang mga kahilingan sa halip na bayaran nang hula-hula. Maaaring mag-stake sa alinmang wallet sa node na ito.</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>Bayaran ang mga bayarin mula sa wallet</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>Bahagi ng bawat block na ginagawa ng node na ito mula sa sarili nitong mga coin, hinati nang pantay sa mga peer na inililista nito. Ang 0 ay walang ibinabahagi.</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>Bahagi ng bawat ginawang block</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>Mailbox</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>Mag-ingat ng selyadong liham para sa mga taong ginagawang mailbox ng talaan ang node na ito, hanggang kunin nila ito. Kung aling relay ang nag-iingat ng liham ng sino ay kinukuwenta mula sa talaan, kaya walang nagtatalaga nito. Inaabot ng mga nagpapadala at may-ari ang node na ito sa pamamagitan ng tatlong relay, kaya hindi nito kailanman nalalaman kung nasaan sila; selyado ang mga liham, kaya hindi nito mababasa ang mga ito o malalaman kung sino ang sumulat. Itinatapon ang mga liham pagkalipas ng dalawang linggo, at ang mga nakalistang tao lamang ang pinagsisilbihan.</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>Iniingatan</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>Mga mail key na iniingatan para sa mga nagpapadala</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>Mag-ingat ng liham para sa mga taong itinatalaga ng talaan sa node na ito</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>Naka-on bilang default saanman tumatakbo ang overlay: ang relay na tumatanggi ay nag-iiwan sa mga taong pinili ito ng isang mailbox na kulang.</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>Kapag puno na ito, tatanggihan ang mga bagong liham hanggang makuha o maitapon ang mga luma. Walang sinumang makagagamit nang higit sa 8 MiB nito.</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>Disk na maaaring gamitin</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Na-save. Binabasa ang mga ito kapag nagsimula ang node, kaya i-restart ang client upang magkabisa ang pagbabago.</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>walang bukas na wallet</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>hindi — tinatanggihan ng relay na hindi nag-i-stake ang mga kahilingan sa pagkakalista</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>oo, sa loob ng %1</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>hindi nagbabayad para sa mga pagkakalista</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>nagbabayad, pero hindi nag-i-stake</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>tumatakbo</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>walang wallet ang build na ito</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>kailangan ng wallet</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>naka-off</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>kailangan ang overlay</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>wala — hindi nag-iingat ng liham</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>walang liham</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>1 titik</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>%1 titik</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>1 tao</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>%1 tao</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>wala sa ngayon, may puwang para sa %1 MiB</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%1 para sa %2, %3 sa %4 MiB</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>nagbabahagi ng %1%: %2 %4 lahat-lahat, %3 %4 sa bawat peer</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>Mga Setting</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>Ang ginagawa ng client na ito na hindi ginagawa ng wallet client, at ang wika. Lahat ng iba pa — proxy, port, pruning — ay iisang tanong sa dalawa, at itinatanong sa iisang lugar.</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Tuklasin</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>Mag-ingat ng index ng talaan</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>Kung wala ito, makapaglalathala ang node na ito pero hindi nito makikita kung sino pa ang nakalista.</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>I-index ang mga pangalan</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>Kailangan upang maghanap ng mga pangalan, magpadala ng liham sa mga ito at irehistro ang sarili mong pangalan.</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>Subukang kumonekta sa mga peer na nasa talaan</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>Ibinibigay ang mga address mula sa talaan sa address manager, kasama ng karaniwang seed at palitan ng address. Kapag in-off, ang talaan ay nagiging listahang binabasa ng node na ito pero hindi kailanman ginagamit.</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Overlay</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>Patakbuhin ang overlay</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>Naka-on bilang default sa client na ito, naka-off sa node at sa wallet client. Hindi pa nasusuri ng sinumang hindi sumulat nito ang handshake nito.</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>Gumagamit ang overlay ng UDP sa sarili nitong port. Hiwalay ang peer-to-peer network at nananatili sa TCP.</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>Makinig sa port</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>Radyo</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>Dalhin din ang overlay sa radyo, sa pamamagitan ng Reticulum</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>LoRa sa pamamagitan ng RNode, packet radio, serial link: anuman ang nakatakdang gamitin ng Reticulum. Kailangan ang overlay.</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>Pumasok sa overlay sa pamamagitan ng mga kapitbahay sa radyo, upang gumana ang liham kahit walang internet</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>Kapag ang BPS node na naririnig sa radyo ay isang nakalistang relay, dito dumaraan ang iyong liham at mga kahilingan sa pagkakalista. Mas mabagal nang husto ang radio link kaysa sa internet.</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>Simulan ang Reticulum bridge kasabay ng BPS Relay</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>Pinapatakbo ang bps-rns-bridge.py sa tabi ng node. Iwanang naka-off kung ikaw mismo ang nagpapatakbo ng bridge.</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>Python command</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Hindi bahagi ng BPS ang Reticulum at may sarili itong lisensya. I-install ito gamit ang %1, at i-set up ang iyong radyo sa sariling configuration ng Reticulum (~/.reticulum/config). Hindi pinapayagan ng mga band ng amateur radio ang naka-encrypt na trapiko, kaya gumamit ng mga band na walang lisensya gaya ng sa LoRa.</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>Display</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>Ipakita ang mga halaga sa</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>Ang wika ng computer</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>Magkakabisa kapag nagsimulang muli ang BPS Relay. Mananatiling Ingles ang mga tekstong ipinapadala mismo ng node, gaya ng mga mensahe ng error mula sa mga command.</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Wika</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>Network, proxy at iba pang pangunahing setting…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>Na-save. Magbabago ang wika kapag nagsimulang muli ang BPS Relay.</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Na-save. Binabasa ang mga ito kapag nagsimula ang node, kaya i-restart ang client upang magkabisa ang pagbabago.</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>Nagsisimula pa ang node; hindi pa available ang mga pangunahing setting.</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2506,7 +5054,7 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Tiyakin ang Katotohanan ng Mensahe</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
         <translation>Ipasok ang address ng tatanggap, mensahe (tiyakin na kopyahin mo ang mga break ng linya, puwang, mga tab, atbp.) at pirma sa ibaba upang i-verify ang mensahe. Mag-ingat na huwag magbasa ng higit pa sa pirma kaysa sa kung ano ang nasa nakapirmang mensahe mismo, upang maiwasan na maloko ng man-in-the-middle attack. Tandaan na pinapatunayan lamang nito na nakakatanggap sa address na ito ang partido na pumirma, hindi nito napapatunayan ang pagpapadala ng anumang transaksyon!</translation>
     </message>
     <message>
@@ -2515,7 +5063,7 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     </message>
     <message>
         <source>Verify the message to ensure it was signed with the specified Bitcoin address</source>
-        <translation>Tiyakin ang katotohanan ng mensahe upang siguruhin na ito'y napirmahan ng tinukoy na Bitcoin address</translation>
+        <translation>Tiyakin ang katotohanan ng mensahe upang siguruhin na ito&apos;y napirmahan ng tinukoy na Bitcoin address</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -2526,8 +5074,8 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>I-reset ang lahat ng mga patlang ng pag-verify ng mensahe</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>I-klik ang "Pirmahan ang Mensahe" upang gumawa ng pirma</translation>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>I-klik ang &quot;Pirmahan ang Mensahe&quot; upang gumawa ng pirma</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2581,6 +5129,217 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <source>Message verified.</source>
         <translation>Napatunayan ang mensahe.</translation>
     </message>
+    <message>
+        <source>The signed message to verify</source>
+        <translation>Ang napirmahang mensaheng susuriin</translation>
+    </message>
+    <message>
+        <source>The signature given when the message was signed</source>
+        <translation>Ang pirmang ibinigay nang pirmahan ang mensahe</translation>
+    </message>
+</context>
+<context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>Ang iyong kasalukuyang magagastos na balanse</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>Mga asset na naka-stake na pag-aari ng wallet na ito</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>Mga asset na naka-stake mula sa mga delegasyon</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>Hindi pa mature:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>Ang iyong hindi pa mature na balanse</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>Mga asset na naka-stake</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>Stake:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>Taas ng block:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>Gantimpala ng block:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/block</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>Bigat ng network:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>Inaasahang taunang kita:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>Mga record ng stake</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>&amp;Ipagkatiwala</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>Uri ng delegasyon:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>Manwal na pagkakatiwala</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>Awtomatikong pagkakatiwala</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>Mga staking address</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>Alisin lahat</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Idikit ang address mula sa clipboard</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>&amp;Idagdag</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>&amp;Aking mga delegasyon</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>Mga asset na ipinagkatiwala</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>Ang iyong kasalukuyang naipagkatiwalang balanse</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>Aking mga delegasyon</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>Mga &amp;natanggap na delegasyon</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>&amp;Gumawa ng bagong staking address</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> na may label:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>Isang opsyonal na label na iuugnay sa bagong address ng pagtanggap (ginagamit mo upang makilala ang isang invoice). Ikinakabit din ito sa kahilingan sa pagbabayad.</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>Mga delegasyong ColdStake</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>Ang mga coin na ibinayad sa mga delegation address ng wallet na ito ay ini-stake ng mga susing ito sa sandaling dumating, at nananatiling naipagkatiwala ang sukli mula sa sarili mong paggastos. Ang staking key ay makagagawa lamang ng mga coinstake na nagbabayad pabalik sa iyo, kaya hindi kailangan ng passphrase ng wallet na may hawak nito.</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>Maglista ng higit sa isa upang ikalat ang iyong mga coin sa ilang staking wallet, upang hindi huminto ang lahat ng staking kapag offline ang isa.
+
+Bawat bagong delegasyon ay napupunta sa address na pinakakaunting nabanggit sa ngayon, binibilang ang mga naipamigay na delegation address at mga naipagkatiwalang coin na hindi pa nagagastos. Binibilang nito ang mga delegasyon, hindi ang mga halaga, kaya ang address na may isang malaking delegasyon ay maaari pa ring mapili bago ang may ilang maliliit.</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>Hindi inililipat ang mga coin na naipagkatiwala na sa inalis na address at patuloy itong nag-i-stake sa mga ito. Ang mga bagong delegasyon lamang ang titigil sa pagbanggit dito.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>Hindi ma-unlock ang wallet.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Hindi makagawa ng bagong %1 address</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>Naka-disable ang cold staking sa node na ito (-coldstaking=0), kaya walang ipinagkakatiwala.</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>Ang staking address dito ay pag-aari ng wallet na ito, na naka-encrypt, kaya nag-i-stake lamang ito habang naka-unlock ang wallet. Upang mag-stake nang walang passphrase, gumamit ng address mula sa hiwalay at hindi naka-encrypt na staking wallet.</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>Itigil ang pagkakatiwala kay %1. Hindi inililipat ang mga coin na naipagkatiwala na rito at patuloy itong nag-i-stake sa mga ito.</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>Hindi ma-save ang mga staking address. Nakatali ang delegasyon sa key hash, kaya bawat isa ay dapat legacy address.</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>Nasa listahan na ang staking address na iyon.</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>Alisin ang lahat ng staking address</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>Itigil ang pagkakatiwala sa lahat ng %1 staking address?
+
+Patuloy na ini-stake ng mga ito ang mga coin na naipagkatiwala na at hindi inililipat ang mga ito. Pero ang mga bagong deposito at sukli ay mapupunta sa mga karaniwang address, na hindi nag-i-stake, at kakailanganin mong muli ang mga address na ito upang i-on ito muli.</translation>
+    </message>
 </context>
 <context>
     <name>TrafficGraphWidget</name>
@@ -2593,7 +5352,10 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Bukas para sa %n pang mga blocks</numerusform><numerusform>Bukas para sa %n pang mga blocks</numerusform></translation>
+        <translation>
+            <numerusform>Bukas para sa %n pang mga blocks</numerusform>
+            <numerusform>Bukas para sa %n pang mga blocks</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2673,7 +5435,10 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>siguradong maaaring gastusin pagkalikha ng %n pang mga block</numerusform><numerusform>siguradong maaaring gastusin pagkalikha ng %n pang mga blocks</numerusform></translation>
+        <translation>
+            <numerusform>siguradong maaaring gastusin pagkalikha ng %n pang mga block</numerusform>
+            <numerusform>siguradong maaaring gastusin pagkalikha ng %n pang mga blocks</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -2728,8 +5493,8 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Mangangalakal</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Ang mga nabuong coins ay dapat mayroong %1 blocks sa ibabaw bago sila gastusin. Kapag nabuo mo ang block na ito, nai-broadcast ito sa network na idadagdag sa block chain. Kung nabigo itong makapasok sa chain, magbabago ang katayuan nito sa "hindi tinanggap" at hindi it magagastos. Maaaring mangyari ito paminsan-minsan kung may isang node na bumuo ng isang block sa loob ng ilang segundo sa iyo.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Ang mga nabuong coins ay dapat mayroong %1 blocks sa ibabaw bago sila gastusin. Kapag nabuo mo ang block na ito, nai-broadcast ito sa network na idadagdag sa block chain. Kung nabigo itong makapasok sa chain, magbabago ang katayuan nito sa &quot;hindi tinanggap&quot; at hindi it magagastos. Maaaring mangyari ito paminsan-minsan kung may isang node na bumuo ng isang block sa loob ng ilang segundo sa iyo.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -2754,6 +5519,10 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     <message>
         <source>false</source>
         <translation>mali</translation>
+    </message>
+    <message>
+        <source> (Certificate was not verified)</source>
+        <translation> (Hindi na-verify ang sertipiko)</translation>
     </message>
 </context>
 <context>
@@ -2783,7 +5552,10 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Bukas para sa %n pang mga block</numerusform><numerusform>Bukas para sa %n pang mga blocks</numerusform></translation>
+        <translation>
+            <numerusform>Bukas para sa %n pang mga block</numerusform>
+            <numerusform>Bukas para sa %n pang mga blocks</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2872,6 +5644,30 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>Halaga na tinanggal o idinagdag sa balanse.</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>Cold Stake</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>Pag-stake para kay</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>Delegasyon ng stake</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>Delegasyon</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>Delegasyon ng stake na ginastos ni</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>Halagang ipinagkatiwala.</translation>
     </message>
 </context>
 <context>
@@ -3032,6 +5828,22 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <source>to</source>
         <translation>sa</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>Mga cold stake</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>Mga hot stake</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>Hindi pa nagagastos na ipinagkatiwala</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>Mga delegasyon</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3050,12 +5862,32 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <source>Closing the wallet for too long can result in having to resync the entire chain if pruning is enabled.</source>
         <translation>Ang pagsasara ng walet nang masyadong matagal ay maaaring magresulta sa pangangailangan ng pag-resync sa buong chain kung pinagana ang pruning.</translation>
     </message>
-    </context>
+    <message>
+        <source>Are you sure you wish to close the wallet &lt;i&gt;%1&lt;/i&gt;?</source>
+        <translation>Sigurado ka bang gusto mong isara ang wallet na &lt;i&gt;%1&lt;/i&gt;?</translation>
+    </message>
+    <message>
+        <source>Close all wallets</source>
+        <translation>Isara ang lahat ng wallet</translation>
+    </message>
+    <message>
+        <source>Are you sure you wish to close all wallets?</source>
+        <translation>Sigurado ka bang gusto mong isara ang lahat ng wallet?</translation>
+    </message>
+</context>
 <context>
     <name>WalletFrame</name>
     <message>
         <source>Create a new wallet</source>
         <translation>Gumawa ng Bagong Pitaka</translation>
+    </message>
+    <message>
+        <source>No wallet has been loaded.
+Go to File &gt; Open Wallet to load a wallet.
+- OR -</source>
+        <translation>Walang wallet na na-load.
+Pumunta sa File &gt; Buksan ang Wallet upang mag-load ng wallet.
+- O -</translation>
     </message>
 </context>
 <context>
@@ -3093,7 +5925,7 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Kumpirmahin ang fee bump</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
+        <source>Can&apos;t draft transaction.</source>
         <translation>Hindi ma-draft ang transaksyon</translation>
     </message>
     <message>
@@ -3101,7 +5933,7 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Kinopya ang PSBT</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>Hindi mapirmahan ang transaksyon.</translation>
     </message>
     <message>
@@ -3111,6 +5943,25 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     <message>
         <source>default wallet</source>
         <translation>walet na default</translation>
+    </message>
+    <message>
+        <source>Do you want to draft a transaction with fee increase?</source>
+        <translation>Gusto mo bang gumawa ng draft ng transaksyon na may dagdag na bayarin?</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ node na ito</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● live</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>Ang wallet client, na tumatakbo sa prosesong ito laban sa node na ito. Ito ang parehong programa ng bitcoin-pos-qt, hindi kopya nito.</translation>
     </message>
 </context>
 <context>
@@ -3155,6 +6006,26 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <source>Cancel</source>
         <translation>Kanselahin</translation>
     </message>
+    <message>
+        <source>Unable to decode PSBT from clipboard (invalid base64)</source>
+        <translation>Hindi ma-decode ang PSBT mula sa clipboard (hindi wastong base64)</translation>
+    </message>
+    <message>
+        <source>Load Transaction Data</source>
+        <translation>I-load ang data ng transaksyon</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (*.psbt)</source>
+        <translation>Bahagyang napirmahang transaksyon (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT file must be smaller than 100 MiB</source>
+        <translation>Ang PSBT file ay dapat mas maliit sa 100 MiB</translation>
+    </message>
+    <message>
+        <source>Unable to decode PSBT</source>
+        <translation>Hindi ma-decode ang PSBT</translation>
+    </message>
 </context>
 <context>
     <name>bitcoin-core</name>
@@ -3191,7 +6062,7 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Error sa pagbabasa %s! Nabasa nang tama ang lahat ng mga key, ngunit ang data ng transaksyon o mga entry sa address book ay maaaring nawawala o hindi tama.</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation>Mangyaring suriin na ang petsa at oras ng iyong computer ay tama! Kung mali ang iyong orasan, ang %s ay hindi gagana nang maayos.</translation>
     </message>
     <message>
@@ -3199,7 +6070,7 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Mangyaring tumulong kung natagpuan mo ang %s kapaki-pakinabang. Bisitahin ang %s para sa karagdagang impormasyon tungkol sa software.</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
         <translation>Ang block database ay naglalaman ng isang block na tila nagmula sa hinaharap. Maaaring ito ay dahil sa petsa at oras ng iyong computer na nakatakda nang hindi wasto. Muling itayo ang database ng block kung sigurado ka na tama ang petsa at oras ng iyong computer</translation>
     </message>
     <message>
@@ -3231,8 +6102,8 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>ang -maxmempool ay dapat hindi bababa sa %d MB</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>Hindi malutas - %s address: ' %s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>Hindi malutas - %s address: &apos; %s&apos;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3303,20 +6174,20 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Hindi tamang o walang nahanap na genesis block. Maling datadir para sa network?</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>Hindi wastong halaga para sa -%s=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Hindi wastong halaga para sa -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>Hindi wastong halaga para sa -discardfee=&lt;amount&gt;:'%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Hindi wastong halaga para sa -discardfee=&lt;amount&gt;:&apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>Hindi wastong halaga para sa -fallbackfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Hindi wastong halaga para sa -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>Ang tinukoy na direktoryo ng mga block "%s" ay hindi umiiral.</translation>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>Ang tinukoy na direktoryo ng mga block &quot;%s&quot; ay hindi umiiral.</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3391,8 +6262,8 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Kamalian: Nabigo ang pakikinig sa mga papasok na koneksyon (ang listen ay nagbalik ng error %s)</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>Hindi wastong halaga para sa -maxtxfee=&lt;amount&gt;: '%s' (dapat hindi bababa sa minrelay fee na %s upang maiwasan ang mga natigil na mga transaksyon)</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Hindi wastong halaga para sa -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (dapat hindi bababa sa minrelay fee na %s upang maiwasan ang mga natigil na mga transaksyon)</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -3415,24 +6286,24 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Kamalian: Ang disk space ay mababa para sa %s</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>Hindi wastong -onion address o hostname: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>Hindi wastong -onion address o hostname: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>Hindi wastong -proxy address o hostname: '%s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>Hindi wastong -proxy address o hostname: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>Hindi wastong halaga para sa -paytxfee=&lt;amount&gt;:'%s' (dapat hindi mas mababa sa %s)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>Hindi wastong halaga para sa -paytxfee=&lt;amount&gt;:&apos;%s&apos; (dapat hindi mas mababa sa %s)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>Hindi wastong netmask na tinukoy sa -whitelist: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>Hindi wastong netmask na tinukoy sa -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>Kailangang tukuyin ang port na may -whitebind: '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>Kailangang tukuyin ang port na may -whitebind: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Reducing -maxconnections from %d to %d, because of system limitations.</source>
@@ -3447,16 +6318,16 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Nabigo ang pagpirma ng transaksyon</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>Ang tinukoy na -walletdir "%s" ay hindi umiiral</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>Ang tinukoy na -walletdir &quot;%s&quot; ay hindi umiiral</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>Ang tinukoy na -walletdir "%s" ay isang relative path</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>Ang tinukoy na -walletdir &quot;%s&quot; ay isang relative path</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>Ang tinukoy na -walletdir "%s" ay hindi isang direktoryo</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>Ang tinukoy na -walletdir &quot;%s&quot; ay hindi isang direktoryo</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3485,8 +6356,8 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Hindi ma-bind sa %s sa computer na ito (ang bind ay nagbalik ng error %s)</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>Hindi makagawa ng PID file '%s': %s</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>Hindi makagawa ng PID file &apos;%s&apos;: %s</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -3545,8 +6416,8 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Ang transaksyon ay dapat mayroong kahit isang tatanggap</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>Hindi kilalang network na tinukoy sa -onlynet: '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>Hindi kilalang network na tinukoy sa -onlynet: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -3561,8 +6432,8 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
         <translation>Babala: Napansin ang mga private key sa walet { %s} na may mga hindi pinaganang private key</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>Hindi makapagsulat sa direktoryo ng data '%s'; suriin ang mga pahintulot.</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>Hindi makapagsulat sa direktoryo ng data &apos;%s&apos;; suriin ang mga pahintulot.</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -3583,6 +6454,134 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     <message>
         <source>Done loading</source>
         <translation>Tapos na ang pag-lo-load</translation>
+    </message>
+    <message>
+        <source>%s corrupt. Try using the wallet tool bitcoin-wallet to salvage or restoring a backup.</source>
+        <translation>Sira ang %s. Subukang gamitin ang wallet tool na bitcoin-wallet upang sagipin ito o mag-restore ng backup.</translation>
+    </message>
+    <message>
+        <source>Cannot provide specific connections and have addrman find outgoing connections at the same.</source>
+        <translation>Hindi maaaring magbigay ng mga partikular na koneksyon at sabay na hayaan ang addrman na maghanap ng mga palabas na koneksyon.</translation>
+    </message>
+    <message>
+        <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use version 169900 or no version specified.</source>
+        <translation>Hindi ma-upgrade ang non-HD split wallet nang hindi nag-a-upgrade para suportahan ang pre-split keypool. Gamitin ang bersyong 169900 o huwag magtukoy ng bersyon.</translation>
+    </message>
+    <message>
+        <source>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</source>
+        <translation>Higit sa isang onion bind address ang ibinigay. Ginagamit ang %s para sa awtomatikong ginawang Tor onion service.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Nabigong ihanda ang statement upang kunin ang bersyon ng schema ng sqlite wallet: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Nabigong ihanda ang statement upang kunin ang application id: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unknown sqlite wallet schema version %d. Only version %d is supported</source>
+        <translation>SQLiteDatabase: Hindi kilalang bersyon ng schema ng sqlite wallet %d. Bersyong %d lamang ang sinusuportahan</translation>
+    </message>
+    <message>
+        <source>This error could occur if this wallet was not shutdown cleanly and was last loaded using a build with a newer version of Berkeley DB. If so, please use the software that last loaded this wallet</source>
+        <translation>Maaaring mangyari ang error na ito kung hindi maayos na naisara ang wallet na ito at huling na-load gamit ang build na may mas bagong bersyon ng Berkeley DB. Kung gayon, gamitin ang software na huling nag-load ng wallet na ito</translation>
+    </message>
+    <message>
+        <source>This is the maximum transaction fee you pay (in addition to the normal fee) to prioritize partial spend avoidance over regular coin selection.</source>
+        <translation>Ito ang pinakamataas na transaction fee na babayaran mo (bukod sa karaniwang bayarin) upang unahin ang pag-iwas sa bahagyang paggastos kaysa sa karaniwang pagpili ng coin.</translation>
+    </message>
+    <message>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
+        <translation>Kailangan ng transaksyon ng change address, pero hindi kami makagawa nito. Tawagin muna ang keypoolrefill.</translation>
+    </message>
+    <message>
+        <source>A fatal internal error occurred, see debug.log for details</source>
+        <translation>Nagkaroon ng malubhang internal error, tingnan ang debug.log para sa mga detalye</translation>
+    </message>
+    <message>
+        <source>Cannot set -peerblockfilters without -blockfilterindex.</source>
+        <translation>Hindi maitakda ang -peerblockfilters nang walang -blockfilterindex.</translation>
+    </message>
+    <message>
+        <source>Could not find asmap file %s</source>
+        <translation>Hindi mahanap ang asmap file na %s</translation>
+    </message>
+    <message>
+        <source>Could not parse asmap file %s</source>
+        <translation>Hindi ma-parse ang asmap file na %s</translation>
+    </message>
+    <message>
+        <source>Disk space is too low!</source>
+        <translation>Masyadong mababa ang espasyo sa disk!</translation>
+    </message>
+    <message>
+        <source>Error: Keypool ran out, please call keypoolrefill first</source>
+        <translation>Error: Naubos ang keypool, tawagin muna ang keypoolrefill</translation>
+    </message>
+    <message>
+        <source>Failed to verify database</source>
+        <translation>Nabigong i-verify ang database</translation>
+    </message>
+    <message>
+        <source>Fee rate (%s) is lower than the minimum fee rate setting (%s)</source>
+        <translation>Ang fee rate (%s) ay mas mababa kaysa sa setting ng minimum na fee rate (%s)</translation>
+    </message>
+    <message>
+        <source>Ignoring duplicate -wallet %s.</source>
+        <translation>Hindi pinapansin ang dobleng -wallet %s.</translation>
+    </message>
+    <message>
+        <source>Initialization sanity check failed. %s is shutting down.</source>
+        <translation>Nabigo ang sanity check sa pag-initialize. Nagsasara ang %s.</translation>
+    </message>
+    <message>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>Hindi wastong P2P permission: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
+        <translation>Walang tinukoy na proxy server. Gamitin ang -proxy=&lt;ip&gt; o -proxy=&lt;ip:port&gt;.</translation>
+    </message>
+    <message>
+        <source>Prune mode is incompatible with -blockfilterindex.</source>
+        <translation>Hindi tugma ang prune mode sa -blockfilterindex.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Nabigong patakbuhin ang statement upang i-verify ang database: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Nabigong kunin ang bersyon ng schema ng sqlite wallet: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Nabigong kunin ang application id: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Nabigong ihanda ang statement upang i-verify ang database: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to read database verification error: %s</source>
+        <translation>SQLiteDatabase: Nabigong basahin ang error sa pag-verify ng database: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unexpected application id. Expected %u, got %u</source>
+        <translation>SQLiteDatabase: Hindi inaasahang application id. Inaasahan %u, nakuha %u</translation>
+    </message>
+    <message>
+        <source>Unknown -blockfilterindex value %s.</source>
+        <translation>Hindi kilalang halaga ng -blockfilterindex %s.</translation>
+    </message>
+    <message>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>Hindi kilalang uri ng address &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>Hindi kilalang uri ng sukli &apos;%s&apos;</translation>
     </message>
 </context>
 </TS>

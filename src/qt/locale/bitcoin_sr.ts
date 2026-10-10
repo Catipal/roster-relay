@@ -1,4 +1,6 @@
-<TS language="sr" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="sr">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -70,10 +72,10 @@
         <translation>Ово су твоје Биткоин адресе за слање уплата. Увек добро провери износ и адресу на коју шаљеш пре него што пошаљеш уплату.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.
-Signing is only possible with addresses of the type 'legacy'.</source>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <translation>Ово су твоје Биткоин адресе за приманје уплата. Користи дугме „Направи нову адресу за примање” у картици за примање за креирање нових адреса.
-Потписивање је могуђе само за адресе типа 'legacy'.</translation>
+Потписивање је могуђе само за адресе типа &apos;legacy&apos;.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -241,6 +243,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Упозорање Caps Lock дугме укључено!</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>Служи за искључивање једноставног слања новца ако је налог оперативног система угрожен. Не пружа праву заштиту.</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>Само за стејкинг.</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -251,6 +261,109 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Banned Until</source>
         <translation>Забрањен до</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>Скупно плаћање</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>Једно плаћање по реду, као &quot;адреса, износ&quot;. Зарез, тачка-зарез или табулатор раздвајају поља, а треће поље постаје ознака. Редови који почињу са # се занемарују.</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>&amp;Налепи</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>Учитај из &amp;датотеке...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>&amp;Обриши</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>Ред</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Адреса</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Износ</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Стање</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>Учитај списак плаћања</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>Текстуалне и CSV датотеке (*.txt *.csv);;Све датотеке (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>Није могуће прочитати %1.</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>очекивано &quot;адреса, износ&quot;</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>нема адресе</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>није исправна адреса</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>нема износа</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>није могуће прочитати износ &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>износ мора бити већи од нуле</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>у реду</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>Налепите једно плаћање по реду, као &quot;адреса, износ&quot;. Треће поље се користи као ознака. Редови који почињу са # се занемарују.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>%1 од %2 редова не може да се употреби. Исправите их или обришите да бисте наставили.</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>%1 прималаца је више него што једна трансакција може да понесе (овде је ограничење %2). Поделите списак.</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>Прималаца: %1, укупно %2, пре накнаде.</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>Додај у образац за слање</translation>
     </message>
 </context>
 <context>
@@ -433,7 +546,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Show the list of used receiving addresses and labels</source>
-        <translation>Прегледајте листу коришћених адреса и етикета за пријем уплата</translation>
+        <translation>Прегледајте листу коришћених адреса и етикета за&#xa0;пријем уплата</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -441,7 +554,11 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n aктивна веза са Биткоин мрежом</numerusform><numerusform>%n aктивних веза са Биткоин мрежом</numerusform><numerusform>%n aктивних веза са Биткоин мрежом</numerusform></translation>
+        <translation>
+            <numerusform>%n aктивна веза са Биткоин мрежом</numerusform>
+            <numerusform>%n aктивних веза са Биткоин мрежом</numerusform>
+            <numerusform>%n aктивних веза са Биткоин мрежом</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -453,7 +570,11 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>Обрађенo %n блокова историјата трансакција.</numerusform><numerusform>Обрађенo %n блокова историјата трансакција.</numerusform><numerusform>Обрађенo је %n блокова историјата трансакција.</numerusform></translation>
+        <translation>
+            <numerusform>Обрађенo %n блокова историјата трансакција.</numerusform>
+            <numerusform>Обрађенo %n блокова историјата трансакција.</numerusform>
+            <numerusform>Обрађенo је %n блокова историјата трансакција.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -631,7 +752,376 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Новчаник јс &lt;b&gt;шифрован&lt;/b&gt; и тренутно &lt;b&gt;закључан&lt;/b&gt;</translation>
     </message>
-    </context>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Дошло је до кобне грешке. %1 више не може безбедно да настави и биће затворен.</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Стејкинг</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>Прикажи стејк новчаника</translation>
+    </message>
+    <message>
+        <source>&amp;Load PSBT from file...</source>
+        <translation>&amp;Учитај PSBT из датотеке...</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction</source>
+        <translation>Учитај делимично потписану Bitcoin трансакцију</translation>
+    </message>
+    <message>
+        <source>Load PSBT from clipboard...</source>
+        <translation>Учитај PSBT из оставе...</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction from clipboard</source>
+        <translation>Учитај делимично потписану Bitcoin трансакцију из оставе</translation>
+    </message>
+    <message>
+        <source>Close All Wallets...</source>
+        <translation>Затвори све новчанике...</translation>
+    </message>
+    <message>
+        <source>&amp;Mask values</source>
+        <translation>&amp;Маскирај вредности</translation>
+    </message>
+    <message>
+        <source>Mask the values in the Overview tab</source>
+        <translation>Маскирај вредности на картици Преглед</translation>
+    </message>
+    <message>
+        <source>&amp;Window</source>
+        <translation>&amp;Прозор</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>Новчаник је &lt;b&gt;шифрован&lt;/b&gt; и тренутно &lt;b&gt;откључан само за стејкинг&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>&amp;Дешифруј новчаник...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>Уклони лозинку, тако да приватни кључеви остану сачувани нешифровани</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Нема стејкинга</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n секунда</numerusform>
+            <numerusform>%n секунде</numerusform>
+            <numerusform>%n секунди</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n минут</numerusform>
+            <numerusform>%n минута</numerusform>
+            <numerusform>%n минута</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n сат</numerusform>
+            <numerusform>%n сата</numerusform>
+            <numerusform>%n сати</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n дан</numerusform>
+            <numerusform>%n дана</numerusform>
+            <numerusform>%n дана</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>Стејкинг је у току.&lt;br&gt;Ваша тежина је %1&lt;br&gt;Тежина мреже је %2&lt;br&gt;Очекивано време до награде: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>Нема стејкинга јер новчаник није на мрежи</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>Нема стејкинга јер се новчаник синхронизује</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>Нема стејкинга јер немате зреле новчиће</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>Нема стејкинга јер је новчаник закључан</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Оригинална порука:</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>Непозната грешка</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>мање од минута</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>минут</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 минута</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>сат</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 сати</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 дана</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>месец</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 месеци</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>око годину дана</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>више од годину дана</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>непознато</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Дошло је до кобне грешке. %1 више не може безбедно да настави и биће затворен.</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Оригинална порука:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Откривање</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Прекривна мрежа</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>Имена</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>Пирови и конзола</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>Чвор</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Новчаник</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>Пошта</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>Пошта (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>Сервер</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Подешавања</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>упис непознат</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>прекривна мрежа непозната</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>повезивање…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>При тренутној тежини мреже стејкинг доноси око %1% годишње: %2 блокова годишње, по %3 %4, на %5 %4 у стејкингу.</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>То је након удела од %1% сваког блока који овај чвор дели са својим пировима.</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>%1% годишње</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>гашење…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>Пирова: %1 — долазних %2, одлазних %3.</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>Кликните да паузирате мрежну активност.</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>1 пир</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>пирова: %1</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>Мрежна активност је паузирана.</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>Кликните да је наставите.</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>мрежа паузирана</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>Обрађено блокова историје: %1.</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>блок %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>Ажурно.</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>Синхронизација са мрежом…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>Обрада блокова на диску…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>Поновно индексирање блокова на диску…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>Повезивање са пировима…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>%1 заостатка</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>Сустизање…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>Последњи примљени блок направљен је пре %1.</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>Новчаник &lt;b&gt;%1&lt;/b&gt; је шифрован и откључан само за стејкинг</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>Новчаник &lt;b&gt;%1&lt;/b&gt; је шифрован и откључан</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>Новчаник &lt;b&gt;%1&lt;/b&gt; је шифрован и закључан</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>стејкинг</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>стејкинг, %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; ради стејкинг.&lt;br&gt;Његова тежина је %2&lt;br&gt;Тежина мреже је %3&lt;br&gt;Очекивано време до награде: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>нема стејкинга</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>нема стејкинга (плаћа %1)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>Нема стејкинга: премало пирова</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>Нема стејкинга: ланац још сустиже</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>Нема стејкинга: &lt;b&gt;%1&lt;/b&gt; нема зреле новчиће</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>Нема стејкинга: &lt;b&gt;%1&lt;/b&gt; је закључан</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Нема стејкинга</translation>
+    </message>
+</context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -782,6 +1272,57 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>(change)</source>
         <translation>(промени)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>делегирано за %1 ради хладног стејкинга</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>Напиши писмо</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>име, надимак из адресара или кључ регистра</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>За</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Тема</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>Пошаљи</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>Коме је? Име, надимак или кључ регистра.</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>Писмо има %1 KB; писмо може имати највише %2 KB.</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>Писмо се печати и оставља у поштанским сандучићима примаоца, сваки пут преко три релеја. То траје неколико секунди…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Послато</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>Писмо је остављено у %1 од %2 поштанских сандучића примаоца. Довољно је једно да стигне.</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>Није послато: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -836,7 +1377,202 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Create</source>
         <translation>Направи</translation>
     </message>
-    </context>
+    <message>
+        <source>Wallet</source>
+        <translation>Новчаник</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>Напредне опције</translation>
+    </message>
+    <message>
+        <source>Use descriptors for scriptPubKey management</source>
+        <translation>Користи дескрипторе за управљање scriptPubKey</translation>
+    </message>
+    <message>
+        <source>Descriptor Wallet</source>
+        <translation>Дескрипторски новчаник</translation>
+    </message>
+    <message>
+        <source>Compiled without sqlite support (required for descriptor wallets)</source>
+        <translation>Преведено без подршке за sqlite (потребна за дескрипторске новчанике)</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>Откривање</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>Пирови се најављују у ланцу уместо на серверу, па је овај списак исти за све и нико не може да га мења.</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>Регистар</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>Ваш упис</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>Уписани пирови</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>Ви сте</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Копирај</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>Објављивање вашег уписа…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>Идентитет</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>Направи…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>Идентитет чува историју овог чвора, колико је дуго уписан, ако његов кључ икада мора да се промени.</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>Пронађи пир или адресу</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Кључ је копиран</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>Адреса је копирана</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>покретање…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>Направи идентитет</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>Плати накнаду из</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Идентитет је други кључ који стоји иза кључа овог чвора. Ако се кључ овог чвора икада изгуби или буде украден, под истим идентитетом може да се постави нови кључ, а чвор задржава колико је дуго уписан уместо да почне изнова.
+
+Кључ за опоравак ће вам бити приказан једном. Запишите га: то је једини начин да спречите онога ко украде идентитет да га премести. Затим мала трансакција објављује идентитет, а ваше следеће обнављање уписа везује кључ овог чвора за њега.</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Ваш релеј је објавио ваш упис у трансакцији %1. Рачуна се када трансакција буде потврђена.</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Објављено у трансакцији %1. Рачуна се када трансакција буде потврђена.</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>непознато</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>индекс регистра искључен</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>није уписан</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>истиче за %1</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>Обнављање вашег уписа…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>Обновите у последња 3 дана</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>Ваш упис истиче за %1. Обнављање је могуће од три дана раније.</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>уписан, истиче за %1</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>нема</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>Овај чвор нема кључ за најаву: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>онемогућено</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>Индекс регистра не ради, па овај чвор не може да види ко је уписан. Поново покрените са -rosterindex да бисте га укључили.</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>сустизање (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>старо %1 дана</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>Најновији блок овог чвора стар је %1 дана, па пирови опозвани од тада још могу бити овде. Регистар се и даље користи за досезање пирова, али прекривна мрежа престаје да даје предност дуго уписаним релејима док ланац не сустигне.</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>ажурно</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>Индекс регистра не ради</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>Ваш кључ за опоравак</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>Запишите га и чувајте на безбедном месту, далеко од овог рачунара. Приказује се само сада и нигде се не чува. Њиме се не могу трошити новчићи; може само да заустави премештање вашег идентитета које нисте ви урадили.</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>Записао сам га</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Ваш идентитет је објављен у трансакцији %1. Ваше следеће обнављање уписа везује кључ овог чвора за њега.</translation>
+    </message>
+</context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -872,16 +1608,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Измени адресу за слање</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>Унета адреса "%1" није важећа Биткоин адреса.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
+        <translation>Унета адреса &quot;%1&quot; није важећа Биткоин адреса.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>Адреса "%1" већ постоји као примајућа адреса са ознаком "%2" и не може бити додата као адреса за слање.</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>Адреса &quot;%1&quot; већ постоји као примајућа адреса са ознаком &quot;%2&quot; и не може бити додата као адреса за слање.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>Унета адреса "%1" већ постоји у адресару са ознаком "%2".</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>Унета адреса &quot;%1&quot; већ постоји у адресару са ознаком &quot;%2&quot;.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -970,7 +1706,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>Биткоин</translation>
+        <translation type="vanished">Биткоин</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -993,8 +1729,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Новчаник ће бити складиштен у овом директоријуму.</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>Грешка: Одабрана датотека  "%1" не може бити креирана.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
+        <translation>Грешка: Одабрана датотека  &quot;%1&quot; не може бити креирана.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1002,15 +1738,186 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>Доступно %n GB слободног простора</numerusform><numerusform>Доступно %n GB слободног простора</numerusform><numerusform>Доступно %n GB слободног простора</numerusform></translation>
+        <translation>
+            <numerusform>Доступно %n GB слободног простора</numerusform>
+            <numerusform>Доступно %n GB слободног простора</numerusform>
+            <numerusform>Доступно %n GB слободног простора</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(од потребних %n GB)</numerusform><numerusform>(од потребних %n GB)</numerusform><numerusform>(од  потребних  %n GB)</numerusform></translation>
+        <translation>
+            <numerusform>(од потребних %n GB)</numerusform>
+            <numerusform>(од потребних %n GB)</numerusform>
+            <numerusform>(од  потребних  %n GB)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(%n GB потребно за цео ланац)</numerusform><numerusform>(%n GB потребно за цео ланац)</numerusform><numerusform>(%n GB потребно за цео ланац)</numerusform></translation>
+        <translation>
+            <numerusform>(%n GB потребно за цео ланац)</numerusform>
+            <numerusform>(%n GB потребно за цео ланац)</numerusform>
+            <numerusform>(%n GB потребно за цео ланац)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>Пошта</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>Ваша адреса</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Копирај</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>Ваш кључ регистра. Свако ко је уписан може да вам пише на њега.</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>Пошта путује преко прекривне мреже. Укључите прекривну мрежу у Подешавањима и поново покрените да бисте слали и примали пошту.</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>Пиши</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>Одговори</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>Преузми сада</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>Преузмите нова писма из својих сандучића сада. То се дешава и на сваких неколико минута.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Обриши</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>Пријемно сандуче</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Послато</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>Од</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Тема</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Датум</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>Писма се печате седмичним поштанским кључем примаоца, уз заједничку употребу secp256k1 и ML-KEM-768; ваш кључ и потпис путују унутар печата, а сваки пут до сандучића иде преко три релеја. Стари поштански кључеви се бришу, па писмо преузето данас касније не може да се отвори кључевима овог рачунара.</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>За</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>Још ниједан релеј није уписан, па немате сандучиће и нико не може да вам пише.</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>Вашу пошту чува %1 релеја; биће их %2 када регистар буде имао више.</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>%1 релеја изабраних према вашем кључу чува вашу пошту док је не преузмете.</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>Поштански кључ бр. %1, обнавља се седмично.</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>Последње преузимање %1.</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>Још није преузето.</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>1 ново писмо</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>Нових писама: %1</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>, из %1 од %2 сандучића.</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(без теме)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>Остављено у %1 сандучића примаоца</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>Од: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>За: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>Послато %1, остављено у %2 сандучића примаоца</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>Написано %1, преузето %2</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>Изаберите писмо да бисте га прочитали.</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>Преузимање…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>Досезање ваших сандучића, сваког преко три релеја…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>Обриши писмо</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>Обрисати ово писмо са овог рачунара? Његове копије у сандучићима су већ уклоњене при преузимању, па не може поново да се преузме.</translation>
     </message>
 </context>
 <context>
@@ -1020,7 +1927,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Форма</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>Недавне трансакције можда не буду видљиве, зато салдо твог новчаника можда буде нетачан. Ова информација биђе тачна када новчаник заврши са синхронизацијом биткоин мреже, приказаној испод.</translation>
     </message>
     <message>
@@ -1070,6 +1977,409 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>Непознато. Синхронизација заглавља (%1, %2%)...</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>Имена</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>Име упућује људе на ваш кључ регистра, па вам могу писати — и плаћати вам — по имену уместо по кључу. Добијање слободног имена и његово обнављање коштају само мрежну накнаду; име се обнавља ручно. Име које неко поседује може се купити ако га стави на продају, по цени коју тражи. Имена испод вашег су бесплатна, као и надимци: ваше сопствене ознаке за људе, сачуване на овом рачунару.</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>Ваша имена</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>Плати из</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Име</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Стање</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>Истиче</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>Подимена</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>Набави име…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>Обнови…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>Додај подиме…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>Продај…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>Пренеси…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>Примај плаћања по имену…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>Потражи</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>име, ознака.име или надимак</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>Копирај кључ</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>Плати…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>Адресар</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>Надимак</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>Кључ</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>Додај некога…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Уклони</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Кључ је копиран</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>Ради се…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>Повуци из продаје</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>Прво га повуците из продаје.</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>Нови кључ за плаћања…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>Плаћања по имену су укључена</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>Имена захтевају индекс имена. Укључите &quot;Индексирај имена&quot; у Подешавањима и поново покрените.</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>Имена још нису почела на овој мрежи. Када ће почети на главној мрежи и како ће се поделити прва имена, тек треба одлучити. У међувремену можете тражити имена и водити адресар.</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1 је %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>из вашег адресара</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>регистровано име, заузето до блока %1</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>устаљено</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>промењено пре %1, још није устаљено</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>прима плаћања по имену</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>На продају: власник тражи %1. Користите Набави име да га купите.</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>%1 је обавезано. Име ће бити преузето само од себе за %2 блокова (око %3) - дотле држите BPS Relay покренут и новчаник откључан.</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>Куповина %1: %2 плаћено власнику. Биће ваше када трансакција буде потврђена.</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>%1 се ставља на продају за %2. Свако може да га купи од следећег блока, без потребе да овај чвор буде на мрежи; цена се плаћа овом новчанику.</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>%1 се повлачи из продаје. Од сада нико не може да га купи.</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>%1 обновљено до блока %2, само за мрежну накнаду.</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>%1 се преноси на %2. Биће њихово када трансакција буде потврђена.</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>%1 је постављено; разрешиће се када трансакција буде потврђена.</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>Плаћања по имену се укључују. Људи могу да плате на било које ваше име око %1 након потврде трансакције; свако плаћање се у новчанику приказује као &quot;Плаћено по имену&quot;.</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>Плаћено %1 за %2, на адресу употребљену само за ово плаћање.</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>Плати</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>за %1</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>истекло пре %1</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>истекло - обновите у току месеца</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>заузето</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>продаја - куповина се потврђује</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>на продају за %1</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>на продају за %1 - још не може да се купи</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>није регистровано</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>регистрација у току</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Кликните да копирате</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>Набави име</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>од 1 до 32 слова, цифре или цртице</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 година</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>2 године</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>На</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>Регистрација има два корака: обавезу која скрива име, и око 20 минута касније захтев, који BPS Relay шаље сам. Нико не може да узме име у међувремену. Сваки корак кошта само мрежну накнаду.</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>Куповина је једна трансакција: плаћа власника и чини име вашим, све одједном или ништа.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Региструј</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>Име чини од 1 до 32 обична слова a-z, цифре или унутрашње цртице.</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>%1, на %2, кошта само мрежну накнаду. Провера да ли је слободно…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>једна година</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>две године</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>Повуци %1 из продаје</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>Повући %1 из продаје? Од тада нико не може да га купи, а када се то потврди, можете га пренети или поново ставити на продају.</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>Продај %1</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>Ваша цена за %1, у BPS. Тада свако може одмах да га купи, чак и док је BPS Relay затворен: плаћају вам ово у истој трансакцији која им даје име. Док је на продају, не можете да га пренесете.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>&quot;%1&quot; није износ у BPS.</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>Ставити %1 на продају за %2? Шаљу се две мале трансакције: једна одваја новчић који купац троши, друга објављује продају.</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>Обнови %1</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>Продужите %1 од тренутног истека. Кошта само мрежну накнаду. Име се може обновити највише две године унапред.</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>Пренеси %1</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>Дај %1 (кључ регистра, надимак или име):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>Дати %1 за %2? Само нови власник може да га врати.</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>Подиме испод %1</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>Део пре .%1, на пример alice за alice.%1:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>На кога показује %1.%2 (кључ регистра, надимак или име), или &quot;remove&quot;:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>Тражење…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>Додај некога</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>Како их зовете (види само ви):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>Њихов кључ регистра или име да бисте запамтили ко га сада поседује:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>Плаћања по имену су укључена. Преместити их на нови кључ из овог новчаника? Плаћања већ упућена на тренутни кључ и даље стижу. Платиоци чекају око %1 након промене пре него што поново плате.</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>Дозволите људима да вам плаћају по имену: било којим именом или подименом које показује на кључ овог чвора, надимком који имају за вас или самим кључем. Свако плаћање иде на засебну адресу коју може да троши само овај новчаник, и нико ко посматра не може да види да сте плаћени нити да су два плаћања отишла истој особи. Кошта мрежну накнаду. Људи могу да вам плаћају око %1 након потврде.</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>Плаћања по имену</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>Плати %1</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>%1 још не прима плаћања по имену. Замолите их да то укључе на картици Имена или их питајте за адресу.</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>%1 је променило власника пре %2.</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>Поставили су кључ на који примају плаћања пре %1.</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>у BPS</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Износ</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>Плаћање иде на адресу употребљену само за њега, коју може да троши само %1; нико други не може да види коме је плаћено. Плаћање не може да се поништи. Мрежна накнада се додаје.</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>Ако то нису били они, плаћање је изгубљено. Безбедније је сачекати да прође %1.</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>Ипак плати</translation>
     </message>
 </context>
 <context>
@@ -1150,7 +2460,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
-        <translation>URL треће стране (нпр блок претраживач) који се појављује у менију трансакције.  %s у URL  замењен је хашом трансакције. Више URL-ова поделено је вертикалом |.</translation>
+        <translation>URL треће стране (нпр блок претраживач) који се појављује у менију трансакције.  %s у URL&#xa0; замењен је хашом трансакције. Више URL-ова поделено је вертикалом |.</translation>
     </message>
     <message>
         <source>Open the %1 configuration file from the working directory.</source>
@@ -1364,6 +2674,221 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>The supplied proxy address is invalid.</source>
         <translation>Достављена прокси адреса није валидна.</translation>
     </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>Да ли да се прикажу функције контроле хладног стејкинга.</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>Омогући функције контроле хладног с&amp;тејкинга</translation>
+    </message>
+    <message>
+        <source>Connect to the Bitcoin network through a separate SOCKS5 proxy for Tor onion services.</source>
+        <translation>Повежи се са Bitcoin мрежом преко засебног SOCKS5 проксија за Tor onion услуге.</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS&amp;5 proxy to reach peers via Tor onion services:</source>
+        <translation>Користи засебан SOCKS&amp;5 прокси за досезање пирова преко Tor onion услуга:</translation>
+    </message>
+    <message>
+        <source>&amp;Window</source>
+        <translation>&amp;Прозор</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>Прекривна мрежа</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>Сопствени шифровани слој BPS-а, који преноси саобраћај преко других пирова тако да друга страна никада не сазна где сте.</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>питање…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>Ради</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>Слуша на</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>Отворене руте</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>Услуге које се овде састају</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>Доступни релеји</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>Данашња рунда</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>Ваш улаз</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>Пирови преко којих ваш саобраћај увек улази. Задржавају се уместо да се мењају: бирање новог сваки пут би на крају дало ред посматрачу.</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>Где људи могу да вас сретну</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>Израчунато из регистра, а не потражено. Свако ко покушава да вас досегне ради исти рачун и добија исти одговор, па нема кога да се пита и нико не би могао да одговори другачије. Мењају се сваког дана.</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>Чуто преко радија</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>Шта доноси релејисање</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>Издато дневно</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>Релеји</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>Корисници</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>Корисника по релеју</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>Удео по кориснику</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>Релеј плаћа пировима које уписује из сопствених награда за блокове, па је удео корисника један подељено бројем корисника његовог релеја — зато узимање удела корисника мреже кошта удео стејка. Колико награде релеј дели, његов је избор и ништа то не намеће: релеј који ништа не плаћа прави потпуно исправан блок. Плаћању га тера то што релеј без корисника никога не штити, па ни себе.</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>Још га није прегледао нико ко га није написао, и скрива где сте, а не када говорите: неко ко посматра оба краја и даље може да упореди време. Сматрајте га недовршеним.</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>Овај чвор ништа не дели. Подесите -relayshare на проценат и прихватајте пирове са addrosteruser.</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>Овај чвор би делио %1%, али %2.</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>Овај чвор дели %1% са пировима (%2): следећи блок који направи исплаћује %3, по %4 сваком.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>Reticulum мост се не јавља. Покрените га из Подешавања, Радио, или сами покрените bps-rns-bridge.py.</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>Слушање. Још ниједан BPS чвор није чут преко радија; чворови се најављују сваких пола сата.</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>Ваш саобраћај улази преко радио-суседа када је неки од њих уписани релеј.</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>Чуто, али ваш саобраћај улази преко интернета (Подешавања, Радио).</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>1 скок</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>скокова: %1</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>скокови непознати</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>чуто пре %1</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>релеј</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>да</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>не</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>Прекривна мрежа је искључена. Овај клијент је укључује сам, па ју је нешто поново искључило, са -overlay=0 у командној линији или у конфигурационој датотеци.</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>ништа док је прекривна мрежа искључена</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>прекривна мрежа искључена</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>још ниједан</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>прекривна мрежа укључена, још нема релеја</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>прекривна мрежа укључена, 1 релеј</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>прекривна мрежа укључена, релеја: %1</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>још није изабрано</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>ниједан — регистар нема релеје из којих би се извели</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>прекривна мрежа непозната</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>још нема релеја</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1439,7 +2964,35 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Current total balance in watch-only addresses</source>
         <translation>Тренутни укупни салдо у адресама у опцији само-гледај</translation>
     </message>
-    </context>
+    <message>
+        <source>Stake</source>
+        <translation>Стејк</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>Незрели стејкови:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>Незреле делегације</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>Незреле делегације:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Делегирано</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>Делегирано:</translation>
+    </message>
+    <message>
+        <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
+        <translation>Режим приватности је укључен за картицу Преглед. Да бисте открили вредности, искључите Подешавања-&gt;Маскирај вредности.</translation>
+    </message>
+</context>
 <context>
     <name>PSBTOperationsDialog</name>
     <message>
@@ -1482,7 +3035,87 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>or</source>
         <translation>или</translation>
     </message>
-    </context>
+    <message>
+        <source>Failed to load transaction: %1</source>
+        <translation>Учитавање трансакције није успело: %1</translation>
+    </message>
+    <message>
+        <source>Failed to sign transaction: %1</source>
+        <translation>Потписивање трансакције није успело: %1</translation>
+    </message>
+    <message>
+        <source>Could not sign any more inputs.</source>
+        <translation>Није могуће потписати још улаза.</translation>
+    </message>
+    <message>
+        <source>Signed %1 inputs, but more signatures are still required.</source>
+        <translation>Потписано %1 улаза, али је потребно још потписа.</translation>
+    </message>
+    <message>
+        <source>Signed transaction successfully. Transaction is ready to broadcast.</source>
+        <translation>Трансакција је успешно потписана. Трансакција је спремна за емитовање.</translation>
+    </message>
+    <message>
+        <source>Unknown error processing transaction.</source>
+        <translation>Непозната грешка при обради трансакције.</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast successfully! Transaction ID: %1</source>
+        <translation>Трансакција је успешно емитована! ID трансакције: %1</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast failed: %1</source>
+        <translation>Емитовање трансакције није успело: %1</translation>
+    </message>
+    <message>
+        <source>PSBT copied to clipboard.</source>
+        <translation>PSBT је копиран у оставу.</translation>
+    </message>
+    <message>
+        <source>PSBT saved to disk.</source>
+        <translation>PSBT је сачуван на диск.</translation>
+    </message>
+    <message>
+        <source> * Sends %1 to %2</source>
+        <translation> * Шаље %1 на %2</translation>
+    </message>
+    <message>
+        <source>Unable to calculate transaction fee or total transaction amount.</source>
+        <translation>Није могуће израчунати накнаду или укупан износ трансакције.</translation>
+    </message>
+    <message>
+        <source>Pays transaction fee: </source>
+        <translation>Плаћа накнаду за трансакцију: </translation>
+    </message>
+    <message>
+        <source>Transaction has %1 unsigned inputs.</source>
+        <translation>Трансакција има %1 непотписаних улаза.</translation>
+    </message>
+    <message>
+        <source>Transaction is missing some information about inputs.</source>
+        <translation>Трансакцији недостају неки подаци о улазима.</translation>
+    </message>
+    <message>
+        <source>Transaction still needs signature(s).</source>
+        <translation>Трансакцији су још потребни потписи.</translation>
+    </message>
+    <message>
+        <source>(But this wallet cannot sign transactions.)</source>
+        <translation>(Али овај новчаник не може да потписује трансакције.)</translation>
+    </message>
+    <message>
+        <source>(But this wallet does not have the right keys.)</source>
+        <translation>(Али овај новчаник нема одговарајуће кључеве.)</translation>
+    </message>
+    <message>
+        <source>Transaction is fully signed and ready for broadcast.</source>
+        <translation>Трансакција је у потпуности потписана и спремна за емитовање.</translation>
+    </message>
+    <message>
+        <source>Transaction status is unknown.</source>
+        <translation>Статус трансакције је непознат.</translation>
+    </message>
+</context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1491,22 +3124,22 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Cannot start bitcoin: click-to-pay handler</source>
-        <translation>Не могу покренути биткоин: "кликни-да-платиш" механизам</translation>
+        <translation>Не могу покренути биткоин: &quot;кликни-да-платиш&quot; механизам</translation>
     </message>
     <message>
         <source>URI handling</source>
         <translation>URI руковање</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>'bitcoin://' није важећи URI. Уместо тога користити  'bitcoin:'.</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;bitcoin://&apos; није важећи URI. Уместо тога користити  &apos;bitcoin:&apos;.</translation>
     </message>
     <message>
         <source>Cannot process payment request because BIP70 is not supported.</source>
         <translation>Захтев за плаћање не може се обрадити, јер BIP70 није подржан.</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
         <translation>Због великог броја безбедносних пропуста у BIP70, препоручено је да се све инструкције трговаца за промену новчаника игноришу.</translation>
     </message>
     <message>
@@ -1554,6 +3187,161 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>Обновите свој упис</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>Објавите свој упис</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>Обнављање уписује нов запис у ланац. Док не буде потврђен, стари и даље важи.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>Ово уписује кратак запис у ланац који каже да постојите и, по жељи, где вас наћи.</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>Како пирови да вас досегну?</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>Преко прекривне мреже — без објављивања адресе</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>Ваш упис каже ко сте, а не где радите. Пирови вас уместо тога досежу преко прекривне мреже, састајући се са вама на тачкама које обе стране израчунавају из регистра. То овај клијент подразумевано укључује.</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>На адреси коју објављујем</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>адреса коју други пирови могу да досегну</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>Свако може да је види, а ланац је чува заувек. Onion адреса објављује локацију коју нико не може да повеже са вама и ради иза NAT-а; IP адреса не ради ни једно ни друго. Чвор који објави IP адресу други могу да изаберу за релеј.</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>Ко плаћа накнаду</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>Месец дана, затим мора да се обнови</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>Годину дана, затим мора да се обнови</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>Колико траје</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>Обнови</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>Објави</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>Плаћа релеј — новчићи нису потребни</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>Прекривна мрежа је искључена, па нема релеја кога би се замолило. Укључите је у Подешавањима или платите из новчаника.</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>У регистру још нема ниједног релеја, па нема кога да се замоли. Платите из новчаника или покушајте поново када се неки релеј упише.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Ваш чвор потписује упис и шаље га преко прекривне мреже релеју преко кога улази. Релеј који плаћа уписе ставља ваш у блок који сам направи, па се потврђује иако га већина чворова не би пренела, и додаје вас пировима са којима дели награде. Ако касније престане да плаћа, ваш упис истиче у току месеца; увек можете сами да га обновите из новчаника са средствима.</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>Овај чвор не ради стејкинг. Упис је већи од онога што старији чворови преносе, па док већина стејкера не надогради, потврђује се само када га укључи стејкер са овом верзијом, што може да потраје. Стејкингом иде у ваш следећи блок; релеј који плаћа укључује га у свој.</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>Овај новчаник је откључан само за стејкинг. Плаћање тражи његову лозинку, а новчаник се после поново закључава, што зауставља стејкинг док га поново не откључате за стејкинг.</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>Плаћање тражи лозинку овог новчаника.</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>Унесите адресу или изаберите да је не објавите.</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>Молимо ваш релеј да је објави… ово може да потраје до пола минута.</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>Тај новчаник више није отворен.</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>Новчаник је још закључан, па ништа није плаћено.</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>Потписивање записа…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>Чвор је вратио запис који овај клијент није разумео.</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>Плаћање објаве…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>Релеј је одбио: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>Нема одговора од релеја. %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1561,7 +3349,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>Унеси Биткоин адресу, (нпр %1)</translation>
+        <translation type="vanished">Унеси Биткоин адресу, (нпр %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1593,23 +3381,43 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n секунда</numerusform><numerusform>%n секунди</numerusform><numerusform>%n секунди</numerusform></translation>
+        <translation>
+            <numerusform>%n секунда</numerusform>
+            <numerusform>%n секунди</numerusform>
+            <numerusform>%n секунди</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n минут</numerusform><numerusform>%n минута</numerusform><numerusform>%n минута</numerusform></translation>
+        <translation>
+            <numerusform>%n минут</numerusform>
+            <numerusform>%n минута</numerusform>
+            <numerusform>%n минута</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n час</numerusform><numerusform>%n часа</numerusform><numerusform>%n часова</numerusform></translation>
+        <translation>
+            <numerusform>%n час</numerusform>
+            <numerusform>%n часа</numerusform>
+            <numerusform>%n часова</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n минут</numerusform><numerusform>%n минута</numerusform><numerusform>%n минута</numerusform></translation>
+        <translation>
+            <numerusform>%n минут</numerusform>
+            <numerusform>%n минута</numerusform>
+            <numerusform>%n минута</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n недеља</numerusform><numerusform>%n недеље</numerusform><numerusform>%n недеља</numerusform></translation>
+        <translation>
+            <numerusform>%n недеља</numerusform>
+            <numerusform>%n недеље</numerusform>
+            <numerusform>%n недеља</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1617,7 +3425,11 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n година</numerusform><numerusform>%n године</numerusform><numerusform>%n година</numerusform></translation>
+        <translation>
+            <numerusform>%n година</numerusform>
+            <numerusform>%n године</numerusform>
+            <numerusform>%n година</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1636,20 +3448,76 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>%1 GB</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>Грешка: Одабрани директорјиум датотеке "%1" не постоји.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>Грешка: Одабрани директорјиум датотеке &quot;%1&quot; не постоји.</translation>
     </message>
     <message>
         <source>Error: %1</source>
         <translation>Грешка: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1 није изашао безбедно...</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>непознато</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>Контакт</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>Примање</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>Скривено</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Непознато</translation>
+    </message>
+    <message>
+        <source>Error: Cannot parse configuration file: %1.</source>
+        <translation>Грешка: Није могуће рашчланити конфигурациону датотеку: %1.</translation>
+    </message>
+    <message>
+        <source>Error initializing settings: %1</source>
+        <translation>Грешка при иницијализацији подешавања: %1</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Делегирано</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>%1 поседује неко ко га је ставио на продају. Тражи %2; мрежна накнада се додаје.</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>Купи</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>Провера да ли је слободно…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>Слободно је.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Региструј</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>још није направљено</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>Унесите BitcoinPoS адресу (нпр. %1)</translation>
     </message>
 </context>
 <context>
@@ -1664,7 +3532,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
-        <translation>Дати резултат URI  предуг, покушај да сманиш текст за ознаку / поруку.</translation>
+        <translation>Дати резултат URI&#xa0; предуг, покушај да сманиш текст за ознаку / поруку.</translation>
     </message>
     <message>
         <source>Error encoding URI into QR Code.</source>
@@ -1710,16 +3578,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Datadir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the data directory use the '%1' option.</source>
-        <translation>Да би сте одредили локацију која није унапред задата за директоријум података користите '%1' опцију.</translation>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>Да би сте одредили локацију која није унапред задата за директоријум података користите &apos;%1&apos; опцију.</translation>
     </message>
     <message>
         <source>Blocksdir</source>
         <translation>Blocksdir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>Да би сте одредили локацију која није унапред задата за директоријум блокова користите '%1' опцију.</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>Да би сте одредили локацију која није унапред задата за директоријум блокова користите &apos;%1&apos; опцију.</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -1962,8 +3830,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Извршење команде без новчаника</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
-        <translation>Извршење команде коришћењем  "%1" новчаника</translation>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>Извршење команде коришћењем  &quot;%1&quot; новчаника</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -1988,6 +3856,53 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown</source>
         <translation>Непознато</translation>
+    </message>
+    <message>
+        <source>Current block height</source>
+        <translation>Тренутна висина блока</translation>
+    </message>
+    <message>
+        <source>Permissions</source>
+        <translation>Дозволе</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>Да ли сте мислили:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>Нисте сигурни у команду? Обичним речима упишите шта желите, на пример %1, и изаберите предлог. Предлози се израчунавају на овом рачунару; ништа од онога што упишете не шаље се никуда.</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>Радио је искључен.</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>Радио је укључен; сами покрените Reticulum мост (contrib/reticulum/bps-rns-bridge.py).</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>bps-rns-bridge.py није поред BPS Relay-а, па мост не може да се покрене.</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>Python није могао да се покрене као &quot;%1&quot;. Инсталирајте Python или подесите команду у Подешавања, Радио.</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Reticulum није инсталиран. Инсталирајте га помоћу: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>Reticulum мост се зауставио (статус %1); погледајте radio/bridge.log.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>Reticulum мост се покреће.</translation>
     </message>
 </context>
 <context>
@@ -2041,12 +3956,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Очисти</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>Природне segwit адресе (нпр Bech32 или BIP-173) касније смањују трошкове трансакција и нуде бољу заштиту од грешака у куцању, али их стари новчаници не подржавају. Када није одабрано, биће креирана адреса компатибилна са старијим новчаницима.</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">Природне segwit адресе (нпр Bech32 или BIP-173) касније смањују трошкове трансакција и нуде бољу заштиту од грешака у куцању, али их стари новчаници не подржавају. Када није одабрано, биће креирана адреса компатибилна са старијим новчаницима.</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>Направи segwit (Bech32) адресу</translation>
+        <translation type="vanished">Направи segwit (Bech32) адресу</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2088,7 +4003,19 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Could not unlock wallet.</source>
         <translation>Новчаник није могуће откључати.</translation>
     </message>
-    </context>
+    <message>
+        <source>(none)</source>
+        <translation>(нема)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>За овај новчаник није подешена адреса за стејкинг, па нема коме да се делегира. Подесите је на страници Стејк, под Делегирај -&gt; Аутоматско делегирање, и овај тип адресе ће радити.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Није могуће направити нову %1 адресу</translation>
+    </message>
+</context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
@@ -2131,6 +4058,10 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Payment information</source>
         <translation>Информације о плаћању</translation>
     </message>
+    <message>
+        <source>Request payment to ...</source>
+        <translation>Захтевај плаћање на ...</translation>
+    </message>
 </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -2161,6 +4092,99 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Requested</source>
         <translation>Захтевано</translation>
+    </message>
+</context>
+<context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>Пир</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Адреса</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>Уписан</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>Упис истиче</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>Уписан већ</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Кликните да копирате</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>Овај пир је уписан, али не објављује адресу. И даље може
+да се досегне преко прекривне мреже, због чега је то и дозвољено.</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>објављена једна адреса</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>Објављено адреса: %1</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>Потврђено у блоку %1</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>Престаје да се рачуна од блока %1</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>Нема историје пре овог уписа.</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>Уписан без прекида од блока %1.</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>Превише скоро да би се већ рачунало.</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>Не ради под идентитетом.</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>Ради под идентитетом %1, који задржава старост ако промени кључеве.</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>нема објављене адресе</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>управо сада</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>пре %1</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>истекло</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>за %1</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>ново</translation>
     </message>
 </context>
 <context>
@@ -2234,12 +4258,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Упозорење: Процена провизије тренутно није могућа.</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>Одредити прилагођену провизију по kB (1,000 битова) виртуелне величине трансакције. 
 
-Напомена: С обзиром да се провизија рачуна на основу броја бајтова, провизија за "100 сатошија по kB" за величину трансакције од 500 бајтова (пола од 1 kB) ће аутоматски износити само 50 сатошија.</translation>
+Напомена: С обзиром да се провизија рачуна на основу броја бајтова, провизија за &quot;100 сатошија по kB&quot; за величину трансакције од 500 бајтова (пола од 1 kB) ће аутоматски износити само 50 сатошија.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2298,7 +4322,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Омогући Замени-за-Провизију</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
         <translation>Са Замени-за-Провизију (BIP-125) се може повећати висина провизије за трансакцију након што је послата. Без овога, виша провизија може бити препоручена да се смањи ризик од кашњења трансакције. </translation>
     </message>
     <message>
@@ -2358,12 +4382,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Креира делимично потписану Биткоин трансакцију (PSBT) за коришћење са нпр. офлајн %1 новчаником, или PSBT компатибилним хардверским новчаником. </translation>
     </message>
     <message>
-        <source> from wallet '%1'</source>
-        <translation>из новчаника '%1'</translation>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation>из новчаника &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>%1 to '%2'</source>
-        <translation>%1 до '%2'</translation>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 до &apos;%2&apos;</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -2414,8 +4438,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Укупан износ</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
-        <translation>Да би сте размотрили листу примаоца кликните на "Прикажи детаље..."</translation>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>Да би сте размотрили листу примаоца кликните на &quot;Прикажи детаље...&quot;</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2467,7 +4491,11 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Процењује се да ће започети потврду унутар %n блока.</numerusform><numerusform>Процењује се да ће започети потврду унутар %n блока.</numerusform><numerusform>Процењује се да ће започети потврду унутар %n блокова.</numerusform></translation>
+        <translation>
+            <numerusform>Процењује се да ће започети потврду унутар %n блока.</numerusform>
+            <numerusform>Процењује се да ће започети потврду унутар %n блока.</numerusform>
+            <numerusform>Процењује се да ће започети потврду унутар %n блокова.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2488,6 +4516,50 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>(no label)</source>
         <translation>(без ознаке)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>Налепите или учитајте списак плаћања уместо да их додајете једно по једно</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>&amp;Скупно...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>При рачунању расположивог стања узми у обзир и делегације. Ако није означено, расположиво стање приказује само новчиће који су тренутно у новчанику.</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>&amp;Укључи делегације</translation>
+    </message>
+    <message>
+        <source>Please, review your transaction proposal. This will produce a Partially Signed Bitcoin Transaction (PSBT) which you can save or copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>Прегледајте предлог трансакције. Ово ће направити делимично потписану Bitcoin трансакцију (PSBT) коју можете сачувати или копирати, а затим потписати нпр. офлајн %1 новчаником или хардверским новчаником који подржава PSBT.</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>Хладни стејкинг није омогућен</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>Хладни стејкинг је омогућен од блока %1</translation>
+    </message>
+    <message>
+        <source>Create Unsigned</source>
+        <translation>Направи непотписану</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>Овај новчаник ради стејкинг сопственим новчићима, па су сви делегирани.</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>Наведена адреса власника није у овом новчанику. УПОЗОРЕЊЕ: Након делегирања само власник кључа адресе власника моћи ће да троши ове новчиће.</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>Наведена адреса стејкера је у овом новчанику. Већ можете да радите стејкинг овим новчићима, нема потребе да их делегирате себи.</translation>
     </message>
 </context>
 <context>
@@ -2572,6 +4644,352 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>Memo:</source>
         <translation>Мемо:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>Адреса &amp;власника:</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>BitcoinPoS адреса власника</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>Сервер</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Шта овај чвор нуди другима. Релејисање и чување поште раде већ данас; хостовање стиже и, као све овде, проналази се на исти начин као пирови — преко регистра. Имена имају своју страницу.</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>Хостовање</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>Сајт или услуга коју нуди овај чвор, пронађена по кључу или имену и досегнута преко прекривне мреже, тако да домаћин никада не објављује где ради. Део за састајање постоји: услуга се региструје на тачкама састанка које обе стране израчунавају из регистра. Пружање страница и апликација преко тога још није направљено.</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>Релеј</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>Преноси саобраћај прекривне мреже других пирова, плаћај месечне уписе пирова који користе овај чвор и дели са њима део сваког блока који направи. Релеј ставља уписе које плаћа у блокове које сам прави, и тако се потврђују док већина чворова још одбија да преноси записе — зато релеј мора да ради стејкинг.</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Стејкинг</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>Пирови уписани овде</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>Следећи блок који направи</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>Плаћај упис пирова који то траже преко прекривне мреже</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>Пир без новчића може да замоли овај чвор да објави његов месечни упис. Овај чвор плаћа накнаду, укључује га у блок и додаје пира онима са којима дели награде. Подразумевано искључено, јер троши новчиће овог чвора.</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>Пирови преко овог броја се одбијају. Пирови већ уписани овде и даље могу да обнављају.</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>Највише пирова који остају уписани</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>једини отворени новчаник</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>Који новчаник плаћа накнаде. Ако их је отворено више, а овде ниједан није наведен, захтеви се одбијају уместо да се плате насумично. Стејкинг може да се ради у било ком новчанику на овом чвору.</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>Плаћај накнаде из новчаника</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>Део сваког блока који овај чвор направи сопственим новчићима, подељен једнако међу пировима које уписује. 0 не дели ништа.</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>Удео сваког направљеног блока</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>Поштанско сандуче</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>Чувај запечаћену пошту за људе којима регистар чини овај чвор поштанским сандучетом, док је не преузму. Који релеји чувају чију пошту израчунава се из регистра, па то нико не додељује. Пошиљаоци и власници досежу овај чвор преко три релеја, па он никада не сазна где су; писма су запечаћена, па не може да их прочита нити да сазна ко их је написао. Писма се бришу после две недеље, а услужују се само уписани људи.</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>Чува се</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>Поштански кључеви сачувани за пошиљаоце</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>Чувај пошту за људе које регистар додељује овом чвору</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>Подразумевано укључено свуда где ради прекривна мрежа: релеј који одбије оставља људе за које је изабран са једним сандучетом мање.</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>Када се ово напуни, нова писма се одбијају док стара не буду преузета или обрисана. Ниједна особа не може да користи више од 8 MiB.</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>Простор на диску који сме да користи</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Сачувано. Ово се чита при покретању чвора, па поново покрените клијент да би промена ступила на снагу.</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>нема отвореног новчаника</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>не — релеј који не ради стејкинг одбија захтеве за упис</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>да, за %1</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>не плаћа уписе</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>плаћа, али не ради стејкинг</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>ради</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>ова верзија нема новчаник</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>потребан је новчаник</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>искључено</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>потребна је прекривна мрежа</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>ништа — не чува пошту</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>нема писама</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>1 слово</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>слова: %1</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>1 особа</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>особа: %1</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>тренутно ништа, места за %1 MiB</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%1 за %2, %3 од %4 MiB</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>дели %1%: укупно %2 %4, по %3 %4 сваком пиру</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>Подешавања</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>Шта овај клијент ради, а клијент новчаника не, и језик. Све остало — прокси, портови, орезивање — исто је питање у оба и поставља се на једном месту.</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Откривање</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>Води индекс регистра</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>Без тога овај чвор може да објављује, али не види ко је још уписан.</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>Индексирај имена</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>Потребно за тражење имена, слање поште на њих и регистрацију сопственог.</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>Покушај повезивање са пировима пронађеним у регистру</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>Предаје адресе из регистра менаџеру адреса, поред уобичајених семена и размене адреса. Ако се искључи, регистар постаје списак који овај чвор чита, али по њему никада не делује.</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Прекривна мрежа</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>Покрени прекривну мрежу</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>Подразумевано укључено у овом клијенту, искључено у чвору и у клијенту новчаника. Његово руковање још није прегледао нико ко га није написао.</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>Прекривна мрежа користи UDP на свом порту. Мрежа равноправних чворова је засебна и остаје на TCP-у.</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>Слушај на порту</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>Радио</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>Преноси прекривну мрежу и преко радија, кроз Reticulum</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>LoRa преко RNode-а, пакетни радио, серијске везе: шта год је Reticulum подешен да користи. Потребна је прекривна мрежа.</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>Улази у прекривну мрежу преко радио-суседа, да пошта ради без интернета</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>Када је BPS чвор чут преко радија уписани релеј, ваша пошта и захтеви за упис иду преко њега. Радио-веза је много спорија од интернета.</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>Покрени Reticulum мост са BPS Relay-ем</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>Покреће bps-rns-bridge.py поред чвора. Оставите искључено ако сами покрећете мост.</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>Python команда</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Reticulum није део BPS-а и има сопствену лиценцу. Инсталирајте га помоћу %1 и подесите радио у Reticulum-овој сопственој конфигурацији (~/.reticulum/config). Радио-аматерски опсези не дозвољавају шифровани саобраћај, па користите опсеге без лиценце, као што су LoRa опсези.</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>Приказ</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>Прикажи износе у</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>Језик рачунара</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>Ступа на снагу када се BPS Relay поново покрене. Текстови које шаље сам чвор, као поруке о грешкама команди, остају на енглеском.</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Језик</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>Мрежа, прокси и друга основна подешавања…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>Сачувано. Језик се мења када се BPS Relay поново покрене.</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Сачувано. Ово се чита при покретању чвора, па поново покрените клијент да би промена ступила на снагу.</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>Чвор се још покреће; основна подешавања још нису доступна.</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2647,7 +5065,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>&amp;Потврди поруку</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
         <translation>Унесите адресу примаоца, поруку (осигурајте да тачно копирате прекиде линија, размаке, картице итд) и потпишите испод да потврдите поруку. Будите опрезни да не убаците више у потпис од онога што је у потписаној поруци, да би сте избегли напад посредника. Имајте на уму да потпис само доказује да потписник прима са потписаном адресом, а не може да докаже слање било које трансакције!</translation>
     </message>
     <message>
@@ -2675,8 +5093,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Поништите сва поља за потврду поруке</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>Притисни "Потпиши поруку" за израду потписа</translation>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>Притисни &quot;Потпиши поруку&quot; за израду потписа</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2730,6 +5148,213 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>Message verified.</source>
         <translation>Порука је проверена.</translation>
     </message>
+    <message>
+        <source>&amp;Sign Message</source>
+        <translation>&amp;Потпиши поруку</translation>
+    </message>
+</context>
+<context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>Образац</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Стејкинг</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>Ваше тренутно расположиво стање</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>Средства у стејкингу која поседује овај новчаник</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>Средства у стејкингу из делегација</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>Незрело:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>Ваше незрело стање</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>Средства у стејкингу</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>Стејк:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Стејкинг</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>Висина блока:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>Награда за блок:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/блок</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>Тежина мреже:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>Очекивани годишњи принос:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>Записи стејкова</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>&amp;Делегирај</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>Тип делегације:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>Ручно делегирање</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>Аутоматско делегирање</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>Адресе за стејкинг</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>Уклони све</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Налепи адресу из оставе</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>&amp;Додај</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>&amp;Моје делегације</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>Делегирана средства</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>Ваше тренутно делегирано стање</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>Моје делегације</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>&amp;Примљене делегације</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>&amp;Направи нову адресу за стејкинг</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> са ознаком:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>Необавезна ознака за нову адресу за примање (служи вам да препознате фактуру). Прилаже се и захтеву за плаћање.</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>ColdStake делегације</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>Новчиће уплаћене на делегационе адресе овог новчаника ови кључеви користе за стејкинг чим стигну, а кусур од ваших трошења остаје делегиран. Кључ за стејкинг може да прави само coinstake трансакције које плаћају назад вама, па новчанику који га чува није потребна лозинка.</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>Наведите више од једне да бисте распоредили новчиће на више новчаника за стејкинг, па ако један није на мрежи, не стаје сав стејкинг.
+
+Свака нова делегација иде на адресу коју је до сада навело најмање њих, рачунајући подељене делегационе адресе и још непотрошене делегиране новчиће. Броји делегације, а не износе, па адреса са једном великом делегацијом и даље може бити изабрана пре адресе са више малих.</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>Новчићи већ делегирани уклоњеној адреси се не премештају и она наставља да их користи за стејкинг. Само нове делегације престају да је наводе.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>Није могуће откључати новчаник.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Није могуће направити нову %1 адресу</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>Хладни стејкинг је онемогућен на овом чвору (-coldstaking=0), па се ништа не делегира.</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>Адреса за стејкинг овде припада овом новчанику, који је шифрован, па ради стејкинг само док је новчаник откључан. За стејкинг без лозинке користите адресу из засебног, нешифрованог новчаника за стејкинг.</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>Престани да делегираш %1. Новчићи већ делегирани њој се не премештају и она наставља да их користи за стејкинг.</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>Није могуће сачувати адресе за стејкинг. Делегација се везује за хеш кључа, па свака мора бити legacy адреса.</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>Та адреса за стејкинг је већ на списку.</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>Уклони све адресе за стејкинг</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>Престати са делегирањем свим адресама за стејкинг (%1)?
+
+Већ делегирани новчићи остају у њиховом стејкингу и не премештају се. Али нове уплате и кусур иду на обичне адресе, које не раде стејкинг, и биће вам поново потребне ове адресе да бисте ово поново укључили.</translation>
+    </message>
 </context>
 <context>
     <name>TrafficGraphWidget</name>
@@ -2742,7 +5367,11 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Отворено за још %n блок.</numerusform><numerusform>Отворено за још %n блока</numerusform><numerusform>Отворено за још %n блокова</numerusform></translation>
+        <translation>
+            <numerusform>Отворено за још %n блок.</numerusform>
+            <numerusform>Отворено за још %n блока</numerusform>
+            <numerusform>Отворено за још %n блокова</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2818,7 +5447,11 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>сазрева за %n блок</numerusform><numerusform>сазрева за %n блока</numerusform><numerusform>сазрева за %n блокова</numerusform></translation>
+        <translation>
+            <numerusform>сазрева за %n блок</numerusform>
+            <numerusform>сазрева за %n блока</numerusform>
+            <numerusform>сазрева за %n блокова</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -2877,8 +5510,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Трговац</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Генерисани новчићи морају доспети %1 блокова пре него што могу бити потрошени. Када генеришете овај блок, он се емитује у мрежу, да би био придодат на ланац блокова. Укупно не успе да се придода на ланац, његово стање се мења у "није прихваћен" и неће га бити могуће потрошити. Ово се може повремено десити уколико други чвор генерише блок у периоду од неколико секунди од вашег.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Генерисани новчићи морају доспети %1 блокова пре него што могу бити потрошени. Када генеришете овај блок, он се емитује у мрежу, да би био придодат на ланац блокова. Укупно не успе да се придода на ланац, његово стање се мења у &quot;није прихваћен&quot; и неће га бити могуће потрошити. Ово се може повремено десити уколико други чвор генерише блок у периоду од неколико секунди од вашег.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -2903,6 +5536,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>false</source>
         <translation>нетачно</translation>
+    </message>
+    <message>
+        <source>conflicted with a transaction with %1 confirmations</source>
+        <translation>у сукобу са трансакцијом са %1 потврда</translation>
     </message>
 </context>
 <context>
@@ -2932,7 +5569,11 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Отворено за још %n блок </numerusform><numerusform>Отворено за још %n блока</numerusform><numerusform> Отворено за још %n блокова</numerusform></translation>
+        <translation>
+            <numerusform>Отворено за још %n блок </numerusform>
+            <numerusform>Отворено за још %n блока</numerusform>
+            <numerusform> Отворено за још %n блокова</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3021,6 +5662,30 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>Износ одбијен или додат салду.</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>Хладни стејк</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>Стејкинг у име</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>Делегација стејка</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>Делегација</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>Делегацију стејка потрошио</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>Делегирани износ.</translation>
     </message>
 </context>
 <context>
@@ -3181,6 +5846,22 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>to</source>
         <translation>до</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>Хладни стејкови</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>Топли стејкови</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>Непотрошено делегирано</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>Делегације</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3217,6 +5898,14 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Create a new wallet</source>
         <translation>Направи нови ночаник</translation>
+    </message>
+    <message>
+        <source>No wallet has been loaded.
+Go to File &gt; Open Wallet to load a wallet.
+- OR -</source>
+        <translation>Ниједан новчаник није учитан.
+Идите на Датотека &gt; Отвори новчаник да бисте учитали новчаник.
+- ИЛИ -</translation>
     </message>
 </context>
 <context>
@@ -3258,7 +5947,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Потврдите ударну провизију</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
+        <source>Can&apos;t draft transaction.</source>
         <translation>Није могуће саставити трансакцију.</translation>
     </message>
     <message>
@@ -3266,7 +5955,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>PSBT је копиран</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>Није могуће потписати трансакцију.</translation>
     </message>
     <message>
@@ -3276,6 +5965,21 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>default wallet</source>
         <translation>подразумевани новчаник</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ овај чвор</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● уживо</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>Клијент новчаника, који ради у овом процесу са овим чвором. То је исти програм као bitcoin-pos-qt, а не његова копија.</translation>
     </message>
 </context>
 <context>
@@ -3380,7 +6084,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Грешка у читању %s! Сви кључеви су прочитани коректно, али подаци о трансакцији или уноси у адресар могу недостајати или бити нетачни.</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation>Молим проверите да су време и датум на вашем рачунару тачни. Уколико је сат нетачан, %s неће радити исправно.</translation>
     </message>
     <message>
@@ -3388,7 +6092,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Молим донирајте, уколико сматрате %s корисним. Посетите %s за више информација о софтверу.</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
         <translation>База података о блоковима садржи блок, за који се чини да је из будућности. Ово може бити услед тога што су време и датум на вашем рачунару нису подешени коректно. Покушајте обнову базе података о блоковима, само уколико сте сигурни да су време и датум на вашем рачунару исправни.</translation>
     </message>
     <message>
@@ -3420,8 +6124,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>-maxmempool мора бити минимално %d MB</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>Не могу решити -%s адреса: '%s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>Не могу решити -%s адреса: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3504,32 +6208,32 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Провера исправности иницијализације није успела. %s се искључује.</translation>
     </message>
     <message>
-        <source>Invalid P2P permission: '%s'</source>
-        <translation>Неважећа P2P дозвола: '%s'</translation>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>Неважећа P2P дозвола: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>Неважећи износ за %s=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Неважећи износ за %s=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>Неважећи износ за -discardfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Неважећи износ за -discardfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>Неважећи износ за -fallbackfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Неважећи износ за -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>Наведени директоријум блокова "%s" не постоји.</translation>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>Наведени директоријум блокова &quot;%s&quot; не постоји.</translation>
     </message>
     <message>
-        <source>Unknown address type '%s'</source>
-        <translation>Непознати тип адресе '%s'</translation>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>Непознати тип адресе &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Unknown change type '%s'</source>
-        <translation>Непознати тип промене '%s'</translation>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>Непознати тип промене &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3604,8 +6308,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Грешка: Претрага за долазним конекцијама није успела (претрага враћа грешку %s)</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>Неважећи износ за -maxtxfee=&lt;amount&gt;: '%s' (мора бити minrelay провизија од %s да би се спречило да се трансакција заглави)</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Неважећи износ за -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (мора бити minrelay провизија од %s да би се спречило да се трансакција заглави)</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -3632,24 +6336,24 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Грешка: Простор на диску је мали за %s</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>Неважећа -onion адреса или име хоста: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>Неважећа -onion адреса или име хоста: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>Неважећа -proxy адреса или име хоста: '%s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>Неважећа -proxy адреса или име хоста: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>Неважећи износ за -paytxfee=&lt;amount&gt;: '%s' (мора бити бар %s)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>Неважећи износ за -paytxfee=&lt;amount&gt;: &apos;%s&apos; (мора бити бар %s)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>Неважећа мрежна маска наведена у -whitelist: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>Неважећа мрежна маска наведена у -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>Ви морате одредити порт са -whitebind: '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>Ви морате одредити порт са -whitebind: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Prune mode is incompatible with -blockfilterindex.</source>
@@ -3668,16 +6372,16 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Потписивање трансакције није успело</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>Наведени -walletdir "%s" не постоји</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>Наведени -walletdir &quot;%s&quot; не постоји</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>Наведени -walletdir "%s" је релативна путања</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>Наведени -walletdir &quot;%s&quot; је релативна путања</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>Наведени -walletdir "%s" није директоријум</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>Наведени -walletdir &quot;%s&quot; није директоријум</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3706,8 +6410,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Није могуће повезати %s на овом рачунару (веза враћа грешку %s)</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>Стварање PID документа '%s': %s није могуће</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>Стварање PID документа &apos;%s&apos;: %s није могуће</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -3770,8 +6474,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Трансакција мора имати бар једног примаоца</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>Непозната мрежа је наведена у -onlynet: '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>Непозната мрежа је наведена у -onlynet: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -3786,8 +6490,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Упозорење: Приватни кључеви су пронађени у новчанику {%s} са онемогућеним приватним кључевима.</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>Није могуће извршити упис у директоријум података '%s'; проверите дозволе за упис.</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>Није могуће извршити упис у директоријум података &apos;%s&apos;; проверите дозволе за упис.</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -3808,6 +6512,94 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Done loading</source>
         <translation>Završeno učitavanje</translation>
+    </message>
+    <message>
+        <source>%s corrupt. Try using the wallet tool bitcoin-wallet to salvage or restoring a backup.</source>
+        <translation>%s је оштећен. Покушајте да га спасете алатом за новчаник bitcoin-wallet или вратите резервну копију.</translation>
+    </message>
+    <message>
+        <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use version 169900 or no version specified.</source>
+        <translation>Није могуће надоградити не-HD подељени новчаник без надоградње за подршку резерви кључева пре поделе. Користите верзију 169900 или не наводите верзију.</translation>
+    </message>
+    <message>
+        <source>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</source>
+        <translation>Наведено је више од једне onion адресе за везивање. Користи се %s за аутоматски направљену Tor onion услугу.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Није успела припрема наредбе за дохватање верзије шеме sqlite новчаника: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Није успела припрема наредбе за дохватање ID-а апликације: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unknown sqlite wallet schema version %d. Only version %d is supported</source>
+        <translation>SQLiteDatabase: Непозната верзија шеме sqlite новчаника %d. Подржана је само верзија %d</translation>
+    </message>
+    <message>
+        <source>This error could occur if this wallet was not shutdown cleanly and was last loaded using a build with a newer version of Berkeley DB. If so, please use the software that last loaded this wallet</source>
+        <translation>Ова грешка може да се јави ако новчаник није исправно затворен и последњи пут је учитан верзијом са новијим издањем Berkeley DB. Ако је тако, користите софтвер који је последњи учитао овај новчаник</translation>
+    </message>
+    <message>
+        <source>This is the maximum transaction fee you pay (in addition to the normal fee) to prioritize partial spend avoidance over regular coin selection.</source>
+        <translation>Ово је највећа накнада за трансакцију коју плаћате (поред уобичајене накнаде) да бисте избегавању делимичне потрошње дали предност над уобичајеним избором новчића.</translation>
+    </message>
+    <message>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
+        <translation>Трансакцији је потребна адреса за кусур, али не можемо да је направимо. Прво позовите keypoolrefill.</translation>
+    </message>
+    <message>
+        <source>A fatal internal error occurred, see debug.log for details</source>
+        <translation>Дошло је до кобне унутрашње грешке, погледајте debug.log за детаље</translation>
+    </message>
+    <message>
+        <source>Cannot set -peerblockfilters without -blockfilterindex.</source>
+        <translation>Није могуће подесити -peerblockfilters без -blockfilterindex.</translation>
+    </message>
+    <message>
+        <source>Error: Keypool ran out, please call keypoolrefill first</source>
+        <translation>Грешка: Резерва кључева је потрошена, прво позовите keypoolrefill</translation>
+    </message>
+    <message>
+        <source>Failed to verify database</source>
+        <translation>Провера базе података није успела</translation>
+    </message>
+    <message>
+        <source>Fee rate (%s) is lower than the minimum fee rate setting (%s)</source>
+        <translation>Стопа накнаде (%s) је нижа од подешене најмање стопе накнаде (%s)</translation>
+    </message>
+    <message>
+        <source>Ignoring duplicate -wallet %s.</source>
+        <translation>Занемарује се дупли -wallet %s.</translation>
+    </message>
+    <message>
+        <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
+        <translation>Није наведен прокси сервер. Користите -proxy=&lt;ip&gt; или -proxy=&lt;ip:port&gt;.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Није успело извршавање наредбе за проверу базе: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Није успело дохватање верзије шеме sqlite новчаника: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Није успело дохватање ID-а апликације: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Није успела припрема наредбе за проверу базе: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to read database verification error: %s</source>
+        <translation>SQLiteDatabase: Није успело читање грешке провере базе: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unexpected application id. Expected %u, got %u</source>
+        <translation>SQLiteDatabase: Неочекиван ID апликације. Очекивано %u, добијено %u</translation>
     </message>
 </context>
 </TS>

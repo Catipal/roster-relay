@@ -1,4 +1,6 @@
-<TS language="he" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="he">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -70,10 +72,10 @@
         <translation>אלו הן כתובות הביטקוין שלך לשליחת תשלומים. חשוב לבדוק את הסכום ואת הכתובת המקבלת לפני שליחת מטבעות.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.
-Signing is only possible with addresses of the type 'legacy'.</source>
-        <translation>אלו כתובת ביטקוין שלך לקבלת תשלומים. ניתן להשתמש בכפתור 'יצירת כתובת קבלה חדשה' בלשונית הקבלה ליצירת כתובות חדשות.
-חתימה אפשרית רק עבור כתובות מסוג 'legacy'.</translation>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
+        <translation>אלו כתובת ביטקוין שלך לקבלת תשלומים. ניתן להשתמש בכפתור &apos;יצירת כתובת קבלה חדשה&apos; בלשונית הקבלה ליצירת כתובות חדשות.
+חתימה אפשרית רק עבור כתובות מסוג &apos;legacy&apos;.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -242,6 +244,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>אזהרה: מקש ה־Caps Lock פעיל!</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>משמש להשבתת שליחת כסף פשוטה כאשר חשבון מערכת ההפעלה נפרץ. אינו מספק אבטחה אמיתית.</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>לסטייקינג בלבד.</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -252,6 +262,109 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Banned Until</source>
         <translation>חסום עד</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>תשלום מרוכז</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>תשלום אחד בכל שורה, בצורה &quot;כתובת, סכום&quot;. פסיק, נקודה־פסיק או טאב מפרידים בין השדות, ושדה שלישי הופך לתווית. שורות שמתחילות ב־# מתעלמים מהן.</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>&amp;הדבקה</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>טעינה מ&amp;קובץ...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>&amp;ניקוי</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>שורה</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>כתובת</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>סכום</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>מצב</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>טעינת רשימת תשלומים</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>קובצי טקסט ו־CSV (*.txt *.csv);;כל הקבצים (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>לא ניתן לקרוא את %1.</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>צפוי &quot;כתובת, סכום&quot;</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>אין כתובת</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>כתובת לא תקינה</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>אין סכום</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>לא ניתן לקרוא את הסכום &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>הסכום חייב להיות גדול מאפס</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>תקין</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>יש להדביק תשלום אחד בכל שורה, בצורה &quot;כתובת, סכום&quot;. שדה שלישי משמש כתווית. שורות שמתחילות ב־# מתעלמים מהן.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>לא ניתן להשתמש ב־%1 מתוך %2 שורות. יש לתקן או למחוק אותן כדי להמשיך.</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>%1 נמענים הם יותר ממה שעסקה אחת יכולה לשאת (המגבלה כאן היא %2). יש לפצל את הרשימה.</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>%1 נמענים, %2 בסך הכול, לפני העמלה.</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>הוספה לטופס השליחה</translation>
     </message>
 </context>
 <context>
@@ -442,7 +555,10 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>חיבור אחד פעיל לרשת ביטקוין</numerusform><numerusform>%n חיבורים פעילים לרשת ביטקוין</numerusform><numerusform>%n חיבורים פעילים לרשת ביטקוין</numerusform><numerusform>%n חיבורים פעילים לרשת ביטקוין</numerusform></translation>
+        <translation>
+            <numerusform>חיבור אחד פעיל לרשת ביטקוין</numerusform>
+            <numerusform>%n חיבורים פעילים לרשת ביטקוין</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -454,7 +570,10 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>%n מקטע של היסטוריית העברות עבר עיבוד</numerusform><numerusform>%n מקטעים של היסטוריית העברות עברו עיבוד</numerusform><numerusform>%n מקטעים של היסטוריית העברות עברו עיבוד</numerusform><numerusform>%n מקטעים של היסטוריית העברות עברו עיבוד</numerusform></translation>
+        <translation>
+            <numerusform>%n מקטע של היסטוריית העברות עבר עיבוד</numerusform>
+            <numerusform>%n מקטעים של היסטוריית העברות עברו עיבוד</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -669,6 +788,335 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
         <translation>אירעה שגיאה חמורה, %1 לא יכול להמשיך בבטחון ולכן יופסק.</translation>
     </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;סטייקינג</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>הצגת הסטייק של הארנק</translation>
+    </message>
+    <message>
+        <source>Warning: %1</source>
+        <translation>אזהרה: %1</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>הארנק &lt;b&gt;מוצפן&lt;/b&gt; וכרגע &lt;b&gt;פתוח לסטייקינג בלבד&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>&amp;פענוח הארנק...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>הסרת מילת הצופן, כך שהמפתחות הפרטיים יישמרו ללא הצפנה</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>אין סטייקינג</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>שנייה %n</numerusform>
+            <numerusform>%n שניות</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>דקה %n</numerusform>
+            <numerusform>%n דקות</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>שעה %n</numerusform>
+            <numerusform>%n שעות</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>יום %n</numerusform>
+            <numerusform>%n ימים</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>סטייקינג פעיל.&lt;br&gt;המשקל שלך הוא %1&lt;br&gt;משקל הרשת הוא %2&lt;br&gt;זמן משוער עד לתגמול: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>אין סטייקינג כי הארנק לא מקוון</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>אין סטייקינג כי הארנק מסתנכרן</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>אין סטייקינג כי אין לך מטבעות בשלים</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>אין סטייקינג כי הארנק נעול</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>שגיאה לא ידועה</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>פחות מדקה</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>דקה</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 דקות</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>שעה</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 שעות</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 ימים</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>חודש</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 חודשים</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>בערך שנה</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>יותר משנה</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>לא ידוע</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>אירעה שגיאה חמורה. %1 אינו יכול להמשיך בבטחה וייסגר.</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>הודעה מקורית:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>גילוי</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>שכבת־על</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>שמות</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>עמיתים ומסוף</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>צומת</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>ארנק</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>דואר</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>דואר (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>שרת</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>הגדרות</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>רישום לא ידוע</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>שכבת־על לא ידועה</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>מתחבר…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>במשקל הרשת הנוכחי, סטייקינג מניב כ־%1% בשנה: %2 בלוקים בשנה, %3 %4 כל אחד, על %5 %4 בסטייקינג.</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>זה אחרי החלק של %1% מכל בלוק שהצומת הזה חולק עם העמיתים שלו.</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>%1% בשנה</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>נסגר…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>%1 עמיתים: %2 נכנסים, %3 יוצאים.</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>יש ללחוץ כדי להשהות את פעילות הרשת.</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>עמית אחד</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>%1 עמיתים</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>פעילות הרשת מושהית.</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>יש ללחוץ כדי לחדש אותה.</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>הרשת מושהית</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>עובדו %1 בלוקים מההיסטוריה.</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>בלוק %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>מעודכן.</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>מסתנכרן עם הרשת…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>מעבד בלוקים בדיסק…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>מאנדקס מחדש בלוקים בדיסק…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>מתחבר לעמיתים…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>%1 מאחור</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>מדביק את הפער…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>הבלוק האחרון שהתקבל נוצר לפני %1.</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>הארנק &lt;b&gt;%1&lt;/b&gt; מוצפן ופתוח לסטייקינג בלבד</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>הארנק &lt;b&gt;%1&lt;/b&gt; מוצפן ופתוח</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>הארנק &lt;b&gt;%1&lt;/b&gt; מוצפן ונעול</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>סטייקינג</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>סטייקינג, %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; מבצע סטייקינג.&lt;br&gt;המשקל שלו הוא %2&lt;br&gt;משקל הרשת הוא %3&lt;br&gt;זמן משוער עד לתגמול: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>אין סטייקינג</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>אין סטייקינג (משלם %1)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>אין סטייקינג: מעט מדי עמיתים</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>אין סטייקינג: השרשרת עדיין מדביקה את הפער</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>אין סטייקינג: ל־&lt;b&gt;%1&lt;/b&gt; אין מטבעות בשלים</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>אין סטייקינג: &lt;b&gt;%1&lt;/b&gt; נעול</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>אין סטייקינג</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -820,6 +1268,57 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>(change)</source>
         <translation>(עודף)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>הואצל ל־%1 לסטייקינג קר</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>כתיבת מכתב</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>שם, כינוי מפנקס הכתובות או מפתח מרשם</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>אל</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>נושא</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>שליחה</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>למי זה? שם, כינוי או מפתח מרשם.</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>המכתב הוא %1 KB; מכתב יכול להיות לכל היותר %2 KB.</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>המכתב נחתם ומונח בתיבות הדואר של הנמען, בכל פעם דרך שלושה ממסרים. זה לוקח כמה שניות…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>נשלח</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>המכתב הונח ב־%1 מתוך %2 תיבות הדואר של הנמען. די באחת כדי שיגיע.</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>לא נשלח: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -876,13 +1375,200 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Descriptor Wallet</source>
-        <translation>ארנק Descriptor </translation>
+        <translation>ארנק Descriptor&#xa0;</translation>
     </message>
     <message>
         <source>Create</source>
         <translation>יצירה</translation>
     </message>
-    </context>
+    <message>
+        <source>Wallet</source>
+        <translation>ארנק</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>אפשרויות מתקדמות</translation>
+    </message>
+    <message>
+        <source>Compiled without sqlite support (required for descriptor wallets)</source>
+        <translation>הודר ללא תמיכה ב־sqlite (נדרשת לארנקי מתארים)</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>גילוי</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>עמיתים מכריזים על עצמם בשרשרת ולא בשרת, כך שהרשימה הזו זהה אצל כולם ואיש אינו יכול לערוך אותה.</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>מרשם</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>הרישום שלך</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>עמיתים רשומים</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>את/ה</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>העתקה</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>מפרסם את הרישום שלך…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>זהות</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>יצירה…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>זהות שומרת את ההיסטוריה של הצומת הזה — כמה זמן הוא רשום — אם יהיה צורך להחליף את המפתח שלו.</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>חיפוש עמית או כתובת</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>המפתח הועתק</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>הכתובת הועתקה</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>מתחיל…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>יצירת זהות</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>תשלום העמלה מתוך</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>זהות היא מפתח שני שעומד מאחורי המפתח של הצומת הזה. אם המפתח של הצומת הזה יאבד או ייגנב אי־פעם, אפשר לשים מפתח חדש תחת אותה זהות, והצומת שומר על משך הזמן שהוא רשום במקום להתחיל מחדש.
+
+יוצג לך מפתח שחזור פעם אחת. יש לרשום אותו: זו הדרך היחידה למנוע ממי שגונב את הזהות להעביר אותה. אחר כך עסקה קטנה מפרסמת את הזהות, וחידוש הרישום הבא שלך קושר אליה את המפתח של הצומת הזה.</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>הממסר שלך פרסם את הרישום שלך בעסקה %1. נספר לאחר שהעסקה מאושרת.</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>פורסם בעסקה %1. נספר לאחר שהעסקה מאושרת.</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>לא ידוע</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>אינדקס המרשם כבוי</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>לא רשום</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>מסתיים בעוד %1</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>מחדש את הרישום שלך…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>חידוש ב־3 הימים האחרונים</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>הרישום שלך מסתיים בעוד %1. אפשר לחדש החל משלושה ימים לפני כן.</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>רשום, מסתיים בעוד %1</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>אין</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>לצומת הזה אין מפתח הכרזה: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>מושבת</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>אינדקס המרשם אינו פועל, ולכן הצומת הזה אינו יכול לראות מי רשום. יש להפעיל מחדש עם ‎-rosterindex כדי להפעיל אותו.</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>מדביק את הפער (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>לפני %1 ימים</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>הבלוק החדש ביותר של הצומת הזה בן %1 ימים, כך שעמיתים שבוטלו מאז עשויים עדיין להופיע כאן. המרשם עדיין משמש להגעה לעמיתים, אבל שכבת־העל מפסיקה להעדיף ממסרים הרשומים זמן רב עד שהשרשרת תדביק את הפער.</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>מעודכן</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>אינדקס המרשם אינו פועל</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>מפתח השחזור שלך</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>יש לרשום אותו ולשמור במקום בטוח, הרחק מהמחשב הזה. הוא מוצג רק עכשיו ולא נשמר בשום מקום. אי אפשר לבזבז בו מטבעות; הוא יכול רק לעצור העברה של הזהות שלך שלא את/ה ביצעת.</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>רשמתי אותו</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>הזהות שלך פורסמה בעסקה %1. חידוש הרישום הבא שלך קושר אליה את המפתח של הצומת הזה.</translation>
+    </message>
+</context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -918,16 +1604,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>עריכת כתובת השליחה</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
         <translation>הכתובת שהוקלדה „%1” היא אינה כתובת ביטקוין תקנית.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>כתובת "%1" כבר קיימת ככתובת מקבלת עם תווית "%2" ולכן לא ניתן להוסיף אותה ככתובת שולחת</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>כתובת &quot;%1&quot; כבר קיימת ככתובת מקבלת עם תווית &quot;%2&quot; ולכן לא ניתן להוסיף אותה ככתובת שולחת</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>הכתובת שהוכנסה "%1" כבר נמצאת בפנקס הכתובות עם התווית "%2".</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>הכתובת שהוכנסה &quot;%1&quot; כבר נמצאת בפנקס הכתובות עם התווית &quot;%2&quot;.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -1016,7 +1702,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>ביטקוין</translation>
+        <translation type="vanished">ביטקוין</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -1039,7 +1725,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>הארנק גם מאוחסן בתיקייה הזו.</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
         <translation>שגיאה: לא ניתן ליצור את תיקיית הנתונים שצוינה „%1“.</translation>
     </message>
     <message>
@@ -1048,13 +1734,185 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>ג״ב של מקום פנוי זמין</numerusform><numerusform>%n ג״ב של מקום פנוי זמינים</numerusform><numerusform>%n ג״ב של מקום פנוי זמינים</numerusform><numerusform>%n ג״ב של מקום פנוי זמינים</numerusform></translation>
+        <translation>
+            <numerusform>ג״ב של מקום פנוי זמין</numerusform>
+            <numerusform>%n ג״ב של מקום פנוי זמינים</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(מתוך %n ג״ב נדרשים)</numerusform><numerusform>(מתוך %n ג״ב נדרשים)</numerusform><numerusform>(מתוך %n ג״ב נדרשים)</numerusform><numerusform>(מתוך %n ג״ב נדרשים)</numerusform></translation>
+        <translation>
+            <numerusform>(מתוך %n ג״ב נדרשים)</numerusform>
+            <numerusform>(מתוך %n ג״ב נדרשים)</numerusform>
+        </translation>
     </message>
-    </context>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+    <message numerus="yes">
+        <source>(%n GB needed for full chain)</source>
+        <translation>
+            <numerusform>(נדרש GB %n לשרשרת המלאה)</numerusform>
+            <numerusform>(נדרשים %n GB לשרשרת המלאה)</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>דואר</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>הכתובת שלך</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>העתקה</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>מפתח המרשם שלך. כל מי שרשום יכול לכתוב לך אליו.</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>הדואר עובר דרך שכבת־העל. יש להפעיל את שכבת־העל בהגדרות ולהפעיל מחדש כדי לשלוח ולקבל דואר.</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>כתיבה</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>תשובה</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>איסוף עכשיו</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>איסוף מכתבים חדשים מתיבות הדואר שלך עכשיו. זה קורה גם כל כמה דקות.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>מחיקה</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>דואר נכנס</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>נשלח</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>מאת</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>נושא</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>תאריך</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>מכתבים נחתמים במפתח הדואר השבועי של הנמען, באמצעות secp256k1 ו־ML-KEM-768 יחד; המפתח והחתימה שלך נוסעים בתוך החותם, וכל דרך לתיבת דואר עוברת דרך שלושה ממסרים. מפתחות דואר ישנים נמחקים, כך שמכתב שנאסף היום לא ייפתח מאוחר יותר במפתחות של המחשב הזה.</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>אל</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>עדיין אין ממסר רשום, ולכן אין לך תיבות דואר ואיש אינו יכול לכתוב לך.</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>%1 ממסרים שומרים את הדואר שלך; יהיו %2 כשבמרשם יהיו רשומים יותר.</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>%1 ממסרים שנבחרו לפי המפתח שלך שומרים את הדואר שלך עד שתאסוף/י אותו.</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>מפתח דואר מס&apos; %1, מתחדש מדי שבוע.</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>נאסף לאחרונה %1.</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>עדיין לא נאסף.</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>מכתב חדש אחד</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>%1 מכתבים חדשים</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>, מ־%1 מתוך %2 תיבות דואר.</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(ללא נושא)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>הונח ב־%1 מתיבות הדואר של הנמען</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>מאת: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>אל: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>נשלח %1, הונח ב־%2 מתיבות הדואר של הנמען</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>נכתב %1, נאסף %2</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>יש לבחור מכתב כדי לקרוא אותו.</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>אוסף…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>מגיע לתיבות הדואר שלך, כל אחת דרך שלושה ממסרים…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>מחיקת מכתב</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>למחוק את המכתב הזה מהמחשב הזה? העותקים שלו בתיבות הדואר כבר הוסרו כשנאסף, כך שאי אפשר להביא אותו שוב.</translation>
+    </message>
+</context>
 <context>
     <name>ModalOverlay</name>
     <message>
@@ -1062,7 +1920,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>טופס</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>ייתכן שהעברות שבוצעו לאחרונה לא יופיעו עדיין, ולכן המאזן בארנק שלך יהיה שגוי. המידע הנכון יוצג במלואו כאשר הארנק שלך יסיים להסתנכרן עם רשת הביטקוין, כמפורט למטה.</translation>
     </message>
     <message>
@@ -1112,6 +1970,409 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>לא ידוע. סינכרון כותרות (%1, %2%)...</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>שמות</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>שם מפנה אנשים למפתח המרשם שלך, כדי שיוכלו לכתוב לך — ולשלם לך — לפי שם במקום לפי מפתח. קבלת שם פנוי וחידושו עולים רק את עמלת הרשת; שם מחודש ידנית. שם שמישהו מחזיק אפשר לקנות אם הוא מציע אותו למכירה, במחיר שהוא מבקש. שמות מתחת לשלך חינמיים, וכך גם כינויים: התוויות שלך לאנשים, שנשמרות במחשב הזה.</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>השמות שלך</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>תשלום מתוך</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>שם</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>מצב</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>מסתיים</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>תת־שמות</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>קבלת שם…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>חידוש…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>הוספת תת־שם…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>מכירה…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>העברה…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>קבלת תשלומים לפי שם…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>חיפוש</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>שם, תווית.שם או כינוי</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>העתקת מפתח</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>תשלום…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>פנקס כתובות</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>כינוי</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>מפתח</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>הוספת מישהו…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>הסרה</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>המפתח הועתק</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>עובד…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>הורדה ממכירה</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>יש להוריד אותו ממכירה קודם.</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>מפתח תשלום חדש…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>תשלומים לפי שם פעילים</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>שמות זקוקים לאינדקס השמות. יש להפעיל את &quot;אינדוקס שמות&quot; בהגדרות ולהפעיל מחדש.</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>השמות עדיין לא התחילו ברשת הזו. מתי יתחילו ברשת הראשית, ואיך יחולקו השמות הראשונים, עדיין לא הוחלט. בינתיים אפשר לחפש שמות ולנהל פנקס כתובות.</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1 הוא %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>מפנקס הכתובות שלך</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>שם רשום, מוחזק עד בלוק %1</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>התייצב</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>השתנה לפני %1, עדיין לא התייצב</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>מקבל תשלומים לפי שם</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>למכירה: המחזיק מבקש %1. יש להשתמש ב&quot;קבלת שם&quot; כדי לקנות אותו.</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>%1 התחייב. השם ייתבע מעצמו בעוד %2 בלוקים (כ־%3) - יש להשאיר את BPS Relay פועל ואת הארנק פתוח עד אז.</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>קונה את %1: %2 שולם למחזיק. הוא שלך לאחר שהעסקה מאושרת.</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>%1 מוצע למכירה ב־%2. כל אחד יכול לקנות אותו מהבלוק הבא, בלי שהצומת הזה יהיה מקוון; המחיר משולם לארנק הזה.</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>%1 יורד ממכירה. מעכשיו איש אינו יכול לקנות אותו.</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>%1 חודש עד בלוק %2, בעבור עמלת הרשת בלבד.</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>%1 מועבר אל %2. הוא שלהם לאחר שהעסקה מאושרת.</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>%1 הוגדר; הוא ייפתר לאחר שהעסקה מאושרת.</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>תשלומים לפי שם מופעלים. אנשים יוכלו לשלם לכל שם שלך כ־%1 לאחר שהעסקה מאושרת; כל תשלום מופיע בארנק שלך כ&quot;שולם לפי שם&quot;.</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>שולם %1 ל־%2, לכתובת ששימשה לתשלום הזה בלבד.</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>תשלום</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>בעוד %1</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>הסתיים לפני %1</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>פג תוקף - יש לחדש בתוך החודש</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>מוחזק</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>במכירה - קנייה מתאשרת</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>למכירה ב־%1</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>למכירה ב־%1 - עדיין לא ניתן לקנות</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>לא רשום</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>בתהליך רישום</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>יש ללחוץ כדי להעתיק</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>קבלת שם</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>1 עד 32 אותיות, ספרות או מקפים</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>שנה אחת</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>שנתיים</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>למשך</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>הרישום נעשה בשני שלבים: התחייבות שמסתירה את השם, וכ־20 דקות לאחר מכן התביעה, ש־BPS Relay שולח בעצמו. איש אינו יכול לקחת את השם בינתיים. כל שלב עולה רק את עמלת הרשת.</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>קנייה היא עסקה אחת: היא משלמת למחזיק והופכת את השם לשלך, הכול בבת אחת או כלום.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>רישום</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>שם הוא 1 עד 32 אותיות פשוטות a-z, ספרות או מקפים פנימיים.</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>%1, למשך %2, עולה רק את עמלת הרשת. בודק אם הוא פנוי…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>שנה אחת</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>שנתיים</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>הורדת %1 ממכירה</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>להוריד את %1 ממכירה? מאותו רגע איש אינו יכול לקנות אותו, ולאחר האישור אפשר להעביר אותו או להציע אותו שוב.</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>מכירת %1</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>המחיר שלך עבור %1, ב־BPS. כל אחד יוכל אז לקנות אותו מיד, גם כש־BPS Relay סגור: הם משלמים לך את זה באותה עסקה שנותנת להם את השם. כל עוד הוא למכירה אי אפשר להעביר אותו.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>&quot;%1&quot; אינו סכום ב־BPS.</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>להציע את %1 למכירה ב־%2? נשלחות שתי עסקאות קטנות: אחת שומרת בצד את המטבע שקונה מבזבז, והשנייה מפרסמת את המכירה.</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>חידוש %1</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>הארכת %1 ממועד הסיום הנוכחי. זה עולה רק את עמלת הרשת. אפשר לחדש שם לכל היותר שנתיים קדימה.</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>העברת %1</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>לתת את %1 ל־(מפתח מרשם, כינוי או שם):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>לתת את %1 ל־%2? רק המחזיק החדש יכול להחזיר אותו.</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>תת־שם תחת %1</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>החלק שלפני ‎.%1, למשל alice עבור alice.%1:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>על מי %1.%2 מצביע (מפתח מרשם, כינוי או שם), או &quot;remove&quot;:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>מחפש…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>הוספת מישהו</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>איך את/ה קורא/ת להם (רק את/ה רואה זאת):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>מפתח המרשם שלהם, או שם כדי לזכור מי מחזיק בו עכשיו:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>תשלומים לפי שם פעילים. להעביר אותם למפתח חדש מהארנק הזה? תשלומים שכבר בוצעו למפתח הנוכחי עדיין יגיעו. משלמים ממתינים כ־%1 אחרי השינוי לפני שהם משלמים שוב.</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>אפשר/י לאנשים לשלם לך לפי שם: כל שם או תת־שם שמצביע על המפתח של הצומת הזה, כינוי שהם שומרים עבורך, או המפתח עצמו. כל תשלום הולך לכתובת משלו שרק הארנק הזה יכול לבזבז, ואף צופה לא יכול לדעת ששילמו לך, או ששני תשלומים הלכו לאותו אדם. זה עולה את עמלת הרשת. אנשים יוכלו לשלם לך כ־%1 אחרי האישור.</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>תשלומים לפי שם</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>תשלום ל־%1</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>%1 עדיין לא מקבל תשלומים לפי שם. אפשר לבקש שיפעילו אותם בלשונית השמות, או לבקש כתובת.</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>%1 החליף ידיים לפני %2.</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>הם הגדירו את המפתח שאליו משלמים להם לפני %1.</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>ב־BPS</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>סכום</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>התשלום הולך לכתובת שמשמשת רק אותו, שרק %1 יכול לבזבז; אף אחד אחר לא יכול לדעת למי שולם. אי אפשר לבטל תשלום. עמלת הרשת נוספת.</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>אם זה לא היה הם, התשלום אובד. בטוח יותר לחכות עד שיעברו %1.</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>לשלם בכל זאת</translation>
     </message>
 </context>
 <context>
@@ -1216,7 +2477,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Disables some advanced features but all blocks will still be fully validated. Reverting this setting requires re-downloading the entire blockchain. Actual disk usage may be somewhat higher.</source>
-        <translation>משבית מספר תכונות מתקדמות אבל כל הבלוקים עדיין יעברו אימות מלא. שינוי של הגדרה זו מצריך הורדה מחדש של הבלוקצ'יין. נצילות הדיסק עלולה לעלות.</translation>
+        <translation>משבית מספר תכונות מתקדמות אבל כל הבלוקים עדיין יעברו אימות מלא. שינוי של הגדרה זו מצריך הורדה מחדש של הבלוקצ&apos;יין. נצילות הדיסק עלולה לעלות.</translation>
     </message>
     <message>
         <source>Prune &amp;block storage to</source>
@@ -1228,7 +2489,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain.</source>
-        <translation>שינוי הגדרה זו מצריך הורדה מחדש של הבלוקצ'יין</translation>
+        <translation>שינוי הגדרה זו מצריך הורדה מחדש של הבלוקצ&apos;יין</translation>
     </message>
     <message>
         <source>MiB</source>
@@ -1364,7 +2625,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Options set in this dialog are overridden by the command line or in the configuration file:</source>
-        <translation>אפשרויות שמוגדרות בדיאלוג הזה נדרסות ע"י שורת הפקודה או קובץ הקונפיגורציה</translation>
+        <translation>אפשרויות שמוגדרות בדיאלוג הזה נדרסות ע&quot;י שורת הפקודה או קובץ הקונפיגורציה</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -1417,6 +2678,209 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>The supplied proxy address is invalid.</source>
         <translation>כתובת המתווך שסופקה אינה תקינה.</translation>
+    </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>האם להציג את תכונות השליטה בסטייקינג קר.</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>הפעלת תכונות שליטה בס&amp;טייקינג קר</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>שכבת־על</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>שכבה מוצפנת של BPS עצמה, שמעבירה תעבורה דרך עמיתים אחרים כך שהצד השני לעולם לא יודע איפה את/ה.</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>שואל…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>פועל</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>מאזין ב־</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>מסלולים פתוחים</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>שירותים שנפגשים כאן</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>ממסרים זמינים</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>הסבב של היום</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>הכניסה שלך</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>העמיתים שדרכם התעבורה שלך תמיד נכנסת. הם נשמרים ולא מוחלפים: בחירה של חדש בכל פעם הייתה נותנת בסופו של דבר תור לצופה.</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>איפה אנשים יכולים לפגוש אותך</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>מחושב מהמרשם, לא נשלף. כל מי שמנסה להגיע אליך עושה את אותו חישוב ומקבל את אותה תשובה, כך שאין את מי לשאול ואין מי שיכול לענות אחרת. הם משתנים כל יום.</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>נשמע ברדיו</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>מה ממסור משלם</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>הונפק ביום</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>ממסרים</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>משתמשים</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>משתמשים לכל ממסר</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>חלק לכל משתמש</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>ממסר משלם לעמיתים שהוא רושם מתוך תגמולי הבלוק שלו, כך שחלקו של משתמש הוא אחד חלקי מספר המשתמשים של הממסר שלו — ולכן לקיחת חלק ממשתמשי הרשת עולה חלק מהסטייק. כמה מהתגמול ממסר חולק היא בחירה שלו ושום דבר לא אוכף אותה: ממסר שלא משלם כלום מייצר בלוק תקין לחלוטין. מה שגורם לו לשלם הוא שממסר בלי משתמשים לא מגן על אף אחד, כולל על עצמו.</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>עדיין לא נבדק בידי מי שלא כתב אותו, והוא מסתיר איפה את/ה ולא מתי את/ה מדבר/ת: מי שצופה בשני הקצוות עדיין יכול להתאים את התזמון. יש להתייחס אליו כאל לא גמור.</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>הצומת הזה לא חולק כלום. יש להגדיר את ‎-relayshare לאחוז, ולקבל עמיתים עם addrosteruser.</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>הצומת הזה היה חולק %1%, אבל %2.</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>הצומת הזה חולק %1% עם %2 עמיתים: הבלוק הבא שהוא יוצר משלם %3, %4 לכל אחד.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>גשר Reticulum אינו מדווח. יש להפעיל אותו מהגדרות, רדיו, או להריץ את bps-rns-bridge.py בעצמך.</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>מאזין. עדיין לא נשמע אף צומת BPS ברדיו; צמתים מכריזים על עצמם כל חצי שעה.</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>התעבורה שלך נכנסת דרך שכן רדיו כשאחד מהם הוא ממסר רשום.</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>נשמע, אבל התעבורה שלך נכנסת דרך האינטרנט (הגדרות, רדיו).</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>קפיצה אחת</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>%1 קפיצות</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>מספר קפיצות לא ידוע</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>נשמע לפני %1</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>ממסר</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>כן</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>לא</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>שכבת־העל כבויה. הלקוח הזה מפעיל אותה בעצמו, כך שמשהו כיבה אותה שוב, עם ‎-overlay=0 בשורת הפקודה או בקובץ התצורה.</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>כלום כל עוד שכבת־העל כבויה</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>שכבת־על כבויה</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>עדיין אין</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>שכבת־על פעילה, עדיין אין ממסרים</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>שכבת־על פעילה, ממסר אחד</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>שכבת־על פעילה, %1 ממסרים</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>עדיין לא נבחרו</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>אין — במרשם אין ממסרים לחשב מהם</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>שכבת־על לא ידועה</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>עדיין אין ממסרים</translation>
     </message>
 </context>
 <context>
@@ -1496,6 +2960,30 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
         <translation>מצב הפרטיות הופעל עבור לשונית התאור הכללי. כדי להסיר את הסוואת הערכים, בטל את ההגדרות, -&gt;הסוואת ערכים.</translation>
+    </message>
+    <message>
+        <source>Stake</source>
+        <translation>סטייק</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>סטייקים לא בשלים:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>האצלות לא בשלות</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>האצלות לא בשלות:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>הואצל</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>הואצל:</translation>
     </message>
 </context>
 <context>
@@ -1636,15 +3124,15 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>טיפול בכתובות</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>'//:bitcoin' אינה כתובת URI תקינה. השתמשו במקום ב ':bitcoin'.</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;//:bitcoin&apos; אינה כתובת URI תקינה. השתמשו במקום ב &apos;:bitcoin&apos;.</translation>
     </message>
     <message>
         <source>Cannot process payment request because BIP70 is not supported.</source>
         <translation>אין אפשרות לעבד את בקשת התשלום כיון ש BIP70 אינו נתמך.</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
         <translation>עקב תקלות בטיחות רבות ב BIP70 מומלץ בחום להתעלם מההוראות של סוחר להחליף ארנקים </translation>
     </message>
     <message>
@@ -1692,6 +3180,161 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>חידוש הרישום שלך</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>פרסום הרישום שלך</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>חידוש כותב רשומה חדשה לשרשרת. עד שהיא מאושרת, הישנה עדיין תקפה.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>זה כותב לשרשרת רשומה קצרה שאומרת שאת/ה קיים/ת, ואם תרצה/י, איפה למצוא אותך.</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>איך עמיתים יגיעו אליך?</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>דרך שכבת־העל — בלי לפרסם כתובת</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>הרישום שלך אומר מי את/ה ולא איפה את/ה פועל/ת. עמיתים מגיעים אליך דרך שכבת־העל, ופוגשים אותך בנקודות ששני הצדדים מחשבים מהמרשם. זה מה שהלקוח הזה מפעיל כברירת מחדל.</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>בכתובת שאני מפרסם/ת</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>כתובת שעמיתים אחרים יכולים להגיע אליה</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>כל אחד יכול לראות אותה, והשרשרת שומרת אותה לצמיתות. כתובת onion מפרסמת מיקום שאיש אינו יכול לקשר אליך ועובדת מאחורי NAT; כתובת IP אינה עושה אף אחד מהם. צומת שמפרסם כתובת IP יכול להיבחר כממסר על ידי אחרים.</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>מי משלם את העמלה</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>חודש, ואז יש לחדש</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>שנה, ואז יש לחדש</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>כמה זמן זה נמשך</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>חידוש</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>פרסום</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>ממסר משלם — לא נדרשים מטבעות</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>שכבת־העל כבויה, כך שאין ממסר לבקש ממנו. יש להפעיל אותה בהגדרות, או לשלם מארנק.</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>עדיין אין ממסר רשום במרשם, כך שאין את מי לבקש. יש לשלם מארנק, או לנסות שוב כשממסר יירשם.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>הצומת שלך חותם על הרישום ושולח אותו דרך שכבת־העל לממסר שדרכו הוא נכנס. ממסר שמשלם על רישומים מכניס את שלך לבלוק שהוא עצמו יוצר, כך שהוא מאושר גם אם רוב הצמתים לא היו מעבירים אותו, ומוסיף אותך לעמיתים שאיתם הוא חולק את התגמולים שלו. אם הוא יפסיק לשלם בהמשך, הרישום שלך יפוג בתוך החודש; תמיד אפשר לחדש בעצמך מארנק עם יתרה.</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>הצומת הזה אינו מבצע סטייקינג. רישום גדול ממה שצמתים ישנים מעבירים, כך שעד שרוב בעלי הסטייק יתעדכנו הוא מאושר רק כשבעל סטייק שמריץ את הגרסה הזו כולל אותו, וזה עשוי לקחת זמן. סטייקינג מכניס אותו לבלוק הבא שלך; ממסר שמשלם מכניס אותו לבלוק שלו.</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>הארנק הזה פתוח לסטייקינג בלבד. תשלום מבקש את מילת הצופן שלו, ואחר כך הארנק ננעל שוב, מה שעוצר את הסטייקינג עד שתפתח/י אותו שוב לסטייקינג.</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>תשלום מבקש את מילת הצופן של הארנק הזה.</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>יש להזין כתובת, או לבחור לא לפרסם כתובת.</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>מבקש מהממסר שלך לפרסם אותה… זה עשוי לקחת עד חצי דקה.</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>הארנק הזה כבר לא פתוח.</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>הארנק עדיין נעול, כך ששום דבר לא שולם.</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>חותם על הרשומה…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>הצומת החזיר רשומה שהלקוח הזה לא הבין.</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>משלם כדי לפרסם…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>הממסר סירב: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>אין תשובה מהממסר. %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1699,7 +3342,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>נא להזין כתובת ביטקוין (למשל: %1)</translation>
+        <translation type="vanished">נא להזין כתובת ביטקוין (למשל: %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1731,23 +3374,38 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>שנייה אחת</numerusform><numerusform>%n שניות</numerusform><numerusform>%n שניות</numerusform><numerusform>%n שניות</numerusform></translation>
+        <translation>
+            <numerusform>שנייה אחת</numerusform>
+            <numerusform>%n שניות</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>דקה אחת</numerusform><numerusform>%n דקות</numerusform><numerusform>%n דקות</numerusform><numerusform>%n דקות</numerusform></translation>
+        <translation>
+            <numerusform>דקה אחת</numerusform>
+            <numerusform>%n דקות</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>שעה אחת</numerusform><numerusform>%n שעות</numerusform><numerusform>%n שעות</numerusform><numerusform>%n שעות</numerusform></translation>
+        <translation>
+            <numerusform>שעה אחת</numerusform>
+            <numerusform>%n שעות</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>יום אחד</numerusform><numerusform>%n ימים</numerusform><numerusform>%n ימים</numerusform><numerusform>%n ימים</numerusform></translation>
+        <translation>
+            <numerusform>יום אחד</numerusform>
+            <numerusform>%n ימים</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>שבוע אחד</numerusform><numerusform>%n שבועות</numerusform><numerusform>%n שבועות</numerusform><numerusform>%n שבועות</numerusform></translation>
+        <translation>
+            <numerusform>שבוע אחד</numerusform>
+            <numerusform>%n שבועות</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1755,7 +3413,10 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>שנה אחת</numerusform><numerusform>%n שנים</numerusform><numerusform>%n שנים</numerusform><numerusform>%n שנים</numerusform></translation>
+        <translation>
+            <numerusform>שנה אחת</numerusform>
+            <numerusform>%n שנים</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1774,7 +3435,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>%1 ג״ב</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation>שגיאה: תיקיית הנתונים שצוינה „%1” אינה קיימת.</translation>
     </message>
     <message>
@@ -1790,12 +3451,60 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>שגיאה בהגדרות הראשוניות: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>הסגירה של %1 לא הושלמה בהצלחה עדיין…</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>לא ידוע</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>איש קשר</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>קבלה</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>מוסתר</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>לא ידוע</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>הואצל</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>%1 מוחזק בידי מישהו שהציע אותו למכירה. הוא מבקש %2; עמלת הרשת נוספת.</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>קנייה</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>בודק אם הוא פנוי…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>הוא פנוי.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>רישום</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>עדיין לא נבנה</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>יש להזין כתובת BitcoinPoS (למשל %1)</translation>
     </message>
 </context>
 <context>
@@ -1856,16 +3565,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Datadir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the data directory use the '%1' option.</source>
-        <translation>כדי לציין מיקום שאינו ברירת המחדל לתיקיית הבלוקים יש להשתמש באפשרות "%1"</translation>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>כדי לציין מיקום שאינו ברירת המחדל לתיקיית הבלוקים יש להשתמש באפשרות &quot;%1&quot;</translation>
     </message>
     <message>
         <source>Blocksdir</source>
         <translation>Blocksdir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>כדי לציין מיקום שאינו ברירת המחדל לתיקיית הבלוקים יש להשתמש באפשרות "%1"</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>כדי לציין מיקום שאינו ברירת המחדל לתיקיית הבלוקים יש להשתמש באפשרות &quot;%1&quot;</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -2116,8 +3825,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>מבצע פקודה ללא כל ארנק</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
-        <translation>מבצע פקודה באמצעות ארנק "%1" </translation>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>מבצע פקודה באמצעות ארנק &quot;%1&quot;&#xa0;</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -2142,6 +3851,45 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown</source>
         <translation>לא ידוע</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>האם התכוונת ל:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>לא בטוח/ה בפקודה? יש להקליד במילים פשוטות מה רוצים, למשל %1, ולבחור הצעה. ההצעות מחושבות במחשב הזה; שום דבר שמוקלד לא נשלח לשום מקום.</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>הרדיו כבוי.</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>הרדיו פעיל; יש להפעיל את גשר Reticulum בעצמך (contrib/reticulum/bps-rns-bridge.py).</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>bps-rns-bridge.py אינו נמצא ליד BPS Relay, ולכן אי אפשר להפעיל את הגשר.</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>לא ניתן להפעיל את Python בתור &quot;%1&quot;. יש להתקין Python, או להגדיר את הפקודה בהגדרות, רדיו.</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Reticulum אינו מותקן. יש להתקין אותו עם: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>גשר Reticulum נעצר (מצב %1); ראו radio/bridge.log.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>גשר Reticulum מתחיל.</translation>
     </message>
 </context>
 <context>
@@ -2195,12 +3943,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>ניקוי</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>כתובות segwit טבעיות (כלומר Bech32 או BIP-173) מפחיתות את עמלת העסקה שלכם בהמשך ומציעות הגנה נגד שגיאות כתיב, אך ארנקים ישנים לא תומכים בהן. אם לא סומן, כתובת תאימה לארנקים ישנים תיווצר במקום.</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">כתובות segwit טבעיות (כלומר Bech32 או BIP-173) מפחיתות את עמלת העסקה שלכם בהמשך ומציעות הגנה נגד שגיאות כתיב, אך ארנקים ישנים לא תומכים בהן. אם לא סומן, כתובת תאימה לארנקים ישנים תיווצר במקום.</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>הפקת כתובת segwit טבעית (Bech32)</translation>
+        <translation type="vanished">הפקת כתובת segwit טבעית (Bech32)</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2245,6 +3993,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Could not generate new %1 address</source>
         <translation>לא ניתן לייצר כתובת %1 חדשה</translation>
+    </message>
+    <message>
+        <source>(none)</source>
+        <translation>(אין)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>לא הוגדרה כתובת סטייקינג לארנק הזה, כך שאין למי להאציל. יש להגדיר אחת בעמוד הסטייק, תחת האצלה -&gt; האצלה אוטומטית, וסוג הכתובת הזה יעבוד.</translation>
     </message>
 </context>
 <context>
@@ -2326,6 +4082,99 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>עמית</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>כתובת</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>רשום</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>הרישום מסתיים</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>רשום במשך</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>יש ללחוץ כדי להעתיק</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>העמית הזה רשום אך אינו מפרסם כתובת. עדיין אפשר
+להגיע אליו דרך שכבת־העל, וזו הסיבה לאפשר זאת.</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>פורסמה כתובת אחת</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>%1 כתובות פורסמו</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>אושר בבלוק %1</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>מפסיק להיספר בבלוק %1</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>אין היסטוריה לפני הרישום הזה.</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>רשום ללא הפסקה מאז בלוק %1.</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>חדש מדי כדי להיספר עדיין.</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>לא פועל תחת זהות.</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>פועל תחת הזהות %1, ששומרת על הוותק שלה אם היא מחליפה מפתחות.</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>לא פורסמה כתובת</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>ממש עכשיו</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>לפני %1</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>פג תוקף</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>בעוד %1</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>חדש</translation>
+    </message>
+</context>
+<context>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
@@ -2389,19 +4238,19 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until you have validated the complete chain.</source>
-        <translation>שימוש בעמלת בררת המחדל עלול לגרום לשליחת עסקה שתכלל בבלוק עוד מספר שעות או ימים (או לעולם לא). נא שקלו בחירה ידנית של העמלה או המתינו לאימות מלא של הבלוקצ'יין.</translation>
+        <translation>שימוש בעמלת בררת המחדל עלול לגרום לשליחת עסקה שתכלל בבלוק עוד מספר שעות או ימים (או לעולם לא). נא שקלו בחירה ידנית של העמלה או המתינו לאימות מלא של הבלוקצ&apos;יין.</translation>
     </message>
     <message>
         <source>Warning: Fee estimation is currently not possible.</source>
         <translation>אזהרה: שערוך העמלה לא אפשרי כעת.</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>ציינו עמלה מותאמת אישית פר קילובייט (1000 בתים) של הגודל הוירטואלי של העסקה.
 
-לתשומת לבכם: מאחר והעמלה מחושבת על בסיס פר-בית, עמלה של "100 סטושי פר קילובייט" עבור עסקה בגודל 500 בתים (חצי קילובייט) תפיק בסופו של דבר עמלה של 50 סטושי בלבד.</translation>
+לתשומת לבכם: מאחר והעמלה מחושבת על בסיס פר-בית, עמלה של &quot;100 סטושי פר קילובייט&quot; עבור עסקה בגודל 500 בתים (חצי קילובייט) תפיק בסופו של דבר עמלה של 50 סטושי בלבד.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2460,7 +4309,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>אפשר ״החלפה-על ידי עמלה״</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
         <translation>באמצעות עמלה-ניתנת-לשינוי (BIP-125) תוכלו להגדיל עמלת עסקה גם לאחר שליחתה. ללא אפשרות זו, עמלה גבוהה יותר יכולה להיות מומלצת כדי להקטין את הסיכון בעיכוב אישור העסקה.</translation>
     </message>
     <message>
@@ -2520,12 +4369,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>יוצר עסקת ביטקוין חתומה חלקית (PSBT) לשימוש עם ארנק %1 לא מחובר למשל, או עם PSBT ארנק חומרה תואם.</translation>
     </message>
     <message>
-        <source> from wallet '%1'</source>
-        <translation>מתוך ארנק '%1'</translation>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation>מתוך ארנק &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>%1 to '%2'</source>
-        <translation>%1 אל '%2'</translation>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 אל &apos;%2&apos;</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -2584,8 +4433,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>סכום כולל</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
-        <translation>כדי לסקור את רשימת המקבלים יש להקיש "הצגת פרטים..."</translation>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>כדי לסקור את רשימת המקבלים יש להקיש &quot;הצגת פרטים...&quot;</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2637,7 +4486,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>האמדן לתחילת ביצוע אימות בתוך בלוק %n </numerusform><numerusform>האמדן לתחילת ביצוע אימות בתוך %n בלוקים</numerusform><numerusform>האמדן לתחילת ביצוע אימות בתוך %n בלוקים</numerusform><numerusform>C.</numerusform></translation>
+        <translation>
+            <numerusform>האמדן לתחילת ביצוע אימות בתוך בלוק %n </numerusform>
+            <numerusform>האמדן לתחילת ביצוע אימות בתוך %n בלוקים</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2658,6 +4510,42 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>(no label)</source>
         <translation>(ללא תווית)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>הדבקה או טעינה של רשימת תשלומים במקום להוסיף אותם אחד אחד</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>&amp;מרוכז...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>בחישוב היתרה הזמינה, לקחת בחשבון גם האצלות. אם לא מסומן, היתרה הזמינה תשקף רק את המטבעות שנמצאים כרגע בארנק.</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>&amp;כולל האצלות</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>סטייקינג קר אינו מופעל</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>סטייקינג קר מופעל בבלוק %1</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>הארנק הזה מבצע סטייקינג במטבעות שלו, ולכן כולם מואצלים.</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>כתובת הבעלים שסופקה אינה בארנק הזה. אזהרה: רק בעל המפתח של כתובת הבעלים יוכל לבזבז את המטבעות האלה לאחר ההאצלה.</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>כתובת בעל הסטייק שסופקה נמצאת בארנק הזה. כבר אפשר לבצע סטייקינג במטבעות; אין צורך להאציל אותם לעצמך.</translation>
     </message>
 </context>
 <context>
@@ -2742,6 +4630,352 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>Memo:</source>
         <translation>תזכורת:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>כתובת ה&amp;בעלים:</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>כתובת הבעלים של BitcoinPoS</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>שרת</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>מה שהצומת הזה מציע לאחרים. ממסור ושמירת דואר פועלים כבר היום; אירוח בדרך, וכמו כל דבר כאן הוא נמצא באותה דרך שבה נמצאים עמיתים — דרך המרשם. לשמות יש עמוד משלהם.</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>אירוח</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>אתר או שירות המוגש מהצומת הזה, שנמצא לפי המפתח או השם שלו ומושג דרך שכבת־העל, כך שהמארח לעולם לא מפרסם איפה הוא פועל. חלק המפגש קיים: שירות נרשם בנקודות מפגש ששני הצדדים מחשבים מהמרשם. הגשת דפים ויישומים דרכו עדיין לא נבנתה.</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>ממסר</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>העברת תעבורת שכבת־העל של עמיתים אחרים, תשלום על הרישומים החודשיים של העמיתים שמשתמשים בצומת הזה, וחלוקת חלק מכל בלוק שהוא יוצר איתם. ממסר מכניס את הרישומים שהוא משלם עליהם לבלוקים שהוא יוצר בעצמו, וכך הם מאושרים בזמן שרוב הצמתים עדיין מסרבים להעביר רשומות — ולכן ממסר חייב לבצע סטייקינג.</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>סטייקינג</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>עמיתים רשומים כאן</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>הבלוק הבא שהוא יוצר</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>תשלום על רישום עמיתים שמבקשים דרך שכבת־העל</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>עמית בלי מטבעות יכול לבקש מהצומת הזה לפרסם את הרישום החודשי שלו. הצומת הזה משלם את העמלה, מכניס אותו לבלוק ומוסיף את העמית לאלה שאיתם הוא חולק תגמולים. כבוי כברירת מחדל, כי זה מבזבז את המטבעות של הצומת הזה.</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>עמיתים מעבר למספר הזה נדחים. עמיתים שכבר רשומים כאן עדיין יכולים לחדש.</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>מספר העמיתים המרבי שיישארו רשומים</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>הארנק הפתוח היחיד</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>איזה ארנק משלם את העמלות. כשכמה פתוחים ואף אחד לא צוין כאן, בקשות נדחות במקום שישולמו לפי ניחוש. סטייקינג יכול להתבצע בכל ארנק בצומת הזה.</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>תשלום עמלות מהארנק</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>חלק מכל בלוק שהצומת הזה יוצר מהמטבעות שלו, מחולק שווה בשווה בין העמיתים שהוא רושם. 0 לא חולק דבר.</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>חלק מכל בלוק שנוצר</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>תיבת דואר</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>שמירת דואר חתום עבור האנשים שהמרשם הופך את הצומת הזה לתיבת הדואר שלהם, עד שיאספו אותו. אילו ממסרים שומרים את הדואר של מי מחושב מהמרשם, כך שאיש אינו מקצה זאת. שולחים ובעלים מגיעים לצומת הזה דרך שלושה ממסרים, כך שהוא לעולם לא יודע איפה הם; המכתבים חתומים, כך שהוא לא יכול לקרוא אותם או לדעת מי כתב אותם. מכתבים נמחקים אחרי שבועיים, ורק אנשים רשומים מקבלים שירות.</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>נשמר</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>מפתחות דואר שנשמרים עבור שולחים</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>שמירת דואר עבור האנשים שהמרשם משייך לצומת הזה</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>פעיל כברירת מחדל בכל מקום שבו שכבת־העל פועלת: ממסר שמסרב משאיר את האנשים שנבחר עבורם עם תיבת דואר אחת פחות.</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>כשזה מלא, מכתבים חדשים נדחים עד שהישנים נאספים או נמחקים. אף אדם אחד לא יכול להשתמש ביותר מ־8 MiB ממנו.</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>שטח דיסק שמותר לו להשתמש</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>נשמר. ההגדרות האלה נקראות כשהצומת מתחיל, לכן יש להפעיל מחדש את הלקוח כדי שהשינוי ייכנס לתוקף.</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>אין ארנק פתוח</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>לא — ממסר שאינו מבצע סטייקינג דוחה בקשות רישום</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>כן, בעוד %1</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>לא משלם על רישומים</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>משלם, אך לא מבצע סטייקינג</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>פועל</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>בבנייה הזו אין ארנק</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>צריך ארנק</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>כבוי</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>צריך את שכבת־העל</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>כלום — לא שומר דואר</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>אין מכתבים</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>אות אחת</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>%1 אותיות</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>אדם אחד</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>%1 אנשים</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>כרגע כלום, מקום ל־%1 MiB</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%1 עבור %2, %3 מתוך %4 MiB</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>חולק %1%: %2 %4 בסך הכול, %3 %4 לכל עמית</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>הגדרות</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>מה שהלקוח הזה עושה ולקוח הארנק לא, והשפה. כל השאר — מתווך, פורטים, גיזום — הוא אותה שאלה בשניהם, ונשאל במקום אחד.</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>גילוי</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>שמירת אינדקס של המרשם</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>בלי זה הצומת הזה יכול לפרסם אבל לא יכול לראות מי עוד רשום.</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>אינדוקס שמות</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>נדרש כדי לחפש שמות, לשלוח אליהם דואר ולרשום שם משלך.</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>ניסיון להתחבר לעמיתים שנמצאו במרשם</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>מעביר כתובות מהמרשם למנהל הכתובות, לצד הזרעים והפצת הכתובות הרגילים. כיבוי שלו הופך את המרשם לרשימה שהצומת הזה קורא אבל לעולם לא פועל לפיה.</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>שכבת־על</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>הפעלת שכבת־העל</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>פעיל כברירת מחדל בלקוח הזה, כבוי בצומת ובלקוח הארנק. לחיצת היד שלו עדיין לא נבדקה בידי מי שלא כתב אותה.</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>שכבת־העל משתמשת ב־UDP בפורט משלה. רשת העמיתים נפרדת ונשארת ב־TCP.</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>האזנה בפורט</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>רדיו</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>העברת שכבת־העל גם ברדיו, דרך Reticulum</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>LoRa דרך RNode, רדיו מנות, קישורים טוריים: כל מה ש־Reticulum מוגדר להשתמש בו. צריך את שכבת־העל.</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>כניסה לשכבת־העל דרך שכני רדיו, כדי שהדואר יעבוד בלי אינטרנט</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>כשצומת BPS שנשמע ברדיו הוא ממסר רשום, הדואר ובקשות הרישום שלך עוברים דרכו. קישור רדיו איטי בהרבה מהאינטרנט.</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>הפעלת גשר Reticulum עם BPS Relay</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>מריץ את bps-rns-bridge.py לצד הצומת. יש להשאיר כבוי אם את/ה מריץ/ה את הגשר בעצמך.</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>פקודת Python</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Reticulum אינו חלק מ־BPS ויש לו רישיון משלו. יש להתקין אותו עם %1, ולהגדיר את הרדיו בתצורה של Reticulum עצמו (~/.reticulum/config). תחומי רדיו חובבים אינם מתירים תעבורה מוצפנת, לכן יש להשתמש בתחומים פטורים מרישיון כמו אלה של LoRa.</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>תצוגה</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>הצגת סכומים ב־</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>שפת המחשב</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>ייכנס לתוקף כש־BPS Relay יופעל מחדש. טקסטים שהצומת עצמו שולח, כמו הודעות שגיאה של פקודות, נשארים באנגלית.</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>שפה</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>רשת, מתווך והגדרות ליבה אחרות…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>נשמר. השפה תשתנה כש־BPS Relay יופעל מחדש.</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>נשמר. ההגדרות האלה נקראות כשהצומת מתחיל, לכן יש להפעיל מחדש את הלקוח כדי שהשינוי ייכנס לתוקף.</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>הצומת עדיין מתחיל; הגדרות הליבה עדיין אינן זמינות.</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2821,7 +5055,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>&amp;אימות הודעה</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
         <translation>יש להזין את כתובת הנמען, ההודעה (נא לוודא שמעתיקים במדויק את תווי קפיצות השורה, רווחים, טאבים וכדומה). והחותימה מתחת אשר מאמתת את ההודעה. יש להזהר שלא לקרוא לתוך החתימה יותר מאשר בהודעה החתומה עצמה, כדי להמנע מניצול לרעה של המתווך שבדרך. יש לשים לב שהדגר רק מוכיח שהצד החותם מקבל עם הכתובת. הדבר אינו מוכיח משלוח כלשהו של עיסקה!</translation>
     </message>
     <message>
@@ -2849,7 +5083,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>איפוס כל שדות אימות ההודעה</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
         <translation>יש ללחוץ על „חתימת ההודעה“ כדי לייצר חתימה</translation>
     </message>
     <message>
@@ -2906,6 +5140,209 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
 </context>
 <context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>טופס</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;סטייקינג</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>היתרה הזמינה לשימוש הנוכחית שלך</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>נכסים בסטייקינג בבעלות הארנק הזה</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>נכסים בסטייקינג מהאצלות</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>לא בשל:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>היתרה הלא בשלה שלך</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>נכסים בסטייקינג</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>סטייק:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>סטייקינג</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>גובה בלוק:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>תגמול בלוק:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/בלוק</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>משקל הרשת:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>תשואה שנתית צפויה:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>רשומות סטייק</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>ה&amp;אצלה</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>סוג האצלה:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>האצלה ידנית</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>האצלה אוטומטית</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>כתובות סטייקינג</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>הסרת הכול</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>הדבקת כתובת מהלוח</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>&amp;הוספה</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>ההאצלות &amp;שלי</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>נכסים מואצלים</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>היתרה המואצלת הנוכחית שלך</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>ההאצלות שלי</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>האצלות ש&amp;התקבלו</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>&amp;יצירת כתובת סטייקינג חדשה</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> עם התווית:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>תווית רשות לשיוך לכתובת הקבלה החדשה (לשימושך לזיהוי חשבונית). היא מצורפת גם לבקשת התשלום.</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>האצלות ColdStake</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>מטבעות ששולמו לכתובות ההאצלה של הארנק הזה נכנסים לסטייקינג במפתחות האלה ברגע שהם מגיעים, והעודף מההוצאות שלך נשאר מואצל. מפתח סטייקינג יכול רק לייצר coinstakes שמשלמים בחזרה אליך, כך שהארנק שמחזיק בו אינו צריך מילת צופן.</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>יש לציין יותר מאחת כדי לפזר את המטבעות על פני כמה ארנקי סטייקינג, כך שאם אחד מהם לא מקוון לא ייעצר כל הסטייקינג.
+
+כל האצלה חדשה הולכת לכתובת שצוינה הכי מעט עד כה, בספירת כתובות ההאצלה שחולקו והמטבעות המואצלים שעדיין לא בוזבזו. היא סופרת האצלות, לא סכומים, כך שכתובת עם האצלה גדולה אחת עדיין יכולה להיבחר לפני כתובת עם כמה קטנות.</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>מטבעות שכבר הואצלו לכתובת שהוסרה אינם מועברים והיא ממשיכה לבצע בהם סטייקינג. רק האצלות חדשות מפסיקות לציין אותה.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>לא ניתן לפתוח את הארנק.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>לא ניתן ליצור כתובת %1 חדשה</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>סטייקינג קר מושבת בצומת הזה (‎-coldstaking=0), כך ששום דבר לא מואצל.</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>כתובת סטייקינג כאן שייכת לארנק הזה, שהוא מוצפן, כך שהיא מבצעת סטייקינג רק כשהארנק פתוח. לסטייקינג בלי מילת צופן, יש להשתמש בכתובת מארנק סטייקינג נפרד ולא מוצפן.</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>הפסקת ההאצלה ל־%1. מטבעות שכבר הואצלו אליה אינם מועברים והיא ממשיכה לבצע בהם סטייקינג.</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>לא ניתן לשמור את כתובות הסטייקינג. האצלה מתחייבת לגיבוב מפתח, כך שכל אחת חייבת להיות כתובת legacy.</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>כתובת הסטייקינג הזו כבר ברשימה.</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>הסרת כל כתובות הסטייקינג</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>להפסיק את ההאצלה לכל %1 כתובות הסטייקינג?
+
+מטבעות שכבר הואצלו ממשיכים להיות בסטייקינג אצלן ואינם מועברים. אבל הפקדות חדשות ועודף ילכו לכתובות רגילות, שאינן מבצעות סטייקינג, ותזדקק/י לכתובות האלה שוב כדי להפעיל זאת מחדש.</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2916,7 +5353,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>פתוח עבור בלוק %n  נוסף </numerusform><numerusform>פתוח עבור %n בלוקים נוספים</numerusform><numerusform>פתוח עבור %n בלוקים נוספים</numerusform><numerusform>פתוח עבור  %n בלוקים נוספים</numerusform></translation>
+        <translation>
+            <numerusform>פתוח עבור בלוק %n  נוסף </numerusform>
+            <numerusform>פתוח עבור %n בלוקים נוספים</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2996,7 +5436,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>הבשלה בעוד בלוק %n</numerusform><numerusform>הבשלה בעוד %n בלוקים</numerusform><numerusform>הבשלה בעוד %n בלוקים</numerusform><numerusform>הבשלה בעוד %n בלוקים</numerusform></translation>
+        <translation>
+            <numerusform>הבשלה בעוד בלוק %n</numerusform>
+            <numerusform>הבשלה בעוד %n בלוקים</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -3055,8 +5498,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>סוחר</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>מטבעות מופקים חייבים להבשיל במשך %1 בלוקים לפני שניתן לבזבזם. כשהפקתם בלוק זה, הבלוק שודר לרשת לצורך הוספה לבלוקצ'יין. אם הבלוק לא יתווסף לבלוקצ'יין, מצב הבלוק ישונה ל"לא התקבל" ולא יהיה ניתן לבזבזו. מצב זה עלול לקרות כאשר צומת אחרת מפיקה בלוק בהפרש של כמה שניות משלכם.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>מטבעות מופקים חייבים להבשיל במשך %1 בלוקים לפני שניתן לבזבזם. כשהפקתם בלוק זה, הבלוק שודר לרשת לצורך הוספה לבלוקצ&apos;יין. אם הבלוק לא יתווסף לבלוקצ&apos;יין, מצב הבלוק ישונה ל&quot;לא התקבל&quot; ולא יהיה ניתן לבזבזו. מצב זה עלול לקרות כאשר צומת אחרת מפיקה בלוק בהפרש של כמה שניות משלכם.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -3110,7 +5553,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>פתוחה למשך בלוק אחד נוסף</numerusform><numerusform>פתוחה למשך %n בלוקים נוספים</numerusform><numerusform>פתוחה למשך %n בלוקים נוספים</numerusform><numerusform>פתוחה למשך %n בלוקים נוספים</numerusform></translation>
+        <translation>
+            <numerusform>פתוחה למשך בלוק אחד נוסף</numerusform>
+            <numerusform>פתוחה למשך %n בלוקים נוספים</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3194,11 +5640,35 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message>
         <source>User-defined intent/purpose of the transaction.</source>
-        <translation>ייעוד/תכלית מגדר ע"י המשתמש של העסקה.</translation>
+        <translation>ייעוד/תכלית מגדר ע&quot;י המשתמש של העסקה.</translation>
     </message>
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>סכום ירד או התווסף למאזן</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>סטייק קר</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>סטייקינג בשם</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>האצלת סטייק</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>האצלה</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>האצלת סטייק בוזבזה על ידי</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>סכום מואצל.</translation>
     </message>
 </context>
 <context>
@@ -3359,6 +5829,22 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>to</source>
         <translation>עד</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>סטייקים קרים</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>סטייקים חמים</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>מואצל שלא בוזבז</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>האצלות</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3444,7 +5930,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>אישור הקפצת עמלה</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
+        <source>Can&apos;t draft transaction.</source>
         <translation>לא ניתן לשמור את העסקה כטיוטה.</translation>
     </message>
     <message>
@@ -3452,7 +5938,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>PSBT הועתקה</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>אי אפשר לחתום על ההעברה.</translation>
     </message>
     <message>
@@ -3462,6 +5948,21 @@ Go to File &gt; Open Wallet to load a wallet.
     <message>
         <source>default wallet</source>
         <translation>ארנק בררת מחדל</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ הצומת הזה</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● חי</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>לקוח הארנק, שפועל בתהליך הזה מול הצומת הזה. זו אותה תוכנה כמו bitcoin-pos-qt, לא עותק שלה.</translation>
     </message>
 </context>
 <context>
@@ -3562,11 +6063,11 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>שגיאה בנסיון לקרוא את %s! כל המפתחות נקראו נכונה, אך נתוני העסקה או הכתובות יתכן שחסרו או שגויים.</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation>נא בדקו שהתאריך והשעה במחשב שלכם נכונים! אם השעון שלכם לא מסונכרן, %s לא יעבוד כהלכה.</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
         <translation>מאגר נתוני הבלוקים מכיל בלוק עם תאריך עתידי. הדבר יכול להיגרם מתאריך ושעה שגויים במחשב שלכם. בצעו בנייה מחדש של מאגר נתוני הבלוקים רק אם אתם בטוחים שהתאריך והשעה במחשבכם נכונים</translation>
     </message>
     <message>
@@ -3583,7 +6084,7 @@ Go to File &gt; Open Wallet to load a wallet.
     </message>
     <message>
         <source>Unable to rewind the database to a pre-fork state. You will need to redownload the blockchain</source>
-        <translation>הרצה-לאחור של מאגר הנתונים למצב טרום-פיצולי לא הצליחה. תצטרכו להוריד מחדש את הבלוקצ'יין.</translation>
+        <translation>הרצה-לאחור של מאגר הנתונים למצב טרום-פיצולי לא הצליחה. תצטרכו להוריד מחדש את הבלוקצ&apos;יין.</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
@@ -3598,8 +6099,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>‎-maxmempool חייב להיות לפחות %d מ״ב</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>לא מצליח לפענח -%s כתובת: '%s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>לא מצליח לפענח -%s כתובת: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3682,36 +6183,36 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>איתחול של תהליך בדיקות השפיות נכשל. %s  בתהליך סגירה.</translation>
     </message>
     <message>
-        <source>Invalid P2P permission: '%s'</source>
-        <translation>הרשאת P2P שגויה: '%s'</translation>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>הרשאת P2P שגויה: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>סכום שגוי עבור ‎-%s=&lt;amount&gt;:‏ '%s'</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>סכום שגוי עבור ‎-%s=&lt;amount&gt;:‏ &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>סכום שגוי של -discardfee=&lt;amount&gt;‏: '%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>סכום שגוי של -discardfee=&lt;amount&gt;‏: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>סכום שגוי עבור ‎-fallbackfee=&lt;amount&gt;:‏ '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>סכום שגוי עבור ‎-fallbackfee=&lt;amount&gt;:‏ &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>התיקיה שהוגדרה "%s" לא קיימת.</translation>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>התיקיה שהוגדרה &quot;%s&quot; לא קיימת.</translation>
     </message>
     <message>
-        <source>Unknown address type '%s'</source>
-        <translation>כתובת לא ידועה מסוג "%s"</translation>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>כתובת לא ידועה מסוג &quot;%s&quot;</translation>
     </message>
     <message>
-        <source>Unknown change type '%s'</source>
-        <translation>סוג שינוי לא ידוע: "%s"</translation>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>סוג שינוי לא ידוע: &quot;%s&quot;</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
-        <translation>שדרוג מאגר נתוני txindex </translation>
+        <translation>שדרוג מאגר נתוני txindex&#xa0;</translation>
     </message>
     <message>
         <source>Loading P2P addresses...</source>
@@ -3763,7 +6264,7 @@ Go to File &gt; Open Wallet to load a wallet.
     </message>
     <message>
         <source>Upgrading UTXO database</source>
-        <translation>שדרוג מאגר נתוני UTXO </translation>
+        <translation>שדרוג מאגר נתוני UTXO&#xa0;</translation>
     </message>
     <message>
         <source>User Agent comment (%s) contains unsafe characters.</source>
@@ -3802,12 +6303,12 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>זוהי עמלת העיסקה המרבית שתשלם (בנוסף לעמלה הרגילה) כדי לתעדף מניעת תשלום חלקי על פני בחירה רגילה של מטבע. </translation>
     </message>
     <message>
-        <source>Transaction needs a change address, but we can't generate it. Please call keypoolrefill first.</source>
-        <translation>עיסקה מחייבת שינוי כתובת, אך לא ניתן לייצרה. נא לקרוא תחילה ל  keypoolrefill </translation>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
+        <translation>עיסקה מחייבת שינוי כתובת, אך לא ניתן לייצרה. נא לקרוא תחילה ל  keypoolrefill&#xa0;</translation>
     </message>
     <message>
         <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
-        <translation>יש צורך בבניה מחדש של מסד הנתונים ע"י שימוש ב -reindex כדי לחזור חזרה לצומת שאינה גזומה.  הפעולה תוריד מחדש את כל שרשרת הבלוקים.</translation>
+        <translation>יש צורך בבניה מחדש של מסד הנתונים ע&quot;י שימוש ב -reindex כדי לחזור חזרה לצומת שאינה גזומה.  הפעולה תוריד מחדש את כל שרשרת הבלוקים.</translation>
     </message>
     <message>
         <source>A fatal internal error occurred, see debug.log for details</source>
@@ -3842,24 +6343,24 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>שיעור העמלה (%s) נמוך משיעור העמלה המינימלי המוגדר  (%s)</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>אי תקינות כתובת  -onion או hostname: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>אי תקינות כתובת  -onion או hostname: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>אי תקינות כתובת -proxy או hostname: '%s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>אי תקינות כתובת -proxy או hostname: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>סכום שגוי של ‎-paytxfee=&lt;amount&gt;‏‎:‏‏ '%s' (נדרשת %s לפחות)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>סכום שגוי של ‎-paytxfee=&lt;amount&gt;‏‎:‏‏ &apos;%s&apos; (נדרשת %s לפחות)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>מסכת הרשת שצוינה עם ‎-whitelist שגויה: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>מסכת הרשת שצוינה עם ‎-whitelist שגויה: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>יש לציין פתחה עם ‎-whitebind:‏ '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>יש לציין פתחה עם ‎-whitebind:‏ &apos;%s&apos;</translation>
     </message>
     <message>
         <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
@@ -3882,16 +6383,16 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>החתימה על ההעברה נכשלה</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>תיקיית הארנק שצויינה  -walletdir "%s" אינה קיימת</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>תיקיית הארנק שצויינה  -walletdir &quot;%s&quot; אינה קיימת</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>תיקיית הארנק שצויינה -walletdir "%s" הנה נתיב יחסי</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>תיקיית הארנק שצויינה -walletdir &quot;%s&quot; הנה נתיב יחסי</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>תיקיית הארנק שצויינה -walletdir‏ "%s" אינה תיקיה</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>תיקיית הארנק שצויינה -walletdir‏ &quot;%s&quot; אינה תיקיה</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3920,8 +6421,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>לא ניתן להתאגד עם הפתחה %s במחשב זה (פעולת האיגוד החזירה את השגיאה %s)</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>לא ניתן ליצור את קובץ PID‏ '%s':‏ %s</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>לא ניתן ליצור את קובץ PID‏ &apos;%s&apos;:‏ %s</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -3977,15 +6478,15 @@ Go to File &gt; Open Wallet to load a wallet.
     </message>
     <message>
         <source>Transaction has too long of a mempool chain</source>
-        <translation>לעסקה יש שרשרת ארוכה מדי של mempool </translation>
+        <translation>לעסקה יש שרשרת ארוכה מדי של mempool&#xa0;</translation>
     </message>
     <message>
         <source>Transaction must have at least one recipient</source>
         <translation>להעברה חייב להיות לפחות נמען אחד</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>רשת לא ידועה צוינה דרך ‎-onlynet:‏ '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>רשת לא ידועה צוינה דרך ‎-onlynet:‏ &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -3993,14 +6494,14 @@ Go to File &gt; Open Wallet to load a wallet.
     </message>
     <message>
         <source>Fee estimation failed. Fallbackfee is disabled. Wait a few blocks or enable -fallbackfee.</source>
-        <translation>אמדן גובה עמלה נכשל. Fallbackfee  מנוטרל. יש להמתין מספר בלוקים או לשפעל את  -fallbackfee</translation>
+        <translation>אמדן גובה עמלה נכשל. Fallbackfee&#xa0; מנוטרל. יש להמתין מספר בלוקים או לשפעל את  -fallbackfee</translation>
     </message>
     <message>
         <source>Warning: Private keys detected in wallet {%s} with disabled private keys</source>
         <translation>אזהרה: זוהו מפתחות פרטיים בארנק {%s} עם מפתחות פרטיים מושבתים</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
         <translation>לא ניתן לכתוב אל תיקיית הנתונים ‚%s’, נא לבדוק את ההרשאות.</translation>
     </message>
     <message>
@@ -4022,6 +6523,66 @@ Go to File &gt; Open Wallet to load a wallet.
     <message>
         <source>Done loading</source>
         <translation>טעינה הושלמה</translation>
+    </message>
+    <message>
+        <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>
+        <translation>לא ניתן לנעול את תיקיית הנתונים %s. כנראה ש־%s כבר פועל.</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>סכום לא תקין עבור ‎-maxtxfee=&lt;amount&gt;: &apos;%s&apos; (חייב להיות לפחות עמלת ההעברה המינימלית של %s כדי למנוע עסקאות תקועות)</translation>
+    </message>
+    <message>
+        <source>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</source>
+        <translation>סופקה יותר מכתובת קישור onion אחת. משתמש ב־%s עבור שירות Tor onion שנוצר אוטומטית.</translation>
+    </message>
+    <message>
+        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
+        <translation>אם %s מועיל לך, נשמח שתתרום/י. בקרו ב־%s למידע נוסף על התוכנה.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: הכנת המשפט לקבלת גרסת הסכימה של ארנק sqlite נכשלה: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: הכנת המשפט לקבלת מזהה היישום נכשלה: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unknown sqlite wallet schema version %d. Only version %d is supported</source>
+        <translation>SQLiteDatabase: גרסת סכימה לא ידועה של ארנק sqlite‏ %d. רק גרסה %d נתמכת</translation>
+    </message>
+    <message>
+        <source>Failed to verify database</source>
+        <translation>אימות מסד הנתונים נכשל</translation>
+    </message>
+    <message>
+        <source>Ignoring duplicate -wallet %s.</source>
+        <translation>מתעלם מ־‎-wallet %s כפול.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
+        <translation>SQLiteDatabase: הפעלת המשפט לאימות מסד הנתונים נכשלה: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: קבלת גרסת הסכימה של ארנק sqlite נכשלה: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: קבלת מזהה היישום נכשלה: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare statement to verify database: %s</source>
+        <translation>SQLiteDatabase: הכנת המשפט לאימות מסד הנתונים נכשלה: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to read database verification error: %s</source>
+        <translation>SQLiteDatabase: קריאת שגיאת אימות מסד הנתונים נכשלה: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unexpected application id. Expected %u, got %u</source>
+        <translation>SQLiteDatabase: מזהה יישום לא צפוי. צפוי %u, התקבל %u</translation>
     </message>
 </context>
 </TS>

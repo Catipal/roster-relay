@@ -1,4 +1,6 @@
-<TS language="zh_TW" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="zh_TW">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -70,8 +72,8 @@
         <translation>這些是你要發送過去的 比特幣地址。在發送幣之前，務必要檢查金額和接收地址是否正確。</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.
-Signing is only possible with addresses of the type 'legacy'.</source>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <translation>這些是您的比特幣接收地址。使用“接收”標籤中的“產生新的接收地址”按鈕產生新的地址。只能使用“傳統”類型的地址進行簽名。</translation>
     </message>
     <message>
@@ -240,6 +242,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>警告: 大寫字母鎖定作用中！</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>用於在作業系統帳戶遭入侵時停用簡單的轉帳功能。並不能提供真正的安全保護。</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>僅用於質押。</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -250,6 +260,109 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Banned Until</source>
         <translation>禁止期限</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>批次付款</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>每行一筆付款，格式為「位址, 金額」。欄位以逗號、分號或定位字元分隔，第三個欄位將作為標籤。以 # 開頭的行會被忽略。</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>貼上(&amp;P)</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>從檔案載入(&amp;F)...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>清除(&amp;C)</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>行</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>位址</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>金額</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>狀態</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>載入付款清單</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>文字與 CSV 檔案 (*.txt *.csv);;所有檔案 (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>無法讀取 %1。</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>應為「位址, 金額」</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>沒有位址</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>不是有效位址</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>沒有金額</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>無法讀取金額「%1」</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>金額必須大於零</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>正常</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>每行貼上一筆付款，格式為「位址, 金額」。第三個欄位作為標籤使用。以 # 開頭的行會被忽略。</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>%2 行中有 %1 行無法使用。請修正或刪除它們後繼續。</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>%1 個收款人超出一筆交易所能容納的數量（此處上限為 %2）。請拆分清單。</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>%1 個收款人，共計 %2，未含手續費。</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>加入付款表單</translation>
     </message>
 </context>
 <context>
@@ -436,7 +549,9 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n 個運作中的 Bitcoin 網路連線</numerusform></translation>
+        <translation>
+            <numerusform>%n 個運作中的 Bitcoin 網路連線</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -448,7 +563,9 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>已經處理了 %n 個區塊的交易紀錄。</numerusform></translation>
+        <translation>
+            <numerusform>已經處理了 %n 個區塊的交易紀錄。</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -662,7 +779,336 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Original message:</source>
         <translation>原始訊息：</translation>
     </message>
-    </context>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>發生嚴重錯誤。%1 無法再安全地繼續執行，即將結束。</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>質押(&amp;S)</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>顯示錢包的質押</translation>
+    </message>
+    <message>
+        <source>&amp;About %1</source>
+        <translation>關於 %1(&amp;A)</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>錢包已&lt;b&gt;加密&lt;/b&gt;，目前&lt;b&gt;僅為質押解鎖&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>解密錢包(&amp;D)...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>移除密碼，使私密金鑰以未加密形式儲存</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>未在質押</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n 秒</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n 分鐘</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n 小時</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n 天</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>正在質押。&lt;br&gt;你的權重為 %1&lt;br&gt;網路權重為 %2&lt;br&gt;預計獲得獎勵的時間：%3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>未在質押，因為錢包處於離線狀態</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>未在質押，因為錢包正在同步</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>未在質押，因為你沒有成熟的幣</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>未在質押，因為錢包已鎖定</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>未知錯誤</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>不到一分鐘</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>一分鐘</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 分鐘</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>一小時</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 小時</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 天</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>一個月</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 個月</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>大約一年</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>超過一年</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>未知</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>發生嚴重錯誤。%1 無法再安全地繼續執行，即將結束。</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>原始訊息：</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>探索</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>覆蓋網路</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>名稱</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>對等節點與主控台</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>節點</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>錢包</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>郵件</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>郵件 (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>伺服器</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>設定</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>登記狀態未知</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>覆蓋網路狀態未知</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>正在連線…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>以目前的網路權重，質押每年約可獲得 %1%：每年 %2 個區塊，每個 %3 %4，質押總額為 %5 %4。</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>這是在扣除本節點與其對等節點分享的每個區塊 %1% 份額之後的數值。</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>每年 %1%</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>正在關閉…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>%1 個對等節點：%2 個連入，%3 個連出。</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>點擊以暫停網路活動。</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>1 個對等節點</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>%1 個對等節點</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>網路活動已暫停。</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>點擊以恢復網路活動。</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>網路已暫停</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>已處理 %1 個歷史區塊。</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>區塊 %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>已是最新。</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>正在與網路同步…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>正在處理磁碟上的區塊…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>正在重新索引磁碟上的區塊…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>正在連線至對等節點…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>落後 %1</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>正在追趕…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>最後收到的區塊產生於 %1 前。</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>錢包 &lt;b&gt;%1&lt;/b&gt; 已加密，僅為質押解鎖</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>錢包 &lt;b&gt;%1&lt;/b&gt; 已加密並已解鎖</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>錢包 &lt;b&gt;%1&lt;/b&gt; 已加密並已鎖定</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>質押中</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>質押中，%1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; 正在質押。&lt;br&gt;其權重為 %2&lt;br&gt;網路權重為 %3&lt;br&gt;預計獲得獎勵的時間：%4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>未在質押</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>未在質押（支付 %1）</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>未在質押：對等節點太少</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>未在質押：區塊鏈仍在追趕</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>未在質押：&lt;b&gt;%1&lt;/b&gt; 沒有成熟的幣</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>未在質押：&lt;b&gt;%1&lt;/b&gt; 已鎖定</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>未在質押</translation>
+    </message>
+</context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -813,6 +1259,57 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>(change)</source>
         <translation>(找零)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>已委託給 %1 進行冷質押</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>寫信</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>名稱、通訊錄中的暱稱或名冊金鑰</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>收件人</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>主旨</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>傳送</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>寫給誰？一個名稱、暱稱或名冊金鑰。</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>這封信有 %1 KB；一封信最多 %2 KB。</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>信件正在封裝，並放入收件人的各個信箱，每次都經過三個中繼。這需要幾秒鐘…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>已傳送</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>信件已放入收件人 %2 個信箱中的 %1 個。只要有一個就能送達。</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>未傳送：%1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -823,6 +1320,10 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Create wallet warning</source>
         <translation>產生錢包警告:</translation>
+    </message>
+    <message>
+        <source>Creating Wallet &lt;b&gt;%1&lt;/b&gt;...</source>
+        <translation>正在建立錢包 &lt;b&gt;%1&lt;/b&gt;...</translation>
     </message>
 </context>
 <context>
@@ -871,7 +1372,194 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Create</source>
         <translation>產生</translation>
     </message>
-    </context>
+    <message>
+        <source>Wallet</source>
+        <translation>錢包</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>進階選項</translation>
+    </message>
+    <message>
+        <source>Compiled without sqlite support (required for descriptor wallets)</source>
+        <translation>編譯時未包含 sqlite 支援（描述器錢包需要）</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>探索</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>對等節點在區塊鏈上公布自己，而不是在伺服器上，所以這份清單對每個人都相同，沒有人能夠編輯它。</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>名冊</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>你的登記</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>已登記的對等節點</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>你是</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>複製</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>正在發布你的登記…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>身分</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>建立一個…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>如果本節點的金鑰將來需要更換，身分可以保留本節點的歷史，也就是它已登記了多久。</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>尋找對等節點或位址</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>金鑰已複製</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>位址已複製</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>正在啟動…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>建立身分</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>手續費支付來源</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>身分是位於本節點金鑰背後的第二把金鑰。如果本節點的金鑰遺失或遭竊，可以在同一身分下換上新金鑰，節點會保留其已登記的時長，而不是從頭開始。
+
+你會看到一次復原金鑰。請把它寫下來：這是阻止盜取身分的人轉移它的唯一方法。隨後一筆小交易會發布該身分，你下一次續期登記時會將本節點的金鑰綁定到它。</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>你的中繼已在交易 %1 中發布了你的登記。交易確認後生效。</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>已在交易 %1 中發布。交易確認後生效。</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>未知</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>名冊索引已關閉</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>未登記</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>%1 後到期</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>正在續期你的登記…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>可在最後 3 天內續期</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>你的登記將在 %1 後到期。可在到期前三天內續期。</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>已登記，%1 後到期</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>無</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>本節點沒有公告金鑰：%1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>已停用</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>名冊索引未執行，因此本節點無法看到誰已登記。請使用 -rosterindex 重新啟動以開啟它。</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>正在追趕 (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>%1 天前</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>本節點最新的區塊已是 %1 天前的，因此之後被撤銷的對等節點可能仍顯示在這裡。名冊仍用於連線對等節點，但在區塊鏈追上之前，覆蓋網路不再優先選擇登記時間長的中繼。</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>已是最新</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>名冊索引未執行</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>你的復原金鑰</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>請把它寫下來，保存在遠離這台電腦的安全地方。它只在此時顯示，不會儲存在任何地方。它不能用來花費任何幣；它只能阻止並非由你發起的身分轉移。</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>我已寫下</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>你的身分已在交易 %1 中發布。你下一次續期登記時會將本節點的金鑰綁定到它。</translation>
+    </message>
+</context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -907,12 +1595,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>編輯發送地址</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
         <translation>輸入的地址 %1 並不是有效的比特幣地址。</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>輸入的地址 %1 已經在地址簿中了，標籤為 "%2"。</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>輸入的地址 %1 已經在地址簿中了，標籤為 &quot;%2&quot;。</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -921,6 +1609,10 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>New key generation failed.</source>
         <translation>產生新的密鑰失敗了。</translation>
+    </message>
+    <message>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>位址「%1」已作為標籤為「%2」的收款位址存在，因此無法新增為付款位址。</translation>
     </message>
 </context>
 <context>
@@ -1001,7 +1693,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <translation type="vanished">Bitcoin</translation>
     </message>
     <message>
         <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
@@ -1020,7 +1712,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>錢包檔也會存放在這個目錄中。</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
         <translation>錯誤: 無法新增指定的資料目錄: %1</translation>
     </message>
     <message>
@@ -1029,15 +1721,184 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>可用空間尚存 %n GB</numerusform></translation>
+        <translation>
+            <numerusform>可用空間尚存 %n GB</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(需要 %n GB)</numerusform></translation>
+        <translation>
+            <numerusform>(需要 %n GB)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>（完整鏈需要％n GB）</numerusform></translation>
+        <translation>
+            <numerusform>（完整鏈需要％n GB）</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+    <message>
+        <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
+        <translation>驗證後捨棄區塊，只保留最近的 %1 GB（修剪）</translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>郵件</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>你的位址</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>複製</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>你的名冊金鑰。任何已登記的人都可以用它寫信給你。</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>郵件透過覆蓋網路傳遞。請在設定中開啟覆蓋網路並重新啟動，以收發郵件。</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>寫信</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>回覆</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>立即收取</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>立即從你的信箱收取新信件。這也會每隔幾分鐘自動進行。</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>刪除</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>收件匣</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>已傳送</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>寄件人</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>主旨</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>日期</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>信件使用收件人每週更換的郵件金鑰，以 secp256k1 和 ML-KEM-768 聯合封裝；你的金鑰和簽章隨封裝一起傳遞，每次前往信箱都經過三個中繼。舊的郵件金鑰會被刪除，所以今天收取的信件以後無法再用這台電腦上的金鑰開啟。</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>收件人</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>目前還沒有登記的中繼，所以你沒有信箱，也沒有人能寫信給你。</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>%1 個中繼保存你的郵件；名冊中登記更多中繼後將增至 %2 個。</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>根據你的金鑰選出的 %1 個中繼會保存你的郵件，直到你收取。</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>郵件金鑰 #%1，每週更新。</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>上次收取於 %1。</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>尚未收取。</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>1 封新信件</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>%1 封新信件</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>，來自 %2 個信箱中的 %1 個。</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>（無主旨）</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>已放入收件人的 %1 個信箱</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>寄件人：%1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>收件人：%1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>傳送於 %1，已放入收件人的 %2 個信箱</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>寫於 %1，收取於 %2</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>選擇一封信件以閱讀。</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>正在收取…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>正在連線至你的信箱，每個都經過三個中繼…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>刪除信件</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>要從這台電腦上刪除這封信嗎？它在各信箱中的副本已在收取時刪除，因此無法再次取得。</translation>
     </message>
 </context>
 <context>
@@ -1047,7 +1908,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>表單</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>最近的交易可能還看不到，因此錢包餘額可能不正確。在錢包軟體完成跟 bitcoin 網路的同步後，這裡的資訊就會正確。詳情請見下面。</translation>
     </message>
     <message>
@@ -1093,6 +1954,413 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>不明。正在同步前導資料中(%1, %2%)...</translation>
+    </message>
+    <message>
+        <source>%1 is currently syncing.  It will download headers and blocks from peers and validate them until reaching the tip of the block chain.</source>
+        <translation>%1 正在同步。它會從對等節點下載區塊標頭和區塊並加以驗證，直到抵達區塊鏈的最新區塊。</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>名稱</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>名稱把別人指向你的名冊金鑰，這樣他們就能透過名稱而不是金鑰寫信給你和付款給你。取得一個空閒名稱和續期都只需網路手續費；名稱需要手動續期。別人持有的名稱，如果對方掛牌出售，可以按其要價購買。你名下的子名稱是免費的，暱稱也是：暱稱是你自己給別人取的標籤，只保存在這台電腦上。</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>你的名稱</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>付款來源</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>名稱</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>狀態</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>到期</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>子名稱</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>取得名稱…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>續期…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>新增子名稱…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>出售…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>轉讓…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>接受依名稱付款…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>查詢</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>名稱、標籤.名稱或暱稱</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>複製金鑰</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>付款…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>通訊錄</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>暱稱</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>金鑰</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>新增聯絡人…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>移除</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>金鑰已複製</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>處理中…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>下架</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>請先將其下架。</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>新的收款金鑰…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>依名稱付款已開啟</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>名稱需要名稱索引。請在設定中開啟「索引名稱」並重新啟動。</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>名稱尚未在此網路上啟用。何時在主網啟用，以及最初的名稱如何分配，仍有待決定。在此期間你可以查詢名稱並維護通訊錄。</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1 是 %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>來自你的通訊錄</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>已註冊的名稱，持有至區塊 %1</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>已穩定</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>%1 前變更，尚未穩定</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>接受依名稱付款</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>出售中：持有人要價 %1。使用「取得名稱」購買。</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>已提交 %1。名稱將在 %2 個區塊後（約 %3）自動認領——在此之前請保持 BPS Relay 執行且錢包處於解鎖狀態。</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>正在購買 %1：已向持有人支付 %2。交易確認後即歸你所有。</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>%1 將以 %2 掛牌出售。從下一個區塊起任何人都可以購買，無需本節點在線；價款將支付到此錢包。</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>%1 正在下架。從現在起沒有人能購買它。</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>已將 %1 續期至區塊 %2，只花了網路手續費。</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>%1 正在轉讓給 %2。交易確認後即歸對方所有。</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>%1 已設定；交易確認後即可解析。</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>正在開啟依名稱付款。交易確認後約 %1，別人就可以向你的任何名稱付款；每筆付款在錢包中顯示為「依名稱付款」。</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>已向 %2 支付 %1，使用的是僅用於這筆付款的位址。</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>付款</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>%1 後</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>已於 %1 前到期</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>已過期——請在一個月內續期</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>已被持有</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>出售中——一筆購買正在確認</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>以 %1 出售中</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>以 %1 出售中——暫不可購買</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>未註冊</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>註冊中</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>點擊以複製</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>取得名稱</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>1 到 32 個字母、數字或連字號</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 年</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>2 年</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>期限</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>註冊分兩步：先提交一個隱藏名稱的承諾，約 20 分鐘後再認領，認領由 BPS Relay 自動傳送。在此期間沒有人能搶走這個名稱。每一步只需網路手續費。</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>購買是一筆交易：它向持有人付款並把名稱轉給你，要麼全部完成，要麼完全不發生。</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>註冊</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>名稱由 1 到 32 個一般字母 a-z、數字或位於中間的連字號組成。</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>%1，期限 %2，只需網路手續費。正在檢查是否可用…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>一年</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>兩年</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>下架 %1</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>下架 %1？從那時起沒有人能購買它，確認後你就可以轉讓它或重新掛牌。</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>出售 %1</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>你對 %1 的要價，以 BPS 計。之後任何人都可以立即購買，即使 BPS Relay 已關閉：他們會在把名稱轉給他們的同一筆交易中向你支付這筆錢。出售期間你無法轉讓它。</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>「%1」不是有效的 BPS 金額。</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>以 %2 掛牌出售 %1？將傳送兩筆小交易：一筆預留買家要花費的幣，另一筆發布出售資訊。</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>續期 %1</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>從目前到期時間起延長 %1。只需網路手續費。名稱最多可提前續期兩年。</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>轉讓 %1</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>把 %1 轉給（名冊金鑰、暱稱或名稱）：</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>把 %1 轉給 %2？只有新持有人才能把它轉回來。</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>%1 下的子名稱</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>.%1 前面的部分，例如 alice.%1 中的 alice：</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>%1.%2 指向誰（名冊金鑰、暱稱或名稱），或輸入「remove」：</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>正在查詢…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>新增聯絡人</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>你對他們的稱呼（只有你能看到）：</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>對方的名冊金鑰，或一個名稱，用來記住目前持有它的人：</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>依名稱付款已開啟。要把它換到此錢包的一把新金鑰嗎？已經付到目前金鑰的款項仍會到帳。更換後，付款人會等待約 %1 再付款。</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>讓別人依名稱付款給你：任何指向本節點金鑰的名稱或子名稱、他們為你保存的暱稱，或金鑰本身都可以。每筆付款都會轉到一個只有此錢包能花費的獨立位址，旁觀者無法看出你收到了付款，也無法看出兩筆付款是給同一個人的。需要網路手續費。確認後約 %1，別人就可以付款給你。</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>依名稱付款</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>支付 %1</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>%1 尚未開啟依名稱付款。請對方在「名稱」分頁中開啟，或者向對方索取一個位址。</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>%1 在 %2 前易主。</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>對方在 %1 前設定了收款金鑰。</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>以 BPS 計</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>金額</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>這筆付款會轉到一個只為它使用、只有 %1 能花費的位址；其他人無法看出付給了誰。付款無法撤回。網路手續費另計。</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>如果那不是對方本人所為，這筆付款將會遺失。等到已滿 %1 再付款更安全。</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>仍然付款</translation>
     </message>
 </context>
 <context>
@@ -1399,6 +2667,209 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>The supplied proxy address is invalid.</source>
         <translation>提供的代理地址無效。</translation>
     </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>是否顯示冷質押控制功能。</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>啟用冷質押控制功能(&amp;T)</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>覆蓋網路</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>BPS 自有的加密層，透過其他對等節點轉送流量，使對方永遠無法得知你在哪裡。</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>正在詢問…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>執行中</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>監聽於</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>已開啟的路由</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>在此會合的服務</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>可用中繼</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>今天的輪次</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>你的入口</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>你的流量始終從這些對等節點進入。它們會被保留而不是輪換：每次都挑選新的，最終會讓監視者輪到一次。</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>別人可以在哪裡與你會合</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>根據名冊計算得出，而不是查詢得來。任何想聯絡你的人都會做同樣的計算並得到同樣的結果，所以無需詢問任何人，也沒有人能給出不同的答案。它們每天都會變化。</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>透過無線電聽到</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>當中繼的收益</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>每天發放</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>中繼</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>使用者</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>每個中繼的使用者數</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>每位使用者的份額</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>中繼從自己的區塊獎勵中向其登記的對等節點付款，所以每個使用者的份額等於一除以其中繼承載的使用者數——這就是為什麼要取得網路使用者的一部分，就需要相應份額的質押。中繼分享多少獎勵由它自己決定，沒有任何機制強制：一個什麼都不付的中繼產生的區塊也完全有效。促使它付款的是：沒有使用者的中繼保護不了任何人，包括它自己。</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>尚未經過作者以外任何人的審查，而且它隱藏的是你在哪裡，而不是你何時發言：同時監視兩端的人仍然可以比對時間。請把它視為未完成。</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>本節點不分享任何東西。將 -relayshare 設為一個百分比，並使用 addrosteruser 接納對等節點。</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>本節點本應分享 %1%，但%2。</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>本節點與 %2 個對等節點分享 %1%：它質押產出的下一個區塊將支付 %3，每個 %4。</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>Reticulum 橋接器沒有回報狀態。請從設定的「無線電」中啟動它，或自行執行 bps-rns-bridge.py。</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>正在監聽。尚未透過無線電聽到任何 BPS 節點；節點每半小時公告一次自己。</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>當某個無線電鄰居是已登記的中繼時，你的流量會經由它進入。</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>已聽到，但你的流量經由網際網路進入（設定，無線電）。</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>1 跳</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>%1 跳</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>跳數未知</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>%1 前聽到</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>一個中繼</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>是</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>否</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>覆蓋網路已關閉。本用戶端會自行開啟它，所以是某處又把它關掉了：命令列或設定檔中的 -overlay=0。</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>覆蓋網路關閉時為空</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>覆蓋網路已關閉</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>暫無</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>覆蓋網路已開啟，暫無中繼</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>覆蓋網路已開啟，1 個中繼</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>覆蓋網路已開啟，%1 個中繼</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>尚未選定</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>無——名冊中沒有可用來推算的中繼</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>覆蓋網路狀態未知</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>暫無中繼</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1477,6 +2948,30 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
         <translation>“總覽”選項卡啟用了隱私模式。要取消遮蔽值，請取消選取 設定-&gt;遮蔽值。</translation>
+    </message>
+    <message>
+        <source>Stake</source>
+        <translation>質押</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>未成熟的質押：</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>未成熟的委託</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>未成熟的委託：</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>已委託</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>已委託：</translation>
     </message>
 </context>
 <context>
@@ -1573,6 +3068,34 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Transaction status is unknown.</source>
         <translation>交易狀態未知</translation>
     </message>
+    <message>
+        <source>Failed to load transaction: %1</source>
+        <translation>載入交易失敗：%1</translation>
+    </message>
+    <message>
+        <source>Failed to sign transaction: %1</source>
+        <translation>簽署交易失敗：%1</translation>
+    </message>
+    <message>
+        <source>Signed %1 inputs, but more signatures are still required.</source>
+        <translation>已簽署 %1 個輸入，但仍需要更多簽章。</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast successfully! Transaction ID: %1</source>
+        <translation>交易廣播成功！交易 ID：%1</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast failed: %1</source>
+        <translation>廣播交易失敗：%1</translation>
+    </message>
+    <message>
+        <source> * Sends %1 to %2</source>
+        <translation> * 傳送 %1 給 %2</translation>
+    </message>
+    <message>
+        <source>Transaction has %1 unsigned inputs.</source>
+        <translation>交易有 %1 個未簽署的輸入。</translation>
+    </message>
 </context>
 <context>
     <name>PaymentServer</name>
@@ -1589,7 +3112,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>URI 處理</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
         <translation>字首為 bitcoin:// 不是有效的 URI，請改用 bitcoin: 開頭。</translation>
     </message>
     <message>
@@ -1597,7 +3120,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>由於不支援BIP70，因此無法處理付款要求。</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
         <translation>由於BIP70中存在廣泛的安全性漏洞，因此強烈建議您忽略任何商戶更換錢包的指示都將被忽略。</translation>
     </message>
     <message>
@@ -1645,6 +3168,161 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>續期你的登記</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>發布你的登記</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>續期會向區塊鏈寫入一筆新紀錄。在它確認之前，舊紀錄仍然有效。</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>這會向區塊鏈寫入一筆簡短紀錄，表明你的存在，並可選擇性地說明在哪裡能找到你。</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>對等節點應如何聯絡你？</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>透過覆蓋網路——不發布位址</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>你的登記表明你是誰，而不是你在哪裡執行。對等節點改為透過覆蓋網路聯絡你，在雙方根據名冊算出的會合點與你會面。這是本用戶端預設開啟的方式。</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>在我發布的位址上</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>洋蔥</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>其他對等節點可以連線的位址</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>任何人都能看到它，區塊鏈會永久保存它。洋蔥位址發布的位置無人能追溯到你，並且可以在 NAT 後面運作；IP 位址兩者都做不到。發布 IP 位址的節點可以被其他人選為中繼。</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>由誰支付手續費</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>一個月，之後需要續期</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>一年，之後需要續期</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>有效期</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>續期</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>發布</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>由中繼支付——無需任何幣</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>覆蓋網路已關閉，所以沒有中繼可問。請在設定中開啟它，或從錢包付款。</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>名冊中還沒有登記任何中繼，所以無人可問。請從錢包付款，或在有中繼登記後再試。</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>你的節點簽署登記，並透過覆蓋網路把它傳送給你所接入的中繼。為登記付費的中繼會把你的登記放進它自己質押產出的區塊，因此即使大多數節點不願轉送也能確認，並且會把你加入它分享獎勵的對等節點中。如果它以後停止付費，你的登記會在一個月內失效；你隨時可以用有餘額的錢包自己續期。</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>本節點沒有在質押。登記紀錄比舊節點願意轉送的更大，所以在大多數質押者升級之前，只有當執行此版本的質押者把它打包進區塊時才會確認，這可能需要一段時間。質押的話它會進入你自己的下一個區塊；付費的中繼會把它打包進自己質押產出的區塊。</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>此錢包僅為質押解鎖。付款需要輸入其密碼，之後錢包會再次鎖定，這會停止質押，直到你再次為質押解鎖。</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>付款需要此錢包的密碼。</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>請輸入一個位址，或者選擇不發布位址。</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>正在請你的中繼發布…最多可能需要半分鐘。</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>該錢包已不再開啟。</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>錢包仍處於鎖定狀態，因此沒有付款。</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>正在簽署紀錄…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>節點傳回了一筆本用戶端無法理解的紀錄。</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>正在付款發布…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>中繼拒絕了：%1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>中繼沒有回應。%1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1652,7 +3330,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>輸入 比特幣地址 (比如說 %1)</translation>
+        <translation type="vanished">輸入 比特幣地址 (比如說 %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1684,23 +3362,33 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n 秒鐘</numerusform></translation>
+        <translation>
+            <numerusform>%n 秒鐘</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n 分鐘</numerusform></translation>
+        <translation>
+            <numerusform>%n 分鐘</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n 小時</numerusform></translation>
+        <translation>
+            <numerusform>%n 小時</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n 天</numerusform></translation>
+        <translation>
+            <numerusform>%n 天</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n 星期</numerusform></translation>
+        <translation>
+            <numerusform>%n 星期</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1708,7 +3396,9 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n 年</numerusform></translation>
+        <translation>
+            <numerusform>%n 年</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1727,7 +3417,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>%1 GB (十億位元組)</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation>错误：指定的数据目录“%1”不存在。</translation>
     </message>
     <message>
@@ -1739,12 +3429,64 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>错误：%1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1 還沒有安全地結束...</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>未知</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>聯絡人</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>收款</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>隱藏</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>未知</translation>
+    </message>
+    <message>
+        <source>Error initializing settings: %1</source>
+        <translation>初始化設定時發生錯誤：%1</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>已委託</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>%1 已被某人持有，對方已掛牌出售。要價 %2；網路手續費另計。</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>購買</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>正在檢查是否可用…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>可以註冊。</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>註冊</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>尚未實作</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>輸入 BitcoinPoS 位址（例如 %1）</translation>
     </message>
 </context>
 <context>
@@ -1805,16 +3547,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>資料目錄</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the data directory use the '%1' option.</source>
-        <translation>如果不想用默认的数据目录位置，请用 '%1' 这个选项来指定新的位置。</translation>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>如果不想用默认的数据目录位置，请用 &apos;%1&apos; 这个选项来指定新的位置。</translation>
     </message>
     <message>
         <source>Blocksdir</source>
         <translation>区块存储目录</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>如果要自定义区块存储目录的位置，请用 '%1' 这个选项来指定新的位置。</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>如果要自定义区块存储目录的位置，请用 &apos;%1&apos; 这个选项来指定新的位置。</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -2065,7 +3807,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>不使用任何錢包來執行指令</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
+        <source>Executing command using &quot;%1&quot; wallet</source>
         <translation>使用 %1 錢包來執行指令</translation>
     </message>
     <message>
@@ -2091,6 +3833,45 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown</source>
         <translation>不明</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>你是不是要找：</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>不確定用哪個指令？用平常的話輸入你想做的事，例如 %1，然後選擇一個建議。建議是在這台電腦上計算出來的；你輸入的任何內容都不會傳送到任何地方。</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>無線電已關閉。</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>無線電已開啟；請自行啟動 Reticulum 橋接器（contrib/reticulum/bps-rns-bridge.py）。</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>bps-rns-bridge.py 不在 BPS Relay 旁邊，因此無法啟動橋接器。</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>無法以「%1」啟動 Python。請安裝 Python，或在設定的「無線電」中設定該指令。</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>未安裝 Reticulum。請使用以下指令安裝：pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>Reticulum 橋接器已停止（狀態 %1）；請查看 radio/bridge.log。</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>Reticulum 橋接器正在啟動。</translation>
     </message>
 </context>
 <context>
@@ -2144,12 +3925,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>清空</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>使用原生的隔離見證地址(也叫做 Bech32 或 BIP-173)可以減少日後的交易手續費，並能更好地防止輸入錯誤，不過會跟舊版的錢包軟體不支援。如果沒有勾選的話，會改產生與舊版錢包軟體相容的地址。</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">使用原生的隔離見證地址(也叫做 Bech32 或 BIP-173)可以減少日後的交易手續費，並能更好地防止輸入錯誤，不過會跟舊版的錢包軟體不支援。如果沒有勾選的話，會改產生與舊版錢包軟體相容的地址。</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>產生原生隔離見證(Bech32)地址</translation>
+        <translation type="vanished">產生原生隔離見證(Bech32)地址</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2191,7 +3972,19 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Could not unlock wallet.</source>
         <translation>沒辦法把錢包解鎖。</translation>
     </message>
-    </context>
+    <message>
+        <source>(none)</source>
+        <translation>（無）</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>此錢包沒有設定質押位址，因此沒有可委託的對象。請在「質押」頁面的「委託 -&gt; 自動委託」中設定一個，這種位址類型就能使用了。</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>無法產生新的 %1 位址</translation>
+    </message>
+</context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
@@ -2271,6 +4064,99 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>對等節點</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>位址</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>已登記</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>登記到期</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>已登記時長</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>點擊以複製</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>此對等節點已登記，但沒有發布位址。它仍然可以
+透過覆蓋網路聯絡到，這正是允許這樣做的原因。</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>已發布一個位址</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>已發布 %1 個位址</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>已在區塊 %1 中確認</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>從區塊 %1 起不再計入</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>此登記之前沒有歷史紀錄。</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>自區塊 %1 起持續登記，未曾中斷。</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>時間太短，暫不計入。</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>未在任何身分下執行。</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>在身分 %1 下執行，更換金鑰時會保留其登記時長。</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>未發布位址</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>剛剛</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>%1 前</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>已過期</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>%1 後</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>新</translation>
+    </message>
+</context>
+<context>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
@@ -2341,9 +4227,9 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>警告：目前無法計算預估手續費。</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>指定每一千位元祖(kB)擬真大小的交易所要付出的手續費。
 
 注意: 交易手續費是以位元組為單位來計算。因此當指定手續費為每千位元組 100 個 satoshi 時，對於一筆大小為 500 位元組(一千位元組的一半)的交易，其手續費會只有  50 個 satoshi。</translation>
@@ -2405,7 +4291,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>啟用手續費追加</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
         <translation>手續費追加(Replace-By-Fee, BIP-125)可以讓你在送出交易後才來提高手續費。不用這個功能的話，建議付比較高的手續費來降低交易延遲的風險。</translation>
     </message>
     <message>
@@ -2461,12 +4347,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Cr＆eate未簽名</translation>
     </message>
     <message>
-        <source> from wallet '%1'</source>
+        <source> from wallet &apos;%1&apos;</source>
         <translation>從錢包 %1</translation>
     </message>
     <message>
-        <source>%1 to '%2'</source>
-        <translation>%1 到 '%2'</translation>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 到 &apos;%2&apos;</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -2521,8 +4407,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>總金額</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
-        <translation>要查看收件人列表，請單擊"顯示詳細訊息..."</translation>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>要查看收件人列表，請單擊&quot;顯示詳細訊息...&quot;</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2574,7 +4460,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>预计在等待 %n 个区块后会有第一个确认。</numerusform></translation>
+        <translation>
+            <numerusform>预计在等待 %n 个区块后会有第一个确认。</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2595,6 +4483,50 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>(no label)</source>
         <translation>(無標記)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>貼上或載入一份付款清單，而不是逐筆新增</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>批次(&amp;B)...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>計算可用餘額時也將委託計算在內。如果不勾選，可用餘額只反映目前在錢包中的幣。</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>包含委託(&amp;N)</translation>
+    </message>
+    <message>
+        <source>Creates a Partially Signed Bitcoin Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>建立部分簽署的比特幣交易（PSBT），可搭配例如離線的 %1 錢包或相容 PSBT 的硬體錢包使用。</translation>
+    </message>
+    <message>
+        <source>Please, review your transaction proposal. This will produce a Partially Signed Bitcoin Transaction (PSBT) which you can save or copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>請檢查你的交易提案。這會產生一筆部分簽署的比特幣交易（PSBT），你可以儲存或複製它，然後用例如離線的 %1 錢包或相容 PSBT 的硬體錢包簽署。</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>冷質押未啟用</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>冷質押在區塊 %1 啟用</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>此錢包質押自己的幣，所以它們都已委託。</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>提供的擁有者位址不在此錢包中。警告：委託後只有擁有擁有者位址金鑰的人才能花費這些幣。</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>提供的質押者位址在此錢包中。你已經可以自己質押這些幣，無需委託給自己。</translation>
     </message>
 </context>
 <context>
@@ -2679,6 +4611,352 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>Memo:</source>
         <translation>備註:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>擁有者位址(&amp;O)：</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>BitcoinPoS 擁有者位址</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>伺服器</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>本節點為他人提供的服務。中繼和保存郵件現在已可執行；託管即將推出，並且和這裡的一切一樣，以找到對等節點的同樣方式找到——透過名冊。名稱有自己的頁面。</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>託管</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>由本節點提供的網站或服務，透過其金鑰或名稱找到，經由覆蓋網路存取，因此主機永遠不會公開它在哪裡執行。會合部分已經存在：服務在雙方根據名冊算出的會合點註冊。透過它提供網頁和應用程式的功能尚未實作。</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>中繼</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>轉送其他對等節點的覆蓋網路流量，為使用本節點的對等節點支付每月登記費用，並與他們分享自己質押產出的每個區塊的一部分。中繼把它付費的登記放進自己質押產出的區塊，這樣在大多數節點仍拒絕轉送此類紀錄時它們也能確認——所以中繼必須在質押。</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>質押</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>在此登記的對等節點</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>它質押產出的下一個區塊</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>為透過覆蓋網路請求的對等節點支付登記費用</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>沒有幣的對等節點可以請本節點發布其每月登記。本節點支付手續費，把它打包進區塊，並把該對等節點加入分享獎勵的名單。預設關閉，因為它會花費本節點的幣。</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>超過此數量的對等節點將被拒絕。已在此登記的對等節點仍可續期。</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>最多保持登記的對等節點數</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>唯一開啟的錢包</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>由哪個錢包支付手續費。如果開啟了多個錢包而這裡沒有指定，請求會被拒絕，而不是隨意選一個付款。質押可以在本節點的任何錢包中進行。</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>從錢包支付手續費</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>本節點用自有幣質押產出的每個區塊中，平均分給其登記的對等節點的部分。0 表示不分享。</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>每個質押區塊的分享比例</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>信箱</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>為名冊指定本節點作為其信箱的人保存封裝好的郵件，直到他們收取。哪些中繼保存誰的郵件是根據名冊算出來的，所以沒有人分配。寄件人和收件人透過三個中繼聯絡本節點，因此它永遠無法得知他們在哪裡；信件是封裝的，所以它無法閱讀，也無法得知是誰寫的。信件兩週後刪除，並且只為已登記的人服務。</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>保存中</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>為寄件人保存的郵件金鑰</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>為名冊分配給本節點的人保存郵件</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>只要執行覆蓋網路就預設開啟：拒絕的中繼會讓選中它的人少一個信箱。</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>空間滿了以後，新信件會被拒絕，直到舊信件被收取或刪除。任何一個人最多只能使用其中 8 MiB。</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>可使用的磁碟空間</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>已儲存。這些設定在節點啟動時讀取，所以請重新啟動用戶端使變更生效。</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>沒有開啟的錢包</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>否——不在質押的中繼會拒絕登記請求</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>是，%1 後</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>不為登記付費</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>付費，但未在質押</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>執行中</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>此版本不含錢包</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>需要錢包</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>關閉</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>需要覆蓋網路</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>無——不保存郵件</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>沒有信件</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>1 個字母</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>%1 個字母</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>1 人</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>%1 人</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>目前為空，可容納 %1 MiB</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%1 用於 %2，%3 / %4 MiB</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>分享 %1%：共 %2 %4，每個對等節點 %3 %4</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>設定</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>本用戶端能做而錢包用戶端不能做的事情，以及語言。其他一切——代理伺服器、連接埠、修剪——在兩者中都是同樣的問題，只在一個地方設定。</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>探索</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>維護名冊索引</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>沒有它，本節點可以發布登記，但看不到還有誰已登記。</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>索引名稱</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>用於查詢名稱、寄郵件給名稱以及註冊你自己的名稱。</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>嘗試連線至名冊中找到的對等節點</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>把名冊中的位址交給位址管理器，與一般的種子節點和位址傳播一起使用。關閉後，名冊只是本節點讀取但從不使用的一份清單。</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>覆蓋網路</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>執行覆蓋網路</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>在本用戶端中預設開啟，在節點和錢包用戶端中預設關閉。它的交握尚未經過作者以外任何人的審查。</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>覆蓋網路在自己的連接埠上使用 UDP。點對點網路是獨立的，仍使用 TCP。</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>監聽連接埠</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>無線電</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>也透過無線電承載覆蓋網路，使用 Reticulum</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>透過 RNode 使用 LoRa、封包無線電、序列連結：Reticulum 設定使用的任何方式都可以。需要覆蓋網路。</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>透過無線電鄰居接入覆蓋網路，這樣沒有網際網路也能收發郵件</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>當透過無線電聽到的 BPS 節點是已登記的中繼時，你的郵件和登記請求會經由它傳送。無線電連結比網際網路慢得多。</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>隨 BPS Relay 啟動 Reticulum 橋接器</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>在節點旁執行 bps-rns-bridge.py。如果你自己執行橋接器，請保持關閉。</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>Python 指令</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Reticulum 不屬於 BPS，有自己的授權條款。請使用 %1 安裝它，並在 Reticulum 自己的設定（~/.reticulum/config）中設定你的無線電。業餘無線電頻段不允許加密流量，所以請使用免執照頻段，例如 LoRa 的頻段。</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>顯示</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>金額顯示單位</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>電腦的語言</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>在 BPS Relay 下次啟動時生效。節點自己傳送的文字，例如指令的錯誤訊息，仍為英文。</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>語言</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>網路、代理伺服器及其他核心設定…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>已儲存。語言將在 BPS Relay 下次啟動時變更。</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>已儲存。這些設定在節點啟動時讀取，所以請重新啟動用戶端使變更生效。</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>節點仍在啟動；核心設定暫不可用。</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2758,7 +5036,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>驗證訊息(&amp;V)</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
         <translation>請在下面輸入收款人的地址，訊息(請確定完整複製了所包含的換行、空格、tabs...等)，以及簽名，來驗證這個訊息。請小心，除了訊息內容以外，不要對簽名本身過度解讀，以避免被用「中間人攻擊法」詐騙。請注意，通過驗證的簽名只能證明簽名人確實可以從該地址收款，不能證明任何交易中的付款人身份！</translation>
     </message>
     <message>
@@ -2786,7 +5064,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>重設所有訊息驗證欄位</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
         <translation>請按一下「簽署訊息」來產生簽章</translation>
     </message>
     <message>
@@ -2843,6 +5121,209 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
 </context>
 <context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>表單</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>質押(&amp;S)</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>你目前的可用餘額</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>此錢包擁有的質押資產</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>來自委託的質押資產</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>未成熟：</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>你的未成熟餘額</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>質押資產</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>質押：</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>質押</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>區塊高度：</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>區塊獎勵：</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/區塊</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>網路權重：</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>預期年化報酬率：</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>質押紀錄</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>委託(&amp;D)</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>委託類型：</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>手動委託</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>自動委託</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>質押位址</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>全部移除</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>從剪貼簿貼上位址</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>新增(&amp;A)</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>我的委託(&amp;M)</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>已委託資產</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>你目前的已委託餘額</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>我的委託</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>收到的委託(&amp;R)</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>建立新的質押位址(&amp;C)</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> 標籤：</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>與新收款位址關聯的選用標籤（供你識別發票）。它也會附加到付款請求中。</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>ColdStake 委託</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>付到此錢包委託位址的幣一到帳就由這些金鑰質押，你自己花費產生的找零也保持委託狀態。質押金鑰只能產生付回給你的 coinstake，所以保存它的錢包不需要密碼。</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>列出多個位址，可以把你的幣分散到幾個質押錢包中，這樣其中一個離線時不會讓所有質押都停止。
+
+每筆新委託都會交給到目前為止被指定次數最少的位址，計算時包括已發出的委託位址和仍未花費的已委託幣。它統計的是委託筆數而不是金額，所以持有一筆大額委託的位址仍可能先於持有幾筆小額委託的位址被選中。</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>已委託給被移除位址的幣不會被移動，該位址會繼續質押它們。只是新的委託不再指向它。</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>無法解鎖錢包。</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>無法產生新的 %1 位址</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>本節點已停用冷質押（-coldstaking=0），因此沒有進行任何委託。</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>這裡的質押位址屬於這個錢包，而它是加密的，所以只有在錢包解鎖時才會質押。要在沒有密碼的情況下質押，請使用來自另一個未加密質押錢包的位址。</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>停止委託給 %1。已委託給它的幣不會被移動，它會繼續質押這些幣。</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>無法儲存質押位址。委託綁定的是金鑰雜湊，所以每個位址都必須是舊式（legacy）位址。</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>該質押位址已在清單中。</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>移除所有質押位址</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>停止委託給全部 %1 個質押位址？
+
+已委託的幣會繼續由它們質押，不會被移動。但新的存款和找零將轉到不進行質押的一般位址，而且要重新開啟時，你還需要這些位址。</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2853,7 +5334,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>到下 %n 個區塊生出來前可修改</numerusform></translation>
+        <translation>
+            <numerusform>到下 %n 個區塊生出來前可修改</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2933,7 +5416,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>再等 %n 個區塊生出來後成熟</numerusform></translation>
+        <translation>
+            <numerusform>再等 %n 個區塊生出來後成熟</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -2992,7 +5477,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>商家</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
         <translation>生產出來的錢要再等 %1 個區塊生出來後才成熟可以用。當區塊生產出來時會公布到網路上，來被加進區塊鏈。如果加失敗了，狀態就會變成「不被接受」，而且不能夠花。如果在你生產出區塊的幾秒鐘內，也有其他節點生產出來的話，就有可能會發生這種情形。</translation>
     </message>
     <message>
@@ -3047,7 +5532,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>到下 %n 個區塊生出來前可修改</numerusform></translation>
+        <translation>
+            <numerusform>到下 %n 個區塊生出來前可修改</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3136,6 +5623,30 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>要減掉或加進餘額的金額。</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>冷質押</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>代為質押</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>質押委託</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>委託</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>質押委託花費方</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>委託金額。</translation>
     </message>
 </context>
 <context>
@@ -3296,6 +5807,22 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>to</source>
         <translation>到</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>冷質押</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>熱質押</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>未花費的委託</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>委託</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3321,6 +5848,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Are you sure you wish to close all wallets?</source>
         <translation>您確定要關閉所有錢包嗎？</translation>
+    </message>
+    <message>
+        <source>Are you sure you wish to close the wallet &lt;i&gt;%1&lt;/i&gt;?</source>
+        <translation>你確定要關閉錢包 &lt;i&gt;%1&lt;/i&gt; 嗎？</translation>
     </message>
 </context>
 <context>
@@ -3377,7 +5908,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>確認手續費提升</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
+        <source>Can&apos;t draft transaction.</source>
         <translation>無法草擬交易。</translation>
     </message>
     <message>
@@ -3385,7 +5916,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>PSBT已復制</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>沒辦法簽署交易。</translation>
     </message>
     <message>
@@ -3395,6 +5926,21 @@ Go to File &gt; Open Wallet to load a wallet.
     <message>
         <source>default wallet</source>
         <translation>預設錢包</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ 本節點</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● 執行中</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>錢包用戶端，在此程序中連線本節點執行。它與 bitcoin-pos-qt 是同一個程式，而不是它的副本。</translation>
     </message>
 </context>
 <context>
@@ -3499,7 +6045,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>讀取錢包檔 %s 時發生錯誤！所有的鑰匙都正確讀取了，但是交易資料或地址簿資料可能會缺少或不正確。</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation>請檢查電腦日期和時間是否正確！%s 沒辦法在時鐘不準的情況下正常運作。</translation>
     </message>
     <message>
@@ -3507,7 +6053,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>如果你覺得 %s 有用，可以幫助我們。關於這個軟體的更多資訊請見 %s。</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
         <translation>區塊資料庫中有來自未來的區塊。可能是你電腦的日期時間不對。如果確定電腦日期時間沒錯的話，就重建區塊資料庫看看。</translation>
     </message>
     <message>
@@ -3539,8 +6085,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>參數 -maxmempool 至少要給 %d 百萬位元組(MB)</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>沒辦法解析 -%s 參數指定的地址: '%s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>沒辦法解析 -%s 參數指定的地址: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3615,32 +6161,32 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>初始化時的基本檢查失敗了。%s 就要關閉了。</translation>
     </message>
     <message>
-        <source>Invalid P2P permission: '%s'</source>
-        <translation>無效的 P2P 權限: '%s'</translation>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>無效的 P2P 權限: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>參數 -%s=&lt;金額&gt; 指定的金額無效: '%s'</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>參數 -%s=&lt;金額&gt; 指定的金額無效: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>設定 -discardfee=&lt;金額&gt; 的金額無效: '%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>設定 -discardfee=&lt;金額&gt; 的金額無效: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>設定 -fallbackfee=&lt;金額&gt; 的金額無效: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>設定 -fallbackfee=&lt;金額&gt; 的金額無效: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>指定的區塊目錄 "%s" 不存在。</translation>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>指定的區塊目錄 &quot;%s&quot; 不存在。</translation>
     </message>
     <message>
-        <source>Unknown address type '%s'</source>
-        <translation>未知的地址類型 '%s'</translation>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>未知的地址類型 &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Unknown change type '%s'</source>
-        <translation>不明的找零位址類型 '%s'</translation>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>不明的找零位址類型 &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3719,8 +6265,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>如果不升級以支援預拆分keypool，則無法升級非HD拆分錢包。請使用169900版本或沒有版本。</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>-maxtxfee=&lt;amount&gt;: '%s' 的金額無效 (必須大於最低轉發手續費 %s 以避免交易無法確認)</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>-maxtxfee=&lt;amount&gt;: &apos;%s&apos; 的金額無效 (必須大於最低轉發手續費 %s 以避免交易無法確認)</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -3735,7 +6281,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>這是您支付的最高交易手續費（除了正常手續費外），優先於避免部分花費而不是定期選取幣。</translation>
     </message>
     <message>
-        <source>Transaction needs a change address, but we can't generate it. Please call keypoolrefill first.</source>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
         <translation>交易需要變更地址，但我們無法產生它。請先呼叫keypoolrefill。</translation>
     </message>
     <message>
@@ -3771,24 +6317,24 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>錯誤：keypool已用完，請先重新呼叫keypoolrefill</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>無效的 -onion 地址或主機名稱: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>無效的 -onion 地址或主機名稱: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>無效的 -proxy 地址或主機名稱: '%s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>無效的 -proxy 地址或主機名稱: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>設定 -paytxfee=&lt;金額&gt; 的金額無效: '%s' (至少要有 %s)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>設定 -paytxfee=&lt;金額&gt; 的金額無效: &apos;%s&apos; (至少要有 %s)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>指定在 -whitelist 的網段無效: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>指定在 -whitelist 的網段無效: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>指定 -whitebind 時必須包含通訊埠: '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>指定 -whitebind 時必須包含通訊埠: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
@@ -3811,16 +6357,16 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>簽署交易失敗</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>以 -walletdir 指定的路徑 "%s" 不存在</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>以 -walletdir 指定的路徑 &quot;%s&quot; 不存在</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>以 -walletdir 指定的路徑 "%s" 是相對路徑</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>以 -walletdir 指定的路徑 &quot;%s&quot; 是相對路徑</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>以 -walletdir 指定的路徑 "%s" 不是個目錄</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>以 -walletdir 指定的路徑 &quot;%s&quot; 不是個目錄</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3849,8 +6395,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>無法和這台電腦上的 %s 繫結(回傳錯誤 %s)</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>無法創建PID文件'%s': %s</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>無法創建PID文件&apos;%s&apos;: %s</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -3913,8 +6459,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>交易必須至少有一個收款人</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>在 -onlynet 指定了不明的網路別: '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>在 -onlynet 指定了不明的網路別: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -3929,8 +6475,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>警告: 在不允許私鑰的錢包 {%s} 中發現有私鑰</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>沒辦法寫入資料目錄 '%s'，請檢查是否有權限。</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>沒辦法寫入資料目錄 &apos;%s&apos;，請檢查是否有權限。</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -3951,6 +6497,70 @@ Go to File &gt; Open Wallet to load a wallet.
     <message>
         <source>Done loading</source>
         <translation>載入完成</translation>
+    </message>
+    <message>
+        <source>%s corrupt. Try using the wallet tool bitcoin-wallet to salvage or restoring a backup.</source>
+        <translation>%s 已損毀。請嘗試使用錢包工具 bitcoin-wallet 進行搶救，或還原備份。</translation>
+    </message>
+    <message>
+        <source>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</source>
+        <translation>提供了多個洋蔥綁定位址。將使用 %s 作為自動建立的 Tor 洋蔥服務。</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase：無法準備取得 sqlite 錢包結構描述版本的陳述式：%s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch the application id: %s</source>
+        <translation>SQLiteDatabase：無法準備取得應用程式 ID 的陳述式：%s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unknown sqlite wallet schema version %d. Only version %d is supported</source>
+        <translation>SQLiteDatabase：未知的 sqlite 錢包結構描述版本 %d。只支援版本 %d</translation>
+    </message>
+    <message>
+        <source>Could not find asmap file %s</source>
+        <translation>找不到 asmap 檔案 %s</translation>
+    </message>
+    <message>
+        <source>Could not parse asmap file %s</source>
+        <translation>無法解析 asmap 檔案 %s</translation>
+    </message>
+    <message>
+        <source>Failed to verify database</source>
+        <translation>驗證資料庫失敗</translation>
+    </message>
+    <message>
+        <source>Fee rate (%s) is lower than the minimum fee rate setting (%s)</source>
+        <translation>手續費率（%s）低於最低手續費率設定（%s）</translation>
+    </message>
+    <message>
+        <source>Ignoring duplicate -wallet %s.</source>
+        <translation>忽略重複的 -wallet %s。</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
+        <translation>SQLiteDatabase：無法執行驗證資料庫的陳述式：%s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase：無法取得 sqlite 錢包結構描述版本：%s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch the application id: %s</source>
+        <translation>SQLiteDatabase：無法取得應用程式 ID：%s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare statement to verify database: %s</source>
+        <translation>SQLiteDatabase：無法準備驗證資料庫的陳述式：%s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to read database verification error: %s</source>
+        <translation>SQLiteDatabase：無法讀取資料庫驗證錯誤：%s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unexpected application id. Expected %u, got %u</source>
+        <translation>SQLiteDatabase：非預期的應用程式 ID。預期為 %u，實際為 %u</translation>
     </message>
 </context>
 </TS>

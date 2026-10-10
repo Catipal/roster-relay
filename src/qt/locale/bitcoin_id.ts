@@ -1,4 +1,6 @@
-<TS language="id" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="id">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -96,6 +98,12 @@
     <message>
         <source>There was an error trying to save the address list to %1. Please try again.</source>
         <translation>Terjadi kesalahan saat mencoba menyimpan daftar alamat ke %1. Silakan coba lagi.</translation>
+    </message>
+    <message>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
+        <translation>Ini adalah alamat Bitcoin Anda untuk menerima pembayaran. Gunakan tombol &apos;Buat alamat penerimaan baru&apos; di tab Terima untuk membuat alamat baru.
+Penandatanganan hanya dapat dilakukan dengan alamat berjenis &apos;legacy&apos;.</translation>
     </message>
 </context>
 <context>
@@ -235,6 +243,14 @@
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Peringatan: Tombol Caps Lock aktif!</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>Berfungsi untuk menonaktifkan pengiriman uang sederhana jika akun sistem operasi disusupi. Tidak memberikan keamanan yang sesungguhnya.</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>Hanya untuk staking.</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -245,6 +261,109 @@
     <message>
         <source>Banned Until</source>
         <translation>Di banned sampai</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>Pembayaran massal</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>Satu pembayaran per baris, dalam bentuk &quot;alamat, jumlah&quot;. Koma, titik koma, atau tab memisahkan kolom, dan kolom ketiga menjadi label. Baris yang diawali # diabaikan.</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>&amp;Tempel</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>Muat dari &amp;berkas...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>&amp;Bersihkan</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>Baris</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Alamat</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Jumlah</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>Muat daftar pembayaran</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>Berkas teks dan CSV (*.txt *.csv);;Semua berkas (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>Tidak dapat membaca %1.</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>diharapkan &quot;alamat, jumlah&quot;</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>tidak ada alamat</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>bukan alamat yang valid</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>tidak ada jumlah</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>tidak dapat membaca jumlah &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>jumlah harus lebih besar dari nol</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>ok</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>Tempel satu pembayaran per baris, dalam bentuk &quot;alamat, jumlah&quot;. Kolom ketiga digunakan sebagai label. Baris yang diawali # diabaikan.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>%1 dari %2 baris tidak dapat digunakan. Perbaiki atau hapus baris tersebut untuk melanjutkan.</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>%1 penerima lebih banyak daripada yang dapat dimuat satu transaksi (batasnya di sini %2). Bagi daftarnya.</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>%1 penerima, total %2, sebelum biaya.</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>Tambahkan ke formulir pengiriman</translation>
     </message>
 </context>
 <context>
@@ -435,7 +554,9 @@
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n koneksi aktif ke jaringan Bitcoin</numerusform></translation>
+        <translation>
+            <numerusform>%n koneksi aktif ke jaringan Bitcoin</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -447,7 +568,9 @@
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>%n blok dari riwayat transaksi diproses.</numerusform></translation>
+        <translation>
+            <numerusform>%n blok dari riwayat transaksi diproses.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -625,7 +748,368 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Dompet saat ini &lt;b&gt;terenkripsi&lt;/b&gt; dan &lt;b&gt;terkunci&lt;/b&gt;</translation>
     </message>
-    </context>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Terjadi kesalahan fatal. %1 tidak dapat lagi berjalan dengan aman dan akan keluar.</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>Tampilkan stake dompet</translation>
+    </message>
+    <message>
+        <source>&amp;Load PSBT from file...</source>
+        <translation>&amp;Muat PSBT dari berkas...</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction</source>
+        <translation>Muat transaksi Bitcoin yang ditandatangani sebagian</translation>
+    </message>
+    <message>
+        <source>Load PSBT from clipboard...</source>
+        <translation>Muat PSBT dari papan klip...</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction from clipboard</source>
+        <translation>Muat transaksi Bitcoin yang ditandatangani sebagian dari papan klip</translation>
+    </message>
+    <message>
+        <source>Close All Wallets...</source>
+        <translation>Tutup semua dompet...</translation>
+    </message>
+    <message>
+        <source>Close all wallets</source>
+        <translation>Tutup semua dompet</translation>
+    </message>
+    <message>
+        <source>&amp;Mask values</source>
+        <translation>&amp;Samarkan nilai</translation>
+    </message>
+    <message>
+        <source>Mask the values in the Overview tab</source>
+        <translation>Samarkan nilai di tab Ikhtisar</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>Dompet &lt;b&gt;terenkripsi&lt;/b&gt; dan saat ini &lt;b&gt;terbuka hanya untuk staking&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>&amp;Dekripsi dompet...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>Hapus frasa sandi, sehingga kunci privat disimpan tanpa enkripsi</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Tidak staking</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n detik</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n menit</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n jam</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n hari</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>Sedang staking.&lt;br&gt;Bobot Anda %1&lt;br&gt;Bobot jaringan %2&lt;br&gt;Perkiraan waktu hingga hadiah: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>Tidak staking karena dompet sedang offline</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>Tidak staking karena dompet sedang sinkronisasi</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>Tidak staking karena Anda tidak memiliki koin yang matang</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>Tidak staking karena dompet terkunci</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Pesan asli:</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>Kesalahan tidak diketahui</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>kurang dari semenit</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>satu menit</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 menit</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>satu jam</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 jam</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 hari</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>sebulan</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 bulan</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>sekitar setahun</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>lebih dari setahun</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>tidak diketahui</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Terjadi kesalahan fatal. %1 tidak dapat lagi berjalan dengan aman dan akan keluar.</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Pesan asli:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Jelajahi</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Jaringan overlay</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>Nama</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>Peer dan konsol</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>Node</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Dompet</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>Surat</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>Surat (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>Server</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Pengaturan</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>pencatatan tidak diketahui</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>jaringan overlay tidak diketahui</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>menghubungkan…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>Dengan bobot jaringan saat ini, staking menghasilkan sekitar %1% per tahun: %2 blok per tahun, masing-masing %3 %4, dari %5 %4 yang di-stake.</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>Itu setelah bagian %1% dari setiap blok yang dibagikan node ini kepada peer-nya.</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>%1% per tahun</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>mematikan…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>%1 peer: %2 masuk, %3 keluar.</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>Klik untuk menjeda aktivitas jaringan.</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>1 peer</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>%1 peer</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>Aktivitas jaringan dijeda.</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>Klik untuk melanjutkannya.</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>jaringan dijeda</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>Memproses %1 blok riwayat.</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>blok %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>Terbaru.</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>Menyinkronkan dengan jaringan…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>Memproses blok di disk…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>Mengindeks ulang blok di disk…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>Menghubungkan ke peer…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>tertinggal %1</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>Mengejar ketertinggalan…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>Blok terakhir yang diterima dibuat %1 yang lalu.</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>Dompet &lt;b&gt;%1&lt;/b&gt; terenkripsi dan terbuka hanya untuk staking</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>Dompet &lt;b&gt;%1&lt;/b&gt; terenkripsi dan terbuka</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>Dompet &lt;b&gt;%1&lt;/b&gt; terenkripsi dan terkunci</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>staking</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>staking, %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; sedang staking.&lt;br&gt;Bobotnya %2&lt;br&gt;Bobot jaringan %3&lt;br&gt;Perkiraan waktu hingga hadiah: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>tidak staking</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>tidak staking (membayar %1)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>Tidak staking: terlalu sedikit peer</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>Tidak staking: rantai masih mengejar ketertinggalan</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>Tidak staking: &lt;b&gt;%1&lt;/b&gt; tidak memiliki koin yang matang</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>Tidak staking: &lt;b&gt;%1&lt;/b&gt; terkunci</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Tidak staking</translation>
+    </message>
+</context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -776,6 +1260,57 @@
         <source>(change)</source>
         <translation>(kembalian)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>didelegasikan ke %1 untuk cold staking</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>Tulis surat</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>nama, nama panggilan dari buku alamat, atau kunci register</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Kepada</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Subjek</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>Kirim</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>Untuk siapa? Sebuah nama, nama panggilan, atau kunci register.</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>Surat ini %1 KB; sebuah surat paling besar %2 KB.</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>Surat sedang disegel dan ditinggalkan di kotak surat penerima, setiap kali melalui tiga relai. Ini memerlukan beberapa detik…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Terkirim</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>Surat ditinggalkan di %1 dari %2 kotak surat penerima. Satu saja cukup agar sampai.</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>Tidak terkirim: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -830,7 +1365,202 @@
         <source>Create</source>
         <translation>Membuat</translation>
     </message>
-    </context>
+    <message>
+        <source>Wallet</source>
+        <translation>Dompet</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>Opsi lanjutan</translation>
+    </message>
+    <message>
+        <source>Use descriptors for scriptPubKey management</source>
+        <translation>Gunakan deskriptor untuk pengelolaan scriptPubKey</translation>
+    </message>
+    <message>
+        <source>Descriptor Wallet</source>
+        <translation>Dompet deskriptor</translation>
+    </message>
+    <message>
+        <source>Compiled without sqlite support (required for descriptor wallets)</source>
+        <translation>Dikompilasi tanpa dukungan sqlite (diperlukan untuk dompet deskriptor)</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>Jelajahi</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>Peer mengumumkan diri di rantai, bukan di server, jadi daftar ini sama bagi semua orang dan tidak ada yang dapat mengubahnya.</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>Register</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>Pencatatan Anda</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>Peer yang tercatat</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>Anda adalah</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Salin</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>Menerbitkan pencatatan Anda…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>Identitas</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>Buat…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>Identitas menyimpan riwayat node ini, berapa lama ia tercatat, jika kuncinya suatu saat harus diganti.</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>Cari peer atau alamat</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Kunci disalin</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>Alamat disalin</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>memulai…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>Buat identitas</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>Bayar biaya dari</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Identitas adalah kunci kedua yang berada di belakang kunci node ini. Jika kunci node ini suatu saat hilang atau dicuri, kunci baru dapat ditempatkan di bawah identitas yang sama, dan node tetap mempertahankan lamanya tercatat alih-alih mulai dari awal.
+
+Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya cara untuk menghentikan orang yang mencuri identitas agar tidak memindahkannya. Setelah itu sebuah transaksi kecil menerbitkan identitas, dan pembaruan pencatatan Anda berikutnya mengikatkan kunci node ini kepadanya.</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Relai Anda menerbitkan pencatatan Anda dalam transaksi %1. Berlaku setelah transaksi dikonfirmasi.</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Diterbitkan dalam transaksi %1. Berlaku setelah transaksi dikonfirmasi.</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>tidak diketahui</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>indeks register mati</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>tidak tercatat</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>berakhir dalam %1</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>Memperbarui pencatatan Anda…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>Perbarui dalam 3 hari terakhir</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>Pencatatan Anda berakhir dalam %1. Pembaruan dapat dilakukan mulai tiga hari sebelumnya.</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>tercatat, berakhir dalam %1</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>tidak ada</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>Node ini tidak memiliki kunci pengumuman: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>dinonaktifkan</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>Indeks register tidak berjalan, jadi node ini tidak dapat melihat siapa yang tercatat. Mulai ulang dengan -rosterindex untuk menyalakannya.</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>mengejar ketertinggalan (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>%1 hari yang lalu</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>Blok terbaru node ini berumur %1 hari, jadi peer yang dicabut sejak itu mungkin masih ada di sini. Register masih digunakan untuk menjangkau peer, tetapi jaringan overlay berhenti mengutamakan relai yang sudah lama tercatat sampai rantai mengejar ketertinggalannya.</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>terbaru</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>Indeks register tidak berjalan</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>Kunci pemulihan Anda</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>Tuliskan dan simpan di tempat yang aman, jauh dari komputer ini. Kunci ini hanya ditampilkan sekarang dan tidak disimpan di mana pun. Kunci ini tidak dapat membelanjakan koin; ia hanya dapat menghentikan pemindahan identitas Anda yang tidak Anda lakukan.</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>Saya sudah menuliskannya</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Identitas Anda diterbitkan dalam transaksi %1. Pembaruan pencatatan Anda berikutnya mengikatkan kunci node ini kepadanya.</translation>
+    </message>
+</context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -866,16 +1596,16 @@
         <translation>Ubah alamat pengirim</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>Alamat yang dimasukkan "%1" bukanlah alamat Bitcoin yang valid.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
+        <translation>Alamat yang dimasukkan &quot;%1&quot; bukanlah alamat Bitcoin yang valid.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>Alamat "%1" sudah ada sebagai alamat penerimaan dengan label "%2" sehingga tidak bisa ditambah sebagai alamat pengiriman.</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>Alamat &quot;%1&quot; sudah ada sebagai alamat penerimaan dengan label &quot;%2&quot; sehingga tidak bisa ditambah sebagai alamat pengiriman.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>Alamat "%1" yang dimasukkan sudah ada di dalam buku alamat dengan label "%2".</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>Alamat &quot;%1&quot; yang dimasukkan sudah ada di dalam buku alamat dengan label &quot;%2&quot;.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -964,7 +1694,7 @@
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <translation type="vanished">Bitcoin</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -987,8 +1717,8 @@
         <translation>Dompet juga akan disimpan di direktori ini.</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>Kesalahan: Direktori data "%1" tidak dapat dibuat.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
+        <translation>Kesalahan: Direktori data &quot;%1&quot; tidak dapat dibuat.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -996,15 +1726,180 @@
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>%n GB ruang kosong tersedia.</numerusform></translation>
+        <translation>
+            <numerusform>%n GB ruang kosong tersedia.</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(dari %n GB yang dibutuhkan)</numerusform></translation>
+        <translation>
+            <numerusform>(dari %n GB yang dibutuhkan)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(%n GB dibutuhkan untuk rantai penuh)</numerusform></translation>
+        <translation>
+            <numerusform>(%n GB dibutuhkan untuk rantai penuh)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>Surat</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>Alamat Anda</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Salin</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>Kunci register Anda. Siapa pun yang tercatat dapat menulis kepada Anda melaluinya.</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>Surat dikirim melalui jaringan overlay. Nyalakan jaringan overlay di Pengaturan dan mulai ulang untuk mengirim dan menerima surat.</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>Tulis</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>Balas</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>Ambil sekarang</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>Ambil surat baru dari kotak surat Anda sekarang. Ini juga terjadi setiap beberapa menit.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Hapus</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>Kotak masuk</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Terkirim</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>Dari</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Subjek</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Tanggal</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>Surat disegel dengan kunci surat mingguan penerima menggunakan secp256k1 dan ML-KEM-768 bersama-sama; kunci dan tanda tangan Anda ikut di dalam segel, dan setiap perjalanan ke kotak surat melewati tiga relai. Kunci surat lama dihapus, jadi surat yang diambil hari ini tidak dapat dibuka nanti dengan kunci komputer ini.</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Kepada</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>Belum ada relai yang tercatat, jadi Anda belum memiliki kotak surat dan tidak ada yang dapat menulis kepada Anda.</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>%1 relai menyimpan surat Anda; akan menjadi %2 setelah register mencatat lebih banyak.</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>%1 relai yang dipilih dari kunci Anda menyimpan surat Anda sampai Anda mengambilnya.</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>Kunci surat #%1, diperbarui setiap minggu.</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>Terakhir diambil %1.</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>Belum diambil.</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>1 surat baru</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>%1 surat baru</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>, dari %1 dari %2 kotak surat.</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(tanpa subjek)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>Ditinggalkan di %1 kotak surat penerima</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>Dari: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>Kepada: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>Dikirim %1, ditinggalkan di %2 kotak surat penerima</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>Ditulis %1, diambil %2</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>Pilih surat untuk membacanya.</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>Mengambil…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>Menjangkau kotak surat Anda, masing-masing melalui tiga relai…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>Hapus surat</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>Hapus surat ini dari komputer ini? Salinannya di kotak surat sudah dihapus saat diambil, jadi tidak dapat diambil lagi.</translation>
     </message>
 </context>
 <context>
@@ -1014,7 +1909,7 @@
         <translation>Formulir</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>Transaksi-transaksi terkini mungkin belum terlihat dan oleh karenanya, saldo dompet Anda mungkin tidak tepat. Informasi ini akan akurat ketika dompet Anda tersinkronisasi dengan jaringan Bitcoin, seperti rincian berikut.</translation>
     </message>
     <message>
@@ -1064,6 +1959,409 @@
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>Tidak diketahui. Sinkronisasi Header (%1, %2%)...</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>Nama</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>Nama mengarahkan orang ke kunci register Anda, sehingga mereka dapat menulis kepada Anda — dan membayar Anda — dengan nama, bukan dengan kunci. Mendapatkan nama yang tersedia dan memperbaruinya hanya memerlukan biaya jaringan; nama diperbarui secara manual. Nama yang dimiliki seseorang dapat dibeli jika ia menjualnya, dengan harga yang ia minta. Nama di bawah nama Anda gratis, begitu juga nama panggilan: label Anda sendiri untuk orang, disimpan di komputer ini.</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>Nama Anda</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>Bayar dari</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nama</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>Berakhir</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>Subnama</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>Dapatkan nama…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>Perbarui…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>Tambahkan subnama…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>Jual…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>Alihkan…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>Terima pembayaran berdasarkan nama…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>Cari</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>nama, label.nama, atau nama panggilan</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>Salin kunci</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>Bayar…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>Buku alamat</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>Nama panggilan</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>Kunci</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>Tambahkan seseorang…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Hapus</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Kunci disalin</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>Memproses…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>Tarik dari penjualan</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>Tarik dari penjualan terlebih dahulu.</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>Kunci pembayaran baru…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>Pembayaran berdasarkan nama menyala</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>Nama memerlukan indeks nama. Nyalakan &quot;Indeks nama&quot; di Pengaturan dan mulai ulang.</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>Nama belum dimulai di jaringan ini. Kapan nama dimulai di mainnet, dan bagaimana nama pertama dibagikan, masih akan diputuskan. Sementara itu Anda dapat mencari nama dan menyimpan buku alamat.</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1 adalah %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>dari buku alamat Anda</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>nama terdaftar, dimiliki sampai blok %1</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>mantap</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>diubah %1 yang lalu, belum mantap</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>menerima pembayaran berdasarkan nama</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>Dijual: pemiliknya meminta %1. Gunakan Dapatkan nama untuk membelinya.</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>%1 telah dikomitmenkan. Nama akan diklaim dengan sendirinya dalam %2 blok (sekitar %3) - biarkan BPS Relay tetap berjalan dan dompet terbuka sampai saat itu.</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>Membeli %1: %2 dibayarkan kepada pemiliknya. Menjadi milik Anda setelah transaksi dikonfirmasi.</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>%1 dijual seharga %2. Siapa pun dapat membelinya mulai blok berikutnya, tanpa node ini harus online; harganya dibayarkan ke dompet ini.</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>%1 sedang ditarik dari penjualan. Mulai sekarang tidak ada yang dapat membelinya.</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>%1 diperbarui sampai blok %2, hanya dengan biaya jaringan.</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>%1 sedang dialihkan ke %2. Menjadi milik mereka setelah transaksi dikonfirmasi.</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>%1 sudah diatur; akan berlaku setelah transaksi dikonfirmasi.</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>Pembayaran berdasarkan nama sedang dinyalakan. Orang dapat membayar nama Anda yang mana pun sekitar %1 setelah transaksi dikonfirmasi; setiap pembayaran muncul di dompet Anda sebagai &quot;Dibayar berdasarkan nama&quot;.</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>Membayar %1 kepada %2, ke alamat yang hanya digunakan untuk pembayaran ini.</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>Bayar</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>dalam %1</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>berakhir %1 yang lalu</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>kedaluwarsa - perbarui dalam sebulan</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>dimiliki</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>sedang dijual - pembelian sedang dikonfirmasi</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>dijual seharga %1</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>dijual seharga %1 - belum dapat dibeli</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>belum terdaftar</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>sedang didaftarkan</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Klik untuk menyalin</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>Dapatkan nama</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>1 sampai 32 huruf, angka, atau tanda hubung</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 tahun</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>2 tahun</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>Untuk</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>Pendaftaran terdiri dari dua langkah: komitmen yang menyembunyikan nama, dan sekitar 20 menit kemudian klaim, yang dikirim BPS Relay dengan sendirinya. Tidak ada yang dapat merebut nama di antaranya. Setiap langkah hanya memerlukan biaya jaringan.</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>Membeli adalah satu transaksi: membayar pemilik dan menjadikan nama milik Anda, semuanya sekaligus atau tidak sama sekali.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Daftarkan</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>Nama terdiri dari 1 sampai 32 huruf biasa a-z, angka, atau tanda hubung di tengah.</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>%1, untuk %2, hanya memerlukan biaya jaringan. Memeriksa apakah masih tersedia…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>satu tahun</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>dua tahun</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>Tarik %1 dari penjualan</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>Tarik %1 dari penjualan? Sejak saat itu tidak ada yang dapat membelinya, dan setelah dikonfirmasi Anda dapat mengalihkannya atau menjualnya lagi.</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>Jual %1</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>Harga Anda untuk %1, dalam BPS. Siapa pun lalu dapat langsung membelinya, bahkan saat BPS Relay ditutup: mereka membayar Anda sejumlah ini dalam transaksi yang sama yang memberi mereka nama. Selama dijual, Anda tidak dapat mengalihkannya.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>&quot;%1&quot; bukan jumlah BPS.</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>Jual %1 seharga %2? Dua transaksi kecil dikirim: satu menyisihkan koin yang dibelanjakan pembeli, yang lain menerbitkan penjualan.</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>Perbarui %1</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>Perpanjang %1 dari waktu berakhirnya sekarang. Hanya memerlukan biaya jaringan. Nama dapat diperbarui paling lama dua tahun ke depan.</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>Alihkan %1</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>Berikan %1 kepada (kunci register, nama panggilan, atau nama):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>Berikan %1 kepada %2? Hanya pemilik barunya yang dapat mengembalikannya.</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>Subnama di bawah %1</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>Bagian sebelum .%1, misalnya alice untuk alice.%1:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>Ke siapa %1.%2 menunjuk (kunci register, nama panggilan, atau nama), atau &quot;remove&quot;:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>Mencari…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>Tambahkan seseorang</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>Apa sebutan Anda untuk mereka (hanya Anda yang melihat ini):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>Kunci register mereka, atau nama untuk mengingat siapa yang memegangnya sekarang:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>Pembayaran berdasarkan nama menyala. Pindahkan ke kunci baru dari dompet ini? Pembayaran yang sudah dilakukan ke kunci saat ini tetap akan masuk. Pembayar menunggu sekitar %1 setelah perubahan sebelum membayar lagi.</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>Biarkan orang membayar Anda berdasarkan nama: nama atau subnama apa pun yang menunjuk ke kunci node ini, nama panggilan yang mereka simpan untuk Anda, atau kunci itu sendiri. Setiap pembayaran masuk ke alamatnya sendiri yang hanya dapat dibelanjakan dompet ini, dan tidak ada yang mengamati dapat mengetahui bahwa Anda dibayar, atau bahwa dua pembayaran masuk ke orang yang sama. Memerlukan biaya jaringan. Orang dapat membayar Anda sekitar %1 setelah dikonfirmasi.</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>Pembayaran berdasarkan nama</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>Bayar %1</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>%1 belum menerima pembayaran berdasarkan nama. Minta mereka menyalakannya di tab Nama, atau minta alamat.</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>%1 berpindah tangan %2 yang lalu.</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>Mereka mengatur kunci tempat mereka dibayar %1 yang lalu.</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>dalam BPS</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Jumlah</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>Pembayaran masuk ke alamat yang hanya digunakan untuknya, yang hanya dapat dibelanjakan %1; tidak ada orang lain yang dapat mengetahui siapa yang dibayar. Pembayaran tidak dapat ditarik kembali. Biaya jaringan ditambahkan.</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>Jika itu bukan mereka, pembayaran hilang. Lebih aman menunggu sampai berumur %1.</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>Tetap bayar</translation>
     </message>
 </context>
 <context>
@@ -1362,6 +2660,217 @@
         <source>The supplied proxy address is invalid.</source>
         <translation>Alamat proxy yang diisi tidak valid.</translation>
     </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>Apakah fitur kontrol cold staking ditampilkan atau tidak.</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>Aktifkan fitur kontrol cold s&amp;taking</translation>
+    </message>
+    <message>
+        <source>Connect to the Bitcoin network through a separate SOCKS5 proxy for Tor onion services.</source>
+        <translation>Hubungkan ke jaringan Bitcoin melalui proxy SOCKS5 terpisah untuk layanan onion Tor.</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS&amp;5 proxy to reach peers via Tor onion services:</source>
+        <translation>Gunakan proxy SOCKS&amp;5 terpisah untuk menjangkau peer melalui layanan onion Tor:</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>Jaringan overlay</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>Lapisan terenkripsi milik BPS sendiri, yang membawa lalu lintas melalui peer lain sehingga ujung lainnya tidak pernah tahu di mana Anda berada.</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>bertanya…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>Berjalan</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>Mendengarkan di</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>Rute terbuka</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>Layanan yang bertemu di sini</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>Relai tersedia</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>Putaran hari ini</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>Pintu masuk Anda</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>Peer tempat lalu lintas Anda selalu masuk. Mereka dipertahankan, bukan diganti: memilih yang baru setiap kali pada akhirnya akan memberi giliran kepada pengamat.</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>Tempat orang dapat menemui Anda</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>Dihitung dari register, bukan dicari. Siapa pun yang mencoba menjangkau Anda melakukan perhitungan yang sama dan mendapat jawaban yang sama, jadi tidak ada yang perlu ditanya dan tidak ada yang dapat menjawab berbeda. Berubah setiap hari.</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>Terdengar di radio</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>Hasil menjadi relai</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>Diterbitkan per hari</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>Relai</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>Pengguna</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>Pengguna per relai</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>Bagian per pengguna</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>Relai membayar peer yang dicatatnya dari hadiah bloknya sendiri, jadi bagian seorang pengguna adalah satu dibagi jumlah pengguna relainya — itulah sebabnya mengambil bagian dari pengguna jaringan memerlukan bagian dari stake. Berapa banyak hadiah yang dibagikan relai adalah pilihannya sendiri dan tidak ada yang memaksakannya: relai yang tidak membayar apa pun tetap menghasilkan blok yang sepenuhnya valid. Yang membuatnya membayar adalah bahwa relai tanpa pengguna tidak melindungi siapa pun, termasuk dirinya sendiri.</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>Belum ditinjau oleh siapa pun selain penulisnya, dan ini menyembunyikan di mana Anda berada, bukan kapan Anda berbicara: seseorang yang mengamati kedua ujung masih dapat mencocokkan waktunya. Anggap ini belum selesai.</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>Node ini tidak berbagi apa pun. Atur -relayshare ke persentase, dan terima peer dengan addrosteruser.</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>Node ini akan berbagi %1%, tetapi %2.</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>Node ini berbagi %1% dengan %2 peer: blok berikutnya yang dibuatnya membayar %3, masing-masing %4.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>Jembatan Reticulum tidak melapor. Mulai dari Pengaturan, Radio, atau jalankan sendiri bps-rns-bridge.py.</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>Mendengarkan. Belum ada node BPS yang terdengar di radio; node mengumumkan diri setiap setengah jam.</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>Lalu lintas Anda masuk melalui tetangga radio jika salah satunya adalah relai yang tercatat.</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>Terdengar, tetapi lalu lintas Anda masuk melalui internet (Pengaturan, Radio).</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>1 lompatan</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>%1 lompatan</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>lompatan tidak diketahui</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>terdengar %1 yang lalu</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>sebuah relai</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>ya</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>tidak</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>Jaringan overlay dimatikan. Klien ini menyalakannya sendiri, jadi ada sesuatu yang mematikannya lagi, dengan -overlay=0 di baris perintah atau di berkas konfigurasi.</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>tidak ada selama jaringan overlay mati</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>jaringan overlay mati</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>belum ada</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>jaringan overlay menyala, belum ada relai</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>jaringan overlay menyala, 1 relai</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>jaringan overlay menyala, %1 relai</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>belum dipilih</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>tidak ada — register tidak memiliki relai untuk menurunkannya</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>jaringan overlay tidak diketahui</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>belum ada relai</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1437,7 +2946,35 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>Jumlah saldo di alamat hanya lihat</translation>
     </message>
-    </context>
+    <message>
+        <source>Stake</source>
+        <translation>Stake</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>Stake belum matang:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>Delegasi belum matang</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>Delegasi belum matang:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Didelegasikan</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>Didelegasikan:</translation>
+    </message>
+    <message>
+        <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
+        <translation>Mode privasi diaktifkan untuk tab Ikhtisar. Untuk menampilkan nilai, hapus centang Pengaturan-&gt;Samarkan nilai.</translation>
+    </message>
+</context>
 <context>
     <name>PSBTOperationsDialog</name>
     <message>
@@ -1448,7 +2985,119 @@
         <source>or</source>
         <translation>atau</translation>
     </message>
-    </context>
+    <message>
+        <source>Dialog</source>
+        <translation>Dialog</translation>
+    </message>
+    <message>
+        <source>Sign Tx</source>
+        <translation>Tandatangani transaksi</translation>
+    </message>
+    <message>
+        <source>Broadcast Tx</source>
+        <translation>Siarkan transaksi</translation>
+    </message>
+    <message>
+        <source>Copy to Clipboard</source>
+        <translation>Salin ke papan klip</translation>
+    </message>
+    <message>
+        <source>Save...</source>
+        <translation>Simpan...</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Tutup</translation>
+    </message>
+    <message>
+        <source>Failed to load transaction: %1</source>
+        <translation>Gagal memuat transaksi: %1</translation>
+    </message>
+    <message>
+        <source>Failed to sign transaction: %1</source>
+        <translation>Gagal menandatangani transaksi: %1</translation>
+    </message>
+    <message>
+        <source>Could not sign any more inputs.</source>
+        <translation>Tidak dapat menandatangani input lagi.</translation>
+    </message>
+    <message>
+        <source>Signed %1 inputs, but more signatures are still required.</source>
+        <translation>Menandatangani %1 input, tetapi masih diperlukan tanda tangan lagi.</translation>
+    </message>
+    <message>
+        <source>Signed transaction successfully. Transaction is ready to broadcast.</source>
+        <translation>Transaksi berhasil ditandatangani. Transaksi siap disiarkan.</translation>
+    </message>
+    <message>
+        <source>Unknown error processing transaction.</source>
+        <translation>Kesalahan tidak diketahui saat memproses transaksi.</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast successfully! Transaction ID: %1</source>
+        <translation>Transaksi berhasil disiarkan! ID transaksi: %1</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast failed: %1</source>
+        <translation>Penyiaran transaksi gagal: %1</translation>
+    </message>
+    <message>
+        <source>PSBT copied to clipboard.</source>
+        <translation>PSBT disalin ke papan klip.</translation>
+    </message>
+    <message>
+        <source>Save Transaction Data</source>
+        <translation>Simpan data transaksi</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation>Transaksi yang ditandatangani sebagian (biner) (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT saved to disk.</source>
+        <translation>PSBT disimpan ke disk.</translation>
+    </message>
+    <message>
+        <source> * Sends %1 to %2</source>
+        <translation> * Mengirim %1 ke %2</translation>
+    </message>
+    <message>
+        <source>Unable to calculate transaction fee or total transaction amount.</source>
+        <translation>Tidak dapat menghitung biaya transaksi atau jumlah total transaksi.</translation>
+    </message>
+    <message>
+        <source>Pays transaction fee: </source>
+        <translation>Membayar biaya transaksi: </translation>
+    </message>
+    <message>
+        <source>Transaction has %1 unsigned inputs.</source>
+        <translation>Transaksi memiliki %1 input yang belum ditandatangani.</translation>
+    </message>
+    <message>
+        <source>Transaction is missing some information about inputs.</source>
+        <translation>Transaksi kekurangan sebagian informasi tentang input.</translation>
+    </message>
+    <message>
+        <source>Transaction still needs signature(s).</source>
+        <translation>Transaksi masih memerlukan tanda tangan.</translation>
+    </message>
+    <message>
+        <source>(But this wallet cannot sign transactions.)</source>
+        <translation>(Tetapi dompet ini tidak dapat menandatangani transaksi.)</translation>
+    </message>
+    <message>
+        <source>(But this wallet does not have the right keys.)</source>
+        <translation>(Tetapi dompet ini tidak memiliki kunci yang tepat.)</translation>
+    </message>
+    <message>
+        <source>Transaction is fully signed and ready for broadcast.</source>
+        <translation>Transaksi sudah ditandatangani sepenuhnya dan siap disiarkan.</translation>
+    </message>
+    <message>
+        <source>Transaction status is unknown.</source>
+        <translation>Status transaksi tidak diketahui.</translation>
+    </message>
+</context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1464,15 +3113,15 @@
         <translation>Pengelolaan URI</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>'bitcoin://' bukanlah alamat URI yang valid. Silakan gunakan 'bitcoin:'.</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;bitcoin://&apos; bukanlah alamat URI yang valid. Silakan gunakan &apos;bitcoin:&apos;.</translation>
     </message>
     <message>
         <source>Cannot process payment request because BIP70 is not supported.</source>
         <translation>Tidak dapat memproses pembayaran karena dukungan BIP70 tidak disertakan.</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
         <translation>Berhubung kelemahan keamanan yang meluas di BIP70, sangat disarankan agar instruksi pedagang untuk mengganti dompet diabaikan.</translation>
     </message>
     <message>
@@ -1520,6 +3169,161 @@
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>Perbarui pencatatan Anda</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>Terbitkan pencatatan Anda</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>Pembaruan menulis catatan baru ke rantai. Sampai dikonfirmasi, catatan lama masih berlaku.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>Ini menulis catatan singkat ke rantai yang menyatakan bahwa Anda ada, dan jika mau, di mana Anda dapat ditemukan.</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>Bagaimana peer harus menjangkau Anda?</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>Melalui jaringan overlay — tanpa menerbitkan alamat</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>Pencatatan Anda menyatakan siapa Anda, bukan di mana Anda berjalan. Peer menjangkau Anda melalui jaringan overlay, menemui Anda di titik yang dihitung kedua pihak dari register. Inilah yang dinyalakan klien ini secara bawaan.</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>Di alamat yang saya terbitkan</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>alamat yang dapat dijangkau peer lain</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>Siapa pun dapat melihatnya, dan rantai menyimpannya selamanya. Alamat onion menerbitkan lokasi yang tidak dapat dilacak siapa pun kembali ke Anda dan berfungsi dari balik NAT; alamat IP tidak melakukan keduanya. Node yang menerbitkan alamat IP dapat dipilih sebagai relai oleh orang lain.</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>Siapa yang membayar biaya</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>Sebulan, lalu perlu diperbarui</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>Setahun, lalu perlu diperbarui</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>Berapa lama berlaku</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>Perbarui</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>Terbitkan</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>Relai yang membayar — tidak perlu koin</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>Jaringan overlay mati, jadi tidak ada relai yang bisa dimintai. Nyalakan di Pengaturan, atau bayar dari dompet.</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>Belum ada relai yang tercatat di register, jadi tidak ada yang bisa dimintai. Bayar dari dompet, atau coba lagi setelah ada relai yang mencatatkan diri.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Node Anda menandatangani pencatatan dan mengirimkannya melalui jaringan overlay ke relai tempat ia masuk. Relai yang membayar pencatatan memasukkan pencatatan Anda ke blok yang dibuatnya sendiri, sehingga dikonfirmasi meski sebagian besar node tidak meneruskannya, dan menambahkan Anda ke peer yang ia bagikan hadiahnya. Jika nanti ia berhenti membayar, pencatatan Anda berakhir dalam sebulan; Anda selalu dapat memperbaruinya sendiri dari dompet yang berisi dana.</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>Node ini tidak staking. Pencatatan lebih besar daripada yang diteruskan node lama, jadi sampai sebagian besar staker memperbarui, pencatatan hanya dikonfirmasi saat staker yang menjalankan versi ini menyertakannya, yang bisa memakan waktu. Staking memasukkannya ke blok Anda sendiri berikutnya; relai yang membayar memasukkannya ke bloknya sendiri.</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>Dompet ini terbuka hanya untuk staking. Pembayaran meminta frasa sandinya, lalu dompet terkunci lagi, yang menghentikan staking sampai Anda membukanya lagi untuk staking.</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>Pembayaran meminta frasa sandi dompet ini.</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>Masukkan alamat, atau pilih untuk tidak menerbitkannya.</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>Meminta relai Anda untuk menerbitkannya… ini bisa memakan waktu hingga setengah menit.</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>Dompet itu tidak lagi terbuka.</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>Dompet masih terkunci, jadi tidak ada yang dibayar.</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>Menandatangani catatan…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>Node mengembalikan catatan yang tidak dipahami klien ini.</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>Membayar untuk menerbitkannya…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>Relai menolak: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>Tidak ada jawaban dari relai. %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1527,7 +3331,7 @@
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>Masukkan alamat Bitcoin (contoh %1)</translation>
+        <translation type="vanished">Masukkan alamat Bitcoin (contoh %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1559,23 +3363,33 @@
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n detik</numerusform></translation>
+        <translation>
+            <numerusform>%n detik</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n menit</numerusform></translation>
+        <translation>
+            <numerusform>%n menit</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n jam</numerusform></translation>
+        <translation>
+            <numerusform>%n jam</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n hari</numerusform></translation>
+        <translation>
+            <numerusform>%n hari</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n minggu</numerusform></translation>
+        <translation>
+            <numerusform>%n minggu</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1583,7 +3397,9 @@
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n tahun</numerusform></translation>
+        <translation>
+            <numerusform>%n tahun</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1602,8 +3418,8 @@
         <translation>%1 GB</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>Error: Direktori data yang ditentukan "%1" tidak ada.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>Error: Direktori data yang ditentukan &quot;%1&quot; tidak ada.</translation>
     </message>
     <message>
         <source>Error: Cannot parse configuration file: %1.</source>
@@ -1614,12 +3430,64 @@
         <translation>Error: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1 masih belum keluar secara aman...</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>tidak diketahui</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>Kontak</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>Penerimaan</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>Tersembunyi</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Tidak diketahui</translation>
+    </message>
+    <message>
+        <source>Error initializing settings: %1</source>
+        <translation>Kesalahan saat menginisialisasi pengaturan: %1</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Didelegasikan</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>%1 dimiliki seseorang yang telah menjualnya. Ia meminta %2; biaya jaringan ditambahkan.</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>Beli</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>Memeriksa apakah masih tersedia…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>Masih tersedia.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Daftarkan</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>belum dibuat</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>Masukkan alamat BitcoinPoS (mis. %1)</translation>
     </message>
 </context>
 <context>
@@ -1680,16 +3548,16 @@
         <translation>Datadir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the data directory use the '%1' option.</source>
-        <translation>Untuk menentukan lokasi direktori data yang tidak standar gunakan opsi '%1'.</translation>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>Untuk menentukan lokasi direktori data yang tidak standar gunakan opsi &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Blocksdir</source>
         <translation>Blocksdir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>Untuk menentukan lokasi direktori block non-default, gunakan opsi '%1'.</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>Untuk menentukan lokasi direktori block non-default, gunakan opsi &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -1957,6 +3825,57 @@
         <source>Unknown</source>
         <translation>Tidak diketahui</translation>
     </message>
+    <message>
+        <source>Current block height</source>
+        <translation>Tinggi blok saat ini</translation>
+    </message>
+    <message>
+        <source>Permissions</source>
+        <translation>Izin</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>Maksud Anda:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>Tidak yakin dengan perintahnya? Ketik apa yang Anda inginkan dengan kata-kata biasa, misalnya %1, lalu pilih saran. Saran dihitung di komputer ini; tidak ada yang Anda ketik dikirim ke mana pun.</translation>
+    </message>
+    <message>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>Menjalankan perintah menggunakan dompet &quot;%1&quot;</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>Radio mati.</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>Radio menyala; jalankan sendiri jembatan Reticulum (contrib/reticulum/bps-rns-bridge.py).</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>bps-rns-bridge.py tidak ada di samping BPS Relay, jadi jembatan tidak dapat dimulai.</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>Python tidak dapat dijalankan sebagai &quot;%1&quot;. Pasang Python, atau atur perintahnya di Pengaturan, Radio.</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Reticulum belum terpasang. Pasang dengan: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>Jembatan Reticulum berhenti (status %1); lihat radio/bridge.log.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>Jembatan Reticulum sedang dimulai.</translation>
+    </message>
 </context>
 <context>
     <name>ReceiveCoinsDialog</name>
@@ -2009,12 +3928,12 @@
         <translation>Hapus</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>Alamat segwit asli (alias Bech32 atau BIP-173) akan mengurangi biaya transaksi anda nantinya dan menawarkan perlindungan yang lebih baik terhadap kesalahan pengetikan, tetapi dompet lama tidak mendukungnya. Ketika tidak dicentang, alamat yang kompatibel dengan dompet lama akan dibuat sebagai gantinya.</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">Alamat segwit asli (alias Bech32 atau BIP-173) akan mengurangi biaya transaksi anda nantinya dan menawarkan perlindungan yang lebih baik terhadap kesalahan pengetikan, tetapi dompet lama tidak mendukungnya. Ketika tidak dicentang, alamat yang kompatibel dengan dompet lama akan dibuat sebagai gantinya.</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>Hasilkan alamat asli segwit (Bech32)</translation>
+        <translation type="vanished">Hasilkan alamat asli segwit (Bech32)</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2056,7 +3975,19 @@
         <source>Could not unlock wallet.</source>
         <translation>Tidak dapat membuka dompet.</translation>
     </message>
-    </context>
+    <message>
+        <source>(none)</source>
+        <translation>(tidak ada)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>Belum ada alamat staking yang diatur untuk dompet ini, jadi tidak ada tujuan delegasi. Atur satu di halaman Stake, di Delegasikan -&gt; Delegasi otomatis, dan jenis alamat ini akan berfungsi.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Tidak dapat membuat alamat %1 baru</translation>
+    </message>
+</context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
@@ -2091,6 +4022,18 @@
         <source>Payment information</source>
         <translation>Informasi pembayaran</translation>
     </message>
+    <message>
+        <source>Request payment to ...</source>
+        <translation>Minta pembayaran ke ...</translation>
+    </message>
+    <message>
+        <source>Address:</source>
+        <translation>Alamat:</translation>
+    </message>
+    <message>
+        <source>Label:</source>
+        <translation>Label:</translation>
+    </message>
 </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -2121,6 +4064,99 @@
     <message>
         <source>Requested</source>
         <translation>Diminta</translation>
+    </message>
+</context>
+<context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>Peer</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Alamat</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>Tercatat</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>Pencatatan berakhir</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>Tercatat selama</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Klik untuk menyalin</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>Peer ini tercatat tetapi tidak menerbitkan alamat. Ia masih dapat
+dijangkau melalui jaringan overlay, dan itulah tujuan mengizinkannya.</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>satu alamat diterbitkan</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>%1 alamat diterbitkan</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>Dikonfirmasi di blok %1</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>Berhenti dihitung pada blok %1</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>Tidak ada riwayat sebelum pencatatan ini.</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>Tercatat tanpa jeda sejak blok %1.</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>Terlalu baru untuk dihitung.</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>Tidak berjalan di bawah identitas.</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>Berjalan di bawah identitas %1, yang mempertahankan umurnya jika berganti kunci.</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>tidak ada alamat diterbitkan</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>baru saja</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>%1 yang lalu</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>kedaluwarsa</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>dalam %1</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>baru</translation>
     </message>
 </context>
 <context>
@@ -2194,12 +4230,12 @@
         <translation>Peringatan: Perkiraan biaya saat ini tidak memungkinkan.</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>Tentukan biaya khusus per kB (1.000 byte) dari ukuran transaksi maya.
 
-Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" untuk ukuran transaksi 500 byte (setengah dari 1 kB) pada akhirnya akan menghasilkan biaya hanya 50 satoshi.</translation>
+Catatan: Karena biaya dihitung berdasarkan per byte, biaya &quot;100 satoshi per kB&quot; untuk ukuran transaksi 500 byte (setengah dari 1 kB) pada akhirnya akan menghasilkan biaya hanya 50 satoshi.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2258,7 +4294,7 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Izinkan Replace-By-Fee</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
         <translation>Dengan Replace-By-Fee (BIP-125) Anda dapat menambah biaya transaksi setelah dikirim. Tanpa ini, biaya yang lebih tinggi dapat direkomendasikan untuk mengkompensasi peningkatan risiko keterlambatan transaksi.</translation>
     </message>
     <message>
@@ -2318,12 +4354,12 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Membuat sebagian tertanda transaksi bitcoin (PSBT) untuk digunakan dengan contoh dompet offline %1, atau dompet yang kompatibel dengan PSBT</translation>
     </message>
     <message>
-        <source> from wallet '%1'</source>
-        <translation>dari dompet '%1'</translation>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation>dari dompet &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>%1 to '%2'</source>
-        <translation>%1 ke '%2'</translation>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 ke &apos;%2&apos;</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -2362,8 +4398,8 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Jumlah Keseluruhan</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
-        <translation>Untuk meninjau daftar penerima, klik "Tampilkan Detail ..."</translation>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>Untuk meninjau daftar penerima, klik &quot;Tampilkan Detail ...&quot;</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2411,7 +4447,9 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Diperkirakan akan memulai konfirmasi dalam %n blok.</numerusform></translation>
+        <translation>
+            <numerusform>Diperkirakan akan memulai konfirmasi dalam %n blok.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2432,6 +4470,66 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
     <message>
         <source>(no label)</source>
         <translation>(tidak ada label)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>Tempel atau muat daftar pembayaran alih-alih menambahkannya satu per satu</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>&amp;Massal...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>Saat menghitung saldo tersedia, perhitungkan juga delegasi. Jika tidak dicentang, saldo tersedia hanya mencerminkan koin yang saat ini ada di dompet.</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>Sertakan &amp;delegasi</translation>
+    </message>
+    <message>
+        <source>Please, review your transaction proposal. This will produce a Partially Signed Bitcoin Transaction (PSBT) which you can save or copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>Harap tinjau usulan transaksi Anda. Ini akan menghasilkan transaksi Bitcoin yang ditandatangani sebagian (PSBT) yang dapat Anda simpan atau salin lalu tandatangani dengan, misalnya, dompet %1 offline atau dompet perangkat keras yang kompatibel dengan PSBT.</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>Cold staking tidak diaktifkan</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>Cold staking diaktifkan pada blok %1</translation>
+    </message>
+    <message>
+        <source>Create Unsigned</source>
+        <translation>Buat tanpa tanda tangan</translation>
+    </message>
+    <message>
+        <source>Save Transaction Data</source>
+        <translation>Simpan data transaksi</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation>Transaksi yang ditandatangani sebagian (biner) (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT saved</source>
+        <translation>PSBT disimpan</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>Dompet ini melakukan staking dengan koinnya sendiri, jadi semuanya didelegasikan.</translation>
+    </message>
+    <message>
+        <source>The total exceeds your balance when the %1 transaction fee is included.</source>
+        <translation>Total melebihi saldo Anda jika biaya transaksi %1 disertakan.</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>Alamat pemilik yang diberikan tidak ada di dompet ini. PERINGATAN: Hanya pemilik kunci alamat pemilik yang dapat membelanjakan koin ini setelah delegasi.</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>Alamat staker yang diberikan ada di dompet ini. Anda sudah dapat melakukan staking dengan koin ini, tidak perlu mendelegasikannya kepada diri sendiri.</translation>
     </message>
 </context>
 <context>
@@ -2516,12 +4614,362 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <source>Memo:</source>
         <translation>Catatan Peringatan:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>Alamat &amp;pemilik:</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>Alamat pemilik BitcoinPoS</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>Server</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Apa yang ditawarkan node ini kepada orang lain. Relai dan penyimpanan surat sudah berjalan hari ini; hosting sedang disiapkan, dan seperti semua hal di sini, ditemukan dengan cara yang sama seperti peer — melalui register. Nama memiliki halamannya sendiri.</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>Hosting</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>Situs atau layanan yang disajikan dari node ini, ditemukan melalui kunci atau namanya dan dijangkau melalui jaringan overlay, sehingga host tidak pernah menerbitkan di mana ia berjalan. Bagian pertemuannya sudah ada: layanan mendaftar di titik temu yang dihitung kedua pihak dari register. Menyajikan halaman dan aplikasi melaluinya belum dibuat.</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>Relai</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>Membawa lalu lintas jaringan overlay peer lain, membayar pencatatan bulanan peer yang menggunakan node ini, dan membagikan sebagian setiap blok yang dibuatnya kepada mereka. Relai memasukkan pencatatan yang dibayarnya ke blok yang dibuatnya sendiri; begitulah pencatatan dikonfirmasi selagi sebagian besar node masih menolak meneruskan catatan — jadi relai harus melakukan staking.</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>Peer yang tercatat di sini</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>Blok berikutnya yang dibuatnya</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>Bayar pencatatan peer yang memintanya melalui jaringan overlay</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>Peer tanpa koin dapat meminta node ini menerbitkan pencatatan bulanannya. Node ini membayar biayanya, memasukkannya ke blok, dan menambahkan peer tersebut ke daftar yang ia bagi hadiahnya. Mati secara bawaan, karena membelanjakan koin node ini.</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>Peer di atas jumlah ini ditolak. Peer yang sudah tercatat di sini masih dapat memperbarui.</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>Peer paling banyak yang tetap dicatat</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>satu-satunya dompet terbuka</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>Dompet mana yang membayar biaya. Jika beberapa terbuka dan tidak ada yang disebut di sini, permintaan ditolak alih-alih dibayar secara tebakan. Staking dapat terjadi di dompet mana pun pada node ini.</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>Bayar biaya dari dompet</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>Bagian dari setiap blok yang dibuat node ini dengan koinnya sendiri, dibagi rata di antara peer yang dicatatnya. 0 tidak membagikan apa pun.</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>Bagian dari setiap blok yang dibuat</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>Kotak surat</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>Simpan surat tersegel untuk orang yang oleh register dijadikan node ini sebagai kotak suratnya, sampai mereka mengambilnya. Relai mana yang menyimpan surat siapa dihitung dari register, jadi tidak ada yang menetapkannya. Pengirim dan pemilik menjangkau node ini melalui tiga relai, jadi ia tidak pernah tahu di mana mereka berada; surat tersegel, jadi ia tidak dapat membacanya atau mengetahui siapa penulisnya. Surat dihapus setelah dua minggu, dan hanya orang yang tercatat yang dilayani.</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>Menyimpan</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>Kunci surat yang disimpan untuk pengirim</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>Simpan surat untuk orang yang ditetapkan register ke node ini</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>Menyala secara bawaan di mana pun jaringan overlay berjalan: relai yang menolak membuat orang yang dipilihnya kehilangan satu kotak surat.</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>Saat penuh, surat baru ditolak sampai surat lama diambil atau dihapus. Tidak ada satu orang pun yang dapat menggunakan lebih dari 8 MiB.</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>Disk yang boleh digunakan</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Tersimpan. Pengaturan ini dibaca saat node dimulai, jadi mulai ulang klien agar perubahan berlaku.</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>tidak ada dompet terbuka</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>tidak — relai yang tidak staking menolak permintaan pencatatan</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>ya, dalam %1</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>tidak membayar pencatatan</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>membayar, tetapi tidak staking</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>berjalan</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>build ini tidak memiliki dompet</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>memerlukan dompet</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>mati</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>memerlukan jaringan overlay</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>tidak ada — tidak menyimpan surat</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>tidak ada surat</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>1 huruf</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>%1 huruf</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>1 orang</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>%1 orang</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>kosong saat ini, ruang untuk %1 MiB</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%1 untuk %2, %3 dari %4 MiB</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>berbagi %1%: total %2 %4, %3 %4 untuk setiap peer</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>Pengaturan</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>Apa yang dilakukan klien ini yang tidak dilakukan klien dompet, dan bahasa. Semua yang lain — proxy, port, pemangkasan — adalah pertanyaan yang sama di keduanya, dan ditanyakan di satu tempat.</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Jelajahi</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>Simpan indeks register</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>Tanpa ini node ini dapat menerbitkan tetapi tidak dapat melihat siapa lagi yang tercatat.</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>Indeks nama</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>Diperlukan untuk mencari nama, mengirim surat ke nama, dan mendaftarkan nama Anda sendiri.</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>Coba hubungkan ke peer yang ditemukan di register</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>Memberikan alamat register kepada pengelola alamat, bersama seed dan pertukaran alamat yang biasa. Mematikannya membuat register menjadi daftar yang dibaca node ini tetapi tidak pernah digunakan.</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Jaringan overlay</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>Jalankan jaringan overlay</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>Menyala secara bawaan di klien ini, mati di node dan di klien dompet. Jabat tangannya belum ditinjau oleh siapa pun selain penulisnya.</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>Jaringan overlay menggunakan UDP di port-nya sendiri. Jaringan peer-to-peer terpisah dan tetap di TCP.</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>Dengarkan di port</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>Radio</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>Bawa jaringan overlay juga melalui radio, lewat Reticulum</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>LoRa melalui RNode, radio paket, tautan serial: apa pun yang diatur untuk digunakan Reticulum. Memerlukan jaringan overlay.</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>Masuk ke jaringan overlay melalui tetangga radio, agar surat berfungsi tanpa internet</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>Jika node BPS yang terdengar di radio adalah relai yang tercatat, surat dan permintaan pencatatan Anda melewatinya. Tautan radio jauh lebih lambat daripada internet.</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>Mulai jembatan Reticulum bersama BPS Relay</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>Menjalankan bps-rns-bridge.py di samping node. Biarkan mati jika Anda menjalankan jembatan sendiri.</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>Perintah Python</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Reticulum bukan bagian dari BPS dan memiliki lisensinya sendiri. Pasang dengan %1, dan atur radio Anda di konfigurasi Reticulum sendiri (~/.reticulum/config). Pita radio amatir tidak mengizinkan lalu lintas terenkripsi, jadi gunakan pita bebas lisensi seperti milik LoRa.</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>Tampilan</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>Tampilkan jumlah dalam</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>Bahasa komputer</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>Berlaku saat BPS Relay dimulai lagi. Teks yang dikirim node sendiri, seperti pesan kesalahan dari perintah, tetap dalam bahasa Inggris.</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Bahasa</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>Jaringan, proxy, dan pengaturan inti lainnya…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>Tersimpan. Bahasa berubah saat BPS Relay dimulai lagi.</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Tersimpan. Pengaturan ini dibaca saat node dimulai, jadi mulai ulang klien agar perubahan berlaku.</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>Node masih dimulai; pengaturan inti belum tersedia.</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
         <translation>Kamu tidak dapat mematikan komputer sebelum jendela ini tertutup sendiri.</translation>
+    </message>
+    <message>
+        <source>%1 is shutting down...</source>
+        <translation>%1 sedang dimatikan...</translation>
     </message>
 </context>
 <context>
@@ -2591,7 +5039,7 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>&amp;Verifikasi Pesan</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
         <translation>Masukkan alamat penerima, pesan (pastikan Anda menyalin persis jeda baris, spasi, tab, dll) dan tanda tangan di bawah untuk memverifikasi pesan. Berhati-hatilah untuk tidak memberi informasi lebih ke tanda tangan daripada apa yang ada dalam pesan yang ditandatangani itu sendiri, untuk menghindari dikelabui oleh serangan man-in-the-middle. Perhatikan bahwa ini hanya membuktikan pihak penandatangan menerima dengan alamat, tapi tidak dapat membuktikan pengiriman dari transaksi apa pun!</translation>
     </message>
     <message>
@@ -2619,8 +5067,8 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Hapus semua bidang verifikasi pesan</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>Klik "Sign Message" untuk menghasilkan tanda tangan</translation>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>Klik &quot;Sign Message&quot; untuk menghasilkan tanda tangan</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2676,6 +5124,209 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
     </message>
 </context>
 <context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>Formulir</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>Saldo yang dapat dibelanjakan saat ini</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>Aset yang di-stake milik dompet ini</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>Aset yang di-stake dari delegasi</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>Belum matang:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>Saldo yang belum matang</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>Aset yang di-stake</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>Stake:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>Tinggi blok:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>Hadiah blok:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/blok</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>Bobot jaringan:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>Perkiraan imbal hasil tahunan:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>Catatan stake</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>&amp;Delegasikan</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>Jenis delegasi:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>Delegasi manual</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>Delegasi otomatis</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>Alamat staking</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>Hapus semua</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Tempel alamat dari papan klip</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>&amp;Tambah</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>Delegasi &amp;saya</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>Aset yang didelegasikan</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>Saldo yang didelegasikan saat ini</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>Delegasi saya</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>Delegasi yang &amp;diterima</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>&amp;Buat alamat staking baru</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> dengan label:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>Label opsional untuk dikaitkan dengan alamat penerimaan baru (Anda gunakan untuk mengenali tagihan). Label ini juga dilampirkan pada permintaan pembayaran.</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>Delegasi ColdStake</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>Koin yang dibayarkan ke alamat delegasi dompet ini di-stake oleh kunci-kunci ini begitu tiba, dan kembalian dari pengeluaran Anda sendiri tetap didelegasikan. Kunci staking hanya dapat menghasilkan coinstake yang membayar kembali kepada Anda, jadi dompet yang menyimpannya tidak memerlukan frasa sandi.</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>Cantumkan lebih dari satu untuk menyebarkan koin Anda ke beberapa dompet staking, agar satu yang offline tidak menghentikan semua staking.
+
+Setiap delegasi baru masuk ke alamat yang sejauh ini paling sedikit disebut, dihitung dari alamat delegasi yang sudah dibagikan dan koin yang didelegasikan yang belum dibelanjakan. Yang dihitung adalah delegasi, bukan jumlah, jadi alamat dengan satu delegasi besar masih dapat dipilih lebih dulu daripada alamat dengan beberapa delegasi kecil.</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>Koin yang sudah didelegasikan ke alamat yang dihapus tidak dipindahkan dan alamat itu tetap melakukan staking dengannya. Hanya delegasi baru yang berhenti menyebutnya.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>Tidak dapat membuka dompet.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Tidak dapat membuat alamat %1 baru</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>Cold staking dinonaktifkan di node ini (-coldstaking=0), jadi tidak ada yang didelegasikan.</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>Alamat staking di sini milik dompet ini, yang terenkripsi, jadi ia hanya staking selama dompet terbuka. Untuk staking tanpa frasa sandi, gunakan alamat dari dompet staking terpisah yang tidak terenkripsi.</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>Berhenti mendelegasikan ke %1. Koin yang sudah didelegasikan kepadanya tidak dipindahkan dan ia tetap melakukan staking dengannya.</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>Tidak dapat menyimpan alamat staking. Delegasi terikat pada hash kunci, jadi masing-masing harus berupa alamat legacy.</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>Alamat staking itu sudah ada di daftar.</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>Hapus semua alamat staking</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>Berhenti mendelegasikan ke semua %1 alamat staking?
+
+Koin yang sudah didelegasikan tetap di-stake oleh alamat-alamat itu dan tidak dipindahkan. Tetapi setoran baru dan kembalian akan masuk ke alamat biasa, yang tidak staking, dan Anda akan memerlukan alamat-alamat ini lagi untuk menyalakannya kembali.</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2686,7 +5337,9 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Buka untuk %n lebih blok</numerusform></translation>
+        <translation>
+            <numerusform>Buka untuk %n lebih blok</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2844,6 +5497,16 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <source>false</source>
         <translation>salah</translation>
     </message>
+    <message numerus="yes">
+        <source>matures in %n more block(s)</source>
+        <translation>
+            <numerusform>matang dalam %n blok lagi</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Koin hasil pembuatan harus matang %1 blok sebelum dapat dibelanjakan. Saat Anda membuat blok ini, blok tersebut disiarkan ke jaringan untuk ditambahkan ke rantai blok. Jika gagal masuk ke rantai, statusnya akan berubah menjadi &quot;tidak diterima&quot; dan tidak dapat dibelanjakan. Hal ini sesekali dapat terjadi jika node lain membuat blok dalam beberapa detik dari blok Anda.</translation>
+    </message>
 </context>
 <context>
     <name>TransactionDescDialog</name>
@@ -2872,7 +5535,9 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Buka %n untuk blok lebih</numerusform></translation>
+        <translation>
+            <numerusform>Buka %n untuk blok lebih</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2957,6 +5622,34 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>Jumlah dihapus dari atau ditambahkan ke saldo.</translation>
+    </message>
+    <message>
+        <source>Confirming (%1 of %2 recommended confirmations)</source>
+        <translation>Mengonfirmasi (%1 dari %2 konfirmasi yang disarankan)</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>Cold stake</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>Staking atas nama</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>Delegasi stake</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>Delegasi</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>Delegasi stake dibelanjakan oleh</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>Jumlah yang didelegasikan.</translation>
     </message>
 </context>
 <context>
@@ -3117,6 +5810,22 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <source>to</source>
         <translation>untuk</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>Cold stake</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>Hot stake</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>Delegasi belum dibelanjakan</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>Delegasi</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3139,12 +5848,28 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <source>Closing the wallet for too long can result in having to resync the entire chain if pruning is enabled.</source>
         <translation>Menutup dompet terlalu lama dapat menyebabkan harus menyinkron ulang seluruh rantai jika pemangkasan diaktifkan.</translation>
     </message>
-    </context>
+    <message>
+        <source>Close all wallets</source>
+        <translation>Tutup semua dompet</translation>
+    </message>
+    <message>
+        <source>Are you sure you wish to close all wallets?</source>
+        <translation>Yakin ingin menutup semua dompet?</translation>
+    </message>
+</context>
 <context>
     <name>WalletFrame</name>
     <message>
         <source>Create a new wallet</source>
         <translation>Bikin dompet baru</translation>
+    </message>
+    <message>
+        <source>No wallet has been loaded.
+Go to File &gt; Open Wallet to load a wallet.
+- OR -</source>
+        <translation>Belum ada dompet yang dimuat.
+Buka Berkas &gt; Buka Dompet untuk memuat dompet.
+- ATAU -</translation>
     </message>
 </context>
 <context>
@@ -3186,7 +5911,7 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Konfirmasi biaya tambahan</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
+        <source>Can&apos;t draft transaction.</source>
         <translation>Tidak dapat membuat konsep transaksi.</translation>
     </message>
     <message>
@@ -3194,7 +5919,7 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>PSBT disalin</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>Tidak dapat menandatangani transaksi.</translation>
     </message>
     <message>
@@ -3204,6 +5929,21 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
     <message>
         <source>default wallet</source>
         <translation>wallet default</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ node ini</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● langsung</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>Klien dompet, yang berjalan di proses ini terhadap node ini. Ini adalah program yang sama dengan bitcoin-pos-qt, bukan salinannya.</translation>
     </message>
 </context>
 <context>
@@ -3248,6 +5988,26 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <source>Cancel</source>
         <translation>Batal</translation>
     </message>
+    <message>
+        <source>Unable to decode PSBT from clipboard (invalid base64)</source>
+        <translation>Tidak dapat mendekode PSBT dari papan klip (base64 tidak valid)</translation>
+    </message>
+    <message>
+        <source>Load Transaction Data</source>
+        <translation>Muat data transaksi</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (*.psbt)</source>
+        <translation>Transaksi yang ditandatangani sebagian (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT file must be smaller than 100 MiB</source>
+        <translation>Berkas PSBT harus lebih kecil dari 100 MiB</translation>
+    </message>
+    <message>
+        <source>Unable to decode PSBT</source>
+        <translation>Tidak dapat mendekode PSBT</translation>
+    </message>
 </context>
 <context>
     <name>bitcoin-core</name>
@@ -3288,7 +6048,7 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Kesalahan membaca %s! Semua kunci dibaca dengan benar, tetapi data transaksi atau entri buku alamat mungkin hilang atau salah.</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation>Periksa apakah tanggal dan waktu komputer anda benar! Jika jam anda salah, %s tidak akan berfungsi dengan baik.</translation>
     </message>
     <message>
@@ -3296,7 +6056,7 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Silakan berkontribusi jika %s berguna. Kunjungi %s untuk informasi lebih lanjut tentang perangkat lunak.</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
         <translation>Blok basis data berisi blok yang tampaknya berasal dari masa depan. Ini mungkin karena tanggal dan waktu komputer anda diatur secara tidak benar. Bangun kembali blok basis data jika anda yakin tanggal dan waktu komputer anda benar</translation>
     </message>
     <message>
@@ -3328,8 +6088,8 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>-maxmempool harus paling sedikit %d MB</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>Tidak bisa menyelesaikan -%s alamat: '%s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>Tidak bisa menyelesaikan -%s alamat: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3412,28 +6172,28 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Inisialisasi pemeriksa kewarasan gagal. %s sedang dimatikan.</translation>
     </message>
     <message>
-        <source>Invalid P2P permission: '%s'</source>
-        <translation>Izin P2P yang tidak sah: '%s'</translation>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>Izin P2P yang tidak sah: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>Jumlah yang tidak benar untuk -discardfee-&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Jumlah yang tidak benar untuk -discardfee-&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>Jumlah yang tidak saf untuk -fallbackfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Jumlah yang tidak saf untuk -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>Blocks yang ditentukan directori "%s" tidak ada.</translation>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>Blocks yang ditentukan directori &quot;%s&quot; tidak ada.</translation>
     </message>
     <message>
-        <source>Unknown address type '%s'</source>
-        <translation>Tipe alamat yang tidak diketahui '%s'</translation>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>Tipe alamat yang tidak diketahui &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Unknown change type '%s'</source>
-        <translation>Tipe ganti yang tidak diketahui '%s'</translation>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>Tipe ganti yang tidak diketahui &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3528,24 +6288,24 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Eror: Kapasitas penyimpanan penuh untuk %s</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>Alamat -onion atau hostname tidak valid: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>Alamat -onion atau hostname tidak valid: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>Alamat proxy atau hostname tidak valid: '%s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>Alamat proxy atau hostname tidak valid: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>Jumlah yang tidak sah untuk -paytxfee=&lt;amount&gt;: '%s' (Paling sedikit harus %s)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>Jumlah yang tidak sah untuk -paytxfee=&lt;amount&gt;: &apos;%s&apos; (Paling sedikit harus %s)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>Netmask tidak valid yang ditentukan di -whitelist: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>Netmask tidak valid yang ditentukan di -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>Perlu menentukan port dengan -whitebind: '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>Perlu menentukan port dengan -whitebind: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Prune mode is incompatible with -blockfilterindex.</source>
@@ -3564,16 +6324,16 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Tandatangani transaksi tergagal</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>-walletdir yang sudah dispesifikasi "%s" tidak ada.</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>-walletdir yang sudah dispesifikasi &quot;%s&quot; tidak ada.</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>-walletdir yang dispesifikasi "%s" adalah jalur yang relatif</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>-walletdir yang dispesifikasi &quot;%s&quot; adalah jalur yang relatif</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>-walletdir yang dispesifikasi "%s" bukan direktori</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>-walletdir yang dispesifikasi &quot;%s&quot; bukan direktori</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3602,8 +6362,8 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Tidak bisa menghubungkan %s di komputer (Penghubung menghasilkan error %s)</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>Tidak dapat membuat berkas PID '%s': %s</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>Tidak dapat membuat berkas PID &apos;%s&apos;: %s</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -3666,8 +6426,8 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Transaksi harus mempunyai paling tidak satu penerima</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>Jaringan tidak diketahui yang ditentukan dalam -onlynet: '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>Jaringan tidak diketahui yang ditentukan dalam -onlynet: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -3682,8 +6442,8 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Peringatan: Kunci pribadi terdeteksi di dompet {%s} dengan kunci pribadi yang dinonaktifkan</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>Tidak dapat menulis ke direktori data '%s'; periksa izinnya.</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>Tidak dapat menulis ke direktori data &apos;%s&apos;; periksa izinnya.</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -3704,6 +6464,106 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
     <message>
         <source>Done loading</source>
         <translation>Memuat selesai</translation>
+    </message>
+    <message>
+        <source>%s corrupt. Try using the wallet tool bitcoin-wallet to salvage or restoring a backup.</source>
+        <translation>%s rusak. Coba gunakan alat dompet bitcoin-wallet untuk menyelamatkannya atau pulihkan cadangan.</translation>
+    </message>
+    <message>
+        <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use version 169900 or no version specified.</source>
+        <translation>Tidak dapat meningkatkan dompet terpisah non-HD tanpa meningkatkan untuk mendukung keypool sebelum pemisahan. Gunakan versi 169900 atau jangan tentukan versi.</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Jumlah tidak valid untuk -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (setidaknya harus sebesar biaya minrelay %s untuk mencegah transaksi macet)</translation>
+    </message>
+    <message>
+        <source>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</source>
+        <translation>Diberikan lebih dari satu alamat ikatan onion. Menggunakan %s untuk layanan onion Tor yang dibuat otomatis.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Gagal menyiapkan pernyataan untuk mengambil versi skema dompet sqlite: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Gagal menyiapkan pernyataan untuk mengambil ID aplikasi: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unknown sqlite wallet schema version %d. Only version %d is supported</source>
+        <translation>SQLiteDatabase: Versi skema dompet sqlite tidak dikenal %d. Hanya versi %d yang didukung</translation>
+    </message>
+    <message>
+        <source>This error could occur if this wallet was not shutdown cleanly and was last loaded using a build with a newer version of Berkeley DB. If so, please use the software that last loaded this wallet</source>
+        <translation>Kesalahan ini dapat terjadi jika dompet ini tidak dimatikan dengan benar dan terakhir dimuat menggunakan build dengan versi Berkeley DB yang lebih baru. Jika demikian, gunakan perangkat lunak yang terakhir memuat dompet ini</translation>
+    </message>
+    <message>
+        <source>This is the maximum transaction fee you pay (in addition to the normal fee) to prioritize partial spend avoidance over regular coin selection.</source>
+        <translation>Ini adalah biaya transaksi maksimum yang Anda bayar (selain biaya normal) untuk mengutamakan penghindaran pembelanjaan parsial dibanding pemilihan koin biasa.</translation>
+    </message>
+    <message>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
+        <translation>Transaksi memerlukan alamat kembalian, tetapi kami tidak dapat membuatnya. Panggil keypoolrefill terlebih dahulu.</translation>
+    </message>
+    <message>
+        <source>A fatal internal error occurred, see debug.log for details</source>
+        <translation>Terjadi kesalahan internal fatal, lihat debug.log untuk detailnya</translation>
+    </message>
+    <message>
+        <source>Cannot set -peerblockfilters without -blockfilterindex.</source>
+        <translation>Tidak dapat mengatur -peerblockfilters tanpa -blockfilterindex.</translation>
+    </message>
+    <message>
+        <source>Disk space is too low!</source>
+        <translation>Ruang disk terlalu sedikit!</translation>
+    </message>
+    <message>
+        <source>Error: Keypool ran out, please call keypoolrefill first</source>
+        <translation>Kesalahan: Keypool habis, panggil keypoolrefill terlebih dahulu</translation>
+    </message>
+    <message>
+        <source>Failed to verify database</source>
+        <translation>Gagal memverifikasi basis data</translation>
+    </message>
+    <message>
+        <source>Fee rate (%s) is lower than the minimum fee rate setting (%s)</source>
+        <translation>Tarif biaya (%s) lebih rendah dari pengaturan tarif biaya minimum (%s)</translation>
+    </message>
+    <message>
+        <source>Ignoring duplicate -wallet %s.</source>
+        <translation>Mengabaikan -wallet %s yang ganda.</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Jumlah tidak valid untuk -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
+        <translation>Tidak ada server proxy yang ditentukan. Gunakan -proxy=&lt;ip&gt; atau -proxy=&lt;ip:port&gt;.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Gagal menjalankan pernyataan untuk memverifikasi basis data: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Gagal mengambil versi skema dompet sqlite: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Gagal mengambil ID aplikasi: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Gagal menyiapkan pernyataan untuk memverifikasi basis data: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to read database verification error: %s</source>
+        <translation>SQLiteDatabase: Gagal membaca kesalahan verifikasi basis data: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unexpected application id. Expected %u, got %u</source>
+        <translation>SQLiteDatabase: ID aplikasi tidak terduga. Diharapkan %u, didapat %u</translation>
     </message>
 </context>
 </TS>

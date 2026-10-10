@@ -1,4 +1,6 @@
-<TS language="ko" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ko">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -70,10 +72,10 @@
         <translation>비트코인을 보내는 계좌 주소입니다. 코인을 보내기 전에 금액과 받는 주소를 항상 확인하십시오.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.
-Signing is only possible with addresses of the type 'legacy'.</source>
-        <translation>비트코인을 받는 계좌 주소입니다. 신규 주소를 만들려면 수신 탭의 '새 수신 주소를 생성하기' 버튼을 사용하십시오.
-서명은 '레거시' 타입의 주소만 가능합니다.</translation>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
+        <translation>비트코인을 받는 계좌 주소입니다. 신규 주소를 만들려면 수신 탭의 &apos;새 수신 주소를 생성하기&apos; 버튼을 사용하십시오.
+서명은 &apos;레거시&apos; 타입의 주소만 가능합니다.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -241,6 +243,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>경고: Caps Lock키가 켜져있습니다!</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>운영체제 계정이 침해되었을 때 간단한 송금을 막는 용도입니다. 실질적인 보안은 제공하지 않습니다.</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>스테이킹 전용.</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -251,6 +261,109 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Banned Until</source>
         <translation>해당 일정까지 밴됨:</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>일괄 지불</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>한 줄에 지불 하나씩, &quot;주소, 금액&quot; 형식으로. 쉼표, 세미콜론 또는 탭으로 필드를 구분하며, 세 번째 필드는 라벨이 됩니다. #으로 시작하는 줄은 무시됩니다.</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>붙여넣기(&amp;P)</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>파일에서 불러오기(&amp;F)...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>지우기(&amp;C)</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>줄</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>주소</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>금액</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>상태</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>지불 목록 불러오기</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>텍스트 및 CSV 파일 (*.txt *.csv);;모든 파일 (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>%1을(를) 읽을 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>&quot;주소, 금액&quot; 형식이어야 합니다</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>주소 없음</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>유효한 주소가 아님</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>금액 없음</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>금액 &quot;%1&quot;을(를) 읽을 수 없습니다</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>금액은 0보다 커야 합니다</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>정상</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>한 줄에 지불 하나씩 &quot;주소, 금액&quot; 형식으로 붙여넣으세요. 세 번째 필드는 라벨로 사용됩니다. #으로 시작하는 줄은 무시됩니다.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>%2줄 중 %1줄을 사용할 수 없습니다. 계속하려면 수정하거나 삭제하세요.</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>수신자 %1명은 한 트랜잭션에 담을 수 있는 수보다 많습니다(여기서 한도는 %2). 목록을 나누세요.</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>수신자 %1명, 합계 %2, 수수료 제외.</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>보내기 양식에 추가</translation>
     </message>
 </context>
 <context>
@@ -441,7 +554,9 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>비트코인 네트워크에 %n 개의 연결이 활성화 되고 있습니다.</numerusform></translation>
+        <translation>
+            <numerusform>비트코인 네트워크에 %n 개의 연결이 활성화 되고 있습니다.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -453,7 +568,9 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>%n 블록 만큼의 거래 기록이 처리됩니다.</numerusform></translation>
+        <translation>
+            <numerusform>%n 블록 만큼의 거래 기록이 처리됩니다.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -671,6 +788,327 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
         <translation>치명적인 오류가 발생했습니다. %1 를 더이상 안전하게 진행할 수 없어 곧 종료합니다.</translation>
     </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>스테이킹(&amp;S)</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>지갑의 스테이크 보기</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>지갑이 &lt;b&gt;암호화&lt;/b&gt;되어 있으며 현재 &lt;b&gt;스테이킹 전용으로 잠금 해제&lt;/b&gt;되어 있습니다</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>지갑 복호화(&amp;D)...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>암호를 제거하여 개인 키를 암호화하지 않은 상태로 저장</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>스테이킹 안 함</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n초</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n분</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n시간</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n일</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>스테이킹 중.&lt;br&gt;내 가중치: %1&lt;br&gt;네트워크 가중치: %2&lt;br&gt;보상까지 예상 시간: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>지갑이 오프라인이어서 스테이킹하지 않음</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>지갑이 동기화 중이어서 스테이킹하지 않음</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>성숙한 코인이 없어 스테이킹하지 않음</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>지갑이 잠겨 있어 스테이킹하지 않음</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>알 수 없는 오류</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>1분 미만</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>1분</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1분</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>1시간</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1시간</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1일</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>1개월</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1개월</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>약 1년</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>1년 이상</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>알 수 없음</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>치명적인 오류가 발생했습니다. %1은(는) 더 이상 안전하게 계속할 수 없어 종료됩니다.</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>원본 메시지:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>탐색</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>오버레이</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>이름</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>피어와 콘솔</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>노드</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>지갑</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>메일</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>메일 (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>서버</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>설정</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>등재 상태 알 수 없음</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>오버레이 상태 알 수 없음</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>연결 중…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>현재 네트워크 가중치에서 스테이킹은 연 약 %1%를 벌어들입니다: 연간 블록 %2개, 각 %3 %4, 스테이킹 중인 %5 %4 기준.</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>이는 이 노드가 각 블록에서 피어들과 나누는 %1% 몫을 뺀 값입니다.</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>연 %1%</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>종료하는 중…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>피어 %1개: 들어오는 연결 %2개, 나가는 연결 %3개.</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>클릭하면 네트워크 활동을 일시 중지합니다.</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>피어 1개</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>피어 %1개</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>네트워크 활동이 일시 중지되었습니다.</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>클릭하면 다시 시작합니다.</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>네트워크 일시 중지됨</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>기록 블록 %1개를 처리했습니다.</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>블록 %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>최신 상태입니다.</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>네트워크와 동기화하는 중…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>디스크의 블록을 처리하는 중…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>디스크의 블록을 다시 색인하는 중…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>피어에 연결하는 중…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>%1 뒤처짐</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>따라잡는 중…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>마지막으로 받은 블록은 %1 전에 생성되었습니다.</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>지갑 &lt;b&gt;%1&lt;/b&gt;은(는) 암호화되어 스테이킹 전용으로 잠금 해제되어 있습니다</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>지갑 &lt;b&gt;%1&lt;/b&gt;은(는) 암호화되어 잠금 해제되어 있습니다</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>지갑 &lt;b&gt;%1&lt;/b&gt;은(는) 암호화되어 잠겨 있습니다</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>스테이킹 중</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>스테이킹 중, %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt;이(가) 스테이킹 중입니다.&lt;br&gt;가중치: %2&lt;br&gt;네트워크 가중치: %3&lt;br&gt;보상까지 예상 시간: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>스테이킹 안 함</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>스테이킹 안 함 (%1 지불)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>스테이킹 안 함: 피어가 너무 적음</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>스테이킹 안 함: 체인이 아직 따라잡는 중</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>스테이킹 안 함: &lt;b&gt;%1&lt;/b&gt;에 성숙한 코인이 없음</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>스테이킹 안 함: &lt;b&gt;%1&lt;/b&gt;이(가) 잠겨 있음</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>스테이킹 안 함</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -822,6 +1260,57 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>(change)</source>
         <translation>(잔돈)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>콜드 스테이킹을 위해 %1에게 위임됨</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>편지 쓰기</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>이름, 주소록의 별칭 또는 명부 키</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>받는 사람</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>제목</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>보내기</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>누구에게 보내나요? 이름, 별칭 또는 명부 키.</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>편지 크기가 %1KB입니다. 편지는 최대 %2KB까지 가능합니다.</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>편지를 봉인하여 받는 사람의 우편함에 넣는 중이며, 매번 릴레이 세 개를 거칩니다. 몇 초 정도 걸립니다…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>보냄</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>받는 사람의 우편함 %2개 중 %1개에 편지를 넣었습니다. 하나만 있어도 도착합니다.</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>보내지 못함: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -888,6 +1377,189 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Compiled without sqlite support (required for descriptor wallets)</source>
         <translation>에스큐엘라이트 지원 없이 컴파일 되었습니다. (디스크립터 지갑에 요구됩니다.)</translation>
     </message>
+    <message>
+        <source>Wallet</source>
+        <translation>지갑</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>고급 옵션</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>탐색</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>피어는 서버가 아니라 체인에 자신을 알리므로, 이 목록은 누구에게나 같고 아무도 편집할 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>명부</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>내 등재</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>등재된 피어</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>나의 신원</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>복사</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>등재를 게시하는 중…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>신원</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>만들기…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>이 노드의 키를 바꿔야 할 때가 오면, 신원이 이 노드의 기록, 즉 등재된 기간을 유지해 줍니다.</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>피어 또는 주소 찾기</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>키가 복사되었습니다</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>주소가 복사되었습니다</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>시작하는 중…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>신원 만들기</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>수수료 지불 지갑</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>신원은 이 노드의 키 뒤에 있는 두 번째 키입니다. 이 노드의 키를 잃어버리거나 도난당하면 같은 신원 아래에 새 키를 넣을 수 있고, 노드는 처음부터 다시 시작하는 대신 등재된 기간을 유지합니다.
+
+복구 키는 한 번만 보여 드립니다. 적어 두세요: 신원을 훔친 사람이 그것을 옮기지 못하게 막는 유일한 방법입니다. 그런 다음 작은 트랜잭션이 신원을 게시하고, 다음 등재 갱신 때 이 노드의 키가 신원에 연결됩니다.</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>릴레이가 트랜잭션 %1에 내 등재를 게시했습니다. 트랜잭션이 확인되면 반영됩니다.</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>트랜잭션 %1에 게시되었습니다. 트랜잭션이 확인되면 반영됩니다.</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>알 수 없음</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>명부 색인 꺼짐</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>등재되지 않음</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>%1 후 종료</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>등재를 갱신하는 중…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>마지막 3일 동안 갱신 가능</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>내 등재는 %1 후에 끝납니다. 그 3일 전부터 갱신할 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>등재됨, %1 후 종료</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>없음</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>이 노드에는 공지 키가 없습니다: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>사용 안 함</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>명부 색인이 실행되고 있지 않아 이 노드는 누가 등재되었는지 볼 수 없습니다. 켜려면 -rosterindex 옵션으로 다시 시작하세요.</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>따라잡는 중 (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>%1일 전</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>이 노드의 최신 블록이 %1일 전 것이므로, 그 이후 철회된 피어가 아직 여기에 있을 수 있습니다. 명부는 여전히 피어에 연결하는 데 쓰이지만, 체인이 따라잡을 때까지 오버레이는 오래 등재된 릴레이를 우선하지 않습니다.</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>최신 상태</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>명부 색인이 실행되고 있지 않습니다</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>복구 키</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>적어서 이 컴퓨터와 떨어진 안전한 곳에 보관하세요. 지금만 표시되며 어디에도 저장되지 않습니다. 이 키로는 코인을 쓸 수 없습니다. 본인이 하지 않은 신원 이동을 막는 것만 할 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>적어 두었습니다</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>신원이 트랜잭션 %1에 게시되었습니다. 다음 등재 갱신 때 이 노드의 키가 신원에 연결됩니다.</translation>
+    </message>
 </context>
 <context>
     <name>EditAddressDialog</name>
@@ -924,16 +1596,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>보내는 주소 편집</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>입력한 "%1" 주소는 올바른 비트코인 주소가 아닙니다.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
+        <translation>입력한 &quot;%1&quot; 주소는 올바른 비트코인 주소가 아닙니다.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>주소 "%1"은 이미 라벨 "%2"로 받는 주소에 존재하여 보내는 주소로 추가될 수 없습니다.</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>주소 &quot;%1&quot;은 이미 라벨 &quot;%2&quot;로 받는 주소에 존재하여 보내는 주소로 추가될 수 없습니다.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>입력된 주소 "%1"은 라벨 "%2"로 이미 주소록에 있습니다.</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>입력된 주소 &quot;%1&quot;은 라벨 &quot;%2&quot;로 이미 주소록에 있습니다.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -998,7 +1670,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</source>
-        <translation>'확인'을 클릭하면, %1은 모든 %4 블록 체인 (%2GB) 장부를 가장 최근 거래 부터 %3 안에 다운로드하고 처리하는데, 이것은 %4가 활성화 될때 시작됩니다. </translation>
+        <translation>&apos;확인&apos;을 클릭하면, %1은 모든 %4 블록 체인 (%2GB) 장부를 가장 최근 거래 부터 %3 안에 다운로드하고 처리하는데, 이것은 %4가 활성화 될때 시작됩니다. </translation>
     </message>
     <message>
         <source>Reverting this setting requires re-downloading the entire blockchain. It is faster to download the full chain first and prune it later. Disables some advanced features.</source>
@@ -1022,7 +1694,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>비트코인</translation>
+        <translation type="vanished">비트코인</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -1045,8 +1717,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>지갑도 이 디렉토리에 저장됩니다.</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>오류: 지정한 데이터 디렉토리 "%1" 를 생성할 수 없습니다.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
+        <translation>오류: 지정한 데이터 디렉토리 &quot;%1&quot; 를 생성할 수 없습니다.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1054,15 +1726,180 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>%n GB 사용가능</numerusform></translation>
+        <translation>
+            <numerusform>%n GB 사용가능</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(%n GB가 필요합니다.)</numerusform></translation>
+        <translation>
+            <numerusform>(%n GB가 필요합니다.)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(Full 체인이 되려면 %n GB 가 필요합니다.)</numerusform></translation>
+        <translation>
+            <numerusform>(Full 체인이 되려면 %n GB 가 필요합니다.)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>메일</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>내 주소</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>복사</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>내 명부 키. 등재된 누구나 이 키로 나에게 편지를 쓸 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>메일은 오버레이를 통해 이동합니다. 메일을 주고받으려면 설정에서 오버레이를 켜고 다시 시작하세요.</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>쓰기</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>답장</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>지금 가져오기</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>지금 우편함에서 새 편지를 가져옵니다. 몇 분마다 자동으로도 실행됩니다.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>삭제</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>받은 편지함</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>보냄</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>보낸 사람</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>제목</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>날짜</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>편지는 받는 사람의 주간 메일 키로 secp256k1과 ML-KEM-768을 함께 사용해 봉인되고, 내 키와 서명은 봉인 안에 담겨 이동하며, 우편함까지 가는 모든 경로는 릴레이 세 개를 거칩니다. 오래된 메일 키는 삭제되므로, 오늘 가져온 편지는 나중에 이 컴퓨터의 키로 열 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>받는 사람</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>아직 등재된 릴레이가 없어 우편함이 없고 아무도 나에게 편지를 쓸 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>릴레이 %1개가 메일을 보관합니다. 명부에 더 등재되면 %2개가 됩니다.</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>내 키로 선택된 릴레이 %1개가 내가 가져갈 때까지 메일을 보관합니다.</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>메일 키 #%1, 매주 갱신됨.</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>마지막으로 가져온 시각 %1.</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>아직 가져오지 않음.</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>새 편지 1통</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>새 편지 %1통</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>, 우편함 %2개 중 %1개에서.</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(제목 없음)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>받는 사람의 우편함 %1개에 넣음</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>보낸 사람: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>받는 사람: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>%1에 보냄, 받는 사람의 우편함 %2개에 넣음</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>%1에 작성, %2에 가져옴</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>읽을 편지를 선택하세요.</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>가져오는 중…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>우편함에 연결하는 중, 각각 릴레이 세 개를 거쳐…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>편지 삭제</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>이 컴퓨터에서 이 편지를 삭제할까요? 우편함에 있던 사본은 가져올 때 이미 지워졌으므로 다시 받을 수 없습니다.</translation>
     </message>
 </context>
 <context>
@@ -1072,7 +1909,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>유형</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>최근 거래는 아직 보이지 않을 수 있습니다. 따라서 당신의 지갑의 잔액이 틀릴 수도 있습니다. 이 정보는 당신의 지갑이 비트코인 네트워크와 완전한 동기화를 완료하면, 아래의 설명과 같이 정확해집니다.</translation>
     </message>
     <message>
@@ -1122,6 +1959,409 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>알 수 없음. 헤더 동기화 중(%1, %2%)...</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>이름</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>이름은 사람들을 내 명부 키로 안내하므로, 키 대신 이름으로 나에게 편지를 쓰고 돈을 보낼 수 있습니다. 비어 있는 이름을 얻고 갱신하는 데는 네트워크 수수료만 들며, 이름은 직접 갱신해야 합니다. 누군가 가진 이름은 그 사람이 판매에 내놓으면 요구하는 가격에 살 수 있습니다. 내 이름 아래의 이름은 무료이며, 별칭도 무료입니다: 이 컴퓨터에 보관되는, 사람들에 대한 나만의 라벨입니다.</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>내 이름</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>지불 지갑</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>이름</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>상태</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>종료</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>하위 이름</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>이름 얻기…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>갱신…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>하위 이름 추가…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>판매…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>이전…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>이름으로 지불 받기…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>조회</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>이름, 라벨.이름 또는 별칭</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>키 복사</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>지불…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>주소록</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>별칭</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>키</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>사람 추가…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>제거</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>키가 복사되었습니다</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>처리 중…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>판매 중단</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>먼저 판매를 중단하세요.</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>새 지불 키…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>이름으로 받는 지불이 켜져 있습니다</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>이름에는 이름 색인이 필요합니다. 설정에서 &quot;이름 색인&quot;을 켜고 다시 시작하세요.</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>이 네트워크에서는 아직 이름이 시작되지 않았습니다. 메인넷에서 언제 시작할지, 첫 이름들을 어떻게 나눌지는 아직 정해지지 않았습니다. 그동안 이름을 조회하고 주소록을 관리할 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1은(는) %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>주소록에서</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>등록된 이름, 블록 %1까지 보유</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>안정됨</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>%1 전에 변경됨, 아직 안정되지 않음</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>이름으로 지불 받음</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>판매 중: 소유자가 %1을(를) 요구합니다. 이름 얻기로 구매하세요.</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>%1 커밋됨. 이름은 %2블록 후(약 %3) 자동으로 등록됩니다 - 그때까지 BPS Relay를 실행하고 지갑을 잠금 해제한 상태로 두세요.</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>%1 구매 중: 소유자에게 %2 지불됨. 트랜잭션이 확인되면 내 소유가 됩니다.</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>%1을(를) %2에 판매합니다. 다음 블록부터 이 노드가 온라인이 아니어도 누구나 살 수 있으며, 대금은 이 지갑으로 지불됩니다.</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>%1의 판매를 중단하는 중입니다. 이제부터 아무도 살 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>네트워크 수수료만으로 %1을(를) 블록 %2까지 갱신했습니다.</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>%1을(를) %2에게 이전하는 중입니다. 트랜잭션이 확인되면 그쪽 소유가 됩니다.</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>%1이(가) 설정되었습니다. 트랜잭션이 확인되면 조회됩니다.</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>이름으로 받는 지불을 켜는 중입니다. 트랜잭션이 확인되고 약 %1 후부터 사람들이 내 어떤 이름으로든 지불할 수 있으며, 각 지불은 지갑에 &quot;이름으로 받음&quot;으로 표시됩니다.</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>이 지불에만 쓰이는 주소로 %2에게 %1을(를) 지불했습니다.</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>지불</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>%1 후</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>%1 전에 종료됨</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>만료됨 - 한 달 안에 갱신하세요</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>보유 중</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>판매 중 - 구매가 확인되는 중</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>%1에 판매 중</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>%1에 판매 중 - 아직 구매 불가</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>등록되지 않음</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>등록 중</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>클릭하여 복사</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>이름 얻기</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>1~32자의 문자, 숫자 또는 하이픈</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1년</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>2년</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>기간</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>등록은 두 단계입니다: 이름을 숨기는 커밋, 그리고 약 20분 뒤 BPS Relay가 스스로 보내는 등록 요청입니다. 그 사이에 아무도 이름을 가로챌 수 없습니다. 각 단계는 네트워크 수수료만 듭니다.</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>구매는 하나의 트랜잭션입니다: 소유자에게 지불하고 이름을 내 것으로 만드는 일이 한꺼번에 일어나거나 전혀 일어나지 않습니다.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>등록</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>이름은 1~32자의 일반 문자 a-z, 숫자 또는 중간에 오는 하이픈으로 이루어집니다.</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>%1, %2 동안, 네트워크 수수료만 듭니다. 사용 가능한지 확인하는 중…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>1년</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>2년</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>%1 판매 중단</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>%1의 판매를 중단할까요? 그때부터 아무도 살 수 없으며, 확인되면 이전하거나 다시 판매에 내놓을 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>%1 판매</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>%1의 판매 가격(BPS). 그러면 BPS Relay가 닫혀 있어도 누구나 즉시 살 수 있습니다: 이름을 넘겨받는 같은 트랜잭션에서 이 금액을 나에게 지불합니다. 판매 중에는 이전할 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>&quot;%1&quot;은(는) BPS 금액이 아닙니다.</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>%1을(를) %2에 판매할까요? 작은 트랜잭션 두 개가 전송됩니다: 하나는 구매자가 쓸 코인을 따로 떼어 두고, 다른 하나는 판매를 게시합니다.</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>%1 갱신</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>%1을(를) 현재 종료 시점부터 연장합니다. 네트워크 수수료만 듭니다. 이름은 최대 2년 앞까지 갱신할 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>%1 이전</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>%1을(를) 넘길 대상(명부 키, 별칭 또는 이름):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>%1을(를) %2에게 넘길까요? 새 소유자만 다시 돌려줄 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>%1 아래의 하위 이름</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>.%1 앞부분, 예를 들어 alice.%1이라면 alice:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>%1.%2이(가) 가리킬 대상(명부 키, 별칭 또는 이름), 또는 &quot;remove&quot;:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>조회하는 중…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>사람 추가</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>그 사람을 부르는 이름(나만 볼 수 있음):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>그 사람의 명부 키, 또는 지금 누가 가지고 있는지 기억할 이름:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>이름으로 받는 지불이 켜져 있습니다. 이 지갑의 새 키로 옮길까요? 현재 키로 이미 보낸 지불은 그대로 도착합니다. 변경 후 지불자는 약 %1을(를) 기다렸다가 다시 지불합니다.</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>사람들이 이름으로 나에게 지불하게 하세요: 이 노드의 키를 가리키는 모든 이름이나 하위 이름, 그들이 나에 대해 저장한 별칭, 또는 키 자체로. 각 지불은 이 지갑만 쓸 수 있는 별도의 주소로 가며, 지켜보는 누구도 내가 돈을 받았는지, 두 지불이 같은 사람에게 갔는지 알 수 없습니다. 네트워크 수수료가 듭니다. 확인 후 약 %1이 지나면 사람들이 지불할 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>이름으로 받는 지불</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>%1에게 지불</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>%1은(는) 아직 이름으로 받는 지불을 받지 않습니다. 이름 탭에서 켜 달라고 하거나 주소를 요청하세요.</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>%1의 소유자가 %2 전에 바뀌었습니다.</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>그 사람은 %1 전에 지불받을 키를 설정했습니다.</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>BPS 단위</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>금액</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>지불은 이 지불에만 쓰이고 %1만 쓸 수 있는 주소로 갑니다. 누가 받았는지 다른 사람은 알 수 없습니다. 지불은 되돌릴 수 없습니다. 네트워크 수수료는 별도입니다.</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>그 사람이 한 일이 아니라면 지불은 사라집니다. %1이(가) 지날 때까지 기다리는 것이 더 안전합니다.</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>그래도 지불</translation>
     </message>
 </context>
 <context>
@@ -1428,6 +2668,209 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>The supplied proxy address is invalid.</source>
         <translation>지정한 프록시 주소가 잘못되었습니다.</translation>
     </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>콜드 스테이커 제어 기능을 표시할지 여부.</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>콜드 스테이커 제어 기능 사용(&amp;T)</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>오버레이</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>다른 피어를 거쳐 트래픽을 전달하는 BPS 자체의 암호화 계층으로, 상대방은 내가 어디에 있는지 결코 알 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>묻는 중…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>실행 중</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>수신 대기 주소</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>열린 경로</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>여기서 만나는 서비스</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>사용 가능한 릴레이</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>오늘의 라운드</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>내 진입점</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>트래픽이 항상 들어가는 피어입니다. 바꾸지 않고 유지됩니다: 매번 새로 고르면 결국 감시자에게 차례가 돌아갑니다.</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>사람들이 나를 만날 수 있는 곳</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>조회하는 것이 아니라 명부에서 계산합니다. 나에게 연락하려는 사람은 누구나 같은 계산을 해서 같은 답을 얻으므로, 물어볼 사람도 다르게 답할 사람도 없습니다. 매일 바뀝니다.</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>무선으로 들림</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>릴레이 수익</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>일일 발행량</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>릴레이</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>사용자</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>릴레이당 사용자</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>사용자당 몫</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>릴레이는 자기 블록 보상에서 등재한 피어들에게 지불하므로, 사용자 한 명의 몫은 1을 그 릴레이가 맡은 사용자 수로 나눈 값입니다 — 그래서 네트워크 사용자의 일부를 차지하려면 그만큼의 스테이크가 듭니다. 보상 중 얼마를 나눌지는 릴레이가 스스로 정하며 아무것도 강제하지 않습니다: 아무것도 지불하지 않는 릴레이도 완전히 유효한 블록을 만듭니다. 릴레이가 지불하게 만드는 것은, 사용자가 없는 릴레이는 자기 자신을 포함해 아무도 보호하지 못한다는 사실입니다.</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>아직 작성자 외에는 아무도 검토하지 않았으며, 언제 말하는지가 아니라 어디에 있는지를 숨깁니다: 양쪽 끝을 지켜보는 사람은 여전히 시간을 맞춰 볼 수 있습니다. 미완성으로 여기세요.</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>이 노드는 아무것도 나누지 않습니다. -relayshare를 백분율로 설정하고 addrosteruser로 피어를 받으세요.</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>이 노드는 %1%를 나누려 하지만, %2.</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>이 노드는 피어 %2개와 %1%를 나눕니다: 다음에 스테이킹하는 블록은 %3을(를) 지불하며, 각 %4입니다.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>Reticulum 브리지가 응답하지 않습니다. 설정의 무선에서 시작하거나 bps-rns-bridge.py를 직접 실행하세요.</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>수신 대기 중. 아직 무선으로 들린 BPS 노드가 없습니다. 노드는 30분마다 자신을 알립니다.</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>무선 이웃 중 하나가 등재된 릴레이이면 트래픽이 그를 통해 들어갑니다.</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>들리지만, 트래픽은 인터넷으로 들어갑니다(설정, 무선).</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>1홉</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>%1홉</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>홉 수 알 수 없음</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>%1 전에 들림</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>릴레이</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>예</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>아니요</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>오버레이가 꺼져 있습니다. 이 클라이언트는 스스로 오버레이를 켜므로, 명령줄이나 설정 파일의 -overlay=0이 다시 끈 것입니다.</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>오버레이가 꺼져 있는 동안 없음</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>오버레이 꺼짐</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>아직 없음</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>오버레이 켜짐, 아직 릴레이 없음</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>오버레이 켜짐, 릴레이 1개</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>오버레이 켜짐, 릴레이 %1개</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>아직 선택되지 않음</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>없음 — 명부에 계산할 릴레이가 없음</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>오버레이 상태 알 수 없음</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>아직 릴레이 없음</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1505,7 +2948,31 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
-        <translation>개요 탭에서 개인 정보 보호 모드가 활성화되었습니다. 값의 마스크를 해제하려면 '설정-&gt; 마스크 값' 선택을 취소하십시오.</translation>
+        <translation>개요 탭에서 개인 정보 보호 모드가 활성화되었습니다. 값의 마스크를 해제하려면 &apos;설정-&gt; 마스크 값&apos; 선택을 취소하십시오.</translation>
+    </message>
+    <message>
+        <source>Stake</source>
+        <translation>스테이크</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>미성숙 스테이크:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>미성숙 위임</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>미성숙 위임:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>위임됨</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>위임됨:</translation>
     </message>
 </context>
 <context>
@@ -1626,6 +3093,10 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Transaction status is unknown.</source>
         <translation>거래 상태를 알 수 없습니다.</translation>
     </message>
+    <message>
+        <source>Signed %1 inputs, but more signatures are still required.</source>
+        <translation>입력 %1개에 서명했지만 아직 서명이 더 필요합니다.</translation>
+    </message>
 </context>
 <context>
     <name>PaymentServer</name>
@@ -1642,16 +3113,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>URI 핸들링</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>'bitcoin://"은 잘못된 URI입니다. 'bitcoin:'을 사용하십시오.</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;bitcoin://&quot;은 잘못된 URI입니다. &apos;bitcoin:&apos;을 사용하십시오.</translation>
     </message>
     <message>
         <source>Cannot process payment request because BIP70 is not supported.</source>
         <translation>BIP70을 지원하지 않아서 지불 요청을 처리할 수 없습니다.</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
-        <translation>BIP70의 보안적 결함에 의하여, "지갑을 바꾸라"라는 판매자 지침은 대부분 무시하는 것을 강력하게 권장합니다.</translation>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <translation>BIP70의 보안적 결함에 의하여, &quot;지갑을 바꾸라&quot;라는 판매자 지침은 대부분 무시하는 것을 강력하게 권장합니다.</translation>
     </message>
     <message>
         <source>If you are receiving this error you should request the merchant provide a BIP21 compatible URI.</source>
@@ -1698,6 +3169,161 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>등재 갱신</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>등재 게시</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>갱신하면 체인에 새 기록이 작성됩니다. 확인될 때까지는 이전 기록이 유효합니다.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>내가 존재한다는 것과, 원하면 나를 찾을 수 있는 곳을 알리는 짧은 기록을 체인에 씁니다.</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>피어가 나에게 어떻게 연결해야 하나요?</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>오버레이를 통해 — 주소를 게시하지 않음</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>등재는 내가 누구인지만 알리고 어디서 실행하는지는 알리지 않습니다. 피어는 대신 오버레이를 통해 연결하며, 양쪽이 명부에서 계산한 지점에서 만납니다. 이 클라이언트가 기본으로 켜는 방식입니다.</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>내가 게시하는 주소로</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>어니언</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>다른 피어가 연결할 수 있는 주소</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>누구나 볼 수 있으며 체인에 영구히 남습니다. 어니언 주소는 아무도 나에게까지 추적할 수 없는 위치를 게시하고 NAT 뒤에서도 작동합니다. IP 주소는 둘 다 해당하지 않습니다. IP 주소를 게시한 노드는 다른 사람이 릴레이로 선택할 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>수수료를 내는 쪽</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>한 달, 그 후 갱신 필요</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>1년, 그 후 갱신 필요</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>유효 기간</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>갱신</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>게시</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>릴레이가 지불 — 코인 필요 없음</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>오버레이가 꺼져 있어 요청할 릴레이가 없습니다. 설정에서 켜거나 지갑에서 지불하세요.</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>아직 명부에 등재된 릴레이가 없어 요청할 곳이 없습니다. 지갑에서 지불하거나, 릴레이가 등재된 후 다시 시도하세요.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>노드가 등재에 서명하여 오버레이를 통해 진입 릴레이로 보냅니다. 등재 비용을 지불하는 릴레이는 자신이 스테이킹하는 블록에 내 등재를 넣으므로 대부분의 노드가 전달하지 않아도 확인되며, 보상을 나누는 피어에 나를 추가합니다. 나중에 지불을 멈추면 등재는 한 달 안에 만료되며, 언제든 잔액이 있는 지갑에서 직접 갱신할 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>이 노드는 스테이킹하지 않습니다. 등재 기록은 이전 노드들이 전달하는 크기보다 커서, 대부분의 스테이커가 업그레이드할 때까지는 이 버전을 실행하는 스테이커가 포함해야만 확인되며 시간이 걸릴 수 있습니다. 스테이킹하면 내 다음 블록에 들어가고, 지불하는 릴레이는 자기 블록에 넣습니다.</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>이 지갑은 스테이킹 전용으로 잠금 해제되어 있습니다. 지불하려면 암호가 필요하고, 지불 후 지갑이 다시 잠기며, 다시 스테이킹용으로 잠금 해제할 때까지 스테이킹이 멈춥니다.</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>지불하려면 이 지갑의 암호가 필요합니다.</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>주소를 입력하거나 게시하지 않도록 선택하세요.</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>릴레이에 게시를 요청하는 중… 최대 30초 정도 걸릴 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>그 지갑은 더 이상 열려 있지 않습니다.</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>지갑이 아직 잠겨 있어 아무것도 지불되지 않았습니다.</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>기록에 서명하는 중…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>노드가 이 클라이언트가 이해하지 못하는 기록을 반환했습니다.</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>게시 비용을 지불하는 중…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>릴레이가 거절했습니다: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>릴레이에서 응답이 없습니다. %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1705,7 +3331,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>비트코인 주소를 입력하세요 (예: %1)</translation>
+        <translation type="vanished">비트코인 주소를 입력하세요 (예: %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1737,23 +3363,33 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n 초</numerusform></translation>
+        <translation>
+            <numerusform>%n 초</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n 분</numerusform></translation>
+        <translation>
+            <numerusform>%n 분</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n 시간</numerusform></translation>
+        <translation>
+            <numerusform>%n 시간</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n 일</numerusform></translation>
+        <translation>
+            <numerusform>%n 일</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n 주</numerusform></translation>
+        <translation>
+            <numerusform>%n 주</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1761,7 +3397,9 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n 년</numerusform></translation>
+        <translation>
+            <numerusform>%n 년</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1780,8 +3418,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>%1 기가바이트</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>오류: 지정한 데이터 폴더 "%1"은 존재하지 않습니다.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>오류: 지정한 데이터 폴더 &quot;%1&quot;은 존재하지 않습니다.</translation>
     </message>
     <message>
         <source>Error: Cannot parse configuration file: %1.</source>
@@ -1796,12 +3434,60 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>설정 초기화 오류 : %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1가 아직 안전하게 종료되지 않았습니다...</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>알 수 없음</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>연락처</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>받기</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>숨김</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>알 수 없음</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>위임됨</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>%1은(는) 누군가가 보유하고 있으며 판매에 내놓았습니다. 요구 가격은 %2이며 네트워크 수수료는 별도입니다.</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>구매</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>사용 가능한지 확인하는 중…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>사용 가능합니다.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>등록</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>아직 구현되지 않음</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>BitcoinPoS 주소를 입력하세요 (예: %1)</translation>
     </message>
 </context>
 <context>
@@ -1862,16 +3548,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>데이터 폴더</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the data directory use the '%1' option.</source>
-        <translation>기본 위치가 아닌 곳으로 데이타 폴더를 지정하려면 '%1' 옵션을 사용하세요.</translation>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>기본 위치가 아닌 곳으로 데이타 폴더를 지정하려면 &apos;%1&apos; 옵션을 사용하세요.</translation>
     </message>
     <message>
         <source>Blocksdir</source>
         <translation>Blocksdir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>기본 위치가 아닌 곳으로 블럭 폴더를 지정하려면 '%1' 옵션을 사용하세요.</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>기본 위치가 아닌 곳으로 블럭 폴더를 지정하려면 &apos;%1&apos; 옵션을 사용하세요.</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -2099,7 +3785,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and %1 to clear screen.</source>
-        <translation>기록을 탐색하려면 '위'와 '아래' 화살표를 사용하고, 화면을 지우려면 %1을 사용하십시오.</translation>
+        <translation>기록을 탐색하려면 &apos;위&apos;와 &apos;아래&apos; 화살표를 사용하고, 화면을 지우려면 %1을 사용하십시오.</translation>
     </message>
     <message>
         <source>Type %1 for an overview of available commands.</source>
@@ -2122,8 +3808,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>지갑 없이 명령 실행</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
-        <translation>"%1" 지갑을 사용하여 명령 실행</translation>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>&quot;%1&quot; 지갑을 사용하여 명령 실행</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -2148,6 +3834,45 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown</source>
         <translation>알수없음</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>이것을 찾으셨나요:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>명령을 잘 모르겠나요? %1처럼 원하는 것을 평범한 말로 입력하고 제안을 고르세요. 제안은 이 컴퓨터에서 계산되며, 입력한 내용은 어디로도 전송되지 않습니다.</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>무선이 꺼져 있습니다.</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>무선이 켜져 있습니다. Reticulum 브리지를 직접 시작하세요 (contrib/reticulum/bps-rns-bridge.py).</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>bps-rns-bridge.py가 BPS Relay 옆에 없어 브리지를 시작할 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>Python을 &quot;%1&quot;(으)로 시작할 수 없습니다. Python을 설치하거나 설정의 무선에서 명령을 지정하세요.</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Reticulum이 설치되어 있지 않습니다. 다음 명령으로 설치하세요: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>Reticulum 브리지가 중지되었습니다 (상태 %1). radio/bridge.log를 확인하세요.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>Reticulum 브리지를 시작하는 중입니다.</translation>
     </message>
 </context>
 <context>
@@ -2201,12 +3926,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>지우기</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>네이티브 세그윗 주소(Bech32 또는 BIP-173)는 거래 수수료를 줄여주고 오입력을 방지하지만 구버전 지갑은 이를 지원하지 않습니다. 체크하지 않으면 구버전 지갑과 호환되는 주소가 대신 생성됩니다.</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">네이티브 세그윗 주소(Bech32 또는 BIP-173)는 거래 수수료를 줄여주고 오입력을 방지하지만 구버전 지갑은 이를 지원하지 않습니다. 체크하지 않으면 구버전 지갑과 호환되는 주소가 대신 생성됩니다.</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>네이티브 세그윗(Bech32) 주소 생성</translation>
+        <translation type="vanished">네이티브 세그윗(Bech32) 주소 생성</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2251,6 +3976,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Could not generate new %1 address</source>
         <translation>새로운 %1 주소를 생성 할 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>(none)</source>
+        <translation>(없음)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>이 지갑에 스테이킹 주소가 설정되지 않아 위임할 대상이 없습니다. 스테이크 페이지의 위임 -&gt; 자동 위임에서 설정하면 이 주소 유형이 작동합니다.</translation>
     </message>
 </context>
 <context>
@@ -2332,6 +4065,99 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>피어</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>주소</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>등재됨</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>등재 종료</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>등재 기간</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>클릭하여 복사</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>이 피어는 등재되었지만 주소를 게시하지 않습니다. 그래도
+오버레이를 통해 연결할 수 있으며, 그것이 이를 허용하는 이유입니다.</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>주소 1개 게시됨</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>주소 %1개 게시됨</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>블록 %1에서 확인됨</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>블록 %1부터 계산에서 제외</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>이 등재 이전 기록 없음.</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>블록 %1부터 중단 없이 등재됨.</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>너무 최근이라 아직 계산되지 않습니다.</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>신원 없이 실행 중.</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>신원 %1 아래에서 실행 중이며, 키를 바꿔도 기간이 유지됩니다.</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>게시된 주소 없음</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>방금</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>%1 전</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>만료됨</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>%1 후</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>새로움</translation>
+    </message>
+</context>
+<context>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
@@ -2402,12 +4228,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>경고: 지금은 수수료 예측이 불가능합니다.</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>거래 가상 크기의 kB (1,000 바이트)당 수수료을 지정하십시오.
 
-참고 : 수수료는 바이트 단위로 계산되므로 거래 크기가 500 바이트 (1kB의 절반)일때에 수수료가 "kB당 100 사토시"면 궁극적으로 50 사토시의 수수료만 발생합니다.</translation>
+참고 : 수수료는 바이트 단위로 계산되므로 거래 크기가 500 바이트 (1kB의 절반)일때에 수수료가 &quot;kB당 100 사토시&quot;면 궁극적으로 50 사토시의 수수료만 발생합니다.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2463,11 +4289,11 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message>
         <source>Enable Replace-By-Fee</source>
-        <translation>'수수료로-대체' 옵션 활성화</translation>
+        <translation>&apos;수수료로-대체&apos; 옵션 활성화</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
-        <translation>'수수료-대체' (BIP-125) 옵션은 보낸 거래의 수수료 상향을 지원해 줍니다. 이 옵션이 없을 경우 거래 지연을 방지하기 위해 더 높은 수수료가 권장됩니다.</translation>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <translation>&apos;수수료-대체&apos; (BIP-125) 옵션은 보낸 거래의 수수료 상향을 지원해 줍니다. 이 옵션이 없을 경우 거래 지연을 방지하기 위해 더 높은 수수료가 권장됩니다.</translation>
     </message>
     <message>
         <source>Clear &amp;All</source>
@@ -2523,15 +4349,15 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message>
         <source>Creates a Partially Signed Bitcoin Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
-        <translation>오프라인 %1 지갑 또는 PSBT가 호환되는 하드웨어 지갑과의 사용을 위한 '부분적으로 서명 된 비트 코인 트랜잭션(PSBT)'를 생성합니다.</translation>
+        <translation>오프라인 %1 지갑 또는 PSBT가 호환되는 하드웨어 지갑과의 사용을 위한 &apos;부분적으로 서명 된 비트 코인 트랜잭션(PSBT)&apos;를 생성합니다.</translation>
     </message>
     <message>
-        <source> from wallet '%1'</source>
-        <translation>'%1' 지갑에서</translation>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation>&apos;%1&apos; 지갑에서</translation>
     </message>
     <message>
-        <source>%1 to '%2'</source>
-        <translation>%1을 '%2'로</translation>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1을 &apos;%2&apos;로</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -2567,7 +4393,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message>
         <source>You can increase the fee later (signals Replace-By-Fee, BIP-125).</source>
-        <translation>추후에 거래 수수료를 올릴 수 있습니다 ('수수료로-대체', BIP-125 지원)</translation>
+        <translation>추후에 거래 수수료를 올릴 수 있습니다 (&apos;수수료로-대체&apos;, BIP-125 지원)</translation>
     </message>
     <message>
         <source>Please, review your transaction proposal. This will produce a Partially Signed Bitcoin Transaction (PSBT) which you can save or copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
@@ -2583,15 +4409,15 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message>
         <source>Not signalling Replace-By-Fee, BIP-125.</source>
-        <translation>'수수료로-대체', BIP-125를 지원하지 않습니다.</translation>
+        <translation>&apos;수수료로-대체&apos;, BIP-125를 지원하지 않습니다.</translation>
     </message>
     <message>
         <source>Total Amount</source>
         <translation>총액</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
-        <translation>수령인 목록을 검토하려면 "거래 세부 내역 보기..." 를 클릭하십시오</translation>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>수령인 목록을 검토하려면 &quot;거래 세부 내역 보기...&quot; 를 클릭하십시오</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2643,7 +4469,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>%n 블록 안에 승인이 시작될 것으로 추정됩니다.</numerusform></translation>
+        <translation>
+            <numerusform>%n 블록 안에 승인이 시작될 것으로 추정됩니다.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2664,6 +4492,42 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>(no label)</source>
         <translation>(라벨 없음)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>지불을 하나씩 추가하는 대신 지불 목록을 붙여넣거나 불러옵니다</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>일괄(&amp;B)...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>사용 가능 잔액을 계산할 때 위임도 포함합니다. 선택하지 않으면 사용 가능 잔액은 현재 지갑에 있는 코인만 반영합니다.</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>위임 포함(&amp;N)</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>콜드 스테이킹이 활성화되지 않음</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>콜드 스테이킹은 블록 %1부터 활성화됩니다</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>이 지갑은 자기 코인을 스테이킹하므로 모두 위임되어 있습니다.</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>입력한 소유자 주소가 이 지갑에 없습니다. 경고: 위임 후에는 소유자 주소의 키를 가진 사람만 이 코인을 쓸 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>입력한 스테이커 주소가 이 지갑에 있습니다. 이미 이 코인을 스테이킹할 수 있으므로 자신에게 위임할 필요가 없습니다.</translation>
     </message>
 </context>
 <context>
@@ -2748,6 +4612,352 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>Memo:</source>
         <translation>메모:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>소유자 주소(&amp;O):</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>BitcoinPoS 소유자 주소</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>서버</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>이 노드가 다른 사람에게 제공하는 것. 릴레이와 메일 보관은 지금 작동하며, 호스팅은 준비 중이고, 여기 있는 모든 것처럼 피어를 찾는 것과 같은 방식 — 명부 — 으로 찾습니다. 이름은 별도의 페이지가 있습니다.</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>호스팅</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>이 노드에서 제공하는 사이트나 서비스로, 키나 이름으로 찾고 오버레이로 접속하므로 호스트는 자신이 어디서 실행되는지 게시하지 않습니다. 만남 부분은 이미 있습니다: 서비스는 양쪽이 명부에서 계산한 만남 지점에 등록합니다. 이를 통해 페이지와 앱을 제공하는 기능은 아직 구현되지 않았습니다.</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>릴레이</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>다른 피어의 오버레이 트래픽을 전달하고, 이 노드를 쓰는 피어의 월간 등재 비용을 내고, 스테이킹하는 각 블록의 일부를 그들과 나눕니다. 릴레이는 비용을 낸 등재를 자신이 스테이킹하는 블록에 넣는데, 대부분의 노드가 아직 이런 기록 전달을 거부하는 동안 확인되는 방법이 이것입니다 — 그래서 릴레이는 스테이킹해야 합니다.</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>스테이킹</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>여기에 등재된 피어</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>다음에 스테이킹할 블록</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>오버레이로 요청하는 피어의 등재 비용 지불</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>코인이 없는 피어는 이 노드에 월간 등재 게시를 요청할 수 있습니다. 이 노드가 수수료를 내고, 블록에 스테이킹해 넣고, 그 피어를 보상을 나누는 대상에 추가합니다. 이 노드의 코인을 쓰므로 기본값은 꺼짐입니다.</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>이 수를 넘는 피어는 거절됩니다. 이미 여기에 등재된 피어는 계속 갱신할 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>등재 유지할 최대 피어 수</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>유일하게 열린 지갑</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>수수료를 낼 지갑. 여러 개가 열려 있고 여기서 지정하지 않으면, 추측해서 지불하는 대신 요청을 거절합니다. 스테이킹은 이 노드의 어느 지갑에서나 할 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>지갑에서 수수료 지불</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>이 노드가 자기 코인으로 스테이킹하는 각 블록 중 등재한 피어들에게 똑같이 나누는 몫. 0이면 나누지 않습니다.</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>스테이킹한 각 블록의 몫</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>우편함</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>명부가 이 노드를 우편함으로 정한 사람들의 봉인된 메일을 그들이 가져갈 때까지 보관합니다. 어떤 릴레이가 누구의 메일을 보관할지는 명부에서 계산되므로 아무도 배정하지 않습니다. 보내는 사람과 받는 사람은 릴레이 세 개를 거쳐 이 노드에 연결하므로 이 노드는 그들이 어디 있는지 알 수 없습니다. 편지는 봉인되어 있어 읽을 수도, 누가 썼는지 알 수도 없습니다. 편지는 2주 후 삭제되며, 등재된 사람만 서비스받습니다.</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>보관 중</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>보내는 사람용으로 보관한 메일 키</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>명부가 이 노드에 배정한 사람들의 메일 보관</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>오버레이가 실행되는 곳이면 기본으로 켜짐: 거부하는 릴레이는 자신이 선택된 사람들의 우편함을 하나 줄입니다.</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>가득 차면 오래된 편지를 가져가거나 삭제할 때까지 새 편지를 거부합니다. 한 사람이 8 MiB 넘게 쓸 수는 없습니다.</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>사용할 수 있는 디스크</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>저장되었습니다. 이 설정은 노드가 시작할 때 읽히므로, 변경을 적용하려면 클라이언트를 다시 시작하세요.</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>열린 지갑 없음</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>아니요 — 스테이킹하지 않는 릴레이는 등재 요청을 거절합니다</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>예, %1 후</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>등재 비용을 지불하지 않음</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>지불하지만 스테이킹하지 않음</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>실행 중</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>이 빌드에는 지갑이 없습니다</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>지갑 필요</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>꺼짐</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>오버레이 필요</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>없음 — 메일을 보관하지 않음</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>편지 없음</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>1글자</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>%1글자</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>1명</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>%1명</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>현재 비어 있음, %1 MiB 여유</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%2명을 위한 %1, %4 MiB 중 %3</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>%1% 나눔: 총 %2 %4, 피어당 %3 %4</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>설정</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>지갑 클라이언트에는 없고 이 클라이언트에만 있는 기능, 그리고 언어. 나머지 — 프록시, 포트, 정리 — 는 둘 다 같은 질문이므로 한곳에서 설정합니다.</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>탐색</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>명부 색인 유지</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>이것이 없으면 이 노드는 게시는 할 수 있지만 다른 누가 등재되었는지 볼 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>이름 색인</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>이름을 조회하고, 이름으로 메일을 보내고, 내 이름을 등록하는 데 필요합니다.</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>명부에서 찾은 피어에 연결 시도</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>명부 주소를 일반 시드 및 주소 교환과 함께 주소 관리자에 넘깁니다. 끄면 명부는 이 노드가 읽기만 하고 사용하지 않는 목록이 됩니다.</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>오버레이</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>오버레이 실행</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>이 클라이언트에서는 기본으로 켜져 있고, 노드와 지갑 클라이언트에서는 꺼져 있습니다. 핸드셰이크는 아직 작성자 외에는 아무도 검토하지 않았습니다.</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>오버레이는 자체 포트에서 UDP를 사용합니다. P2P 네트워크는 별개이며 TCP를 그대로 사용합니다.</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>수신 포트</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>무선</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>Reticulum을 통해 무선으로도 오버레이 전달</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>RNode를 통한 LoRa, 패킷 무선, 직렬 링크 등 Reticulum에 설정된 모든 것. 오버레이가 필요합니다.</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>무선 이웃을 통해 오버레이에 진입하여 인터넷 없이도 메일 사용</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>무선으로 들린 BPS 노드가 등재된 릴레이이면 메일과 등재 요청이 그를 통해 갑니다. 무선 링크는 인터넷보다 훨씬 느립니다.</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>BPS Relay와 함께 Reticulum 브리지 시작</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>노드 옆에서 bps-rns-bridge.py를 실행합니다. 브리지를 직접 실행한다면 꺼 두세요.</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>Python 명령</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Reticulum은 BPS의 일부가 아니며 자체 라이선스가 있습니다. %1(으)로 설치하고, 무선 장치는 Reticulum 자체 설정(~/.reticulum/config)에서 구성하세요. 아마추어 무선 대역에서는 암호화된 트래픽이 허용되지 않으므로 LoRa 같은 비면허 대역을 사용하세요.</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>표시</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>금액 표시 단위</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>컴퓨터의 언어</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>BPS Relay를 다시 시작하면 적용됩니다. 명령의 오류 메시지처럼 노드 자체가 보내는 텍스트는 영어로 유지됩니다.</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>언어</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>네트워크, 프록시 및 기타 핵심 설정…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>저장되었습니다. 언어는 BPS Relay를 다시 시작하면 바뀝니다.</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>저장되었습니다. 이 설정은 노드가 시작할 때 읽히므로, 변경을 적용하려면 클라이언트를 다시 시작하세요.</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>노드가 아직 시작하는 중이라 핵심 설정을 아직 사용할 수 없습니다.</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2827,7 +5037,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>메시지 검증(&amp;V)</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
         <translation>메시지를 검증하기 위해 아래 칸에 각각 지갑 주소와 메시지, 서명을 입력하세요 (메시지 원본의 띄어쓰기, 들여쓰기, 행 나눔 등이 정확하게 입력되어야 하므로 원본을 복사해서 입력하세요). 네트워크 침입자의 속임수에 넘어가지 않도록 서명된 메시지 내용 이외의 내용은 참고하지 않도록 유의하세요. 이 기능은 단순히 서명한 쪽에서 해당 주소로 송금을 받을 수 있다는 것을 증명하는 것 뿐이며 그 이상은 어떤 것도 보증하지 않습니다.</translation>
     </message>
     <message>
@@ -2855,8 +5065,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>모든 입력 항목을 초기화합니다</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>서명을 만들려면 "메시지 서명"을 클릭하세요</translation>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>서명을 만들려면 &quot;메시지 서명&quot;을 클릭하세요</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2912,6 +5122,209 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
 </context>
 <context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>양식</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>스테이킹(&amp;S)</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>현재 사용 가능한 잔액</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>이 지갑이 소유한 스테이킹 자산</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>위임에서 온 스테이킹 자산</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>미성숙:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>미성숙 잔액</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>스테이킹 자산</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>스테이크:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>스테이킹</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>블록 높이:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>블록 보상:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/블록</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>네트워크 가중치:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>예상 연간 수익률:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>스테이크 기록</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>위임(&amp;D)</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>위임 유형:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>수동 위임</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>자동 위임</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>스테이킹 주소</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>모두 제거</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>클립보드에서 주소 붙여넣기</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>추가(&amp;A)</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>내 위임(&amp;M)</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>위임된 자산</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>현재 위임된 잔액</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>내 위임</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>받은 위임(&amp;R)</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>새 스테이킹 주소 만들기(&amp;C)</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> 라벨:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>새 받기 주소에 연결할 선택적 라벨(인보이스를 구분하는 데 사용). 지불 요청에도 첨부됩니다.</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>ColdStake 위임</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>이 지갑의 위임 주소로 들어온 코인은 도착하는 즉시 이 키들이 스테이킹하며, 내가 쓴 뒤 남은 거스름돈도 위임 상태로 유지됩니다. 스테이킹 키는 나에게 다시 지불하는 코인스테이크만 만들 수 있으므로, 이 키를 가진 지갑에는 암호가 필요 없습니다.</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>둘 이상을 나열하면 코인을 여러 스테이킹 지갑에 나눌 수 있어, 그중 하나가 오프라인이어도 전체 스테이킹이 멈추지 않습니다.
+
+새 위임은 지금까지 가장 적게 지정된 주소로 가며, 발급된 위임 주소와 아직 쓰지 않은 위임 코인을 셉니다. 금액이 아니라 위임 건수를 세므로, 큰 위임 하나를 가진 주소가 작은 위임 여러 개를 가진 주소보다 먼저 선택될 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>제거된 주소에 이미 위임된 코인은 옮겨지지 않으며 그 주소가 계속 스테이킹합니다. 새 위임만 그 주소를 지정하지 않게 됩니다.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>지갑을 잠금 해제할 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>새 %1 주소를 생성할 수 없습니다</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>이 노드에서 콜드 스테이킹이 비활성화되어 있으므로(-coldstaking=0) 아무것도 위임되지 않습니다.</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>여기의 스테이킹 주소는 암호화된 이 지갑에 속하므로, 지갑이 잠금 해제된 동안에만 스테이킹합니다. 암호 없이 스테이킹하려면 별도의 암호화되지 않은 스테이킹 지갑의 주소를 사용하세요.</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>%1에 대한 위임을 중단합니다. 이미 위임된 코인은 옮겨지지 않으며 그 주소가 계속 스테이킹합니다.</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>스테이킹 주소를 저장할 수 없습니다. 위임은 키 해시에 고정되므로 각 주소는 레거시 주소여야 합니다.</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>그 스테이킹 주소는 이미 목록에 있습니다.</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>모든 스테이킹 주소 제거</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>스테이킹 주소 %1개 모두에 대한 위임을 중단할까요?
+
+이미 위임된 코인은 계속 그 주소들이 스테이킹하며 옮겨지지 않습니다. 하지만 새 입금과 거스름돈은 스테이킹하지 않는 일반 주소로 가고, 다시 켜려면 이 주소들이 필요합니다.</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2922,7 +5335,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>%n개의 더 많은 블록 열기</numerusform></translation>
+        <translation>
+            <numerusform>%n개의 더 많은 블록 열기</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3002,7 +5417,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>%n개의 블록검증이 더 필요함</numerusform></translation>
+        <translation>
+            <numerusform>%n개의 블록검증이 더 필요함</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -3061,8 +5478,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>판매자</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>신규 채굴된 코인이 사용되기 위해서는 %1 개의 블록이 경과되어야 합니다. 블록을 생성할 때 블록체인에 추가되도록 네트워크에 전파되는 과정을 거치는데, 블록체인에 포함되지 못하고 실패한다면 해당 블록의 상태는 '미승인'으로 표현되고 비트코인 또한 사용될 수 없습니다. 이 현상은 다른 노드가 비슷한 시간대에 동시에 블록을 생성할 때 종종 발생할 수 있습니다.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>신규 채굴된 코인이 사용되기 위해서는 %1 개의 블록이 경과되어야 합니다. 블록을 생성할 때 블록체인에 추가되도록 네트워크에 전파되는 과정을 거치는데, 블록체인에 포함되지 못하고 실패한다면 해당 블록의 상태는 &apos;미승인&apos;으로 표현되고 비트코인 또한 사용될 수 없습니다. 이 현상은 다른 노드가 비슷한 시간대에 동시에 블록을 생성할 때 종종 발생할 수 있습니다.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -3116,7 +5533,9 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>%n개의 더 많은 블록 열기</numerusform></translation>
+        <translation>
+            <numerusform>%n개의 더 많은 블록 열기</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3205,6 +5624,30 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>늘어나거나 줄어든 액수.</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>콜드 스테이크</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>대신 스테이킹</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>스테이크 위임</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>위임</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>스테이크 위임 사용처</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>위임된 금액.</translation>
     </message>
 </context>
 <context>
@@ -3365,6 +5808,22 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>to</source>
         <translation>수신인</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>콜드 스테이크</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>핫 스테이크</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>사용되지 않은 위임</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>위임</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3403,7 +5862,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
 Go to File &gt; Open Wallet to load a wallet.
 - OR -</source>
         <translation>지갑이 로드되지 않았습니다.
-'파일 &gt; 지갑 열기'로 이동하여 지갑을 로드합니다.
+&apos;파일 &gt; 지갑 열기&apos;로 이동하여 지갑을 로드합니다.
 -또는-</translation>
     </message>
     <message>
@@ -3450,7 +5909,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>수수료 범프 승인</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
+        <source>Can&apos;t draft transaction.</source>
         <translation>거래 초안을 작성할 수 없습니다.</translation>
     </message>
     <message>
@@ -3458,7 +5917,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>PSBT 복사됨</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>거래에 서명 할 수 없습니다.</translation>
     </message>
     <message>
@@ -3468,6 +5927,21 @@ Go to File &gt; Open Wallet to load a wallet.
     <message>
         <source>default wallet</source>
         <translation>기본 지갑</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ 이 노드</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● 실행 중</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>이 프로세스에서 이 노드에 연결되어 실행되는 지갑 클라이언트입니다. bitcoin-pos-qt와 같은 프로그램이며 사본이 아닙니다.</translation>
     </message>
 </context>
 <context>
@@ -3576,7 +6050,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>하나 이상의 양파 바인딩 주소가 제공됩니다. 자동으로 생성 된 Tor onion 서비스에 %s 사용.</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation>컴퓨터의 날짜와 시간이 올바른지 확인하십시오! 시간이 잘못되면 %s은 제대로 동작하지 않습니다.</translation>
     </message>
     <message>
@@ -3596,7 +6070,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>에스큐엘라이트 데이터베이스 : 알 수 없는 에스큐엘라이트 지갑 스키마 버전 %d. %d 버전만 지원합니다.</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
         <translation>블록 데이터베이스에 미래의 블록이 포함되어 있습니다. 이것은 사용자의 컴퓨터의 날짜와 시간이 올바르게 설정되어 있지 않을때 나타날 수 있습니다. 블록 데이터 베이스의 재구성은 사용자의 컴퓨터의 날짜와 시간이 올바르다고 확신할 때에만 하십시오.</translation>
     </message>
     <message>
@@ -3628,8 +6102,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>-maxmempool은 최소한 %d MB 이어야 합니다</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>%s 주소를 확인할 수 없습니다: '%s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>%s 주소를 확인할 수 없습니다: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3716,20 +6190,20 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>무결성 확인 초기화에 실패하였습니다. %s가 곧 종료됩니다.</translation>
     </message>
     <message>
-        <source>Invalid P2P permission: '%s'</source>
-        <translation>잘못된 P2P 권한: '%s'</translation>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>잘못된 P2P 권한: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>유효하지 않은 금액 -%s=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>유효하지 않은 금액 -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>유효하지 않은 금액 -discardfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>유효하지 않은 금액 -discardfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>유효하지 않은 금액 -fallbackfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>유효하지 않은 금액 -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
@@ -3752,12 +6226,12 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>에스큐엘라이트 데이터베이스 : 예상 못한 어플리케이션 아이디. 예정: %u, 받음: %u</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>지정한 블록 디렉토리 "%s" 가 존재하지 않습니다.</translation>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>지정한 블록 디렉토리 &quot;%s&quot; 가 존재하지 않습니다.</translation>
     </message>
     <message>
-        <source>Unknown change type '%s'</source>
-        <translation>알 수 없는 변경 형식 '%s'</translation>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>알 수 없는 변경 형식 &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3833,15 +6307,15 @@ Go to File &gt; Open Wallet to load a wallet.
     </message>
     <message>
         <source>%s corrupt. Try using the wallet tool bitcoin-wallet to salvage or restoring a backup.</source>
-        <translation>%s가 손상되었습니다. '비트 코인-지갑'을 사용하여 백업을 구제하거나 복원하십시오.</translation>
+        <translation>%s가 손상되었습니다. &apos;비트 코인-지갑&apos;을 사용하여 백업을 구제하거나 복원하십시오.</translation>
     </message>
     <message>
         <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use version 169900 or no version specified.</source>
         <translation>HD 분할을 하지 않은 지갑은 pre split keypool로 업그레이드 하지 않고는 업그레이드를 진행할 수 없습니다. 버전 169900나 버전을 지정하지 않는 것을 사용해주십시오.</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>유효하지 않은 금액 -maxtxfee=&lt;amount&gt;: '%s' (거래가 막히는 상황을 방지하게 위해 적어도 %s 의 중계 수수료를 지정해야 합니다)</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>유효하지 않은 금액 -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (거래가 막히는 상황을 방지하게 위해 적어도 %s 의 중계 수수료를 지정해야 합니다)</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -3856,7 +6330,7 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>이것은 일반 코인 선택보다 부분적 지출 회피를 우선시하기 위해 지불하는 최대 거래 수수료 (일반 수수료에 추가)입니다.</translation>
     </message>
     <message>
-        <source>Transaction needs a change address, but we can't generate it. Please call keypoolrefill first.</source>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
         <translation>거래에 변경 주소가 필요하지만 생성 할 수 없습니다. 먼저 keypoolrefill에 전화하십시오.</translation>
     </message>
     <message>
@@ -3892,24 +6366,24 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>오류: 키풀이 바닥남, 키풀 리필을 먼저 호출할 하십시오</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>올바르지 않은 -onion 주소 또는 호스트 이름: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>올바르지 않은 -onion 주소 또는 호스트 이름: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>올바르지 않은 -proxy 주소 또는 호스트 이름: '%s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>올바르지 않은 -proxy 주소 또는 호스트 이름: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>유효하지 않은 금액 -paytxfee=&lt;amount&gt;: "%s" (최소 %s 이상이어야 합니다)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>유효하지 않은 금액 -paytxfee=&lt;amount&gt;: &quot;%s&quot; (최소 %s 이상이어야 합니다)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>유효하지 않은 넷마스크가 -whitelist: '%s" 를 통해 지정됨</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>유효하지 않은 넷마스크가 -whitelist: &apos;%s&quot; 를 통해 지정됨</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>-whitebind: '%s' 를 이용하여 포트를 지정해야 합니다</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>-whitebind: &apos;%s&apos; 를 이용하여 포트를 지정해야 합니다</translation>
     </message>
     <message>
         <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
@@ -3932,21 +6406,21 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>거래 서명에 실패했습니다</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>지정한 -walletdir "%s"은 존재하지 않습니다</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>지정한 -walletdir &quot;%s&quot;은 존재하지 않습니다</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>지정한 -walletdir "%s"은 상대 경로입니다</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>지정한 -walletdir &quot;%s&quot;은 상대 경로입니다</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>지정한 -walletdir "%s"은 디렉토리가 아닙니다</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>지정한 -walletdir &quot;%s&quot;은 디렉토리가 아닙니다</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
 </source>
-        <translation>지정한 설정 파일 "%s"는 존재하지 않습니다
+        <translation>지정한 설정 파일 &quot;%s&quot;는 존재하지 않습니다
 </translation>
     </message>
     <message>
@@ -3970,8 +6444,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>이 컴퓨터의 %s 에 바인딩할 수 없습니다 (바인딩 과정에 %s 오류 발생)</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>PID 파일 생성 실패 '%s': %s</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>PID 파일 생성 실패 &apos;%s&apos;: %s</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -4034,8 +6508,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>거래에는 최소한 한명의 수령인이 있어야 합니다.</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>-onlynet: '%s' 에 알수없는 네트워크가 지정되었습니다</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>-onlynet: &apos;%s&apos; 에 알수없는 네트워크가 지정되었습니다</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -4050,8 +6524,8 @@ Go to File &gt; Open Wallet to load a wallet.
         <translation>경고: 비활성화된 개인키 지갑 {%s} 에서 개인키들이 발견되었습니다</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>"%s" 데이터 폴더에 기록하지 못했습니다. 접근권한을 확인하십시오.</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>&quot;%s&quot; 데이터 폴더에 기록하지 못했습니다. 접근권한을 확인하십시오.</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -4072,6 +6546,22 @@ Go to File &gt; Open Wallet to load a wallet.
     <message>
         <source>Done loading</source>
         <translation>로딩 완료</translation>
+    </message>
+    <message>
+        <source>Fee rate (%s) is lower than the minimum fee rate setting (%s)</source>
+        <translation>수수료율(%s)이 최소 수수료율 설정(%s)보다 낮습니다</translation>
+    </message>
+    <message>
+        <source>Ignoring duplicate -wallet %s.</source>
+        <translation>중복된 -wallet %s을(를) 무시합니다.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to read database verification error: %s</source>
+        <translation>SQLiteDatabase: 데이터베이스 검증 오류를 읽지 못했습니다: %s</translation>
+    </message>
+    <message>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>알 수 없는 주소 유형 &apos;%s&apos;</translation>
     </message>
 </context>
 </TS>

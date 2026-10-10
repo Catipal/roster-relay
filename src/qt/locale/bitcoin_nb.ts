@@ -1,4 +1,6 @@
-<TS language="nb" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="nb">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -70,9 +72,9 @@
         <translation>Dette er dine Bitcoin adresser for å sende  å sende betalinger. Husk å sjekke beløp og mottager adresser før du sender mynter.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.
-Signing is only possible with addresses of the type 'legacy'.</source>
-        <translation>Dette er dine Bitcoin adresser for å motta betalinger. Bruk 'Lag ny mottaksadresse' knappen i motta tabben for å lage nye adresser. Signering er bare mulig for adresser av typen 'legacy'.</translation>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
+        <translation>Dette er dine Bitcoin adresser for å motta betalinger. Bruk &apos;Lag ny mottaksadresse&apos; knappen i motta tabben for å lage nye adresser. Signering er bare mulig for adresser av typen &apos;legacy&apos;.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -240,6 +242,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Advarsel: Caps Lock er på!</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>Brukes til å slå av enkel pengesending hvis operativsystemkontoen er kompromittert. Gir ingen reell sikkerhet.</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>Kun for staking.</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -250,6 +260,109 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Banned Until</source>
         <translation>Utestengt Til</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>Massebetaling</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>Én betaling per linje, som &quot;adresse, beløp&quot;. Komma, semikolon eller tabulator skiller feltene, og et tredje felt blir etiketten. Linjer som starter med # ignoreres.</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>&amp;Lim inn</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>Last inn fra &amp;fil...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>&amp;Tøm</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>Linje</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Adresse</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Beløp</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>Last inn betalingsliste</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>Tekst- og CSV-filer (*.txt *.csv);;Alle filer (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>Kunne ikke lese %1.</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>forventet &quot;adresse, beløp&quot;</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>ingen adresse</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>ikke en gyldig adresse</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>intet beløp</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>kunne ikke lese beløpet &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>beløpet må være større enn null</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>ok</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>Lim inn én betaling per linje, som &quot;adresse, beløp&quot;. Et tredje felt brukes som etikett. Linjer som starter med # ignoreres.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>%1 av %2 linjer kan ikke brukes. Rett dem eller slett dem for å fortsette.</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>%1 mottakere er flere enn én transaksjon kan bære (grensen her er %2). Del opp listen.</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>%1 mottakere, %2 totalt, før gebyret.</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>Legg til i sendeskjemaet</translation>
     </message>
 </context>
 <context>
@@ -440,7 +553,10 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n aktiv tilkobling til Bitcoin nettverket</numerusform><numerusform>%n aktive tilkoblinger til Bitcoin nettverket</numerusform></translation>
+        <translation>
+            <numerusform>%n aktiv tilkobling til Bitcoin nettverket</numerusform>
+            <numerusform>%n aktive tilkoblinger til Bitcoin nettverket</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -452,7 +568,10 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>Har prosessert %n blokk av transaksjonshistorien</numerusform><numerusform>Har prosessert %n blokker av transaksjonshistorien</numerusform></translation>
+        <translation>
+            <numerusform>Har prosessert %n blokk av transaksjonshistorien</numerusform>
+            <numerusform>Har prosessert %n blokker av transaksjonshistorien</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -670,6 +789,331 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
         <translation>En fatal feil har skjedd. %1 kan ikke lenger trygt fortsette og kommer til å avslutte.</translation>
     </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>Vis lommebokens stake</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>Lommeboken er &lt;b&gt;kryptert&lt;/b&gt; og for øyeblikket &lt;b&gt;låst opp kun for staking&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>&amp;Dekrypter lommebok...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>Fjern passordfrasen, slik at de private nøklene lagres ukryptert</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Ingen staking</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n sekund</numerusform>
+            <numerusform>%n sekunder</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n minutt</numerusform>
+            <numerusform>%n minutter</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n time</numerusform>
+            <numerusform>%n timer</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n dag</numerusform>
+            <numerusform>%n dager</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>Staking pågår.&lt;br&gt;Din vekt er %1&lt;br&gt;Nettverkets vekt er %2&lt;br&gt;Forventet tid til belønning: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>Ingen staking fordi lommeboken er frakoblet</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>Ingen staking fordi lommeboken synkroniserer</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>Ingen staking fordi du ikke har modne mynter</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>Ingen staking fordi lommeboken er låst</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>Ukjent feil</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>under ett minutt</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>ett minutt</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 minutter</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>en time</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 timer</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 dager</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>en måned</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 måneder</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>omtrent ett år</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>over ett år</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>ukjent</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>En alvorlig feil har oppstått. %1 kan ikke lenger fortsette trygt og avsluttes.</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Opprinnelig melding:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Utforsk</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Overleggsnett</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>Navn</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>Likemenn og konsoll</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>Node</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Lommebok</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>Post</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>Post (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>Tjener</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Innstillinger</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>oppføring ukjent</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>overleggsnett ukjent</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>kobler til…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>Med dagens nettverksvekt gir staking omtrent %1 % per år: %2 blokker per år, %3 %4 hver, på %5 %4 i staking.</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>Det er etter andelen på %1 % av hver blokk som denne noden deler med likemennene sine.</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>%1 % per år</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>avslutter…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>%1 likemenn: %2 innkommende, %3 utgående.</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>Klikk for å sette nettverksaktiviteten på pause.</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>1 likemann</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>%1 likemenn</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>Nettverksaktiviteten er satt på pause.</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>Klikk for å fortsette den.</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>nettverk på pause</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>Behandlet %1 blokker med historikk.</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>blokk %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>Oppdatert.</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>Synkroniserer med nettverket…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>Behandler blokker på disk…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>Reindekserer blokker på disk…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>Kobler til likemenn…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>%1 etter</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>Tar igjen…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>Siste mottatte blokk ble laget for %1 siden.</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>Lommebok &lt;b&gt;%1&lt;/b&gt; er kryptert og låst opp kun for staking</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>Lommebok &lt;b&gt;%1&lt;/b&gt; er kryptert og låst opp</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>Lommebok &lt;b&gt;%1&lt;/b&gt; er kryptert og låst</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>staking</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>staking, %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; driver staking.&lt;br&gt;Vekten er %2&lt;br&gt;Nettverkets vekt er %3&lt;br&gt;Forventet tid til belønning: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>ingen staking</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>ingen staking (betaler %1)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>Ingen staking: for få likemenn</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>Ingen staking: kjeden tar fortsatt igjen</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>Ingen staking: &lt;b&gt;%1&lt;/b&gt; har ingen modne mynter</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>Ingen staking: &lt;b&gt;%1&lt;/b&gt; er låst</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Ingen staking</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -821,6 +1265,57 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>(change)</source>
         <translation>(veksel)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>delegert til %1 for kald staking</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>Skriv et brev</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>et navn, et kallenavn fra adresseboken eller en registernøkkel</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Til</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Emne</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>Send</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>Hvem er det til? Et navn, et kallenavn eller en registernøkkel.</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>Brevet er %1 KB; et brev kan være på høyst %2 KB.</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>Brevet forsegles og legges i mottakerens postkasser, hver gang gjennom tre reléer. Dette tar noen sekunder…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Sendt</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>Brevet ble lagt i %1 av mottakerens %2 postkasser. Én er nok til at det kommer frem.</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>Ikke sendt: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -887,6 +1382,189 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>Compiled without sqlite support (required for descriptor wallets)</source>
         <translation>Kompilert uten sqlite støtte (kreves for deskriptor lommebok)</translation>
     </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Lommebok</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>Avanserte valg</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>Utforsk</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>Likemenn kunngjør seg på kjeden i stedet for hos en tjener, så denne listen er den samme for alle og ingen kan redigere den.</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>Register</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>Din oppføring</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>Oppførte likemenn</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>Du er</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Kopier</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>Publiserer oppføringen din…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>Identitet</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>Lag en…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>En identitet bevarer denne nodens historikk, hvor lenge den har vært oppført, hvis nøkkelen noen gang må byttes.</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>Finn en likemann eller en adresse</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Nøkkel kopiert</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>Adresse kopiert</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>starter…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>Lag en identitet</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>Betal gebyret fra</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>En identitet er en andre nøkkel som står bak nøkkelen til denne noden. Hvis nodens nøkkel noen gang går tapt eller blir stjålet, kan en ny nøkkel settes under samme identitet, og noden beholder hvor lenge den har vært oppført i stedet for å begynne på nytt.
+
+Du får se en gjenopprettingsnøkkel én gang. Skriv den ned: det er den eneste måten å hindre noen som stjeler identiteten i å flytte den. Deretter publiserer en liten transaksjon identiteten, og din neste fornyelse av oppføringen knytter nodens nøkkel til den.</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Reléet ditt publiserte oppføringen din i transaksjon %1. Teller når transaksjonen er bekreftet.</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Publisert i transaksjon %1. Teller når transaksjonen er bekreftet.</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>ukjent</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>registerindeks av</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>ikke oppført</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>utløper om %1</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>Fornyer oppføringen din…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>Forny i løpet av de siste 3 dagene</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>Oppføringen din utløper om %1. Fornyelse er mulig fra tre dager før.</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>oppført, utløper om %1</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>ingen</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>Denne noden har ingen kunngjøringsnøkkel: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>deaktivert</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>Registerindeksen kjører ikke, så denne noden kan ikke se hvem som er oppført. Start på nytt med -rosterindex for å slå den på.</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>tar igjen (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>%1 dager gammel</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>Den nyeste blokken til denne noden er %1 dager gammel, så likemenn som er tilbakekalt siden kan fortsatt stå her. Registeret brukes fortsatt til å nå likemenn, men overleggsnettet slutter å foretrekke lenge oppførte reléer til kjeden har tatt igjen.</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>oppdatert</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>Registerindeksen kjører ikke</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>Din gjenopprettingsnøkkel</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>Skriv den ned og oppbevar den et trygt sted, borte fra denne datamaskinen. Den vises bare nå og lagres ingen steder. Den kan ikke brukes til å bruke mynter; den kan bare stoppe en flytting av identiteten din som du ikke selv har gjort.</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>Jeg har skrevet den ned</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Identiteten din ble publisert i transaksjon %1. Din neste fornyelse av oppføringen knytter nodens nøkkel til den.</translation>
+    </message>
 </context>
 <context>
     <name>EditAddressDialog</name>
@@ -923,16 +1601,16 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Rediger utsendingsadresse</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>Den angitte adressen "%1" er ikke en gyldig Bitcoin-adresse.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
+        <translation>Den angitte adressen &quot;%1&quot; er ikke en gyldig Bitcoin-adresse.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>Adresse "%1" eksisterer allerede som en mottaksadresse merket "%2" og kan derfor ikke bli lagt til som en sendingsadresse.</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>Adresse &quot;%1&quot; eksisterer allerede som en mottaksadresse merket &quot;%2&quot; og kan derfor ikke bli lagt til som en sendingsadresse.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>Den oppgitte adressen ''%1'' er allerede i adresseboken med etiketten ''%2''.</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>Den oppgitte adressen &apos;&apos;%1&apos;&apos; er allerede i adresseboken med etiketten &apos;&apos;%2&apos;&apos;.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -1021,7 +1699,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <translation type="vanished">Bitcoin</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -1044,8 +1722,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Lommeboken vil også bli lagret i denne mappen.</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>Feil: Den oppgitte datamappen "%1" kan ikke opprettes.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
+        <translation>Feil: Den oppgitte datamappen &quot;%1&quot; kan ikke opprettes.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1053,13 +1731,185 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>%n GB med ledig lagringsplass</numerusform><numerusform>%n GB med ledig lagringsplass</numerusform></translation>
+        <translation>
+            <numerusform>%n GB med ledig lagringsplass</numerusform>
+            <numerusform>%n GB med ledig lagringsplass</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(av %n GB som trengs)</numerusform><numerusform>(av %n GB som trengs)</numerusform></translation>
+        <translation>
+            <numerusform>(av %n GB som trengs)</numerusform>
+            <numerusform>(av %n GB som trengs)</numerusform>
+        </translation>
     </message>
-    </context>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+    <message numerus="yes">
+        <source>(%n GB needed for full chain)</source>
+        <translation>
+            <numerusform>(%n GB trengs for hele kjeden)</numerusform>
+            <numerusform>(%n GB trengs for hele kjeden)</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>Post</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>Din adresse</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Kopier</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>Din registernøkkel. Alle som er oppført kan skrive til deg på den.</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>Post reiser over overleggsnettet. Slå på overleggsnettet under Innstillinger og start på nytt for å sende og motta post.</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>Skriv</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>Svar</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>Hent nå</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>Hent nye brev fra postkassene dine nå. Dette skjer også med noen minutters mellomrom.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Slett</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>Innboks</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Sendt</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>Fra</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Emne</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Dato</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>Brev forsegles med mottakerens ukentlige postnøkkel med secp256k1 og ML-KEM-768 sammen, nøkkelen og signaturen din reiser inne i forseglingen, og hver tur til en postkasse går gjennom tre reléer. Gamle postnøkler slettes, så et brev som hentes i dag kan ikke åpnes senere med nøklene på denne datamaskinen.</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Til</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>Ingen reléer er oppført ennå, så du har ingen postkasser og ingen kan skrive til deg.</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>%1 reléer oppbevarer posten din; det blir %2 når registeret har flere.</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>%1 reléer valgt ut fra nøkkelen din oppbevarer posten din til du henter den.</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>Postnøkkel nr. %1, fornyes ukentlig.</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>Sist hentet %1.</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>Ikke hentet ennå.</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>1 nytt brev</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>%1 nye brev</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>, fra %1 av %2 postkasser.</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(uten emne)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>Lagt i %1 av mottakerens postkasser</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>Fra: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>Til: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>Sendt %1, lagt i %2 av mottakerens postkasser</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>Skrevet %1, hentet %2</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>Velg et brev for å lese det.</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>Henter…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>Når postkassene dine, hver gjennom tre reléer…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>Slett brev</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>Slette dette brevet fra denne datamaskinen? Kopiene i postkassene ble allerede fjernet da det ble hentet, så det kan ikke hentes igjen.</translation>
+    </message>
+</context>
 <context>
     <name>ModalOverlay</name>
     <message>
@@ -1067,7 +1917,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Skjema</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>Det kan hende nylige transaksjoner ikke vises enda, og at lommeboksaldoen dermed blir uriktig. Denne informasjonen vil rette seg når synkronisering av lommeboka mot bitcoin-nettverket er fullført, som anvist nedenfor.</translation>
     </message>
     <message>
@@ -1117,6 +1967,409 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>Ukjent.Synkroniser overskrifter (%1,%2%)...</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>Navn</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>Et navn viser folk til registernøkkelen din, så de kan skrive til deg — og betale deg — med navn i stedet for nøkkel. Å få et ledig navn og fornye det koster bare nettverksgebyret; et navn fornyes for hånd. Et navn noen har kan kjøpes hvis de setter det til salgs, for det de ber om. Navn under ditt er gratis, og det er kallenavn også: dine egne etiketter for folk, lagret på denne datamaskinen.</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>Dine navn</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>Betal fra</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Navn</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>Utløper</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>Undernavn</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>Få et navn…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>Forny…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>Legg til et undernavn…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>Selg…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>Overfør…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>Ta imot betalinger via navn…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>Slå opp</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>et navn, etikett.navn eller kallenavn</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>Kopier nøkkel</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>Betal…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>Adressebok</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>Kallenavn</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>Nøkkel</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>Legg til noen…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Fjern</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Nøkkel kopiert</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>Arbeider…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>Ta av salg</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>Ta det av salg først.</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>Ny betalingsnøkkel…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>Betalinger via navn er på</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>Navn trenger navneindeksen. Slå på &quot;Indekser navn&quot; under Innstillinger og start på nytt.</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>Navn har ikke startet på dette nettverket ennå. Når de starter på hovednettet, og hvordan de første navnene deles ut, er ennå ikke bestemt. I mellomtiden kan du slå opp navn og føre en adressebok.</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1 er %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>fra adresseboken din</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>registrert navn, opptatt til blokk %1</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>stabilt</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>endret for %1 siden, ikke stabilt ennå</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>tar imot betalinger via navn</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>Til salgs: eieren ber om %1. Bruk Få et navn for å kjøpe det.</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>%1 forpliktet. Navnet gjøres krav på av seg selv om %2 blokker (omtrent %3) - hold BPS Relay i gang og lommeboken låst opp til da.</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>Kjøper %1: %2 betalt til eieren. Det er ditt når transaksjonen er bekreftet.</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>%1 settes til salgs for %2. Hvem som helst kan kjøpe det fra neste blokk, uten at denne noden er tilkoblet; prisen betales til denne lommeboken.</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>%1 tas av salg. Ingen kan kjøpe det fra nå av.</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>Fornyet %1 til blokk %2, bare for nettverksgebyret.</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>%1 overføres til %2. Det er deres når transaksjonen er bekreftet.</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>%1 er satt; det løses opp når transaksjonen er bekreftet.</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>Betalinger via navn slås på. Folk kan betale hvilket som helst av navnene dine omtrent %1 etter at transaksjonen er bekreftet; hver betaling vises i lommeboken som &quot;Betalt via navn&quot;.</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>Betalte %1 til %2, til en adresse som bare ble brukt til denne betalingen.</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>Betal</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>om %1</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>utløp for %1 siden</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>utløpt - forny i løpet av måneden</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>opptatt</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>selges - et kjøp bekreftes</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>til salgs for %1</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>til salgs for %1 - kan ikke kjøpes ennå</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>ikke registrert</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>registreres</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Klikk for å kopiere</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>Få et navn</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>1 til 32 bokstaver, sifre eller bindestreker</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 år</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>2 år</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>For</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>Registrering tar to trinn: en forpliktelse som skjuler navnet, og omtrent 20 minutter senere kravet, som BPS Relay sender selv. Ingen kan ta navnet i mellomtiden. Hvert trinn koster bare nettverksgebyret.</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>Et kjøp er én transaksjon: den betaler eieren og gjør navnet ditt, alt på en gang eller ikke i det hele tatt.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Registrer</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>Et navn består av 1 til 32 vanlige bokstaver a-z, sifre eller indre bindestreker.</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>%1, for %2, koster bare nettverksgebyret. Sjekker om det er ledig…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>ett år</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>to år</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>Ta %1 av salg</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>Ta %1 av salg? Ingen kan kjøpe det fra da av, og når det er bekreftet, kan du overføre det eller sette det til salgs igjen.</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>Selg %1</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>Din pris for %1, i BPS. Hvem som helst kan da kjøpe det med en gang, selv mens BPS Relay er lukket: de betaler deg dette i samme transaksjon som gir dem navnet. Mens det er til salgs, kan du ikke overføre det.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>&quot;%1&quot; er ikke et beløp i BPS.</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>Sette %1 til salgs for %2? To små transaksjoner sendes: én setter av mynten en kjøper bruker, den andre publiserer salget.</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>Forny %1</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>Forleng %1 fra når det utløper nå. Det koster bare nettverksgebyret. Et navn kan fornyes høyst to år frem i tid.</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>Overfør %1</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>Gi %1 til (en registernøkkel, et kallenavn eller et navn):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>Gi %1 til %2? Bare den nye eieren kan gi det tilbake.</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>Undernavn under %1</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>Delen før .%1, for eksempel alice for alice.%1:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>Hvem %1.%2 peker til (en registernøkkel, et kallenavn eller et navn), eller &quot;remove&quot;:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>Slår opp…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>Legg til noen</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>Hva du kaller dem (bare du ser dette):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>Registernøkkelen deres, eller et navn for å huske hvem som har den nå:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>Betalinger via navn er på. Flytte dem til en ny nøkkel fra denne lommeboken? Betalinger som allerede er gjort til den nåværende nøkkelen, kommer fortsatt frem. Betalere venter omtrent %1 etter endringen før de betaler igjen.</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>La folk betale deg med navn: ethvert navn eller undernavn som peker til nodens nøkkel, et kallenavn de har på deg, eller selve nøkkelen. Hver betaling går til en egen adresse som bare denne lommeboken kan bruke, og ingen som ser på kan se at du ble betalt, eller at to betalinger gikk til samme person. Det koster nettverksgebyret. Folk kan betale deg omtrent %1 etter at det er bekreftet.</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>Betalinger via navn</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>Betal %1</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>%1 tar ikke imot betalinger via navn ennå. Be dem slå det på i Navn-fanen, eller be om en adresse.</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>%1 skiftet eier for %2 siden.</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>De satte nøkkelen de betales til for %1 siden.</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>i BPS</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Beløp</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>Betalingen går til en adresse som bare brukes til den, og som bare %1 kan bruke; ingen andre kan se hvem som ble betalt. En betaling kan ikke tas tilbake. Nettverksgebyret kommer i tillegg.</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>Hvis det ikke var dem, er betalingen tapt. Det er tryggere å vente til det er %1 gammelt.</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>Betal likevel</translation>
     </message>
 </context>
 <context>
@@ -1423,6 +2676,209 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <source>The supplied proxy address is invalid.</source>
         <translation>Angitt proxyadresse er ugyldig.</translation>
     </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>Om kontrollfunksjonene for kald staking skal vises.</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>Aktiver kontrollfunksjoner for kald s&amp;taking</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>Overleggsnett</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>Et eget kryptert lag i BPS som fører trafikk gjennom andre likemenn, slik at den andre enden aldri får vite hvor du er.</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>spør…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>Kjører</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>Lytter på</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>Åpne ruter</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>Tjenester som møtes her</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>Tilgjengelige reléer</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>Dagens runde</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>Din inngang</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>Likemennene trafikken din alltid går inn gjennom. De beholdes i stedet for å byttes: å velge en ny hver gang ville til slutt gi en overvåker en tur.</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>Hvor folk kan møte deg</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>Beregnet fra registeret, ikke slått opp. Alle som prøver å nå deg gjør samme utregning og får samme svar, så det er ingen å spørre og ingen som kunne svart annerledes. De endres hver dag.</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>Hørt på radio</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>Hva det gir å være relé</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>Utstedt per dag</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>Reléer</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>Brukere</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>Brukere per relé</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>Andel per bruker</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>Et relé betaler likemennene det fører opp fra sine egne blokkbelønninger, så en brukers andel er én delt på antall brukere reléet har — derfor koster det en andel av staken å ta en andel av nettverkets brukere. Hvor mye av en belønning et relé deler, er dets eget valg, og ingenting håndhever det: et relé som ikke betaler noe, lager en helt gyldig blokk. Det som får det til å betale, er at et relé uten brukere ikke beskytter noen, heller ikke seg selv.</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>Ennå ikke gjennomgått av noen som ikke skrev det, og det skjuler hvor du er, ikke når du snakker: noen som overvåker begge ender, kan fortsatt sammenligne tidspunktene. Betrakt det som uferdig.</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>Denne noden deler ingenting. Sett -relayshare til en prosent, og ta inn likemenn med addrosteruser.</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>Denne noden ville delt %1 %, men %2.</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>Denne noden deler %1 % med %2 likemann/-menn: den neste blokken den lager, betaler %3, %4 hver.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>Reticulum-broen rapporterer ikke. Start den fra Innstillinger, Radio, eller kjør bps-rns-bridge.py selv.</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>Lytter. Ingen BPS-node hørt på radio ennå; noder kunngjør seg hver halvtime.</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>Trafikken din går inn gjennom en radionabo når en av dem er et oppført relé.</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>Hørt, men trafikken din går inn via internett (Innstillinger, Radio).</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>1 hopp</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>%1 hopp</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>hopp ukjent</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>hørt for %1 siden</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>et relé</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>ja</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>nei</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>Overleggsnettet er slått av. Denne klienten slår det på av seg selv, så noe har slått det av igjen, med -overlay=0 på kommandolinjen eller i konfigurasjonsfilen.</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>ingenting mens overleggsnettet er av</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>overleggsnett av</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>ingen ennå</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>overleggsnett på, ingen reléer ennå</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>overleggsnett på, 1 relé</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>overleggsnett på, %1 reléer</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>ingen valgt ennå</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>ingen — registeret har ingen reléer å utlede dem fra</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>overleggsnett ukjent</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>ingen reléer ennå</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1501,6 +2957,30 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
         <translation>Privat mode er aktivert for oversiktstabben. For å se verdier, uncheck innstillinger-&gt;Masker verdier</translation>
+    </message>
+    <message>
+        <source>Stake</source>
+        <translation>Stake</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>Umodne staker:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>Umodne delegeringer</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>Umodne delegeringer:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Delegert</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>Delegert:</translation>
     </message>
 </context>
 <context>
@@ -1641,15 +3121,15 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>URI-håndtering</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>'bitcoin: //' er ikke en gyldig URI. Bruk 'bitcoin:' i stedet.</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;bitcoin: //&apos; er ikke en gyldig URI. Bruk &apos;bitcoin:&apos; i stedet.</translation>
     </message>
     <message>
         <source>Cannot process payment request because BIP70 is not supported.</source>
         <translation>Kan ikke behandle betalingsforespørsel fordi BIP70 ikke støttes.</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
         <translation>På grunn av utbredte sikkerhetsfeil i BIP70 anbefales det på det sterkeste at alle selgerinstruksjoner for å bytte lommebok ignoreres.</translation>
     </message>
     <message>
@@ -1697,6 +3177,161 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>Forny oppføringen din</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>Publiser oppføringen din</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>Fornyelse skriver en ny post til kjeden. Til den er bekreftet, gjelder den gamle fortsatt.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>Dette skriver en kort post til kjeden som sier at du finnes, og eventuelt hvor du kan finnes.</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>Hvordan skal likemenn nå deg?</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>Gjennom overleggsnettet — publiser ingen adresse</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>Oppføringen din sier hvem du er og ikke hvor du kjører. Likemenn når deg over overleggsnettet i stedet, og møter deg på punkter begge sider beregner fra registeret. Dette er hva denne klienten slår på som standard.</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>På en adresse jeg publiserer</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>adresse andre likemenn kan nå</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>Alle kan se den, og kjeden beholder den for alltid. En onion-adresse publiserer et sted ingen kan spore tilbake til deg, og fungerer bak NAT; en IP-adresse gjør ingen av delene. En node som publiserer en IP-adresse, kan bli valgt som relé av andre.</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>Hvem betaler gebyret</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>En måned, så må den fornyes</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>Et år, så må den fornyes</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>Hvor lenge den varer</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>Forny</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>Publiser</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>Et relé betaler — ingen mynter trengs</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>Overleggsnettet er av, så det er ikke noe relé å spørre. Slå det på under Innstillinger, eller betal fra en lommebok.</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>Ingen reléer er oppført i registeret ennå, så det er ingen å spørre. Betal fra en lommebok, eller prøv igjen når et relé har ført seg opp.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Noden din signerer oppføringen og sender den over overleggsnettet til reléet den går inn gjennom. Et relé som betaler for oppføringer, legger din inn i en blokk det staker selv, så den bekreftes selv om de fleste noder ikke ville sendt den videre, og legger deg til likemennene det deler belønningene med. Hvis det senere slutter å betale, utløper oppføringen din innen måneden; du kan alltid fornye selv fra en lommebok med midler.</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>Denne noden driver ikke staking. En oppføring er større enn eldre noder sender videre, så inntil de fleste stakere har oppgradert, bekreftes den bare når en staker med denne versjonen tar den med, noe som kan ta en stund. Staking legger den i din egen neste blokk; et relé som betaler, staker den inn i sin egen.</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>Denne lommeboken er låst opp kun for staking. Betaling ber om passordfrasen, og lommeboken låses igjen etterpå, noe som stopper staking til du låser den opp for staking igjen.</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>Betaling ber om passordfrasen til denne lommeboken.</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>Skriv inn en adresse, eller velg å ikke publisere noen.</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>Ber reléet ditt publisere den… dette kan ta opptil et halvt minutt.</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>Den lommeboken er ikke lenger åpen.</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>Lommeboken er fortsatt låst, så ingenting ble betalt.</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>Signerer posten…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>Noden returnerte en post som denne klienten ikke forsto.</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>Betaler for å publisere den…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>Reléet avslo: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>Ikke noe svar fra reléet. %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1704,7 +3339,7 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>Oppgi en Bitcoin-adresse (f.eks. %1)</translation>
+        <translation type="vanished">Oppgi en Bitcoin-adresse (f.eks. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1736,23 +3371,38 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n sekund</numerusform><numerusform>%n sekunder</numerusform></translation>
+        <translation>
+            <numerusform>%n sekund</numerusform>
+            <numerusform>%n sekunder</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minutt</numerusform><numerusform>%n minutter</numerusform></translation>
+        <translation>
+            <numerusform>%n minutt</numerusform>
+            <numerusform>%n minutter</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n time</numerusform><numerusform>%n timer</numerusform></translation>
+        <translation>
+            <numerusform>%n time</numerusform>
+            <numerusform>%n timer</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n dag</numerusform><numerusform>%n dager</numerusform></translation>
+        <translation>
+            <numerusform>%n dag</numerusform>
+            <numerusform>%n dager</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n uke</numerusform><numerusform>%n uker</numerusform></translation>
+        <translation>
+            <numerusform>%n uke</numerusform>
+            <numerusform>%n uker</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1760,7 +3410,10 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n år</numerusform><numerusform>%n år</numerusform></translation>
+        <translation>
+            <numerusform>%n år</numerusform>
+            <numerusform>%n år</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1779,8 +3432,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>%1 GB</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>Feil: Den spesifiserte datamappen "%1" finnes ikke.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>Feil: Den spesifiserte datamappen &quot;%1&quot; finnes ikke.</translation>
     </message>
     <message>
         <source>Error: %1</source>
@@ -1791,12 +3444,64 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Initialisering av innstillinger feilet: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1 har ikke avsluttet trygt enda…</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>ukjent</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>Kontakt</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>Mottak</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>Skjult</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Ukjent</translation>
+    </message>
+    <message>
+        <source>Error: Cannot parse configuration file: %1.</source>
+        <translation>Feil: Kan ikke tolke konfigurasjonsfilen: %1.</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Delegert</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>%1 eies av noen som har satt det til salgs. De ber om %2; nettverksgebyret kommer i tillegg.</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>Kjøp</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>Sjekker om det er ledig…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>Det er ledig.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Registrer</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>ikke bygget ennå</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>Skriv inn en BitcoinPoS-adresse (f.eks. %1)</translation>
     </message>
 </context>
 <context>
@@ -2109,8 +3814,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Utfør kommando uten noen lommebok</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
-        <translation>Utfør kommando med lommebok "%1"</translation>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>Utfør kommando med lommebok &quot;%1&quot;</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -2135,6 +3840,53 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Unknown</source>
         <translation>Ukjent</translation>
+    </message>
+    <message>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>For å angi en annen plassering for datamappen enn standard, bruk valget &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>For å angi en annen plassering for blokkmappen enn standard, bruk valget &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>Mente du:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>Usikker på en kommando? Skriv hva du vil med vanlige ord, som %1, og velg et forslag. Forslagene regnes ut på denne datamaskinen; ingenting du skriver sendes noe sted.</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>Radio er av.</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>Radio er på; start Reticulum-broen selv (contrib/reticulum/bps-rns-bridge.py).</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>bps-rns-bridge.py ligger ikke ved siden av BPS Relay, så broen kan ikke startes.</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>Python kunne ikke startes som &quot;%1&quot;. Installer Python, eller angi kommandoen under Innstillinger, Radio.</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Reticulum er ikke installert. Installer det med: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>Reticulum-broen stoppet (status %1); se radio/bridge.log.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>Reticulum-broen starter.</translation>
     </message>
 </context>
 <context>
@@ -2188,12 +3940,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Fjern</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>Innfødte segwit-adresser (også kalt Bech32 eller BIP-173) reduserer transaksjonsgebyrene senere og gir bedre beskyttelse mot skrivefeil, men gamle lommebøker støtter dem ikke. Når du ikke har merket av, opprettes en adresse som er kompatibel med eldre lommebøker.</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">Innfødte segwit-adresser (også kalt Bech32 eller BIP-173) reduserer transaksjonsgebyrene senere og gir bedre beskyttelse mot skrivefeil, men gamle lommebøker støtter dem ikke. Når du ikke har merket av, opprettes en adresse som er kompatibel med eldre lommebøker.</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>Generer nativ segwit (Bech32) adresse</translation>
+        <translation type="vanished">Generer nativ segwit (Bech32) adresse</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2238,6 +3990,14 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     <message>
         <source>Could not generate new %1 address</source>
         <translation>Kunne ikke generere ny %1 adresse </translation>
+    </message>
+    <message>
+        <source>(none)</source>
+        <translation>(ingen)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>Ingen staking-adresse er satt for denne lommeboken, så det er ingenting å delegere til. Sett en på Stake-siden, under Deleger -&gt; Automatisk delegering, så virker denne adressetypen.</translation>
     </message>
 </context>
 <context>
@@ -2319,6 +4079,99 @@ Signing is only possible with addresses of the type 'legacy'.</source>
     </message>
 </context>
 <context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>Likemann</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Adresse</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>Oppført</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>Oppføringen utløper</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>Oppført i</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Klikk for å kopiere</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>Denne likemannen er oppført, men publiserer ingen adresse. Den kan
+fortsatt nås over overleggsnettet, som er poenget med å tillate det.</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>én adresse publisert</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>%1 adresser publisert</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>Bekreftet i blokk %1</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>Slutter å telle ved blokk %1</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>Ingen historikk før denne oppføringen.</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>Oppført uten avbrudd siden blokk %1.</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>For nylig til å telle ennå.</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>Kjører ikke under en identitet.</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>Kjører under identiteten %1, som beholder alderen sin hvis den bytter nøkler.</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>ingen adresse publisert</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>akkurat nå</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>for %1 siden</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>utløpt</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>om %1</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>ny</translation>
+    </message>
+</context>
+<context>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
@@ -2389,12 +4242,12 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation>Advarsel: Gebyroverslag er ikke tilgjengelig for tiden.</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>Spesifiser en tilpasset avgift per kB (1000 byte) av transaksjonens virtuelle størrelse.
 
-Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis per kB" for en transaksjonsstørrelse på 500 byte (halvparten av 1 kB) til slutt gi et gebyr på bare 50 satoshis.</translation>
+Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på &quot;100 satoshis per kB&quot; for en transaksjonsstørrelse på 500 byte (halvparten av 1 kB) til slutt gi et gebyr på bare 50 satoshis.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2453,7 +4306,7 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis 
         <translation>Aktiver Replace-By-Fee</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
         <translation>Med Replace-By-Fee (BIP-125) kan du øke transaksjonens gebyr etter at den er sendt. Uten dette aktivert anbefales et høyere gebyr for å kompensere for risikoen for at transaksjonen blir forsinket.</translation>
     </message>
     <message>
@@ -2565,8 +4418,8 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis 
         <translation>Totalbeløp</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
-        <translation>For å se gjennom mottakerlisten, klikk "Vis detaljer ..."</translation>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>For å se gjennom mottakerlisten, klikk &quot;Vis detaljer ...&quot;</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2618,7 +4471,10 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis 
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Antatt bekreftelsesbegynnelse innen %n blokk.</numerusform><numerusform>Antatt bekreftelsesbegynnelse innen %n blokker.</numerusform></translation>
+        <translation>
+            <numerusform>Antatt bekreftelsesbegynnelse innen %n blokk.</numerusform>
+            <numerusform>Antatt bekreftelsesbegynnelse innen %n blokker.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2639,6 +4495,54 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis 
     <message>
         <source>(no label)</source>
         <translation>(ingen beskrivelse)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>Lim inn eller last inn en liste med betalinger i stedet for å legge dem til én om gangen</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>&amp;Masse...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>Ta også med delegeringer når tilgjengelig saldo beregnes. Hvis ikke avkrysset, viser tilgjengelig saldo bare myntene som er i lommeboken nå.</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>&amp;Ta med delegeringer</translation>
+    </message>
+    <message>
+        <source>Creates a Partially Signed Bitcoin Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>Lager en delvis signert Bitcoin-transaksjon (PSBT) til bruk med f.eks. en frakoblet %1-lommebok, eller en PSBT-kompatibel maskinvarelommebok.</translation>
+    </message>
+    <message>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation> fra lommebok &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 til &apos;%2&apos;</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>Kald staking er ikke aktivert</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>Kald staking aktiveres ved blokk %1</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>Denne lommeboken staker sine egne mynter, så alle er delegert.</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>Den oppgitte eieradressen finnes ikke i denne lommeboken. ADVARSEL: Bare eieren av nøkkelen til eieradressen kan bruke disse myntene etter delegeringen.</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>Den oppgitte stakeradressen finnes i denne lommeboken. Du kan allerede drive staking med myntene, så du trenger ikke delegere dem til deg selv.</translation>
     </message>
 </context>
 <context>
@@ -2723,6 +4627,352 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis 
         <source>Memo:</source>
         <translation>Memo:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>&amp;Eieradresse:</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>BitcoinPoS-eieradressen</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>Tjener</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Hva denne noden tilbyr andre. Relé og oppbevaring av post kjører i dag; vertskap er på vei, og som alt her finnes det på samme måte som likemenn — gjennom registeret. Navn har en egen side.</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>Vertskap</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>Et nettsted eller en tjeneste som leveres fra denne noden, funnet via nøkkelen eller navnet og nådd over overleggsnettet, slik at verten aldri publiserer hvor den kjører. Møtedelen finnes: en tjeneste registrerer seg på møtepunkter begge sider beregner fra registeret. Å levere sider og apper gjennom den er ikke bygget ennå.</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>Relé</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>Bær andre likemenns overleggstrafikk, betal for de månedlige oppføringene til likemennene som bruker denne noden, og del en del av hver blokk den staker med dem. Et relé legger oppføringene det betaler for inn i blokker det staker selv, og slik bekreftes de mens de fleste noder fortsatt nekter å sende poster videre — så et relé må drive staking.</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>Likemenn oppført her</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>Neste blokk den staker</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>Betal for å føre opp likemenn som ber om det over overleggsnettet</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>En likemann uten mynter kan be denne noden om å publisere sin månedlige oppføring. Denne noden betaler gebyret, staker den inn i en blokk og legger likemannen til dem den deler belønninger med. Av som standard, fordi det bruker denne nodens mynter.</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>Likemenn utover dette tallet avvises. Likemenn som allerede er oppført her, kan fortsatt fornye.</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>Høyeste antall likemenn som holdes oppført</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>den eneste åpne lommeboken</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>Hvilken lommebok som betaler gebyrene. Med flere åpne og ingen angitt her, avvises forespørsler i stedet for å betales etter en gjetning. Staking kan skje i hvilken som helst lommebok på denne noden.</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>Betal gebyrer fra lommebok</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>Del av hver blokk denne noden staker med egne mynter, fordelt likt mellom likemennene den fører opp. 0 deler ingenting.</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>Andel av hver stakede blokk</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>Postkasse</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>Oppbevar forseglet post for menneskene registeret gjør denne noden til postkasse for, til de henter den. Hvilke reléer som oppbevarer hvem sin post, beregnes fra registeret, så ingen tildeler det. Avsendere og eiere når denne noden gjennom tre reléer, så den får aldri vite hvor de er; brev er forseglet, så den kan ikke lese dem eller se hvem som skrev dem. Brev slettes etter to uker, og bare oppførte personer betjenes.</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>Oppbevarer</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>Postnøkler oppbevart for avsendere</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>Oppbevar post for menneskene registeret tildeler denne noden</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>På som standard der overleggsnettet kjører: et relé som nekter, etterlater dem det ble valgt for med én postkasse mindre.</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>Når dette er fullt, avvises nye brev til gamle er hentet eller slettet. Ingen enkeltperson kan bruke mer enn 8 MiB av det.</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>Diskplass det kan bruke</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Lagret. Disse leses når noden starter, så start klienten på nytt for at endringen skal tre i kraft.</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>ingen lommebok åpen</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>nei — et relé som ikke driver staking, avviser oppføringsforespørsler</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>ja, om %1</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>betaler ikke for oppføringer</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>betaler, men driver ikke staking</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>kjører</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>denne versjonen har ingen lommebok</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>trenger en lommebok</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>av</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>trenger overleggsnettet</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>ingenting — oppbevarer ikke post</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>ingen brev</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>1 bokstav</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>%1 bokstaver</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>1 person</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>%1 personer</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>ingenting for øyeblikket, plass til %1 MiB</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%1 for %2, %3 av %4 MiB</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>deler %1 %: %2 %4 totalt, %3 %4 til hver likemann</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>Innstillinger</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>Hva denne klienten gjør som lommebokklienten ikke gjør, og språket. Alt annet — mellomtjener, porter, beskjæring — er det samme spørsmålet i begge, og stilles ett sted.</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Utforsk</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>Hold en indeks over registeret</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>Uten den kan denne noden publisere, men ikke se hvem andre som er oppført.</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>Indekser navn</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>Trengs for å slå opp navn, sende post til dem og registrere ditt eget.</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>Prøv å koble til likemenn funnet i registeret</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>Gir registeradresser til adressebehandleren, sammen med de vanlige frøene og adressedelingen. Slår du det av, blir registeret en liste denne noden leser, men aldri handler på.</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Overleggsnett</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>Kjør overleggsnettet</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>På som standard i denne klienten, av i noden og i lommebokklienten. Håndtrykket er ennå ikke gjennomgått av noen som ikke skrev det.</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>Overleggsnettet bruker UDP på sin egen port. Node-til-node-nettverket er separat og blir på TCP.</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>Lytt på port</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>Radio</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>Bær overleggsnettet over radio også, gjennom Reticulum</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>LoRa via en RNode, pakkeradio, serielle forbindelser: hva enn Reticulum er satt opp til å bruke. Trenger overleggsnettet.</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>Gå inn i overleggsnettet gjennom radionaboer, så post virker uten internett</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>Når en BPS-node som høres på radio er et oppført relé, går posten og oppføringsforespørslene dine gjennom den. En radioforbindelse er mye tregere enn internett.</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>Start Reticulum-broen med BPS Relay</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>Kjører bps-rns-bridge.py ved siden av noden. La den være av hvis du kjører broen selv.</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>Python-kommando</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Reticulum er ikke en del av BPS og har sin egen lisens. Installer det med %1, og sett opp radioen i Reticulums egen konfigurasjon (~/.reticulum/config). Amatørradiobånd tillater ikke kryptert trafikk, så bruk lisensfrie bånd som LoRas.</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>Visning</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>Vis beløp i</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>Datamaskinens språk</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>Trer i kraft når BPS Relay startes på nytt. Tekster noden selv sender, som feilmeldinger fra kommandoer, forblir på engelsk.</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Språk</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>Nettverk, mellomtjener og andre grunninnstillinger…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>Lagret. Språket endres når BPS Relay startes på nytt.</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Lagret. Disse leses når noden starter, så start klienten på nytt for at endringen skal tre i kraft.</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>Noden starter fortsatt; grunninnstillingene er ikke tilgjengelige ennå.</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2802,7 +5052,7 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis 
         <translation>&amp;Verifiser Melding</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
         <translation>Skriv inn mottakerens adresse, melding (forsikre deg om at du kopier linjeskift, mellomrom, faner osv. nøyaktig) og underskrift nedenfor for å bekrefte meldingen. Vær forsiktig så du ikke leser mer ut av signaturen enn hva som er i den signerte meldingen i seg selv, for å unngå å bli lurt av et man-in-the-middle-angrep. Merk at dette bare beviser at den som signerer kan motta med adressen, dette beviser ikke hvem som har sendt transaksjoner!</translation>
     </message>
     <message>
@@ -2830,8 +5080,8 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis 
         <translation>Tilbakestill alle felter for meldingsverifikasjon</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>Klikk "Signer melding" for å generere signatur</translation>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>Klikk &quot;Signer melding&quot; for å generere signatur</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2887,6 +5137,209 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis 
     </message>
 </context>
 <context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>Skjema</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>Din nåværende disponible saldo</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>Eiendeler i staking som denne lommeboken eier</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>Eiendeler i staking fra delegeringer</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>Umodent:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>Din umodne saldo</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>Eiendeler i staking</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>Stake:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>Blokkhøyde:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>Blokkbelønning:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/blokk</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>Nettverksvekt:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>Forventet årlig avkastning:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>Stake-poster</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>&amp;Deleger</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>Delegeringstype:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>Manuell delegering</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>Automatisk delegering</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>Staking-adresser</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>Fjern alle</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Lim inn adresse fra utklippstavlen</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>&amp;Legg til</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>&amp;Mine delegeringer</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>Delegerte eiendeler</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>Din nåværende delegerte saldo</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>Mine delegeringer</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>&amp;Mottatte delegeringer</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>&amp;Lag ny staking-adresse</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> med etikett:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>En valgfri etikett som knyttes til den nye mottaksadressen (brukes av deg til å kjenne igjen en faktura). Den legges også ved betalingsforespørselen.</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>ColdStake-delegeringer</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>Mynter betalt til denne lommebokens delegeringsadresser stakes av disse nøklene i det øyeblikket de kommer, og veksel fra dine egne utgifter forblir delegert. En staking-nøkkel kan bare lage coinstakes som betaler tilbake til deg, så lommeboken som holder den, trenger ingen passordfrase.</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>Før opp mer enn én for å spre myntene dine over flere staking-lommebøker, slik at én av dem frakoblet ikke stopper all staking.
+
+Hver ny delegering går til den adressen som så langt er nevnt av færrest, regnet ut fra utdelte delegeringsadresser og delegerte mynter som ennå ikke er brukt. Den teller delegeringer, ikke beløp, så en adresse med én stor delegering kan fortsatt velges foran en med flere små.</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>Mynter som allerede er delegert til en fjernet adresse, flyttes ikke, og den fortsetter å stake dem. Bare nye delegeringer slutter å nevne den.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>Kunne ikke låse opp lommeboken.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Kunne ikke lage ny %1-adresse</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>Kald staking er deaktivert på denne noden (-coldstaking=0), så ingenting delegeres.</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>En staking-adresse her tilhører denne lommeboken, som er kryptert, så den staker bare mens lommeboken er låst opp. For å drive staking uten passordfrase, bruk en adresse fra en separat, ukryptert staking-lommebok.</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>Slutt å delegere til %1. Mynter som allerede er delegert til den, flyttes ikke, og den fortsetter å stake dem.</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>Kunne ikke lagre staking-adressene. En delegering forplikter seg til en nøkkelhash, så hver må være en legacy-adresse.</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>Den staking-adressen står allerede i listen.</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>Fjern alle staking-adresser</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>Slutte å delegere til alle %1 staking-adresser?
+
+Mynter som allerede er delegert, stakes fortsatt av dem og flyttes ikke. Men nye innskudd og veksel går til vanlige adresser, som ikke staker, og du trenger disse adressene igjen for å slå dette på igjen.</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2897,7 +5350,10 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis 
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Åpen for %n blokk til</numerusform><numerusform>Åpen for %n flere blokker</numerusform></translation>
+        <translation>
+            <numerusform>Åpen for %n blokk til</numerusform>
+            <numerusform>Åpen for %n flere blokker</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2977,7 +5433,10 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis 
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>modner om %n blokk</numerusform><numerusform>modner om %n blokker</numerusform></translation>
+        <translation>
+            <numerusform>modner om %n blokk</numerusform>
+            <numerusform>modner om %n blokker</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -3036,8 +5495,8 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis 
         <translation>Forretningsdrivende</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Genererte bitcoins må modne %1 blokker før de kan brukes. Da du genererte denne blokken ble den kringkastet på nettverket for å bli lagt til i kjeden av blokker. Hvis den ikke kommer med i kjeden vil den endre seg til "ikke akseptert", og vil ikke kunne brukes. Dette vil noen ganger skje hvis en annen node genererer en blokk innen noen sekunder av din.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Genererte bitcoins må modne %1 blokker før de kan brukes. Da du genererte denne blokken ble den kringkastet på nettverket for å bli lagt til i kjeden av blokker. Hvis den ikke kommer med i kjeden vil den endre seg til &quot;ikke akseptert&quot;, og vil ikke kunne brukes. Dette vil noen ganger skje hvis en annen node genererer en blokk innen noen sekunder av din.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -3091,7 +5550,10 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis 
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Åpen for én blokk til</numerusform><numerusform>Åpen for %n blokker til</numerusform></translation>
+        <translation>
+            <numerusform>Åpen for én blokk til</numerusform>
+            <numerusform>Åpen for %n blokker til</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3180,6 +5642,30 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis 
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>Beløp fjernet eller lagt til saldo.</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>Kald stake</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>Staking på vegne av</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>Stake-delegering</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>Delegering</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>Stake-delegering brukt av</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>Delegert beløp.</translation>
     </message>
 </context>
 <context>
@@ -3340,6 +5826,22 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis 
         <source>to</source>
         <translation>til</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>Kalde staker</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>Varme staker</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>Ubrukt delegert</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>Delegeringer</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3365,6 +5867,10 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på "100 satoshis 
     <message>
         <source>Are you sure you wish to close all wallets?</source>
         <translation>Er du sikker på at du vil lukke alle lommebøker?</translation>
+    </message>
+    <message>
+        <source>Are you sure you wish to close the wallet &lt;i&gt;%1&lt;/i&gt;?</source>
+        <translation>Er du sikker på at du vil lukke lommeboken &lt;i&gt;%1&lt;/i&gt;?</translation>
     </message>
 </context>
 <context>
@@ -3421,7 +5927,7 @@ Gå til Fil &gt; Åpne lommebok for å laste en lommebok.
         <translation>Bekreft gebyrøkning</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
+        <source>Can&apos;t draft transaction.</source>
         <translation>Kan ikke utarbeide transaksjon.</translation>
     </message>
     <message>
@@ -3429,7 +5935,7 @@ Gå til Fil &gt; Åpne lommebok for å laste en lommebok.
         <translation>PSBT kopiert</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>Kan ikke signere transaksjon</translation>
     </message>
     <message>
@@ -3439,6 +5945,21 @@ Gå til Fil &gt; Åpne lommebok for å laste en lommebok.
     <message>
         <source>default wallet</source>
         <translation>standard lommebok</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ denne noden</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● direkte</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>Lommebokklienten, som kjører i denne prosessen mot denne noden. Det er det samme programmet som bitcoin-pos-qt, ikke en kopi av det.</translation>
     </message>
 </context>
 <context>
@@ -3547,7 +6068,7 @@ Gå til Fil &gt; Åpne lommebok for å laste en lommebok.
         <translation>Mer enn en onion adresse har blitt gitt. Bruker %s for den automatisk lagde Tor onion tjenesten.</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation>Sjekk at din datamaskins dato og klokke er stilt rett! Hvis klokka er feil, vil ikke %s fungere ordentlig.</translation>
     </message>
     <message>
@@ -3555,7 +6076,7 @@ Gå til Fil &gt; Åpne lommebok for å laste en lommebok.
         <translation>Bidra hvis du finner %s nyttig. Besøk %s for mer informasjon om programvaren.</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
         <translation>Blokkdatabasen inneholder en blokk som ser ut til å være fra fremtiden. Dette kan være fordi dato og tid på din datamaskin er satt feil. Gjenopprett kun blokkdatabasen når du er sikker på at dato og tid er satt riktig.</translation>
     </message>
     <message>
@@ -3587,8 +6108,8 @@ Gå til Fil &gt; Åpne lommebok for å laste en lommebok.
         <translation>-maxmempool må være minst %d MB</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>Kunne ikke slå opp -%s-adresse: "%s"</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>Kunne ikke slå opp -%s-adresse: &quot;%s&quot;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3671,16 +6192,16 @@ Gå til Fil &gt; Åpne lommebok for å laste en lommebok.
         <translation>Sunnhetssjekk ved oppstart mislyktes. %s skrus av.</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>Ugyldig beløp for -%s=&lt;amount&gt;: "%s"</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Ugyldig beløp for -%s=&lt;amount&gt;: &quot;%s&quot;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>Ugyldig beløp for -discardfee=&lt;amount&gt;: "%s"</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Ugyldig beløp for -discardfee=&lt;amount&gt;: &quot;%s&quot;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>Ugyldig beløp for -fallbackfee=&lt;amount&gt;: "%s"</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Ugyldig beløp for -fallbackfee=&lt;amount&gt;: &quot;%s&quot;</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3759,8 +6280,8 @@ Gå til Fil &gt; Åpne lommebok for å laste en lommebok.
         <translation>%s korrupt. Prøv å bruk lommebokverktøyet bitcoin-wallet til å fikse det eller laste en backup.</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>Ugyldig beløp for -maxtxfee=&lt;amount&gt;: '%s' (må være minst minimum relé gebyr på %s for å hindre fastlåste transaksjoner)</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Ugyldig beløp for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (må være minst minimum relé gebyr på %s for å hindre fastlåste transaksjoner)</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -3775,7 +6296,7 @@ Gå til Fil &gt; Åpne lommebok for å laste en lommebok.
         <translation>Dette er maksimum transaksjonsavgift du betaler (i tillegg til den normale avgiften) for å prioritere delvis betaling unngåelse over normal mynt seleksjon.</translation>
     </message>
     <message>
-        <source>Transaction needs a change address, but we can't generate it. Please call keypoolrefill first.</source>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
         <translation>Transaksjon trenger en veksel adresse, men vi kan ikke generere den. Kall keypoolrefill først.</translation>
     </message>
     <message>
@@ -3815,24 +6336,24 @@ Gå til Fil &gt; Åpne lommebok for å laste en lommebok.
         <translation>Avgiftsrate (%s) er lavere enn den minimume avgiftsrate innstillingen (%s)</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>Ugyldig -onion adresse eller vertsnavn: "%s"</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>Ugyldig -onion adresse eller vertsnavn: &quot;%s&quot;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>Ugyldig -mellomtjeneradresse eller vertsnavn: "%s"</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>Ugyldig -mellomtjeneradresse eller vertsnavn: &quot;%s&quot;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>Ugyldig beløp for -paytxfee=&lt;amount&gt;: '%s' (må være minst %s)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>Ugyldig beløp for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (må være minst %s)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>Ugyldig nettmaske spesifisert i -whitelist: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>Ugyldig nettmaske spesifisert i -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>Må oppgi en port med -whitebind: '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>Må oppgi en port med -whitebind: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
@@ -3851,16 +6372,16 @@ Gå til Fil &gt; Åpne lommebok for å laste en lommebok.
         <translation>Signering av transaksjon feilet</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>Oppgitt -walletdir "%s" eksisterer ikke</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>Oppgitt -walletdir &quot;%s&quot; eksisterer ikke</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>Oppgitt -walletdir "%s" er en relativ sti</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>Oppgitt -walletdir &quot;%s&quot; er en relativ sti</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>Oppgitt -walletdir "%s" er ikke en katalog</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>Oppgitt -walletdir &quot;%s&quot; er ikke en katalog</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3945,8 +6466,8 @@ Gå til Fil &gt; Åpne lommebok for å laste en lommebok.
         <translation>Transaksjonen må ha minst én mottaker</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>Ukjent nettverk angitt i -onlynet '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>Ukjent nettverk angitt i -onlynet &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -3975,6 +6496,90 @@ Gå til Fil &gt; Åpne lommebok for å laste en lommebok.
     <message>
         <source>Done loading</source>
         <translation>Ferdig med lasting</translation>
+    </message>
+    <message>
+        <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use version 169900 or no version specified.</source>
+        <translation>Kan ikke oppgradere en ikke-HD delt lommebok uten å oppgradere til støtte for nøkkelpool fra før deling. Bruk versjon 169900 eller ingen angitt versjon.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Kunne ikke forberede setningen for å hente skjemaversjonen til sqlite-lommeboken: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Kunne ikke forberede setningen for å hente program-ID-en: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unknown sqlite wallet schema version %d. Only version %d is supported</source>
+        <translation>SQLiteDatabase: Ukjent skjemaversjon %d for sqlite-lommebok. Bare versjon %d støttes</translation>
+    </message>
+    <message>
+        <source>Warning: Private keys detected in wallet {%s} with disabled private keys</source>
+        <translation>Advarsel: Private nøkler oppdaget i lommebok {%s} med deaktiverte private nøkler</translation>
+    </message>
+    <message>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>Kan ikke skrive til datamappen &apos;%s&apos;; sjekk tillatelsene.</translation>
+    </message>
+    <message>
+        <source>Config setting for %s only applied on %s network when in [%s] section.</source>
+        <translation>Konfigurasjonsinnstillingen for %s brukes bare på %s-nettverket når den står i [%s]-seksjonen.</translation>
+    </message>
+    <message>
+        <source>Error loading %s: Private keys can only be disabled during creation</source>
+        <translation>Feil ved lasting av %s: Private nøkler kan bare deaktiveres når lommeboken opprettes</translation>
+    </message>
+    <message>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>Ugyldig P2P-tillatelse: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Kunne ikke utføre setningen for å verifisere databasen: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Kunne ikke hente skjemaversjonen til sqlite-lommeboken: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Kunne ikke hente program-ID-en: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Kunne ikke forberede setningen for å verifisere databasen: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to read database verification error: %s</source>
+        <translation>SQLiteDatabase: Kunne ikke lese databasens verifiseringsfeil: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unexpected application id. Expected %u, got %u</source>
+        <translation>SQLiteDatabase: Uventet program-ID. Forventet %u, fikk %u</translation>
+    </message>
+    <message>
+        <source>Section [%s] is not recognized.</source>
+        <translation>Seksjonen [%s] gjenkjennes ikke.</translation>
+    </message>
+    <message>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>Angitt blokkmappe &quot;%s&quot; finnes ikke.</translation>
+    </message>
+    <message>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>Kan ikke lage PID-filen &apos;%s&apos;: %s</translation>
+    </message>
+    <message>
+        <source>Unknown -blockfilterindex value %s.</source>
+        <translation>Ukjent -blockfilterindex-verdi %s.</translation>
+    </message>
+    <message>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>Ukjent adressetype &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>Ukjent vekseltype &apos;%s&apos;</translation>
     </message>
 </context>
 </TS>

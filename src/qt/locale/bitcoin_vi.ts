@@ -1,4 +1,6 @@
-<TS language="vi" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="vi">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -96,6 +98,12 @@
     <message>
         <source>There was an error trying to save the address list to %1. Please try again.</source>
         <translation>Có lỗi khi đang save list địa chỉ đến %1. Vui lòng thử lại.</translation>
+    </message>
+    <message>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
+        <translation>Đây là các địa chỉ Bitcoin của bạn để nhận thanh toán. Dùng nút &apos;Tạo địa chỉ nhận mới&apos; ở thẻ Nhận để tạo địa chỉ mới.
+Chỉ có thể ký với các địa chỉ loại &apos;legacy&apos;.</translation>
     </message>
 </context>
 <context>
@@ -235,6 +243,14 @@
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Cảnh báo: chữ Viết Hoa đang bật!</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>Dùng để tắt việc gửi tiền đơn giản khi tài khoản hệ điều hành bị xâm phạm. Không mang lại bảo mật thực sự.</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>Chỉ dùng cho staking.</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -245,6 +261,109 @@
     <message>
         <source>Banned Until</source>
         <translation>Cấm Đến</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>Thanh toán hàng loạt</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>Mỗi dòng một khoản thanh toán, dạng &quot;địa chỉ, số tiền&quot;. Dấu phẩy, dấu chấm phẩy hoặc tab phân tách các trường, và trường thứ ba trở thành nhãn. Các dòng bắt đầu bằng # sẽ bị bỏ qua.</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>&amp;Dán</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>Tải từ &amp;tệp...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>&amp;Xóa</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>Dòng</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Địa chỉ</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Số tiền</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Trạng thái</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>Tải danh sách thanh toán</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>Tệp văn bản và CSV (*.txt *.csv);;Tất cả các tệp (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>Không thể đọc %1.</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>cần dạng &quot;địa chỉ, số tiền&quot;</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>không có địa chỉ</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>không phải địa chỉ hợp lệ</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>không có số tiền</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>không thể đọc số tiền &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>số tiền phải lớn hơn không</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>ok</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>Dán mỗi dòng một khoản thanh toán, dạng &quot;địa chỉ, số tiền&quot;. Trường thứ ba được dùng làm nhãn. Các dòng bắt đầu bằng # sẽ bị bỏ qua.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>%1 trong %2 dòng không dùng được. Hãy sửa hoặc xóa chúng để tiếp tục.</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>%1 người nhận là nhiều hơn mức một giao dịch có thể chứa (giới hạn ở đây là %2). Hãy chia nhỏ danh sách.</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>%1 người nhận, tổng cộng %2, chưa tính phí.</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>Thêm vào biểu mẫu gửi</translation>
     </message>
 </context>
 <context>
@@ -435,7 +554,9 @@
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n kết nối đến Bitcoin network</numerusform></translation>
+        <translation>
+            <numerusform>%n kết nối đến Bitcoin network</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -447,7 +568,9 @@
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>Hoàn thành %n khối của lịch sử giao dịch.</numerusform></translation>
+        <translation>
+            <numerusform>Hoàn thành %n khối của lịch sử giao dịch.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -637,6 +760,355 @@
         <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
         <translation>Lỗi nghiêm trong. %1 không thể tiếp tục và sẽ thoát ra</translation>
     </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>Hiện stake của ví</translation>
+    </message>
+    <message>
+        <source>&amp;Load PSBT from file...</source>
+        <translation>&amp;Tải PSBT từ tệp...</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction</source>
+        <translation>Tải giao dịch Bitcoin đã ký một phần</translation>
+    </message>
+    <message>
+        <source>Load PSBT from clipboard...</source>
+        <translation>Tải PSBT từ bộ nhớ tạm...</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction from clipboard</source>
+        <translation>Tải giao dịch Bitcoin đã ký một phần từ bộ nhớ tạm</translation>
+    </message>
+    <message>
+        <source>&amp;Mask values</source>
+        <translation>&amp;Che giá trị</translation>
+    </message>
+    <message>
+        <source>Mask the values in the Overview tab</source>
+        <translation>Che các giá trị trong thẻ Tổng quan</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>Ví đã được &lt;b&gt;mã hóa&lt;/b&gt; và hiện &lt;b&gt;chỉ mở khóa để staking&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>&amp;Giải mã ví...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>Gỡ cụm mật khẩu, để khóa riêng được lưu không mã hóa</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Không staking</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n giây</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n phút</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n giờ</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n ngày</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>Đang staking.&lt;br&gt;Trọng số của bạn là %1&lt;br&gt;Trọng số mạng là %2&lt;br&gt;Thời gian dự kiến đến phần thưởng: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>Không staking vì ví đang ngoại tuyến</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>Không staking vì ví đang đồng bộ</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>Không staking vì bạn không có đồng xu đã trưởng thành</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>Không staking vì ví đang bị khóa</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Tin nhắn gốc:</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>Lỗi không xác định</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>chưa đến một phút</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>một phút</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 phút</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>một giờ</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 giờ</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 ngày</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>một tháng</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 tháng</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>khoảng một năm</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>hơn một năm</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>không rõ</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Đã xảy ra lỗi nghiêm trọng. %1 không thể tiếp tục an toàn và sẽ thoát.</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Tin nhắn gốc:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Khám phá</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Mạng phủ</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>Tên</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>Nút ngang hàng và bảng điều khiển</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>Nút</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Ví</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>Thư</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>Thư (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>Máy chủ</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Cài đặt</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>niêm yết không rõ</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>mạng phủ không rõ</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>đang kết nối…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>Với trọng số mạng hiện tại, staking mang lại khoảng %1% mỗi năm: %2 khối mỗi năm, mỗi khối %3 %4, trên %5 %4 đang staking.</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>Đó là sau phần %1% của mỗi khối mà nút này chia sẻ với các nút ngang hàng của nó.</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>%1% mỗi năm</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>đang tắt…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>%1 nút ngang hàng: %2 kết nối đến, %3 kết nối đi.</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>Nhấp để tạm dừng hoạt động mạng.</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>1 nút ngang hàng</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>%1 nút ngang hàng</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>Hoạt động mạng đang tạm dừng.</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>Nhấp để tiếp tục.</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>mạng đang tạm dừng</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>Đã xử lý %1 khối lịch sử.</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>khối %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>Đã cập nhật.</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>Đang đồng bộ với mạng…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>Đang xử lý các khối trên đĩa…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>Đang lập chỉ mục lại các khối trên đĩa…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>Đang kết nối với các nút ngang hàng…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>chậm %1</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>Đang bắt kịp…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>Khối nhận được gần nhất được tạo cách đây %1.</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>Ví &lt;b&gt;%1&lt;/b&gt; đã được mã hóa và chỉ mở khóa để staking</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>Ví &lt;b&gt;%1&lt;/b&gt; đã được mã hóa và đã mở khóa</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>Ví &lt;b&gt;%1&lt;/b&gt; đã được mã hóa và đang khóa</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>đang staking</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>đang staking, %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; đang staking.&lt;br&gt;Trọng số của nó là %2&lt;br&gt;Trọng số mạng là %3&lt;br&gt;Thời gian dự kiến đến phần thưởng: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>không staking</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>không staking (trả %1)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>Không staking: quá ít nút ngang hàng</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>Không staking: chuỗi vẫn đang bắt kịp</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>Không staking: &lt;b&gt;%1&lt;/b&gt; không có đồng xu đã trưởng thành</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>Không staking: &lt;b&gt;%1&lt;/b&gt; đang bị khóa</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Không staking</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -788,6 +1260,57 @@
         <source>(change)</source>
         <translation>(change)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>đã ủy thác cho %1 để staking lạnh</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>Viết thư</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>một tên, một biệt danh trong sổ địa chỉ hoặc một khóa danh bạ</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Đến</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Chủ đề</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>Gửi</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>Gửi cho ai? Một tên, một biệt danh hoặc một khóa danh bạ.</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>Thư có dung lượng %1 KB; một lá thư tối đa %2 KB.</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>Thư đang được niêm phong và để vào các hộp thư của người nhận, mỗi lần qua ba trạm chuyển tiếp. Việc này mất vài giây…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Đã gửi</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>Thư đã được để vào %1 trong %2 hộp thư của người nhận. Chỉ cần một là đủ để đến nơi.</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>Chưa gửi: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -842,7 +1365,202 @@
         <source>Create</source>
         <translation>Tạo</translation>
     </message>
-    </context>
+    <message>
+        <source>Wallet</source>
+        <translation>Ví</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>Tùy chọn nâng cao</translation>
+    </message>
+    <message>
+        <source>Use descriptors for scriptPubKey management</source>
+        <translation>Dùng bộ mô tả để quản lý scriptPubKey</translation>
+    </message>
+    <message>
+        <source>Descriptor Wallet</source>
+        <translation>Ví mô tả</translation>
+    </message>
+    <message>
+        <source>Compiled without sqlite support (required for descriptor wallets)</source>
+        <translation>Được biên dịch không có hỗ trợ sqlite (cần cho ví mô tả)</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>Khám phá</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>Các nút ngang hàng tự công bố trên chuỗi chứ không phải trên máy chủ, nên danh sách này giống nhau với mọi người và không ai chỉnh sửa được.</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>Danh bạ</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>Niêm yết của bạn</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>Nút ngang hàng đã niêm yết</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>Bạn là</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Sao chép</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>Đang công bố niêm yết của bạn…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>Danh tính</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>Tạo…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>Danh tính giữ lại lịch sử của nút này, tức nó đã được niêm yết bao lâu, nếu khóa của nó có lúc phải thay.</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>Tìm nút ngang hàng hoặc địa chỉ</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Đã sao chép khóa</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>Đã sao chép địa chỉ</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>đang khởi động…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>Tạo danh tính</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>Trả phí từ</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Danh tính là khóa thứ hai đứng sau khóa của nút này. Nếu khóa của nút này bị mất hoặc bị đánh cắp, có thể đặt một khóa mới dưới cùng danh tính, và nút giữ được thời gian đã niêm yết thay vì bắt đầu lại.
+
+Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là cách duy nhất để ngăn kẻ đánh cắp danh tính chuyển nó đi. Sau đó một giao dịch nhỏ công bố danh tính, và lần gia hạn niêm yết tiếp theo sẽ gắn khóa của nút này vào nó.</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Trạm chuyển tiếp của bạn đã công bố niêm yết của bạn trong giao dịch %1. Có hiệu lực khi giao dịch được xác nhận.</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Đã công bố trong giao dịch %1. Có hiệu lực khi giao dịch được xác nhận.</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>không rõ</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>chỉ mục danh bạ tắt</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>chưa niêm yết</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>kết thúc sau %1</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>Đang gia hạn niêm yết của bạn…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>Gia hạn trong 3 ngày cuối</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>Niêm yết của bạn kết thúc sau %1. Có thể gia hạn từ ba ngày trước đó.</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>đã niêm yết, kết thúc sau %1</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>không có</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>Nút này không có khóa công bố: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>đã tắt</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>Chỉ mục danh bạ không chạy, nên nút này không thấy ai đã niêm yết. Hãy khởi động lại với -rosterindex để bật nó.</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>đang bắt kịp (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>%1 ngày trước</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>Khối mới nhất của nút này đã cũ %1 ngày, nên các nút ngang hàng bị thu hồi từ đó vẫn có thể có ở đây. Danh bạ vẫn được dùng để liên lạc với các nút ngang hàng, nhưng mạng phủ ngừng ưu tiên các trạm chuyển tiếp niêm yết lâu cho đến khi chuỗi bắt kịp.</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>đã cập nhật</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>Chỉ mục danh bạ không chạy</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>Khóa khôi phục của bạn</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>Hãy ghi lại và cất ở nơi an toàn, cách xa máy tính này. Nó chỉ hiện lúc này và không được lưu ở đâu cả. Không thể dùng nó để tiêu đồng xu; nó chỉ có thể ngăn một lần chuyển danh tính mà bạn không thực hiện.</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>Tôi đã ghi lại</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Danh tính của bạn đã được công bố trong giao dịch %1. Lần gia hạn niêm yết tiếp theo sẽ gắn khóa của nút này vào nó.</translation>
+    </message>
+</context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -878,16 +1596,16 @@
         <translation>Edit address đang gửi</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>Address đã nhập "%1" không valid Bitcoin address.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
+        <translation>Address đã nhập &quot;%1&quot; không valid Bitcoin address.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>Địa chỉ "%1" đã tồn tại như địa chỉ nhận với nhãn "%2" và vì vậy không thể thêm như là địa chỉ gửi.</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>Địa chỉ &quot;%1&quot; đã tồn tại như địa chỉ nhận với nhãn &quot;%2&quot; và vì vậy không thể thêm như là địa chỉ gửi.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>Địa chỉ  nhập "%1" đã có trong sổ địa chỉ với nhãn "%2".</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>Địa chỉ  nhập &quot;%1&quot; đã có trong sổ địa chỉ với nhãn &quot;%2&quot;.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -976,7 +1694,7 @@
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <translation type="vanished">Bitcoin</translation>
     </message>
     <message>
         <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
@@ -995,8 +1713,8 @@
         <translation>Wallet sẽ cùng được lưu giữ trong danh mục này.</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>Error: Danh mục data xác định "%1" không thể được tạo.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
+        <translation>Error: Danh mục data xác định &quot;%1&quot; không thể được tạo.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1004,15 +1722,184 @@
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>%n GB of free space available</numerusform></translation>
+        <translation>
+            <numerusform>%n GB of free space available</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(of %n GB cần thiết)</numerusform></translation>
+        <translation>
+            <numerusform>(of %n GB cần thiết)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(%n GB cần cho toàn blockchain)</numerusform></translation>
+        <translation>
+            <numerusform>(%n GB cần cho toàn blockchain)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+    <message>
+        <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
+        <translation>Bỏ các khối sau khi xác minh, trừ %1 GB gần nhất (cắt tỉa)</translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>Thư</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>Địa chỉ của bạn</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Sao chép</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>Khóa danh bạ của bạn. Bất kỳ ai đã niêm yết đều có thể viết thư cho bạn qua nó.</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>Thư đi qua mạng phủ. Hãy bật mạng phủ trong Cài đặt và khởi động lại để gửi và nhận thư.</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>Viết</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>Trả lời</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>Nhận ngay</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>Nhận thư mới từ các hộp thư của bạn ngay bây giờ. Việc này cũng diễn ra vài phút một lần.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Xóa</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>Hộp thư đến</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Đã gửi</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>Từ</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Chủ đề</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Ngày</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>Thư được niêm phong bằng khóa thư hằng tuần của người nhận, dùng secp256k1 và ML-KEM-768 cùng lúc; khóa và chữ ký của bạn đi bên trong niêm phong, và mỗi chuyến đến hộp thư đều qua ba trạm chuyển tiếp. Các khóa thư cũ bị xóa, nên thư nhận hôm nay sau này không thể mở bằng khóa của máy tính này.</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Đến</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>Chưa có trạm chuyển tiếp nào được niêm yết, nên bạn chưa có hộp thư và không ai có thể viết thư cho bạn.</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>%1 trạm chuyển tiếp giữ thư của bạn; sẽ có %2 khi danh bạ có nhiều hơn.</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>%1 trạm chuyển tiếp được chọn theo khóa của bạn giữ thư của bạn cho đến khi bạn nhận.</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>Khóa thư số %1, làm mới hằng tuần.</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>Lần nhận gần nhất %1.</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>Chưa nhận.</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>1 thư mới</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>%1 thư mới</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>, từ %1 trong %2 hộp thư.</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(không có chủ đề)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>Đã để vào %1 hộp thư của người nhận</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>Từ: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>Đến: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>Đã gửi %1, đã để vào %2 hộp thư của người nhận</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>Viết %1, nhận %2</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>Chọn một lá thư để đọc.</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>Đang nhận…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>Đang liên lạc với các hộp thư của bạn, mỗi hộp qua ba trạm chuyển tiếp…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>Xóa thư</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>Xóa thư này khỏi máy tính này? Các bản sao ở hộp thư đã bị gỡ khi thư được nhận, nên không thể lấy lại.</translation>
     </message>
 </context>
 <context>
@@ -1022,7 +1909,7 @@
         <translation>Form</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>Giao dịch gần đây có thể chưa được hiển thị, và vì vậy số dư wallet của bạn có thể không dúng. Thông tin này sẽ được làm đúng khi wallet hoàn thành đồng bộ với bitcoin network, như chi tiết bên dưới.</translation>
     </message>
     <message>
@@ -1072,6 +1959,409 @@
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>Không biết. Đang đồng bộ Headers (%1, %2%)...</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>Tên</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>Tên chỉ cho mọi người đến khóa danh bạ của bạn, để họ có thể viết thư — và trả tiền — cho bạn bằng tên thay vì bằng khóa. Lấy một tên còn trống và gia hạn nó chỉ tốn phí mạng; tên được gia hạn thủ công. Một tên đã có người giữ có thể mua được nếu họ rao bán, với giá họ đưa ra. Các tên nằm dưới tên của bạn là miễn phí, và biệt danh cũng vậy: các nhãn riêng của bạn cho mọi người, lưu trên máy tính này.</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>Tên của bạn</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>Trả từ</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Tên</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Trạng thái</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>Kết thúc</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>Tên con</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>Lấy tên…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>Gia hạn…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>Thêm tên con…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>Bán…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>Chuyển nhượng…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>Nhận thanh toán theo tên…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>Tra cứu</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>một tên, nhãn.tên hoặc biệt danh</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>Sao chép khóa</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>Trả…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>Sổ địa chỉ</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>Biệt danh</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>Khóa</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>Thêm người…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Gỡ</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Đã sao chép khóa</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>Đang xử lý…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>Rút khỏi bán</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>Hãy rút nó khỏi bán trước.</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>Khóa thanh toán mới…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>Thanh toán theo tên đang bật</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>Tên cần chỉ mục tên. Hãy bật &quot;Lập chỉ mục tên&quot; trong Cài đặt và khởi động lại.</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>Tên chưa bắt đầu trên mạng này. Khi nào chúng bắt đầu trên mạng chính, và các tên đầu tiên được phân phát thế nào, vẫn chưa được quyết định. Trong lúc đó bạn có thể tra cứu tên và giữ sổ địa chỉ.</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>%1 là %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>từ sổ địa chỉ của bạn</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>tên đã đăng ký, được giữ đến khối %1</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>đã ổn định</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>đã đổi cách đây %1, chưa ổn định</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>nhận thanh toán theo tên</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>Đang bán: người giữ đòi %1. Dùng Lấy tên để mua.</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>Đã cam kết %1. Tên sẽ tự được nhận sau %2 khối (khoảng %3) - hãy giữ BPS Relay chạy và ví mở khóa cho đến lúc đó.</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>Đang mua %1: đã trả %2 cho người giữ. Nó thuộc về bạn khi giao dịch được xác nhận.</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>%1 được rao bán với giá %2. Bất kỳ ai cũng có thể mua từ khối kế tiếp, không cần nút này trực tuyến; tiền được trả vào ví này.</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>%1 đang được rút khỏi bán. Từ giờ không ai mua được.</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>Đã gia hạn %1 đến khối %2, chỉ với phí mạng.</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>%1 đang được chuyển cho %2. Nó thuộc về họ khi giao dịch được xác nhận.</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>%1 đã được đặt; nó sẽ phân giải khi giao dịch được xác nhận.</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>Thanh toán theo tên đang được bật. Mọi người có thể trả cho bất kỳ tên nào của bạn khoảng %1 sau khi giao dịch được xác nhận; mỗi khoản hiện trong ví của bạn là &quot;Trả theo tên&quot;.</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>Đã trả %1 cho %2, đến một địa chỉ chỉ dùng cho khoản này.</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>Trả</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>sau %1</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>đã kết thúc cách đây %1</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>đã hết hạn - hãy gia hạn trong tháng</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>đã có người giữ</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>đang bán - một giao dịch mua đang được xác nhận</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>đang bán giá %1</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>đang bán giá %1 - chưa mua được</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>chưa đăng ký</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>đang đăng ký</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Nhấp để sao chép</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>Lấy tên</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>1 đến 32 chữ cái, chữ số hoặc gạch nối</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 năm</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>2 năm</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>Thời hạn</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>Đăng ký gồm hai bước: một cam kết ẩn tên, và khoảng 20 phút sau là yêu cầu nhận, do BPS Relay tự gửi. Không ai có thể lấy mất tên ở giữa. Mỗi bước chỉ tốn phí mạng.</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>Mua là một giao dịch duy nhất: nó trả tiền cho người giữ và chuyển tên cho bạn, tất cả cùng lúc hoặc không gì cả.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Đăng ký</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>Một tên gồm 1 đến 32 chữ cái thường a-z, chữ số hoặc gạch nối ở giữa.</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>%1, trong %2, chỉ tốn phí mạng. Đang kiểm tra xem còn trống không…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>một năm</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>hai năm</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>Rút %1 khỏi bán</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>Rút %1 khỏi bán? Từ đó không ai mua được, và khi đã xác nhận bạn có thể chuyển nhượng hoặc rao bán lại.</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>Bán %1</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>Giá của bạn cho %1, tính bằng BPS. Sau đó bất kỳ ai cũng có thể mua ngay, kể cả khi BPS Relay đóng: họ trả cho bạn số tiền này trong cùng giao dịch trao tên cho họ. Khi đang bán, bạn không thể chuyển nhượng.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>&quot;%1&quot; không phải là số tiền BPS.</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>Rao bán %1 với giá %2? Hai giao dịch nhỏ sẽ được gửi: một để riêng đồng xu mà người mua tiêu, một công bố việc bán.</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>Gia hạn %1</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>Gia hạn %1 từ thời điểm kết thúc hiện tại. Chỉ tốn phí mạng. Một tên có thể được gia hạn tối đa hai năm trước.</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>Chuyển nhượng %1</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>Trao %1 cho (một khóa danh bạ, một biệt danh hoặc một tên):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>Trao %1 cho %2? Chỉ người giữ mới có thể trả lại.</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>Tên con dưới %1</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>Phần trước .%1, ví dụ alice cho alice.%1:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>%1.%2 trỏ đến ai (một khóa danh bạ, biệt danh hoặc tên), hoặc &quot;remove&quot;:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>Đang tra cứu…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>Thêm người</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>Bạn gọi họ là gì (chỉ bạn thấy):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>Khóa danh bạ của họ, hoặc một tên để nhớ ai đang giữ nó:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>Thanh toán theo tên đang bật. Chuyển chúng sang một khóa mới từ ví này? Các khoản đã trả vào khóa hiện tại vẫn đến. Người trả đợi khoảng %1 sau khi đổi rồi mới trả tiếp.</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>Cho phép mọi người trả tiền cho bạn bằng tên: bất kỳ tên hoặc tên con nào trỏ đến khóa của nút này, một biệt danh họ đặt cho bạn, hoặc chính khóa đó. Mỗi khoản thanh toán đến một địa chỉ riêng mà chỉ ví này tiêu được, và không ai quan sát có thể biết bạn đã được trả tiền, hay hai khoản đã đến cùng một người. Tốn phí mạng. Mọi người có thể trả cho bạn khoảng %1 sau khi được xác nhận.</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>Thanh toán theo tên</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>Trả %1</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>%1 chưa nhận thanh toán theo tên. Hãy nhờ họ bật nó ở thẻ Tên, hoặc xin một địa chỉ.</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>%1 đã đổi chủ cách đây %2.</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>Họ đã đặt khóa nhận tiền cách đây %1.</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>tính bằng BPS</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Số tiền</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>Khoản thanh toán đến một địa chỉ chỉ dùng riêng cho nó, mà chỉ %1 tiêu được; không ai khác biết ai đã được trả. Khoản thanh toán không thể lấy lại. Phí mạng tính thêm.</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>Nếu đó không phải là họ, khoản thanh toán sẽ mất. An toàn hơn là đợi đến khi nó đủ %1.</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>Vẫn trả</translation>
     </message>
 </context>
 <context>
@@ -1370,6 +2660,217 @@
         <source>The supplied proxy address is invalid.</source>
         <translation>Cung cấp proxy address thì invalid.</translation>
     </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>Có hiện các tính năng điều khiển staking lạnh hay không.</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>Bật các tính năng điều khiển s&amp;taking lạnh</translation>
+    </message>
+    <message>
+        <source>Connect to the Bitcoin network through a separate SOCKS5 proxy for Tor onion services.</source>
+        <translation>Kết nối với mạng Bitcoin qua một proxy SOCKS5 riêng cho các dịch vụ onion Tor.</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS&amp;5 proxy to reach peers via Tor onion services:</source>
+        <translation>Dùng proxy SOCKS&amp;5 riêng để liên lạc với nút ngang hàng qua dịch vụ onion Tor:</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>Mạng phủ</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>Lớp mã hóa riêng của BPS, chuyển lưu lượng qua các nút ngang hàng khác để đầu bên kia không bao giờ biết bạn ở đâu.</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>đang hỏi…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>Đang chạy</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>Đang lắng nghe trên</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>Tuyến đang mở</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>Dịch vụ gặp nhau ở đây</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>Trạm chuyển tiếp sẵn có</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>Vòng hôm nay</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>Lối vào của bạn</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>Các nút ngang hàng mà lưu lượng của bạn luôn đi vào qua. Chúng được giữ thay vì đổi: mỗi lần chọn một nút mới thì rốt cuộc sẽ cho kẻ theo dõi một lượt.</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>Nơi mọi người có thể gặp bạn</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>Được tính từ danh bạ, không phải tra cứu. Bất kỳ ai muốn liên lạc với bạn đều làm cùng phép tính và nhận cùng kết quả, nên không có ai để hỏi và không ai có thể trả lời khác đi. Chúng thay đổi mỗi ngày.</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>Nghe được qua sóng vô tuyến</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>Làm trạm chuyển tiếp được gì</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>Phát hành mỗi ngày</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>Trạm chuyển tiếp</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>Người dùng</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>Người dùng mỗi trạm</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>Phần mỗi người dùng</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>Một trạm chuyển tiếp trả cho các nút ngang hàng nó niêm yết từ phần thưởng khối của chính nó, nên phần của mỗi người dùng là một chia cho số người dùng của trạm đó — vì vậy muốn nhận một phần người dùng của mạng thì phải tốn một phần stake. Chia bao nhiêu phần thưởng là lựa chọn của trạm và không gì bắt buộc: một trạm không trả gì vẫn tạo ra một khối hoàn toàn hợp lệ. Điều khiến nó trả là một trạm không có người dùng thì không bảo vệ được ai, kể cả chính nó.</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>Chưa được ai ngoài tác giả xem xét, và nó che giấu bạn ở đâu chứ không phải khi nào bạn nói: ai theo dõi cả hai đầu vẫn có thể khớp thời điểm. Hãy coi nó là chưa hoàn thiện.</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>Nút này không chia gì cả. Hãy đặt -relayshare thành một tỷ lệ phần trăm, và nhận các nút ngang hàng bằng addrosteruser.</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>Nút này lẽ ra chia %1%, nhưng %2.</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>Nút này chia %1% với %2 nút ngang hàng: khối kế tiếp nó tạo ra trả %3, mỗi nút %4.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>Cầu nối Reticulum không phản hồi. Hãy khởi động nó từ Cài đặt, Vô tuyến, hoặc tự chạy bps-rns-bridge.py.</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>Đang lắng nghe. Chưa nghe được nút BPS nào qua sóng vô tuyến; các nút tự công bố mỗi nửa giờ.</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>Lưu lượng của bạn đi vào qua một hàng xóm vô tuyến khi một trong số họ là trạm chuyển tiếp đã niêm yết.</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>Nghe được, nhưng lưu lượng của bạn đi vào qua internet (Cài đặt, Vô tuyến).</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>1 bước nhảy</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>%1 bước nhảy</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>không rõ số bước nhảy</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>nghe được cách đây %1</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>một trạm chuyển tiếp</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>có</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>không</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>Mạng phủ đang tắt. Ứng dụng này tự bật nó, nên có thứ gì đó đã tắt nó lại, bằng -overlay=0 trên dòng lệnh hoặc trong tệp cấu hình.</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>không có gì khi mạng phủ đang tắt</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>mạng phủ tắt</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>chưa có</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>mạng phủ bật, chưa có trạm chuyển tiếp</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>mạng phủ bật, 1 trạm chuyển tiếp</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>mạng phủ bật, %1 trạm chuyển tiếp</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>chưa chọn</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>không có — danh bạ không có trạm chuyển tiếp để suy ra chúng</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>mạng phủ không rõ</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>chưa có trạm chuyển tiếp</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1445,7 +2946,35 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>Tổng số dư hiện tại trong watch-only addresses</translation>
     </message>
-    </context>
+    <message>
+        <source>Stake</source>
+        <translation>Stake</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>Stake chưa trưởng thành:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>Ủy thác chưa trưởng thành</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>Ủy thác chưa trưởng thành:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Đã ủy thác</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>Đã ủy thác:</translation>
+    </message>
+    <message>
+        <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
+        <translation>Chế độ riêng tư đã bật cho thẻ Tổng quan. Để hiện lại giá trị, bỏ chọn Cài đặt-&gt;Che giá trị.</translation>
+    </message>
+</context>
 <context>
     <name>PSBTOperationsDialog</name>
     <message>
@@ -1504,7 +3033,71 @@
         <source>Transaction is fully signed and ready for broadcast.</source>
         <translation>Giao dịch đã được đăng ký và chuẩn bị để phát lên</translation>
     </message>
-    </context>
+    <message>
+        <source>Broadcast Tx</source>
+        <translation>Phát giao dịch</translation>
+    </message>
+    <message>
+        <source>Failed to load transaction: %1</source>
+        <translation>Không tải được giao dịch: %1</translation>
+    </message>
+    <message>
+        <source>Could not sign any more inputs.</source>
+        <translation>Không thể ký thêm đầu vào nào.</translation>
+    </message>
+    <message>
+        <source>Signed %1 inputs, but more signatures are still required.</source>
+        <translation>Đã ký %1 đầu vào, nhưng vẫn cần thêm chữ ký.</translation>
+    </message>
+    <message>
+        <source>Signed transaction successfully. Transaction is ready to broadcast.</source>
+        <translation>Đã ký giao dịch thành công. Giao dịch đã sẵn sàng để phát.</translation>
+    </message>
+    <message>
+        <source>Unknown error processing transaction.</source>
+        <translation>Lỗi không xác định khi xử lý giao dịch.</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast successfully! Transaction ID: %1</source>
+        <translation>Phát giao dịch thành công! Mã giao dịch: %1</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast failed: %1</source>
+        <translation>Phát giao dịch thất bại: %1</translation>
+    </message>
+    <message>
+        <source>PSBT copied to clipboard.</source>
+        <translation>Đã sao chép PSBT vào bộ nhớ tạm.</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation>Giao dịch đã ký một phần (nhị phân) (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT saved to disk.</source>
+        <translation>Đã lưu PSBT vào đĩa.</translation>
+    </message>
+    <message>
+        <source>Unable to calculate transaction fee or total transaction amount.</source>
+        <translation>Không thể tính phí giao dịch hoặc tổng số tiền giao dịch.</translation>
+    </message>
+    <message>
+        <source>Transaction has %1 unsigned inputs.</source>
+        <translation>Giao dịch có %1 đầu vào chưa ký.</translation>
+    </message>
+    <message>
+        <source>Transaction is missing some information about inputs.</source>
+        <translation>Giao dịch thiếu một số thông tin về đầu vào.</translation>
+    </message>
+    <message>
+        <source>(But this wallet does not have the right keys.)</source>
+        <translation>(Nhưng ví này không có đúng khóa.)</translation>
+    </message>
+    <message>
+        <source>Transaction status is unknown.</source>
+        <translation>Không rõ trạng thái giao dịch.</translation>
+    </message>
+</context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1520,15 +3113,15 @@
         <translation>URI handling</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>'bitcoin://' không khả dụng URI. Dùng thay vì 'bitcoin:' .</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;bitcoin://&apos; không khả dụng URI. Dùng thay vì &apos;bitcoin:&apos; .</translation>
     </message>
     <message>
         <source>Cannot process payment request because BIP70 is not supported.</source>
         <translation>Không thể tiến hần yêu cầu giao dịch vì BIP70 không được hỗ trợ.</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
         <translation>Do lỗ hổng bảo mật lan rộng của BIP70, bạn được khuyến cáo mạnh mẽ rằng bất kỳ hướng dẫn thương mại để chuyển ví đều bị bỏ qua.</translation>
     </message>
     <message>
@@ -1576,6 +3169,161 @@
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>Gia hạn niêm yết của bạn</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>Công bố niêm yết của bạn</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>Gia hạn ghi một bản ghi mới lên chuỗi. Cho đến khi nó được xác nhận, bản cũ vẫn có hiệu lực.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>Việc này ghi một bản ghi ngắn lên chuỗi nói rằng bạn tồn tại, và nếu muốn, nơi có thể tìm bạn.</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>Các nút ngang hàng nên liên lạc với bạn thế nào?</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>Qua mạng phủ — không công bố địa chỉ</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>Niêm yết của bạn cho biết bạn là ai chứ không cho biết bạn chạy ở đâu. Các nút ngang hàng liên lạc với bạn qua mạng phủ, gặp bạn tại các điểm mà cả hai bên tính ra từ danh bạ. Đây là điều ứng dụng này bật theo mặc định.</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>Tại một địa chỉ tôi công bố</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>địa chỉ các nút ngang hàng khác có thể liên lạc</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>Ai cũng có thể thấy nó, và chuỗi lưu giữ nó mãi mãi. Địa chỉ onion công bố một vị trí không ai truy ngược được về bạn và hoạt động được sau NAT; địa chỉ IP không làm được điều nào. Một nút công bố địa chỉ IP có thể được người khác chọn làm trạm chuyển tiếp.</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>Ai trả phí</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>Một tháng, sau đó cần gia hạn</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>Một năm, sau đó cần gia hạn</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>Thời hạn</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>Gia hạn</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>Công bố</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>Một trạm chuyển tiếp trả — không cần đồng xu</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>Mạng phủ đang tắt, nên không có trạm chuyển tiếp nào để nhờ. Hãy bật nó trong Cài đặt, hoặc trả từ một ví.</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>Chưa có trạm chuyển tiếp nào trong danh bạ, nên không có ai để nhờ. Hãy trả từ một ví, hoặc thử lại khi có trạm chuyển tiếp đã niêm yết.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Nút của bạn ký niêm yết và gửi nó qua mạng phủ đến trạm chuyển tiếp mà nó đi vào. Một trạm chuyển tiếp trả phí niêm yết sẽ đưa niêm yết của bạn vào một khối do chính nó staking, nên nó được xác nhận dù phần lớn các nút không chuyển tiếp, và thêm bạn vào các nút ngang hàng mà nó chia phần thưởng. Nếu sau này nó ngừng trả, niêm yết của bạn hết hạn trong tháng; bạn luôn có thể tự gia hạn từ một ví có tiền.</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>Nút này không staking. Một niêm yết lớn hơn mức các nút cũ chịu chuyển tiếp, nên cho đến khi phần lớn người staking nâng cấp, nó chỉ được xác nhận khi một người staking chạy phiên bản này đưa nó vào, việc này có thể mất một lúc. Staking sẽ đưa nó vào khối kế tiếp của chính bạn; trạm chuyển tiếp có trả phí sẽ đưa nó vào khối của mình.</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>Ví này chỉ mở khóa để staking. Thanh toán sẽ hỏi cụm mật khẩu của nó, và sau đó ví khóa lại, làm dừng staking cho đến khi bạn mở khóa lại để staking.</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>Thanh toán sẽ hỏi cụm mật khẩu của ví này.</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>Nhập một địa chỉ, hoặc chọn không công bố địa chỉ nào.</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>Đang nhờ trạm chuyển tiếp của bạn công bố… việc này có thể mất đến nửa phút.</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>Ví đó không còn mở.</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>Ví vẫn đang khóa, nên chưa trả gì cả.</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>Đang ký bản ghi…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>Nút trả về một bản ghi mà ứng dụng này không hiểu.</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>Đang trả phí để công bố…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>Trạm chuyển tiếp từ chối: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>Trạm chuyển tiếp không trả lời. %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1583,7 +3331,7 @@
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>Nhập một Bitcoin address (e.g. %1)</translation>
+        <translation type="vanished">Nhập một Bitcoin address (e.g. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1615,23 +3363,33 @@
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n giây</numerusform></translation>
+        <translation>
+            <numerusform>%n giây</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n phút</numerusform></translation>
+        <translation>
+            <numerusform>%n phút</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n giờ</numerusform></translation>
+        <translation>
+            <numerusform>%n giờ</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n ngày</numerusform></translation>
+        <translation>
+            <numerusform>%n ngày</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n tuần</numerusform></translation>
+        <translation>
+            <numerusform>%n tuần</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1639,7 +3397,9 @@
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n năm</numerusform></translation>
+        <translation>
+            <numerusform>%n năm</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1658,8 +3418,8 @@
         <translation>%1 GB</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>Error: Xác định data directory "%1" không tồn tại.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>Error: Xác định data directory &quot;%1&quot; không tồn tại.</translation>
     </message>
     <message>
         <source>Error: Cannot parse configuration file: %1.</source>
@@ -1670,12 +3430,64 @@
         <translation>Error: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1 vẫn chưa thoát an toàn...</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>unknown</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>Liên hệ</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>Nhận</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>Ẩn</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Không rõ</translation>
+    </message>
+    <message>
+        <source>Error initializing settings: %1</source>
+        <translation>Lỗi khi khởi tạo cài đặt: %1</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Đã ủy thác</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>%1 thuộc về một người đã rao bán nó. Họ đòi %2; phí mạng tính thêm.</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>Mua</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>Đang kiểm tra xem còn trống không…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>Còn trống.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Đăng ký</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>chưa được xây dựng</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>Nhập một địa chỉ BitcoinPoS (ví dụ %1)</translation>
     </message>
 </context>
 <context>
@@ -1736,16 +3548,16 @@
         <translation>Datadir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the data directory use the '%1' option.</source>
-        <translation>Để chỉ ra một nơi không mặt định của thư mục dữ liệu hãy dùng tùy chọn '%1'</translation>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>Để chỉ ra một nơi không mặt định của thư mục dữ liệu hãy dùng tùy chọn &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Blocksdir</source>
         <translation>Thư mục chứa các khối Blocksdir</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>Để chỉ ra một nơi không mặt định của thư mục các khối hãy dùng tùy chọn '%1'</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>Để chỉ ra một nơi không mặt định của thư mục các khối hãy dùng tùy chọn &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -1992,8 +3804,8 @@
         <translation>Đang chạy lệnh khi không có ví nào</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
-        <translation>Chạy lệnh bằng ví "%1"</translation>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>Chạy lệnh bằng ví &quot;%1&quot;</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -2018,6 +3830,49 @@
     <message>
         <source>Unknown</source>
         <translation>Không biết</translation>
+    </message>
+    <message>
+        <source>Current block height</source>
+        <translation>Độ cao khối hiện tại</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>Có phải ý bạn là:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>Không chắc về lệnh? Hãy gõ điều bạn muốn bằng lời thường, ví dụ %1, rồi chọn một gợi ý. Gợi ý được tính trên máy tính này; không gì bạn gõ được gửi đi đâu cả.</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>Vô tuyến đang tắt.</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>Vô tuyến đang bật; hãy tự khởi động cầu nối Reticulum (contrib/reticulum/bps-rns-bridge.py).</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>bps-rns-bridge.py không nằm cạnh BPS Relay, nên không thể khởi động cầu nối.</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>Không thể khởi động Python bằng &quot;%1&quot;. Hãy cài Python, hoặc đặt lệnh trong Cài đặt, Vô tuyến.</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Chưa cài Reticulum. Hãy cài bằng: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>Cầu nối Reticulum đã dừng (trạng thái %1); xem radio/bridge.log.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>Cầu nối Reticulum đang khởi động.</translation>
     </message>
 </context>
 <context>
@@ -2071,12 +3926,12 @@
         <translation>Xóa</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>Các địa chỉ segwit gốc (còn gọi là Bech32 hoặc BIP-173) sẽ giảm phí giao dịch của bạn sau này và bảo vệ tốt hơn trước các lỗi chính tả, nhưng ví cũ không hỗ trợ chúng. Khi không được chọn, một địa chỉ tương thích với ví cũ sẽ được tạo thay thế.</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">Các địa chỉ segwit gốc (còn gọi là Bech32 hoặc BIP-173) sẽ giảm phí giao dịch của bạn sau này và bảo vệ tốt hơn trước các lỗi chính tả, nhưng ví cũ không hỗ trợ chúng. Khi không được chọn, một địa chỉ tương thích với ví cũ sẽ được tạo thay thế.</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>Tạo địa chỉ segwit (Bech32) riêng</translation>
+        <translation type="vanished">Tạo địa chỉ segwit (Bech32) riêng</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2122,6 +3977,14 @@
         <source>Could not generate new %1 address</source>
         <translation>Không thể tạo ra %1 địa chỉ mới</translation>
     </message>
+    <message>
+        <source>(none)</source>
+        <translation>(không có)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>Ví này chưa đặt địa chỉ staking, nên không có gì để ủy thác. Hãy đặt một địa chỉ ở trang Stake, mục Ủy thác -&gt; Ủy thác tự động, và loại địa chỉ này sẽ hoạt động.</translation>
+    </message>
 </context>
 <context>
     <name>ReceiveRequestDialog</name>
@@ -2165,6 +4028,10 @@
         <source>Payment information</source>
         <translation>Payment thông tin</translation>
     </message>
+    <message>
+        <source>Request payment to ...</source>
+        <translation>Yêu cầu thanh toán đến ...</translation>
+    </message>
 </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -2195,6 +4062,99 @@
     <message>
         <source>Requested</source>
         <translation>Đã yêu cầu</translation>
+    </message>
+</context>
+<context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>Nút ngang hàng</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Địa chỉ</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>Đã niêm yết</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>Niêm yết kết thúc</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>Đã niêm yết được</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Nhấp để sao chép</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>Nút ngang hàng này đã niêm yết nhưng không công bố địa chỉ. Vẫn có thể
+liên lạc với nó qua mạng phủ, đó chính là lý do cho phép điều này.</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>đã công bố một địa chỉ</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>Đã công bố %1 địa chỉ</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>Đã xác nhận ở khối %1</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>Ngừng được tính từ khối %1</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>Không có lịch sử trước niêm yết này.</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>Niêm yết liên tục từ khối %1.</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>Quá mới để được tính.</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>Không chạy dưới danh tính nào.</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>Chạy dưới danh tính %1, giữ nguyên thời gian của nó nếu đổi khóa.</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>chưa công bố địa chỉ</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>vừa xong</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>%1 trước</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>đã hết hạn</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>sau %1</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>mới</translation>
     </message>
 </context>
 <context>
@@ -2268,12 +4228,12 @@
         <translation>Warning: Fee ước tính hiện tại không khả thi.</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>Chỉ định một khoản phí tùy chỉnh cho mỗi kB (1.000 byte) kích thước ảo của giao dịch.
 
-Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satoshi trên mỗi kB" cho kích thước giao dịch là 500 byte (một nửa của 1 kB) cuối cùng sẽ mang lại một khoản phí chỉ 50 satoshi.</translation>
+Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí &quot;100 satoshi trên mỗi kB&quot; cho kích thước giao dịch là 500 byte (một nửa của 1 kB) cuối cùng sẽ mang lại một khoản phí chỉ 50 satoshi.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2332,7 +4292,7 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>Kích hoạt  Phí thay thế</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
         <translation>Với Phí thay thế (BIP-125), bạn có thể tăng phí giao dịch sau khi được gửi. Nếu không có điều này, một khoản phí cao hơn có thể được đề xuất để bù đắp cho rủi ro chậm trễ giao dịch tăng lên.</translation>
     </message>
     <message>
@@ -2392,12 +4352,12 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>Tạo Giao dịch Bitcoin được ký một phần (PSBT) để sử dụng với các dạng như: ví ngoại tuyến %1 hoặc ví phần cứng tương thích PSBT.</translation>
     </message>
     <message>
-        <source> from wallet '%1'</source>
-        <translation>từ ví  '%1'</translation>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation>từ ví  &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>%1 to '%2'</source>
-        <translation>%1 tới '%2'</translation>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 tới &apos;%2&apos;</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -2444,8 +4404,8 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>Tổng số</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
-        <translation>Để xem nhận xét người nhận, nhấn "Xem chi tiết..."</translation>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>Để xem nhận xét người nhận, nhấn &quot;Xem chi tiết...&quot;</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2497,7 +4457,9 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Dự kiến bắt đầu xác nhận trong vòng %n blocks.</numerusform></translation>
+        <translation>
+            <numerusform>Dự kiến bắt đầu xác nhận trong vòng %n blocks.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2518,6 +4480,54 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
     <message>
         <source>(no label)</source>
         <translation>(không nhãn)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>Dán hoặc tải một danh sách thanh toán thay vì thêm từng khoản một</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>&amp;Hàng loạt...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>Khi tính số dư khả dụng, tính cả các khoản ủy thác. Nếu không chọn, số dư khả dụng chỉ phản ánh các đồng xu hiện có trong ví.</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>&amp;Bao gồm ủy thác</translation>
+    </message>
+    <message>
+        <source>Please, review your transaction proposal. This will produce a Partially Signed Bitcoin Transaction (PSBT) which you can save or copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>Vui lòng xem lại đề xuất giao dịch của bạn. Việc này sẽ tạo một giao dịch Bitcoin đã ký một phần (PSBT) mà bạn có thể lưu hoặc sao chép rồi ký bằng, ví dụ, một ví %1 ngoại tuyến hoặc một ví phần cứng tương thích PSBT.</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>Staking lạnh chưa được bật</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>Staking lạnh được bật từ khối %1</translation>
+    </message>
+    <message>
+        <source>Create Unsigned</source>
+        <translation>Tạo chưa ký</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation>Giao dịch đã ký một phần (nhị phân) (*.psbt)</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>Ví này staking đồng xu của chính nó, nên tất cả đều đã được ủy thác.</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>Địa chỉ chủ sở hữu đã nhập không có trong ví này. CẢNH BÁO: Sau khi ủy thác, chỉ chủ sở hữu khóa của địa chỉ chủ sở hữu mới tiêu được các đồng xu này.</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>Địa chỉ người staking đã nhập có trong ví này. Bạn đã có thể staking các đồng xu này, không cần ủy thác cho chính mình.</translation>
     </message>
 </context>
 <context>
@@ -2602,6 +4612,352 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <source>Memo:</source>
         <translation>Bản ghi nhớ:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>Địa chỉ &amp;chủ sở hữu:</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>Địa chỉ chủ sở hữu BitcoinPoS</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>Máy chủ</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Những gì nút này cung cấp cho người khác. Chuyển tiếp và giữ thư đã chạy ngay hôm nay; lưu trữ đang đến, và như mọi thứ ở đây, được tìm theo cùng cách với các nút ngang hàng — qua danh bạ. Tên có trang riêng.</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>Lưu trữ</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>Một trang hoặc dịch vụ được phục vụ từ nút này, tìm được qua khóa hoặc tên và truy cập qua mạng phủ, nên máy chủ không bao giờ công bố nơi nó chạy. Phần gặp gỡ đã có: dịch vụ đăng ký tại các điểm hẹn mà cả hai bên tính ra từ danh bạ. Việc phục vụ trang và ứng dụng qua nó chưa được xây dựng.</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>Trạm chuyển tiếp</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>Chuyển lưu lượng mạng phủ của các nút ngang hàng khác, trả phí niêm yết hằng tháng cho các nút ngang hàng dùng nút này, và chia với họ một phần mỗi khối nó staking. Trạm chuyển tiếp đưa các niêm yết nó trả phí vào các khối do chính nó staking, nhờ đó chúng được xác nhận trong khi phần lớn các nút vẫn từ chối chuyển tiếp bản ghi — vì vậy trạm chuyển tiếp phải staking.</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>Nút ngang hàng niêm yết ở đây</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>Khối tiếp theo nó staking</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>Trả phí niêm yết cho các nút ngang hàng yêu cầu qua mạng phủ</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>Một nút ngang hàng không có đồng xu có thể nhờ nút này công bố niêm yết hằng tháng của nó. Nút này trả phí, staking nó vào một khối và thêm nút ngang hàng đó vào nhóm được chia phần thưởng. Mặc định tắt, vì nó tiêu đồng xu của nút này.</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>Các nút ngang hàng vượt quá số này sẽ bị từ chối. Các nút đã niêm yết ở đây vẫn có thể gia hạn.</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>Số nút ngang hàng tối đa giữ niêm yết</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>ví duy nhất đang mở</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>Ví nào trả phí. Khi mở nhiều ví mà không chỉ định ví nào ở đây, các yêu cầu bị từ chối thay vì trả theo phỏng đoán. Staking có thể diễn ra ở bất kỳ ví nào trên nút này.</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>Trả phí từ ví</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>Phần của mỗi khối mà nút này staking bằng đồng xu của chính nó, chia đều cho các nút ngang hàng nó niêm yết. 0 không chia gì.</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>Phần của mỗi khối staking</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>Hộp thư</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>Giữ thư đã niêm phong cho những người mà danh bạ chọn nút này làm hộp thư, cho đến khi họ nhận. Trạm nào giữ thư của ai được tính từ danh bạ, nên không ai phân công. Người gửi và chủ hộp thư liên lạc với nút này qua ba trạm chuyển tiếp, nên nó không bao giờ biết họ ở đâu; thư được niêm phong, nên nó không đọc được và không biết ai viết. Thư bị xóa sau hai tuần, và chỉ phục vụ những người đã niêm yết.</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>Đang giữ</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>Khóa thư giữ cho người gửi</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>Giữ thư cho những người mà danh bạ giao cho nút này</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>Mặc định bật ở mọi nơi chạy mạng phủ: một trạm chuyển tiếp từ chối sẽ khiến những người được chọn cho nó thiếu đi một hộp thư.</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>Khi đầy, thư mới bị từ chối cho đến khi thư cũ được nhận hoặc bị xóa. Không ai được dùng quá 8 MiB.</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>Dung lượng đĩa được dùng</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Đã lưu. Các cài đặt này được đọc khi nút khởi động, nên hãy khởi động lại ứng dụng để thay đổi có hiệu lực.</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>không có ví nào mở</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>không — trạm chuyển tiếp không staking sẽ từ chối yêu cầu niêm yết</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>có, sau %1</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>không trả phí niêm yết</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>có trả phí, nhưng không staking</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>đang chạy</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>bản dựng này không có ví</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>cần một ví</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>tắt</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>cần mạng phủ</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>không có gì — không giữ thư</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>không có thư</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>1 chữ cái</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>%1 chữ cái</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>1 người</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>%1 người</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>hiện không có gì, còn chỗ cho %1 MiB</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%1 cho %2, %3 trên %4 MiB</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>chia %1%: tổng %2 %4, mỗi nút ngang hàng %3 %4</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>Cài đặt</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>Những gì ứng dụng này làm mà ứng dụng ví không làm, và ngôn ngữ. Mọi thứ khác — proxy, cổng, cắt tỉa — là cùng một câu hỏi ở cả hai, và được hỏi ở một chỗ.</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Khám phá</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>Giữ chỉ mục danh bạ</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>Không có nó, nút này có thể công bố nhưng không thấy ai khác đã niêm yết.</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>Lập chỉ mục tên</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>Cần để tra cứu tên, gửi thư đến tên và đăng ký tên của riêng bạn.</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>Thử kết nối với các nút ngang hàng tìm thấy trong danh bạ</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>Trao địa chỉ trong danh bạ cho bộ quản lý địa chỉ, cùng với các nút gốc và việc trao đổi địa chỉ thông thường. Tắt nó đi thì danh bạ chỉ là danh sách mà nút này đọc nhưng không bao giờ dùng.</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Mạng phủ</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>Chạy mạng phủ</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>Mặc định bật trong ứng dụng này, tắt trong nút và trong ứng dụng ví. Phần bắt tay của nó chưa được ai ngoài tác giả xem xét.</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>Mạng phủ dùng UDP trên cổng riêng. Mạng ngang hàng là riêng biệt và vẫn dùng TCP.</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>Lắng nghe trên cổng</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>Vô tuyến</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>Truyền cả mạng phủ qua sóng vô tuyến, nhờ Reticulum</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>LoRa qua RNode, vô tuyến gói, liên kết nối tiếp: bất cứ thứ gì Reticulum được cấu hình để dùng. Cần mạng phủ.</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>Vào mạng phủ qua các hàng xóm vô tuyến, để thư hoạt động không cần internet</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>Khi một nút BPS nghe được qua vô tuyến là trạm chuyển tiếp đã niêm yết, thư và yêu cầu niêm yết của bạn đi qua nó. Liên kết vô tuyến chậm hơn internet rất nhiều.</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>Khởi động cầu nối Reticulum cùng BPS Relay</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>Chạy bps-rns-bridge.py bên cạnh nút. Để tắt nếu bạn tự chạy cầu nối.</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>Lệnh Python</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Reticulum không thuộc BPS và có giấy phép riêng. Hãy cài nó bằng %1, và thiết lập máy vô tuyến trong cấu hình riêng của Reticulum (~/.reticulum/config). Các băng tần vô tuyến nghiệp dư không cho phép lưu lượng mã hóa, nên hãy dùng các băng tần không cần giấy phép như của LoRa.</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>Hiển thị</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>Hiện số tiền theo</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>Ngôn ngữ của máy tính</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>Có hiệu lực khi BPS Relay khởi động lại. Văn bản do chính nút gửi, như thông báo lỗi của lệnh, vẫn bằng tiếng Anh.</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Ngôn ngữ</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>Mạng, proxy và các cài đặt cốt lõi khác…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>Đã lưu. Ngôn ngữ thay đổi khi BPS Relay khởi động lại.</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Đã lưu. Các cài đặt này được đọc khi nút khởi động, nên hãy khởi động lại ứng dụng để thay đổi có hiệu lực.</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>Nút vẫn đang khởi động; cài đặt cốt lõi chưa sẵn sàng.</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2681,7 +5037,7 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>&amp;Verify Tin nhắn</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
         <translation>Nhập vào address người nhận, tin nhắn (chắc rằng bạn copy line breaks, khoảng trống, tabs, etc. chính xác) và signature bên dưới verify tin nhắn. Cẩn thận không đọc nhiều hơn từ signature so với cái được ký trong bản thân tin nhắn, để tránh bị lừa bới man-in-the-middle tấn công. Lưu ý rằng điều này chỉ chứng nhận nhóm những người nhân với address, nó không thể chứng minh bên gửi có bất kỳ transaction!</translation>
     </message>
     <message>
@@ -2709,8 +5065,8 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>Reset tất cả verify khoảng trống nhắn</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>Click "Sign Message" để generate signature</translation>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>Click &quot;Sign Message&quot; để generate signature</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2766,6 +5122,209 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
     </message>
 </context>
 <context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>Biểu mẫu</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>Số dư có thể tiêu hiện tại của bạn</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>Tài sản đang staking thuộc ví này</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>Tài sản đang staking từ ủy thác</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>Chưa trưởng thành:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>Số dư chưa trưởng thành của bạn</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>Tài sản đang staking</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>Stake:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>Độ cao khối:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>Phần thưởng khối:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/khối</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>Trọng số mạng:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>Lợi suất năm dự kiến:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>Bản ghi stake</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>&amp;Ủy thác</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>Loại ủy thác:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>Ủy thác thủ công</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>Ủy thác tự động</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>Địa chỉ staking</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>Gỡ tất cả</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Dán địa chỉ từ bộ nhớ tạm</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>&amp;Thêm</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>&amp;Ủy thác của tôi</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>Tài sản đã ủy thác</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>Số dư đã ủy thác hiện tại của bạn</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>Ủy thác của tôi</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>Ủy thác đã &amp;nhận</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>&amp;Tạo địa chỉ staking mới</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> với nhãn:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>Một nhãn tùy chọn để gắn với địa chỉ nhận mới (bạn dùng để nhận ra hóa đơn). Nó cũng được đính kèm vào yêu cầu thanh toán.</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>Ủy thác ColdStake</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>Đồng xu trả vào các địa chỉ ủy thác của ví này được các khóa này staking ngay khi đến, và tiền thối từ các khoản chi của bạn vẫn ở trạng thái ủy thác. Khóa staking chỉ tạo được coinstake trả lại cho bạn, nên ví giữ nó không cần cụm mật khẩu.</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>Liệt kê nhiều hơn một địa chỉ để rải đồng xu của bạn qua nhiều ví staking, để một ví ngoại tuyến không làm dừng toàn bộ staking.
+
+Mỗi ủy thác mới đi đến địa chỉ được chỉ định ít nhất cho đến nay, tính cả các địa chỉ ủy thác đã phát và các đồng xu ủy thác chưa tiêu. Nó đếm số ủy thác chứ không phải số tiền, nên một địa chỉ có một ủy thác lớn vẫn có thể được chọn trước một địa chỉ có nhiều ủy thác nhỏ.</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>Đồng xu đã ủy thác cho một địa chỉ bị gỡ sẽ không bị chuyển và địa chỉ đó tiếp tục staking chúng. Chỉ các ủy thác mới ngừng chỉ định nó.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>Không thể mở khóa ví.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Không thể tạo địa chỉ %1 mới</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>Staking lạnh đã tắt trên nút này (-coldstaking=0), nên không có gì được ủy thác.</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>Địa chỉ staking ở đây thuộc về ví này, vốn đã mã hóa, nên nó chỉ staking khi ví được mở khóa. Để staking không cần cụm mật khẩu, hãy dùng địa chỉ từ một ví staking riêng không mã hóa.</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>Ngừng ủy thác cho %1. Đồng xu đã ủy thác cho nó sẽ không bị chuyển và nó tiếp tục staking chúng.</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>Không thể lưu các địa chỉ staking. Một ủy thác gắn với một mã băm khóa, nên mỗi địa chỉ phải là địa chỉ legacy.</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>Địa chỉ staking đó đã có trong danh sách.</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>Gỡ tất cả địa chỉ staking</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>Ngừng ủy thác cho tất cả %1 địa chỉ staking?
+
+Đồng xu đã ủy thác vẫn được chúng staking và không bị chuyển. Nhưng khoản nạp mới và tiền thối sẽ đến các địa chỉ thường, không staking, và bạn sẽ cần lại các địa chỉ này để bật lại.</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2776,7 +5335,9 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Mở cho %n nhiều hơn blocks</numerusform></translation>
+        <translation>
+            <numerusform>Mở cho %n nhiều hơn blocks</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2856,7 +5417,9 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>Hoàn thiện trong %n nhiều hơn blocks</numerusform></translation>
+        <translation>
+            <numerusform>Hoàn thiện trong %n nhiều hơn blocks</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -2915,8 +5478,8 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>Merchant</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -2970,7 +5533,9 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Mở cho %n nhiều hơn blocks</numerusform></translation>
+        <translation>
+            <numerusform>Mở cho %n nhiều hơn blocks</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3059,6 +5624,30 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>Amount removed from or added to balance.</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>Stake lạnh</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>Staking thay mặt cho</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>Ủy thác stake</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>Ủy thác</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>Ủy thác stake đã được tiêu bởi</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>Số tiền đã ủy thác.</translation>
     </message>
 </context>
 <context>
@@ -3219,6 +5808,22 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <source>to</source>
         <translation>to</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>Stake lạnh</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>Stake nóng</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>Ủy thác chưa tiêu</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>Ủy thác</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3255,6 +5860,14 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
     <message>
         <source>Create a new wallet</source>
         <translation>Tạo một ví mới</translation>
+    </message>
+    <message>
+        <source>No wallet has been loaded.
+Go to File &gt; Open Wallet to load a wallet.
+- OR -</source>
+        <translation>Chưa tải ví nào.
+Vào Tệp &gt; Mở ví để tải một ví.
+- HOẶC -</translation>
     </message>
 </context>
 <context>
@@ -3296,7 +5909,7 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>Confirm fee bump</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
+        <source>Can&apos;t draft transaction.</source>
         <translation>Không thể tạo tạm giao dịch.</translation>
     </message>
     <message>
@@ -3304,8 +5917,8 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>Đã sao chép PSBT</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
-        <translation>Can't sign transaction.</translation>
+        <source>Can&apos;t sign transaction.</source>
+        <translation>Can&apos;t sign transaction.</translation>
     </message>
     <message>
         <source>Could not commit transaction</source>
@@ -3314,6 +5927,21 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
     <message>
         <source>default wallet</source>
         <translation>ví mặc định</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ nút này</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● trực tiếp</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>Ứng dụng ví, chạy trong tiến trình này với nút này. Đó là cùng một chương trình với bitcoin-pos-qt, không phải bản sao.</translation>
     </message>
 </context>
 <context>
@@ -3366,6 +5994,18 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <source>Cancel</source>
         <translation>Hủy</translation>
     </message>
+    <message>
+        <source>Unable to decode PSBT from clipboard (invalid base64)</source>
+        <translation>Không thể giải mã PSBT từ bộ nhớ tạm (base64 không hợp lệ)</translation>
+    </message>
+    <message>
+        <source>PSBT file must be smaller than 100 MiB</source>
+        <translation>Tệp PSBT phải nhỏ hơn 100 MiB</translation>
+    </message>
+    <message>
+        <source>Unable to decode PSBT</source>
+        <translation>Không thể giải mã PSBT</translation>
+    </message>
 </context>
 <context>
     <name>bitcoin-core</name>
@@ -3406,16 +6046,16 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
-        <translation>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</translation>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</translation>
     </message>
     <message>
         <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
         <translation>Please contribute if you find %s useful. Visit %s for further information about the software.</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
-        <translation>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</translation>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
+        <translation>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</translation>
     </message>
     <message>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
@@ -3446,8 +6086,8 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>-maxmempool must be at least %d MB</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>Cannot resolve -%s address: '%s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>Cannot resolve -%s address: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3534,32 +6174,32 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>Initialization sanity check failed. %s is shutting down.</translation>
     </message>
     <message>
-        <source>Invalid P2P permission: '%s'</source>
-        <translation>Quyền P2P không hợp lệ: '%s'</translation>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>Quyền P2P không hợp lệ: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>Invalid amount for -%s=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>Thư mục chứa các khối được chỉ ra "%s"  không tồn tại</translation>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>Thư mục chứa các khối được chỉ ra &quot;%s&quot;  không tồn tại</translation>
     </message>
     <message>
-        <source>Unknown address type '%s'</source>
-        <translation>Không biết địa chỉ kiểu '%s'</translation>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>Không biết địa chỉ kiểu &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Unknown change type '%s'</source>
-        <translation>Không biết thay đổi kiểu '%s'</translation>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>Không biết thay đổi kiểu &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3634,8 +6274,8 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>Error: Listening for incoming connections failed (listen returned error %s)</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -3666,24 +6306,24 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>Lỗi: Đĩa trống ít quá cho %s</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>Invalid -onion address or hostname: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>Invalid -onion address or hostname: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>Invalid -proxy address or hostname: '%s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>Invalid -proxy address or hostname: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>Invalid netmask specified in -whitelist: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>Invalid netmask specified in -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>Need to specify a port with -whitebind: '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>Need to specify a port with -whitebind: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Prune mode is incompatible with -blockfilterindex.</source>
@@ -3702,16 +6342,16 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>Signing transaction failed</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>Thư mục ví được nêu  -walletdir "%s" không tồn tại</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>Thư mục ví được nêu  -walletdir &quot;%s&quot; không tồn tại</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>Chỉ định -walletdir "%s" là đường dẫn tương đối</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>Chỉ định -walletdir &quot;%s&quot; là đường dẫn tương đối</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>Chỉ định -walletdir "%s" không phải là một thư mục</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>Chỉ định -walletdir &quot;%s&quot; không phải là một thư mục</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3740,8 +6380,8 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>Unable to bind to %s on this computer (bind returned error %s)</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>Không thể tạo tệp PID '%s': %s</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>Không thể tạo tệp PID &apos;%s&apos;: %s</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -3804,8 +6444,8 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>Transaction phải có ít nhất một người nhận</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>Unknown network được xác định trong -onlynet: '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>Unknown network được xác định trong -onlynet: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -3820,8 +6460,8 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
         <translation>Cảnh báo: các khóa riêng tư được tìm thấy trong ví {%s} với  khóa riêng tư không kích hoạt</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>Không thể ghi vào thư mục dữ liệu  '%s'; kiểm tra lại quyền.</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>Không thể ghi vào thư mục dữ liệu  &apos;%s&apos;; kiểm tra lại quyền.</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -3842,6 +6482,86 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí "100 satos
     <message>
         <source>Done loading</source>
         <translation>Done loading</translation>
+    </message>
+    <message>
+        <source>%s corrupt. Try using the wallet tool bitcoin-wallet to salvage or restoring a backup.</source>
+        <translation>%s bị hỏng. Hãy thử dùng công cụ ví bitcoin-wallet để cứu dữ liệu hoặc khôi phục từ bản sao lưu.</translation>
+    </message>
+    <message>
+        <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use version 169900 or no version specified.</source>
+        <translation>Không thể nâng cấp ví tách không phải HD nếu không nâng cấp để hỗ trợ kho khóa trước khi tách. Hãy dùng phiên bản 169900 hoặc không chỉ định phiên bản.</translation>
+    </message>
+    <message>
+        <source>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</source>
+        <translation>Có nhiều hơn một địa chỉ ràng buộc onion. Dùng %s cho dịch vụ onion Tor được tạo tự động.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Không thể chuẩn bị câu lệnh để lấy phiên bản lược đồ ví sqlite: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Không thể chuẩn bị câu lệnh để lấy mã ứng dụng: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unknown sqlite wallet schema version %d. Only version %d is supported</source>
+        <translation>SQLiteDatabase: Phiên bản lược đồ ví sqlite không rõ %d. Chỉ hỗ trợ phiên bản %d</translation>
+    </message>
+    <message>
+        <source>This error could occur if this wallet was not shutdown cleanly and was last loaded using a build with a newer version of Berkeley DB. If so, please use the software that last loaded this wallet</source>
+        <translation>Lỗi này có thể xảy ra nếu ví không được đóng đúng cách và lần cuối được tải bằng bản dựng dùng phiên bản Berkeley DB mới hơn. Nếu vậy, hãy dùng phần mềm đã tải ví này lần cuối</translation>
+    </message>
+    <message>
+        <source>This is the maximum transaction fee you pay (in addition to the normal fee) to prioritize partial spend avoidance over regular coin selection.</source>
+        <translation>Đây là phí giao dịch tối đa bạn trả (ngoài phí thông thường) để ưu tiên tránh chi tiêu một phần hơn việc chọn đồng xu thông thường.</translation>
+    </message>
+    <message>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
+        <translation>Giao dịch cần một địa chỉ tiền thối, nhưng chúng tôi không thể tạo. Hãy gọi keypoolrefill trước.</translation>
+    </message>
+    <message>
+        <source>Cannot set -peerblockfilters without -blockfilterindex.</source>
+        <translation>Không thể đặt -peerblockfilters nếu không có -blockfilterindex.</translation>
+    </message>
+    <message>
+        <source>Error: Keypool ran out, please call keypoolrefill first</source>
+        <translation>Lỗi: Kho khóa đã hết, hãy gọi keypoolrefill trước</translation>
+    </message>
+    <message>
+        <source>Fee rate (%s) is lower than the minimum fee rate setting (%s)</source>
+        <translation>Mức phí (%s) thấp hơn cài đặt mức phí tối thiểu (%s)</translation>
+    </message>
+    <message>
+        <source>Ignoring duplicate -wallet %s.</source>
+        <translation>Bỏ qua -wallet %s bị trùng.</translation>
+    </message>
+    <message>
+        <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
+        <translation>Chưa chỉ định máy chủ proxy. Dùng -proxy=&lt;ip&gt; hoặc -proxy=&lt;ip:port&gt;.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Không thể thực thi câu lệnh để xác minh cơ sở dữ liệu: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Không thể lấy phiên bản lược đồ ví sqlite: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Không thể lấy mã ứng dụng: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Không thể chuẩn bị câu lệnh để xác minh cơ sở dữ liệu: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to read database verification error: %s</source>
+        <translation>SQLiteDatabase: Không thể đọc lỗi xác minh cơ sở dữ liệu: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unexpected application id. Expected %u, got %u</source>
+        <translation>SQLiteDatabase: Mã ứng dụng không như mong đợi. Cần %u, nhận được %u</translation>
     </message>
 </context>
 </TS>

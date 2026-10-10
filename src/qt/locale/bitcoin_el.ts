@@ -1,4 +1,6 @@
-<TS language="el" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="el">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -96,6 +98,12 @@
     <message>
         <source>There was an error trying to save the address list to %1. Please try again.</source>
         <translation>Σφάλμα κατά την προσπάθεια αποθήκευσης της λίστας διευθύνσεων στο %1. Παρακαλώ δοκιμάστε ξανά.</translation>
+    </message>
+    <message>
+        <source>These are your Bitcoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.
+Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
+        <translation>Αυτές είναι οι διευθύνσεις Bitcoin σας για τη λήψη πληρωμών. Χρησιμοποιήστε το κουμπί &apos;Δημιουργία νέας διεύθυνσης λήψης&apos; στην καρτέλα Λήψη για να δημιουργήσετε νέες διευθύνσεις.
+Η υπογραφή είναι δυνατή μόνο με διευθύνσεις τύπου &apos;legacy&apos;.</translation>
     </message>
 </context>
 <context>
@@ -235,6 +243,14 @@
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Προσοχη: το πλήκτρο Caps Lock είναι ενεργο.</translation>
     </message>
+    <message>
+        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
+        <translation>Χρησιμεύει για την απενεργοποίηση της απλής αποστολής χρημάτων αν ο λογαριασμός του λειτουργικού συστήματος παραβιαστεί. Δεν παρέχει πραγματική ασφάλεια.</translation>
+    </message>
+    <message>
+        <source>For staking only.</source>
+        <translation>Μόνο για staking.</translation>
+    </message>
 </context>
 <context>
     <name>BanTableModel</name>
@@ -245,6 +261,109 @@
     <message>
         <source>Banned Until</source>
         <translation>Απαγορευμένο έως</translation>
+    </message>
+</context>
+<context>
+    <name>BatchComposerDialog</name>
+    <message>
+        <source>Batch payment</source>
+        <translation>Μαζική πληρωμή</translation>
+    </message>
+    <message>
+        <source>One payment per line, as &quot;address, amount&quot;. A comma, semicolon or tab separates the fields, and a third field becomes the label. Lines starting with # are ignored.</source>
+        <translation>Μία πληρωμή ανά γραμμή, ως &quot;διεύθυνση, ποσό&quot;. Κόμμα, ερωτηματικό ή στηλοθέτης χωρίζουν τα πεδία, και ένα τρίτο πεδίο γίνεται η ετικέτα. Οι γραμμές που ξεκινούν με # αγνοούνται.</translation>
+    </message>
+    <message>
+        <source>&amp;Paste</source>
+        <translation>&amp;Επικόλληση</translation>
+    </message>
+    <message>
+        <source>Load from &amp;file...</source>
+        <translation>Φόρτωση από &amp;αρχείο...</translation>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation>&amp;Καθαρισμός</translation>
+    </message>
+    <message>
+        <source>Line</source>
+        <translation>Γραμμή</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Διεύθυνση</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Ποσό</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Κατάσταση</translation>
+    </message>
+    <message>
+        <source>Load payment list</source>
+        <translation>Φόρτωση λίστας πληρωμών</translation>
+    </message>
+    <message>
+        <source>Text and CSV files (*.txt *.csv);;All files (*)</source>
+        <translation>Αρχεία κειμένου και CSV (*.txt *.csv);;Όλα τα αρχεία (*)</translation>
+    </message>
+    <message>
+        <source>Could not read %1.</source>
+        <translation>Δεν ήταν δυνατή η ανάγνωση του %1.</translation>
+    </message>
+    <message>
+        <source>expected &quot;address, amount&quot;</source>
+        <translation>αναμενόταν &quot;διεύθυνση, ποσό&quot;</translation>
+    </message>
+    <message>
+        <source>no address</source>
+        <translation>χωρίς διεύθυνση</translation>
+    </message>
+    <message>
+        <source>not a valid address</source>
+        <translation>μη έγκυρη διεύθυνση</translation>
+    </message>
+    <message>
+        <source>no amount</source>
+        <translation>χωρίς ποσό</translation>
+    </message>
+    <message>
+        <source>could not read the amount &quot;%1&quot;</source>
+        <translation>δεν ήταν δυνατή η ανάγνωση του ποσού &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>amount must be greater than zero</source>
+        <translation>το ποσό πρέπει να είναι μεγαλύτερο από μηδέν</translation>
+    </message>
+    <message>
+        <source>%1  (%2)</source>
+        <translation>%1  (%2)</translation>
+    </message>
+    <message>
+        <source>ok</source>
+        <translation>εντάξει</translation>
+    </message>
+    <message>
+        <source>Paste one payment per line, as &quot;address, amount&quot;. A third field is used as the label. Lines starting with # are ignored.</source>
+        <translation>Επικολλήστε μία πληρωμή ανά γραμμή, ως &quot;διεύθυνση, ποσό&quot;. Ένα τρίτο πεδίο χρησιμοποιείται ως ετικέτα. Οι γραμμές που ξεκινούν με # αγνοούνται.</translation>
+    </message>
+    <message>
+        <source>%1 of %2 lines cannot be used. Fix them, or delete them, to continue.</source>
+        <translation>%1 από %2 γραμμές δεν μπορούν να χρησιμοποιηθούν. Διορθώστε τες ή διαγράψτε τες για να συνεχίσετε.</translation>
+    </message>
+    <message>
+        <source>%1 recipients is more than one transaction can carry (the limit here is %2). Split the list.</source>
+        <translation>%1 παραλήπτες είναι περισσότεροι από όσους μπορεί να μεταφέρει μία συναλλαγή (το όριο εδώ είναι %2). Χωρίστε τη λίστα.</translation>
+    </message>
+    <message>
+        <source>%1 recipients, %2 in total, before the fee.</source>
+        <translation>%1 παραλήπτες, %2 συνολικά, πριν από την αμοιβή.</translation>
+    </message>
+    <message>
+        <source>Add to the send form</source>
+        <translation>Προσθήκη στη φόρμα αποστολής</translation>
     </message>
 </context>
 <context>
@@ -319,7 +438,7 @@
     </message>
     <message>
         <source>Open &amp;URI...</source>
-        <translation>'Ανοιγμα &amp;URI</translation>
+        <translation>&apos;Ανοιγμα &amp;URI</translation>
     </message>
     <message>
         <source>Create Wallet...</source>
@@ -399,7 +518,7 @@
     </message>
     <message>
         <source>Verify messages to ensure they were signed with specified Bitcoin addresses</source>
-        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως ανήκει μια συγκεκριμένη διεύθυνση Bitcoin</translation>
+        <translation>Υπογράψτε ένα μήνυμα για ν&apos; αποδείξετε πως ανήκει μια συγκεκριμένη διεύθυνση Bitcoin</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -435,7 +554,10 @@
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n ενεργές συνδέσεις στο δίκτυο Bitcoin</numerusform><numerusform>%n ενεργές συνδέσεις στο δίκτυο Bitcoin</numerusform></translation>
+        <translation>
+            <numerusform>%n ενεργές συνδέσεις στο δίκτυο Bitcoin</numerusform>
+            <numerusform>%n ενεργές συνδέσεις στο δίκτυο Bitcoin</numerusform>
+        </translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -447,7 +569,10 @@
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>Επεξεργασμένα %n μπλοκ ιστορικού συναλλαγών.</numerusform><numerusform>Επεξεργασμένα %n μπλοκ ιστορικού συναλλαγών.</numerusform></translation>
+        <translation>
+            <numerusform>Επεξεργασμένα %n μπλοκ ιστορικού συναλλαγών.</numerusform>
+            <numerusform>Επεξεργασμένα %n μπλοκ ιστορικού συναλλαγών.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -637,7 +762,360 @@
         <source>Original message:</source>
         <translation>Αρχικό Μήνυμα:</translation>
     </message>
-    </context>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Παρουσιάστηκε μοιραίο σφάλμα. Το %1 δεν μπορεί πλέον να συνεχίσει με ασφάλεια και θα τερματιστεί.</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Show stake of wallet</source>
+        <translation>Εμφάνιση του stake του πορτοφολιού</translation>
+    </message>
+    <message>
+        <source>&amp;Load PSBT from file...</source>
+        <translation>&amp;Φόρτωση PSBT από αρχείο...</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction</source>
+        <translation>Φόρτωση μερικώς υπογεγραμμένης συναλλαγής Bitcoin</translation>
+    </message>
+    <message>
+        <source>Load PSBT from clipboard...</source>
+        <translation>Φόρτωση PSBT από το πρόχειρο...</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction from clipboard</source>
+        <translation>Φόρτωση μερικώς υπογεγραμμένης συναλλαγής Bitcoin από το πρόχειρο</translation>
+    </message>
+    <message>
+        <source>&amp;Mask values</source>
+        <translation>&amp;Απόκρυψη τιμών</translation>
+    </message>
+    <message>
+        <source>Mask the values in the Overview tab</source>
+        <translation>Απόκρυψη των τιμών στην καρτέλα Επισκόπηση</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked for staking only&lt;/b&gt;</source>
+        <translation>Το πορτοφόλι είναι &lt;b&gt;κρυπτογραφημένο&lt;/b&gt; και αυτή τη στιγμή &lt;b&gt;ξεκλείδωτο μόνο για staking&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Decrypt Wallet...</source>
+        <translation>&amp;Αποκρυπτογράφηση πορτοφολιού...</translation>
+    </message>
+    <message>
+        <source>Remove the passphrase, leaving the private keys stored unencrypted</source>
+        <translation>Αφαίρεση του συνθηματικού, ώστε τα ιδιωτικά κλειδιά να αποθηκεύονται χωρίς κρυπτογράφηση</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Χωρίς staking</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation>
+            <numerusform>%n δευτερόλεπτο</numerusform>
+            <numerusform>%n δευτερόλεπτα</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation>
+            <numerusform>%n λεπτό</numerusform>
+            <numerusform>%n λεπτά</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation>
+            <numerusform>%n ώρα</numerusform>
+            <numerusform>%n ώρες</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n ημέρα</numerusform>
+            <numerusform>%n ημέρες</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
+        <translation>Staking σε εξέλιξη.&lt;br&gt;Το βάρος σας είναι %1&lt;br&gt;Το βάρος του δικτύου είναι %2&lt;br&gt;Αναμενόμενος χρόνος έως την ανταμοιβή: %3</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is offline</source>
+        <translation>Χωρίς staking επειδή το πορτοφόλι είναι εκτός σύνδεσης</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is syncing</source>
+        <translation>Χωρίς staking επειδή το πορτοφόλι συγχρονίζεται</translation>
+    </message>
+    <message>
+        <source>Not staking because you don&apos;t have mature coins</source>
+        <translation>Χωρίς staking επειδή δεν έχετε ώριμα νομίσματα</translation>
+    </message>
+    <message>
+        <source>Not staking because wallet is locked</source>
+        <translation>Χωρίς staking επειδή το πορτοφόλι είναι κλειδωμένο</translation>
+    </message>
+</context>
+<context>
+    <name>BpsRpcWorker</name>
+    <message>
+        <source>Unknown error</source>
+        <translation>Άγνωστο σφάλμα</translation>
+    </message>
+</context>
+<context>
+    <name>BpsUtil</name>
+    <message>
+        <source>less than a minute</source>
+        <translation>λιγότερο από ένα λεπτό</translation>
+    </message>
+    <message>
+        <source>a minute</source>
+        <translation>ένα λεπτό</translation>
+    </message>
+    <message>
+        <source>%1 minutes</source>
+        <translation>%1 λεπτά</translation>
+    </message>
+    <message>
+        <source>an hour</source>
+        <translation>μία ώρα</translation>
+    </message>
+    <message>
+        <source>%1 hours</source>
+        <translation>%1 ώρες</translation>
+    </message>
+    <message>
+        <source>%1 days</source>
+        <translation>%1 ημέρες</translation>
+    </message>
+    <message>
+        <source>a month</source>
+        <translation>ένας μήνας</translation>
+    </message>
+    <message>
+        <source>%1 months</source>
+        <translation>%1 μήνες</translation>
+    </message>
+    <message>
+        <source>about a year</source>
+        <translation>περίπου ένα έτος</translation>
+    </message>
+    <message>
+        <source>over a year</source>
+        <translation>πάνω από ένα έτος</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>άγνωστο</translation>
+    </message>
+</context>
+<context>
+    <name>BpsWindow</name>
+    <message>
+        <source>A fatal error occurred. %1 can no longer continue safely and will quit.</source>
+        <translation>Παρουσιάστηκε μοιραίο σφάλμα. Το %1 δεν μπορεί πλέον να συνεχίσει με ασφάλεια και θα τερματιστεί.</translation>
+    </message>
+    <message>
+        <source>Original message:</source>
+        <translation>Αρχικό μήνυμα:</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Ανακάλυψη</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Δίκτυο επικάλυψης</translation>
+    </message>
+    <message>
+        <source>Names</source>
+        <translation>Ονόματα</translation>
+    </message>
+    <message>
+        <source>Peers and console</source>
+        <translation>Ομότιμοι και κονσόλα</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>Κόμβος</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Πορτοφόλι</translation>
+    </message>
+    <message>
+        <source>Mail</source>
+        <translation>Αλληλογραφία</translation>
+    </message>
+    <message>
+        <source>Mail (%1)</source>
+        <translation>Αλληλογραφία (%1)</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>Διακομιστής</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Ρυθμίσεις</translation>
+    </message>
+    <message>
+        <source>listing unknown</source>
+        <translation>καταχώριση άγνωστη</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>δίκτυο επικάλυψης άγνωστο</translation>
+    </message>
+    <message>
+        <source>connecting…</source>
+        <translation>σύνδεση…</translation>
+    </message>
+    <message>
+        <source>Staking earns about %1% a year at the current network weight: %2 blocks a year, %3 %4 each, over %5 %4 staking.</source>
+        <translation>Με το τρέχον βάρος δικτύου, το staking αποδίδει περίπου %1% ετησίως: %2 μπλοκ τον χρόνο, %3 %4 το καθένα, σε %5 %4 σε staking.</translation>
+    </message>
+    <message>
+        <source>That is after the %1% of each block this node shares with its peers.</source>
+        <translation>Αυτό είναι μετά το μερίδιο %1% κάθε μπλοκ που μοιράζεται αυτός ο κόμβος με τους ομότιμούς του.</translation>
+    </message>
+    <message>
+        <source>%1% a year</source>
+        <translation>%1% ετησίως</translation>
+    </message>
+    <message>
+        <source>shutting down…</source>
+        <translation>τερματισμός…</translation>
+    </message>
+    <message>
+        <source>%1 peers: %2 inbound, %3 outbound.</source>
+        <translation>%1 ομότιμοι: %2 εισερχόμενοι, %3 εξερχόμενοι.</translation>
+    </message>
+    <message>
+        <source>Click to pause network activity.</source>
+        <translation>Κάντε κλικ για παύση της δικτυακής δραστηριότητας.</translation>
+    </message>
+    <message>
+        <source>1 peer</source>
+        <translation>1 ομότιμος</translation>
+    </message>
+    <message>
+        <source>%1 peers</source>
+        <translation>%1 ομότιμοι</translation>
+    </message>
+    <message>
+        <source>Network activity is paused.</source>
+        <translation>Η δικτυακή δραστηριότητα βρίσκεται σε παύση.</translation>
+    </message>
+    <message>
+        <source>Click to resume it.</source>
+        <translation>Κάντε κλικ για συνέχιση.</translation>
+    </message>
+    <message>
+        <source>network paused</source>
+        <translation>δίκτυο σε παύση</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of history.</source>
+        <translation>Επεξεργάστηκαν %1 μπλοκ του ιστορικού.</translation>
+    </message>
+    <message>
+        <source>block %1</source>
+        <translation>μπλοκ %1</translation>
+    </message>
+    <message>
+        <source>Up to date.</source>
+        <translation>Ενημερωμένο.</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation>Συγχρονισμός με το δίκτυο…</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation>Επεξεργασία μπλοκ στον δίσκο…</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk…</source>
+        <translation>Επαναδημιουργία ευρετηρίου μπλοκ στον δίσκο…</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation>Σύνδεση με ομότιμους…</translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>%1 πίσω</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation>Συγχρονισμός σε εξέλιξη…</translation>
+    </message>
+    <message>
+        <source>The last block received was made %1 ago.</source>
+        <translation>Το τελευταίο μπλοκ που ελήφθη δημιουργήθηκε πριν από %1.</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked for staking only</source>
+        <translation>Το πορτοφόλι &lt;b&gt;%1&lt;/b&gt; είναι κρυπτογραφημένο και ξεκλείδωτο μόνο για staking</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and unlocked</source>
+        <translation>Το πορτοφόλι &lt;b&gt;%1&lt;/b&gt; είναι κρυπτογραφημένο και ξεκλείδωτο</translation>
+    </message>
+    <message>
+        <source>Wallet &lt;b&gt;%1&lt;/b&gt; is encrypted and locked</source>
+        <translation>Το πορτοφόλι &lt;b&gt;%1&lt;/b&gt; είναι κρυπτογραφημένο και κλειδωμένο</translation>
+    </message>
+    <message>
+        <source>staking</source>
+        <translation>staking</translation>
+    </message>
+    <message>
+        <source>staking, %1</source>
+        <translation>staking, %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; is staking.&lt;br&gt;Its weight is %2&lt;br&gt;Network weight is %3&lt;br&gt;Expected time to earn a reward is %4</source>
+        <translation>Το &lt;b&gt;%1&lt;/b&gt; κάνει staking.&lt;br&gt;Το βάρος του είναι %2&lt;br&gt;Το βάρος του δικτύου είναι %3&lt;br&gt;Αναμενόμενος χρόνος έως την ανταμοιβή: %4</translation>
+    </message>
+    <message>
+        <source>not staking</source>
+        <translation>χωρίς staking</translation>
+    </message>
+    <message>
+        <source>not staking (pays %1)</source>
+        <translation>χωρίς staking (πληρώνει %1)</translation>
+    </message>
+    <message>
+        <source>Not staking: too few peers</source>
+        <translation>Χωρίς staking: πολύ λίγοι ομότιμοι</translation>
+    </message>
+    <message>
+        <source>Not staking: still catching up with the chain</source>
+        <translation>Χωρίς staking: η αλυσίδα ακόμη συγχρονίζεται</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; has no mature coins</source>
+        <translation>Χωρίς staking: το &lt;b&gt;%1&lt;/b&gt; δεν έχει ώριμα νομίσματα</translation>
+    </message>
+    <message>
+        <source>Not staking: &lt;b&gt;%1&lt;/b&gt; is locked</source>
+        <translation>Χωρίς staking: το &lt;b&gt;%1&lt;/b&gt; είναι κλειδωμένο</translation>
+    </message>
+    <message>
+        <source>Not staking</source>
+        <translation>Χωρίς staking</translation>
+    </message>
+</context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -788,6 +1266,57 @@
         <source>(change)</source>
         <translation>(αλλαγή)</translation>
     </message>
+    <message>
+        <source>delegated to %1 for cold staking</source>
+        <translation>ανατέθηκε στο %1 για ψυχρό staking</translation>
+    </message>
+</context>
+<context>
+    <name>ComposeDialog</name>
+    <message>
+        <source>Write a letter</source>
+        <translation>Γράψτε μια επιστολή</translation>
+    </message>
+    <message>
+        <source>a name, a petname from your address book, or a roster key</source>
+        <translation>ένα όνομα, ένα παρατσούκλι από το βιβλίο διευθύνσεων ή ένα κλειδί μητρώου</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Προς</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Θέμα</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>Αποστολή</translation>
+    </message>
+    <message>
+        <source>Who is it for? A name, a petname or a roster key.</source>
+        <translation>Για ποιον είναι; Ένα όνομα, ένα παρατσούκλι ή ένα κλειδί μητρώου.</translation>
+    </message>
+    <message>
+        <source>The letter is %1 KB; the most a letter can be is %2 KB.</source>
+        <translation>Η επιστολή είναι %1 KB· μια επιστολή μπορεί να είναι το πολύ %2 KB.</translation>
+    </message>
+    <message>
+        <source>Sealing the letter and leaving it at the recipient&apos;s mailboxes, through three relays each. This takes a few seconds…</source>
+        <translation>Η επιστολή σφραγίζεται και αφήνεται στα γραμματοκιβώτια του παραλήπτη, κάθε φορά μέσω τριών αναμεταδοτών. Αυτό διαρκεί λίγα δευτερόλεπτα…</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Στάλθηκε</translation>
+    </message>
+    <message>
+        <source>The letter was left at %1 of the recipient&apos;s %2 mailboxes. One is enough for it to arrive.</source>
+        <translation>Η επιστολή αφέθηκε σε %1 από τα %2 γραμματοκιβώτια του παραλήπτη. Ένα αρκεί για να φτάσει.</translation>
+    </message>
+    <message>
+        <source>Not sent: %1</source>
+        <translation>Δεν στάλθηκε: %1</translation>
+    </message>
 </context>
 <context>
     <name>CreateWalletActivity</name>
@@ -842,7 +1371,202 @@
         <source>Create</source>
         <translation>Δημιουργία</translation>
     </message>
-    </context>
+    <message>
+        <source>Wallet</source>
+        <translation>Πορτοφόλι</translation>
+    </message>
+    <message>
+        <source>Advanced options</source>
+        <translation>Επιλογές για προχωρημένους</translation>
+    </message>
+    <message>
+        <source>Use descriptors for scriptPubKey management</source>
+        <translation>Χρήση περιγραφέων για διαχείριση του scriptPubKey</translation>
+    </message>
+    <message>
+        <source>Descriptor Wallet</source>
+        <translation>Πορτοφόλι περιγραφέων</translation>
+    </message>
+    <message>
+        <source>Compiled without sqlite support (required for descriptor wallets)</source>
+        <translation>Μεταγλωττίστηκε χωρίς υποστήριξη sqlite (απαιτείται για πορτοφόλια περιγραφέων)</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoveryPage</name>
+    <message>
+        <source>Discovery</source>
+        <translation>Ανακάλυψη</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
+        <translation>Οι ομότιμοι ανακοινώνονται στην αλυσίδα αντί σε διακομιστή, οπότε αυτή η λίστα είναι ίδια για όλους και κανείς δεν μπορεί να την επεξεργαστεί.</translation>
+    </message>
+    <message>
+        <source>Roster</source>
+        <translation>Μητρώο</translation>
+    </message>
+    <message>
+        <source>Your listing</source>
+        <translation>Η καταχώρισή σας</translation>
+    </message>
+    <message>
+        <source>Peers listed</source>
+        <translation>Καταχωρισμένοι ομότιμοι</translation>
+    </message>
+    <message>
+        <source>You are</source>
+        <translation>Είστε</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Αντιγραφή</translation>
+    </message>
+    <message>
+        <source>Publish your listing…</source>
+        <translation>Δημοσίευση της καταχώρισής σας…</translation>
+    </message>
+    <message>
+        <source>Identity</source>
+        <translation>Ταυτότητα</translation>
+    </message>
+    <message>
+        <source>Make one…</source>
+        <translation>Δημιουργία…</translation>
+    </message>
+    <message>
+        <source>An identity keeps this node&apos;s history - how long it has been listed - if its key ever has to change.</source>
+        <translation>Η ταυτότητα διατηρεί το ιστορικό αυτού του κόμβου, πόσο καιρό είναι καταχωρισμένος, αν ποτέ χρειαστεί να αλλάξει το κλειδί του.</translation>
+    </message>
+    <message>
+        <source>Find a peer or an address</source>
+        <translation>Εύρεση ομότιμου ή διεύθυνσης</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Το κλειδί αντιγράφηκε</translation>
+    </message>
+    <message>
+        <source>Address copied</source>
+        <translation>Η διεύθυνση αντιγράφηκε</translation>
+    </message>
+    <message>
+        <source>starting…</source>
+        <translation>εκκίνηση…</translation>
+    </message>
+    <message>
+        <source>Make an identity</source>
+        <translation>Δημιουργία ταυτότητας</translation>
+    </message>
+    <message>
+        <source>Pay the fee from</source>
+        <translation>Πληρωμή αμοιβής από</translation>
+    </message>
+    <message>
+        <source>An identity is a second key that stands behind this node&apos;s key. If this node&apos;s key is ever lost or stolen, a new key can be put under the same identity, and the node keeps how long it has been listed instead of starting again.
+
+You will be shown a recovery key once. Write it down: it is the only way to stop someone who steals the identity from moving it. Then a small transaction publishes the identity, and your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Η ταυτότητα είναι ένα δεύτερο κλειδί που βρίσκεται πίσω από το κλειδί αυτού του κόμβου. Αν το κλειδί αυτού του κόμβου χαθεί ή κλαπεί ποτέ, μπορεί να τοποθετηθεί νέο κλειδί υπό την ίδια ταυτότητα, και ο κόμβος διατηρεί πόσο καιρό είναι καταχωρισμένος αντί να ξεκινήσει από την αρχή.
+
+Θα σας εμφανιστεί ένα κλειδί ανάκτησης μία φορά. Σημειώστε το: είναι ο μόνος τρόπος να εμποδίσετε όποιον κλέψει την ταυτότητα να τη μετακινήσει. Έπειτα μια μικρή συναλλαγή δημοσιεύει την ταυτότητα και η επόμενη ανανέωση της καταχώρισής σας συνδέει σε αυτήν το κλειδί αυτού του κόμβου.</translation>
+    </message>
+    <message>
+        <source>Your relay published your listing in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Ο αναμεταδότης σας δημοσίευσε την καταχώρισή σας στη συναλλαγή %1. Μετράει μόλις επιβεβαιωθεί η συναλλαγή.</translation>
+    </message>
+    <message>
+        <source>Published in transaction %1. It counts once the transaction confirms.</source>
+        <translation>Δημοσιεύτηκε στη συναλλαγή %1. Μετράει μόλις επιβεβαιωθεί η συναλλαγή.</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>άγνωστο</translation>
+    </message>
+    <message>
+        <source>roster index off</source>
+        <translation>ευρετήριο μητρώου απενεργοποιημένο</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>μη καταχωρισμένος</translation>
+    </message>
+    <message>
+        <source>ends in %1</source>
+        <translation>λήγει σε %1</translation>
+    </message>
+    <message>
+        <source>Renew your listing…</source>
+        <translation>Ανανέωση της καταχώρισής σας…</translation>
+    </message>
+    <message>
+        <source>Renew in the last 3 days</source>
+        <translation>Ανανέωση τις τελευταίες 3 ημέρες</translation>
+    </message>
+    <message>
+        <source>Your listing ends in %1. Renewing opens three days before it does.</source>
+        <translation>Η καταχώρισή σας λήγει σε %1. Η ανανέωση είναι δυνατή από τρεις ημέρες πριν.</translation>
+    </message>
+    <message>
+        <source>listed, ends in %1</source>
+        <translation>καταχωρισμένος, λήγει σε %1</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>κανένα</translation>
+    </message>
+    <message>
+        <source>This node has no announcing key: %1</source>
+        <translation>Αυτός ο κόμβος δεν έχει κλειδί ανακοίνωσης: %1</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>απενεργοποιημένο</translation>
+    </message>
+    <message>
+        <source>The roster index is not running, so this node cannot see who is listed. Restart with -rosterindex to turn it on.</source>
+        <translation>Το ευρετήριο μητρώου δεν εκτελείται, οπότε αυτός ο κόμβος δεν μπορεί να δει ποιος είναι καταχωρισμένος. Επανεκκινήστε με -rosterindex για να το ενεργοποιήσετε.</translation>
+    </message>
+    <message>
+        <source>catching up (%1)</source>
+        <translation>συγχρονισμός (%1)</translation>
+    </message>
+    <message>
+        <source>%1 days old</source>
+        <translation>πριν από %1 ημέρες</translation>
+    </message>
+    <message>
+        <source>The newest block this node has is %1 days old, so peers revoked since then may still be listed here. The roster is still used to reach peers, but the overlay stops preferring long-listed relays until the chain catches up.</source>
+        <translation>Το νεότερο μπλοκ αυτού του κόμβου είναι %1 ημερών, οπότε ομότιμοι που ανακλήθηκαν από τότε μπορεί να εμφανίζονται ακόμη εδώ. Το μητρώο χρησιμοποιείται ακόμη για την προσέγγιση ομότιμων, αλλά το δίκτυο επικάλυψης παύει να προτιμά αναμεταδότες με μακρά καταχώριση μέχρι να συγχρονιστεί η αλυσίδα.</translation>
+    </message>
+    <message>
+        <source>up to date</source>
+        <translation>ενημερωμένο</translation>
+    </message>
+    <message>
+        <source>The roster index is not running</source>
+        <translation>Το ευρετήριο μητρώου δεν εκτελείται</translation>
+    </message>
+    <message>
+        <source>Your recovery key</source>
+        <translation>Το κλειδί ανάκτησής σας</translation>
+    </message>
+    <message>
+        <source>Write this down and keep it somewhere safe, away from this computer. It is shown only now and is not kept anywhere. Nobody can use it to spend coins; it can only stop a move of your identity you did not make.</source>
+        <translation>Σημειώστε το και φυλάξτε το σε ασφαλές μέρος, μακριά από αυτόν τον υπολογιστή. Εμφανίζεται μόνο τώρα και δεν αποθηκεύεται πουθενά. Δεν μπορεί να ξοδέψει νομίσματα· μπορεί μόνο να σταματήσει μια μετακίνηση της ταυτότητάς σας που δεν κάνατε εσείς.</translation>
+    </message>
+    <message>
+        <source>I have written it down</source>
+        <translation>Το σημείωσα</translation>
+    </message>
+    <message>
+        <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
+        <translation>Η ταυτότητά σας δημοσιεύτηκε στη συναλλαγή %1. Η επόμενη ανανέωση της καταχώρισής σας συνδέει σε αυτήν το κλειδί αυτού του κόμβου.</translation>
+    </message>
+</context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -878,16 +1602,16 @@
         <translation>Επεξεργασία διεύθυνσης αποστολής</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>Η διεύθυνση "%1" δεν είναι έγκυρη Bitcoin διεύθυνση.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Bitcoin address.</source>
+        <translation>Η διεύθυνση &quot;%1&quot; δεν είναι έγκυρη Bitcoin διεύθυνση.</translation>
     </message>
     <message>
-        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
-        <translation>Η διεύθυνση "%1"  υπάρχει ήδη ως διεύθυνσης λήψης με ετικέτα "%2" και γιαυτό τον λόγο δεν μπορεί να προστεθεί ως διεύθυνση αποστολής.</translation>
+        <source>Address &quot;%1&quot; already exists as a receiving address with label &quot;%2&quot; and so cannot be added as a sending address.</source>
+        <translation>Η διεύθυνση &quot;%1&quot;  υπάρχει ήδη ως διεύθυνσης λήψης με ετικέτα &quot;%2&quot; και γιαυτό τον λόγο δεν μπορεί να προστεθεί ως διεύθυνση αποστολής.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book with label "%2".</source>
-        <translation>Η διεύθυνση "%1" βρίσκεται ήδη στο βιβλίο διευθύνσεων με ετικέτα "%2".</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book with label &quot;%2&quot;.</source>
+        <translation>Η διεύθυνση &quot;%1&quot; βρίσκεται ήδη στο βιβλίο διευθύνσεων με ετικέτα &quot;%2&quot;.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -968,7 +1692,7 @@
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <translation type="vanished">Bitcoin</translation>
     </message>
     <message>
         <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
@@ -987,8 +1711,8 @@
         <translation>Το πορτοφόλι θα αποθηκευτεί επίσης σε αυτό το ευρετήριο</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>Σφάλμα: Ο καθορισμένος φάκελος δεδομένων "%1" δεν μπορεί να δημιουργηθεί.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
+        <translation>Σφάλμα: Ο καθορισμένος φάκελος δεδομένων &quot;%1&quot; δεν μπορεί να δημιουργηθεί.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -996,15 +1720,195 @@
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>%n GB ελεύθερου χώρου διαθέσιμα</numerusform><numerusform>%n GB ελεύθερου χώρου διαθέσιμα</numerusform></translation>
+        <translation>
+            <numerusform>%n GB ελεύθερου χώρου διαθέσιμα</numerusform>
+            <numerusform>%n GB ελεύθερου χώρου διαθέσιμα</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(από το %n GB που απαιτείται)</numerusform><numerusform>(από τα %n GB που απαιτούνται)</numerusform></translation>
+        <translation>
+            <numerusform>(από το %n GB που απαιτείται)</numerusform>
+            <numerusform>(από τα %n GB που απαιτούνται)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(%n GB needed for full chain)</source>
-        <translation><numerusform>(%n GB απαιτούνται για την πλήρη αλυσίδα)</numerusform><numerusform>(%n GB απαιτούνται για την πλήρη αλυσίδα)</numerusform></translation>
+        <translation>
+            <numerusform>(%n GB απαιτούνται για την πλήρη αλυσίδα)</numerusform>
+            <numerusform>(%n GB απαιτούνται για την πλήρη αλυσίδα)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>As this is the first time the program is launched, you can choose where %1 will store its data.</source>
+        <translation>Καθώς είναι η πρώτη φορά που εκκινείται το πρόγραμμα, μπορείτε να επιλέξετε πού θα αποθηκεύει τα δεδομένα του το %1.</translation>
+    </message>
+    <message>
+        <source>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</source>
+        <translation>Όταν πατήσετε OK, το %1 θα αρχίσει να κατεβάζει και να επεξεργάζεται ολόκληρη την αλυσίδα μπλοκ του %4 (%2GB), ξεκινώντας από τις πρώτες συναλλαγές το %3, όταν πρωτοξεκίνησε το %4.</translation>
+    </message>
+    <message>
+        <source>Bitcoin PoS</source>
+        <translation>Bitcoin PoS</translation>
+    </message>
+    <message>
+        <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
+        <translation>Απόρριψη μπλοκ μετά την επαλήθευση, εκτός από τα πιο πρόσφατα %1 GB (περικοπή)</translation>
+    </message>
+</context>
+<context>
+    <name>MailPage</name>
+    <message>
+        <source>Mail</source>
+        <translation>Αλληλογραφία</translation>
+    </message>
+    <message>
+        <source>Your address</source>
+        <translation>Η διεύθυνσή σας</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Αντιγραφή</translation>
+    </message>
+    <message>
+        <source>Your roster key. Anyone listed can write to you at it.</source>
+        <translation>Το κλειδί μητρώου σας. Οποιοσδήποτε είναι καταχωρισμένος μπορεί να σας γράψει σε αυτό.</translation>
+    </message>
+    <message>
+        <source>Mail travels over the overlay. Turn the overlay on under Settings and restart to send and receive mail.</source>
+        <translation>Η αλληλογραφία ταξιδεύει μέσω του δικτύου επικάλυψης. Ενεργοποιήστε το δίκτυο επικάλυψης στις Ρυθμίσεις και επανεκκινήστε για να στέλνετε και να λαμβάνετε αλληλογραφία.</translation>
+    </message>
+    <message>
+        <source>Write</source>
+        <translation>Σύνταξη</translation>
+    </message>
+    <message>
+        <source>Reply</source>
+        <translation>Απάντηση</translation>
+    </message>
+    <message>
+        <source>Collect now</source>
+        <translation>Παραλαβή τώρα</translation>
+    </message>
+    <message>
+        <source>Fetch new letters from your mailboxes now. This also happens every few minutes.</source>
+        <translation>Παραλάβετε τώρα νέες επιστολές από τα γραμματοκιβώτιά σας. Αυτό γίνεται επίσης κάθε λίγα λεπτά.</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Διαγραφή</translation>
+    </message>
+    <message>
+        <source>Inbox</source>
+        <translation>Εισερχόμενα</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Στάλθηκε</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>Από</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation>Θέμα</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Ημερομηνία</translation>
+    </message>
+    <message>
+        <source>Letters are sealed to the recipient&apos;s weekly mail key with secp256k1 and ML-KEM-768 together, your key and signature travel inside the seal, and every trip to a mailbox goes through three relays. Old mail keys are deleted, so a letter collected today cannot be opened later from this computer&apos;s keys.</source>
+        <translation>Οι επιστολές σφραγίζονται με το εβδομαδιαίο κλειδί αλληλογραφίας του παραλήπτη, με secp256k1 και ML-KEM-768 μαζί· το κλειδί και η υπογραφή σας ταξιδεύουν μέσα στη σφραγίδα, και κάθε διαδρομή προς ένα γραμματοκιβώτιο περνά από τρεις αναμεταδότες. Τα παλιά κλειδιά αλληλογραφίας διαγράφονται, οπότε μια επιστολή που παραλήφθηκε σήμερα δεν μπορεί να ανοιχτεί αργότερα με τα κλειδιά αυτού του υπολογιστή.</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Προς</translation>
+    </message>
+    <message>
+        <source>No relay is listed yet, so you have no mailboxes and nobody can write to you.</source>
+        <translation>Δεν υπάρχει ακόμη καταχωρισμένος αναμεταδότης, οπότε δεν έχετε γραμματοκιβώτια και κανείς δεν μπορεί να σας γράψει.</translation>
+    </message>
+    <message>
+        <source>%1 relays hold your mail; there will be %2 once the roster lists more.</source>
+        <translation>%1 αναμεταδότες κρατούν την αλληλογραφία σας· θα γίνουν %2 μόλις το μητρώο έχει περισσότερους.</translation>
+    </message>
+    <message>
+        <source>%1 relays chosen from your key hold your mail until you collect it.</source>
+        <translation>%1 αναμεταδότες που επιλέχθηκαν από το κλειδί σας κρατούν την αλληλογραφία σας μέχρι να την παραλάβετε.</translation>
+    </message>
+    <message>
+        <source>Mail key #%1, renewed weekly.</source>
+        <translation>Κλειδί αλληλογραφίας #%1, ανανεώνεται κάθε εβδομάδα.</translation>
+    </message>
+    <message>
+        <source>Last collected %1.</source>
+        <translation>Τελευταία παραλαβή %1.</translation>
+    </message>
+    <message>
+        <source>Not collected yet.</source>
+        <translation>Δεν έχει παραληφθεί ακόμη.</translation>
+    </message>
+    <message>
+        <source>1 new letter</source>
+        <translation>1 νέα επιστολή</translation>
+    </message>
+    <message>
+        <source>%1 new letters</source>
+        <translation>%1 νέες επιστολές</translation>
+    </message>
+    <message>
+        <source>, from %1 of %2 mailboxes.</source>
+        <translation>, από %1 από %2 γραμματοκιβώτια.</translation>
+    </message>
+    <message>
+        <source>(no subject)</source>
+        <translation>(χωρίς θέμα)</translation>
+    </message>
+    <message>
+        <source>Left at %1 of the recipient&apos;s mailboxes</source>
+        <translation>Αφέθηκε σε %1 από τα γραμματοκιβώτια του παραλήπτη</translation>
+    </message>
+    <message>
+        <source>From: %1</source>
+        <translation>Από: %1</translation>
+    </message>
+    <message>
+        <source>To: %1</source>
+        <translation>Προς: %1</translation>
+    </message>
+    <message>
+        <source>Sent %1, left at %2 of the recipient&apos;s mailboxes</source>
+        <translation>Στάλθηκε %1, αφέθηκε σε %2 από τα γραμματοκιβώτια του παραλήπτη</translation>
+    </message>
+    <message>
+        <source>Written %1, collected %2</source>
+        <translation>Γράφτηκε %1, παραλήφθηκε %2</translation>
+    </message>
+    <message>
+        <source>Select a letter to read it.</source>
+        <translation>Επιλέξτε μια επιστολή για να τη διαβάσετε.</translation>
+    </message>
+    <message>
+        <source>Collecting…</source>
+        <translation>Παραλαβή…</translation>
+    </message>
+    <message>
+        <source>Reaching your mailboxes through three relays each…</source>
+        <translation>Προσέγγιση των γραμματοκιβωτίων σας, το καθένα μέσω τριών αναμεταδοτών…</translation>
+    </message>
+    <message>
+        <source>Delete letter</source>
+        <translation>Διαγραφή επιστολής</translation>
+    </message>
+    <message>
+        <source>Delete this letter from this computer? Its copies at the mailboxes were already removed when it was collected, so it cannot be fetched again.</source>
+        <translation>Διαγραφή αυτής της επιστολής από αυτόν τον υπολογιστή; Τα αντίγραφά της στα γραμματοκιβώτια αφαιρέθηκαν ήδη κατά την παραλαβή, οπότε δεν μπορεί να ανακτηθεί ξανά.</translation>
     </message>
 </context>
 <context>
@@ -1014,7 +1918,7 @@
         <translation>Φόρμα</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
         <translation>Οι πρόσφατες συναλλαγές ενδέχεται να μην είναι ακόμα ορατές και επομένως η ισορροπία του πορτοφολιού σας μπορεί να είναι εσφαλμένη. Αυτές οι πληροφορίες θα είναι σωστές όταν ολοκληρωθεί το συγχρονισμό του πορτοφολιού σας με το δίκτυο Bitcoin, όπως περιγράφεται παρακάτω.</translation>
     </message>
     <message>
@@ -1064,6 +1968,409 @@
     <message>
         <source>Unknown. Syncing Headers (%1, %2%)...</source>
         <translation>Αγνωστος. Συγχρονισμός κεφαλίδων (%1, %2%)...</translation>
+    </message>
+</context>
+<context>
+    <name>NamesPage</name>
+    <message>
+        <source>Names</source>
+        <translation>Ονόματα</translation>
+    </message>
+    <message>
+        <source>A name points people to your roster key, so they can write to you - and pay you - by name instead of by key. Getting a free name and renewing it cost only the network fee; a name is renewed by hand. A name someone holds can be bought if they put it up for sale, for what they ask. Names under yours are free, and so are petnames: your own labels for people, kept on this computer.</source>
+        <translation>Ένα όνομα οδηγεί τους ανθρώπους στο κλειδί μητρώου σας, ώστε να μπορούν να σας γράφουν — και να σας πληρώνουν — με όνομα αντί για κλειδί. Η απόκτηση ενός ελεύθερου ονόματος και η ανανέωσή του κοστίζουν μόνο την αμοιβή δικτύου· ένα όνομα ανανεώνεται χειροκίνητα. Ένα όνομα που κατέχει κάποιος μπορεί να αγοραστεί αν το θέσει προς πώληση, στην τιμή που ζητά. Τα ονόματα κάτω από το δικό σας είναι δωρεάν, όπως και τα παρατσούκλια: οι δικές σας ετικέτες για ανθρώπους, αποθηκευμένες σε αυτόν τον υπολογιστή.</translation>
+    </message>
+    <message>
+        <source>Your names</source>
+        <translation>Τα ονόματά σας</translation>
+    </message>
+    <message>
+        <source>Pay from</source>
+        <translation>Πληρωμή από</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Όνομα</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Κατάσταση</translation>
+    </message>
+    <message>
+        <source>Ends</source>
+        <translation>Λήγει</translation>
+    </message>
+    <message>
+        <source>Subnames</source>
+        <translation>Υπο-ονόματα</translation>
+    </message>
+    <message>
+        <source>Get a name…</source>
+        <translation>Απόκτηση ονόματος…</translation>
+    </message>
+    <message>
+        <source>Renew…</source>
+        <translation>Ανανέωση…</translation>
+    </message>
+    <message>
+        <source>Add a subname…</source>
+        <translation>Προσθήκη υπο-ονόματος…</translation>
+    </message>
+    <message>
+        <source>Sell…</source>
+        <translation>Πώληση…</translation>
+    </message>
+    <message>
+        <source>Transfer…</source>
+        <translation>Μεταβίβαση…</translation>
+    </message>
+    <message>
+        <source>Take payments by name…</source>
+        <translation>Αποδοχή πληρωμών μέσω ονόματος…</translation>
+    </message>
+    <message>
+        <source>Look up</source>
+        <translation>Αναζήτηση</translation>
+    </message>
+    <message>
+        <source>a name, label.name or petname</source>
+        <translation>ένα όνομα, ετικέτα.όνομα ή παρατσούκλι</translation>
+    </message>
+    <message>
+        <source>Copy key</source>
+        <translation>Αντιγραφή κλειδιού</translation>
+    </message>
+    <message>
+        <source>Pay…</source>
+        <translation>Πληρωμή…</translation>
+    </message>
+    <message>
+        <source>Address book</source>
+        <translation>Βιβλίο διευθύνσεων</translation>
+    </message>
+    <message>
+        <source>Petname</source>
+        <translation>Παρατσούκλι</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>Κλειδί</translation>
+    </message>
+    <message>
+        <source>Add someone…</source>
+        <translation>Προσθήκη ατόμου…</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Αφαίρεση</translation>
+    </message>
+    <message>
+        <source>Key copied</source>
+        <translation>Το κλειδί αντιγράφηκε</translation>
+    </message>
+    <message>
+        <source>Working…</source>
+        <translation>Σε εξέλιξη…</translation>
+    </message>
+    <message>
+        <source>Take off sale</source>
+        <translation>Απόσυρση από την πώληση</translation>
+    </message>
+    <message>
+        <source>Take it off sale first.</source>
+        <translation>Αποσύρετέ το πρώτα από την πώληση.</translation>
+    </message>
+    <message>
+        <source>New payment key…</source>
+        <translation>Νέο κλειδί πληρωμών…</translation>
+    </message>
+    <message>
+        <source>Payments by name are on</source>
+        <translation>Οι πληρωμές μέσω ονόματος είναι ενεργές</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn on &quot;Index names&quot; under Settings and restart.</source>
+        <translation>Τα ονόματα χρειάζονται το ευρετήριο ονομάτων. Ενεργοποιήστε το &quot;Ευρετηρίαση ονομάτων&quot; στις Ρυθμίσεις και επανεκκινήστε.</translation>
+    </message>
+    <message>
+        <source>Names have not started on this network yet. When they start on mainnet, and how the first names are given out, is still to be decided. You can look names up and keep an address book meanwhile.</source>
+        <translation>Τα ονόματα δεν έχουν ξεκινήσει ακόμη σε αυτό το δίκτυο. Πότε θα ξεκινήσουν στο κύριο δίκτυο και πώς θα μοιραστούν τα πρώτα ονόματα δεν έχει αποφασιστεί ακόμη. Στο μεταξύ μπορείτε να αναζητάτε ονόματα και να διατηρείτε βιβλίο διευθύνσεων.</translation>
+    </message>
+    <message>
+        <source>%1 is %2</source>
+        <translation>Το %1 είναι %2</translation>
+    </message>
+    <message>
+        <source>from your address book</source>
+        <translation>από το βιβλίο διευθύνσεών σας</translation>
+    </message>
+    <message>
+        <source>registered name, held until block %1</source>
+        <translation>καταχωρισμένο όνομα, κατεχόμενο έως το μπλοκ %1</translation>
+    </message>
+    <message>
+        <source>settled</source>
+        <translation>σταθεροποιημένο</translation>
+    </message>
+    <message>
+        <source>changed %1 ago, not settled yet</source>
+        <translation>άλλαξε πριν από %1, δεν έχει σταθεροποιηθεί ακόμη</translation>
+    </message>
+    <message>
+        <source>takes payments by name</source>
+        <translation>δέχεται πληρωμές μέσω ονόματος</translation>
+    </message>
+    <message>
+        <source>For sale: its holder asks %1. Use Get a name to buy it.</source>
+        <translation>Προς πώληση: ο κάτοχος ζητά %1. Χρησιμοποιήστε την Απόκτηση ονόματος για να το αγοράσετε.</translation>
+    </message>
+    <message>
+        <source>Committed %1. The name is claimed by itself in %2 blocks (about %3) - keep BPS Relay running and the wallet unlocked until then.</source>
+        <translation>Δεσμεύτηκε το %1. Το όνομα θα διεκδικηθεί αυτόματα σε %2 μπλοκ (περίπου %3) - κρατήστε το BPS Relay σε λειτουργία και το πορτοφόλι ξεκλείδωτο μέχρι τότε.</translation>
+    </message>
+    <message>
+        <source>Buying %1: %2 paid to its holder. It is yours once the transaction confirms.</source>
+        <translation>Αγορά του %1: %2 καταβλήθηκαν στον κάτοχο. Θα είναι δικό σας μόλις επιβεβαιωθεί η συναλλαγή.</translation>
+    </message>
+    <message>
+        <source>%1 is going up for sale at %2. Anyone can buy it from the next block on, without this node being online; the price is paid to this wallet.</source>
+        <translation>Το %1 τίθεται προς πώληση για %2. Οποιοσδήποτε μπορεί να το αγοράσει από το επόμενο μπλοκ, χωρίς αυτός ο κόμβος να είναι συνδεδεμένος· η τιμή καταβάλλεται σε αυτό το πορτοφόλι.</translation>
+    </message>
+    <message>
+        <source>%1 is coming off sale. Nobody can buy it from now on.</source>
+        <translation>Το %1 αποσύρεται από την πώληση. Από τώρα κανείς δεν μπορεί να το αγοράσει.</translation>
+    </message>
+    <message>
+        <source>Renewed %1 until block %2, for the network fee alone.</source>
+        <translation>Το %1 ανανεώθηκε έως το μπλοκ %2, μόνο για την αμοιβή δικτύου.</translation>
+    </message>
+    <message>
+        <source>%1 is being transferred to %2. It is theirs once the transaction confirms.</source>
+        <translation>Το %1 μεταβιβάζεται στο %2. Θα είναι δικό τους μόλις επιβεβαιωθεί η συναλλαγή.</translation>
+    </message>
+    <message>
+        <source>%1 is set; it resolves once the transaction confirms.</source>
+        <translation>Το %1 ορίστηκε· θα επιλύεται μόλις επιβεβαιωθεί η συναλλαγή.</translation>
+    </message>
+    <message>
+        <source>Payments by name are being turned on. People can pay any name of yours about %1 after the transaction confirms; each payment shows in your wallet as &quot;Paid by name&quot;.</source>
+        <translation>Οι πληρωμές μέσω ονόματος ενεργοποιούνται. Οι άνθρωποι μπορούν να πληρώσουν οποιοδήποτε όνομά σας περίπου %1 μετά την επιβεβαίωση της συναλλαγής· κάθε πληρωμή εμφανίζεται στο πορτοφόλι σας ως &quot;Πληρωμή μέσω ονόματος&quot;.</translation>
+    </message>
+    <message>
+        <source>Paid %1 to %2, at an address used for this payment only.</source>
+        <translation>Πληρώθηκαν %1 στο %2, σε διεύθυνση που χρησιμοποιήθηκε μόνο για αυτή την πληρωμή.</translation>
+    </message>
+    <message>
+        <source>Pay</source>
+        <translation>Πληρωμή</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>σε %1</translation>
+    </message>
+    <message>
+        <source>ended %1 ago</source>
+        <translation>έληξε πριν από %1</translation>
+    </message>
+    <message>
+        <source>expired - renew within the month</source>
+        <translation>έληξε - ανανεώστε μέσα στον μήνα</translation>
+    </message>
+    <message>
+        <source>held</source>
+        <translation>κατεχόμενο</translation>
+    </message>
+    <message>
+        <source>selling - a purchase is confirming</source>
+        <translation>σε πώληση - μια αγορά επιβεβαιώνεται</translation>
+    </message>
+    <message>
+        <source>for sale at %1</source>
+        <translation>προς πώληση για %1</translation>
+    </message>
+    <message>
+        <source>for sale at %1 - not yet buyable</source>
+        <translation>προς πώληση για %1 - δεν αγοράζεται ακόμη</translation>
+    </message>
+    <message>
+        <source>not registered</source>
+        <translation>μη καταχωρισμένο</translation>
+    </message>
+    <message>
+        <source>registering</source>
+        <translation>σε καταχώριση</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Κάντε κλικ για αντιγραφή</translation>
+    </message>
+    <message>
+        <source>Get a name</source>
+        <translation>Απόκτηση ονόματος</translation>
+    </message>
+    <message>
+        <source>1 to 32 letters, digits or hyphens</source>
+        <translation>1 έως 32 γράμματα, ψηφία ή παύλες</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 έτος</translation>
+    </message>
+    <message>
+        <source>2 years</source>
+        <translation>2 έτη</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>Για</translation>
+    </message>
+    <message>
+        <source>Registering takes two steps: a commitment that hides the name, and about 20 minutes later the claim, which BPS Relay sends by itself. Nobody can take the name in between. Each costs only the network fee.</source>
+        <translation>Η καταχώριση γίνεται σε δύο βήματα: μια δέσμευση που κρύβει το όνομα, και περίπου 20 λεπτά αργότερα η διεκδίκηση, που το BPS Relay στέλνει μόνο του. Κανείς δεν μπορεί να πάρει το όνομα στο ενδιάμεσο. Κάθε βήμα κοστίζει μόνο την αμοιβή δικτύου.</translation>
+    </message>
+    <message>
+        <source>Buying is one transaction: it pays the holder and makes the name yours, all at once or not at all.</source>
+        <translation>Η αγορά είναι μία συναλλαγή: πληρώνει τον κάτοχο και κάνει το όνομα δικό σας, όλα μαζί ή καθόλου.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Καταχώριση</translation>
+    </message>
+    <message>
+        <source>A name is 1 to 32 plain letters a-z, digits or inner hyphens.</source>
+        <translation>Ένα όνομα αποτελείται από 1 έως 32 απλά γράμματα a-z, ψηφία ή εσωτερικές παύλες.</translation>
+    </message>
+    <message>
+        <source>%1, for %2, costs only the network fee. Checking whether it is free…</source>
+        <translation>Το %1, για %2, κοστίζει μόνο την αμοιβή δικτύου. Έλεγχος αν είναι ελεύθερο…</translation>
+    </message>
+    <message>
+        <source>one year</source>
+        <translation>ένα έτος</translation>
+    </message>
+    <message>
+        <source>two years</source>
+        <translation>δύο έτη</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale</source>
+        <translation>Απόσυρση του %1 από την πώληση</translation>
+    </message>
+    <message>
+        <source>Take %1 off sale? Nobody can buy it from then on, and once that confirms you can transfer it or put it up again.</source>
+        <translation>Να αποσυρθεί το %1 από την πώληση; Από τότε κανείς δεν μπορεί να το αγοράσει, και μόλις επιβεβαιωθεί μπορείτε να το μεταβιβάσετε ή να το θέσετε ξανά προς πώληση.</translation>
+    </message>
+    <message>
+        <source>Sell %1</source>
+        <translation>Πώληση %1</translation>
+    </message>
+    <message>
+        <source>Your price for %1, in BPS. Anyone can then buy it at once, even while BPS Relay is closed: they pay you this, in the same transaction that gives them the name. While it is for sale you cannot transfer it.</source>
+        <translation>Η τιμή σας για το %1, σε BPS. Τότε οποιοσδήποτε μπορεί να το αγοράσει αμέσως, ακόμη κι όταν το BPS Relay είναι κλειστό: σας πληρώνουν αυτό στην ίδια συναλλαγή που τους δίνει το όνομα. Όσο είναι προς πώληση δεν μπορείτε να το μεταβιβάσετε.</translation>
+    </message>
+    <message>
+        <source>&quot;%1&quot; is not an amount of BPS.</source>
+        <translation>Το &quot;%1&quot; δεν είναι ποσό σε BPS.</translation>
+    </message>
+    <message>
+        <source>Put %1 up for sale at %2? Two small transactions are sent: one sets aside the coin a buyer spends, the other publishes the sale.</source>
+        <translation>Να τεθεί το %1 προς πώληση για %2; Στέλνονται δύο μικρές συναλλαγές: η μία δεσμεύει το νόμισμα που ξοδεύει ο αγοραστής, η άλλη δημοσιεύει την πώληση.</translation>
+    </message>
+    <message>
+        <source>Renew %1</source>
+        <translation>Ανανέωση %1</translation>
+    </message>
+    <message>
+        <source>Extend %1 from when it ends now. It costs only the network fee. A name can be renewed at most two years ahead.</source>
+        <translation>Παράταση του %1 από τη λήξη του τώρα. Κοστίζει μόνο την αμοιβή δικτύου. Ένα όνομα μπορεί να ανανεωθεί το πολύ δύο χρόνια μπροστά.</translation>
+    </message>
+    <message>
+        <source>Transfer %1</source>
+        <translation>Μεταβίβαση %1</translation>
+    </message>
+    <message>
+        <source>Give %1 to (a roster key, a petname or a name):</source>
+        <translation>Δώστε το %1 σε (κλειδί μητρώου, παρατσούκλι ή όνομα):</translation>
+    </message>
+    <message>
+        <source>Give %1 to %2? Only its new holder can give it back.</source>
+        <translation>Να δοθεί το %1 στο %2; Μόνο ο νέος κάτοχος μπορεί να το επιστρέψει.</translation>
+    </message>
+    <message>
+        <source>Subname under %1</source>
+        <translation>Υπο-όνομα κάτω από το %1</translation>
+    </message>
+    <message>
+        <source>The part before .%1, for example alice for alice.%1:</source>
+        <translation>Το μέρος πριν από το .%1, για παράδειγμα alice για alice.%1:</translation>
+    </message>
+    <message>
+        <source>Who %1.%2 points to (a roster key, petname or name), or &quot;remove&quot;:</source>
+        <translation>Πού δείχνει το %1.%2 (κλειδί μητρώου, παρατσούκλι ή όνομα), ή &quot;remove&quot;:</translation>
+    </message>
+    <message>
+        <source>Looking up…</source>
+        <translation>Αναζήτηση…</translation>
+    </message>
+    <message>
+        <source>Add someone</source>
+        <translation>Προσθήκη ατόμου</translation>
+    </message>
+    <message>
+        <source>What you call them (only you see this):</source>
+        <translation>Πώς τους αποκαλείτε (το βλέπετε μόνο εσείς):</translation>
+    </message>
+    <message>
+        <source>Their roster key, or a name to remember who holds it now:</source>
+        <translation>Το κλειδί μητρώου τους, ή ένα όνομα για να θυμάστε ποιος το κατέχει τώρα:</translation>
+    </message>
+    <message>
+        <source>Payments by name are on. Move them to a fresh key from this wallet? Payments already made to the current key still arrive. Payers wait about %1 after the change before they pay again.</source>
+        <translation>Οι πληρωμές μέσω ονόματος είναι ενεργές. Να μεταφερθούν σε νέο κλειδί από αυτό το πορτοφόλι; Οι πληρωμές που έχουν ήδη γίνει στο τρέχον κλειδί εξακολουθούν να φτάνουν. Οι πληρωτές περιμένουν περίπου %1 μετά την αλλαγή πριν πληρώσουν ξανά.</translation>
+    </message>
+    <message>
+        <source>Let people pay you by name: any name or subname that points at this node&apos;s key, a petname they keep for you, or the key itself. Each payment goes to an address of its own that only this wallet can spend, and nobody watching can tell that you were paid, or that two payments went to the same person. It costs the network fee. People can pay about %1 after it confirms.</source>
+        <translation>Επιτρέψτε στους ανθρώπους να σας πληρώνουν με όνομα: οποιοδήποτε όνομα ή υπο-όνομα που δείχνει στο κλειδί αυτού του κόμβου, ένα παρατσούκλι που έχουν για εσάς, ή το ίδιο το κλειδί. Κάθε πληρωμή πηγαίνει σε δική της διεύθυνση που μόνο αυτό το πορτοφόλι μπορεί να ξοδέψει, και κανείς που παρακολουθεί δεν μπορεί να καταλάβει ότι πληρωθήκατε ή ότι δύο πληρωμές πήγαν στο ίδιο άτομο. Κοστίζει την αμοιβή δικτύου. Οι άνθρωποι μπορούν να σας πληρώσουν περίπου %1 μετά την επιβεβαίωση.</translation>
+    </message>
+    <message>
+        <source>Payments by name</source>
+        <translation>Πληρωμές μέσω ονόματος</translation>
+    </message>
+    <message>
+        <source>Pay %1</source>
+        <translation>Πληρωμή %1</translation>
+    </message>
+    <message>
+        <source>%1 does not take payments by name yet. Ask them to turn it on on their Names tab, or for an address.</source>
+        <translation>Το %1 δεν δέχεται ακόμη πληρωμές μέσω ονόματος. Ζητήστε τους να το ενεργοποιήσουν στην καρτέλα Ονόματα, ή ζητήστε μια διεύθυνση.</translation>
+    </message>
+    <message>
+        <source>%1 changed hands %2 ago.</source>
+        <translation>Το %1 άλλαξε κάτοχο πριν από %2.</translation>
+    </message>
+    <message>
+        <source>They set the key they are paid on %1 ago.</source>
+        <translation>Όρισαν το κλειδί στο οποίο πληρώνονται πριν από %1.</translation>
+    </message>
+    <message>
+        <source>in BPS</source>
+        <translation>σε BPS</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Ποσό</translation>
+    </message>
+    <message>
+        <source>The payment goes to an address used for it alone, which only %1 can spend; nobody else can tell who was paid. A payment cannot be taken back. The network fee is on top.</source>
+        <translation>Η πληρωμή πηγαίνει σε διεύθυνση που χρησιμοποιείται μόνο για αυτήν, την οποία μόνο το %1 μπορεί να ξοδέψει· κανείς άλλος δεν μπορεί να καταλάβει ποιος πληρώθηκε. Μια πληρωμή δεν μπορεί να ανακληθεί. Η αμοιβή δικτύου προστίθεται.</translation>
+    </message>
+    <message>
+        <source>If that was not them, the payment is lost. Waiting until it is %1 old is safer.</source>
+        <translation>Αν δεν ήταν αυτοί, η πληρωμή χάνεται. Είναι ασφαλέστερο να περιμένετε μέχρι να περάσει %1.</translation>
+    </message>
+    <message>
+        <source>Pay anyway</source>
+        <translation>Πληρωμή ούτως ή άλλως</translation>
     </message>
 </context>
 <context>
@@ -1336,7 +2643,7 @@
     </message>
     <message>
         <source>Configuration options</source>
-        <translation> 
+        <translation>&#xa0;
 Επιλογές διαμόρφωσης</translation>
     </message>
     <message>
@@ -1358,6 +2665,221 @@
     <message>
         <source>The supplied proxy address is invalid.</source>
         <translation>Δεν είναι έγκυρη η διεύθυνση διαμεσολαβητή</translation>
+    </message>
+    <message>
+        <source>Whether to show cold staker control features or not.</source>
+        <translation>Αν θα εμφανίζονται οι λειτουργίες ελέγχου ψυχρού staking.</translation>
+    </message>
+    <message>
+        <source>Enable cold s&amp;taker control features</source>
+        <translation>Ενεργοποίηση λειτουργιών ελέγχου ψυχρού s&amp;taking</translation>
+    </message>
+    <message>
+        <source>Connect to the Bitcoin network through a separate SOCKS5 proxy for Tor onion services.</source>
+        <translation>Σύνδεση στο δίκτυο Bitcoin μέσω ξεχωριστού διαμεσολαβητή SOCKS5 για υπηρεσίες onion του Tor.</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS&amp;5 proxy to reach peers via Tor onion services:</source>
+        <translation>Χρήση ξεχωριστού διαμεσολαβητή SOCKS&amp;5 για προσέγγιση ομότιμων μέσω υπηρεσιών onion του Tor:</translation>
+    </message>
+    <message>
+        <source>&amp;Third party transaction URLs</source>
+        <translation>&amp;URL συναλλαγών τρίτων</translation>
+    </message>
+</context>
+<context>
+    <name>OverlayPage</name>
+    <message>
+        <source>Overlay</source>
+        <translation>Δίκτυο επικάλυψης</translation>
+    </message>
+    <message>
+        <source>An encrypted layer of BPS&apos;s own, carrying traffic through other peers so that the far end never learns where you are.</source>
+        <translation>Ένα δικό του κρυπτογραφημένο στρώμα του BPS, που μεταφέρει την κίνηση μέσω άλλων ομότιμων ώστε η άλλη άκρη να μη μάθει ποτέ πού βρίσκεστε.</translation>
+    </message>
+    <message>
+        <source>asking…</source>
+        <translation>ερώτηση…</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Running</source>
+        <translation>Σε λειτουργία</translation>
+    </message>
+    <message>
+        <source>Listening on</source>
+        <translation>Ακρόαση σε</translation>
+    </message>
+    <message>
+        <source>Routes open</source>
+        <translation>Ανοιχτές διαδρομές</translation>
+    </message>
+    <message>
+        <source>Services meeting here</source>
+        <translation>Υπηρεσίες που συναντιούνται εδώ</translation>
+    </message>
+    <message>
+        <source>Relays available</source>
+        <translation>Διαθέσιμοι αναμεταδότες</translation>
+    </message>
+    <message>
+        <source>Today&apos;s round</source>
+        <translation>Ο σημερινός γύρος</translation>
+    </message>
+    <message>
+        <source>Your way in</source>
+        <translation>Η είσοδός σας</translation>
+    </message>
+    <message>
+        <source>The peers your traffic always enters through. They are kept rather than swapped: picking a new one each time would eventually hand a watcher a turn.</source>
+        <translation>Οι ομότιμοι μέσω των οποίων μπαίνει πάντα η κίνησή σας. Διατηρούνται αντί να εναλλάσσονται: η επιλογή νέου κάθε φορά θα έδινε τελικά σειρά σε έναν παρατηρητή.</translation>
+    </message>
+    <message>
+        <source>Where people can meet you</source>
+        <translation>Πού μπορούν να σας συναντήσουν</translation>
+    </message>
+    <message>
+        <source>Worked out from the roster, not looked up. Anyone trying to reach you does the same sum and gets the same answer, so there is nobody to ask and nobody who could answer differently. They change each day.</source>
+        <translation>Υπολογίζεται από το μητρώο, δεν αναζητείται. Όποιος προσπαθεί να σας προσεγγίσει κάνει τον ίδιο υπολογισμό και παίρνει την ίδια απάντηση, οπότε δεν υπάρχει κανείς να ρωτήσετε ούτε κανείς που θα μπορούσε να απαντήσει διαφορετικά. Αλλάζουν κάθε ημέρα.</translation>
+    </message>
+    <message>
+        <source>Heard on the radio</source>
+        <translation>Ακούστηκε στον ασύρματο</translation>
+    </message>
+    <message>
+        <source>What relaying pays</source>
+        <translation>Τι αποδίδει η αναμετάδοση</translation>
+    </message>
+    <message>
+        <source>Issued per day</source>
+        <translation>Εκδίδονται ανά ημέρα</translation>
+    </message>
+    <message>
+        <source>Relays</source>
+        <translation>Αναμεταδότες</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>Χρήστες</translation>
+    </message>
+    <message>
+        <source>Users per relay</source>
+        <translation>Χρήστες ανά αναμεταδότη</translation>
+    </message>
+    <message>
+        <source>Share per user</source>
+        <translation>Μερίδιο ανά χρήστη</translation>
+    </message>
+    <message>
+        <source>A relay pays the peers it lists from inside its own block rewards, so a user&apos;s share is one divided by how many users their relay carries — which is why taking a share of the network&apos;s users costs a share of the stake. How much of a reward a relay shares is its own choice and nothing enforces it: a relay that pays nothing produces a perfectly valid block. What makes it pay is that a relay with no users protects nobody, itself included.</source>
+        <translation>Ένας αναμεταδότης πληρώνει τους ομότιμους που καταχωρίζει από τις δικές του ανταμοιβές μπλοκ, οπότε το μερίδιο ενός χρήστη είναι ένα διά τον αριθμό των χρηστών του αναμεταδότη του — γι&apos; αυτό η απόκτηση μεριδίου των χρηστών του δικτύου κοστίζει μερίδιο του stake. Πόσο από μια ανταμοιβή μοιράζεται ένας αναμεταδότης είναι δική του επιλογή και τίποτα δεν το επιβάλλει: ένας αναμεταδότης που δεν πληρώνει τίποτα παράγει απολύτως έγκυρο μπλοκ. Αυτό που τον κάνει να πληρώνει είναι ότι ένας αναμεταδότης χωρίς χρήστες δεν προστατεύει κανέναν, ούτε τον εαυτό του.</translation>
+    </message>
+    <message>
+        <source>Not yet reviewed by anyone who did not write it, and it hides where you are rather than when you speak: someone watching both ends can still line up the timing. Treat it as unfinished.</source>
+        <translation>Δεν έχει ελεγχθεί ακόμη από κανέναν που δεν το έγραψε, και κρύβει πού βρίσκεστε, όχι πότε μιλάτε: όποιος παρακολουθεί και τις δύο άκρες μπορεί ακόμη να αντιστοιχίσει τους χρόνους. Θεωρήστε το ημιτελές.</translation>
+    </message>
+    <message>
+        <source>This node shares nothing. Set -relayshare to a percent, and take peers on with addrosteruser.</source>
+        <translation>Αυτός ο κόμβος δεν μοιράζεται τίποτα. Ορίστε το -relayshare σε ποσοστό και δεχτείτε ομότιμους με το addrosteruser.</translation>
+    </message>
+    <message>
+        <source>This node would share %1%, but %2.</source>
+        <translation>Αυτός ο κόμβος θα μοιραζόταν %1%, αλλά %2.</translation>
+    </message>
+    <message>
+        <source>This node shares %1% with %2 peer(s): the next block it stakes pays %3, %4 each.</source>
+        <translation>Αυτός ο κόμβος μοιράζεται %1% με %2 ομότιμο(-ους): το επόμενο μπλοκ που θα δημιουργήσει πληρώνει %3, %4 στον καθένα.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is not reporting. Start it from Settings, Radio, or run bps-rns-bridge.py yourself.</source>
+        <translation>Η γέφυρα Reticulum δεν αναφέρει κατάσταση. Ξεκινήστε τη από τις Ρυθμίσεις, Ασύρματος, ή εκτελέστε μόνοι σας το bps-rns-bridge.py.</translation>
+    </message>
+    <message>
+        <source>Listening. No BPS node heard on the radio yet; nodes announce themselves every half hour.</source>
+        <translation>Ακρόαση. Δεν έχει ακουστεί ακόμη κόμβος BPS στον ασύρματο· οι κόμβοι ανακοινώνονται κάθε μισή ώρα.</translation>
+    </message>
+    <message>
+        <source>Your traffic enters through a radio neighbour when one is a listed relay.</source>
+        <translation>Η κίνησή σας μπαίνει μέσω ενός γείτονα ασυρμάτου όταν κάποιος από αυτούς είναι καταχωρισμένος αναμεταδότης.</translation>
+    </message>
+    <message>
+        <source>Heard, but your traffic enters over the internet (Settings, Radio).</source>
+        <translation>Ακούστηκε, αλλά η κίνησή σας μπαίνει μέσω διαδικτύου (Ρυθμίσεις, Ασύρματος).</translation>
+    </message>
+    <message>
+        <source>1 hop</source>
+        <translation>1 άλμα</translation>
+    </message>
+    <message>
+        <source>%1 hops</source>
+        <translation>%1 άλματα</translation>
+    </message>
+    <message>
+        <source>hops unknown</source>
+        <translation>άγνωστα άλματα</translation>
+    </message>
+    <message>
+        <source>heard %1 ago</source>
+        <translation>ακούστηκε πριν από %1</translation>
+    </message>
+    <message>
+        <source>a relay</source>
+        <translation>ένας αναμεταδότης</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>ναι</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>όχι</translation>
+    </message>
+    <message>
+        <source>The overlay is switched off. This client turns it on by itself, so something has turned it back off, with -overlay=0 on the command line or in the configuration file.</source>
+        <translation>Το δίκτυο επικάλυψης είναι απενεργοποιημένο. Αυτό το πρόγραμμα το ενεργοποιεί μόνο του, οπότε κάτι το απενεργοποίησε ξανά, με -overlay=0 στη γραμμή εντολών ή στο αρχείο ρυθμίσεων.</translation>
+    </message>
+    <message>
+        <source>nothing while the overlay is off</source>
+        <translation>τίποτα όσο το δίκτυο επικάλυψης είναι απενεργοποιημένο</translation>
+    </message>
+    <message>
+        <source>overlay off</source>
+        <translation>δίκτυο επικάλυψης απενεργοποιημένο</translation>
+    </message>
+    <message>
+        <source>none yet</source>
+        <translation>κανένας ακόμη</translation>
+    </message>
+    <message>
+        <source>overlay on, no relays yet</source>
+        <translation>δίκτυο επικάλυψης ενεργό, χωρίς αναμεταδότες ακόμη</translation>
+    </message>
+    <message>
+        <source>overlay on, 1 relay</source>
+        <translation>δίκτυο επικάλυψης ενεργό, 1 αναμεταδότης</translation>
+    </message>
+    <message>
+        <source>overlay on, %1 relays</source>
+        <translation>δίκτυο επικάλυψης ενεργό, %1 αναμεταδότες</translation>
+    </message>
+    <message>
+        <source>none chosen yet</source>
+        <translation>δεν έχουν επιλεγεί ακόμη</translation>
+    </message>
+    <message>
+        <source>none — the roster has no relays to derive them from</source>
+        <translation>κανένα — το μητρώο δεν έχει αναμεταδότες από τους οποίους να προκύψουν</translation>
+    </message>
+    <message>
+        <source>overlay unknown</source>
+        <translation>δίκτυο επικάλυψης άγνωστο</translation>
+    </message>
+    <message>
+        <source>no relays yet</source>
+        <translation>δεν υπάρχουν ακόμη αναμεταδότες</translation>
     </message>
 </context>
 <context>
@@ -1434,7 +2956,35 @@
         <source>Current total balance in watch-only addresses</source>
         <translation>Το τρέχον συνολικό υπόλοιπο σε διευθύνσεις παρακολούθησης μόνο</translation>
     </message>
-    </context>
+    <message>
+        <source>Stake</source>
+        <translation>Stake</translation>
+    </message>
+    <message>
+        <source>Immature Stakes:</source>
+        <translation>Ανώριμα stakes:</translation>
+    </message>
+    <message>
+        <source>Immature Delegations</source>
+        <translation>Ανώριμες αναθέσεις</translation>
+    </message>
+    <message>
+        <source>Immature Delegations:</source>
+        <translation>Ανώριμες αναθέσεις:</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Ανατεθειμένα</translation>
+    </message>
+    <message>
+        <source>Delegated:</source>
+        <translation>Ανατεθειμένα:</translation>
+    </message>
+    <message>
+        <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
+        <translation>Η λειτουργία απορρήτου είναι ενεργή για την καρτέλα Επισκόπηση. Για να εμφανίσετε τις τιμές, αποεπιλέξτε το Ρυθμίσεις-&gt;Απόκρυψη τιμών.</translation>
+    </message>
+</context>
 <context>
     <name>PSBTOperationsDialog</name>
     <message>
@@ -1493,6 +3043,70 @@
         <source>Transaction status is unknown.</source>
         <translation>Η κατάσταση της συναλλαγής είναι άγνωστη.</translation>
     </message>
+    <message>
+        <source>Sign Tx</source>
+        <translation>Υπογραφή συναλλαγής</translation>
+    </message>
+    <message>
+        <source>Broadcast Tx</source>
+        <translation>Μετάδοση συναλλαγής</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Κλείσιμο</translation>
+    </message>
+    <message>
+        <source>Could not sign any more inputs.</source>
+        <translation>Δεν ήταν δυνατή η υπογραφή άλλων εισόδων.</translation>
+    </message>
+    <message>
+        <source>Signed %1 inputs, but more signatures are still required.</source>
+        <translation>Υπογράφηκαν %1 είσοδοι, αλλά χρειάζονται ακόμη υπογραφές.</translation>
+    </message>
+    <message>
+        <source>Signed transaction successfully. Transaction is ready to broadcast.</source>
+        <translation>Η συναλλαγή υπογράφηκε επιτυχώς. Η συναλλαγή είναι έτοιμη για μετάδοση.</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast successfully! Transaction ID: %1</source>
+        <translation>Η συναλλαγή μεταδόθηκε επιτυχώς! Αναγνωριστικό συναλλαγής: %1</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast failed: %1</source>
+        <translation>Η μετάδοση της συναλλαγής απέτυχε: %1</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation>Μερικώς υπογεγραμμένη συναλλαγή (δυαδική) (*.psbt)</translation>
+    </message>
+    <message>
+        <source>Unable to calculate transaction fee or total transaction amount.</source>
+        <translation>Δεν είναι δυνατός ο υπολογισμός της αμοιβής ή του συνολικού ποσού της συναλλαγής.</translation>
+    </message>
+    <message>
+        <source>Transaction has %1 unsigned inputs.</source>
+        <translation>Η συναλλαγή έχει %1 μη υπογεγραμμένες εισόδους.</translation>
+    </message>
+    <message>
+        <source>Transaction is missing some information about inputs.</source>
+        <translation>Λείπουν ορισμένες πληροφορίες για τις εισόδους της συναλλαγής.</translation>
+    </message>
+    <message>
+        <source>Transaction still needs signature(s).</source>
+        <translation>Η συναλλαγή χρειάζεται ακόμη υπογραφή(-ές).</translation>
+    </message>
+    <message>
+        <source>(But this wallet cannot sign transactions.)</source>
+        <translation>(Αλλά αυτό το πορτοφόλι δεν μπορεί να υπογράφει συναλλαγές.)</translation>
+    </message>
+    <message>
+        <source>(But this wallet does not have the right keys.)</source>
+        <translation>(Αλλά αυτό το πορτοφόλι δεν έχει τα σωστά κλειδιά.)</translation>
+    </message>
+    <message>
+        <source>Transaction is fully signed and ready for broadcast.</source>
+        <translation>Η συναλλαγή είναι πλήρως υπογεγραμμένη και έτοιμη για μετάδοση.</translation>
+    </message>
 </context>
 <context>
     <name>PaymentServer</name>
@@ -1509,15 +3123,15 @@
         <translation>URI χειριστής</translation>
     </message>
     <message>
-        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
-        <translation>'bitcoin: //' δεν είναι έγκυρο URI. Χρησιμοποιήστε το "bitcoin:" αντ 'αυτού.</translation>
+        <source>&apos;bitcoin://&apos; is not a valid URI. Use &apos;bitcoin:&apos; instead.</source>
+        <translation>&apos;bitcoin: //&apos; δεν είναι έγκυρο URI. Χρησιμοποιήστε το &quot;bitcoin:&quot; αντ &apos;αυτού.</translation>
     </message>
     <message>
         <source>Cannot process payment request because BIP70 is not supported.</source>
         <translation>Δεν είναι δυνατή η επεξεργασία της αίτησης πληρωμής, επειδή δεν υποστηρίζεται το BIP70.</translation>
     </message>
     <message>
-        <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
+        <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
         <translation>Λόγω εκτεταμένων αδυναμιών ασφαλείας στο BIP70 συνιστάται ανεπιφύλακτα να αγνοούνται οι οδηγίες του εμπόρου για την αλλαγή πορτοφολιών.</translation>
     </message>
     <message>
@@ -1565,6 +3179,161 @@
     </message>
 </context>
 <context>
+    <name>PublishDialog</name>
+    <message>
+        <source>Renew your listing</source>
+        <translation>Ανανέωση της καταχώρισής σας</translation>
+    </message>
+    <message>
+        <source>Publish your listing</source>
+        <translation>Δημοσίευση της καταχώρισής σας</translation>
+    </message>
+    <message>
+        <source>Renewing writes a fresh record to the chain. Until it confirms, the old one still counts.</source>
+        <translation>Η ανανέωση γράφει μια νέα εγγραφή στην αλυσίδα. Μέχρι να επιβεβαιωθεί, η παλιά εξακολουθεί να ισχύει.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
+        <translation>Αυτό γράφει στην αλυσίδα μια σύντομη εγγραφή που λέει ότι υπάρχετε και, προαιρετικά, πού θα σας βρουν.</translation>
+    </message>
+    <message>
+        <source>How should peers reach you?</source>
+        <translation>Πώς πρέπει να σας προσεγγίζουν οι ομότιμοι;</translation>
+    </message>
+    <message>
+        <source>Through the overlay — publish no address</source>
+        <translation>Μέσω του δικτύου επικάλυψης — χωρίς δημοσίευση διεύθυνσης</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
+        <translation>Η καταχώρισή σας λέει ποιος είστε και όχι πού λειτουργείτε. Οι ομότιμοι σας προσεγγίζουν αντί γι&apos; αυτό μέσω του δικτύου επικάλυψης, συναντώντας σας σε σημεία που υπολογίζουν και οι δύο πλευρές από το μητρώο. Αυτό ενεργοποιεί από προεπιλογή αυτό το πρόγραμμα.</translation>
+    </message>
+    <message>
+        <source>At an address I publish</source>
+        <translation>Σε μια διεύθυνση που δημοσιεύω</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Onion</source>
+        <translation>Onion</translation>
+    </message>
+    <message>
+        <source>I2P</source>
+        <translation>I2P</translation>
+    </message>
+    <message>
+        <source>cjdns</source>
+        <translation>cjdns</translation>
+    </message>
+    <message>
+        <source>address other peers can reach</source>
+        <translation>διεύθυνση στην οποία μπορούν να φτάσουν άλλοι ομότιμοι</translation>
+    </message>
+    <message>
+        <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
+        <translation>Οποιοσδήποτε μπορεί να τη δει και η αλυσίδα τη διατηρεί για πάντα. Μια διεύθυνση onion δημοσιεύει μια τοποθεσία που κανείς δεν μπορεί να συνδέσει με εσάς και λειτουργεί πίσω από NAT· μια διεύθυνση IP δεν κάνει τίποτα από τα δύο. Ένας κόμβος που δημοσιεύει διεύθυνση IP μπορεί να επιλεγεί ως αναμεταδότης από άλλους.</translation>
+    </message>
+    <message>
+        <source>Who pays the fee</source>
+        <translation>Ποιος πληρώνει την αμοιβή</translation>
+    </message>
+    <message>
+        <source>A month, then it needs renewing</source>
+        <translation>Ένας μήνας, μετά χρειάζεται ανανέωση</translation>
+    </message>
+    <message>
+        <source>A year, then it needs renewing</source>
+        <translation>Ένα έτος, μετά χρειάζεται ανανέωση</translation>
+    </message>
+    <message>
+        <source>How long it lasts</source>
+        <translation>Πόσο διαρκεί</translation>
+    </message>
+    <message>
+        <source>Renew</source>
+        <translation>Ανανέωση</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <translation>Δημοσίευση</translation>
+    </message>
+    <message>
+        <source>%1 — %2</source>
+        <translation>%1 — %2</translation>
+    </message>
+    <message>
+        <source>A relay pays — needs no coins</source>
+        <translation>Πληρώνει ένας αναμεταδότης — δεν χρειάζονται νομίσματα</translation>
+    </message>
+    <message>
+        <source>The overlay is off, so there is no relay to ask. Turn it on in Settings, or pay from a wallet.</source>
+        <translation>Το δίκτυο επικάλυψης είναι απενεργοποιημένο, οπότε δεν υπάρχει αναμεταδότης να ρωτηθεί. Ενεργοποιήστε το στις Ρυθμίσεις ή πληρώστε από ένα πορτοφόλι.</translation>
+    </message>
+    <message>
+        <source>No relay is listed in the roster yet, so there is nobody to ask. Pay from a wallet, or try again once a relay has listed itself.</source>
+        <translation>Δεν υπάρχει ακόμη αναμεταδότης στο μητρώο, οπότε δεν υπάρχει κανείς να ρωτηθεί. Πληρώστε από ένα πορτοφόλι ή δοκιμάστε ξανά όταν κάποιος αναμεταδότης καταχωριστεί.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Ο κόμβος σας υπογράφει την καταχώριση και τη στέλνει μέσω του δικτύου επικάλυψης στον αναμεταδότη από τον οποίο μπαίνει. Ένας αναμεταδότης που πληρώνει για καταχωρίσεις βάζει τη δική σας σε μπλοκ που δημιουργεί ο ίδιος, οπότε επιβεβαιώνεται ακόμη κι αν οι περισσότεροι κόμβοι δεν θα την προωθούσαν, και σας προσθέτει στους ομότιμους με τους οποίους μοιράζεται τις ανταμοιβές του. Αν αργότερα σταματήσει να πληρώνει, η καταχώρισή σας λήγει μέσα στον μήνα· μπορείτε πάντα να την ανανεώσετε μόνοι σας από πορτοφόλι με υπόλοιπο.</translation>
+    </message>
+    <message>
+        <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
+        <translation>Αυτός ο κόμβος δεν κάνει staking. Μια καταχώριση είναι μεγαλύτερη από όσο προωθούν οι παλαιότεροι κόμβοι, οπότε μέχρι να αναβαθμιστούν οι περισσότεροι stakers, επιβεβαιώνεται μόνο όταν τη συμπεριλάβει ένας staker με αυτή την έκδοση, κάτι που μπορεί να πάρει χρόνο. Με staking μπαίνει στο δικό σας επόμενο μπλοκ· ένας αναμεταδότης που πληρώνει τη βάζει στο δικό του.</translation>
+    </message>
+    <message>
+        <source>This wallet is unlocked for staking only. Paying asks for its passphrase, and the wallet locks again afterwards, which stops staking until you unlock it for staking again.</source>
+        <translation>Αυτό το πορτοφόλι είναι ξεκλείδωτο μόνο για staking. Η πληρωμή ζητά το συνθηματικό του και το πορτοφόλι κλειδώνει ξανά μετά, κάτι που σταματά το staking μέχρι να το ξεκλειδώσετε ξανά για staking.</translation>
+    </message>
+    <message>
+        <source>Paying asks for this wallet&apos;s passphrase.</source>
+        <translation>Η πληρωμή ζητά το συνθηματικό αυτού του πορτοφολιού.</translation>
+    </message>
+    <message>
+        <source>Enter an address, or choose not to publish one.</source>
+        <translation>Εισαγάγετε μια διεύθυνση ή επιλέξτε να μη δημοσιεύσετε καμία.</translation>
+    </message>
+    <message>
+        <source>Asking your relay to publish it… this can take up to half a minute.</source>
+        <translation>Ζητείται από τον αναμεταδότη σας να τη δημοσιεύσει… μπορεί να διαρκέσει έως μισό λεπτό.</translation>
+    </message>
+    <message>
+        <source>That wallet is no longer open.</source>
+        <translation>Αυτό το πορτοφόλι δεν είναι πλέον ανοιχτό.</translation>
+    </message>
+    <message>
+        <source>The wallet is still locked, so nothing was paid.</source>
+        <translation>Το πορτοφόλι είναι ακόμη κλειδωμένο, οπότε δεν πληρώθηκε τίποτα.</translation>
+    </message>
+    <message>
+        <source>Signing the record…</source>
+        <translation>Υπογραφή της εγγραφής…</translation>
+    </message>
+    <message>
+        <source>The node returned a record this client did not understand.</source>
+        <translation>Ο κόμβος επέστρεψε μια εγγραφή που αυτό το πρόγραμμα δεν κατάλαβε.</translation>
+    </message>
+    <message>
+        <source>Paying to publish it…</source>
+        <translation>Πληρωμή για δημοσίευση…</translation>
+    </message>
+    <message>
+        <source>The relay declined: %1</source>
+        <translation>Ο αναμεταδότης αρνήθηκε: %1</translation>
+    </message>
+    <message>
+        <source>No answer from the relay. %1</source>
+        <translation>Καμία απάντηση από τον αναμεταδότη. %1</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Amount</source>
@@ -1572,7 +3341,7 @@
     </message>
     <message>
         <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>Εισάγετε μια διεύθυνση Bitcoin (π.χ. %1)</translation>
+        <translation type="vanished">Εισάγετε μια διεύθυνση Bitcoin (π.χ. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1604,23 +3373,38 @@
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n δευτερόλεπτα</numerusform><numerusform>%n δευτερόλεπτα</numerusform></translation>
+        <translation>
+            <numerusform>%n δευτερόλεπτα</numerusform>
+            <numerusform>%n δευτερόλεπτα</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n λεπτά</numerusform><numerusform>%n λεπτά</numerusform></translation>
+        <translation>
+            <numerusform>%n λεπτά</numerusform>
+            <numerusform>%n λεπτά</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n ώρες</numerusform><numerusform>%n ώρες</numerusform></translation>
+        <translation>
+            <numerusform>%n ώρες</numerusform>
+            <numerusform>%n ώρες</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n ημέρες</numerusform><numerusform>%n ημέρες</numerusform></translation>
+        <translation>
+            <numerusform>%n ημέρες</numerusform>
+            <numerusform>%n ημέρες</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n εβδομάδες</numerusform><numerusform>%n εβδομάδες</numerusform></translation>
+        <translation>
+            <numerusform>%n εβδομάδες</numerusform>
+            <numerusform>%n εβδομάδες</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1628,7 +3412,10 @@
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n χρόνια</numerusform><numerusform>%n χρόνια</numerusform></translation>
+        <translation>
+            <numerusform>%n χρόνια</numerusform>
+            <numerusform>%n χρόνια</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1647,8 +3434,8 @@
         <translation>%1 GB</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>Σφάλμα: Ο καθορισμένος κατάλογος δεδομένων "%1" δεν υπάρχει.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>Σφάλμα: Ο καθορισμένος κατάλογος δεδομένων &quot;%1&quot; δεν υπάρχει.</translation>
     </message>
     <message>
         <source>Error: Cannot parse configuration file: %1.</source>
@@ -1659,12 +3446,64 @@
         <translation>Σφάλμα: %1</translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation> Το %1 δεν έφυγε ακόμα με ασφάλεια...</translation>
     </message>
     <message>
         <source>unknown</source>
         <translation>Άγνωστο</translation>
+    </message>
+    <message>
+        <source>Contact</source>
+        <translation>Επαφή</translation>
+    </message>
+    <message>
+        <source>Receiving</source>
+        <translation>Λήψη</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>Κρυφό</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Άγνωστο</translation>
+    </message>
+    <message>
+        <source>Error initializing settings: %1</source>
+        <translation>Σφάλμα κατά την αρχικοποίηση των ρυθμίσεων: %1</translation>
+    </message>
+    <message>
+        <source>Delegated</source>
+        <translation>Ανατεθειμένα</translation>
+    </message>
+    <message>
+        <source>%1 is held by someone, who has put it up for sale. They ask %2; the network fee is on top.</source>
+        <translation>Το %1 το κατέχει κάποιος που το έθεσε προς πώληση. Ζητά %2· η αμοιβή δικτύου προστίθεται.</translation>
+    </message>
+    <message>
+        <source>Buy</source>
+        <translation>Αγορά</translation>
+    </message>
+    <message>
+        <source>Checking whether it is free…</source>
+        <translation>Έλεγχος αν είναι ελεύθερο…</translation>
+    </message>
+    <message>
+        <source>It is free.</source>
+        <translation>Είναι ελεύθερο.</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Καταχώριση</translation>
+    </message>
+    <message>
+        <source>not built yet</source>
+        <translation>δεν έχει υλοποιηθεί ακόμη</translation>
+    </message>
+    <message>
+        <source>Enter a BitcoinPoS address (e.g. %1)</source>
+        <translation>Εισαγάγετε μια διεύθυνση BitcoinPoS (π.χ. %1)</translation>
     </message>
 </context>
 <context>
@@ -1729,8 +3568,8 @@
         <translation>Κατάλογος των Μπλοκς</translation>
     </message>
     <message>
-        <source>To specify a non-default location of the blocks directory use the '%1' option.</source>
-        <translation>Για να καθορίσετε μια μη προεπιλεγμένη θέση του καταλόγου μπλοκ, χρησιμοποιήστε την επιλογή '%1'.</translation>
+        <source>To specify a non-default location of the blocks directory use the &apos;%1&apos; option.</source>
+        <translation>Για να καθορίσετε μια μη προεπιλεγμένη θέση του καταλόγου μπλοκ, χρησιμοποιήστε την επιλογή &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -1981,9 +3820,9 @@
         <translation>Εκτέλεση εντολής χωρίς πορτοφόλι</translation>
     </message>
     <message>
-        <source>Executing command using "%1" wallet</source>
-        <translation> 
-Εκτελέστε εντολή χρησιμοποιώντας το πορτοφόλι "%1"</translation>
+        <source>Executing command using &quot;%1&quot; wallet</source>
+        <translation>&#xa0;
+Εκτελέστε εντολή χρησιμοποιώντας το πορτοφόλι &quot;%1&quot;</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -2008,6 +3847,49 @@
     <message>
         <source>Unknown</source>
         <translation>Άγνωστο(α)</translation>
+    </message>
+    <message>
+        <source>To specify a non-default location of the data directory use the &apos;%1&apos; option.</source>
+        <translation>Για να ορίσετε μη προεπιλεγμένη θέση για τον κατάλογο δεδομένων, χρησιμοποιήστε την επιλογή &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Did you mean:</source>
+        <translation>Μήπως εννοούσατε:</translation>
+    </message>
+    <message>
+        <source>Not sure of a command? Type what you want in plain words, such as %1, and pick a suggestion. Suggestions are worked out on this computer; nothing you type is sent anywhere.</source>
+        <translation>Δεν είστε σίγουροι για μια εντολή; Γράψτε με απλά λόγια τι θέλετε, όπως %1, και επιλέξτε μια πρόταση. Οι προτάσεις υπολογίζονται σε αυτόν τον υπολογιστή· τίποτα από όσα γράφετε δεν στέλνεται πουθενά.</translation>
+    </message>
+</context>
+<context>
+    <name>RadioBridge</name>
+    <message>
+        <source>Radio is off.</source>
+        <translation>Ο ασύρματος είναι απενεργοποιημένος.</translation>
+    </message>
+    <message>
+        <source>Radio is on; start the Reticulum bridge yourself (contrib/reticulum/bps-rns-bridge.py).</source>
+        <translation>Ο ασύρματος είναι ενεργός· ξεκινήστε μόνοι σας τη γέφυρα Reticulum (contrib/reticulum/bps-rns-bridge.py).</translation>
+    </message>
+    <message>
+        <source>bps-rns-bridge.py is not beside BPS Relay, so the bridge cannot be started.</source>
+        <translation>Το bps-rns-bridge.py δεν βρίσκεται δίπλα στο BPS Relay, οπότε η γέφυρα δεν μπορεί να ξεκινήσει.</translation>
+    </message>
+    <message>
+        <source>Python could not be started as &quot;%1&quot;. Install Python, or set the command under Settings, Radio.</source>
+        <translation>Δεν ήταν δυνατή η εκκίνηση της Python ως &quot;%1&quot;. Εγκαταστήστε την Python ή ορίστε την εντολή στις Ρυθμίσεις, Ασύρματος.</translation>
+    </message>
+    <message>
+        <source>Reticulum is not installed. Install it with: pip install rns</source>
+        <translation>Το Reticulum δεν είναι εγκατεστημένο. Εγκαταστήστε το με: pip install rns</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge stopped (status %1); see radio/bridge.log.</source>
+        <translation>Η γέφυρα Reticulum σταμάτησε (κατάσταση %1)· δείτε το radio/bridge.log.</translation>
+    </message>
+    <message>
+        <source>The Reticulum bridge is starting.</source>
+        <translation>Η γέφυρα Reticulum ξεκινά.</translation>
     </message>
 </context>
 <context>
@@ -2061,12 +3943,12 @@
         <translation>Καθαρισμός</translation>
     </message>
     <message>
-        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
-        <translation>Οι εγγενείς διευθύνσεις αλληλογραφίας (aka Bech32 ή BIP-173) μειώνουν αργότερα τις αμοιβές συναλλαγών σας και προσφέρουν καλύτερη προστασία από τυπογραφικά λάθη, αλλά τα παλιά πορτοφόλια δεν τα υποστηρίζουν. Όταν δεν έχει επιλεγεί, θα δημιουργηθεί μια διεύθυνση συμβατή με παλιότερα πορτοφόλια.</translation>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don&apos;t support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation type="vanished">Οι εγγενείς διευθύνσεις αλληλογραφίας (aka Bech32 ή BIP-173) μειώνουν αργότερα τις αμοιβές συναλλαγών σας και προσφέρουν καλύτερη προστασία από τυπογραφικά λάθη, αλλά τα παλιά πορτοφόλια δεν τα υποστηρίζουν. Όταν δεν έχει επιλεγεί, θα δημιουργηθεί μια διεύθυνση συμβατή με παλιότερα πορτοφόλια.</translation>
     </message>
     <message>
         <source>Generate native segwit (Bech32) address</source>
-        <translation>Δημιουργήστε τη διεύθυνση native segwit (Bech32)</translation>
+        <translation type="vanished">Δημιουργήστε τη διεύθυνση native segwit (Bech32)</translation>
     </message>
     <message>
         <source>Requested payments history</source>
@@ -2108,7 +3990,19 @@
         <source>Could not unlock wallet.</source>
         <translation>Δεν είναι δυνατό το ξεκλείδωμα του πορτοφολιού.</translation>
     </message>
-    </context>
+    <message>
+        <source>(none)</source>
+        <translation>(κανένα)</translation>
+    </message>
+    <message>
+        <source>No staking address is set for this wallet, so there is nothing to delegate to. Set one on the Stake page, under Delegate -&gt; Automatic delegation, and this address type will work.</source>
+        <translation>Δεν έχει οριστεί διεύθυνση staking για αυτό το πορτοφόλι, οπότε δεν υπάρχει πού να γίνει ανάθεση. Ορίστε μία στη σελίδα Stake, στο Ανάθεση -&gt; Αυτόματη ανάθεση, και αυτός ο τύπος διεύθυνσης θα λειτουργήσει.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Δεν ήταν δυνατή η δημιουργία νέας διεύθυνσης %1</translation>
+    </message>
+</context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
@@ -2151,6 +4045,10 @@
         <source>Payment information</source>
         <translation>Πληροφορίες πληρωμής</translation>
     </message>
+    <message>
+        <source>Label:</source>
+        <translation>Ετικέτα:</translation>
+    </message>
 </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -2181,6 +4079,99 @@
     <message>
         <source>Requested</source>
         <translation>Ζητείται</translation>
+    </message>
+</context>
+<context>
+    <name>RosterModel</name>
+    <message>
+        <source>Peer</source>
+        <translation>Ομότιμος</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Διεύθυνση</translation>
+    </message>
+    <message>
+        <source>Listed</source>
+        <translation>Καταχωρισμένος</translation>
+    </message>
+    <message>
+        <source>Listing ends</source>
+        <translation>Η καταχώριση λήγει</translation>
+    </message>
+    <message>
+        <source>Listed for</source>
+        <translation>Καταχωρισμένος για</translation>
+    </message>
+    <message>
+        <source>Click to copy</source>
+        <translation>Κάντε κλικ για αντιγραφή</translation>
+    </message>
+    <message>
+        <source>This peer is listed but publishes no address. It can still be
+reached over the overlay, which is the point of allowing it.</source>
+        <translation>Αυτός ο ομότιμος είναι καταχωρισμένος αλλά δεν δημοσιεύει διεύθυνση. Μπορεί
+ακόμη να προσεγγιστεί μέσω του δικτύου επικάλυψης, και γι&apos; αυτό επιτρέπεται.</translation>
+    </message>
+    <message>
+        <source>one address published</source>
+        <translation>δημοσιεύτηκε μία διεύθυνση</translation>
+    </message>
+    <message>
+        <source>%1 addresses published</source>
+        <translation>%1 διευθύνσεις δημοσιευμένες</translation>
+    </message>
+    <message>
+        <source>Confirmed in block %1</source>
+        <translation>Επιβεβαιώθηκε στο μπλοκ %1</translation>
+    </message>
+    <message>
+        <source>Stops counting at block %1</source>
+        <translation>Παύει να μετράει στο μπλοκ %1</translation>
+    </message>
+    <message>
+        <source>No history before this listing.</source>
+        <translation>Δεν υπάρχει ιστορικό πριν από αυτή την καταχώριση.</translation>
+    </message>
+    <message>
+        <source>Listed without a break since block %1.</source>
+        <translation>Καταχωρισμένος χωρίς διακοπή από το μπλοκ %1.</translation>
+    </message>
+    <message>
+        <source>Too recent to count yet.</source>
+        <translation>Πολύ πρόσφατο για να μετράει ακόμη.</translation>
+    </message>
+    <message>
+        <source>Not run under an identity.</source>
+        <translation>Δεν λειτουργεί υπό ταυτότητα.</translation>
+    </message>
+    <message>
+        <source>Run under identity %1, which keeps its age if it changes keys.</source>
+        <translation>Λειτουργεί υπό την ταυτότητα %1, η οποία διατηρεί την ηλικία της αν αλλάξει κλειδιά.</translation>
+    </message>
+    <message>
+        <source>no address published</source>
+        <translation>δεν δημοσιεύτηκε διεύθυνση</translation>
+    </message>
+    <message>
+        <source>just now</source>
+        <translation>μόλις τώρα</translation>
+    </message>
+    <message>
+        <source>%1 ago</source>
+        <translation>πριν από %1</translation>
+    </message>
+    <message>
+        <source>expired</source>
+        <translation>έληξε</translation>
+    </message>
+    <message>
+        <source>in %1</source>
+        <translation>σε %1</translation>
+    </message>
+    <message>
+        <source>new</source>
+        <translation>νέο</translation>
     </message>
 </context>
 <context>
@@ -2251,16 +4242,16 @@
     </message>
     <message>
         <source>Warning: Fee estimation is currently not possible.</source>
-        <translation> 
+        <translation>&#xa0;
 Προειδοποίηση: Προς το παρόν δεν είναι δυνατή η εκτίμηση των εξόδων..</translation>
     </message>
     <message>
-        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction&apos;s virtual size.
 
-Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satoshis per kB&quot; for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
         <translation>Καθορίστε μια προσαρμοσμένη χρέωση ανά kB (1.000 bytes) του εικονικού μεγέθους της συναλλαγής.
 
-Σημείωση: Δεδομένου ότι η χρέωση υπολογίζεται ανά βάση, η αμοιβή "100 satoshis ανά kB" για ένα μέγεθος συναλλαγής 500 bytes (το μισό του 1 kB) θα αποφέρει τέλος μόνο 50 satoshis.</translation>
+Σημείωση: Δεδομένου ότι η χρέωση υπολογίζεται ανά βάση, η αμοιβή &quot;100 satoshis ανά kB&quot; για ένα μέγεθος συναλλαγής 500 bytes (το μισό του 1 kB) θα αποφέρει τέλος μόνο 50 satoshis.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2319,7 +4310,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Ενεργοποίηση Αντικατάστασης-Aπό-Έξοδα</translation>
     </message>
     <message>
-        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction&apos;s fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
         <translation>Με την υπηρεσία αντικατάστασης-πληρωμής (BIP-125) μπορείτε να αυξήσετε το τέλος μιας συναλλαγής μετά την αποστολή. Χωρίς αυτό, μπορεί να συνιστάται υψηλότερη αμοιβή για την αντιστάθμιση του αυξημένου κινδύνου καθυστέρησης της συναλλαγής.</translation>
     </message>
     <message>
@@ -2375,12 +4366,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Δη&amp;μιουργία Ανυπόγραφου</translation>
     </message>
     <message>
-        <source> from wallet '%1'</source>
-        <translation>από πορτοφόλι '%1'</translation>
+        <source> from wallet &apos;%1&apos;</source>
+        <translation>από πορτοφόλι &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>%1 to '%2'</source>
-        <translation>%1 προς το '%2'</translation>
+        <source>%1 to &apos;%2&apos;</source>
+        <translation>%1 προς το &apos;%2&apos;</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -2416,7 +4407,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message>
         <source>Not signalling Replace-By-Fee, BIP-125.</source>
-        <translation> 
+        <translation>&#xa0;
 Δεν σηματοδοτεί την Aντικατάσταση-Aπό-Έξοδο, BIP-125.</translation>
     </message>
     <message>
@@ -2424,8 +4415,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Συνολικό Ποσό</translation>
     </message>
     <message>
-        <source>To review recipient list click "Show Details..."</source>
-        <translation>Για να ελέγξετε τη λίστα παραληπτών, κάντε κλικ στην επιλογή "Εμφάνιση Λεπτομερειών..."</translation>
+        <source>To review recipient list click &quot;Show Details...&quot;</source>
+        <translation>Για να ελέγξετε τη λίστα παραληπτών, κάντε κλικ στην επιλογή &quot;Εμφάνιση Λεπτομερειών...&quot;</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -2477,7 +4468,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Εκτιμάται η έναρξη επιβεβαίωσης εντός %n μπλοκ.</numerusform><numerusform>Εκτιμάται η έναρξη επιβεβαίωσης εντός %n μπλοκ.</numerusform></translation>
+        <translation>
+            <numerusform>Εκτιμάται η έναρξη επιβεβαίωσης εντός %n μπλοκ.</numerusform>
+            <numerusform>Εκτιμάται η έναρξη επιβεβαίωσης εντός %n μπλοκ.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Warning: Invalid Bitcoin address</source>
@@ -2498,6 +4492,62 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>(no label)</source>
         <translation>(χωρίς ετικέτα)</translation>
+    </message>
+    <message>
+        <source>Paste or load a list of payments instead of adding them one at a time</source>
+        <translation>Επικολλήστε ή φορτώστε μια λίστα πληρωμών αντί να τις προσθέτετε μία μία</translation>
+    </message>
+    <message>
+        <source>&amp;Batch...</source>
+        <translation>&amp;Μαζικά...</translation>
+    </message>
+    <message>
+        <source>When calculating the available balance, take into account delegations also. If unchecked, the available balance will reflect only the coins currently in the wallet.</source>
+        <translation>Κατά τον υπολογισμό του διαθέσιμου υπολοίπου, να λαμβάνονται υπόψη και οι αναθέσεις. Αν δεν επιλεγεί, το διαθέσιμο υπόλοιπο θα δείχνει μόνο τα νομίσματα που βρίσκονται τώρα στο πορτοφόλι.</translation>
+    </message>
+    <message>
+        <source>I&amp;nclude delegations</source>
+        <translation>&amp;Συμπερίληψη αναθέσεων</translation>
+    </message>
+    <message>
+        <source>Creates a Partially Signed Bitcoin Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>Δημιουργεί μια μερικώς υπογεγραμμένη συναλλαγή Bitcoin (PSBT) για χρήση π.χ. με ένα πορτοφόλι %1 εκτός σύνδεσης ή ένα πορτοφόλι υλικού συμβατό με PSBT.</translation>
+    </message>
+    <message>
+        <source>Please, review your transaction proposal. This will produce a Partially Signed Bitcoin Transaction (PSBT) which you can save or copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>Ελέγξτε την πρόταση συναλλαγής σας. Θα δημιουργηθεί μια μερικώς υπογεγραμμένη συναλλαγή Bitcoin (PSBT), την οποία μπορείτε να αποθηκεύσετε ή να αντιγράψετε και μετά να υπογράψετε π.χ. με ένα πορτοφόλι %1 εκτός σύνδεσης ή ένα πορτοφόλι υλικού συμβατό με PSBT.</translation>
+    </message>
+    <message>
+        <source>Cold Staking not enabled</source>
+        <translation>Το ψυχρό staking δεν είναι ενεργοποιημένο</translation>
+    </message>
+    <message>
+        <source>Cold staking is enabled at block %1</source>
+        <translation>Το ψυχρό staking ενεργοποιείται στο μπλοκ %1</translation>
+    </message>
+    <message>
+        <source>Create Unsigned</source>
+        <translation>Δημιουργία ανυπόγραφης</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary) (*.psbt)</source>
+        <translation>Μερικώς υπογεγραμμένη συναλλαγή (δυαδική) (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT saved</source>
+        <translation>Το PSBT αποθηκεύτηκε</translation>
+    </message>
+    <message>
+        <source>This wallet stakes its own coins, so they are all delegated.</source>
+        <translation>Αυτό το πορτοφόλι κάνει staking με τα δικά του νομίσματα, οπότε είναι όλα ανατεθειμένα.</translation>
+    </message>
+    <message>
+        <source>The provided owner address is not present in this wallet. WARNING: Only the owner of the key to owner address will be allowed to spend these coins after the delegation.</source>
+        <translation>Η διεύθυνση κατόχου που δόθηκε δεν υπάρχει σε αυτό το πορτοφόλι. ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Μετά την ανάθεση μόνο ο κάτοχος του κλειδιού της διεύθυνσης κατόχου θα μπορεί να ξοδέψει αυτά τα νομίσματα.</translation>
+    </message>
+    <message>
+        <source>The provided staker address is present in this wallet. You can already stake the coins, there is no need to delegate them to yourself.</source>
+        <translation>Η διεύθυνση staker που δόθηκε υπάρχει σε αυτό το πορτοφόλι. Μπορείτε ήδη να κάνετε staking με τα νομίσματα, δεν χρειάζεται να τα αναθέσετε στον εαυτό σας.</translation>
     </message>
 </context>
 <context>
@@ -2578,6 +4628,356 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>Memo:</source>
         <translation>Σημείωση:</translation>
     </message>
+    <message>
+        <source>&amp;Owner Address:</source>
+        <translation>Διεύθυνση &amp;κατόχου:</translation>
+    </message>
+    <message>
+        <source>The BitcoinPoS owner address</source>
+        <translation>Η διεύθυνση κατόχου BitcoinPoS</translation>
+    </message>
+    <message>
+        <source>S&amp;ubtract fee from amount</source>
+        <translation>Α&amp;φαίρεση αμοιβής από το ποσό</translation>
+    </message>
+</context>
+<context>
+    <name>ServerPage</name>
+    <message>
+        <source>Server</source>
+        <translation>Διακομιστής</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Τι προσφέρει αυτός ο κόμβος σε άλλους. Η αναμετάδοση και η διατήρηση αλληλογραφίας λειτουργούν ήδη· η φιλοξενία έρχεται και, όπως όλα εδώ, εντοπίζεται με τον ίδιο τρόπο όπως οι ομότιμοι — μέσω του μητρώου. Τα ονόματα έχουν δική τους σελίδα.</translation>
+    </message>
+    <message>
+        <source>Hosting</source>
+        <translation>Φιλοξενία</translation>
+    </message>
+    <message>
+        <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
+        <translation>Ένας ιστότοπος ή υπηρεσία που προσφέρεται από αυτόν τον κόμβο, εντοπίζεται από το κλειδί ή το όνομά του και προσεγγίζεται μέσω του δικτύου επικάλυψης, ώστε ο οικοδεσπότης να μη δημοσιεύει ποτέ πού λειτουργεί. Το κομμάτι της συνάντησης υπάρχει: μια υπηρεσία καταχωρίζεται σε σημεία συνάντησης που υπολογίζουν και οι δύο πλευρές από το μητρώο. Η προσφορά σελίδων και εφαρμογών μέσω αυτού δεν έχει υλοποιηθεί ακόμη.</translation>
+    </message>
+    <message>
+        <source>Relay</source>
+        <translation>Αναμεταδότης</translation>
+    </message>
+    <message>
+        <source>Carry other peers&apos; overlay traffic, pay for the monthly listings of the peers that use this node, and share part of each block it stakes with them. A relay puts the listings it pays for into blocks it stakes itself, which is how they confirm while most nodes still refuse to pass records on — so a relay has to be staking.</source>
+        <translation>Μεταφορά της κίνησης επικάλυψης άλλων ομότιμων, πληρωμή των μηνιαίων καταχωρίσεων των ομότιμων που χρησιμοποιούν αυτόν τον κόμβο, και μοιρασιά με αυτούς μέρους κάθε μπλοκ που δημιουργεί. Ένας αναμεταδότης βάζει τις καταχωρίσεις που πληρώνει σε μπλοκ που δημιουργεί ο ίδιος, κι έτσι επιβεβαιώνονται ενώ οι περισσότεροι κόμβοι ακόμη αρνούνται να προωθήσουν εγγραφές — άρα ένας αναμεταδότης πρέπει να κάνει staking.</translation>
+    </message>
+    <message>
+        <source>—</source>
+        <translation>—</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Peers listed here</source>
+        <translation>Ομότιμοι καταχωρισμένοι εδώ</translation>
+    </message>
+    <message>
+        <source>Next block it stakes</source>
+        <translation>Επόμενο μπλοκ που θα δημιουργήσει</translation>
+    </message>
+    <message>
+        <source>Pay to list peers that ask through the overlay</source>
+        <translation>Πληρωμή για καταχώριση ομότιμων που το ζητούν μέσω του δικτύου επικάλυψης</translation>
+    </message>
+    <message>
+        <source>A peer with no coins can ask this node to publish its monthly listing. This node pays the fee, stakes it into a block, and adds the peer to those it shares rewards with. Off by default, because it spends this node&apos;s coins.</source>
+        <translation>Ένας ομότιμος χωρίς νομίσματα μπορεί να ζητήσει από αυτόν τον κόμβο να δημοσιεύσει τη μηνιαία καταχώρισή του. Αυτός ο κόμβος πληρώνει την αμοιβή, τη βάζει σε μπλοκ και προσθέτει τον ομότιμο σε όσους μοιράζεται ανταμοιβές. Απενεργοποιημένο από προεπιλογή, επειδή ξοδεύει νομίσματα αυτού του κόμβου.</translation>
+    </message>
+    <message>
+        <source>Peers past this number are turned away. Peers already listed here can still renew.</source>
+        <translation>Ομότιμοι πέρα από αυτόν τον αριθμό απορρίπτονται. Ομότιμοι ήδη καταχωρισμένοι εδώ μπορούν ακόμη να ανανεώνουν.</translation>
+    </message>
+    <message>
+        <source>Most peers to keep listed</source>
+        <translation>Μέγιστος αριθμός καταχωρισμένων ομότιμων</translation>
+    </message>
+    <message>
+        <source>the only wallet open</source>
+        <translation>το μόνο ανοιχτό πορτοφόλι</translation>
+    </message>
+    <message>
+        <source>Which wallet pays the fees. With several open and none named here, requests are declined rather than paid from a guess. Staking can happen in any wallet on this node.</source>
+        <translation>Ποιο πορτοφόλι πληρώνει τις αμοιβές. Με πολλά ανοιχτά και κανένα ορισμένο εδώ, τα αιτήματα απορρίπτονται αντί να πληρωθούν στην τύχη. Το staking μπορεί να γίνεται σε οποιοδήποτε πορτοφόλι σε αυτόν τον κόμβο.</translation>
+    </message>
+    <message>
+        <source>Pay fees from wallet</source>
+        <translation>Πληρωμή αμοιβών από πορτοφόλι</translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation> %</translation>
+    </message>
+    <message>
+        <source>Part of every block this node stakes from its own coins, split equally among the peers it lists. 0 shares nothing.</source>
+        <translation>Μέρος κάθε μπλοκ που δημιουργεί αυτός ο κόμβος με τα δικά του νομίσματα, μοιρασμένο εξίσου στους ομότιμους που καταχωρίζει. 0 δεν μοιράζει τίποτα.</translation>
+    </message>
+    <message>
+        <source>Share of each staked block</source>
+        <translation>Μερίδιο κάθε μπλοκ που δημιουργείται</translation>
+    </message>
+    <message>
+        <source>Mailbox</source>
+        <translation>Γραμματοκιβώτιο</translation>
+    </message>
+    <message>
+        <source>Hold sealed mail for the people the roster makes this node a mailbox for, until they collect it. Which relays hold whose mail is worked out from the roster, so nobody assigns it. Senders and owners reach this node through three relays, so it never learns where they are; letters are sealed, so it cannot read them or tell who wrote them. Letters are dropped after two weeks, and only listed people are served.</source>
+        <translation>Διατήρηση σφραγισμένης αλληλογραφίας για όσους το μητρώο κάνει αυτόν τον κόμβο γραμματοκιβώτιό τους, μέχρι να την παραλάβουν. Ποιοι αναμεταδότες κρατούν την αλληλογραφία ποιου υπολογίζεται από το μητρώο, οπότε κανείς δεν το αναθέτει. Αποστολείς και κάτοχοι φτάνουν σε αυτόν τον κόμβο μέσω τριών αναμεταδοτών, οπότε δεν μαθαίνει ποτέ πού βρίσκονται· οι επιστολές είναι σφραγισμένες, οπότε δεν μπορεί να τις διαβάσει ούτε να μάθει ποιος τις έγραψε. Οι επιστολές διαγράφονται μετά από δύο εβδομάδες και εξυπηρετούνται μόνο καταχωρισμένα άτομα.</translation>
+    </message>
+    <message>
+        <source>Holding</source>
+        <translation>Διατηρούνται</translation>
+    </message>
+    <message>
+        <source>Mail keys held for senders</source>
+        <translation>Κλειδιά αλληλογραφίας που διατηρούνται για αποστολείς</translation>
+    </message>
+    <message>
+        <source>Hold mail for the people the roster assigns to this node</source>
+        <translation>Διατήρηση αλληλογραφίας για όσους το μητρώο αναθέτει σε αυτόν τον κόμβο</translation>
+    </message>
+    <message>
+        <source>On by default wherever the overlay runs: a relay that refuses leaves the people it was chosen for with one mailbox fewer.</source>
+        <translation>Ενεργό από προεπιλογή όπου λειτουργεί το δίκτυο επικάλυψης: ένας αναμεταδότης που αρνείται αφήνει όσους επιλέχθηκε να εξυπηρετεί με ένα γραμματοκιβώτιο λιγότερο.</translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <source>When this is full, new letters are refused until old ones are collected or dropped. No one person can use more than 8 MiB of it.</source>
+        <translation>Όταν γεμίσει, οι νέες επιστολές απορρίπτονται μέχρι να παραληφθούν ή να διαγραφούν οι παλιές. Κανένα άτομο δεν μπορεί να χρησιμοποιήσει πάνω από 8 MiB.</translation>
+    </message>
+    <message>
+        <source>Disk it may use</source>
+        <translation>Χώρος στον δίσκο που μπορεί να χρησιμοποιήσει</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Αποθηκεύτηκε. Αυτά διαβάζονται κατά την εκκίνηση του κόμβου, οπότε επανεκκινήστε το πρόγραμμα για να ισχύσει η αλλαγή.</translation>
+    </message>
+    <message>
+        <source>no wallet open</source>
+        <translation>κανένα ανοιχτό πορτοφόλι</translation>
+    </message>
+    <message>
+        <source>no — a relay that is not staking turns listing requests down</source>
+        <translation>όχι — ένας αναμεταδότης που δεν κάνει staking απορρίπτει αιτήματα καταχώρισης</translation>
+    </message>
+    <message>
+        <source>yes, in %1</source>
+        <translation>ναι, σε %1</translation>
+    </message>
+    <message>
+        <source>not paying for listings</source>
+        <translation>δεν πληρώνει για καταχωρίσεις</translation>
+    </message>
+    <message>
+        <source>paying, but not staking</source>
+        <translation>πληρώνει, αλλά δεν κάνει staking</translation>
+    </message>
+    <message>
+        <source>running</source>
+        <translation>σε λειτουργία</translation>
+    </message>
+    <message>
+        <source>this build has no wallet</source>
+        <translation>αυτή η έκδοση δεν έχει πορτοφόλι</translation>
+    </message>
+    <message>
+        <source>needs a wallet</source>
+        <translation>χρειάζεται πορτοφόλι</translation>
+    </message>
+    <message>
+        <source>off</source>
+        <translation>ανενεργό</translation>
+    </message>
+    <message>
+        <source>needs the overlay</source>
+        <translation>χρειάζεται το δίκτυο επικάλυψης</translation>
+    </message>
+    <message>
+        <source>nothing — not holding mail</source>
+        <translation>τίποτα — δεν διατηρεί αλληλογραφία</translation>
+    </message>
+    <message>
+        <source>no letters</source>
+        <translation>καμία επιστολή</translation>
+    </message>
+    <message>
+        <source>1 letter</source>
+        <translation>1 γράμμα</translation>
+    </message>
+    <message>
+        <source>%1 letters</source>
+        <translation>%1 γράμματα</translation>
+    </message>
+    <message>
+        <source>1 person</source>
+        <translation>1 άτομο</translation>
+    </message>
+    <message>
+        <source>%1 people</source>
+        <translation>%1 άτομα</translation>
+    </message>
+    <message>
+        <source>%1 KiB</source>
+        <translation>%1 KiB</translation>
+    </message>
+    <message>
+        <source>%1 MiB</source>
+        <translation>%1 MiB</translation>
+    </message>
+    <message>
+        <source>nothing at the moment, room for %1 MiB</source>
+        <translation>τίποτα προς το παρόν, χώρος για %1 MiB</translation>
+    </message>
+    <message>
+        <source>%1 for %2, %3 of %4 MiB</source>
+        <translation>%1 για %2, %3 από %4 MiB</translation>
+    </message>
+    <message>
+        <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
+        <translation>μοιράζεται %1%: %2 %4 συνολικά, %3 %4 σε κάθε ομότιμο</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>Ρυθμίσεις</translation>
+    </message>
+    <message>
+        <source>What this client does that the wallet client does not, and the language. Everything else — proxy, ports, pruning — is the same question in both, and is asked in one place.</source>
+        <translation>Τι κάνει αυτό το πρόγραμμα που δεν κάνει το πρόγραμμα πορτοφολιού, και η γλώσσα. Όλα τα άλλα — διαμεσολαβητής, θύρες, περικοπή — είναι η ίδια ερώτηση και στα δύο και ρωτιούνται σε ένα σημείο.</translation>
+    </message>
+    <message>
+        <source>Discovery</source>
+        <translation>Ανακάλυψη</translation>
+    </message>
+    <message>
+        <source>Keep an index of the roster</source>
+        <translation>Διατήρηση ευρετηρίου του μητρώου</translation>
+    </message>
+    <message>
+        <source>Without it this node can publish but cannot see who else is listed.</source>
+        <translation>Χωρίς αυτό ο κόμβος μπορεί να δημοσιεύει αλλά δεν μπορεί να δει ποιος άλλος είναι καταχωρισμένος.</translation>
+    </message>
+    <message>
+        <source>Index names</source>
+        <translation>Ευρετηρίαση ονομάτων</translation>
+    </message>
+    <message>
+        <source>Needed to look names up, send mail to them and register your own.</source>
+        <translation>Απαιτείται για αναζήτηση ονομάτων, αποστολή αλληλογραφίας σε αυτά και καταχώριση του δικού σας.</translation>
+    </message>
+    <message>
+        <source>Try to connect to peers found in the roster</source>
+        <translation>Απόπειρα σύνδεσης με ομότιμους από το μητρώο</translation>
+    </message>
+    <message>
+        <source>Hands roster addresses to the address manager, alongside the usual seeds and gossip. Turning it off leaves the roster a list this node reads but never acts on.</source>
+        <translation>Δίνει διευθύνσεις από το μητρώο στη διαχείριση διευθύνσεων, μαζί με τους συνήθεις κόμβους εκκίνησης και την ανταλλαγή διευθύνσεων. Αν απενεργοποιηθεί, το μητρώο γίνεται μια λίστα που αυτός ο κόμβος διαβάζει αλλά δεν χρησιμοποιεί ποτέ.</translation>
+    </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Δίκτυο επικάλυψης</translation>
+    </message>
+    <message>
+        <source>Run the overlay</source>
+        <translation>Εκτέλεση του δικτύου επικάλυψης</translation>
+    </message>
+    <message>
+        <source>On by default in this client, off in the node and in the wallet client. Its handshake has not been reviewed by anyone who did not write it.</source>
+        <translation>Ενεργό από προεπιλογή σε αυτό το πρόγραμμα, ανενεργό στον κόμβο και στο πρόγραμμα πορτοφολιού. Η χειραψία του δεν έχει ελεγχθεί ακόμη από κανέναν που δεν την έγραψε.</translation>
+    </message>
+    <message>
+        <source>The overlay speaks UDP on its own port. The peer-to-peer network is separate and stays on TCP.</source>
+        <translation>Το δίκτυο επικάλυψης χρησιμοποιεί UDP στη δική του θύρα. Το ομότιμο δίκτυο είναι ξεχωριστό και παραμένει σε TCP.</translation>
+    </message>
+    <message>
+        <source>Listen on port</source>
+        <translation>Ακρόαση στη θύρα</translation>
+    </message>
+    <message>
+        <source>Radio</source>
+        <translation>Ασύρματος</translation>
+    </message>
+    <message>
+        <source>Carry the overlay over radio too, through Reticulum</source>
+        <translation>Μεταφορά του δικτύου επικάλυψης και μέσω ασυρμάτου, με το Reticulum</translation>
+    </message>
+    <message>
+        <source>LoRa through an RNode, packet radio, serial links: whatever Reticulum is set up to use. Needs the overlay.</source>
+        <translation>LoRa μέσω RNode, πακετικός ασύρματος, σειριακές συνδέσεις: ό,τι έχει ρυθμιστεί να χρησιμοποιεί το Reticulum. Χρειάζεται το δίκτυο επικάλυψης.</translation>
+    </message>
+    <message>
+        <source>Enter the overlay through radio neighbours, so mail works without the internet</source>
+        <translation>Είσοδος στο δίκτυο επικάλυψης μέσω γειτόνων ασυρμάτου, ώστε η αλληλογραφία να λειτουργεί χωρίς διαδίκτυο</translation>
+    </message>
+    <message>
+        <source>When a BPS node heard on the radio is a listed relay, your mail and listing requests go through it. A radio link is much slower than the internet.</source>
+        <translation>Όταν ένας κόμβος BPS που ακούγεται στον ασύρματο είναι καταχωρισμένος αναμεταδότης, η αλληλογραφία και τα αιτήματα καταχώρισής σας περνούν από αυτόν. Μια ασύρματη ζεύξη είναι πολύ πιο αργή από το διαδίκτυο.</translation>
+    </message>
+    <message>
+        <source>Start the Reticulum bridge with BPS Relay</source>
+        <translation>Εκκίνηση της γέφυρας Reticulum μαζί με το BPS Relay</translation>
+    </message>
+    <message>
+        <source>Runs bps-rns-bridge.py beside the node. Leave it off if you run the bridge yourself.</source>
+        <translation>Εκτελεί το bps-rns-bridge.py δίπλα στον κόμβο. Αφήστε το απενεργοποιημένο αν εκτελείτε μόνοι σας τη γέφυρα.</translation>
+    </message>
+    <message>
+        <source>Python command</source>
+        <translation>Εντολή Python</translation>
+    </message>
+    <message>
+        <source>Reticulum is not part of BPS and has its own licence. Install it with %1, and set up your radio in Reticulum&apos;s own configuration (~/.reticulum/config). Ham radio bands do not allow encrypted traffic, so use licence-free bands such as LoRa&apos;s.</source>
+        <translation>Το Reticulum δεν είναι μέρος του BPS και έχει δική του άδεια. Εγκαταστήστε το με %1 και ρυθμίστε τον ασύρματό σας στη δική του ρύθμιση του Reticulum (~/.reticulum/config). Οι ερασιτεχνικές ζώνες δεν επιτρέπουν κρυπτογραφημένη κίνηση, οπότε χρησιμοποιήστε ζώνες χωρίς άδεια, όπως αυτές του LoRa.</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>Εμφάνιση</translation>
+    </message>
+    <message>
+        <source>Show amounts in</source>
+        <translation>Εμφάνιση ποσών σε</translation>
+    </message>
+    <message>
+        <source>The computer&apos;s language</source>
+        <translation>Η γλώσσα του υπολογιστή</translation>
+    </message>
+    <message>
+        <source>Takes effect when BPS Relay starts again. Texts the node itself sends, such as error messages from commands, stay in English.</source>
+        <translation>Ισχύει όταν το BPS Relay ξεκινήσει ξανά. Τα κείμενα που στέλνει ο ίδιος ο κόμβος, όπως μηνύματα σφάλματος εντολών, παραμένουν στα αγγλικά.</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Γλώσσα</translation>
+    </message>
+    <message>
+        <source>Network, proxy and other core settings…</source>
+        <translation>Δίκτυο, διαμεσολαβητής και άλλες βασικές ρυθμίσεις…</translation>
+    </message>
+    <message>
+        <source>Saved. The language changes when BPS Relay starts again.</source>
+        <translation>Αποθηκεύτηκε. Η γλώσσα αλλάζει όταν το BPS Relay ξεκινήσει ξανά.</translation>
+    </message>
+    <message>
+        <source>Saved. These are read when the node starts, so restart the client for the change to take effect.</source>
+        <translation>Αποθηκεύτηκε. Αυτά διαβάζονται κατά την εκκίνηση του κόμβου, οπότε επανεκκινήστε το πρόγραμμα για να ισχύσει η αλλαγή.</translation>
+    </message>
+    <message>
+        <source>The node is still starting; core settings are not available yet.</source>
+        <translation>Ο κόμβος ακόμη ξεκινά· οι βασικές ρυθμίσεις δεν είναι ακόμη διαθέσιμες.</translation>
+    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
@@ -2602,7 +5002,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message>
         <source>You can sign messages/agreements with your addresses to prove you can receive bitcoins sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>Μπορείτε να υπογράψετε μηνύματα/συμφωνίες με τις διευθύνσεις σας για να αποδείξετε ότι μπορείτε να λάβετε τα bitcoins που τους αποστέλλονται. Προσέξτε να μην υπογράψετε τίποτα ασαφές ή τυχαίο, καθώς οι επιθέσεις ηλεκτρονικού "ψαρέματος" ενδέχεται να σας εξαπατήσουν να υπογράψετε την ταυτότητά σας σε αυτούς. Υπογράψτε μόνο πλήρως λεπτομερείς δηλώσεις που συμφωνείτε.</translation>
+        <translation>Μπορείτε να υπογράψετε μηνύματα/συμφωνίες με τις διευθύνσεις σας για να αποδείξετε ότι μπορείτε να λάβετε τα bitcoins που τους αποστέλλονται. Προσέξτε να μην υπογράψετε τίποτα ασαφές ή τυχαίο, καθώς οι επιθέσεις ηλεκτρονικού &quot;ψαρέματος&quot; ενδέχεται να σας εξαπατήσουν να υπογράψετε την ταυτότητά σας σε αυτούς. Υπογράψτε μόνο πλήρως λεπτομερείς δηλώσεις που συμφωνείτε.</translation>
     </message>
     <message>
         <source>The Bitcoin address to sign the message with</source>
@@ -2657,7 +5057,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>&amp;Επιβεβαίωση Mηνύματος</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
         <translation>Εισαγάγετε τη διεύθυνση του παραλήπτη, το μήνυμα (βεβαιωθείτε ότι αντιγράφετε σωστά τα διαλείμματα γραμμής, τα κενά, τις καρτέλες κλπ.) Και την υπογραφή παρακάτω για να επαληθεύσετε το μήνυμα. Προσέξτε να μην διαβάσετε περισσότερα στην υπογραφή από ό,τι είναι στο ίδιο το υπογεγραμμένο μήνυμα, για να αποφύγετε να εξαπατήσετε από μια επίθεση στον άνθρωπο στη μέση. Σημειώστε ότι αυτό αποδεικνύει μόνο ότι η υπογραφή συμβαλλόμενο μέρος λαμβάνει με τη διεύθυνση, δεν μπορεί να αποδειχθεί αποστολή οποιασδήποτε συναλλαγής!</translation>
     </message>
     <message>
@@ -2685,8 +5085,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Επαναφορά όλων των πεδίων επαλήθευσης μηνύματος</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>Κάντε κλικ στην επιλογή "Υπογραφή μηνύματος" για να δημιουργήσετε υπογραφή</translation>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>Κάντε κλικ στην επιλογή &quot;Υπογραφή μηνύματος&quot; για να δημιουργήσετε υπογραφή</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2742,6 +5142,209 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
 </context>
 <context>
+    <name>StakePage</name>
+    <message>
+        <source>Form</source>
+        <translation>Φόρμα</translation>
+    </message>
+    <message>
+        <source>&amp;Stake</source>
+        <translation>&amp;Staking</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation>Το τρέχον διαθέσιμο υπόλοιπό σας</translation>
+    </message>
+    <message>
+        <source>Staking assets that this wallet owns</source>
+        <translation>Στοιχεία σε staking που ανήκουν σε αυτό το πορτοφόλι</translation>
+    </message>
+    <message>
+        <source>Staking assets from delegations</source>
+        <translation>Στοιχεία σε staking από αναθέσεις</translation>
+    </message>
+    <message>
+        <source>Immature:</source>
+        <translation>Ανώριμα:</translation>
+    </message>
+    <message>
+        <source>Your immature balance</source>
+        <translation>Το ανώριμο υπόλοιπό σας</translation>
+    </message>
+    <message>
+        <source>Staking assets</source>
+        <translation>Στοιχεία σε staking</translation>
+    </message>
+    <message>
+        <source>Stake:</source>
+        <translation>Stake:</translation>
+    </message>
+    <message>
+        <source>0.000&#x2009;000&#x2009;00 BPS</source>
+        <translation>0.000 000 00 BPS</translation>
+    </message>
+    <message>
+        <source>Staking</source>
+        <translation>Staking</translation>
+    </message>
+    <message>
+        <source>Block height:</source>
+        <translation>Ύψος μπλοκ:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Block reward:</source>
+        <translation>Ανταμοιβή μπλοκ:</translation>
+    </message>
+    <message>
+        <source>6.25 BPS/Block</source>
+        <translation>6.25 BPS/μπλοκ</translation>
+    </message>
+    <message>
+        <source>Network weight:</source>
+        <translation>Βάρος δικτύου:</translation>
+    </message>
+    <message>
+        <source>Expected annualized ROI:</source>
+        <translation>Αναμενόμενη ετήσια απόδοση:</translation>
+    </message>
+    <message>
+        <source>7.9 %</source>
+        <translation>7.9 %</translation>
+    </message>
+    <message>
+        <source>Stake records</source>
+        <translation>Εγγραφές stake</translation>
+    </message>
+    <message>
+        <source>&amp;Delegate</source>
+        <translation>&amp;Ανάθεση</translation>
+    </message>
+    <message>
+        <source>Delegation type:</source>
+        <translation>Τύπος ανάθεσης:</translation>
+    </message>
+    <message>
+        <source>Manual delegation</source>
+        <translation>Χειροκίνητη ανάθεση</translation>
+    </message>
+    <message>
+        <source>Automatic delegation</source>
+        <translation>Αυτόματη ανάθεση</translation>
+    </message>
+    <message>
+        <source>Staking addresses</source>
+        <translation>Διευθύνσεις staking</translation>
+    </message>
+    <message>
+        <source>Remove all</source>
+        <translation>Αφαίρεση όλων</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Επικόλληση διεύθυνσης από το πρόχειρο</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>&amp;Προσθήκη</translation>
+    </message>
+    <message>
+        <source>&amp;My Delegations</source>
+        <translation>Οι &amp;αναθέσεις μου</translation>
+    </message>
+    <message>
+        <source>Delegated assets</source>
+        <translation>Ανατεθειμένα στοιχεία</translation>
+    </message>
+    <message>
+        <source>Your current delegated balance</source>
+        <translation>Το τρέχον ανατεθειμένο υπόλοιπό σας</translation>
+    </message>
+    <message>
+        <source>My delegations</source>
+        <translation>Οι αναθέσεις μου</translation>
+    </message>
+    <message>
+        <source>&amp;Received Delegations</source>
+        <translation>&amp;Ληφθείσες αναθέσεις</translation>
+    </message>
+    <message>
+        <source>&amp;Create new staking address</source>
+        <translation>&amp;Δημιουργία νέας διεύθυνσης staking</translation>
+    </message>
+    <message>
+        <source> with label:</source>
+        <translation> με ετικέτα:</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address (used by you to identify an invoice).  It is also attached to the payment request.</source>
+        <translation>Μια προαιρετική ετικέτα για συσχέτιση με τη νέα διεύθυνση λήψης (τη χρησιμοποιείτε για να αναγνωρίσετε ένα τιμολόγιο). Επισυνάπτεται επίσης στο αίτημα πληρωμής.</translation>
+    </message>
+    <message>
+        <source>ColdStake delegations</source>
+        <translation>Αναθέσεις ColdStake</translation>
+    </message>
+    <message>
+        <source>Coins paid to this wallet&apos;s delegation addresses are staked by these keys the moment they arrive, and change from your own spends stays delegated. A staking key can only produce coinstakes that pay back to you, so the wallet holding it does not need a passphrase.</source>
+        <translation>Τα νομίσματα που πληρώνονται στις διευθύνσεις ανάθεσης αυτού του πορτοφολιού μπαίνουν σε staking από αυτά τα κλειδιά μόλις φτάσουν, και τα ρέστα από τις δικές σας δαπάνες παραμένουν ανατεθειμένα. Ένα κλειδί staking μπορεί να παράγει μόνο coinstakes που πληρώνουν πίσω σε εσάς, οπότε το πορτοφόλι που το κρατά δεν χρειάζεται συνθηματικό.</translation>
+    </message>
+    <message>
+        <source>List more than one to spread your coins over several staking wallets, so one of them being offline does not stop everything staking.
+
+Each new delegation goes to whichever address is named by the fewest of them so far, counting the delegation addresses handed out and the delegated coins still unspent. It counts delegations, not amounts, so an address holding one large delegation can still be chosen ahead of one holding several small ones.</source>
+        <translation>Ορίστε περισσότερες από μία για να μοιράσετε τα νομίσματά σας σε πολλά πορτοφόλια staking, ώστε αν ένα είναι εκτός σύνδεσης να μη σταματήσει όλο το staking.
+
+Κάθε νέα ανάθεση πηγαίνει στη διεύθυνση που έχει αναφερθεί λιγότερο μέχρι τώρα, μετρώντας τις διευθύνσεις ανάθεσης που δόθηκαν και τα ανατεθειμένα νομίσματα που δεν έχουν ξοδευτεί ακόμη. Μετρά αναθέσεις, όχι ποσά, οπότε μια διεύθυνση με μία μεγάλη ανάθεση μπορεί να επιλεγεί πριν από μια με αρκετές μικρές.</translation>
+    </message>
+    <message>
+        <source>Coins already delegated to a removed address are not moved and it keeps staking them. Only new delegations stop naming it.</source>
+        <translation>Τα νομίσματα που έχουν ήδη ανατεθεί σε μια διεύθυνση που αφαιρέθηκε δεν μετακινούνται και αυτή συνεχίζει να κάνει staking με αυτά. Μόνο οι νέες αναθέσεις παύουν να την αναφέρουν.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>Δεν ήταν δυνατό το ξεκλείδωμα του πορτοφολιού.</translation>
+    </message>
+    <message>
+        <source>Could not generate new %1 address</source>
+        <translation>Δεν ήταν δυνατή η δημιουργία νέας διεύθυνσης %1</translation>
+    </message>
+    <message>
+        <source>Cold staking is disabled on this node (-coldstaking=0), so nothing is being delegated.</source>
+        <translation>Το ψυχρό staking είναι απενεργοποιημένο σε αυτόν τον κόμβο (-coldstaking=0), οπότε τίποτα δεν ανατίθεται.</translation>
+    </message>
+    <message>
+        <source>A staking address here belongs to this wallet, which is encrypted, so it only stakes while the wallet is unlocked. To stake without a passphrase, use an address from a separate unencrypted staking wallet.</source>
+        <translation>Μια διεύθυνση staking εδώ ανήκει σε αυτό το πορτοφόλι, που είναι κρυπτογραφημένο, οπότε κάνει staking μόνο όσο το πορτοφόλι είναι ξεκλείδωτο. Για staking χωρίς συνθηματικό, χρησιμοποιήστε διεύθυνση από ξεχωριστό, μη κρυπτογραφημένο πορτοφόλι staking.</translation>
+    </message>
+    <message>
+        <source>Stop delegating to %1. Coins already delegated to it are not moved and it keeps staking them.</source>
+        <translation>Διακοπή ανάθεσης στο %1. Τα νομίσματα που έχουν ήδη ανατεθεί σε αυτό δεν μετακινούνται και συνεχίζει να κάνει staking με αυτά.</translation>
+    </message>
+    <message>
+        <source>Could not save the staking addresses. A delegation commits to a key hash, so each one has to be a legacy address.</source>
+        <translation>Δεν ήταν δυνατή η αποθήκευση των διευθύνσεων staking. Μια ανάθεση δεσμεύεται σε κατακερματισμό κλειδιού, οπότε η καθεμία πρέπει να είναι διεύθυνση legacy.</translation>
+    </message>
+    <message>
+        <source>That staking address is already in the list.</source>
+        <translation>Αυτή η διεύθυνση staking υπάρχει ήδη στη λίστα.</translation>
+    </message>
+    <message>
+        <source>Remove all staking addresses</source>
+        <translation>Αφαίρεση όλων των διευθύνσεων staking</translation>
+    </message>
+    <message>
+        <source>Stop delegating to all %1 staking addresses?
+
+Coins already delegated keep being staked by them and are not moved. But new deposits and change will go to ordinary addresses, which do not stake, and you will need these addresses again to turn this back on.</source>
+        <translation>Διακοπή ανάθεσης και στις %1 διευθύνσεις staking;
+
+Τα νομίσματα που έχουν ήδη ανατεθεί συνεχίζουν να είναι σε staking από αυτές και δεν μετακινούνται. Όμως οι νέες καταθέσεις και τα ρέστα θα πηγαίνουν σε συνηθισμένες διευθύνσεις, που δεν κάνουν staking, και θα χρειαστείτε ξανά αυτές τις διευθύνσεις για να το ενεργοποιήσετε ξανά.</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2752,7 +5355,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Ανοίξτε για %n περισσότερα μπλοκ</numerusform><numerusform>Ανοίξτε για %n περισσότερα μπλοκ</numerusform></translation>
+        <translation>
+            <numerusform>Ανοίξτε για %n περισσότερα μπλοκ</numerusform>
+            <numerusform>Ανοίξτε για %n περισσότερα μπλοκ</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2832,7 +5438,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>ωριμάζει σε %n περισσότερα μπλοκ</numerusform><numerusform>ωριμάζει σε %n περισσότερα κομμάτια</numerusform></translation>
+        <translation>
+            <numerusform>ωριμάζει σε %n περισσότερα μπλοκ</numerusform>
+            <numerusform>ωριμάζει σε %n περισσότερα κομμάτια</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -2891,8 +5500,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Έμπορος</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Τα δημιουργημένα κέρματα πρέπει να ωριμάσουν σε %1 μπλοκ πριν να ξοδευτούν. Όταν δημιουργήσατε αυτό το μπλοκ, μεταδόθηκε στο δίκτυο για να προστεθεί στην αλυσίδα μπλοκ. Εάν αποτύχει να εισέλθει στην αλυσίδα, η κατάσταση της θα αλλάξει σε "μη αποδεκτή" και δεν θα είναι δαπανηρή. Αυτό μπορεί περιστασιακά να συμβεί εάν ένας άλλος κόμβος παράγει ένα μπλοκ μέσα σε λίγα δευτερόλεπτα από το δικό σας.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Τα δημιουργημένα κέρματα πρέπει να ωριμάσουν σε %1 μπλοκ πριν να ξοδευτούν. Όταν δημιουργήσατε αυτό το μπλοκ, μεταδόθηκε στο δίκτυο για να προστεθεί στην αλυσίδα μπλοκ. Εάν αποτύχει να εισέλθει στην αλυσίδα, η κατάσταση της θα αλλάξει σε &quot;μη αποδεκτή&quot; και δεν θα είναι δαπανηρή. Αυτό μπορεί περιστασιακά να συμβεί εάν ένας άλλος κόμβος παράγει ένα μπλοκ μέσα σε λίγα δευτερόλεπτα από το δικό σας.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -2946,7 +5555,10 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Ανοίξτε για %n περισσότερα μπλοκ</numerusform><numerusform>Ανοίξτε για %n περισσότερα μπλοκ</numerusform></translation>
+        <translation>
+            <numerusform>Ανοίξτε για %n περισσότερα μπλοκ</numerusform>
+            <numerusform>Ανοίξτε για %n περισσότερα μπλοκ</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -3035,6 +5647,30 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Amount removed from or added to balance.</source>
         <translation>Ποσό που αφαιρέθηκε ή προστέθηκε στην ισορροπία.</translation>
+    </message>
+    <message>
+        <source>Cold Stake</source>
+        <translation>Ψυχρό stake</translation>
+    </message>
+    <message>
+        <source>Stake on behalf of</source>
+        <translation>Staking για λογαριασμό του</translation>
+    </message>
+    <message>
+        <source>Stake delegation</source>
+        <translation>Ανάθεση stake</translation>
+    </message>
+    <message>
+        <source>Delegation</source>
+        <translation>Ανάθεση</translation>
+    </message>
+    <message>
+        <source>Stake delegation spent by</source>
+        <translation>Ανάθεση stake που ξοδεύτηκε από</translation>
+    </message>
+    <message>
+        <source>Delegated amount.</source>
+        <translation>Ανατεθειμένο ποσό.</translation>
     </message>
 </context>
 <context>
@@ -3195,6 +5831,22 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>to</source>
         <translation>προς</translation>
     </message>
+    <message>
+        <source>Cold stakes</source>
+        <translation>Ψυχρά stakes</translation>
+    </message>
+    <message>
+        <source>Hot stakes</source>
+        <translation>Θερμά stakes</translation>
+    </message>
+    <message>
+        <source>Unspent Delegated</source>
+        <translation>Μη ξοδεμένα ανατεθειμένα</translation>
+    </message>
+    <message>
+        <source>Delegations</source>
+        <translation>Αναθέσεις</translation>
+    </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -3221,12 +5873,24 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>Close all wallets</source>
         <translation>Κλείσιμο όλων των πορτοφολιών</translation>
     </message>
-    </context>
+    <message>
+        <source>Are you sure you wish to close all wallets?</source>
+        <translation>Είστε σίγουροι ότι θέλετε να κλείσετε όλα τα πορτοφόλια;</translation>
+    </message>
+</context>
 <context>
     <name>WalletFrame</name>
     <message>
         <source>Create a new wallet</source>
         <translation>Δημιουργία νέου Πορτοφολιού</translation>
+    </message>
+    <message>
+        <source>No wallet has been loaded.
+Go to File &gt; Open Wallet to load a wallet.
+- OR -</source>
+        <translation>Δεν έχει φορτωθεί κανένα πορτοφόλι.
+Μεταβείτε στο Αρχείο &gt; Άνοιγμα πορτοφολιού για να φορτώσετε ένα πορτοφόλι.
+- Ή -</translation>
     </message>
 </context>
 <context>
@@ -3268,7 +5932,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Επιβεβαίωση χρέωσης εξόδων</translation>
     </message>
     <message>
-        <source>Can't draft transaction.</source>
+        <source>Can&apos;t draft transaction.</source>
         <translation>Δεν είναι δυνατή η σύνταξη συναλλαγής.</translation>
     </message>
     <message>
@@ -3276,7 +5940,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>PSBT αντιγράφηκε</translation>
     </message>
     <message>
-        <source>Can't sign transaction.</source>
+        <source>Can&apos;t sign transaction.</source>
         <translation>Δεν είναι δυνατή η υπογραφή συναλλαγής.</translation>
     </message>
     <message>
@@ -3286,6 +5950,21 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>default wallet</source>
         <translation>Προεπιλεγμένο πορτοφόλι</translation>
+    </message>
+</context>
+<context>
+    <name>WalletPage</name>
+    <message>
+        <source>bitcoin-pos-qt @ this node</source>
+        <translation>bitcoin-pos-qt @ αυτός ο κόμβος</translation>
+    </message>
+    <message>
+        <source>● live</source>
+        <translation>● ζωντανά</translation>
+    </message>
+    <message>
+        <source>The wallet client, running in this process against this node. It is the same program as bitcoin-pos-qt, not a copy of it.</source>
+        <translation>Το πρόγραμμα πορτοφολιού, που εκτελείται σε αυτή τη διεργασία με αυτόν τον κόμβο. Είναι το ίδιο πρόγραμμα με το bitcoin-pos-qt, όχι αντίγραφό του.</translation>
     </message>
 </context>
 <context>
@@ -3334,6 +6013,22 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <source>Cancel</source>
         <translation>Ακύρωση</translation>
     </message>
+    <message>
+        <source>Unable to decode PSBT from clipboard (invalid base64)</source>
+        <translation>Δεν είναι δυνατή η αποκωδικοποίηση του PSBT από το πρόχειρο (μη έγκυρο base64)</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (*.psbt)</source>
+        <translation>Μερικώς υπογεγραμμένη συναλλαγή (*.psbt)</translation>
+    </message>
+    <message>
+        <source>PSBT file must be smaller than 100 MiB</source>
+        <translation>Το αρχείο PSBT πρέπει να είναι μικρότερο από 100 MiB</translation>
+    </message>
+    <message>
+        <source>Unable to decode PSBT</source>
+        <translation>Δεν είναι δυνατή η αποκωδικοποίηση του PSBT</translation>
+    </message>
 </context>
 <context>
     <name>bitcoin-core</name>
@@ -3374,7 +6069,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Σφάλμα κατά την ανάγνωση %s! Όλα τα κλειδιά διαβάζονται σωστά, αλλά τα δεδομένα των συναλλαγών ή οι καταχωρίσεις του βιβλίου διευθύνσεων ενδέχεται να λείπουν ή να είναι εσφαλμένα.</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation>Ελέγξτε ότι η ημερομηνία και η ώρα του υπολογιστή σας είναι σωστές! Αν το ρολόι σας είναι λάθος, το %s δεν θα λειτουργήσει σωστά.</translation>
     </message>
     <message>
@@ -3382,7 +6077,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Παρακαλώ συμβάλλετε αν βρείτε %s χρήσιμο. Επισκεφθείτε το %s για περισσότερες πληροφορίες σχετικά με το λογισμικό.</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
         <translation>Η βάση δεδομένων μπλοκ περιέχει ένα μπλοκ που φαίνεται να είναι από το μέλλον. Αυτό μπορεί να οφείλεται στην εσφαλμένη ρύθμιση της ημερομηνίας και της ώρας του υπολογιστή σας. Αποκαταστήστε μόνο τη βάση δεδομένων μπλοκ αν είστε βέβαιοι ότι η ημερομηνία και η ώρα του υπολογιστή σας είναι σωστές</translation>
     </message>
     <message>
@@ -3414,8 +6109,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>-maxmempool πρέπει να είναι τουλάχιστον %d MB</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>Δεν είναι δυνατή η επίλυση -%s διεύθυνση: '%s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>Δεν είναι δυνατή η επίλυση -%s διεύθυνση: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Change index out of range</source>
@@ -3498,24 +6193,24 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation> Ο έλεγχος ευελιξίας εκκίνησης απέτυχε. Το %s τερματίζεται.</translation>
     </message>
     <message>
-        <source>Invalid P2P permission: '%s'</source>
-        <translation>Μη έγκυρη άδεια P2P: '%s'</translation>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation>Μη έγκυρη άδεια P2P: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>Μη έγκυρο ποσό για το -discardfee =&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Μη έγκυρο ποσό για το -discardfee =&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>Μη έγκυρο ποσό για το -fallbackfee =&lt;amount&gt;: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Μη έγκυρο ποσό για το -fallbackfee =&lt;amount&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Specified blocks directory "%s" does not exist.</source>
-        <translation>Δεν υπάρχει κατάλογος καθορισμένων μπλοκ "%s".</translation>
+        <source>Specified blocks directory &quot;%s&quot; does not exist.</source>
+        <translation>Δεν υπάρχει κατάλογος καθορισμένων μπλοκ &quot;%s&quot;.</translation>
     </message>
     <message>
-        <source>Unknown address type '%s'</source>
-        <translation>Άγνωστος τύπος διεύθυνσης '%s'</translation>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation>Άγνωστος τύπος διεύθυνσης &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Upgrading txindex database</source>
@@ -3590,8 +6285,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Σφάλμα: Η ακρόαση για εισερχόμενες συνδέσεις απέτυχε (ακούστε επιστραμμένο σφάλμα %s)</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>Μη έγκυρο ποσό για το -maxtxfee =: '%s' (πρέπει να είναι τουλάχιστον το minrelay έξοδο του %s για την αποφυγή κολλημένων συναλλαγών)</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Μη έγκυρο ποσό για το -maxtxfee =: &apos;%s&apos; (πρέπει να είναι τουλάχιστον το minrelay έξοδο του %s για την αποφυγή κολλημένων συναλλαγών)</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -3618,24 +6313,24 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Σφάλμα: Ο χώρος στο δίσκο είναι χαμηλός για %s</translation>
     </message>
     <message>
-        <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>Μη έγκυρη διεύθυνση μητρώου ή όνομα κεντρικού υπολογιστή: '%s'</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation>Μη έγκυρη διεύθυνση μητρώου ή όνομα κεντρικού υπολογιστή: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>Μη έγκυρη διεύθυνση -proxy ή όνομα κεντρικού υπολογιστή: '%s'</translation>
+        <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation>Μη έγκυρη διεύθυνση -proxy ή όνομα κεντρικού υπολογιστή: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>Μη έγκυρο ποσό για το -paytxfee =&lt;amount&gt;: '%s' (πρέπει να είναι τουλάχιστον %s)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>Μη έγκυρο ποσό για το -paytxfee =&lt;amount&gt;: &apos;%s&apos; (πρέπει να είναι τουλάχιστον %s)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>Μη έγκυρη μάσκα δικτύου που καθορίζεται στο -whitelist: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>Μη έγκυρη μάσκα δικτύου που καθορίζεται στο -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>Πρέπει να καθορίσετε μια θύρα με -whitebind: '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>Πρέπει να καθορίσετε μια θύρα με -whitebind: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Prune mode is incompatible with -blockfilterindex.</source>
@@ -3654,16 +6349,16 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Η υπογραφή συναλλαγής απέτυχε</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" does not exist</source>
-        <translation>Δεν υπάρχει καθορισμένο "%s"</translation>
+        <source>Specified -walletdir &quot;%s&quot; does not exist</source>
+        <translation>Δεν υπάρχει καθορισμένο &quot;%s&quot;</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is a relative path</source>
-        <translation>Το συγκεκριμένο -walletdir "%s" είναι μια σχετική διαδρομή</translation>
+        <source>Specified -walletdir &quot;%s&quot; is a relative path</source>
+        <translation>Το συγκεκριμένο -walletdir &quot;%s&quot; είναι μια σχετική διαδρομή</translation>
     </message>
     <message>
-        <source>Specified -walletdir "%s" is not a directory</source>
-        <translation>Το συγκεκριμένο -walletdir "%s" δεν είναι κατάλογος</translation>
+        <source>Specified -walletdir &quot;%s&quot; is not a directory</source>
+        <translation>Το συγκεκριμένο -walletdir &quot;%s&quot; δεν είναι κατάλογος</translation>
     </message>
     <message>
         <source>The specified config file %s does not exist
@@ -3692,8 +6387,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation> Δεν είναι δυνατή η δέσμευση του %s σε αυτόν τον υπολογιστή (δεσμεύει το επιστρεφόμενο σφάλμα %s)</translation>
     </message>
     <message>
-        <source>Unable to create the PID file '%s': %s</source>
-        <translation>Δεν είναι δυνατή η δημιουργία του PID αρχείου '%s': %s</translation>
+        <source>Unable to create the PID file &apos;%s&apos;: %s</source>
+        <translation>Δεν είναι δυνατή η δημιουργία του PID αρχείου &apos;%s&apos;: %s</translation>
     </message>
     <message>
         <source>Unable to generate initial keys</source>
@@ -3748,8 +6443,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Η συναλλαγή πρέπει να έχει τουλάχιστον έναν παραλήπτη</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>Έχει οριστεί άγνωστo δίκτυο στο -onlynet: '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>Έχει οριστεί άγνωστo δίκτυο στο -onlynet: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -3760,8 +6455,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Η αποτίμηση του τέλους απέτυχε. Το Fallbackfee είναι απενεργοποιημένο. Περιμένετε λίγα τετράγωνα ή ενεργοποιήστε το -fallbackfee.</translation>
     </message>
     <message>
-        <source>Cannot write to data directory '%s'; check permissions.</source>
-        <translation>Δεν είναι δυνατή η εγγραφή στον κατάλογο δεδομένων '%s'. ελέγξτε τα δικαιώματα.</translation>
+        <source>Cannot write to data directory &apos;%s&apos;; check permissions.</source>
+        <translation>Δεν είναι δυνατή η εγγραφή στον κατάλογο δεδομένων &apos;%s&apos;. ελέγξτε τα δικαιώματα.</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -3782,6 +6477,114 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
     <message>
         <source>Done loading</source>
         <translation>Η φόρτωση ολοκληρώθηκε</translation>
+    </message>
+    <message>
+        <source>%s corrupt. Try using the wallet tool bitcoin-wallet to salvage or restoring a backup.</source>
+        <translation>Το %s είναι κατεστραμμένο. Δοκιμάστε να το διασώσετε με το εργαλείο πορτοφολιού bitcoin-wallet ή επαναφέρετε ένα αντίγραφο ασφαλείας.</translation>
+    </message>
+    <message>
+        <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use version 169900 or no version specified.</source>
+        <translation>Δεν είναι δυνατή η αναβάθμιση ενός διαχωρισμένου πορτοφολιού χωρίς HD χωρίς αναβάθμιση για υποστήριξη της δεξαμενής κλειδιών πριν από τον διαχωρισμό. Χρησιμοποιήστε την έκδοση 169900 ή μην ορίσετε έκδοση.</translation>
+    </message>
+    <message>
+        <source>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</source>
+        <translation>Δόθηκαν περισσότερες από μία διευθύνσεις σύνδεσης onion. Χρησιμοποιείται το %s για την αυτόματα δημιουργημένη υπηρεσία onion του Tor.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Απέτυχε η προετοιμασία της εντολής λήψης της έκδοσης σχήματος του πορτοφολιού sqlite: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare the statement to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Απέτυχε η προετοιμασία της εντολής λήψης του αναγνωριστικού εφαρμογής: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unknown sqlite wallet schema version %d. Only version %d is supported</source>
+        <translation>SQLiteDatabase: Άγνωστη έκδοση σχήματος πορτοφολιού sqlite %d. Υποστηρίζεται μόνο η έκδοση %d</translation>
+    </message>
+    <message>
+        <source>This error could occur if this wallet was not shutdown cleanly and was last loaded using a build with a newer version of Berkeley DB. If so, please use the software that last loaded this wallet</source>
+        <translation>Αυτό το σφάλμα μπορεί να προκύψει αν το πορτοφόλι δεν τερματίστηκε σωστά και φορτώθηκε τελευταία με έκδοση με νεότερη Berkeley DB. Αν ισχύει αυτό, χρησιμοποιήστε το λογισμικό που φόρτωσε τελευταίο αυτό το πορτοφόλι</translation>
+    </message>
+    <message>
+        <source>This is the maximum transaction fee you pay (in addition to the normal fee) to prioritize partial spend avoidance over regular coin selection.</source>
+        <translation>Αυτή είναι η μέγιστη αμοιβή συναλλαγής που πληρώνετε (επιπλέον της κανονικής αμοιβής) για να προτιμηθεί η αποφυγή μερικής δαπάνης έναντι της κανονικής επιλογής νομισμάτων.</translation>
+    </message>
+    <message>
+        <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
+        <translation>Το συνολικό μήκος της συμβολοσειράς έκδοσης δικτύου (%i) υπερβαίνει το μέγιστο μήκος (%i). Μειώστε τον αριθμό ή το μέγεθος των uacomments.</translation>
+    </message>
+    <message>
+        <source>Transaction needs a change address, but we can&apos;t generate it. Please call keypoolrefill first.</source>
+        <translation>Η συναλλαγή χρειάζεται διεύθυνση ρέστων, αλλά δεν μπορούμε να τη δημιουργήσουμε. Καλέστε πρώτα το keypoolrefill.</translation>
+    </message>
+    <message>
+        <source>Warning: Private keys detected in wallet {%s} with disabled private keys</source>
+        <translation>Προειδοποίηση: Εντοπίστηκαν ιδιωτικά κλειδιά στο πορτοφόλι {%s} με απενεργοποιημένα ιδιωτικά κλειδιά</translation>
+    </message>
+    <message>
+        <source>%s is set very high!</source>
+        <translation>Το %s έχει οριστεί πολύ υψηλά!</translation>
+    </message>
+    <message>
+        <source>A fatal internal error occurred, see debug.log for details</source>
+        <translation>Παρουσιάστηκε μοιραίο εσωτερικό σφάλμα, δείτε το debug.log για λεπτομέρειες</translation>
+    </message>
+    <message>
+        <source>Cannot set -peerblockfilters without -blockfilterindex.</source>
+        <translation>Δεν είναι δυνατός ο ορισμός του -peerblockfilters χωρίς το -blockfilterindex.</translation>
+    </message>
+    <message>
+        <source>Error: Keypool ran out, please call keypoolrefill first</source>
+        <translation>Σφάλμα: Η δεξαμενή κλειδιών εξαντλήθηκε, καλέστε πρώτα το keypoolrefill</translation>
+    </message>
+    <message>
+        <source>Failed to verify database</source>
+        <translation>Η επαλήθευση της βάσης δεδομένων απέτυχε</translation>
+    </message>
+    <message>
+        <source>Fee rate (%s) is lower than the minimum fee rate setting (%s)</source>
+        <translation>Ο συντελεστής αμοιβής (%s) είναι χαμηλότερος από τη ρύθμιση ελάχιστου συντελεστή αμοιβής (%s)</translation>
+    </message>
+    <message>
+        <source>Ignoring duplicate -wallet %s.</source>
+        <translation>Αγνοείται το διπλότυπο -wallet %s.</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Μη έγκυρο ποσό για -%s=&lt;amount&gt;: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <source>No proxy server specified. Use -proxy=&lt;ip&gt; or -proxy=&lt;ip:port&gt;.</source>
+        <translation>Δεν ορίστηκε διακομιστής διαμεσολάβησης. Χρησιμοποιήστε -proxy=&lt;ip&gt; ή -proxy=&lt;ip:port&gt;.</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to execute statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Απέτυχε η εκτέλεση της εντολής επαλήθευσης της βάσης δεδομένων: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch sqlite wallet schema version: %s</source>
+        <translation>SQLiteDatabase: Απέτυχε η λήψη της έκδοσης σχήματος του πορτοφολιού sqlite: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to fetch the application id: %s</source>
+        <translation>SQLiteDatabase: Απέτυχε η λήψη του αναγνωριστικού εφαρμογής: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to prepare statement to verify database: %s</source>
+        <translation>SQLiteDatabase: Απέτυχε η προετοιμασία της εντολής επαλήθευσης της βάσης δεδομένων: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Failed to read database verification error: %s</source>
+        <translation>SQLiteDatabase: Απέτυχε η ανάγνωση του σφάλματος επαλήθευσης της βάσης δεδομένων: %s</translation>
+    </message>
+    <message>
+        <source>SQLiteDatabase: Unexpected application id. Expected %u, got %u</source>
+        <translation>SQLiteDatabase: Μη αναμενόμενο αναγνωριστικό εφαρμογής. Αναμενόταν %u, ελήφθη %u</translation>
+    </message>
+    <message>
+        <source>Unknown change type &apos;%s&apos;</source>
+        <translation>Άγνωστος τύπος ρέστων &apos;%s&apos;</translation>
     </message>
 </context>
 </TS>

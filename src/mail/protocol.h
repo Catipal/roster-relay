@@ -6,29 +6,21 @@
 #define BITCOIN_MAIL_PROTOCOL_H
 
 #include <mail/mailbox.h>
+#include <overlay/cells.h>
 #include <overlay/path.h>
 #include <overlay/relay.h>
 
 #include <chrono>
-#include <map>
 #include <stdint.h>
 #include <string>
-#include <utility>
 #include <vector>
 
 /**
  * How mail moves over the overlay.
  *
  * A path carries at most MAX_PATH_APP_PAYLOAD bytes a datagram and a sealed
- * letter can be thirty-five thousand, so every mail message travels as cells:
- *
- *   MAIL_CELL(1) || transfer(8) || index(2) || count(2) || up to CELL_DATA bytes
- *
- * and is put back together at the far end. Datagrams get lost, so a sender
- * that hears nothing sends the whole message again under the same transfer
- * id; the receiver keeps what it had and fills in the gaps. An answer goes
- * back under the request's id with its top bit set, so a repeated request
- * fills in a lost answer the same way.
+ * letter can be thirty-five thousand, so every mail message travels as cells
+ * tagged MAIL_CELL (overlay/cells.h) and is put back together at the far end.
  *
  * Inside, a message is op(1) || request id(8) || fields. Requests are what a
  * mailbox serves; answers have the top bit of op set.
@@ -37,15 +29,14 @@ namespace mail {
 
 /** First byte of mail's overlay messages. Listing requests use 0x01 and 0x02. */
 static constexpr uint8_t MAIL_CELL = 0x10;
-static constexpr size_t CELL_HEADER_SIZE = 1 + 8 + 2 + 2;
-static constexpr size_t CELL_DATA = overlay::MAX_PATH_APP_PAYLOAD - CELL_HEADER_SIZE;
-/** Enough cells for the largest answer: a letter and its id. */
-static constexpr size_t MAX_CELLS = 64;
-static constexpr size_t MAX_MESSAGE_SIZE = CELL_DATA * MAX_CELLS;
+static constexpr size_t CELL_HEADER_SIZE = overlay::CELL_HEADER_SIZE;
+static constexpr size_t CELL_DATA = overlay::CELL_DATA;
+static constexpr size_t MAX_CELLS = overlay::MAX_CELLS;
+static constexpr size_t MAX_MESSAGE_SIZE = overlay::MAX_CELL_MESSAGE_SIZE;
 static_assert(MAX_MESSAGE_SIZE >= MAX_ENVELOPE_SIZE + 64, "a letter must fit in one message");
 
 /** The top bit of a transfer id marks it as an answer. */
-static constexpr uint64_t ANSWER_BIT = uint64_t{1} << 63;
+static constexpr uint64_t ANSWER_BIT = overlay::ANSWER_BIT;
 
 enum class Op : uint8_t {
     PUT_KEY = 0x01, //!< req || mail key: keep this as my current key
@@ -81,37 +72,11 @@ bool IsMailPayload(const std::vector<unsigned char>& payload);
 std::vector<std::vector<unsigned char>> SplitCells(uint64_t transfer,
                                                    const std::vector<unsigned char>& message);
 
-/** Puts messages back together from their cells. Not thread safe. */
-class Reassembler
+/** Puts mail messages back together from their cells. Not thread safe. */
+class Reassembler : public overlay::CellReassembler
 {
 public:
-    /** Seconds a partial message is kept for its missing cells. */
-    static constexpr int64_t TTL = 60;
-    /** Bounds, because sending cells is something strangers do. */
-    static constexpr size_t MAX_TRANSFERS = 256;
-    static constexpr size_t MAX_BUFFERED = 8 * 1024 * 1024;
-
-    /**
-     * Add one cell. True when it completed a message, which is then in
-     * `message_out` with its transfer id in `transfer_out`.
-     */
-    bool Add(const overlay::Hop& from, const std::vector<unsigned char>& cell, int64_t now,
-             std::vector<unsigned char>& message_out, uint64_t& transfer_out);
-
-    size_t Pending() const { return m_partial.size(); }
-
-private:
-    struct Partial {
-        std::vector<std::vector<unsigned char>> cells;
-        size_t have{0};
-        size_t bytes{0};
-        int64_t started{0};
-    };
-    void Expire(int64_t now);
-    void Drop(std::map<std::pair<overlay::Hop, uint64_t>, Partial>::iterator it);
-
-    std::map<std::pair<overlay::Hop, uint64_t>, Partial> m_partial;
-    size_t m_bytes{0};
+    Reassembler() : overlay::CellReassembler(MAIL_CELL) {}
 };
 
 /**

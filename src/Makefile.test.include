@@ -245,6 +245,7 @@ BITCOIN_TESTS =\
   test/mempool_tests.cpp \
   test/merkle_tests.cpp \
   test/merkleblock_tests.cpp \
+  test/cells_tests.cpp \
   test/mail_tests.cpp \
   test/miner_tests.cpp \
   test/mlkem_tests.cpp \

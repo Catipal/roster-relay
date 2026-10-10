@@ -208,6 +208,7 @@ BITCOIN_CORE_H = \
   random.h \
   randomenv.h \
   reverse_iterator.h \
+  overlay/cells.h \
   overlay/frame.h \
   overlay/handshake.h \
   overlay/chainsync.h \
@@ -659,6 +660,7 @@ libbitcoin_common_a_SOURCES = \
   policy/policy.cpp \
   protocol.cpp \
   psbt.cpp \
+  overlay/cells.cpp \
   overlay/frame.cpp \
   overlay/exitpolicy.cpp \
   overlay/gatewayproto.cpp \

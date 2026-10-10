@@ -49,6 +49,8 @@
 #include <roster/ledger.h>
 #include <roster/view.h>
 #include <index/nameindex.h>
+#include <companion/node.h>
+#include <companion/service.h>
 #include <mail/bridge.h>
 #include <mail/client.h>
 #include <names/name.h>
@@ -239,6 +241,9 @@ void Shutdown(NodeContext& node)
     StopREST();
     StopRPC();
     StopHTTPServer();
+    // Before the wallets flush: the companion's thread spends from one. The
+    // service itself stays until the overlay, which hands it requests, is gone.
+    if (companion::g_companion) companion::g_companion->Stop();
     for (const auto& client : node.chain_clients) {
         client->flush();
     }
@@ -325,8 +330,10 @@ void Shutdown(NodeContext& node)
         overlay::g_overlay.reset();
     }
     overlay::g_radio.reset();
-    // After the overlay, whose receive thread is what serves the mailbox.
+    // After the overlay, whose receive thread is what serves the mailbox and
+    // hands the companion its requests.
     mail::g_mailbox.reset();
+    companion::g_companion.reset();
     {
         LOCK(overlay::g_selector_mutex);
         overlay::g_selector.reset();
@@ -606,6 +613,8 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-gatewayallowlocal", "Let a gateway connect to loopback and private addresses (regtest only, for tests)", ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
     argsman.AddArg("-meethops=<n>", strprintf("Relays between this node and each of its meeting points, 1 to %d: more hides its address better and is slower (default: %d)", overlay::MAX_MEET_HOPS, overlay::DEFAULT_MEET_HOPS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-overlayblocks", strprintf("With -radio, carry new blocks to and from radio neighbours over the overlay, so a node with only radio keeps up with the chain (default: %u)", overlay::DEFAULT_OVERLAY_BLOCKS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-companion", strprintf("Let paired phones spend from an allowance wallet through this node (default: %u). Needs -overlay, and this node to be a listed relay: a phone builds a path of %u relays to it and proves the device key it was paired with. The phone holds no coin keys; this node checks its PIN and holds it to the limits set when it was paired.", companion::DEFAULT_COMPANION, (unsigned)overlay::DEFAULT_PATH_HOPS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-companionwallet=<name>", "The allowance wallet paired phones spend from. It needs no passphrase, since nobody is there to type one, and does not stake; keep its balance small. Not the -listingwallet.", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-radio", strprintf("Carry the overlay over radio too, through Reticulum (LoRa via an RNode, packet radio, serial links). Needs -overlay, and contrib/reticulum/bps-rns-bridge.py running beside the node with Reticulum installed (default: %u)", overlay::DEFAULT_RADIO), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-radioentry", strprintf("With -radio, enter the overlay through a radio neighbour whenever one is a listed relay, so mail and listing requests work without the internet; slower (default: %u)", overlay::DEFAULT_RADIO_ENTRY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-overlayport=<port>", strprintf("UDP port the overlay listens on (default: one above the peer-to-peer port: %u, testnet: %u, signet: %u, regtest: %u). Its own socket, separate from the peer-to-peer port, because the overlay is a datagram protocol and the peer-to-peer one is not.", overlay::OverlayPortFor(defaultChainParams->GetDefaultPort()), overlay::OverlayPortFor(testnetChainParams->GetDefaultPort()), overlay::OverlayPortFor(signetChainParams->GetDefaultPort()), overlay::OverlayPortFor(regtestChainParams->GetDefaultPort())), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -2373,8 +2382,17 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 "stop it, or choose another port with -overlayport (in BPS Relay: Settings, Overlay).",
                 bind_error, port)));
         }
+        // Made before the overlay starts, so the receive thread never sees it
+        // half there.
+        if (args.GetBoolArg("-companion", companion::DEFAULT_COMPANION)) {
+            companion::g_companion = MakeUnique<companion::Service>(
+                GetDataDir() / "companion", args.GetArg("-companionwallet", ""), op_key.GetPubKey(),
+                companion::MakeNodeHooks());
+            companion::g_companion->Start();
+        }
         // Application data addressed to this node: a peer asking its relay
-        // to pay for its listing (roster/listing.h), or mail (mail/protocol.h).
+        // to pay for its listing (roster/listing.h), mail (mail/protocol.h),
+        // or a paired phone (companion/protocol.h).
         if (!overlay::g_overlay->Start([](const overlay::Hop& from, std::vector<unsigned char>&& payload) {
                 if (mail::IsMailPayload(payload)) {
                     mail::HandleOverlayApp(from, std::move(payload));
@@ -2415,6 +2433,8 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                     // an adjacent peer. Routed even when this node hosts nothing,
                     // so a visitor's own fetch gets its answers.
                     overlay::HandleSiteApp(from, payload);
+                } else if (companion::g_companion && companion::g_companion->IsOurs(payload)) {
+                    companion::g_companion->HandleOverlayApp(from, std::move(payload));
                 } else {
                     roster::HandleOverlayApp(from, std::move(payload));
                 }

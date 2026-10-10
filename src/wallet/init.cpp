@@ -20,6 +20,7 @@
 #include <util/system.h>
 #include <util/translation.h>
 #include <wallet/coincontrol.h>
+#include <wallet/companion.h>
 #include <wallet/rpcnames.h>
 #include <wallet/rpcwallet.h>
 #include <wallet/wallet.h>
@@ -133,6 +134,8 @@ void WalletInit::Construct(NodeContext& node) const
     roster::SetListingPublisher(PublishListingForPeer, StakingWeightForListings);
     // Likewise for names: the node sees a registration through, the wallet pays.
     names::SetClaimPublisher(PublishNameClaim);
+    // And for a paired phone: the node checks it, the allowance wallet pays.
+    companion::SetWalletHooks(MakeCompanionWalletHooks());
     node.wallet_client = wallet_client.get();
     node.chain_clients.emplace_back(std::move(wallet_client));
 }

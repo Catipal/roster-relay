@@ -4,7 +4,9 @@
 
 #include <companion/policy.h>
 #include <companion/protocol.h>
+#include <companion/service.h>
 #include <companion/store.h>
+#include <companion/wallethook.h>
 #include <key.h>
 #include <random.h>
 #include <script/standard.h>
@@ -290,6 +292,360 @@ BOOST_AUTO_TEST_CASE(store_keeps_devices_and_its_secret)
     const std::vector<Device> left = store.All();
     BOOST_REQUIRE_EQUAL(left.size(), 1u);
     BOOST_CHECK_EQUAL(left[0].name, "Librem");
+}
+
+namespace {
+
+/**
+ * An allowance wallet with no wallet behind it: it records what it was asked
+ * to do, so the service's rules can be checked without coins or a chain.
+ */
+struct FakeWallet {
+    CAmount balance{50 * COIN};
+    CAmount fee{1000};
+    bool reject_send{false};
+    int prepared{0};
+    int sent{0};
+    int cancelled{0};
+    uint256 next_txid;
+
+    WalletHooks Hooks()
+    {
+        WalletHooks h;
+        h.status = [this](const std::string&, CAmount& b, CAmount& p, std::string&) {
+            b = balance;
+            p = 0;
+            return true;
+        };
+        h.new_address = [](const std::string&, std::string& address, std::string&) {
+            address = "bpsaddress";
+            return true;
+        };
+        h.history = [](const std::string&, size_t, size_t, std::vector<HistoryItem>&, std::string&) { return true; };
+        h.prepare = [this](const std::string&, const std::string& to, CAmount amount, bool subtract_fee,
+                           PreparedPayment& out, std::string& error) {
+            if (to == "nobody") {
+                error = "nobody does not take payments by name.";
+                return false;
+            }
+            ++prepared;
+            out = PreparedPayment();
+            out.amount = subtract_fee ? amount - fee : amount;
+            out.fee = fee;
+            out.payee = to;
+            out.payee_script = CScript() << OP_TRUE << std::vector<unsigned char>(to.begin(), to.end());
+            return true;
+        };
+        h.send = [this](const std::string&, const PreparedPayment&, uint256& txid, bool& rejected, std::string& error) {
+            if (reject_send) {
+                rejected = true;
+                error = "The network refused it. Nothing was spent.";
+                return false;
+            }
+            ++sent;
+            txid = next_txid = Rand256();
+            return true;
+        };
+        h.cancel = [this](const std::string&, const PreparedPayment&) { ++cancelled; };
+        return h;
+    }
+};
+
+/** A service on its own: no overlay, no chain, a fake wallet. */
+struct ServiceFixture {
+    CKey node = NewKey();
+    CKey device = NewKey();
+    FakeWallet wallet;
+    std::unique_ptr<Service> service;
+
+    explicit ServiceFixture(const fs::path& dir)
+    {
+        SetWalletHooks(wallet.Hooks());
+        NodeHooks hooks;
+        hooks.height = [] { return 1234; };
+        hooks.relays = [] {
+            std::vector<RelayEntry> r(3);
+            for (RelayEntry& e : r) {
+                e.key = NewKey().GetPubKey();
+                e.addr = "198.51.100.1:48931";
+            }
+            return r;
+        };
+        service = MakeUnique<Service>(dir, "allowance", node.GetPubKey(), hooks, /* memory_only */ true);
+    }
+    ~ServiceFixture() { SetWalletHooks(WalletHooks()); }
+
+    Message Ask(const CKey& who, Op op, const Message& body)
+    {
+        Message m = body;
+        m.op = op;
+        return service->Serve(who.GetPubKey(), m, now);
+    }
+    template <typename T>
+    Message Ask(const CKey& who, Op op, const T& body)
+    {
+        return service->Serve(who.GetPubKey(), Make(op, 1, body), now);
+    }
+    Message AskEmpty(const CKey& who, Op op)
+    {
+        Message m;
+        m.op = op;
+        m.req = 1;
+        return service->Serve(who.GetPubKey(), m, now);
+    }
+
+    /** Ticket, answer, accept: a paired device. */
+    void Pair(const CKey& who, const Limits& limits, const std::string& pin = "246810")
+    {
+        const PairingTicket t = service->NewTicket("regtest", "127.0.0.1:1", {}, now);
+        PairRequest req;
+        req.token = t.token;
+        req.name = "Pixel";
+        req.pin = pin;
+        ResultAnswer r;
+        BOOST_REQUIRE(Read(Ask(who, Op::PAIR, req), Op::RESULT, r));
+        BOOST_REQUIRE_MESSAGE(r.ok, r.text);
+        std::string error;
+        BOOST_REQUIRE_MESSAGE(service->Accept(t.token, limits, now, error), error);
+    }
+
+    /** Prepare a payment; the answer, or a failed RESULT's text in `error`. */
+    bool Prepare(const CKey& who, const std::string& to, CAmount amount, PrepareAnswer& out, std::string& error)
+    {
+        PrepareRequest req;
+        req.to = to;
+        req.amount = amount;
+        const Message reply = Ask(who, Op::PREPARE, req);
+        if (Read(reply, Op::PREPARED, out)) return true;
+        ResultAnswer r;
+        Read(reply, Op::RESULT, r);
+        error = r.text;
+        return false;
+    }
+
+    /** Send a prepared payment, signed by `signer`. */
+    Message Send(const CKey& who, const PrepareAnswer& p, const std::string& pin, const CKey* signer = nullptr)
+    {
+        SendRequest req;
+        req.prepare_id = p.prepare_id;
+        req.pin = pin;
+        (signer ? *signer : who).Sign(SendDigest(node.GetPubKey(), p.prepare_id, p.payee_script, p.amount, p.fee),
+                                       req.signature);
+        return Ask(who, Op::SEND, req);
+    }
+
+    int64_t now{NOW};
+};
+
+std::string ResultText(const Message& m)
+{
+    ResultAnswer r;
+    return Read(m, Op::RESULT, r) ? r.text : std::string("(not a result)");
+}
+
+} // namespace
+
+BOOST_AUTO_TEST_CASE(service_pairs_a_phone_only_once_accepted)
+{
+    ServiceFixture f(GetDataDir() / "companion_pair");
+    const CKey other = NewKey();
+
+    // Unpaired: nothing but pairing is answered.
+    BOOST_CHECK_EQUAL(ResultText(f.AskEmpty(f.device, Op::STATUS)), "This phone is not paired with this home node, or has been unpaired.");
+    // And nothing at all without a key proved on a path.
+    Message anon;
+    anon.op = Op::STATUS;
+    BOOST_CHECK(ResultText(f.service->Serve(CPubKey(), anon, f.now)).find("over a path") != std::string::npos);
+
+    const PairingTicket t = f.service->NewTicket("regtest", "127.0.0.1:1", {}, f.now);
+    PairRequest req;
+    req.token = t.token;
+    req.name = "Pixel\x01";
+    req.pin = "12345";
+    BOOST_CHECK_EQUAL(ResultText(f.Ask(f.device, Op::PAIR, req)), "A PIN is six to twelve digits.");
+    req.pin = "246810";
+    ResultAnswer r;
+    BOOST_REQUIRE(Read(f.Ask(f.device, Op::PAIR, req), Op::RESULT, r));
+    BOOST_CHECK(r.ok);
+    // Its first answer lost, the same phone may ask again; another phone may not.
+    BOOST_REQUIRE(Read(f.Ask(f.device, Op::PAIR, req), Op::RESULT, r));
+    BOOST_CHECK(r.ok);
+    BOOST_CHECK(ResultText(f.Ask(other, Op::PAIR, req)).find("already been used") != std::string::npos);
+
+    // The home node sees the phone's name, cleaned, and the code it should show.
+    std::vector<Pairing> pairings = f.service->Pairings(f.now);
+    BOOST_REQUIRE_EQUAL(pairings.size(), 1u);
+    BOOST_CHECK_EQUAL(pairings[0].name, "Pixel");
+    BOOST_CHECK_EQUAL(pairings[0].code, PairingCode(t.token, f.device.GetPubKey(), f.node.GetPubKey()));
+
+    // Waiting until accepted; nobody else can even ask.
+    PairStatusRequest status;
+    status.token = t.token;
+    PairStateAnswer s;
+    BOOST_REQUIRE(Read(f.Ask(f.device, Op::PAIR_STATUS, status), Op::PAIR_STATE, s));
+    BOOST_CHECK_EQUAL(s.state, (uint8_t)PairState::WAITING);
+    BOOST_REQUIRE(Read(f.Ask(other, Op::PAIR_STATUS, status), Op::PAIR_STATE, s));
+    BOOST_CHECK_EQUAL(s.state, (uint8_t)PairState::UNKNOWN);
+    BOOST_CHECK(ResultText(f.AskEmpty(f.device, Op::STATUS)).find("not paired") != std::string::npos);
+
+    std::string error;
+    BOOST_CHECK(!f.service->Accept(t.token, Limits(), f.now, error)); // limits have to be set
+    BOOST_REQUIRE_MESSAGE(f.service->Accept(t.token, Limits(5 * COIN, 20 * COIN), f.now, error), error);
+    BOOST_REQUIRE(Read(f.Ask(f.device, Op::PAIR_STATUS, status), Op::PAIR_STATE, s));
+    BOOST_CHECK_EQUAL(s.state, (uint8_t)PairState::ACCEPTED);
+    BOOST_CHECK_EQUAL(s.per_day, 20 * COIN);
+
+    StatusAnswer st;
+    BOOST_REQUIRE(Read(f.AskEmpty(f.device, Op::STATUS), Op::STATUS_INFO, st));
+    BOOST_CHECK_EQUAL(st.balance, 50 * COIN);
+    BOOST_CHECK_EQUAL(st.per_tx, 5 * COIN);
+    BOOST_CHECK_EQUAL(st.height, 1234);
+    BOOST_CHECK(!st.locked);
+
+    // A ticket is good for ten minutes and no longer.
+    const PairingTicket late = f.service->NewTicket("regtest", "127.0.0.1:1", {}, f.now);
+    req.token = late.token;
+    f.now += TICKET_TTL + 1;
+    BOOST_CHECK(ResultText(f.Ask(other, Op::PAIR, req)).find("expired") != std::string::npos);
+}
+
+BOOST_AUTO_TEST_CASE(service_pays_within_the_limits_and_the_pin)
+{
+    ServiceFixture f(GetDataDir() / "companion_pay");
+    f.Pair(f.device, Limits(5 * COIN, 6 * COIN));
+
+    PrepareAnswer p;
+    std::string error;
+    BOOST_REQUIRE_MESSAGE(f.Prepare(f.device, "alice", 2 * COIN, p, error), error);
+    BOOST_CHECK_EQUAL(p.amount, 2 * COIN);
+    BOOST_CHECK_EQUAL(p.fee, 1000);
+    BOOST_CHECK_EQUAL(p.expires, f.now + PREPARE_TTL);
+
+    // A wrong PIN, then a signature from another key: refused, nothing sent.
+    BOOST_CHECK_EQUAL(ResultText(f.Send(f.device, p, "135790")), "Wrong PIN. 4 tries left before this phone is locked.");
+    const CKey stranger = NewKey();
+    BOOST_CHECK(ResultText(f.Send(f.device, p, "246810", &stranger)).find("signature") != std::string::npos);
+    BOOST_CHECK_EQUAL(f.wallet.sent, 0);
+
+    SendAnswer sent;
+    BOOST_REQUIRE(Read(f.Send(f.device, p, "246810"), Op::SENT, sent));
+    BOOST_CHECK(sent.txid == f.wallet.next_txid);
+    // Its answer lost, the phone asks again: the same payment, not a second one.
+    SendAnswer again;
+    BOOST_REQUIRE(Read(f.Send(f.device, p, "246810"), Op::SENT, again));
+    BOOST_CHECK(again.txid == sent.txid);
+    BOOST_CHECK_EQUAL(f.wallet.sent, 1);
+
+    StatusAnswer st;
+    BOOST_REQUIRE(Read(f.AskEmpty(f.device, Op::STATUS), Op::STATUS_INFO, st));
+    BOOST_CHECK_EQUAL(st.spent_today, 2 * COIN + 1000);
+
+    // Over one payment's limit: refused before the wallet is asked.
+    const int prepared = f.wallet.prepared;
+    BOOST_CHECK(!f.Prepare(f.device, "alice", 5 * COIN + 1, p, error));
+    BOOST_CHECK(error.find("one payment") != std::string::npos);
+    BOOST_CHECK_EQUAL(f.wallet.prepared, prepared);
+    // Exactly what is left of the day, which only the fee takes over: built,
+    // refused, and its coins let go.
+    BOOST_CHECK(!f.Prepare(f.device, "alice", 4 * COIN - 1000, p, error));
+    BOOST_CHECK(error.find("left of this phone's limit") != std::string::npos);
+    BOOST_CHECK_EQUAL(f.wallet.cancelled, 1);
+
+    // The network refusing a payment does not count it against the day.
+    BOOST_REQUIRE(f.Prepare(f.device, "alice", 3 * COIN, p, error));
+    f.wallet.reject_send = true;
+    BOOST_CHECK(ResultText(f.Send(f.device, p, "246810")).find("refused") != std::string::npos);
+    f.wallet.reject_send = false;
+    BOOST_REQUIRE(Read(f.AskEmpty(f.device, Op::STATUS), Op::STATUS_INFO, st));
+    BOOST_CHECK_EQUAL(st.spent_today, 2 * COIN + 1000);
+
+    // A prepared payment not sent in time is let go.
+    BOOST_REQUIRE(f.Prepare(f.device, "alice", COIN, p, error));
+    const int cancelled = f.wallet.cancelled;
+    f.service->Expire(f.now + PREPARE_TTL + 1);
+    BOOST_CHECK_EQUAL(f.wallet.cancelled, cancelled + 1);
+    BOOST_CHECK(ResultText(f.Send(f.device, p, "246810")).find("no longer waiting") != std::string::npos);
+
+    // A day later the window has moved on.
+    f.now += SPEND_WINDOW;
+    BOOST_REQUIRE_MESSAGE(f.Prepare(f.device, "alice", 5 * COIN - 1000, p, error), error);
+}
+
+BOOST_AUTO_TEST_CASE(service_locks_a_phone_after_wrong_pins)
+{
+    ServiceFixture f(GetDataDir() / "companion_lock");
+    f.Pair(f.device, Limits(5 * COIN, 20 * COIN));
+    PrepareAnswer p;
+    std::string error;
+    BOOST_REQUIRE(f.Prepare(f.device, "alice", COIN, p, error));
+    for (int i = 0; i < MAX_PIN_FAILURES - 1; ++i) {
+        f.now += 10; // under the shared cap
+        BOOST_CHECK(ResultText(f.Send(f.device, p, "000000")).find("Wrong PIN") != std::string::npos);
+    }
+    BOOST_CHECK(ResultText(f.Send(f.device, p, "000000")).find("now locked") != std::string::npos);
+    // Locked: not even the right PIN, nor a new payment.
+    BOOST_CHECK(ResultText(f.Send(f.device, p, "246810")).find("locked") != std::string::npos);
+    BOOST_CHECK(!f.Prepare(f.device, "alice", COIN, p, error));
+    BOOST_CHECK(error.find("locked") != std::string::npos);
+    StatusAnswer st;
+    BOOST_REQUIRE(Read(f.AskEmpty(f.device, Op::STATUS), Op::STATUS_INFO, st));
+    BOOST_CHECK(st.locked);
+    BOOST_CHECK_EQUAL(f.wallet.sent, 0);
+
+    // Only the home node unlocks it.
+    BOOST_REQUIRE(f.service->Unlock(f.device.GetPubKey(), error));
+    BOOST_REQUIRE(f.Prepare(f.device, "alice", COIN, p, error));
+    SendAnswer sent;
+    BOOST_CHECK(Read(f.Send(f.device, p, "246810"), Op::SENT, sent));
+
+    // The PIN can be changed, knowing the old one.
+    SetPinRequest change;
+    change.old_pin = "246810";
+    change.new_pin = "97531086";
+    BOOST_CHECK_EQUAL(ResultText(f.Ask(f.device, Op::SET_PIN, change)), "PIN changed.");
+    BOOST_REQUIRE(f.Prepare(f.device, "alice", COIN, p, error));
+    BOOST_CHECK(ResultText(f.Send(f.device, p, "246810")).find("Wrong PIN") != std::string::npos);
+    BOOST_CHECK(Read(f.Send(f.device, p, "97531086"), Op::SENT, sent));
+}
+
+BOOST_AUTO_TEST_CASE(service_pin_guesses_are_capped_across_phones)
+{
+    // Ten phones guessing one PIN each still make ten guesses a minute, at most.
+    ServiceFixture f(GetDataDir() / "companion_cap");
+    std::vector<CKey> phones(PIN_ATTEMPTS + 1);
+    std::vector<PrepareAnswer> prepared(phones.size());
+    std::string error;
+    for (size_t i = 0; i < phones.size(); ++i) {
+        phones[i].MakeNewKey(true);
+        f.Pair(phones[i], Limits(5 * COIN, 20 * COIN));
+        BOOST_REQUIRE(f.Prepare(phones[i], "alice", COIN, prepared[i], error));
+    }
+    for (size_t i = 0; i < PIN_ATTEMPTS; ++i) {
+        BOOST_CHECK(ResultText(f.Send(phones[i], prepared[i], "000000")).find("Wrong PIN") != std::string::npos);
+    }
+    BOOST_CHECK(ResultText(f.Send(phones.back(), prepared.back(), "246810")).find("Too many PIN attempts") !=
+                std::string::npos);
+    f.now += PIN_WINDOW;
+    SendAnswer sent;
+    BOOST_CHECK(Read(f.Send(phones.back(), prepared.back(), "246810"), Op::SENT, sent));
+}
+
+BOOST_AUTO_TEST_CASE(service_forgets_a_revoked_phone)
+{
+    ServiceFixture f(GetDataDir() / "companion_revoke");
+    f.Pair(f.device, Limits(5 * COIN, 20 * COIN));
+    PrepareAnswer p;
+    std::string error;
+    BOOST_REQUIRE(f.Prepare(f.device, "alice", COIN, p, error));
+    BOOST_REQUIRE(f.service->Revoke(f.device.GetPubKey()));
+    BOOST_CHECK_EQUAL(f.wallet.cancelled, 1); // its prepared payment let go
+    BOOST_CHECK(ResultText(f.Send(f.device, p, "246810")).find("not paired") != std::string::npos);
+    BOOST_CHECK(f.service->Devices().empty());
+
+    // A phone can unpair itself too.
+    f.Pair(f.device, Limits(5 * COIN, 20 * COIN));
+    BOOST_CHECK_EQUAL(ResultText(f.AskEmpty(f.device, Op::UNPAIR)), "Unpaired.");
+    BOOST_CHECK(f.service->Devices().empty());
 }
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -135,9 +135,12 @@ BITCOIN_CORE_H = \
   compat/cpuid.h \
   compat/endian.h \
   compat/sanity.h \
+  companion/node.h \
   companion/policy.h \
   companion/protocol.h \
+  companion/service.h \
   companion/store.h \
+  companion/wallethook.h \
   compressor.h \
   consensus/consensus.h \
   consensus/tx_check.h \
@@ -319,6 +322,7 @@ BITCOIN_CORE_H = \
   wallet/bdb.h \
   wallet/coincontrol.h \
   wallet/coinselection.h \
+  wallet/companion.h \
   wallet/context.h \
   wallet/crypter.h \
   wallet/db.h \
@@ -365,6 +369,8 @@ libbitcoin_server_a_SOURCES = \
   blockfilter.cpp \
   chain.cpp \
   checkpoints.cpp \
+  companion/node.cpp \
+  companion/service.cpp \
   companion/store.cpp \
   consensus/tx_verify.cpp \
   dbwrapper.cpp \
@@ -426,6 +432,7 @@ libbitcoin_server_a_SOURCES = \
   pos.cpp \
   rest.cpp \
   rpc/blockchain.cpp \
+  rpc/companion.cpp \
   rpc/mail.cpp \
   rpc/mining.cpp \
   rpc/names.cpp \
@@ -478,6 +485,7 @@ libbitcoin_wallet_a_SOURCES = \
   names/payment.cpp \
   wallet/bdb.cpp \
   wallet/coincontrol.cpp \
+  wallet/companion.cpp \
   wallet/context.cpp \
   wallet/crypter.cpp \
   wallet/db.cpp \

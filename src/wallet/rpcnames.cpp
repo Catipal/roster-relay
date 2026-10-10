@@ -86,13 +86,11 @@ std::shared_ptr<const names::NameState> CurrentNames(int& next_out, bool wait = 
     return state;
 }
 
-/**
- * Sign a transaction this wallet has funded, check the mempool takes it, and
- * only then keep it. A transaction the wallet keeps but the network refuses
- * would sit unconfirmed, tying up its coins. Inputs listed in `presigned`
- * already carry their input script and are left as they are.
- */
-CTransactionRef SignAndSend(CWallet* const pwallet, CMutableTransaction raw_tx, const std::set<size_t>& presigned = {})
+} // namespace
+
+// A transaction the wallet kept but the network refused would sit unconfirmed,
+// tying up its coins - which is why the mempool is asked first.
+CTransactionRef SignAndSend(CWallet* const pwallet, CMutableTransaction raw_tx, const std::set<size_t>& presigned)
 {
     PartiallySignedTransaction psbtx(raw_tx);
     for (size_t i : presigned) {
@@ -114,6 +112,8 @@ CTransactionRef SignAndSend(CWallet* const pwallet, CMutableTransaction raw_tx, 
     pwallet->CommitTransaction(tx, {}, {});
     return tx;
 }
+
+namespace {
 
 /**
  * Fund `raw_tx` from this wallet with the change after every output it has,
@@ -228,6 +228,54 @@ void CheckNoSaleWaiting(CWallet* const pwallet, const std::string& name)
 }
 
 } // namespace
+
+NamePaymentPlan PlanNamePayment(const names::Target& target, bool allow_unsettled, bool wait_for_index)
+{
+    NamePaymentPlan plan;
+    plan.who = target.source == names::Source::KEY ? HexStr(target.key) : target.label;
+    const std::string& who = plan.who;
+
+    int next = 0;
+    std::shared_ptr<const names::NameState> state = CurrentNames(next, wait_for_index);
+    const names::PayKey* pay = state->PaymentKey(target.key);
+    if (!pay) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
+            "%s does not take payments by name. Nothing was spent.", who));
+    }
+    // A revoked key may be in someone else's hands now, and so may the
+    // spending key it last published.
+    if (roster::SeenRevoked(target.key) ||
+        (g_rosterindex && g_rosterindex->RevokedAt(target.key, next - 1) >= 0)) {
+        const std::string whose = target.source == names::Source::KEY
+            ? std::string("That roster key") : "The roster key " + who + " points to";
+        throw JSONRPCError(RPC_INVALID_PARAMETER, whose +
+            " has been revoked, so a payment to it could reach someone else. Nothing was spent.");
+    }
+    if (!allow_unsettled) {
+        if (target.source == names::Source::NAME && target.depth < (int)names::SETTLE_DEPTH) {
+            throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
+                "%s changed hands %d blocks ago. A payment cannot be taken back, so wait until that is "
+                "%u blocks ago, or pass allow_unsettled. Nothing was spent.", who, target.depth, names::SETTLE_DEPTH));
+        }
+        const int key_depth = (next - 1) - pay->height;
+        if (key_depth < (int)names::SETTLE_DEPTH) {
+            throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
+                "%s published the key it is paid on %d blocks ago. A payment cannot be taken back, so wait until "
+                "that is %u blocks ago, or pass allow_unsettled. Nothing was spent.", who, key_depth, names::SETTLE_DEPTH));
+        }
+    }
+
+    CKey one_time;
+    one_time.MakeNewKey(true);
+    CPubKey dest;
+    if (!names::PaymentDestination(target.key, pay->spend, one_time, dest)) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
+            "%s has published keys no payment can be made to. Nothing was spent.", who));
+    }
+    plan.address = PKHash(dest);
+    plan.marker = CScript() << OP_RETURN << names::PaymentMarker(one_time.GetPubKey());
+    return plan;
+}
 
 bool PublishNameClaim(const names::PendingRegistration& p, uint256& txid_out, std::string& error_out)
 {
@@ -893,51 +941,15 @@ RPCHelpMan sendtoname()
     const CAmount amount = AmountFromValue(request.params[1]);
     if (amount <= 0) throw JSONRPCError(RPC_TYPE_ERROR, "Invalid amount for send");
     const bool allow_unsettled = !request.params[2].isNull() && request.params[2].get_bool();
-    const std::string who = target.source == names::Source::KEY ? HexStr(target.key) : target.label;
 
-    int next = 0;
-    std::shared_ptr<const names::NameState> state = CurrentNames(next);
-    const names::PayKey* pay = state->PaymentKey(target.key);
-    if (!pay) {
-        throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
-            "%s does not take payments by name. Nothing was spent.", who));
-    }
-    // A revoked key may be in someone else's hands now, and so may the
-    // spending key it last published.
-    if (roster::SeenRevoked(target.key) ||
-        (g_rosterindex && g_rosterindex->RevokedAt(target.key, next - 1) >= 0)) {
-        const std::string whose = target.source == names::Source::KEY
-            ? std::string("That roster key") : "The roster key " + who + " points to";
-        throw JSONRPCError(RPC_INVALID_PARAMETER, whose +
-            " has been revoked, so a payment to it could reach someone else. Nothing was spent.");
-    }
-    if (!allow_unsettled) {
-        if (target.source == names::Source::NAME && target.depth < (int)names::SETTLE_DEPTH) {
-            throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
-                "%s changed hands %d blocks ago. A payment cannot be taken back, so wait until that is "
-                "%u blocks ago, or pass allow_unsettled. Nothing was spent.", who, target.depth, names::SETTLE_DEPTH));
-        }
-        const int key_depth = (next - 1) - pay->height;
-        if (key_depth < (int)names::SETTLE_DEPTH) {
-            throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
-                "%s published the key it is paid on %d blocks ago. A payment cannot be taken back, so wait until "
-                "that is %u blocks ago, or pass allow_unsettled. Nothing was spent.", who, key_depth, names::SETTLE_DEPTH));
-        }
-    }
-
-    CKey one_time;
-    one_time.MakeNewKey(true);
-    CPubKey dest;
-    if (!names::PaymentDestination(target.key, pay->spend, one_time, dest)) {
-        throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
-            "%s has published keys no payment can be made to. Nothing was spent.", who));
-    }
-    const PKHash address(dest);
+    const NamePaymentPlan plan = PlanNamePayment(target, allow_unsettled);
+    const std::string& who = plan.who;
+    const PKHash& address = plan.address;
     EnsureWalletIsUnlocked(pwallet);
 
     CMutableTransaction mtx;
     mtx.vout.emplace_back(amount, GetScriptForDestination(address));
-    mtx.vout.emplace_back(0, CScript() << OP_RETURN << names::PaymentMarker(one_time.GetPubKey()));
+    mtx.vout.emplace_back(0, plan.marker);
     // The change goes anywhere, as for any other payment: always last would
     // tell a watcher which output paid and how much.
     CCoinControl coin_control;

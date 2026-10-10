@@ -263,6 +263,21 @@ Your listing, the relay network, the wallet's lock and staking state with the
 yearly rate staking pays, your peers (click to pause the network) and the
 block height, with a progress bar while catching up.
 
+Languages
+---------
+
+BPS Relay is translated into the 38 languages whose wallet translation was
+at least 80% done: Afrikaans, Arabic, Bengali, Catalan, Chinese (simplified
+and traditional), Croatian, Czech, Danish, Dutch, Filipino, Finnish, French,
+Galician, German, Greek, Hebrew, Hungarian, Indonesian, Italian, Japanese,
+Korean, Malay, Norwegian, Persian, Polish, Portuguese (Brazil and Portugal),
+Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swedish, Tamil,
+Ukrainian and Vietnamese. Regional variants such as Mexican Spanish use their
+base language. Choose one under Settings, Display, Language; it takes effect
+when BPS Relay starts again, and the wallet inside it follows the same
+setting. The other languages the wallet carries can be chosen too, but show
+BPS Relay's own pages in English.
+
 New options
 ===========
 
@@ -328,7 +343,11 @@ Known issues
   internet from there.
 - Radio needs Python and Reticulum installed beside BPS Relay. Ham radio
   bands do not allow encrypted traffic; use licence-free ones such as LoRa's.
-
+- The translations were made by Claude, not by native speakers; corrections
+  are welcome. Texts the node itself sends, such as error messages from
+  commands, stay in English.
+- Arabic, Hebrew and Persian read right to left, but the window keeps its
+  left-to-right layout, as the wallet client does.
 - The relay network's handshake has not been reviewed by anyone who did not
   write it. Do not rely on it for anything that must stay private.
 - A relay pays its peers inside the blocks it stakes, so who a relay pays is

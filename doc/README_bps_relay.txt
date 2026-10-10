@@ -12,7 +12,7 @@ are about the network rather than about coins:
   Wallet     the BitcoinPoS Core wallet itself, running inside this window
   Mail       letters to and from other people on the roster
   Server     what this node offers others: relaying and holding mail
-  Settings   roster, overlay and display options
+  Settings   roster, overlay, radio, display and language options
 
 What changed in this version is in release-notes.md, next to this file.
 
@@ -86,6 +86,13 @@ An identity stands behind your node's key, so that if the key ever has to
 change, your node keeps how long it has been listed. Make one on the Discovery
 tab. Write down the recovery key it shows you: it is shown only once, and it is
 the only way to stop someone who steals your identity from moving it.
+
+
+Language
+--------
+BPS Relay speaks 38 languages. Choose yours under Settings, Display, Language
+and start BPS Relay again. The translations were made by Claude, not by
+native speakers. Messages the node itself sends stay in English.
 
 
 See the bitcoin proof of stake FAQs at:

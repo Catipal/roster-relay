@@ -208,6 +208,9 @@ public:
     bool Has(uint64_t path_id) const;
     size_t Size() const { return m_paths.size(); }
 
+    /** The paths this node carries on to `hop`, where `hop` is their next stop. */
+    std::vector<uint64_t> ForwardedTo(const Hop& hop) const;
+
 private:
     struct Entry {
         Hop upstream;

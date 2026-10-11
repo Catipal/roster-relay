@@ -51,7 +51,31 @@ bool Relay::Start(AppHandler app, PathHandler path)
         [this](const CService& from, std::vector<unsigned char>&& msg) {
             OnMessage(Hop::Direct(from), std::move(msg));
         },
-        [this](const CService& peer) { OnEstablished(peer); });
+        [this](const CService& peer) { OnEstablished(peer); },
+        [this](const CService& peer) { OnStale(peer); });
+}
+
+void Relay::SetKeyLookup(KeyLookup lookup)
+{
+    LOCK(m_mutex);
+    m_lookup = std::move(lookup);
+}
+
+void Relay::OnStale(const CService& peer)
+{
+    // A phone is nobody's relay, and nobody's session with it outlives it.
+    if (m_client_only) return;
+    KeyLookup lookup;
+    {
+        LOCK(m_mutex);
+        lookup = m_lookup;
+    }
+    CPubKey key;
+    if (!lookup || !lookup(peer, key) || !key.IsFullyValid()) return;
+    LogPrint(BCLog::NET, "overlay: %s still holds a session from before a restart here; starting a new one\n",
+             peer.ToString());
+    // Through Connect, so a node that hides behind throwaway keys still does.
+    Connect(peer, key);
 }
 
 void Relay::Stop() { m_socket.Stop(); }
@@ -254,9 +278,10 @@ bool Relay::SendSecret(uint64_t path_id, const std::vector<unsigned char>& paylo
 
 bool Relay::BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out,
                          std::string& error, std::chrono::milliseconds step_timeout, bool prove_last,
-                         const CKey* prove_as)
+                         const CKey* prove_as, size_t* failed_at)
 {
     path_out = 0;
+    if (failed_at) *failed_at = 0;
     if (hops.size() < 2) {
         error = "a path needs at least one relay before its destination";
         return false;
@@ -307,6 +332,9 @@ bool Relay::BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out
             error = strprintf(answer == 0 ? "stop %u of the path refused to reach the next one"
                                           : "stop %u of the path did not answer",
                               (unsigned)i);
+            // The stop before answered its own handshake a moment ago; the one
+            // it was asked to reach is the likelier fault.
+            if (failed_at) *failed_at = i;
             ClosePath(legs);
             return false;
         }
@@ -329,6 +357,7 @@ bool Relay::BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out
         }
         if (!secret) {
             error = strprintf("stop %u of the path did not complete its handshake", (unsigned)i);
+            if (failed_at) *failed_at = i;
             ClosePath(legs);
             return false;
         }
@@ -460,6 +489,24 @@ void Relay::ExpirePendingBuilds()
 
 void Relay::OnEstablished(const CService& peer)
 {
+    // A session with a peer this node already carries paths to is a new one:
+    // the peer restarted and forgot them, along with the binds that made it
+    // their endpoint, sent over the session it no longer has. Bind them again,
+    // or every path through here to it stays dead. A first session has none.
+    std::vector<uint64_t> rebind;
+    {
+        LOCK(m_mutex);
+        rebind = m_paths.ForwardedTo(Hop::Direct(peer));
+    }
+    for (uint64_t id : rebind) {
+        std::vector<unsigned char> bind;
+        if (EncodePathBind(id, bind)) SendToHop(Hop::Direct(peer), bind);
+    }
+    if (!rebind.empty()) {
+        LogPrint(BCLog::NET, "overlay: new session with %s; rebound %u paths to it\n", peer.ToString(),
+                 (unsigned)rebind.size());
+    }
+
     std::vector<PendingBuild> ready;
     {
         LOCK(m_mutex);

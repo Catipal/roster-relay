@@ -374,4 +374,13 @@ bool PathTable::Has(uint64_t path_id) const
     return m_paths.count(path_id) != 0;
 }
 
+std::vector<uint64_t> PathTable::ForwardedTo(const Hop& hop) const
+{
+    std::vector<uint64_t> out;
+    for (const auto& entry : m_paths) {
+        if (entry.second.downstream.IsValid() && entry.second.downstream == hop) out.push_back(entry.first);
+    }
+    return out;
+}
+
 } // namespace overlay

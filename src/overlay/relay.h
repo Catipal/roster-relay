@@ -82,6 +82,11 @@ public:
      * the roster address is used unchanged.
      */
     using NextHopResolver = std::function<CService(const CPubKey& key, const CService& listed, bool& slow)>;
+    /**
+     * The key the roster lists at `addr`, if any. Used to start a fresh session
+     * with a relay that still holds one from before this node restarted.
+     */
+    using KeyLookup = std::function<bool(const CService& addr, CPubKey& key_out)>;
 
     /** One stop on a circuit: where it listens and the key that must answer there. */
     struct CircuitHop {
@@ -110,6 +115,18 @@ public:
      */
     void SetLimits(uint64_t daily_budget, uint64_t path_rate) { m_limits.Configure(daily_budget, path_rate); }
     TrafficLimits::Stats LimitStats() const;
+
+    /**
+     * How a restarted node finds out who still holds an old session with it.
+     * A peer that sends session traffic this node cannot open is looked up,
+     * and if the roster lists it there, a new session is started with it -
+     * by this node, to a known key, so a forged datagram can cause at most a
+     * handshake to a listed relay, and at most once per Socket::STALE_INTERVAL.
+     * Without this, every relay that knew this node before a restart goes on
+     * sending into a session that no longer exists, and every path through it
+     * to this node fails.
+     */
+    void SetKeyLookup(KeyLookup lookup);
 
     /**
      * Carry nobody's traffic and be nobody's meeting point: requests to extend
@@ -199,10 +216,14 @@ public:
      * relay before it still sees only throwaway keys. `prove_as` does the same
      * with a key of the caller's: a phone shows its device key to its home
      * node this way, and to nothing else on the path.
+     *
+     * On failure `failed_at`, if given, is the index in `hops` of the stop
+     * that could not be reached or would not answer, so the caller can leave
+     * it out of the next try.
      */
     bool BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out, std::string& error,
                       std::chrono::milliseconds step_timeout = std::chrono::milliseconds{4000},
-                      bool prove_last = false, const CKey* prove_as = nullptr);
+                      bool prove_last = false, const CKey* prove_as = nullptr, size_t* failed_at = nullptr);
 
     /**
      * Whether the sessions this node opens with its neighbours over the
@@ -276,6 +297,8 @@ private:
     void OnMessage(const Hop& from, std::vector<unsigned char>&& msg);
     /** A session with an adjacent peer has just completed. */
     void OnEstablished(const CService& peer);
+    /** A peer is still sending on a session this node no longer has. */
+    void OnStale(const CService& peer);
     /** Join `from` to `dest` as `path_id`, tell both, and answer `from`. */
     void FinishBuild(uint64_t path_id, const Hop& from, const CService& dest);
     /** Answer the builds that have waited too long for their dial. */
@@ -324,6 +347,7 @@ private:
      * shaking hands again costs airtime that a quiet minute does not justify.
      */
     bool Fresh(const CService& peer, bool radio);
+    KeyLookup m_lookup GUARDED_BY(m_mutex);
 
     Mutex m_results_mutex;
     std::condition_variable m_results_cv;

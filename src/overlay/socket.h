@@ -54,6 +54,12 @@ public:
     using PayloadHandler = std::function<void(const CService&, std::vector<unsigned char>&&)>;
     /** Called on the receive thread when a session with a peer completes, either way round. */
     using EstablishedHandler = std::function<void(const CService&)>;
+    /**
+     * Called on the receive thread when a peer keeps sending session traffic
+     * this node holds no session for: it still has one from before this node
+     * restarted. At most once per STALE_INTERVAL for any one address.
+     */
+    using StaleHandler = std::function<void(const CService&)>;
 
     explicit Socket(const CKey& static_key);
     ~Socket();
@@ -62,7 +68,10 @@ public:
     bool Bind(const CService& listen_addr, std::string& error);
 
     /** Begin the receive thread. Bind must have succeeded. */
-    bool Start(PayloadHandler handler, EstablishedHandler established = nullptr);
+    bool Start(PayloadHandler handler, EstablishedHandler established = nullptr, StaleHandler stale = nullptr);
+
+    /** Seconds between two stale reports for the same address. */
+    static constexpr int64_t STALE_INTERVAL = 20;
 
     /** Stop the thread and close the socket. Safe to call twice. */
     void Stop();
@@ -148,9 +157,13 @@ private:
     size_t m_global_attempts GUARDED_BY(m_mutex){0};
     int64_t m_window_start GUARDED_BY(m_mutex){0};
     size_t m_refused GUARDED_BY(m_mutex){0};
+    // When each address was last reported stale. Bounded like the handshake
+    // table, since a forged source address costs nothing.
+    std::map<CService, int64_t> m_stale_reported GUARDED_BY(m_mutex);
 
     PayloadHandler m_handler;
     EstablishedHandler m_established;
+    StaleHandler m_stale;
     std::thread m_thread;
     CThreadInterrupt m_interrupt;
     std::atomic<bool> m_running{false};

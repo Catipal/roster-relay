@@ -2542,6 +2542,15 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
         // those the roster lists, at the address and with the key it lists.
         // Read again if the answer is not in a copy up to ten minutes old,
         // since a relay that just listed is exactly who a path may name.
+        // And who it is, when a relay that knew this node before a restart is
+        // still sending on the old session: the roster says which key is listed
+        // at that address, so this node can start a new one with it.
+        overlay::g_overlay->SetKeyLookup([](const CService& addr, CPubKey& key) {
+            for (const roster::RelayInfo& r : roster::FreshRelays(600)) {
+                if (roster::OverlayAddressFor(r.addr) == addr) return roster::StakerPubKeyFromRoster(r.key, key);
+            }
+            return false;
+        });
         overlay::g_overlay->SetDialPolicy([](const CService& dest, const CPubKey& key) {
             const roster::KeyBytes x = mail::XOnly(key);
             for (int64_t max_age : {int64_t{600}, int64_t{10}}) {

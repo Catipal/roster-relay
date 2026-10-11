@@ -345,13 +345,14 @@ int Socket::ReceiveDatagram(unsigned char* buf, size_t len, struct sockaddr_stor
 #endif
 }
 
-bool Socket::Start(PayloadHandler handler, EstablishedHandler established)
+bool Socket::Start(PayloadHandler handler, EstablishedHandler established, StaleHandler stale)
 {
     if (m_socket == INVALID_SOCKET) return false;
     if (m_running.exchange(true)) return false;
 
     m_handler = std::move(handler);
     m_established = std::move(established);
+    m_stale = std::move(stale);
     m_thread = std::thread(&TraceThread<std::function<void()> >, "overlay",
                            std::function<void()>([this] { ThreadReceive(); }));
     return true;
@@ -531,20 +532,40 @@ void Socket::ThreadReceive()
         }
         std::vector<unsigned char> reply, payload;
         Transport::Result result;
+        bool stale = false;
         {
             LOCK(m_mutex);
             // Metered before any key agreement happens, which is the only
             // place it helps: past this point the work is already done.
             FrameType type;
             uint64_t sid = 0, ctr = 0;
-            if (PeekFrame(buffer.data(), static_cast<size_t>(got), type, sid, ctr) &&
-                type == FrameType::HANDSHAKE_INIT &&
-                !AllowHandshake(peer, GetTime())) {
+            const bool framed = PeekFrame(buffer.data(), static_cast<size_t>(got), type, sid, ctr);
+            if (framed && type == FrameType::HANDSHAKE_INIT && !AllowHandshake(peer, GetTime())) {
                 continue;
             }
             result = m_transport.Receive(peer, buffer.data(), static_cast<size_t>(got),
                                          reply, payload);
+            // Session traffic from a peer this node has no session with: the
+            // peer still holds one from before a restart here, and will keep
+            // sending into it - and every path it carries towards this node
+            // with it - until something makes a new one. Reported, not
+            // answered: only a handshake this node starts, to a key it knows,
+            // can replace it, and a forged datagram must not get a reply.
+            if (framed && type == FrameType::DATA && result == Transport::Result::IGNORED && m_stale &&
+                !m_transport.HasSession(peer) && !m_transport.HasPendingHandshake(peer)) {
+                const int64_t now = GetTime();
+                std::map<CService, int64_t>::iterator it = m_stale_reported.find(peer);
+                if (it == m_stale_reported.end() && m_stale_reported.size() >= MAX_TRACKED_SOURCES) {
+                    m_stale_reported.clear();
+                    it = m_stale_reported.end();
+                }
+                if (it == m_stale_reported.end() || now - it->second >= STALE_INTERVAL) {
+                    m_stale_reported[peer] = now;
+                    stale = true;
+                }
+            }
         }
+        if (stale) m_stale(peer);
 
         if (!reply.empty()) SendDatagram(peer, reply);
 
@@ -569,6 +590,7 @@ void Socket::ThreadReceive()
     }
 }
 
+constexpr int64_t Socket::STALE_INTERVAL;
 constexpr int64_t Socket::RATE_WINDOW;
 constexpr size_t Socket::PER_SOURCE_LIMIT;
 constexpr size_t Socket::GLOBAL_LIMIT;

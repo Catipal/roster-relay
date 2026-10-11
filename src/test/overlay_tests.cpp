@@ -2715,6 +2715,115 @@ BOOST_AUTO_TEST_CASE(relay_circuit_shows_a_chosen_key_to_its_destination_only)
     for (overlay::Relay* r : {&A, &R1, &R2, &C}) r->Stop();
 }
 
+BOOST_AUTO_TEST_CASE(relay_restarted_node_renews_sessions_others_still_hold)
+{
+    // A and B have a session. B restarts - same key, same address, no memory of
+    // A. A goes on sending on its old session; B finds no session for it, looks
+    // A up as the roster would, and starts a new one, and A gets through again.
+    CKey ka, kb;
+    ka.MakeNewKey(true);
+    kb.MakeNewKey(true);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    overlay::Relay A(ka);
+    BOOST_REQUIRE_MESSAGE(A.Bind(any, err), err);
+    Inbox in_a;
+    BOOST_REQUIRE(A.Start(in_a.Handler()));
+    std::unique_ptr<overlay::Relay> B(new overlay::Relay(kb));
+    BOOST_REQUIRE_MESSAGE(B->Bind(any, err), err);
+    Inbox in_b;
+    BOOST_REQUIRE(B->Start(in_b.Handler()));
+    const CService a_addr = A.BoundAddress(), b_addr = B->BoundAddress();
+    BOOST_REQUIRE(WaitFor([&] {
+        if (A.HasSession(b_addr)) return true;
+        A.Connect(b_addr, kb.GetPubKey());
+        return A.HasSession(b_addr);
+    }));
+
+    B->Stop();
+    B.reset(new overlay::Relay(kb));
+    BOOST_REQUIRE_MESSAGE(B->Bind(b_addr, err), err);
+    Inbox in_b2;
+    B->SetKeyLookup([&](const CService& addr, CPubKey& key) {
+        if (addr != a_addr) return false;
+        key = ka.GetPubKey();
+        return true;
+    });
+    BOOST_REQUIRE(B->Start(in_b2.Handler()));
+    BOOST_CHECK(A.HasSession(b_addr)); // A has no way to know
+
+    const std::vector<unsigned char> hello{0x01, 0x02, 0x03};
+    BOOST_CHECK(WaitFor([&] {
+        if (in_b2.Count() > 0) return true;
+        A.SendApp(b_addr, hello);
+        return in_b2.Count() > 0;
+    }, 10000));
+    BOOST_REQUIRE(in_b2.Count() > 0);
+    BOOST_CHECK(in_b2.At(0) == hello);
+
+    A.Stop();
+    B->Stop();
+}
+
+BOOST_AUTO_TEST_CASE(relay_restarted_endpoint_gets_its_paths_back)
+{
+    // A -> R -> B, end to end with B. B restarts. Its end-to-end session is
+    // gone for good, but the path need not be: once B has renewed its session
+    // with R, R binds the path to B again, and A can open a new end-to-end
+    // session over the very same path.
+    CKey ka, kr, kb;
+    for (CKey* k : {&ka, &kr, &kb}) k->MakeNewKey(true);
+    std::string err;
+    const CService any = CService(LookupNumeric("127.0.0.1", 0));
+    overlay::Relay A(ka), R(kr);
+    BOOST_REQUIRE_MESSAGE(A.Bind(any, err), err);
+    BOOST_REQUIRE_MESSAGE(R.Bind(any, err), err);
+    std::unique_ptr<overlay::Relay> B(new overlay::Relay(kb));
+    BOOST_REQUIRE_MESSAGE(B->Bind(any, err), err);
+    Inbox in_a, in_r, in_b;
+    BOOST_REQUIRE(A.Start(in_a.Handler()));
+    BOOST_REQUIRE(R.Start(in_r.Handler()));
+    BOOST_REQUIRE(B->Start(in_b.Handler()));
+    DialAnything(R);
+    const CService r_addr = R.BoundAddress(), b_addr = B->BoundAddress();
+
+    const std::vector<overlay::Relay::CircuitHop> hops{{r_addr, kr.GetPubKey()}, {b_addr, kb.GetPubKey()}};
+    uint64_t path = 0;
+    BOOST_REQUIRE_MESSAGE(A.BuildCircuit(hops, path, err), err);
+
+    B->Stop();
+    B.reset(new overlay::Relay(kb));
+    BOOST_REQUIRE_MESSAGE(B->Bind(b_addr, err), err);
+    Inbox in_b2;
+    B->SetKeyLookup([&](const CService& addr, CPubKey& key) {
+        if (addr != r_addr) return false;
+        key = kr.GetPubKey();
+        return true;
+    });
+    BOOST_REQUIRE(B->Start(in_b2.Handler()));
+
+    // The first tries land in R's old session and only wake B up; once R has
+    // rebound the path, a try gets through.
+    BOOST_CHECK(WaitFor([&] {
+        if (A.HasSecretSession(path) && B->HasSecretSession(path)) return true;
+        A.ConnectSecret(path, kb.GetPubKey());
+        UninterruptibleSleep(std::chrono::milliseconds{300});
+        return A.HasSecretSession(path) && B->HasSecretSession(path);
+    }, 15000));
+    const std::vector<unsigned char> hello{0x0b, 0x0a, 0x0c, 0x0e};
+    BOOST_CHECK(WaitFor([&] {
+        if (in_b2.Count() > 0) return true;
+        A.SendSecret(path, hello);
+        return in_b2.Count() > 0;
+    }, 10000));
+    BOOST_REQUIRE(in_b2.Count() > 0);
+    BOOST_CHECK(in_b2.At(0) == hello);
+
+    A.Stop();
+    R.Stop();
+    B->Stop();
+}
+
 BOOST_AUTO_TEST_CASE(relay_client_only_carries_nothing)
 {
     // A phone on someone's path is no relay: asked to extend it, it stays

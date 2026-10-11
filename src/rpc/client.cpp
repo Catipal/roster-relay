@@ -41,6 +41,7 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "publishrecord", 1, "options" },
     { "requestlisting", 0, "options" },
     { "requestlisting", 1, "relay" },
+    { "meet", 1, "hops" },
     { "registername", 1, "years" },
     { "renewname", 1, "years" },
     { "getnameprice", 1, "years" },

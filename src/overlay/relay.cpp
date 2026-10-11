@@ -65,6 +65,12 @@ void Relay::SetDialPolicy(DialPolicy policy)
     m_dial = std::move(policy);
 }
 
+void Relay::SetIntroducePolicy(IntroducePolicy policy)
+{
+    LOCK(m_mutex);
+    m_introduce = std::move(policy);
+}
+
 bool Relay::Connect(const CService& peer, const CPubKey& peer_static)
 {
     return m_socket.Connect(peer, peer_static);
@@ -198,7 +204,7 @@ bool Relay::SendSecret(uint64_t path_id, const std::vector<unsigned char>& paylo
 }
 
 bool Relay::BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out,
-                         std::string& error, std::chrono::milliseconds step_timeout)
+                         std::string& error, std::chrono::milliseconds step_timeout, bool prove_last)
 {
     path_out = 0;
     if (hops.size() < 2) {
@@ -253,7 +259,11 @@ bool Relay::BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out
 
         bool secret = false;
         for (int attempt = 0; !secret && attempt < 3 && !m_interrupted; ++attempt) {
-            if (!ConnectSecret(id, hops[i].key, /* anonymous */ true)) break;
+            // Every stop sees a key made for this handshake alone, except, when
+            // asked, the last: a meeting point registers a service only over a
+            // session that proved the service's own key.
+            const bool anonymous = !(prove_last && i + 1 == hops.size());
+            if (!ConnectSecret(id, hops[i].key, anonymous)) break;
             const auto until = std::chrono::steady_clock::now() + attempt_timeout;
             while (std::chrono::steady_clock::now() < until && !HasSecretSession(id) && !m_interrupted) {
                 UninterruptibleSleep(std::chrono::milliseconds{20});
@@ -314,7 +324,16 @@ bool Relay::Meet(uint64_t path_id, const roster::KeyBytes& service, uint64_t mee
 size_t Relay::IntroductionCount()
 {
     LOCK(m_mutex);
+    m_paths.Expire(GetTime());
+    PruneIntros();
     return m_intros.size();
+}
+
+void Relay::PruneIntros()
+{
+    for (std::map<roster::KeyBytes, uint64_t>::iterator it = m_intros.begin(); it != m_intros.end();) {
+        it = m_paths.Has(it->second) ? std::next(it) : m_intros.erase(it);
+    }
 }
 
 size_t Relay::PathCount()
@@ -504,16 +523,40 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
         // Only over a path: a service registering from an address would have
         // just told the relay where it is, which is the one thing it must not.
         if (!from.via_path) return;
-        LOCK(m_mutex);
-        // And only by the service itself. The end-to-end session proved a key;
-        // registering under any other would let anyone take over a service's
-        // meeting point and be spliced to its clients in its place.
-        if (!SameX(m_secret.PeerIdentity(from.path), service)) return;
-        if (m_intros.size() >= PathTable::MAX_PATHS &&
-            m_intros.find(service) == m_intros.end()) {
-            return; // bounded, because registering is something strangers do
+        IntroducePolicy policy;
+        {
+            LOCK(m_mutex);
+            // And only by the service itself. The end-to-end session proved a
+            // key; registering under any other would let anyone take over a
+            // service's meeting point and be spliced to its clients in its place.
+            if (!SameX(m_secret.PeerIdentity(from.path), service)) return;
+            policy = m_introduce;
         }
-        m_intros[service] = from.path;
+        // And only for a key the roster lists, asked outside the lock since
+        // it reads the roster.
+        bool ok = !policy || policy(service);
+        if (ok) {
+            LOCK(m_mutex);
+            m_paths.Expire(GetTime());
+            PruneIntros();
+            // Bounded, because registering is something strangers do.
+            ok = m_intros.size() < PathTable::MAX_PATHS || m_intros.count(service);
+            if (ok) m_intros[service] = from.path;
+        }
+        // Answered, so the service knows it can be met here. Repeating the
+        // registration is also how it keeps the path from idling out.
+        std::vector<unsigned char> answer;
+        if (EncodeIntroduced(ok, service, answer)) SendSecretRaw(from.path, answer);
+        return;
+    }
+
+    case MessageKind::INTRODUCED: {
+        bool ok = false;
+        roster::KeyBytes service;
+        if (!DecodeIntroduced(msg, ok, service) || !from.via_path) return;
+        // Only the meeting point at the far end of the registration path can
+        // send this: it arrived sealed in the session with it.
+        NoteResult(from.path, ok);
         return;
     }
 
@@ -527,6 +570,10 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
         bool ok = false;
         {
             LOCK(m_mutex);
+            m_paths.Expire(GetTime());
+            // A registration whose path has gone would splice the visitor to
+            // nothing and still answer that it worked.
+            PruneIntros();
             std::map<roster::KeyBytes, uint64_t>::const_iterator it = m_intros.find(service);
             if (it != m_intros.end()) {
                 service_hop = Hop::Path(it->second);

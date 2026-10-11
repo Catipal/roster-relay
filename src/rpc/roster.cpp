@@ -17,6 +17,7 @@
 #include <roster/payout.h>
 #include <roster/record.h>
 #include <roster/view.h>
+#include <overlay/meeting.h>
 #include <overlay/radio.h>
 #include <overlay/relay.h>
 #include <overlay/rendezvous.h>
@@ -277,6 +278,105 @@ static RPCHelpMan getradioinfo()
     };
 }
 
+static RPCHelpMan getmeetinginfo()
+{
+    return RPCHelpMan{"getmeetinginfo",
+                "\nWhere this node can be met without an address (-meetable).\n"
+                "\nA node listed with no endpoint keeps itself registered at its meeting points: relays anyone\n"
+                "computes from the roster, reached through -meethops relays of its own, so a meeting point\n"
+                "learns its key and not where it is. Also counts the services this node holds as a meeting point.\n",
+                {},
+                RPCResult{
+                    RPCResult::Type::OBJ, "", "",
+                    {
+                        {RPCResult::Type::BOOL, "meetable", "Whether -meetable is on"},
+                        {RPCResult::Type::NUM, "hops", /* optional */ true, "Relays between this node and each meeting point"},
+                        {RPCResult::Type::ARR, "registrations", /* optional */ true, "Meeting points this node is registered at",
+                            {{RPCResult::Type::OBJ, "", "", {
+                                {RPCResult::Type::STR_HEX, "point", "The meeting point's roster key"},
+                                {RPCResult::Type::ARR, "epochs", "Epochs it is a point for", {{RPCResult::Type::NUM, "", ""}}},
+                                {RPCResult::Type::ARR, "through", "The relays in front of this node on the way there", {{RPCResult::Type::STR_HEX, "", ""}}},
+                                {RPCResult::Type::NUM_TIME, "since", "When it first answered"},
+                                {RPCResult::Type::NUM_TIME, "refreshed", "When it last answered"},
+                            }}}},
+                        {RPCResult::Type::STR, "error", /* optional */ true, "Why a point is missing, if one is"},
+                        {RPCResult::Type::NUM, "held", /* optional */ true, "Services registered at this node as a meeting point"},
+                    }},
+                RPCExamples{HelpExampleCli("getmeetinginfo", "")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("meetable", overlay::g_meeting != nullptr);
+    if (overlay::g_meeting) {
+        out.pushKV("hops", overlay::g_meeting->Hops());
+        UniValue regs(UniValue::VARR);
+        for (const overlay::Registration& r : overlay::g_meeting->Registrations()) {
+            UniValue o(UniValue::VOBJ);
+            o.pushKV("point", HexStr(r.point));
+            UniValue epochs(UniValue::VARR);
+            for (uint64_t e : r.epochs) epochs.push_back(e);
+            o.pushKV("epochs", epochs);
+            UniValue through(UniValue::VARR);
+            for (const roster::KeyBytes& k : r.reached.through) through.push_back(HexStr(k));
+            o.pushKV("through", through);
+            o.pushKV("since", r.since);
+            o.pushKV("refreshed", r.refreshed);
+            regs.push_back(o);
+        }
+        out.pushKV("registrations", regs);
+        const std::string error = overlay::g_meeting->LastError();
+        if (!error.empty()) out.pushKV("error", error);
+    }
+    if (overlay::g_overlay) out.pushKV("held", (uint64_t)overlay::g_overlay->IntroductionCount());
+    return out;
+},
+    };
+}
+
+static RPCHelpMan meet()
+{
+    return RPCHelpMan{"meet",
+                "\nReach a node by its roster key through one of its meeting points, ask whether it is there,\n"
+                "and leave. Nothing is looked up: the meeting points are computed from the roster.\n",
+                {
+                    {"key", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "Its roster key"},
+                    {"hops", RPCArg::Type::NUM, /* default */ strprintf("%d", overlay::DEFAULT_MEET_HOPS), "Relays between this node and the meeting point, 1 to 3"},
+                },
+                RPCResult{
+                    RPCResult::Type::OBJ, "", "",
+                    {
+                        {RPCResult::Type::STR_HEX, "point", "The meeting point used"},
+                        {RPCResult::Type::NUM, "epoch", "The epoch its points were taken from"},
+                        {RPCResult::Type::NUM, "hops", "Relays on this side"},
+                        {RPCResult::Type::NUM, "rtt_ms", "Round trip across the meeting, in milliseconds"},
+                    }},
+                RPCExamples{HelpExampleCli("meet", "\"a1b2...\"")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    const std::vector<unsigned char> raw = ParseHexV(request.params[0], "key");
+    roster::KeyBytes key{};
+    if (raw.size() != key.size()) throw JSONRPCError(RPC_INVALID_PARAMETER, "key must be 32 bytes of hex, as the roster lists it");
+    std::copy(raw.begin(), raw.end(), key.begin());
+    const int hops = request.params[1].isNull() ? overlay::DEFAULT_MEET_HOPS : request.params[1].get_int();
+    if (hops < 1 || hops > overlay::MAX_MEET_HOPS) throw JSONRPCError(RPC_INVALID_PARAMETER, "hops must be 1 to 3");
+
+    overlay::Meeting m;
+    std::string error;
+    if (!overlay::MeetService(key, hops, m, error)) throw JSONRPCError(RPC_MISC_ERROR, "Could not meet it: " + error);
+    std::chrono::milliseconds rtt{0};
+    const bool there = overlay::EchoAcross(m, std::chrono::milliseconds{15000}, rtt);
+    overlay::CloseMeeting(m);
+    if (!there) throw JSONRPCError(RPC_MISC_ERROR, "It was met but did not answer.");
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("point", HexStr(m.point));
+    out.pushKV("epoch", m.epoch);
+    out.pushKV("hops", m.hops);
+    out.pushKV("rtt_ms", (int64_t)rtt.count());
+    return out;
+},
+    };
+}
+
 static RPCHelpMan getoverlayinfo()
 {
     return RPCHelpMan{"getoverlayinfo",
@@ -343,16 +443,14 @@ static RPCHelpMan getoverlayinfo()
         roster::KeyBytes self;
         std::copy(pub.begin() + 1, pub.begin() + 33, self.begin());
 
-        // The roster in key order, which is the order derivation requires.
-        const std::vector<overlay::RelayCandidate>& all = overlay::g_selector->Candidates();
-        std::vector<roster::KeyBytes> relay_keys;
-        relay_keys.reserve(all.size());
-        for (size_t i = 0; i < all.size(); ++i) relay_keys.push_back(all[i].key);
-
+        // From the roster at the epoch's anchor, as anyone looking for this
+        // node computes them.
         UniValue rv(UniValue::VARR);
-        std::vector<roster::KeyBytes> points =
-            overlay::RendezvousPoints(self, epoch, relay_keys);
-        for (size_t i = 0; i < points.size(); ++i) rv.push_back(HexStr(points[i]));
+        std::vector<roster::KeyBytes> points;
+        std::string rv_error;
+        if (overlay::MeetingPointsFor(self, epoch, points, rv_error)) {
+            for (size_t i = 0; i < points.size(); ++i) rv.push_back(HexStr(points[i]));
+        }
         out.pushKV("rendezvous", rv);
     }
     return out;
@@ -1231,6 +1329,8 @@ static const CRPCCommand commands[] =
   //  ------------------  ----------------------  ----------------------  ----------
     { "overlay",          "getoverlayinfo",       &getoverlayinfo,        {} },
     { "overlay",          "getradioinfo",         &getradioinfo,          {} },
+    { "overlay",          "getmeetinginfo",       &getmeetinginfo,        {} },
+    { "overlay",          "meet",                 &meet,                  {"key","hops"} },
     { "roster",           "getrosterinfo",        &getrosterinfo,         {} },
     { "roster",           "getroster",            &getroster,             {"count","skip","hints"} },
     { "roster",           "getrosterhistory",     &getrosterhistory,      {"key"} },

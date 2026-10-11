@@ -43,6 +43,7 @@ bool KnownKind(unsigned char raw, MessageKind& out)
     case static_cast<unsigned char>(MessageKind::PATH_BIND):
     case static_cast<unsigned char>(MessageKind::INTRODUCE):
     case static_cast<unsigned char>(MessageKind::MEET):
+    case static_cast<unsigned char>(MessageKind::INTRODUCED):
         out = static_cast<MessageKind>(raw);
         return true;
     default:
@@ -157,6 +158,24 @@ bool DecodeIntroduce(const std::vector<unsigned char>& msg, roster::KeyBytes& se
     if (!DecodeKind(msg, kind) || kind != MessageKind::INTRODUCE) return false;
     if (msg.size() != KIND_SIZE + service_out.size()) return false;
     std::copy(msg.begin() + KIND_SIZE, msg.end(), service_out.begin());
+    return true;
+}
+
+bool EncodeIntroduced(bool ok, const roster::KeyBytes& service, std::vector<unsigned char>& out)
+{
+    PutKind(MessageKind::INTRODUCED, out);
+    out.push_back(ok ? 1 : 0);
+    out.insert(out.end(), service.begin(), service.end());
+    return true;
+}
+
+bool DecodeIntroduced(const std::vector<unsigned char>& msg, bool& ok_out, roster::KeyBytes& service_out)
+{
+    MessageKind kind;
+    if (!DecodeKind(msg, kind) || kind != MessageKind::INTRODUCED) return false;
+    if (msg.size() != KIND_SIZE + 1 + service_out.size() || msg[KIND_SIZE] > 1) return false;
+    ok_out = msg[KIND_SIZE] == 1;
+    std::copy(msg.begin() + KIND_SIZE + 1, msg.end(), service_out.begin());
     return true;
 }
 

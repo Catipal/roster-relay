@@ -300,6 +300,8 @@ New options
 | `-overlayport` | one above this node's peer-to-peer port (48931 on mainnet) | Its UDP port |
 | `-radio` | off | Carry the overlay over Reticulum too (needs the bridge running) |
 | `-radioentry` | on | With `-radio`, enter the overlay through a radio neighbour that is a listed relay |
+| `-meetable` | off | Stay registered at this node's meeting points, so it can be reached by its key with no address published (needs a listing) |
+| `-meethops` | 1 | Relays between this node and each meeting point, 1 to 3 |
 | `-nameindex` | on in BPS Relay, off in the node | Keep an index of names, to look them up, register, sell and buy |
 | `-mail` | on | Send and collect mail (needs the overlay) |
 | `-mailbox` | on | Hold sealed mail for others (needs the overlay) |
@@ -328,8 +330,9 @@ revocations `getidentity`, `createidentity`, `createdelegation`,
 `createrotation`, `createveto`, `createrevocation`, `sendrevocation`,
 `listrevocations`, `getageproof` and `verifyageproof`; and for the roster's
 fingerprint `getrostersnapshot`, `verifyrostersnapshot`,
-`getrostermembership` and `verifyrostermembership`; and `getradioinfo` for
-radio links. Each has its full description in `help`.
+`getrostermembership` and `verifyrostermembership`; `getradioinfo` for
+radio links; and `getmeetinginfo` and `meet` for reaching a node by its key alone.
+Each has its full description in `help`.
 
 The console suggests commands from what you type in plain words - "pay pilot
 2", "saldo", "how many blocks" - in English, Italian, Spanish, French, German

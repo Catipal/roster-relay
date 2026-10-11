@@ -86,6 +86,17 @@ bool CollectRelays(const RosterIndex& index, int tip_height,
                    std::vector<RelayInfo>& out, bool allow_local = false);
 
 /**
+ * The relay set every node agrees on at `height`: keys the roster lists as live
+ * there with an endpoint any node could dial, in ascending key order.
+ *
+ * Unlike CollectRelays, nothing about this node enters into it - not which
+ * networks it can reach, not revocations it has seen ahead of the chain -
+ * because meeting points are computed from it on both sides of a meeting and
+ * have to come out the same. `allow_local` as for CollectRelays.
+ */
+bool AgreedRelays(const RosterIndex& index, int height, std::vector<KeyBytes>& out, bool allow_local = false);
+
+/**
  * Re-read the relay set into the overlay's path selector, unless it was read
  * at the index's current height less than `max_age` seconds ago, and return it.
  *

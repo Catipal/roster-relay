@@ -1709,6 +1709,70 @@ BOOST_AUTO_TEST_CASE(rendezvous_epoch_follows_height)
     BOOST_CHECK_EQUAL(overlay::RendezvousEpoch(-1), 0u);
 }
 
+BOOST_AUTO_TEST_CASE(rendezvous_survives_rosters_that_differ_a_little)
+{
+    // Two nodes rarely hold exactly the same relay set - one has seen a
+    // revocation the other has not, or reads a listing a block later. With a
+    // draw by modulo one relay more or less moved every point and they never
+    // met; scored, they still share all but at most one.
+    const std::vector<roster::KeyBytes> roster = RvRoster(50);
+    const roster::KeyBytes service = RvKey(0xAA, 0x01);
+    const std::vector<roster::KeyBytes> pts = overlay::RendezvousPoints(service, 7, roster);
+
+    // Order does not matter.
+    std::vector<roster::KeyBytes> shuffled(roster.rbegin(), roster.rend());
+    BOOST_CHECK(overlay::RendezvousPoints(service, 7, shuffled) == pts);
+
+    auto shared = [](const std::vector<roster::KeyBytes>& a, const std::vector<roster::KeyBytes>& b) {
+        size_t n = 0;
+        for (const roster::KeyBytes& k : a) n += std::count(b.begin(), b.end(), k);
+        return n;
+    };
+    for (size_t drop = 0; drop < roster.size(); ++drop) {
+        std::vector<roster::KeyBytes> fewer = roster;
+        fewer.erase(fewer.begin() + drop);
+        BOOST_CHECK_GE(shared(pts, overlay::RendezvousPoints(service, 7, fewer)), pts.size() - 1);
+    }
+    std::vector<roster::KeyBytes> more = roster;
+    more.push_back(RvKey(0xFE, 0xFE));
+    BOOST_CHECK_GE(shared(pts, overlay::RendezvousPoints(service, 7, more)), pts.size() - 1);
+
+    // A service is never its own meeting point: it would have to take its
+    // visitors at its own address.
+    std::vector<roster::KeyBytes> with_self = roster;
+    with_self.push_back(service);
+    for (uint64_t epoch = 0; epoch < 50; ++epoch) {
+        const std::vector<roster::KeyBytes> p = overlay::RendezvousPoints(service, epoch, with_self);
+        BOOST_CHECK(std::find(p.begin(), p.end(), service) == p.end());
+    }
+}
+
+BOOST_AUTO_TEST_CASE(rendezvous_epochs_overlap_at_their_edges)
+{
+    const int E = overlay::RENDEZVOUS_EPOCH_BLOCKS;
+    // The relay set is read a few blocks before the epoch starts.
+    BOOST_CHECK_EQUAL(overlay::RendezvousAnchor(0), 0);
+    BOOST_CHECK_EQUAL(overlay::RendezvousAnchor(2), 2 * E - overlay::RENDEZVOUS_ANCHOR_DEPTH);
+
+    using V = std::vector<uint64_t>;
+    // Mid-epoch: one epoch only.
+    BOOST_CHECK(overlay::EpochsToRegister(2 * E + 200) == V({2}));
+    // From the next epoch's anchor, its points too, so a visitor a block ahead finds it.
+    BOOST_CHECK(overlay::EpochsToRegister(3 * E - overlay::RENDEZVOUS_ANCHOR_DEPTH - 1) == V({2}));
+    BOOST_CHECK(overlay::EpochsToRegister(3 * E - overlay::RENDEZVOUS_ANCHOR_DEPTH) == V({2, 3}));
+    // Into a new epoch: the old one's points for a while, for visitors behind.
+    BOOST_CHECK(overlay::EpochsToRegister(3 * E) == V({3, 2}));
+    BOOST_CHECK(overlay::EpochsToRegister(3 * E + overlay::RENDEZVOUS_OVERLAP - 1) == V({3, 2}));
+    BOOST_CHECK(overlay::EpochsToRegister(3 * E + overlay::RENDEZVOUS_OVERLAP) == V({3}));
+    // The first epoch has no previous one.
+    BOOST_CHECK(overlay::EpochsToRegister(0) == V({0}));
+    BOOST_CHECK(overlay::EpochsToRegister(-1).empty());
+
+    // A visitor tries its own epoch, then the one before.
+    BOOST_CHECK(overlay::EpochsToTry(3 * E + 5) == V({3, 2}));
+    BOOST_CHECK(overlay::EpochsToTry(5) == V({0}));
+}
+
 
 BOOST_AUTO_TEST_CASE(rendezvous_client_reaches_a_service_that_never_published_an_address)
 {

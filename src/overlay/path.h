@@ -45,6 +45,7 @@ enum class MessageKind : uint8_t {
     PATH_BIND = 0x06,  //!< a relay telling the far end it is a path's endpoint
     INTRODUCE = 0x07,  //!< a service telling a relay it can be reached this way
     MEET = 0x08,       //!< a client asking a relay to splice it to a service
+    INTRODUCED = 0x09, //!< a meeting point answering a registration
 };
 
 /**
@@ -118,6 +119,9 @@ bool DecodePathBind(const std::vector<unsigned char>& msg, uint64_t& path_id_out
 
 bool EncodeIntroduce(const roster::KeyBytes& service, std::vector<unsigned char>& out);
 bool DecodeIntroduce(const std::vector<unsigned char>& msg, roster::KeyBytes& service_out);
+/** The meeting point's answer to INTRODUCE: whether `service` is now registered there. */
+bool EncodeIntroduced(bool ok, const roster::KeyBytes& service, std::vector<unsigned char>& out);
+bool DecodeIntroduced(const std::vector<unsigned char>& msg, bool& ok_out, roster::KeyBytes& service_out);
 bool EncodeMeet(const roster::KeyBytes& service, uint64_t meet_id,
                 std::vector<unsigned char>& out);
 bool DecodeMeet(const std::vector<unsigned char>& msg, roster::KeyBytes& service_out,

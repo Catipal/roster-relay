@@ -66,6 +66,13 @@ public:
      * with that key. Without a policy nothing is dialled on anyone's behalf.
      */
     using DialPolicy = std::function<bool(const CService& dest, const CPubKey& key)>;
+    /**
+     * Whether this node, as a meeting point, registers `service`. Set from the
+     * roster: only keys it lists, since a listing is what keeps one person from
+     * filling meeting points with a thousand services. Without a policy any
+     * service that proves its key is registered.
+     */
+    using IntroducePolicy = std::function<bool(const roster::KeyBytes& service)>;
 
     /** One stop on a circuit: where it listens and the key that must answer there. */
     struct CircuitHop {
@@ -86,6 +93,7 @@ public:
     void Interrupt();
 
     void SetDialPolicy(DialPolicy policy);
+    void SetIntroducePolicy(IntroducePolicy policy);
 
     bool Connect(const CService& peer, const CPubKey& peer_static);
     CService BoundAddress() const { return m_socket.BoundAddress(); }
@@ -154,9 +162,14 @@ public:
      * On success `path_out` is the path to the destination: SendSecret on it
      * reaches the destination through every relay before it, and nothing on
      * the way can read it or learn who sent it.
+     *
+     * `prove_last` shows the destination this node's roster key instead of a
+     * throwaway one, as a service must to register at a meeting point; every
+     * relay before it still sees only throwaway keys.
      */
     bool BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out, std::string& error,
-                      std::chrono::milliseconds step_timeout = std::chrono::milliseconds{4000});
+                      std::chrono::milliseconds step_timeout = std::chrono::milliseconds{4000},
+                      bool prove_last = false);
 
     /**
      * Forget a path this node built, and every leg under it that `legs` names.
@@ -176,7 +189,9 @@ public:
      * will come looking for it. The path's end-to-end session must have been
      * opened with ConnectSecret(..., false), proving that same key: otherwise
      * anyone could register as anyone, and the meeting point would splice
-     * clients to an impostor.
+     * clients to an impostor. The meeting point answers, and AwaitPath on
+     * `path_id` returns it; a registration lasts as long as its path, so
+     * repeating it every few minutes keeps both alive.
      */
     bool Introduce(uint64_t path_id, const roster::KeyBytes& service);
 
@@ -225,6 +240,8 @@ private:
     bool SendToHop(const Hop& to, const std::vector<unsigned char>& msg, bool wrapping = false);
     /** Record the answer to a path request for AwaitPath. */
     void NoteResult(uint64_t path_id, bool ok);
+    /** Forget registrations whose path is gone. */
+    void PruneIntros() EXCLUSIVE_LOCKS_REQUIRED(m_mutex);
 
     Socket m_socket;
     Mutex m_mutex;
@@ -239,6 +256,7 @@ private:
     // Circuits this node built: the innermost path and the legs under it.
     std::map<uint64_t, std::vector<uint64_t>> m_circuits GUARDED_BY(m_mutex);
     DialPolicy m_dial GUARDED_BY(m_mutex);
+    IntroducePolicy m_introduce GUARDED_BY(m_mutex);
 
     Mutex m_results_mutex;
     std::condition_variable m_results_cv;

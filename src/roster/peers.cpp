@@ -146,6 +146,27 @@ bool CollectRelays(const RosterIndex& index, int tip_height,
     return true;
 }
 
+bool AgreedRelays(const RosterIndex& index, int height, std::vector<KeyBytes>& out, bool allow_local)
+{
+    out.clear();
+    std::map<KeyBytes, RosterEntry> live;
+    if (!index.BuildRoster(height, live)) return false;
+    for (std::map<KeyBytes, RosterEntry>::const_iterator it = live.begin(); it != live.end(); ++it) {
+        Record rec;
+        if (!it->second.Parse(rec)) continue;
+        for (const Endpoint& ep : rec.endpoints) {
+            CService service;
+            if (!EndpointToService(ep, service)) continue;
+            // Routable is a property of the address, the same everywhere;
+            // reachable is a property of this node, and stays out.
+            if (!allow_local && !service.IsRoutable()) continue;
+            out.push_back(it->first);
+            break;
+        }
+    }
+    return true;
+}
+
 bool CollectPeers(const RosterIndex& index, int tip_height,
                   std::vector<CAddress>& out, CollectStats& stats)
 {

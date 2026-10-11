@@ -135,6 +135,7 @@ BASE_SCRIPTS = [
     'feature_names.py',
     'feature_name_payments.py',
     'feature_radio.py',
+    'feature_meeting.py',
     'feature_roster_identity.py',
     'feature_roster_commitment.py',
     'feature_reindex.py',

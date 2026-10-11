@@ -24,6 +24,7 @@
 #include <index/blockfilterindex.h>
 #include <index/rosterindex.h>
 #include <roster/peers.h>
+#include <overlay/meeting.h>
 #include <overlay/radio.h>
 #include <overlay/relay.h>
 #include <overlay/rendezvous.h>
@@ -247,6 +248,11 @@ void Shutdown(NodeContext& node)
     if (mail::g_mail) {
         mail::g_mail->Stop();
         mail::g_mail.reset();
+    }
+    // Its thread builds paths over the overlay too.
+    if (overlay::g_meeting) {
+        overlay::g_meeting->Stop();
+        overlay::g_meeting.reset();
     }
     if (overlay::g_overlay) {
         overlay::g_overlay->Stop();
@@ -509,6 +515,8 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-mailboxmaxsize=<n>", strprintf("Disk the mailbox may use, in MiB (default: %u)", mail::DEFAULT_MAILBOX_MAX_MB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-mailpoll=<n>", strprintf("Seconds between trips to collect mail, or 0 to collect only when asked (default: %u)", mail::DEFAULT_MAIL_POLL), ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
     argsman.AddArg("-maxlistedusers=<n>", strprintf("Most peers this node keeps listed under -acceptlistings (default: %u)", roster::DEFAULT_MAX_LISTED_USERS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-meetable", strprintf("Keep this node registered at its meeting points, relays computed from the roster, so it can be reached by its key without publishing an address. Needs -overlay and -rosterindex, and a listing (default: %u)", overlay::DEFAULT_MEETABLE), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-meethops=<n>", strprintf("Relays between this node and each of its meeting points, 1 to %d: more hides its address better and is slower (default: %d)", overlay::MAX_MEET_HOPS, overlay::DEFAULT_MEET_HOPS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-radio", strprintf("Carry the overlay over radio too, through Reticulum (LoRa via an RNode, packet radio, serial links). Needs -overlay, and contrib/reticulum/bps-rns-bridge.py running beside the node with Reticulum installed (default: %u)", overlay::DEFAULT_RADIO), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-radioentry", strprintf("With -radio, enter the overlay through a radio neighbour whenever one is a listed relay, so mail and listing requests work without the internet; slower (default: %u)", overlay::DEFAULT_RADIO_ENTRY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-overlayport=<port>", strprintf("UDP port the overlay listens on (default: one above the peer-to-peer port: %u, testnet: %u, signet: %u, regtest: %u). Its own socket, separate from the peer-to-peer port, because the overlay is a datagram protocol and the peer-to-peer one is not.", overlay::OverlayPortFor(defaultChainParams->GetDefaultPort()), overlay::OverlayPortFor(testnetChainParams->GetDefaultPort()), overlay::OverlayPortFor(signetChainParams->GetDefaultPort()), overlay::OverlayPortFor(regtestChainParams->GetDefaultPort())), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -2243,6 +2251,8 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
         if (!overlay::g_overlay->Start([](const overlay::Hop& from, std::vector<unsigned char>&& payload) {
                 if (mail::IsMailPayload(payload)) {
                     mail::HandleOverlayApp(from, std::move(payload));
+                } else if (!payload.empty() && payload[0] == overlay::MEET_ECHO) {
+                    overlay::HandleMeetEcho(from, payload);
                 } else {
                     roster::HandleOverlayApp(from, std::move(payload));
                 }
@@ -2304,6 +2314,23 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             }
             return false;
         });
+
+        // As a meeting point, register only services the roster lists: a
+        // listing is what keeps one person from filling meeting points with a
+        // thousand of them (design note §11·6).
+        overlay::g_overlay->SetIntroducePolicy([](const roster::KeyBytes& service) {
+            return g_rosterindex && roster::LiveExpiry(service, g_rosterindex->GetSummary().best_block_height) > 0;
+        });
+
+        // Being met without an address (overlay/meeting.h).
+        if (args.GetBoolArg("-meetable", overlay::DEFAULT_MEETABLE)) {
+            if (!g_rosterindex) {
+                return InitError(Untranslated("-meetable needs -rosterindex: the meeting points are computed from the roster."));
+            }
+            overlay::g_meeting = MakeUnique<overlay::MeetingService>(
+                self, (int)args.GetArg("-meethops", overlay::DEFAULT_MEET_HOPS));
+            overlay::g_meeting->Start();
+        }
 
         // Holding mail for others. Only for listed people this node is one of
         // the mailboxes of, by the roster as it reads it now - with two places

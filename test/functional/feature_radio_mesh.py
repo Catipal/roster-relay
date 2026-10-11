@@ -54,7 +54,9 @@ class RadioMeshTest(BitcoinTestFramework):
         self.num_nodes = 4
         self.setup_clean_chain = True
         self.rpc_timeout = 900
-        common = ["-overlay", "-rosterindex", "-fallbackfee=0.0001", "-mailpoll=0", "-mail=0"]
+        # -overlayblocks off: this test is about forwarding and meeting, not
+        # block sync, and its chatter would only compete for the radio.
+        common = ["-overlay", "-rosterindex", "-fallbackfee=0.0001", "-mailpoll=0", "-mail=0", "-overlayblocks=0"]
         # Only R1 and R2 run the radio. S is meetable; it reaches its radio-only
         # meeting point through R1.
         self.extra_args = [

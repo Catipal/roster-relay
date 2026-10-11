@@ -24,6 +24,7 @@
 #include <index/blockfilterindex.h>
 #include <index/rosterindex.h>
 #include <roster/peers.h>
+#include <overlay/chainsync.h>
 #include <overlay/meeting.h>
 #include <overlay/radio.h>
 #include <overlay/relay.h>
@@ -253,6 +254,10 @@ void Shutdown(NodeContext& node)
     if (overlay::g_meeting) {
         overlay::g_meeting->Stop();
         overlay::g_meeting.reset();
+    }
+    if (overlay::g_chainsync) {
+        overlay::g_chainsync->Stop();
+        overlay::g_chainsync.reset();
     }
     if (overlay::g_overlay) {
         overlay::g_overlay->Stop();
@@ -517,6 +522,7 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-maxlistedusers=<n>", strprintf("Most peers this node keeps listed under -acceptlistings (default: %u)", roster::DEFAULT_MAX_LISTED_USERS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-meetable", strprintf("Keep this node registered at its meeting points, relays computed from the roster, so it can be reached by its key without publishing an address. Needs -overlay and -rosterindex, and a listing (default: %u)", overlay::DEFAULT_MEETABLE), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-meethops=<n>", strprintf("Relays between this node and each of its meeting points, 1 to %d: more hides its address better and is slower (default: %d)", overlay::MAX_MEET_HOPS, overlay::DEFAULT_MEET_HOPS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-overlayblocks", strprintf("With -radio, carry new blocks to and from radio neighbours over the overlay, so a node with only radio keeps up with the chain (default: %u)", overlay::DEFAULT_OVERLAY_BLOCKS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-radio", strprintf("Carry the overlay over radio too, through Reticulum (LoRa via an RNode, packet radio, serial links). Needs -overlay, and contrib/reticulum/bps-rns-bridge.py running beside the node with Reticulum installed (default: %u)", overlay::DEFAULT_RADIO), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-radioentry", strprintf("With -radio, enter the overlay through a radio neighbour whenever one is a listed relay, so mail and listing requests work without the internet; slower (default: %u)", overlay::DEFAULT_RADIO_ENTRY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-overlayport=<port>", strprintf("UDP port the overlay listens on (default: one above the peer-to-peer port: %u, testnet: %u, signet: %u, regtest: %u). Its own socket, separate from the peer-to-peer port, because the overlay is a datagram protocol and the peer-to-peer one is not.", overlay::OverlayPortFor(defaultChainParams->GetDefaultPort()), overlay::OverlayPortFor(testnetChainParams->GetDefaultPort()), overlay::OverlayPortFor(signetChainParams->GetDefaultPort()), overlay::OverlayPortFor(regtestChainParams->GetDefaultPort())), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -2253,6 +2259,9 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                     mail::HandleOverlayApp(from, std::move(payload));
                 } else if (!payload.empty() && payload[0] == overlay::MEET_ECHO) {
                     overlay::HandleMeetEcho(from, payload);
+                } else if (overlay::g_chainsync && !from.via_path && overlay::IsChainPayload(payload)) {
+                    // Blocks between adjacent radio neighbours, never over a path.
+                    overlay::g_chainsync->HandleApp(from.addr, payload);
                 } else {
                     roster::HandleOverlayApp(from, std::move(payload));
                 }
@@ -2299,6 +2308,23 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 LOCK(overlay::g_selector_mutex);
                 if (overlay::g_selector) overlay::g_selector->SetPreferredEntries(keys);
             }, std::chrono::seconds{5});
+
+            // Blocks over the radio (overlay/chainsync.h): feed new blocks to
+            // radio neighbours, and pull from a neighbour that is ahead, so a
+            // node with only radio keeps up with the chain and so the roster.
+            // Needs the roster index to make use of the blocks it follows.
+            if (args.GetBoolArg("-overlayblocks", overlay::DEFAULT_OVERLAY_BLOCKS)) {
+                overlay::g_chainsync = MakeUnique<overlay::ChainSync>(chainparams, self, /* pull */ true);
+                // Poll and pull over the radio only while this node has no
+                // peer-to-peer connection to get blocks from; otherwise just
+                // serve its radio neighbours. Safe to capture: the chain feed
+                // is stopped before connman is torn down.
+                if (CConnman* connman = node.connman.get()) {
+                    overlay::g_chainsync->SetIsolatedCheck(
+                        [connman] { return connman->GetNodeCount(CConnman::CONNECTIONS_ALL) == 0; });
+                }
+                overlay::g_chainsync->Start();
+            }
         }
 
         // Where to reach the next relay on a path: usually the address the

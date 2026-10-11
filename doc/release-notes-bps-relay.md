@@ -302,6 +302,7 @@ New options
 | `-overlayport` | one above this node's peer-to-peer port (48931 on mainnet) | Its UDP port |
 | `-radio` | off | Carry the overlay over Reticulum too (needs the bridge running) |
 | `-radioentry` | on | With `-radio`, enter the overlay through a radio neighbour that is a listed relay |
+| `-overlayblocks` | on with `-radio` | Carry new blocks to and from radio neighbours, so a radio-only node keeps up with the chain |
 | `-meetable` | off | Stay registered at this node's meeting points, so it can be reached by its key with no address published (needs a listing) |
 | `-meethops` | 1 | Relays between this node and each meeting point, 1 to 3 |
 | `-nameindex` | on in BPS Relay, off in the node | Keep an index of names, to look them up, register, sell and buy |
@@ -333,7 +334,7 @@ revocations `getidentity`, `createidentity`, `createdelegation`,
 `listrevocations`, `getageproof` and `verifyageproof`; and for the roster's
 fingerprint `getrostersnapshot`, `verifyrostersnapshot`,
 `getrostermembership` and `verifyrostermembership`; `getradioinfo` for
-radio links; and `getmeetinginfo` and `meet` for reaching a node by its key alone.
+radio links; and `getmeetinginfo` and `meet` for reaching a node by its key alone; and `getchainfeedinfo` for blocks over radio.
 Each has its full description in `help`.
 
 The console suggests commands from what you type in plain words - "pay pilot
@@ -354,13 +355,15 @@ Known issues
 
 - Relays now carry a path on to the next relay over radio when they have no
   internet route to it, so a path can cross a stretch that has only radio, and
-  a radio neighbour is no longer only the first hop. What is still missing for
-  two nodes with only radio between them to mail each other is the block chain
-  over radio: a relay with no internet does not learn the roster, so it cannot
-  yet act as the mailbox or meeting point in the middle.
-- The radio carries the overlay, not the block chain. A node with only radio
-  stops receiving blocks, so its view of the roster ages until it reaches the
-  internet again.
+  a radio neighbour is no longer only the first hop.
+- New blocks now travel over the radio as well. A node with the internet feeds
+  them to its radio neighbours, and a node with only radio follows a neighbour
+  that is ahead, one block at a time, so it keeps up with the chain and so with
+  the roster (`-overlayblocks`, on by default with the radio; `getchainfeedinfo`
+  shows the neighbours and their heights). This is not a sync from genesis -
+  LoRa cannot carry that - so a radio-only node starts from a recent copy and
+  only ever follows the last few hundred blocks this way. A node kept at the
+  tip by the internet has nothing to pull.
 - Mail over radio is heavy: each letter goes to three mailboxes through
   three separate paths, and every path is built across the radio.
 - Radio needs Python and Reticulum installed beside BPS Relay. Ham radio

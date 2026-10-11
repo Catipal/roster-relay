@@ -17,6 +17,7 @@
 #include <roster/payout.h>
 #include <roster/record.h>
 #include <roster/view.h>
+#include <overlay/chainsync.h>
 #include <overlay/meeting.h>
 #include <overlay/radio.h>
 #include <overlay/relay.h>
@@ -273,6 +274,49 @@ static RPCHelpMan getradioinfo()
         neighbours.push_back(n);
     }
     out.pushKV("neighbours", neighbours);
+    return out;
+},
+    };
+}
+
+static RPCHelpMan getchainfeedinfo()
+{
+    return RPCHelpMan{"getchainfeedinfo",
+                "\nBlocks carried over the overlay between radio neighbours (-overlayblocks).\n"
+                "\nShows each radio neighbour and the chain height it last reported, so a node with only\n"
+                "radio can be seen following a neighbour that is ahead.\n",
+                {},
+                RPCResult{
+                    RPCResult::Type::OBJ, "", "",
+                    {
+                        {RPCResult::Type::BOOL, "enabled", "Whether the chain feed is running"},
+                        {RPCResult::Type::BOOL, "pulls", /* optional */ true, "Whether this node pulls blocks it is missing"},
+                        {RPCResult::Type::ARR, "neighbours", /* optional */ true, "Radio neighbours and their last reported height",
+                            {{RPCResult::Type::OBJ, "", "", {
+                                {RPCResult::Type::STR_HEX, "key", "The neighbour's roster key"},
+                                {RPCResult::Type::STR, "local", "The bridge's port standing for it"},
+                                {RPCResult::Type::NUM, "height", "Its best height as it last told us, or -1"},
+                                {RPCResult::Type::NUM_TIME, "heard", "When it last told us, or 0"},
+                            }}}},
+                    }},
+                RPCExamples{HelpExampleCli("getchainfeedinfo", "")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("enabled", overlay::g_chainsync != nullptr);
+    if (overlay::g_chainsync) {
+        out.pushKV("pulls", overlay::g_chainsync->Pulls());
+        UniValue arr(UniValue::VARR);
+        for (const overlay::ChainSync::PeerView& p : overlay::g_chainsync->Neighbours()) {
+            UniValue o(UniValue::VOBJ);
+            o.pushKV("key", HexStr(p.key));
+            o.pushKV("local", p.addr.ToString());
+            o.pushKV("height", p.height);
+            o.pushKV("heard", p.heard);
+            arr.push_back(o);
+        }
+        out.pushKV("neighbours", arr);
+    }
     return out;
 },
     };
@@ -1330,6 +1374,7 @@ static const CRPCCommand commands[] =
     { "overlay",          "getoverlayinfo",       &getoverlayinfo,        {} },
     { "overlay",          "getradioinfo",         &getradioinfo,          {} },
     { "overlay",          "getmeetinginfo",       &getmeetinginfo,        {} },
+    { "overlay",          "getchainfeedinfo",     &getchainfeedinfo,      {} },
     { "overlay",          "meet",                 &meet,                  {"key","hops"} },
     { "roster",           "getrosterinfo",        &getrosterinfo,         {} },
     { "roster",           "getroster",            &getroster,             {"count","skip","hints"} },

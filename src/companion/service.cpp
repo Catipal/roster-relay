@@ -267,19 +267,26 @@ bool Service::SetLimits(const CPubKey& key, const Limits& limits, std::string& e
     return m_store.Put(d);
 }
 
+std::vector<PreparedPayment> Service::TakePrepared(const CPubKey& device)
+{
+    std::vector<PreparedPayment> taken;
+    LOCK(cs_companion);
+    for (auto it = m_prepared.begin(); it != m_prepared.end();) {
+        if (it->second.device == device) {
+            taken.push_back(it->second.payment);
+            it = m_prepared.erase(it);
+        } else {
+            ++it;
+        }
+    }
+    return taken;
+}
+
 bool Service::Revoke(const CPubKey& key)
 {
-    std::vector<PreparedPayment> release;
+    const std::vector<PreparedPayment> release = TakePrepared(key);
     {
         LOCK(cs_companion);
-        for (auto it = m_prepared.begin(); it != m_prepared.end();) {
-            if (it->second.device == key) {
-                release.push_back(it->second.payment);
-                it = m_prepared.erase(it);
-            } else {
-                ++it;
-            }
-        }
         Device d;
         if (!m_store.Get(key, d)) return false;
         m_store.Erase(key);
@@ -454,6 +461,12 @@ Message Service::Prepare(const CPubKey& device, const Message& request, int64_t 
 
     const WalletHooks hooks = GetWalletHooks();
     if (!hooks.prepare) return Result(request.req, false, NO_WALLET);
+    // A phone reviews one payment at a time: a new one replaces any it had
+    // waiting, whose coins would otherwise stay locked until it expired - all
+    // of them, in an allowance that holds a single coin.
+    for (const PreparedPayment& old : TakePrepared(device)) {
+        if (hooks.cancel) hooks.cancel(m_wallet, old);
+    }
     PreparedPayment payment;
     if (!hooks.prepare(m_wallet, req.to, req.amount, req.subtract_fee, payment, why)) {
         return Result(request.req, false, why);

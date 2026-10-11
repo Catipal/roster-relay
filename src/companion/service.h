@@ -135,6 +135,8 @@ private:
     };
 
     void Work();
+    /** Remove every prepared payment of `device`, for the caller to cancel without the lock. */
+    std::vector<PreparedPayment> TakePrepared(const CPubKey& device);
 
     Message Pair(const CPubKey& device, const Message& request, int64_t now);
     Message PairStatus(const CPubKey& device, const Message& request, int64_t now);

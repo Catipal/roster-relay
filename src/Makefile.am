@@ -135,6 +135,7 @@ BITCOIN_CORE_H = \
   compat/cpuid.h \
   compat/endian.h \
   compat/sanity.h \
+  companion/client.h \
   companion/node.h \
   companion/policy.h \
   companion/protocol.h \
@@ -658,6 +659,7 @@ libbitcoin_common_a_SOURCES = \
   bloom.cpp \
   chainparams.cpp \
   coins.cpp \
+  companion/client.cpp \
   companion/policy.cpp \
   companion/protocol.cpp \
   compressor.cpp \
@@ -857,6 +859,23 @@ bitcoin_pos_tx_LDADD = \
   $(LIBSECP256K1)
 
 bitcoin_pos_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+#
+
+# bps-companion-cli: a paired phone from the command line, for testing a home
+# node. Links what a phone links and nothing of the node.
+noinst_PROGRAMS += bps-companion-cli
+bps_companion_cli_SOURCES = bps-companion-cli.cpp
+bps_companion_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+bps_companion_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bps_companion_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+bps_companion_cli_LDADD = \
+  $(LIBUNIVALUE) \
+  $(LIBBITCOIN_COMMON) \
+  $(LIBBITCOIN_UTIL) \
+  $(LIBBITCOIN_CONSENSUS) \
+  $(LIBBITCOIN_CRYPTO) \
+  $(LIBSECP256K1) \
+  $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
 # bitcoin-wallet binary #

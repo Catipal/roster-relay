@@ -139,6 +139,8 @@ bool History(const std::string& name, size_t skip, size_t count, std::vector<com
     return true;
 }
 
+void Cancel(const std::string& name, const companion::PreparedPayment& payment);
+
 bool Prepare(const std::string& name, const std::string& to, CAmount amount, bool subtract_fee,
              companion::PreparedPayment& out, std::string& error)
 {
@@ -190,7 +192,20 @@ bool Prepare(const std::string& name, const std::string& to, CAmount amount, boo
         FundTransaction(w.get(), mtx, fee, change_position, options, coin_control, /* override_min_fee */ true);
         out.tx = mtx;
         out.fee = fee;
-        out.amount = mtx.vout[0].nValue;
+        // The change lands anywhere, as for any payment, so the payee's output
+        // is found by its script rather than by where it started.
+        out.amount = -1;
+        for (const CTxOut& o : mtx.vout) {
+            if (o.scriptPubKey == out.payee_script) {
+                out.amount = o.nValue;
+                break;
+            }
+        }
+        if (out.amount < 0) {
+            Cancel(name, out);
+            error = "The payment came out without its payee. Nothing was sent.";
+            return false;
+        }
         return true;
     } catch (const UniValue& e) {
         error = ErrorText(e);

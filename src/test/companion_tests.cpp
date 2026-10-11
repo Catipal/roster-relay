@@ -566,6 +566,17 @@ BOOST_AUTO_TEST_CASE(service_pays_within_the_limits_and_the_pin)
     BOOST_CHECK_EQUAL(f.wallet.cancelled, cancelled + 1);
     BOOST_CHECK(ResultText(f.Send(f.device, p, "246810")).find("no longer waiting") != std::string::npos);
 
+    // A new payment replaces the one waiting and lets its coins go, so a phone
+    // that gave up on a payment is not left with an allowance it cannot use.
+    BOOST_REQUIRE(f.Prepare(f.device, "alice", COIN, p, error));
+    PrepareAnswer second;
+    const int before = f.wallet.cancelled;
+    BOOST_REQUIRE(f.Prepare(f.device, "alice", COIN / 2, second, error));
+    BOOST_CHECK_EQUAL(f.wallet.cancelled, before + 1);
+    BOOST_CHECK(ResultText(f.Send(f.device, p, "246810")).find("no longer waiting") != std::string::npos);
+    SendAnswer replaced;
+    BOOST_CHECK(Read(f.Send(f.device, second, "246810"), Op::SENT, replaced));
+
     // A day later the window has moved on.
     f.now += SPEND_WINDOW;
     BOOST_REQUIRE_MESSAGE(f.Prepare(f.device, "alice", 5 * COIN - 1000, p, error), error);

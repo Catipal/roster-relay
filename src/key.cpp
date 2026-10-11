@@ -14,15 +14,19 @@
 #include <secp256k1_recovery.h>
 #include <secp256k1_schnorrsig.h>
 
+// OpenSSL is here only for EnsureLowS, which block validation uses. A phone
+// validates no blocks, so its build (mobile/core, BPS_MOBILE) leaves both out.
+#ifndef BPS_MOBILE
 #include <openssl/bn.h>
 #include <openssl/ecdsa.h>
 #include <openssl/rand.h>
 #include <openssl/obj_mac.h>
 #include <openssl/opensslv.h>
+#endif
 
 static secp256k1_context* secp256k1_context_sign = nullptr;
 
-#if OPENSSL_VERSION_NUMBER < 0x10100000L
+#if !defined(BPS_MOBILE) && OPENSSL_VERSION_NUMBER < 0x10100000L
 // Compatibility Layer for older versions of Open SSL
 void ECDSA_SIG_get0(const ECDSA_SIG *sig, const BIGNUM **pr, const BIGNUM **ps)
  {
@@ -416,6 +420,7 @@ void ECC_Stop() {
     }
 }
 
+#ifndef BPS_MOBILE
 const unsigned char vchOrder[32] = {
     0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xfe,0xba,0xae,0xdc,0xe6,0xaf,0x48,0xa0,0x3b,0xbf,0xd2,0x5e,0x8c,0xd0,0x36,0x41,0x41
 };
@@ -454,3 +459,4 @@ bool EnsureLowS(std::vector<unsigned char>& vchSig) {
     vchSig.resize(nSize); // Shrink to fit actual size
     return true;
 }
+#endif // BPS_MOBILE

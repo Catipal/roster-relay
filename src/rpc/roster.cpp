@@ -226,6 +226,7 @@ static RPCHelpMan getradioinfo()
                                 {RPCResult::Type::NUM, "hops", "Radio hops away, or -1 if unknown"},
                                 {RPCResult::Type::NUM_TIME, "heard", "When it last announced or sent anything"},
                                 {RPCResult::Type::BOOL, "link", "Whether a Reticulum link to it is open"},
+                                {RPCResult::Type::NUM, "bitrate", "Bits a second of the radio the way to it starts on, as Reticulum reports it, or 0 if not known"},
                                 {RPCResult::Type::BOOL, "relay", "Whether the roster lists it as a relay, so paths can enter through it"},
                                 {RPCResult::Type::BOOL, "session", "Whether the overlay has a session with it"},
                             }},
@@ -265,6 +266,7 @@ static RPCHelpMan getradioinfo()
         n.pushKV("hops", p.hops);
         n.pushKV("heard", p.heard);
         n.pushKV("link", p.link_up);
+        n.pushKV("bitrate", p.bitrate);
         n.pushKV("relay", std::find(relays.begin(), relays.end(), p.key) != relays.end());
         n.pushKV("session", overlay::g_overlay && overlay::g_overlay->HasSession(p.local));
         neighbours.push_back(n);
@@ -871,8 +873,12 @@ static RPCHelpMan requestlisting()
     std::vector<unsigned char> raw = BuildAnnouncement(options, rec, warnings);
 
     bool answered = false;
-    // A radio link moves a few hundred bytes a second: longer waits.
-    const std::chrono::seconds connect_wait{slow ? 90 : 15}, answer_wait{slow ? 240 : 30};
+    // A radio link moves a few hundred bytes a second: longer waits, and
+    // longer still the slower the radio is.
+    const auto greeting = overlay::RadioAirtime(relay_addr, overlay::RADIO_GREETING_BYTES);
+    const auto exchange = overlay::RadioAirtime(relay_addr, 2 * overlay::SAFE_DATAGRAM);
+    const std::chrono::seconds connect_wait{slow ? 90 + 4 * std::chrono::duration_cast<std::chrono::seconds>(greeting).count() : 15};
+    const std::chrono::seconds answer_wait{slow ? 240 + 2 * std::chrono::duration_cast<std::chrono::seconds>(exchange).count() : 30};
     roster::ListingOutcome outcome = roster::RequestListing(
         relay_addr, relay_pubkey, raw, connect_wait, answer_wait, answered);
 

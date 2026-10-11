@@ -476,9 +476,10 @@ bool MailClient::Reach(const roster::RelayInfo& box, Circuit& out, std::string& 
         // Every step's answer comes back over the first hop, so a radio one
         // slows them all.
         if (overlay::g_overlay->BuildCircuit(hops, path, error,
-                                             slow ? overlay::RADIO_STEP_TIMEOUT : std::chrono::milliseconds{4000})) {
+                                             slow ? overlay::RadioStepTimeout(hops[0].addr) : std::chrono::milliseconds{4000})) {
             out.hop = overlay::Hop::Path(path);
             out.legs = overlay::g_overlay->CircuitLegs(path);
+            if (slow) out.radio_cell = overlay::RadioAirtime(hops[0].addr, overlay::SAFE_DATAGRAM);
             return true;
         }
         // An entry relay that does not answer stops being one; the next try
@@ -503,7 +504,7 @@ bool MailClient::Exchange(const Circuit& c, const Message& request, Message& ans
         answer.req = request.req;
         return true;
     }
-    return Ask(c.hop, request, answer, timeout, error);
+    return Ask(c.hop, request, answer, timeout, error, c.radio_cell);
 }
 
 void MailClient::Close(const Circuit& c)

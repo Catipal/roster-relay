@@ -11,6 +11,8 @@
 #include <util/strencodings.h>
 #include <util/time.h>
 
+#include <algorithm>
+#include <chrono>
 #include <condition_variable>
 #include <cstring>
 #include <limits>
@@ -23,10 +25,15 @@ namespace {
 struct Waiting {
     bool done{false};
     Message answer;
+    //! When the last cell of the answer arrived, so a long answer still
+    //! coming in is not mistaken for a lost one.
+    std::chrono::steady_clock::time_point progress{};
 };
 Mutex g_wait_mutex;
 std::condition_variable g_wait_cv;
 std::map<uint64_t, Waiting> g_waiting GUARDED_BY(g_wait_mutex);
+/** The request each transfer Ask is waiting on carries. */
+std::map<uint64_t, uint64_t> g_transfers GUARDED_BY(g_wait_mutex);
 bool g_interrupted GUARDED_BY(g_wait_mutex){false};
 
 Mutex g_cells_mutex;
@@ -334,6 +341,19 @@ void HandleOverlayApp(const overlay::Hop& from, std::vector<unsigned char>&& pay
     if (!IsMailPayload(payload)) return;
     const int64_t now = GetTime();
 
+    // A cell of an answer being waited for: note that it is still coming.
+    if (payload.size() >= CELL_HEADER_SIZE) {
+        const uint64_t cell_transfer = ReadLE64(payload.data() + 1);
+        if (cell_transfer & ANSWER_BIT) {
+            LOCK(g_wait_mutex);
+            std::map<uint64_t, uint64_t>::const_iterator t = g_transfers.find(cell_transfer & ~ANSWER_BIT);
+            if (t != g_transfers.end()) {
+                std::map<uint64_t, Waiting>::iterator w = g_waiting.find(t->second);
+                if (w != g_waiting.end()) w->second.progress = std::chrono::steady_clock::now();
+            }
+        }
+    }
+
     std::vector<unsigned char> raw;
     uint64_t transfer = 0;
     {
@@ -398,7 +418,7 @@ void InterruptAsks()
 }
 
 bool Ask(const overlay::Hop& to, Message request, Message& answer, std::chrono::milliseconds timeout,
-         std::string& error)
+         std::string& error, std::chrono::milliseconds per_cell)
 {
     request.req = GetRand(std::numeric_limits<uint64_t>::max());
     const uint64_t transfer = GetRand(std::numeric_limits<uint64_t>::max()) & ~ANSWER_BIT;
@@ -410,10 +430,16 @@ bool Ask(const overlay::Hop& to, Message request, Message& answer, std::chrono::
     {
         LOCK(g_wait_mutex);
         g_waiting[request.req] = Waiting();
+        g_transfers[transfer] = request.req;
     }
 
     bool done = false;
-    const auto attempt = timeout / 3;
+    const int64_t cells = (int64_t)((raw.size() + CELL_DATA - 1) / CELL_DATA);
+    // On a radio hop a try lasts until the request's cells are out and the
+    // first of the answer's is back; after that, while the answer is arriving,
+    // until it pauses for longer than a cell takes, both ways.
+    const auto attempt = timeout / 3 + per_cell * (cells + 1);
+    const auto pause = timeout / 3 + per_cell * 2;
     for (int i = 0; i < 3 && !done; ++i) {
         {
             LOCK(g_wait_mutex);
@@ -427,15 +453,25 @@ bool Ask(const overlay::Hop& to, Message request, Message& answer, std::chrono::
             break;
         }
         WAIT_LOCK(g_wait_mutex, lock);
-        g_wait_cv.wait_for(lock, attempt, [&]() EXCLUSIVE_LOCKS_REQUIRED(g_wait_mutex) {
-            return g_waiting[request.req].done || g_interrupted;
-        });
+        auto until = std::chrono::steady_clock::now() + attempt;
+        std::chrono::steady_clock::time_point seen = g_waiting[request.req].progress;
+        while (true) {
+            g_wait_cv.wait_until(lock, until, [&]() EXCLUSIVE_LOCKS_REQUIRED(g_wait_mutex) {
+                return g_waiting[request.req].done || g_interrupted;
+            });
+            const Waiting& w = g_waiting[request.req];
+            if (w.done || g_interrupted || w.progress == seen) break;
+            // Part of the answer came in since: give the rest time.
+            seen = w.progress;
+            until = std::max(until, seen + pause);
+        }
         done = g_waiting[request.req].done;
     }
 
     LOCK(g_wait_mutex);
     if (done) answer = g_waiting[request.req].answer;
     g_waiting.erase(request.req);
+    g_transfers.erase(transfer);
     if (!done && error.empty()) error = "No answer came back.";
     return done;
 }

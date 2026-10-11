@@ -47,8 +47,27 @@ except ImportError:
 
 APP_NAME = "bps"
 ASPECT = "overlay"
-#: Each fragment: message id, its index, and how many there are.
+#: Each fragment: message id, its index, and how many there are. A count of
+#: zero marks a control message instead, and the index says which.
 FRAGMENT_HEADER = struct.Struct("!HBB")
+#: Control: "I cannot tell who you are; identify yourself again."
+CONTROL_IDENTIFY = 1
+#: Packets on a link whose far end has not identified itself yet are held
+#: this long, this many at most: the identification can arrive after them, or
+#: be lost on the way.
+UNIDENTIFIED_TTL = 60
+UNIDENTIFIED_MAX = 32
+#: How often an unidentified link is asked to identify, and how often such a
+#: request is answered.
+IDENTIFY_INTERVAL = 5
+#: A link that carries datagrams out and brings nothing back for this long
+#: (or eight round trips, if longer), plus the airtime of what it was given to
+#: send meanwhile, there and back, is started again: a lost packet while
+#: setting it up can leave both ends thinking it works when it does not.
+SILENCE = 45
+#: Airtime per byte handed to Reticulum, against the interface's bit rate:
+#: its headers and encryption, and an RNode sending each packet as two.
+FRAMING = 1.5
 #: Largest datagram passed on; the overlay's are at most 1200 bytes.
 MAX_DATAGRAM = 1500
 #: Fragments of a datagram not complete by then are dropped; the overlay retries.
@@ -75,6 +94,9 @@ class Peer:
         self.queue = []          # datagrams waiting for the link
         self.next_id = 0
         self.partial = {}        # message id -> (deadline, count, {index: bytes})
+        self.waiting_since = None  # first datagram sent since anything came back
+        self.unanswered = 0        # bytes sent since then
+        self.last_identify = 0
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.sock.bind(("127.0.0.1", 0))
         self.port = self.sock.getsockname()[1]
@@ -91,6 +113,7 @@ class Bridge:
         self.lock = threading.RLock()
         self.peers = {}          # destination hash -> Peer
         self.links = {}          # link id -> Peer, for links others opened to us
+        self.unidentified = {}   # link id -> what came on it before it identified
         self.node = None         # what the node wrote in node.json
         self.running = True
         self.changed = True
@@ -144,6 +167,14 @@ class Bridge:
         identity.to_file(path)
         return identity
 
+    @staticmethod
+    def bitrate_to(destination_hash):
+        """Bits a second of the interface the way to a node starts on; 0 if not known."""
+        try:
+            return int(RNS.Transport.next_hop_interface_bitrate(destination_hash) or 0)
+        except Exception:
+            return 0
+
     def write_peers(self, force=False):
         now = time.time()
         with self.lock:
@@ -156,6 +187,8 @@ class Bridge:
                 "hops": p.hops if p.hops is not None else -1,
                 "heard": int(p.heard),
                 "link": p.link_up(),
+                # So the node can wait as long as this radio needs.
+                "bitrate": self.bitrate_to(p.hash),
             } for p in self.peers.values()]
             self.changed = False
             self.last_write = now
@@ -224,6 +257,10 @@ class Bridge:
                 peer.link = link
             self.links[link.link_id] = peer
             self.changed = True
+            held = self.unidentified.pop(link.link_id, None)
+        # What arrived before the identification, in the order it came.
+        for data in (held["held"] if held else []):
+            self.from_link(link, data)
 
     def outbound_link(self, peer):
         identity = RNS.Identity.recall(peer.hash)
@@ -252,9 +289,42 @@ class Bridge:
     def link_closed(self, link):
         with self.lock:
             peer = self.links.pop(link.link_id, None)
+            self.unidentified.pop(link.link_id, None)
             if peer is not None and peer.link is link:
                 peer.link = None
+                peer.waiting_since = None
+                peer.unanswered = 0
             self.changed = True
+
+    def send_control(self, link, kind):
+        RNS.Packet(link, FRAGMENT_HEADER.pack(0, kind, 0)).send()
+
+    def control(self, link, kind):
+        if kind != CONTROL_IDENTIFY or not link.initiator:
+            return
+        # The far end lost our identification (or it has not reached it yet):
+        # say again who we are, at most every few seconds.
+        with self.lock:
+            peer = self.links.get(link.link_id)
+            now = time.time()
+            if peer is None or now - peer.last_identify < IDENTIFY_INTERVAL:
+                return
+            peer.last_identify = now
+        log("identifying again to %s" % RNS.prettyhexrep(peer.hash), RNS.LOG_VERBOSE)
+        link.identify(self.identity)
+
+    def hold(self, link, data):
+        """Keep what came on a link that has not said who it is yet; expire() asks."""
+        entry = self.unidentified.get(link.link_id)
+        if entry is None:
+            if len(self.unidentified) >= MAX_PEERS:
+                return
+            # Not asked at once: the identification is usually just behind,
+            # since each packet is handled on a thread of its own.
+            now = time.time()
+            entry = self.unidentified[link.link_id] = {"link": link, "since": now, "asked": now, "held": []}
+        if len(entry["held"]) < UNIDENTIFIED_MAX:
+            entry["held"].append(data)
 
     # --- datagrams -----------------------------------------------------------
 
@@ -279,6 +349,9 @@ class Bridge:
         with self.lock:
             message_id = peer.next_id
             peer.next_id = (peer.next_id + 1) & 0xFFFF
+            if peer.waiting_since is None:
+                peer.waiting_since = time.time()
+            peer.unanswered += len(datagram)
         for index, part in enumerate(parts):
             RNS.Packet(link, FRAGMENT_HEADER.pack(message_id, index, len(parts)) + part).send()
 
@@ -286,13 +359,19 @@ class Bridge:
         if len(data) < FRAGMENT_HEADER.size:
             return
         message_id, index, count = FRAGMENT_HEADER.unpack_from(data)
-        if count == 0 or index >= count:
+        if count == 0:
+            self.control(link, index)
+            return
+        if index >= count:
             return
         with self.lock:
             peer = self.links.get(link.link_id)
             if peer is None:
+                self.hold(link, data)
                 return
             peer.heard = time.time()
+            peer.waiting_since = None
+            peer.unanswered = 0
             deadline, total, parts = peer.partial.get(message_id, (time.time() + REASSEMBLY_TTL, count, {}))
             if total != count:
                 return
@@ -307,10 +386,29 @@ class Bridge:
 
     def expire(self):
         now = time.time()
+        ask, silent = [], []
         with self.lock:
             for peer in self.peers.values():
                 for message_id in [m for m, (deadline, _, _) in peer.partial.items() if deadline < now]:
                     del peer.partial[message_id]
+                link = peer.link
+                if peer.waiting_since is not None and link is not None and link.status == RNS.Link.ACTIVE:
+                    # A long message on a slow radio is still going out, not lost.
+                    airtime = 2 * peer.unanswered * 8 * FRAMING / (self.bitrate_to(peer.hash) or 1000)
+                    if now - peer.waiting_since > max(SILENCE, 8 * (link.rtt or 0)) + airtime:
+                        silent.append((peer, link))
+            for link_id, entry in list(self.unidentified.items()):
+                if now - entry["since"] > UNIDENTIFIED_TTL:
+                    del self.unidentified[link_id]
+                elif now - entry["asked"] >= IDENTIFY_INTERVAL:
+                    entry["asked"] = now
+                    ask.append(entry["link"])
+        for link in ask:
+            self.send_control(link, CONTROL_IDENTIFY)
+        for peer, link in silent:
+            # Started again on the next datagram for it.
+            log("nothing back from %s over its link; starting the link again" % RNS.prettyhexrep(peer.hash))
+            link.teardown()
 
     # --- loops ---------------------------------------------------------------
 

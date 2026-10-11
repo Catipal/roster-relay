@@ -45,8 +45,29 @@ static const bool DEFAULT_RADIO_ENTRY = true;
 static constexpr int64_t RADIO_BRIDGE_TIMEOUT = 60;
 /** How long a neighbour is used after it was last heard; the bridge announces every half hour. */
 static constexpr int64_t RADIO_PEER_TTL = 3 * 60 * 60;
-/** Each step of a path whose first hop is a radio link may take this long. */
+/**
+ * Each step of a path whose first hop is a radio link may take this long, on
+ * top of the airtime its datagrams need (RadioStepTimeout).
+ */
 static constexpr std::chrono::milliseconds RADIO_STEP_TIMEOUT{30000};
+/**
+ * The speed assumed for a radio the bridge does not report one for: LoRa at
+ * spreading factor 8 and 125 kHz, a common setting for Reticulum.
+ */
+static constexpr int64_t RADIO_DEFAULT_BITRATE = 3125;
+/**
+ * What the radio spends on each byte of overlay datagram, in percent. A full
+ * datagram goes as three Reticulum packets, whose headers and link encryption
+ * add about a fifth, and an RNode sends each as two LoRa packets with a
+ * preamble apiece. Rounded up, because a wait that is too short costs far more
+ * airtime than one that is too long.
+ */
+static constexpr int64_t RADIO_FRAMING_PERCENT = 150;
+/**
+ * What a first greeting over the radio puts on the air, both ways: the overlay
+ * handshake and its answer, and the Reticulum link the bridge sets up for them.
+ */
+static constexpr size_t RADIO_GREETING_BYTES = 800;
 
 struct RadioPeer {
     roster::KeyBytes key{};
@@ -56,6 +77,7 @@ struct RadioPeer {
     int hops{-1};
     int64_t heard{0};
     bool link_up{false};
+    int64_t bitrate{0};       //!< of the radio the way to it starts on, bits a second; 0 if not reported
 };
 
 struct RadioState {
@@ -90,6 +112,12 @@ public:
     bool AddressFor(const roster::KeyBytes& key, int64_t now, CService& out) const;
     /** Whether an overlay address is one of the bridge's ports. */
     bool IsRadioAddress(const CService& addr) const;
+    /**
+     * Bits a second the radio carries towards the neighbour at `addr`, shared
+     * between the radio hops on the way since each one sends on the same
+     * channel. 0 when `addr` is not one of the bridge's ports.
+     */
+    int64_t RateTo(const CService& addr) const;
 
     fs::path Dir() const { return m_dir; }
 
@@ -110,6 +138,21 @@ extern bool g_radio_entry;
  * otherwise `internet`. `slow` is set when it is the radio.
  */
 CService FirstHopAddress(const roster::KeyBytes& key, const CService& internet, bool& slow);
+
+/**
+ * Roughly how long the radio takes to carry `bytes` of overlay datagrams to
+ * the neighbour at `addr`, framing counted. Zero when `addr` is not a radio
+ * neighbour, so callers can add it to any wait.
+ *
+ * Waits on a radio hop have to grow with this rather than be fixed: a greeting
+ * re-sent before the first could have arrived replaces it, and a request
+ * re-sent while its answer is still on the air doubles the airtime, so a
+ * fixed wait that suits LoRa's fastest setting never completes at its slowest.
+ */
+std::chrono::milliseconds RadioAirtime(const CService& addr, size_t bytes);
+
+/** How long each step of a path may take when its first hop is the radio neighbour at `addr`. */
+std::chrono::milliseconds RadioStepTimeout(const CService& addr);
 
 } // namespace overlay
 

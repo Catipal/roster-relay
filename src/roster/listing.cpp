@@ -8,6 +8,7 @@
 #include <crypto/common.h>
 #include <index/rosterindex.h>
 #include <logging.h>
+#include <overlay/radio.h>
 #include <overlay/relay.h>
 #include <random.h>
 #include <roster/payout.h>
@@ -56,6 +57,18 @@ StakeWeightSource g_stake_weight GUARDED_BY(g_relay_mutex);
 //! request while the first payment is still unconfirmed does not pay twice;
 //! the chain answers the question once it confirms.
 std::map<KeyBytes, int> g_paid_at GUARDED_BY(g_relay_mutex);
+
+//! Answers given, by who asked and the request's id, so a request repeated
+//! because its answer was lost gets that answer again instead of being
+//! decided twice - the second time it would be refused as a double payment.
+//! Bounded, because asking is something strangers do.
+struct GivenAnswer {
+    int64_t at{0};
+    ListingOutcome outcome;
+};
+std::map<std::pair<KeyBytes, uint64_t>, GivenAnswer> g_given GUARDED_BY(g_relay_mutex);
+constexpr int64_t GIVEN_TTL = 15 * 60;
+constexpr size_t MAX_GIVEN = 256;
 
 } // namespace
 
@@ -185,10 +198,44 @@ void HandleRequest(const overlay::Hop& from, const std::vector<unsigned char>& p
     std::vector<unsigned char> raw;
     if (!DecodeListingRequest(payload, id, raw)) return;
 
+    const CPubKey identity = overlay::g_overlay->PeerIdentity(from.addr);
+    KeyBytes requester{};
+    if (identity.IsValid() && identity.size() == CPubKey::COMPRESSED_SIZE) {
+        std::copy(identity.begin() + 1, identity.begin() + 33, requester.begin());
+    }
+    const std::pair<KeyBytes, uint64_t> asked(requester, id);
+    const int64_t now = GetTime();
+    bool repeated = false;
+    ListingOutcome before;
+    {
+        LOCK(g_relay_mutex);
+        for (auto it = g_given.begin(); it != g_given.end();) {
+            it = now - it->second.at >= GIVEN_TTL ? g_given.erase(it) : std::next(it);
+        }
+        std::map<std::pair<KeyBytes, uint64_t>, GivenAnswer>::const_iterator it = g_given.find(asked);
+        if (it != g_given.end()) {
+            repeated = true;
+            before = it->second.outcome;
+        }
+    }
+    if (repeated) {
+        Answer(from.addr, id, before);
+        return;
+    }
+
     const ListingOutcome outcome = Decide(from.addr, raw);
     if (!outcome.ok) {
         LogPrint(BCLog::NET, "roster: declined a listing request from %s: %s\n",
                  from.addr.ToString(), outcome.reason);
+    }
+    {
+        LOCK(g_relay_mutex);
+        if (g_given.size() < MAX_GIVEN) {
+            GivenAnswer given;
+            given.at = now;
+            given.outcome = outcome;
+            g_given[asked] = given;
+        }
     }
     Answer(from.addr, id, outcome);
 }
@@ -403,12 +450,15 @@ ListingOutcome RequestListing(const CService& relay_addr, const CPubKey& relay_k
     // Retried after a pause rather than in a loop, because a new attempt
     // discards the one whose answer may still be on its way.
     const auto deadline = std::chrono::steady_clock::now() + connect_timeout;
+    // Over a radio hop the pause also covers the greeting's airtime both ways,
+    // or every try would replace one that had not had time to arrive.
+    const auto pause = std::chrono::milliseconds{3000} + overlay::RadioAirtime(relay_addr, overlay::RADIO_GREETING_BYTES);
     bool connected = false;
     while (!connected && std::chrono::steady_clock::now() < deadline) {
         if (!overlay::g_overlay->Connect(relay_addr, relay_key)) {
             return Refused("Could not start a session with the relay.");
         }
-        const auto retry = std::min(deadline, std::chrono::steady_clock::now() + std::chrono::seconds{3});
+        const auto retry = std::min(deadline, std::chrono::steady_clock::now() + pause);
         while (overlay::g_overlay->HasPendingHandshake(relay_addr) && std::chrono::steady_clock::now() < retry) {
             UninterruptibleSleep(std::chrono::milliseconds{100});
         }
@@ -433,20 +483,30 @@ ListingOutcome RequestListing(const CService& relay_addr, const CPubKey& relay_k
         LOCK(g_requests_mutex);
         g_requests[id].relay = relay_addr;
     }
-    if (!overlay::g_overlay->SendApp(relay_addr, msg)) {
-        LOCK(g_requests_mutex);
-        g_requests.erase(id);
-        return Refused("Could not send the request to the relay.");
-    }
-
+    // Sent again, under the same id, while no answer comes: a datagram can be
+    // lost, which on a radio hop is ordinary. The relay answers a repeat with
+    // the answer it already gave rather than deciding twice. Each try allows
+    // for the request, the answer and, on a radio hop, a link set up again.
+    const auto answer_deadline = std::chrono::steady_clock::now() + answer_timeout;
+    const auto resend_every = std::chrono::milliseconds{10000} +
+                              2 * overlay::RadioAirtime(relay_addr, msg.size() + overlay::RADIO_GREETING_BYTES);
     PendingRequest result;
-    {
+    while (true) {
+        if (!overlay::g_overlay->SendApp(relay_addr, msg)) {
+            LOCK(g_requests_mutex);
+            g_requests.erase(id);
+            return Refused("Could not send the request to the relay.");
+        }
         WAIT_LOCK(g_requests_mutex, lock);
-        g_requests_cv.wait_for(lock, answer_timeout, [&]() EXCLUSIVE_LOCKS_REQUIRED(g_requests_mutex) {
+        const auto until = std::min(answer_deadline, std::chrono::steady_clock::now() + resend_every);
+        g_requests_cv.wait_until(lock, until, [&]() EXCLUSIVE_LOCKS_REQUIRED(g_requests_mutex) {
             return g_requests[id].done;
         });
-        result = g_requests[id];
-        g_requests.erase(id);
+        if (g_requests[id].done || std::chrono::steady_clock::now() >= answer_deadline) {
+            result = g_requests[id];
+            g_requests.erase(id);
+            break;
+        }
     }
     if (!result.done) return Refused("The relay did not answer in time.");
     answered = true;

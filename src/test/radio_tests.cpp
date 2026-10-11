@@ -105,6 +105,43 @@ BOOST_AUTO_TEST_CASE(neighbours_are_those_heard_lately_through_a_live_bridge)
     BOOST_CHECK(other.Neighbours(now).empty());
 }
 
+BOOST_AUTO_TEST_CASE(waits_follow_the_radio_speed)
+{
+    const fs::path dir = GetDataDir() / "radio";
+    fs::create_directories(dir);
+    g_radio = MakeUnique<Radio>(dir, "main");
+    const int64_t now = 1700000000;
+    {
+        // LoRa at SF8 next door; SF12 behind a repeater; an older bridge that reports no speed.
+        std::ofstream f((dir / "peers.json").string());
+        f << strprintf(R"({"version": 1, "network": "main", "updated": %d, "peers": [
+            {"key": "%s", "port": 40001, "hops": 1, "heard": %d, "link": true, "bitrate": 3125},
+            {"key": "%s", "port": 40002, "hops": 2, "heard": %d, "link": true, "bitrate": 293},
+            {"key": "%s", "port": 40003, "hops": 1, "heard": %d, "link": true}]})",
+            now, HexStr(Key(1)), now, HexStr(Key(2)), now, HexStr(Key(3)), now);
+    }
+    g_radio->Refresh();
+    const CService next_door(LookupNumeric("127.0.0.1", 40001)), via_repeater(LookupNumeric("127.0.0.1", 40002)),
+        unreported(LookupNumeric("127.0.0.1", 40003)), internet(LookupNumeric("192.0.2.1", 8346));
+    BOOST_REQUIRE_EQUAL(g_radio->State().peers.size(), 3U);
+    BOOST_CHECK_EQUAL(g_radio->State().peers[0].bitrate, 3125);
+    BOOST_CHECK_EQUAL(g_radio->RateTo(next_door), 3125);
+    // Each hop sends on the same channel, so two share it.
+    BOOST_CHECK_EQUAL(g_radio->RateTo(via_repeater), 146);
+    BOOST_CHECK_EQUAL(g_radio->RateTo(unreported), RADIO_DEFAULT_BITRATE);
+    BOOST_CHECK_EQUAL(g_radio->RateTo(internet), 0);
+
+    // A full datagram, framing counted: 1200 B x 8 x 1.5 at 3125 bit/s.
+    BOOST_CHECK_EQUAL(RadioAirtime(next_door, 1200).count(), 4608);
+    BOOST_CHECK_EQUAL(RadioAirtime(via_repeater, 1200).count(), 98630);
+    // Nothing added off the radio.
+    BOOST_CHECK_EQUAL(RadioAirtime(internet, 1200).count(), 0);
+    BOOST_CHECK(RadioStepTimeout(next_door) == RADIO_STEP_TIMEOUT + 6 * std::chrono::milliseconds{4608});
+    BOOST_CHECK(RadioStepTimeout(via_repeater) > RadioStepTimeout(next_door));
+    g_radio.reset();
+    BOOST_CHECK_EQUAL(RadioAirtime(next_door, 1200).count(), 0);
+}
+
 BOOST_AUTO_TEST_CASE(a_radio_neighbour_that_is_a_listed_relay_is_the_entry)
 {
     PathSelector selector(2, /* local_relays */ true);

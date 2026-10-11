@@ -23,6 +23,11 @@ What the test is really about:
     comes back the same way - the overlay's handshake and encryption running
     end to end through it;
 
+  * the same holds over a pretend LoRa channel (test_framework/lora.py) at
+    spreading factor 10, under a kilobit a second, with a tenth of the packets
+    lost: the node waits as long as the speed its bridge reports needs, and
+    the bridge recovers a link whose setup lost a packet;
+
   * with -radioentry=0 the same request goes over the internet instead.
 
 Skipped when Reticulum is not installed (pip install rns).
@@ -53,11 +58,17 @@ RNS_CONFIG = """[reticulum]
     {where}
 """
 
+LORA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "test_framework", "lora.py")
+LORA_SF = 10
+LORA_LOSS = 0.1
+
 
 class RadioTest(BitcoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 2
         self.setup_clean_chain = True
+        # A request over slow LoRa with packets lost takes minutes.
+        self.rpc_timeout = 900
 
     def skip_test_if_missing_module(self):
         self.skip_if_no_wallet()
@@ -74,24 +85,39 @@ class RadioTest(BitcoinTestFramework):
     def key(self, n):
         return self.nodes[n].getrosterinfo()["operational_key"]
 
-    def start_bridges(self):
-        # A port the framework gives no node in this test.
+    def start_bridges(self, lora=False):
+        # Ports the framework gives no node in this test.
         link_port = p2p_port(self.num_nodes + 3)
         bridge = os.path.join(self.config["environment"]["SRCDIR"], "contrib", "reticulum", "bps-rns-bridge.py")
         self.bridges = []
+        if lora:
+            # One station per node on the pretend channel, joined to it by a
+            # pipe, and telling Reticulum the speed an RNode would report.
+            base = p2p_port(self.num_nodes + 5)
+            bitrate = subprocess.check_output([sys.executable, LORA, "bitrate", "--sf", str(LORA_SF)]).decode().strip()
+            self.bridges.append(subprocess.Popen(
+                [sys.executable, LORA, "channel", "--base", str(base), "--stations", str(self.num_nodes),
+                 "--sf", str(LORA_SF), "--loss", str(LORA_LOSS)]))
         for n in range(self.num_nodes):
-            config_dir = os.path.join(self.options.tmpdir, "reticulum%d" % n)
+            config_dir = os.path.join(self.options.tmpdir, "reticulum%d%s" % (n, "lora" if lora else ""))
             os.makedirs(config_dir, exist_ok=True)
-            if n == 0:
+            if lora:
+                # Reticulum splits the command the POSIX way, which would eat
+                # Windows' backslashes; Python takes forward ones everywhere.
+                kind, where = "PipeInterface", "command = %s %s pipe %d\n    respawn_delay = 1\n    bitrate = %s" % (
+                    sys.executable.replace("\\", "/"), LORA.replace("\\", "/"), base + n, bitrate)
+            elif n == 0:
                 kind, where = "TCPServerInterface", "listen_ip = 127.0.0.1\n    listen_port = %d" % link_port
             else:
                 kind, where = "TCPClientInterface", "target_host = 127.0.0.1\n    target_port = %d" % link_port
             with open(os.path.join(config_dir, "config"), "w", encoding="utf-8") as f:
                 f.write(RNS_CONFIG.format(kind=kind, where=where))
-            log = open(os.path.join(self.options.tmpdir, "bridge%d.log" % n), "w", encoding="utf-8")
+            log = open(os.path.join(self.options.tmpdir, "bridge%d%s.log" % (n, "lora" if lora else "")), "w",
+                       encoding="utf-8")
+            # Airtime is scarce on LoRa: announce at start, then rarely.
             self.bridges.append(subprocess.Popen(
                 [sys.executable, bridge, "--datadir", os.path.join(self.nodes[n].datadir, self.chain),
-                 "--rnsconfig", config_dir, "--announce-interval", "5"],
+                 "--rnsconfig", config_dir, "--announce-interval", "120" if lora else "5"],
                 stdout=log, stderr=subprocess.STDOUT))
 
     def stop_bridges(self):
@@ -149,6 +175,24 @@ class RadioTest(BitcoinTestFramework):
             assert_equal(res["status"], "refused")
             assert "not staking" in res["reason"], res["reason"]
             assert self.neighbour(1, self.key(0))["session"]
+        finally:
+            self.stop_bridges()
+
+        self.log.info("over LoRa at SF%d with %d%% of packets lost, the request still gets through", LORA_SF,
+                      LORA_LOSS * 100)
+        bitrate = int(subprocess.check_output([sys.executable, LORA, "bitrate", "--sf", str(LORA_SF)]).decode())
+        self.start_bridges(lora=True)
+        try:
+            # Heard on the new channel: the speed the node scales its waits by
+            # is the one Reticulum reports for it, not the old link's.
+            self.wait_until(lambda: (self.neighbour(1, self.key(0)) or {}).get("bitrate") == bitrate and
+                            self.neighbour(1, self.key(0))["relay"], timeout=300)
+            heard = self.neighbour(1, self.key(0))
+            res = user.requestlisting()
+            self.log.info("  %s", res)
+            assert_equal(res["relay_address"], heard["local"])
+            assert_equal(res["status"], "refused")
+            assert "not staking" in res["reason"], res["reason"]
         finally:
             self.stop_bridges()
 

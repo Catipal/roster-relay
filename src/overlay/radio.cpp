@@ -5,12 +5,14 @@
 #include <overlay/radio.h>
 
 #include <netbase.h>
+#include <overlay/frame.h>
 #include <util/strencodings.h>
 #include <util/system.h>
 #include <util/time.h>
 
 #include <univalue.h>
 
+#include <algorithm>
 #include <fstream>
 #include <sstream>
 
@@ -66,6 +68,8 @@ bool ParseRadioPeers(const std::string& json, RadioState& out, std::string& erro
         if (find_value(p, "hops").isNum()) peer.hops = find_value(p, "hops").get_int();
         if (find_value(p, "heard").isNum()) peer.heard = find_value(p, "heard").get_int64();
         peer.link_up = find_value(p, "link").isTrue();
+        // Bridges before this field was added report none.
+        if (find_value(p, "bitrate").isNum()) peer.bitrate = std::max<int64_t>(0, find_value(p, "bitrate").get_int64());
         out.peers.push_back(peer);
     }
     out.bridge_seen = true;
@@ -176,6 +180,17 @@ bool Radio::IsRadioAddress(const CService& addr) const
     return false;
 }
 
+int64_t Radio::RateTo(const CService& addr) const
+{
+    LOCK(m_mutex);
+    for (const RadioPeer& p : m_state.peers) {
+        if (p.local != addr) continue;
+        const int64_t bitrate = p.bitrate > 0 ? p.bitrate : RADIO_DEFAULT_BITRATE;
+        return std::max<int64_t>(1, bitrate / std::max(1, p.hops));
+    }
+    return 0;
+}
+
 CService FirstHopAddress(const roster::KeyBytes& key, const CService& internet, bool& slow)
 {
     slow = false;
@@ -185,6 +200,20 @@ CService FirstHopAddress(const roster::KeyBytes& key, const CService& internet, 
         return radio;
     }
     return internet;
+}
+
+std::chrono::milliseconds RadioAirtime(const CService& addr, size_t bytes)
+{
+    const int64_t rate = g_radio ? g_radio->RateTo(addr) : 0;
+    if (rate <= 0) return std::chrono::milliseconds{0};
+    const int64_t bits = (int64_t)bytes * 8 * RADIO_FRAMING_PERCENT / 100;
+    return std::chrono::milliseconds{bits * 1000 / rate};
+}
+
+std::chrono::milliseconds RadioStepTimeout(const CService& addr)
+{
+    // Each of a step's three tries carries a datagram out and one back.
+    return RADIO_STEP_TIMEOUT + 6 * RadioAirtime(addr, SAFE_DATAGRAM);
 }
 
 } // namespace overlay

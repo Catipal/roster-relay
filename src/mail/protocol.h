@@ -128,11 +128,16 @@ void HandleOverlayApp(const overlay::Hop& from, std::vector<unsigned char>&& pay
  * Send `request` to `to` and wait for the answer.
  *
  * Retries twice inside `timeout`, resending under the same transfer id so
- * nothing already delivered is wasted. False with `error` set when nothing
- * came back.
+ * nothing already delivered is wasted. A try does not end while cells of the
+ * answer are still arriving: a long answer on a slow path is not a lost one.
+ * False with `error` set when nothing came back.
+ *
+ * `per_cell` is how long one cell takes on a radio hop the path starts with,
+ * zero otherwise; each try then also waits for the request's cells to go out
+ * and the answer's first to come back.
  */
 bool Ask(const overlay::Hop& to, Message request, Message& answer, std::chrono::milliseconds timeout,
-         std::string& error);
+         std::string& error, std::chrono::milliseconds per_cell = std::chrono::milliseconds{0});
 
 /** Make every Ask in progress, and every later one, give up at once. For shutdown. */
 void InterruptAsks();

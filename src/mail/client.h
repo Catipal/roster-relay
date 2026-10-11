@@ -150,6 +150,8 @@ private:
         overlay::Hop hop;
         std::vector<uint64_t> legs;
         bool local{false};
+        //! How long one cell takes on the radio, when the path starts with a radio hop.
+        std::chrono::milliseconds radio_cell{0};
     };
     bool Reach(const roster::RelayInfo& box, Circuit& out, std::string& error);
     bool Exchange(const Circuit& c, const Message& request, Message& answer,

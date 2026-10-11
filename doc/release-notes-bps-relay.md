@@ -139,8 +139,10 @@ mail and listing requests still go out.
   Each one announces itself every half hour, and again soon after it hears a
   newcomer.
 - **Entering by radio** - when a neighbour is a listed relay, your paths
-  start there (on by default; Settings, Radio). Everything after that first
-  hop goes over the internet as before.
+  start there (on by default; Settings, Radio). A relay then carries the path
+  on to the next relay over radio too, when it has no internet route to it, so
+  a path reaches across a stretch that has only radio rather than only its
+  first hop.
 - **Private as before** - the bridge carries the overlay's datagrams and
   never sees inside them; the handshake still proves the neighbour is who it
   announced.
@@ -350,9 +352,12 @@ compact filters that match listings.
 Known issues
 ============
 
-- Two nodes with only radio between them cannot mail each other: the radio
-  replaces the first hop of a path, and mailboxes are reached over the
-  internet from there.
+- Relays now carry a path on to the next relay over radio when they have no
+  internet route to it, so a path can cross a stretch that has only radio, and
+  a radio neighbour is no longer only the first hop. What is still missing for
+  two nodes with only radio between them to mail each other is the block chain
+  over radio: a relay with no internet does not learn the roster, so it cannot
+  yet act as the mailbox or meeting point in the middle.
 - The radio carries the overlay, not the block chain. A node with only radio
   stops receiving blocks, so its view of the roster ages until it reaches the
   internet again.

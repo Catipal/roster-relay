@@ -2301,6 +2301,13 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             }, std::chrono::seconds{5});
         }
 
+        // Where to reach the next relay on a path: usually the address the
+        // roster lists, but a radio neighbour with no internet route from here
+        // is reached over the radio, so a path can cross a radio-only stretch.
+        overlay::g_overlay->SetNextHopResolver([](const CPubKey& key, const CService& listed, bool& slow) {
+            return overlay::NextHopForRelay(mail::XOnly(key), listed, slow);
+        });
+
         // Which relays this node will dial when a path asks it to reach one:
         // those the roster lists, at the address and with the key it lists.
         // Read again if the answer is not in a copy up to ten minutes old,

@@ -73,6 +73,14 @@ public:
      * service that proves its key is registered.
      */
     using IntroducePolicy = std::function<bool(const roster::KeyBytes& service)>;
+    /**
+     * Where to actually reach the next relay on a path. Given the key and the
+     * address the roster lists, returns the address to dial - usually the same,
+     * but a radio neighbour of a node with no internet to it is reached at a
+     * local port instead, with `slow` set. Set from overlay/radio.h; without it
+     * the roster address is used unchanged.
+     */
+    using NextHopResolver = std::function<CService(const CPubKey& key, const CService& listed, bool& slow)>;
 
     /** One stop on a circuit: where it listens and the key that must answer there. */
     struct CircuitHop {
@@ -94,6 +102,7 @@ public:
 
     void SetDialPolicy(DialPolicy policy);
     void SetIntroducePolicy(IntroducePolicy policy);
+    void SetNextHopResolver(NextHopResolver resolver);
 
     bool Connect(const CService& peer, const CPubKey& peer_static);
     CService BoundAddress() const { return m_socket.BoundAddress(); }
@@ -218,6 +227,8 @@ private:
     };
     /** How long a dial on someone else's behalf may take, in seconds. */
     static constexpr int64_t PENDING_BUILD_TTL = 10;
+    /** The same when the next relay is reached over radio, where a handshake is slower. */
+    static constexpr int64_t RADIO_DIAL_TTL = 90;
     /** Bounded, because asking a relay to dial is something strangers do. */
     static constexpr size_t MAX_PENDING_BUILDS = 64;
 
@@ -257,6 +268,7 @@ private:
     std::map<uint64_t, std::vector<uint64_t>> m_circuits GUARDED_BY(m_mutex);
     DialPolicy m_dial GUARDED_BY(m_mutex);
     IntroducePolicy m_introduce GUARDED_BY(m_mutex);
+    NextHopResolver m_next_hop GUARDED_BY(m_mutex);
 
     Mutex m_results_mutex;
     std::condition_variable m_results_cv;

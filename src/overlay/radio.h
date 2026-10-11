@@ -140,6 +140,15 @@ extern bool g_radio_entry;
 CService FirstHopAddress(const roster::KeyBytes& key, const CService& internet, bool& slow);
 
 /**
+ * Where a relay reaches the next hop `key`, listed at `internet`: its radio
+ * port when it is a neighbour this node has no working internet route to
+ * (the address is not routable or not reachable from here), otherwise
+ * `internet`. `slow` is set when it is the radio. This is what lets a path
+ * cross a stretch that has only radio, one relay bridging to the next.
+ */
+CService NextHopForRelay(const roster::KeyBytes& key, const CService& internet, bool& slow);
+
+/**
  * Roughly how long the radio takes to carry `bytes` of overlay datagrams to
  * the neighbour at `addr`, framing counted. Zero when `addr` is not a radio
  * neighbour, so callers can add it to any wait.

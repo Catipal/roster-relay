@@ -4,6 +4,7 @@
 
 #include <overlay/radio.h>
 
+#include <net.h>
 #include <netbase.h>
 #include <overlay/frame.h>
 #include <util/strencodings.h>
@@ -198,6 +199,23 @@ CService FirstHopAddress(const roster::KeyBytes& key, const CService& internet, 
     if (g_radio && g_radio_entry && g_radio->AddressFor(key, GetTime(), radio)) {
         slow = true;
         return radio;
+    }
+    return internet;
+}
+
+CService NextHopForRelay(const roster::KeyBytes& key, const CService& internet, bool& slow)
+{
+    slow = false;
+    // Prefer the internet when there is a working route: it is faster, and a
+    // relay reached over radio is one with no other way in. Routable and
+    // reachable are both properties of the address and this node, not of the
+    // far relay, so two relays with internet between them never fall to radio.
+    if (g_radio && (!internet.IsRoutable() || !IsReachable(internet))) {
+        CService radio;
+        if (g_radio->AddressFor(key, GetTime(), radio)) {
+            slow = true;
+            return radio;
+        }
     }
     return internet;
 }

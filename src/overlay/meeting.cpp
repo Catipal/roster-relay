@@ -135,7 +135,13 @@ bool ReachRelay(const roster::KeyBytes& key, int hops, bool prove_last, Reached&
             }
             circuit.push_back(h);
         }
-        const std::chrono::milliseconds step = slow ? RadioStepTimeout(circuit[0].addr) : std::chrono::milliseconds{4000};
+        // A hidden node may be reached across a radio hop anywhere on the path
+        // - a relay bridging to the next over radio - which the builder cannot
+        // see and cannot size a timeout from. So budget for radio on every step
+        // (RadioStepTimeout is the radio step even when the first hop is not
+        // radio), or a slow later hop times the handshake out before its answer
+        // returns. Success still returns as soon as each step completes.
+        const std::chrono::milliseconds step = RadioStepTimeout(circuit[0].addr);
         uint64_t path = 0;
         if (g_overlay->BuildCircuit(circuit, path, error, step, prove_last)) {
             out.path = path;

@@ -142,6 +142,45 @@ BOOST_AUTO_TEST_CASE(waits_follow_the_radio_speed)
     BOOST_CHECK_EQUAL(RadioAirtime(next_door, 1200).count(), 0);
 }
 
+BOOST_AUTO_TEST_CASE(a_relay_reaches_the_next_hop_over_radio_only_when_it_must)
+{
+    const fs::path dir = GetDataDir() / "radio";
+    fs::create_directories(dir);
+    g_radio = MakeUnique<Radio>(dir, "main");
+    const int64_t now = GetTime();
+    {
+        std::ofstream f((dir / "peers.json").string());
+        f << strprintf(R"({"version": 1, "network": "main", "updated": %d, "peers": [
+            {"key": "%s", "port": 40001, "hops": 1, "heard": %d, "link": true, "bitrate": 3125}]})",
+            now, HexStr(Key(1)), now);
+    }
+    g_radio->Refresh();
+
+    const CService radio_local(LookupNumeric("127.0.0.1", 40001));
+    const CService on_internet(LookupNumeric("8.8.8.8", 48931));   // routable and reachable
+    const CService unreachable(LookupNumeric("10.0.0.1", 48931));  // private, not routable
+    bool slow = true;
+
+    // A relay reachable at its listed address is reached there, not over radio.
+    BOOST_CHECK(NextHopForRelay(Key(1), on_internet, slow) == on_internet);
+    BOOST_CHECK(!slow);
+
+    // One with no route from here, but heard on the radio, is reached over it.
+    BOOST_CHECK(NextHopForRelay(Key(1), unreachable, slow) == radio_local);
+    BOOST_CHECK(slow);
+
+    // One with no route and not a radio neighbour stays at its listed address:
+    // there is nothing better to do, and the dial simply fails.
+    slow = true;
+    BOOST_CHECK(NextHopForRelay(Key(2), unreachable, slow) == unreachable);
+    BOOST_CHECK(!slow);
+
+    // With no radio at all, the listed address is used unchanged.
+    g_radio.reset();
+    BOOST_CHECK(NextHopForRelay(Key(1), unreachable, slow) == unreachable);
+    BOOST_CHECK(!slow);
+}
+
 BOOST_AUTO_TEST_CASE(a_radio_neighbour_that_is_a_listed_relay_is_the_entry)
 {
     PathSelector selector(2, /* local_relays */ true);

@@ -71,6 +71,14 @@ void Relay::SetIntroducePolicy(IntroducePolicy policy)
     m_introduce = std::move(policy);
 }
 
+void Relay::SetNextHopResolver(NextHopResolver resolver)
+{
+    LOCK(m_mutex);
+    m_next_hop = std::move(resolver);
+}
+
+constexpr int64_t Relay::RADIO_DIAL_TTL;
+
 bool Relay::Connect(const CService& peer, const CPubKey& peer_static)
 {
     return m_socket.Connect(peer, peer_static);
@@ -446,12 +454,28 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
         if (!DecodePathBuild(msg, path_id, dest, dest_key)) return;
         ExpirePendingBuilds();
 
+        // The next relay may be one this node reaches over radio rather than at
+        // the address the roster lists - a radio neighbour of a node with no
+        // internet to it. The resolver (set from overlay/radio.h) returns that
+        // local port, and `slow` sizes the wait. `dest` stays the roster
+        // address, which is what the dial policy is checked against.
+        CService reach = dest;
+        bool slow = false;
+        {
+            NextHopResolver resolve;
+            {
+                LOCK(m_mutex);
+                resolve = m_next_hop;
+            }
+            if (resolve && dest_key.IsValid()) reach = resolve(dest_key, dest, slow);
+        }
+
         // A session that exists already is used only if it is with the key
         // the path was asked for; an address is not an identity.
-        bool linked = m_socket.HasSession(dest);
-        if (linked && dest_key.IsValid() && m_socket.PeerIdentity(dest) != dest_key) linked = false;
+        bool linked = m_socket.HasSession(reach);
+        if (linked && dest_key.IsValid() && m_socket.PeerIdentity(reach) != dest_key) linked = false;
 
-        if (!linked && dest_key.IsValid() && Hop::Direct(dest) != from) {
+        if (!linked && dest_key.IsValid() && Hop::Direct(reach) != from) {
             // Dial only a relay the roster lists, at the address it lists, with
             // the key it lists. Building a path to a host this node has never
             // heard of would let a stranger name any address and have the
@@ -469,14 +493,17 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
                         if (p.path_id == path_id) waiting = true;
                     }
                     if (!waiting && m_pending_builds.size() < MAX_PENDING_BUILDS) {
+                        // A radio handshake takes longer than an internet one.
                         m_pending_builds.push_back(
-                            PendingBuild{path_id, from, dest, dest_key, GetTime() + PENDING_BUILD_TTL});
+                            PendingBuild{path_id, from, reach, dest_key,
+                                         GetTime() + (slow ? RADIO_DIAL_TTL : PENDING_BUILD_TTL)});
                         waiting = true;
                     }
                 }
                 if (waiting) {
-                    if (!m_socket.HasPendingHandshake(dest)) m_socket.Connect(dest, dest_key);
-                    LogPrint(BCLog::NET, "overlay: dialling %s to extend a path\n", dest.ToString());
+                    if (!m_socket.HasPendingHandshake(reach)) m_socket.Connect(reach, dest_key);
+                    LogPrint(BCLog::NET, "overlay: dialling %s to extend a path%s\n", reach.ToString(),
+                             slow ? " over radio" : "");
                     return; // answered once the session completes, or when it times out
                 }
             }
@@ -487,7 +514,7 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
             if (EncodePathResult(false, path_id, reply)) SendToHop(from, reply);
             return;
         }
-        FinishBuild(path_id, from, dest);
+        FinishBuild(path_id, from, reach);
         return;
     }
 

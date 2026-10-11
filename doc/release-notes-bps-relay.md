@@ -144,9 +144,18 @@ mail and listing requests still go out.
 - **Private as before** - the bridge carries the overlay's datagrams and
   never sees inside them; the handshake still proves the neighbour is who it
   announced.
+- **Repeaters** - a Reticulum node set to pass traffic on (a small computer
+  with an RNode on a roof, say) extends the range, and needs no BPS of its
+  own. It cannot read what it carries.
 
-Radio is slow - a LoRa link moves a few hundred bytes a second - so a letter
-sent this way takes minutes.
+Radio is slow - a LoRa link moves a few hundred bytes a second - and BPS
+Relay waits as long as the radio's speed needs, down to LoRa's slowest
+setting. Tested on a simulated LoRa link at 3 kbit/s: a listing request takes
+about 5 seconds, sending a short letter about a minute, collecting one about a
+minute and a half. Sending one letter uses about 36 seconds of transmitting,
+which in Europe is a whole hour's allowance on most of the 868 MHz band (1%);
+the 869.4-869.65 MHz slice allows 10%. `contrib/reticulum/README.md` has the
+figures for other settings.
 
 Names
 -----
@@ -341,6 +350,11 @@ Known issues
 - Two nodes with only radio between them cannot mail each other: the radio
   replaces the first hop of a path, and mailboxes are reached over the
   internet from there.
+- The radio carries the overlay, not the block chain. A node with only radio
+  stops receiving blocks, so its view of the roster ages until it reaches the
+  internet again.
+- Mail over radio is heavy: each letter goes to three mailboxes through
+  three separate paths, and every path is built across the radio.
 - Radio needs Python and Reticulum installed beside BPS Relay. Ham radio
   bands do not allow encrypted traffic; use licence-free ones such as LoRa's.
 - The translations were made by Claude, not by native speakers; corrections

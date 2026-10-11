@@ -64,14 +64,69 @@ Setting it up
 Things to know
 --------------
 
-- **Radio is slow.** A LoRa link moves a few hundred bytes a second, and an
-  overlay message is up to 1200. Waits on a path that starts with a radio hop
-  are longer (30 seconds a step), and sending a letter takes minutes, not
-  seconds.
+- **Radio is slow, and the node waits accordingly.** A LoRa link moves a few
+  hundred bytes a second, and an overlay message is up to 1200. The bridge
+  tells the node how fast each neighbour's radio is, and the node stretches
+  every wait on a radio hop to match, so the slowest LoRa settings work too.
 - **Airtime is shared and limited.** Each node announces itself every half
   hour, and once more soon after it hears a newcomer. Many countries limit how
-  much of the time a LoRa transmitter may send; Reticulum's interface settings
-  are where that is respected.
+  much of the time a LoRa transmitter may send - in Europe's 868 MHz band, 1%
+  on most of it (36 seconds an hour) and 10% on 869.4-869.65 MHz. Reticulum's
+  RNode settings `airtime_limit_short` and `airtime_limit_long` are where that
+  is enforced. The figures below show why it matters: one short letter can use
+  a whole hour's 1%.
+- **Lost packets are expected.** The node retries, and the bridge restarts a
+  radio link whose setup lost a packet. Tested with a tenth of all packets
+  lost.
+
+How long things take
+--------------------
+
+Measured on a simulated LoRa channel (the one `test/functional/feature_radio.py`
+uses, `test/functional/test_framework/lora.py`) with real LoRa airtime, two
+nodes in range, nothing lost unless stated. "Airtime" is what the node
+without the internet sent itself.
+
+| Setting | Speed | What | Took | Airtime |
+|---|---|---|---|---|
+| SF8, 125 kHz | 3.1 kbit/s | ask a relay to list you | 5 s | 3 s |
+| SF8, 125 kHz | 3.1 kbit/s | the same, through a repeater | 10 s | 3 s |
+| SF8, 125 kHz | 3.1 kbit/s | the same, 10% of packets lost | 11 s | 4 s |
+| SF10, 125 kHz | 1 kbit/s | ask a relay to list you | 16 s | 9 s |
+| SF12, 125 kHz | 0.3 kbit/s | ask a relay to list you | 86 s | 45 s |
+| SF8, 125 kHz | 3.1 kbit/s | leave your mail key at your 3 mailboxes | 94 s | 59 s |
+| SF8, 125 kHz | 3.1 kbit/s | send a short letter (to 3 mailboxes) | 57 s | 36 s |
+| SF8, 125 kHz | 3.1 kbit/s | the same, 5% of packets lost | 122 s | 61 s |
+| SF8, 125 kHz | 3.1 kbit/s | collect a letter from 3 mailboxes | 86 s | 35 s |
+| SF10, 125 kHz | 1 kbit/s | leave your mail key at your 3 mailboxes | 213 s | 134 s |
+| SF10, 125 kHz | 1 kbit/s | send a short letter (to 3 mailboxes) | 100 s | 62 s |
+| SF10, 125 kHz | 1 kbit/s | collect a letter from 3 mailboxes | 203 s | 81 s |
+
+Mail is the heavy part: every letter goes to three mailboxes, each through its
+own path of three relays, and every step of every path crosses the radio. Use
+the fastest setting your range allows, and the 10% sub-band in Europe.
+
+Repeaters
+---------
+
+Reticulum carries traffic across nodes that relay for others ("transport
+nodes"), so a radio in a high place extends everyone's range. A repeater does
+not need BPS at all: a small computer with an RNode, running Reticulum with
+
+```
+[reticulum]
+  enable_transport = yes
+```
+
+in its configuration (and `rnsd` to keep it running), passes BPS traffic on
+without being able to read it - the overlay's encryption runs end to end
+through it. Neighbours heard through a repeater show 2 hops on the Overlay
+page. Each repeater sends everything again on the same channel, so a path
+through one has half the speed and uses twice the airtime.
+
+A GPS module or antenna cannot do this job: GPS satellites only send, a GPS
+receiver only listens, and a GPS antenna is built to receive on 1575 MHz, not
+to transmit on LoRa's bands.
 - **Ham radio bands are out.** Amateur licences in most countries forbid
   encrypted traffic, and everything the overlay sends is encrypted. Use
   licence-free bands, such as LoRa's.

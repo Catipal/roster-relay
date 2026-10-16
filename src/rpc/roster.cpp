@@ -128,6 +128,7 @@ UniValue EntryToJSON(const RosterEntry& entry, const roster::Record& rec)
         // announcement may carry no endpoint at all, which is legal and says
         // "this identity exists" without offering anywhere to dial.
         out.pushKV("dialable", !rec.endpoints.empty());
+        out.pushKV("gateway", roster::IsGatewayRecord(rec.services, rec.endpoints.size()));
         out.pushKV("prev_height", (uint64_t)rec.prev_height);
         {
             UniValue eps(UniValue::VARR);
@@ -590,6 +591,7 @@ static RPCHelpMan getroster()
                     {RPCResult::Type::NUM, "expiry_height", "Height the record stops counting"},
                     {RPCResult::Type::NUM, "prev_height", "Height of this key's previous record, 0 if first"},
                     {RPCResult::Type::BOOL, "dialable", "Whether the record carries any endpoint at all"},
+                    {RPCResult::Type::BOOL, "gateway", "Whether the key is a gateway to the internet, met at its meeting points: the gateway bit, on a record with no endpoint"},
                     {RPCResult::Type::NUM, "age_blocks", "Blocks of continuous history, 0 until it is deep enough to count"},
                     {RPCResult::Type::NUM, "since_height", "Where that history starts"},
                     {RPCResult::Type::STR_HEX, "identity", /* optional */ true, "The identity running it"},
@@ -787,6 +789,19 @@ static std::vector<unsigned char> BuildAnnouncement(const UniValue& options, ros
         }
     }
 
+    // A gateway is listed by its key alone and met at its meeting points. With
+    // an endpoint the record would publish where an exit is - the public exit
+    // list design note §8·7 exists to avoid - so the two never go together.
+    if (options.exists("gateway") && options["gateway"].get_bool()) {
+        if (!rec.endpoints.empty()) {
+            throw JSONRPCError(RPC_INVALID_PARAMETER,
+                "A gateway is listed with no endpoint: it is met at its meeting points, so nobody "
+                "learns where it is. A record with an address and the gateway bit would publish "
+                "where an exit is. Drop the endpoints, or the gateway option.");
+        }
+        rec.services |= roster::SERVICE_GATEWAY;
+    }
+
     // Link the age chain without making the caller track it. §5's prev_height
     // is what makes age unforgeable, and an operator who has to remember it by
     // hand will eventually publish a zero and silently restart their history.
@@ -860,7 +875,7 @@ static std::vector<unsigned char> BuildAnnouncement(const UniValue& options, ros
                                "peers not on one will not reach this address.");
         }
     }
-    if (rec.endpoints.empty()) {
+    if (rec.endpoints.empty() && !(rec.services & roster::SERVICE_GATEWAY)) {
         warnings.push_back("No endpoints: this record lists the identity but offers nowhere to dial. "
                            "Intentional for a name holder or for accruing age; add an endpoint to be reachable.");
     }
@@ -893,6 +908,8 @@ static RPCHelpMan createannouncement()
                                     {"port", RPCArg::Type::NUM, RPCArg::Optional::NO, "TCP port."},
                                 }},
                         }},
+                    {"gateway", RPCArg::Type::BOOL, /* default */ "false",
+                     "List this key as a gateway to the internet, met at its meeting points (design note §8·7). Only on a record with no endpoints."},
                 }},
         },
         RPCResult{

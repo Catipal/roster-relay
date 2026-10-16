@@ -97,6 +97,16 @@ bool CollectRelays(const RosterIndex& index, int tip_height,
 bool AgreedRelays(const RosterIndex& index, int height, std::vector<KeyBytes>& out, bool allow_local = false);
 
 /**
+ * The gateways the roster lists as live at `height`: keys whose record carries
+ * SERVICE_GATEWAY and no endpoint, in ascending key order, without those this
+ * node has seen revoked.
+ *
+ * A visitor picks among them at random, so unlike AgreedRelays nothing here
+ * has to come out the same on two nodes.
+ */
+bool CollectGateways(const RosterIndex& index, int height, std::vector<KeyBytes>& out);
+
+/**
  * Re-read the relay set into the overlay's path selector, unless it was read
  * at the index's current height less than `max_age` seconds ago, and return it.
  *

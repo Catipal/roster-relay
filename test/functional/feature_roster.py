@@ -451,6 +451,22 @@ class RosterTest(BitcoinTestFramework):
         self.restart_node(0, self.extra_args[0])
         self.connect_nodes(0, 1)
 
+    def test_gateway_records(self):
+        self.log.info("a gateway is listed with no endpoint, and never with one")
+        # An address beside the gateway bit would publish where an exit is.
+        assert_raises_rpc_error(
+            -8, "listed with no endpoint",
+            self.nodes[1].createannouncement, {"gateway": True, "endpoints": [IPV4_ENDPOINT]})
+        record = self.nodes[1].createannouncement({"gateway": True})
+        # Not the "offers nowhere to dial" warning: a gateway is met, not dialled.
+        assert "warnings" not in record
+        entry = self.publish(record)
+        assert_equal(entry["gateway"], True)
+        assert_equal(entry["dialable"], False)
+        assert_equal(entry["endpoints"], [])
+        others = [e for e in self.nodes[0].getroster() if e["key"] != record["key"]]
+        assert all(not e["gateway"] for e in others)
+
     def run_test(self):
         node = self.nodes[0]
         self.sink = node.getnewaddress()
@@ -477,6 +493,7 @@ class RosterTest(BitcoinTestFramework):
         self.test_onion_endpoints_reach_the_address_manager()
         self.test_index_can_be_switched_off()
         self.test_too_small_a_window_is_refused()
+        self.test_gateway_records()
 
 
 if __name__ == "__main__":

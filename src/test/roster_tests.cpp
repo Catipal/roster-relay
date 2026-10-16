@@ -118,6 +118,44 @@ BOOST_AUTO_TEST_CASE(announce_roundtrip)
     BOOST_CHECK(SerializeRecord(out) == raw);
 }
 
+//! A gateway is a record with the gateway bit and no endpoint (design note
+//! §8·7). The bit is advisory: it changes nothing about how the record parses,
+//! so a node that has never heard of gateways indexes the record unchanged.
+BOOST_AUTO_TEST_CASE(gateway_bit)
+{
+    const CKey key = MakeKey(4);
+    Record in = MakeAnnounce(key);
+    in.endpoints.clear();
+    in.services = SERVICE_GATEWAY;
+    SignInPlace(in, key, "main");
+
+    const std::vector<unsigned char> raw = SerializeRecord(in);
+    BOOST_CHECK_EQUAL(raw.size(), 113U); // the same size as any record with no endpoint
+    Record out;
+    BOOST_CHECK(ParseAndVerify(raw, "main", out));
+    BOOST_CHECK_EQUAL(out.services, SERVICE_GATEWAY);
+    BOOST_CHECK(SerializeRecord(out) == raw);
+    BOOST_CHECK(IsGatewayRecord(out.services, out.endpoints.size()));
+
+    // The bit beside the others, and beside a meta hash, which does change the length.
+    in.services = SERVICE_GATEWAY | SERVICE_RENDEZVOUS_ONLY;
+    in.meta_hash = uint256S("01");
+    BOOST_CHECK_EQUAL(ParseErrorString(ParseRecord(SerializeRecord(in), out)), "ok");
+    BOOST_CHECK(out.meta_hash.has_value());
+    BOOST_CHECK(IsGatewayRecord(out.services, out.endpoints.size()));
+
+    // With an endpoint the bit is ignored: such a record would publish where
+    // an exit is, so it never counts as a gateway, whoever made it.
+    in.meta_hash.reset();
+    in.endpoints.push_back(EpIPv4(9345));
+    BOOST_CHECK_EQUAL(ParseErrorString(ParseRecord(SerializeRecord(in), out)), "ok");
+    BOOST_CHECK(!IsGatewayRecord(out.services, out.endpoints.size()));
+
+    // And without the bit, no endpoint is just a listed identity.
+    BOOST_CHECK(!IsGatewayRecord(SERVICE_RENDEZVOUS_ONLY, 0));
+    BOOST_CHECK(!IsGatewayRecord(0, 0));
+}
+
 //! The sizes quoted in design note 001 §1. If one of these moves, the growth
 //! arithmetic in §4 moves with it, so they are asserted rather than assumed.
 BOOST_AUTO_TEST_CASE(documented_record_sizes)

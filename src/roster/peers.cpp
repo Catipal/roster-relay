@@ -167,6 +167,20 @@ bool AgreedRelays(const RosterIndex& index, int height, std::vector<KeyBytes>& o
     return true;
 }
 
+bool CollectGateways(const RosterIndex& index, int height, std::vector<KeyBytes>& out)
+{
+    out.clear();
+    std::map<KeyBytes, RosterEntry> live;
+    if (!index.BuildRoster(height, live)) return false;
+    for (std::map<KeyBytes, RosterEntry>::const_iterator it = live.begin(); it != live.end(); ++it) {
+        if (SeenRevoked(it->first)) continue;
+        Record rec;
+        if (!it->second.Parse(rec)) continue;
+        if (IsGatewayRecord(rec.services, rec.endpoints.size())) out.push_back(it->first);
+    }
+    return true;
+}
+
 bool CollectPeers(const RosterIndex& index, int tip_height,
                   std::vector<CAddress>& out, CollectStats& stats)
 {

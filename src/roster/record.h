@@ -51,26 +51,36 @@ enum class RecordType : uint8_t {
  *
  * Bits 0 and 1 are DEFINED BUT NOT IMPLEMENTED. Nothing sets or reads them; a
  * record carrying one is legal and inert, and createannouncement refuses to
- * set one rather than let an operator advertise something undeliverable.
+ * set one rather than let an operator advertise something undeliverable. The
+ * relay layer was built without them: a relay is any listed key with an
+ * endpoint, and a key with none is met at its meeting points.
  *
- * An earlier revision recorded the relay layer as abandoned on legal grounds
- * and renamed these to RESERVED. That was wrong, and it contradicted §8's own
- * finding: an overlay relay carries encrypted protocol messages between BPS
- * peers and cannot reach arbitrary hosts, so no third party's logs ever hold
- * an operator's address. That is far closer to running an ordinary node, which
- * already forwards other people's transactions and blocks, than to running a
- * Tor exit. The liability argument applies to exits, and the design never
- * included exits.
- *
- * What does block the feature is sybil resistance: path selection needs relays
- * that cannot be cheaply mass-created, and announcements are free by
- * construction. That is unsolved, so the bits stay unimplemented — but the
- * question is open rather than closed, and these names describe what they
- * would mean.
+ * An overlay relay carries sealed protocol messages between BPS peers and
+ * cannot reach arbitrary hosts, so no third party's logs ever hold a relay's
+ * address. A gateway is different, and is the one role that is an exit: it
+ * opens connections to the internet for others, and the websites they reach
+ * see the gateway's address (design note §8·7). That is why a gateway is
+ * listed with no endpoint and reached only at its meeting points: no BPS node
+ * learns where it is, and the roster never becomes a list of exit addresses.
  */
 static constexpr uint32_t SERVICE_RELAY_CAPABLE = 1U << 0;
 static constexpr uint32_t SERVICE_RENDEZVOUS_ONLY = 1U << 1;
+/**
+ * This key is a gateway to the internet, met at its meeting points (§8·7).
+ *
+ * Advisory like the others: a node that does not know the bit parses, indexes
+ * and commits to the record unchanged. Meaningful only on a record with no
+ * endpoint. With one, the record would publish where an exit is, so this
+ * node's builder refuses the combination and readers ignore the bit.
+ */
+static constexpr uint32_t SERVICE_GATEWAY = 1U << 2;
 static constexpr uint32_t SERVICE_META_PRESENT = 1U << 31;
+
+/** Whether a parsed announcement lists a gateway: the bit, and no endpoint. */
+inline bool IsGatewayRecord(uint32_t services, size_t endpoint_count)
+{
+    return (services & SERVICE_GATEWAY) != 0 && endpoint_count == 0;
+}
 
 static constexpr size_t RECORD_HEADER_SIZE = 4; //!< magic(3) + ver/type(1)
 static constexpr size_t RECORD_KEY_SIZE = 32;

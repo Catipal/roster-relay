@@ -18,6 +18,7 @@
 #include <roster/record.h>
 #include <roster/view.h>
 #include <overlay/chainsync.h>
+#include <overlay/gateway.h>
 #include <overlay/meeting.h>
 #include <overlay/radio.h>
 #include <overlay/relay.h>
@@ -520,6 +521,74 @@ static RPCHelpMan getoverlayinfo()
         }
         out.pushKV("rendezvous", rv);
     }
+    return out;
+},
+    };
+}
+
+static RPCHelpMan getgatewayinfo()
+{
+    return RPCHelpMan{"getgatewayinfo",
+                "\nThis node as a gateway to the internet (design note section 8.7).\n"
+                "\nA gateway serves only while the roster lists its key as one: the gateway bit and no\n"
+                "address, met at its meeting points. Websites see this computer's address for what it carries.\n",
+                {},
+                RPCResult{
+                    RPCResult::Type::OBJ, "", "",
+                    {
+                        {RPCResult::Type::BOOL, "enabled", "Whether -gateway is on, with the overlay and the roster index"},
+                        {RPCResult::Type::STR, "state", /* optional */ true, "open, closed for today (budget spent), or off (not listed as a gateway)"},
+                        {RPCResult::Type::BOOL, "listed", /* optional */ true, "Whether the roster lists this node as a gateway"},
+                        {RPCResult::Type::NUM, "registrations", /* optional */ true, "Meeting points it is registered at"},
+                        {RPCResult::Type::STR, "policy", /* optional */ true, "Ports it carries, as -gatewayports takes them"},
+                        {RPCResult::Type::NUM, "today_bytes", /* optional */ true, "Bytes carried today (UTC), both ways"},
+                        {RPCResult::Type::NUM, "daily_budget_bytes", /* optional */ true, "-gatewaybandwidth in bytes, 0 for no limit"},
+                        {RPCResult::Type::NUM, "visitor_rate_bytes", /* optional */ true, "-gatewayrate in bytes a second, 0 for no limit"},
+                        {RPCResult::Type::NUM, "tcp_connections", /* optional */ true, "TCP connections open now"},
+                        {RPCResult::Type::NUM, "udp_flows", /* optional */ true, "UDP flows open now"},
+                        {RPCResult::Type::NUM, "visitors", /* optional */ true, "Meetings it has heard from recently"},
+                        {RPCResult::Type::NUM, "opened", /* optional */ true, "Connections and flows opened since start"},
+                        {RPCResult::Type::NUM, "refused_policy", /* optional */ true, "Refused: a port or address it does not carry"},
+                        {RPCResult::Type::NUM, "refused_limits", /* optional */ true, "Refused: the day's budget, or too many connections"},
+                        {RPCResult::Type::NUM, "refused_off", /* optional */ true, "Refused: not listed as a gateway"},
+                        {RPCResult::Type::NUM, "malformed", /* optional */ true, "Messages or packets that did not parse"},
+                        {RPCResult::Type::NUM, "lookups", /* optional */ true, "Names looked up for visitors"},
+                        {RPCResult::Type::BOOL, "allow_local", /* optional */ true, "Present when -gatewayallowlocal lets it reach local addresses (regtest)"},
+                    }},
+                RPCExamples{HelpExampleCli("getgatewayinfo", "") + HelpExampleRpc("getgatewayinfo", "")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    UniValue out(UniValue::VOBJ);
+    if (!overlay::g_gateway) {
+        out.pushKV("enabled", false);
+        return out;
+    }
+    const overlay::Gateway::Stats s = overlay::g_gateway->GetStats();
+    out.pushKV("enabled", true);
+    out.pushKV("state", s.state == overlay::GatewayState::OPEN ? "open"
+                        : s.state == overlay::GatewayState::CLOSED_TODAY ? "closed for today" : "off");
+    out.pushKV("listed", s.listed);
+    size_t registrations = 0;
+    if (overlay::g_gateway_meeting) {
+        registrations = overlay::g_gateway_meeting->Registrations().size();
+    } else if (overlay::g_meeting) {
+        registrations = overlay::g_meeting->Registrations().size();
+    }
+    out.pushKV("registrations", (uint64_t)registrations);
+    out.pushKV("policy", s.policy);
+    out.pushKV("today_bytes", s.today_bytes);
+    out.pushKV("daily_budget_bytes", s.daily_budget);
+    out.pushKV("visitor_rate_bytes", s.meeting_rate);
+    out.pushKV("tcp_connections", s.tcp_flows);
+    out.pushKV("udp_flows", s.udp_flows);
+    out.pushKV("visitors", s.visitors);
+    out.pushKV("opened", s.opened);
+    out.pushKV("refused_policy", s.refused_policy);
+    out.pushKV("refused_limits", s.refused_limits);
+    out.pushKV("refused_off", s.refused_state);
+    out.pushKV("malformed", s.malformed);
+    out.pushKV("lookups", s.lookups);
+    if (s.allow_local) out.pushKV("allow_local", true);
     return out;
 },
     };
@@ -1413,6 +1482,7 @@ static const CRPCCommand commands[] =
     { "overlay",          "getoverlayinfo",       &getoverlayinfo,        {} },
     { "overlay",          "getradioinfo",         &getradioinfo,          {} },
     { "overlay",          "getmeetinginfo",       &getmeetinginfo,        {} },
+    { "overlay",          "getgatewayinfo",       &getgatewayinfo,        {} },
     { "overlay",          "getchainfeedinfo",     &getchainfeedinfo,      {} },
     { "overlay",          "meet",                 &meet,                  {"key","hops"} },
     { "roster",           "getrosterinfo",        &getrosterinfo,         {} },

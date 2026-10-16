@@ -53,6 +53,20 @@ static const bool DEFAULT_MEETABLE = false;
 static constexpr int64_t MEET_REFRESH = 240;
 /** Overlay application data tag: "are you there" across a meeting, and its answer. */
 static constexpr uint8_t MEET_ECHO = 0x12;
+/**
+ * Overlay application data tag: a byte to an adjacent relay that means
+ * nothing, sent so that the home router in front of a node keeps its UDP
+ * mapping open. Receivers drop it; nodes that predate it drop it as unknown.
+ */
+static constexpr uint8_t KEEPALIVE_TAG = 0x14;
+/**
+ * How often a registered node sends one to the relay in front of each of its
+ * registrations. Home routers forget a UDP mapping after half a minute to two
+ * minutes, and the registration refresh (MEET_REFRESH) comes far too seldom to
+ * hold it, so without this a node at home falls out of reach between refreshes
+ * - every gateway at home among them (design note §11·6, §8·7).
+ */
+static constexpr int64_t KEEPALIVE_GUARD = 25;
 
 /**
  * The meeting points of `service` in `epoch`, from the relay set at the
@@ -108,6 +122,8 @@ public:
 
 private:
     void ThreadMeeting();
+    /** A keep-alive to the relay in front of each registration, over the internet only. */
+    void KeepGuardsAwake();
 
     const roster::KeyBytes m_self;
     const int m_hops;

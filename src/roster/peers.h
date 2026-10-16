@@ -107,6 +107,12 @@ bool AgreedRelays(const RosterIndex& index, int height, std::vector<KeyBytes>& o
 bool CollectGateways(const RosterIndex& index, int height, std::vector<KeyBytes>& out);
 
 /**
+ * The announcement that lists `key` at `height`: its latest one confirmed by
+ * then and not yet expired. False when the key is not listed there.
+ */
+bool LiveAnnouncement(const RosterIndex& index, const KeyBytes& key, int height, Record& out);
+
+/**
  * Re-read the relay set into the overlay's path selector, unless it was read
  * at the index's current height less than `max_age` seconds ago, and return it.
  *

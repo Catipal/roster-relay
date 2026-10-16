@@ -82,6 +82,10 @@
  * segments are kept and acknowledged selectively, since a path loses
  * datagrams the way any network does.
  */
+/* Some systems' netinet/tcp.h name a socket option TCP_MSS; here it is lwIP's. */
+#ifdef TCP_MSS
+#undef TCP_MSS
+#endif
 #define TCP_MSS                         520
 #define TCP_CALCULATE_EFF_SEND_MSS      1
 #define LWIP_WND_SCALE                  1
@@ -105,6 +109,24 @@
 /* Checksums are checked on the way in: the packets come from strangers. */
 #define CHECKSUM_CHECK_IP               1
 #define CHECKSUM_CHECK_TCP              1
+
+/*
+ * Loopback has no interface of its own in this stack. A connection to
+ * 127.0.0.1 opened on a visitor's side goes out the default interface like
+ * any other - which is the overlay, to a gateway, whose exit policy refuses
+ * it unless -gatewayallowlocal (regtest only) says otherwise. lwIP would
+ * otherwise refuse to route it at all (overlay/netstack.cpp).
+ */
+struct netif;
+struct ip4_addr;
+#ifdef __cplusplus
+extern "C" {
+#endif
+struct netif* bps_lwip_route4(const struct ip4_addr* src, const struct ip4_addr* dest);
+#ifdef __cplusplus
+}
+#endif
+#define LWIP_HOOK_IP4_ROUTE_SRC(src, dest) bps_lwip_route4((src), (dest))
 
 /*
  * lwIP would otherwise define htons and friends as macros, which collide

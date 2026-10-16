@@ -195,12 +195,42 @@ std::string MeetingService::LastError() const
     return m_error;
 }
 
+void MeetingService::KeepGuardsAwake()
+{
+    if (!g_overlay) return;
+    std::vector<roster::KeyBytes> guards;
+    {
+        LOCK(m_mutex);
+        for (const auto& r : m_regs) {
+            const std::vector<roster::KeyBytes>& through = r.second.reached.through;
+            if (!through.empty() && std::find(guards.begin(), guards.end(), through.front()) == guards.end()) {
+                guards.push_back(through.front());
+            }
+        }
+    }
+    if (guards.empty()) return;
+    const std::vector<unsigned char> ping{KEEPALIVE_TAG};
+    for (const roster::RelayInfo& info : roster::FreshRelays()) {
+        if (std::find(guards.begin(), guards.end(), info.key) == guards.end()) continue;
+        bool slow = false;
+        const CService at = FirstHopAddress(info.key, roster::OverlayAddressFor(info.addr), slow);
+        // Radio has no router to keep awake, and airtime is too scarce to spend on nothing.
+        if (slow) continue;
+        g_overlay->SendApp(at, ping);
+    }
+}
+
 void MeetingService::ThreadMeeting()
 {
     // A first round once the roster has had a moment to be read, then every
     // few seconds; each round does only what is due.
     int64_t next = GetTime() + 5;
+    int64_t next_keepalive = GetTime() + KEEPALIVE_GUARD;
     while (m_interrupt.sleep_for(std::chrono::seconds{1})) {
+        if (GetTime() >= next_keepalive) {
+            KeepGuardsAwake();
+            next_keepalive = GetTime() + KEEPALIVE_GUARD;
+        }
         if (GetTime() < next) continue;
         Tick();
         next = GetTime() + 15;

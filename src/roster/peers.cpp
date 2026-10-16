@@ -181,6 +181,21 @@ bool CollectGateways(const RosterIndex& index, int height, std::vector<KeyBytes>
     return true;
 }
 
+bool LiveAnnouncement(const RosterIndex& index, const KeyBytes& key, int height, Record& out)
+{
+    std::vector<RosterEntry> entries;
+    if (!index.ReadRecordsForKey(key, entries)) return false;
+    int best = -1;
+    for (const RosterEntry& entry : entries) {
+        Record rec;
+        if (entry.height > height || entry.height <= best || !entry.Parse(rec)) continue;
+        if (rec.type != RecordType::ANNOUNCE || rec.op_key != key) continue;
+        best = entry.height;
+        out = rec;
+    }
+    return best >= 0 && out.expiry_height > (uint32_t)height;
+}
+
 bool CollectPeers(const RosterIndex& index, int tip_height,
                   std::vector<CAddress>& out, CollectStats& stats)
 {

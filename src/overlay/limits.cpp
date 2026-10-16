@@ -10,6 +10,11 @@
 
 namespace overlay {
 
+constexpr int64_t TrafficLimits::DAY_MS;
+constexpr uint64_t TrafficLimits::OVERRUN_DIVISOR;
+constexpr int64_t TrafficLimits::BUCKET_IDLE_MS;
+constexpr size_t TrafficLimits::MAX_BUCKETS;
+
 void TrafficLimits::Configure(uint64_t daily_budget, uint64_t path_rate)
 {
     LOCK(m_mutex);

@@ -210,6 +210,10 @@ BITCOIN_CORE_H = \
   overlay/frame.h \
   overlay/handshake.h \
   overlay/chainsync.h \
+  overlay/exitpolicy.h \
+  overlay/gateway.h \
+  overlay/gatewayproto.h \
+  overlay/ippacket.h \
   overlay/limits.h \
   overlay/meeting.h \
   overlay/netstack.h \
@@ -362,6 +366,7 @@ libbitcoin_server_a_SOURCES = \
   mail/mailbox.cpp \
   mail/protocol.cpp \
   overlay/chainsync.cpp \
+  overlay/gateway.cpp \
   overlay/meeting.cpp \
   overlay/netstack.cpp \
   names/name.cpp \
@@ -629,7 +634,10 @@ libbitcoin_common_a_SOURCES = \
   protocol.cpp \
   psbt.cpp \
   overlay/frame.cpp \
+  overlay/exitpolicy.cpp \
+  overlay/gatewayproto.cpp \
   overlay/handshake.cpp \
+  overlay/ippacket.cpp \
   overlay/limits.cpp \
   overlay/path.cpp \
   overlay/radio.cpp \

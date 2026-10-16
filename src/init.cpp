@@ -25,6 +25,9 @@
 #include <index/rosterindex.h>
 #include <roster/peers.h>
 #include <overlay/chainsync.h>
+#include <overlay/gateway.h>
+#include <overlay/gatewayproto.h>
+#include <overlay/netstack.h>
 #include <overlay/meeting.h>
 #include <overlay/radio.h>
 #include <overlay/relay.h>
@@ -250,6 +253,16 @@ void Shutdown(NodeContext& node)
         mail::g_mail->Stop();
         mail::g_mail.reset();
     }
+    // The gateway, and its registration, which builds paths too.
+    if (overlay::g_gateway) {
+        overlay::g_gateway->Stop();
+        overlay::g_gateway.reset();
+    }
+    if (overlay::g_gateway_meeting) {
+        overlay::g_gateway_meeting->Stop();
+        overlay::g_gateway_meeting.reset();
+    }
+    overlay::GetNetStack().Stop();
     // Its thread builds paths over the overlay too.
     if (overlay::g_meeting) {
         overlay::g_meeting->Stop();
@@ -523,6 +536,12 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-meetable", strprintf("Keep this node registered at its meeting points, relays computed from the roster, so it can be reached by its key without publishing an address. Needs -overlay and -rosterindex, and a listing (default: %u)", overlay::DEFAULT_MEETABLE), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-relaybandwidth=<n>", strprintf("MiB of other people's traffic this node carries through the overlay in a day; once spent it accepts no new paths until the day (UTC) turns, and paths already open stop a tenth later. 0 for no limit (default: %u)", overlay::DEFAULT_RELAY_BANDWIDTH_MIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-relaypathrate=<n>", strprintf("KiB a second one path may move through this node; more is dropped, as a full link would drop it. 0 for no limit (default: %u)", overlay::DEFAULT_RELAY_PATH_RATE_KIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-gateway", strprintf("Carry other people's connections out to the internet while the roster lists this node as a gateway: its key with the gateway bit and no address, met at its meeting points, so nobody learns where it is (default: %u). Websites see this computer's address for what it carries; -gateway=0 switches it off. Needs -overlay and -rosterindex.", overlay::DEFAULT_GATEWAY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-gatewayports=<list>", strprintf("Ports a gateway carries: TCP by number, UDP as udp:N. Port 25 is never carried (default: %s)", overlay::DEFAULT_GATEWAY_PORTS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-gatewaybandwidth=<n>", strprintf("MiB a gateway carries in a day (UTC), both ways; once spent it takes no new connections until the day turns. 0 for no limit (default: %u)", overlay::DEFAULT_GATEWAY_BANDWIDTH_MIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-gatewayrate=<n>", strprintf("KiB a second one visitor may move through this gateway. 0 for no limit (default: %u)", overlay::DEFAULT_GATEWAY_RATE_KIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-gatewaymaxflows=<n>", strprintf("Connections a gateway holds open at once, for everyone together (default: %u)", overlay::DEFAULT_GATEWAY_MAX_FLOWS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-gatewayallowlocal", "Let a gateway connect to loopback and private addresses (regtest only, for tests)", ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
     argsman.AddArg("-meethops=<n>", strprintf("Relays between this node and each of its meeting points, 1 to %d: more hides its address better and is slower (default: %d)", overlay::MAX_MEET_HOPS, overlay::DEFAULT_MEET_HOPS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-overlayblocks", strprintf("With -radio, carry new blocks to and from radio neighbours over the overlay, so a node with only radio keeps up with the chain (default: %u)", overlay::DEFAULT_OVERLAY_BLOCKS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-radio", strprintf("Carry the overlay over radio too, through Reticulum (LoRa via an RNode, packet radio, serial links). Needs -overlay, and contrib/reticulum/bps-rns-bridge.py running beside the node with Reticulum installed (default: %u)", overlay::DEFAULT_RADIO), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -2265,6 +2284,11 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                     mail::HandleOverlayApp(from, std::move(payload));
                 } else if (!payload.empty() && payload[0] == overlay::MEET_ECHO) {
                     overlay::HandleMeetEcho(from, payload);
+                } else if (!payload.empty() && payload[0] == overlay::KEEPALIVE_TAG) {
+                    // Only holds a router's mapping open (overlay/meeting.h).
+                } else if (overlay::IsGatewayPayload(payload)) {
+                    // A visitor's packets, across a meeting (overlay/gateway.h).
+                    if (overlay::g_gateway) overlay::g_gateway->HandleApp(from, std::move(payload));
                 } else if (overlay::g_chainsync && !from.via_path && overlay::IsChainPayload(payload)) {
                     // Blocks between adjacent radio neighbours, never over a path.
                     overlay::g_chainsync->HandleApp(from.addr, payload);
@@ -2369,6 +2393,77 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             overlay::g_meeting = MakeUnique<overlay::MeetingService>(
                 self, (int)args.GetArg("-meethops", overlay::DEFAULT_MEET_HOPS));
             overlay::g_meeting->Start();
+        }
+
+        // A gateway out to the internet (overlay/gateway.h): on unless switched
+        // off, and serving only while the roster lists this node as one.
+        if (args.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY) && g_rosterindex) {
+            overlay::GatewayConfig gw;
+            std::string gw_error;
+            if (args.IsArgSet("-gatewayports") && !gw.policy.Parse(args.GetArg("-gatewayports", ""), gw_error)) {
+                return InitError(Untranslated("-gatewayports: " + gw_error));
+            }
+            if (args.GetBoolArg("-gatewayallowlocal", false)) {
+                if (chainparams.NetworkIDString() != CBaseChainParams::REGTEST) {
+                    return InitError(Untranslated("-gatewayallowlocal is for regtest only: it lets strangers reach this computer's own network."));
+                }
+                gw.policy.AllowLocal(true);
+            }
+            gw.daily_budget = (uint64_t)std::max<int64_t>(0, args.GetArg("-gatewaybandwidth", (int64_t)overlay::DEFAULT_GATEWAY_BANDWIDTH_MIB)) << 20;
+            gw.meeting_rate = (uint64_t)std::max<int64_t>(0, args.GetArg("-gatewayrate", (int64_t)overlay::DEFAULT_GATEWAY_RATE_KIB)) << 10;
+            gw.max_flows = (size_t)std::max<int64_t>(1, args.GetArg("-gatewaymaxflows", (int64_t)overlay::DEFAULT_GATEWAY_MAX_FLOWS));
+            if (!overlay::GetNetStack().Start(gw_error)) {
+                return InitError(Untranslated("gateway: " + gw_error));
+            }
+            // Registered at its meeting points only while listed as a gateway,
+            // unless -meetable keeps the node registered regardless.
+            if (!overlay::g_meeting) {
+                overlay::g_gateway_meeting = MakeUnique<overlay::MeetingService>(
+                    self, (int)args.GetArg("-meethops", overlay::DEFAULT_MEET_HOPS));
+            }
+            overlay::g_gateway = MakeUnique<overlay::Gateway>(gw,
+                [](uint64_t path, const std::vector<uint8_t>& msg) {
+                    return overlay::g_overlay && overlay::g_overlay->SendSecret(path, msg);
+                },
+                // Never under a key with an address: that would publish where an exit is.
+                [self]() {
+                    if (!g_rosterindex || roster::SeenRevoked(self)) return false;
+                    roster::Record rec;
+                    const int tip = g_rosterindex->GetSummary().best_block_height;
+                    return roster::LiveAnnouncement(*g_rosterindex, self, tip, rec) &&
+                           roster::IsGatewayRecord(rec.services, rec.endpoints.size());
+                },
+                // This machine's own addresses, as its interfaces and its peers see them.
+                [&node]() {
+                    std::vector<overlay::IpAddr> out = overlay::LocalInterfaceAddresses();
+                    overlay::IpAddr a;
+                    {
+                        LOCK(cs_mapLocalHost);
+                        for (const auto& local : mapLocalHost) {
+                            if (overlay::NetAddrToIp(local.first, a)) out.push_back(a);
+                        }
+                    }
+                    if (node.connman) {
+                        node.connman->ForEachNode([&out](CNode* pnode) {
+                            overlay::IpAddr seen;
+                            if (overlay::NetAddrToIp(pnode->GetAddrLocal(), seen)) out.push_back(seen);
+                        });
+                    }
+                    return out;
+                },
+                nullptr,
+                [](bool listed) {
+                    if (!overlay::g_gateway_meeting) return;
+                    if (listed) {
+                        overlay::g_gateway_meeting->Start();
+                    } else {
+                        overlay::g_gateway_meeting->Stop();
+                    }
+                });
+            if (!overlay::g_gateway->Start(gw_error)) {
+                overlay::g_gateway.reset();
+                return InitError(Untranslated("gateway: " + gw_error));
+            }
         }
 
         // Holding mail for others. Only for listed people this node is one of

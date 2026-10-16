@@ -205,6 +205,7 @@ BITCOIN_CORE_H = \
   overlay/frame.h \
   overlay/handshake.h \
   overlay/chainsync.h \
+  overlay/limits.h \
   overlay/meeting.h \
   overlay/path.h \
   overlay/radio.h \
@@ -588,6 +589,7 @@ libbitcoin_common_a_SOURCES = \
   psbt.cpp \
   overlay/frame.cpp \
   overlay/handshake.cpp \
+  overlay/limits.cpp \
   overlay/path.cpp \
   overlay/radio.cpp \
   overlay/relay.cpp \

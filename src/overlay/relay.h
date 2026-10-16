@@ -5,6 +5,7 @@
 #ifndef BITCOIN_OVERLAY_RELAY_H
 #define BITCOIN_OVERLAY_RELAY_H
 
+#include <overlay/limits.h>
 #include <overlay/path.h>
 #include <overlay/socket.h>
 #include <sync.h>
@@ -103,6 +104,12 @@ public:
     void SetDialPolicy(DialPolicy policy);
     void SetIntroducePolicy(IntroducePolicy policy);
     void SetNextHopResolver(NextHopResolver resolver);
+    /**
+     * How much of others' traffic this node carries: bytes a day and bytes a
+     * second per path, 0 for no limit (overlay/limits.h).
+     */
+    void SetLimits(uint64_t daily_budget, uint64_t path_rate) { m_limits.Configure(daily_budget, path_rate); }
+    TrafficLimits::Stats LimitStats() const;
 
     bool Connect(const CService& peer, const CPubKey& peer_static);
     CService BoundAddress() const { return m_socket.BoundAddress(); }
@@ -255,6 +262,8 @@ private:
     void PruneIntros() EXCLUSIVE_LOCKS_REQUIRED(m_mutex);
 
     Socket m_socket;
+    // Internally locked, and checked outside m_mutex.
+    TrafficLimits m_limits;
     Mutex m_mutex;
     PathTable m_paths GUARDED_BY(m_mutex);
     // Sessions with the far ends of paths, keyed by path rather than address,

@@ -521,6 +521,8 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-mailpoll=<n>", strprintf("Seconds between trips to collect mail, or 0 to collect only when asked (default: %u)", mail::DEFAULT_MAIL_POLL), ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
     argsman.AddArg("-maxlistedusers=<n>", strprintf("Most peers this node keeps listed under -acceptlistings (default: %u)", roster::DEFAULT_MAX_LISTED_USERS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-meetable", strprintf("Keep this node registered at its meeting points, relays computed from the roster, so it can be reached by its key without publishing an address. Needs -overlay and -rosterindex, and a listing (default: %u)", overlay::DEFAULT_MEETABLE), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-relaybandwidth=<n>", strprintf("MiB of other people's traffic this node carries through the overlay in a day; once spent it accepts no new paths until the day (UTC) turns, and paths already open stop a tenth later. 0 for no limit (default: %u)", overlay::DEFAULT_RELAY_BANDWIDTH_MIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-relaypathrate=<n>", strprintf("KiB a second one path may move through this node; more is dropped, as a full link would drop it. 0 for no limit (default: %u)", overlay::DEFAULT_RELAY_PATH_RATE_KIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-meethops=<n>", strprintf("Relays between this node and each of its meeting points, 1 to %d: more hides its address better and is slower (default: %d)", overlay::MAX_MEET_HOPS, overlay::DEFAULT_MEET_HOPS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-overlayblocks", strprintf("With -radio, carry new blocks to and from radio neighbours over the overlay, so a node with only radio keeps up with the chain (default: %u)", overlay::DEFAULT_OVERLAY_BLOCKS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-radio", strprintf("Carry the overlay over radio too, through Reticulum (LoRa via an RNode, packet radio, serial links). Needs -overlay, and contrib/reticulum/bps-rns-bridge.py running beside the node with Reticulum installed (default: %u)", overlay::DEFAULT_RADIO), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -2243,6 +2245,10 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
         const uint16_t port = static_cast<uint16_t>(
             args.GetArg("-overlayport", overlay::OverlayPortFor(GetListenPort())));
         overlay::g_overlay = MakeUnique<overlay::Relay>(op_key);
+        // What this node carries for others (overlay/limits.h).
+        overlay::g_overlay->SetLimits(
+            (uint64_t)std::max<int64_t>(0, args.GetArg("-relaybandwidth", (int64_t)overlay::DEFAULT_RELAY_BANDWIDTH_MIB)) << 20,
+            (uint64_t)std::max<int64_t>(0, args.GetArg("-relaypathrate", (int64_t)overlay::DEFAULT_RELAY_PATH_RATE_KIB)) << 10);
         std::string bind_error;
         const CService listen_at(LookupNumeric("0.0.0.0", port));
         if (!overlay::g_overlay->Bind(listen_at, bind_error)) {

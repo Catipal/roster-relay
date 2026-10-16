@@ -21,6 +21,12 @@ constexpr size_t Relay::MAX_PENDING_BUILDS;
 
 namespace {
 
+/** Now, as the traffic limits count it: mockable, so tests can turn the day. */
+int64_t LimitsNow()
+{
+    return GetTime<std::chrono::milliseconds>().count();
+}
+
 /** Whether a full public key is the one a roster x-only key names. */
 bool SameX(const CPubKey& pub, const roster::KeyBytes& x)
 {
@@ -344,6 +350,11 @@ void Relay::PruneIntros()
     }
 }
 
+TrafficLimits::Stats Relay::LimitStats() const
+{
+    return m_limits.GetStats(LimitsNow());
+}
+
 size_t Relay::PathCount()
 {
     LOCK(m_mutex);
@@ -453,6 +464,15 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
         CPubKey dest_key;
         if (!DecodePathBuild(msg, path_id, dest, dest_key)) return;
         ExpirePendingBuilds();
+
+        // A new path through this node is new traffic it carries for someone
+        // else. Once the day's budget is spent, the answer is no until the
+        // day turns (overlay/limits.h).
+        if (!m_limits.AdmitPath(LimitsNow())) {
+            std::vector<unsigned char> reply;
+            if (EncodePathResult(false, path_id, reply)) SendToHop(from, reply);
+            return;
+        }
 
         // The next relay may be one this node reaches over radio rather than at
         // the address the roster lists - a radio neighbour of a node with no
@@ -592,6 +612,8 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
         uint64_t meet_id = 0;
         if (!DecodeMeet(msg, service, meet_id)) return;
         if (!from.via_path) return;
+        // A splice is a new path through this node, like any other.
+        const bool admitted = m_limits.AdmitPath(LimitsNow());
 
         Hop service_hop;
         bool ok = false;
@@ -602,7 +624,7 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
             // nothing and still answer that it worked.
             PruneIntros();
             std::map<roster::KeyBytes, uint64_t>::const_iterator it = m_intros.find(service);
-            if (it != m_intros.end()) {
+            if (admitted && it != m_intros.end()) {
                 service_hop = Hop::Path(it->second);
                 m_paths.Expire(GetTime());
                 // The splice: two paths joined, and this relay is the only
@@ -641,6 +663,9 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
             // was padded where it began.
             std::vector<unsigned char> out;
             if (!EncodePathData(path_id, inner, out)) return;
+            // Someone else's traffic: within the path's rate and the day's
+            // budget, or dropped as a full link would drop it.
+            if (!m_limits.Forward(path_id, out.size(), LimitsNow())) return;
             SendToHop(next, out, /* wrapping */ true);
             return;
         }

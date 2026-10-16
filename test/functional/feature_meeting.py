@@ -109,6 +109,19 @@ class MeetingTest(BitcoinTestFramework):
         assert_equal(met["hops"], 3)
         assert met["point"] in expected
 
+        self.log.info("the relays count what they carried for others, within their limits")
+        carried = [self.nodes[n].getoverlayinfo()["carried"] for n in range(6)]
+        assert sum(c["today_bytes"] for c in carried) > 0
+        for c in carried:
+            assert_equal(c["daily_budget_bytes"], 1024 << 20)
+            assert_equal(c["path_rate_bytes"], 64 << 10)
+            assert_equal(c["accepting"], True)
+            assert_equal(c["refused_paths"], 0)
+            assert_equal(c["dropped_budget"], 0)
+        # What a node does for itself is not carrying: node 6 built every path
+        # it used, and forwarded nothing for anyone.
+        assert_equal(self.nodes[6].getoverlayinfo()["carried"]["today_bytes"], 0)
+
         self.log.info("a key with no registration cannot be met")
         assert_raises_rpc_error(-1, "Could not meet it", self.nodes[1].meet, self.key(5))
 

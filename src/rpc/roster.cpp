@@ -439,6 +439,16 @@ static RPCHelpMan getoverlayinfo()
                         {RPCResult::Type::NUM, "paths", /* optional */ true, "Paths this node is an end of or carries"},
                         {RPCResult::Type::NUM, "introductions", /* optional */ true, "Services registered here as a rendezvous point"},
                         {RPCResult::Type::NUM, "handshakes_refused", /* optional */ true, "Inbound handshakes dropped by the flood limit"},
+                        {RPCResult::Type::OBJ, "carried", /* optional */ true, "Other people's traffic this node forwarded today (UTC), and its limits",
+                            {
+                                {RPCResult::Type::NUM, "today_bytes", "Bytes forwarded so far today"},
+                                {RPCResult::Type::NUM, "daily_budget_bytes", "-relaybandwidth in bytes, 0 for no limit"},
+                                {RPCResult::Type::NUM, "path_rate_bytes", "-relaypathrate in bytes a second, 0 for no limit"},
+                                {RPCResult::Type::BOOL, "accepting", "Whether a new path would be accepted now"},
+                                {RPCResult::Type::NUM, "refused_paths", "New paths refused today because the budget was spent"},
+                                {RPCResult::Type::NUM, "dropped_rate", "Datagrams dropped today for going over a path's rate"},
+                                {RPCResult::Type::NUM, "dropped_budget", "Datagrams dropped today past the budget's overrun"},
+                            }},
                         {RPCResult::Type::NUM, "relay_candidates", /* optional */ true, "Relays from the roster this node would route through"},
                         {RPCResult::Type::ARR, "guards", /* optional */ true, "Entry relays, which are kept rather than rotated",
                             {{RPCResult::Type::STR_HEX, "", "Operational key"}}},
@@ -459,6 +469,18 @@ static RPCHelpMan getoverlayinfo()
     out.pushKV("listening", overlay::g_overlay->BoundAddress().ToString());
     out.pushKV("paths", (uint64_t)overlay::g_overlay->PathCount());
     out.pushKV("introductions", (uint64_t)overlay::g_overlay->IntroductionCount());
+    {
+        const overlay::TrafficLimits::Stats carried = overlay::g_overlay->LimitStats();
+        UniValue c(UniValue::VOBJ);
+        c.pushKV("today_bytes", carried.today);
+        c.pushKV("daily_budget_bytes", carried.daily_budget);
+        c.pushKV("path_rate_bytes", carried.path_rate);
+        c.pushKV("accepting", carried.accepting);
+        c.pushKV("refused_paths", carried.refused_paths);
+        c.pushKV("dropped_rate", carried.dropped_rate);
+        c.pushKV("dropped_budget", carried.dropped_budget);
+        out.pushKV("carried", c);
+    }
 
     int tip;
     {

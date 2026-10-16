@@ -59,6 +59,11 @@ LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_SHANI)
 endif
 LIBBITCOIN_CRYPTO_MLKEM = crypto/libbitcoin_crypto_mlkem.a
 LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_MLKEM)
+# lwIP, the gateway's TCP/IP stack. Linked with the libraries every binary
+# takes, after the server library whose overlay code calls into it.
+LIBBITCOIN_LWIP = libbitcoin_lwip.a
+LIBBITCOIN_CRYPTO += $(LIBBITCOIN_LWIP)
+LWIP_CPPFLAGS = -I$(srcdir)/overlay/lwip -I$(srcdir)/lwip/include
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(wildcard secp256k1/include/*)
 	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C $(@D) $(@F)
@@ -207,6 +212,9 @@ BITCOIN_CORE_H = \
   overlay/chainsync.h \
   overlay/limits.h \
   overlay/meeting.h \
+  overlay/netstack.h \
+  overlay/lwip/lwipopts.h \
+  overlay/lwip/arch/cc.h \
   overlay/path.h \
   overlay/radio.h \
   overlay/relay.h \
@@ -325,7 +333,7 @@ libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 # Contains code accessing mempool and chain state that is meant to be separated
 # from wallet and gui code (see node/README.md). Shared code should go in
 # libbitcoin_common or libbitcoin_util libraries, instead.
-libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS) $(LWIP_CPPFLAGS)
 libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_server_a_SOURCES = \
   addrdb.cpp \
@@ -355,6 +363,7 @@ libbitcoin_server_a_SOURCES = \
   mail/protocol.cpp \
   overlay/chainsync.cpp \
   overlay/meeting.cpp \
+  overlay/netstack.cpp \
   names/name.cpp \
   names/petnames.cpp \
   names/record.cpp \
@@ -526,6 +535,38 @@ crypto_libbitcoin_crypto_mlkem_a_SOURCES = \
   crypto/mlkem768.h \
   crypto/mlkem768_config.h \
   crypto/mlkem768_impl.c
+
+# lwIP 2.2.1 for the gateway (src/lwip, vendored unmodified; BPS's settings
+# are in overlay/lwip). C, a library of its own, and only the TCP/IP core:
+# overlay/lwip/lwipopts.h switches off what these files would otherwise add.
+libbitcoin_lwip_a_CPPFLAGS = $(AM_CPPFLAGS) $(LWIP_CPPFLAGS)
+libbitcoin_lwip_a_CFLAGS = $(AM_CFLAGS) $(PIE_FLAGS)
+libbitcoin_lwip_a_SOURCES = \
+  lwip/core/init.c \
+  lwip/core/def.c \
+  lwip/core/inet_chksum.c \
+  lwip/core/ip.c \
+  lwip/core/mem.c \
+  lwip/core/memp.c \
+  lwip/core/netif.c \
+  lwip/core/pbuf.c \
+  lwip/core/stats.c \
+  lwip/core/sys.c \
+  lwip/core/tcp.c \
+  lwip/core/tcp_in.c \
+  lwip/core/tcp_out.c \
+  lwip/core/timeouts.c \
+  lwip/core/ipv4/ip4.c \
+  lwip/core/ipv4/ip4_addr.c \
+  lwip/core/ipv4/icmp.c \
+  lwip/core/ipv4/ip4_frag.c \
+  lwip/core/ipv6/ip6.c \
+  lwip/core/ipv6/ip6_addr.c \
+  lwip/core/ipv6/icmp6.c \
+  lwip/core/ipv6/inet6.c \
+  lwip/core/ipv6/nd6.c \
+  lwip/core/ipv6/mld6.c \
+  lwip/core/ipv6/ip6_frag.c
 
 # consensus: shared between all executables that validate any consensus rules.
 libbitcoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
@@ -847,7 +888,211 @@ CLEANFILES += wallet/test/*.gcda wallet/test/*.gcno
 CLEANFILES += zmq/*.gcda zmq/*.gcno
 CLEANFILES += obj/build.h
 
-EXTRA_DIST = $(CTAES_DIST) $(MLKEM_DIST)
+LWIP_DIST = lwip/COPYING
+LWIP_DIST += lwip/core/altcp.c
+LWIP_DIST += lwip/core/altcp_alloc.c
+LWIP_DIST += lwip/core/altcp_tcp.c
+LWIP_DIST += lwip/core/def.c
+LWIP_DIST += lwip/core/dns.c
+LWIP_DIST += lwip/core/inet_chksum.c
+LWIP_DIST += lwip/core/init.c
+LWIP_DIST += lwip/core/ip.c
+LWIP_DIST += lwip/core/mem.c
+LWIP_DIST += lwip/core/memp.c
+LWIP_DIST += lwip/core/netif.c
+LWIP_DIST += lwip/core/pbuf.c
+LWIP_DIST += lwip/core/raw.c
+LWIP_DIST += lwip/core/stats.c
+LWIP_DIST += lwip/core/sys.c
+LWIP_DIST += lwip/core/tcp.c
+LWIP_DIST += lwip/core/tcp_in.c
+LWIP_DIST += lwip/core/tcp_out.c
+LWIP_DIST += lwip/core/timeouts.c
+LWIP_DIST += lwip/core/udp.c
+LWIP_DIST += lwip/core/ipv4/acd.c
+LWIP_DIST += lwip/core/ipv4/autoip.c
+LWIP_DIST += lwip/core/ipv4/dhcp.c
+LWIP_DIST += lwip/core/ipv4/etharp.c
+LWIP_DIST += lwip/core/ipv4/icmp.c
+LWIP_DIST += lwip/core/ipv4/igmp.c
+LWIP_DIST += lwip/core/ipv4/ip4.c
+LWIP_DIST += lwip/core/ipv4/ip4_addr.c
+LWIP_DIST += lwip/core/ipv4/ip4_frag.c
+LWIP_DIST += lwip/core/ipv6/dhcp6.c
+LWIP_DIST += lwip/core/ipv6/ethip6.c
+LWIP_DIST += lwip/core/ipv6/icmp6.c
+LWIP_DIST += lwip/core/ipv6/inet6.c
+LWIP_DIST += lwip/core/ipv6/ip6.c
+LWIP_DIST += lwip/core/ipv6/ip6_addr.c
+LWIP_DIST += lwip/core/ipv6/ip6_frag.c
+LWIP_DIST += lwip/core/ipv6/mld6.c
+LWIP_DIST += lwip/core/ipv6/nd6.c
+LWIP_DIST += lwip/include/compat/posix/netdb.h
+LWIP_DIST += lwip/include/compat/posix/arpa/inet.h
+LWIP_DIST += lwip/include/compat/posix/net/if.h
+LWIP_DIST += lwip/include/compat/posix/sys/socket.h
+LWIP_DIST += lwip/include/compat/stdc/errno.h
+LWIP_DIST += lwip/include/lwip/acd.h
+LWIP_DIST += lwip/include/lwip/altcp.h
+LWIP_DIST += lwip/include/lwip/altcp_tcp.h
+LWIP_DIST += lwip/include/lwip/altcp_tls.h
+LWIP_DIST += lwip/include/lwip/api.h
+LWIP_DIST += lwip/include/lwip/arch.h
+LWIP_DIST += lwip/include/lwip/autoip.h
+LWIP_DIST += lwip/include/lwip/debug.h
+LWIP_DIST += lwip/include/lwip/def.h
+LWIP_DIST += lwip/include/lwip/dhcp.h
+LWIP_DIST += lwip/include/lwip/dhcp6.h
+LWIP_DIST += lwip/include/lwip/dns.h
+LWIP_DIST += lwip/include/lwip/err.h
+LWIP_DIST += lwip/include/lwip/errno.h
+LWIP_DIST += lwip/include/lwip/etharp.h
+LWIP_DIST += lwip/include/lwip/ethip6.h
+LWIP_DIST += lwip/include/lwip/icmp.h
+LWIP_DIST += lwip/include/lwip/icmp6.h
+LWIP_DIST += lwip/include/lwip/if_api.h
+LWIP_DIST += lwip/include/lwip/igmp.h
+LWIP_DIST += lwip/include/lwip/inet.h
+LWIP_DIST += lwip/include/lwip/inet_chksum.h
+LWIP_DIST += lwip/include/lwip/init.h
+LWIP_DIST += lwip/include/lwip/init.h.cmake.in
+LWIP_DIST += lwip/include/lwip/ip.h
+LWIP_DIST += lwip/include/lwip/ip4.h
+LWIP_DIST += lwip/include/lwip/ip4_addr.h
+LWIP_DIST += lwip/include/lwip/ip4_frag.h
+LWIP_DIST += lwip/include/lwip/ip6.h
+LWIP_DIST += lwip/include/lwip/ip6_addr.h
+LWIP_DIST += lwip/include/lwip/ip6_frag.h
+LWIP_DIST += lwip/include/lwip/ip6_zone.h
+LWIP_DIST += lwip/include/lwip/ip_addr.h
+LWIP_DIST += lwip/include/lwip/mem.h
+LWIP_DIST += lwip/include/lwip/memp.h
+LWIP_DIST += lwip/include/lwip/mld6.h
+LWIP_DIST += lwip/include/lwip/nd6.h
+LWIP_DIST += lwip/include/lwip/netbuf.h
+LWIP_DIST += lwip/include/lwip/netdb.h
+LWIP_DIST += lwip/include/lwip/netif.h
+LWIP_DIST += lwip/include/lwip/netifapi.h
+LWIP_DIST += lwip/include/lwip/opt.h
+LWIP_DIST += lwip/include/lwip/pbuf.h
+LWIP_DIST += lwip/include/lwip/raw.h
+LWIP_DIST += lwip/include/lwip/sio.h
+LWIP_DIST += lwip/include/lwip/snmp.h
+LWIP_DIST += lwip/include/lwip/sockets.h
+LWIP_DIST += lwip/include/lwip/stats.h
+LWIP_DIST += lwip/include/lwip/sys.h
+LWIP_DIST += lwip/include/lwip/tcp.h
+LWIP_DIST += lwip/include/lwip/tcpbase.h
+LWIP_DIST += lwip/include/lwip/tcpip.h
+LWIP_DIST += lwip/include/lwip/timeouts.h
+LWIP_DIST += lwip/include/lwip/udp.h
+LWIP_DIST += lwip/include/lwip/apps/FILES
+LWIP_DIST += lwip/include/lwip/apps/altcp_proxyconnect.h
+LWIP_DIST += lwip/include/lwip/apps/altcp_tls_mbedtls_opts.h
+LWIP_DIST += lwip/include/lwip/apps/fs.h
+LWIP_DIST += lwip/include/lwip/apps/http_client.h
+LWIP_DIST += lwip/include/lwip/apps/httpd.h
+LWIP_DIST += lwip/include/lwip/apps/httpd_opts.h
+LWIP_DIST += lwip/include/lwip/apps/lwiperf.h
+LWIP_DIST += lwip/include/lwip/apps/mdns.h
+LWIP_DIST += lwip/include/lwip/apps/mdns_domain.h
+LWIP_DIST += lwip/include/lwip/apps/mdns_opts.h
+LWIP_DIST += lwip/include/lwip/apps/mdns_out.h
+LWIP_DIST += lwip/include/lwip/apps/mdns_priv.h
+LWIP_DIST += lwip/include/lwip/apps/mqtt.h
+LWIP_DIST += lwip/include/lwip/apps/mqtt_opts.h
+LWIP_DIST += lwip/include/lwip/apps/mqtt_priv.h
+LWIP_DIST += lwip/include/lwip/apps/netbiosns.h
+LWIP_DIST += lwip/include/lwip/apps/netbiosns_opts.h
+LWIP_DIST += lwip/include/lwip/apps/smtp.h
+LWIP_DIST += lwip/include/lwip/apps/smtp_opts.h
+LWIP_DIST += lwip/include/lwip/apps/snmp.h
+LWIP_DIST += lwip/include/lwip/apps/snmp_core.h
+LWIP_DIST += lwip/include/lwip/apps/snmp_mib2.h
+LWIP_DIST += lwip/include/lwip/apps/snmp_opts.h
+LWIP_DIST += lwip/include/lwip/apps/snmp_scalar.h
+LWIP_DIST += lwip/include/lwip/apps/snmp_snmpv2_framework.h
+LWIP_DIST += lwip/include/lwip/apps/snmp_snmpv2_usm.h
+LWIP_DIST += lwip/include/lwip/apps/snmp_table.h
+LWIP_DIST += lwip/include/lwip/apps/snmp_threadsync.h
+LWIP_DIST += lwip/include/lwip/apps/snmpv3.h
+LWIP_DIST += lwip/include/lwip/apps/sntp.h
+LWIP_DIST += lwip/include/lwip/apps/sntp_opts.h
+LWIP_DIST += lwip/include/lwip/apps/tftp_client.h
+LWIP_DIST += lwip/include/lwip/apps/tftp_common.h
+LWIP_DIST += lwip/include/lwip/apps/tftp_opts.h
+LWIP_DIST += lwip/include/lwip/apps/tftp_server.h
+LWIP_DIST += lwip/include/lwip/priv/altcp_priv.h
+LWIP_DIST += lwip/include/lwip/priv/api_msg.h
+LWIP_DIST += lwip/include/lwip/priv/mem_priv.h
+LWIP_DIST += lwip/include/lwip/priv/memp_priv.h
+LWIP_DIST += lwip/include/lwip/priv/memp_std.h
+LWIP_DIST += lwip/include/lwip/priv/nd6_priv.h
+LWIP_DIST += lwip/include/lwip/priv/raw_priv.h
+LWIP_DIST += lwip/include/lwip/priv/sockets_priv.h
+LWIP_DIST += lwip/include/lwip/priv/tcp_priv.h
+LWIP_DIST += lwip/include/lwip/priv/tcpip_priv.h
+LWIP_DIST += lwip/include/lwip/prot/acd.h
+LWIP_DIST += lwip/include/lwip/prot/autoip.h
+LWIP_DIST += lwip/include/lwip/prot/dhcp.h
+LWIP_DIST += lwip/include/lwip/prot/dhcp6.h
+LWIP_DIST += lwip/include/lwip/prot/dns.h
+LWIP_DIST += lwip/include/lwip/prot/etharp.h
+LWIP_DIST += lwip/include/lwip/prot/ethernet.h
+LWIP_DIST += lwip/include/lwip/prot/iana.h
+LWIP_DIST += lwip/include/lwip/prot/icmp.h
+LWIP_DIST += lwip/include/lwip/prot/icmp6.h
+LWIP_DIST += lwip/include/lwip/prot/ieee.h
+LWIP_DIST += lwip/include/lwip/prot/igmp.h
+LWIP_DIST += lwip/include/lwip/prot/ip.h
+LWIP_DIST += lwip/include/lwip/prot/ip4.h
+LWIP_DIST += lwip/include/lwip/prot/ip6.h
+LWIP_DIST += lwip/include/lwip/prot/mld6.h
+LWIP_DIST += lwip/include/lwip/prot/nd6.h
+LWIP_DIST += lwip/include/lwip/prot/tcp.h
+LWIP_DIST += lwip/include/lwip/prot/udp.h
+LWIP_DIST += lwip/include/netif/bridgeif.h
+LWIP_DIST += lwip/include/netif/bridgeif_opts.h
+LWIP_DIST += lwip/include/netif/etharp.h
+LWIP_DIST += lwip/include/netif/ethernet.h
+LWIP_DIST += lwip/include/netif/ieee802154.h
+LWIP_DIST += lwip/include/netif/lowpan6.h
+LWIP_DIST += lwip/include/netif/lowpan6_ble.h
+LWIP_DIST += lwip/include/netif/lowpan6_common.h
+LWIP_DIST += lwip/include/netif/lowpan6_opts.h
+LWIP_DIST += lwip/include/netif/slipif.h
+LWIP_DIST += lwip/include/netif/zepif.h
+LWIP_DIST += lwip/include/netif/ppp/ccp.h
+LWIP_DIST += lwip/include/netif/ppp/chap-md5.h
+LWIP_DIST += lwip/include/netif/ppp/chap-new.h
+LWIP_DIST += lwip/include/netif/ppp/chap_ms.h
+LWIP_DIST += lwip/include/netif/ppp/eap.h
+LWIP_DIST += lwip/include/netif/ppp/ecp.h
+LWIP_DIST += lwip/include/netif/ppp/eui64.h
+LWIP_DIST += lwip/include/netif/ppp/fsm.h
+LWIP_DIST += lwip/include/netif/ppp/ipcp.h
+LWIP_DIST += lwip/include/netif/ppp/ipv6cp.h
+LWIP_DIST += lwip/include/netif/ppp/lcp.h
+LWIP_DIST += lwip/include/netif/ppp/magic.h
+LWIP_DIST += lwip/include/netif/ppp/mppe.h
+LWIP_DIST += lwip/include/netif/ppp/ppp.h
+LWIP_DIST += lwip/include/netif/ppp/ppp_impl.h
+LWIP_DIST += lwip/include/netif/ppp/ppp_opts.h
+LWIP_DIST += lwip/include/netif/ppp/pppapi.h
+LWIP_DIST += lwip/include/netif/ppp/pppcrypt.h
+LWIP_DIST += lwip/include/netif/ppp/pppdebug.h
+LWIP_DIST += lwip/include/netif/ppp/pppoe.h
+LWIP_DIST += lwip/include/netif/ppp/pppol2tp.h
+LWIP_DIST += lwip/include/netif/ppp/pppos.h
+LWIP_DIST += lwip/include/netif/ppp/upap.h
+LWIP_DIST += lwip/include/netif/ppp/vj.h
+LWIP_DIST += lwip/include/netif/ppp/polarssl/arc4.h
+LWIP_DIST += lwip/include/netif/ppp/polarssl/des.h
+LWIP_DIST += lwip/include/netif/ppp/polarssl/md4.h
+LWIP_DIST += lwip/include/netif/ppp/polarssl/md5.h
+LWIP_DIST += lwip/include/netif/ppp/polarssl/sha1.h
+
+EXTRA_DIST = $(CTAES_DIST) $(MLKEM_DIST) $(LWIP_DIST)
 
 
 config/bitcoin-config.h: config/stamp-h1

@@ -262,6 +262,7 @@ BITCOIN_TESTS =\
   test/reverselock_tests.cpp \
   test/overlay_tests.cpp \
   test/overlaylimits_tests.cpp \
+  test/lwip_tests.cpp \
   test/roster_tests.cpp \
   test/rosteridentity_tests.cpp \
   test/rosterlisting_tests.cpp \
@@ -320,7 +321,7 @@ BITCOIN_TEST_SUITE += \
 endif
 
 test_test_bitcoin_SOURCES = $(BITCOIN_TEST_SUITE) $(BITCOIN_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
-test_test_bitcoin_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(TESTDEFS) $(EVENT_CFLAGS)
+test_test_bitcoin_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(TESTDEFS) $(EVENT_CFLAGS) $(LWIP_CPPFLAGS)
 test_test_bitcoin_LDADD = $(LIBTEST_UTIL)
 if ENABLE_WALLET
 test_test_bitcoin_LDADD += $(LIBBITCOIN_WALLET)

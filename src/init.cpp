@@ -567,12 +567,12 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-relayaddress=<ip>[:<port>]", "The address this node announces while the roster lists it as a relay that announces its own (createannouncement's \"relay\"), signed and good for three hours; once for IPv4 and once for IPv6. Without it, the address most of its outbound peers see it at, else the best it knows of itself. The port is the peer-to-peer one by default; the overlay is one above it.", ArgsManager::ALLOW_ANY | ArgsManager::NETWORK_ONLY, OptionsCategory::CONNECTION);
     argsman.AddArg("-relaybandwidth=<n>", strprintf("MiB of other people's traffic this node carries through the overlay in a day; once spent it accepts no new paths until the day (UTC) turns, and paths already open stop a tenth later. 0 for no limit (default: %u)", overlay::DEFAULT_RELAY_BANDWIDTH_MIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-relaypathrate=<n>", strprintf("KiB a second one path may move through this node; more is dropped, as a full link would drop it. 0 for no limit (default: %u)", overlay::DEFAULT_RELAY_PATH_RATE_KIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
-    argsman.AddArg("-gateway", strprintf("Carry other people's connections out to the internet while the roster lists this node as a gateway: its key with the gateway bit and no address, met at its meeting points, so nobody learns where it is (default: %u). Websites see this computer's address for what it carries; -gateway=0 switches it off. Needs -overlay and -rosterindex.", overlay::DEFAULT_GATEWAY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-gateway", strprintf("Carry other people's connections out to the internet while the roster lists this node through the overlay - no address, not a relay - so that it is met at its meeting points and nobody learns where it is; a relay never does, its address being public. It is a switch, not a listing (default: %u). Websites see this computer's address for what it carries; -gateway=0 switches it off. Needs -overlay and -rosterindex.", overlay::DEFAULT_GATEWAY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayports=<list>", strprintf("Ports a gateway carries: TCP by number, UDP as udp:N. Port 25 is never carried (default: %s)", overlay::DEFAULT_GATEWAY_PORTS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewaybandwidth=<n>", strprintf("MiB a gateway carries in a day (UTC), both ways; once spent it takes no new connections until the day turns. 0 for no limit (default: %u)", overlay::DEFAULT_GATEWAY_BANDWIDTH_MIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayrate=<n>", strprintf("KiB a second one visitor may move through this gateway. 0 for no limit (default: %u)", overlay::DEFAULT_GATEWAY_RATE_KIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewaymaxflows=<n>", strprintf("Connections a gateway holds open at once, for everyone together (default: %u)", overlay::DEFAULT_GATEWAY_MAX_FLOWS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
-    argsman.AddArg("-gatewayproxy", strprintf("Run a SOCKS5 proxy on 127.0.0.1 that takes programs on this computer out to the internet through the network's gateways, each connection through another gateway; names are looked up at a gateway, never here. Used only while this node's own gateway is listed, or while it has no internet line and relays over radio (default: %u; on in BPS Relay)", overlay::DEFAULT_GATEWAY_PROXY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-gatewayproxy", strprintf("Run a SOCKS5 proxy on 127.0.0.1 that takes programs on this computer out to the internet through the network's gateways, each connection through another gateway; names are looked up at a gateway, never here. Used only while this node's own -gateway is on, or while it has no internet line and relays over radio (default: %u; in BPS Relay it comes with the gateway switch)", overlay::DEFAULT_GATEWAY_PROXY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayinterface=<name>", "Carry all of this computer's traffic through the network's gateways, on the network interface <name>: on Linux a TUN device an administrator makes once for the user the node runs as (ip tuntap add dev <name> mode tun user <user>), given the addresses 10.77.1.2 and fd62:7073:6966::2, with the computer's resolver set to 10.77.1.53. Each new connection goes through another gateway, names are looked up at a gateway, and only what comes back for the computer's own connections is let in. Under the same rule as -gatewayproxy (default: off)", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayroutes", "Route all of this computer's traffic through the -gatewayinterface interface, apart from its own networks and the node's own connections, and point systemd-resolved at the interface's resolver; taken down when the node stops. Linux: needs the right to manage the network, granted once (sudo setcap cap_net_admin+ep <the program>) (default: 0)", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayproxyport=<port>", "Port of the local proxy on 127.0.0.1 (default: two above the peer-to-peer port)", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -2364,6 +2364,13 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                         overlay::g_gateway_client->HandleApp(from, std::move(payload));
                     } else if (overlay::g_gateway) {
                         overlay::g_gateway->HandleApp(from, std::move(payload));
+                    } else if (from.via_path) {
+                        // A visitor looking for a gateway met this node, whose
+                        // gateway is off: answer its hello, and it moves on.
+                        overlay::GatewayMessage m;
+                        if (overlay::DecodeGatewayMessage(payload, m) && m.kind == overlay::GatewayKind::HELLO) {
+                            overlay::g_overlay->SendSecret(from.path, overlay::EncodeStatus(overlay::GatewayState::OFF, {}, {}));
+                        }
                     }
                 } else if (overlay::g_chainsync && !from.via_path && overlay::IsChainPayload(payload)) {
                     // Blocks between adjacent radio neighbours, never over a path.
@@ -2388,6 +2395,37 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 overlay::PathSelector::GUARD_COUNT, chainparams.NetworkIDString() == CBaseChainParams::REGTEST);
             overlay::g_selector->SetSelf(self);
         }
+
+        // Every node that is not a relay shows the relays it connects to a key
+        // made for each connection (overlay/relay.h): the
+        // relay a path enters through sees its address and must not learn
+        // who it is. A relay - relaying switched on, or listed at an
+        // address - proves its roster key, which is public with its address.
+        const bool relay_switch = args.GetBoolArg("-relay", roster::DEFAULT_RELAY);
+        const std::function<void()> update_hop_keys = [self, relay_switch] {
+            if (!overlay::g_overlay) return;
+            bool relay = relay_switch;
+            roster::Record own;
+            if (!relay && g_rosterindex &&
+                roster::LiveAnnouncement(*g_rosterindex, self, g_rosterindex->GetSummary().best_block_height, own)) {
+                relay = !own.endpoints.empty();
+            }
+            if (overlay::g_overlay->ThrowawayHopKeys() != !relay) {
+                overlay::g_overlay->SetThrowawayHopKeys(!relay);
+                LogPrintf("overlay: %s\n", relay ? "a relay: connections prove this node's roster key"
+                                                 : "not a relay: each connection proves a key made for it");
+            }
+        };
+        update_hop_keys();
+        node.scheduler->scheduleEvery(update_hop_keys, std::chrono::seconds{60});
+        // A radio neighbour knows this node's key from its radio announcement.
+        overlay::g_overlay->SetRadioCheck([](const CService& addr) {
+            if (!overlay::g_radio) return false;
+            for (const overlay::RadioPeer& p : overlay::g_radio->Neighbours(GetTime())) {
+                if (p.local == addr) return true;
+            }
+            return false;
+        });
 
         // Radio links (overlay/radio.h): tell the bridge where the overlay is,
         // and read the neighbours it hears every few seconds. A radio
@@ -2472,7 +2510,7 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
         }
 
         // A gateway out to the internet (overlay/gateway.h): on unless switched
-        // off, and serving only while the roster lists this node as one.
+        // off, and serving while the roster lists this node through the overlay.
         if (args.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY) && g_rosterindex) {
             overlay::GatewayConfig gw;
             std::string gw_error;
@@ -2491,60 +2529,46 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             if (!overlay::GetNetStack().Start(gw_error)) {
                 return InitError(Untranslated("gateway: " + gw_error));
             }
-            // Registered at its meeting points only while listed as a gateway,
-            // under the key it is listed by, unless -meetable keeps the node's
-            // own key registered regardless.
+            // Registered at its meeting points only while it serves, unless
+            // -meetable keeps the node registered regardless.
             const int meet_hops = (int)args.GetArg("-meethops", overlay::DEFAULT_MEET_HOPS);
-            auto register_as = [self, meet_hops](const overlay::GatewayIdentity& id) {
+            auto register_gateway = [self, meet_hops](bool serving) {
                 LOCK(overlay::g_gateway_meeting_mutex);
                 if (overlay::g_gateway_meeting) {
                     overlay::g_gateway_meeting->Stop();
                     overlay::g_gateway_meeting.reset();
                 }
-                if (!id.listed || (!id.second_key && overlay::g_meeting)) return;
-                CKey second;
-                if (id.second_key && !roster::ReadGatewayKey(second)) return;
-                overlay::g_gateway_meeting = MakeUnique<overlay::MeetingService>(
-                    id.key, meet_hops, id.second_key ? &second : nullptr);
+                if (!serving || overlay::g_meeting) return;
+                overlay::g_gateway_meeting = MakeUnique<overlay::MeetingService>(self, meet_hops);
                 overlay::g_gateway_meeting->Start();
             };
+            const bool relaying = args.GetBoolArg("-relay", roster::DEFAULT_RELAY);
             overlay::g_gateway = MakeUnique<overlay::Gateway>(gw,
                 [](uint64_t path, const std::vector<uint8_t>& msg) {
                     return overlay::g_overlay && overlay::g_overlay->SendSecret(path, msg);
                 },
-                // Which of this node's keys the roster lists as a gateway, if
-                // any. Never one with an address: that would publish where an
-                // exit is.
-                [self, register_as]() {
+                // Sharing is a switch, not a listing: the
+                // node serves while the roster lists it through the overlay -
+                // no address, not a relay - so that visitors can meet it.
+                // Never a relay, whose address is public: its exit would be
+                // at that address.
+                [self, relaying]() {
                     overlay::GatewayIdentity id;
-                    if (g_rosterindex) {
-                        const int tip = g_rosterindex->GetSummary().best_block_height;
-                        auto is_gateway = [tip](const roster::KeyBytes& key) {
-                            roster::Record rec;
-                            return !roster::SeenRevoked(key) && roster::LiveAnnouncement(*g_rosterindex, key, tip, rec) &&
-                                   roster::IsGatewayRecord(rec.services, rec.endpoints.size());
-                        };
-                        roster::Record own;
-                        if (roster::LiveAnnouncement(*g_rosterindex, self, tip, own)) {
-                            id.own_listed = true;
-                            // On the chain, or announced while it runs as a relay.
-                            id.own_address = !own.endpoints.empty() || roster::IsAnnouncingRelay(own.services);
-                        }
-                        CKey second;
-                        if (is_gateway(self)) {
-                            id.listed = true;
-                            id.key = self;
-                        } else if (roster::ReadGatewayKey(second) && is_gateway(roster::KeyBytesOf(second))) {
-                            id.listed = true;
-                            id.second_key = true;
-                            id.key = roster::KeyBytesOf(second);
-                        }
+                    id.key = self;
+                    roster::Record own;
+                    if (relaying) {
+                        id.why = "this node relays (-relay), so its address is public: it does not share its internet";
+                    } else if (!g_rosterindex || roster::SeenRevoked(self) ||
+                               !roster::LiveAnnouncement(*g_rosterindex, self,
+                                                         g_rosterindex->GetSummary().best_block_height, own)) {
+                        id.why = "this node is not listed, so visitors cannot meet it: publish a listing through the overlay";
+                    } else if (!roster::IsListedThroughOverlay(own.services, own.endpoints.size())) {
+                        id.why = "this node is listed at an address or as a relay, so its exit would be at a public address";
+                    } else {
+                        id.serving = true;
                     }
-                    const overlay::GatewayIdentity before = overlay::GetGatewayIdentity();
                     overlay::SetGatewayIdentity(id);
-                    // Still listed, but now under the other key: register under it.
-                    if (id.listed && before.listed && id.key != before.key) register_as(id);
-                    return id.listed;
+                    return id.serving;
                 },
                 // This machine's own addresses, as its interfaces and its peers see them.
                 [&node]() {
@@ -2573,11 +2597,7 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                           return overlay::ResolveDirect(upstream_resolvers, name, family, out);
                       })
                     : overlay::Gateway::Resolver(nullptr),
-                [register_as](bool listed) {
-                    overlay::GatewayIdentity id = overlay::GetGatewayIdentity();
-                    id.listed = listed;
-                    register_as(id);
-                });
+                register_gateway);
             if (!overlay::g_gateway->Start(gw_error)) {
                 overlay::g_gateway.reset();
                 return InitError(Untranslated("gateway: " + gw_error));
@@ -2609,16 +2629,14 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                     why = "this node's own gateway is off (-gateway=0): the network's internet is for those who share theirs";
                     return false;
                 },
+                // Where gateways are: among the keys listed through the
+                // overlay, met at random; one with its gateway off says so,
+                // and the next is tried.
                 [self]() {
                     std::vector<roster::KeyBytes> out;
                     if (!g_rosterindex) return out;
-                    roster::CollectGateways(*g_rosterindex, g_rosterindex->GetSummary().best_block_height, out);
-                    // Never this node itself, under either of its keys.
+                    roster::CollectThroughOverlay(*g_rosterindex, g_rosterindex->GetSummary().best_block_height, out);
                     out.erase(std::remove(out.begin(), out.end(), self), out.end());
-                    CKey second;
-                    if (roster::ReadGatewayKey(second)) {
-                        out.erase(std::remove(out.begin(), out.end(), roster::KeyBytesOf(second)), out.end());
-                    }
                     return out;
                 },
                 [](const roster::KeyBytes& key, int hops, overlay::Meeting& m, std::string& error) {

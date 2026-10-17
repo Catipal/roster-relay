@@ -85,7 +85,6 @@ class RelayAddressTest(BitcoinTestFramework):
         for entry in self.nodes[6].getroster(0):
             assert_equal(entry["endpoints"], [])
             assert_equal(entry["dialable"], False)
-            assert_equal(entry["gateway"], False)
         for n in range(6):
             here = self.announced(6, n)
             assert_equal(here["endpoints"], [{"network": "ipv4", "address": "127.0.0.1", "port": p2p_port(n)}])

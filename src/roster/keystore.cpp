@@ -20,7 +20,6 @@ constexpr size_t SECRET_SIZE = 32;
 
 fs::path KeyPath() { return GetDataDir() / "roster.key"; }
 fs::path IdentityPath() { return GetDataDir() / "roster_identity.key"; }
-fs::path GatewayPath() { return GetDataDir() / "gateway.key"; }
 
 //! Best-effort owner-only permissions. Failure is logged rather than fatal:
 //! some filesystems cannot express it, and refusing to run there would be a
@@ -201,20 +200,6 @@ bool LoadOrCreateKey(const fs::path& path, const char* what, CKey& key_out, std:
 bool GetOperationalKey(CKey& key_out, std::string& error)
 {
     return LoadOrCreateKey(KeyPath(), "operational", key_out, error);
-}
-
-bool GetGatewayKey(CKey& key_out, std::string& error)
-{
-    return LoadOrCreateKey(GatewayPath(), "gateway", key_out, error);
-}
-
-bool ReadGatewayKey(CKey& key_out)
-{
-    const fs::path path = GatewayPath();
-    std::string error;
-    if (!fs::exists(path) || !ReadKeyFile(path, key_out, error)) return false;
-    CanonicaliseEvenY(key_out);
-    return true;
 }
 
 } // namespace roster

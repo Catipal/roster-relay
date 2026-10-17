@@ -67,23 +67,17 @@ QLabel* SmallNote(const QString& text, QWidget* parent)
 } // namespace
 
 PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bool renewing,
-                             QWidget* parent, bool gateway_key)
-    : QDialog(parent), m_rpc(rpc), m_wallets(wallets), m_tip(tip), m_gateway_key(gateway_key)
+                             QWidget* parent)
+    : QDialog(parent), m_rpc(rpc), m_wallets(wallets), m_tip(tip)
 {
-    setWindowTitle(gateway_key ? tr("List this relay's gateway")
-                               : renewing ? tr("Renew your listing") : tr("Publish your listing"));
+    setWindowTitle(renewing ? tr("Renew your listing") : tr("Publish your listing"));
     setMinimumWidth(540);
 
     QVBoxLayout* outer = new QVBoxLayout(this);
     outer->setSizeConstraint(QLayout::SetMinimumSize);
 
     QLabel* intro = new QLabel(
-        gateway_key
-            ? tr("A relay's own listing carries its address, so its gateway is listed under a second "
-                 "key with no address, apart from it. Nobody can tell from the roster that the two belong "
-                 "to one computer. Visitors reach the gateway through relays, so it never learns who they "
-                 "are; the websites they visit see this computer's address.")
-        : renewing
+        renewing
             ? tr("Renewing writes a fresh record to the chain. Until it confirms, the "
                  "old one still counts.")
             : tr("This writes a short record to the chain saying that you exist, and "
@@ -112,26 +106,19 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
     nowhere_note->setContentsMargins(24, 0, 0, 0);
     where_layout->addWidget(nowhere_note);
 
-    // Relaying and the gateway are settings of the node, on the Server page,
-    // not choices made with each listing: the listing
-    // only takes over what they are when it is published, since others find
-    // relays and gateways by it. Never both on one key: a relay's address is
-    // public, and the gateway beside it would be an exit at that address, so
-    // a relay lists its gateway under a second key, from the Server page.
-    QString settings_note;
+    // Relaying is a setting of the node, on the Server page, not a choice made
+    // with each listing: the listing only takes it over
+    // when it is published, since others find relays by it. Sharing the
+    // internet is not in the listing at all.
     if (ServerPage::RelaySwitchedOn()) {
-        settings_note = tr("This node carries others' paths as a relay, as set on the Server page, so the "
-                           "listing says so. Its address is announced while it runs, never written to the chain.");
-    } else if (ServerPage::GatewaySwitchedOn()) {
-        settings_note = tr("This node shares its internet connection as a gateway, as set on the Server page, "
-                           "so the listing says so.");
-    } else {
-        settings_note = tr("This node neither relays for others nor shares its internet connection, as set "
-                           "on the Server page.");
+        QLabel* switches_note = SmallNote(
+            tr("This node carries others' paths as a relay, as set on the Server page, so the "
+               "listing says so. Its address is announced while it runs, never written to the chain.") +
+                " " + tr("A change there reaches the roster with your next listing."),
+            where);
+        switches_note->setContentsMargins(24, 0, 0, 0);
+        where_layout->addWidget(switches_note);
     }
-    QLabel* switches_note = SmallNote(settings_note + " " + tr("A change there reaches the roster with your next listing."), where);
-    switches_note->setContentsMargins(24, 0, 0, 0);
-    where_layout->addWidget(switches_note);
 
     m_at_address = new QRadioButton(tr("At an address I publish"), where);
     where_layout->addWidget(m_at_address);
@@ -166,8 +153,6 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
 
     m_nowhere->setChecked(true);
     outer->addWidget(where);
-    // A gateway key has no address to choose.
-    if (gateway_key) where->setVisible(false);
 
     // --- who pays, and how long ----------------------------------------
     QFormLayout* form = new QFormLayout();
@@ -230,10 +215,7 @@ void PublishDialog::FillPayers()
     m_payer->clear();
     int preferred = -1;
 #ifdef ENABLE_WALLET
-    // Never this node's wallet for a gateway key: its coins are the ones that
-    // paid for the relay's own listing, so the chain would tie the gateway to
-    // the relay's address. Another relay pays, asked through a path.
-    if (m_wallets && !m_gateway_key) {
+    if (m_wallets) {
         for (WalletModel* model : m_wallets->getOpenWallets()) {
             const CAmount balance = model->wallet().getBalances().balance;
             const int unit = model->getOptionsModel() ? model->getOptionsModel()->getDisplayUnit()
@@ -247,9 +229,7 @@ void PublishDialog::FillPayers()
 #endif
     // Always offered, and the default when no wallet can pay: the user signs,
     // the relay pays, which is how a node with no coins gets listed at all.
-    m_payer->addItem(m_gateway_key ? tr("Another relay pays, asked through a path")
-                                   : tr("A relay pays \xe2\x80\x94 needs no coins"),
-                     RELAY);
+    m_payer->addItem(tr("A relay pays \xe2\x80\x94 needs no coins"), RELAY);
     m_payer->setCurrentIndex(preferred >= 0 ? preferred : m_payer->count() - 1);
     m_payer->setEnabled(m_payer->count() > 1);
     m_payer->blockSignals(false);
@@ -277,18 +257,13 @@ void PublishDialog::onPayerChanged()
             note = tr("No relay is listed in the roster yet, so there is nobody to ask. Pay from a "
                       "wallet, or try again once a relay has listed itself.");
             can_publish = false;
-        } else if (m_gateway_key) {
-            note = tr("Your node signs the gateway's listing and sends it through relays to another relay, "
-                      "which pays for it and puts it into a block it stakes. That relay learns the gateway's "
-                      "key and never this computer's address. Paying from this node's own wallet would tie "
-                      "the gateway to this relay on the chain, and so to its address.");
         } else {
-            note = tr("Your node signs the listing and sends it over the overlay to the relay it "
-                      "enters through. A relay that pays for listings puts yours into a block it "
-                      "stakes itself, so it confirms even while most nodes would not pass it on, and "
-                      "adds you to the peers it shares its rewards with. If it later stops paying, your "
-                      "listing lapses within the month; you can always renew from a funded wallet "
-                      "yourself.");
+            note = tr("Your node signs the listing and sends it through a path to a relay it does not "
+                      "enter through, so that relay learns who you are and not where. A relay that pays "
+                      "for listings puts yours into a block it stakes itself, so it confirms even while "
+                      "most nodes would not pass it on, and adds you to the peers it shares its rewards "
+                      "with. If it later stops paying, your listing lapses within the month; you can "
+                      "always renew from a funded wallet yourself.");
         }
     }
 #ifdef ENABLE_WALLET
@@ -363,15 +338,8 @@ void PublishDialog::Done()
 bool PublishDialog::BuildOptions(UniValue& options)
 {
     options = UniValue(UniValue::VOBJ);
-    if (m_gateway_key) {
-        options.pushKV("key", "gateway");
-    } else if (m_nowhere->isChecked() && ServerPage::RelaySwitchedOn()) {
-        options.pushKV("relay", true);
-    } else if (m_nowhere->isChecked() && ServerPage::GatewaySwitchedOn()) {
-        // Never a gateway at a published address: that would say where an exit is.
-        options.pushKV("gateway", true);
-    }
-    if (!m_gateway_key && m_at_address->isChecked()) {
+    if (m_nowhere->isChecked() && ServerPage::RelaySwitchedOn()) options.pushKV("relay", true);
+    if (m_at_address->isChecked()) {
         const QString address = m_address->text().trimmed();
         if (address.isEmpty()) {
             ShowError(tr("Enter an address, or choose not to publish one."));
@@ -432,9 +400,7 @@ void PublishDialog::onPublish()
 
     if (RelayChosen()) {
         SetBusy(true);
-        m_status->setText(m_gateway_key
-                              ? tr("Asking a relay through a path to publish it\xe2\x80\xa6 this can take a minute.")
-                              : tr("Asking your relay to publish it\xe2\x80\xa6 this can take up to half a minute."));
+        m_status->setText(tr("Asking a relay through a path to publish it\xe2\x80\xa6 this can take a minute."));
         m_rpc.Call(TAG_REQUEST, "requestlisting", params);
         return;
     }

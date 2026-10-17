@@ -17,6 +17,11 @@
 
 namespace overlay {
 
+/** Seconds a hop session may go unheard and still be trusted as it is (Transport::Live). */
+static constexpr int64_t HOP_QUIET = 60;
+/** Seconds something sent on a hop session may go unanswered before the session is doubted. */
+static constexpr int64_t HOP_ANSWER = 10;
+
 /**
  * The overlay's state machine, deliberately without a socket.
  *
@@ -61,7 +66,7 @@ public:
      * round trip, not in a tight loop.
      */
     bool Connect(const PeerKey& peer, const CPubKey& peer_static,
-                 std::vector<unsigned char>& datagram_out);
+                 std::vector<unsigned char>& datagram_out, bool throwaway = false);
 
     /**
      * The same, proving `as` instead of this node's own static key.
@@ -96,21 +101,25 @@ public:
     bool HasSession(const PeerKey& peer) const;
     bool HasPendingHandshake(const PeerKey& peer) const;
 
+    /**
+     * Whether a session can be trusted to reach the peer as it is: heard
+     * from in the last HOP_QUIET seconds, and nothing sent on it waiting more
+     * than HOP_ANSWER for a word back.
+     *
+     * A peer that restarts forgets its half of every session and says
+     * nothing - a node answers nothing it cannot open, or it would be a
+     * reflector - so the half left here looks as good as ever and swallows
+     * whatever is sent on it. Shaking hands again is the only way to know,
+     * and it costs a round trip.
+     */
+    bool Live(const PeerKey& peer, int64_t now) const;
+
     /** Who this peer proved itself to be. Invalid if there is no session. */
     CPubKey PeerIdentity(const PeerKey& peer) const;
 
     /** Drop everything for one peer. */
     void Forget(const PeerKey& peer);
 
-    /**
-     * Answer a handshake from `peer` with `key` rather than this node's
-     * static key. For a node met under a second key: a gateway listed apart
-     * from the relay it runs on, whose own key carries the relay's address
-     * (design note §8·7). Bounded, since meetings are something strangers
-     * start; past the bound an arbitrary one goes.
-     */
-    void SetResponderKey(const PeerKey& peer, const CKey& key);
-    static constexpr size_t MAX_RESPONDER_KEYS = 4096;
 
     size_t SessionCount() const { return m_sessions.size(); }
     size_t PendingCount() const { return m_pending.size(); }
@@ -123,10 +132,11 @@ private:
     struct Established {
         std::unique_ptr<Session> session;
         CPubKey identity;
+        int64_t heard{0};            //!< when the peer last said anything on it
+        int64_t unanswered_since{0}; //!< the first send since then, 0 if none
     };
 
     CKey m_static;
-    std::map<PeerKey, CKey> m_responder_keys;
     std::map<PeerKey, Pending> m_pending;
     std::map<PeerKey, Established> m_sessions;
 };

@@ -56,12 +56,11 @@ public:
     static void ApplyStoredSettings();
 
     /**
-     * What the owner chose here for relaying and the gateway, saved or as the
-     * node runs: settings of the node, which a listing takes over when it is
-     * published, not choices made with each listing.
+     * Whether the owner switched relaying on here, saved or as the node runs:
+     * a setting of the node, which a listing takes over when it is published,
+     * not a choice made with each listing.
      */
     static bool RelaySwitchedOn();
-    static bool GatewaySwitchedOn();
 
     /**
      * The first time the client starts, say plainly what sharing the internet
@@ -78,7 +77,6 @@ private Q_SLOTS:
     void onRpcResult(const QString& tag, const UniValue& value);
     void onRpcFailed(const QString& tag, const QString& message);
     void onChanged();
-    void onListGateway();
     void onInstallNetService();
 
 private:
@@ -115,19 +113,14 @@ private:
 
     QLabel* m_gateway_badge{nullptr};
     QLabel* m_gateway_state{nullptr};
-    QLabel* m_gateway_key{nullptr};
     QLabel* m_gateway_today{nullptr};
     QLabel* m_gateway_now{nullptr};
-    QPushButton* m_gateway_list{nullptr};
     QCheckBox* m_gateway{nullptr};
     QSpinBox* m_gateway_budget{nullptr};
-    QCheckBox* m_proxy{nullptr};
     QLabel* m_proxy_status{nullptr};
-    QCheckBox* m_interface{nullptr};    //!< all of this computer's traffic through the network
     QLabel* m_interface_status{nullptr};
     QPushButton* m_interface_setup{nullptr}; //!< Windows: install the network service
     QLabel* m_gateway_note{nullptr};
-    bool m_own_address{false};
     QTimer* m_timer{nullptr};
 };
 

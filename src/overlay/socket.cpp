@@ -399,12 +399,12 @@ bool Socket::SendDatagram(const CService& to, const std::vector<unsigned char>& 
     return true;
 }
 
-bool Socket::Connect(const CService& peer, const CPubKey& peer_static)
+bool Socket::Connect(const CService& peer, const CPubKey& peer_static, bool throwaway)
 {
     std::vector<unsigned char> datagram;
     {
         LOCK(m_mutex);
-        if (!m_transport.Connect(peer, peer_static, datagram)) return false;
+        if (!m_transport.Connect(peer, peer_static, datagram, throwaway)) return false;
     }
     return SendDatagram(peer, datagram);
 }
@@ -423,6 +423,12 @@ bool Socket::HasSession(const CService& peer)
 {
     LOCK(m_mutex);
     return m_transport.HasSession(peer);
+}
+
+bool Socket::Live(const CService& peer)
+{
+    LOCK(m_mutex);
+    return m_transport.Live(peer, GetTime());
 }
 
 CPubKey Socket::PeerIdentity(const CService& peer)

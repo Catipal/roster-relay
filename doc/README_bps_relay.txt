@@ -37,9 +37,14 @@ A listing is a short record on the chain saying that you exist. It costs a
 small fee. Publish it from the Discovery tab of the Node page.
 
 If your wallet pays, choose a month or a year. If your wallet has no coins,
-choose "A relay pays": your node signs the listing and sends it over the
-overlay to the relay it enters through, and a relay that has chosen to pay for
-its users publishes it for you, for a month.
+choose "A relay pays": your node signs the listing and sends it through a
+path to a relay it does not enter through, which learns who you are and not
+where; a relay that has chosen to pay for its users publishes it for you, for
+a month.
+
+The relays your node connects to see its address, but not who it is: unless
+it relays, each connection shows them a key made for that connection, never
+your roster key.
 
 A listing can be renewed in its last three days, by hand. If you stop
 renewing, it simply lapses.
@@ -92,24 +97,27 @@ between servers, and never into your own home network. It shares at most
 where you live or your internet provider's terms forbid sharing your
 connection, switch it off.
 
-To share, your node has to be listed as a gateway: with sharing switched on
-on the Server page, publish your listing through the overlay, with no
-address. A relay, whose address is public, lists its gateway under a second
-key from the Server page instead. Another relay pays for that listing, asked through
-relays, so it learns the gateway's key and not where it is; paying from the
-relay's own wallet would tie the two together on the chain.
+Sharing is a switch on the Server page, not something you are listed for.
+Visitors find gateways among the nodes listed through the overlay, with no
+address, and meet them at their meeting points; one whose sharing is off
+says so and they try another. So your node shares while the switch is on
+and its listing has no address. A relay never shares: its address is
+public, so its exit would be at a known address.
 
-While sharing is switched on - your node needs no listing for this, only to
-be found as a gateway - programs on this computer can use a SOCKS5 proxy at
+The same switch uses the network's internet in return, for the whole
+computer: switched off, the network carries only BPS itself (mail, meetings,
+the chain) and the computer uses its own connection.
+
+While sharing is switched on, programs on this computer can use a SOCKS5 proxy at
 127.0.0.1, on the port the Server page shows. Set it in a browser with names
 looked up through the proxy (Firefox: "Proxy DNS when using SOCKS v5"). Each
 connection leaves through another member's gateway, and names are looked up
 there, never on your computer. .bps names are not sent out. It is slower than
 your own connection: browsing and messages, not video.
 
-All of this computer's traffic can go this way too, with no proxy setting in
-any program: tick "Carry all of this computer's traffic through the network"
-on the Server page, and restart. BPS Relay then adds a network interface of
+All of this computer's traffic goes this way too, with no proxy setting in
+any program, once BPS Relay may manage the network (below): with sharing
+switched on, restart, and BPS Relay adds a network interface of
 its own, routes the computer through it and points the computer's resolver at
 it, and takes all of that down when it stops. This computer's own network -
 the router, a printer - and BPS Relay's own connections stay direct. It needs

@@ -68,12 +68,15 @@ public:
     void Stop();
 
     /** Begin a session with a peer whose identity came from the roster. */
-    bool Connect(const CService& peer, const CPubKey& peer_static);
+    /** With `throwaway`, prove a key made for this session instead of the static key. */
+    bool Connect(const CService& peer, const CPubKey& peer_static, bool throwaway = false);
 
     /** Send application data to an established peer. */
     bool Send(const CService& peer, const std::vector<unsigned char>& payload);
 
     bool HasSession(const CService& peer);
+    /** A session that can be trusted as it is (Transport::Live). */
+    bool Live(const CService& peer);
     size_t SessionCount();
 
     /** The static key a peer proved in its handshake. Invalid with no session. */

@@ -70,9 +70,7 @@ const char* KEY_MAILBOX = "bps/mailbox";
 const char* KEY_MAILBOX_SIZE = "bps/mailboxmaxsize";
 const char* KEY_GATEWAY = "bps/gateway";
 const char* KEY_GATEWAY_BUDGET = "bps/gatewaybandwidth";
-const char* KEY_GATEWAY_PROXY = "bps/gatewayproxy";
 const char* KEY_GATEWAY_NOTICE = "bps/gatewaynotice";
-const char* KEY_GATEWAY_INTERFACE = "bps/gatewayinterface";
 
 /** The system-wide interface's name: a TUN device on Linux; on Windows the service's adapter, whatever this says. */
 const char* InterfaceName()
@@ -161,13 +159,6 @@ bool ServerPage::RelaySwitchedOn()
     return gArgs.GetBoolArg("-relay", roster::DEFAULT_RELAY);
 }
 
-bool ServerPage::GatewaySwitchedOn()
-{
-    QSettings settings;
-    if (settings.contains(KEY_GATEWAY)) return settings.value(KEY_GATEWAY).toBool();
-    return gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY);
-}
-
 void ServerPage::ApplyStoredSettings()
 {
     QSettings settings;
@@ -199,14 +190,16 @@ void ServerPage::ApplyStoredSettings()
     if (settings.contains(KEY_GATEWAY_BUDGET)) {
         gArgs.SoftSetArg("-gatewaybandwidth", settings.value(KEY_GATEWAY_BUDGET).toString().toStdString());
     }
-    // The local proxy is part of this client: on unless switched off here.
-    if (!settings.contains(KEY_GATEWAY_PROXY)) settings.setValue(KEY_GATEWAY_PROXY, true);
-    gArgs.SoftSetBoolArg("-gatewayproxy", settings.value(KEY_GATEWAY_PROXY).toBool());
-    // All of the computer's traffic through the network: off until chosen, and
-    // only once this program may route the computer - the node would refuse
-    // to start otherwise. The Server page says what is missing.
+    // One switch: sharing this
+    // computer's line, and using the network's internet for the whole
+    // computer in return - at the system's level once this program may route
+    // the computer (an administrator, once; the node would refuse to start
+    // otherwise), and through the local proxy always. Switched off, the
+    // overlay serves only BPS itself: mail, meetings, the chain.
+    const bool share = settings.value(KEY_GATEWAY, overlay::DEFAULT_GATEWAY).toBool();
+    gArgs.SoftSetBoolArg("-gatewayproxy", share);
     std::string how;
-    if (settings.value(KEY_GATEWAY_INTERFACE, false).toBool() && InterfaceAvailable() && overlay::HaveNetAdmin(how)) {
+    if (share && InterfaceAvailable() && overlay::HaveNetAdmin(how)) {
         gArgs.SoftSetArg("-gatewayinterface", InterfaceName());
         gArgs.SoftSetBoolArg("-gatewayroutes", true);
     }
@@ -458,32 +451,24 @@ QWidget* ServerPage::MakeGatewayCard()
     QFormLayout* status = new QFormLayout();
     m_gateway_state = new QLabel(tr("\xe2\x80\x94"), card);
     m_gateway_state->setWordWrap(true);
-    m_gateway_key = new QLabel(tr("\xe2\x80\x94"), card);
-    m_gateway_key->setWordWrap(true);
     m_gateway_today = new QLabel(tr("\xe2\x80\x94"), card);
     m_gateway_now = new QLabel(tr("\xe2\x80\x94"), card);
     status->addRow(tr("Sharing"), m_gateway_state);
-    status->addRow(tr("Listed as"), m_gateway_key);
     status->addRow(tr("Today"), m_gateway_today);
     status->addRow(tr("Open now"), m_gateway_now);
     body->addLayout(status);
-
-    m_gateway_list = new QPushButton(tr("List as a gateway\xe2\x80\xa6"), card);
-    m_gateway_list->setVisible(false);
-    QHBoxLayout* list_row = new QHBoxLayout();
-    list_row->addWidget(m_gateway_list);
-    list_row->addStretch(1);
-    body->addLayout(list_row);
 
     QFrame* rule = new QFrame(card);
     rule->setFrameShape(QFrame::HLine);
     rule->setFrameShadow(QFrame::Sunken);
     body->addWidget(rule);
 
-    m_gateway = new QCheckBox(tr("Share this computer's internet connection as a gateway"), card);
-    m_gateway->setToolTip(tr("Switch it off if the law where you live, or your internet provider's terms, "
-                             "forbid sharing your connection. With it off, this node still relays, holds "
-                             "mail and stays on the chain, and uses its own connection directly."));
+    m_gateway = new QCheckBox(tr("Share this computer's internet connection, and use the network's in return"), card);
+    m_gateway->setToolTip(tr("On, this computer's connection is shared, and all of its own traffic goes out through "
+                             "the network's gateways, each connection through another; this computer's own network "
+                             "\xe2\x80\x94 a printer, the router \xe2\x80\x94 stays direct. Switch it off if the law "
+                             "where you live, or your internet provider's terms, forbid sharing your connection: "
+                             "the network then carries only BPS itself, and this computer uses its own connection."));
     body->addWidget(m_gateway);
 
     QFormLayout* form = new QFormLayout();
@@ -496,24 +481,12 @@ QWidget* ServerPage::MakeGatewayCard()
     form->addRow(tr("Most it shares in a day"), m_gateway_budget);
     body->addLayout(form);
 
-    m_proxy = new QCheckBox(tr("Let programs on this computer use the network's internet, through a local proxy"), card);
-    m_proxy->setToolTip(tr("A SOCKS5 proxy on this computer only. Each connection leaves through another "
-                           "member's gateway, and names are looked up there, never here. It works while "
-                           "this computer shares its own connection."));
-    body->addWidget(m_proxy);
     m_proxy_status = new QLabel(card);
     m_proxy_status->setWordWrap(true);
     m_proxy_status->setTextInteractionFlags(Qt::TextSelectableByMouse);
     m_proxy_status->setContentsMargins(24, 0, 0, 0);
     body->addWidget(m_proxy_status);
 
-    m_interface = new QCheckBox(tr("Carry all of this computer's traffic through the network, with no proxy setting "
-                                   "in any program"), card);
-    m_interface->setToolTip(tr("Every program's connections leave through the network's gateways, each through "
-                               "another, and names are looked up there. This computer's own network \xe2\x80\x94 a "
-                               "printer, the router \xe2\x80\x94 and this node's own connections stay direct. It "
-                               "works while this computer shares its own connection."));
-    body->addWidget(m_interface);
     m_interface_status = new QLabel(card);
     m_interface_status->setWordWrap(true);
     m_interface_status->setTextInteractionFlags(Qt::TextSelectableByMouse);
@@ -535,9 +508,6 @@ QWidget* ServerPage::MakeGatewayCard()
     connect(m_gateway, &QCheckBox::toggled, this, &ServerPage::onChanged);
     connect(m_gateway_budget, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, &ServerPage::onChanged);
-    connect(m_proxy, &QCheckBox::toggled, this, &ServerPage::onChanged);
-    connect(m_interface, &QCheckBox::toggled, this, &ServerPage::onChanged);
-    connect(m_gateway_list, &QPushButton::clicked, this, &ServerPage::onListGateway);
     connect(m_interface_setup, &QPushButton::clicked, this, &ServerPage::onInstallNetService);
     return card;
 }
@@ -600,16 +570,6 @@ void ServerPage::onInstallNetService()
 #endif
 }
 
-void ServerPage::onListGateway()
-{
-    if (!m_client_model) return;
-    // A relay's own listing carries its address, so its gateway is listed under
-    // a second key; any other node lists itself with the gateway option on.
-    PublishDialog dialog(m_rpc, m_wallets, m_client_model->getNumBlocks(), false, this, m_own_address);
-    dialog.exec();
-    Refresh();
-}
-
 void ServerPage::ShowGateway(const UniValue& value)
 {
     const auto num = [&value](const char* key) -> int64_t {
@@ -652,19 +612,22 @@ void ServerPage::ShowGateway(const UniValue& value)
     const UniValue& iface = visitor.isObject() ? find_value(visitor, "interface") : NullUniValue;
     std::string how;
     const bool may = InterfaceAvailable() && overlay::HaveNetAdmin(how);
-    m_interface->setEnabled(InterfaceAvailable());
     m_interface_setup->setVisible(false);
     if (iface.isObject()) {
         const auto inum = [&iface](const char* key) -> int64_t {
             const UniValue& v = find_value(iface, key);
             return v.isNum() ? v.get_int64() : 0;
         };
-        m_interface_status->setText(tr("On: %1 connection(s) through the network now; %2 sent, %3 received.")
+        m_interface_status->setText(tr("For the whole computer: on, %1 connection(s) through the network now; %2 sent, "
+                                       "%3 received.")
                                         .arg(inum("connections"))
                                         .arg(mib(inum("bytes_out")))
                                         .arg(mib(inum("bytes_in"))));
+    } else if (!m_gateway->isChecked()) {
+        m_interface_status->setText(QString());
     } else if (!InterfaceAvailable()) {
-        m_interface_status->setText(tr("Not available on this system yet."));
+        m_interface_status->setText(tr("For the whole computer: not available on this system yet; programs can use "
+                                       "the proxy."));
     } else if (!may) {
 #ifdef WIN32
         m_interface_status->setText(tr("First install BPS Relay's network service, once; Windows asks for an "
@@ -675,7 +638,7 @@ void ServerPage::ShowGateway(const UniValue& value)
                                         .arg(QString::fromStdString(how.substr(how.find("sudo") == std::string::npos ? 0 : how.find("sudo")))));
 #endif
     } else {
-        m_interface_status->setText(m_interface->isChecked() ? tr("Starts when the client restarts.") : QString());
+        m_interface_status->setText(tr("For the whole computer: starts when the client restarts."));
     }
     m_interface_status->setVisible(!m_interface_status->text().isEmpty());
 
@@ -686,29 +649,15 @@ void ServerPage::ShowGateway(const UniValue& value)
         m_gateway_state->setText(gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY)
                                      ? tr("no \xe2\x80\x94 it needs the overlay and the roster index")
                                      : tr("no \xe2\x80\x94 switched off"));
-        for (QLabel* l : {m_gateway_key, m_gateway_today, m_gateway_now}) l->setText(tr("\xe2\x80\x94"));
-        m_gateway_list->setVisible(false);
+        for (QLabel* l : {m_gateway_today, m_gateway_now}) l->setText(tr("\xe2\x80\x94"));
         return;
     }
     const std::string state = find_value(value, "state").getValStr();
-    const bool listed = find_value(value, "listed").isTrue();
-    const std::string own = find_value(value, "own_listing").getValStr();
-    m_own_address = own == "with an address";
-    if (!listed) {
-        SetBadge(m_gateway_badge, Status::ATTENTION, tr("not listed as a gateway"));
-        m_gateway_state->setText(tr("not yet \xe2\x80\x94 the roster does not list this node as a gateway, so "
-                                    "nobody can find it"));
-        m_gateway_key->setText(
-            m_own_address ? tr("nothing yet \xe2\x80\x94 a relay lists its gateway under a second key, with no "
-                               "address, apart from its own listing")
-            : own == "without an address"
-                ? tr("nothing yet \xe2\x80\x94 this node's listing lacks the gateway option; publish it again "
-                     "with the option on")
-                : tr("nothing yet \xe2\x80\x94 publish a listing with no address and the gateway option on"));
-        m_gateway_list->setText(m_own_address ? tr("List this relay's gateway\xe2\x80\xa6") : tr("List as a gateway\xe2\x80\xa6"));
-        m_gateway_list->setVisible(true);
+    // Sharing is a switch, not a listing: the node says why it does not serve.
+    if (!find_value(value, "serving").isTrue()) {
+        SetBadge(m_gateway_badge, Status::ATTENTION, tr("not sharing"));
+        m_gateway_state->setText(tr("no \xe2\x80\x94 %1").arg(QString::fromStdString(find_value(value, "why").getValStr())));
     } else {
-        m_gateway_list->setVisible(false);
         if (state == "open") {
             SetBadge(m_gateway_badge, Status::RUNNING, tr("sharing"));
             m_gateway_state->setText(tr("yes, taking connections"));
@@ -717,10 +666,6 @@ void ServerPage::ShowGateway(const UniValue& value)
             m_gateway_state->setText(tr("today's share is used up; it takes connections again when the day "
                                         "turns (UTC)"));
         }
-        const QString key = BpsUtil::ShortKey(QString::fromStdString(find_value(value, "key").getValStr()));
-        m_gateway_key->setText(find_value(value, "second_key").isTrue()
-                                   ? tr("its gateway key %1, apart from the relay's address").arg(key)
-                                   : tr("this node's own key %1").arg(key));
     }
     const int64_t budget = num("daily_budget_bytes");
     m_gateway_today->setText(budget > 0 ? tr("%1 of %2 MiB").arg(mib(num("today_bytes"))).arg(budget >> 20)
@@ -745,9 +690,6 @@ void ServerPage::Load()
     m_mailbox_size->setValue((int)gArgs.GetArg("-mailboxmaxsize", (int64_t)mail::DEFAULT_MAILBOX_MAX_MB));
     m_gateway->setChecked(gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY));
     m_gateway_budget->setValue((int)gArgs.GetArg("-gatewaybandwidth", (int64_t)overlay::DEFAULT_GATEWAY_BANDWIDTH_MIB));
-    m_proxy->setChecked(gArgs.GetBoolArg("-gatewayproxy", overlay::DEFAULT_GATEWAY_PROXY));
-    m_interface->setChecked(gArgs.GetBoolArg("-gatewayroutes", false) ||
-                            QSettings().value(KEY_GATEWAY_INTERFACE, false).toBool());
     m_loading = false;
 }
 
@@ -764,8 +706,6 @@ void ServerPage::onChanged()
     settings.setValue(KEY_MAILBOX_SIZE, m_mailbox_size->value());
     settings.setValue(KEY_GATEWAY, m_gateway->isChecked());
     settings.setValue(KEY_GATEWAY_BUDGET, m_gateway_budget->value());
-    settings.setValue(KEY_GATEWAY_PROXY, m_proxy->isChecked());
-    settings.setValue(KEY_GATEWAY_INTERFACE, m_interface->isChecked());
     const QString saved = tr("Saved. These are read when the node starts, so restart the client "
                              "for the change to take effect.");
     for (QLabel* note : {m_restart_note, m_mailbox_note, m_gateway_note}) {

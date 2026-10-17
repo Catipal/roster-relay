@@ -59,9 +59,11 @@ struct netif;
  * public addresses are given back, so a visitor learns nothing of the
  * owner's own network.
  *
- * A node serves as a gateway only while the roster lists its key as one: the
- * gateway bit, and no endpoint. Never under a key with an address, which
- * would publish where an exit is.
+ * A node serves as a gateway while its owner has it switched on and the roster
+ * lists the node through the overlay - no address, not a relay - so that it
+ * can be met. Nothing else: sharing is a switch, not a listing.
+ * Never a relay, whose address is public: its exit would be at
+ * that address.
  */
 namespace overlay {
 
@@ -89,14 +91,14 @@ class Gateway
 public:
     /** Send a message to the visitor at the end of `path`, sealed (Relay::SendSecret). */
     using Sender = std::function<bool(uint64_t path, const std::vector<uint8_t>& payload)>;
-    /** Whether the roster lists this node as a gateway now. */
-    using ListedCheck = std::function<bool()>;
+    /** Whether this node serves now: switched on, listed through the overlay, not a relay. */
+    using ServingCheck = std::function<bool()>;
     /** This machine's own addresses, which a stranger never connects to. */
     using SelfAddresses = std::function<std::vector<IpAddr>()>;
     /** Look a name up. The default asks the system's resolver. */
     using Resolver = std::function<ResolveStatus(const std::string& name, uint8_t family, std::vector<IpAddr>& out)>;
-    /** Called when the gateway starts or stops being listed, to register at meeting points or not. */
-    using ListedChanged = std::function<void(bool listed)>;
+    /** Called when the gateway starts or stops serving, to register at meeting points or not. */
+    using ServingChanged = std::function<void(bool serving)>;
 
     static constexpr int64_t CONNECT_TIMEOUT_MS = 20 * 1000;
     static constexpr int64_t UDP_IDLE_MS = 2 * 60 * 1000;
@@ -110,8 +112,8 @@ public:
     static constexpr size_t MAX_LOOKUPS = 256;
     static constexpr uint32_t RESOLVE_TTL = 300;
 
-    Gateway(const GatewayConfig& config, Sender send, ListedCheck listed, SelfAddresses self,
-            Resolver resolve = nullptr, ListedChanged changed = nullptr);
+    Gateway(const GatewayConfig& config, Sender send, ServingCheck serving, SelfAddresses self,
+            Resolver resolve = nullptr, ServingChanged changed = nullptr);
     ~Gateway();
 
     /** Needs the stack running (GetNetStack().Start). */
@@ -125,7 +127,7 @@ public:
 
     struct Stats {
         GatewayState state{GatewayState::OFF};
-        bool listed{false};
+        bool serving{false};
         uint64_t today_bytes{0};
         uint64_t daily_budget{0};
         uint64_t meeting_rate{0};
@@ -219,10 +221,10 @@ private:
 
     const GatewayConfig m_config;
     const Sender m_send;
-    const ListedCheck m_listed_check;
+    const ServingCheck m_serving_check;
     const SelfAddresses m_self_addresses;
     Resolver m_resolve;
-    const ListedChanged m_listed_changed;
+    const ServingChanged m_serving_changed;
 
     TrafficLimits m_limits;
     /**
@@ -233,7 +235,7 @@ private:
      * caps, so they rarely drop.
      */
     TrafficLimits m_pacer;
-    std::atomic<bool> m_listed{false};
+    std::atomic<bool> m_serving{false};
     std::atomic<bool> m_running{false};
 
     // Between the receive thread and the stack thread.
@@ -275,27 +277,21 @@ private:
 extern std::unique_ptr<Gateway> g_gateway;
 
 /**
- * The key this node serves as a gateway under: its own operational key when
- * the roster lists that as a gateway (no address), or its gateway key - a
- * relay's, since a relay's own key carries its address (roster/keystore.h).
+ * Whether this node serves as a gateway, under its roster key, and why not
+ * when it does not: for getgatewayinfo and the Server page.
  */
 struct GatewayIdentity {
-    bool listed{false};
-    bool second_key{false};
+    bool serving{false};
     roster::KeyBytes key{};
-    //! The node's own listing, which says how it may list itself as a gateway:
-    //! a listing with an address is a relay's, whose gateway needs the second key.
-    bool own_listed{false};
-    bool own_address{false};
+    std::string why; //!< why not, while not serving
 };
 GatewayIdentity GetGatewayIdentity();
 void SetGatewayIdentity(const GatewayIdentity& id);
 
 class MeetingService;
 /**
- * The gateway's registration at its meeting points, running only while the
- * roster lists this node as a gateway, under the key it is listed by. Null
- * when not listed, or when -meetable keeps the node's own key registered
+ * The gateway's registration at its meeting points, running only while it
+ * serves. Null when it does not, or when -meetable keeps the node registered
  * anyway (overlay::g_meeting). Guarded by g_gateway_meeting_mutex.
  */
 extern Mutex g_gateway_meeting_mutex;

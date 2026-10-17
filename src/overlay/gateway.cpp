@@ -291,10 +291,10 @@ std::vector<IpAddr> LocalInterfaceAddresses()
     return out;
 }
 
-Gateway::Gateway(const GatewayConfig& config, Sender send, ListedCheck listed, SelfAddresses self,
-                 Resolver resolve, ListedChanged changed)
-    : m_config(config), m_send(std::move(send)), m_listed_check(std::move(listed)),
-      m_self_addresses(std::move(self)), m_resolve(std::move(resolve)), m_listed_changed(std::move(changed))
+Gateway::Gateway(const GatewayConfig& config, Sender send, ServingCheck serving, SelfAddresses self,
+                 Resolver resolve, ServingChanged changed)
+    : m_config(config), m_send(std::move(send)), m_serving_check(std::move(serving)),
+      m_self_addresses(std::move(self)), m_resolve(std::move(resolve)), m_serving_changed(std::move(changed))
 {
     if (!m_resolve) m_resolve = SystemResolve;
     m_limits.Configure(m_config.daily_budget, m_config.meeting_rate);
@@ -417,13 +417,13 @@ void Gateway::Stop()
     } else {
         teardown();
     }
-    if (m_listed && m_listed_changed) m_listed_changed(false);
-    m_listed = false;
+    if (m_serving && m_serving_changed) m_serving_changed(false);
+    m_serving = false;
 }
 
 GatewayState Gateway::State() const
 {
-    if (!m_listed) return GatewayState::OFF;
+    if (!m_serving) return GatewayState::OFF;
     if (!m_limits.GetStats(NowMs()).accepting) return GatewayState::CLOSED_TODAY;
     return GatewayState::OPEN;
 }
@@ -432,7 +432,7 @@ Gateway::Stats Gateway::GetStats() const
 {
     Stats s;
     s.state = State();
-    s.listed = m_listed;
+    s.serving = m_serving;
     const TrafficLimits::Stats l = m_limits.GetStats(NowMs());
     s.today_bytes = l.today;
     s.daily_budget = l.daily_budget;
@@ -1065,11 +1065,11 @@ void Gateway::Tick()
 
 void Gateway::Refresh()
 {
-    const bool listed = m_listed_check ? m_listed_check() : false;
-    if (listed != m_listed.exchange(listed)) {
-        LogPrintf("gateway: %s\n", listed ? "listed as a gateway; taking connections"
-                                          : "not listed as a gateway (the gateway bit, no address); taking none");
-        if (m_listed_changed) m_listed_changed(listed);
+    const bool serving = m_serving_check ? m_serving_check() : false;
+    if (serving != m_serving.exchange(serving)) {
+        LogPrintf("gateway: %s\n", serving ? "serving; taking connections"
+                                           : "not serving (see getgatewayinfo); taking none");
+        if (m_serving_changed) m_serving_changed(serving);
     }
     std::vector<IpAddr> self = m_self_addresses ? m_self_addresses() : std::vector<IpAddr>();
     LOCK(m_worker_mutex);

@@ -214,7 +214,7 @@ bool AgreedRelays(const RosterIndex& index, int height, std::vector<KeyBytes>& o
     return true;
 }
 
-bool CollectGateways(const RosterIndex& index, int height, std::vector<KeyBytes>& out)
+bool CollectThroughOverlay(const RosterIndex& index, int height, std::vector<KeyBytes>& out)
 {
     out.clear();
     std::map<KeyBytes, RosterEntry> live;
@@ -223,7 +223,7 @@ bool CollectGateways(const RosterIndex& index, int height, std::vector<KeyBytes>
         if (SeenRevoked(it->first)) continue;
         Record rec;
         if (!it->second.Parse(rec)) continue;
-        if (IsGatewayRecord(rec.services, rec.endpoints.size())) out.push_back(it->first);
+        if (IsListedThroughOverlay(rec.services, rec.endpoints.size())) out.push_back(it->first);
     }
     return true;
 }

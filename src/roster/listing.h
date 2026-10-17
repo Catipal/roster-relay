@@ -27,28 +27,21 @@ struct Hop;
  * Design note 001 settles who does what: the user signs its own record, month
  * by month, and the relay it uses pays the fee (§2, §8). What it left open is
  * how the signed record reaches the relay. This is that: the record travels
- * over the overlay session the user already has with its entry relay, as
- * application data, so nothing new is opened and the relay learns nothing it
- * did not already know from the handshake.
+ * as application data over a path whose session proves the user's roster
+ * key to the relay asked and to nobody else, so a relay can insist that the
+ * record it pays for names the key of the peer actually asking.
  *
- * The session is what makes the request meaningful. The overlay authenticates
- * each side's static key, which is the same operational key the roster
- * publishes, so a relay can insist that the record it pays for names the key
- * of the peer actually connected to it. That is the "relay watches its own
- * connections" half of the settled model: the relay pays for the peers it
- * serves, and it is the only party that can see who those are.
+ * The relay asked is never one of the user's entry relays.
+ * A node that is not a relay shows the relays it connects to a
+ * key made for each connection, so the relay that sees its address does not
+ * learn who it is, and the relay that learns who it is does not see its
+ * address. A radio neighbour is the exception: it knows the key from the
+ * radio announcement already, and a node with one relay in range could build
+ * no path, so it is asked directly.
  *
  * Paying is opt-in on the relay's side and off by default. Spending a wallet's
  * coins because a stranger asked is something an operator should choose, not
  * discover.
- *
- * One listing is asked for over a path instead: a relay's gateway key
- * (design note §8·7). The relay's own key carries its address, so asking from
- * where it is - or paying from its own wallet, whose coins the chain ties to
- * the relay's own listing - would say where that gateway is. Over a path that
- * proves the gateway key and nothing else, the relay that pays learns the key
- * and not the address. Relays pay that way only for a gateway's listing: the
- * bit, and no address.
  *
  * A relay also has to be staking, and that is what makes this work before the
  * rest of the network upgrades (settled 2026-09-07). A record is larger than
@@ -115,7 +108,6 @@ bool DecodeListingResult(const std::vector<unsigned char>& msg, uint64_t& id_out
 /** Everything a relay knows when deciding, gathered so the decision can be tested alone. */
 struct ListingContext {
     KeyBytes requester{};        //!< key the overlay session authenticated
-    bool over_path{false};       //!< asked through a path, so from no address
     int next_height{0};          //!< earliest height the record could confirm at
     std::string chain_id;
     uint32_t live_expiry{0};     //!< expiry of the requester's live listing, 0 if none
@@ -136,7 +128,8 @@ uint32_t NeededConfirmWindow(uint64_t own_weight, uint64_t network_weight);
  * Decide whether to pay for a peer's record, before any coin is touched.
  *
  * Refuses a record that would not be indexed, one naming a key other than the
- * requester's, anything but a gateway's listing when asked over a path, a renewal asked for before the current listing's last three days, a second payment while the first is still confirming, and a new peer
+ * requester's, a renewal asked for before the current listing's last three
+ * days, a second payment while the first is still confirming, and a new peer
  * once the relay is full. Each of those would cost the relay a fee and gain
  * nobody anything.
  *
@@ -177,11 +170,15 @@ uint32_t LiveExpiry(const KeyBytes& key, int tip);
 CService OverlayAddressFor(const CService& endpoint);
 
 /**
- * Ask a relay to publish `record`, and wait for its answer.
+ * Ask a radio neighbour relay to publish `record`, directly, and wait for its
+ * answer. Only over the radio: a neighbour there knows this node's roster key
+ * from its radio announcement already, and a node with one relay in range
+ * could build no path. Over the internet a node never asks the relay it
+ * connects to, which sees its address (RequestListingOverPath).
  *
- * Opens an overlay session with the relay if there is none, checking that the
- * key answering at that address is the one asked for. `answered` is false
- * when the relay could not be reached or said nothing in time, so a caller can
+ * Opens a session with the relay if there is none, checking that the key
+ * answering at that address is the one asked for. `answered` is false when
+ * the relay could not be reached or said nothing in time, so a caller can
  * tell silence from a refusal.
  */
 ListingOutcome RequestListing(const CService& relay_addr, const CPubKey& relay_key,
@@ -190,13 +187,16 @@ ListingOutcome RequestListing(const CService& relay_addr, const CPubKey& relay_k
                               std::chrono::seconds answer_timeout, bool& answered);
 
 /**
- * Ask the listed relay `relay` to publish a gateway's `record`, through a path
- * of `hops` relays whose session proves `as` - the key the record names - and
- * nothing about where this node is. For a relay's gateway key, which must not
- * be asked for from the relay's own address.
+ * Ask the listed relay `relay` to publish `record`, through a path of `hops`
+ * relays, and wait for its answer. The path's session proves this node's
+ * roster key - the key the record names - to `relay` alone, and nothing
+ * about where this node is: the relay that pays learns the key, the relays on
+ * the way learn nothing, and the entry relay, which sees the address, sees a
+ * key made for the connection. `answered` is false when
+ * the relay could not be reached or said nothing in time, so a caller can
+ * tell silence from a refusal.
  */
-ListingOutcome RequestListingOverPath(const KeyBytes& relay, const CKey& as,
-                                      const std::vector<unsigned char>& record, int hops,
+ListingOutcome RequestListingOverPath(const KeyBytes& relay, const std::vector<unsigned char>& record, int hops,
                                       std::chrono::seconds answer_timeout, bool& answered);
 
 } // namespace roster

@@ -102,9 +102,10 @@ void Answer(const overlay::Hop& to, uint64_t id, const ListingOutcome& outcome)
 }
 
 /**
- * The key the asker proved: in the hop's handshake, or for a path in the
- * end-to-end handshake, where a requester proves its key on purpose (a
- * gateway's) and every other path a throwaway one.
+ * The key the asker proved: for a path in the end-to-end handshake, where a
+ * requester proves its key on purpose and every other path a throwaway one;
+ * directly, in the hop's handshake, which only a relay still makes with its
+ * own key - every other node shows a key made for the connection.
  */
 CPubKey RequesterIdentity(const overlay::Hop& from)
 {
@@ -127,7 +128,6 @@ ListingOutcome Decide(const overlay::Hop& from, const std::vector<unsigned char>
 
     ListingContext ctx;
     std::copy(identity.begin() + 1, identity.begin() + 33, ctx.requester.begin());
-    ctx.over_path = from.via_path;
     ctx.chain_id = Params().NetworkIDString();
     int tip;
     uint64_t network_weight;
@@ -392,13 +392,6 @@ bool CheckListingRequest(const std::vector<unsigned char>& raw, const ListingCon
         reason = "The listing names a different key from the one connected here.";
         return false;
     }
-    // Over a path the relay cannot watch who it is paying for, as it watches
-    // its own connections. A gateway is the one listing that must be asked
-    // for from no address, so it is the one paid for that way.
-    if (ctx.over_path && !IsGatewayRecord(rec.services, rec.endpoints.size())) {
-        reason = "Through a path, this relay pays only for a gateway's listing: the gateway bit and no address.";
-        return false;
-    }
     if (!ExpiryInRange(rec.expiry_height, ctx.next_height)) {
         reason = strprintf("The listing ends at block %u, which is out of range for one confirming at %d.",
                            rec.expiry_height, ctx.next_height);
@@ -470,6 +463,9 @@ ListingOutcome RequestListing(const CService& relay_addr, const CPubKey& relay_k
     if (!overlay::g_overlay) return Refused("The overlay is off, so there is no way to reach a relay.");
     if (!relay_key.IsFullyValid()) return Refused("That is not a valid relay key.");
 
+    // Only to a radio neighbour (requestlisting): over the radio this node
+    // proves its roster key, which its radio announcement shows anyway.
+    //
     // A fresh handshake every time rather than trusting a session left over
     // from before: if the relay has restarted since, its half of the old
     // session is gone and anything sent on it vanishes without a word. One
@@ -541,18 +537,17 @@ ListingOutcome RequestListing(const CService& relay_addr, const CPubKey& relay_k
     return result.outcome;
 }
 
-ListingOutcome RequestListingOverPath(const KeyBytes& relay, const CKey& as,
-                                      const std::vector<unsigned char>& record, int hops,
+ListingOutcome RequestListingOverPath(const KeyBytes& relay, const std::vector<unsigned char>& record, int hops,
                                       std::chrono::seconds answer_timeout, bool& answered)
 {
     answered = false;
     if (!overlay::g_overlay) return Refused("The overlay is off, so there is no way to reach a relay.");
 
-    // The relay proves itself as the path's far end; this node proves `as`
-    // to it and to nobody else on the way.
+    // The relay proves itself as the path's far end; this node proves its
+    // roster key to it and to nobody else on the way.
     overlay::Reached reached;
     std::string error;
-    if (!overlay::ReachRelay(relay, hops, /* prove_last */ true, reached, error, &as)) {
+    if (!overlay::ReachRelay(relay, hops, /* prove_last */ true, reached, error)) {
         return Refused("Could not reach the relay through a path: " + error + ".");
     }
 
@@ -568,7 +563,8 @@ ListingOutcome RequestListingOverPath(const KeyBytes& relay, const CKey& as,
     }
     // Sent again under the same id while no answer comes, as above; each try
     // allows for the step timeout of every relay on the way and back.
-    const auto answer_deadline = std::chrono::steady_clock::now() + answer_timeout;
+    // A path that starts on the radio takes longer a step, both ways.
+    const auto answer_deadline = std::chrono::steady_clock::now() + answer_timeout + 6 * reached.step;
     const auto resend_every = std::chrono::milliseconds{10000} + 2 * reached.step;
     PendingRequest result;
     while (true) {

@@ -47,11 +47,18 @@ static constexpr int MAX_MEET_HOPS = 3;
 /** Whether this node keeps itself registered at its meeting points (-meetable). */
 static const bool DEFAULT_MEETABLE = false;
 /**
- * How often a registration is repeated. That keeps its path from idling out
- * at every relay on it (PathTable::PATH_TTL, ten minutes), and the answer
- * says the meeting point still has it.
+ * How often a registration is repeated over the internet. The answer comes
+ * back along the whole path, so it is the echo that says the path still
+ * works: a relay on it that restarts, crashes or moves forgets the path
+ * without telling anyone, and the meeting point goes on joining visitors to
+ * it. Unanswered, the node builds a new path at once, and the meeting point
+ * keeps the newest registration for each key, so a node is out of reach for
+ * about this long plus a rebuild - half a minute, where it was four.
+ * It also keeps the path from idling out (PathTable::PATH_TTL).
  */
-static constexpr int64_t MEET_REFRESH = 240;
+static constexpr int64_t MEET_REFRESH = 30;
+/** The same over a path that starts on the radio, whose airtime is too scarce for it. */
+static constexpr int64_t MEET_REFRESH_RADIO = 240;
 /** Overlay application data tag: "are you there" across a meeting, and its answer. */
 static constexpr uint8_t MEET_ECHO = 0x12;
 /**
@@ -92,8 +99,7 @@ struct Reached {
  * meeting point must be to register it; every relay before it sees only a key
  * made for the occasion.
  */
-bool ReachRelay(const roster::KeyBytes& key, int hops, bool prove_last, Reached& out, std::string& error,
-                const CKey* prove_as = nullptr);
+bool ReachRelay(const roster::KeyBytes& key, int hops, bool prove_last, Reached& out, std::string& error);
 
 /** One registration of this node at a meeting point. */
 struct Registration {
@@ -109,12 +115,8 @@ struct Registration {
 class MeetingService
 {
 public:
-    /**
-     * Keep `self` registered. With `as`, `self` is that key - one the node
-     * holds besides its static key, as a relay's gateway key is - and both
-     * the registration and the meetings spliced onto it use it.
-     */
-    MeetingService(const roster::KeyBytes& self, int hops, const CKey* as = nullptr);
+    /** Keep `self`, this node's roster key, registered. */
+    MeetingService(const roster::KeyBytes& self, int hops);
     ~MeetingService();
 
     void Start();
@@ -135,11 +137,8 @@ private:
 
     const roster::KeyBytes m_self;
     const int m_hops;
-    const bool m_has_as;
-    const CKey m_as;
-    //! This node's own operational key. Under a second key, the node can be one
-    //! of its own meeting points - a relay running a gateway - and a path to
-    //! itself cannot be built, so that point is left out.
+    //! This node's own operational key. A relay can be one of its own meeting
+    //! points, and a path to itself cannot be built, so that point is left out.
     roster::KeyBytes m_node{};
     mutable Mutex m_mutex;
     std::map<roster::KeyBytes, Registration> m_regs GUARDED_BY(m_mutex);

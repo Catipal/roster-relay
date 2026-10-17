@@ -62,9 +62,12 @@ enum class RecordType : uint8_t {
  * cannot reach arbitrary hosts, so no third party's logs ever hold a relay's
  * address. A gateway is different, and is the one role that is an exit: it
  * opens connections to the internet for others, and the websites they reach
- * see the gateway's address (design note §8·7). That is why a gateway is
- * listed with no endpoint and reached only at its meeting points: no BPS node
- * learns where it is, and the roster never becomes a list of exit addresses.
+ * see the gateway's address (design note §8·7). Sharing the internet is a
+ * switch of the node, not something it is listed for:
+ * visitors look for gateways among the keys listed through the overlay - no
+ * endpoint, not a relay - met at their meeting points, so no BPS node learns
+ * where one is and the roster never becomes a list of exits. A relay, whose
+ * address is public, never shares its internet.
  */
 /**
  * This key is a relay that announces its address while it runs, signed and
@@ -74,13 +77,9 @@ enum class RecordType : uint8_t {
 static constexpr uint32_t SERVICE_RELAY_CAPABLE = 1U << 0;
 static constexpr uint32_t SERVICE_RENDEZVOUS_ONLY = 1U << 1;
 /**
- * This key is a gateway to the internet, met at its meeting points (§8·7).
- *
- * Advisory like the others: a node that does not know the bit parses, indexes
- * and commits to the record unchanged. Meaningful only on a record with no
- * endpoint and not listing a relay. With an endpoint, or announcing one as a
- * relay does, the record would say where an exit is, so this node's builder
- * refuses the combination and readers ignore the bit.
+ * Retired: once "this key is a gateway". Gateways are no longer listed;
+ * nothing sets the bit and nothing reads it, and a record
+ * carrying it parses and counts as any other.
  */
 static constexpr uint32_t SERVICE_GATEWAY = 1U << 2;
 /**
@@ -95,10 +94,14 @@ static constexpr uint32_t SERVICE_GATEWAY = 1U << 2;
 static constexpr uint32_t SERVICE_MEET_PRESENT = 1U << 30;
 static constexpr uint32_t SERVICE_META_PRESENT = 1U << 31;
 
-/** Whether a parsed announcement lists a gateway: the bit, no endpoint, and not a relay. */
-inline bool IsGatewayRecord(uint32_t services, size_t endpoint_count)
+/**
+ * Whether a parsed announcement lists a key through the overlay: no endpoint,
+ * and not a relay. Met at its meeting points, and where visitors look for
+ * gateways.
+ */
+inline bool IsListedThroughOverlay(uint32_t services, size_t endpoint_count)
 {
-    return (services & SERVICE_GATEWAY) != 0 && (services & SERVICE_RELAY_CAPABLE) == 0 && endpoint_count == 0;
+    return endpoint_count == 0 && (services & SERVICE_RELAY_CAPABLE) == 0;
 }
 
 static constexpr size_t RECORD_HEADER_SIZE = 4; //!< magic(3) + ver/type(1)

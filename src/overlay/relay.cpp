@@ -85,9 +85,35 @@ void Relay::SetNextHopResolver(NextHopResolver resolver)
 
 constexpr int64_t Relay::RADIO_DIAL_TTL;
 
+void Relay::SetRadioCheck(RadioCheck check)
+{
+    LOCK(m_mutex);
+    m_radio_check = std::move(check);
+}
+
+bool Relay::OverRadio(const CService& peer)
+{
+    RadioCheck radio;
+    {
+        LOCK(m_mutex);
+        radio = m_radio_check;
+    }
+    return radio && radio(peer);
+}
+
+bool Relay::Throwaway(const CService& peer)
+{
+    return m_throwaway && !OverRadio(peer);
+}
+
+bool Relay::Fresh(const CService& peer, bool radio)
+{
+    return radio ? m_socket.HasSession(peer) : m_socket.Live(peer);
+}
+
 bool Relay::Connect(const CService& peer, const CPubKey& peer_static)
 {
-    return m_socket.Connect(peer, peer_static);
+    return m_socket.Connect(peer, peer_static, Throwaway(peer));
 }
 
 bool Relay::SendApp(const CService& peer, const std::vector<unsigned char>& payload)
@@ -164,15 +190,12 @@ bool Relay::SendOnPath(uint64_t path_id, const std::vector<unsigned char>& inner
     return SendToHop(carrier, msg, /* wrapping */ true);
 }
 
-bool Relay::ConnectSecret(uint64_t path_id, const CPubKey& far_static, bool anonymous, const CKey* as)
+bool Relay::ConnectSecret(uint64_t path_id, const CPubKey& far_static, bool anonymous)
 {
     std::vector<unsigned char> hello;
     {
         LOCK(m_mutex);
-        if (as) {
-            // A key of this node's other than its static one, shown on purpose.
-            if (!m_secret.ConnectAs(path_id, far_static, *as, hello)) return false;
-        } else if (anonymous) {
+        if (anonymous) {
             // Made for this handshake and dropped with it. The far end sees a
             // key it has never seen and never will again.
             CKey once;
@@ -221,8 +244,7 @@ bool Relay::SendSecret(uint64_t path_id, const std::vector<unsigned char>& paylo
 }
 
 bool Relay::BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out,
-                         std::string& error, std::chrono::milliseconds step_timeout, bool prove_last,
-                         const CKey* prove_as)
+                         std::string& error, std::chrono::milliseconds step_timeout, bool prove_last)
 {
     path_out = 0;
     if (hops.size() < 2) {
@@ -240,17 +262,22 @@ bool Relay::BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out
     const std::chrono::milliseconds attempt_timeout = step_timeout / 3;
 
     // The entry relay is the one hop reached directly. A session left over
-    // from before is used only if the right key is still on it.
+    // from before is used only if the right key is still on it, and it has
+    // been heard from lately: the relay may have restarted since.
     const CircuitHop& entry = hops[0];
-    bool linked = m_socket.HasSession(entry.addr) && m_socket.PeerIdentity(entry.addr) == entry.key;
+    const bool entry_radio = OverRadio(entry.addr);
+    const auto entry_linked = [&] {
+        return Fresh(entry.addr, entry_radio) && m_socket.PeerIdentity(entry.addr) == entry.key;
+    };
+    bool linked = entry_linked();
     for (int attempt = 0; !linked && attempt < 3 && !m_interrupted; ++attempt) {
-        if (!m_socket.Connect(entry.addr, entry.key)) break;
+        if (!m_socket.Connect(entry.addr, entry.key, Throwaway(entry.addr))) break;
         const auto until = std::chrono::steady_clock::now() + attempt_timeout;
         while (std::chrono::steady_clock::now() < until && m_socket.HasPendingHandshake(entry.addr) &&
                !m_interrupted) {
             UninterruptibleSleep(std::chrono::milliseconds{20});
         }
-        linked = m_socket.HasSession(entry.addr) && m_socket.PeerIdentity(entry.addr) == entry.key;
+        linked = entry_linked();
     }
     if (!linked) {
         error = strprintf("the entry relay at %s did not answer", entry.addr.ToString());
@@ -281,7 +308,7 @@ bool Relay::BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out
             // asked, the last: a meeting point registers a service only over a
             // session that proved the service's own key.
             const bool anonymous = !(prove_last && i + 1 == hops.size());
-            if (!ConnectSecret(id, hops[i].key, anonymous, anonymous ? nullptr : prove_as)) break;
+            if (!ConnectSecret(id, hops[i].key, anonymous)) break;
             const auto until = std::chrono::steady_clock::now() + attempt_timeout;
             while (std::chrono::steady_clock::now() < until && !HasSecretSession(id) && !m_interrupted) {
                 UninterruptibleSleep(std::chrono::milliseconds{20});
@@ -359,16 +386,7 @@ TrafficLimits::Stats Relay::LimitStats() const
     return m_limits.GetStats(LimitsNow());
 }
 
-void Relay::SetServiceKey(uint64_t registration_path, const CKey& key)
-{
-    LOCK(m_mutex);
-    // Bounded like the path table; a registration's path is the only thing
-    // that ever names an entry, and old ones are simply never asked for again.
-    if (m_service_keys.size() >= PathTable::MAX_PATHS && !m_service_keys.count(registration_path)) {
-        m_service_keys.erase(m_service_keys.begin());
-    }
-    m_service_keys[registration_path] = key;
-}
+
 
 size_t Relay::PathCount()
 {
@@ -506,11 +524,15 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
         }
 
         // A session that exists already is used only if it is with the key
-        // the path was asked for; an address is not an identity.
+        // the path was asked for; an address is not an identity. And only as
+        // it is if it has been heard from lately: a relay that restarted has
+        // forgotten its half and would swallow the path without a word, so a
+        // quiet one is shaken hands again first, where the dial policy allows.
         bool linked = m_socket.HasSession(reach);
         if (linked && dest_key.IsValid() && m_socket.PeerIdentity(reach) != dest_key) linked = false;
+        const bool fresh = linked && Fresh(reach, slow);
 
-        if (!linked && dest_key.IsValid() && Hop::Direct(reach) != from) {
+        if (!fresh && dest_key.IsValid() && Hop::Direct(reach) != from) {
             // Dial only a relay the roster lists, at the address it lists, with
             // the key it lists. Building a path to a host this node has never
             // heard of would let a stranger name any address and have the
@@ -536,9 +558,9 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
                     }
                 }
                 if (waiting) {
-                    if (!m_socket.HasPendingHandshake(reach)) m_socket.Connect(reach, dest_key);
-                    LogPrint(BCLog::NET, "overlay: dialling %s to extend a path%s\n", reach.ToString(),
-                             slow ? " over radio" : "");
+                    if (!m_socket.HasPendingHandshake(reach)) m_socket.Connect(reach, dest_key, m_throwaway && !slow);
+                    LogPrint(BCLog::NET, "overlay: dialling %s to extend a path%s%s\n", reach.ToString(),
+                             slow ? " over radio" : "", linked ? " (its session had gone quiet)" : "");
                     return; // answered once the session completes, or when it times out
                 }
             }
@@ -576,12 +598,6 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
         LOCK(m_mutex);
         m_paths.Expire(GetTime());
         m_paths.CreateEndpoint(path_id, from, GetTime());
-        // Spliced onto a registration made under another key: the visitor is
-        // asking for that key, so that is the key that answers.
-        if (from.via_path) {
-            std::map<uint64_t, CKey>::const_iterator k = m_service_keys.find(from.path);
-            if (k != m_service_keys.end()) m_secret.SetResponderKey(path_id, k->second);
-        }
         return;
     }
 

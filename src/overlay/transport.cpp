@@ -4,6 +4,8 @@
 
 #include <overlay/transport.h>
 
+#include <util/time.h>
+
 #include <cstring>
 
 namespace overlay {
@@ -34,8 +36,17 @@ TransportT<PeerKey>::TransportT(const CKey& static_key) : m_static(static_key) {
 
 template <typename PeerKey>
 bool TransportT<PeerKey>::Connect(const PeerKey& peer, const CPubKey& peer_static,
-                        std::vector<unsigned char>& datagram_out)
+                        std::vector<unsigned char>& datagram_out, bool throwaway)
 {
+    // With `throwaway`, a key made for this handshake proves nothing about who
+    // opened the session. Answering is unchanged: a peer that dials this node
+    // reached the key it asked for, which only the static key can prove.
+    if (throwaway) {
+        // Made for this handshake and kept only as long as the handshake is.
+        CKey once;
+        once.MakeNewKey(true);
+        return ConnectAs(peer, peer_static, once, datagram_out);
+    }
     return ConnectAs(peer, peer_static, m_static, datagram_out);
 }
 
@@ -86,8 +97,7 @@ typename TransportT<PeerKey>::Result TransportT<PeerKey>::Receive(const PeerKey&
         std::vector<unsigned char> msg2;
         SessionKeys keys;
         HandshakeResponder responder;
-        typename std::map<PeerKey, CKey>::const_iterator as = m_responder_keys.find(from);
-        if (!responder.Accept(as != m_responder_keys.end() ? as->second : m_static, body, body_len, initiator, msg2, keys)) {
+        if (!responder.Accept(m_static, body, body_len, initiator, msg2, keys)) {
             return TransportT<PeerKey>::Result::IGNORED;
         }
 
@@ -97,6 +107,7 @@ typename TransportT<PeerKey>::Result TransportT<PeerKey>::Receive(const PeerKey&
         Established est;
         est.session.reset(new Session(keys));
         est.identity = initiator;
+        est.heard = GetTime();
         m_sessions[from] = std::move(est);
         m_pending.erase(from);
 
@@ -126,6 +137,7 @@ typename TransportT<PeerKey>::Result TransportT<PeerKey>::Receive(const PeerKey&
         // The responder authenticated itself by completing the exchange, so
         // its identity is the key we deliberately encrypted to.
         est.identity = expected;
+        est.heard = GetTime();
         m_sessions[from] = std::move(est);
         return TransportT<PeerKey>::Result::ESTABLISHED;
     }
@@ -136,6 +148,8 @@ typename TransportT<PeerKey>::Result TransportT<PeerKey>::Receive(const PeerKey&
         // The session id in the header is only a hint for lookup; Open checks
         // it against the authenticated one and verifies the tag.
         if (!it->second.session->Open(data, len, payload_out)) return TransportT<PeerKey>::Result::IGNORED;
+        it->second.heard = GetTime();
+        it->second.unanswered_since = 0;
         return TransportT<PeerKey>::Result::PAYLOAD;
     }
     }
@@ -149,6 +163,7 @@ bool TransportT<PeerKey>::Send(const PeerKey& peer, const std::vector<unsigned c
 {
     typename std::map<PeerKey, Established>::iterator it = m_sessions.find(peer);
     if (it == m_sessions.end()) return false;
+    if (it->second.unanswered_since == 0) it->second.unanswered_since = GetTime();
     return it->second.session->Seal(payload, datagram_out, pad);
 }
 
@@ -156,6 +171,16 @@ template <typename PeerKey>
 bool TransportT<PeerKey>::HasSession(const PeerKey& peer) const
 {
     return m_sessions.find(peer) != m_sessions.end();
+}
+
+template <typename PeerKey>
+bool TransportT<PeerKey>::Live(const PeerKey& peer, int64_t now) const
+{
+    typename std::map<PeerKey, Established>::const_iterator it = m_sessions.find(peer);
+    if (it == m_sessions.end()) return false;
+    const Established& est = it->second;
+    if (now - est.heard >= HOP_QUIET) return false;
+    return est.unanswered_since == 0 || now - est.unanswered_since < HOP_ANSWER;
 }
 
 template <typename PeerKey>
@@ -177,16 +202,6 @@ void TransportT<PeerKey>::Forget(const PeerKey& peer)
 {
     m_sessions.erase(peer);
     m_pending.erase(peer);
-    m_responder_keys.erase(peer);
-}
-
-template <typename PeerKey>
-void TransportT<PeerKey>::SetResponderKey(const PeerKey& peer, const CKey& key)
-{
-    if (m_responder_keys.size() >= MAX_RESPONDER_KEYS && !m_responder_keys.count(peer)) {
-        m_responder_keys.erase(m_responder_keys.begin());
-    }
-    m_responder_keys[peer] = key;
 }
 
 // Explicit instantiations: hop sessions keyed by address, path sessions keyed

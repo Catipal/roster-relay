@@ -76,9 +76,11 @@ decides how long it lasts:
 
 - **Your own wallet pays** - a month or a year, your choice.
 - **A relay pays** - for a wallet with no coins. Your node signs the listing
-  and sends it over the relay network to the relay it enters through, which
-  pays the fee and adds you to the peers it shares its rewards with. A month,
-  always.
+  and sends it through a path to a relay it does not enter through, which
+  learns who you are and not where, pays the fee and adds you to the peers it
+  shares its rewards with. A month, always. The relays a node connects to see
+  its address and, unless it relays itself, a key made for each connection,
+  never its roster key.
 
 A listing can be renewed in its last three days and not before. Renewing is
 always done by hand: a peer leaves simply by not renewing, and stops costing
@@ -276,19 +278,17 @@ What this node offers other people.
   off. Shares this computer's internet connection with the network, and lets
   programs on this computer use the network's internet in return. The first
   start says plainly what sharing means and lets you switch it off before
-  anything runs. A gateway is listed by its key with no address and reached
-  only through relays at its meeting points, so it never learns who uses it
-  and nobody learns where it is; the websites people visit through it see
-  its address. Only encrypted connections leave (TCP 443, 465, 853, 993,
+  anything runs. Sharing is a switch, not a listing: visitors find gateways
+  among the nodes listed through the overlay with no address, met only
+  through relays at their meeting points, so a gateway never learns who uses
+  it and nobody learns where it is; the websites people visit through it see
+  its address. A relay never shares, since its address is public. Only encrypted connections leave (TCP 443, 465, 853, 993,
   995, 5223, 5228 and UDP 443), never port 25 and never a private address;
   at most 1 GiB a day by default (`-gatewaybandwidth`), 64 KiB/s per visitor
   (`-gatewayrate`). Names are looked up with the gateway computer's own
-  resolver, and only public addresses are given back. A relay lists its
-  gateway under a second key, `gateway.key`, with no address, and another
-  relay pays for that listing, asked through relays: it learns the key and
-  not where the gateway is, and no payment ties the two. The card shows
+  resolver, and only public addresses are given back. The card shows
   today's traffic, open connections and the meeting points it is registered
-  at, and lists the node as a gateway if it is not yet.
+  at, and says why the node does not share when it does not.
 - **Local proxy** - a SOCKS5 proxy on 127.0.0.1 (`-gatewayproxy`, on in BPS
   Relay; port `-gatewayproxyport`, two above the peer-to-peer port). Each
   connection leaves through another member's gateway, met through one relay
@@ -298,9 +298,12 @@ What this node offers other people.
   has no line and relays over radio; it never needs a listing, which would tie
   the node's key to its address for whoever paid for it. Measured on one computer (regtest): 1.5 MiB
   in 39 s, paced to stay under the relays' caps.
-- **All of this computer's traffic** - "Carry all of this computer's traffic
-  through the network" on the Server page (`-gatewayinterface`,
-  `-gatewayroutes`): the computer's own IP packets go through the gateways,
+- **All of this computer's traffic** - comes with the gateway switch on the
+  Server page: switched on, the computer shares its line and uses the
+  network's in return, all of it (`-gatewayinterface`, `-gatewayroutes`) once
+  BPS Relay may manage the network, through the local proxy until then;
+  switched off, the network carries only BPS itself. The computer's own IP
+  packets go through the gateways,
   each new connection through another, and only what comes back for the
   computer's own connections is let in. The interface's resolver
   (10.77.1.53) answers every lookup the computer sends through it, at a

@@ -118,10 +118,11 @@ BOOST_AUTO_TEST_CASE(announce_roundtrip)
     BOOST_CHECK(SerializeRecord(out) == raw);
 }
 
-//! A gateway is a record with the gateway bit and no endpoint (design note
-//! §8·7). The bit is advisory: it changes nothing about how the record parses,
-//! so a node that has never heard of gateways indexes the record unchanged.
-BOOST_AUTO_TEST_CASE(gateway_bit)
+//! A key listed through the overlay - no endpoint, not a relay - is met at
+//! its meeting points, and is where visitors look for gateways. The retired
+//! gateway bit changes nothing: a record carrying it parses and counts as any
+//! other.
+BOOST_AUTO_TEST_CASE(listed_through_the_overlay)
 {
     const CKey key = MakeKey(4);
     Record in = MakeAnnounce(key);
@@ -133,27 +134,15 @@ BOOST_AUTO_TEST_CASE(gateway_bit)
     BOOST_CHECK_EQUAL(raw.size(), 113U); // the same size as any record with no endpoint
     Record out;
     BOOST_CHECK(ParseAndVerify(raw, "main", out));
-    BOOST_CHECK_EQUAL(out.services, SERVICE_GATEWAY);
     BOOST_CHECK(SerializeRecord(out) == raw);
-    BOOST_CHECK(IsGatewayRecord(out.services, out.endpoints.size()));
+    BOOST_CHECK(IsListedThroughOverlay(out.services, out.endpoints.size()));
 
-    // The bit beside the others, and beside a meta hash, which does change the length.
-    in.services = SERVICE_GATEWAY | SERVICE_RENDEZVOUS_ONLY;
-    in.meta_hash = uint256S("01");
-    BOOST_CHECK_EQUAL(ParseErrorString(ParseRecord(SerializeRecord(in), out)), "ok");
-    BOOST_CHECK(out.meta_hash.has_value());
-    BOOST_CHECK(IsGatewayRecord(out.services, out.endpoints.size()));
-
-    // With an endpoint the bit is ignored: such a record would publish where
-    // an exit is, so it never counts as a gateway, whoever made it.
-    in.meta_hash.reset();
-    in.endpoints.push_back(EpIPv4(9345));
-    BOOST_CHECK_EQUAL(ParseErrorString(ParseRecord(SerializeRecord(in), out)), "ok");
-    BOOST_CHECK(!IsGatewayRecord(out.services, out.endpoints.size()));
-
-    // And without the bit, no endpoint is just a listed identity.
-    BOOST_CHECK(!IsGatewayRecord(SERVICE_RENDEZVOUS_ONLY, 0));
-    BOOST_CHECK(!IsGatewayRecord(0, 0));
+    BOOST_CHECK(IsListedThroughOverlay(0, 0));
+    BOOST_CHECK(IsListedThroughOverlay(SERVICE_RENDEZVOUS_ONLY, 0));
+    // An address, or a relay announcing one, is not hidden.
+    BOOST_CHECK(!IsListedThroughOverlay(0, 1));
+    BOOST_CHECK(!IsListedThroughOverlay(SERVICE_RELAY_CAPABLE, 0));
+    BOOST_CHECK(!IsListedThroughOverlay(SERVICE_GATEWAY, 1));
 }
 
 //! A key listed with no address names one relay it can be met at for the
@@ -178,13 +167,13 @@ BOOST_AUTO_TEST_CASE(meeting_point)
     BOOST_CHECK(SerializeRecord(out) == raw);
     BOOST_CHECK(out.endpoints.empty());
 
-    // Beside a meta hash, and beside the gateway bit, which it does not change.
+    // Beside a meta hash, and beside the relay bit, which it does not change.
     in.meta_hash = uint256S("01");
-    in.services = SERVICE_GATEWAY;
+    in.services = SERVICE_RELAY_CAPABLE;
     BOOST_CHECK_EQUAL(ParseErrorString(ParseRecord(SerializeRecord(in), out)), "ok");
     BOOST_CHECK(out.meet_point.has_value() && out.meta_hash.has_value());
     BOOST_CHECK(*out.meet_point == point);
-    BOOST_CHECK(IsGatewayRecord(out.services, out.endpoints.size()));
+    BOOST_CHECK(out.services & SERVICE_RELAY_CAPABLE);
 
     // The bit follows the field, whatever the caller set.
     Record none = in;

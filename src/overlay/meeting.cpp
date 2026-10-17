@@ -90,8 +90,7 @@ bool MeetingPointsFor(const roster::KeyBytes& service, uint64_t epoch, std::vect
     return !out.empty();
 }
 
-bool ReachRelay(const roster::KeyBytes& key, int hops, bool prove_last, Reached& out, std::string& error,
-                const CKey* prove_as)
+bool ReachRelay(const roster::KeyBytes& key, int hops, bool prove_last, Reached& out, std::string& error)
 {
     out = Reached();
     if (!g_overlay) {
@@ -145,7 +144,7 @@ bool ReachRelay(const roster::KeyBytes& key, int hops, bool prove_last, Reached&
         // returns. Success still returns as soon as each step completes.
         const std::chrono::milliseconds step = RadioStepTimeout(circuit[0].addr);
         uint64_t path = 0;
-        if (g_overlay->BuildCircuit(circuit, path, error, step, prove_last, prove_as)) {
+        if (g_overlay->BuildCircuit(circuit, path, error, step, prove_last)) {
             out.path = path;
             out.legs = g_overlay->CircuitLegs(path);
             for (size_t i = 0; i + 1 < chosen.size(); ++i) out.through.push_back(chosen[i].key);
@@ -162,9 +161,8 @@ bool ReachRelay(const roster::KeyBytes& key, int hops, bool prove_last, Reached&
     return false;
 }
 
-MeetingService::MeetingService(const roster::KeyBytes& self, int hops, const CKey* as)
-    : m_self(self), m_hops(std::max(1, std::min(MAX_MEET_HOPS, hops))), m_has_as(as != nullptr),
-      m_as(as ? *as : CKey())
+MeetingService::MeetingService(const roster::KeyBytes& self, int hops)
+    : m_self(self), m_hops(std::max(1, std::min(MAX_MEET_HOPS, hops)))
 {
     CKey node;
     if (roster::ReadOperationalKey(node)) m_node = roster::KeyBytesOf(node);
@@ -238,7 +236,7 @@ void MeetingService::ThreadMeeting()
         }
         if (GetTime() < next) continue;
         Tick();
-        next = GetTime() + 15;
+        next = GetTime() + 10;
     }
 }
 
@@ -301,7 +299,9 @@ void MeetingService::Tick()
                 have = true;
             }
         }
-        if (have && now - reg.refreshed < MEET_REFRESH) continue;
+        // A path that starts on the radio takes longer a step (Reached::step).
+        const bool radio = reg.reached.step > Reached().step;
+        if (have && now - reg.refreshed < (radio ? MEET_REFRESH_RADIO : MEET_REFRESH)) continue;
 
         // Repeated over the path it was made on, which keeps that path alive;
         // made afresh if the path or the registration is gone.
@@ -309,9 +309,7 @@ void MeetingService::Tick()
         if (!ok) {
             if (have) g_overlay->ClosePath(reg.reached.legs);
             Reached fresh;
-            if (ReachRelay(w.first, m_hops, /* prove_last */ true, fresh, error, m_has_as ? &m_as : nullptr)) {
-                // Meetings spliced onto this path are for m_self: answered as it.
-                if (m_has_as) g_overlay->SetServiceKey(fresh.path, m_as);
+            if (ReachRelay(w.first, m_hops, /* prove_last */ true, fresh, error)) {
                 ok = Register(fresh.path, m_self, std::max(ANSWER_WAIT, fresh.step / 3));
                 if (!ok) {
                     g_overlay->ClosePath(fresh.legs);

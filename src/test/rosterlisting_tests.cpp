@@ -165,34 +165,24 @@ BOOST_AUTO_TEST_CASE(refuses_a_record_for_someone_else)
     BOOST_CHECK(reason.find("different key") != std::string::npos);
 }
 
-BOOST_AUTO_TEST_CASE(through_a_path_pays_only_for_a_gateway)
+BOOST_AUTO_TEST_CASE(any_listing_is_paid_through_a_path)
 {
-    // Asked through a path, a relay cannot watch who it pays for. A relay's
-    // gateway key is the one listing that must be asked for from no address,
-    // so it is the only one paid for that way: the bit, and no address.
-    const CKey gateway = MakeKey(5);
+    // Requests come through a path now, for every listing: the key is the one
+    // the path's end-to-end session proved, and nothing else differs.
+    const CKey peer = MakeKey(5);
     const uint32_t expiry = NEXT_HEIGHT + MIN_TTL + 144;
-    ListingContext ctx = ContextFor(gateway);
-    ctx.over_path = true;
+    const ListingContext ctx = ContextFor(peer);
     Record rec;
     std::string reason;
     uint32_t needed = 0;
-    BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(gateway, expiry, SERVICE_GATEWAY), ctx, rec, reason, needed),
+    BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(peer, expiry), ctx, rec, reason, needed), reason);
+    BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(peer, expiry, SERVICE_RELAY_CAPABLE), ctx, rec, reason, needed),
                         reason);
-    BOOST_CHECK(IsGatewayRecord(rec.services, rec.endpoints.size()));
+    BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(peer, expiry, 0, true), ctx, rec, reason, needed), reason);
 
-    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(gateway, expiry), ctx, rec, reason, needed));
-    BOOST_CHECK(reason.find("only for a gateway") != std::string::npos);
-    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(gateway, expiry, SERVICE_GATEWAY, true), ctx, rec, reason, needed));
-
-    // And the key is still the one the path's session proved.
     const CKey other = MakeKey(6);
-    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(other, expiry, SERVICE_GATEWAY), ctx, rec, reason, needed));
+    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(other, expiry), ctx, rec, reason, needed));
     BOOST_CHECK(reason.find("different key") != std::string::npos);
-
-    // From an adjacent peer, nothing changes.
-    BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(gateway, expiry), ContextFor(gateway), rec, reason, needed),
-                        reason);
 }
 
 BOOST_AUTO_TEST_CASE(refuses_what_the_index_would_drop)

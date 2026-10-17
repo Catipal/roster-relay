@@ -176,13 +176,13 @@ class GatewayInterfaceTest(BitcoinTestFramework):
         payer.generatetoaddress(520, payer.getnewaddress("", "legacy"))
         self.sync_all()
 
-        self.log.info("list five relays with addresses, and nodes 5 and 6 as gateways with none; the visitor not at all")
+        self.log.info("list five relays with addresses, and nodes 5 and 6 through the overlay; the visitor not at all")
         for n in range(5):
             record = self.nodes[n].createannouncement({"endpoints": [
                 {"network": "ipv4", "address": "127.0.0.1", "port": p2p_port(n)}]})
             payer.publishrecord(record["hex"])
         for n in (5, 6):
-            payer.publishrecord(self.nodes[n].createannouncement({"gateway": True})["hex"])
+            payer.publishrecord(self.nodes[n].createannouncement({})["hex"])
         payer.generatetoaddress(1, payer.getnewaddress())
         self.sync_all()
         self.mine_to(2 * EPOCH + 10)

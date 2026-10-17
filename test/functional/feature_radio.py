@@ -28,7 +28,9 @@ What the test is really about:
     lost: the node waits as long as the speed its bridge reports needs, and
     the bridge recovers a link whose setup lost a packet;
 
-  * with -radioentry=0 the same request goes over the internet instead.
+  * with -radioentry=0 the request is not sent: over the internet a node
+    never asks the relay it enters through, which sees its address, and here
+    there is no other.
 
 Skipped when Reticulum is not installed (pip install rns).
 """
@@ -40,6 +42,7 @@ import sys
 from test_framework.test_framework import BitcoinTestFramework, SkipTest
 from test_framework.util import (
     assert_equal,
+    assert_raises_rpc_error,
     p2p_port,
 )
 
@@ -196,14 +199,12 @@ class RadioTest(BitcoinTestFramework):
         finally:
             self.stop_bridges()
 
-        self.log.info("with -radioentry=0 the same request goes over the internet")
+        self.log.info("with -radioentry=0 it is not sent: the only relay is the one the user enters through")
         self.restart_node(1, self.extra_args[1] + ["-radioentry=0"])
         self.connect_nodes(1, 0)
         assert_equal(user.getradioinfo()["entry"], False)
         self.wait_until(lambda: user.getoverlayinfo().get("relay_candidates", 0) >= 1, timeout=60)
-        res = user.requestlisting()
-        assert_equal(res["relay_address"], "127.0.0.1:%d" % (p2p_port(0) + 1))
-        assert_equal(res["status"], "refused")
+        assert_raises_rpc_error(-1, "other than this node's entry relays", user.requestlisting)
 
 
 if __name__ == '__main__':

@@ -50,7 +50,7 @@ enum class GatewayKind : uint8_t {
 enum class GatewayState : uint8_t {
     OPEN = 0,
     CLOSED_TODAY = 1, //!< its daily budget is spent
-    OFF = 2,          //!< switched off, or not listed as a gateway
+    OFF = 2,          //!< switched off, or not serving (see GatewayIdentity)
 };
 
 enum class ResolveStatus : uint8_t {

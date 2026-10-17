@@ -196,43 +196,6 @@ BOOST_AUTO_TEST_CASE(only_public_addresses_are_exits)
     }
 }
 
-//! A relay's gateway is met under its gateway key, not the relay's own: the
-//! end of a meeting spliced onto that registration answers as that key, and a
-//! handshake meant for it fails anywhere else.
-BOOST_AUTO_TEST_CASE(second_key_answers_its_meetings)
-{
-    CKey node_key, gateway_key, visitor_once;
-    node_key.MakeNewKey(true);
-    gateway_key.MakeNewKey(true);
-    visitor_once.MakeNewKey(true);
-    PathTransport gateway(node_key), visitor(visitor_once);
-    const uint64_t meeting = 42, other = 43;
-    std::vector<unsigned char> init, reply, payload;
-
-    // Without being told, the node answers only as itself: a handshake meant
-    // for the gateway key gets nothing.
-    BOOST_REQUIRE(visitor.ConnectAs(meeting, gateway_key.GetPubKey(), visitor_once, init));
-    BOOST_CHECK(gateway.Receive(meeting, init.data(), init.size(), reply, payload) == PathTransport::Result::IGNORED);
-
-    // Told that this meeting is for its gateway key, it answers as that key.
-    gateway.SetResponderKey(meeting, gateway_key);
-    BOOST_REQUIRE(visitor.ConnectAs(meeting, gateway_key.GetPubKey(), visitor_once, init));
-    BOOST_REQUIRE(gateway.Receive(meeting, init.data(), init.size(), reply, payload) == PathTransport::Result::ESTABLISHED);
-    BOOST_REQUIRE(visitor.Receive(meeting, reply.data(), reply.size(), init, payload) == PathTransport::Result::ESTABLISHED);
-    BOOST_CHECK(visitor.PeerIdentity(meeting) == gateway_key.GetPubKey());
-
-    // Only that meeting: another path still gets the node's own key.
-    BOOST_REQUIRE(visitor.ConnectAs(other, gateway_key.GetPubKey(), visitor_once, init));
-    BOOST_CHECK(gateway.Receive(other, init.data(), init.size(), reply, payload) == PathTransport::Result::IGNORED);
-    BOOST_REQUIRE(visitor.ConnectAs(other, node_key.GetPubKey(), visitor_once, init));
-    BOOST_CHECK(gateway.Receive(other, init.data(), init.size(), reply, payload) == PathTransport::Result::ESTABLISHED);
-
-    // Forgetting the meeting forgets the key it answered with.
-    gateway.Forget(meeting);
-    BOOST_REQUIRE(visitor.ConnectAs(meeting, gateway_key.GetPubKey(), visitor_once, init));
-    BOOST_CHECK(gateway.Receive(meeting, init.data(), init.size(), reply, payload) == PathTransport::Result::IGNORED);
-}
-
 BOOST_AUTO_TEST_CASE(exit_policy)
 {
     ExitPolicy p;
@@ -565,8 +528,8 @@ BOOST_AUTO_TEST_CASE(a_visitor_reaches_the_internet_through_the_gateway)
     GatewayConfig cfg;
     BOOST_REQUIRE(cfg.policy.Parse(strprintf("%u,udp:%u", echo.port, reverser.port), error));
     cfg.policy.AllowLocal(true); // the "internet" here is 127.0.0.1
-    bool listed = true;
-    g_gateway = MakeUnique<Gateway>(cfg, FromGateway, [&listed] { return listed; },
+    bool serving = true;
+    g_gateway = MakeUnique<Gateway>(cfg, FromGateway, [&serving] { return serving; },
         [] { return std::vector<IpAddr>(); },
         [](const std::string& name, uint8_t, std::vector<IpAddr>& out) {
             if (name != "example.com") return ResolveStatus::NO_SUCH_NAME;
@@ -670,10 +633,10 @@ BOOST_AUTO_TEST_CASE(a_visitor_reaches_the_internet_through_the_gateway)
     g_gateway->Stop();
     g_gateway.reset();
 
-    // Without allow_local, and not listed: nothing opens, and it says why.
+    // Without allow_local, and not serving: nothing opens, and it says why.
     GatewayConfig plain;
-    listed = false;
-    g_gateway = MakeUnique<Gateway>(plain, FromGateway, [&listed] { return listed; },
+    serving = false;
+    g_gateway = MakeUnique<Gateway>(plain, FromGateway, [&serving] { return serving; },
         [] { return std::vector<IpAddr>(); },
         [](const std::string&, uint8_t, std::vector<IpAddr>& out) {
             out = {IpAddr::V4(192, 168, 1, 1), IpAddr::V4(93, 184, 216, 34)};

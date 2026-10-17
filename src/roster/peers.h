@@ -111,14 +111,16 @@ bool CollectRelays(const RosterIndex& index, int tip_height,
 bool AgreedRelays(const RosterIndex& index, int height, std::vector<KeyBytes>& out, bool allow_local = false);
 
 /**
- * The gateways the roster lists as live at `height`: keys whose record carries
- * SERVICE_GATEWAY and no endpoint, in ascending key order, without those this
- * node has seen revoked.
+ * The keys the roster lists as live at `height` through the overlay - no
+ * endpoint, not a relay - in ascending key order, without those this node has
+ * seen revoked.
  *
- * A visitor picks among them at random, so unlike AgreedRelays nothing here
- * has to come out the same on two nodes.
+ * Where a visitor looks for gateways: sharing the internet is a switch of the
+ * node, not something it is listed for, so a visitor meets these at random
+ * and goes on to another when one's gateway is off. Unlike AgreedRelays
+ * nothing here has to come out the same on two nodes.
  */
-bool CollectGateways(const RosterIndex& index, int height, std::vector<KeyBytes>& out);
+bool CollectThroughOverlay(const RosterIndex& index, int height, std::vector<KeyBytes>& out);
 
 /**
  * The announcement that lists `key` at `height`: its latest one confirmed by

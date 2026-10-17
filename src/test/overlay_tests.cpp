@@ -717,6 +717,95 @@ void Introduce(overlay::Transport& a, const CService& a_addr,
 
 } // namespace
 
+//! A node that is not a relay shows the relay it connects to a key made for
+//! that connection, so the relay learns where it is and not who: a fresh one
+//! each time, so not across addresses either. The relay still proves itself.
+BOOST_AUTO_TEST_CASE(throwaway_hop_keys)
+{
+    CKey ka, kb;
+    ka.MakeNewKey(true);
+    kb.MakeNewKey(true);
+    const CService aa = Addr("10.0.0.1", 9346), moved = Addr("10.0.0.9", 9346), ba = Addr("10.0.0.2", 9346);
+    overlay::Transport A(ka), B(kb), B2(kb);
+    const auto introduce = [&](const CService& from, overlay::Transport& b, bool throwaway) {
+        std::vector<unsigned char> m1, reply, payload, none, none2;
+        BOOST_REQUIRE(A.Connect(ba, kb.GetPubKey(), m1, throwaway));
+        BOOST_REQUIRE(b.Receive(from, m1.data(), m1.size(), reply, payload) == overlay::Transport::Result::ESTABLISHED);
+        BOOST_REQUIRE(A.Receive(ba, reply.data(), reply.size(), none, none2) == overlay::Transport::Result::ESTABLISHED);
+    };
+
+    introduce(aa, B, true);
+    BOOST_CHECK(A.PeerIdentity(ba) == kb.GetPubKey());
+    const CPubKey first = B.PeerIdentity(aa);
+    BOOST_CHECK(first.IsValid());
+    BOOST_CHECK(first != ka.GetPubKey());
+
+    // The same node from another address: another key, nothing to match.
+    A.Forget(ba);
+    introduce(moved, B2, true);
+    const CPubKey second = B2.PeerIdentity(moved);
+    BOOST_CHECK(second.IsValid());
+    BOOST_CHECK(second != ka.GetPubKey());
+    BOOST_CHECK(second != first);
+
+    // A relay, or a radio neighbour: its own key again.
+    A.Forget(ba);
+    overlay::Transport B3(kb);
+    introduce(aa, B3, false);
+    BOOST_CHECK(B3.PeerIdentity(aa) == ka.GetPubKey());
+}
+
+BOOST_AUTO_TEST_CASE(quiet_hop_sessions_are_doubted)
+{
+    // A relay that restarts forgets its half of every session and says
+    // nothing. What is left on this side must stop being trusted, or every
+    // path sent through it vanishes.
+    CKey ka, kb;
+    ka.MakeNewKey(true);
+    kb.MakeNewKey(true);
+    const CService aa = Addr("10.0.0.1", 9346), ba = Addr("10.0.0.2", 9346);
+    overlay::Transport A(ka), B(kb);
+    int64_t now = 1700000000;
+    SetMockTime(now);
+    Introduce(A, aa, B, kb, ba);
+    BOOST_CHECK(A.Live(ba, now));
+    BOOST_CHECK(B.Live(aa, now));
+
+    // Quiet for a minute: doubted, though nothing is known to be wrong.
+    BOOST_CHECK(A.Live(ba, now + overlay::HOP_QUIET - 1));
+    BOOST_CHECK(!A.Live(ba, now + overlay::HOP_QUIET));
+    BOOST_CHECK(!A.Live(Addr("10.0.0.3", 9346), now)); // no session at all
+
+    // A word from the peer, and it is trusted again.
+    now += overlay::HOP_QUIET;
+    SetMockTime(now);
+    const std::vector<unsigned char> msg = Payload(40, 1);
+    std::vector<unsigned char> dgram, reply, got;
+    BOOST_REQUIRE(B.Send(aa, msg, dgram));
+    BOOST_REQUIRE(A.Receive(ba, dgram.data(), dgram.size(), reply, got) == overlay::Transport::Result::PAYLOAD);
+    BOOST_CHECK(A.Live(ba, now));
+
+    // The peer restarts. What A sends is dropped there without an answer...
+    overlay::Transport B2(kb);
+    BOOST_REQUIRE(A.Send(ba, msg, dgram));
+    BOOST_CHECK(B2.Receive(aa, dgram.data(), dgram.size(), reply, got) == overlay::Transport::Result::IGNORED);
+    BOOST_CHECK(reply.empty());
+    // ...and once it has waited long enough, A doubts the session.
+    BOOST_CHECK(A.Live(ba, now + overlay::HOP_ANSWER - 1));
+    BOOST_CHECK(!A.Live(ba, now + overlay::HOP_ANSWER));
+    BOOST_CHECK(A.HasSession(ba)); // still there: only a handshake can tell
+
+    // Shaking hands again settles it.
+    now += overlay::HOP_ANSWER;
+    SetMockTime(now);
+    Introduce(A, aa, B2, kb, ba);
+    BOOST_CHECK(A.Live(ba, now));
+    BOOST_REQUIRE(A.Send(ba, msg, dgram));
+    BOOST_CHECK(B2.Receive(aa, dgram.data(), dgram.size(), reply, got) == overlay::Transport::Result::PAYLOAD);
+    BOOST_CHECK(got == msg);
+    SetMockTime(0);
+}
+
 BOOST_AUTO_TEST_CASE(transport_establishes_and_carries_payloads)
 {
     CKey ka, kb;

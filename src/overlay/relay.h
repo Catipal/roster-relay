@@ -154,7 +154,7 @@ public:
      * that has to be recognised - a service registering at its meeting point -
      * passes false and proves its roster key instead.
      */
-    bool ConnectSecret(uint64_t path_id, const CPubKey& far_static, bool anonymous = true, const CKey* as = nullptr);
+    bool ConnectSecret(uint64_t path_id, const CPubKey& far_static, bool anonymous = true);
 
     /** True once the far end of this path has completed the exchange. */
     bool HasSecretSession(uint64_t path_id);
@@ -185,14 +185,23 @@ public:
      */
     bool BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out, std::string& error,
                       std::chrono::milliseconds step_timeout = std::chrono::milliseconds{4000},
-                      bool prove_last = false, const CKey* prove_as = nullptr);
+                      bool prove_last = false);
 
     /**
-     * A registration this node made on `registration_path` was made under
-     * `key`, not its static key, so meetings spliced onto that path are
-     * answered as `key`: how a relay's gateway is met under a key of its own.
+     * Whether the sessions this node opens with its neighbours over the
+     * internet prove a key made for each one instead of its roster key. On
+     * for every node that is not a relay: the relay a path
+     * enters through sees the node's address, and with the roster key it
+     * would know who is there, and know it again at every address the node
+     * moves to. A relay proves its roster key, which with its address is
+     * public anyway; so does every node to a radio neighbour, which knows it
+     * from the radio announcement. Sessions already open keep their key.
      */
-    void SetServiceKey(uint64_t registration_path, const CKey& key);
+    void SetThrowawayHopKeys(bool on) { m_throwaway = on; }
+    bool ThrowawayHopKeys() const { return m_throwaway; }
+    /** Whether an address is a radio neighbour's (overlay/radio.h). Called with no lock held. */
+    using RadioCheck = std::function<bool(const CService& addr)>;
+    void SetRadioCheck(RadioCheck check);
 
     /**
      * Forget a path this node built, and every leg under it that `legs` names.
@@ -280,13 +289,24 @@ private:
     // Bounded like the path table: registering is something strangers do.
     std::map<roster::KeyBytes, uint64_t> m_intros GUARDED_BY(m_mutex);
     std::vector<PendingBuild> m_pending_builds GUARDED_BY(m_mutex);
-    // Registrations made under a key other than the static one, by path.
-    std::map<uint64_t, CKey> m_service_keys GUARDED_BY(m_mutex);
     // Circuits this node built: the innermost path and the legs under it.
     std::map<uint64_t, std::vector<uint64_t>> m_circuits GUARDED_BY(m_mutex);
     DialPolicy m_dial GUARDED_BY(m_mutex);
     IntroducePolicy m_introduce GUARDED_BY(m_mutex);
     NextHopResolver m_next_hop GUARDED_BY(m_mutex);
+    RadioCheck m_radio_check GUARDED_BY(m_mutex);
+    std::atomic<bool> m_throwaway{false};
+    /** Whether a session this node opens to `peer` proves a throwaway key. */
+    bool Throwaway(const CService& peer);
+    /** Whether `peer` is a radio neighbour, by the check installed with SetRadioCheck. */
+    bool OverRadio(const CService& peer);
+    /**
+     * Whether the session with `peer` can carry a new path as it is. Over the
+     * internet only one heard from lately (Socket::Live): a relay that has
+     * restarted would swallow the path. Over the radio any session, since
+     * shaking hands again costs airtime that a quiet minute does not justify.
+     */
+    bool Fresh(const CService& peer, bool radio);
 
     Mutex m_results_mutex;
     std::condition_variable m_results_cv;

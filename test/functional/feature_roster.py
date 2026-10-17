@@ -235,8 +235,6 @@ class RosterTest(BitcoinTestFramework):
         self.log.info("createannouncement refuses to advertise what nothing delivers")
         assert_raises_rpc_error(-8, "not implemented", self.nodes[0].createannouncement, {"rendezvous_only": True})
         assert_raises_rpc_error(-8, "the \"relay\" option", self.nodes[0].createannouncement, {"relay_capable": True})
-        self.log.info("a relay that announces its address is never a gateway too")
-        assert_raises_rpc_error(-8, "cannot be both", self.nodes[0].createannouncement, {"relay": True, "gateway": True})
         # No endpoint, and nothing to warn about: where it is, it announces.
         assert "warnings" not in self.nodes[0].createannouncement({"relay": True})
 
@@ -454,20 +452,10 @@ class RosterTest(BitcoinTestFramework):
         self.connect_nodes(0, 1)
 
     def test_gateway_records(self):
-        self.log.info("a gateway is listed with no endpoint, and never with one")
-        # An address beside the gateway bit would publish where an exit is.
-        assert_raises_rpc_error(
-            -8, "listed with no endpoint",
-            self.nodes[1].createannouncement, {"gateway": True, "endpoints": [IPV4_ENDPOINT]})
-        record = self.nodes[1].createannouncement({"gateway": True})
-        # Not the "offers nowhere to dial" warning: a gateway is met, not dialled.
-        assert "warnings" not in record
-        entry = self.publish(record)
-        assert_equal(entry["gateway"], True)
-        assert_equal(entry["dialable"], False)
-        assert_equal(entry["endpoints"], [])
-        others = [e for e in self.nodes[0].getroster() if e["key"] != record["key"]]
-        assert all(not e["gateway"] for e in others)
+        self.log.info("a gateway is not listed: sharing is a switch of the node")
+        for options in ({"gateway": True}, {"key": "gateway"}, {"gateway": True, "endpoints": [IPV4_ENDPOINT]}):
+            assert_raises_rpc_error(-8, "not listed", self.nodes[1].createannouncement, options)
+        assert all("gateway" not in e for e in self.nodes[0].getroster())
 
     def run_test(self):
         node = self.nodes[0]

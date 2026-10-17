@@ -272,11 +272,12 @@ void GatewayClient::OnStackOutput(struct pbuf* p)
 
 bool GatewayClient::Choose(uint8_t protocol, uint16_t port, uint64_t& path)
 {
+    const int64_t now = NowMs();
     LOCK(m_mutex);
     std::vector<uint64_t> open;
     for (const std::pair<const uint64_t, Entry>& e : m_entries) {
         const Entry& g = e.second;
-        if (!g.known || g.state != GatewayState::OPEN) continue;
+        if (!g.known || g.state != GatewayState::OPEN || now - g.last_heard > STALE_MS) continue;
         const std::set<uint16_t>& ports = protocol == IPPROTO_UDP_NUM ? g.udp : g.tcp;
         if (ports.count(port)) open.push_back(e.first);
     }
@@ -288,9 +289,10 @@ bool GatewayClient::Choose(uint8_t protocol, uint16_t port, uint64_t& path)
 
 bool GatewayClient::AnyOpen() const
 {
+    const int64_t now = NowMs();
     LOCK(m_mutex);
     for (const std::pair<const uint64_t, Entry>& e : m_entries) {
-        if (e.second.known && e.second.state == GatewayState::OPEN) return true;
+        if (e.second.known && e.second.state == GatewayState::OPEN && now - e.second.last_heard <= STALE_MS) return true;
     }
     return false;
 }
@@ -319,10 +321,11 @@ void GatewayClient::Resolve(const std::string& name, uint8_t family, Resolved do
 {
     uint64_t path = 0;
     {
+        const int64_t now = NowMs();
         LOCK(m_mutex);
         std::vector<uint64_t> open;
         for (const std::pair<const uint64_t, Entry>& e : m_entries) {
-            if (e.second.known && e.second.state == GatewayState::OPEN) open.push_back(e.first);
+            if (e.second.known && e.second.state == GatewayState::OPEN && now - e.second.last_heard <= STALE_MS) open.push_back(e.first);
         }
         if (!open.empty()) path = open[m_rr++ % open.size()];
     }

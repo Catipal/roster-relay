@@ -53,6 +53,8 @@ public:
     static constexpr int64_t CONNECT_TIMEOUT_MS = 30 * 1000;
     /** Bytes held for a connection in either direction before reading stops. */
     static constexpr size_t MAX_BUFFER = 256 * 1024;
+    /** Times a connection still being opened moves to another gateway when its own goes away. */
+    static constexpr int MAX_RETRIES = 2;
 
     LocalProxy(GatewayClient& client, uint16_t port);
     ~LocalProxy();
@@ -90,6 +92,7 @@ private:
         bool remote_shut{false};
         bool local_shut{false};
         bool closing{false};
+        int retries{0}; //!< connects moved to another gateway after one went away
         int64_t deadline{0};
     };
 

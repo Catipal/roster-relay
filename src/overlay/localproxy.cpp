@@ -535,7 +535,14 @@ void LocalProxy::OnGatewayGone(uint64_t path)
             tcp_abort(s.pcb);
             s.pcb = nullptr;
         }
-        if (s.stage == Stage::CONNECTING) {
+        m_client.RemoveFlow(IPPROTO_TCP_NUM, s.local_port, s.dst, s.dst_port);
+        s.flow = false;
+        if (s.stage == Stage::CONNECTING && s.retries < MAX_RETRIES) {
+            // Nothing has reached the program yet, so the connection can still
+            // be opened through another gateway without it noticing.
+            ++s.retries;
+            Connect(s);
+        } else if (s.stage == Stage::CONNECTING) {
             Reply(s, REP_NET_UNREACHABLE);
         } else {
             s.closing = true;

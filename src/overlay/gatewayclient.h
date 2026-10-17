@@ -75,6 +75,12 @@ public:
      * elsewhere instead of waiting out the idle limit.
      */
     static constexpr int64_t BUSY_SILENCE_MS = 30 * 1000;
+    /**
+     * A gateway that has missed its answer to the last HELLO gets no new
+     * connections: its meeting path is probably gone - a relay on it restarted,
+     * or it did - and the next connection should not be the one to find out.
+     */
+    static constexpr int64_t STALE_MS = HELLO_EVERY_MS + 20 * 1000;
     static constexpr int64_t RETRY_AFTER_MS = 60 * 1000;
     static constexpr int64_t OFF_RETRY_AFTER_MS = 10 * 60 * 1000;
     static constexpr int64_t RESOLVE_TIMEOUT_MS = 10 * 1000;

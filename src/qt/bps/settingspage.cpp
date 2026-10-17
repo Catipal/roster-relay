@@ -17,6 +17,8 @@
 
 #include <chainparams.h>
 #include <index/rosterindex.h>
+#include <overlay/gatewayclient.h>
+#include <overlay/meeting.h>
 #include <overlay/radio.h>
 #include <overlay/socket.h>
 #include <roster/peers.h>
@@ -45,6 +47,8 @@ const char* KEY_NAMEINDEX = "bps/nameindex";
 const char* KEY_ROSTERCONNECT = "bps/rosterconnect";
 const char* KEY_OVERLAY = "bps/overlay";
 const char* KEY_OVERLAYPORT = "bps/overlayport";
+const char* KEY_MEETHOPS = "bps/meethops";
+const char* KEY_GATEWAYHOPS = "bps/gatewayhops";
 const char* KEY_RADIO = "bps/radio";
 const char* KEY_RADIOENTRY = "bps/radioentry";
 const char* KEY_RADIOBRIDGE = "bps/radiobridge";
@@ -85,6 +89,12 @@ void SettingsPage::ApplyStoredSettings()
     gArgs.SoftSetBoolArg("-overlay", settings.value(KEY_OVERLAY).toBool());
     if (settings.contains(KEY_OVERLAYPORT)) {
         gArgs.SoftSetArg("-overlayport", settings.value(KEY_OVERLAYPORT).toString().toStdString());
+    }
+    if (settings.contains(KEY_MEETHOPS)) {
+        gArgs.SoftSetArg("-meethops", settings.value(KEY_MEETHOPS).toString().toStdString());
+    }
+    if (settings.contains(KEY_GATEWAYHOPS)) {
+        gArgs.SoftSetArg("-gatewayhops", settings.value(KEY_GATEWAYHOPS).toString().toStdString());
     }
     gArgs.SoftSetBoolArg("-radio", settings.value(KEY_RADIO, overlay::DEFAULT_RADIO).toBool());
     gArgs.SoftSetBoolArg("-radioentry", settings.value(KEY_RADIOENTRY, overlay::DEFAULT_RADIO_ENTRY).toBool());
@@ -148,7 +158,30 @@ SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
     m_overlayport->setToolTip(tr("The overlay speaks UDP on its own port. The peer-to-peer "
                                  "network is separate and stays on TCP."));
     overlay_form->addRow(tr("Listen on port"), m_overlayport);
+
+    // Only the first connection is direct: to an entry relay, which sees this
+    // computer's address and, unless it relays itself, a key made for that
+    // connection. Everything after it goes through relays, as many as set here.
+    m_meethops = new QSpinBox(overlay_box);
+    m_meethops->setRange(1, overlay::MAX_MEET_HOPS);
+    m_meethops->setToolTip(tr("Others meet you at relays worked out from the roster, and your node keeps a path "
+                              "open to each of them through this many relays. The meeting point sees only the "
+                              "last of them, never your address. More hides you better and is slower."));
+    overlay_form->addRow(tr("Relays before your meeting points"), m_meethops);
+    m_gatewayhops = new QSpinBox(overlay_box);
+    m_gatewayhops->setRange(1, overlay::MAX_MEET_HOPS);
+    m_gatewayhops->setToolTip(tr("When this computer uses the network's internet, each connection goes through this "
+                                 "many relays to a gateway's meeting point, and through the gateway's own after it: "
+                                 "the gateway never learns who you are. More hides you better and is slower."));
+    overlay_form->addRow(tr("Relays before a gateway's meeting point"), m_gatewayhops);
     overlay_layout->addLayout(overlay_form);
+
+    QLabel* hops_note = new QLabel(tr("Only your first connection is direct, to an entry relay that sees your address "
+                                      "and not who you are. Mail always goes through three relays."),
+                                   overlay_box);
+    hops_note->setWordWrap(true);
+    hops_note->setEnabled(false);
+    overlay_layout->addWidget(hops_note);
     outer->addWidget(overlay_box);
 
     // --- radio -------------------------------------------------------------
@@ -227,6 +260,10 @@ SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
     connect(m_overlay, &QCheckBox::toggled, this, &SettingsPage::onChanged);
     connect(m_overlayport, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, &SettingsPage::onChanged);
+    connect(m_meethops, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            this, &SettingsPage::onChanged);
+    connect(m_gatewayhops, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            this, &SettingsPage::onChanged);
     connect(m_radio, &QCheckBox::toggled, this, &SettingsPage::onChanged);
     connect(m_radioentry, &QCheckBox::toggled, this, &SettingsPage::onChanged);
     connect(m_radiobridge, &QCheckBox::toggled, this, &SettingsPage::onChanged);
@@ -247,6 +284,9 @@ void SettingsPage::Load()
     m_rosterconnect->setChecked(settings.value(KEY_ROSTERCONNECT, roster::DEFAULT_ROSTERCONNECT).toBool());
     m_overlay->setChecked(settings.value(KEY_OVERLAY, true).toBool());
     m_overlayport->setValue((int)gArgs.GetArg("-overlayport", overlay::OverlayPortFor((uint16_t)gArgs.GetArg("-port", Params().GetDefaultPort()))));
+    m_meethops->setValue((int)gArgs.GetArg("-meethops", settings.value(KEY_MEETHOPS, overlay::DEFAULT_MEET_HOPS).toInt()));
+    m_gatewayhops->setValue((int)gArgs.GetArg("-gatewayhops",
+                                              settings.value(KEY_GATEWAYHOPS, overlay::DEFAULT_GATEWAY_HOPS).toInt()));
     // What the node runs with: the stored choice, unless the command line or
     // the configuration file said otherwise.
     m_radio->setChecked(gArgs.GetBoolArg("-radio", settings.value(KEY_RADIO, overlay::DEFAULT_RADIO).toBool()));
@@ -315,6 +355,8 @@ void SettingsPage::onChanged()
     settings.setValue(KEY_ROSTERCONNECT, m_rosterconnect->isChecked());
     settings.setValue(KEY_OVERLAY, m_overlay->isChecked());
     settings.setValue(KEY_OVERLAYPORT, m_overlayport->value());
+    settings.setValue(KEY_MEETHOPS, m_meethops->value());
+    settings.setValue(KEY_GATEWAYHOPS, m_gatewayhops->value());
     settings.setValue(KEY_RADIO, m_radio->isChecked());
     settings.setValue(KEY_RADIOENTRY, m_radioentry->isChecked());
     settings.setValue(KEY_RADIOBRIDGE, m_radiobridge->isChecked());

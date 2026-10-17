@@ -81,6 +81,8 @@ private:
     QCheckBox* m_rosterconnect{nullptr};
     QCheckBox* m_overlay{nullptr};
     QSpinBox* m_overlayport{nullptr};
+    QSpinBox* m_meethops{nullptr};    //!< -meethops
+    QSpinBox* m_gatewayhops{nullptr}; //!< -gatewayhops
     QCheckBox* m_radio{nullptr};
     QCheckBox* m_radioentry{nullptr};
     QCheckBox* m_radiobridge{nullptr};

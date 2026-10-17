@@ -2591,13 +2591,14 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             overlay::g_gateway_client = MakeUnique<overlay::GatewayClient>(
                 overlay::DEFAULT_GATEWAY_POOL, (int)args.GetArg("-gatewayhops", overlay::DEFAULT_GATEWAY_HOPS), allow_local,
                 // Giving to get (design note section 8.7): this node's own gateway
-                // listed, or no internet line of its own and relaying over radio.
+                // switched on, or no internet line of its own and relaying over
+                // radio. Never a listing: using the gateways must not need one,
+                // since a listing ties the node's key to its address for whoever
+                // pays for it.
                 [&node](std::string& why) {
-                    if (overlay::g_gateway && overlay::g_gateway->GetStats().listed) return true;
+                    if (overlay::g_gateway) return true;
                     if (overlay::g_radio && node.connman && node.connman->GetNodeCount(CConnman::CONNECTIONS_ALL) == 0) return true;
-                    why = overlay::g_gateway
-                        ? "this node is not listed as a gateway yet: the network's internet is for those who share theirs"
-                        : "this node's own gateway is off (-gateway=0): the network's internet is for those who share theirs";
+                    why = "this node's own gateway is off (-gateway=0): the network's internet is for those who share theirs";
                     return false;
                 },
                 [self]() {

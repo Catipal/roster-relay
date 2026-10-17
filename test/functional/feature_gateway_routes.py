@@ -225,12 +225,12 @@ class GatewayRoutesTest(BitcoinTestFramework):
         self.log.info("the visitor's own peer-to-peer traffic passes the interface by: it follows the chain")
         self.sync_all()
 
-        self.log.info("list five relays at this machine's address, and nodes 5, 6 and 7 as gateways with none")
+        self.log.info("list five relays at this machine's address, and nodes 5 and 6 as gateways with none; the visitor not at all")
         for n in range(5):
             record = self.nodes[n].createannouncement({"endpoints": [
                 {"network": "ipv4", "address": OTHERS, "port": p2p_port(n)}]})
             payer.publishrecord(record["hex"])
-        for n in (5, 6, 7):
+        for n in (5, 6):
             payer.publishrecord(self.nodes[n].createannouncement({"gateway": True})["hex"])
         payer.generatetoaddress(1, payer.getnewaddress())
         self.sync_all()

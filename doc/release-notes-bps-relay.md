@@ -287,8 +287,9 @@ What this node offers other people.
   connection leaves through another member's gateway, met through one relay
   of this node's own (`-gatewayhops`); names are looked up at a gateway,
   never here, and `.bps`, `.onion` and home-network names are not sent out
-  at all. It works while this node shares its own connection, or while it
-  has none and relays over radio. Measured on one computer (regtest): 1.5 MiB
+  at all. It works while this node's own gateway is switched on, or while it
+  has no line and relays over radio; it never needs a listing, which would tie
+  the node's key to its address for whoever paid for it. Measured on one computer (regtest): 1.5 MiB
   in 39 s, paced to stay under the relays' caps.
 - **All of this computer's traffic** - "Carry all of this computer's traffic
   through the network" on the Server page (`-gatewayinterface`,

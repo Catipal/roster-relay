@@ -79,7 +79,8 @@ the Server page instead. Another relay pays for that listing, asked through
 relays, so it learns the gateway's key and not where it is; paying from the
 relay's own wallet would tie the two together on the chain.
 
-While your node shares, programs on this computer can use a SOCKS5 proxy at
+While sharing is switched on - your node needs no listing for this, only to
+be found as a gateway - programs on this computer can use a SOCKS5 proxy at
 127.0.0.1, on the port the Server page shows. Set it in a browser with names
 looked up through the proxy (Firefox: "Proxy DNS when using SOCKS v5"). Each
 connection leaves through another member's gateway, and names are looked up

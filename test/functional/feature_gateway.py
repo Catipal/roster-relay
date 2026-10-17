@@ -6,9 +6,11 @@
 
 Nine nodes. Nodes 0 to 5 are relays listed with an endpoint. Nodes 6 and 7
 are gateways: listed with the gateway bit and no address, met only at their
-meeting points. Node 8 is a visitor running the local proxy (-gatewayproxy);
-it is listed as a gateway too, since a node uses the network's internet only
-while it shares its own. An HTTP server on 127.0.0.1 stands in for the
+meeting points. Node 8 is a visitor running the local proxy (-gatewayproxy),
+with its own gateway switched on, as a node needs to use the network's
+internet, and no listing at all: using the gateways must not need one, since
+a listing would tie its key to its address for whoever paid for it. An HTTP
+server on 127.0.0.1 stands in for the
 internet, which the gateways may reach here only because of
 -gatewayallowlocal (regtest).
 
@@ -155,16 +157,16 @@ class GatewayTest(BitcoinTestFramework):
         payer.generatetoaddress(520, payer.getnewaddress("", "legacy"))
         self.sync_all()
 
-        self.log.info("list six relays with addresses, and nodes 6, 7 and 8 as gateways with none")
+        self.log.info("list six relays with addresses, and nodes 6 and 7 as gateways with none; node 8 not at all")
         for n in range(6):
             record = self.nodes[n].createannouncement({"endpoints": [
                 {"network": "ipv4", "address": "127.0.0.1", "port": p2p_port(n)}]})
             payer.publishrecord(record["hex"])
-        for n in (6, 7, 8):
+        for n in (6, 7):
             payer.publishrecord(self.nodes[n].createannouncement({"gateway": True})["hex"])
         payer.generatetoaddress(1, payer.getnewaddress())
         self.sync_all()
-        gateways = sorted(self.key(n) for n in (6, 7, 8))
+        gateways = sorted(self.key(n) for n in (6, 7))
         assert_equal(sorted(e["key"] for e in self.nodes[0].getroster(0) if e["gateway"]), gateways)
 
         self.log.info("relays are not gateways: their keys carry an address")
@@ -181,7 +183,8 @@ class GatewayTest(BitcoinTestFramework):
             assert_equal(info["policy"], str(self.http_port))
             assert_equal(info["allow_local"], True)
 
-        self.log.info("the visitor may use gateways, and meets both others - never itself")
+        self.log.info("the visitor, listed nowhere, may use the gateways, and meets both")
+        assert self.key(8) not in [e["key"] for e in self.nodes[0].getroster(0)]
         self.wait_until(lambda: self.visitor()["allowed"], timeout=90)
         self.wait_until(lambda: self.open_gateways() == sorted([self.key(6), self.key(7)]), timeout=300)
         assert_equal(self.visitor()["proxy"], "127.0.0.1:%d" % self.proxy_port)

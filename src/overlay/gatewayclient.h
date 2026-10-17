@@ -44,9 +44,11 @@ struct pbuf;
  * own and go to the gateways as they are.
  *
  * Giving to get: a node uses the network's internet only
- * while its own gateway is on, or when it has no internet line of its own and
- * relays over radio instead. Gateways cannot check this without learning who
- * is asking, so the node checks itself.
+ * while its own gateway is switched on, or when it has no internet line of its
+ * own and relays over radio instead. Gateways cannot check this without
+ * learning who is asking, so the node checks itself. It never needs to be
+ * listed for it: a listing would tie its key to its
+ * address for whoever paid for it, just to use the network.
  */
 namespace overlay {
 

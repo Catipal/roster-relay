@@ -565,7 +565,7 @@ static RPCHelpMan getgatewayinfo()
                         {RPCResult::Type::BOOL, "allow_local", /* optional */ true, "Present when -gatewayallowlocal lets it reach local addresses (regtest)"},
                         {RPCResult::Type::OBJ, "visitor", /* optional */ true, "This node using the network's gateways (-gatewayproxy)",
                             {
-                                {RPCResult::Type::BOOL, "allowed", "Whether it may: its own gateway is listed, or it relays over radio with no line of its own"},
+                                {RPCResult::Type::BOOL, "allowed", "Whether it may: its own gateway is switched on, or it relays over radio with no line of its own. No listing is needed"},
                                 {RPCResult::Type::STR, "why", /* optional */ true, "Why not, when it may not"},
                                 {RPCResult::Type::NUM, "hops", "Relays between it and a gateway's meeting point"},
                                 {RPCResult::Type::STR, "proxy", /* optional */ true, "Where the local SOCKS5 proxy listens"},

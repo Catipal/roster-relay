@@ -63,6 +63,18 @@ bool ParseDnsQuery(const std::vector<uint8_t>& msg, DnsQuery& q, DnsRcode& rcode
  */
 std::vector<uint8_t> BuildDnsAnswer(const DnsQuery& q, DnsRcode rcode, const std::vector<IpAddr>& addrs, uint32_t ttl);
 
+/** A query for `name` (lower case, no trailing dot) of `qtype`, recursion desired. Empty for a name DNS cannot carry. */
+std::vector<uint8_t> BuildDnsQuery(uint16_t id, const std::string& name, uint16_t qtype);
+
+/**
+ * Read the answer to a query of `id` and `qtype`: its result code, the
+ * addresses of that type it carries for any owner (a CNAME chain arrives in
+ * the same answer), and the shortest of their TTLs. False when it is not an
+ * answer to that query, or is cut short (truncated answers are not taken).
+ */
+bool ParseDnsResponse(const std::vector<uint8_t>& msg, uint16_t id, uint16_t qtype, DnsRcode& rcode,
+                      std::vector<IpAddr>& addrs, uint32_t& ttl);
+
 /** Longest a lookup's answer is kept by those who ask: five minutes. */
 static constexpr uint32_t MAX_DNS_TTL = 300;
 /** And at least, so a burst of queries is not a burst of lookups. */

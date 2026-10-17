@@ -93,6 +93,100 @@ bool ParseDnsQuery(const std::vector<uint8_t>& msg, DnsQuery& q, DnsRcode& rcode
     return true;
 }
 
+std::vector<uint8_t> BuildDnsQuery(uint16_t id, const std::string& name, uint16_t qtype)
+{
+    std::vector<uint8_t> out;
+    if (name.empty() || name.size() > MAX_RESOLVE_NAME) return out;
+    Put16(out, id);
+    out.push_back(RD);
+    out.push_back(0);
+    Put16(out, 1);
+    Put16(out, 0);
+    Put16(out, 0);
+    Put16(out, 0);
+    size_t start = 0;
+    while (start <= name.size()) {
+        size_t dot = name.find('.', start);
+        if (dot == std::string::npos) dot = name.size();
+        const size_t len = dot - start;
+        if (len == 0 || len > 63) return std::vector<uint8_t>();
+        out.push_back((uint8_t)len);
+        out.insert(out.end(), name.begin() + start, name.begin() + dot);
+        start = dot + 1;
+    }
+    out.push_back(0);
+    Put16(out, qtype);
+    Put16(out, DNS_CLASS_IN);
+    return out;
+}
+
+namespace {
+
+/** Step over a name at `at`, compressed or not. False when it runs off the message. */
+bool SkipName(const std::vector<uint8_t>& msg, size_t& at)
+{
+    for (int labels = 0; labels < 128; ++labels) {
+        if (at >= msg.size()) return false;
+        const uint8_t len = msg[at];
+        if (len == 0) {
+            ++at;
+            return true;
+        }
+        if ((len & 0xc0) == 0xc0) {
+            if (at + 1 >= msg.size()) return false;
+            at += 2;
+            return true;
+        }
+        if (len & 0xc0) return false;
+        at += 1 + len;
+    }
+    return false;
+}
+
+} // namespace
+
+bool ParseDnsResponse(const std::vector<uint8_t>& msg, uint16_t id, uint16_t qtype, DnsRcode& rcode,
+                      std::vector<IpAddr>& addrs, uint32_t& ttl)
+{
+    addrs.clear();
+    ttl = 0;
+    if (msg.size() < HEADER || Get16(msg.data()) != id || !(msg[2] & QR)) return false;
+    if (msg[2] & 0x02) return false; // truncated
+    rcode = (DnsRcode)(msg[3] & 0x0f);
+    const uint16_t questions = Get16(msg.data() + 4);
+    const uint16_t answers = Get16(msg.data() + 6);
+    size_t at = HEADER;
+    for (uint16_t i = 0; i < questions; ++i) {
+        if (!SkipName(msg, at) || at + 4 > msg.size()) return false;
+        at += 4;
+    }
+    bool first = true;
+    for (uint16_t i = 0; i < answers; ++i) {
+        if (!SkipName(msg, at) || at + 10 > msg.size()) return false;
+        const uint16_t type = Get16(msg.data() + at);
+        const uint16_t cls = Get16(msg.data() + at + 2);
+        const uint32_t rttl = ((uint32_t)Get16(msg.data() + at + 4) << 16) | Get16(msg.data() + at + 6);
+        const uint16_t len = Get16(msg.data() + at + 8);
+        at += 10;
+        if (at + len > msg.size()) return false;
+        if (cls == DNS_CLASS_IN && type == qtype && ((type == DNS_TYPE_A && len == 4) || (type == DNS_TYPE_AAAA && len == 16))) {
+            IpAddr a;
+            if (type == DNS_TYPE_A) {
+                a = IpAddr::V4(msg[at], msg[at + 1], msg[at + 2], msg[at + 3]);
+            } else {
+                std::array<uint8_t, 16> b{};
+                std::copy(msg.begin() + at, msg.begin() + at + 16, b.begin());
+                a = IpAddr::V6(b);
+            }
+            if (addrs.size() < MAX_RESOLVED && std::find(addrs.begin(), addrs.end(), a) == addrs.end()) addrs.push_back(a);
+            ttl = first ? rttl : std::min(ttl, rttl);
+            first = false;
+        }
+        at += len;
+    }
+    return true;
+}
+
 std::vector<uint8_t> BuildDnsAnswer(const DnsQuery& q, DnsRcode rcode, const std::vector<IpAddr>& addrs, uint32_t ttl)
 {
     std::vector<IpAddr> answers;

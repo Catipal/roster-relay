@@ -5076,6 +5076,58 @@ You can change this at any time on the Server page.</source>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 соединений для %2 посетителей, в %3 точках встречи</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>Пропускать весь трафик этого компьютера через сеть, без настройки прокси в каких-либо программах</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>Соединения каждой программы выходят через шлюзы сети, каждое через другой, и имена ищутся там же. Собственная сеть этого компьютера — принтер, маршрутизатор — и собственные соединения этого узла остаются прямыми. Это работает, пока этот компьютер делится своим подключением.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>Установить сетевую службу…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>Сетевая служба</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>Сетевая служба не установлена: bps-relay-net.exe и wintun.dll должны лежать рядом с BPS Relay.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>Сетевая служба не установлена: Windows не дал ей прав администратора.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>Сетевая служба установлена и работает. Перезапустите BPS Relay, чтобы трафик этого компьютера шёл через сеть.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>Сетевая служба не установлена (код %1). Её журнал находится в %ProgramData%\BPS Relay\network.log.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Включено: сейчас %1 соединений через сеть; отправлено %2, получено %3.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>В этой системе пока недоступно.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>Сначала один раз установите сетевую службу BPS Relay; Windows запросит администратора.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>Сначала один раз, как администратор, разрешите BPS Relay управлять сетью: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>Начнёт работать после перезапуска клиента.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

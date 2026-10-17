@@ -5060,6 +5060,58 @@ You can change this at any time on the Server page.</source>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%2 பார்வையாளர்களுக்கு %1 இணைப்புகள், %3 சந்திப்பு இடங்களில்</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>இந்தக் கணினியின் அனைத்துப் போக்குவரத்தையும் வலையமைப்பு வழியாக அனுப்பு, எந்த நிரலிலும் ப்ராக்ஸி அமைப்பு இல்லாமல்</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>ஒவ்வொரு நிரலின் இணைப்புகளும் வலையமைப்பின் நுழைவாயில்கள் வழியாக வெளியேறுகின்றன, ஒவ்வொன்றும் வேறொன்றின் வழியாக, பெயர்களும் அங்கேயே தேடப்படுகின்றன. இந்தக் கணினியின் சொந்த வலையமைப்பு — அச்சுப்பொறி, ரூட்டர் — மற்றும் இந்த முனையின் சொந்த இணைப்புகள் நேரடியாகவே இருக்கும். இந்தக் கணினி தன் இணைப்பைப் பகிரும் வரை இது செயல்படும்.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>வலையமைப்புச் சேவையை நிறுவு…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>வலையமைப்புச் சேவை</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>வலையமைப்புச் சேவை நிறுவப்படவில்லை: bps-relay-net.exe மற்றும் wintun.dll ஆகியவை BPS Relay-இன் அருகில் இருக்க வேண்டும்.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>வலையமைப்புச் சேவை நிறுவப்படவில்லை: Windows அதற்கு நிர்வாகி உரிமைகளை வழங்கவில்லை.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>வலையமைப்புச் சேவை நிறுவப்பட்டு இயங்குகிறது. இந்தக் கணினியின் போக்குவரத்து வலையமைப்பு வழியாகச் செல்ல BPS Relay-ஐ மீண்டும் தொடங்குங்கள்.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>வலையமைப்புச் சேவை நிறுவப்படவில்லை (குறியீடு %1). அதன் பதிவு %ProgramData%\BPS Relay\network.log இல் உள்ளது.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>இயக்கத்தில்: இப்போது வலையமைப்பு வழியாக %1 இணைப்பு(கள்); %2 அனுப்பப்பட்டது, %3 பெறப்பட்டது.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>இந்த அமைப்பில் இன்னும் கிடைக்கவில்லை.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>முதலில் BPS Relay-இன் வலையமைப்புச் சேவையை ஒருமுறை நிறுவுங்கள்; Windows நிர்வாகியைக் கேட்கும்.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>முதலில் ஒருமுறை, நிர்வாகியாக, BPS Relay வலையமைப்பை நிர்வகிக்க அனுமதியுங்கள்: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>கிளையன்ட் மீண்டும் தொடங்கும்போது தொடங்கும்.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

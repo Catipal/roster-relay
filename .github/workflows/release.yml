@@ -138,6 +138,9 @@ jobs:
           done
           test -f "src/qt/bitcoin-pos-qt$EXT" || { echo "GUI was not built"; exit 1; }
           test -f "src/qt/bps-relay$EXT" || { echo "BPS Relay was not built"; exit 1; }
+          if [ "${{ matrix.windows }}" = "true" ]; then
+            test -f src/bps-relay-net.exe || { echo "BPS Relay's network service was not built"; exit 1; }
+          fi
 
       - name: Package
         run: |
@@ -161,7 +164,20 @@ jobs:
           RDIR="bps-relay-$VER"
           mkdir -p "dist/$RDIR"
           cp "src/qt/bps-relay$EXT" "dist/$RDIR/"
+          [ "${{ matrix.windows }}" = "true" ] && cp src/bps-relay-net.exe "dist/$RDIR/"
           ${{ matrix.host }}-strip dist/$RDIR/* 2>/dev/null || strip dist/$RDIR/* 2>/dev/null || true
+          if [ "${{ matrix.windows }}" = "true" ]; then
+            # Wintun, the driver the network service uses (src/wintun/README.md):
+            # the signed DLL as published, checked against wintun.net's checksum,
+            # copied after stripping - its licence forbids changing it.
+            curl -fsSL -o wintun.zip https://www.wintun.net/builds/wintun-0.14.1.zip
+            echo "07c256185d6ee3652e09fa55c0b673e2624b565e02c4b9091c79ca7d2f24ef51  wintun.zip" | sha256sum -c -
+            rm -rf wintun-x && unzip -q wintun.zip -d wintun-x
+            ARCH=amd64
+            [ "${{ matrix.name }}" = "win32" ] && ARCH=x86
+            cp "wintun-x/wintun/bin/$ARCH/wintun.dll" "dist/$RDIR/"
+            cp wintun-x/wintun/LICENSE.txt "dist/$RDIR/wintun-license.txt"
+          fi
           cp doc/README_bps_relay.txt "dist/$RDIR/readme.txt"
           cp contrib/reticulum/bps-rns-bridge.py "dist/$RDIR/"
           cp doc/release-notes-bps-relay.md "dist/$RDIR/release-notes.md"

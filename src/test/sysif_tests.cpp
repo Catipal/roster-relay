@@ -3,15 +3,18 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <overlay/dnsanswer.h>
+#include <overlay/dnsclient.h>
 #include <overlay/gatewayclient.h>
 #include <overlay/gatewayproto.h>
 #include <overlay/ippacket.h>
 #include <overlay/netstack.h>
 #include <overlay/sysif.h>
+#include <overlay/sysroute.h>
 #include <test/util/setup_common.h>
 
 #include <boost/test/unit_test.hpp>
 
+#include <algorithm>
 #include <cstring>
 
 using namespace overlay;
@@ -299,10 +302,110 @@ BOOST_AUTO_TEST_CASE(the_interface_lets_in_only_what_the_computer_asked_for)
         BOOST_CHECK_EQUAL(answer[3] & 0x0f, (int)DnsRcode::SERVER_FAILURE);
         BOOST_CHECK_EQUAL(sysif.GetStats().lookups, 4U);
 
+        // A lookup sent to another resolver is answered here all the same,
+        // from that resolver's address, so the program takes it.
+        const IpAddr quad9 = IpAddr::V4(9, 9, 9, 9);
+        const size_t before = written.size();
+        GetNetStack().RunSync([&] { sysif.FromComputer(BuildUdp(me, 5354, quad9, DNS_PORT, Query("site.bps", DNS_TYPE_A))); });
+        BOOST_REQUIRE_EQUAL(written.size(), before + 1);
+        PacketInfo from;
+        BOOST_REQUIRE(ParsePacket(written.back(), from, why));
+        BOOST_CHECK(from.src == quad9);
+        BOOST_CHECK_EQUAL(UdpPayload(written.back())[3] & 0x0f, (int)DnsRcode::NO_SUCH_NAME);
+        BOOST_CHECK_EQUAL(sysif.GetStats().kept_local, 3U);
+
         sysif.Stop();
         client.Stop();
     }
     GetNetStack().Stop();
+}
+
+BOOST_AUTO_TEST_CASE(direct_lookups_read_answers_carefully)
+{
+    const std::vector<uint8_t> q = BuildDnsQuery(0x4242, "www.example.com", DNS_TYPE_A);
+    BOOST_REQUIRE(!q.empty());
+    BOOST_CHECK(BuildDnsQuery(1, "a..b", DNS_TYPE_A).empty());
+    BOOST_CHECK(BuildDnsQuery(1, std::string(64, 'a') + ".com", DNS_TYPE_A).empty());
+
+    // An answer as a resolver sends it: the question, a CNAME, then two
+    // addresses, names compressed.
+    std::vector<uint8_t> a(q);
+    a[2] = 0x81;
+    a[3] = 0x80;
+    a[7] = 3;
+    const uint8_t cname[] = {0xc0, 0x0c, 0, 5, 0, 1, 0, 0, 1, 0, 0, 2, 0xc0, 0x10};
+    a.insert(a.end(), cname, cname + sizeof(cname));
+    const uint8_t a1[] = {0xc0, 0x10, 0, 1, 0, 1, 0, 0, 0, 60, 0, 4, 93, 184, 216, 34};
+    const uint8_t a2[] = {0xc0, 0x10, 0, 1, 0, 1, 0, 0, 0, 30, 0, 4, 93, 184, 216, 35};
+    a.insert(a.end(), a1, a1 + sizeof(a1));
+    a.insert(a.end(), a2, a2 + sizeof(a2));
+    DnsRcode rcode;
+    std::vector<IpAddr> addrs;
+    uint32_t ttl;
+    BOOST_REQUIRE(ParseDnsResponse(a, 0x4242, DNS_TYPE_A, rcode, addrs, ttl));
+    BOOST_CHECK(rcode == DnsRcode::OK);
+    BOOST_REQUIRE_EQUAL(addrs.size(), 2U);
+    BOOST_CHECK(addrs[0] == IpAddr::V4(93, 184, 216, 34));
+    BOOST_CHECK_EQUAL(ttl, 30U);
+    // Not for this query, cut short, or truncated: not taken.
+    BOOST_CHECK(!ParseDnsResponse(a, 0x4243, DNS_TYPE_A, rcode, addrs, ttl));
+    std::vector<uint8_t> cut(a.begin(), a.end() - 3);
+    BOOST_CHECK(!ParseDnsResponse(cut, 0x4242, DNS_TYPE_A, rcode, addrs, ttl));
+    std::vector<uint8_t> tc(a);
+    tc[2] |= 0x02;
+    BOOST_CHECK(!ParseDnsResponse(tc, 0x4242, DNS_TYPE_A, rcode, addrs, ttl));
+    // The type asked for only.
+    BOOST_REQUIRE(ParseDnsResponse(a, 0x4242, DNS_TYPE_AAAA, rcode, addrs, ttl));
+    BOOST_CHECK(addrs.empty());
+    // A name that does not exist.
+    std::vector<uint8_t> nx(q);
+    nx[2] = 0x81;
+    nx[3] = 0x83;
+    BOOST_REQUIRE(ParseDnsResponse(nx, 0x4242, DNS_TYPE_A, rcode, addrs, ttl));
+    BOOST_CHECK(rcode == DnsRcode::NO_SUCH_NAME);
+}
+
+BOOST_AUTO_TEST_CASE(the_resolvers_the_computer_used_are_read)
+{
+    const std::vector<CService> got = ParseResolvConf(
+        "# Generated\nnameserver 127.0.0.53\nnameserver 9.9.9.9\nnameserver ::1\nnameserver 10.77.1.53\n"
+        "nameserver fe80::1%eth0\nsearch lan\nnameserver 2620:fe::fe\nnameserver 9.9.9.9\n");
+    BOOST_REQUIRE_EQUAL(got.size(), 2U);
+    BOOST_CHECK_EQUAL(got[0].ToString(), "9.9.9.9:53");
+    BOOST_CHECK_EQUAL(got[1].ToString(), "[2620:fe::fe]:53");
+}
+
+BOOST_AUTO_TEST_CASE(routing_the_computer_is_planned_and_undone)
+{
+    const std::vector<RouteStep> up = PlanRoutesUp("bps0", true);
+    auto has = [](const std::vector<RouteStep>& steps, const std::string& joined) {
+        for (const RouteStep& s : steps) {
+            std::string j;
+            for (const std::string& a : s.argv) j += (j.empty() ? "" : " ") + a;
+            if (j == joined) return true;
+        }
+        return false;
+    };
+    BOOST_CHECK(has(up, "ip link set dev bps0 mtu 1280 up"));
+    BOOST_CHECK(has(up, "ip -4 addr replace 10.77.1.2/32 dev bps0"));
+    BOOST_CHECK(has(up, "ip -4 route replace default dev bps0 table 25200"));
+    // The computer's own networks before everything else, and the node's own
+    // sockets, carrying the mark, past the interface.
+    BOOST_CHECK(has(up, "ip -4 rule add table main suppress_prefixlength 0 priority 25200"));
+    BOOST_CHECK(has(up, "ip -4 rule add not fwmark 0x6270 table 25200 priority 25201"));
+    BOOST_CHECK(has(up, "resolvectl domain bps0 ~."));
+    BOOST_CHECK(!has(PlanRoutesUp("bps0", false), "resolvectl domain bps0 ~."));
+    // Only IPv4 is needed; IPv6 may be switched off.
+    for (const RouteStep& s : up) {
+        if (std::find(s.argv.begin(), s.argv.end(), "-6") != s.argv.end() || s.argv[0] == "resolvectl") {
+            BOOST_CHECK(!s.required);
+        }
+    }
+    const std::vector<RouteStep> down = PlanRoutesDown("bps0", true);
+    BOOST_CHECK(has(down, "ip -4 rule del priority 25201"));
+    BOOST_CHECK(has(down, "ip -4 rule del priority 25200"));
+    BOOST_CHECK(has(down, "ip -6 route flush table 25200"));
+    BOOST_CHECK(has(down, "resolvectl revert bps0"));
 }
 
 BOOST_AUTO_TEST_SUITE_END()

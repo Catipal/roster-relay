@@ -71,6 +71,7 @@ private Q_SLOTS:
     void onRpcFailed(const QString& tag, const QString& message);
     void onChanged();
     void onListGateway();
+    void onInstallNetService();
 
 private:
     QWidget* MakeRelayCard();
@@ -112,6 +113,9 @@ private:
     QSpinBox* m_gateway_budget{nullptr};
     QCheckBox* m_proxy{nullptr};
     QLabel* m_proxy_status{nullptr};
+    QCheckBox* m_interface{nullptr};    //!< all of this computer's traffic through the network
+    QLabel* m_interface_status{nullptr};
+    QPushButton* m_interface_setup{nullptr}; //!< Windows: install the network service
     QLabel* m_gateway_note{nullptr};
     bool m_own_address{false};
     QTimer* m_timer{nullptr};

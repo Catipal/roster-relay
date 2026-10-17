@@ -5045,6 +5045,58 @@ Anda dapat mengubahnya kapan saja di halaman Server.</translation>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 koneksi untuk %2 pengunjung, di %3 titik temu</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>Alirkan semua lalu lintas komputer ini melalui jaringan, tanpa pengaturan proksi di program mana pun</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>Koneksi setiap program keluar melalui gerbang jaringan, masing-masing melalui gerbang lain, dan nama dicari di sana. Jaringan komputer ini sendiri — printer, router — dan koneksi node ini sendiri tetap langsung. Ini berfungsi selama komputer ini berbagi koneksinya sendiri.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>Pasang layanan jaringan…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>Layanan jaringan</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>Layanan jaringan tidak terpasang: bps-relay-net.exe dan wintun.dll harus berada di samping BPS Relay.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>Layanan jaringan tidak terpasang: Windows tidak memberinya hak administrator.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>Layanan jaringan sudah terpasang dan berjalan. Mulai ulang BPS Relay agar lalu lintas komputer ini melalui jaringan.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>Layanan jaringan tidak terpasang (kode %1). Lognya ada di %ProgramData%\BPS Relay\network.log.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Aktif: %1 koneksi melalui jaringan sekarang; %2 terkirim, %3 diterima.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>Belum tersedia di sistem ini.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>Pasang dulu layanan jaringan BPS Relay, sekali saja; Windows meminta administrator.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>Izinkan dulu BPS Relay mengelola jaringan, sekali saja, sebagai administrator: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>Dimulai saat klien dimulai ulang.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

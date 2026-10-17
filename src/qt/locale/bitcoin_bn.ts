@@ -5059,6 +5059,58 @@ You can change this at any time on the Server page.</source>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%2 জন দর্শনার্থীর জন্য %1টি সংযোগ, %3টি মিলনবিন্দুতে</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>এই কম্পিউটারের সব ট্র্যাফিক নেটওয়ার্কের মধ্য দিয়ে পাঠান, কোনো প্রোগ্রামে প্রক্সি সেটিং ছাড়াই</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>প্রতিটি প্রোগ্রামের সংযোগ নেটওয়ার্কের গেটওয়ে দিয়ে বের হয়, প্রতিটি আলাদা গেটওয়ে দিয়ে, এবং নাম সেখানেই খোঁজা হয়। এই কম্পিউটারের নিজস্ব নেটওয়ার্ক — একটি প্রিন্টার, রাউটার — এবং এই নোডের নিজস্ব সংযোগ সরাসরি থাকে। এই কম্পিউটার নিজের সংযোগ ভাগ করলে তবেই এটি কাজ করে।</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>নেটওয়ার্ক সার্ভিস ইনস্টল করুন…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>নেটওয়ার্ক সার্ভিস</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>নেটওয়ার্ক সার্ভিস ইনস্টল হয়নি: bps-relay-net.exe এবং wintun.dll অবশ্যই BPS Relay-এর পাশে থাকতে হবে।</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>নেটওয়ার্ক সার্ভিস ইনস্টল হয়নি: Windows এটিকে অ্যাডমিনিস্ট্রেটরের অধিকার দেয়নি।</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>নেটওয়ার্ক সার্ভিস ইনস্টল হয়েছে এবং চলছে। এই কম্পিউটারের ট্র্যাফিক নেটওয়ার্কের মধ্য দিয়ে যেতে BPS Relay পুনরায় চালু করুন।</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>নেটওয়ার্ক সার্ভিস ইনস্টল হয়নি (কোড %1)। এর লগ আছে %ProgramData%\BPS Relay\network.log-এ।</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>চালু: এখন নেটওয়ার্কের মধ্য দিয়ে %1টি সংযোগ; %2 পাঠানো, %3 পাওয়া।</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>এই সিস্টেমে এখনো উপলব্ধ নয়।</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>প্রথমে একবার BPS Relay-এর নেটওয়ার্ক সার্ভিস ইনস্টল করুন; Windows একজন অ্যাডমিনিস্ট্রেটর চায়।</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>প্রথমে একবার অ্যাডমিনিস্ট্রেটর হিসেবে BPS Relay-কে নেটওয়ার্ক পরিচালনা করতে দিন: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>ক্লায়েন্ট পুনরায় চালু হলে শুরু হয়।</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

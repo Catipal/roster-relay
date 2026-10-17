@@ -5059,6 +5059,58 @@ Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 yhteyttä %2 vierailijalle, %3 kohtauspisteessä</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>Ohjaa kaikki tämän tietokoneen liikenne verkon kautta, ilman välityspalvelinasetusta missään ohjelmassa</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>Jokaisen ohjelman yhteydet lähtevät verkon yhdyskäytävien kautta, kukin eri yhdyskäytävän, ja nimet haetaan siellä. Tämän tietokoneen oma verkko — tulostin, reititin — ja tämän solmun omat yhteydet pysyvät suorina. Toimii, kun tämä tietokone jakaa oman yhteytensä.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>Asenna verkkopalvelu…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>Verkkopalvelu</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>Verkkopalvelua ei asennettu: bps-relay-net.exe ja wintun.dll on oltava BPS Relayn vieressä.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>Verkkopalvelua ei asennettu: Windows ei antanut sille ylläpitäjän oikeuksia.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>Verkkopalvelu on asennettu ja käynnissä. Käynnistä BPS Relay uudelleen, jotta tämän tietokoneen liikenne kulkee verkon kautta.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>Verkkopalvelua ei asennettu (koodi %1). Sen loki on kohteessa %ProgramData%\BPS Relay\network.log.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Päällä: nyt %1 yhteys(tä) verkon kautta; lähetetty %2, vastaanotettu %3.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>Ei vielä saatavilla tässä järjestelmässä.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>Asenna ensin kerran BPS Relayn verkkopalvelu; Windows pyytää ylläpitäjää.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>Anna ensin kerran ylläpitäjänä BPS Relayn hallita verkkoa: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>Alkaa, kun asiakasohjelma käynnistetään uudelleen.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

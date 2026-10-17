@@ -212,6 +212,7 @@ BITCOIN_CORE_H = \
   overlay/chainsync.h \
   overlay/exitpolicy.h \
   overlay/dnsanswer.h \
+  overlay/dnsclient.h \
   overlay/gateway.h \
   overlay/gatewayclient.h \
   overlay/gatewayproto.h \
@@ -219,8 +220,10 @@ BITCOIN_CORE_H = \
   overlay/limits.h \
   overlay/localproxy.h \
   overlay/meeting.h \
+  overlay/netservice.h \
   overlay/netstack.h \
   overlay/sysif.h \
+  overlay/sysroute.h \
   overlay/lwip/lwipopts.h \
   overlay/lwip/arch/cc.h \
   overlay/path.h \
@@ -371,12 +374,14 @@ libbitcoin_server_a_SOURCES = \
   mail/protocol.cpp \
   overlay/chainsync.cpp \
   overlay/dnsanswer.cpp \
+  overlay/dnsclient.cpp \
   overlay/gateway.cpp \
   overlay/gatewayclient.cpp \
   overlay/localproxy.cpp \
   overlay/meeting.cpp \
   overlay/netstack.cpp \
   overlay/sysif.cpp \
+  overlay/sysroute.cpp \
   names/name.cpp \
   names/petnames.cpp \
   names/record.cpp \
@@ -791,6 +796,18 @@ bitcoin_pos_cli_LDADD = \
 bitcoin_pos_cli_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
+# BPS Relay's network service on Windows (overlay/netservice.h): owns the
+# Wintun adapter and the routes, so BPS Relay itself needs no administrator.
+if TARGET_WINDOWS
+bin_PROGRAMS += bps-relay-net
+bps_relay_net_SOURCES = bps-relay-net.cpp
+bps_relay_net_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+bps_relay_net_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bps_relay_net_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+bps_relay_net_LDADD = -ladvapi32 -lshell32 -liphlpapi
+endif
+#
+
 # bitcoin-tx binary #
 bitcoin_pos_tx_SOURCES = bitcoin-tx.cpp
 bitcoin_pos_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
@@ -1108,7 +1125,7 @@ LWIP_DIST += lwip/include/netif/ppp/polarssl/md4.h
 LWIP_DIST += lwip/include/netif/ppp/polarssl/md5.h
 LWIP_DIST += lwip/include/netif/ppp/polarssl/sha1.h
 
-EXTRA_DIST = $(CTAES_DIST) $(MLKEM_DIST) $(LWIP_DIST)
+EXTRA_DIST = $(CTAES_DIST) $(MLKEM_DIST) $(LWIP_DIST) wintun/wintun.h wintun/README.md
 
 
 config/bitcoin-config.h: config/stamp-h1

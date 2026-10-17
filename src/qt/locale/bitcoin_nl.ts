@@ -5061,6 +5061,58 @@ Je kunt dit altijd veranderen op de pagina Server.</translation>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 verbinding(en) voor %2 bezoeker(s), op %3 ontmoetingspunt(en)</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>Al het verkeer van deze computer via het netwerk laten lopen, zonder proxy-instelling in welk programma dan ook</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>De verbindingen van elk programma gaan naar buiten via de gateways van het netwerk, elk via een andere, en namen worden daar opgezocht. Het eigen netwerk van deze computer — een printer, de router — en de eigen verbindingen van deze node blijven direct. Het werkt zolang deze computer zijn eigen verbinding deelt.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>De netwerkdienst installeren…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>Netwerkdienst</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>De netwerkdienst is niet geïnstalleerd: bps-relay-net.exe en wintun.dll moeten naast BPS Relay staan.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>De netwerkdienst is niet geïnstalleerd: Windows gaf hem geen beheerdersrechten.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>De netwerkdienst is geïnstalleerd en draait. Start BPS Relay opnieuw zodat het verkeer van deze computer via het netwerk gaat.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>De netwerkdienst is niet geïnstalleerd (code %1). Het logboek staat in %ProgramData%\BPS Relay\network.log.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Aan: nu %1 verbinding(en) via het netwerk; %2 verzonden, %3 ontvangen.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>Nog niet beschikbaar op dit systeem.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>Installeer eerst eenmalig de netwerkdienst van BPS Relay; Windows vraagt om een beheerder.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>Laat BPS Relay eerst eenmalig, als beheerder, het netwerk beheren: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>Begint wanneer de client opnieuw start.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

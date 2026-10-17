@@ -5075,6 +5075,58 @@ You can change this at any time on the Server page.</source>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 веза за %2 посетилаца, на %3 места сусрета</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>Проведи сав саобраћај овог рачунара кроз мрежу, без подешавања проксија у било ком програму</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>Везе сваког програма излазе кроз пролазе мреже, свака кроз други, а имена се тамо траже. Сопствена мрежа овог рачунара — штампач, рутер — и сопствене везе овог чвора остају директне. Ради док овај рачунар дели сопствену везу.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>Инсталирај мрежни сервис…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>Мрежни сервис</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>Мрежни сервис није инсталиран: bps-relay-net.exe и wintun.dll морају бити поред BPS Relay-а.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>Мрежни сервис није инсталиран: Windows му није дао администраторска права.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>Мрежни сервис је инсталиран и ради. Поново покрените BPS Relay да би саобраћај овог рачунара ишао кроз мрежу.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>Мрежни сервис није инсталиран (код %1). Његов дневник је у %ProgramData%\BPS Relay\network.log.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Укључено: сада %1 веза кроз мрежу; послато %2, примљено %3.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>Још није доступно на овом систему.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>Прво једном инсталирајте мрежни сервис BPS Relay-а; Windows тражи администратора.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>Прво једном, као администратор, дозволите BPS Relay-у да управља мрежом: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>Почиње када се клијент поново покрене.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

@@ -5045,6 +5045,58 @@ You can change this at any time on the Server page.</source>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 اتصال برای %2 بازدیدکننده، در %3 نقطهٔ دیدار</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>همه ترافیک این رایانه از راه شبکه برود، بدون تنظیم پراکسی در هیچ برنامه‌ای</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>اتصال‌های هر برنامه از راه دروازه‌های شبکه بیرون می‌روند، هر کدام از راه دروازه‌ای دیگر، و نام‌ها همان‌جا جست‌وجو می‌شوند. شبکه خود این رایانه — یک چاپگر، مسیریاب — و اتصال‌های خود این گره مستقیم می‌مانند. این تا وقتی کار می‌کند که این رایانه اتصال خودش را هم به اشتراک بگذارد.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>نصب سرویس شبکه…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>سرویس شبکه</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>سرویس شبکه نصب نشد: bps-relay-net.exe و wintun.dll باید کنار BPS Relay باشند.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>سرویس شبکه نصب نشد: Windows به آن اختیارات مدیر نداد.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>سرویس شبکه نصب شده و در حال اجراست. BPS Relay را دوباره راه‌اندازی کنید تا ترافیک این رایانه از راه شبکه برود.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>سرویس شبکه نصب نشد (کد %1). گزارش آن در %ProgramData%\BPS Relay\network.log است.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>روشن: اکنون %1 اتصال از راه شبکه؛ %2 فرستاده، %3 دریافت شده.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>هنوز روی این سیستم در دسترس نیست.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>نخست یک بار سرویس شبکه BPS Relay را نصب کنید؛ Windows مدیر می‌خواهد.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>نخست یک بار، به‌عنوان مدیر، اجازه دهید BPS Relay شبکه را مدیریت کند: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>با راه‌اندازی دوباره برنامه آغاز می‌شود.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

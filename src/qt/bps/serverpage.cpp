@@ -18,6 +18,8 @@
 #include <mail/mailbox.h>
 #include <overlay/gateway.h>
 #include <overlay/localproxy.h>
+#include <overlay/sysif.h>
+#include <overlay/sysroute.h>
 #include <policy/feerate.h>
 #include <roster/listing.h>
 #include <roster/payout.h>
@@ -40,6 +42,19 @@
 #include <QTimer>
 #include <QVBoxLayout>
 
+#ifdef WIN32
+#include <QCoreApplication>
+#include <QDir>
+#include <QFile>
+
+#include <cstring>
+#include <vector>
+
+#include <windows.h>
+#include <sddl.h>
+#include <shellapi.h>
+#endif
+
 namespace {
 //! QSettings keys, prefixed like the Settings page's own.
 const char* KEY_ACCEPTLISTINGS = "bps/acceptlistings";
@@ -52,6 +67,27 @@ const char* KEY_GATEWAY = "bps/gateway";
 const char* KEY_GATEWAY_BUDGET = "bps/gatewaybandwidth";
 const char* KEY_GATEWAY_PROXY = "bps/gatewayproxy";
 const char* KEY_GATEWAY_NOTICE = "bps/gatewaynotice";
+const char* KEY_GATEWAY_INTERFACE = "bps/gatewayinterface";
+
+/** The system-wide interface's name: a TUN device on Linux; on Windows the service's adapter, whatever this says. */
+const char* InterfaceName()
+{
+#ifdef WIN32
+    return "bps";
+#else
+    return "bps0";
+#endif
+}
+
+/** Whether this system can have the system-wide interface at all yet. */
+bool InterfaceAvailable()
+{
+#if defined(__linux__) || defined(WIN32)
+    return true;
+#else
+    return false;
+#endif
+}
 
 const char* TAG_PAYOUT = "server:payout";
 const char* TAG_MAIL = "server:mail";
@@ -143,6 +179,14 @@ void ServerPage::ApplyStoredSettings()
     // The local proxy is part of this client: on unless switched off here.
     if (!settings.contains(KEY_GATEWAY_PROXY)) settings.setValue(KEY_GATEWAY_PROXY, true);
     gArgs.SoftSetBoolArg("-gatewayproxy", settings.value(KEY_GATEWAY_PROXY).toBool());
+    // All of the computer's traffic through the network: off until chosen, and
+    // only once this program may route the computer - the node would refuse
+    // to start otherwise. The Server page says what is missing.
+    std::string how;
+    if (settings.value(KEY_GATEWAY_INTERFACE, false).toBool() && InterfaceAvailable() && overlay::HaveNetAdmin(how)) {
+        gArgs.SoftSetArg("-gatewayinterface", InterfaceName());
+        gArgs.SoftSetBoolArg("-gatewayroutes", true);
+    }
 }
 
 void ServerPage::AskAboutGatewayOnce()
@@ -417,6 +461,26 @@ QWidget* ServerPage::MakeGatewayCard()
     m_proxy_status->setContentsMargins(24, 0, 0, 0);
     body->addWidget(m_proxy_status);
 
+    m_interface = new QCheckBox(tr("Carry all of this computer's traffic through the network, with no proxy setting "
+                                   "in any program"), card);
+    m_interface->setToolTip(tr("Every program's connections leave through the network's gateways, each through "
+                               "another, and names are looked up there. This computer's own network \xe2\x80\x94 a "
+                               "printer, the router \xe2\x80\x94 and this node's own connections stay direct. It "
+                               "works while this computer shares its own connection."));
+    body->addWidget(m_interface);
+    m_interface_status = new QLabel(card);
+    m_interface_status->setWordWrap(true);
+    m_interface_status->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    m_interface_status->setContentsMargins(24, 0, 0, 0);
+    body->addWidget(m_interface_status);
+    m_interface_setup = new QPushButton(tr("Install the network service\xe2\x80\xa6"), card);
+    m_interface_setup->setVisible(false);
+    QHBoxLayout* setup_row = new QHBoxLayout();
+    setup_row->setContentsMargins(24, 0, 0, 0);
+    setup_row->addWidget(m_interface_setup);
+    setup_row->addStretch(1);
+    body->addLayout(setup_row);
+
     m_gateway_note = new QLabel(card);
     m_gateway_note->setWordWrap(true);
     m_gateway_note->setVisible(false);
@@ -426,8 +490,68 @@ QWidget* ServerPage::MakeGatewayCard()
     connect(m_gateway_budget, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, &ServerPage::onChanged);
     connect(m_proxy, &QCheckBox::toggled, this, &ServerPage::onChanged);
+    connect(m_interface, &QCheckBox::toggled, this, &ServerPage::onChanged);
     connect(m_gateway_list, &QPushButton::clicked, this, &ServerPage::onListGateway);
+    connect(m_interface_setup, &QPushButton::clicked, this, &ServerPage::onInstallNetService);
     return card;
+}
+
+void ServerPage::onInstallNetService()
+{
+#ifdef WIN32
+    // The service serves only the user it is installed for: this one.
+    QString sid;
+    HANDLE token = nullptr;
+    if (OpenProcessToken(GetCurrentProcess(), TOKEN_QUERY, &token)) {
+        DWORD size = 0;
+        GetTokenInformation(token, TokenUser, nullptr, 0, &size);
+        std::vector<BYTE> buf(size);
+        LPWSTR text = nullptr;
+        if (size && GetTokenInformation(token, TokenUser, buf.data(), size, &size) &&
+            ConvertSidToStringSidW(((TOKEN_USER*)buf.data())->User.Sid, &text)) {
+            sid = QString::fromWCharArray(text);
+            LocalFree(text);
+        }
+        CloseHandle(token);
+    }
+    const QString exe = QDir::toNativeSeparators(QCoreApplication::applicationDirPath() + "/bps-relay-net.exe");
+    if (sid.isEmpty() || !QFile::exists(exe)) {
+        QMessageBox::warning(this, tr("Network service"),
+                             tr("The network service was not installed: bps-relay-net.exe and wintun.dll must be "
+                                "beside BPS Relay."));
+        return;
+    }
+    const std::wstring file = exe.toStdWString();
+    const std::wstring params = (QStringLiteral("install ") + sid).toStdWString();
+    SHELLEXECUTEINFOW sei;
+    std::memset(&sei, 0, sizeof(sei));
+    sei.cbSize = sizeof(sei);
+    sei.fMask = SEE_MASK_NOCLOSEPROCESS;
+    sei.lpVerb = L"runas";
+    sei.lpFile = file.c_str();
+    sei.lpParameters = params.c_str();
+    sei.nShow = SW_HIDE;
+    if (!ShellExecuteExW(&sei) || !sei.hProcess) {
+        QMessageBox::warning(this, tr("Network service"),
+                             tr("The network service was not installed: Windows did not give it an administrator's "
+                                "rights."));
+        return;
+    }
+    WaitForSingleObject(sei.hProcess, 120000);
+    DWORD code = 1;
+    GetExitCodeProcess(sei.hProcess, &code);
+    CloseHandle(sei.hProcess);
+    if (code == 0) {
+        QMessageBox::information(this, tr("Network service"),
+                                 tr("The network service is installed and running. Restart BPS Relay for this "
+                                    "computer's traffic to go through the network."));
+    } else {
+        QMessageBox::warning(this, tr("Network service"),
+                             tr("The network service was not installed (code %1). Its log is in "
+                                "%ProgramData%\\BPS Relay\\network.log.").arg(code));
+    }
+    Refresh();
+#endif
 }
 
 void ServerPage::onListGateway()
@@ -477,6 +601,37 @@ void ServerPage::ShowGateway(const UniValue& value)
                                     ? tr("Off: it needs the overlay and the roster index.")
                                     : tr("Off."));
     }
+
+    // All of the computer's traffic, and what it still needs.
+    const UniValue& iface = visitor.isObject() ? find_value(visitor, "interface") : NullUniValue;
+    std::string how;
+    const bool may = InterfaceAvailable() && overlay::HaveNetAdmin(how);
+    m_interface->setEnabled(InterfaceAvailable());
+    m_interface_setup->setVisible(false);
+    if (iface.isObject()) {
+        const auto inum = [&iface](const char* key) -> int64_t {
+            const UniValue& v = find_value(iface, key);
+            return v.isNum() ? v.get_int64() : 0;
+        };
+        m_interface_status->setText(tr("On: %1 connection(s) through the network now; %2 sent, %3 received.")
+                                        .arg(inum("connections"))
+                                        .arg(mib(inum("bytes_out")))
+                                        .arg(mib(inum("bytes_in"))));
+    } else if (!InterfaceAvailable()) {
+        m_interface_status->setText(tr("Not available on this system yet."));
+    } else if (!may) {
+#ifdef WIN32
+        m_interface_status->setText(tr("First install BPS Relay's network service, once; Windows asks for an "
+                                       "administrator."));
+        m_interface_setup->setVisible(true);
+#else
+        m_interface_status->setText(tr("First let BPS Relay manage the network, once, as an administrator: %1")
+                                        .arg(QString::fromStdString(how.substr(how.find("sudo") == std::string::npos ? 0 : how.find("sudo")))));
+#endif
+    } else {
+        m_interface_status->setText(m_interface->isChecked() ? tr("Starts when the client restarts.") : QString());
+    }
+    m_interface_status->setVisible(!m_interface_status->text().isEmpty());
 
     // Sharing.
     if (!find_value(value, "enabled").isTrue()) {
@@ -544,6 +699,8 @@ void ServerPage::Load()
     m_gateway->setChecked(gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY));
     m_gateway_budget->setValue((int)gArgs.GetArg("-gatewaybandwidth", (int64_t)overlay::DEFAULT_GATEWAY_BANDWIDTH_MIB));
     m_proxy->setChecked(gArgs.GetBoolArg("-gatewayproxy", overlay::DEFAULT_GATEWAY_PROXY));
+    m_interface->setChecked(gArgs.GetBoolArg("-gatewayroutes", false) ||
+                            QSettings().value(KEY_GATEWAY_INTERFACE, false).toBool());
     m_loading = false;
 }
 
@@ -560,6 +717,7 @@ void ServerPage::onChanged()
     settings.setValue(KEY_GATEWAY, m_gateway->isChecked());
     settings.setValue(KEY_GATEWAY_BUDGET, m_gateway_budget->value());
     settings.setValue(KEY_GATEWAY_PROXY, m_proxy->isChecked());
+    settings.setValue(KEY_GATEWAY_INTERFACE, m_interface->isChecked());
     const QString saved = tr("Saved. These are read when the node starts, so restart the client "
                              "for the change to take effect.");
     for (QLabel* note : {m_restart_note, m_mailbox_note, m_gateway_note}) {

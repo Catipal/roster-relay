@@ -5116,6 +5116,58 @@ You can change this at any time on the Server page.</source>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 اتصال لـ %2 زائر، عند %3 نقطة لقاء</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>مرّر كل حركة هذا الحاسوب عبر الشبكة، دون إعداد وكيل في أي برنامج</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>تخرج اتصالات كل برنامج عبر بوابات الشبكة، كل اتصال عبر بوابة أخرى، وتُبحث الأسماء هناك. تبقى شبكة هذا الحاسوب نفسه — طابعة، الموجّه — واتصالات هذه العقدة نفسها مباشرة. يعمل ذلك ما دام هذا الحاسوب يشارك اتصاله.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>تثبيت خدمة الشبكة…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>خدمة الشبكة</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>لم تُثبَّت خدمة الشبكة: يجب أن يكون bps-relay-net.exe و wintun.dll بجانب BPS Relay.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>لم تُثبَّت خدمة الشبكة: لم يمنحها Windows صلاحيات المسؤول.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>خدمة الشبكة مثبتة وتعمل. أعد تشغيل BPS Relay لتمر حركة هذا الحاسوب عبر الشبكة.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>لم تُثبَّت خدمة الشبكة (الرمز %1). سجلها في %ProgramData%\BPS Relay\network.log.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>مفعّل: %1 اتصال(ات) عبر الشبكة الآن؛ أُرسل %2، واستُقبل %3.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>غير متاح على هذا النظام بعد.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>ثبّت أولًا خدمة الشبكة الخاصة بـ BPS Relay، مرة واحدة؛ يطلب Windows مسؤولًا.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>اسمح أولًا لـ BPS Relay بإدارة الشبكة، مرة واحدة، بصفتك مسؤولًا: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>يبدأ عند إعادة تشغيل العميل.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

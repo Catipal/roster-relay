@@ -5095,6 +5095,58 @@ To lahko kadar koli spremenite na strani Strežnik.</translation>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 povezav za %2 obiskovalcev, na %3 točkah srečanja</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>Ves promet tega računalnika naj gre skozi omrežje, brez nastavitve posredniškega strežnika v katerem koli programu</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>Povezave vsakega programa gredo ven skozi prehode omrežja, vsaka skozi drugega, imena pa se poiščejo tam. Lastno omrežje tega računalnika — tiskalnik, usmerjevalnik — in lastne povezave tega vozlišča ostanejo neposredne. Deluje, dokler ta računalnik deli svojo povezavo.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>Namesti omrežno storitev…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>Omrežna storitev</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>Omrežna storitev ni bila nameščena: bps-relay-net.exe in wintun.dll morata biti ob BPS Relay.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>Omrežna storitev ni bila nameščena: Windows ji ni dal skrbniških pravic.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>Omrežna storitev je nameščena in teče. Znova zaženite BPS Relay, da bo promet tega računalnika šel skozi omrežje.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>Omrežna storitev ni bila nameščena (koda %1). Njen dnevnik je v %ProgramData%\BPS Relay\network.log.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Vklopljeno: zdaj %1 povezav skozi omrežje; poslano %2, prejeto %3.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>V tem sistemu še ni na voljo.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>Najprej enkrat namestite omrežno storitev BPS Relay; Windows zahteva skrbnika.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>Najprej enkrat kot skrbnik dovolite BPS Relay, da upravlja omrežje: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>Začne se, ko se odjemalec znova zažene.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

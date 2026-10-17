@@ -5043,6 +5043,58 @@ You can change this at any time on the Server page.</source>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 个连接，%2 位访问者，%3 个会面点</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>让这台电脑的全部流量都经过网络，任何程序都无需设置代理</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>每个程序的连接都经由网络的网关出去，每个连接用不同的网关，名称也在那里查询。这台电脑自己的网络（打印机、路由器）和这个节点自己的连接保持直连。只有在这台电脑共享自己的连接时才有效。</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>安装网络服务…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>网络服务</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>网络服务未安装：bps-relay-net.exe 和 wintun.dll 必须放在 BPS Relay 旁边。</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>网络服务未安装：Windows 没有给它管理员权限。</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>网络服务已安装并在运行。请重启 BPS Relay，让这台电脑的流量经过网络。</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>网络服务未安装（代码 %1）。日志在 %ProgramData%\BPS Relay\network.log。</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>已开启：现在有 %1 个连接经过网络；已发送 %2，已接收 %3。</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>此系统暂不支持。</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>请先安装一次 BPS Relay 的网络服务；Windows 会要求管理员。</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>请先以管理员身份允许 BPS Relay 管理网络，只需一次：%1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>客户端重启后开始。</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

@@ -56,6 +56,12 @@ bool Socket::Bind(const CService& listen_addr, std::string& error)
         error = strprintf("cannot create a UDP socket: %s", NetworkErrorString(WSAGetLastError()));
         return false;
     }
+    // The overlay's own datagrams never go into the interface it carries.
+    if (!MarkBypass(sock)) {
+        error = "cannot mark the overlay socket to pass the system-wide interface by";
+        CloseSocket(const_cast<SOCKET&>(sock));
+        return false;
+    }
 
     if (storage.ss_family == AF_INET6) {
         // Keep v6 and v4 sockets separate, so a v6 bind does not silently also

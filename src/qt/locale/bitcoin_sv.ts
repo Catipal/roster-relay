@@ -5060,6 +5060,58 @@ Du kan ändra detta när som helst på sidan Server.</translation>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 anslutning(ar) för %2 besökare, vid %3 mötesplats(er)</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>Skicka all trafik från den här datorn genom nätverket, utan proxyinställning i något program</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>Varje programs anslutningar går ut genom nätverkets gatewayer, var och en genom en annan, och namn slås upp där. Den här datorns eget nätverk — en skrivare, routern — och den här nodens egna anslutningar förblir direkta. Det fungerar så länge den här datorn delar sin egen anslutning.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>Installera nätverkstjänsten…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>Nätverkstjänst</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>Nätverkstjänsten installerades inte: bps-relay-net.exe och wintun.dll måste ligga bredvid BPS Relay.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>Nätverkstjänsten installerades inte: Windows gav den inte administratörsrättigheter.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>Nätverkstjänsten är installerad och körs. Starta om BPS Relay så att den här datorns trafik går genom nätverket.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>Nätverkstjänsten installerades inte (kod %1). Dess logg finns i %ProgramData%\BPS Relay\network.log.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>På: %1 anslutning(ar) genom nätverket nu; %2 skickat, %3 mottaget.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>Ännu inte tillgängligt på det här systemet.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>Installera först BPS Relays nätverkstjänst, en gång; Windows ber om en administratör.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>Låt först BPS Relay hantera nätverket, en gång, som administratör: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>Startar när klienten startas om.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

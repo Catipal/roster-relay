@@ -5060,6 +5060,58 @@ Pots canviar-ho en qualsevol moment a la pàgina Servidor.</translation>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 connexió(ns) per a %2 visitant(s), en %3 punt(s) de trobada</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>Fes passar tot el trànsit d&apos;aquest ordinador per la xarxa, sense cap configuració de servidor intermediari en cap programa</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>Les connexions de cada programa surten per les passarel·les de la xarxa, cadascuna per una altra, i els noms es consulten allà. La xarxa pròpia d&apos;aquest ordinador — una impressora, l&apos;encaminador — i les connexions pròpies d&apos;aquest node continuen directes. Funciona mentre aquest ordinador comparteix la seva connexió.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>Instal·la el servei de xarxa…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>Servei de xarxa</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>El servei de xarxa no s&apos;ha instal·lat: bps-relay-net.exe i wintun.dll han d&apos;estar al costat de BPS Relay.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>El servei de xarxa no s&apos;ha instal·lat: Windows no li ha donat drets d&apos;administrador.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>El servei de xarxa està instal·lat i en marxa. Reinicieu BPS Relay perquè el trànsit d&apos;aquest ordinador passi per la xarxa.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>El servei de xarxa no s&apos;ha instal·lat (codi %1). El seu registre és a %ProgramData%\BPS Relay\network.log.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Activat: %1 connexió(ns) per la xarxa ara; %2 enviat, %3 rebut.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>Encara no està disponible en aquest sistema.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>Primer instal·leu el servei de xarxa de BPS Relay, una vegada; Windows demana un administrador.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>Primer deixeu que BPS Relay gestioni la xarxa, una vegada, com a administrador: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>Comença quan es reinicia el client.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

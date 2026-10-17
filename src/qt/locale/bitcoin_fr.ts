@@ -5059,6 +5059,58 @@ Vous pouvez changer cela à tout moment dans la page Serveur.</translation>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 connexion(s) pour %2 visiteur(s), à %3 point(s) de rencontre</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>Faire passer tout le trafic de cet ordinateur par le réseau, sans réglage de proxy dans aucun programme</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>Les connexions de chaque programme sortent par les passerelles du réseau, chacune par une autre, et les noms y sont résolus. Le réseau propre de cet ordinateur — une imprimante, le routeur — et les connexions propres de ce nœud restent directs. Cela fonctionne tant que cet ordinateur partage sa propre connexion.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>Installer le service réseau…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>Service réseau</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>Le service réseau n&apos;a pas été installé : bps-relay-net.exe et wintun.dll doivent se trouver à côté de BPS Relay.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>Le service réseau n&apos;a pas été installé : Windows ne lui a pas donné de droits d&apos;administrateur.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>Le service réseau est installé et en marche. Redémarrez BPS Relay pour que le trafic de cet ordinateur passe par le réseau.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>Le service réseau n&apos;a pas été installé (code %1). Son journal est dans %ProgramData%\BPS Relay\network.log.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Activé : %1 connexion(s) par le réseau en ce moment ; %2 envoyé, %3 reçu.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>Pas encore disponible sur ce système.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>Installez d&apos;abord le service réseau de BPS Relay, une fois ; Windows demande un administrateur.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>Laissez d&apos;abord BPS Relay gérer le réseau, une fois, en tant qu&apos;administrateur : %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>Démarre au redémarrage du client.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

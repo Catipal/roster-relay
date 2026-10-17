@@ -5061,6 +5061,58 @@ You can change this at any time on the Server page.</source>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 חיבורים ל-%2 מבקרים, ב-%3 נקודות מפגש</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>להעביר את כל התעבורה של המחשב הזה דרך הרשת, בלי הגדרת פרוקסי באף תוכנה</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>החיבורים של כל תוכנה יוצאים דרך השערים של הרשת, כל אחד דרך שער אחר, והשמות נבדקים שם. הרשת של המחשב הזה עצמו — מדפסת, הנתב — והחיבורים של הצומת הזה עצמו נשארים ישירים. זה עובד כל עוד המחשב הזה משתף את החיבור שלו.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>התקנת שירות הרשת…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>שירות רשת</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>שירות הרשת לא הותקן: bps-relay-net.exe ו-wintun.dll חייבים להיות לצד BPS Relay.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>שירות הרשת לא הותקן: Windows לא נתן לו הרשאות מנהל.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>שירות הרשת מותקן ופועל. הפעילו מחדש את BPS Relay כדי שהתעבורה של המחשב הזה תעבור דרך הרשת.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>שירות הרשת לא הותקן (קוד %1). היומן שלו נמצא ב-%ProgramData%\BPS Relay\network.log.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>פעיל: %1 חיבורים דרך הרשת עכשיו; נשלחו %2, התקבלו %3.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>עדיין לא זמין במערכת הזו.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>קודם התקינו פעם אחת את שירות הרשת של BPS Relay; Windows מבקש מנהל.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>קודם אפשרו ל-BPS Relay לנהל את הרשת, פעם אחת, כמנהל: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>מתחיל כשהלקוח מופעל מחדש.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

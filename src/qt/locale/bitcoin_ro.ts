@@ -5075,6 +5075,58 @@ Poți schimba asta oricând în pagina Server.</translation>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 conexiune(i) pentru %2 vizitator(i), la %3 punct(e) de întâlnire</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>Trece tot traficul acestui computer prin rețea, fără setare de proxy în niciun program</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>Conexiunile fiecărui program ies prin gateway-urile rețelei, fiecare prin altul, iar numele sunt căutate acolo. Rețeaua proprie a acestui computer — o imprimantă, routerul — și conexiunile proprii ale acestui nod rămân directe. Funcționează cât timp acest computer își partajează propria conexiune.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>Instalează serviciul de rețea…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>Serviciu de rețea</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>Serviciul de rețea nu a fost instalat: bps-relay-net.exe și wintun.dll trebuie să fie lângă BPS Relay.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>Serviciul de rețea nu a fost instalat: Windows nu i-a dat drepturi de administrator.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>Serviciul de rețea este instalat și rulează. Reporniți BPS Relay pentru ca traficul acestui computer să treacă prin rețea.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>Serviciul de rețea nu a fost instalat (cod %1). Jurnalul lui este în %ProgramData%\BPS Relay\network.log.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Pornit: %1 conexiune(i) prin rețea acum; %2 trimiși, %3 primiți.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>Încă nu este disponibil pe acest sistem.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>Instalați mai întâi serviciul de rețea al BPS Relay, o singură dată; Windows cere un administrator.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>Permiteți mai întâi BPS Relay să administreze rețeaua, o singură dată, ca administrator: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>Pornește când clientul este repornit.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

@@ -5043,6 +5043,58 @@ Bạn có thể thay đổi điều này bất cứ lúc nào ở trang Máy ch�
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 kết nối cho %2 khách, tại %3 điểm gặp</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>Cho toàn bộ lưu lượng của máy tính này đi qua mạng, không cần cài proxy trong bất kỳ chương trình nào</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>Các kết nối của mọi chương trình đi ra qua các cổng của mạng, mỗi kết nối qua một cổng khác, và tên được tra cứu ở đó. Mạng riêng của máy tính này — máy in, bộ định tuyến — và các kết nối riêng của nút này vẫn đi trực tiếp. Tính năng này hoạt động khi máy tính này chia sẻ kết nối của chính nó.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>Cài dịch vụ mạng…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>Dịch vụ mạng</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>Dịch vụ mạng chưa được cài: bps-relay-net.exe và wintun.dll phải nằm cạnh BPS Relay.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>Dịch vụ mạng chưa được cài: Windows không cấp quyền quản trị viên cho nó.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>Dịch vụ mạng đã được cài và đang chạy. Hãy khởi động lại BPS Relay để lưu lượng của máy tính này đi qua mạng.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>Dịch vụ mạng chưa được cài (mã %1). Nhật ký của nó nằm ở %ProgramData%\BPS Relay\network.log.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Bật: hiện có %1 kết nối qua mạng; đã gửi %2, đã nhận %3.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>Chưa có trên hệ thống này.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>Trước tiên hãy cài dịch vụ mạng của BPS Relay, một lần; Windows sẽ yêu cầu quản trị viên.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>Trước tiên hãy cho phép BPS Relay quản lý mạng, một lần, với tư cách quản trị viên: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>Bắt đầu khi khởi động lại ứng dụng.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

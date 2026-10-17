@@ -572,6 +572,59 @@ static bool Socks5(const std::string& strDest, int port, const ProxyCredentials 
  * For details on the desired properties, see the inline comments in the source
  * code.
  */
+namespace {
+std::atomic<uint32_t> g_bypass_mark{0};
+std::atomic<uint32_t> g_bypass_if4{0}, g_bypass_if6{0};
+} // namespace
+
+void SetBypassInterfaces(uint32_t v4_index, uint32_t v6_index)
+{
+    g_bypass_if4 = v4_index;
+    g_bypass_if6 = v6_index;
+}
+
+void SetBypassMark(uint32_t mark)
+{
+    g_bypass_mark = mark;
+}
+
+uint32_t GetBypassMark()
+{
+    return g_bypass_mark;
+}
+
+bool MarkBypass(SOCKET s)
+{
+#ifdef WIN32
+    const uint32_t if4 = g_bypass_if4, if6 = g_bypass_if6;
+    if (if4 == 0 && if6 == 0) return true;
+    WSAPROTOCOL_INFOW info;
+    int len = sizeof(info);
+    if (getsockopt(s, SOL_SOCKET, SO_PROTOCOL_INFOW, (char*)&info, &len) != 0) return false;
+#ifndef IP_UNICAST_IF
+#define IP_UNICAST_IF 31
+#endif
+#ifndef IPV6_UNICAST_IF
+#define IPV6_UNICAST_IF 31
+#endif
+    if (info.iAddressFamily == AF_INET6) {
+        const DWORD index = if6; // host order for IPv6
+        return if6 == 0 || setsockopt(s, IPPROTO_IPV6, IPV6_UNICAST_IF, (const char*)&index, sizeof(index)) == 0;
+    }
+    const DWORD index = htonl(if4); // network order for IPv4
+    return if4 == 0 || setsockopt(s, IPPROTO_IP, IP_UNICAST_IF, (const char*)&index, sizeof(index)) == 0;
+#else
+    const uint32_t mark = g_bypass_mark;
+    if (mark == 0) return true;
+#ifdef SO_MARK
+    return setsockopt(s, SOL_SOCKET, SO_MARK, (sockopt_arg_type)&mark, sizeof(mark)) == 0;
+#else
+    (void)s;
+    return false;
+#endif
+#endif
+}
+
 SOCKET CreateSocket(const CService &addrConnect)
 {
     // Create a sockaddr from the specified service.
@@ -586,6 +639,9 @@ SOCKET CreateSocket(const CService &addrConnect)
     SOCKET hSocket = socket(((struct sockaddr*)&sockaddr)->sa_family, SOCK_STREAM, IPPROTO_TCP);
     if (hSocket == INVALID_SOCKET)
         return INVALID_SOCKET;
+    // Peer-to-peer stays on the computer's own line, listening sockets too:
+    // a listener's mark is what its handshake replies carry.
+    if (!MarkBypass(hSocket)) LogPrintf("Cannot mark a socket to pass the overlay's interface by\n");
 
     // Ensure that waiting for I/O on this socket won't result in undefined
     // behavior.

@@ -5060,6 +5060,58 @@ Mababago mo ito anumang oras sa pahinang Server.</translation>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 koneksyon para sa %2 bisita, sa %3 tagpuan</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>Idaan ang lahat ng trapiko ng computer na ito sa network, nang walang proxy setting sa anumang programa</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>Lumalabas ang mga koneksyon ng bawat programa sa mga gateway ng network, bawat isa sa ibang gateway, at doon hinahanap ang mga pangalan. Nananatiling direkta ang sariling network ng computer na ito — isang printer, ang router — at ang sariling mga koneksyon ng node na ito. Gumagana ito habang ibinabahagi ng computer na ito ang sarili nitong koneksyon.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>I-install ang network service…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>Network service</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>Hindi na-install ang network service: dapat nasa tabi ng BPS Relay ang bps-relay-net.exe at wintun.dll.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>Hindi na-install ang network service: hindi ito binigyan ng Windows ng karapatan ng administrator.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>Naka-install at tumatakbo ang network service. I-restart ang BPS Relay para dumaan sa network ang trapiko ng computer na ito.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>Hindi na-install ang network service (code %1). Nasa %ProgramData%\BPS Relay\network.log ang log nito.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Naka-on: %1 koneksyon sa network ngayon; %2 naipadala, %3 natanggap.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>Hindi pa available sa system na ito.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>I-install muna ang network service ng BPS Relay, isang beses; humihingi ang Windows ng administrator.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>Hayaan muna ang BPS Relay na pamahalaan ang network, isang beses, bilang administrator: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>Magsisimula kapag na-restart ang client.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

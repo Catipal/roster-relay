@@ -5043,6 +5043,58 @@ You can change this at any time on the Server page.</source>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%2 人の訪問者に %1 件の接続、%3 か所の待ち合わせ点で</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>このコンピューターのすべての通信をネットワーク経由にする（どのプログラムにもプロキシ設定は不要）</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>各プログラムの接続はネットワークのゲートウェイから外に出ます。接続ごとに別のゲートウェイを使い、名前の検索もそこで行います。このコンピューター自身のネットワーク（プリンター、ルーターなど）とこのノード自身の接続は直接のままです。このコンピューターが自分の接続を共有している間だけ機能します。</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>ネットワーク サービスをインストール…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>ネットワーク サービス</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>ネットワーク サービスはインストールされませんでした: bps-relay-net.exe と wintun.dll を BPS Relay と同じ場所に置く必要があります。</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>ネットワーク サービスはインストールされませんでした: Windows が管理者権限を与えませんでした。</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>ネットワーク サービスはインストールされ、動作中です。このコンピューターの通信をネットワーク経由にするには BPS Relay を再起動してください。</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>ネットワーク サービスはインストールされませんでした（コード %1）。ログは %ProgramData%\BPS Relay\network.log にあります。</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>オン: 現在 %1 件の接続がネットワーク経由。送信 %2、受信 %3。</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>このシステムではまだ利用できません。</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>まず BPS Relay のネットワーク サービスを一度インストールしてください。Windows が管理者を求めます。</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>まず一度、管理者として BPS Relay にネットワークの管理を許可してください: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>クライアントの再起動後に始まります。</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

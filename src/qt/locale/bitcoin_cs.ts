@@ -5074,6 +5074,58 @@ Toto můžete kdykoli změnit na stránce Server.</translation>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>%1 spojení pro %2 návštěvníků, na %3 místech setkání</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>Vést veškerý provoz tohoto počítače přes síť, bez nastavení proxy v jakémkoli programu</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>Spojení každého programu odcházejí přes brány sítě, každé přes jinou, a jména se vyhledávají tam. Vlastní síť tohoto počítače — tiskárna, router — a vlastní spojení tohoto uzlu zůstávají přímá. Funguje to, dokud tento počítač sdílí své vlastní připojení.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>Nainstalovat síťovou službu…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>Síťová služba</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>Síťová služba nebyla nainstalována: bps-relay-net.exe a wintun.dll musí být vedle BPS Relay.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>Síťová služba nebyla nainstalována: Windows jí nedal práva správce.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>Síťová služba je nainstalována a běží. Restartujte BPS Relay, aby provoz tohoto počítače šel přes síť.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>Síťová služba nebyla nainstalována (kód %1). Její záznam je v %ProgramData%\BPS Relay\network.log.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Zapnuto: %1 spojení nyní přes síť; odesláno %2, přijato %3.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>V tomto systému zatím není k dispozici.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>Nejprve jednou nainstalujte síťovou službu BPS Relay; Windows si vyžádá správce.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>Nejprve jednou jako správce dovolte BPS Relay spravovat síť: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>Spustí se po restartu klienta.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

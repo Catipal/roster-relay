@@ -32,10 +32,10 @@
  * the gateway that connection went to: a gateway is a stranger, and the
  * interface is a door into the computer.
  *
- * The interface answers name lookups at its own resolver address (DNS_V4,
- * DNS_V6): a name is looked up at a gateway, never by the computer, and a
- * .bps, .onion or home-network name is never sent anywhere
- * (overlay/dnsanswer.h).
+ * The interface answers name lookups at its own resolver address
+ * (InterfaceResolver), and any lookup sent through it to another resolver
+ * too: a name is looked up at a gateway, never by the computer, and a .bps,
+ * .onion or home-network name is never sent anywhere (overlay/dnsanswer.h).
  *
  * Packets from the computer wait in a short queue per gateway and leave no
  * faster than the relays on the way will carry them (PACE_SHARE of their
@@ -66,12 +66,15 @@ public:
 };
 
 /**
- * The TUN device `name`. On Linux it is made once by an administrator, owned
- * by the user BPS Relay runs as (ip tuntap add dev bps0 mode tun user ...),
- * and then opened with no rights of BPS Relay's own. Null where there is no
- * such device yet.
+ * The interface. On Linux the TUN device `name`: made once by an
+ * administrator for the user BPS Relay runs as (ip tuntap add dev bps0 mode
+ * tun user ...) and opened with no rights of BPS Relay's own, or made by the
+ * node itself when it may manage the network. On Windows the Wintun adapter
+ * of BPS Relay's network service, reached over its pipe (overlay/netservice.h);
+ * with `route_computer` the service also routes the whole computer through
+ * it. Null where there is no such device yet.
  */
-std::unique_ptr<PacketDevice> MakeTunDevice(const std::string& name);
+std::unique_ptr<PacketDevice> MakeTunDevice(const std::string& name, bool route_computer = false);
 
 /** The computer's addresses on the interface, and the resolver it is told to ask. */
 IpAddr InterfaceAddress(uint8_t version);

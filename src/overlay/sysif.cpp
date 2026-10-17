@@ -14,6 +14,15 @@
 #include <algorithm>
 #include <cstring>
 
+#ifdef WIN32
+#include <overlay/netservice.h>
+
+#include <condition_variable>
+#include <deque>
+#include <mutex>
+#include <thread>
+#endif
+
 #ifdef __linux__
 #include <errno.h>
 #include <fcntl.h>
@@ -129,14 +138,194 @@ private:
 };
 #endif
 
+#ifdef WIN32
+/**
+ * The Wintun adapter of BPS Relay's network service, over its pipe. A thread
+ * reads frames and hands packets to the stack; another writes, so a slow
+ * service never holds the stack up.
+ */
+class ServiceDevice : public PacketDevice
+{
+public:
+    explicit ServiceDevice(bool route_computer) : m_route(route_computer) {}
+    ~ServiceDevice() override { Stop(); }
+
+    bool Start(Receive receive, std::string& error) override
+    {
+        m_pipe = CreateFileW(NET_SERVICE_PIPE, GENERIC_READ | GENERIC_WRITE, 0, nullptr, OPEN_EXISTING,
+                             FILE_FLAG_OVERLAPPED, nullptr);
+        if (m_pipe == INVALID_HANDLE_VALUE) {
+            const DWORD err = GetLastError();
+            error = err == ERROR_FILE_NOT_FOUND
+                ? "BPS Relay's network service is not running; install it once from the Server page"
+                : err == ERROR_ACCESS_DENIED ? "BPS Relay's network service was installed for another user"
+                : err == ERROR_PIPE_BUSY ? "another BPS Relay is using the network service"
+                : strprintf("cannot reach BPS Relay's network service (error %u)", (unsigned)err);
+            return false;
+        }
+        m_stop = CreateEventW(nullptr, TRUE, FALSE, nullptr);
+        m_alive = std::make_shared<std::atomic<bool>>(true);
+        m_receive = std::move(receive);
+        const uint8_t flags = m_route ? NS_ROUTE_COMPUTER : 0;
+        if (!WriteFrame(NS_HELLO, &flags, 1)) {
+            error = "BPS Relay's network service did not take the greeting";
+            CloseHandle(m_pipe);
+            CloseHandle(m_stop);
+            m_pipe = INVALID_HANDLE_VALUE;
+            return false;
+        }
+        m_reader = std::thread([this] { ReadLoop(); });
+        m_writer = std::thread([this] { WriteLoop(); });
+        return true;
+    }
+
+    void Stop() override
+    {
+        if (m_pipe == INVALID_HANDLE_VALUE) return;
+        *m_alive = false;
+        SetEvent(m_stop);
+        {
+            std::lock_guard<std::mutex> lock(m_mutex);
+            m_quit = true;
+        }
+        m_cv.notify_all();
+        CancelIoEx(m_pipe, nullptr);
+        if (m_reader.joinable()) m_reader.join();
+        if (m_writer.joinable()) m_writer.join();
+        CloseHandle(m_pipe);
+        CloseHandle(m_stop);
+        m_pipe = INVALID_HANDLE_VALUE;
+    }
+
+    bool Write(const std::vector<uint8_t>& pkt) override
+    {
+        std::lock_guard<std::mutex> lock(m_mutex);
+        if (m_quit || m_queued + pkt.size() > MAX_QUEUED) return false;
+        m_queued += pkt.size();
+        m_queue.push_back(pkt);
+        m_cv.notify_one();
+        return true;
+    }
+
+    std::string Name() const override { return "BPS Relay (Wintun)"; }
+
+private:
+    static constexpr size_t MAX_QUEUED = 1 << 20;
+
+    bool Wait(OVERLAPPED& ov, DWORD& done)
+    {
+        HANDLE waits[2] = {ov.hEvent, m_stop};
+        if (WaitForMultipleObjects(2, waits, FALSE, INFINITE) != WAIT_OBJECT_0) {
+            CancelIoEx(m_pipe, &ov);
+            GetOverlappedResult(m_pipe, &ov, &done, TRUE);
+            return false;
+        }
+        return GetOverlappedResult(m_pipe, &ov, &done, FALSE) != 0;
+    }
+
+    bool ReadExact(uint8_t* buf, size_t len)
+    {
+        OVERLAPPED ov;
+        std::memset(&ov, 0, sizeof(ov));
+        ov.hEvent = CreateEventW(nullptr, TRUE, FALSE, nullptr);
+        size_t got = 0;
+        bool ok = true;
+        while (ok && got < len) {
+            ResetEvent(ov.hEvent);
+            DWORD done = 0;
+            if (!ReadFile(m_pipe, buf + got, (DWORD)(len - got), &done, &ov)) {
+                if (GetLastError() != ERROR_IO_PENDING || !Wait(ov, done)) ok = false;
+            }
+            if (ok && done == 0) ok = false;
+            got += done;
+        }
+        CloseHandle(ov.hEvent);
+        return ok;
+    }
+
+    bool WriteFrame(uint8_t type, const uint8_t* data, size_t len)
+    {
+        if (len > NS_MAX_FRAME) return false;
+        std::vector<uint8_t> frame(NS_HEADER + len);
+        frame[0] = type;
+        frame[2] = (uint8_t)(len & 0xff);
+        frame[3] = (uint8_t)(len >> 8);
+        if (len) std::memcpy(frame.data() + NS_HEADER, data, len);
+        OVERLAPPED ov;
+        std::memset(&ov, 0, sizeof(ov));
+        ov.hEvent = CreateEventW(nullptr, TRUE, FALSE, nullptr);
+        DWORD done = 0;
+        bool ok = WriteFile(m_pipe, frame.data(), (DWORD)frame.size(), &done, &ov) != 0;
+        if (!ok && GetLastError() == ERROR_IO_PENDING) ok = Wait(ov, done);
+        CloseHandle(ov.hEvent);
+        return ok && done == frame.size();
+    }
+
+    void ReadLoop()
+    {
+        uint8_t header[NS_HEADER];
+        std::vector<uint8_t> buf;
+        while (ReadExact(header, sizeof(header))) {
+            const size_t len = header[2] | (header[3] << 8);
+            buf.resize(len);
+            if (len && !ReadExact(buf.data(), len)) break;
+            if (header[0] == NS_NOTE) {
+                LogPrintf("system interface: the network service says: %s\n", std::string(buf.begin(), buf.end()));
+            } else if (header[0] == NS_PACKET && len) {
+                const std::shared_ptr<std::atomic<bool>> alive = m_alive;
+                Receive receive = m_receive;
+                std::vector<uint8_t> pkt(buf);
+                GetNetStack().Post([alive, receive, pkt]() mutable {
+                    if (*alive) receive(std::move(pkt));
+                });
+            }
+        }
+        if (*m_alive) LogPrintf("system interface: BPS Relay's network service closed the connection\n");
+    }
+
+    void WriteLoop()
+    {
+        while (true) {
+            std::vector<uint8_t> pkt;
+            {
+                std::unique_lock<std::mutex> lock(m_mutex);
+                m_cv.wait(lock, [this] { return m_quit || !m_queue.empty(); });
+                if (m_quit) return;
+                pkt = std::move(m_queue.front());
+                m_queue.pop_front();
+                m_queued -= pkt.size();
+            }
+            if (!WriteFrame(NS_PACKET, pkt.data(), pkt.size())) return;
+        }
+    }
+
+    const bool m_route;
+    HANDLE m_pipe{INVALID_HANDLE_VALUE};
+    HANDLE m_stop{nullptr};
+    Receive m_receive;
+    std::shared_ptr<std::atomic<bool>> m_alive;
+    std::thread m_reader, m_writer;
+    std::mutex m_mutex;
+    std::condition_variable m_cv;
+    std::deque<std::vector<uint8_t>> m_queue;
+    size_t m_queued{0};
+    bool m_quit{false};
+};
+#endif
+
 } // namespace
 
-std::unique_ptr<PacketDevice> MakeTunDevice(const std::string& name)
+std::unique_ptr<PacketDevice> MakeTunDevice(const std::string& name, bool route_computer)
 {
 #ifdef __linux__
+    (void)route_computer;
     return std::unique_ptr<PacketDevice>(new LinuxTun(name));
+#elif defined(WIN32)
+    (void)name;
+    return std::unique_ptr<PacketDevice>(new ServiceDevice(route_computer));
 #else
     (void)name;
+    (void)route_computer;
     return nullptr;
 #endif
 }
@@ -262,12 +451,15 @@ void SystemInterface::FromComputer(std::vector<uint8_t>&& pkt)
         ++m_dropped;
         return;
     }
+    // A lookup is answered here, whichever resolver it was sent to: a
+    // program with a resolver of its own would otherwise ask it as this
+    // computer, and port 53 is in no exit policy anyway.
+    if (info.IsUdp() && info.dst_port == DNS_PORT) {
+        Lookup(info, pkt);
+        return;
+    }
     if (info.dst == InterfaceResolver(info.version)) {
-        if (info.IsUdp() && info.dst_port == DNS_PORT) {
-            Lookup(info, pkt);
-        } else {
-            Refuse(info);
-        }
+        Refuse(info);
         return;
     }
     // Routes keep the computer's own network off the interface; this keeps

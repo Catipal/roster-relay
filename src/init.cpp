@@ -28,7 +28,9 @@
 #include <overlay/gateway.h>
 #include <overlay/gatewayclient.h>
 #include <overlay/localproxy.h>
+#include <overlay/dnsclient.h>
 #include <overlay/sysif.h>
+#include <overlay/sysroute.h>
 #include <overlay/gatewayproto.h>
 #include <overlay/netstack.h>
 #include <overlay/meeting.h>
@@ -259,6 +261,11 @@ void Shutdown(NodeContext& node)
     // The system-wide interface and the local proxy, the gateways they use,
     // then this node's own gateway and its registration, all of which build
     // paths too.
+    // The computer back on its own line first, then the interface it went through.
+    if (overlay::g_system_routes) {
+        overlay::g_system_routes->Undo();
+        overlay::g_system_routes.reset();
+    }
     if (overlay::g_system_interface) {
         overlay::g_system_interface->Stop();
         overlay::g_system_interface.reset();
@@ -563,6 +570,7 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-gatewaymaxflows=<n>", strprintf("Connections a gateway holds open at once, for everyone together (default: %u)", overlay::DEFAULT_GATEWAY_MAX_FLOWS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayproxy", strprintf("Run a SOCKS5 proxy on 127.0.0.1 that takes programs on this computer out to the internet through the network's gateways, each connection through another gateway; names are looked up at a gateway, never here. Used only while this node's own gateway is listed, or while it has no internet line and relays over radio (default: %u; on in BPS Relay)", overlay::DEFAULT_GATEWAY_PROXY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayinterface=<name>", "Carry all of this computer's traffic through the network's gateways, on the network interface <name>: on Linux a TUN device an administrator makes once for the user the node runs as (ip tuntap add dev <name> mode tun user <user>), given the addresses 10.77.1.2 and fd62:7073:6966::2, with the computer's resolver set to 10.77.1.53. Each new connection goes through another gateway, names are looked up at a gateway, and only what comes back for the computer's own connections is let in. Under the same rule as -gatewayproxy (default: off)", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-gatewayroutes", "Route all of this computer's traffic through the -gatewayinterface interface, apart from its own networks and the node's own connections, and point systemd-resolved at the interface's resolver; taken down when the node stops. Linux: needs the right to manage the network, granted once (sudo setcap cap_net_admin+ep <the program>) (default: 0)", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayproxyport=<port>", "Port of the local proxy on 127.0.0.1 (default: two above the peer-to-peer port)", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayhops=<n>", strprintf("Relays between this node and a gateway's meeting point, 1 to %d: more hides who is asking better and is slower (default: %d)", overlay::MAX_MEET_HOPS, overlay::DEFAULT_GATEWAY_HOPS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayallowlocal", "Let a gateway connect to loopback and private addresses (regtest only, for tests)", ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
@@ -1468,6 +1476,37 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
 {
     const ArgsManager& args = *Assert(node.args);
     const CChainParams& chainparams = Params();
+    // Routing the whole computer through the system-wide interface: the
+    // node's own sockets - the RPC server's too, made next - are marked from
+    // the first one on, so the routes pass them by (overlay/sysroute.h), and
+    // the resolvers the computer used until now are remembered for the
+    // gateway's own lookups (dnsclient.h).
+    const bool route_computer = args.GetBoolArg("-gatewayroutes", false);
+    std::vector<CService> upstream_resolvers;
+    if (route_computer) {
+        if (args.GetArg("-gatewayinterface", "").empty() || !args.GetBoolArg("-overlay", overlay::DEFAULT_OVERLAY)) {
+            return InitError(Untranslated("-gatewayroutes needs the overlay and -gatewayinterface"));
+        }
+        std::string how;
+        if (!overlay::HaveNetAdmin(how)) {
+            return InitError(Untranslated("-gatewayroutes: this program may not route the computer; " + how));
+        }
+#ifdef WIN32
+        uint32_t own_v4 = 0, own_v6 = 0;
+        if (!overlay::DefaultInterfaces(own_v4, own_v6)) {
+            return InitError(Untranslated("-gatewayroutes: cannot tell which of this computer's interfaces is its own line"));
+        }
+        SetBypassInterfaces(own_v4, own_v6);
+#else
+        SetBypassMark(overlay::ROUTE_MARK);
+#endif
+        upstream_resolvers = overlay::UpstreamResolvers();
+        if (upstream_resolvers.empty()) {
+            LogPrintf("system routes: cannot tell which resolvers this computer uses; the gateway will ask the system's, "
+                      "which then asks the interface\n");
+        }
+    }
+
     // ********************************************************* Step 4a: application initialization
     if (!CreatePidFile(args)) {
         // Detailed error printed inside CreatePidFile().
@@ -2517,7 +2556,15 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                     }
                     return out;
                 },
-                nullptr,
+                // With the computer routed through the interface, its resolver
+                // asks a gateway; a gateway's own lookups go to the resolvers
+                // it had before, directly, or they would travel on to another.
+                route_computer && !upstream_resolvers.empty()
+                    ? overlay::Gateway::Resolver([upstream_resolvers](const std::string& name, uint8_t family,
+                                                                      std::vector<overlay::IpAddr>& out) {
+                          return overlay::ResolveDirect(upstream_resolvers, name, family, out);
+                      })
+                    : overlay::Gateway::Resolver(nullptr),
                 [register_as](bool listed) {
                     overlay::GatewayIdentity id = overlay::GetGatewayIdentity();
                     id.listed = listed;
@@ -2583,12 +2630,27 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             }
             if (!interface_name.empty()) {
                 overlay::g_system_interface = MakeUnique<overlay::SystemInterface>(
-                    *overlay::g_gateway_client, overlay::MakeTunDevice(interface_name));
+                    *overlay::g_gateway_client, overlay::MakeTunDevice(interface_name, route_computer));
                 if (!overlay::g_system_interface->Start(gc_error)) {
                     overlay::g_system_interface.reset();
                     return InitError(Untranslated("system-wide interface: " + gc_error));
                 }
+#ifndef WIN32
+                // On Windows the network service routes the computer when the
+                // interface asks it to (overlay/netservice.h).
+                if (route_computer) {
+                    overlay::g_system_routes = MakeUnique<overlay::SystemRoutes>();
+                    if (!overlay::g_system_routes->Apply(interface_name, gc_error)) {
+                        overlay::g_system_routes.reset();
+                        return InitError(Untranslated("system routes: " + gc_error));
+                    }
+                }
+#endif
             }
+        }
+
+        if (route_computer && !overlay::g_system_interface) {
+            return InitError(Untranslated("-gatewayroutes needs the roster index (-rosterindex) and -gatewayinterface"));
         }
 
         // Holding mail for others. Only for listed people this node is one of

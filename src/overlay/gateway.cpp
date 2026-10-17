@@ -155,7 +155,9 @@ SOCKET OpenSocket(uint8_t version, bool tcp)
 {
     SOCKET s = socket(version == 6 ? AF_INET6 : AF_INET, tcp ? SOCK_STREAM : SOCK_DGRAM, tcp ? IPPROTO_TCP : IPPROTO_UDP);
     if (s == INVALID_SOCKET) return INVALID_SOCKET;
-    if (!IsSelectableSocket(s)) {
+    // A visitor's connection leaves on this computer's own line, never into
+    // its own system-wide interface - which would hand it to another gateway.
+    if (!IsSelectableSocket(s) || !MarkBypass(s)) {
         CloseSocket(s);
         return INVALID_SOCKET;
     }

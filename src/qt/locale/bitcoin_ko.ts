@@ -5043,6 +5043,58 @@ You can change this at any time on the Server page.</source>
         <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
         <translation>방문자 %2명에 연결 %1개, 만남 지점 %3곳</translation>
     </message>
+    <message>
+        <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
+        <translation>이 컴퓨터의 모든 트래픽을 네트워크로 보내기 (어떤 프로그램에도 프록시 설정 불필요)</translation>
+    </message>
+    <message>
+        <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
+        <translation>각 프로그램의 연결은 네트워크의 게이트웨이를 통해 나가며, 연결마다 다른 게이트웨이를 쓰고 이름도 그곳에서 조회합니다. 이 컴퓨터 자체의 네트워크(프린터, 라우터)와 이 노드 자체의 연결은 직접 연결로 남습니다. 이 컴퓨터가 자신의 연결을 공유하는 동안에만 작동합니다.</translation>
+    </message>
+    <message>
+        <source>Install the network service…</source>
+        <translation>네트워크 서비스 설치…</translation>
+    </message>
+    <message>
+        <source>Network service</source>
+        <translation>네트워크 서비스</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: bps-relay-net.exe and wintun.dll must be beside BPS Relay.</source>
+        <translation>네트워크 서비스가 설치되지 않았습니다: bps-relay-net.exe와 wintun.dll이 BPS Relay 옆에 있어야 합니다.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed: Windows did not give it an administrator&apos;s rights.</source>
+        <translation>네트워크 서비스가 설치되지 않았습니다: Windows가 관리자 권한을 주지 않았습니다.</translation>
+    </message>
+    <message>
+        <source>The network service is installed and running. Restart BPS Relay for this computer&apos;s traffic to go through the network.</source>
+        <translation>네트워크 서비스가 설치되어 실행 중입니다. 이 컴퓨터의 트래픽이 네트워크를 거치도록 BPS Relay를 다시 시작하세요.</translation>
+    </message>
+    <message>
+        <source>The network service was not installed (code %1). Its log is in %ProgramData%\BPS Relay\network.log.</source>
+        <translation>네트워크 서비스가 설치되지 않았습니다(코드 %1). 로그는 %ProgramData%\BPS Relay\network.log에 있습니다.</translation>
+    </message>
+    <message>
+        <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>켜짐: 지금 네트워크를 통한 연결 %1개, 보냄 %2, 받음 %3.</translation>
+    </message>
+    <message>
+        <source>Not available on this system yet.</source>
+        <translation>이 시스템에서는 아직 사용할 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
+        <translation>먼저 BPS Relay의 네트워크 서비스를 한 번 설치하세요. Windows가 관리자를 요청합니다.</translation>
+    </message>
+    <message>
+        <source>First let BPS Relay manage the network, once, as an administrator: %1</source>
+        <translation>먼저 한 번, 관리자로서 BPS Relay가 네트워크를 관리하도록 허용하세요: %1</translation>
+    </message>
+    <message>
+        <source>Starts when the client restarts.</source>
+        <translation>클라이언트를 다시 시작하면 시작됩니다.</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

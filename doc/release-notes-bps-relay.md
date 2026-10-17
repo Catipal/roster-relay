@@ -290,15 +290,20 @@ What this node offers other people.
   at all. It works while this node shares its own connection, or while it
   has none and relays over radio. Measured on one computer (regtest): 1.5 MiB
   in 39 s, paced to stay under the relays' caps.
-- **System-wide interface (Linux, first part)** - `-gatewayinterface=<name>`
-  carries the computer's own IP packets through the gateways on a TUN
-  device an administrator makes once; each new connection through another
-  gateway, and only what comes back for the computer's own connections let
-  in. Its resolver (10.77.1.53) looks names up at a gateway and never sends
-  `.bps`, `.onion` or home-network names anywhere; other record types than
-  addresses get no answer. Segments are kept to the interface's 1,280-byte
-  packets. Routing the whole computer through it, and Windows, are not done
-  yet.
+- **All of this computer's traffic** - "Carry all of this computer's traffic
+  through the network" on the Server page (`-gatewayinterface`,
+  `-gatewayroutes`): the computer's own IP packets go through the gateways,
+  each new connection through another, and only what comes back for the
+  computer's own connections is let in. The interface's resolver
+  (10.77.1.53) answers every lookup the computer sends through it, at a
+  gateway; `.bps`, `.onion` and home-network names are never sent anywhere,
+  and other record types than addresses get no answer. The computer's own
+  network and the node's own connections stay direct, and a gateway's own
+  lookups go to the resolvers the computer had before. Needs an
+  administrator once: on Linux `sudo setcap cap_net_admin+ep` on the
+  program, after which it sets the routes up and takes them down itself; on
+  Windows BPS Relay's network service (bps-relay-net.exe, with Wintun 0.14.1
+  beside it), installed from the Server page.
 - **Relays carry within limits** - `-relaypathrate` (64 KiB/s per path) and
   `-relaybandwidth` (1 GiB of other people's traffic a day), shown in
   `getoverlayinfo`.

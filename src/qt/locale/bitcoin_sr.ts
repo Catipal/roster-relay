@@ -3340,6 +3340,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>No answer from the relay. %1</source>
         <translation>Нема одговора од релеја. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>Упиши пролаз овог релеја</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>Упис релеја садржи његову адресу, па се његов пролаз уписује под другим кључем без адресе, одвојено. Нико из регистра не може сазнати да оба припадају истом рачунару. Посетиоци долазе до пролаза преко релеја, па никад не сазнаје ко су; сајтови које посећују виде адресу овог рачунара.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Дели интернет везу овог рачунара као пролаз</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>Сајтови које чланови мреже посећују преко њега виде адресу овог рачунара. Искључите пролаз на страници Сервер ако не смете да делите своју везу.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>Пролаз је искључен на страници Сервер.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>Плаћа други релеј, замољен преко релеја</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>Ваш чвор потписује упис пролаза и шаље га преко релеја другом релеју, који га плаћа и ставља у блок који сам направи. Тај релеј сазна кључ пролаза, а никад адресу овог рачунара. Плаћање из сопственог новчаника овог чвора повезало би пролаз са овим релејем у ланцу, а тиме и са његовом адресом.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>Молимо релеј преко других релеја да је објави… ово може да потраје минут.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4661,7 +4693,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Шта овај чвор нуди другима. Релејисање и чување поште раде већ данас; хостовање стиже и, као све овде, проналази се на исти начин као пирови — преко регистра. Имена имају своју страницу.</translation>
+        <translation type="vanished">Шта овај чвор нуди другима. Релејисање и чување поште раде већ данас; хостовање стиже и, као све овде, проналази се на исти начин као пирови — преко регистра. Имена имају своју страницу.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4858,6 +4890,190 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>дели %1%: укупно %2 %4, по %3 %4 сваком пиру</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>Дељење ваше интернет везе</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay дели интернет везу овог рачунара са мрежом, као што чини сваки члан са интернетом, осим ако то не искључите. Заузврат програми на овом рачунару могу да користе интернет мреже.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>Људи долазе до интернета преко овог рачунара путем релеја, па он никад не сазнаје ко су, а нико у мрежи не сазнаје где се налази.
+
+Шта то значи за вас: сајтови које посећују виде интернет адресу овог рачунара, као што би видели вашу. Излазе само шифроване везе — веб и шифрована пошта и поруке — никад пошта између сервера и никад у вашу кућну мрежу. Дели највише 1 GiB дневно.
+
+Ако закон где живите или услови вашег добављача интернета забрањују дељење везе, искључите га. У ЕУ је прослеђивање саобраћаја за друге заштићено као &quot;пуки пренос&quot;, али притужбе на то ипак стижу до вас преко добављача.
+
+Ово можете променити било када на страници Сервер.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>Настави да делиш</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>Искључи</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Шта овај чвор нуди другима. Прослеђивање, чување поште и дељење интернета раде већ данас; хостинг стиже и, као све овде, проналази се исто као чворови — преко регистра. Имена имају сопствену страницу.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>Пролаз</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>Дели интернет везу овог рачунара са мрежом, као што чини сваки члан са интернетом осим ако је не искључи, и заузврат користи интернет мреже. Људи долазе до интернета преко њега путем релеја, па никад не сазнаје ко су, а нико у мрежи не сазнаје где се налази. Сајтови које посећују виде адресу овог рачунара, као што би видели вашу. Излазе само шифроване везе — веб и шифрована пошта и поруке — никад пошта између сервера и никад у вашу сопствену мрежу.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>Дељење</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>Уписано као</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Данас</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>Отворено сада</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>Упиши као пролаз…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Дели интернет везу овог рачунара као пролаз</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>Искључите га ако закон где живите или услови вашег добављача интернета забрањују дељење везе. Искључен, овај чвор и даље прослеђује, чува пошту и прати ланац, а сопствену везу користи директно.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>без ограничења</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>Оба смера заједно. Кад се потроши, пролаз не прима нове везе до промене дана (UTC).</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>Највише дели дневно</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>Дозволи програмима на овом рачунару да користе интернет мреже преко локалног посредника</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>SOCKS5 посредник само за овај рачунар. Свака веза излази кроз пролаз другог члана, а имена се разрешавају тамо, никад овде. Ради док овај рачунар дели сопствену везу.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>Чека: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>Тражење пролаза за коришћење…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>SOCKS5 посредник на %1 — подесите га у прегледачу или другом програму, са разрешавањем имена преко посредника. Пронађени пролази: %2, отворене везе: %3.</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>Искључено: потребни су overlay и индекс регистра.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>Искључено.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>онемогућено</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>не — потребни су overlay и индекс регистра</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>не — искључено</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>није уписано као пролаз</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>још не — регистар не води овај чвор као пролаз, па га нико не може пронаћи</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>још ништа — релеј уписује свој пролаз под другим кључем, без адресе, одвојено од сопственог уписа</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>још ништа — упису овог чвора недостаје опција пролаза; објавите га поново са укљученом опцијом</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>још ништа — објавите упис без адресе са укљученом опцијом пролаза</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>Упиши пролаз овог релеја…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>дели</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>да, прима везе</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>данашњи удео потрошен</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>данашњи удео је потрошен; везе поново прима кад се дан промени (UTC)</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>његов кључ пролаза %1, одвојен од адресе релеја</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>сопствени кључ овог чвора %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 од %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, без дневног ограничења</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 веза за %2 посетилаца, на %3 места сусрета</translation>
     </message>
 </context>
 <context>

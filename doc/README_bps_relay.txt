@@ -57,6 +57,36 @@ them, travel through three relays, and wait at the recipient's mailboxes for
 up to two weeks until they collect them.
 
 
+Sharing the internet
+--------------------
+BPS Relay shares your internet connection with the network, as every member
+with the internet does, unless you switch it off; the first start asks. In
+return, programs on your computer can use the network's internet.
+
+The people who use your connection reach it through relays, so it never learns
+who they are, and nobody in the network learns where it is. The websites they
+visit see your internet address, as they would see yours. Only encrypted
+connections leave - the web, and encrypted mail and messaging - never mail
+between servers, and never into your own home network. It shares at most
+1 GiB a day; change that, or switch sharing off, on the Server page. If the law
+where you live or your internet provider's terms forbid sharing your
+connection, switch it off.
+
+To share, your node has to be listed as a gateway: publish your listing with
+no address and "Share this computer's internet connection" ticked. A relay,
+whose listing carries its address, lists its gateway under a second key from
+the Server page instead. Another relay pays for that listing, asked through
+relays, so it learns the gateway's key and not where it is; paying from the
+relay's own wallet would tie the two together on the chain.
+
+While your node shares, programs on this computer can use a SOCKS5 proxy at
+127.0.0.1, on the port the Server page shows. Set it in a browser with names
+looked up through the proxy (Firefox: "Proxy DNS when using SOCKS v5"). Each
+connection leaves through another member's gateway, and names are looked up
+there, never on your computer. .bps names are not sent out. It is slower than
+your own connection: browsing and messages, not video.
+
+
 Radio
 -----
 With a LoRa radio (an RNode) or another radio Reticulum supports, your node

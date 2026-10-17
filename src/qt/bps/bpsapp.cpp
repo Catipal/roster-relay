@@ -180,6 +180,9 @@ void BpsApplication::parameterSetup()
     // for. The settings page owns these now - it stores them and soft-sets
     // them, so anything on the command line or in the config file still wins.
     SettingsPage::ApplyStoredSettings();
+    // Said plainly once, before the node first runs: this client shares the
+    // internet connection unless the owner switches it off (design note 8.7).
+    if (gArgs.GetBoolArg("-overlay", false)) ServerPage::AskAboutGatewayOnce();
     ServerPage::ApplyStoredSettings();
 
     InitLogging(gArgs);

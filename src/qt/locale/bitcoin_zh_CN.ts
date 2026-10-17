@@ -3322,6 +3322,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>No answer from the relay. %1</source>
         <translation>中继没有回应。%1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>登记这个中继的网关</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>中继的登记中带有它的地址，所以它的网关用第二个不带地址的密钥另行登记。没人能从名册看出两者属于同一台电脑。访问者经由中继到达网关，所以网关永远不知道他们是谁；他们访问的网站看到的是这台电脑的地址。</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>把这台电脑的互联网连接作为网关共享</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>网络成员通过它访问的网站会看到这台电脑的地址。如果你不能共享自己的连接，请在服务器页面关闭网关。</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>网关已在服务器页面关闭。</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>由另一个中继支付，经由中继请求</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>你的节点签署网关的登记，并经由中继把它发送给另一个中继，由它付费并放进它自己质押产出的区块。那个中继只知道网关的密钥，永远不知道这台电脑的地址。如果从这个节点自己的钱包付费，链上就会把网关和这个中继联系在一起，从而联系到它的地址。</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>正在经由其他中继请一个中继发布…可能需要一分钟。</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4629,7 +4661,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>本节点为他人提供的服务。中继和保存邮件现在已可运行；托管即将推出，并且和这里的一切一样，以找到对等节点的同样方式找到——通过名册。名称有自己的页面。</translation>
+        <translation type="vanished">本节点为他人提供的服务。中继和保存邮件现在已可运行；托管即将推出，并且和这里的一切一样，以找到对等节点的同样方式找到——通过名册。名称有自己的页面。</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4826,6 +4858,190 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>分享 %1%：共 %2 %4，每个对等节点 %3 %4</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>共享你的互联网连接</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay 会把这台电脑的互联网连接与网络共享，就像每个有互联网的成员一样，除非你把它关闭。作为回报，这台电脑上的程序可以使用网络的互联网。</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>人们经由中继通过这台电脑访问互联网，所以它永远不知道他们是谁，网络中也没有人知道它在哪里。
+
+这对你意味着：他们访问的网站会看到这台电脑的互联网地址，就像会看到你的地址一样。只有加密连接会出去——网页，以及加密的邮件和消息——绝不包括服务器之间的邮件，也绝不进入你自己的家庭网络。它每天最多共享 1 GiB。
+
+如果你所在地的法律或你的互联网服务商的条款禁止共享连接，请把它关闭。在欧盟，为他人转发流量作为&quot;纯粹管道&quot;受到保护，但有关投诉仍会通过你的服务商找到你。
+
+你可以随时在服务器页面更改此设置。</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>继续共享</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>关闭</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>这个节点向他人提供的服务。中继、保存邮件和共享互联网现已运行；托管即将到来，和这里的一切一样，它的找到方式与对等节点相同——通过名册。名称有自己的页面。</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>网关</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>把这台电脑的互联网连接与网络共享，就像每个有互联网的成员在不关闭的情况下所做的那样，并作为回报使用网络的互联网。人们经由中继通过它访问互联网，所以它永远不知道他们是谁，网络中也没有人知道它在哪里。他们访问的网站会看到这台电脑的地址，就像会看到你的地址一样。只有加密连接会出去——网页，以及加密的邮件和消息——绝不包括服务器之间的邮件，也绝不进入你自己的网络。</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>共享</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>登记为</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>今天</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>当前打开</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>登记为网关…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>把这台电脑的互联网连接作为网关共享</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>如果你所在地的法律或互联网服务商的条款禁止共享连接，请关闭它。关闭后，这个节点仍会中继、保存邮件并跟随区块链，并直接使用自己的连接。</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>无上限</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>两个方向合计。用完后，网关在日期变更（UTC）之前不再接受新连接。</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>每天最多共享</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>允许这台电脑上的程序通过本地代理使用网络的互联网</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>仅供这台电脑使用的 SOCKS5 代理。每个连接都从另一位成员的网关出去，名称也在那里解析，绝不在这里。只要这台电脑共享自己的连接，它就能工作。</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>等待中：%1。</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>正在寻找可用的网关…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>SOCKS5 代理位于 %1——在浏览器或其他程序中设置它，并通过代理解析名称。已遇到 %2 个网关，打开 %3 个连接。</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>关闭：需要覆盖网络和名册索引。</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>关闭。</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>已禁用</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>否——需要覆盖网络和名册索引</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>否——已关闭</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>未登记为网关</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>尚未——名册没有把这个节点列为网关，所以没人能找到它</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>暂无——中继用第二个不带地址的密钥登记它的网关，与自己的登记分开</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>暂无——这个节点的登记缺少网关选项；请打开该选项后重新发布</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>暂无——请发布一条不带地址并打开网关选项的登记</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>登记这个中继的网关…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>共享中</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>是，正在接受连接</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>今天的额度已用完</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>今天的额度已用完；日期变更（UTC）后会再次接受连接</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>它的网关密钥 %1，与中继的地址分开</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>这个节点自己的密钥 %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 / %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1，无每日上限</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 个连接，%2 位访问者，%3 个会面点</translation>
     </message>
 </context>
 <context>

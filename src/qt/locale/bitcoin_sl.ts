@@ -3353,6 +3353,38 @@ Obnovitveni ključ vam bo prikazan enkrat. Zapišite ga: to je edini način, da 
         <source>No answer from the relay. %1</source>
         <translation>Posrednik ni odgovoril. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>Vpiši prehod tega releja</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>Vpis releja vsebuje njegov naslov, zato je njegov prehod vpisan pod drugim ključem brez naslova, ločeno. Nihče iz registra ne more ugotoviti, da oba pripadata istemu računalniku. Obiskovalci pridejo do prehoda prek relejev, zato nikoli ne izve, kdo so; spletna mesta, ki jih obiščejo, vidijo naslov tega računalnika.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Deli internetno povezavo tega računalnika kot prehod</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>Spletna mesta, ki jih člani omrežja obiščejo prek njega, vidijo naslov tega računalnika. Izklopite prehod na strani Strežnik, če svoje povezave ne smete deliti.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>Prehod je izklopljen na strani Strežnik.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>Plača drug posrednik, zaprošen prek posrednikov</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>Vaše vozlišče podpiše vpis prehoda in ga prek posrednikov pošlje drugemu posredniku, ki ga plača in vključi v blok, ki ga ustvari sam. Ta posrednik izve ključ prehoda, nikoli pa naslova tega računalnika. Plačilo iz lastne denarnice tega vozlišča bi na verigi povezalo prehod s tem posrednikom in s tem z njegovim naslovom.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>Prošnja posredniku prek drugih posrednikov, naj ga objavi… to lahko traja minuto.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4681,7 +4713,7 @@ Opomba: Ker se provizija izračuna na bajt, bi provizija &quot;100 satoshijev na
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Kaj to vozlišče ponuja drugim. Posredovanje in hramba pošte delujeta že danes; gostovanje prihaja in se, kot vse tukaj, najde na enak način kot soležniki — prek registra. Imena imajo svojo stran.</translation>
+        <translation type="vanished">Kaj to vozlišče ponuja drugim. Posredovanje in hramba pošte delujeta že danes; gostovanje prihaja in se, kot vse tukaj, najde na enak način kot soležniki — prek registra. Imena imajo svojo stran.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4878,6 +4910,190 @@ Opomba: Ker se provizija izračuna na bajt, bi provizija &quot;100 satoshijev na
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>deli %1 %: skupaj %2 %4, vsakemu soležniku %3 %4</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>Deljenje vaše internetne povezave</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay deli internetno povezavo tega računalnika z omrežjem, kot to počne vsak član z internetom, razen če to izklopite. V zameno lahko programi na tem računalniku uporabljajo internet omrežja.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>Ljudje pridejo do interneta prek tega računalnika po relejih, zato nikoli ne izve, kdo so, in nihče v omrežju ne izve, kje je.
+
+Kaj to pomeni za vas: spletna mesta, ki jih obiščejo, vidijo internetni naslov tega računalnika, kot bi videla vašega. Ven gredo samo šifrirane povezave — splet ter šifrirana pošta in sporočila — nikoli pošta med strežniki in nikoli v vaše domače omrežje. Deli največ 1 GiB na dan.
+
+Če zakon, kjer živite, ali pogoji vašega ponudnika interneta prepovedujejo deljenje povezave, ga izklopite. V EU je posredovanje prometa za druge zaščiteno kot &quot;zgolj prenos&quot;, pritožbe glede tega pa vas vseeno dosežejo prek ponudnika.
+
+To lahko kadar koli spremenite na strani Strežnik.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>Še naprej deli</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>Izklopi</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Kaj to vozlišče ponuja drugim. Posredovanje, hramba pošte in deljenje interneta delujejo že danes; gostovanje prihaja in se, kot vse tukaj, najde enako kot vozlišča — prek registra. Imena imajo svojo stran.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>Prehod</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>Deli internetno povezavo tega računalnika z omrežjem, kot to počne vsak član z internetom, razen če jo izklopi, in v zameno uporabljaj internet omrežja. Ljudje pridejo do interneta prek njega po relejih, zato nikoli ne izve, kdo so, in nihče v omrežju ne izve, kje je. Spletna mesta, ki jih obiščejo, vidijo naslov tega računalnika, kot bi videla vašega. Ven gredo samo šifrirane povezave — splet ter šifrirana pošta in sporočila — nikoli pošta med strežniki in nikoli v vaše lastno omrežje.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>Deljenje</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>Vpisano kot</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Danes</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>Odprto zdaj</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>Vpiši kot prehod…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Deli internetno povezavo tega računalnika kot prehod</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>Izklopite ga, če zakon, kjer živite, ali pogoji vašega ponudnika interneta prepovedujejo deljenje povezave. Izklopljeno vozlišče še naprej posreduje, hrani pošto in sledi verigi, svojo povezavo pa uporablja neposredno.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>brez omejitve</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>Obe smeri skupaj. Ko je porabljeno, prehod ne sprejema novih povezav do menjave dneva (UTC).</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>Največ deljeno na dan</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>Dovoli programom na tem računalniku uporabo interneta omrežja prek lokalnega posredniškega strežnika</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>Posredniški strežnik SOCKS5 samo za ta računalnik. Vsaka povezava gre ven skozi prehod drugega člana, imena pa se razrešijo tam, nikoli tukaj. Deluje, dokler ta računalnik deli svojo povezavo.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>Čaka: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>Iskanje prehodov za uporabo…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>Posredniški strežnik SOCKS5 na %1 — nastavite ga v brskalniku ali drugem programu, z razreševanjem imen prek strežnika. Najdeni prehodi: %2, odprte povezave: %3.</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>Izklopljeno: potrebuje prekrivno omrežje in indeks registra.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>Izklopljeno.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>onemogočeno</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>ne — potrebuje prekrivno omrežje in indeks registra</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>ne — izklopljeno</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>ni vpisano kot prehod</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>še ne — register tega vozlišča ne vodi kot prehod, zato ga nihče ne najde</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>še nič — rele vpiše svoj prehod pod drugim ključem, brez naslova, ločeno od lastnega vpisa</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>še nič — vpisu tega vozlišča manjka možnost prehoda; objavite ga znova z vklopljeno možnostjo</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>še nič — objavite vpis brez naslova z vklopljeno možnostjo prehoda</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>Vpiši prehod tega releja…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>deli</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>da, sprejema povezave</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>današnji delež porabljen</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>današnji delež je porabljen; povezave znova sprejema ob menjavi dneva (UTC)</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>njegov ključ prehoda %1, ločeno od naslova releja</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>lastni ključ tega vozlišča %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 od %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, brez dnevne omejitve</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 povezav za %2 obiskovalcev, na %3 točkah srečanja</translation>
     </message>
 </context>
 <context>

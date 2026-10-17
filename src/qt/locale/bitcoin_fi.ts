@@ -3331,6 +3331,38 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
         <source>No answer from the relay. %1</source>
         <translation>Välittäjä ei vastannut. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>Ilmoita tämän välittäjän yhdyskäytävä</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>Välittäjän ilmoitus sisältää sen osoitteen, joten sen yhdyskäytävä ilmoitetaan toisella avaimella ilman osoitetta, erillään siitä. Kukaan ei voi nähdä rekisteristä, että ne kuuluvat samalle tietokoneelle. Vierailijat tavoittavat yhdyskäytävän välittäjien kautta, joten se ei koskaan saa tietää, keitä he ovat; heidän vierailemansa sivustot näkevät tämän tietokoneen osoitteen.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Jaa tämän tietokoneen internetyhteys yhdyskäytävänä</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>Sivustot, joilla verkon jäsenet käyvät sen kautta, näkevät tämän tietokoneen osoitteen. Kytke yhdyskäytävä pois Palvelin-sivulla, jos et saa jakaa yhteyttäsi.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>Yhdyskäytävä on kytketty pois Palvelin-sivulla.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>Toinen välittäjä maksaa, pyydettynä välittäjien kautta</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>Solmusi allekirjoittaa yhdyskäytävän merkinnän ja lähettää sen välittäjien kautta toiselle välittäjälle, joka maksaa sen ja laittaa sen itse tekemäänsä lohkoon. Se välittäjä saa tietää yhdyskäytävän avaimen mutta ei koskaan tämän tietokoneen osoitetta. Maksaminen tämän solmun omasta lompakosta sitoisi yhdyskäytävän ketjussa tähän välittäjään ja siten sen osoitteeseen.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>Pyydetään välittäjää muiden välittäjien kautta julkaisemaan se… tämä voi kestää minuutin.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4645,7 +4677,7 @@ Huom: Koska siirtomaksu lasketaan tavujen mukaan, niin määrittelemällä 500 t
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Mitä tämä solmu tarjoaa muille. Välittäminen ja postin säilytys toimivat jo; hosting on tulossa, ja kuten kaikki täällä, se löydetään samalla tavalla kuin vertaiset — rekisterin kautta. Nimillä on oma sivunsa.</translation>
+        <translation type="vanished">Mitä tämä solmu tarjoaa muille. Välittäminen ja postin säilytys toimivat jo; hosting on tulossa, ja kuten kaikki täällä, se löydetään samalla tavalla kuin vertaiset — rekisterin kautta. Nimillä on oma sivunsa.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4842,6 +4874,190 @@ Huom: Koska siirtomaksu lasketaan tavujen mukaan, niin määrittelemällä 500 t
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>jakaa %1 %: yhteensä %2 %4, %3 %4 kullekin vertaiselle</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>Internetyhteytesi jakaminen</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay jakaa tämän tietokoneen internetyhteyden verkon kanssa, kuten jokainen jäsen, jolla on internet, ellet kytke sitä pois. Vastineeksi tämän tietokoneen ohjelmat voivat käyttää verkon internetiä.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>Ihmiset pääsevät internetiin tämän tietokoneen kautta välittäjien välityksellä, joten se ei koskaan saa tietää, keitä he ovat, eikä kukaan verkossa saa tietää, missä se on.
+
+Mitä se tarkoittaa sinulle: sivustot, joilla he käyvät, näkevät tämän tietokoneen internetosoitteen, kuten ne näkisivät sinun osoitteesi. Ulos lähtee vain salattuja yhteyksiä — verkko sekä salattu posti ja viestintä — ei koskaan postia palvelinten välillä eikä koskaan omaan kotiverkkoosi. Se jakaa enintään 1 GiB päivässä.
+
+Jos asuinmaasi laki tai internetpalveluntarjoajasi ehdot kieltävät yhteyden jakamisen, kytke se pois. EU:ssa liikenteen välittäminen muiden puolesta on suojattu &quot;pelkkänä siirtona&quot;, mutta siitä tehdyt valitukset tulevat silti sinulle palveluntarjoajasi kautta.
+
+Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>Jatka jakamista</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>Kytke pois</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Mitä tämä solmu tarjoaa muille. Välittäminen, postin säilyttäminen ja internetin jakaminen toimivat jo; ylläpito on tulossa, ja kuten kaikki täällä, se löytyy samalla tavalla kuin vertaiset — rekisterin kautta. Nimillä on oma sivunsa.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>Yhdyskäytävä</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>Jaa tämän tietokoneen internetyhteys verkon kanssa, kuten jokainen jäsen, jolla on internet, ellei kytke sitä pois, ja käytä vastineeksi verkon internetiä. Ihmiset pääsevät internetiin sen kautta välittäjien välityksellä, joten se ei koskaan saa tietää, keitä he ovat, eikä kukaan verkossa saa tietää, missä se on. Sivustot, joilla he käyvät, näkevät tämän tietokoneen osoitteen, kuten ne näkisivät sinun osoitteesi. Ulos lähtee vain salattuja yhteyksiä — verkko sekä salattu posti ja viestintä — ei koskaan postia palvelinten välillä eikä koskaan omaan verkkoosi.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>Jakaminen</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>Ilmoitettu</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Tänään</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>Auki nyt</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>Ilmoita yhdyskäytävänä…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Jaa tämän tietokoneen internetyhteys yhdyskäytävänä</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>Kytke se pois, jos asuinmaasi laki tai internetpalveluntarjoajasi ehdot kieltävät yhteyden jakamisen. Pois kytkettynä tämä solmu välittää edelleen, säilyttää postia ja pysyy ketjussa, ja käyttää omaa yhteyttään suoraan.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>ei rajaa</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>Molemmat suunnat yhteensä. Kun se on käytetty, yhdyskäytävä ei ota uusia yhteyksiä ennen kuin päivä vaihtuu (UTC).</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>Enintään jaetaan päivässä</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>Anna tämän tietokoneen ohjelmien käyttää verkon internetiä paikallisen välityspalvelimen kautta</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>SOCKS5-välityspalvelin vain tälle tietokoneelle. Jokainen yhteys lähtee toisen jäsenen yhdyskäytävän kautta, ja nimet selvitetään siellä, ei koskaan täällä. Se toimii niin kauan kuin tämä tietokone jakaa oman yhteytensä.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>Odottaa: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>Etsitään käytettäviä yhdyskäytäviä…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>SOCKS5-välityspalvelin osoitteessa %1 — aseta se selaimeen tai muuhun ohjelmaan niin, että nimet selvitetään välityspalvelimen kautta. %2 yhdyskäytävää tavattu, %3 yhteyttä auki.</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>Pois: se tarvitsee overlayn ja rekisteri-indeksin.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>Pois.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>pois käytöstä</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>ei — se tarvitsee overlayn ja rekisteri-indeksin</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>ei — kytketty pois</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>ei ilmoitettu yhdyskäytävänä</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>ei vielä — rekisteri ei ilmoita tätä solmua yhdyskäytävänä, joten kukaan ei löydä sitä</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>ei vielä mitään — välittäjä ilmoittaa yhdyskäytävänsä toisella avaimella ilman osoitetta, erillään omasta ilmoituksestaan</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>ei vielä mitään — tämän solmun ilmoituksesta puuttuu yhdyskäytävävalinta; julkaise se uudelleen valinta päällä</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>ei vielä mitään — julkaise ilmoitus ilman osoitetta yhdyskäytävävalinta päällä</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>Ilmoita tämän välittäjän yhdyskäytävä…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>jakaa</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>kyllä, ottaa yhteyksiä</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>päivän osuus käytetty</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>tämän päivän osuus on käytetty; se ottaa taas yhteyksiä, kun päivä vaihtuu (UTC)</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>sen yhdyskäytäväavain %1, erillään välittäjän osoitteesta</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>tämän solmun oma avain %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 / %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, ei päivärajaa</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 yhteyttä %2 vierailijalle, %3 kohtauspisteessä</translation>
     </message>
 </context>
 <context>

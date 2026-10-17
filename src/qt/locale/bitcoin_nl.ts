@@ -3332,6 +3332,38 @@ Je krijgt één keer een herstelsleutel te zien. Schrijf hem op: het is de enige
         <source>No answer from the relay. %1</source>
         <translation>Geen antwoord van de relay. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>Gateway van deze relay vermelden</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>De vermelding van een relay bevat zijn adres, dus zijn gateway wordt vermeld onder een tweede sleutel zonder adres, apart daarvan. Niemand kan in het register zien dat de twee bij één computer horen. Bezoekers bereiken de gateway via relays, dus die weet nooit wie ze zijn; de websites die ze bezoeken zien het adres van deze computer.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>De internetverbinding van deze computer delen als gateway</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>Websites die leden van het netwerk erdoor bezoeken, zien het adres van deze computer. Zet de gateway uit op de pagina Server als je je verbinding niet mag delen.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>De gateway staat uit op de pagina Server.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>Een andere relay betaalt, gevraagd via relays</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>Je node ondertekent de vermelding van de gateway en stuurt hem via relays naar een andere relay, die ervoor betaalt en hem in een blok zet dat hij zelf maakt. Die relay leert de sleutel van de gateway en nooit het adres van deze computer. Betalen uit de eigen portemonnee van deze node zou de gateway op de keten aan deze relay koppelen, en dus aan zijn adres.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>Een relay via andere relays vragen hem te publiceren… dit kan een minuut duren.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4647,7 +4679,7 @@ Vb. een offline %1 portemonee, of een PSBT-combatiebele hardware portemonee.</tr
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Wat deze node anderen biedt. Relayen en post bewaren werken nu; hosting komt eraan, en zoals alles hier wordt het op dezelfde manier gevonden als peers — via het register. Namen hebben een eigen pagina.</translation>
+        <translation type="vanished">Wat deze node anderen biedt. Relayen en post bewaren werken nu; hosting komt eraan, en zoals alles hier wordt het op dezelfde manier gevonden als peers — via het register. Namen hebben een eigen pagina.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4844,6 +4876,190 @@ Vb. een offline %1 portemonee, of een PSBT-combatiebele hardware portemonee.</tr
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>deelt %1%: %2 %4 in totaal, %3 %4 per peer</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>Je internetverbinding delen</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay deelt de internetverbinding van deze computer met het netwerk, zoals elk lid met internet doet, tenzij je het uitzet. In ruil daarvoor kunnen programma&apos;s op deze computer het internet van het netwerk gebruiken.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>Mensen bereiken het internet via deze computer langs relays, dus hij weet nooit wie ze zijn, en niemand in het netwerk weet waar hij staat.
+
+Wat het voor jou betekent: de websites die ze bezoeken zien het internetadres van deze computer, zoals ze het jouwe zouden zien. Alleen versleutelde verbindingen gaan naar buiten — het web, en versleutelde mail en berichten — nooit mail tussen servers, en nooit naar je eigen thuisnetwerk. Hij deelt hoogstens 1 GiB per dag.
+
+Als de wet waar je woont of de voorwaarden van je internetprovider het delen van je verbinding verbieden, zet het uit. In de EU is verkeer doorgeven voor anderen beschermd als &quot;mere conduit&quot;, maar klachten daarover bereiken je toch via je provider.
+
+Je kunt dit altijd veranderen op de pagina Server.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>Blijven delen</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>Uitzetten</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Wat deze node anderen biedt. Doorgeven, mail bewaren en het internet delen werken vandaag; hosting is onderweg, en zoals alles hier wordt het gevonden zoals peers — via het register. Namen hebben een eigen pagina.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>Gateway</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>Deel de internetverbinding van deze computer met het netwerk, zoals elk lid met internet doet tenzij het die uitzet, en gebruik in ruil het internet van het netwerk. Mensen bereiken het internet erdoor langs relays, dus hij weet nooit wie ze zijn, en niemand in het netwerk weet waar hij staat. De websites die ze bezoeken zien het adres van deze computer, zoals ze het jouwe zouden zien. Alleen versleutelde verbindingen gaan naar buiten — het web, en versleutelde mail en berichten — nooit mail tussen servers, en nooit naar je eigen netwerk.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>Delen</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>Vermeld als</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Vandaag</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>Nu open</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>Vermelden als gateway…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>De internetverbinding van deze computer delen als gateway</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>Zet het uit als de wet waar je woont of de voorwaarden van je internetprovider het delen van je verbinding verbieden. Uitgezet blijft deze node doorgeven, mail bewaren en bij de keten, en gebruikt hij zijn eigen verbinding rechtstreeks.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>geen limiet</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>Beide richtingen samen. Is het op, dan neemt de gateway geen nieuwe verbindingen aan tot de dag omslaat (UTC).</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>Hoogstens gedeeld per dag</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>Programma&apos;s op deze computer het internet van het netwerk laten gebruiken, via een lokale proxy</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>Een SOCKS5-proxy alleen voor deze computer. Elke verbinding gaat naar buiten via de gateway van een ander lid, en namen worden daar opgezocht, nooit hier. Hij werkt zolang deze computer zijn eigen verbinding deelt.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>Wacht: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>Gateways zoeken om te gebruiken…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>SOCKS5-proxy op %1 — stel hem in in een browser of ander programma, met namen opgezocht via de proxy. %2 gateway(s) ontmoet, %3 verbinding(en) open.</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>Uit: het heeft de overlay en de registerindex nodig.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>Uit.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>uitgeschakeld</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>nee — het heeft de overlay en de registerindex nodig</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>nee — uitgezet</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>niet vermeld als gateway</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>nog niet — het register vermeldt deze node niet als gateway, dus niemand kan hem vinden</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>nog niets — een relay vermeldt zijn gateway onder een tweede sleutel, zonder adres, los van zijn eigen vermelding</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>nog niets — de vermelding van deze node mist de gatewayoptie; publiceer haar opnieuw met de optie aan</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>nog niets — publiceer een vermelding zonder adres met de gatewayoptie aan</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>Gateway van deze relay vermelden…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>deelt</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>ja, neemt verbindingen aan</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>deel van vandaag op</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>het deel van vandaag is op; hij neemt weer verbindingen aan als de dag omslaat (UTC)</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>zijn gatewaysleutel %1, los van het adres van de relay</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>de eigen sleutel van deze node %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 van %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, zonder daglimiet</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 verbinding(en) voor %2 bezoeker(s), op %3 ontmoetingspunt(en)</translation>
     </message>
 </context>
 <context>

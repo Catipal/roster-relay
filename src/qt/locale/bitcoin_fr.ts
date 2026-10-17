@@ -3331,6 +3331,38 @@ Une clé de récupération vous sera montrée une seule fois. Notez-la : c&apos;
         <source>No answer from the relay. %1</source>
         <translation>Pas de réponse du relais. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>Inscrire la passerelle de ce relais</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>L&apos;inscription d&apos;un relais porte son adresse, donc sa passerelle est inscrite sous une seconde clé sans adresse, à part. Personne ne peut savoir d&apos;après le registre que les deux appartiennent au même ordinateur. Les visiteurs atteignent la passerelle par des relais, elle ne sait donc jamais qui ils sont ; les sites qu&apos;ils visitent voient l&apos;adresse de cet ordinateur.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Partager la connexion internet de cet ordinateur comme passerelle</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>Les sites que les membres du réseau visitent par elle voient l&apos;adresse de cet ordinateur. Désactivez la passerelle dans la page Serveur si vous ne pouvez pas partager votre connexion.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>La passerelle est désactivée dans la page Serveur.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>Un autre relais paie, sollicité par d&apos;autres relais</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>Votre nœud signe l&apos;inscription de la passerelle et l&apos;envoie par des relais à un autre relais, qui la paie et la met dans un bloc qu&apos;il produit lui-même. Ce relais apprend la clé de la passerelle et jamais l&apos;adresse de cet ordinateur. Payer depuis le portefeuille de ce nœud lierait la passerelle à ce relais sur la chaîne, et donc à son adresse.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>Demande de publication à un relais par d&apos;autres relais… cela peut prendre une minute.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4645,7 +4677,7 @@ Note&#xa0;: Les frais étant calculés par octet, des frais de «&#x2009;100 sat
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Ce que ce nœud offre aux autres. Le relais et la garde du courrier fonctionnent aujourd&apos;hui ; l&apos;hébergement arrive et, comme tout ici, il se trouve de la même manière que les pairs — par le registre. Les noms ont leur propre page.</translation>
+        <translation type="vanished">Ce que ce nœud offre aux autres. Le relais et la garde du courrier fonctionnent aujourd&apos;hui ; l&apos;hébergement arrive et, comme tout ici, il se trouve de la même manière que les pairs — par le registre. Les noms ont leur propre page.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4842,6 +4874,190 @@ Note&#xa0;: Les frais étant calculés par octet, des frais de «&#x2009;100 sat
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>partage %1 % : %2 %4 au total, %3 %4 à chaque pair</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>Partager votre connexion internet</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay partage la connexion internet de cet ordinateur avec le réseau, comme le fait chaque membre qui a internet, sauf si vous la désactivez. En échange, les programmes de cet ordinateur peuvent utiliser l&apos;internet du réseau.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>Des personnes atteignent internet par cet ordinateur en passant par des relais, il ne sait donc jamais qui elles sont, et personne dans le réseau ne sait où il se trouve.
+
+Ce que cela signifie pour vous : les sites qu&apos;elles visitent voient l&apos;adresse internet de cet ordinateur, comme ils verraient la vôtre. Seules des connexions chiffrées sortent — le web, et le courrier et la messagerie chiffrés — jamais de courrier entre serveurs, et jamais vers votre propre réseau domestique. Il partage au plus 1 Gio par jour.
+
+Si la loi de votre pays ou les conditions de votre fournisseur internet interdisent de partager votre connexion, désactivez-la. Dans l&apos;UE, faire transiter du trafic pour d&apos;autres est protégé comme &quot;simple transport&quot;, mais les plaintes à ce sujet vous parviennent quand même par votre fournisseur.
+
+Vous pouvez changer cela à tout moment dans la page Serveur.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>Continuer à partager</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>Désactiver</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Ce que ce nœud offre aux autres. Le relais, la garde du courrier et le partage d&apos;internet fonctionnent aujourd&apos;hui ; l&apos;hébergement arrive, et comme tout ici il se trouve de la même façon que les pairs — par le registre. Les noms ont leur propre page.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>Passerelle</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>Partager la connexion internet de cet ordinateur avec le réseau, comme le fait chaque membre qui a internet sauf s&apos;il la désactive, et utiliser en échange l&apos;internet du réseau. Des personnes atteignent internet par lui en passant par des relais, il ne sait donc jamais qui elles sont, et personne dans le réseau ne sait où il se trouve. Les sites qu&apos;elles visitent voient l&apos;adresse de cet ordinateur, comme ils verraient la vôtre. Seules des connexions chiffrées sortent — le web, et le courrier et la messagerie chiffrés — jamais de courrier entre serveurs, et jamais vers votre propre réseau.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>Partage</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>Inscrit comme</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Aujourd&apos;hui</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>Ouvertes maintenant</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>Inscrire comme passerelle…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Partager la connexion internet de cet ordinateur comme passerelle</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>Désactivez-le si la loi de votre pays ou les conditions de votre fournisseur internet interdisent de partager votre connexion. Désactivé, ce nœud continue de relayer, de garder le courrier et de suivre la chaîne, et utilise directement sa propre connexion.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>aucune limite</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>Les deux sens ensemble. Une fois épuisé, la passerelle n&apos;accepte plus de nouvelles connexions jusqu&apos;au jour suivant (UTC).</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>Partage maximal par jour</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>Laisser les programmes de cet ordinateur utiliser l&apos;internet du réseau, par un proxy local</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>Un proxy SOCKS5 pour cet ordinateur seulement. Chaque connexion sort par la passerelle d&apos;un autre membre, et les noms y sont résolus, jamais ici. Il fonctionne tant que cet ordinateur partage sa propre connexion.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>En attente : %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>Recherche de passerelles à utiliser…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>Proxy SOCKS5 à %1 — à régler dans un navigateur ou un autre programme, avec la résolution des noms par le proxy. %2 passerelle(s) rencontrée(s), %3 connexion(s) ouverte(s).</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>Désactivé : il faut l&apos;overlay et l&apos;index du registre.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>Désactivé.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>désactivé</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>non — il faut l&apos;overlay et l&apos;index du registre</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>non — désactivée</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>non inscrit comme passerelle</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>pas encore — le registre n&apos;inscrit pas ce nœud comme passerelle, donc personne ne peut le trouver</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>rien pour l&apos;instant — un relais inscrit sa passerelle sous une seconde clé, sans adresse, à part de sa propre inscription</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>rien pour l&apos;instant — l&apos;inscription de ce nœud n&apos;a pas l&apos;option passerelle ; publiez-la de nouveau avec l&apos;option activée</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>rien pour l&apos;instant — publiez une inscription sans adresse avec l&apos;option passerelle activée</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>Inscrire la passerelle de ce relais…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>partage</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>oui, accepte des connexions</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>part du jour épuisée</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>la part du jour est épuisée ; elle accepte de nouveau des connexions au jour suivant (UTC)</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>sa clé de passerelle %1, à part de l&apos;adresse du relais</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>la propre clé de ce nœud %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 sur %2 Mio</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, sans limite quotidienne</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 connexion(s) pour %2 visiteur(s), à %3 point(s) de rencontre</translation>
     </message>
 </context>
 <context>

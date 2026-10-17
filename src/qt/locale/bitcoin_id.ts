@@ -3322,6 +3322,38 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
         <source>No answer from the relay. %1</source>
         <translation>Tidak ada jawaban dari relai. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>Daftarkan gerbang relai ini</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>Pendaftaran relai memuat alamatnya, jadi gerbangnya didaftarkan dengan kunci kedua tanpa alamat, terpisah darinya. Tak seorang pun bisa tahu dari daftar bahwa keduanya milik satu komputer. Pengunjung mencapai gerbang melalui relai, jadi gerbang tidak pernah tahu siapa mereka; situs yang mereka kunjungi melihat alamat komputer ini.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Bagikan koneksi internet komputer ini sebagai gerbang</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>Situs yang dikunjungi anggota jaringan melaluinya melihat alamat komputer ini. Matikan gerbang di halaman Server jika Anda tidak boleh membagikan koneksi Anda.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>Gerbang dimatikan di halaman Server.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>Relai lain yang membayar, diminta melalui relai-relai</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>Node Anda menandatangani pencatatan gerbang dan mengirimkannya melalui relai-relai ke relai lain, yang membayarnya dan memasukkannya ke blok yang dibuatnya sendiri. Relai itu mengetahui kunci gerbang dan tidak pernah alamat komputer ini. Membayar dari dompet node ini sendiri akan mengaitkan gerbang dengan relai ini di rantai, dan dengan demikian dengan alamatnya.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>Meminta sebuah relai melalui relai lain untuk menerbitkannya… ini bisa memakan waktu satu menit.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4631,7 +4663,7 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya &quot;100 satoshi per
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Apa yang ditawarkan node ini kepada orang lain. Relai dan penyimpanan surat sudah berjalan hari ini; hosting sedang disiapkan, dan seperti semua hal di sini, ditemukan dengan cara yang sama seperti peer — melalui register. Nama memiliki halamannya sendiri.</translation>
+        <translation type="vanished">Apa yang ditawarkan node ini kepada orang lain. Relai dan penyimpanan surat sudah berjalan hari ini; hosting sedang disiapkan, dan seperti semua hal di sini, ditemukan dengan cara yang sama seperti peer — melalui register. Nama memiliki halamannya sendiri.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4828,6 +4860,190 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya &quot;100 satoshi per
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>berbagi %1%: total %2 %4, %3 %4 untuk setiap peer</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>Membagikan koneksi internet Anda</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay membagikan koneksi internet komputer ini dengan jaringan, seperti yang dilakukan setiap anggota yang punya internet, kecuali Anda mematikannya. Sebagai gantinya, program di komputer ini dapat memakai internet jaringan.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>Orang mencapai internet melalui komputer ini lewat relai, jadi komputer ini tidak pernah tahu siapa mereka, dan tak seorang pun di jaringan tahu di mana ia berada.
+
+Artinya bagi Anda: situs yang mereka kunjungi melihat alamat internet komputer ini, seperti mereka akan melihat alamat Anda. Hanya koneksi terenkripsi yang keluar — web, serta surel dan pesan terenkripsi — tidak pernah surel antarserver, dan tidak pernah ke jaringan rumah Anda sendiri. Ia berbagi paling banyak 1 GiB per hari.
+
+Jika hukum di tempat Anda tinggal atau ketentuan penyedia internet Anda melarang berbagi koneksi, matikanlah. Di UE, meneruskan lalu lintas untuk orang lain dilindungi sebagai &quot;saluran semata&quot;, tetapi keluhan tentangnya tetap sampai kepada Anda melalui penyedia Anda.
+
+Anda dapat mengubahnya kapan saja di halaman Server.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>Tetap berbagi</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>Matikan</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Apa yang ditawarkan simpul ini kepada orang lain. Meneruskan, menyimpan surel, dan berbagi internet sudah berjalan; hosting sedang menyusul dan, seperti semua hal di sini, ditemukan dengan cara yang sama seperti rekan — melalui daftar. Nama punya halamannya sendiri.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>Gerbang</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>Bagikan koneksi internet komputer ini dengan jaringan, seperti yang dilakukan setiap anggota yang punya internet kecuali mereka mematikannya, dan pakai internet jaringan sebagai gantinya. Orang mencapai internet melaluinya lewat relai, jadi ia tidak pernah tahu siapa mereka, dan tak seorang pun di jaringan tahu di mana ia berada. Situs yang mereka kunjungi melihat alamat komputer ini, seperti mereka akan melihat alamat Anda. Hanya koneksi terenkripsi yang keluar — web, serta surel dan pesan terenkripsi — tidak pernah surel antarserver, dan tidak pernah ke jaringan Anda sendiri.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>Berbagi</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>Terdaftar sebagai</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Hari ini</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>Terbuka sekarang</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>Daftarkan sebagai gerbang…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Bagikan koneksi internet komputer ini sebagai gerbang</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>Matikan jika hukum di tempat Anda tinggal atau ketentuan penyedia internet Anda melarang berbagi koneksi. Saat dimatikan, simpul ini tetap meneruskan, menyimpan surel, dan mengikuti rantai, serta memakai koneksinya sendiri secara langsung.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>tanpa batas</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>Kedua arah bersama. Setelah habis, gerbang tidak menerima koneksi baru sampai hari berganti (UTC).</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>Paling banyak dibagikan per hari</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>Izinkan program di komputer ini memakai internet jaringan, melalui proksi lokal</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>Proksi SOCKS5 hanya untuk komputer ini. Setiap koneksi keluar melalui gerbang anggota lain, dan nama dicari di sana, tidak pernah di sini. Proksi bekerja selama komputer ini membagikan koneksinya sendiri.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>Menunggu: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>Mencari gerbang untuk dipakai…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>Proksi SOCKS5 di %1 — atur di peramban atau program lain, dengan pencarian nama melalui proksi. %2 gerbang ditemui, %3 koneksi terbuka.</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>Mati: perlu overlay dan indeks daftar.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>Mati.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>dinonaktifkan</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>tidak — perlu overlay dan indeks daftar</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>tidak — dimatikan</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>tidak terdaftar sebagai gerbang</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>belum — daftar tidak mencatat simpul ini sebagai gerbang, jadi tak seorang pun bisa menemukannya</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>belum ada — relai mendaftarkan gerbangnya dengan kunci kedua, tanpa alamat, terpisah dari pendaftarannya sendiri</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>belum ada — pendaftaran simpul ini tidak punya opsi gerbang; terbitkan lagi dengan opsi menyala</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>belum ada — terbitkan pendaftaran tanpa alamat dengan opsi gerbang menyala</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>Daftarkan gerbang relai ini…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>berbagi</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>ya, menerima koneksi</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>jatah hari ini terpakai</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>jatah hari ini sudah habis; menerima koneksi lagi saat hari berganti (UTC)</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>kunci gerbangnya %1, terpisah dari alamat relai</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>kunci simpul ini sendiri %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 dari %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, tanpa batas harian</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 koneksi untuk %2 pengunjung, di %3 titik temu</translation>
     </message>
 </context>
 <context>

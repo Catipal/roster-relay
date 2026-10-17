@@ -3321,6 +3321,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>No answer from the relay. %1</source>
         <translation>中繼沒有回應。%1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>登記這個中繼的閘道</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>中繼的登記中帶有它的位址，所以它的閘道以第二把不帶位址的金鑰另行登記。沒有人能從名冊看出兩者屬於同一台電腦。訪客經由中繼到達閘道，所以閘道永遠不知道他們是誰；他們造訪的網站看到的是這台電腦的位址。</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>把這台電腦的網際網路連線當作閘道分享</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>網路成員透過它造訪的網站會看到這台電腦的位址。如果你不能分享自己的連線，請在伺服器頁面關閉閘道。</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>閘道已在伺服器頁面關閉。</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>由另一個中繼支付，經由中繼請求</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>你的節點簽署閘道的登記，並經由中繼把它傳送給另一個中繼，由它付費並放進它自己質押產出的區塊。那個中繼只知道閘道的金鑰，永遠不知道這台電腦的位址。如果從這個節點自己的錢包付費，鏈上就會把閘道和這個中繼聯繫在一起，從而聯繫到它的位址。</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>正在經由其他中繼請一個中繼發布…可能需要一分鐘。</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4628,7 +4660,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>本節點為他人提供的服務。中繼和保存郵件現在已可執行；託管即將推出，並且和這裡的一切一樣，以找到對等節點的同樣方式找到——透過名冊。名稱有自己的頁面。</translation>
+        <translation type="vanished">本節點為他人提供的服務。中繼和保存郵件現在已可執行；託管即將推出，並且和這裡的一切一樣，以找到對等節點的同樣方式找到——透過名冊。名稱有自己的頁面。</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4825,6 +4857,190 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>分享 %1%：共 %2 %4，每個對等節點 %3 %4</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>分享你的網際網路連線</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay 會把這台電腦的網際網路連線與網路分享，就像每個有網際網路的成員一樣，除非你把它關閉。作為回報，這台電腦上的程式可以使用網路的網際網路。</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>人們經由中繼透過這台電腦連上網際網路，所以它永遠不知道他們是誰，網路中也沒有人知道它在哪裡。
+
+這對你代表：他們造訪的網站會看到這台電腦的網際網路位址，就像會看到你的位址一樣。只有加密連線會出去——網頁，以及加密的郵件和訊息——絕不包括伺服器之間的郵件，也絕不進入你自己的家用網路。它每天最多分享 1 GiB。
+
+如果你所在地的法律或你的網路服務供應商條款禁止分享連線，請把它關閉。在歐盟，替他人轉送流量受到&quot;純粹傳輸管道&quot;的保護，但有關的申訴仍會透過你的供應商找到你。
+
+你可以隨時在伺服器頁面變更此設定。</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>繼續分享</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>關閉</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>這個節點提供給他人的服務。中繼、保管郵件和分享網際網路現已運作；代管即將到來，和這裡的一切一樣，它的找到方式與對等節點相同——透過名冊。名稱有自己的頁面。</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>閘道</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>把這台電腦的網際網路連線與網路分享，就像每個有網際網路的成員在不關閉的情況下所做的那樣，並作為回報使用網路的網際網路。人們經由中繼透過它連上網際網路，所以它永遠不知道他們是誰，網路中也沒有人知道它在哪裡。他們造訪的網站會看到這台電腦的位址，就像會看到你的位址一樣。只有加密連線會出去——網頁，以及加密的郵件和訊息——絕不包括伺服器之間的郵件，也絕不進入你自己的網路。</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>分享</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>登記為</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>今天</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>目前開啟</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>登記為閘道…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>把這台電腦的網際網路連線當作閘道分享</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>如果你所在地的法律或網路服務供應商條款禁止分享連線，請關閉它。關閉後，這個節點仍會中繼、保管郵件並跟隨區塊鏈，並直接使用自己的連線。</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>無上限</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>兩個方向合計。用完後，閘道在日期變更（UTC）之前不再接受新連線。</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>每天最多分享</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>允許這台電腦上的程式透過本機代理伺服器使用網路的網際網路</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>僅供這台電腦使用的 SOCKS5 代理伺服器。每個連線都從另一位成員的閘道出去，名稱也在那裡解析，絕不在這裡。只要這台電腦分享自己的連線，它就能運作。</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>等待中：%1。</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>正在尋找可用的閘道…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>SOCKS5 代理伺服器位於 %1——在瀏覽器或其他程式中設定它，並透過代理伺服器解析名稱。已遇到 %2 個閘道，開啟 %3 個連線。</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>關閉：需要覆蓋網路和名冊索引。</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>關閉。</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>已停用</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>否——需要覆蓋網路和名冊索引</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>否——已關閉</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>未登記為閘道</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>尚未——名冊沒有把這個節點列為閘道，所以沒有人能找到它</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>尚無——中繼以第二把不帶位址的金鑰登記它的閘道，與自己的登記分開</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>尚無——這個節點的登記缺少閘道選項；請開啟該選項後重新發布</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>尚無——請發布一筆不帶位址並開啟閘道選項的登記</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>登記這個中繼的閘道…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>分享中</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>是，正在接受連線</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>今天的額度已用完</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>今天的額度已用完；日期變更（UTC）後會再次接受連線</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>它的閘道金鑰 %1，與中繼的位址分開</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>這個節點自己的金鑰 %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 / %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1，無每日上限</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 個連線，%2 位訪客，%3 個會面點</translation>
     </message>
 </context>
 <context>

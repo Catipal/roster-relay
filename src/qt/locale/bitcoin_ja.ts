@@ -3322,6 +3322,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>No answer from the relay. %1</source>
         <translation>リレーから応答がありません。%1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>このリレーのゲートウェイを登録</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>リレーの登録にはそのアドレスが載っているため、そのゲートウェイはアドレスのない2つ目の鍵で、別に登録されます。名簿から2つが同じコンピューターのものだと分かる人はいません。訪問者はリレーを経由してゲートウェイに届くので、ゲートウェイには相手が誰か分かりません。訪問者が見るウェブサイトには、このコンピューターのアドレスが見えます。</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>このコンピューターのインターネット接続をゲートウェイとして共有する</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>ネットワークのメンバーがこれを通じて見るウェブサイトには、このコンピューターのアドレスが見えます。接続の共有が許されない場合は、サーバーページでゲートウェイをオフにしてください。</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>ゲートウェイはサーバーページでオフになっています。</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>別のリレーが支払う（リレー経由で依頼）</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>あなたのノードはゲートウェイの登録に署名し、リレーを経由して別のリレーに送ります。そのリレーが支払い、自分がステーキングで作るブロックに入れます。そのリレーが知るのはゲートウェイの鍵だけで、このコンピューターのアドレスは決して知りません。このノード自身のウォレットから支払うと、チェーン上でゲートウェイがこのリレーと結び付き、ひいてはそのアドレスと結び付いてしまいます。</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>リレー経由で別のリレーに公開を依頼しています… 1 分ほどかかることがあります。</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4629,7 +4661,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>このノードが他の人に提供するもの。リレーとメールの保管は既に動作しています。ホスティングは準備中で、ここにあるすべてと同様、ピアと同じ方法 — 名簿を通じて — 見つけられます。名前には専用のページがあります。</translation>
+        <translation type="vanished">このノードが他の人に提供するもの。リレーとメールの保管は既に動作しています。ホスティングは準備中で、ここにあるすべてと同様、ピアと同じ方法 — 名簿を通じて — 見つけられます。名前には専用のページがあります。</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4826,6 +4858,190 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>%1% を分配: 合計 %2 %4、ピアごとに %3 %4</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>インターネット接続の共有</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay は、インターネットのあるメンバーが皆そうしているように、オフにしない限り、このコンピューターのインターネット接続をネットワークと共有します。その代わり、このコンピューターのプログラムはネットワークのインターネットを使えます。</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>人々はリレーを経由してこのコンピューターからインターネットに出ます。そのため、このコンピューターには相手が誰か分からず、ネットワークの誰にもこのコンピューターの場所は分かりません。
+
+あなたにとっての意味: 彼らが見るウェブサイトには、あなたのアドレスが見えるのと同じように、このコンピューターのインターネットアドレスが見えます。出ていくのは暗号化された接続だけです — ウェブ、そして暗号化されたメールとメッセージ — サーバー間のメールは決して出ず、あなたの家のネットワークへも決して入りません。共有は1日最大 1 GiB です。
+
+お住まいの地域の法律やインターネットプロバイダーの規約が接続の共有を禁じている場合は、オフにしてください。EU では他人のための通信の中継は「単なる導管」として保護されますが、それに関する苦情はやはりプロバイダーを通じてあなたに届きます。
+
+これはサーバーページでいつでも変更できます。</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>共有を続ける</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>オフにする</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>このノードがほかの人に提供するもの。中継、メールの保管、インターネットの共有はすでに動いています。ホスティングは準備中で、ここにあるものすべてと同じく、ピアと同じ方法 — 名簿を通じて — 見つけられます。名前には専用のページがあります。</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>ゲートウェイ</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>インターネットのあるメンバーが皆オフにしない限りそうしているように、このコンピューターのインターネット接続をネットワークと共有し、その代わりにネットワークのインターネットを使います。人々はリレーを経由してここからインターネットに出るので、このコンピューターには相手が誰か分からず、ネットワークの誰にもその場所は分かりません。彼らが見るウェブサイトには、あなたのアドレスが見えるのと同じように、このコンピューターのアドレスが見えます。出ていくのは暗号化された接続だけです — ウェブ、そして暗号化されたメールとメッセージ — サーバー間のメールは決して出ず、あなた自身のネットワークへも決して入りません。</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>共有</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>登録</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>今日</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>現在開いている数</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>ゲートウェイとして登録…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>このコンピューターのインターネット接続をゲートウェイとして共有する</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>お住まいの地域の法律やインターネットプロバイダーの規約が接続の共有を禁じている場合はオフにしてください。オフでも、このノードは中継とメールの保管を続けてチェーンに参加し、自分の接続は直接使います。</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>上限なし</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>両方向の合計です。使い切ると、日付が変わる (UTC) までゲートウェイは新しい接続を受け付けません。</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>1日に共有する上限</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>このコンピューターのプログラムが、ローカルプロキシを通じてネットワークのインターネットを使えるようにする</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>このコンピューター専用の SOCKS5 プロキシです。各接続は別のメンバーのゲートウェイから出ていき、名前の解決もそこで行われ、ここでは決して行われません。このコンピューターが自分の接続を共有している間だけ動作します。</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>待機中: %1。</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>使えるゲートウェイを探しています…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>SOCKS5 プロキシ: %1 — ブラウザーや他のプログラムに設定し、名前の解決もプロキシ経由にしてください。ゲートウェイ %2 件、開いている接続 %3 件。</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>オフ: オーバーレイと名簿インデックスが必要です。</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>オフ。</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>無効</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>いいえ — オーバーレイと名簿インデックスが必要です</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>いいえ — オフ</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>ゲートウェイとして未登録</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>まだです — 名簿はこのノードをゲートウェイとして載せていないので、誰も見つけられません</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>まだありません — リレーは自分の登録とは別に、アドレスのない2つ目の鍵でゲートウェイを登録します</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>まだありません — このノードの登録にはゲートウェイのオプションがありません。オプションをオンにして公開し直してください</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>まだありません — アドレスなしでゲートウェイのオプションをオンにした登録を公開してください</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>このリレーのゲートウェイを登録…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>共有中</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>はい、接続を受け付けています</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>今日の分を使い切り</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>今日の分を使い切りました。日付が変わると (UTC) また接続を受け付けます</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>リレーのアドレスとは別の、ゲートウェイ鍵 %1</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>このノード自身の鍵 %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%2 MiB 中 %1</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1、1日の上限なし</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%2 人の訪問者に %1 件の接続、%3 か所の待ち合わせ点で</translation>
     </message>
 </context>
 <context>

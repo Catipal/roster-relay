@@ -3322,6 +3322,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>No answer from the relay. %1</source>
         <translation>릴레이에서 응답이 없습니다. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>이 릴레이의 게이트웨이 등록</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>릴레이의 등록에는 그 주소가 들어 있으므로, 그 게이트웨이는 주소 없는 두 번째 키로 따로 등록됩니다. 명부만 보고 둘이 같은 컴퓨터의 것임을 알 수 있는 사람은 없습니다. 방문자는 릴레이를 거쳐 게이트웨이에 닿으므로 게이트웨이는 그들이 누구인지 알 수 없습니다. 그들이 방문하는 웹사이트에는 이 컴퓨터의 주소가 보입니다.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>이 컴퓨터의 인터넷 연결을 게이트웨이로 공유</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>네트워크 구성원이 이를 통해 방문하는 웹사이트에는 이 컴퓨터의 주소가 보입니다. 연결을 공유할 수 없다면 서버 페이지에서 게이트웨이를 끄세요.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>게이트웨이는 서버 페이지에서 꺼져 있습니다.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>다른 릴레이가 지불 — 릴레이를 거쳐 요청</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>노드가 게이트웨이의 등재에 서명하여 릴레이를 거쳐 다른 릴레이로 보내면, 그 릴레이가 비용을 지불하고 자신이 스테이킹하는 블록에 넣습니다. 그 릴레이는 게이트웨이의 키만 알 뿐 이 컴퓨터의 주소는 결코 알지 못합니다. 이 노드의 자체 지갑에서 지불하면 체인 위에서 게이트웨이가 이 릴레이와, 따라서 그 주소와 연결됩니다.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>릴레이를 거쳐 다른 릴레이에 게시를 요청하는 중… 1분 정도 걸릴 수 있습니다.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4629,7 +4661,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>이 노드가 다른 사람에게 제공하는 것. 릴레이와 메일 보관은 지금 작동하며, 호스팅은 준비 중이고, 여기 있는 모든 것처럼 피어를 찾는 것과 같은 방식 — 명부 — 으로 찾습니다. 이름은 별도의 페이지가 있습니다.</translation>
+        <translation type="vanished">이 노드가 다른 사람에게 제공하는 것. 릴레이와 메일 보관은 지금 작동하며, 호스팅은 준비 중이고, 여기 있는 모든 것처럼 피어를 찾는 것과 같은 방식 — 명부 — 으로 찾습니다. 이름은 별도의 페이지가 있습니다.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4826,6 +4858,190 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>%1% 나눔: 총 %2 %4, 피어당 %3 %4</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>인터넷 연결 공유</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay는 인터넷이 있는 모든 구성원이 그렇게 하듯, 끄지 않는 한 이 컴퓨터의 인터넷 연결을 네트워크와 공유합니다. 그 대가로 이 컴퓨터의 프로그램은 네트워크의 인터넷을 쓸 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>사람들은 릴레이를 거쳐 이 컴퓨터를 통해 인터넷에 나가므로, 이 컴퓨터는 그들이 누구인지 알 수 없고 네트워크의 누구도 이 컴퓨터가 어디 있는지 알 수 없습니다.
+
+당신에게 의미하는 것: 그들이 방문하는 웹사이트에는 당신의 주소가 보이듯 이 컴퓨터의 인터넷 주소가 보입니다. 암호화된 연결만 나갑니다 — 웹, 그리고 암호화된 메일과 메시지 — 서버 간 메일은 절대 나가지 않고, 당신의 가정 네트워크로도 절대 들어가지 않습니다. 하루 최대 1 GiB를 공유합니다.
+
+사는 곳의 법이나 인터넷 제공업체의 약관이 연결 공유를 금지한다면 끄세요. EU에서는 다른 사람의 트래픽을 전달하는 것이 &quot;단순 전송&quot;으로 보호되지만, 그에 관한 불만은 여전히 제공업체를 통해 당신에게 옵니다.
+
+이 설정은 서버 페이지에서 언제든 바꿀 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>계속 공유</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>끄기</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>이 노드가 다른 사람에게 제공하는 것. 릴레이, 메일 보관, 인터넷 공유는 오늘 작동합니다. 호스팅은 준비 중이며, 여기 있는 모든 것처럼 피어와 같은 방식 — 명부를 통해 — 찾을 수 있습니다. 이름에는 별도 페이지가 있습니다.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>게이트웨이</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>인터넷이 있는 모든 구성원이 끄지 않는 한 그렇게 하듯 이 컴퓨터의 인터넷 연결을 네트워크와 공유하고, 그 대가로 네트워크의 인터넷을 씁니다. 사람들은 릴레이를 거쳐 이를 통해 인터넷에 나가므로, 이 컴퓨터는 그들이 누구인지 알 수 없고 네트워크의 누구도 그 위치를 알 수 없습니다. 그들이 방문하는 웹사이트에는 당신의 주소가 보이듯 이 컴퓨터의 주소가 보입니다. 암호화된 연결만 나갑니다 — 웹, 그리고 암호화된 메일과 메시지 — 서버 간 메일은 절대 나가지 않고, 당신의 네트워크로도 절대 들어가지 않습니다.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>공유</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>등록 상태</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>오늘</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>현재 열림</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>게이트웨이로 등록…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>이 컴퓨터의 인터넷 연결을 게이트웨이로 공유</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>사는 곳의 법이나 인터넷 제공업체의 약관이 연결 공유를 금지한다면 끄세요. 꺼도 이 노드는 계속 릴레이하고 메일을 보관하며 체인에 남고, 자기 연결은 직접 씁니다.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>한도 없음</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>양방향 합계입니다. 다 쓰면 날짜가 바뀔 때(UTC)까지 게이트웨이는 새 연결을 받지 않습니다.</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>하루 최대 공유량</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>이 컴퓨터의 프로그램이 로컬 프록시를 통해 네트워크의 인터넷을 쓰도록 허용</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>이 컴퓨터 전용 SOCKS5 프록시입니다. 각 연결은 다른 구성원의 게이트웨이로 나가며, 이름은 그곳에서 조회되고 여기서는 절대 조회되지 않습니다. 이 컴퓨터가 자기 연결을 공유하는 동안 작동합니다.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>대기 중: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>쓸 게이트웨이를 찾는 중…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>SOCKS5 프록시: %1 — 브라우저나 다른 프로그램에 설정하고, 이름 조회도 프록시를 거치게 하세요. 게이트웨이 %2개 만남, 연결 %3개 열림.</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>꺼짐: 오버레이와 명부 인덱스가 필요합니다.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>꺼짐.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>사용 안 함</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>아니요 — 오버레이와 명부 인덱스가 필요합니다</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>아니요 — 꺼짐</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>게이트웨이로 등록되지 않음</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>아직 아님 — 명부에 이 노드가 게이트웨이로 올라 있지 않아 아무도 찾을 수 없습니다</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>아직 없음 — 릴레이는 자기 등록과 별도로, 주소 없는 두 번째 키로 게이트웨이를 등록합니다</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>아직 없음 — 이 노드의 등록에 게이트웨이 옵션이 없습니다. 옵션을 켜고 다시 게시하세요</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>아직 없음 — 주소 없이 게이트웨이 옵션을 켠 등록을 게시하세요</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>이 릴레이의 게이트웨이 등록…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>공유 중</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>예, 연결을 받는 중</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>오늘 몫 소진</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>오늘 몫을 다 썼습니다. 날짜가 바뀌면(UTC) 다시 연결을 받습니다</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>릴레이 주소와 분리된 게이트웨이 키 %1</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>이 노드 자신의 키 %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%2 MiB 중 %1</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, 하루 한도 없음</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>방문자 %2명에 연결 %1개, 만남 지점 %3곳</translation>
     </message>
 </context>
 <context>

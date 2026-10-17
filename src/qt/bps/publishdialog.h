@@ -24,6 +24,7 @@ class UniValue;
 class WalletController;
 
 QT_BEGIN_NAMESPACE
+class QCheckBox;
 class QComboBox;
 class QDialogButtonBox;
 class QLabel;
@@ -56,8 +57,13 @@ class PublishDialog : public QDialog
     Q_OBJECT
 
 public:
+    /**
+     * With `gateway_key`, list a relay's gateway under its second key instead
+     * of the node itself: no address, paid by another relay asked through a
+     * path (design note §8·7).
+     */
     PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bool renewing,
-                  QWidget* parent = nullptr);
+                  QWidget* parent = nullptr, bool gateway_key = false);
     ~PublishDialog();
 
 Q_SIGNALS:
@@ -85,12 +91,14 @@ private:
     BpsRpc& m_rpc;
     WalletController* m_wallets;
     const int m_tip;
+    const bool m_gateway_key;
 
     bool m_overlay_on{false};
     int m_relays{-1}; //!< relays this node could ask, -1 until known
 
     QRadioButton* m_at_address{nullptr};
     QRadioButton* m_nowhere{nullptr};
+    QCheckBox* m_gateway{nullptr}; //!< list as a gateway too, with no address
     QWidget* m_address_row{nullptr};
     QComboBox* m_network{nullptr};
     QLineEdit* m_address{nullptr};

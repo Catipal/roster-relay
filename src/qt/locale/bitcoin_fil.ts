@@ -3331,6 +3331,38 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
         <source>No answer from the relay. %1</source>
         <translation>Walang sagot mula sa relay. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>Ilista ang gateway ng relay na ito</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>Dala ng listing ng isang relay ang address nito, kaya ang gateway nito ay inililista sa ilalim ng ikalawang susi na walang address, hiwalay rito. Walang makakaalam mula sa roster na iisang computer ang may-ari ng dalawa. Inaabot ng mga bisita ang gateway sa pamamagitan ng mga relay, kaya hindi nito nalalaman kung sino sila; ang mga website na binibisita nila ay nakikita ang address ng computer na ito.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Ibahagi ang koneksyon sa internet ng computer na ito bilang gateway</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>Nakikita ng mga website na binibisita ng mga miyembro ng network sa pamamagitan nito ang address ng computer na ito. I-off ang gateway sa pahinang Server kung hindi ka pinapayagang ibahagi ang iyong koneksyon.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>Naka-off ang gateway sa pahinang Server.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>Ibang relay ang nagbabayad, hiniling sa pamamagitan ng mga relay</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>Pinipirmahan ng iyong node ang pagkakalista ng gateway at ipinapadala ito sa pamamagitan ng mga relay sa ibang relay, na nagbabayad para dito at inilalagay ito sa block na ito mismo ang gumawa. Nalalaman ng relay na iyon ang susi ng gateway at hindi kailanman ang address ng computer na ito. Kapag nagbayad mula sa sariling wallet ng node na ito, maiuugnay sa chain ang gateway sa relay na ito, at sa gayon sa address nito.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>Hinihiling sa isang relay sa pamamagitan ng ibang relay na ilathala ito… maaari itong umabot nang isang minuto.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4646,7 +4678,7 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Ang iniaalok ng node na ito sa ibang tao. Tumatakbo na ngayon ang pagre-relay at pag-iingat ng liham; paparating ang hosting, at gaya ng lahat dito, natatagpuan ito sa parehong paraan ng mga peer — sa pamamagitan ng talaan. May sariling pahina ang mga pangalan.</translation>
+        <translation type="vanished">Ang iniaalok ng node na ito sa ibang tao. Tumatakbo na ngayon ang pagre-relay at pag-iingat ng liham; paparating ang hosting, at gaya ng lahat dito, natatagpuan ito sa parehong paraan ng mga peer — sa pamamagitan ng talaan. May sariling pahina ang mga pangalan.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4843,6 +4875,190 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>nagbabahagi ng %1%: %2 %4 lahat-lahat, %3 %4 sa bawat peer</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>Pagbabahagi ng iyong koneksyon sa internet</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>Ibinabahagi ng BPS Relay ang koneksyon sa internet ng computer na ito sa network, gaya ng ginagawa ng bawat miyembrong may internet, maliban kung i-off mo ito. Kapalit nito, magagamit ng mga programa sa computer na ito ang internet ng network.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>Naaabot ng mga tao ang internet sa pamamagitan ng computer na ito sa daan ng mga relay, kaya hindi nito nalalaman kung sino sila, at walang sinuman sa network ang nakakaalam kung nasaan ito.
+
+Ano ang ibig sabihin nito para sa iyo: nakikita ng mga website na binibisita nila ang internet address ng computer na ito, gaya ng makikita nila ang sa iyo. Mga naka-encrypt na koneksyon lamang ang lumalabas — ang web, at naka-encrypt na mail at pagmemensahe — hindi kailanman mail sa pagitan ng mga server, at hindi kailanman papasok sa sarili mong network sa bahay. Nagbabahagi ito nang hindi hihigit sa 1 GiB bawat araw.
+
+Kung ipinagbabawal ng batas kung saan ka nakatira o ng mga tuntunin ng iyong internet provider ang pagbabahagi ng koneksyon, i-off ito. Sa EU, protektado bilang &quot;mere conduit&quot; ang pagpapasa ng trapiko para sa iba, pero ang mga reklamo tungkol dito ay nakakarating pa rin sa iyo sa pamamagitan ng iyong provider.
+
+Mababago mo ito anumang oras sa pahinang Server.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>Patuloy na magbahagi</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>I-off</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Ang iniaalok ng node na ito sa iba. Gumagana na ngayon ang pagre-relay, pag-iingat ng mail at pagbabahagi ng internet; paparating ang hosting, at gaya ng lahat dito, natatagpuan ito sa parehong paraan ng mga peer — sa pamamagitan ng roster. May sariling pahina ang mga pangalan.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>Gateway</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>Ibahagi ang koneksyon sa internet ng computer na ito sa network, gaya ng ginagawa ng bawat miyembrong may internet maliban kung i-off nila ito, at gamitin kapalit ang internet ng network. Naaabot ng mga tao ang internet sa pamamagitan nito sa daan ng mga relay, kaya hindi nito nalalaman kung sino sila, at walang sinuman sa network ang nakakaalam kung nasaan ito. Nakikita ng mga website na binibisita nila ang address ng computer na ito, gaya ng makikita nila ang sa iyo. Mga naka-encrypt na koneksyon lamang ang lumalabas — ang web, at naka-encrypt na mail at pagmemensahe — hindi kailanman mail sa pagitan ng mga server, at hindi kailanman papasok sa sarili mong network.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>Pagbabahagi</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>Nakalista bilang</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Ngayon</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>Bukas ngayon</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>Ilista bilang gateway…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Ibahagi ang koneksyon sa internet ng computer na ito bilang gateway</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>I-off ito kung ipinagbabawal ng batas kung saan ka nakatira o ng mga tuntunin ng iyong internet provider ang pagbabahagi ng koneksyon. Kapag naka-off, patuloy pa ring nagre-relay ang node na ito, nag-iingat ng mail at nasa chain, at direktang ginagamit ang sarili nitong koneksyon.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>walang limitasyon</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>Magkasama ang dalawang direksyon. Kapag naubos, hindi tatanggap ang gateway ng bagong koneksyon hanggang magpalit ang araw (UTC).</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>Pinakamarami na ibinabahagi bawat araw</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>Payagan ang mga programa sa computer na ito na gamitin ang internet ng network, sa pamamagitan ng lokal na proxy</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>Isang SOCKS5 proxy para lamang sa computer na ito. Lumalabas ang bawat koneksyon sa gateway ng ibang miyembro, at doon hinahanap ang mga pangalan, hindi kailanman dito. Gumagana ito habang ibinabahagi ng computer na ito ang sarili nitong koneksyon.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>Naghihintay: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>Naghahanap ng mga gateway na magagamit…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>SOCKS5 proxy sa %1 — itakda ito sa isang browser o ibang programa, na hinahanap ang mga pangalan sa pamamagitan ng proxy. %2 gateway ang nakatagpo, %3 koneksyon ang bukas.</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>Naka-off: kailangan nito ang overlay at ang index ng roster.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>Naka-off.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>naka-disable</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>hindi — kailangan nito ang overlay at ang index ng roster</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>hindi — naka-off</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>hindi nakalista bilang gateway</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>hindi pa — hindi inililista ng roster ang node na ito bilang gateway, kaya walang makakahanap dito</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>wala pa — inililista ng isang relay ang gateway nito sa ilalim ng ikalawang susi, walang address, hiwalay sa sarili nitong listing</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>wala pa — kulang ang listing ng node na ito sa opsyon na gateway; ilathala itong muli na naka-on ang opsyon</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>wala pa — maglathala ng listing na walang address at naka-on ang opsyon na gateway</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>Ilista ang gateway ng relay na ito…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>nagbabahagi</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>oo, tumatanggap ng koneksyon</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>naubos ang bahagi ngayong araw</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>naubos na ang bahagi ngayong araw; tatanggap ulit ito ng koneksyon kapag nagpalit ang araw (UTC)</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>ang gateway key nito na %1, hiwalay sa address ng relay</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>ang sariling susi ng node na ito na %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 sa %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, walang pang-araw-araw na limitasyon</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 koneksyon para sa %2 bisita, sa %3 tagpuan</translation>
     </message>
 </context>
 <context>

@@ -3331,6 +3331,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>No answer from the relay. %1</source>
         <translation>রিলে থেকে কোনো উত্তর নেই। %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>এই রিলের গেটওয়ে তালিকাভুক্ত করুন</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>একটি রিলের তালিকাভুক্তিতে তার ঠিকানা থাকে, তাই তার গেটওয়ে ঠিকানা ছাড়া একটি দ্বিতীয় চাবির অধীনে আলাদাভাবে তালিকাভুক্ত হয়। তালিকা দেখে কেউ বলতে পারে না যে দুটি একই কম্পিউটারের। দর্শনার্থীরা রিলের মাধ্যমে গেটওয়েতে পৌঁছান, তাই এটি কখনো জানে না তাঁরা কে; তাঁরা যে ওয়েবসাইটে যান সেগুলো এই কম্পিউটারের ঠিকানা দেখে।</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>এই কম্পিউটারের ইন্টারনেট সংযোগ গেটওয়ে হিসেবে ভাগ করুন</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>নেটওয়ার্কের সদস্যরা এর মাধ্যমে যে ওয়েবসাইটে যান সেগুলো এই কম্পিউটারের ঠিকানা দেখে। আপনার সংযোগ ভাগ করার অনুমতি না থাকলে সার্ভার পাতায় গেটওয়ে বন্ধ করুন।</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>সার্ভার পাতায় গেটওয়ে বন্ধ করা আছে।</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>অন্য একটি রিলে পরিশোধ করে, রিলের মাধ্যমে অনুরোধ করে</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>আপনার নোড গেটওয়ের তালিকাভুক্তিতে স্বাক্ষর করে এবং রিলের মাধ্যমে অন্য একটি রিলেতে পাঠায়, যা এর জন্য পরিশোধ করে এবং এটি তার নিজের তৈরি ব্লকে রাখে। সেই রিলে গেটওয়ের চাবি জানে, কিন্তু এই কম্পিউটারের ঠিকানা কখনো জানে না। এই নোডের নিজের ওয়ালেট থেকে পরিশোধ করলে চেইনে গেটওয়েটি এই রিলের সাথে যুক্ত হয়ে যেত, আর তাই এর ঠিকানার সাথেও।</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>অন্য রিলের মাধ্যমে একটি রিলেকে এটি প্রকাশ করতে বলা হচ্ছে… এতে এক মিনিট লাগতে পারে।</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4645,7 +4677,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>এই নোড অন্যদের যা দেয়। রিলে ও মেইল রাখা আজই চলছে; হোস্টিং আসছে, এবং এখানকার সবকিছুর মতো এটিও পিয়ারদের মতো একইভাবে খুঁজে পাওয়া যায় — রেজিস্টারের মাধ্যমে। নামের নিজস্ব পাতা আছে।</translation>
+        <translation type="vanished">এই নোড অন্যদের যা দেয়। রিলে ও মেইল রাখা আজই চলছে; হোস্টিং আসছে, এবং এখানকার সবকিছুর মতো এটিও পিয়ারদের মতো একইভাবে খুঁজে পাওয়া যায় — রেজিস্টারের মাধ্যমে। নামের নিজস্ব পাতা আছে।</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4842,6 +4874,190 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>%1% ভাগ করে: মোট %2 %4, প্রতিটি পিয়ারকে %3 %4</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>আপনার ইন্টারনেট সংযোগ ভাগ করা</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay এই কম্পিউটারের ইন্টারনেট সংযোগ নেটওয়ার্কের সঙ্গে ভাগ করে, যেমন ইন্টারনেট থাকা প্রত্যেক সদস্য করেন, যদি না আপনি এটি বন্ধ করেন। বিনিময়ে এই কম্পিউটারের প্রোগ্রামগুলো নেটওয়ার্কের ইন্টারনেট ব্যবহার করতে পারে।</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>মানুষ রিলের পথ ধরে এই কম্পিউটারের মাধ্যমে ইন্টারনেটে পৌঁছান, তাই এটি কখনো জানে না তাঁরা কে, আর নেটওয়ার্কে কেউ জানে না এটি কোথায়।
+
+আপনার জন্য এর অর্থ: তাঁরা যে ওয়েবসাইটে যান সেগুলো এই কম্পিউটারের ইন্টারনেট ঠিকানা দেখে, যেমন আপনারটা দেখত। শুধু এনক্রিপ্ট করা সংযোগ বেরোয় — ওয়েব, আর এনক্রিপ্ট করা মেল ও বার্তা — কখনো সার্ভারের মধ্যে মেল নয়, আর কখনো আপনার নিজের বাড়ির নেটওয়ার্কে নয়। এটি দিনে সর্বোচ্চ 1 GiB ভাগ করে।
+
+আপনি যেখানে থাকেন সেখানকার আইন বা আপনার ইন্টারনেট সরবরাহকারীর শর্ত সংযোগ ভাগ করা নিষেধ করলে এটি বন্ধ করুন। ইইউ-তে অন্যদের ট্র্যাফিক পার করে দেওয়া &quot;নিছক বাহক&quot; হিসেবে সুরক্ষিত, তবু এ নিয়ে অভিযোগ আপনার সরবরাহকারীর মাধ্যমে আপনার কাছে পৌঁছায়।
+
+আপনি যেকোনো সময় সার্ভার পাতায় এটি বদলাতে পারেন।</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>ভাগ করা চালিয়ে যান</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>বন্ধ করুন</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>এই নোড অন্যদের যা দেয়। রিলে করা, মেল রাখা ও ইন্টারনেট ভাগ করা আজই চলছে; হোস্টিং আসছে, আর এখানকার সবকিছুর মতো এটিও পিয়ারদের মতোই খুঁজে পাওয়া যায় — তালিকার মাধ্যমে। নামের নিজস্ব পাতা আছে।</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>গেটওয়ে</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>এই কম্পিউটারের ইন্টারনেট সংযোগ নেটওয়ার্কের সঙ্গে ভাগ করুন, যেমন ইন্টারনেট থাকা প্রত্যেক সদস্য বন্ধ না করলে করেন, আর বিনিময়ে নেটওয়ার্কের ইন্টারনেট ব্যবহার করুন। মানুষ রিলের পথ ধরে এর মাধ্যমে ইন্টারনেটে পৌঁছান, তাই এটি কখনো জানে না তাঁরা কে, আর নেটওয়ার্কে কেউ জানে না এটি কোথায়। তাঁরা যে ওয়েবসাইটে যান সেগুলো এই কম্পিউটারের ঠিকানা দেখে, যেমন আপনারটা দেখত। শুধু এনক্রিপ্ট করা সংযোগ বেরোয় — ওয়েব, আর এনক্রিপ্ট করা মেল ও বার্তা — কখনো সার্ভারের মধ্যে মেল নয়, আর কখনো আপনার নিজের নেটওয়ার্কে নয়।</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>ভাগ করা</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>তালিকাভুক্ত হিসেবে</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>আজ</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>এখন খোলা</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>গেটওয়ে হিসেবে তালিকাভুক্ত করুন…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>এই কম্পিউটারের ইন্টারনেট সংযোগ গেটওয়ে হিসেবে ভাগ করুন</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>আপনি যেখানে থাকেন সেখানকার আইন বা আপনার ইন্টারনেট সরবরাহকারীর শর্ত সংযোগ ভাগ করা নিষেধ করলে এটি বন্ধ করুন। বন্ধ থাকলেও এই নোড রিলে করে, মেল রাখে ও চেইনে থাকে, আর নিজের সংযোগ সরাসরি ব্যবহার করে।</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>কোনো সীমা নেই</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>দুই দিক মিলিয়ে। শেষ হয়ে গেলে দিন বদলানো (UTC) পর্যন্ত গেটওয়ে নতুন সংযোগ নেয় না।</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>দিনে সর্বোচ্চ যতটা ভাগ করে</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>এই কম্পিউটারের প্রোগ্রামগুলোকে একটি স্থানীয় প্রক্সির মাধ্যমে নেটওয়ার্কের ইন্টারনেট ব্যবহার করতে দিন</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>শুধু এই কম্পিউটারের জন্য একটি SOCKS5 প্রক্সি। প্রতিটি সংযোগ অন্য সদস্যের গেটওয়ে দিয়ে বেরোয়, আর নাম সেখানেই খোঁজা হয়, কখনো এখানে নয়। এই কম্পিউটার নিজের সংযোগ ভাগ করা পর্যন্ত এটি কাজ করে।</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>অপেক্ষায়: %1।</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>ব্যবহারের জন্য গেটওয়ে খোঁজা হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>%1-এ SOCKS5 প্রক্সি — একটি ব্রাউজার বা অন্য প্রোগ্রামে এটি সেট করুন, প্রক্সির মাধ্যমে নাম খোঁজার ব্যবস্থাসহ। %2টি গেটওয়ে পাওয়া গেছে, %3টি সংযোগ খোলা।</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>বন্ধ: এর জন্য ওভারলে ও তালিকার সূচক দরকার।</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>বন্ধ।</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>নিষ্ক্রিয়</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>না — এর জন্য ওভারলে ও তালিকার সূচক দরকার</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>না — বন্ধ</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>গেটওয়ে হিসেবে তালিকাভুক্ত নয়</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>এখনো নয় — তালিকা এই নোডকে গেটওয়ে হিসেবে রাখে না, তাই কেউ এটি খুঁজে পায় না</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>এখনো কিছু নেই — একটি রিলে তার গেটওয়ে একটি দ্বিতীয় চাবির অধীনে, ঠিকানা ছাড়া, নিজের তালিকাভুক্তি থেকে আলাদা করে তালিকাভুক্ত করে</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>এখনো কিছু নেই — এই নোডের তালিকাভুক্তিতে গেটওয়ে বিকল্প নেই; বিকল্প চালু রেখে আবার প্রকাশ করুন</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>এখনো কিছু নেই — ঠিকানা ছাড়া, গেটওয়ে বিকল্প চালু রেখে একটি তালিকাভুক্তি প্রকাশ করুন</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>এই রিলের গেটওয়ে তালিকাভুক্ত করুন…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>ভাগ করছে</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>হ্যাঁ, সংযোগ নিচ্ছে</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>আজকের ভাগ শেষ</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>আজকের ভাগ শেষ; দিন বদলালে (UTC) আবার সংযোগ নেয়</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>এর গেটওয়ে চাবি %1, রিলের ঠিকানা থেকে আলাদা</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>এই নোডের নিজের চাবি %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%2 MiB-এর মধ্যে %1</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, দৈনিক সীমা ছাড়া</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%2 জন দর্শনার্থীর জন্য %1টি সংযোগ, %3টি মিলনবিন্দুতে</translation>
     </message>
 </context>
 <context>

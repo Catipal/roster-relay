@@ -3341,6 +3341,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>No answer from the relay. %1</source>
         <translation>Ретранслятор не ответил. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>Записать шлюз этого ретранслятора</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>Запись ретранслятора содержит его адрес, поэтому его шлюз записывается под вторым ключом без адреса, отдельно. По реестру никто не может понять, что оба принадлежат одному компьютеру. Посетители добираются до шлюза через ретрансляторы, поэтому он никогда не узнаёт, кто они; сайты, которые они посещают, видят адрес этого компьютера.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Делиться интернет-соединением этого компьютера как шлюз</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>Сайты, которые участники сети посещают через него, видят адрес этого компьютера. Выключите шлюз на странице Сервер, если вам нельзя делиться соединением.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>Шлюз выключен на странице Сервер.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>Платит другой ретранслятор, запрос идёт через ретрансляторы</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>Ваш узел подписывает запись шлюза и отправляет её через ретрансляторы другому ретранслятору, который оплачивает её и включает в блок, который создаёт сам. Этот ретранслятор узнаёт ключ шлюза и никогда — адрес этого компьютера. Оплата из собственного кошелька этого узла связала бы шлюз с этим ретранслятором в цепочке, а значит, и с его адресом.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>Просим ретранслятор через другие ретрансляторы опубликовать её… это может занять минуту.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4662,7 +4694,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Что этот узел предлагает другим. Ретрансляция и хранение почты работают уже сегодня; хостинг на подходе, и, как всё здесь, находится так же, как пиры, — через реестр. У имён своя страница.</translation>
+        <translation type="vanished">Что этот узел предлагает другим. Ретрансляция и хранение почты работают уже сегодня; хостинг на подходе, и, как всё здесь, находится так же, как пиры, — через реестр. У имён своя страница.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4859,6 +4891,190 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>делится %1%: всего %2 %4, по %3 %4 каждому пиру</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>Как делиться интернет-соединением</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay делится интернет-соединением этого компьютера с сетью, как это делает каждый участник с интернетом, если вы это не выключите. Взамен программы на этом компьютере могут пользоваться интернетом сети.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>Люди выходят в интернет через этот компьютер по цепочке ретрансляторов, поэтому он никогда не узнаёт, кто они, и никто в сети не узнаёт, где он находится.
+
+Что это значит для вас: сайты, которые они посещают, видят интернет-адрес этого компьютера, как видели бы ваш. Наружу выходят только зашифрованные соединения — веб, а также зашифрованная почта и сообщения — никогда почта между серверами и никогда в вашу домашнюю сеть. Он делится не более чем 1 ГиБ в день.
+
+Если закон там, где вы живёте, или условия вашего интернет-провайдера запрещают делиться соединением, выключите это. В ЕС передача трафика других защищена как &quot;простая передача&quot;, но жалобы на неё всё равно приходят к вам через провайдера.
+
+Это можно изменить в любое время на странице Сервер.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>Продолжать делиться</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>Выключить</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Что этот узел предлагает другим. Ретрансляция, хранение почты и раздача интернета работают уже сегодня; хостинг на подходе и, как всё здесь, находится так же, как пиры, — через реестр. У имён своя страница.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>Шлюз</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>Делиться интернет-соединением этого компьютера с сетью, как это делает каждый участник с интернетом, если не выключит, и взамен пользоваться интернетом сети. Люди выходят в интернет через него по цепочке ретрансляторов, поэтому он никогда не узнаёт, кто они, и никто в сети не узнаёт, где он находится. Сайты, которые они посещают, видят адрес этого компьютера, как видели бы ваш. Наружу выходят только зашифрованные соединения — веб, а также зашифрованная почта и сообщения — никогда почта между серверами и никогда в вашу собственную сеть.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>Раздача</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>Записан как</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Сегодня</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>Открыто сейчас</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>Записать как шлюз…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Делиться интернет-соединением этого компьютера как шлюз</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>Выключите его, если закон там, где вы живёте, или условия вашего интернет-провайдера запрещают делиться соединением. Выключенный, этот узел по-прежнему ретранслирует, хранит почту и следит за цепочкой, а своим соединением пользуется напрямую.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>без лимита</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>Оба направления вместе. Когда он исчерпан, шлюз не принимает новых соединений до смены дня (UTC).</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>Не больше в день</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>Разрешить программам на этом компьютере пользоваться интернетом сети через локальный прокси</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>SOCKS5-прокси только для этого компьютера. Каждое соединение выходит через шлюз другого участника, а имена разрешаются там, никогда здесь. Работает, пока этот компьютер делится своим соединением.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>Ожидание: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>Поиск шлюзов для использования…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>SOCKS5-прокси на %1 — укажите его в браузере или другой программе, с разрешением имён через прокси. Найдено шлюзов: %2, открыто соединений: %3.</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>Выключено: нужны оверлей и индекс реестра.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>Выключено.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>выключено</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>нет — нужны оверлей и индекс реестра</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>нет — выключен</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>не записан как шлюз</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>пока нет — реестр не числит этот узел шлюзом, поэтому его никто не найдёт</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>пока ничего — ретранслятор записывает свой шлюз под вторым ключом, без адреса, отдельно от собственной записи</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>пока ничего — в записи этого узла нет параметра шлюза; опубликуйте её заново с включённым параметром</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>пока ничего — опубликуйте запись без адреса с включённым параметром шлюза</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>Записать шлюз этого ретранслятора…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>раздаёт</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>да, принимает соединения</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>сегодняшняя доля исчерпана</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>сегодняшняя доля исчерпана; соединения снова принимаются со сменой дня (UTC)</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>его ключ шлюза %1, отдельно от адреса ретранслятора</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>собственный ключ этого узла %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 из %2 МиБ</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, без дневного лимита</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 соединений для %2 посетителей, в %3 точках встречи</translation>
     </message>
 </context>
 <context>

@@ -265,6 +265,34 @@ What this node offers other people.
   for the people the roster makes this node a mailbox for, and only for
   listed people. It cannot read what it holds. You can turn it off or limit
   the disk it uses (256 MiB by default, 8 MiB at most for any one person).
+- **Gateway** - running wherever the relay network runs, unless switched
+  off. Shares this computer's internet connection with the network, and lets
+  programs on this computer use the network's internet in return. The first
+  start says plainly what sharing means and lets you switch it off before
+  anything runs. A gateway is listed by its key with no address and reached
+  only through relays at its meeting points, so it never learns who uses it
+  and nobody learns where it is; the websites people visit through it see
+  its address. Only encrypted connections leave (TCP 443, 465, 853, 993,
+  995, 5223, 5228 and UDP 443), never port 25 and never a private address;
+  at most 1 GiB a day by default (`-gatewaybandwidth`), 64 KiB/s per visitor
+  (`-gatewayrate`). Names are looked up with the gateway computer's own
+  resolver, and only public addresses are given back. A relay lists its
+  gateway under a second key, `gateway.key`, with no address, and another
+  relay pays for that listing, asked through relays: it learns the key and
+  not where the gateway is, and no payment ties the two. The card shows
+  today's traffic, open connections and the meeting points it is registered
+  at, and lists the node as a gateway if it is not yet.
+- **Local proxy** - a SOCKS5 proxy on 127.0.0.1 (`-gatewayproxy`, on in BPS
+  Relay; port `-gatewayproxyport`, two above the peer-to-peer port). Each
+  connection leaves through another member's gateway, met through one relay
+  of this node's own (`-gatewayhops`); names are looked up at a gateway,
+  never here, and `.bps`, `.onion` and home-network names are not sent out
+  at all. It works while this node shares its own connection, or while it
+  has none and relays over radio. Measured on one computer (regtest): 1.5 MiB
+  in 39 s, paced to stay under the relays' caps.
+- **Relays carry within limits** - `-relaypathrate` (64 KiB/s per path) and
+  `-relaybandwidth` (1 GiB of other people's traffic a day), shown in
+  `getoverlayinfo`.
 - **Hosting** - shown as planned. Not built yet.
 
 Footer

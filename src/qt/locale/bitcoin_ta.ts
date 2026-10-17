@@ -3332,6 +3332,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>No answer from the relay. %1</source>
         <translation>ரிலேயிடமிருந்து பதில் இல்லை. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>இந்த அஞ்சலியின் நுழைவாயிலைப் பதிவு செய்</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>ஒரு அஞ்சலியின் பதிவில் அதன் முகவரி இருப்பதால், அதன் நுழைவாயில் முகவரி இல்லாத இரண்டாவது சாவியின் கீழ் தனியாகப் பதியப்படுகிறது. இரண்டும் ஒரே கணினிக்குச் சொந்தமானவை என்று பதிவேட்டிலிருந்து யாராலும் அறிய முடியாது. பார்வையாளர்கள் அஞ்சலிகள் வழியாக நுழைவாயிலை அடைவதால், அவர்கள் யார் என்று அதற்கு ஒருபோதும் தெரியாது; அவர்கள் பார்க்கும் இணையதளங்கள் இந்தக் கணினியின் முகவரியைப் பார்க்கின்றன.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>இந்தக் கணினியின் இணைய இணைப்பை நுழைவாயிலாகப் பகிர்</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>பிணைய உறுப்பினர்கள் இதன் வழியாகப் பார்க்கும் இணையதளங்கள் இந்தக் கணினியின் முகவரியைப் பார்க்கின்றன. உங்கள் இணைப்பைப் பகிர உங்களுக்கு அனுமதி இல்லையெனில், சேவையகப் பக்கத்தில் நுழைவாயிலை அணையுங்கள்.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>சேவையகப் பக்கத்தில் நுழைவாயில் அணைக்கப்பட்டுள்ளது.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>வேறொரு ரிலே செலுத்துகிறது, ரிலேக்கள் வழியாகக் கேட்கப்படுகிறது</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>உங்கள் முனை நுழைவாயிலின் பட்டியலிடலில் கையொப்பமிட்டு, ரிலேக்கள் வழியாக வேறொரு ரிலேக்கு அனுப்புகிறது; அது அதற்குச் செலுத்தித் தானே உருவாக்கும் தொகுதியில் வைக்கிறது. அந்த ரிலே நுழைவாயிலின் சாவியை அறியும், இந்தக் கணினியின் முகவரியை ஒருபோதும் அறியாது. இந்த முனையின் சொந்த வாலட்டிலிருந்து செலுத்தினால், சங்கிலியில் நுழைவாயில் இந்த ரிலேயுடனும், அதனால் அதன் முகவரியுடனும் இணைக்கப்படும்.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>ரிலேக்கள் வழியாக ஒரு ரிலேயிடம் வெளியிடக் கேட்கிறது… இதற்கு ஒரு நிமிடம் ஆகலாம்.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4646,7 +4678,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>இந்த முனை பிறருக்கு வழங்குவது. ரிலே செய்வதும் அஞ்சலை வைத்திருப்பதும் இன்றே இயங்குகின்றன; ஹோஸ்டிங் வருகிறது, இங்குள்ள அனைத்தையும் போல, பியர்களைக் கண்டறியும் அதே வழியில் — பதிவேடு வழியாக — கண்டறியப்படும். பெயர்களுக்குத் தனிப் பக்கம் உள்ளது.</translation>
+        <translation type="vanished">இந்த முனை பிறருக்கு வழங்குவது. ரிலே செய்வதும் அஞ்சலை வைத்திருப்பதும் இன்றே இயங்குகின்றன; ஹோஸ்டிங் வருகிறது, இங்குள்ள அனைத்தையும் போல, பியர்களைக் கண்டறியும் அதே வழியில் — பதிவேடு வழியாக — கண்டறியப்படும். பெயர்களுக்குத் தனிப் பக்கம் உள்ளது.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4843,6 +4875,190 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>%1% பகிர்கிறது: மொத்தம் %2 %4, ஒவ்வொரு பியருக்கும் %3 %4</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>உங்கள் இணைய இணைப்பைப் பகிர்தல்</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>இணையம் உள்ள ஒவ்வொரு உறுப்பினரும் செய்வது போல, நீங்கள் அணைக்காத வரை BPS Relay இந்தக் கணினியின் இணைய இணைப்பைப் பிணையத்துடன் பகிர்கிறது. பதிலுக்கு, இந்தக் கணினியிலுள்ள நிரல்கள் பிணையத்தின் இணையத்தைப் பயன்படுத்தலாம்.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>மக்கள் அஞ்சலிகள் வழியாக இந்தக் கணினி மூலம் இணையத்தை அடைகிறார்கள், எனவே அவர்கள் யார் என்று இதற்கு ஒருபோதும் தெரியாது, இது எங்கே உள்ளது என்று பிணையத்தில் யாருக்கும் தெரியாது.
+
+உங்களுக்கு இதன் பொருள்: அவர்கள் பார்க்கும் இணையதளங்கள் உங்களுடையதைப் பார்ப்பது போல் இந்தக் கணினியின் இணைய முகவரியைப் பார்க்கின்றன. குறியாக்கப்பட்ட இணைப்புகள் மட்டுமே வெளியேறுகின்றன — இணையம், குறியாக்கப்பட்ட அஞ்சல் மற்றும் செய்திகள் — சேவையகங்களுக்கு இடையிலான அஞ்சல் ஒருபோதும் இல்லை, உங்கள் சொந்த வீட்டுப் பிணையத்துக்குள்ளும் ஒருபோதும் இல்லை. இது நாளொன்றுக்கு அதிகபட்சம் 1 GiB பகிர்கிறது.
+
+நீங்கள் வசிக்கும் இடத்தின் சட்டமோ உங்கள் இணைய வழங்குநரின் விதிமுறைகளோ இணைப்பைப் பகிர்வதைத் தடை செய்தால், இதை அணையுங்கள். ஐரோப்பிய ஒன்றியத்தில் பிறருக்காகப் போக்குவரத்தைக் கடத்துவது &quot;வெறும் வழித்தடம்&quot; எனப் பாதுகாக்கப்படுகிறது, ஆனாலும் அது பற்றிய புகார்கள் உங்கள் வழங்குநர் மூலம் உங்களை வந்தடைகின்றன.
+
+சேவையகப் பக்கத்தில் இதை எப்போது வேண்டுமானாலும் மாற்றலாம்.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>தொடர்ந்து பகிர்</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>அணை</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>இந்தக் கணு மற்றவர்களுக்கு வழங்குவது. அஞ்சல் செய்தல், அஞ்சலைக் காத்தல், இணையத்தைப் பகிர்தல் இன்றே இயங்குகின்றன; வலைத்தள வழங்கல் வந்துகொண்டிருக்கிறது, இங்குள்ள எல்லாவற்றையும் போல அதுவும் சகாக்களைப் போலவே கண்டறியப்படுகிறது — பதிவேடு வழியாக. பெயர்களுக்குத் தனிப் பக்கம் உண்டு.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>நுழைவாயில்</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>இணையம் உள்ள ஒவ்வொரு உறுப்பினரும் அணைக்காத வரை செய்வது போல், இந்தக் கணினியின் இணைய இணைப்பைப் பிணையத்துடன் பகிர்ந்து, பதிலுக்குப் பிணையத்தின் இணையத்தைப் பயன்படுத்துங்கள். மக்கள் அஞ்சலிகள் வழியாக இதன் மூலம் இணையத்தை அடைகிறார்கள், எனவே அவர்கள் யார் என்று இதற்கு ஒருபோதும் தெரியாது, இது எங்கே உள்ளது என்று பிணையத்தில் யாருக்கும் தெரியாது. அவர்கள் பார்க்கும் இணையதளங்கள் உங்களுடையதைப் பார்ப்பது போல் இந்தக் கணினியின் முகவரியைப் பார்க்கின்றன. குறியாக்கப்பட்ட இணைப்புகள் மட்டுமே வெளியேறுகின்றன — இணையம், குறியாக்கப்பட்ட அஞ்சல் மற்றும் செய்திகள் — சேவையகங்களுக்கு இடையிலான அஞ்சல் ஒருபோதும் இல்லை, உங்கள் சொந்தப் பிணையத்துக்குள்ளும் ஒருபோதும் இல்லை.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>பகிர்வு</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>பதிவு</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>இன்று</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>இப்போது திறந்தவை</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>நுழைவாயிலாகப் பதிவு செய்…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>இந்தக் கணினியின் இணைய இணைப்பை நுழைவாயிலாகப் பகிர்</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>நீங்கள் வசிக்கும் இடத்தின் சட்டமோ உங்கள் இணைய வழங்குநரின் விதிமுறைகளோ இணைப்பைப் பகிர்வதைத் தடை செய்தால் இதை அணையுங்கள். அணைத்த பிறகும் இந்தக் கணு அஞ்சல் செய்கிறது, அஞ்சலைக் காக்கிறது, சங்கிலியில் தொடர்கிறது, தன் இணைப்பை நேரடியாகப் பயன்படுத்துகிறது.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>வரம்பு இல்லை</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>இரு திசைகளும் சேர்த்து. தீர்ந்துவிட்டால், நாள் மாறும் வரை (UTC) நுழைவாயில் புதிய இணைப்புகளை ஏற்காது.</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>நாளொன்றுக்கு அதிகபட்சப் பகிர்வு</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>இந்தக் கணினியிலுள்ள நிரல்கள் ஒரு உள்ளூர் பதிலி வழியாகப் பிணையத்தின் இணையத்தைப் பயன்படுத்த அனுமதி</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>இந்தக் கணினிக்கு மட்டுமான SOCKS5 பதிலி. ஒவ்வொரு இணைப்பும் வேறொரு உறுப்பினரின் நுழைவாயில் வழியாக வெளியேறுகிறது, பெயர்கள் அங்கேயே தேடப்படுகின்றன, இங்கே ஒருபோதும் இல்லை. இந்தக் கணினி தன் இணைப்பைப் பகிரும் வரை இது வேலை செய்யும்.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>காத்திருக்கிறது: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>பயன்படுத்த நுழைவாயில்களைத் தேடுகிறது…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>%1-இல் SOCKS5 பதிலி — பெயர்கள் பதிலி வழியாகத் தேடப்படும்படி, ஒரு உலாவியிலோ வேறு நிரலிலோ இதை அமையுங்கள். சந்தித்த நுழைவாயில்கள்: %2, திறந்த இணைப்புகள்: %3.</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>அணைக்கப்பட்டது: இதற்கு மேலடுக்கும் பதிவேட்டுக் குறியீடும் தேவை.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>அணைக்கப்பட்டது.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>முடக்கப்பட்டது</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>இல்லை — இதற்கு மேலடுக்கும் பதிவேட்டுக் குறியீடும் தேவை</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>இல்லை — அணைக்கப்பட்டது</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>நுழைவாயிலாகப் பதியப்படவில்லை</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>இன்னும் இல்லை — பதிவேடு இந்தக் கணுவை நுழைவாயிலாகப் பதியவில்லை, எனவே யாராலும் இதைக் கண்டறிய முடியாது</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>இன்னும் எதுவும் இல்லை — ஒரு அஞ்சலி தன் நுழைவாயிலை இரண்டாவது சாவியின் கீழ், முகவரி இல்லாமல், தன் சொந்தப் பதிவிலிருந்து தனியாகப் பதிகிறது</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>இன்னும் எதுவும் இல்லை — இந்தக் கணுவின் பதிவில் நுழைவாயில் விருப்பம் இல்லை; விருப்பத்தை இயக்கி மீண்டும் வெளியிடுங்கள்</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>இன்னும் எதுவும் இல்லை — முகவரி இல்லாமல், நுழைவாயில் விருப்பம் இயக்கத்தில் உள்ள ஒரு பதிவை வெளியிடுங்கள்</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>இந்த அஞ்சலியின் நுழைவாயிலைப் பதிவு செய்…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>பகிர்கிறது</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>ஆம், இணைப்புகளை ஏற்கிறது</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>இன்றைய பங்கு தீர்ந்தது</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>இன்றைய பங்கு தீர்ந்தது; நாள் மாறும்போது (UTC) மீண்டும் இணைப்புகளை ஏற்கும்</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>அதன் நுழைவாயில் சாவி %1, அஞ்சலியின் முகவரியிலிருந்து தனியாக</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>இந்தக் கணுவின் சொந்தச் சாவி %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%2 MiB-இல் %1</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, தினசரி வரம்பு இல்லாமல்</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%2 பார்வையாளர்களுக்கு %1 இணைப்புகள், %3 சந்திப்பு இடங்களில்</translation>
     </message>
 </context>
 <context>

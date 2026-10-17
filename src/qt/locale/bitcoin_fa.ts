@@ -3324,6 +3324,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>No answer from the relay. %1</source>
         <translation>رله پاسخی نداد. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>ثبت دروازهٔ این رله</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>ثبت یک رله نشانی آن را دارد، پس دروازه‌اش با کلید دومی بدون نشانی، جدا از آن، ثبت می‌شود. هیچ‌کس از روی فهرست نمی‌تواند بفهمد که این دو مال یک رایانه‌اند. بازدیدکنندگان از راه رله‌ها به دروازه می‌رسند، پس دروازه هرگز نمی‌فهمد آن‌ها کیستند؛ وب‌سایت‌هایی که بازدید می‌کنند نشانی این رایانه را می‌بینند.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>هم‌رسانی اتصال اینترنت این رایانه به‌عنوان دروازه</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>وب‌سایت‌هایی که اعضای شبکه از راه آن بازدید می‌کنند نشانی این رایانه را می‌بینند. اگر اجازهٔ هم‌رسانی اتصالتان را ندارید، دروازه را در صفحهٔ سرور خاموش کنید.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>دروازه در صفحهٔ سرور خاموش است.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>رله‌ای دیگر می‌پردازد، از راه رله‌های دیگر درخواست می‌شود</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>گره شما ثبت دروازه را امضا می‌کند و از راه رله‌ها به رله‌ای دیگر می‌فرستد که هزینه‌اش را می‌پردازد و آن را در بلوکی که خودش استیک می‌کند می‌گذارد. آن رله کلید دروازه را می‌فهمد و هرگز نشانی این رایانه را نه. پرداخت از کیف پول خود این گره، دروازه را روی زنجیره به این رله و در نتیجه به نشانی آن پیوند می‌داد.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>در حال درخواست انتشار از یک رله از راه رله‌های دیگر… ممکن است یک دقیقه طول بکشد.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4631,7 +4663,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>آنچه این گره به دیگران ارائه می‌دهد. رله کردن و نگهداری پست امروز کار می‌کنند؛ میزبانی در راه است و مانند همه چیز اینجا به همان روشی یافته می‌شود که همتاها — از طریق دفتر. نام‌ها صفحه جداگانه‌ای دارند.</translation>
+        <translation type="vanished">آنچه این گره به دیگران ارائه می‌دهد. رله کردن و نگهداری پست امروز کار می‌کنند؛ میزبانی در راه است و مانند همه چیز اینجا به همان روشی یافته می‌شود که همتاها — از طریق دفتر. نام‌ها صفحه جداگانه‌ای دارند.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4828,6 +4860,190 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>%1% تقسیم می‌کند: در مجموع %2 %4، به هر همتا %3 %4</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>هم‌رسانی اتصال اینترنت شما</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay اتصال اینترنت این رایانه را با شبکه هم‌رسانی می‌کند، همان‌طور که هر عضوی که اینترنت دارد می‌کند، مگر این‌که آن را خاموش کنید. در عوض، برنامه‌های این رایانه می‌توانند از اینترنت شبکه استفاده کنند.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>مردم از راه رله‌ها و از طریق این رایانه به اینترنت می‌رسند، پس این رایانه هرگز نمی‌فهمد آن‌ها کیستند و هیچ‌کس در شبکه نمی‌فهمد این رایانه کجاست.
+
+معنایش برای شما: وب‌سایت‌هایی که بازدید می‌کنند نشانی اینترنت این رایانه را می‌بینند، همان‌طور که نشانی شما را می‌دیدند. فقط اتصال‌های رمزنگاری‌شده بیرون می‌روند — وب، و ایمیل و پیام‌رسانی رمزنگاری‌شده — هرگز ایمیل میان سرورها، و هرگز به درون شبکهٔ خانگی خودتان. حداکثر 1 GiB در روز هم‌رسانی می‌کند.
+
+اگر قانون محل زندگی‌تان یا شرایط ارائه‌دهندهٔ اینترنت، هم‌رسانی اتصال را ممنوع می‌کند، آن را خاموش کنید. در اتحادیهٔ اروپا گذراندن ترافیک دیگران به‌عنوان &quot;صرفاً مجرای انتقال&quot; حمایت می‌شود، اما شکایت‌ها دربارهٔ آن همچنان از راه ارائه‌دهنده به شما می‌رسد.
+
+هر زمان بخواهید می‌توانید این را در صفحهٔ سرور تغییر دهید.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>ادامهٔ هم‌رسانی</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>خاموش کن</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>آنچه این گره به دیگران عرضه می‌کند. رله کردن، نگه‌داری ایمیل و هم‌رسانی اینترنت امروز کار می‌کنند؛ میزبانی در راه است و مانند همه‌چیز این‌جا، به همان روشی یافته می‌شود که همتاها — از راه فهرست. نام‌ها صفحهٔ خودشان را دارند.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>دروازه</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>اتصال اینترنت این رایانه را با شبکه هم‌رسانی کنید، همان‌طور که هر عضوی که اینترنت دارد مگر خاموشش کند می‌کند، و در عوض از اینترنت شبکه استفاده کنید. مردم از راه رله‌ها و از طریق آن به اینترنت می‌رسند، پس هرگز نمی‌فهمد آن‌ها کیستند و هیچ‌کس در شبکه نمی‌فهمد کجاست. وب‌سایت‌هایی که بازدید می‌کنند نشانی این رایانه را می‌بینند، همان‌طور که نشانی شما را می‌دیدند. فقط اتصال‌های رمزنگاری‌شده بیرون می‌روند — وب، و ایمیل و پیام‌رسانی رمزنگاری‌شده — هرگز ایمیل میان سرورها، و هرگز به درون شبکهٔ خودتان.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>هم‌رسانی</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>ثبت‌شده به‌عنوان</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>امروز</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>باز در این لحظه</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>ثبت به‌عنوان دروازه…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>هم‌رسانی اتصال اینترنت این رایانه به‌عنوان دروازه</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>اگر قانون محل زندگی‌تان یا شرایط ارائه‌دهندهٔ اینترنت، هم‌رسانی اتصال را ممنوع می‌کند، آن را خاموش کنید. با خاموش بودن، این گره همچنان رله می‌کند، ایمیل نگه می‌دارد و زنجیره را دنبال می‌کند، و از اتصال خودش مستقیم استفاده می‌کند.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>بدون سقف</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>هر دو جهت با هم. وقتی تمام شود، دروازه تا عوض شدن روز (UTC) اتصال تازه‌ای نمی‌پذیرد.</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>بیشترین هم‌رسانی در روز</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>اجازه به برنامه‌های این رایانه برای استفاده از اینترنت شبکه از راه یک پراکسی محلی</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>پراکسی SOCKS5 فقط برای این رایانه. هر اتصال از دروازهٔ عضو دیگری بیرون می‌رود و نام‌ها همان‌جا یافته می‌شوند، هرگز این‌جا. تا وقتی این رایانه اتصال خودش را هم‌رسانی می‌کند کار می‌کند.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>در انتظار: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>در حال یافتن دروازه برای استفاده…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>پراکسی SOCKS5 در %1 — آن را در یک مرورگر یا برنامهٔ دیگر تنظیم کنید و نام‌ها را از راه پراکسی بیابید. %2 دروازه یافته شد، %3 اتصال باز است.</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>خاموش: به اورلی و نمایهٔ فهرست نیاز دارد.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>خاموش.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>غیرفعال</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>نه — به اورلی و نمایهٔ فهرست نیاز دارد</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>نه — خاموش</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>به‌عنوان دروازه ثبت نشده</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>هنوز نه — فهرست این گره را به‌عنوان دروازه ثبت نکرده است، پس هیچ‌کس نمی‌تواند پیدایش کند</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>هنوز چیزی نیست — رله دروازه‌اش را با کلید دوم، بدون نشانی، جدا از ثبت خودش ثبت می‌کند</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>هنوز چیزی نیست — ثبت این گره گزینهٔ دروازه را ندارد؛ آن را دوباره با گزینهٔ روشن منتشر کنید</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>هنوز چیزی نیست — ثبتی بدون نشانی و با گزینهٔ دروازهٔ روشن منتشر کنید</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>ثبت دروازهٔ این رله…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>در حال هم‌رسانی</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>بله، اتصال می‌پذیرد</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>سهم امروز مصرف شد</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>سهم امروز تمام شد؛ با عوض شدن روز (UTC) دوباره اتصال می‌پذیرد</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>کلید دروازهٔ آن %1، جدا از نشانی رله</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>کلید خود این گره %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 از %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1، بدون سقف روزانه</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 اتصال برای %2 بازدیدکننده، در %3 نقطهٔ دیدار</translation>
     </message>
 </context>
 <context>

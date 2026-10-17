@@ -21,6 +21,7 @@ class QCheckBox;
 class QGridLayout;
 class QLabel;
 class QLineEdit;
+class QPushButton;
 class QSpinBox;
 class QTimer;
 QT_END_NAMESPACE
@@ -54,6 +55,14 @@ public:
     /** Read the stored relay settings into the argument list, before the node starts. */
     static void ApplyStoredSettings();
 
+    /**
+     * The first time the client starts, say plainly what sharing the internet
+     * connection means, and let the owner switch it off before the node
+     * starts (design note section 8.7). Not asked again, and not asked when
+     * -gateway was given on the command line or in the config file.
+     */
+    static void AskAboutGatewayOnce();
+
 public Q_SLOTS:
     void Refresh();
 
@@ -61,10 +70,13 @@ private Q_SLOTS:
     void onRpcResult(const QString& tag, const UniValue& value);
     void onRpcFailed(const QString& tag, const QString& message);
     void onChanged();
+    void onListGateway();
 
 private:
     QWidget* MakeRelayCard();
     QWidget* MakeMailboxCard();
+    QWidget* MakeGatewayCard();
+    void ShowGateway(const UniValue& value);
     void Load();
     void UpdateStaking();
 
@@ -89,6 +101,19 @@ private:
     QCheckBox* m_mailbox{nullptr};
     QSpinBox* m_mailbox_size{nullptr};
     QLabel* m_mailbox_note{nullptr};
+
+    QLabel* m_gateway_badge{nullptr};
+    QLabel* m_gateway_state{nullptr};
+    QLabel* m_gateway_key{nullptr};
+    QLabel* m_gateway_today{nullptr};
+    QLabel* m_gateway_now{nullptr};
+    QPushButton* m_gateway_list{nullptr};
+    QCheckBox* m_gateway{nullptr};
+    QSpinBox* m_gateway_budget{nullptr};
+    QCheckBox* m_proxy{nullptr};
+    QLabel* m_proxy_status{nullptr};
+    QLabel* m_gateway_note{nullptr};
+    bool m_own_address{false};
     QTimer* m_timer{nullptr};
 };
 

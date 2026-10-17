@@ -3331,6 +3331,38 @@ Du får vist en gendannelsesnøgle én gang. Skriv den ned: det er den eneste m�
         <source>No answer from the relay. %1</source>
         <translation>Intet svar fra relæet. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>Registrér denne relays gateway</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>En relays registrering indeholder dens adresse, så dens gateway registreres under en anden nøgle uden adresse, adskilt fra den. Ingen kan se i registret, at de to hører til én computer. Besøgende når gatewayen gennem relays, så den finder aldrig ud af, hvem de er; de websteder, de besøger, ser denne computers adresse.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Del denne computers internetforbindelse som gateway</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>Websteder, som netværkets medlemmer besøger gennem den, ser denne computers adresse. Slå gatewayen fra på siden Server, hvis du ikke må dele din forbindelse.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>Gatewayen er slået fra på siden Server.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>Et andet relæ betaler, spurgt gennem andre relæer</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>Din knude signerer gatewayens opføring og sender den gennem relæer til et andet relæ, som betaler for den og lægger den i en blok, det selv staker. Det relæ får gatewayens nøgle at vide og aldrig denne computers adresse. At betale fra denne knudes egen tegnebog ville binde gatewayen til dette relæ på kæden og dermed til dets adresse.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>Beder et relæ gennem andre relæer om at offentliggøre den… det kan tage et minut.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4645,7 +4677,7 @@ Note: Siden gebyret er kalkuleret på en per-byte basis, et gebyr på &quot;100 
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Hvad denne knude tilbyder andre. Relæ og opbevaring af post kører i dag; hosting er på vej, og som alt her findes det på samme måde som peers — gennem registeret. Navne har deres egen side.</translation>
+        <translation type="vanished">Hvad denne knude tilbyder andre. Relæ og opbevaring af post kører i dag; hosting er på vej, og som alt her findes det på samme måde som peers — gennem registeret. Navne har deres egen side.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4842,6 +4874,190 @@ Note: Siden gebyret er kalkuleret på en per-byte basis, et gebyr på &quot;100 
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>deler %1 %: %2 %4 i alt, %3 %4 til hver peer</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>At dele din internetforbindelse</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay deler denne computers internetforbindelse med netværket, som hvert medlem med internet gør, medmindre du slår det fra. Til gengæld kan programmer på denne computer bruge netværkets internet.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>Folk når internettet gennem denne computer via relays, så den finder aldrig ud af, hvem de er, og ingen i netværket finder ud af, hvor den står.
+
+Hvad det betyder for dig: de websteder, de besøger, ser denne computers internetadresse, som de ville se din. Kun krypterede forbindelser går ud — nettet samt krypteret post og beskeder — aldrig post mellem servere og aldrig ind i dit eget hjemmenetværk. Den deler højst 1 GiB om dagen.
+
+Hvis loven, hvor du bor, eller din internetudbyders vilkår forbyder at dele din forbindelse, så slå det fra. I EU er det at sende trafik videre for andre beskyttet som &quot;ren videreformidling&quot;, men klager over det når dig stadig gennem din udbyder.
+
+Du kan ændre dette når som helst på siden Server.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>Bliv ved med at dele</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>Slå fra</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Hvad denne node tilbyder andre. Videresendelse, opbevaring af post og deling af internettet kører i dag; hosting er på vej, og som alt her findes det på samme måde som peers — gennem registret. Navne har deres egen side.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>Gateway</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>Del denne computers internetforbindelse med netværket, som hvert medlem med internet gør, medmindre det slår den fra, og brug til gengæld netværkets internet. Folk når internettet gennem den via relays, så den finder aldrig ud af, hvem de er, og ingen i netværket finder ud af, hvor den står. De websteder, de besøger, ser denne computers adresse, som de ville se din. Kun krypterede forbindelser går ud — nettet samt krypteret post og beskeder — aldrig post mellem servere og aldrig ind i dit eget netværk.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>Deler</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>Registreret som</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>I dag</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>Åbne nu</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>Registrér som gateway…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Del denne computers internetforbindelse som gateway</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>Slå det fra, hvis loven, hvor du bor, eller din internetudbyders vilkår forbyder at dele din forbindelse. Slået fra bliver denne node ved med at videresende, opbevare post og følge kæden, og den bruger sin egen forbindelse direkte.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>ingen grænse</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>Begge retninger tilsammen. Når den er brugt op, tager gatewayen ikke imod nye forbindelser, før dagen skifter (UTC).</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>Højst delt pr. dag</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>Lad programmer på denne computer bruge netværkets internet gennem en lokal proxy</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>En SOCKS5-proxy kun for denne computer. Hver forbindelse går ud gennem et andet medlems gateway, og navne slås op dér, aldrig her. Den virker, så længe denne computer deler sin egen forbindelse.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>Venter: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>Leder efter gateways at bruge…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>SOCKS5-proxy på %1 — indstil den i en browser eller et andet program, med navneopslag gennem proxyen. %2 gateway(s) mødt, %3 forbindelse(r) åben(e).</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>Fra: den kræver overlayet og registerindekset.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>Fra.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>deaktiveret</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>nej — den kræver overlayet og registerindekset</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>nej — slået fra</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>ikke registreret som gateway</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>endnu ikke — registret har ikke denne node som gateway, så ingen kan finde den</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>intet endnu — en relay registrerer sin gateway under en anden nøgle, uden adresse, adskilt fra sin egen registrering</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>intet endnu — denne nodes registrering mangler gatewayvalget; udgiv den igen med valget slået til</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>intet endnu — udgiv en registrering uden adresse med gatewayvalget slået til</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>Registrér denne relays gateway…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>deler</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>ja, tager imod forbindelser</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>dagens andel brugt</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>dagens andel er brugt op; den tager imod forbindelser igen, når dagen skifter (UTC)</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>dens gatewaynøgle %1, adskilt fra relayens adresse</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>denne nodes egen nøgle %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 af %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, uden daglig grænse</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 forbindelse(r) for %2 besøgende, ved %3 mødested(er)</translation>
     </message>
 </context>
 <context>

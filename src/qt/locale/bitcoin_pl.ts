@@ -3340,6 +3340,38 @@ Klucz odzyskiwania zostanie pokazany raz. Zapisz go: to jedyny sposób, by powst
         <source>No answer from the relay. %1</source>
         <translation>Brak odpowiedzi od przekaźnika. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>Wpisz bramę tego przekaźnika</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>Wpis przekaźnika zawiera jego adres, więc jego bramę wpisuje się pod drugim kluczem bez adresu, osobno. Nikt nie może poznać z rejestru, że oba należą do jednego komputera. Odwiedzający docierają do bramy przez przekaźniki, więc nigdy nie wie, kim są; strony, które odwiedzają, widzą adres tego komputera.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Udostępniaj połączenie internetowe tego komputera jako bramę</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>Strony, które członkowie sieci odwiedzają przez nią, widzą adres tego komputera. Wyłącz bramę na stronie Serwer, jeśli nie wolno ci udostępniać połączenia.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>Brama jest wyłączona na stronie Serwer.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>Płaci inny przekaźnik, poproszony przez przekaźniki</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>Twój węzeł podpisuje wpis bramy i wysyła go przez przekaźniki do innego przekaźnika, który za niego płaci i umieszcza go w bloku, który sam tworzy. Ten przekaźnik poznaje klucz bramy, a nigdy adresu tego komputera. Płacenie z własnego portfela tego węzła powiązałoby bramę z tym przekaźnikiem w łańcuchu, a więc z jego adresem.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>Prośba do przekaźnika, przez inne przekaźniki, o publikację… to może potrwać minutę.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4662,7 +4694,7 @@ Uwaga: Ponieważ opłata jest naliczana za każdy bajt, opłata &quot;100 satosh
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Co ten węzeł oferuje innym. Przekazywanie i przechowywanie poczty działają już dziś; hosting jest w drodze i, jak wszystko tutaj, znajduje się go w ten sam sposób co peery — przez rejestr. Nazwy mają własną stronę.</translation>
+        <translation type="vanished">Co ten węzeł oferuje innym. Przekazywanie i przechowywanie poczty działają już dziś; hosting jest w drodze i, jak wszystko tutaj, znajduje się go w ten sam sposób co peery — przez rejestr. Nazwy mają własną stronę.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4859,6 +4891,190 @@ Uwaga: Ponieważ opłata jest naliczana za każdy bajt, opłata &quot;100 satosh
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>dzieli się %1%: łącznie %2 %4, po %3 %4 na peera</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>Udostępnianie twojego połączenia internetowego</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay udostępnia połączenie internetowe tego komputera sieci, jak robi to każdy członek z internetem, chyba że to wyłączysz. W zamian programy na tym komputerze mogą korzystać z internetu sieci.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>Ludzie docierają do internetu przez ten komputer za pośrednictwem przekaźników, więc nigdy nie wie, kim są, a nikt w sieci nie wie, gdzie się znajduje.
+
+Co to oznacza dla ciebie: strony, które odwiedzają, widzą adres internetowy tego komputera, tak jak widziałyby twój. Wychodzą tylko połączenia szyfrowane — sieć WWW oraz szyfrowana poczta i wiadomości — nigdy poczta między serwerami i nigdy do twojej domowej sieci. Udostępnia najwyżej 1 GiB dziennie.
+
+Jeśli prawo w miejscu, w którym mieszkasz, lub warunki twojego dostawcy internetu zabraniają udostępniania połączenia, wyłącz to. W UE przekazywanie ruchu w imieniu innych jest chronione jako &quot;zwykły przekaz&quot;, ale skargi na to i tak docierają do ciebie przez dostawcę.
+
+Możesz to zmienić w każdej chwili na stronie Serwer.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>Udostępniaj dalej</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>Wyłącz</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Co ten węzeł oferuje innym. Przekazywanie, przechowywanie poczty i udostępnianie internetu działają już dziś; hosting jest w drodze i, jak wszystko tutaj, znajduje się go tak samo jak węzły — przez rejestr. Nazwy mają własną stronę.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>Brama</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>Udostępniaj połączenie internetowe tego komputera sieci, jak robi to każdy członek z internetem, chyba że je wyłączy, i korzystaj w zamian z internetu sieci. Ludzie docierają do internetu przez niego za pośrednictwem przekaźników, więc nigdy nie wie, kim są, a nikt w sieci nie wie, gdzie się znajduje. Strony, które odwiedzają, widzą adres tego komputera, tak jak widziałyby twój. Wychodzą tylko połączenia szyfrowane — sieć WWW oraz szyfrowana poczta i wiadomości — nigdy poczta między serwerami i nigdy do twojej własnej sieci.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>Udostępnianie</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>Wpisany jako</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Dziś</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>Otwarte teraz</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>Wpisz jako bramę…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Udostępniaj połączenie internetowe tego komputera jako bramę</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>Wyłącz to, jeśli prawo w miejscu, w którym mieszkasz, lub warunki twojego dostawcy internetu zabraniają udostępniania połączenia. Po wyłączeniu ten węzeł nadal przekazuje, przechowuje pocztę i śledzi łańcuch, a z własnego połączenia korzysta bezpośrednio.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>bez limitu</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>Oba kierunki razem. Gdy się wyczerpie, brama nie przyjmuje nowych połączeń do zmiany dnia (UTC).</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>Najwięcej udostępniane dziennie</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>Pozwól programom na tym komputerze korzystać z internetu sieci przez lokalny serwer pośredniczący</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>Serwer pośredniczący SOCKS5 tylko dla tego komputera. Każde połączenie wychodzi przez bramę innego członka, a nazwy są tłumaczone tam, nigdy tutaj. Działa, dopóki ten komputer udostępnia własne połączenie.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>Oczekiwanie: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>Szukanie bram do użycia…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>Serwer pośredniczący SOCKS5 pod %1 — ustaw go w przeglądarce lub innym programie, z tłumaczeniem nazw przez serwer pośredniczący. Spotkane bramy: %2, otwarte połączenia: %3.</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>Wyłączone: wymaga overlayu i indeksu rejestru.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>Wyłączone.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>wyłączone</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>nie — wymaga overlayu i indeksu rejestru</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>nie — wyłączone</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>niewpisany jako brama</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>jeszcze nie — rejestr nie ma tego węzła jako bramy, więc nikt go nie znajdzie</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>jeszcze nic — przekaźnik wpisuje swoją bramę pod drugim kluczem, bez adresu, osobno od własnego wpisu</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>jeszcze nic — wpisowi tego węzła brakuje opcji bramy; opublikuj go ponownie z włączoną opcją</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>jeszcze nic — opublikuj wpis bez adresu z włączoną opcją bramy</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>Wpisz bramę tego przekaźnika…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>udostępnia</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>tak, przyjmuje połączenia</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>dzisiejszy limit wyczerpany</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>dzisiejszy limit się wyczerpał; znów przyjmuje połączenia po zmianie dnia (UTC)</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>jego klucz bramy %1, osobno od adresu przekaźnika</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>własny klucz tego węzła %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 z %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, bez dziennego limitu</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 połączeń dla %2 odwiedzających, w %3 punktach spotkań</translation>
     </message>
 </context>
 <context>

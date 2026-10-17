@@ -3331,6 +3331,38 @@ Amosaráseche unha chave de recuperación unha vez. Anótaa: é a única forma d
         <source>No answer from the relay. %1</source>
         <translation>Sen resposta do repetidor. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>Inscribir a pasarela deste repetidor</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>A inscrición dun repetidor leva o seu enderezo, así que a súa pasarela inscríbese cunha segunda clave sen enderezo, á parte. Ninguén pode saber polo rexistro que as dúas pertencen ao mesmo ordenador. Os visitantes chegan á pasarela a través de repetidores, así que nunca sabe quen son; os sitios que visitan ven o enderezo deste ordenador.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Compartir a conexión a internet deste ordenador como pasarela</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>Os sitios que os membros da rede visitan a través dela ven o enderezo deste ordenador. Desactiva a pasarela na páxina Servidor se non podes compartir a túa conexión.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>A pasarela está desactivada na páxina Servidor.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>Paga outro repetidor, pedido a través doutros repetidores</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>O teu nodo asina a inscrición da pasarela e envíaa a través de repetidores a outro repetidor, que a paga e a pon nun bloque que xera el mesmo. Ese repetidor coñece a clave da pasarela e nunca o enderezo deste ordenador. Pagar desde a carteira deste mesmo nodo ataría a pasarela a este repetidor na cadea, e polo tanto ao seu enderezo.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>Pedíndolle a un repetidor, a través doutros, que a publique… pode levar un minuto.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4645,7 +4677,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>O que este nodo ofrece a outras persoas. Facer de repetidor e gardar correo xa funcionan; o aloxamento está en camiño e, como todo aquí, atópase do mesmo xeito ca os pares — a través do rexistro. Os nomes teñen unha páxina propia.</translation>
+        <translation type="vanished">O que este nodo ofrece a outras persoas. Facer de repetidor e gardar correo xa funcionan; o aloxamento está en camiño e, como todo aquí, atópase do mesmo xeito ca os pares — a través do rexistro. Os nomes teñen unha páxina propia.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4842,6 +4874,190 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>comparte un %1%: %2 %4 en total, %3 %4 por par</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>Compartir a túa conexión a internet</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay comparte a conexión a internet deste ordenador coa rede, como fai cada membro que ten internet, agás que a desactives. A cambio, os programas deste ordenador poden usar a internet da rede.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>Hai persoas que chegan a internet por este ordenador a través de repetidores, así que nunca sabe quen son, e ninguén na rede sabe onde está.
+
+O que significa para ti: os sitios que visitan ven o enderezo de internet deste ordenador, como verían o teu. Só saen conexións cifradas — a web, e o correo e a mensaxería cifrados — nunca correo entre servidores, e nunca cara á túa propia rede doméstica. Comparte como moito 1 GiB ao día.
+
+Se a lei de onde vives ou as condicións do teu provedor de internet prohiben compartir a conexión, desactívaa. Na UE, pasar tráfico doutros está protexido como &quot;mera transmisión&quot;, pero as queixas sobre isto seguen chegándoche a través do provedor.
+
+Podes cambialo en calquera momento na páxina Servidor.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>Seguir compartindo</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>Desactivar</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>O que este nodo ofrece aos demais. Repetir, gardar correo e compartir internet funcionan hoxe; o aloxamento está en camiño e, como todo aquí, atópase igual que os pares — a través do rexistro. Os nomes teñen unha páxina propia.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>Pasarela</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>Compartir a conexión a internet deste ordenador coa rede, como fai cada membro que ten internet agás que a desactive, e usar a cambio a internet da rede. Hai persoas que chegan a internet por el a través de repetidores, así que nunca sabe quen son, e ninguén na rede sabe onde está. Os sitios que visitan ven o enderezo deste ordenador, como verían o teu. Só saen conexións cifradas — a web, e o correo e a mensaxería cifrados — nunca correo entre servidores, e nunca cara á túa propia rede.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>Compartindo</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>Inscrito como</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Hoxe</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>Abertas agora</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>Inscribir como pasarela…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Compartir a conexión a internet deste ordenador como pasarela</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>Desactívao se a lei de onde vives ou as condicións do teu provedor de internet prohiben compartir a conexión. Desactivado, este nodo segue repetindo, gardando correo e na cadea, e usa directamente a súa propia conexión.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>sen límite</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>Os dous sentidos xuntos. Cando se esgota, a pasarela non acepta conexións novas ata que cambia o día (UTC).</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>Máximo que comparte ao día</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>Deixar que os programas deste ordenador usen a internet da rede, mediante un proxy local</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>Un proxy SOCKS5 só para este ordenador. Cada conexión sae pola pasarela doutro membro, e os nomes resólvense alí, nunca aquí. Funciona mentres este ordenador comparte a súa propia conexión.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>Agardando: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>Buscando pasarelas que usar…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>Proxy SOCKS5 en %1 — configúrao nun navegador ou noutro programa, coa resolución de nomes a través do proxy. %2 pasarela(s) atopada(s), %3 conexión(s) aberta(s).</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>Desactivado: precisa do overlay e do índice do rexistro.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>Desactivado.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>desactivado</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>non — precisa do overlay e do índice do rexistro</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>non — desactivada</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>non inscrito como pasarela</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>aínda non — o rexistro non inscribe este nodo como pasarela, así que ninguén o pode atopar</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>nada aínda — un repetidor inscribe a súa pasarela cunha segunda clave, sen enderezo, á parte da súa propia inscrición</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>nada aínda — á inscrición deste nodo fáltalle a opción de pasarela; publícaa de novo coa opción activada</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>nada aínda — publica unha inscrición sen enderezo coa opción de pasarela activada</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>Inscribir a pasarela deste repetidor…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>compartindo</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>si, acepta conexións</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>cota de hoxe esgotada</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>a cota de hoxe esgotouse; volve aceptar conexións cando cambia o día (UTC)</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>a súa clave de pasarela %1, á parte do enderezo do repetidor</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>a clave propia deste nodo %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 de %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, sen límite diario</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 conexión(s) para %2 visitante(s), en %3 punto(s) de encontro</translation>
     </message>
 </context>
 <context>

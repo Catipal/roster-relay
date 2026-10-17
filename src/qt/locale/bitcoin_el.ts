@@ -3332,6 +3332,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>No answer from the relay. %1</source>
         <translation>Καμία απάντηση από τον αναμεταδότη. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>Καταχώριση της πύλης αυτού του αναμεταδότη</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>Η καταχώριση ενός αναμεταδότη περιέχει τη διεύθυνσή του, γι&apos; αυτό η πύλη του καταχωρίζεται με δεύτερο κλειδί χωρίς διεύθυνση, χωριστά. Κανείς δεν μπορεί να καταλάβει από το μητρώο ότι τα δύο ανήκουν στον ίδιο υπολογιστή. Οι επισκέπτες φτάνουν στην πύλη μέσω αναμεταδοτών, άρα δεν μαθαίνει ποτέ ποιοι είναι· οι ιστότοποι που επισκέπτονται βλέπουν τη διεύθυνση αυτού του υπολογιστή.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Κοινή χρήση της σύνδεσης ίντερνετ αυτού του υπολογιστή ως πύλη</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>Οι ιστότοποι που επισκέπτονται τα μέλη του δικτύου μέσω αυτής βλέπουν τη διεύθυνση αυτού του υπολογιστή. Απενεργοποιήστε την πύλη στη σελίδα Διακομιστής αν δεν επιτρέπεται να μοιράζεστε τη σύνδεσή σας.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>Η πύλη είναι απενεργοποιημένη στη σελίδα Διακομιστής.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>Πληρώνει άλλος αναμεταδότης, μέσω άλλων αναμεταδοτών</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>Ο κόμβος σας υπογράφει την καταχώριση της πύλης και τη στέλνει μέσω αναμεταδοτών σε άλλον αναμεταδότη, που πληρώνει γι&apos; αυτήν και τη βάζει σε μπλοκ που δημιουργεί ο ίδιος. Αυτός ο αναμεταδότης μαθαίνει το κλειδί της πύλης και ποτέ τη διεύθυνση αυτού του υπολογιστή. Η πληρωμή από το πορτοφόλι αυτού του κόμβου θα συνέδεε την πύλη με αυτόν τον αναμεταδότη στην αλυσίδα, άρα και με τη διεύθυνσή του.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>Ζητείται από έναν αναμεταδότη, μέσω άλλων, να τη δημοσιεύσει… μπορεί να διαρκέσει ένα λεπτό.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4649,7 +4681,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Τι προσφέρει αυτός ο κόμβος σε άλλους. Η αναμετάδοση και η διατήρηση αλληλογραφίας λειτουργούν ήδη· η φιλοξενία έρχεται και, όπως όλα εδώ, εντοπίζεται με τον ίδιο τρόπο όπως οι ομότιμοι — μέσω του μητρώου. Τα ονόματα έχουν δική τους σελίδα.</translation>
+        <translation type="vanished">Τι προσφέρει αυτός ο κόμβος σε άλλους. Η αναμετάδοση και η διατήρηση αλληλογραφίας λειτουργούν ήδη· η φιλοξενία έρχεται και, όπως όλα εδώ, εντοπίζεται με τον ίδιο τρόπο όπως οι ομότιμοι — μέσω του μητρώου. Τα ονόματα έχουν δική τους σελίδα.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4846,6 +4878,190 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>μοιράζεται %1%: %2 %4 συνολικά, %3 %4 σε κάθε ομότιμο</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>Κοινή χρήση της σύνδεσής σας στο ίντερνετ</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>Το BPS Relay μοιράζεται τη σύνδεση ίντερνετ αυτού του υπολογιστή με το δίκτυο, όπως κάνει κάθε μέλος που έχει ίντερνετ, εκτός αν το απενεργοποιήσετε. Σε αντάλλαγμα, τα προγράμματα αυτού του υπολογιστή μπορούν να χρησιμοποιούν το ίντερνετ του δικτύου.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>Άνθρωποι φτάνουν στο ίντερνετ μέσω αυτού του υπολογιστή περνώντας από αναμεταδότες, άρα δεν μαθαίνει ποτέ ποιοι είναι, και κανείς στο δίκτυο δεν μαθαίνει πού βρίσκεται.
+
+Τι σημαίνει για εσάς: οι ιστότοποι που επισκέπτονται βλέπουν τη διεύθυνση ίντερνετ αυτού του υπολογιστή, όπως θα έβλεπαν τη δική σας. Βγαίνουν μόνο κρυπτογραφημένες συνδέσεις — ο ιστός, και κρυπτογραφημένο ταχυδρομείο και μηνύματα — ποτέ ταχυδρομείο μεταξύ διακομιστών, και ποτέ προς το δικό σας οικιακό δίκτυο. Μοιράζεται το πολύ 1 GiB την ημέρα.
+
+Αν ο νόμος του τόπου σας ή οι όροι του παρόχου ίντερνετ απαγορεύουν την κοινή χρήση της σύνδεσης, απενεργοποιήστε την. Στην ΕΕ η διαβίβαση κίνησης για άλλους προστατεύεται ως &quot;απλή μεταφορά&quot;, αλλά οι καταγγελίες σχετικά με αυτήν σας φτάνουν ούτως ή άλλως μέσω του παρόχου.
+
+Μπορείτε να το αλλάξετε οποιαδήποτε στιγμή στη σελίδα Διακομιστής.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>Συνέχιση κοινής χρήσης</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>Απενεργοποίηση</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Τι προσφέρει αυτός ο κόμβος στους άλλους. Η αναμετάδοση, η φύλαξη ταχυδρομείου και η κοινή χρήση του ίντερνετ λειτουργούν ήδη· η φιλοξενία έρχεται και, όπως όλα εδώ, βρίσκεται με τον ίδιο τρόπο όπως οι ομότιμοι — μέσω του μητρώου. Τα ονόματα έχουν δική τους σελίδα.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>Πύλη</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>Κοινή χρήση της σύνδεσης ίντερνετ αυτού του υπολογιστή με το δίκτυο, όπως κάνει κάθε μέλος που έχει ίντερνετ εκτός αν την απενεργοποιήσει, και χρήση σε αντάλλαγμα του ίντερνετ του δικτύου. Άνθρωποι φτάνουν στο ίντερνετ μέσω αυτού περνώντας από αναμεταδότες, άρα δεν μαθαίνει ποτέ ποιοι είναι, και κανείς στο δίκτυο δεν μαθαίνει πού βρίσκεται. Οι ιστότοποι που επισκέπτονται βλέπουν τη διεύθυνση αυτού του υπολογιστή, όπως θα έβλεπαν τη δική σας. Βγαίνουν μόνο κρυπτογραφημένες συνδέσεις — ο ιστός, και κρυπτογραφημένο ταχυδρομείο και μηνύματα — ποτέ ταχυδρομείο μεταξύ διακομιστών, και ποτέ προς το δικό σας δίκτυο.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>Κοινή χρήση</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>Καταχωρισμένο ως</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Σήμερα</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>Ανοιχτές τώρα</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>Καταχώριση ως πύλη…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Κοινή χρήση της σύνδεσης ίντερνετ αυτού του υπολογιστή ως πύλη</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>Απενεργοποιήστε το αν ο νόμος του τόπου σας ή οι όροι του παρόχου ίντερνετ απαγορεύουν την κοινή χρήση της σύνδεσης. Απενεργοποιημένος, αυτός ο κόμβος συνεχίζει να αναμεταδίδει, να φυλάει ταχυδρομείο και να ακολουθεί την αλυσίδα, και χρησιμοποιεί απευθείας τη δική του σύνδεση.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>χωρίς όριο</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>Και οι δύο κατευθύνσεις μαζί. Όταν εξαντληθεί, η πύλη δεν δέχεται νέες συνδέσεις μέχρι να αλλάξει η μέρα (UTC).</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>Μέγιστο κοινόχρηστο ανά ημέρα</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>Να επιτρέπεται στα προγράμματα αυτού του υπολογιστή να χρησιμοποιούν το ίντερνετ του δικτύου μέσω τοπικού διακομιστή μεσολάβησης</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>Ένας διακομιστής μεσολάβησης SOCKS5 μόνο για αυτόν τον υπολογιστή. Κάθε σύνδεση βγαίνει από την πύλη άλλου μέλους, και τα ονόματα επιλύονται εκεί, ποτέ εδώ. Λειτουργεί όσο αυτός ο υπολογιστής μοιράζεται τη δική του σύνδεση.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>Σε αναμονή: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>Αναζήτηση πυλών για χρήση…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>Διακομιστής μεσολάβησης SOCKS5 στο %1 — ορίστε τον σε ένα πρόγραμμα περιήγησης ή άλλο πρόγραμμα, με επίλυση ονομάτων μέσω του διακομιστή. Πύλες που βρέθηκαν: %2, ανοιχτές συνδέσεις: %3.</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>Ανενεργό: χρειάζεται το overlay και το ευρετήριο του μητρώου.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>Ανενεργό.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>απενεργοποιημένο</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>όχι — χρειάζεται το overlay και το ευρετήριο του μητρώου</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>όχι — απενεργοποιημένη</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>δεν είναι καταχωρισμένο ως πύλη</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>όχι ακόμα — το μητρώο δεν καταχωρίζει αυτόν τον κόμβο ως πύλη, άρα κανείς δεν μπορεί να τον βρει</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>τίποτα ακόμα — ένας αναμεταδότης καταχωρίζει την πύλη του με δεύτερο κλειδί, χωρίς διεύθυνση, χωριστά από τη δική του καταχώριση</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>τίποτα ακόμα — στην καταχώριση αυτού του κόμβου λείπει η επιλογή πύλης· δημοσιεύστε την ξανά με ενεργή την επιλογή</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>τίποτα ακόμα — δημοσιεύστε μια καταχώριση χωρίς διεύθυνση με ενεργή την επιλογή πύλης</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>Καταχώριση της πύλης αυτού του αναμεταδότη…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>μοιράζεται</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>ναι, δέχεται συνδέσεις</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>σημερινό μερίδιο εξαντλημένο</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>το σημερινό μερίδιο εξαντλήθηκε· δέχεται ξανά συνδέσεις όταν αλλάξει η μέρα (UTC)</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>το κλειδί πύλης του %1, χωριστά από τη διεύθυνση του αναμεταδότη</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>το δικό κλειδί αυτού του κόμβου %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 από %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, χωρίς ημερήσιο όριο</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 συνδέσεις για %2 επισκέπτες, σε %3 σημεία συνάντησης</translation>
     </message>
 </context>
 <context>

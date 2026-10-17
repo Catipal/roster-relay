@@ -3332,6 +3332,38 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
         <source>No answer from the relay. %1</source>
         <translation>Cap resposta del repetidor. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>Inscriu la passarel·la d&apos;aquest relé</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>La inscripció d&apos;un relé porta la seva adreça, així que la seva passarel·la s&apos;inscriu amb una segona clau sense adreça, a part. Ningú pot saber pel registre que les dues pertanyen al mateix ordinador. Els visitants arriben a la passarel·la a través de relés, així que mai no sap qui són; els llocs que visiten veuen l&apos;adreça d&apos;aquest ordinador.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Comparteix la connexió a internet d&apos;aquest ordinador com a passarel·la</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>Els llocs que els membres de la xarxa visiten a través d&apos;ella veuen l&apos;adreça d&apos;aquest ordinador. Desactiva la passarel·la a la pàgina Servidor si no pots compartir la teva connexió.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>La passarel·la està desactivada a la pàgina Servidor.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>Paga un altre repetidor, demanat a través d&apos;altres repetidors</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>El vostre node signa la inscripció de la passarel·la i l&apos;envia a través de repetidors a un altre repetidor, que la paga i la posa en un bloc que genera ell mateix. Aquest repetidor coneix la clau de la passarel·la i mai l&apos;adreça d&apos;aquest ordinador. Pagar des del moneder d&apos;aquest mateix node lligaria la passarel·la a aquest repetidor a la cadena, i per tant a la seva adreça.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>Demanant a un repetidor, a través d&apos;altres, que la publiqui… pot trigar un minut.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4646,7 +4678,7 @@ Nota: Com que la comissió es calcula en funció dels bytes, una comissió de &q
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>El que aquest node ofereix als altres. Fer de repetidor i guardar correu ja funcionen; l&apos;allotjament és en camí i, com tot aquí, es troba de la mateixa manera que els parells — a través del registre. Els noms tenen una pàgina pròpia.</translation>
+        <translation type="vanished">El que aquest node ofereix als altres. Fer de repetidor i guardar correu ja funcionen; l&apos;allotjament és en camí i, com tot aquí, es troba de la mateixa manera que els parells — a través del registre. Els noms tenen una pàgina pròpia.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4843,6 +4875,190 @@ Nota: Com que la comissió es calcula en funció dels bytes, una comissió de &q
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>comparteix un %1%: %2 %4 en total, %3 %4 per parell</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>Compartir la teva connexió a internet</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay comparteix la connexió a internet d&apos;aquest ordinador amb la xarxa, com fa cada membre que té internet, tret que la desactivis. A canvi, els programes d&apos;aquest ordinador poden fer servir l&apos;internet de la xarxa.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>Hi ha persones que arriben a internet per aquest ordinador a través de relés, així que mai no sap qui són, i ningú a la xarxa no sap on és.
+
+Què vol dir per a tu: els llocs que visiten veuen l&apos;adreça d&apos;internet d&apos;aquest ordinador, com veurien la teva. Només surten connexions xifrades — el web, i el correu i la missatgeria xifrats — mai correu entre servidors, i mai cap a la teva pròpia xarxa domèstica. Comparteix com a màxim 1 GiB al dia.
+
+Si la llei d&apos;on vius o les condicions del teu proveïdor d&apos;internet prohibeixen compartir la connexió, desactiva-la. A la UE, passar trànsit d&apos;altres està protegit com a &quot;mera transmissió&quot;, però les queixes sobre això et continuen arribant a través del proveïdor.
+
+Pots canviar-ho en qualsevol moment a la pàgina Servidor.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>Continua compartint</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>Desactiva</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>El que aquest node ofereix als altres. Retransmetre, guardar correu i compartir internet funcionen avui; l&apos;allotjament és en camí i, com tot aquí, es troba igual que els iguals — a través del registre. Els noms tenen una pàgina pròpia.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>Passarel·la</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>Comparteix la connexió a internet d&apos;aquest ordinador amb la xarxa, com fa cada membre que té internet tret que la desactivi, i fes servir a canvi l&apos;internet de la xarxa. Hi ha persones que arriben a internet per ell a través de relés, així que mai no sap qui són, i ningú a la xarxa no sap on és. Els llocs que visiten veuen l&apos;adreça d&apos;aquest ordinador, com veurien la teva. Només surten connexions xifrades — el web, i el correu i la missatgeria xifrats — mai correu entre servidors, i mai cap a la teva pròpia xarxa.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>Compartint</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>Inscrit com a</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Avui</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>Obertes ara</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>Inscriu com a passarel·la…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Comparteix la connexió a internet d&apos;aquest ordinador com a passarel·la</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>Desactiva-ho si la llei d&apos;on vius o les condicions del teu proveïdor d&apos;internet prohibeixen compartir la connexió. Desactivat, aquest node continua retransmetent, guardant correu i a la cadena, i fa servir directament la seva pròpia connexió.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>sense límit</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>Els dos sentits junts. Quan s&apos;esgota, la passarel·la no accepta connexions noves fins que canvia el dia (UTC).</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>Màxim que comparteix al dia</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>Deixa que els programes d&apos;aquest ordinador facin servir l&apos;internet de la xarxa, a través d&apos;un servidor intermediari local</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>Un servidor intermediari SOCKS5 només per a aquest ordinador. Cada connexió surt per la passarel·la d&apos;un altre membre, i els noms es resolen allà, mai aquí. Funciona mentre aquest ordinador comparteix la seva pròpia connexió.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>Esperant: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>Cercant passarel·les per fer servir…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>Servidor intermediari SOCKS5 a %1 — configura&apos;l en un navegador o un altre programa, amb la resolució de noms a través del servidor intermediari. %2 passarel·la(es) trobada(es), %3 connexió(ns) oberta(es).</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>Desactivat: necessita l&apos;overlay i l&apos;índex del registre.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>Desactivat.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>desactivat</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>no — necessita l&apos;overlay i l&apos;índex del registre</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>no — desactivada</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>no inscrit com a passarel·la</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>encara no — el registre no inscriu aquest node com a passarel·la, així que ningú no el pot trobar</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>encara res — un relé inscriu la seva passarel·la amb una segona clau, sense adreça, a part de la seva pròpia inscripció</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>encara res — a la inscripció d&apos;aquest node li falta l&apos;opció de passarel·la; torna-la a publicar amb l&apos;opció activada</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>encara res — publica una inscripció sense adreça amb l&apos;opció de passarel·la activada</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>Inscriu la passarel·la d&apos;aquest relé…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>compartint</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>sí, accepta connexions</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>quota d&apos;avui esgotada</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>la quota d&apos;avui s&apos;ha esgotat; torna a acceptar connexions quan canvia el dia (UTC)</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>la seva clau de passarel·la %1, a part de l&apos;adreça del relé</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>la clau pròpia d&apos;aquest node %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 de %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, sense límit diari</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 connexió(ns) per a %2 visitant(s), en %3 punt(s) de trobada</translation>
     </message>
 </context>
 <context>

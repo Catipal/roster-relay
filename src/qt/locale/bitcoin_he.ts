@@ -3333,6 +3333,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>No answer from the relay. %1</source>
         <translation>אין תשובה מהממסר. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>רישום השער של הממסר הזה</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>הרישום של ממסר כולל את הכתובת שלו, ולכן השער שלו נרשם תחת מפתח שני בלי כתובת, בנפרד ממנו. איש אינו יכול לדעת מתוך הרשם ששניהם שייכים למחשב אחד. מבקרים מגיעים לשער דרך ממסרים, כך שהוא לעולם אינו יודע מי הם; האתרים שהם מבקרים בהם רואים את הכתובת של המחשב הזה.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>שיתוף חיבור האינטרנט של המחשב הזה כשער</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>אתרים שחברי הרשת מבקרים בהם דרכו רואים את הכתובת של המחשב הזה. כבו את השער בדף השרת אם אסור לכם לשתף את החיבור שלכם.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>השער כבוי בדף השרת.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>ממסר אחר משלם, בבקשה דרך ממסרים</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>הצומת שלך חותם על הרישום של השער ושולח אותו דרך ממסרים לממסר אחר, שמשלם עליו ומכניס אותו לבלוק שהוא עצמו יוצר. הממסר הזה לומד את המפתח של השער ולעולם לא את הכתובת של המחשב הזה. תשלום מהארנק של הצומת הזה עצמו היה קושר את השער לממסר הזה בשרשרת, ולכן לכתובת שלו.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>מבקש מממסר דרך ממסרים אחרים לפרסם אותה… זה עשוי לקחת דקה.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4647,7 +4679,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>מה שהצומת הזה מציע לאחרים. ממסור ושמירת דואר פועלים כבר היום; אירוח בדרך, וכמו כל דבר כאן הוא נמצא באותה דרך שבה נמצאים עמיתים — דרך המרשם. לשמות יש עמוד משלהם.</translation>
+        <translation type="vanished">מה שהצומת הזה מציע לאחרים. ממסור ושמירת דואר פועלים כבר היום; אירוח בדרך, וכמו כל דבר כאן הוא נמצא באותה דרך שבה נמצאים עמיתים — דרך המרשם. לשמות יש עמוד משלהם.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4844,6 +4876,190 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>חולק %1%: %2 %4 בסך הכול, %3 %4 לכל עמית</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>שיתוף חיבור האינטרנט שלכם</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay משתף את חיבור האינטרנט של המחשב הזה עם הרשת, כמו שעושה כל חבר שיש לו אינטרנט, אלא אם תכבו זאת. בתמורה, תוכנות במחשב הזה יכולות להשתמש באינטרנט של הרשת.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>אנשים מגיעים לאינטרנט דרך המחשב הזה בדרך של ממסרים, כך שהוא לעולם אינו יודע מי הם, ואיש ברשת אינו יודע היכן הוא.
+
+מה זה אומר בשבילכם: האתרים שהם מבקרים בהם רואים את כתובת האינטרנט של המחשב הזה, כפי שהיו רואים את שלכם. יוצאים רק חיבורים מוצפנים — הרשת, ודואר והודעות מוצפנים — לעולם לא דואר בין שרתים, ולעולם לא לתוך הרשת הביתית שלכם. הוא משתף לכל היותר 1 GiB ביום.
+
+אם החוק במקום מגוריכם או התנאים של ספק האינטרנט שלכם אוסרים לשתף את החיבור, כבו זאת. באיחוד האירופי העברת תעבורה עבור אחרים מוגנת כ&quot;צינור בלבד&quot;, אבל תלונות על כך עדיין מגיעות אליכם דרך הספק.
+
+אפשר לשנות זאת בכל עת בדף השרת.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>להמשיך לשתף</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>לכבות</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>מה שהצומת הזה מציע לאחרים. העברה כממסר, שמירת דואר ושיתוף האינטרנט פועלים כבר היום; אירוח בדרך, וכמו כל דבר כאן הוא נמצא באותה דרך כמו עמיתים — דרך הרשם. לשמות יש דף משלהם.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>שער</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>לשתף את חיבור האינטרנט של המחשב הזה עם הרשת, כמו שעושה כל חבר שיש לו אינטרנט אלא אם הוא מכבה זאת, ולהשתמש בתמורה באינטרנט של הרשת. אנשים מגיעים לאינטרנט דרכו בדרך של ממסרים, כך שהוא לעולם אינו יודע מי הם, ואיש ברשת אינו יודע היכן הוא. האתרים שהם מבקרים בהם רואים את הכתובת של המחשב הזה, כפי שהיו רואים את שלכם. יוצאים רק חיבורים מוצפנים — הרשת, ודואר והודעות מוצפנים — לעולם לא דואר בין שרתים, ולעולם לא לתוך הרשת שלכם.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>שיתוף</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>רשום בתור</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>היום</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>פתוחים עכשיו</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>רישום כשער…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>שיתוף חיבור האינטרנט של המחשב הזה כשער</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>כבו זאת אם החוק במקום מגוריכם או התנאים של ספק האינטרנט שלכם אוסרים לשתף את החיבור. כשזה כבוי, הצומת הזה ממשיך לשמש ממסר, לשמור דואר ולעקוב אחרי השרשרת, ומשתמש בחיבור שלו ישירות.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>ללא מגבלה</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>שני הכיוונים יחד. כשהיא נגמרת, השער אינו מקבל חיבורים חדשים עד שהיום מתחלף (UTC).</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>המקסימום שמשותף ביום</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>לאפשר לתוכנות במחשב הזה להשתמש באינטרנט של הרשת דרך מתווך מקומי</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>מתווך SOCKS5 למחשב הזה בלבד. כל חיבור יוצא דרך השער של חבר אחר, והשמות מתורגמים שם, לעולם לא כאן. הוא פועל כל עוד המחשב הזה משתף את החיבור שלו.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>ממתין: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>מחפש שערים לשימוש…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>מתווך SOCKS5 ב-%1 — הגדירו אותו בדפדפן או בתוכנה אחרת, עם תרגום שמות דרך המתווך. נמצאו %2 שערים, פתוחים %3 חיבורים.</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>כבוי: נדרשים שכבת הכיסוי ואינדקס הרשם.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>כבוי.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>מושבת</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>לא — נדרשים שכבת הכיסוי ואינדקס הרשם</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>לא — כבוי</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>לא רשום כשער</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>עדיין לא — הרשם אינו רושם את הצומת הזה כשער, כך שאיש אינו יכול למצוא אותו</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>עדיין כלום — ממסר רושם את השער שלו תחת מפתח שני, בלי כתובת, בנפרד מהרישום שלו</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>עדיין כלום — לרישום של הצומת הזה חסרה אפשרות השער; פרסמו אותו שוב עם האפשרות מופעלת</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>עדיין כלום — פרסמו רישום בלי כתובת עם אפשרות השער מופעלת</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>רישום השער של הממסר הזה…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>משתף</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>כן, מקבל חיבורים</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>החלק של היום נוצל</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>החלק של היום נגמר; הוא מקבל חיבורים שוב כשהיום מתחלף (UTC)</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>מפתח השער שלו %1, בנפרד מכתובת הממסר</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>המפתח של הצומת הזה עצמו %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 מתוך %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, ללא מגבלה יומית</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 חיבורים ל-%2 מבקרים, ב-%3 נקודות מפגש</translation>
     </message>
 </context>
 <context>

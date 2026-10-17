@@ -3340,6 +3340,38 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
         <source>No answer from the relay. %1</source>
         <translation>Niciun răspuns de la releu. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>Înscrie gateway-ul acestui releu</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>Înscrierea unui releu conține adresa lui, așa că gateway-ul lui este înscris sub o a doua cheie fără adresă, separat. Nimeni nu poate afla din registru că cele două aparțin aceluiași computer. Vizitatorii ajung la gateway prin relee, așa că el nu află niciodată cine sunt; site-urile pe care le vizitează văd adresa acestui computer.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Partajează conexiunea la internet a acestui computer ca gateway</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>Site-urile pe care membrii rețelei le vizitează prin el văd adresa acestui computer. Oprește gateway-ul în pagina Server dacă nu ai voie să îți partajezi conexiunea.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>Gateway-ul este oprit în pagina Server.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>Plătește alt releu, rugat prin alte relee</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>Nodul dvs. semnează înscrierea gateway-ului și o trimite prin relee unui alt releu, care plătește pentru ea și o pune într-un bloc pe care îl creează singur. Acel releu află cheia gateway-ului și niciodată adresa acestui computer. Plata din portofelul propriu al acestui nod ar lega gateway-ul de acest releu pe lanț și, astfel, de adresa lui.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>Se cere unui releu, prin alte relee, să o publice… poate dura un minut.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4661,7 +4693,7 @@ Nota: Cum taxa este calculata per byte, o taxa de &quot;100 satoshi per kB&quot;
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Ce oferă acest nod altora. Funcția de releu și păstrarea poștei rulează deja; găzduirea urmează și, ca tot ce e aici, se găsește la fel ca partenerii — prin registru. Numele au o pagină proprie.</translation>
+        <translation type="vanished">Ce oferă acest nod altora. Funcția de releu și păstrarea poștei rulează deja; găzduirea urmează și, ca tot ce e aici, se găsește la fel ca partenerii — prin registru. Numele au o pagină proprie.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4858,6 +4890,190 @@ Nota: Cum taxa este calculata per byte, o taxa de &quot;100 satoshi per kB&quot;
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>împarte %1%: %2 %4 în total, câte %3 %4 fiecărui partener</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>Partajarea conexiunii tale la internet</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>BPS Relay partajează conexiunea la internet a acestui computer cu rețeaua, cum face fiecare membru care are internet, dacă nu o oprești. În schimb, programele de pe acest computer pot folosi internetul rețelei.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>Oamenii ajung la internet prin acest computer trecând prin relee, așa că el nu află niciodată cine sunt, iar nimeni din rețea nu află unde se află.
+
+Ce înseamnă pentru tine: site-urile pe care le vizitează văd adresa de internet a acestui computer, așa cum ar vedea-o pe a ta. Ies doar conexiuni criptate — web-ul, plus e-mail și mesagerie criptate — niciodată e-mail între servere și niciodată spre propria ta rețea de acasă. Partajează cel mult 1 GiB pe zi.
+
+Dacă legea de unde locuiești sau condițiile furnizorului tău de internet interzic partajarea conexiunii, oprește-o. În UE, transmiterea traficului pentru alții este protejată ca &quot;simplă transmitere&quot;, dar plângerile despre asta tot ajung la tine prin furnizor.
+
+Poți schimba asta oricând în pagina Server.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>Continuă partajarea</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>Oprește</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Ce oferă acest nod altora. Retransmiterea, păstrarea e-mailului și partajarea internetului funcționează azi; găzduirea e pe drum și, ca tot ce e aici, se găsește la fel ca nodurile pereche — prin registru. Numele au o pagină proprie.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>Gateway</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>Partajează conexiunea la internet a acestui computer cu rețeaua, cum face fiecare membru care are internet dacă nu o oprește, și folosește în schimb internetul rețelei. Oamenii ajung la internet prin el trecând prin relee, așa că el nu află niciodată cine sunt, iar nimeni din rețea nu află unde se află. Site-urile pe care le vizitează văd adresa acestui computer, așa cum ar vedea-o pe a ta. Ies doar conexiuni criptate — web-ul, plus e-mail și mesagerie criptate — niciodată e-mail între servere și niciodată spre propria ta rețea.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>Partajare</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>Înscris ca</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Astăzi</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>Deschise acum</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>Înscrie ca gateway…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>Partajează conexiunea la internet a acestui computer ca gateway</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>Oprește-l dacă legea de unde locuiești sau condițiile furnizorului tău de internet interzic partajarea conexiunii. Oprit, acest nod continuă să retransmită, să păstreze e-mailul și să urmeze lanțul, și își folosește direct propria conexiune.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>fără limită</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>Ambele sensuri împreună. Odată epuizat, gateway-ul nu mai acceptă conexiuni noi până la schimbarea zilei (UTC).</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>Cel mult partajat pe zi</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>Permite programelor de pe acest computer să folosească internetul rețelei, printr-un proxy local</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>Un proxy SOCKS5 doar pentru acest computer. Fiecare conexiune iese prin gateway-ul altui membru, iar numele sunt rezolvate acolo, niciodată aici. Funcționează cât timp acest computer își partajează propria conexiune.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>În așteptare: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>Se caută gateway-uri de folosit…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>Proxy SOCKS5 la %1 — setează-l într-un browser sau alt program, cu rezolvarea numelor prin proxy. %2 gateway(-uri) întâlnit(e), %3 conexiune(i) deschisă(e).</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>Oprit: are nevoie de overlay și de indexul registrului.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>Oprit.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>dezactivat</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>nu — are nevoie de overlay și de indexul registrului</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>nu — oprit</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>neînscris ca gateway</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>încă nu — registrul nu înscrie acest nod ca gateway, așa că nimeni nu îl poate găsi</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>încă nimic — un releu își înscrie gateway-ul sub o a doua cheie, fără adresă, separat de propria înscriere</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>încă nimic — înscrierii acestui nod îi lipsește opțiunea de gateway; public-o din nou cu opțiunea pornită</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>încă nimic — publică o înscriere fără adresă cu opțiunea de gateway pornită</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>Înscrie gateway-ul acestui releu…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>partajează</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>da, acceptă conexiuni</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>cota de azi epuizată</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>cota de azi s-a epuizat; acceptă din nou conexiuni la schimbarea zilei (UTC)</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>cheia lui de gateway %1, separată de adresa releului</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>cheia proprie a acestui nod %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 din %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, fără limită zilnică</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 conexiune(i) pentru %2 vizitator(i), la %3 punct(e) de întâlnire</translation>
     </message>
 </context>
 <context>

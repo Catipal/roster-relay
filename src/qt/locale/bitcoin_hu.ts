@@ -3320,6 +3320,38 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
         <source>No answer from the relay. %1</source>
         <translation>Nincs válasz a továbbítótól. %1</translation>
     </message>
+    <message>
+        <source>List this relay&apos;s gateway</source>
+        <translation>E továbbító átjárójának bejegyzése</translation>
+    </message>
+    <message>
+        <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
+        <translation>Egy továbbító bejegyzése tartalmazza a címét, ezért az átjárója egy második kulccsal, cím nélkül, attól külön kerül be. A nyilvántartásból senki sem tudhatja meg, hogy a kettő egy számítógéphez tartozik. A látogatók továbbítókon keresztül érik el az átjárót, így az sosem tudja meg, kik ők; az általuk látogatott webhelyek ennek a számítógépnek a címét látják.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>E számítógép internetkapcsolatának megosztása átjáróként</translation>
+    </message>
+    <message>
+        <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
+        <translation>Azok a webhelyek, amelyeket a hálózat tagjai rajta keresztül látogatnak, ennek a számítógépnek a címét látják. Kapcsolja ki az átjárót a Kiszolgáló oldalon, ha nem oszthatja meg a kapcsolatát.</translation>
+    </message>
+    <message>
+        <source>The gateway is switched off on the Server page.</source>
+        <translation>Az átjáró ki van kapcsolva a Kiszolgáló oldalon.</translation>
+    </message>
+    <message>
+        <source>Another relay pays, asked through a path</source>
+        <translation>Egy másik továbbító fizet, továbbítókon át megkérve</translation>
+    </message>
+    <message>
+        <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
+        <translation>A csomópontja aláírja az átjáró bejegyzését, és továbbítókon át elküldi egy másik továbbítónak, amely kifizeti, és egy általa készített blokkba teszi. Az a továbbító megtudja az átjáró kulcsát, de ennek a számítógépnek a címét soha. Ha ennek a csomópontnak a saját tárcájából fizetne, a láncon az átjáró ehhez a továbbítóhoz, és így a címéhez kötődne.</translation>
+    </message>
+    <message>
+        <source>Asking a relay through a path to publish it… this can take a minute.</source>
+        <translation>Egy továbbító megkérése más továbbítókon át a közzétételre… ez egy percig is eltarthat.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4627,7 +4659,7 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a &quot;100 satoshi pe
     </message>
     <message>
         <source>What this node offers other people. Relaying and holding mail run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Amit ez a csomópont másoknak nyújt. A továbbítás és a posta őrzése már működik; a tárhely úton van, és mint itt minden, ugyanúgy található meg, mint a partnerek — a jegyzéken keresztül. A neveknek saját oldaluk van.</translation>
+        <translation type="vanished">Amit ez a csomópont másoknak nyújt. A továbbítás és a posta őrzése már működik; a tárhely úton van, és mint itt minden, ugyanúgy található meg, mint a partnerek — a jegyzéken keresztül. A neveknek saját oldaluk van.</translation>
     </message>
     <message>
         <source>Hosting</source>
@@ -4824,6 +4856,190 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a &quot;100 satoshi pe
     <message>
         <source>shares %1%: %2 %4 in all, %3 %4 to each peer</source>
         <translation>%1%-ot oszt meg: összesen %2 %4, partnerenként %3 %4</translation>
+    </message>
+    <message>
+        <source>Sharing your internet connection</source>
+        <translation>Az internetkapcsolat megosztása</translation>
+    </message>
+    <message>
+        <source>BPS Relay shares this computer&apos;s internet connection with the network, as every member with the internet does, unless you switch it off. In return, programs on this computer can use the network&apos;s internet.</source>
+        <translation>A BPS Relay megosztja e számítógép internetkapcsolatát a hálózattal, ahogy minden internettel rendelkező tag teszi, hacsak ki nem kapcsolja. Cserébe a számítógép programjai használhatják a hálózat internetét.</translation>
+    </message>
+    <message>
+        <source>People reach the internet through this computer by way of relays, so it never learns who they are, and nobody in the network learns where it is.
+
+What it means for you: the websites they visit see this computer&apos;s internet address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own home network. It shares at most 1 GiB a day.
+
+If the law where you live, or your internet provider&apos;s terms, forbid sharing your connection, switch it off. In the EU, passing traffic on for others is protected as a &quot;mere conduit&quot;, but complaints about it still reach you through your provider.
+
+You can change this at any time on the Server page.</source>
+        <translation>Emberek érik el az internetet ezen a számítógépen keresztül továbbítókon át, így az sosem tudja meg, kik ők, és a hálózatban senki sem tudja meg, hol van.
+
+Mit jelent ez Önnek: az általuk látogatott webhelyek ennek a számítógépnek az internetcímét látják, ahogy az Önét látnák. Csak titkosított kapcsolatok mennek ki — a web, valamint a titkosított levelezés és üzenetküldés — soha nem levél kiszolgálók között, és soha nem a saját otthoni hálózatába. Naponta legfeljebb 1 GiB-ot oszt meg.
+
+Ha a lakóhelye szerinti törvény vagy az internetszolgáltatója feltételei tiltják a kapcsolat megosztását, kapcsolja ki. Az EU-ban a forgalom mások helyett történő továbbítása &quot;egyszerű továbbításként&quot; védett, a panaszok azonban így is eljutnak Önhöz a szolgáltatón keresztül.
+
+Ezt bármikor megváltoztathatja a Kiszolgáló oldalon.</translation>
+    </message>
+    <message>
+        <source>Keep sharing</source>
+        <translation>Megosztás folytatása</translation>
+    </message>
+    <message>
+        <source>Switch it off</source>
+        <translation>Kikapcsolás</translation>
+    </message>
+    <message>
+        <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Amit ez a csomópont másoknak kínál. A továbbítás, a levelek őrzése és az internet megosztása már ma működik; a tárhely úton van, és mint itt minden, ugyanúgy található meg, mint a társak — a nyilvántartáson keresztül. A neveknek saját oldaluk van.</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation>Átjáró</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection with the network, as every member with the internet does unless they switch it off, and use the network&apos;s internet in return. People reach the internet through it by way of relays, so it never learns who they are, and nobody in the network learns where it is. The websites they visit see this computer&apos;s address, as they would see yours. Only encrypted connections leave — the web, and encrypted mail and messaging — never mail between servers, and never into your own network.</source>
+        <translation>E számítógép internetkapcsolatának megosztása a hálózattal, ahogy minden internettel rendelkező tag teszi, hacsak ki nem kapcsolja, és cserébe a hálózat internetének használata. Emberek érik el rajta keresztül az internetet továbbítókon át, így az sosem tudja meg, kik ők, és a hálózatban senki sem tudja meg, hol van. Az általuk látogatott webhelyek ennek a számítógépnek a címét látják, ahogy az Önét látnák. Csak titkosított kapcsolatok mennek ki — a web, valamint a titkosított levelezés és üzenetküldés — soha nem levél kiszolgálók között, és soha nem a saját hálózatába.</translation>
+    </message>
+    <message>
+        <source>Sharing</source>
+        <translation>Megosztás</translation>
+    </message>
+    <message>
+        <source>Listed as</source>
+        <translation>Bejegyezve mint</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Ma</translation>
+    </message>
+    <message>
+        <source>Open now</source>
+        <translation>Most nyitva</translation>
+    </message>
+    <message>
+        <source>List as a gateway…</source>
+        <translation>Bejegyzés átjáróként…</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection as a gateway</source>
+        <translation>E számítógép internetkapcsolatának megosztása átjáróként</translation>
+    </message>
+    <message>
+        <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
+        <translation>Kapcsolja ki, ha a lakóhelye szerinti törvény vagy az internetszolgáltatója feltételei tiltják a kapcsolat megosztását. Kikapcsolva ez a csomópont továbbra is továbbít, levelet őriz és követi a láncot, a saját kapcsolatát pedig közvetlenül használja.</translation>
+    </message>
+    <message>
+        <source>no limit</source>
+        <translation>nincs korlát</translation>
+    </message>
+    <message>
+        <source>Both ways together. Once it is used up the gateway takes no new connections until the day turns (UTC).</source>
+        <translation>A két irány együtt. Ha elfogy, az átjáró a nap fordulójáig (UTC) nem fogad új kapcsolatot.</translation>
+    </message>
+    <message>
+        <source>Most it shares in a day</source>
+        <translation>Naponta legfeljebb megosztva</translation>
+    </message>
+    <message>
+        <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
+        <translation>E számítógép programjai használhatják a hálózat internetét egy helyi proxyn keresztül</translation>
+    </message>
+    <message>
+        <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
+        <translation>SOCKS5 proxy csak erre a számítógépre. Minden kapcsolat egy másik tag átjáróján keresztül megy ki, és a neveket ott oldják fel, sosem itt. Addig működik, amíg ez a számítógép megosztja a saját kapcsolatát.</translation>
+    </message>
+    <message>
+        <source>Waiting: %1.</source>
+        <translation>Várakozik: %1.</translation>
+    </message>
+    <message>
+        <source>Looking for gateways to use…</source>
+        <translation>Használható átjárók keresése…</translation>
+    </message>
+    <message>
+        <source>SOCKS5 proxy at %1 — set it in a browser or another program, with names looked up through the proxy. %2 gateway(s) met, %3 connection(s) open.</source>
+        <translation>SOCKS5 proxy itt: %1 — állítsa be egy böngészőben vagy más programban, a nevek proxyn keresztüli feloldásával. %2 átjáró megtalálva, %3 kapcsolat nyitva.</translation>
+    </message>
+    <message>
+        <source>Off: it needs the overlay and the roster index.</source>
+        <translation>Kikapcsolva: szüksége van az overlayre és a nyilvántartás indexére.</translation>
+    </message>
+    <message>
+        <source>Off.</source>
+        <translation>Kikapcsolva.</translation>
+    </message>
+    <message>
+        <source>switched off</source>
+        <translation>letiltva</translation>
+    </message>
+    <message>
+        <source>no — it needs the overlay and the roster index</source>
+        <translation>nem — szüksége van az overlayre és a nyilvántartás indexére</translation>
+    </message>
+    <message>
+        <source>no — switched off</source>
+        <translation>nem — kikapcsolva</translation>
+    </message>
+    <message>
+        <source>not listed as a gateway</source>
+        <translation>nincs bejegyezve átjáróként</translation>
+    </message>
+    <message>
+        <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
+        <translation>még nem — a nyilvántartás nem tartja nyilván ezt a csomópontot átjáróként, így senki sem találja meg</translation>
+    </message>
+    <message>
+        <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
+        <translation>még semmi — egy továbbító az átjáróját egy második kulccsal, cím nélkül, a saját bejegyzésétől külön jegyzi be</translation>
+    </message>
+    <message>
+        <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
+        <translation>még semmi — e csomópont bejegyzéséből hiányzik az átjáró beállítás; tegye közzé újra bekapcsolt beállítással</translation>
+    </message>
+    <message>
+        <source>nothing yet — publish a listing with no address and the gateway option on</source>
+        <translation>még semmi — tegyen közzé egy cím nélküli bejegyzést bekapcsolt átjáró beállítással</translation>
+    </message>
+    <message>
+        <source>List this relay&apos;s gateway…</source>
+        <translation>E továbbító átjárójának bejegyzése…</translation>
+    </message>
+    <message>
+        <source>sharing</source>
+        <translation>megoszt</translation>
+    </message>
+    <message>
+        <source>yes, taking connections</source>
+        <translation>igen, fogad kapcsolatot</translation>
+    </message>
+    <message>
+        <source>today&apos;s share used</source>
+        <translation>a mai keret elfogyott</translation>
+    </message>
+    <message>
+        <source>today&apos;s share is used up; it takes connections again when the day turns (UTC)</source>
+        <translation>a mai keret elfogyott; a nap fordulóján (UTC) újra fogad kapcsolatot</translation>
+    </message>
+    <message>
+        <source>its gateway key %1, apart from the relay&apos;s address</source>
+        <translation>az átjárókulcsa %1, a továbbító címétől külön</translation>
+    </message>
+    <message>
+        <source>this node&apos;s own key %1</source>
+        <translation>e csomópont saját kulcsa %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 MiB</source>
+        <translation>%1 / %2 MiB</translation>
+    </message>
+    <message>
+        <source>%1, with no daily limit</source>
+        <translation>%1, napi korlát nélkül</translation>
+    </message>
+    <message>
+        <source>%1 connection(s) for %2 visitor(s), at %3 meeting point(s)</source>
+        <translation>%1 kapcsolat %2 látogatónak, %3 találkozási ponton</translation>
     </message>
 </context>
 <context>

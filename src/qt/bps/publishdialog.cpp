@@ -17,10 +17,13 @@
 
 #include <amount.h>
 #include <chainparams.h>
+#include <overlay/gateway.h>
 #include <roster/listing.h>
+#include <util/system.h>
 #include <roster/record.h>
 #include <univalue.h>
 
+#include <QCheckBox>
 #include <QComboBox>
 #include <QDialogButtonBox>
 #include <QFormLayout>
@@ -61,17 +64,23 @@ QLabel* SmallNote(const QString& text, QWidget* parent)
 } // namespace
 
 PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bool renewing,
-                             QWidget* parent)
-    : QDialog(parent), m_rpc(rpc), m_wallets(wallets), m_tip(tip)
+                             QWidget* parent, bool gateway_key)
+    : QDialog(parent), m_rpc(rpc), m_wallets(wallets), m_tip(tip), m_gateway_key(gateway_key)
 {
-    setWindowTitle(renewing ? tr("Renew your listing") : tr("Publish your listing"));
+    setWindowTitle(gateway_key ? tr("List this relay's gateway")
+                               : renewing ? tr("Renew your listing") : tr("Publish your listing"));
     setMinimumWidth(540);
 
     QVBoxLayout* outer = new QVBoxLayout(this);
     outer->setSizeConstraint(QLayout::SetMinimumSize);
 
     QLabel* intro = new QLabel(
-        renewing
+        gateway_key
+            ? tr("A relay's own listing carries its address, so its gateway is listed under a second "
+                 "key with no address, apart from it. Nobody can tell from the roster that the two belong "
+                 "to one computer. Visitors reach the gateway through relays, so it never learns who they "
+                 "are; the websites they visit see this computer's address.")
+        : renewing
             ? tr("Renewing writes a fresh record to the chain. Until it confirms, the "
                  "old one still counts.")
             : tr("This writes a short record to the chain saying that you exist, and "
@@ -97,6 +106,26 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
         where);
     nowhere_note->setContentsMargins(24, 0, 0, 0);
     where_layout->addWidget(nowhere_note);
+
+    // A node with no address is listed as a gateway too unless its owner
+    // switched the gateway off (design note section 8.7); with an address it
+    // is a relay, whose gateway is listed apart, from the Server page.
+    QWidget* gateway_row = new QWidget(where);
+    QHBoxLayout* gateway_layout = new QHBoxLayout(gateway_row);
+    gateway_layout->setContentsMargins(24, 0, 0, 0);
+    m_gateway = new QCheckBox(tr("Share this computer's internet connection as a gateway"), gateway_row);
+    m_gateway->setChecked(gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY));
+    gateway_layout->addWidget(m_gateway);
+    where_layout->addWidget(gateway_row);
+    QLabel* gateway_note = SmallNote(
+        gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY)
+            ? tr("Websites the network's members visit through it see this computer's address. Switch the "
+                 "gateway off on the Server page if you may not share your connection.")
+            : tr("The gateway is switched off on the Server page."),
+        where);
+    gateway_note->setContentsMargins(48, 0, 0, 0);
+    where_layout->addWidget(gateway_note);
+    if (!gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY)) m_gateway->setEnabled(false);
 
     m_at_address = new QRadioButton(tr("At an address I publish"), where);
     where_layout->addWidget(m_at_address);
@@ -131,6 +160,8 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
 
     m_nowhere->setChecked(true);
     outer->addWidget(where);
+    // A gateway key has no address to choose.
+    if (gateway_key) where->setVisible(false);
 
     // --- who pays, and how long ----------------------------------------
     QFormLayout* form = new QFormLayout();
@@ -193,7 +224,10 @@ void PublishDialog::FillPayers()
     m_payer->clear();
     int preferred = -1;
 #ifdef ENABLE_WALLET
-    if (m_wallets) {
+    // Never this node's wallet for a gateway key: its coins are the ones that
+    // paid for the relay's own listing, so the chain would tie the gateway to
+    // the relay's address. Another relay pays, asked through a path.
+    if (m_wallets && !m_gateway_key) {
         for (WalletModel* model : m_wallets->getOpenWallets()) {
             const CAmount balance = model->wallet().getBalances().balance;
             const int unit = model->getOptionsModel() ? model->getOptionsModel()->getDisplayUnit()
@@ -207,7 +241,9 @@ void PublishDialog::FillPayers()
 #endif
     // Always offered, and the default when no wallet can pay: the user signs,
     // the relay pays, which is how a node with no coins gets listed at all.
-    m_payer->addItem(tr("A relay pays \xe2\x80\x94 needs no coins"), RELAY);
+    m_payer->addItem(m_gateway_key ? tr("Another relay pays, asked through a path")
+                                   : tr("A relay pays \xe2\x80\x94 needs no coins"),
+                     RELAY);
     m_payer->setCurrentIndex(preferred >= 0 ? preferred : m_payer->count() - 1);
     m_payer->setEnabled(m_payer->count() > 1);
     m_payer->blockSignals(false);
@@ -235,6 +271,11 @@ void PublishDialog::onPayerChanged()
             note = tr("No relay is listed in the roster yet, so there is nobody to ask. Pay from a "
                       "wallet, or try again once a relay has listed itself.");
             can_publish = false;
+        } else if (m_gateway_key) {
+            note = tr("Your node signs the gateway's listing and sends it through relays to another relay, "
+                      "which pays for it and puts it into a block it stakes. That relay learns the gateway's "
+                      "key and never this computer's address. Paying from this node's own wallet would tie "
+                      "the gateway to this relay on the chain, and so to its address.");
         } else {
             note = tr("Your node signs the listing and sends it over the overlay to the relay it "
                       "enters through. A relay that pays for listings puts yours into a block it "
@@ -285,6 +326,8 @@ void PublishDialog::onPayerChanged()
 void PublishDialog::onAddressChoiceChanged()
 {
     m_address_row->setEnabled(m_at_address->isChecked());
+    // Never a gateway at a published address: that would say where an exit is.
+    if (m_gateway) m_gateway->setEnabled(!m_at_address->isChecked() && gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY));
 }
 
 void PublishDialog::SetBusy(bool busy)
@@ -316,7 +359,12 @@ void PublishDialog::Done()
 bool PublishDialog::BuildOptions(UniValue& options)
 {
     options = UniValue(UniValue::VOBJ);
-    if (m_at_address->isChecked()) {
+    if (m_gateway_key) {
+        options.pushKV("key", "gateway");
+    } else if (!m_at_address->isChecked() && m_gateway->isEnabled() && m_gateway->isChecked()) {
+        options.pushKV("gateway", true);
+    }
+    if (!m_gateway_key && m_at_address->isChecked()) {
         const QString address = m_address->text().trimmed();
         if (address.isEmpty()) {
             ShowError(tr("Enter an address, or choose not to publish one."));
@@ -377,7 +425,9 @@ void PublishDialog::onPublish()
 
     if (RelayChosen()) {
         SetBusy(true);
-        m_status->setText(tr("Asking your relay to publish it\xe2\x80\xa6 this can take up to half a minute."));
+        m_status->setText(m_gateway_key
+                              ? tr("Asking a relay through a path to publish it\xe2\x80\xa6 this can take a minute.")
+                              : tr("Asking your relay to publish it\xe2\x80\xa6 this can take up to half a minute."));
         m_rpc.Call(TAG_REQUEST, "requestlisting", params);
         return;
     }

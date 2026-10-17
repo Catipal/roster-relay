@@ -1561,7 +1561,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>對等節點在區塊鏈上公布自己，而不是在伺服器上，所以這份清單對每個人都相同，沒有人能夠編輯它。中繼在運作期間會說明自己所在的位置，所以它們的位址從不上鏈，只在在線時顯示在這裡。</translation>
+        <translation type="vanished">對等節點在區塊鏈上公布自己，而不是在伺服器上，所以這份清單對每個人都相同，沒有人能夠編輯它。中繼在運作期間會說明自己所在的位置，所以它們的位址從不上鏈，只在在線時顯示在這裡。</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1570,6 +1570,10 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>最近三小時內說明過自己位置的中繼。其他節點也已登記：登記只說明對等節點存在，並不說明它在運作。</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>對等節點在區塊鏈上公布自己，而不是在伺服器上，所以這份清單對每個人都相同，沒有人能夠編輯它。透過覆蓋網路登記的對等節點會顯示今天在哪裡能與它會面，每天都會變化；中繼只在在線時顯示位址，因為位址從不上鏈。</translation>
     </message>
 </context>
 <context>
@@ -3207,7 +3211,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>你的登記表明你是誰，而不是你在哪裡執行。對等節點改為透過覆蓋網路聯絡你，在雙方根據名冊算出的會合點與你會面。這是本用戶端預設開啟的方式。</translation>
+        <translation type="vanished">你的登記表明你是誰，而不是你在哪裡執行。對等節點改為透過覆蓋網路聯絡你，在雙方根據名冊算出的會合點與你會面。這是本用戶端預設開啟的方式。</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3367,11 +3371,27 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>作為中繼——運作期間公布我的位址</translation>
+        <translation type="vanished">作為中繼——運作期間公布我的位址</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>其他人的路徑會經過這台電腦。你的登記只說明你是中繼，不說明你在哪裡：節點運作期間，會用自己的金鑰簽署後把目前位址告訴網路，位址一變就再告訴一次，無需任何交易。關於你所在位置的任何資訊都不會上鏈，節點停止後三小時內網路就會忘記這個位址。其他人需要能透過連接埠 %1 (TCP) 和 %2 (UDP) 連到這台電腦。</translation>
+        <translation type="vanished">其他人的路徑會經過這台電腦。你的登記只說明你是中繼，不說明你在哪裡：節點運作期間，會用自己的金鑰簽署後把目前位址告訴網路，位址一變就再告訴一次，無需任何交易。關於你所在位置的任何資訊都不會上鏈，節點停止後三小時內網路就會忘記這個位址。其他人需要能透過連接埠 %1 (TCP) 和 %2 (UDP) 連到這台電腦。</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>你的登記只說明你是誰，不說明你在哪裡運作。對等節點透過覆蓋網路找到你，在雙方都從名冊算出的會面點與你會面，這些點每天變化；探索頁面顯示今天的會面點。你的登記還會寫明一個中繼，在登記有效期間都能在那裡與你會面，每次續期都會寫明一個新的。這是本用戶端的預設設定。</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>作為中繼傳遞他人的路徑</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">路徑需要能到達中繼，所以節點運作期間，會用自己的金鑰簽署後把這台電腦的目前位址告訴網路，位址一變就再告訴一次，無需任何交易。位址從不寫入鏈上，節點停止後三小時內網路就會忘記它。其他人需要能透過連接埠 %1 (TCP) 和 %2 (UDP) 連到這台電腦。中繼在伺服器頁面用第二把金鑰分享其網際網路連線。</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>節點運作期間，會用自己的金鑰簽署後把這台電腦的目前位址告訴網路，讓路徑能夠到達，位址一變就再告訴一次。位址從不寫入鏈上，節點停止後三小時內網路就會忘記它。其他人需要能透過連接埠 %1 (TCP) 和 %2 (UDP) 連到這台電腦。</translation>
     </message>
 </context>
 <context>
@@ -4224,6 +4244,20 @@ the last three hours: it is not running, or not reachable from here.</source>
     <message>
         <source>relay, offline</source>
         <translation>中繼，離線</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>透過覆蓋網路登記。今天可以在這些中繼與它會面，
+由名冊算出；每天都會變化：</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>它的登記還寫明了這一個，在登記有效期間有效：</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>會面於 %1</translation>
     </message>
 </context>
 <context>

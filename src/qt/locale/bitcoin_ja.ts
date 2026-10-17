@@ -1562,7 +1562,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>ピアはサーバーではなくチェーン上で自らを告知するため、このリストは誰にとっても同じで、誰も編集できません。リレーは動いている間、自分がどこにいるかを伝えます。そのためアドレスがチェーンに載ることはなく、ここにはオンラインの間だけ表示されます。</translation>
+        <translation type="vanished">ピアはサーバーではなくチェーン上で自らを告知するため、このリストは誰にとっても同じで、誰も編集できません。リレーは動いている間、自分がどこにいるかを伝えます。そのためアドレスがチェーンに載ることはなく、ここにはオンラインの間だけ表示されます。</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1571,6 +1571,10 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>直近3時間以内に居場所を伝えたリレー。ほかのピアも登録されています。登録はピアが存在することを示すだけで、動いていることは示しません。</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>ピアはサーバーではなくチェーン上で自らを告知するため、このリストは誰にとっても同じで、誰も編集できません。オーバーレイ経由で登録されたピアは、今日どこで会えるかを表示します。これは毎日変わります。リレーはオンラインの間だけアドレスを表示します。アドレスがチェーンに載ることはないためです。</translation>
     </message>
 </context>
 <context>
@@ -3208,7 +3212,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>登録はあなたが誰であるかを示し、どこで動いているかは示しません。ピアは代わりにオーバーレイ経由で、双方が名簿から計算した地点であなたと落ち合います。これがこのクライアントの既定の設定です。</translation>
+        <translation type="vanished">登録はあなたが誰であるかを示し、どこで動いているかは示しません。ピアは代わりにオーバーレイ経由で、双方が名簿から計算した地点であなたと落ち合います。これがこのクライアントの既定の設定です。</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3368,11 +3372,27 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>リレーとして — 動いている間、自分のアドレスを告知する</translation>
+        <translation type="vanished">リレーとして — 動いている間、自分のアドレスを告知する</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>他の人の経路がこのコンピューターを通ります。あなたの登録はリレーであることを示しますが、場所は示しません。ノードが動いている間、現在のアドレスを鍵で署名してネットワークに伝え、変わるたびに再び伝えます。トランザクションは不要です。あなたの居場所に関することはチェーンに一切載らず、ノードが止まってから3時間以内にネットワークはアドレスを忘れます。他の人がこのコンピューターのポート %1 (TCP) と %2 (UDP) に到達できる必要があります。</translation>
+        <translation type="vanished">他の人の経路がこのコンピューターを通ります。あなたの登録はリレーであることを示しますが、場所は示しません。ノードが動いている間、現在のアドレスを鍵で署名してネットワークに伝え、変わるたびに再び伝えます。トランザクションは不要です。あなたの居場所に関することはチェーンに一切載らず、ノードが止まってから3時間以内にネットワークはアドレスを忘れます。他の人がこのコンピューターのポート %1 (TCP) と %2 (UDP) に到達できる必要があります。</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>あなたの登録は、あなたが誰かを示し、どこで動いているかは示しません。ピアはオーバーレイ経由であなたに届き、双方が名簿から割り出す地点であなたと会います。この地点は毎日変わり、発見に今日のものが表示されます。登録には、有効な間あなたと会えるリレーも1つ記されており、更新のたびに新しいものになります。これがこのクライアントの既定の設定です。</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>リレーとして他の人の経路を運ぶ</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">経路はリレーに到達する必要があるため、ノードが動いている間、このコンピューターの現在のアドレスを鍵で署名してネットワークに伝え、変わるたびに再び伝えます。トランザクションは不要です。チェーンに書かれることはなく、ノードが止まってから3時間以内にネットワークはそれを忘れます。他の人がこのコンピューターのポート %1 (TCP) と %2 (UDP) に到達できる必要があります。リレーはインターネット接続を2つ目の鍵で、サーバーページから共有します。</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>ノードが動いている間、経路が届くように、このコンピューターの現在のアドレスを鍵で署名してネットワークに伝え、変わるたびに再び伝えます。チェーンに書かれることはなく、ノードが止まってから3時間以内にネットワークはそれを忘れます。他の人がこのコンピューターのポート %1 (TCP) と %2 (UDP) に到達できる必要があります。</translation>
     </message>
 </context>
 <context>
@@ -4225,6 +4245,20 @@ the last three hours: it is not running, or not reachable from here.</source>
     <message>
         <source>relay, offline</source>
         <translation>リレー、オフライン</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>オーバーレイ経由で登録。今日はこれらのリレーで会えます。
+名簿から割り出したもので、毎日変わります:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>登録には、有効な間はこのリレーも記されています:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>%1 で会える</translation>
     </message>
 </context>
 <context>

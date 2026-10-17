@@ -1562,7 +1562,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>피어는 서버가 아니라 체인에 자신을 알리므로, 이 목록은 누구에게나 같고 아무도 편집할 수 없습니다. 릴레이는 실행되는 동안 자신이 어디에 있는지 알리므로, 주소가 체인에 올라가지 않으며 온라인인 동안에만 여기에 표시됩니다.</translation>
+        <translation type="vanished">피어는 서버가 아니라 체인에 자신을 알리므로, 이 목록은 누구에게나 같고 아무도 편집할 수 없습니다. 릴레이는 실행되는 동안 자신이 어디에 있는지 알리므로, 주소가 체인에 올라가지 않으며 온라인인 동안에만 여기에 표시됩니다.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1571,6 +1571,10 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>지난 3시간 안에 위치를 알린 릴레이입니다. 다른 피어도 등재되어 있습니다. 등재는 피어가 존재한다는 뜻일 뿐, 실행 중이라는 뜻이 아닙니다.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>피어는 서버가 아니라 체인에 자신을 알리므로, 이 목록은 누구에게나 같고 아무도 편집할 수 없습니다. 오버레이로 등재된 피어는 오늘 어디서 만날 수 있는지를 보여 주며, 이는 매일 바뀝니다. 릴레이는 온라인인 동안에만 주소를 보여 줍니다. 주소가 체인에 올라가지 않기 때문입니다.</translation>
     </message>
 </context>
 <context>
@@ -3208,7 +3212,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>등재는 내가 누구인지만 알리고 어디서 실행하는지는 알리지 않습니다. 피어는 대신 오버레이를 통해 연결하며, 양쪽이 명부에서 계산한 지점에서 만납니다. 이 클라이언트가 기본으로 켜는 방식입니다.</translation>
+        <translation type="vanished">등재는 내가 누구인지만 알리고 어디서 실행하는지는 알리지 않습니다. 피어는 대신 오버레이를 통해 연결하며, 양쪽이 명부에서 계산한 지점에서 만납니다. 이 클라이언트가 기본으로 켜는 방식입니다.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3368,11 +3372,27 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>릴레이로 — 실행되는 동안 내 주소를 알림</translation>
+        <translation type="vanished">릴레이로 — 실행되는 동안 내 주소를 알림</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>다른 사람들의 경로가 이 컴퓨터를 지나갑니다. 등재 정보에는 릴레이라는 사실만 있고 위치는 없습니다. 노드가 실행되는 동안 현재 주소를 키로 서명해 네트워크에 알리고, 주소가 바뀔 때마다 다시 알립니다. 트랜잭션은 필요 없습니다. 위치에 관한 어떤 것도 체인에 올라가지 않으며, 노드가 멈추면 3시간 안에 네트워크가 주소를 잊습니다. 다른 사람이 이 컴퓨터의 포트 %1 (TCP)과 %2 (UDP)에 접속할 수 있어야 합니다.</translation>
+        <translation type="vanished">다른 사람들의 경로가 이 컴퓨터를 지나갑니다. 등재 정보에는 릴레이라는 사실만 있고 위치는 없습니다. 노드가 실행되는 동안 현재 주소를 키로 서명해 네트워크에 알리고, 주소가 바뀔 때마다 다시 알립니다. 트랜잭션은 필요 없습니다. 위치에 관한 어떤 것도 체인에 올라가지 않으며, 노드가 멈추면 3시간 안에 네트워크가 주소를 잊습니다. 다른 사람이 이 컴퓨터의 포트 %1 (TCP)과 %2 (UDP)에 접속할 수 있어야 합니다.</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>등재 정보는 당신이 누구인지만 말하고 어디서 실행되는지는 말하지 않습니다. 피어는 오버레이를 통해 당신에게 닿고, 양쪽이 명부에서 계산하는 지점에서 당신을 만납니다. 이 지점은 매일 바뀌며 탐색에 오늘의 지점이 표시됩니다. 등재 정보에는 유효한 동안 당신을 만날 수 있는 릴레이 하나도 적혀 있고, 갱신할 때마다 새 릴레이가 적힙니다. 이 클라이언트는 기본적으로 이렇게 설정합니다.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>릴레이로서 다른 사람의 경로를 나름</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">경로가 릴레이에 닿아야 하므로, 노드가 실행되는 동안 이 컴퓨터의 현재 주소를 키로 서명해 네트워크에 알리고, 주소가 바뀔 때마다 다시 알립니다. 트랜잭션은 필요 없습니다. 주소는 체인에 기록되지 않으며, 노드가 멈추면 3시간 안에 네트워크가 잊습니다. 다른 사람이 이 컴퓨터의 포트 %1 (TCP)과 %2 (UDP)에 접속할 수 있어야 합니다. 릴레이는 서버 페이지에서 두 번째 키로 인터넷 연결을 공유합니다.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>노드가 실행되는 동안 경로가 닿을 수 있도록 이 컴퓨터의 현재 주소를 키로 서명해 네트워크에 알리고, 주소가 바뀔 때마다 다시 알립니다. 주소는 체인에 기록되지 않으며, 노드가 멈추면 3시간 안에 네트워크가 잊습니다. 다른 사람이 이 컴퓨터의 포트 %1 (TCP)과 %2 (UDP)에 접속할 수 있어야 합니다.</translation>
     </message>
 </context>
 <context>
@@ -4225,6 +4245,20 @@ the last three hours: it is not running, or not reachable from here.</source>
     <message>
         <source>relay, offline</source>
         <translation>릴레이, 오프라인</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>오버레이로 등재됨. 오늘은 이 릴레이들에서 만날 수 있으며,
+명부에서 계산한 것으로 매일 바뀝니다:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>등재 정보에는 유효한 동안 이 릴레이도 적혀 있습니다:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>%1에서 만남</translation>
     </message>
 </context>
 <context>

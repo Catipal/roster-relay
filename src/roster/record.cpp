@@ -107,6 +107,7 @@ std::string ParseErrorString(ParseError err)
     case ParseError::BAD_LENGTH: return "length does not match record type";
     case ParseError::BAD_ENDPOINT_COUNT: return "too many endpoints";
     case ParseError::BAD_ENDPOINT_NETWORK: return "unknown or unsupported endpoint network";
+    case ParseError::BAD_MEETING_POINT: return "meeting point on a record with endpoints";
     case ParseError::TRAILING_BYTES: return "trailing bytes after record";
     }
     return "unknown error";
@@ -166,6 +167,17 @@ ParseError ParseRecord(Span<const unsigned char> raw, Record& out)
             ep.port = ReadBE16(body + off);
             off += 2;
             out.endpoints.push_back(std::move(ep));
+        }
+
+        // A key reached at an address needs no meeting point, and allowing
+        // both would let the largest record outgrow MAX_RECORD_SIZE.
+        if (out.services & SERVICE_MEET_PRESENT) {
+            if (ep_count != 0) return ParseError::BAD_MEETING_POINT;
+            if (off + RECORD_KEY_SIZE > body_size) return ParseError::BAD_LENGTH;
+            KeyBytes point;
+            std::memcpy(point.data(), body + off, RECORD_KEY_SIZE);
+            out.meet_point = point;
+            off += RECORD_KEY_SIZE;
         }
 
         if (out.services & SERVICE_META_PRESENT) {
@@ -248,6 +260,11 @@ std::vector<unsigned char> SerializeRecord(const Record& rec)
         } else {
             services &= ~SERVICE_META_PRESENT;
         }
+        if (rec.meet_point.has_value()) {
+            services |= SERVICE_MEET_PRESENT;
+        } else {
+            services &= ~SERVICE_MEET_PRESENT;
+        }
         WriteLE32(out, services);
         WriteLE32(out, rec.prev_height);
         out.push_back((unsigned char)rec.endpoints.size());
@@ -256,6 +273,7 @@ std::vector<unsigned char> SerializeRecord(const Record& rec)
             out.insert(out.end(), ep.addr.begin(), ep.addr.end());
             WriteBE16(out, ep.port);
         }
+        if (rec.meet_point.has_value()) AppendKey(out, *rec.meet_point);
         if (rec.meta_hash.has_value()) {
             out.insert(out.end(), rec.meta_hash->begin(), rec.meta_hash->end());
         }

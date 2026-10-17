@@ -1584,7 +1584,7 @@ Obnovitveni ključ vam bo prikazan enkrat. Zapišite ga: to je edini način, da 
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Soležniki se oznanijo v verigi namesto na strežniku, zato je ta seznam za vse enak in ga nihče ne more urejati. Posredniki povedo, kje so, dokler delujejo, zato njihovi naslovi nikoli ne gredo v verigo in so tu prikazani le, dokler so na spletu.</translation>
+        <translation type="vanished">Soležniki se oznanijo v verigi namesto na strežniku, zato je ta seznam za vse enak in ga nihče ne more urejati. Posredniki povedo, kje so, dokler delujejo, zato njihovi naslovi nikoli ne gredo v verigo in so tu prikazani le, dokler so na spletu.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1593,6 +1593,10 @@ Obnovitveni ključ vam bo prikazan enkrat. Zapišite ga: to je edini način, da 
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Posredniki, ki so v zadnjih treh urah povedali, kje so. Tudi drugi so vpisani: vpis pove, da soležnik obstaja, ne pa, da deluje.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Soležniki se oznanijo v verigi namesto na strežniku, zato je ta seznam za vse enak in ga nihče ne more urejati. Soležnik, vpisan prek prekrivnega omrežja, pokaže, kje ga je danes mogoče srečati, kar se spreminja vsak dan; posrednik pokaže svoj naslov le, dokler je na spletu, saj ga nikoli ni v verigi.</translation>
     </message>
 </context>
 <context>
@@ -3239,7 +3243,7 @@ Obnovitveni ključ vam bo prikazan enkrat. Zapišite ga: to je edini način, da 
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>Vaš vpis pove, kdo ste, ne pa kje tečete. Soležniki vas namesto tega dosežejo prek prekrivnega omrežja in vas srečajo na točkah, ki jih obe strani izračunata iz registra. To ta odjemalec privzeto vklopi.</translation>
+        <translation type="vanished">Vaš vpis pove, kdo ste, ne pa kje tečete. Soležniki vas namesto tega dosežejo prek prekrivnega omrežja in vas srečajo na točkah, ki jih obe strani izračunata iz registra. To ta odjemalec privzeto vklopi.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3399,11 +3403,27 @@ Obnovitveni ključ vam bo prikazan enkrat. Zapišite ga: to je edini način, da 
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Kot posrednik — objavljaj moj naslov, dokler delujem</translation>
+        <translation type="vanished">Kot posrednik — objavljaj moj naslov, dokler delujem</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Poti drugih gredo skozi ta računalnik. Vaš vpis pove, da ste posrednik, ne pa kje: dokler vaše vozlišče deluje, omrežju sporoča svoj trenutni naslov, podpisan s svojim ključem, in znova vsakič, ko se spremeni, brez kakršne koli transakcije. Nič o tem, kje ste, ne gre v verigo, omrežje pa naslov pozabi v treh urah po tem, ko se vaše vozlišče ustavi. Drugi morajo ta računalnik doseči na vratih %1 (TCP) in %2 (UDP).</translation>
+        <translation type="vanished">Poti drugih gredo skozi ta računalnik. Vaš vpis pove, da ste posrednik, ne pa kje: dokler vaše vozlišče deluje, omrežju sporoča svoj trenutni naslov, podpisan s svojim ključem, in znova vsakič, ko se spremeni, brez kakršne koli transakcije. Nič o tem, kje ste, ne gre v verigo, omrežje pa naslov pozabi v treh urah po tem, ko se vaše vozlišče ustavi. Drugi morajo ta računalnik doseči na vratih %1 (TCP) in %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>Vaš vpis pove, kdo ste, ne pa, kje delujete. Soležniki vas dosežejo prek prekrivnega omrežja in se z vami srečajo v točkah, ki jih obe strani izračunata iz registra in ki se spreminjajo vsak dan; Odkrivanje pokaže današnje. Vaš vpis imenuje tudi enega posrednika, pri katerem vas je mogoče srečati, dokler velja, in vsaka obnovitev imenuje novega. To ta odjemalec privzeto vklopi.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Prenašaj poti drugih kot posrednik</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Poti morajo doseči posrednika, zato vaše vozlišče, dokler deluje, omrežju sporoča trenutni naslov tega računalnika, podpisan s svojim ključem, in znova vsakič, ko se spremeni, brez kakršne koli transakcije. Nikoli se ne zapiše v verigo, omrežje pa ga pozabi v treh urah po tem, ko se vaše vozlišče ustavi. Drugi morajo ta računalnik doseči na vratih %1 (TCP) in %2 (UDP). Posrednik deli svojo internetno povezavo pod drugim ključem, s strani Strežnik.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Dokler vaše vozlišče deluje, omrežju sporoča trenutni naslov tega računalnika, podpisan s svojim ključem, da ga poti lahko dosežejo, in znova vsakič, ko se spremeni. Nikoli se ne zapiše v verigo, omrežje pa ga pozabi v treh urah po tem, ko se vaše vozlišče ustavi. Drugi morajo ta računalnik doseči na vratih %1 (TCP) in %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4274,6 +4294,20 @@ treh urah ni povedal: ne deluje ali od tu ni dosegljiv.</translation>
     <message>
         <source>relay, offline</source>
         <translation>posrednik, ni na spletu</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Vpisan prek prekrivnega omrežja. Danes ga je mogoče srečati pri teh posrednikih,
+izračunanih iz registra; spreminjajo se vsak dan:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>Njegov vpis imenuje tudi tega, dokler vpis velja:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>srečanje pri %1</translation>
     </message>
 </context>
 <context>

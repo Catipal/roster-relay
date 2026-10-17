@@ -1568,7 +1568,7 @@ Uma chave de recuperação será mostrada uma única vez. Anote-a: é a única f
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Os pares se anunciam na cadeia em vez de em um servidor, então esta lista é a mesma para todos e ninguém está em posição de editá-la. Os retransmissores dizem onde estão enquanto funcionam, então os seus endereços nunca vão para a cadeia e só aparecem aqui enquanto estão online.</translation>
+        <translation type="vanished">Os pares se anunciam na cadeia em vez de em um servidor, então esta lista é a mesma para todos e ninguém está em posição de editá-la. Os retransmissores dizem onde estão enquanto funcionam, então os seus endereços nunca vão para a cadeia e só aparecem aqui enquanto estão online.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1577,6 +1577,10 @@ Uma chave de recuperação será mostrada uma única vez. Anote-a: é a única f
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Retransmissores que disseram onde estão nas últimas três horas. Os outros também estão inscritos: estar inscrito diz que um par existe, não que esteja funcionando.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Os pares se anunciam na cadeia em vez de em um servidor, então esta lista é a mesma para todos e ninguém está em posição de editá-la. Um par inscrito pelo overlay mostra onde pode ser encontrado hoje, o que muda todos os dias; um retransmissor mostra o seu endereço só enquanto está online, porque ele nunca está na cadeia.</translation>
     </message>
 </context>
 <context>
@@ -3219,7 +3223,7 @@ ID transação: %1</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>Sua inscrição diz quem você é, e não onde você roda. Os pares alcançam você pelo overlay, encontrando-o em pontos que os dois lados calculam a partir do registro. É o que este cliente ativa por padrão.</translation>
+        <translation type="vanished">Sua inscrição diz quem você é, e não onde você roda. Os pares alcançam você pelo overlay, encontrando-o em pontos que os dois lados calculam a partir do registro. É o que este cliente ativa por padrão.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3379,11 +3383,27 @@ ID transação: %1</translation>
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Como retransmissor — anunciar o meu endereço enquanto funciono</translation>
+        <translation type="vanished">Como retransmissor — anunciar o meu endereço enquanto funciono</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Os caminhos de outros passam por este computador. A sua inscrição diz que é um retransmissor, não onde: enquanto o seu nó funciona, ele diz à rede o seu endereço atual, assinado com a sua chave, e de novo sempre que muda, sem nenhuma transação. Nada sobre onde está vai para a cadeia, e a rede esquece o endereço nas três horas seguintes à parada do seu nó. Os outros precisam conseguir alcançar este computador na porta %1 (TCP) e %2 (UDP).</translation>
+        <translation type="vanished">Os caminhos de outros passam por este computador. A sua inscrição diz que é um retransmissor, não onde: enquanto o seu nó funciona, ele diz à rede o seu endereço atual, assinado com a sua chave, e de novo sempre que muda, sem nenhuma transação. Nada sobre onde está vai para a cadeia, e a rede esquece o endereço nas três horas seguintes à parada do seu nó. Os outros precisam conseguir alcançar este computador na porta %1 (TCP) e %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>A sua inscrição diz quem é e não onde funciona. Os pares chegam até si pelo overlay e encontram-no em pontos que ambos os lados calculam a partir do registro, e que mudam todos os dias; a Descoberta mostra os de hoje. A sua inscrição também nomeia um retransmissor onde pode ser encontrado enquanto ela durar, e cada renovação nomeia um novo. É isto que este cliente ativa por padrão.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Levar caminhos de outros como retransmissor</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Os caminhos precisam chegar a um retransmissor, então enquanto o seu nó funciona ele diz à rede o endereço atual deste computador, assinado com a sua chave, e de novo sempre que muda, sem nenhuma transação. Nunca é escrito na cadeia, e a rede esquece-o nas três horas seguintes à parada do seu nó. Os outros precisam conseguir alcançar este computador na porta %1 (TCP) e %2 (UDP). Um retransmissor partilha a sua ligação à internet com uma segunda chave, a partir da página Servidor.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Enquanto o seu nó funciona, ele diz à rede o endereço atual deste computador, assinado com a sua chave, para que os caminhos o alcancem, e de novo sempre que muda. Nunca é escrito na cadeia, e a rede esquece-o nas três horas seguintes à parada do seu nó. Os outros precisam conseguir alcançar este computador na porta %1 (TCP) e %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4242,6 +4262,20 @@ the last three hours: it is not running, or not reachable from here.</source>
     <message>
         <source>relay, offline</source>
         <translation>retransmissor, offline</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Inscrito pelo overlay. Hoje pode ser encontrado nestes retransmissores,
+calculados a partir do registro; mudam todos os dias:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>A sua inscrição também nomeia este, enquanto a inscrição durar:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>encontra-se em %1</translation>
     </message>
 </context>
 <context>

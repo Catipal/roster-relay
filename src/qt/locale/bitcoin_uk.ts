@@ -1574,7 +1574,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Піри оголошують про себе в ланцюжку, а не на сервері, тому цей список у всіх однаковий і ніхто не може його змінити. Ретранслятори повідомляють, де вони, поки працюють, тому їхні адреси ніколи не потрапляють у ланцюжок і видно їх тут лише поки вони в мережі.</translation>
+        <translation type="vanished">Піри оголошують про себе в ланцюжку, а не на сервері, тому цей список у всіх однаковий і ніхто не може його змінити. Ретранслятори повідомляють, де вони, поки працюють, тому їхні адреси ніколи не потрапляють у ланцюжок і видно їх тут лише поки вони в мережі.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1583,6 +1583,10 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Ретранслятори, які повідомили, де вони, за останні три години. Інші теж у реєстрі: запис у реєстрі каже, що пір існує, а не що він працює.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Піри оголошують про себе в ланцюжку, а не на сервері, тому цей список у всіх однаковий і ніхто не може його змінити. Пір, внесений до реєстру через оверлей, показує, де його можна зустріти сьогодні, а це змінюється щодня; ретранслятор показує свою адресу лише поки він у мережі, бо її ніколи немає в ланцюжку.</translation>
     </message>
 </context>
 <context>
@@ -3226,7 +3230,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>Ваш запис каже, хто ви, а не де ви працюєте. Піри зв&apos;язуються з вами через оверлей, зустрічаючи вас у точках, які обидві сторони обчислюють із реєстру. Саме це клієнт вмикає за замовчуванням.</translation>
+        <translation type="vanished">Ваш запис каже, хто ви, а не де ви працюєте. Піри зв&apos;язуються з вами через оверлей, зустрічаючи вас у точках, які обидві сторони обчислюють із реєстру. Саме це клієнт вмикає за замовчуванням.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3386,11 +3390,27 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Як ретранслятор — повідомляти мою адресу, поки я працюю</translation>
+        <translation type="vanished">Як ретранслятор — повідомляти мою адресу, поки я працюю</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Шляхи інших проходять через цей комп&apos;ютер. Ваш запис каже, що ви ретранслятор, але не де: поки ваш вузол працює, він повідомляє мережі свою поточну адресу, підписану своїм ключем, і знову щоразу, коли вона змінюється, без жодної транзакції. Нічого про те, де ви, не потрапляє в ланцюжок, а мережа забуває адресу протягом трьох годин після зупинки вашого вузла. Інші повинні мати змогу дістатися до цього комп&apos;ютера через порт %1 (TCP) і %2 (UDP).</translation>
+        <translation type="vanished">Шляхи інших проходять через цей комп&apos;ютер. Ваш запис каже, що ви ретранслятор, але не де: поки ваш вузол працює, він повідомляє мережі свою поточну адресу, підписану своїм ключем, і знову щоразу, коли вона змінюється, без жодної транзакції. Нічого про те, де ви, не потрапляє в ланцюжок, а мережа забуває адресу протягом трьох годин після зупинки вашого вузла. Інші повинні мати змогу дістатися до цього комп&apos;ютера через порт %1 (TCP) і %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>Ваш запис каже, хто ви, а не де ви працюєте. Піри дістаються до вас через оверлей і зустрічають вас у точках, які обидві сторони обчислюють з реєстру і які змінюються щодня; Огляд показує сьогоднішні. Ваш запис також називає один ретранслятор, де вас можна зустріти, поки він чинний, і кожне продовження називає новий. Саме це цей клієнт вмикає за замовчуванням.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Передавати шляхи інших як ретранслятор</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Шляхи мають доходити до ретранслятора, тому, поки ваш вузол працює, він повідомляє мережі поточну адресу цього комп&apos;ютера, підписану своїм ключем, і знову щоразу, коли вона змінюється, без жодної транзакції. Вона ніколи не записується в ланцюжок, а мережа забуває її протягом трьох годин після зупинки вашого вузла. Інші повинні мати змогу дістатися до цього комп&apos;ютера через порт %1 (TCP) і %2 (UDP). Ретранслятор ділиться своїм підключенням до інтернету під другим ключем, зі сторінки Сервер.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Поки ваш вузол працює, він повідомляє мережі поточну адресу цього комп&apos;ютера, підписану своїм ключем, щоб до нього доходили шляхи, і знову щоразу, коли вона змінюється. Вона ніколи не записується в ланцюжок, а мережа забуває її протягом трьох годин після зупинки вашого вузла. Інші повинні мати змогу дістатися до цього комп&apos;ютера через порт %1 (TCP) і %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4255,6 +4275,20 @@ the last three hours: it is not running, or not reachable from here.</source>
     <message>
         <source>relay, offline</source>
         <translation>ретранслятор, не в мережі</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Внесено до реєстру через оверлей. Сьогодні його можна зустріти біля цих ретрансляторів,
+обчислених з реєстру; вони змінюються щодня:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>Його запис також називає цей, поки запис чинний:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>зустріч біля %1</translation>
     </message>
 </context>
 <context>

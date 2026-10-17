@@ -187,7 +187,7 @@ class GatewayInterfaceTest(BitcoinTestFramework):
         self.sync_all()
         self.mine_to(2 * EPOCH + 10)
         for n in (5, 6):
-            self.wait_until(lambda: self.nodes[n].getgatewayinfo()["registrations"] == 3, timeout=180)
+            self.wait_until(lambda: self.nodes[n].getgatewayinfo()["registrations"] >= 3, timeout=180)
         self.wait_until(lambda: self.visitor()["allowed"], timeout=90)
         self.wait_until(lambda: self.open_gateways() == sorted([self.key(5), self.key(6)]), timeout=300)
         info = self.visitor()["interface"]

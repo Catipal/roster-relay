@@ -1568,7 +1568,7 @@ Du får vist en gendannelsesnøgle én gang. Skriv den ned: det er den eneste m�
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Peers annoncerer sig på kæden i stedet for hos en server, så denne liste er den samme for alle, og ingen kan redigere den. Relæer fortæller, hvor de er, mens de kører, så deres adresser kommer aldrig på kæden og vises her kun, mens de er online.</translation>
+        <translation type="vanished">Peers annoncerer sig på kæden i stedet for hos en server, så denne liste er den samme for alle, og ingen kan redigere den. Relæer fortæller, hvor de er, mens de kører, så deres adresser kommer aldrig på kæden og vises her kun, mens de er online.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1577,6 +1577,10 @@ Du får vist en gendannelsesnøgle én gang. Skriv den ned: det er den eneste m�
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Relæer, der har sagt, hvor de er, inden for de sidste tre timer. Andre er også opført: at være opført siger, at en peer findes, ikke at den kører.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Peers annoncerer sig på kæden i stedet for hos en server, så denne liste er den samme for alle, og ingen kan redigere den. En peer, der er opført gennem overlay-netværket, viser, hvor den kan mødes i dag, hvilket skifter hver dag; et relæ viser kun sin adresse, mens det er online, da den aldrig er på kæden.</translation>
     </message>
 </context>
 <context>
@@ -3217,7 +3221,7 @@ Du får vist en gendannelsesnøgle én gang. Skriv den ned: det er den eneste m�
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>Din opføring siger, hvem du er, og ikke hvor du kører. Peers når dig i stedet over overlay-netværket og møder dig på punkter, som begge sider beregner ud fra registeret. Det er det, denne klient slår til som standard.</translation>
+        <translation type="vanished">Din opføring siger, hvem du er, og ikke hvor du kører. Peers når dig i stedet over overlay-netværket og møder dig på punkter, som begge sider beregner ud fra registeret. Det er det, denne klient slår til som standard.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3377,11 +3381,27 @@ Du får vist en gendannelsesnøgle én gang. Skriv den ned: det er den eneste m�
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Som relæ — annoncér min adresse, mens jeg kører</translation>
+        <translation type="vanished">Som relæ — annoncér min adresse, mens jeg kører</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Andres stier går gennem denne computer. Din opførelse siger, at du er et relæ, men ikke hvor: mens din node kører, fortæller den netværket sin nuværende adresse, signeret med sin nøgle, og igen hver gang den ændrer sig, uden nogen transaktion. Intet om, hvor du er, kommer på kæden, og netværket glemmer adressen inden for tre timer efter, at din node stopper. Andre skal kunne nå denne computer på port %1 (TCP) og %2 (UDP).</translation>
+        <translation type="vanished">Andres stier går gennem denne computer. Din opførelse siger, at du er et relæ, men ikke hvor: mens din node kører, fortæller den netværket sin nuværende adresse, signeret med sin nøgle, og igen hver gang den ændrer sig, uden nogen transaktion. Intet om, hvor du er, kommer på kæden, og netværket glemmer adressen inden for tre timer efter, at din node stopper. Andre skal kunne nå denne computer på port %1 (TCP) og %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>Din opførelse siger, hvem du er, og ikke hvor du kører. Peers når dig gennem overlay-netværket og mødes med dig på punkter, som begge sider udregner fra registeret, og som skifter hver dag; Udforsk viser dagens. Din opførelse nævner også ét relæ, hvor du kan mødes, så længe den gælder, og hver fornyelse nævner et nyt. Det er det, denne klient slår til som standard.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Bær andres stier som relæ</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Stier skal kunne nå et relæ, så mens din node kører, fortæller den netværket denne computers nuværende adresse, signeret med sin nøgle, og igen hver gang den ændrer sig, uden nogen transaktion. Den skrives aldrig på kæden, og netværket glemmer den inden for tre timer efter, at din node stopper. Andre skal kunne nå denne computer på port %1 (TCP) og %2 (UDP). Et relæ deler sin internetforbindelse under en anden nøgle, fra siden Server.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Mens din node kører, fortæller den netværket denne computers nuværende adresse, signeret med sin nøgle, så stier kan nå den, og igen hver gang den ændrer sig. Den skrives aldrig på kæden, og netværket glemmer den inden for tre timer efter, at din node stopper. Andre skal kunne nå denne computer på port %1 (TCP) og %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4240,6 +4260,20 @@ inden for de sidste tre timer: det kører ikke, eller kan ikke nås herfra.</tra
     <message>
         <source>relay, offline</source>
         <translation>relæ, offline</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Opført gennem overlay-netværket. Den kan mødes i dag ved disse relæer,
+udregnet fra registeret; de skifter hver dag:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>Dens opførelse nævner også dette, så længe opførelsen gælder:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>mødes ved %1</translation>
     </message>
 </context>
 <context>

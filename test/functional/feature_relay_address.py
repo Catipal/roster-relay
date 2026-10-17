@@ -25,6 +25,7 @@ announcing 127.0.0.1 (-relayaddress), and node 6, listed with no address and
 
 import sys
 
+from test_framework.authproxy import JSONRPCException
 from test_framework.test_framework import BitcoinTestFramework, SkipTest
 from test_framework.util import assert_equal, p2p_port
 
@@ -114,13 +115,19 @@ class RelayAddressTest(BitcoinTestFramework):
         assert_equal(self.nodes[2].getrosterinfo()["announcing"]["endpoints"], moved)
 
         self.log.info("paths run through it at its new address, the only one it answers at")
-        self.wait_until(lambda: len(self.nodes[6].getmeetinginfo()["registrations"]) == 3, timeout=180)
-        for _ in range(8):
+        # A registration node 6 made through relay 2 before it moved died with
+        # it, and node 6 notices at its next refresh (MEET_REFRESH, 4 minutes):
+        # until then a visitor may find no answer there. What is tested here is
+        # that paths reach relay 2 where it is now.
+        def met_through_moved_relay():
             for visitor in (0, 1, 3, 4, 5):
-                assert_equal(self.nodes[visitor].meet(self.keys[6], 3)["hops"], 3)
-            if self.nodes[2].getoverlayinfo()["carried"]["today_bytes"] > 0:
-                break
-        assert self.nodes[2].getoverlayinfo()["carried"]["today_bytes"] > 0
+                try:
+                    assert_equal(self.nodes[visitor].meet(self.keys[6], 3)["hops"], 3)
+                except JSONRPCException as e:
+                    self.log.info("  not yet: %s", e.error["message"])
+                    return False
+            return self.nodes[2].getoverlayinfo()["carried"]["today_bytes"] > 0
+        self.wait_until(met_through_moved_relay, timeout=900)
 
 if __name__ == '__main__':
     RelayAddressTest().main()

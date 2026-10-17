@@ -1560,7 +1560,7 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>A partnerek a láncon jelentik be magukat, nem egy kiszolgálón, így ez a lista mindenkinél ugyanaz, és senki sem szerkesztheti. A továbbítók addig mondják meg, hol vannak, amíg futnak, így a címük sosem kerül a láncra, és itt csak addig látszik, amíg elérhetők.</translation>
+        <translation type="vanished">A partnerek a láncon jelentik be magukat, nem egy kiszolgálón, így ez a lista mindenkinél ugyanaz, és senki sem szerkesztheti. A továbbítók addig mondják meg, hol vannak, amíg futnak, így a címük sosem kerül a láncra, és itt csak addig látszik, amíg elérhetők.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1569,6 +1569,10 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Továbbítók, amelyek az elmúlt három órában megmondták, hol vannak. A többiek is be vannak jegyezve: a bejegyzés azt mondja, hogy egy partner létezik, nem azt, hogy fut.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>A partnerek a láncon jelentik be magukat, nem egy kiszolgálón, így ez a lista mindenkinél ugyanaz, és senki sem szerkesztheti. Az átfedő hálózaton át bejegyzett partner azt mutatja, hol találkozhatunk vele ma, ami naponta változik; egy továbbító csak akkor mutatja a címét, amíg elérhető, mert az sosem kerül a láncra.</translation>
     </message>
 </context>
 <context>
@@ -3206,7 +3210,7 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>A bejegyzése azt mondja meg, ki Ön, nem azt, hol fut. A partnerek ehelyett az átfedő hálózaton érik el, olyan pontokon találkozva Önnel, amelyeket mindkét fél a jegyzékből számít ki. Ez a kliens alapértelmezésben ezt kapcsolja be.</translation>
+        <translation type="vanished">A bejegyzése azt mondja meg, ki Ön, nem azt, hol fut. A partnerek ehelyett az átfedő hálózaton érik el, olyan pontokon találkozva Önnel, amelyeket mindkét fél a jegyzékből számít ki. Ez a kliens alapértelmezésben ezt kapcsolja be.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3366,11 +3370,27 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Továbbítóként — a címem közzététele, amíg futok</translation>
+        <translation type="vanished">Továbbítóként — a címem közzététele, amíg futok</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Mások útvonalai ezen a számítógépen haladnak át. Az Ön bejegyzése azt mondja, hogy Ön továbbító, de azt nem, hogy hol: amíg a csomópontja fut, közli a hálózattal a jelenlegi címét a kulcsával aláírva, és újra, valahányszor megváltozik, tranzakció nélkül. Semmi sem kerül a láncra arról, hol van Ön, és a hálózat a csomópont leállása után három órán belül elfelejti a címet. Másoknak el kell tudniuk érni ezt a számítógépet a(z) %1 (TCP) és %2 (UDP) porton.</translation>
+        <translation type="vanished">Mások útvonalai ezen a számítógépen haladnak át. Az Ön bejegyzése azt mondja, hogy Ön továbbító, de azt nem, hogy hol: amíg a csomópontja fut, közli a hálózattal a jelenlegi címét a kulcsával aláírva, és újra, valahányszor megváltozik, tranzakció nélkül. Semmi sem kerül a láncra arról, hol van Ön, és a hálózat a csomópont leállása után három órán belül elfelejti a címet. Másoknak el kell tudniuk érni ezt a számítógépet a(z) %1 (TCP) és %2 (UDP) porton.</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>Az Ön bejegyzése azt mondja meg, ki Ön, és nem azt, hol fut. A partnerek az átfedő hálózaton át érik el Önt, és olyan pontokon találkoznak Önnel, amelyeket mindkét fél a jegyzékből számol ki, és amelyek naponta változnak; a Felfedezés a maiakat mutatja. Bejegyzése egy továbbítót is megnevez, ahol a bejegyzés érvényessége alatt találkozni lehet Önnel, és minden megújítás újat nevez meg. Ezt kapcsolja be ez a kliens alapértelmezésként.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Mások útvonalainak vitele továbbítóként</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Az útvonalaknak el kell érniük a továbbítót, ezért amíg a csomópontja fut, közli a hálózattal ennek a számítógépnek a jelenlegi címét a kulcsával aláírva, és újra, valahányszor megváltozik, tranzakció nélkül. Sosem kerül a láncra, és a hálózat a csomópont leállása után három órán belül elfelejti. Másoknak el kell tudniuk érni ezt a számítógépet a(z) %1 (TCP) és %2 (UDP) porton. A továbbító egy második kulccsal osztja meg az internetkapcsolatát, a Kiszolgáló oldalról.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Amíg a csomópontja fut, közli a hálózattal ennek a számítógépnek a jelenlegi címét a kulcsával aláírva, hogy az útvonalak elérjék, és újra, valahányszor megváltozik. Sosem kerül a láncra, és a hálózat a csomópont leállása után három órán belül elfelejti. Másoknak el kell tudniuk érni ezt a számítógépet a(z) %1 (TCP) és %2 (UDP) porton.</translation>
     </message>
 </context>
 <context>
@@ -4223,6 +4243,20 @@ the last three hours: it is not running, or not reachable from here.</source>
     <message>
         <source>relay, offline</source>
         <translation>továbbító, nem elérhető</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Az átfedő hálózaton át bejegyezve. Ma ezeknél a továbbítóknál lehet vele találkozni,
+a jegyzékből számolva; naponta változnak:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>Bejegyzése ezt is megnevezi, amíg a bejegyzés érvényes:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>találkozás itt: %1</translation>
     </message>
 </context>
 <context>

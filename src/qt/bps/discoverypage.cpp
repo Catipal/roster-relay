@@ -125,9 +125,9 @@ DiscoveryPage::DiscoveryPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_
 
     QLabel* subtitle = new QLabel(
         tr("Peers announce themselves on the chain rather than to a server, so this list "
-           "is the same for everyone and nobody is in a position to edit it. Relays say "
-           "where they are while they run, so their addresses never go on the chain and "
-           "show here only while they are online."),
+           "is the same for everyone and nobody is in a position to edit it. A peer listed "
+           "through the overlay shows where it can be met today, which changes every day; "
+           "a relay shows its address only while it is online, since it is never on the chain."),
         this);
     subtitle->setWordWrap(true);
     subtitle->setEnabled(false);

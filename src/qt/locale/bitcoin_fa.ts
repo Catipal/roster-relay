@@ -1563,7 +1563,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>همتاها خود را روی زنجیره اعلام می‌کنند نه روی یک سرور، بنابراین این فهرست برای همه یکسان است و هیچ‌کس نمی‌تواند آن را ویرایش کند. رله‌ها تا وقتی کار می‌کنند می‌گویند کجا هستند، پس نشانی‌هایشان هرگز روی زنجیره نمی‌رود و فقط تا وقتی آنلاین‌اند اینجا نشان داده می‌شود.</translation>
+        <translation type="vanished">همتاها خود را روی زنجیره اعلام می‌کنند نه روی یک سرور، بنابراین این فهرست برای همه یکسان است و هیچ‌کس نمی‌تواند آن را ویرایش کند. رله‌ها تا وقتی کار می‌کنند می‌گویند کجا هستند، پس نشانی‌هایشان هرگز روی زنجیره نمی‌رود و فقط تا وقتی آنلاین‌اند اینجا نشان داده می‌شود.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1572,6 +1572,10 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>رله‌هایی که در سه ساعت گذشته گفته‌اند کجا هستند. دیگران هم ثبت شده‌اند: ثبت‌شدن یعنی همتایی وجود دارد، نه اینکه کار می‌کند.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>همتاها خود را روی زنجیره اعلام می‌کنند نه روی یک سرور، بنابراین این فهرست برای همه یکسان است و هیچ‌کس نمی‌تواند آن را ویرایش کند. همتایی که از طریق شبکه روکش ثبت شده نشان می‌دهد امروز کجا می‌توان با آن دیدار کرد، که هر روز تغییر می‌کند؛ رله نشانی‌اش را فقط وقتی آنلاین است نشان می‌دهد، چون هرگز روی زنجیره نیست.</translation>
     </message>
 </context>
 <context>
@@ -3210,7 +3214,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>ثبت شما می‌گوید شما چه کسی هستید، نه اینکه کجا اجرا می‌شوید. همتاها به جای آن از طریق شبکه روکش به شما می‌رسند و در نقاطی که هر دو طرف از دفتر محاسبه می‌کنند با شما ملاقات می‌کنند. این همان چیزی است که این برنامه به طور پیش‌فرض روشن می‌کند.</translation>
+        <translation type="vanished">ثبت شما می‌گوید شما چه کسی هستید، نه اینکه کجا اجرا می‌شوید. همتاها به جای آن از طریق شبکه روکش به شما می‌رسند و در نقاطی که هر دو طرف از دفتر محاسبه می‌کنند با شما ملاقات می‌کنند. این همان چیزی است که این برنامه به طور پیش‌فرض روشن می‌کند.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3370,11 +3374,27 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>به‌عنوان رله — تا وقتی کار می‌کنم نشانی‌ام را اعلام کن</translation>
+        <translation type="vanished">به‌عنوان رله — تا وقتی کار می‌کنم نشانی‌ام را اعلام کن</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>مسیرهای دیگران از این رایانه می‌گذرد. ثبت شما می‌گوید که رله هستید، نه اینکه کجا: تا وقتی گره شما کار می‌کند، نشانی فعلی‌اش را با امضای کلیدش به شبکه می‌گوید، و هر بار که تغییر کند دوباره، بدون هیچ تراکنشی. چیزی دربارهٔ جای شما روی زنجیره نمی‌رود، و شبکه ظرف سه ساعت پس از توقف گره شما نشانی را فراموش می‌کند. دیگران باید بتوانند به این رایانه روی درگاه %1 (TCP) و %2 (UDP) برسند.</translation>
+        <translation type="vanished">مسیرهای دیگران از این رایانه می‌گذرد. ثبت شما می‌گوید که رله هستید، نه اینکه کجا: تا وقتی گره شما کار می‌کند، نشانی فعلی‌اش را با امضای کلیدش به شبکه می‌گوید، و هر بار که تغییر کند دوباره، بدون هیچ تراکنشی. چیزی دربارهٔ جای شما روی زنجیره نمی‌رود، و شبکه ظرف سه ساعت پس از توقف گره شما نشانی را فراموش می‌کند. دیگران باید بتوانند به این رایانه روی درگاه %1 (TCP) و %2 (UDP) برسند.</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>ثبت شما می‌گوید چه کسی هستید، نه کجا کار می‌کنید. همتاها از طریق شبکه روکش به شما می‌رسند و در نقاطی با شما دیدار می‌کنند که هر دو طرف از دفتر حساب می‌کنند و هر روز تغییر می‌کنند؛ کاوش نقاط امروز را نشان می‌دهد. ثبت شما همچنین یک رله را نام می‌برد که تا وقتی ثبت برقرار است می‌توان در آن با شما دیدار کرد، و هر تمدید رله تازه‌ای را نام می‌برد. این همان چیزی است که این کارخواه به‌طور پیش‌فرض روشن می‌کند.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>حمل مسیرهای دیگران به‌عنوان رله</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">مسیرها باید به رله برسند، پس تا وقتی گره شما کار می‌کند، نشانی فعلی این رایانه را با امضای کلیدش به شبکه می‌گوید، و هر بار که تغییر کند دوباره، بدون هیچ تراکنشی. هرگز روی زنجیره نوشته نمی‌شود، و شبکه ظرف سه ساعت پس از توقف گره شما آن را فراموش می‌کند. دیگران باید بتوانند به این رایانه روی درگاه %1 (TCP) و %2 (UDP) برسند. رله اتصال اینترنتش را با کلید دوم، از صفحه سرور، به اشتراک می‌گذارد.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>تا وقتی گره شما کار می‌کند، نشانی فعلی این رایانه را با امضای کلیدش به شبکه می‌گوید تا مسیرها به آن برسند، و هر بار که تغییر کند دوباره. هرگز روی زنجیره نوشته نمی‌شود، و شبکه ظرف سه ساعت پس از توقف گره شما آن را فراموش می‌کند. دیگران باید بتوانند به این رایانه روی درگاه %1 (TCP) و %2 (UDP) برسند.</translation>
     </message>
 </context>
 <context>
@@ -4227,6 +4247,20 @@ the last three hours: it is not running, or not reachable from here.</source>
     <message>
         <source>relay, offline</source>
         <translation>رله، آفلاین</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>ثبت‌شده از طریق شبکه روکش. امروز می‌توان در این رله‌ها با آن دیدار کرد،
+که از دفتر حساب شده‌اند؛ هر روز تغییر می‌کنند:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>ثبت آن همچنین این یکی را نام می‌برد، تا وقتی ثبت برقرار است:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>دیدار در %1</translation>
     </message>
 </context>
 <context>

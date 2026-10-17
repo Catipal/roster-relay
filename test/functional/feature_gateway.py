@@ -177,7 +177,7 @@ class GatewayTest(BitcoinTestFramework):
         self.mine_to(2 * EPOCH + 10)
         for n in (6, 7):
             self.wait_until(lambda: self.nodes[n].getgatewayinfo()["listed"], timeout=90)
-            self.wait_until(lambda: self.nodes[n].getgatewayinfo()["registrations"] == 3, timeout=180)
+            self.wait_until(lambda: self.nodes[n].getgatewayinfo()["registrations"] >= 3, timeout=180)
             info = self.nodes[n].getgatewayinfo()
             assert_equal(info["state"], "open")
             assert_equal(info["policy"], str(self.http_port))
@@ -234,7 +234,7 @@ class GatewayTest(BitcoinTestFramework):
         self.restart_node(7, self.gateway_args)
         self.connect_nodes(6, 7)
         self.connect_nodes(7, 8)
-        self.wait_until(lambda: self.nodes[7].getgatewayinfo()["registrations"] == 3, timeout=240)
+        self.wait_until(lambda: self.nodes[7].getgatewayinfo()["registrations"] >= 3, timeout=240)
         self.wait_until(lambda: self.open_gateways() == sorted([self.key(6), self.key(7)]), timeout=300)
         assert_equal(self.fetch("/small"), b"hello from the internet\n")
 
@@ -242,7 +242,7 @@ class GatewayTest(BitcoinTestFramework):
         self.restart_node(6, self.gateway_args + ["-gatewaybandwidth=1"])
         self.connect_nodes(5, 6)
         self.connect_nodes(6, 7)
-        self.wait_until(lambda: self.nodes[6].getgatewayinfo()["registrations"] == 3, timeout=240)
+        self.wait_until(lambda: self.nodes[6].getgatewayinfo()["registrations"] >= 3, timeout=240)
         self.wait_until(lambda: self.open_gateways() == sorted([self.key(6), self.key(7)]), timeout=300)
         # Large answers until node 6's mebibyte is gone.
         deadline = time.time() + 300

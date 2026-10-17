@@ -1574,7 +1574,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Пирови се најављују у ланцу уместо на серверу, па је овај списак исти за све и нико не може да га мења. Релеји кажу где су док раде, па њихове адресе никад не иду у ланац и овде се приказују само док су на мрежи.</translation>
+        <translation type="vanished">Пирови се најављују у ланцу уместо на серверу, па је овај списак исти за све и нико не може да га мења. Релеји кажу где су док раде, па њихове адресе никад не иду у ланац и овде се приказују само док су на мрежи.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1583,6 +1583,10 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Релеји који су у последња три сата рекли где су. Остали су такође уписани: упис каже да пир постоји, а не да ради.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Пирови се најављују у ланцу уместо на серверу, па је овај списак исти за све и нико не може да га мења. Пир уписан преко прекривне мреже показује где се данас може срести, што се мења сваког дана; релеј показује своју адресу само док је на мрежи, јер она никад није у ланцу.</translation>
     </message>
 </context>
 <context>
@@ -3226,7 +3230,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>Ваш упис каже ко сте, а не где радите. Пирови вас уместо тога досежу преко прекривне мреже, састајући се са вама на тачкама које обе стране израчунавају из регистра. То овај клијент подразумевано укључује.</translation>
+        <translation type="vanished">Ваш упис каже ко сте, а не где радите. Пирови вас уместо тога досежу преко прекривне мреже, састајући се са вама на тачкама које обе стране израчунавају из регистра. То овај клијент подразумевано укључује.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3386,11 +3390,27 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Као релеј — објављуј моју адресу док радим</translation>
+        <translation type="vanished">Као релеј — објављуј моју адресу док радим</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Путање других пролазе кроз овај рачунар. Ваш упис каже да сте релеј, али не и где: док ваш чвор ради, говори мрежи своју тренутну адресу потписану својим кључем, и поново сваки пут када се промени, без икакве трансакције. Ништа о томе где сте не иде у ланац, а мрежа заборавља адресу у року од три сата након што се ваш чвор заустави. Други морају моћи да дођу до овог рачунара на порту %1 (TCP) и %2 (UDP).</translation>
+        <translation type="vanished">Путање других пролазе кроз овај рачунар. Ваш упис каже да сте релеј, али не и где: док ваш чвор ради, говори мрежи своју тренутну адресу потписану својим кључем, и поново сваки пут када се промени, без икакве трансакције. Ништа о томе где сте не иде у ланац, а мрежа заборавља адресу у року од три сата након што се ваш чвор заустави. Други морају моћи да дођу до овог рачунара на порту %1 (TCP) и %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>Ваш упис каже ко сте, а не где радите. Пирови вас достижу преко прекривне мреже и срећу вас у тачкама које обе стране израчунају из регистра и које се мењају сваког дана; Откривање приказује данашње. Ваш упис такође именује један релеј где вас је могуће срести док важи, а свака обнова именује нови. То овај клијент подразумевано укључује.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Преноси путање других као релеј</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Путање морају да стигну до релеја, па док ваш чвор ради, говори мрежи тренутну адресу овог рачунара потписану својим кључем, и поново сваки пут када се промени, без икакве трансакције. Никад се не уписује у ланац, а мрежа је заборавља у року од три сата након што се ваш чвор заустави. Други морају моћи да дођу до овог рачунара на порту %1 (TCP) и %2 (UDP). Релеј дели своју интернет везу под другим кључем, са странице Сервер.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Док ваш чвор ради, говори мрежи тренутну адресу овог рачунара потписану својим кључем, да би путање могле да стигну до њега, и поново сваки пут када се промени. Никад се не уписује у ланац, а мрежа је заборавља у року од три сата након што се ваш чвор заустави. Други морају моћи да дођу до овог рачунара на порту %1 (TCP) и %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4255,6 +4275,20 @@ the last three hours: it is not running, or not reachable from here.</source>
     <message>
         <source>relay, offline</source>
         <translation>релеј, ван мреже</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Уписан преко прекривне мреже. Данас се може срести код ових релеја,
+израчунатих из регистра; мењају се сваког дана:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>Његов упис такође именује овај, док упис важи:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>сусрет код %1</translation>
     </message>
 </context>
 <context>

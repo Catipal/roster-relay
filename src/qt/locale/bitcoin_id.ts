@@ -1562,7 +1562,7 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Peer mengumumkan diri di rantai, bukan di server, jadi daftar ini sama bagi semua orang dan tidak ada yang dapat mengubahnya. Relai memberi tahu di mana mereka berada selama berjalan, sehingga alamat mereka tidak pernah masuk ke rantai dan hanya tampil di sini selama mereka daring.</translation>
+        <translation type="vanished">Peer mengumumkan diri di rantai, bukan di server, jadi daftar ini sama bagi semua orang dan tidak ada yang dapat mengubahnya. Relai memberi tahu di mana mereka berada selama berjalan, sehingga alamat mereka tidak pernah masuk ke rantai dan hanya tampil di sini selama mereka daring.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1571,6 +1571,10 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Relai yang memberi tahu di mana mereka berada dalam tiga jam terakhir. Yang lain juga tercatat: tercatat berarti sebuah peer ada, bukan berarti sedang berjalan.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Peer mengumumkan diri di rantai, bukan di server, jadi daftar ini sama bagi semua orang dan tidak ada yang dapat mengubahnya. Peer yang tercatat melalui jaringan overlay menunjukkan di mana ia dapat ditemui hari ini, yang berubah setiap hari; relai menunjukkan alamatnya hanya selama ia daring, karena alamat itu tidak pernah ada di rantai.</translation>
     </message>
 </context>
 <context>
@@ -3208,7 +3212,7 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>Pencatatan Anda menyatakan siapa Anda, bukan di mana Anda berjalan. Peer menjangkau Anda melalui jaringan overlay, menemui Anda di titik yang dihitung kedua pihak dari register. Inilah yang dinyalakan klien ini secara bawaan.</translation>
+        <translation type="vanished">Pencatatan Anda menyatakan siapa Anda, bukan di mana Anda berjalan. Peer menjangkau Anda melalui jaringan overlay, menemui Anda di titik yang dihitung kedua pihak dari register. Inilah yang dinyalakan klien ini secara bawaan.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3368,11 +3372,27 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Sebagai relai — umumkan alamat saya selama saya berjalan</translation>
+        <translation type="vanished">Sebagai relai — umumkan alamat saya selama saya berjalan</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Jalur orang lain melewati komputer ini. Catatan Anda menyatakan bahwa Anda adalah relai, bukan di mana: selama node Anda berjalan, node itu memberi tahu jaringan alamatnya saat ini, ditandatangani dengan kuncinya, dan sekali lagi setiap kali berubah, tanpa transaksi apa pun. Tidak ada apa pun tentang lokasi Anda yang masuk ke rantai, dan jaringan melupakan alamat itu dalam tiga jam setelah node Anda berhenti. Orang lain harus dapat menjangkau komputer ini di port %1 (TCP) dan %2 (UDP).</translation>
+        <translation type="vanished">Jalur orang lain melewati komputer ini. Catatan Anda menyatakan bahwa Anda adalah relai, bukan di mana: selama node Anda berjalan, node itu memberi tahu jaringan alamatnya saat ini, ditandatangani dengan kuncinya, dan sekali lagi setiap kali berubah, tanpa transaksi apa pun. Tidak ada apa pun tentang lokasi Anda yang masuk ke rantai, dan jaringan melupakan alamat itu dalam tiga jam setelah node Anda berhenti. Orang lain harus dapat menjangkau komputer ini di port %1 (TCP) dan %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>Catatan Anda menyatakan siapa Anda, bukan di mana Anda berjalan. Peer menjangkau Anda melalui jaringan overlay dan menemui Anda di titik-titik yang dihitung kedua pihak dari register, yang berubah setiap hari; Jelajahi menampilkan titik hari ini. Catatan Anda juga menyebut satu relai tempat Anda dapat ditemui selama catatan berlaku, dan setiap pembaruan menyebut relai baru. Inilah yang diaktifkan klien ini secara bawaan.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Bawa jalur orang lain sebagai relai</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Jalur harus dapat menjangkau relai, jadi selama node Anda berjalan, node itu memberi tahu jaringan alamat komputer ini saat ini, ditandatangani dengan kuncinya, dan sekali lagi setiap kali berubah, tanpa transaksi apa pun. Alamat itu tidak pernah ditulis ke rantai, dan jaringan melupakannya dalam tiga jam setelah node Anda berhenti. Orang lain harus dapat menjangkau komputer ini di port %1 (TCP) dan %2 (UDP). Relai berbagi koneksi internetnya dengan kunci kedua, dari halaman Server.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Selama node Anda berjalan, node itu memberi tahu jaringan alamat komputer ini saat ini, ditandatangani dengan kuncinya, agar jalur dapat menjangkaunya, dan sekali lagi setiap kali berubah. Alamat itu tidak pernah ditulis ke rantai, dan jaringan melupakannya dalam tiga jam setelah node Anda berhenti. Orang lain harus dapat menjangkau komputer ini di port %1 (TCP) dan %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4227,6 +4247,20 @@ tiga jam terakhir: ia tidak berjalan, atau tidak dapat dijangkau dari sini.</tra
     <message>
         <source>relay, offline</source>
         <translation>relai, luring</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Tercatat melalui jaringan overlay. Hari ini ia dapat ditemui di relai-relai ini,
+dihitung dari register; relai ini berubah setiap hari:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>Catatannya juga menyebut relai ini, selama catatan berlaku:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>ditemui di %1</translation>
     </message>
 </context>
 <context>

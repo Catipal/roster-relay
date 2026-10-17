@@ -1568,7 +1568,7 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Los pares se anuncian en la cadena en lugar de ante un servidor, así que esta lista es la misma para todos y nadie está en posición de editarla. Los relés dicen dónde están mientras funcionan, así que sus direcciones nunca van a la cadena y solo aparecen aquí mientras están en línea.</translation>
+        <translation type="vanished">Los pares se anuncian en la cadena en lugar de ante un servidor, así que esta lista es la misma para todos y nadie está en posición de editarla. Los relés dicen dónde están mientras funcionan, así que sus direcciones nunca van a la cadena y solo aparecen aquí mientras están en línea.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1577,6 +1577,10 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Relés que han dicho dónde están en las últimas tres horas. Los demás también están inscritos: estar inscrito dice que un par existe, no que esté funcionando.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Los pares se anuncian en la cadena en lugar de ante un servidor, así que esta lista es la misma para todos y nadie está en posición de editarla. Un par inscrito por el overlay muestra dónde se le puede encontrar hoy, lo que cambia cada día; un relé muestra su dirección solo mientras está en línea, porque nunca está en la cadena.</translation>
     </message>
 </context>
 <context>
@@ -3217,7 +3221,7 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>Tu inscripción dice quién eres y no dónde funcionas. Los pares te alcanzan por el overlay, encontrándote en puntos que ambas partes calculan a partir del registro. Es lo que este cliente activa por defecto.</translation>
+        <translation type="vanished">Tu inscripción dice quién eres y no dónde funcionas. Los pares te alcanzan por el overlay, encontrándote en puntos que ambas partes calculan a partir del registro. Es lo que este cliente activa por defecto.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3377,11 +3381,27 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Como relé — anunciar mi dirección mientras funciono</translation>
+        <translation type="vanished">Como relé — anunciar mi dirección mientras funciono</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Los caminos de otros pasan por este ordenador. Tu inscripción dice que eres un relé, no dónde: mientras tu nodo funciona, le dice a la red su dirección actual, firmada con su clave, y otra vez cada vez que cambia, sin ninguna transacción. Nada sobre dónde estás va a la cadena, y la red olvida la dirección en las tres horas siguientes a que tu nodo se detenga. Los demás deben poder llegar a este ordenador en el puerto %1 (TCP) y %2 (UDP).</translation>
+        <translation type="vanished">Los caminos de otros pasan por este ordenador. Tu inscripción dice que eres un relé, no dónde: mientras tu nodo funciona, le dice a la red su dirección actual, firmada con su clave, y otra vez cada vez que cambia, sin ninguna transacción. Nada sobre dónde estás va a la cadena, y la red olvida la dirección en las tres horas siguientes a que tu nodo se detenga. Los demás deben poder llegar a este ordenador en el puerto %1 (TCP) y %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>Tu inscripción dice quién eres y no dónde funcionas. Los pares te alcanzan por el overlay y se encuentran contigo en puntos que ambas partes calculan a partir del registro, y que cambian cada día; Descubrimiento muestra los de hoy. Tu inscripción también nombra un relé donde se te puede encontrar mientras dure, y cada renovación nombra uno nuevo. Esto es lo que este cliente activa por defecto.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Llevar caminos de otros como relé</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Los caminos tienen que llegar a un relé, así que mientras tu nodo funciona le dice a la red la dirección actual de este ordenador, firmada con su clave, y otra vez cada vez que cambia, sin ninguna transacción. Nunca se escribe en la cadena, y la red la olvida en las tres horas siguientes a que tu nodo se detenga. Los demás deben poder llegar a este ordenador en el puerto %1 (TCP) y %2 (UDP). Un relé comparte su conexión a internet con una segunda clave, desde la página Servidor.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Mientras tu nodo funciona, le dice a la red la dirección actual de este ordenador, firmada con su clave, para que los caminos puedan llegar a él, y otra vez cada vez que cambia. Nunca se escribe en la cadena, y la red la olvida en las tres horas siguientes a que tu nodo se detenga. Los demás deben poder llegar a este ordenador en el puerto %1 (TCP) y %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4240,6 +4260,20 @@ las últimas tres horas: no está funcionando, o no se puede llegar a él desde 
     <message>
         <source>relay, offline</source>
         <translation>relé, fuera de línea</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Inscrito por el overlay. Hoy se le puede encontrar en estos relés,
+calculados a partir del registro; cambian cada día:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>Su inscripción también nombra este, mientras dure la inscripción:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>se encuentra en %1</translation>
     </message>
 </context>
 <context>

@@ -23,6 +23,7 @@
 #include <algorithm>
 #include <condition_variable>
 #include <limits>
+#include <set>
 
 namespace overlay {
 
@@ -263,6 +264,11 @@ void MeetingService::Tick()
             want[p].push_back(epoch);
         }
     }
+    // And the one its listing names, for as long as the listing lasts: the
+    // chain holds it, so visitors can count on it whatever the epoch.
+    roster::KeyBytes listed{};
+    const bool have_listed = roster::ListedMeetingPoint(*g_rosterindex, m_self, height, listed) && listed != m_node;
+    if (have_listed) want[listed];
 
     // Registrations no epoch needs any more lapse with their paths.
     std::vector<Registration> gone;
@@ -275,6 +281,7 @@ void MeetingService::Tick()
                 it = m_regs.erase(it);
             } else {
                 it->second.epochs = w->second;
+                it->second.listed = have_listed && it->first == listed;
                 ++it;
             }
         }
@@ -328,13 +335,14 @@ void MeetingService::Tick()
         }
         reg.refreshed = now;
         reg.epochs = w.second;
+        reg.listed = have_listed && w.first == listed;
         m_regs[w.first] = reg;
     }
     LOCK(m_mutex);
     m_error = last_error;
 }
 
-bool MeetService(const roster::KeyBytes& service, int hops, Meeting& out, std::string& error)
+bool MeetService(const roster::KeyBytes& service, int hops, Meeting& out, std::string& error, bool listed_only)
 {
     out = Meeting();
     if (!g_overlay || !g_rosterindex) {
@@ -349,12 +357,41 @@ bool MeetService(const roster::KeyBytes& service, int hops, Meeting& out, std::s
     hops = std::max(1, std::min(MAX_MEET_HOPS, hops));
     std::string why = "no meeting point was found";
     FastRandomContext rng;
-    for (uint64_t epoch : EpochsToTry(TipHeight())) {
-        std::vector<roster::KeyBytes> points;
-        if (!MeetingPointsFor(service, epoch, points, why)) continue;
-        // In no fixed order, so visitors spread over all three.
-        Shuffle(points.begin(), points.end(), rng);
-        for (const roster::KeyBytes& point : points) {
+    // Today's points first, so visits spread over relays that change every
+    // epoch; the one the listing names for its whole life is the one left
+    // when they fail, and is the same for every visitor all month.
+    struct Try {
+        roster::KeyBytes point;
+        uint64_t epoch;
+        bool listed;
+    };
+    std::vector<Try> tries;
+    const int tip = TipHeight();
+    if (!listed_only) {
+        for (uint64_t epoch : EpochsToTry(tip)) {
+            std::vector<roster::KeyBytes> points;
+            if (!MeetingPointsFor(service, epoch, points, why)) continue;
+            // In no fixed order, so visitors spread over all three.
+            Shuffle(points.begin(), points.end(), rng);
+            for (const roster::KeyBytes& p : points) tries.push_back(Try{p, epoch, false});
+        }
+    }
+    roster::KeyBytes named{};
+    if (roster::ListedMeetingPoint(*g_rosterindex, service, tip, named)) {
+        tries.push_back(Try{named, RendezvousEpoch(tip), true});
+    } else if (listed_only) {
+        why = "its listing names no meeting point";
+    }
+    // Never this node itself: a path to itself cannot be built, and when it
+    // is one of the service's points, the others serve as well.
+    std::set<roster::KeyBytes> tried;
+    CKey own;
+    if (roster::ReadOperationalKey(own)) tried.insert(roster::KeyBytesOf(own));
+    for (const Try& t : tries) {
+        const roster::KeyBytes& point = t.point;
+        const uint64_t epoch = t.epoch;
+        if (!tried.insert(point).second) continue;
+        {
             Reached r;
             if (!ReachRelay(point, hops, /* prove_last */ false, r, why)) continue;
             const std::chrono::milliseconds wait = std::max(ANSWER_WAIT, r.step / 3);
@@ -394,6 +431,7 @@ bool MeetService(const roster::KeyBytes& service, int hops, Meeting& out, std::s
             out.point = point;
             out.epoch = epoch;
             out.hops = hops;
+            out.listed = t.listed;
             return true;
         }
     }

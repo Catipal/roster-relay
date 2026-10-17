@@ -1570,7 +1570,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>עמיתים מכריזים על עצמם בשרשרת ולא בשרת, כך שהרשימה הזו זהה אצל כולם ואיש אינו יכול לערוך אותה. ממסרים אומרים היכן הם נמצאים כל עוד הם פועלים, כך שהכתובות שלהם לעולם אינן נכנסות לשרשרת ומוצגות כאן רק כל עוד הם מחוברים.</translation>
+        <translation type="vanished">עמיתים מכריזים על עצמם בשרשרת ולא בשרת, כך שהרשימה הזו זהה אצל כולם ואיש אינו יכול לערוך אותה. ממסרים אומרים היכן הם נמצאים כל עוד הם פועלים, כך שהכתובות שלהם לעולם אינן נכנסות לשרשרת ומוצגות כאן רק כל עוד הם מחוברים.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1579,6 +1579,10 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>ממסרים שאמרו היכן הם נמצאים בשלוש השעות האחרונות. גם האחרים רשומים: רישום אומר שעמית קיים, לא שהוא פועל.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>עמיתים מכריזים על עצמם בשרשרת ולא בשרת, כך שהרשימה הזו זהה אצל כולם ואיש אינו יכול לערוך אותה. עמית שרשום דרך שכבת־העל מראה היכן אפשר לפגוש אותו היום, וזה משתנה כל יום; ממסר מראה את הכתובת שלו רק כל עוד הוא מחובר, כי היא אף פעם אינה בשרשרת.</translation>
     </message>
 </context>
 <context>
@@ -3219,7 +3223,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>הרישום שלך אומר מי את/ה ולא איפה את/ה פועל/ת. עמיתים מגיעים אליך דרך שכבת־העל, ופוגשים אותך בנקודות ששני הצדדים מחשבים מהמרשם. זה מה שהלקוח הזה מפעיל כברירת מחדל.</translation>
+        <translation type="vanished">הרישום שלך אומר מי את/ה ולא איפה את/ה פועל/ת. עמיתים מגיעים אליך דרך שכבת־העל, ופוגשים אותך בנקודות ששני הצדדים מחשבים מהמרשם. זה מה שהלקוח הזה מפעיל כברירת מחדל.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3379,11 +3383,27 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>כממסר — להכריז על הכתובת שלי כל עוד אני פועל/ת</translation>
+        <translation type="vanished">כממסר — להכריז על הכתובת שלי כל עוד אני פועל/ת</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>נתיבים של אחרים עוברים דרך המחשב הזה. הרישום שלך אומר שאת/ה ממסר, לא היכן: כל עוד הצומת שלך פועל, הוא מודיע לרשת את הכתובת הנוכחית שלו, חתומה במפתח שלו, ושוב בכל פעם שהיא משתנה, בלי שום עסקה. שום דבר על המקום שבו את/ה נמצא/ת לא נכנס לשרשרת, והרשת שוכחת את הכתובת בתוך שלוש שעות מעצירת הצומת שלך. אחרים צריכים להיות מסוגלים להגיע למחשב הזה בפורט %1 (TCP) ו־%2 (UDP).</translation>
+        <translation type="vanished">נתיבים של אחרים עוברים דרך המחשב הזה. הרישום שלך אומר שאת/ה ממסר, לא היכן: כל עוד הצומת שלך פועל, הוא מודיע לרשת את הכתובת הנוכחית שלו, חתומה במפתח שלו, ושוב בכל פעם שהיא משתנה, בלי שום עסקה. שום דבר על המקום שבו את/ה נמצא/ת לא נכנס לשרשרת, והרשת שוכחת את הכתובת בתוך שלוש שעות מעצירת הצומת שלך. אחרים צריכים להיות מסוגלים להגיע למחשב הזה בפורט %1 (TCP) ו־%2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>הרישום שלך אומר מי את/ה ולא היכן את/ה פועל/ת. עמיתים מגיעים אליך דרך שכבת־העל ונפגשים איתך בנקודות ששני הצדדים מחשבים מהמרשם, ושמשתנות כל יום; דף הגילוי מראה את של היום. הרישום שלך גם נוקב בממסר אחד שבו אפשר לפגוש אותך כל עוד הוא בתוקף, וכל חידוש נוקב בממסר חדש. זה מה שהלקוח הזה מפעיל כברירת מחדל.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>להעביר נתיבים של אחרים כממסר</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">נתיבים צריכים להגיע לממסר, ולכן כל עוד הצומת שלך פועל הוא מודיע לרשת את הכתובת הנוכחית של המחשב הזה, חתומה במפתח שלו, ושוב בכל פעם שהיא משתנה, בלי שום עסקה. היא לעולם אינה נכתבת בשרשרת, והרשת שוכחת אותה בתוך שלוש שעות מעצירת הצומת שלך. אחרים צריכים להיות מסוגלים להגיע למחשב הזה בפורט %1 (TCP) ו־%2 (UDP). ממסר משתף את חיבור האינטרנט שלו במפתח שני, מדף השרת.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>כל עוד הצומת שלך פועל, הוא מודיע לרשת את הכתובת הנוכחית של המחשב הזה, חתומה במפתח שלו, כדי שנתיבים יוכלו להגיע אליו, ושוב בכל פעם שהיא משתנה. היא לעולם אינה נכתבת בשרשרת, והרשת שוכחת אותה בתוך שלוש שעות מעצירת הצומת שלך. אחרים צריכים להיות מסוגלים להגיע למחשב הזה בפורט %1 (TCP) ו־%2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4242,6 +4262,20 @@ the last three hours: it is not running, or not reachable from here.</source>
     <message>
         <source>relay, offline</source>
         <translation>ממסר, לא מחובר</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>רשום דרך שכבת־העל. אפשר לפגוש אותו היום בממסרים האלה,
+שמחושבים מהמרשם; הם משתנים כל יום:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>הרישום שלו נוקב גם בזה, כל עוד הרישום בתוקף:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>נפגש ב־%1</translation>
     </message>
 </context>
 <context>

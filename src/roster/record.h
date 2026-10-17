@@ -46,8 +46,8 @@ enum class RecordType : uint8_t {
 /**
  * services bitfield.
  *
- * Bit 31 is structural — it changes the record's length. Every other bit is
- * advisory and has no parsing consequence.
+ * Bits 31 and 30 are structural — each changes the record's length. Every
+ * other bit is advisory and has no parsing consequence.
  *
  * Bit 1 is DEFINED BUT NOT IMPLEMENTED. Nothing sets or reads it; a record
  * carrying it is legal and inert, and createannouncement refuses to set it
@@ -83,6 +83,16 @@ static constexpr uint32_t SERVICE_RENDEZVOUS_ONLY = 1U << 1;
  * refuses the combination and readers ignore the bit.
  */
 static constexpr uint32_t SERVICE_GATEWAY = 1U << 2;
+/**
+ * The record names a meeting point: the key of one relay where this key can
+ * be met for as long as the record counts. Only on a
+ * record with no endpoint - a key listed with no address, met through the
+ * overlay - and 32 bytes after the endpoints. The chain cannot change it, so
+ * it holds for the listing's life, and a renewal names a new one. Beside it,
+ * the key is met at points worked out from the roster, which change every
+ * epoch (overlay/rendezvous.h).
+ */
+static constexpr uint32_t SERVICE_MEET_PRESENT = 1U << 30;
 static constexpr uint32_t SERVICE_META_PRESENT = 1U << 31;
 
 /** Whether a parsed announcement lists a gateway: the bit, no endpoint, and not a relay. */
@@ -237,6 +247,9 @@ struct Record {
     uint32_t services{0};
     uint32_t prev_height{0};
     std::vector<Endpoint> endpoints;
+    //! ANNOUNCE with no endpoints only: the relay this key can be met at for
+    //! the record's life (SERVICE_MEET_PRESENT).
+    Optional<KeyBytes> meet_point;
     Optional<uint256> meta_hash;
 
     //! DELEGATE only, present on an identity's first delegation.
@@ -263,6 +276,7 @@ enum class ParseError {
     BAD_LENGTH,           //!< length disagrees with what the type requires
     BAD_ENDPOINT_COUNT,
     BAD_ENDPOINT_NETWORK, //!< unknown, or a network we refuse to carry
+    BAD_MEETING_POINT,    //!< a meeting point on a record that has endpoints
     TRAILING_BYTES,
 };
 

@@ -99,6 +99,7 @@ bool ReachRelay(const roster::KeyBytes& key, int hops, bool prove_last, Reached&
 struct Registration {
     roster::KeyBytes point{};
     std::vector<uint64_t> epochs;  //!< the epochs it is a point for
+    bool listed{false};            //!< the meeting point this node's listing names
     Reached reached;
     int64_t since{0};              //!< first acknowledged
     int64_t refreshed{0};          //!< last acknowledged
@@ -157,13 +158,17 @@ struct Meeting {
     roster::KeyBytes point{};
     uint64_t epoch{0};
     int hops{0};
+    bool listed{false};            //!< met at the point its listing names
 };
 
 /**
  * Meet `service` through `hops` relays of this node's choosing and one of its
- * meeting points, trying the current epoch's and then the previous one's.
+ * meeting points, trying the current epoch's, then the previous one's, then
+ * the one its listing names for the listing's life. With `listed_only`, that
+ * last one alone.
  */
-bool MeetService(const roster::KeyBytes& service, int hops, Meeting& out, std::string& error);
+bool MeetService(const roster::KeyBytes& service, int hops, Meeting& out, std::string& error,
+                 bool listed_only = false);
 void CloseMeeting(const Meeting& m);
 
 /**

@@ -251,6 +251,14 @@ bool ListedAsAnnouncingRelay(const KeyBytes& key)
     return LiveAnnouncement(*index, key, index->GetSummary().best_block_height, rec) && IsAnnouncingRelay(rec.services);
 }
 
+bool ListedMeetingPoint(const RosterIndex& index, const KeyBytes& key, int height, KeyBytes& out)
+{
+    Record rec;
+    if (!LiveAnnouncement(index, key, height, rec) || !rec.meet_point.has_value()) return false;
+    out = *rec.meet_point;
+    return true;
+}
+
 bool CollectPeers(const RosterIndex& index, int tip_height,
                   std::vector<CAddress>& out, CollectStats& stats)
 {

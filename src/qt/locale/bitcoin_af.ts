@@ -1568,7 +1568,7 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Eweknieë kondig hulself op die ketting aan in plaas van by &apos;n bediener, so hierdie lys is dieselfde vir almal en niemand kan dit wysig nie. Relês sê waar hulle is terwyl hulle loop, so hul adresse gaan nooit op die ketting nie en verskyn hier slegs terwyl hulle aanlyn is.</translation>
+        <translation type="vanished">Eweknieë kondig hulself op die ketting aan in plaas van by &apos;n bediener, so hierdie lys is dieselfde vir almal en niemand kan dit wysig nie. Relês sê waar hulle is terwyl hulle loop, so hul adresse gaan nooit op die ketting nie en verskyn hier slegs terwyl hulle aanlyn is.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1577,6 +1577,10 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Relês wat in die laaste drie uur gesê het waar hulle is. Ander word ook gelys: ingeskryf wees sê dat &apos;n eweknie bestaan, nie dat dit loop nie.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Eweknieë kondig hulself op die ketting aan in plaas van by &apos;n bediener, so hierdie lys is dieselfde vir almal en niemand kan dit wysig nie. &apos;n Eweknie wat deur die oorlegnetwerk ingeskryf is, wys waar dit vandag ontmoet kan word, wat elke dag verander; &apos;n relê wys sy adres slegs terwyl dit aanlyn is, want dit is nooit op die ketting nie.</translation>
     </message>
 </context>
 <context>
@@ -3217,7 +3221,7 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>Jou inskrywing sê wie jy is en nie waar jy loop nie. Eweknieë bereik jou eerder oor die oorlegnetwerk en ontmoet jou by punte wat albei kante uit die register bereken. Dit is wat hierdie kliënt by verstek aanskakel.</translation>
+        <translation type="vanished">Jou inskrywing sê wie jy is en nie waar jy loop nie. Eweknieë bereik jou eerder oor die oorlegnetwerk en ontmoet jou by punte wat albei kante uit die register bereken. Dit is wat hierdie kliënt by verstek aanskakel.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3377,11 +3381,27 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>As &apos;n relê — kondig my adres aan terwyl ek loop</translation>
+        <translation type="vanished">As &apos;n relê — kondig my adres aan terwyl ek loop</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Ander se paaie loop deur hierdie rekenaar. Jou inskrywing sê dat jy &apos;n relê is en nie waar nie: terwyl jou nodus loop, vertel dit die netwerk sy huidige adres, onderteken met sy sleutel, en weer wanneer dit verander, sonder &apos;n transaksie. Niks oor waar jy is gaan op die ketting nie, en die netwerk vergeet die adres binne drie uur nadat jou nodus stop. Ander moet hierdie rekenaar by poort %1 (TCP) en %2 (UDP) kan bereik.</translation>
+        <translation type="vanished">Ander se paaie loop deur hierdie rekenaar. Jou inskrywing sê dat jy &apos;n relê is en nie waar nie: terwyl jou nodus loop, vertel dit die netwerk sy huidige adres, onderteken met sy sleutel, en weer wanneer dit verander, sonder &apos;n transaksie. Niks oor waar jy is gaan op die ketting nie, en die netwerk vergeet die adres binne drie uur nadat jou nodus stop. Ander moet hierdie rekenaar by poort %1 (TCP) en %2 (UDP) kan bereik.</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>Jou inskrywing sê wie jy is en nie waar jy loop nie. Eweknieë bereik jou oor die oorlegnetwerk en ontmoet jou by punte wat albei kante uit die register uitwerk, en wat elke dag verander; Ontdek wys dié van vandag. Jou inskrywing noem ook een relê waar jy ontmoet kan word solank dit geld, en elke hernuwing noem &apos;n nuwe een. Dit is wat hierdie kliënt by verstek aanskakel.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Dra ander se paaie as &apos;n relê</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Paaie moet &apos;n relê kan bereik, so terwyl jou nodus loop, vertel dit die netwerk hierdie rekenaar se huidige adres, onderteken met sy sleutel, en weer wanneer dit verander, sonder &apos;n transaksie. Dit word nooit op die ketting geskryf nie, en die netwerk vergeet dit binne drie uur nadat jou nodus stop. Ander moet hierdie rekenaar by poort %1 (TCP) en %2 (UDP) kan bereik. &apos;n Relê deel sy internetverbinding onder &apos;n tweede sleutel, vanaf die Bediener-bladsy.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Terwyl jou nodus loop, vertel dit die netwerk hierdie rekenaar se huidige adres, onderteken met sy sleutel, sodat paaie dit kan bereik, en weer wanneer dit verander. Dit word nooit op die ketting geskryf nie, en die netwerk vergeet dit binne drie uur nadat jou nodus stop. Ander moet hierdie rekenaar by poort %1 (TCP) en %2 (UDP) kan bereik.</translation>
     </message>
 </context>
 <context>
@@ -4240,6 +4260,20 @@ drie uur gesê het nie: dit loop nie, of is nie van hier af bereikbaar nie.</tra
     <message>
         <source>relay, offline</source>
         <translation>relê, vanlyn</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Deur die oorlegnetwerk ingeskryf. Dit kan vandag by hierdie relês ontmoet word,
+uitgewerk uit die register; hulle verander elke dag:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>Sy inskrywing noem ook hierdie een, solank die inskrywing geld:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>ontmoet by %1</translation>
     </message>
 </context>
 <context>

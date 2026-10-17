@@ -1573,7 +1573,7 @@ Klíč pro obnovení se vám zobrazí jednou. Zapište si ho: je to jediný způ
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Protějšky se ohlašují v řetězci, ne na serveru, takže tento seznam je pro všechny stejný a nikdo ho nemůže upravit. Relé říkají, kde jsou, dokud běží, takže jejich adresy nikdy nejdou do řetězce a zobrazují se tu jen, dokud jsou online.</translation>
+        <translation type="vanished">Protějšky se ohlašují v řetězci, ne na serveru, takže tento seznam je pro všechny stejný a nikdo ho nemůže upravit. Relé říkají, kde jsou, dokud běží, takže jejich adresy nikdy nejdou do řetězce a zobrazují se tu jen, dokud jsou online.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1582,6 +1582,10 @@ Klíč pro obnovení se vám zobrazí jednou. Zapište si ho: je to jediný způ
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Relé, která za poslední tři hodiny řekla, kde jsou. Ostatní jsou zapsána také: zápis říká, že protějšek existuje, ne že běží.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Protějšky se ohlašují v řetězci, ne na serveru, takže tento seznam je pro všechny stejný a nikdo ho nemůže upravit. Protějšek zapsaný přes překryvnou síť ukazuje, kde ho lze dnes zastihnout, což se mění každý den; relé ukazuje svou adresu jen tehdy, když je online, protože v řetězci nikdy není.</translation>
     </message>
 </context>
 <context>
@@ -3225,7 +3229,7 @@ Klíč pro obnovení se vám zobrazí jednou. Zapište si ho: je to jediný způ
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>Váš zápis říká, kdo jste, ne kde běžíte. Protějšky vás místo toho zastihnou přes překryvnou síť a setkají se s vámi v bodech, které obě strany vypočítají z rejstříku. Právě to tento klient ve výchozím stavu zapíná.</translation>
+        <translation type="vanished">Váš zápis říká, kdo jste, ne kde běžíte. Protějšky vás místo toho zastihnou přes překryvnou síť a setkají se s vámi v bodech, které obě strany vypočítají z rejstříku. Právě to tento klient ve výchozím stavu zapíná.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3385,11 +3389,27 @@ Klíč pro obnovení se vám zobrazí jednou. Zapište si ho: je to jediný způ
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Jako relé — oznamovat mou adresu, dokud běžím</translation>
+        <translation type="vanished">Jako relé — oznamovat mou adresu, dokud běžím</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Cesty ostatních vedou přes tento počítač. Váš zápis říká, že jste relé, ale ne kde: dokud váš uzel běží, sděluje síti svou aktuální adresu podepsanou svým klíčem, a znovu pokaždé, když se změní, bez jakékoli transakce. Nic o tom, kde jste, nejde do řetězce, a síť adresu zapomene do tří hodin od zastavení vašeho uzlu. Ostatní musí tento počítač zastihnout na portu %1 (TCP) a %2 (UDP).</translation>
+        <translation type="vanished">Cesty ostatních vedou přes tento počítač. Váš zápis říká, že jste relé, ale ne kde: dokud váš uzel běží, sděluje síti svou aktuální adresu podepsanou svým klíčem, a znovu pokaždé, když se změní, bez jakékoli transakce. Nic o tom, kde jste, nejde do řetězce, a síť adresu zapomene do tří hodin od zastavení vašeho uzlu. Ostatní musí tento počítač zastihnout na portu %1 (TCP) a %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>Váš zápis říká, kdo jste, a ne kde běžíte. Protějšky vás zastihnou přes překryvnou síť a setkají se s vámi v bodech, které obě strany spočítají z rejstříku a které se každý den mění; Objevovat ukazuje ty dnešní. Váš zápis také jmenuje jedno relé, kde vás lze zastihnout, dokud platí, a každé obnovení jmenuje nové. To tento klient zapíná ve výchozím nastavení.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Přenášet cesty ostatních jako relé</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Cesty musí relé zastihnout, takže dokud váš uzel běží, sděluje síti aktuální adresu tohoto počítače podepsanou svým klíčem, a znovu pokaždé, když se změní, bez jakékoli transakce. Nikdy se nezapisuje do řetězce a síť ji zapomene do tří hodin od zastavení vašeho uzlu. Ostatní musí tento počítač zastihnout na portu %1 (TCP) a %2 (UDP). Relé sdílí své připojení k internetu pod druhým klíčem, ze stránky Server.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Dokud váš uzel běží, sděluje síti aktuální adresu tohoto počítače podepsanou svým klíčem, aby ho cesty zastihly, a znovu pokaždé, když se změní. Nikdy se nezapisuje do řetězce a síť ji zapomene do tří hodin od zastavení vašeho uzlu. Ostatní musí tento počítač zastihnout na portu %1 (TCP) a %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4254,6 +4274,20 @@ tři hodiny: neběží, nebo odsud není dosažitelné.</translation>
     <message>
         <source>relay, offline</source>
         <translation>relé, offline</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Zapsáno přes překryvnou síť. Dnes ho lze zastihnout u těchto relé,
+spočítaných z rejstříku; mění se každý den:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>Jeho zápis také jmenuje toto relé, dokud zápis platí:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>setkání u %1</translation>
     </message>
 </context>
 <context>

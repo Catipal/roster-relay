@@ -238,7 +238,7 @@ class GatewayRoutesTest(BitcoinTestFramework):
 
         self.log.info("and so does its overlay traffic: it meets both gateways")
         for n in (5, 6):
-            self.wait_until(lambda: self.nodes[n].getgatewayinfo()["registrations"] == 3, timeout=180)
+            self.wait_until(lambda: self.nodes[n].getgatewayinfo()["registrations"] >= 3, timeout=180)
         self.wait_until(lambda: self.visitor()["allowed"], timeout=90)
         self.wait_until(lambda: self.open_gateways() == sorted([self.key(5), self.key(6)]), timeout=300)
 

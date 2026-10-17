@@ -1569,7 +1569,7 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Els parells s&apos;anuncien a la cadena en lloc de fer-ho a un servidor, de manera que aquesta llista és la mateixa per a tothom i ningú no la pot editar. Els repetidors diuen on són mentre funcionen, de manera que les seves adreces no van mai a la cadena i només es mostren aquí mentre són en línia.</translation>
+        <translation type="vanished">Els parells s&apos;anuncien a la cadena en lloc de fer-ho a un servidor, de manera que aquesta llista és la mateixa per a tothom i ningú no la pot editar. Els repetidors diuen on són mentre funcionen, de manera que les seves adreces no van mai a la cadena i només es mostren aquí mentre són en línia.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1578,6 +1578,10 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Repetidors que han dit on són en les darreres tres hores. Els altres també hi són: estar inscrit diu que un parell existeix, no que funcioni.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Els parells s&apos;anuncien a la cadena en lloc de fer-ho a un servidor, de manera que aquesta llista és la mateixa per a tothom i ningú no la pot editar. Un parell inscrit a través de la xarxa superposada mostra on se&apos;l pot trobar avui, que canvia cada dia; un repetidor mostra la seva adreça només mentre és en línia, perquè mai no és a la cadena.</translation>
     </message>
 </context>
 <context>
@@ -3218,7 +3222,7 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>La vostra inscripció diu qui sou i no on us executeu. Els parells us arriben a través de la xarxa superposada, trobant-vos en punts que totes dues parts calculen a partir del registre. És el que aquest client activa per defecte.</translation>
+        <translation type="vanished">La vostra inscripció diu qui sou i no on us executeu. Els parells us arriben a través de la xarxa superposada, trobant-vos en punts que totes dues parts calculen a partir del registre. És el que aquest client activa per defecte.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3378,11 +3382,27 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Com a repetidor — anunciar la meva adreça mentre funcioni</translation>
+        <translation type="vanished">Com a repetidor — anunciar la meva adreça mentre funcioni</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Els camins d&apos;altres passen per aquest ordinador. La teva inscripció diu que ets un repetidor, no on ets: mentre el teu node funciona, diu a la xarxa la seva adreça actual, signada amb la seva clau, i de nou cada cop que canvia, sense cap transacció. Res sobre on ets no va a la cadena, i la xarxa oblida l&apos;adreça en les tres hores següents a l&apos;aturada del teu node. Els altres han de poder arribar a aquest ordinador al port %1 (TCP) i %2 (UDP).</translation>
+        <translation type="vanished">Els camins d&apos;altres passen per aquest ordinador. La teva inscripció diu que ets un repetidor, no on ets: mentre el teu node funciona, diu a la xarxa la seva adreça actual, signada amb la seva clau, i de nou cada cop que canvia, sense cap transacció. Res sobre on ets no va a la cadena, i la xarxa oblida l&apos;adreça en les tres hores següents a l&apos;aturada del teu node. Els altres han de poder arribar a aquest ordinador al port %1 (TCP) i %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>La teva inscripció diu qui ets i no on funciones. Els parells t&apos;arriben per la xarxa superposada i et troben en punts que totes dues parts calculen a partir del registre, i que canvien cada dia; Descobreix mostra els d&apos;avui. La teva inscripció també anomena un repetidor on se&apos;t pot trobar mentre duri, i cada renovació n&apos;anomena un de nou. Això és el que aquest client activa per defecte.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Portar camins d&apos;altres com a repetidor</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Els camins han d&apos;arribar a un repetidor, així que mentre el teu node funciona diu a la xarxa l&apos;adreça actual d&apos;aquest ordinador, signada amb la seva clau, i de nou cada cop que canvia, sense cap transacció. No s&apos;escriu mai a la cadena, i la xarxa l&apos;oblida en les tres hores següents a l&apos;aturada del teu node. Els altres han de poder arribar a aquest ordinador al port %1 (TCP) i %2 (UDP). Un repetidor comparteix la seva connexió a internet amb una segona clau, des de la pàgina Servidor.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Mentre el teu node funciona, diu a la xarxa l&apos;adreça actual d&apos;aquest ordinador, signada amb la seva clau, perquè els camins hi puguin arribar, i de nou cada cop que canvia. No s&apos;escriu mai a la cadena, i la xarxa l&apos;oblida en les tres hores següents a l&apos;aturada del teu node. Els altres han de poder arribar a aquest ordinador al port %1 (TCP) i %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4241,6 +4261,20 @@ les darreres tres hores: no funciona, o no s&apos;hi pot arribar des d&apos;aqu�
     <message>
         <source>relay, offline</source>
         <translation>repetidor, fora de línia</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Inscrit a través de la xarxa superposada. Avui se&apos;l pot trobar en aquests repetidors,
+calculats a partir del registre; canvien cada dia:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>La seva inscripció també anomena aquest, mentre duri la inscripció:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>es troba a %1</translation>
     </message>
 </context>
 <context>

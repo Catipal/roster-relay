@@ -1562,7 +1562,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>对等节点在区块链上公布自己，而不是在服务器上，所以这份列表对每个人都相同，没有人能够编辑它。中继在运行期间会说明自己所在的位置，所以它们的地址从不上链，只在在线时显示在这里。</translation>
+        <translation type="vanished">对等节点在区块链上公布自己，而不是在服务器上，所以这份列表对每个人都相同，没有人能够编辑它。中继在运行期间会说明自己所在的位置，所以它们的地址从不上链，只在在线时显示在这里。</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1571,6 +1571,10 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>最近三小时内说明过自己位置的中继。其他节点也已登记：登记只说明对等节点存在，并不说明它在运行。</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>对等节点在区块链上公布自己，而不是在服务器上，所以这份列表对每个人都相同，没有人能够编辑它。通过覆盖网络登记的对等节点会显示今天在哪里能与它会面，每天都会变化；中继只在在线时显示地址，因为地址从不上链。</translation>
     </message>
 </context>
 <context>
@@ -3208,7 +3212,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>你的登记表明你是谁，而不是你在哪里运行。对等节点改为通过覆盖网络联系你，在双方根据名册算出的会合点与你会面。这是本客户端默认开启的方式。</translation>
+        <translation type="vanished">你的登记表明你是谁，而不是你在哪里运行。对等节点改为通过覆盖网络联系你，在双方根据名册算出的会合点与你会面。这是本客户端默认开启的方式。</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3368,11 +3372,27 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>作为中继——运行期间公布我的地址</translation>
+        <translation type="vanished">作为中继——运行期间公布我的地址</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>其他人的路径会经过这台电脑。你的登记只说明你是中继，不说明你在哪里：节点运行期间，会用自己的密钥签名后把当前地址告诉网络，地址一变就再告诉一次，无需任何交易。关于你所在位置的任何信息都不会上链，节点停止后三小时内网络就会忘记这个地址。其他人需要能通过端口 %1 (TCP) 和 %2 (UDP) 连到这台电脑。</translation>
+        <translation type="vanished">其他人的路径会经过这台电脑。你的登记只说明你是中继，不说明你在哪里：节点运行期间，会用自己的密钥签名后把当前地址告诉网络，地址一变就再告诉一次，无需任何交易。关于你所在位置的任何信息都不会上链，节点停止后三小时内网络就会忘记这个地址。其他人需要能通过端口 %1 (TCP) 和 %2 (UDP) 连到这台电脑。</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>你的登记只说明你是谁，不说明你在哪里运行。对等节点通过覆盖网络找到你，在双方都从名册算出的会面点与你会面，这些点每天变化；发现页面显示今天的会面点。你的登记还会写明一个中继，在登记有效期内都能在那里与你会面，每次续期都会写明一个新的。这是本客户端的默认设置。</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>作为中继传递他人的路径</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">路径需要能到达中继，所以节点运行期间，会用自己的密钥签名后把这台电脑的当前地址告诉网络，地址一变就再告诉一次，无需任何交易。地址从不写入链上，节点停止后三小时内网络就会忘记它。其他人需要能通过端口 %1 (TCP) 和 %2 (UDP) 连到这台电脑。中继在服务器页面用第二个密钥共享其互联网连接。</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>节点运行期间，会用自己的密钥签名后把这台电脑的当前地址告诉网络，让路径能够到达，地址一变就再告诉一次。地址从不写入链上，节点停止后三小时内网络就会忘记它。其他人需要能通过端口 %1 (TCP) 和 %2 (UDP) 连到这台电脑。</translation>
     </message>
 </context>
 <context>
@@ -4225,6 +4245,20 @@ the last three hours: it is not running, or not reachable from here.</source>
     <message>
         <source>relay, offline</source>
         <translation>中继，离线</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>通过覆盖网络登记。今天可以在这些中继与它会面，
+由名册算出；每天都会变化：</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>它的登记还写明了这一个，在登记有效期内有效：</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>会面于 %1</translation>
     </message>
 </context>
 <context>

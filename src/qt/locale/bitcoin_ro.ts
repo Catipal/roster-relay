@@ -1574,7 +1574,7 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Partenerii se anunță în lanț, nu la un server, așa că această listă este aceeași pentru toată lumea și nimeni nu o poate modifica. Releele spun unde sunt cât timp rulează, așa că adresele lor nu ajung niciodată în lanț și apar aici doar cât sunt online.</translation>
+        <translation type="vanished">Partenerii se anunță în lanț, nu la un server, așa că această listă este aceeași pentru toată lumea și nimeni nu o poate modifica. Releele spun unde sunt cât timp rulează, așa că adresele lor nu ajung niciodată în lanț și apar aici doar cât sunt online.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1583,6 +1583,10 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Relee care au spus unde sunt în ultimele trei ore. Și celelalte sunt înscrise: înscrierea spune că un partener există, nu că rulează.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Partenerii se anunță în lanț, nu la un server, așa că această listă este aceeași pentru toată lumea și nimeni nu o poate modifica. Un partener înscris prin rețeaua suprapusă arată unde poate fi întâlnit azi, lucru care se schimbă în fiecare zi; un releu își arată adresa doar cât este online, pentru că ea nu este niciodată în lanț.</translation>
     </message>
 </context>
 <context>
@@ -3226,7 +3230,7 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>Înscrierea dvs. spune cine sunteți, nu unde rulați. Partenerii ajung la dvs. prin rețeaua suprapusă, întâlnindu-vă în puncte pe care ambele părți le calculează din registru. Asta pornește implicit acest client.</translation>
+        <translation type="vanished">Înscrierea dvs. spune cine sunteți, nu unde rulați. Partenerii ajung la dvs. prin rețeaua suprapusă, întâlnindu-vă în puncte pe care ambele părți le calculează din registru. Asta pornește implicit acest client.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3386,11 +3390,27 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Ca releu — anunță-mi adresa cât timp rulez</translation>
+        <translation type="vanished">Ca releu — anunță-mi adresa cât timp rulez</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Căile altora trec prin acest calculator. Înscrierea ta spune că ești un releu, nu unde: cât timp nodul tău rulează, spune rețelei adresa lui actuală, semnată cu cheia lui, și din nou de fiecare dată când se schimbă, fără nicio tranzacție. Nimic despre unde ești nu ajunge în lanț, iar rețeaua uită adresa în cel mult trei ore după ce nodul tău se oprește. Ceilalți trebuie să poată ajunge la acest calculator pe portul %1 (TCP) și %2 (UDP).</translation>
+        <translation type="vanished">Căile altora trec prin acest calculator. Înscrierea ta spune că ești un releu, nu unde: cât timp nodul tău rulează, spune rețelei adresa lui actuală, semnată cu cheia lui, și din nou de fiecare dată când se schimbă, fără nicio tranzacție. Nimic despre unde ești nu ajunge în lanț, iar rețeaua uită adresa în cel mult trei ore după ce nodul tău se oprește. Ceilalți trebuie să poată ajunge la acest calculator pe portul %1 (TCP) și %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>Înscrierea ta spune cine ești, nu unde rulezi. Partenerii ajung la tine prin rețeaua suprapusă și te întâlnesc în puncte pe care ambele părți le calculează din registru și care se schimbă în fiecare zi; Descoperă le arată pe cele de azi. Înscrierea ta numește și un releu unde poți fi întâlnit cât timp ea este valabilă, iar fiecare reînnoire numește unul nou. Asta activează acest client în mod implicit.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Transportă căile altora ca releu</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Căile trebuie să ajungă la un releu, așa că, cât timp nodul tău rulează, spune rețelei adresa actuală a acestui calculator, semnată cu cheia lui, și din nou de fiecare dată când se schimbă, fără nicio tranzacție. Nu este scrisă niciodată în lanț, iar rețeaua o uită în cel mult trei ore după ce nodul tău se oprește. Ceilalți trebuie să poată ajunge la acest calculator pe portul %1 (TCP) și %2 (UDP). Un releu își partajează conexiunea la internet sub o a doua cheie, din pagina Server.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Cât timp nodul tău rulează, spune rețelei adresa actuală a acestui calculator, semnată cu cheia lui, ca să poată ajunge căile la el, și din nou de fiecare dată când se schimbă. Nu este scrisă niciodată în lanț, iar rețeaua o uită în cel mult trei ore după ce nodul tău se oprește. Ceilalți trebuie să poată ajunge la acest calculator pe portul %1 (TCP) și %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4255,6 +4275,20 @@ ultimele trei ore: nu rulează sau nu poate fi atins de aici.</translation>
     <message>
         <source>relay, offline</source>
         <translation>releu, offline</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Înscris prin rețeaua suprapusă. Azi poate fi întâlnit la aceste relee,
+calculate din registru; se schimbă în fiecare zi:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>Înscrierea lui numește și acest releu, cât timp înscrierea este valabilă:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>se întâlnește la %1</translation>
     </message>
 </context>
 <context>

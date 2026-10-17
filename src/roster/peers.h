@@ -135,6 +135,13 @@ bool LiveAnnouncement(const RosterIndex& index, const KeyBytes& key, int height,
 bool ListedAsAnnouncingRelay(const KeyBytes& key);
 
 /**
+ * The meeting point `key`'s live listing names at `height`
+ * (SERVICE_MEET_PRESENT): one relay it can be met at for the listing's life.
+ * False when it is not listed there or names none.
+ */
+bool ListedMeetingPoint(const RosterIndex& index, const KeyBytes& key, int height, KeyBytes& out);
+
+/**
  * Re-read the relay set into the overlay's path selector, unless it was read
  * at the index's current height less than `max_age` seconds ago, and return it.
  *

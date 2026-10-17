@@ -1568,7 +1568,7 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Inaanunsyo ng mga peer ang kanilang sarili sa chain at hindi sa isang server, kaya pareho ang listahang ito para sa lahat at walang makapag-e-edit nito. Sinasabi ng mga relay kung nasaan sila habang tumatakbo, kaya hindi kailanman napupunta sa chain ang kanilang mga address at lumalabas lang dito habang online sila.</translation>
+        <translation type="vanished">Inaanunsyo ng mga peer ang kanilang sarili sa chain at hindi sa isang server, kaya pareho ang listahang ito para sa lahat at walang makapag-e-edit nito. Sinasabi ng mga relay kung nasaan sila habang tumatakbo, kaya hindi kailanman napupunta sa chain ang kanilang mga address at lumalabas lang dito habang online sila.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1577,6 +1577,10 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Mga relay na nagsabi kung nasaan sila sa nakalipas na tatlong oras. Nakalista rin ang iba: ang pagkakalista ay nagsasabing umiiral ang isang peer, hindi na tumatakbo ito.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Inaanunsyo ng mga peer ang kanilang sarili sa chain at hindi sa isang server, kaya pareho ang listahang ito para sa lahat at walang makapag-e-edit nito. Ang peer na nakalista sa pamamagitan ng overlay ay nagpapakita kung saan ito makikita ngayon, na nagbabago araw-araw; ipinapakita lang ng relay ang address nito habang online ito, dahil hindi ito kailanman nasa chain.</translation>
     </message>
 </context>
 <context>
@@ -3217,7 +3221,7 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>Sinasabi ng iyong pagkakalista kung sino ka at hindi kung saan ka tumatakbo. Inaabot ka ng mga peer sa pamamagitan ng overlay, at nakikipagtagpo sa iyo sa mga puntong kinukuwenta ng magkabilang panig mula sa talaan. Ito ang ino-on ng client na ito bilang default.</translation>
+        <translation type="vanished">Sinasabi ng iyong pagkakalista kung sino ka at hindi kung saan ka tumatakbo. Inaabot ka ng mga peer sa pamamagitan ng overlay, at nakikipagtagpo sa iyo sa mga puntong kinukuwenta ng magkabilang panig mula sa talaan. Ito ang ino-on ng client na ito bilang default.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3377,11 +3381,27 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Bilang relay — ianunsyo ang aking address habang tumatakbo ako</translation>
+        <translation type="vanished">Bilang relay — ianunsyo ang aking address habang tumatakbo ako</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Dumadaan sa computer na ito ang mga path ng iba. Sinasabi ng iyong listing na relay ka, hindi kung nasaan: habang tumatakbo ang iyong node, sinasabi nito sa network ang kasalukuyang address nito, nilagdaan ng susi nito, at muli tuwing nagbabago ito, nang walang transaksyon. Walang anuman tungkol sa kung nasaan ka ang napupunta sa chain, at nakakalimutan ng network ang address sa loob ng tatlong oras matapos huminto ang iyong node. Dapat maabot ng iba ang computer na ito sa port %1 (TCP) at %2 (UDP).</translation>
+        <translation type="vanished">Dumadaan sa computer na ito ang mga path ng iba. Sinasabi ng iyong listing na relay ka, hindi kung nasaan: habang tumatakbo ang iyong node, sinasabi nito sa network ang kasalukuyang address nito, nilagdaan ng susi nito, at muli tuwing nagbabago ito, nang walang transaksyon. Walang anuman tungkol sa kung nasaan ka ang napupunta sa chain, at nakakalimutan ng network ang address sa loob ng tatlong oras matapos huminto ang iyong node. Dapat maabot ng iba ang computer na ito sa port %1 (TCP) at %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>Sinasabi ng iyong listing kung sino ka at hindi kung saan ka tumatakbo. Inaabot ka ng mga peer sa pamamagitan ng overlay at nakikipagkita sa iyo sa mga puntong kinukwenta ng magkabilang panig mula sa talaan, na nagbabago araw-araw; ipinapakita ng Tuklasin ang mga ngayon. Pinapangalanan din ng iyong listing ang isang relay kung saan ka makikita habang ito ay may bisa, at bawat pag-renew ay nagpapangalan ng bago. Ito ang binubuksan ng client na ito bilang default.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Magdala ng mga path ng iba bilang relay</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Kailangang maabot ng mga path ang isang relay, kaya habang tumatakbo ang iyong node, sinasabi nito sa network ang kasalukuyang address ng computer na ito, nilagdaan ng susi nito, at muli tuwing nagbabago ito, nang walang transaksyon. Hindi ito kailanman isinusulat sa chain, at nakakalimutan ito ng network sa loob ng tatlong oras matapos huminto ang iyong node. Dapat maabot ng iba ang computer na ito sa port %1 (TCP) at %2 (UDP). Ibinabahagi ng relay ang koneksyon nito sa internet sa ilalim ng ikalawang susi, mula sa pahinang Server.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Habang tumatakbo ang iyong node, sinasabi nito sa network ang kasalukuyang address ng computer na ito, nilagdaan ng susi nito, para maabot ito ng mga path, at muli tuwing nagbabago ito. Hindi ito kailanman isinusulat sa chain, at nakakalimutan ito ng network sa loob ng tatlong oras matapos huminto ang iyong node. Dapat maabot ng iba ang computer na ito sa port %1 (TCP) at %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4241,6 +4261,20 @@ nakalipas na tatlong oras: hindi ito tumatakbo, o hindi ito maabot mula rito.</t
     <message>
         <source>relay, offline</source>
         <translation>relay, offline</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Nakalista sa pamamagitan ng overlay. Makikita ito ngayon sa mga relay na ito,
+kinuwenta mula sa talaan; nagbabago sila araw-araw:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>Pinapangalanan din ng listing nito ang isang ito, habang may bisa ang listing:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>makikita sa %1</translation>
     </message>
 </context>
 <context>

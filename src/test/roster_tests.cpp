@@ -156,6 +156,55 @@ BOOST_AUTO_TEST_CASE(gateway_bit)
     BOOST_CHECK(!IsGatewayRecord(0, 0));
 }
 
+//! A key listed with no address names one relay it can be met at for the
+//! record's life: 32 bytes, on a record with no endpoint only.
+BOOST_AUTO_TEST_CASE(meeting_point)
+{
+    const CKey key = MakeKey(5);
+    KeyBytes point;
+    point.fill(0x42);
+    Record in = MakeAnnounce(key);
+    in.endpoints.clear();
+    in.meet_point = point;
+    SignInPlace(in, key, "main");
+
+    const std::vector<unsigned char> raw = SerializeRecord(in);
+    BOOST_CHECK_EQUAL(raw.size(), 113U + 32U);
+    Record out;
+    BOOST_REQUIRE(ParseAndVerify(raw, "main", out));
+    BOOST_REQUIRE(out.meet_point.has_value());
+    BOOST_CHECK(*out.meet_point == point);
+    BOOST_CHECK(out.services & SERVICE_MEET_PRESENT);
+    BOOST_CHECK(SerializeRecord(out) == raw);
+    BOOST_CHECK(out.endpoints.empty());
+
+    // Beside a meta hash, and beside the gateway bit, which it does not change.
+    in.meta_hash = uint256S("01");
+    in.services = SERVICE_GATEWAY;
+    BOOST_CHECK_EQUAL(ParseErrorString(ParseRecord(SerializeRecord(in), out)), "ok");
+    BOOST_CHECK(out.meet_point.has_value() && out.meta_hash.has_value());
+    BOOST_CHECK(*out.meet_point == point);
+    BOOST_CHECK(IsGatewayRecord(out.services, out.endpoints.size()));
+
+    // The bit follows the field, whatever the caller set.
+    Record none = in;
+    none.meet_point.reset();
+    none.services |= SERVICE_MEET_PRESENT;
+    BOOST_CHECK_EQUAL(ParseErrorString(ParseRecord(SerializeRecord(none), out)), "ok");
+    BOOST_CHECK(!out.meet_point.has_value());
+
+    // Never on a record with an address.
+    in.meta_hash.reset();
+    in.endpoints.push_back(EpIPv4(9345));
+    BOOST_CHECK_EQUAL(ParseErrorString(ParseRecord(SerializeRecord(in), out)),
+                      ParseErrorString(ParseError::BAD_MEETING_POINT));
+
+    // Cut short, it does not parse.
+    std::vector<unsigned char> cut = raw;
+    cut.erase(cut.end() - 64 - 1);
+    BOOST_CHECK(ParseRecord(cut, out) != ParseError::OK);
+}
+
 //! The sizes quoted in design note 001 §1. If one of these moves, the growth
 //! arithmetic in §4 moves with it, so they are asserted rather than assumed.
 BOOST_AUTO_TEST_CASE(documented_record_sizes)

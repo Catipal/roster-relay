@@ -1568,7 +1568,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>পিয়াররা সার্ভারে নয়, চেইনে নিজেদের ঘোষণা করে, তাই এই তালিকা সবার জন্য একই এবং কেউ এটি সম্পাদনা করতে পারে না। রিলেগুলো চলার সময় জানায় তারা কোথায় আছে, তাই তাদের ঠিকানা কখনো চেইনে যায় না এবং কেবল অনলাইনে থাকার সময় এখানে দেখা যায়।</translation>
+        <translation type="vanished">পিয়াররা সার্ভারে নয়, চেইনে নিজেদের ঘোষণা করে, তাই এই তালিকা সবার জন্য একই এবং কেউ এটি সম্পাদনা করতে পারে না। রিলেগুলো চলার সময় জানায় তারা কোথায় আছে, তাই তাদের ঠিকানা কখনো চেইনে যায় না এবং কেবল অনলাইনে থাকার সময় এখানে দেখা যায়।</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1577,6 +1577,10 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>যে রিলেগুলো গত তিন ঘণ্টায় জানিয়েছে তারা কোথায় আছে। অন্যরাও তালিকাভুক্ত: তালিকাভুক্ত হওয়া মানে একটি পিয়ার আছে, সেটি চলছে তা নয়।</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>পিয়াররা সার্ভারে নয়, চেইনে নিজেদের ঘোষণা করে, তাই এই তালিকা সবার জন্য একই এবং কেউ এটি সম্পাদনা করতে পারে না। ওভারলের মাধ্যমে তালিকাভুক্ত একটি পিয়ার দেখায় আজ তাকে কোথায় পাওয়া যায়, যা প্রতিদিন বদলায়; একটি রিলে কেবল অনলাইনে থাকার সময় তার ঠিকানা দেখায়, কারণ তা কখনো চেইনে থাকে না।</translation>
     </message>
 </context>
 <context>
@@ -3217,7 +3221,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>আপনার তালিকাভুক্তি বলে আপনি কে, আপনি কোথায় চলছেন তা নয়। পিয়াররা এর বদলে ওভারলের মাধ্যমে আপনার কাছে পৌঁছায়, এমন বিন্দুতে আপনার সাথে মিলিত হয় যা উভয় পক্ষ রেজিস্টার থেকে হিসাব করে। এই ক্লায়েন্ট ডিফল্টভাবে এটিই চালু করে।</translation>
+        <translation type="vanished">আপনার তালিকাভুক্তি বলে আপনি কে, আপনি কোথায় চলছেন তা নয়। পিয়াররা এর বদলে ওভারলের মাধ্যমে আপনার কাছে পৌঁছায়, এমন বিন্দুতে আপনার সাথে মিলিত হয় যা উভয় পক্ষ রেজিস্টার থেকে হিসাব করে। এই ক্লায়েন্ট ডিফল্টভাবে এটিই চালু করে।</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3377,11 +3381,27 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>রিলে হিসেবে — চলার সময় আমার ঠিকানা ঘোষণা করুন</translation>
+        <translation type="vanished">রিলে হিসেবে — চলার সময় আমার ঠিকানা ঘোষণা করুন</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>অন্যদের পথ এই কম্পিউটারের মধ্য দিয়ে যায়। আপনার তালিকাভুক্তি বলে আপনি একটি রিলে, কোথায় তা নয়: আপনার নোড চলার সময় নেটওয়ার্ককে তার বর্তমান ঠিকানা জানায়, তার কী দিয়ে স্বাক্ষর করে, এবং যখনই তা বদলায় আবার জানায়, কোনো লেনদেন ছাড়াই। আপনি কোথায় আছেন সে সম্পর্কে কিছুই চেইনে যায় না, এবং আপনার নোড থামার তিন ঘণ্টার মধ্যে নেটওয়ার্ক ঠিকানাটি ভুলে যায়। অন্যদের অবশ্যই এই কম্পিউটারে পোর্ট %1 (TCP) এবং %2 (UDP)-এ পৌঁছাতে পারতে হবে।</translation>
+        <translation type="vanished">অন্যদের পথ এই কম্পিউটারের মধ্য দিয়ে যায়। আপনার তালিকাভুক্তি বলে আপনি একটি রিলে, কোথায় তা নয়: আপনার নোড চলার সময় নেটওয়ার্ককে তার বর্তমান ঠিকানা জানায়, তার কী দিয়ে স্বাক্ষর করে, এবং যখনই তা বদলায় আবার জানায়, কোনো লেনদেন ছাড়াই। আপনি কোথায় আছেন সে সম্পর্কে কিছুই চেইনে যায় না, এবং আপনার নোড থামার তিন ঘণ্টার মধ্যে নেটওয়ার্ক ঠিকানাটি ভুলে যায়। অন্যদের অবশ্যই এই কম্পিউটারে পোর্ট %1 (TCP) এবং %2 (UDP)-এ পৌঁছাতে পারতে হবে।</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>আপনার তালিকাভুক্তি বলে আপনি কে, আপনি কোথায় চলেন তা নয়। পিয়াররা ওভারলের মাধ্যমে আপনার কাছে পৌঁছায়, এমন বিন্দুতে আপনার সাথে মিলিত হয় যা দুই পক্ষই রেজিস্টার থেকে বের করে এবং যা প্রতিদিন বদলায়; খুঁজুন পাতা আজকেরগুলো দেখায়। আপনার তালিকাভুক্তি এমন একটি রিলের নামও দেয় যেখানে যতদিন তা বহাল থাকে আপনার সাথে মিলিত হওয়া যায়, এবং প্রতিটি নবায়ন নতুন একটির নাম দেয়। এই ক্লায়েন্ট ডিফল্টভাবে এটিই চালু করে।</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>রিলে হিসেবে অন্যদের পথ বহন করুন</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">পথগুলোকে রিলেতে পৌঁছাতে হয়, তাই আপনার নোড চলার সময় নেটওয়ার্ককে এই কম্পিউটারের বর্তমান ঠিকানা জানায়, তার কী দিয়ে স্বাক্ষর করে, এবং যখনই তা বদলায় আবার জানায়, কোনো লেনদেন ছাড়াই। এটি কখনো চেইনে লেখা হয় না, এবং আপনার নোড থামার তিন ঘণ্টার মধ্যে নেটওয়ার্ক এটি ভুলে যায়। অন্যদের অবশ্যই এই কম্পিউটারে পোর্ট %1 (TCP) এবং %2 (UDP)-এ পৌঁছাতে পারতে হবে। একটি রিলে সার্ভার পাতা থেকে দ্বিতীয় একটি কী-এর অধীনে তার ইন্টারনেট সংযোগ শেয়ার করে।</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>আপনার নোড চলার সময় নেটওয়ার্ককে এই কম্পিউটারের বর্তমান ঠিকানা জানায়, তার কী দিয়ে স্বাক্ষর করে, যাতে পথগুলো এখানে পৌঁছাতে পারে, এবং যখনই তা বদলায় আবার জানায়। এটি কখনো চেইনে লেখা হয় না, এবং আপনার নোড থামার তিন ঘণ্টার মধ্যে নেটওয়ার্ক এটি ভুলে যায়। অন্যদের অবশ্যই এই কম্পিউটারে পোর্ট %1 (TCP) এবং %2 (UDP)-এ পৌঁছাতে পারতে হবে।</translation>
     </message>
 </context>
 <context>
@@ -4240,6 +4260,20 @@ the last three hours: it is not running, or not reachable from here.</source>
     <message>
         <source>relay, offline</source>
         <translation>রিলে, অফলাইন</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>ওভারলের মাধ্যমে তালিকাভুক্ত। আজ একে এই রিলেগুলোতে পাওয়া যায়,
+যা রেজিস্টার থেকে বের করা; এগুলো প্রতিদিন বদলায়:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>এর তালিকাভুক্তি এটিরও নাম দেয়, যতদিন তালিকাভুক্তি বহাল থাকে:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>%1-এ মিলিত হয়</translation>
     </message>
 </context>
 <context>

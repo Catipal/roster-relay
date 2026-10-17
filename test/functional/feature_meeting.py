@@ -141,6 +141,55 @@ class MeetingTest(BitcoinTestFramework):
         met = self.nodes[3].meet(self.key(6))
         assert met["point"] in new_points
         assert_equal(met["epoch"], 3)
+        assert_equal(met["listed"], False)
+
+        self.log.info("the roster shows where it can be met today, as every visitor works it out")
+        entry = self.entry(6)
+        assert_equal(sorted(entry["meeting_points"]), new_points)
+        assert "meeting_point" not in entry  # listed before any relay was
+        relays = [self.key(n) for n in range(6)]
+        assert all("meeting_points" not in self.entry(n) for n in range(6))
+        assert_raises_rpc_error(-1, "names no meeting point", self.nodes[4].meet, self.key(6), 1, "listed")
+
+        self.log.info("renewed, its listing names one relay to meet it at for the listing's life")
+        named = self.renew(6)
+        assert named in relays
+        assert named not in self.nodes[6].getoverlayinfo()["guards"]
+        self.wait_until(lambda: any(r["point"] == named and r["listed"]
+                                    for r in self.nodes[6].getmeetinginfo()["registrations"]), timeout=180)
+        met = self.nodes[self.visitor(named)].meet(self.key(6), 1, "listed")
+        assert_equal(met["point"], named)
+        assert_equal(met["listed"], True)
+        assert "epoch" not in met
+        # Today's points are unchanged by it.
+        assert_equal(sorted(self.entry(6)["meeting_points"]), new_points)
+
+        self.log.info("each renewal names a new one, and the old one is let go")
+        again = self.renew(6)
+        assert again != named and again in relays
+        self.wait_until(lambda: [r["point"] for r in self.nodes[6].getmeetinginfo()["registrations"] if r["listed"]] == [again],
+                        timeout=180)
+        assert_equal(self.nodes[self.visitor(again)].meet(self.key(6), 1, "listed")["point"], again)
+
+    def visitor(self, point):
+        """A relay to meet from that is not the meeting point itself."""
+        return [n for n in range(6) if self.key(n) != point][0]
+
+    def entry(self, n):
+        key = self.key(n)
+        return [e for e in self.nodes[0].getroster(0) if e["key"] == key][0]
+
+    def renew(self, n):
+        record = self.nodes[n].createannouncement({})
+        assert "warnings" not in record
+        payer = self.nodes[0]
+        payer.publishrecord(record["hex"])
+        payer.generatetoaddress(1, payer.getnewaddress())
+        self.sync_all()
+        height = payer.getblockcount()
+        for node in self.nodes:
+            self.wait_until(lambda: node.getrosterinfo()["best_block_height"] == height, timeout=60)
+        return self.entry(n)["meeting_point"]
 
 
 if __name__ == '__main__':

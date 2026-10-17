@@ -1568,7 +1568,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Οι ομότιμοι ανακοινώνονται στην αλυσίδα αντί σε διακομιστή, οπότε αυτή η λίστα είναι ίδια για όλους και κανείς δεν μπορεί να την επεξεργαστεί. Οι αναμεταδότες λένε πού βρίσκονται όσο λειτουργούν, οπότε οι διευθύνσεις τους δεν μπαίνουν ποτέ στην αλυσίδα και εμφανίζονται εδώ μόνο όσο είναι συνδεδεμένοι.</translation>
+        <translation type="vanished">Οι ομότιμοι ανακοινώνονται στην αλυσίδα αντί σε διακομιστή, οπότε αυτή η λίστα είναι ίδια για όλους και κανείς δεν μπορεί να την επεξεργαστεί. Οι αναμεταδότες λένε πού βρίσκονται όσο λειτουργούν, οπότε οι διευθύνσεις τους δεν μπαίνουν ποτέ στην αλυσίδα και εμφανίζονται εδώ μόνο όσο είναι συνδεδεμένοι.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1577,6 +1577,10 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Αναμεταδότες που είπαν πού βρίσκονται τις τελευταίες τρεις ώρες. Και οι άλλοι είναι καταχωρισμένοι: η καταχώριση λέει ότι ένας ομότιμος υπάρχει, όχι ότι λειτουργεί.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Οι ομότιμοι ανακοινώνονται στην αλυσίδα αντί σε διακομιστή, οπότε αυτή η λίστα είναι ίδια για όλους και κανείς δεν μπορεί να την επεξεργαστεί. Ένας ομότιμος καταχωρισμένος μέσω του δικτύου επικάλυψης δείχνει πού μπορεί να βρεθεί σήμερα, κάτι που αλλάζει κάθε μέρα· ένας αναμεταδότης δείχνει τη διεύθυνσή του μόνο όσο είναι συνδεδεμένος, αφού δεν βρίσκεται ποτέ στην αλυσίδα.</translation>
     </message>
 </context>
 <context>
@@ -3218,7 +3222,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>Η καταχώρισή σας λέει ποιος είστε και όχι πού λειτουργείτε. Οι ομότιμοι σας προσεγγίζουν αντί γι&apos; αυτό μέσω του δικτύου επικάλυψης, συναντώντας σας σε σημεία που υπολογίζουν και οι δύο πλευρές από το μητρώο. Αυτό ενεργοποιεί από προεπιλογή αυτό το πρόγραμμα.</translation>
+        <translation type="vanished">Η καταχώρισή σας λέει ποιος είστε και όχι πού λειτουργείτε. Οι ομότιμοι σας προσεγγίζουν αντί γι&apos; αυτό μέσω του δικτύου επικάλυψης, συναντώντας σας σε σημεία που υπολογίζουν και οι δύο πλευρές από το μητρώο. Αυτό ενεργοποιεί από προεπιλογή αυτό το πρόγραμμα.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3378,11 +3382,27 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Ως αναμεταδότης — ανακοίνωση της διεύθυνσής μου όσο λειτουργώ</translation>
+        <translation type="vanished">Ως αναμεταδότης — ανακοίνωση της διεύθυνσής μου όσο λειτουργώ</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Οι διαδρομές άλλων περνούν από αυτόν τον υπολογιστή. Η καταχώρισή σας λέει ότι είστε αναμεταδότης, όχι πού: όσο λειτουργεί ο κόμβος σας, λέει στο δίκτυο την τρέχουσα διεύθυνσή του, υπογεγραμμένη με το κλειδί του, και ξανά κάθε φορά που αλλάζει, χωρίς συναλλαγή. Τίποτα για το πού βρίσκεστε δεν μπαίνει στην αλυσίδα, και το δίκτυο ξεχνά τη διεύθυνση μέσα σε τρεις ώρες αφότου σταματήσει ο κόμβος σας. Οι άλλοι πρέπει να μπορούν να φτάσουν αυτόν τον υπολογιστή στη θύρα %1 (TCP) και %2 (UDP).</translation>
+        <translation type="vanished">Οι διαδρομές άλλων περνούν από αυτόν τον υπολογιστή. Η καταχώρισή σας λέει ότι είστε αναμεταδότης, όχι πού: όσο λειτουργεί ο κόμβος σας, λέει στο δίκτυο την τρέχουσα διεύθυνσή του, υπογεγραμμένη με το κλειδί του, και ξανά κάθε φορά που αλλάζει, χωρίς συναλλαγή. Τίποτα για το πού βρίσκεστε δεν μπαίνει στην αλυσίδα, και το δίκτυο ξεχνά τη διεύθυνση μέσα σε τρεις ώρες αφότου σταματήσει ο κόμβος σας. Οι άλλοι πρέπει να μπορούν να φτάσουν αυτόν τον υπολογιστή στη θύρα %1 (TCP) και %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>Η καταχώρισή σας λέει ποιος είστε και όχι πού λειτουργείτε. Οι ομότιμοι σας φτάνουν μέσω του δικτύου επικάλυψης και σας συναντούν σε σημεία που υπολογίζουν και οι δύο πλευρές από το μητρώο και που αλλάζουν κάθε μέρα· η Ανακάλυψη δείχνει τα σημερινά. Η καταχώρισή σας ονομάζει επίσης έναν αναμεταδότη όπου μπορείτε να βρεθείτε όσο ισχύει, και κάθε ανανέωση ονομάζει νέο. Αυτό ενεργοποιεί αυτός ο πελάτης από προεπιλογή.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Μεταφορά διαδρομών άλλων ως αναμεταδότης</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Οι διαδρομές πρέπει να φτάνουν σε έναν αναμεταδότη, οπότε όσο λειτουργεί ο κόμβος σας λέει στο δίκτυο την τρέχουσα διεύθυνση αυτού του υπολογιστή, υπογεγραμμένη με το κλειδί του, και ξανά κάθε φορά που αλλάζει, χωρίς συναλλαγή. Δεν γράφεται ποτέ στην αλυσίδα, και το δίκτυο την ξεχνά μέσα σε τρεις ώρες αφότου σταματήσει ο κόμβος σας. Οι άλλοι πρέπει να μπορούν να φτάσουν αυτόν τον υπολογιστή στη θύρα %1 (TCP) και %2 (UDP). Ένας αναμεταδότης μοιράζεται τη σύνδεσή του στο διαδίκτυο με δεύτερο κλειδί, από τη σελίδα Διακομιστής.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Όσο λειτουργεί ο κόμβος σας, λέει στο δίκτυο την τρέχουσα διεύθυνση αυτού του υπολογιστή, υπογεγραμμένη με το κλειδί του, ώστε να τον φτάνουν οι διαδρομές, και ξανά κάθε φορά που αλλάζει. Δεν γράφεται ποτέ στην αλυσίδα, και το δίκτυο την ξεχνά μέσα σε τρεις ώρες αφότου σταματήσει ο κόμβος σας. Οι άλλοι πρέπει να μπορούν να φτάσουν αυτόν τον υπολογιστή στη θύρα %1 (TCP) και %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4242,6 +4262,20 @@ the last three hours: it is not running, or not reachable from here.</source>
     <message>
         <source>relay, offline</source>
         <translation>αναμεταδότης, εκτός σύνδεσης</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Καταχωρισμένος μέσω του δικτύου επικάλυψης. Σήμερα βρίσκεται σε αυτούς τους αναμεταδότες,
+υπολογισμένους από το μητρώο· αλλάζουν κάθε μέρα:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>Η καταχώρισή του ονομάζει επίσης αυτόν, όσο ισχύει η καταχώριση:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>συνάντηση στο %1</translation>
     </message>
 </context>
 <context>

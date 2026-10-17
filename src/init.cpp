@@ -2620,7 +2620,10 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                     }
                     return out;
                 },
-                overlay::MeetService, overlay::CloseMeeting,
+                [](const roster::KeyBytes& key, int hops, overlay::Meeting& m, std::string& error) {
+                    return overlay::MeetService(key, hops, m, error);
+                },
+                overlay::CloseMeeting,
                 [](uint64_t path, const std::vector<uint8_t>& msg) {
                     return overlay::g_overlay && overlay::g_overlay->SendSecret(path, msg);
                 });

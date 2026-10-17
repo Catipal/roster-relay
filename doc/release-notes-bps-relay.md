@@ -40,11 +40,14 @@ The first page, with four tabs.
   listing is a short signed record saying you exist and, if you want,
   where to reach you. Nobody can list you without your key, hide you from
   some clients and not others, or quietly remove you. Click a peer's key or
-  address to copy it. A relay can be listed without its address: it says
+  address to copy it. A peer listed through the overlay shows where it can
+  be met today, worked out from the roster; these change every day, and its
+  listing also names one relay to meet it at for as long as the listing
+  lasts, a new one at each renewal. A relay listed through the overlay says
   where it is while it runs, in a short message signed with its key that
-  peers pass on, and the address shows here only while the relay is online
-  ("Only relays online now" hides the rest). It can change without a
-  transaction, and none of it is ever on the chain. "Listed for" is how long each peer has been listed
+  peers pass on, and its address shows here only while it is online ("Only
+  relays online now" hides the rest). It can change without a transaction,
+  and none of it is ever on the chain. "Listed for" is how long each peer has been listed
   without a break - the one thing a newcomer cannot fake - and its tooltip
   says whether an identity stands behind it (see Identities).
   If the newest block this node has is over a month old, the roster is

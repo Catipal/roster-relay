@@ -1568,7 +1568,7 @@ Amosaráseche unha chave de recuperación unha vez. Anótaa: é a única forma d
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Os pares anúncianse na cadea en vez de nun servidor, así que esta lista é a mesma para todos e ninguén a pode editar. Os repetidores din onde están mentres funcionan, así que os seus enderezos nunca van á cadea e só se amosan aquí mentres están en liña.</translation>
+        <translation type="vanished">Os pares anúncianse na cadea en vez de nun servidor, así que esta lista é a mesma para todos e ninguén a pode editar. Os repetidores din onde están mentres funcionan, así que os seus enderezos nunca van á cadea e só se amosan aquí mentres están en liña.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1577,6 +1577,10 @@ Amosaráseche unha chave de recuperación unha vez. Anótaa: é a única forma d
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Repetidores que dixeron onde están nas últimas tres horas. Os demais tamén están inscritos: estar inscrito di que un par existe, non que estea funcionando.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Os pares anúncianse na cadea en vez de nun servidor, así que esta lista é a mesma para todos e ninguén a pode editar. Un par inscrito a través da rede superposta amosa onde se pode atopar hoxe, o que cambia cada día; un repetidor amosa o seu enderezo só mentres está en liña, porque nunca está na cadea.</translation>
     </message>
 </context>
 <context>
@@ -3217,7 +3221,7 @@ Amosaráseche unha chave de recuperación unha vez. Anótaa: é a única forma d
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>A túa inscrición di quen es e non onde estás en execución. Os pares chegan a ti a través da rede superposta, atopándote en puntos que ambas partes calculan a partir do rexistro. É o que este cliente activa por defecto.</translation>
+        <translation type="vanished">A túa inscrición di quen es e non onde estás en execución. Os pares chegan a ti a través da rede superposta, atopándote en puntos que ambas partes calculan a partir do rexistro. É o que este cliente activa por defecto.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3377,11 +3381,27 @@ Amosaráseche unha chave de recuperación unha vez. Anótaa: é a única forma d
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Como repetidor — anunciar o meu enderezo mentres funciono</translation>
+        <translation type="vanished">Como repetidor — anunciar o meu enderezo mentres funciono</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Os camiños doutros pasan por este ordenador. A túa inscrición di que es un repetidor, non onde: mentres o teu nodo funciona, dille á rede o seu enderezo actual, asinado coa súa chave, e de novo cada vez que cambia, sen ningunha transacción. Nada sobre onde estás vai á cadea, e a rede esquece o enderezo nas tres horas seguintes a que o teu nodo se deteña. Os demais deben poder chegar a este ordenador no porto %1 (TCP) e %2 (UDP).</translation>
+        <translation type="vanished">Os camiños doutros pasan por este ordenador. A túa inscrición di que es un repetidor, non onde: mentres o teu nodo funciona, dille á rede o seu enderezo actual, asinado coa súa chave, e de novo cada vez que cambia, sen ningunha transacción. Nada sobre onde estás vai á cadea, e a rede esquece o enderezo nas tres horas seguintes a que o teu nodo se deteña. Os demais deben poder chegar a este ordenador no porto %1 (TCP) e %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>A túa inscrición di quen es e non onde funcionas. Os pares chegan a ti a través da rede superposta e atópante en puntos que ambas as partes calculan a partir do rexistro, e que cambian cada día; Descubrir amosa os de hoxe. A túa inscrición tamén nomea un repetidor onde se te pode atopar mentres dure, e cada renovación nomea un novo. Isto é o que este cliente activa por defecto.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Levar camiños doutros como repetidor</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Os camiños teñen que chegar a un repetidor, así que mentres o teu nodo funciona dille á rede o enderezo actual deste ordenador, asinado coa súa chave, e de novo cada vez que cambia, sen ningunha transacción. Nunca se escribe na cadea, e a rede esquéceo nas tres horas seguintes a que o teu nodo se deteña. Os demais deben poder chegar a este ordenador no porto %1 (TCP) e %2 (UDP). Un repetidor comparte a súa conexión a internet cunha segunda chave, desde a páxina Servidor.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Mentres o teu nodo funciona, dille á rede o enderezo actual deste ordenador, asinado coa súa chave, para que os camiños poidan chegar a el, e de novo cada vez que cambia. Nunca se escribe na cadea, e a rede esquéceo nas tres horas seguintes a que o teu nodo se deteña. Os demais deben poder chegar a este ordenador no porto %1 (TCP) e %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4240,6 +4260,20 @@ the last three hours: it is not running, or not reachable from here.</source>
     <message>
         <source>relay, offline</source>
         <translation>repetidor, fóra de liña</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Inscrito a través da rede superposta. Hoxe pódese atopar nestes repetidores,
+calculados a partir do rexistro; cambian cada día:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>A súa inscrición tamén nomea este, mentres dure a inscrición:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>atópase en %1</translation>
     </message>
 </context>
 <context>

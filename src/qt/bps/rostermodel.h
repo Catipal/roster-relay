@@ -8,6 +8,7 @@
 #include <QAbstractTableModel>
 #include <QList>
 #include <QString>
+#include <QStringList>
 
 class UniValue;
 
@@ -25,6 +26,8 @@ struct RosterRow {
     bool relay{false};  //!< listed as a relay that announces its address while it runs
     QString announced;  //!< where it says it is now, readable, or empty when not heard from
     int announced_age{-1}; //!< seconds since it said so, -1 when not heard from
+    QStringList meets;  //!< listed with no address: today's meeting points, full hex
+    QString meet_point; //!< the meeting point its listing names, full hex, or empty
 };
 
 /**

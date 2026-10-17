@@ -4,6 +4,7 @@
 
 #include <chain.h>
 #include <chainparams.h>
+#include <chainparamsbase.h>
 #include <compat.h>
 #include <index/rosterindex.h>
 #include <key_io.h>
@@ -138,6 +139,7 @@ UniValue EntryToJSON(const RosterEntry& entry, const roster::Record& rec)
         out.pushKV("dialable", !rec.endpoints.empty());
         out.pushKV("relay", roster::IsAnnouncingRelay(rec.services));
         out.pushKV("gateway", roster::IsGatewayRecord(rec.services, rec.endpoints.size()));
+        if (rec.meet_point.has_value()) out.pushKV("meeting_point", HexStr(*rec.meet_point));
         out.pushKV("prev_height", (uint64_t)rec.prev_height);
         {
             UniValue eps(UniValue::VARR);
@@ -349,6 +351,7 @@ static RPCHelpMan getmeetinginfo()
                             {{RPCResult::Type::OBJ, "", "", {
                                 {RPCResult::Type::STR_HEX, "point", "The meeting point's roster key"},
                                 {RPCResult::Type::ARR, "epochs", "Epochs it is a point for", {{RPCResult::Type::NUM, "", ""}}},
+                                {RPCResult::Type::BOOL, "listed", "Whether it is the meeting point this node's listing names, for the listing's life"},
                                 {RPCResult::Type::ARR, "through", "The relays in front of this node on the way there", {{RPCResult::Type::STR_HEX, "", ""}}},
                                 {RPCResult::Type::NUM_TIME, "since", "When it first answered"},
                                 {RPCResult::Type::NUM_TIME, "refreshed", "When it last answered"},
@@ -370,6 +373,7 @@ static RPCHelpMan getmeetinginfo()
             UniValue epochs(UniValue::VARR);
             for (uint64_t e : r.epochs) epochs.push_back(e);
             o.pushKV("epochs", epochs);
+            o.pushKV("listed", r.listed);
             UniValue through(UniValue::VARR);
             for (const roster::KeyBytes& k : r.reached.through) through.push_back(HexStr(k));
             o.pushKV("through", through);
@@ -391,16 +395,19 @@ static RPCHelpMan meet()
 {
     return RPCHelpMan{"meet",
                 "\nReach a node by its roster key through one of its meeting points, ask whether it is there,\n"
-                "and leave. Nothing is looked up: the meeting points are computed from the roster.\n",
+                "and leave. Nothing is looked up: today's meeting points are computed from the roster, and\n"
+                "the one its listing names, for the listing's life, is on the chain.\n",
                 {
                     {"key", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "Its roster key"},
                     {"hops", RPCArg::Type::NUM, /* default */ strprintf("%d", overlay::DEFAULT_MEET_HOPS), "Relays between this node and the meeting point, 1 to 3"},
+                    {"point", RPCArg::Type::STR, /* default */ "any", "\"any\": today's points, then the one its listing names; \"listed\": only the one its listing names"},
                 },
                 RPCResult{
                     RPCResult::Type::OBJ, "", "",
                     {
                         {RPCResult::Type::STR_HEX, "point", "The meeting point used"},
-                        {RPCResult::Type::NUM, "epoch", "The epoch its points were taken from"},
+                        {RPCResult::Type::BOOL, "listed", "Whether it was the one its listing names"},
+                        {RPCResult::Type::NUM, "epoch", /* optional */ true, "The epoch its points were taken from, when it was one of today's"},
                         {RPCResult::Type::NUM, "hops", "Relays on this side"},
                         {RPCResult::Type::NUM, "rtt_ms", "Round trip across the meeting, in milliseconds"},
                     }},
@@ -413,17 +420,22 @@ static RPCHelpMan meet()
     std::copy(raw.begin(), raw.end(), key.begin());
     const int hops = request.params[1].isNull() ? overlay::DEFAULT_MEET_HOPS : request.params[1].get_int();
     if (hops < 1 || hops > overlay::MAX_MEET_HOPS) throw JSONRPCError(RPC_INVALID_PARAMETER, "hops must be 1 to 3");
+    const std::string point = request.params[2].isNull() ? "any" : request.params[2].get_str();
+    if (point != "any" && point != "listed") throw JSONRPCError(RPC_INVALID_PARAMETER, "point is \"any\" or \"listed\"");
 
     overlay::Meeting m;
     std::string error;
-    if (!overlay::MeetService(key, hops, m, error)) throw JSONRPCError(RPC_MISC_ERROR, "Could not meet it: " + error);
+    if (!overlay::MeetService(key, hops, m, error, point == "listed")) {
+        throw JSONRPCError(RPC_MISC_ERROR, "Could not meet it: " + error);
+    }
     std::chrono::milliseconds rtt{0};
     const bool there = overlay::EchoAcross(m, std::chrono::milliseconds{15000}, rtt);
     overlay::CloseMeeting(m);
     if (!there) throw JSONRPCError(RPC_MISC_ERROR, "It was met but did not answer.");
     UniValue out(UniValue::VOBJ);
     out.pushKV("point", HexStr(m.point));
-    out.pushKV("epoch", m.epoch);
+    out.pushKV("listed", m.listed);
+    if (!m.listed) out.pushKV("epoch", m.epoch);
     out.pushKV("hops", m.hops);
     out.pushKV("rtt_ms", (int64_t)rtt.count());
     return out;
@@ -804,6 +816,9 @@ static RPCHelpMan getroster()
                     {RPCResult::Type::BOOL, "dialable", "Whether the record carries any endpoint at all"},
                     {RPCResult::Type::BOOL, "relay", "Whether it is listed as a relay that announces its address while it runs, instead of on the chain"},
                     {RPCResult::Type::BOOL, "gateway", "Whether the key is a gateway to the internet, met at its meeting points: the gateway bit, on a record with no endpoint"},
+                    {RPCResult::Type::STR_HEX, "meeting_point", /* optional */ true, "The relay its listing names to meet it at, for the listing's life"},
+                    {RPCResult::Type::ARR, "meeting_points", /* optional */ true, "For a key listed with no address and not a relay: where it can be met today, worked out from the roster; they change every epoch",
+                        {{RPCResult::Type::STR_HEX, "", "A meeting point's roster key"}}},
                     {RPCResult::Type::OBJ, "announced", /* optional */ true, "Present for a relay whose announcement this node holds and still counts: where it says it is now",
                         {
                             {RPCResult::Type::NUM_TIME, "time", "When the relay signed it"},
@@ -848,6 +863,13 @@ static RPCHelpMan getroster()
 
     const bool hints = !request.params[2].isNull() && request.params[2].get_bool();
     const int64_t now = GetTime();
+    // Today's meeting points come from the relay set at the epoch's anchor,
+    // read once for every entry (overlay/rendezvous.h).
+    const uint64_t epoch = overlay::RendezvousEpoch(tip);
+    std::vector<roster::KeyBytes> anchor_relays;
+    const bool have_points = overlay::RendezvousAnchor(epoch) <= tip &&
+        roster::AgreedRelays(index, overlay::RendezvousAnchor(epoch), anchor_relays,
+                             Params().NetworkIDString() == CBaseChainParams::REGTEST);
     UniValue out(UniValue::VARR);
     int seen = 0, emitted = 0;
     for (const std::pair<const roster::KeyBytes, RosterEntry>& item : live) {
@@ -857,6 +879,13 @@ static RPCHelpMan getroster()
         roster::Record rec;
         if (!item.second.Parse(rec)) continue;
         UniValue entry = EntryToJSON(item.second, rec);
+        if (have_points && rec.endpoints.empty() && !roster::IsAnnouncingRelay(rec.services)) {
+            UniValue points(UniValue::VARR);
+            for (const roster::KeyBytes& p : overlay::RendezvousPoints(item.first, epoch, anchor_relays)) {
+                points.push_back(HexStr(p));
+            }
+            entry.pushKV("meeting_points", points);
+        }
         roster::RelayAddress announced;
         if (roster::IsAnnouncingRelay(rec.services) && roster::g_relay_addresses &&
             roster::g_relay_addresses->Current(item.first, now, announced)) {
@@ -1040,6 +1069,44 @@ static std::vector<unsigned char> BuildAnnouncement(const UniValue& options, ros
         rec.services |= roster::SERVICE_GATEWAY;
     }
 
+    // A key listed with no address names one relay it can be met at for as
+    // long as the listing counts: the chain cannot change
+    // it, so it holds for the listing's life, and each renewal names a new
+    // one. Drawn at random from the relays this node can reach - never its own
+    // guards, which see where it is already, nor this node, nor the one it
+    // names now.
+    if (options.exists("meeting_point")) {
+        const std::string named = options["meeting_point"].get_str();
+        if (named != "none") {
+            if (!rec.endpoints.empty()) {
+                throw JSONRPCError(RPC_INVALID_PARAMETER, "A meeting point is only for a listing with no endpoints.");
+            }
+            rec.meet_point = ParseKeyArg(options["meeting_point"]);
+        }
+    } else if (rec.endpoints.empty()) {
+        std::set<roster::KeyBytes> avoid;
+        avoid.insert(rec.op_key);
+        CKey own;
+        if (roster::ReadOperationalKey(own)) avoid.insert(roster::KeyBytesOf(own));
+        {
+            LOCK(overlay::g_selector_mutex);
+            if (overlay::g_selector) {
+                for (const overlay::RelayCandidate& g : overlay::g_selector->Guards()) avoid.insert(g.key);
+            }
+        }
+        roster::Record live;
+        if (g_rosterindex && roster::LiveAnnouncement(*g_rosterindex, rec.op_key, tip, live) && live.meet_point.has_value()) {
+            avoid.insert(*live.meet_point);
+        }
+        std::vector<roster::KeyBytes> candidates;
+        for (const roster::RelayInfo& r : roster::FreshRelays()) {
+            if (!avoid.count(r.key)) candidates.push_back(r.key);
+        }
+        // With none to draw from the listing names none, and is met at the
+        // points worked out from the roster alone, as before there were any.
+        if (!candidates.empty()) rec.meet_point = candidates[GetRand(candidates.size())];
+    }
+
     // A relay that says where it is while it runs, instead of here: the
     // chain keeps that it is a relay, and never where (roster/relayaddr.h).
     // Never a gateway as well: the address it announces would be an exit's.
@@ -1125,7 +1192,8 @@ static std::vector<unsigned char> BuildAnnouncement(const UniValue& options, ros
                                "peers not on one will not reach this address.");
         }
     }
-    if (rec.endpoints.empty() && !(rec.services & (roster::SERVICE_GATEWAY | roster::SERVICE_RELAY_CAPABLE))) {
+    if (rec.endpoints.empty() && !(rec.services & (roster::SERVICE_GATEWAY | roster::SERVICE_RELAY_CAPABLE)) &&
+        !rec.meet_point.has_value()) {
         warnings.push_back("No endpoints: this record lists the identity but offers nowhere to dial. "
                            "Intentional for a name holder or for accruing age; add an endpoint to be reachable.");
     }
@@ -1161,7 +1229,9 @@ static RPCHelpMan createannouncement()
                     {"gateway", RPCArg::Type::BOOL, /* default */ "false",
                      "List this key as a gateway to the internet, met at its meeting points (design note §8·7). Only on a record with no endpoints."},
                     {"relay", RPCArg::Type::BOOL, /* default */ "false",
-                     "List this key as a relay that announces its address while it runs - signed, passed between peers, good for three hours - instead of writing it to the chain. Give no endpoints, and no address of this node lands on the chain; it can change without a transaction. Not with gateway."},
+                     "List this key as a relay that carries others' paths and announces its address while it runs - signed, passed between peers, good for three hours - instead of writing it to the chain. Give no endpoints, and no address of this node lands on the chain; it can change without a transaction. Not with gateway."},
+                    {"meeting_point", RPCArg::Type::STR, /* default */ "a relay drawn at random",
+                     "For a listing with no endpoints: the relay key it can be met at for the listing's life, or \"none\". By default one this node can reach, never one of its guards nor the one it names now, so each renewal names a new one; none while it can reach no relay."},
                     {"key", RPCArg::Type::STR, /* default */ "operational",
                      "Which key signs: \"operational\", or \"gateway\" - the second key a relay lists its gateway under, since its operational key carries its address. A gateway key is always listed as a gateway, with no endpoints, and is created in <datadir>/gateway.key on first use."},
                 }},
@@ -1761,7 +1831,7 @@ static const CRPCCommand commands[] =
     { "overlay",          "getmeetinginfo",       &getmeetinginfo,        {} },
     { "overlay",          "getgatewayinfo",       &getgatewayinfo,        {} },
     { "overlay",          "getchainfeedinfo",     &getchainfeedinfo,      {} },
-    { "overlay",          "meet",                 &meet,                  {"key","hops"} },
+    { "overlay",          "meet",                 &meet,                  {"key","hops","point"} },
     { "roster",           "getrosterinfo",        &getrosterinfo,         {} },
     { "roster",           "getroster",            &getroster,             {"count","skip","hints"} },
     { "roster",           "getrosterhistory",     &getrosterhistory,      {"key"} },

@@ -1568,7 +1568,7 @@ Ti verrà mostrata una chiave di recupero una sola volta. Scrivila: è l&apos;un
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>I peer si annunciano sulla catena anziché a un server, quindi questo elenco è lo stesso per tutti e nessuno è in grado di modificarlo. I relay dicono dove si trovano finché sono in funzione, quindi i loro indirizzi non finiscono mai sulla catena e compaiono qui solo mentre sono online.</translation>
+        <translation type="vanished">I peer si annunciano sulla catena anziché a un server, quindi questo elenco è lo stesso per tutti e nessuno è in grado di modificarlo. I relay dicono dove si trovano finché sono in funzione, quindi i loro indirizzi non finiscono mai sulla catena e compaiono qui solo mentre sono online.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1577,6 +1577,10 @@ Ti verrà mostrata una chiave di recupero una sola volta. Scrivila: è l&apos;un
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Relay che hanno detto dove si trovano nelle ultime tre ore. Anche gli altri sono iscritti: essere iscritti dice che un peer esiste, non che sia in funzione.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>I peer si annunciano sulla catena anziché a un server, quindi questo elenco è lo stesso per tutti e nessuno è in grado di modificarlo. Un peer iscritto tramite l&apos;overlay mostra dove lo si può incontrare oggi, cosa che cambia ogni giorno; un relay mostra il suo indirizzo solo mentre è online, perché non è mai sulla catena.</translation>
     </message>
 </context>
 <context>
@@ -3218,7 +3222,7 @@ Per specificare più URL separarli con una barra verticale &quot;|&quot;.</trans
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>La tua iscrizione dice chi sei, non dove sei in esecuzione. I peer ti raggiungono invece tramite l&apos;overlay, incontrandoti in punti che entrambe le parti calcolano dal registro. È ciò che questo client attiva in modo predefinito.</translation>
+        <translation type="vanished">La tua iscrizione dice chi sei, non dove sei in esecuzione. I peer ti raggiungono invece tramite l&apos;overlay, incontrandoti in punti che entrambe le parti calcolano dal registro. È ciò che questo client attiva in modo predefinito.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3378,11 +3382,27 @@ Per specificare più URL separarli con una barra verticale &quot;|&quot;.</trans
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Come relay — annuncia il mio indirizzo finché sono in funzione</translation>
+        <translation type="vanished">Come relay — annuncia il mio indirizzo finché sono in funzione</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>I percorsi degli altri passano da questo computer. La tua iscrizione dice che sei un relay, non dove: finché il tuo nodo è in funzione, comunica alla rete il suo indirizzo attuale, firmato con la sua chiave, e di nuovo ogni volta che cambia, senza alcuna transazione. Nulla su dove ti trovi finisce sulla catena, e la rete dimentica l&apos;indirizzo entro tre ore da quando il tuo nodo si ferma. Gli altri devono poter raggiungere questo computer sulla porta %1 (TCP) e %2 (UDP).</translation>
+        <translation type="vanished">I percorsi degli altri passano da questo computer. La tua iscrizione dice che sei un relay, non dove: finché il tuo nodo è in funzione, comunica alla rete il suo indirizzo attuale, firmato con la sua chiave, e di nuovo ogni volta che cambia, senza alcuna transazione. Nulla su dove ti trovi finisce sulla catena, e la rete dimentica l&apos;indirizzo entro tre ore da quando il tuo nodo si ferma. Gli altri devono poter raggiungere questo computer sulla porta %1 (TCP) e %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>La tua iscrizione dice chi sei e non dove sei in funzione. I peer ti raggiungono tramite l&apos;overlay e ti incontrano in punti che entrambe le parti ricavano dal registro, e che cambiano ogni giorno; Scoperta mostra quelli di oggi. La tua iscrizione nomina anche un relay dove ti si può incontrare finché dura, e ogni rinnovo ne nomina uno nuovo. È ciò che questo client attiva in modo predefinito.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Trasporta i percorsi degli altri come relay</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">I percorsi devono raggiungere un relay, quindi finché il tuo nodo è in funzione comunica alla rete l&apos;indirizzo attuale di questo computer, firmato con la sua chiave, e di nuovo ogni volta che cambia, senza alcuna transazione. Non viene mai scritto sulla catena, e la rete lo dimentica entro tre ore da quando il tuo nodo si ferma. Gli altri devono poter raggiungere questo computer sulla porta %1 (TCP) e %2 (UDP). Un relay condivide la sua connessione a internet con una seconda chiave, dalla pagina Server.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Finché il tuo nodo è in funzione, comunica alla rete l&apos;indirizzo attuale di questo computer, firmato con la sua chiave, perché i percorsi possano raggiungerlo, e di nuovo ogni volta che cambia. Non viene mai scritto sulla catena, e la rete lo dimentica entro tre ore da quando il tuo nodo si ferma. Gli altri devono poter raggiungere questo computer sulla porta %1 (TCP) e %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4241,6 +4261,20 @@ nelle ultime tre ore: non è in funzione, o non è raggiungibile da qui.</transl
     <message>
         <source>relay, offline</source>
         <translation>relay, offline</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Iscritto tramite l&apos;overlay. Oggi lo si incontra a questi relay,
+ricavati dal registro; cambiano ogni giorno:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>La sua iscrizione nomina anche questo, finché l&apos;iscrizione dura:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>si incontra a %1</translation>
     </message>
 </context>
 <context>

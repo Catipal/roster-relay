@@ -1569,7 +1569,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>பியர்கள் சேவையகத்தில் அல்ல, சங்கிலியில் தங்களை அறிவிக்கின்றன, எனவே இந்தப் பட்டியல் அனைவருக்கும் ஒன்றே, யாரும் இதைத் திருத்த முடியாது. ரிலேக்கள் இயங்கும்வரை தாங்கள் எங்கே இருக்கின்றன என்று சொல்கின்றன, எனவே அவற்றின் முகவரிகள் ஒருபோதும் சங்கிலியில் சேராது, அவை இணைப்பில் இருக்கும்வரை மட்டுமே இங்கே காட்டப்படும்.</translation>
+        <translation type="vanished">பியர்கள் சேவையகத்தில் அல்ல, சங்கிலியில் தங்களை அறிவிக்கின்றன, எனவே இந்தப் பட்டியல் அனைவருக்கும் ஒன்றே, யாரும் இதைத் திருத்த முடியாது. ரிலேக்கள் இயங்கும்வரை தாங்கள் எங்கே இருக்கின்றன என்று சொல்கின்றன, எனவே அவற்றின் முகவரிகள் ஒருபோதும் சங்கிலியில் சேராது, அவை இணைப்பில் இருக்கும்வரை மட்டுமே இங்கே காட்டப்படும்.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1578,6 +1578,10 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>கடந்த மூன்று மணி நேரத்தில் தாங்கள் எங்கே இருக்கின்றன என்று சொன்ன ரிலேக்கள். மற்றவையும் பட்டியலிடப்பட்டுள்ளன: பட்டியலிடப்படுவது ஒரு பியர் இருக்கிறது என்பதைச் சொல்கிறது, அது இயங்குகிறது என்பதை அல்ல.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>பியர்கள் சேவையகத்தில் அல்ல, சங்கிலியில் தங்களை அறிவிக்கின்றன, எனவே இந்தப் பட்டியல் அனைவருக்கும் ஒன்றே, யாரும் இதைத் திருத்த முடியாது. மேலடுக்கு வழியாகப் பட்டியலிடப்பட்ட பியர் இன்று எங்கே சந்திக்கலாம் என்று காட்டுகிறது, அது ஒவ்வொரு நாளும் மாறும்; ரிலே இணைப்பில் இருக்கும்போது மட்டுமே தன் முகவரியைக் காட்டுகிறது, ஏனெனில் அது ஒருபோதும் சங்கிலியில் இல்லை.</translation>
     </message>
 </context>
 <context>
@@ -3218,7 +3222,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>உங்கள் பட்டியலிடல் நீங்கள் யார் என்பதைச் சொல்கிறது, நீங்கள் எங்கே இயங்குகிறீர்கள் என்பதை அல்ல. பியர்கள் அதற்குப் பதிலாக மேலடுக்கு வழியாக உங்களை அடைகின்றன, இரு தரப்பும் பதிவேட்டிலிருந்து கணக்கிடும் புள்ளிகளில் உங்களைச் சந்திக்கின்றன. இந்தக் கிளையன்ட் இயல்பாக இயக்குவது இதைத்தான்.</translation>
+        <translation type="vanished">உங்கள் பட்டியலிடல் நீங்கள் யார் என்பதைச் சொல்கிறது, நீங்கள் எங்கே இயங்குகிறீர்கள் என்பதை அல்ல. பியர்கள் அதற்குப் பதிலாக மேலடுக்கு வழியாக உங்களை அடைகின்றன, இரு தரப்பும் பதிவேட்டிலிருந்து கணக்கிடும் புள்ளிகளில் உங்களைச் சந்திக்கின்றன. இந்தக் கிளையன்ட் இயல்பாக இயக்குவது இதைத்தான்.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3378,11 +3382,27 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>ரிலேவாக — நான் இயங்கும்வரை என் முகவரியை அறிவி</translation>
+        <translation type="vanished">ரிலேவாக — நான் இயங்கும்வரை என் முகவரியை அறிவி</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>மற்றவர்களின் பாதைகள் இந்தக் கணினி வழியாகச் செல்கின்றன. உங்கள் பட்டியல் நீங்கள் ஒரு ரிலே என்று சொல்கிறது, எங்கே என்று அல்ல: உங்கள் கணு இயங்கும்வரை, அது தன் தற்போதைய முகவரியைத் தன் சாவியால் கையொப்பமிட்டு வலையமைப்புக்குச் சொல்கிறது, அது மாறும் ஒவ்வொரு முறையும் மீண்டும் சொல்கிறது, எந்தப் பரிவர்த்தனையும் இல்லாமல். நீங்கள் எங்கே இருக்கிறீர்கள் என்பது பற்றி எதுவும் சங்கிலியில் சேராது, உங்கள் கணு நின்ற மூன்று மணி நேரத்துக்குள் வலையமைப்பு முகவரியை மறந்துவிடும். மற்றவர்கள் இந்தக் கணினியை போர்ட் %1 (TCP) மற்றும் %2 (UDP) இல் அடைய முடிய வேண்டும்.</translation>
+        <translation type="vanished">மற்றவர்களின் பாதைகள் இந்தக் கணினி வழியாகச் செல்கின்றன. உங்கள் பட்டியல் நீங்கள் ஒரு ரிலே என்று சொல்கிறது, எங்கே என்று அல்ல: உங்கள் கணு இயங்கும்வரை, அது தன் தற்போதைய முகவரியைத் தன் சாவியால் கையொப்பமிட்டு வலையமைப்புக்குச் சொல்கிறது, அது மாறும் ஒவ்வொரு முறையும் மீண்டும் சொல்கிறது, எந்தப் பரிவர்த்தனையும் இல்லாமல். நீங்கள் எங்கே இருக்கிறீர்கள் என்பது பற்றி எதுவும் சங்கிலியில் சேராது, உங்கள் கணு நின்ற மூன்று மணி நேரத்துக்குள் வலையமைப்பு முகவரியை மறந்துவிடும். மற்றவர்கள் இந்தக் கணினியை போர்ட் %1 (TCP) மற்றும் %2 (UDP) இல் அடைய முடிய வேண்டும்.</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>உங்கள் பட்டியல் நீங்கள் யார் என்று சொல்கிறது, நீங்கள் எங்கே இயங்குகிறீர்கள் என்று அல்ல. பியர்கள் மேலடுக்கு வழியாக உங்களை அடைந்து, இரு தரப்பும் பதிவேட்டிலிருந்து கணக்கிடும் புள்ளிகளில் உங்களைச் சந்திக்கின்றன; அவை ஒவ்வொரு நாளும் மாறும், கண்டறி இன்றையவற்றைக் காட்டுகிறது. உங்கள் பட்டியல் அது செல்லுபடியாகும்வரை உங்களைச் சந்திக்கக்கூடிய ஒரு ரிலேயையும் பெயரிடுகிறது, ஒவ்வொரு புதுப்பிப்பும் புதியதைப் பெயரிடுகிறது. இதையே இந்தக் கிளையன்ட் இயல்பாக இயக்குகிறது.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>ரிலேவாக மற்றவர்களின் பாதைகளைச் சுமந்து செல்</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">பாதைகள் ரிலேவை அடைய வேண்டும், எனவே உங்கள் கணு இயங்கும்வரை இந்தக் கணினியின் தற்போதைய முகவரியைத் தன் சாவியால் கையொப்பமிட்டு வலையமைப்புக்குச் சொல்கிறது, அது மாறும் ஒவ்வொரு முறையும் மீண்டும் சொல்கிறது, எந்தப் பரிவர்த்தனையும் இல்லாமல். அது ஒருபோதும் சங்கிலியில் எழுதப்படாது, உங்கள் கணு நின்ற மூன்று மணி நேரத்துக்குள் வலையமைப்பு அதை மறந்துவிடும். மற்றவர்கள் இந்தக் கணினியை போர்ட் %1 (TCP) மற்றும் %2 (UDP) இல் அடைய முடிய வேண்டும். ரிலே தன் இணைய இணைப்பை இரண்டாவது சாவியின் கீழ், சேவையகம் பக்கத்திலிருந்து பகிர்கிறது.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>உங்கள் கணு இயங்கும்வரை, பாதைகள் இதை அடையும்படி இந்தக் கணினியின் தற்போதைய முகவரியைத் தன் சாவியால் கையொப்பமிட்டு வலையமைப்புக்குச் சொல்கிறது, அது மாறும் ஒவ்வொரு முறையும் மீண்டும் சொல்கிறது. அது ஒருபோதும் சங்கிலியில் எழுதப்படாது, உங்கள் கணு நின்ற மூன்று மணி நேரத்துக்குள் வலையமைப்பு அதை மறந்துவிடும். மற்றவர்கள் இந்தக் கணினியை போர்ட் %1 (TCP) மற்றும் %2 (UDP) இல் அடைய முடிய வேண்டும்.</translation>
     </message>
 </context>
 <context>
@@ -4241,6 +4261,20 @@ the last three hours: it is not running, or not reachable from here.</source>
     <message>
         <source>relay, offline</source>
         <translation>ரிலே, இணைப்பில் இல்லை</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>மேலடுக்கு வழியாகப் பட்டியலிடப்பட்டது. இன்று இந்த ரிலேக்களில் சந்திக்கலாம்,
+பதிவேட்டிலிருந்து கணக்கிடப்பட்டவை; அவை ஒவ்வொரு நாளும் மாறும்:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>அதன் பட்டியல், செல்லுபடியாகும்வரை இதையும் பெயரிடுகிறது:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>%1 இல் சந்திப்பு</translation>
     </message>
 </context>
 <context>

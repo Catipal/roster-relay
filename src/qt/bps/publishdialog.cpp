@@ -103,8 +103,10 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
     where_layout->addWidget(m_nowhere);
     QLabel* nowhere_note = SmallNote(
         tr("Your listing says who you are and not where you run. Peers reach you over "
-           "the overlay instead, meeting you at points both sides work out from the "
-           "roster. This is what this client turns on by default."),
+           "the overlay, meeting you at points both sides work out from the roster, "
+           "which change every day; Discovery shows today's. Your listing also names "
+           "one relay where you can be met for as long as it lasts, and each renewal "
+           "names a new one. This is what this client turns on by default."),
         where);
     nowhere_note->setContentsMargins(24, 0, 0, 0);
     where_layout->addWidget(nowhere_note);
@@ -129,19 +131,24 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
     where_layout->addWidget(gateway_note);
     if (!gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY)) m_gateway->setEnabled(false);
 
-    // A relay without its address on the chain: it says where it is while it
-    // runs, signed with its key (roster/relayaddr.h).
-    m_as_relay = new QRadioButton(tr("As a relay \xe2\x80\x94 announce my address while I run"), where);
-    where_layout->addWidget(m_as_relay);
+    // A relay listed through the overlay too: its listing
+    // holds no address, and it says where it is while it runs, signed with its
+    // key (roster/relayaddr.h). Relays have to be dialled, so that address is
+    // public; a hidden node does not relay.
+    QWidget* relay_row = new QWidget(where);
+    QHBoxLayout* relay_layout = new QHBoxLayout(relay_row);
+    relay_layout->setContentsMargins(24, 0, 0, 0);
+    m_relay = new QCheckBox(tr("Carry others' paths as a relay"), relay_row);
+    relay_layout->addWidget(m_relay);
+    where_layout->addWidget(relay_row);
     QLabel* relay_note = SmallNote(
-        tr("Others' paths run through this computer. Your listing says you are a relay and not where: "
-           "while your node runs it tells the network its current address, signed with its key, and "
-           "again whenever it changes, with no transaction. Nothing about where you are goes on the "
-           "chain, and the network forgets the address within three hours of your node stopping. "
-           "Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).")
+        tr("While your node runs it tells the network this computer's current address, signed with "
+           "its key, so that paths can reach it, and again whenever it changes. It is never written to "
+           "the chain, and the network forgets it within three hours of your node stopping. Others "
+           "must be able to reach this computer at port %1 (TCP) and %2 (UDP).")
             .arg(GetListenPort()).arg(overlay::OverlayPortFor(GetListenPort())),
         where);
-    relay_note->setContentsMargins(24, 0, 0, 0);
+    relay_note->setContentsMargins(48, 0, 0, 0);
     where_layout->addWidget(relay_note);
 
     m_at_address = new QRadioButton(tr("At an address I publish"), where);
@@ -220,7 +227,7 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
     connect(m_buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
     connect(m_publish, &QPushButton::clicked, this, &PublishDialog::onPublish);
     connect(m_at_address, &QRadioButton::toggled, this, &PublishDialog::onAddressChoiceChanged);
-    connect(m_as_relay, &QRadioButton::toggled, this, &PublishDialog::onAddressChoiceChanged);
+    connect(m_relay, &QCheckBox::toggled, this, &PublishDialog::onRelayToggled);
     connect(m_payer, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, &PublishDialog::onPayerChanged);
     connect(&m_rpc, &BpsRpc::result, this, &PublishDialog::onRpcResult);
@@ -344,9 +351,20 @@ void PublishDialog::onPayerChanged()
 void PublishDialog::onAddressChoiceChanged()
 {
     m_address_row->setEnabled(m_at_address->isChecked());
+    // Relaying and the gateway both belong to a listing through the overlay.
     // Never a gateway at an address, published or announced: that would say
     // where an exit is. A relay lists its gateway apart, from the Server page.
-    if (m_gateway) m_gateway->setEnabled(m_nowhere->isChecked() && gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY));
+    m_relay->setEnabled(m_nowhere->isChecked());
+    if (m_gateway) {
+        m_gateway->setEnabled(m_nowhere->isChecked() && !m_relay->isChecked() &&
+                              gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY));
+    }
+}
+
+void PublishDialog::onRelayToggled(bool on)
+{
+    if (on && m_gateway) m_gateway->setChecked(false);
+    onAddressChoiceChanged();
 }
 
 void PublishDialog::SetBusy(bool busy)
@@ -358,8 +376,8 @@ void PublishDialog::SetBusy(bool busy)
     m_payer->setEnabled(!busy && m_payer->count() > 1);
     m_length->setEnabled(!busy);
     m_nowhere->setEnabled(!busy);
-    m_as_relay->setEnabled(!busy);
     m_at_address->setEnabled(!busy);
+    m_relay->setEnabled(!busy && m_nowhere->isChecked());
     if (!busy) onPayerChanged();
 }
 
@@ -381,7 +399,7 @@ bool PublishDialog::BuildOptions(UniValue& options)
     options = UniValue(UniValue::VOBJ);
     if (m_gateway_key) {
         options.pushKV("key", "gateway");
-    } else if (m_as_relay->isChecked()) {
+    } else if (m_nowhere->isChecked() && m_relay->isChecked()) {
         options.pushKV("relay", true);
     } else if (m_nowhere->isChecked() && m_gateway->isEnabled() && m_gateway->isChecked()) {
         options.pushKV("gateway", true);

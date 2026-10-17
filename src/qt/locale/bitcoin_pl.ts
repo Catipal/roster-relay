@@ -1574,7 +1574,7 @@ Klucz odzyskiwania zostanie pokazany raz. Zapisz go: to jedyny sposób, by powst
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Peery ogłaszają się w łańcuchu, a nie na serwerze, więc ta lista jest dla wszystkich taka sama i nikt nie może jej edytować. Przekaźniki mówią, gdzie są, dopóki działają, więc ich adresy nigdy nie trafiają do łańcucha i są tu widoczne tylko wtedy, gdy są online.</translation>
+        <translation type="vanished">Peery ogłaszają się w łańcuchu, a nie na serwerze, więc ta lista jest dla wszystkich taka sama i nikt nie może jej edytować. Przekaźniki mówią, gdzie są, dopóki działają, więc ich adresy nigdy nie trafiają do łańcucha i są tu widoczne tylko wtedy, gdy są online.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1583,6 +1583,10 @@ Klucz odzyskiwania zostanie pokazany raz. Zapisz go: to jedyny sposób, by powst
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Przekaźniki, które w ciągu ostatnich trzech godzin powiedziały, gdzie są. Pozostałe też są wpisane: wpis mówi, że peer istnieje, a nie że działa.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Peery ogłaszają się w łańcuchu, a nie na serwerze, więc ta lista jest dla wszystkich taka sama i nikt nie może jej edytować. Peer wpisany przez sieć nakładkową pokazuje, gdzie można go dziś spotkać, co zmienia się codziennie; przekaźnik pokazuje swój adres tylko wtedy, gdy jest online, bo nigdy nie ma go w łańcuchu.</translation>
     </message>
 </context>
 <context>
@@ -3226,7 +3230,7 @@ Klucz odzyskiwania zostanie pokazany raz. Zapisz go: to jedyny sposób, by powst
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>Twój wpis mówi, kim jesteś, a nie gdzie działasz. Peery docierają do Ciebie przez sieć nakładkową, spotykając Cię w punktach, które obie strony wyliczają z rejestru. To ten klient włącza domyślnie.</translation>
+        <translation type="vanished">Twój wpis mówi, kim jesteś, a nie gdzie działasz. Peery docierają do Ciebie przez sieć nakładkową, spotykając Cię w punktach, które obie strony wyliczają z rejestru. To ten klient włącza domyślnie.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3386,11 +3390,27 @@ Klucz odzyskiwania zostanie pokazany raz. Zapisz go: to jedyny sposób, by powst
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Jako przekaźnik — ogłaszaj mój adres, dopóki działam</translation>
+        <translation type="vanished">Jako przekaźnik — ogłaszaj mój adres, dopóki działam</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Ścieżki innych przechodzą przez ten komputer. Twój wpis mówi, że jesteś przekaźnikiem, ale nie gdzie: dopóki twój węzeł działa, podaje sieci swój bieżący adres podpisany swoim kluczem, i ponownie za każdym razem, gdy się zmieni, bez żadnej transakcji. Nic o tym, gdzie jesteś, nie trafia do łańcucha, a sieć zapomina adres w ciągu trzech godzin od zatrzymania twojego węzła. Inni muszą móc dotrzeć do tego komputera na porcie %1 (TCP) i %2 (UDP).</translation>
+        <translation type="vanished">Ścieżki innych przechodzą przez ten komputer. Twój wpis mówi, że jesteś przekaźnikiem, ale nie gdzie: dopóki twój węzeł działa, podaje sieci swój bieżący adres podpisany swoim kluczem, i ponownie za każdym razem, gdy się zmieni, bez żadnej transakcji. Nic o tym, gdzie jesteś, nie trafia do łańcucha, a sieć zapomina adres w ciągu trzech godzin od zatrzymania twojego węzła. Inni muszą móc dotrzeć do tego komputera na porcie %1 (TCP) i %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>Twój wpis mówi, kim jesteś, a nie gdzie działasz. Peery docierają do ciebie przez sieć nakładkową i spotykają cię w punktach, które obie strony wyliczają z rejestru i które zmieniają się codziennie; Odkrywanie pokazuje dzisiejsze. Twój wpis wskazuje też jeden przekaźnik, w którym można cię spotkać, dopóki wpis obowiązuje, a każde odnowienie wskazuje nowy. To ten klient włącza domyślnie.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Przenoś ścieżki innych jako przekaźnik</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Ścieżki muszą docierać do przekaźnika, więc dopóki twój węzeł działa, podaje sieci bieżący adres tego komputera podpisany swoim kluczem, i ponownie za każdym razem, gdy się zmieni, bez żadnej transakcji. Nigdy nie jest zapisywany w łańcuchu, a sieć zapomina go w ciągu trzech godzin od zatrzymania twojego węzła. Inni muszą móc dotrzeć do tego komputera na porcie %1 (TCP) i %2 (UDP). Przekaźnik udostępnia swoje połączenie z internetem pod drugim kluczem, ze strony Serwer.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Dopóki twój węzeł działa, podaje sieci bieżący adres tego komputera podpisany swoim kluczem, aby ścieżki mogły do niego dotrzeć, i ponownie za każdym razem, gdy się zmieni. Nigdy nie jest zapisywany w łańcuchu, a sieć zapomina go w ciągu trzech godzin od zatrzymania twojego węzła. Inni muszą móc dotrzeć do tego komputera na porcie %1 (TCP) i %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4255,6 +4275,20 @@ w ciągu ostatnich trzech godzin: nie działa albo jest stąd nieosiągalny.</tr
     <message>
         <source>relay, offline</source>
         <translation>przekaźnik, offline</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Wpisany przez sieć nakładkową. Dziś można go spotkać przy tych przekaźnikach,
+wyliczonych z rejestru; zmieniają się codziennie:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>Jego wpis wskazuje też ten, dopóki wpis obowiązuje:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>spotkanie przy %1</translation>
     </message>
 </context>
 <context>

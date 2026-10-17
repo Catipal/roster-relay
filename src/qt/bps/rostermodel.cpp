@@ -41,7 +41,11 @@ QVariant RosterModel::data(const QModelIndex& index, int role) const
     const RosterRow& row = m_rows.at(index.row());
 
     if (role == KeyRole) return row.key;
-    if (role == AddressRole) return !row.announced.isEmpty() ? row.announced : row.endpoints == 0 ? QString() : row.where;
+    if (role == AddressRole) {
+        if (!row.announced.isEmpty()) return row.announced;
+        if (row.endpoints == 0) return row.meets.join(", ");
+        return row.where;
+    }
     if (role == OnlineRole) return !row.announced.isEmpty();
 
     if (role == Qt::ToolTipRole) {
@@ -59,6 +63,18 @@ QVariant RosterModel::data(const QModelIndex& index, int role) const
             if (row.relay && row.endpoints == 0) {
                 return tr("A relay that says where it is while it runs, and has not said so in\n"
                           "the last three hours: it is not running, or not reachable from here.");
+            }
+            if (row.endpoints == 0 && !row.meets.isEmpty()) {
+                // Where it can be met today, worked out here as every visitor
+                // works it out, and the relay its listing names.
+                QString text = tr("Listed through the overlay. It can be met today at these relays,\n"
+                                  "worked out from the roster; they change every day:") +
+                               "\n" + row.meets.join("\n");
+                if (!row.meet_point.isEmpty()) {
+                    text += "\n" + tr("Its listing also names this one, for as long as the listing lasts:") +
+                            "\n" + row.meet_point;
+                }
+                return text + "\n" + tr("Click to copy");
             }
             return row.endpoints == 0
                        ? tr("This peer is listed but publishes no address. It can still be\n"
@@ -98,6 +114,11 @@ QVariant RosterModel::data(const QModelIndex& index, int role) const
     case Where:
         if (!row.announced.isEmpty()) return row.announced;
         if (row.relay && row.endpoints == 0) return tr("relay, offline");
+        if (row.endpoints == 0 && !row.meets.isEmpty()) {
+            QStringList shortened;
+            for (const QString& m : row.meets) shortened << BpsUtil::ShortKey(m);
+            return tr("meets at %1").arg(shortened.join(", "));
+        }
         return row.endpoints == 0 ? tr("no address published") : row.where;
     case ListedAt: {
         const int age = m_tip - row.height;
@@ -156,6 +177,12 @@ void RosterModel::SetRoster(const UniValue& reply, int tip)
                 if (eps.size() > 0) row.where = BpsUtil::DescribeEndpoint(eps[0]);
             }
             row.relay = find_value(entry, "relay").isTrue();
+            const UniValue& meets = find_value(entry, "meeting_points");
+            for (size_t m = 0; meets.isArray() && m < meets.size(); ++m) {
+                if (meets[m].isStr()) row.meets << QString::fromStdString(meets[m].get_str());
+            }
+            const UniValue& meet_point = find_value(entry, "meeting_point");
+            if (meet_point.isStr()) row.meet_point = QString::fromStdString(meet_point.get_str());
             const UniValue& announced = find_value(entry, "announced");
             if (announced.isObject()) {
                 const UniValue& now_at = find_value(announced, "endpoints");

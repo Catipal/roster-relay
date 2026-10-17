@@ -1562,7 +1562,7 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
-        <translation>Các nút ngang hàng tự công bố trên chuỗi chứ không phải trên máy chủ, nên danh sách này giống nhau với mọi người và không ai chỉnh sửa được. Các trạm chuyển tiếp cho biết chúng ở đâu khi đang chạy, nên địa chỉ của chúng không bao giờ lên chuỗi và chỉ hiện ở đây khi chúng đang trực tuyến.</translation>
+        <translation type="vanished">Các nút ngang hàng tự công bố trên chuỗi chứ không phải trên máy chủ, nên danh sách này giống nhau với mọi người và không ai chỉnh sửa được. Các trạm chuyển tiếp cho biết chúng ở đâu khi đang chạy, nên địa chỉ của chúng không bao giờ lên chuỗi và chỉ hiện ở đây khi chúng đang trực tuyến.</translation>
     </message>
     <message>
         <source>Only relays online now</source>
@@ -1571,6 +1571,10 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     <message>
         <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
         <translation>Các trạm chuyển tiếp đã cho biết chúng ở đâu trong ba giờ qua. Những nút khác cũng được niêm yết: được niêm yết nghĩa là một nút ngang hàng tồn tại, không phải là nó đang chạy.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
+        <translation>Các nút ngang hàng tự công bố trên chuỗi chứ không phải trên máy chủ, nên danh sách này giống nhau với mọi người và không ai chỉnh sửa được. Nút ngang hàng niêm yết qua mạng phủ cho thấy hôm nay có thể gặp nó ở đâu, điều này thay đổi mỗi ngày; trạm chuyển tiếp chỉ hiện địa chỉ khi đang trực tuyến, vì địa chỉ đó không bao giờ có trên chuỗi.</translation>
     </message>
 </context>
 <context>
@@ -3208,7 +3212,7 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
-        <translation>Niêm yết của bạn cho biết bạn là ai chứ không cho biết bạn chạy ở đâu. Các nút ngang hàng liên lạc với bạn qua mạng phủ, gặp bạn tại các điểm mà cả hai bên tính ra từ danh bạ. Đây là điều ứng dụng này bật theo mặc định.</translation>
+        <translation type="vanished">Niêm yết của bạn cho biết bạn là ai chứ không cho biết bạn chạy ở đâu. Các nút ngang hàng liên lạc với bạn qua mạng phủ, gặp bạn tại các điểm mà cả hai bên tính ra từ danh bạ. Đây là điều ứng dụng này bật theo mặc định.</translation>
     </message>
     <message>
         <source>At an address I publish</source>
@@ -3368,11 +3372,27 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     </message>
     <message>
         <source>As a relay — announce my address while I run</source>
-        <translation>Làm trạm chuyển tiếp — công bố địa chỉ của tôi khi tôi đang chạy</translation>
+        <translation type="vanished">Làm trạm chuyển tiếp — công bố địa chỉ của tôi khi tôi đang chạy</translation>
     </message>
     <message>
         <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Đường đi của người khác đi qua máy tính này. Bản niêm yết của bạn cho biết bạn là trạm chuyển tiếp, không cho biết ở đâu: khi nút của bạn đang chạy, nó cho mạng biết địa chỉ hiện tại của nó, được ký bằng khóa của nó, và cho biết lại mỗi khi địa chỉ thay đổi, không cần giao dịch nào. Không có gì về nơi bạn ở được đưa lên chuỗi, và mạng quên địa chỉ trong vòng ba giờ sau khi nút của bạn dừng. Người khác phải kết nối được tới máy tính này ở cổng %1 (TCP) và %2 (UDP).</translation>
+        <translation type="vanished">Đường đi của người khác đi qua máy tính này. Bản niêm yết của bạn cho biết bạn là trạm chuyển tiếp, không cho biết ở đâu: khi nút của bạn đang chạy, nó cho mạng biết địa chỉ hiện tại của nó, được ký bằng khóa của nó, và cho biết lại mỗi khi địa chỉ thay đổi, không cần giao dịch nào. Không có gì về nơi bạn ở được đưa lên chuỗi, và mạng quên địa chỉ trong vòng ba giờ sau khi nút của bạn dừng. Người khác phải kết nối được tới máy tính này ở cổng %1 (TCP) và %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
+        <translation>Bản niêm yết của bạn cho biết bạn là ai chứ không cho biết bạn chạy ở đâu. Các nút ngang hàng tới bạn qua mạng phủ và gặp bạn tại những điểm mà hai bên tính ra từ danh bạ, thay đổi mỗi ngày; Khám phá hiện các điểm của hôm nay. Bản niêm yết của bạn cũng nêu một trạm chuyển tiếp nơi có thể gặp bạn chừng nào nó còn hiệu lực, và mỗi lần gia hạn nêu một trạm mới. Đây là thiết lập mặc định của ứng dụng này.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Chuyển đường đi của người khác như một trạm chuyển tiếp</translation>
+    </message>
+    <message>
+        <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
+        <translation type="vanished">Đường đi cần tới được trạm chuyển tiếp, nên khi nút của bạn đang chạy, nó cho mạng biết địa chỉ hiện tại của máy tính này, ký bằng khóa của nó, và cho biết lại mỗi khi địa chỉ thay đổi, không cần giao dịch nào. Địa chỉ không bao giờ được ghi lên chuỗi, và mạng quên nó trong vòng ba giờ sau khi nút của bạn dừng. Người khác phải kết nối được tới máy tính này ở cổng %1 (TCP) và %2 (UDP). Trạm chuyển tiếp chia sẻ kết nối internet của mình dưới một khóa thứ hai, từ trang Máy chủ.</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Khi nút của bạn đang chạy, nó cho mạng biết địa chỉ hiện tại của máy tính này, ký bằng khóa của nó, để đường đi có thể tới được, và cho biết lại mỗi khi địa chỉ thay đổi. Địa chỉ không bao giờ được ghi lên chuỗi, và mạng quên nó trong vòng ba giờ sau khi nút của bạn dừng. Người khác phải kết nối được tới máy tính này ở cổng %1 (TCP) và %2 (UDP).</translation>
     </message>
 </context>
 <context>
@@ -4225,6 +4245,20 @@ ba giờ qua: nó không chạy, hoặc không thể kết nối từ đây.</tr
     <message>
         <source>relay, offline</source>
         <translation>trạm chuyển tiếp, ngoại tuyến</translation>
+    </message>
+    <message>
+        <source>Listed through the overlay. It can be met today at these relays,
+worked out from the roster; they change every day:</source>
+        <translation>Niêm yết qua mạng phủ. Hôm nay có thể gặp nó tại các trạm chuyển tiếp này,
+tính ra từ danh bạ; chúng thay đổi mỗi ngày:</translation>
+    </message>
+    <message>
+        <source>Its listing also names this one, for as long as the listing lasts:</source>
+        <translation>Bản niêm yết của nó cũng nêu trạm này, chừng nào bản niêm yết còn hiệu lực:</translation>
+    </message>
+    <message>
+        <source>meets at %1</source>
+        <translation>gặp tại %1</translation>
     </message>
 </context>
 <context>

@@ -21,6 +21,7 @@
 #include <memory>
 #include <string>
 #include <thread>
+#include <set>
 #include <tuple>
 #include <vector>
 
@@ -223,6 +224,14 @@ private:
     const ListedChanged m_listed_changed;
 
     TrafficLimits m_limits;
+    /**
+     * What a visitor's meeting may be sent, paced at PACE_SHARE of the
+     * visitor rate (overlay/limits.h). Relays drop what goes over their
+     * per-path cap, and a dropped segment stalls TCP for a second or more;
+     * reading from a site no faster than this keeps a download under their
+     * caps, so they rarely drop.
+     */
+    TrafficLimits m_pacer;
     std::atomic<bool> m_listed{false};
     std::atomic<bool> m_running{false};
 
@@ -253,6 +262,7 @@ private:
     std::map<FlowKey, uint64_t> m_by_key;
     std::map<std::pair<IpAddr, uint16_t>, uint64_t> m_by_internal;
     std::map<uint64_t, Visitor> m_visitors;
+    std::set<uint64_t> m_paced; //!< flows waiting for their meeting's allowance
 
     // Read by GetStats from any thread.
     std::atomic<uint64_t> m_tcp_flows{0}, m_udp_flows{0}, m_visitor_count{0};

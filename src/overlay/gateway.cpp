@@ -162,18 +162,6 @@ bool WouldBlock(int err)
         ;
 }
 
-/** Names a gateway never looks up: the overlay's own, and those that only mean something on a home network. */
-bool IsLocalName(const std::string& lower)
-{
-    if (lower.find('.') == std::string::npos) return true; // a single label is completed by the local search list
-    for (const char* suffix : {".bps", ".onion", ".local", ".localhost", ".localdomain", ".lan", ".home",
-                               ".internal", ".intranet", ".corp", ".private", ".home.arpa", ".in-addr.arpa", ".ip6.arpa"}) {
-        const size_t n = strlen(suffix);
-        if (lower.size() >= n && lower.compare(lower.size() - n, n, suffix) == 0) return true;
-    }
-    return false;
-}
-
 ResolveStatus SystemResolve(const std::string& name, uint8_t family, std::vector<IpAddr>& out)
 {
     std::vector<CNetAddr> found;
@@ -290,6 +278,7 @@ Gateway::Gateway(const GatewayConfig& config, Sender send, ListedCheck listed, S
 {
     if (!m_resolve) m_resolve = SystemResolve;
     m_limits.Configure(m_config.daily_budget, m_config.meeting_rate);
+    m_pacer.Configure(0, m_config.meeting_rate * PACE_SHARE_NUM / PACE_SHARE_DEN);
 }
 
 Gateway::~Gateway()
@@ -691,7 +680,8 @@ void Gateway::OnStackOutput(struct pbuf* p)
 
 void Gateway::SendToVisitor(uint64_t path, const std::vector<uint8_t>& pkt)
 {
-    if (!m_limits.Forward(path, pkt.size(), NowMs())) return;
+    // Paced where it is read from the site, so counted here only against the day.
+    if (!m_limits.Spend(pkt.size(), NowMs())) return;
     for (const std::vector<uint8_t>& m : EncodePacket(pkt, ++m_frag_id)) m_send(path, m);
 }
 
@@ -875,11 +865,20 @@ bool Gateway::PumpFromRemote(Flow& f)
     }
     uint8_t buf[8 * TCP_MSS];
     bool wrote = false;
+    m_paced.erase(f.id);
     for (;;) {
         const size_t space = tcp_sndbuf(f.pcb);
         if (space < TCP_MSS || tcp_sndqueuelen(f.pcb) + 16 >= TCP_SND_QUEUELEN) break;
-        const int n = recv(f.sock, (char*)buf, (int)std::min(space, sizeof(buf)), 0);
+        const uint64_t allowance = m_pacer.Available(f.path, NowMs());
+        if (allowance < TCP_MSS) {
+            // Back when the meeting's allowance has come round again (Tick).
+            m_paced.insert(f.id);
+            break;
+        }
+        const size_t want = (size_t)std::min<uint64_t>(std::min(space, sizeof(buf)), allowance);
+        const int n = recv(f.sock, (char*)buf, (int)want, 0);
         if (n > 0) {
+            m_pacer.Forward(f.path, (size_t)n, NowMs());
             if (tcp_write(f.pcb, buf, (u16_t)n, TCP_WRITE_FLAG_COPY) != ERR_OK) {
                 Abort(f, "the stack refused data");
                 return false;
@@ -906,7 +905,8 @@ bool Gateway::PumpFromRemote(Flow& f)
 void Gateway::UpdateInterest(const Flow& f)
 {
     if (f.sock == INVALID_SOCKET) return;
-    const bool room = f.pcb && tcp_sndbuf(f.pcb) >= TCP_MSS && tcp_sndqueuelen(f.pcb) + 16 < TCP_SND_QUEUELEN;
+    const bool room = f.pcb && tcp_sndbuf(f.pcb) >= TCP_MSS && tcp_sndqueuelen(f.pcb) + 16 < TCP_SND_QUEUELEN &&
+                      !m_paced.count(f.id);
     const bool read = f.connected && !f.remote_eof && room;
     const bool write = f.connecting || (f.connected && !f.to_remote.empty());
     GetNetStack().SetInterest(f.sock, read, write);
@@ -944,6 +944,7 @@ void Gateway::Close(Flow& f)
     }
     f.closed = true;
     f.closed_at = NowMs();
+    m_paced.erase(f.id);
     f.to_remote.clear();
     f.to_remote.shrink_to_fit();
     std::map<uint64_t, Visitor>::iterator v = m_visitors.find(f.path);
@@ -989,6 +990,18 @@ void Gateway::OnUdpPacket(uint64_t path, const std::vector<uint8_t>& pkt, const 
 void Gateway::Tick()
 {
     const int64_t now = NowMs();
+    // Flows that were waiting for their meeting's allowance try again.
+    if (!m_paced.empty()) {
+        const std::set<uint64_t> waiting = m_paced;
+        for (uint64_t id : waiting) {
+            Flow* f = FindFlow(id);
+            if (!f || f->closed) {
+                m_paced.erase(id);
+            } else {
+                PumpFromRemote(*f);
+            }
+        }
+    }
     if (now - m_last_sweep < 1000) return;
     m_last_sweep = now;
 
@@ -1073,7 +1086,7 @@ void Gateway::ThreadWorker()
         std::transform(lower.begin(), lower.end(), lower.begin(), [](char c) { return (char)tolower((unsigned char)c); });
         std::vector<IpAddr> found;
         ResolveStatus status = ResolveStatus::NO_SUCH_NAME;
-        if (!IsLocalName(lower)) status = m_resolve(lower, job.family, found);
+        if (!IsLocalOnlyName(lower)) status = m_resolve(lower, job.family, found);
         // Only public addresses go back: what the owner's own network calls
         // its machines is not the visitor's to learn.
         std::vector<IpAddr> answer;

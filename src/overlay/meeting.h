@@ -64,7 +64,7 @@ static constexpr uint8_t KEEPALIVE_TAG = 0x14;
  * registrations. Home routers forget a UDP mapping after half a minute to two
  * minutes, and the registration refresh (MEET_REFRESH) comes far too seldom to
  * hold it, so without this a node at home falls out of reach between refreshes
- * - every gateway at home among them (design note §11·6, §8·7).
+ * - every gateway at home among them (design note Â§11Â·6, Â§8Â·7).
  */
 static constexpr int64_t KEEPALIVE_GUARD = 25;
 

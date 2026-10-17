@@ -19,6 +19,8 @@
 #include <roster/view.h>
 #include <overlay/chainsync.h>
 #include <overlay/gateway.h>
+#include <overlay/gatewayclient.h>
+#include <overlay/localproxy.h>
 #include <overlay/meeting.h>
 #include <overlay/radio.h>
 #include <overlay/relay.h>
@@ -554,11 +556,62 @@ static RPCHelpMan getgatewayinfo()
                         {RPCResult::Type::NUM, "malformed", /* optional */ true, "Messages or packets that did not parse"},
                         {RPCResult::Type::NUM, "lookups", /* optional */ true, "Names looked up for visitors"},
                         {RPCResult::Type::BOOL, "allow_local", /* optional */ true, "Present when -gatewayallowlocal lets it reach local addresses (regtest)"},
+                        {RPCResult::Type::OBJ, "visitor", /* optional */ true, "This node using the network's gateways (-gatewayproxy)",
+                            {
+                                {RPCResult::Type::BOOL, "allowed", "Whether it may: its own gateway is listed, or it relays over radio with no line of its own"},
+                                {RPCResult::Type::STR, "why", /* optional */ true, "Why not, when it may not"},
+                                {RPCResult::Type::NUM, "hops", "Relays between it and a gateway's meeting point"},
+                                {RPCResult::Type::STR, "proxy", /* optional */ true, "Where the local SOCKS5 proxy listens"},
+                                {RPCResult::Type::NUM, "proxy_sessions", /* optional */ true, "Programs connected to the proxy now"},
+                                {RPCResult::Type::NUM, "served", /* optional */ true, "Connections the proxy has opened since start"},
+                                {RPCResult::Type::NUM, "connections", "Connections out through gateways now"},
+                                {RPCResult::Type::NUM, "lookups", "Names looked up at gateways"},
+                                {RPCResult::Type::NUM, "meetings_failed", "Gateways it tried and could not meet"},
+                                {RPCResult::Type::STR, "last_error", /* optional */ true, "Why the last meeting failed"},
+                                {RPCResult::Type::ARR, "gateways", "The gateways it has met",
+                                    {
+                                        {RPCResult::Type::OBJ, "", "",
+                                            {
+                                                {RPCResult::Type::STR_HEX, "key", "The gateway's key"},
+                                                {RPCResult::Type::STR, "state", "open, closed for today, off, or unknown until it answers"},
+                                                {RPCResult::Type::NUM, "since", "When it was met (milliseconds)"},
+                                                {RPCResult::Type::NUM, "connections", "Connections through it now"},
+                                            }},
+                                    }},
+                            }},
                     }},
                 RPCExamples{HelpExampleCli("getgatewayinfo", "") + HelpExampleRpc("getgatewayinfo", "")},
         [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
 {
     UniValue out(UniValue::VOBJ);
+    if (overlay::g_gateway_client) {
+        const overlay::GatewayClient::Stats c = overlay::g_gateway_client->GetStats();
+        UniValue v(UniValue::VOBJ);
+        v.pushKV("allowed", c.allowed);
+        if (!c.allowed && !c.why.empty()) v.pushKV("why", c.why);
+        v.pushKV("hops", c.hops);
+        if (overlay::g_local_proxy) {
+            v.pushKV("proxy", strprintf("127.0.0.1:%u", overlay::g_local_proxy->Port()));
+            v.pushKV("proxy_sessions", (uint64_t)overlay::g_local_proxy->Sessions());
+            v.pushKV("served", overlay::g_local_proxy->Served());
+        }
+        v.pushKV("connections", c.flows);
+        v.pushKV("lookups", c.lookups);
+        v.pushKV("meetings_failed", c.meetings_failed);
+        if (!c.last_error.empty()) v.pushKV("last_error", c.last_error);
+        UniValue gws(UniValue::VARR);
+        for (const overlay::GatewayClient::GatewayView& g : c.gateways) {
+            UniValue o(UniValue::VOBJ);
+            o.pushKV("key", HexStr(g.key));
+            o.pushKV("state", !g.known ? "unknown" : g.state == overlay::GatewayState::OPEN ? "open"
+                              : g.state == overlay::GatewayState::CLOSED_TODAY ? "closed for today" : "off");
+            o.pushKV("since", g.since);
+            o.pushKV("connections", g.flows);
+            gws.push_back(o);
+        }
+        v.pushKV("gateways", gws);
+        out.pushKV("visitor", v);
+    }
     if (!overlay::g_gateway) {
         out.pushKV("enabled", false);
         return out;

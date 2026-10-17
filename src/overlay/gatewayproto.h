@@ -111,6 +111,15 @@ std::vector<uint8_t> EncodeHello();
 bool IsResolvableName(const std::string& name);
 
 /**
+ * Whether a lower-case name only means something to the overlay or to a home
+ * network: a .bps or .onion name, a single label (completed from the local
+ * search list), or a home-network suffix. A visitor never sends one to a
+ * gateway - a .bps name would tell it which hidden site someone wants - and a
+ * gateway never looks one up, which would show strangers its owner's network.
+ */
+bool IsLocalOnlyName(const std::string& lower);
+
+/**
  * Puts fragmented packets back together, per source (a meeting's path).
  *
  * Bounded, because the pieces come from strangers: a packet is let go if

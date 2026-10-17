@@ -36,6 +36,19 @@ static constexpr uint64_t DEFAULT_RELAY_BANDWIDTH_MIB = 1024;
 /** -relaypathrate: KiB/s one path may move through a relay. 0 = no cap. */
 static constexpr uint64_t DEFAULT_RELAY_PATH_RATE_KIB = 64;
 
+/**
+ * The share of a per-path cap that endpoints pace their own data at.
+ *
+ * A relay counts every byte it carries for a path: the packet, its padding to
+ * the next bucket, a layer of encryption per relay still ahead, and the ACKs
+ * coming back the other way. Measured on regtest that is about 1.3 times the
+ * IP packets themselves, and a little more payload than that is headers. Data
+ * sent at three fifths of the cap arrives at the relays a little under it, so
+ * they do not drop it - and a dropped segment stalls TCP for a second or more.
+ */
+static constexpr uint64_t PACE_SHARE_NUM = 3;
+static constexpr uint64_t PACE_SHARE_DEN = 5;
+
 class TrafficLimits
 {
 public:
@@ -69,6 +82,16 @@ public:
     /** Whether a new path may start through this node. Counts a refusal. */
     bool AdmitPath(int64_t now_ms);
 
+    /**
+     * Bytes `path_id` may send now without going over its rate, spending
+     * nothing; the largest value when there is no rate. For pacing: a sender
+     * that waits for its allowance is never dropped for its rate.
+     */
+    uint64_t Available(uint64_t path_id, int64_t now_ms);
+
+    /** Count bytes against the day's budget only, not any path's rate. False past the overrun. */
+    bool Spend(size_t bytes, int64_t now_ms);
+
     Stats GetStats(int64_t now_ms) const;
 
 private:
@@ -78,6 +101,8 @@ private:
     };
 
     void RollDay(int64_t now_ms) const EXCLUSIVE_LOCKS_REQUIRED(m_mutex);
+    /** The path's bucket, created full and refilled to now. Needs a rate. */
+    Bucket& Refill(uint64_t path_id, int64_t now_ms) EXCLUSIVE_LOCKS_REQUIRED(m_mutex);
     bool BudgetSpent() const EXCLUSIVE_LOCKS_REQUIRED(m_mutex);
     void Prune(int64_t now_ms) EXCLUSIVE_LOCKS_REQUIRED(m_mutex);
 

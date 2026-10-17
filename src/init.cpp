@@ -26,6 +26,8 @@
 #include <roster/peers.h>
 #include <overlay/chainsync.h>
 #include <overlay/gateway.h>
+#include <overlay/gatewayclient.h>
+#include <overlay/localproxy.h>
 #include <overlay/gatewayproto.h>
 #include <overlay/netstack.h>
 #include <overlay/meeting.h>
@@ -253,7 +255,16 @@ void Shutdown(NodeContext& node)
         mail::g_mail->Stop();
         mail::g_mail.reset();
     }
-    // The gateway, and its registration, which builds paths too.
+    // The local proxy and the gateways it uses, then this node's own gateway
+    // and its registration, all of which build paths too.
+    if (overlay::g_local_proxy) {
+        overlay::g_local_proxy->Stop();
+        overlay::g_local_proxy.reset();
+    }
+    if (overlay::g_gateway_client) {
+        overlay::g_gateway_client->Stop();
+        overlay::g_gateway_client.reset();
+    }
     if (overlay::g_gateway) {
         overlay::g_gateway->Stop();
         overlay::g_gateway.reset();
@@ -541,6 +552,9 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-gatewaybandwidth=<n>", strprintf("MiB a gateway carries in a day (UTC), both ways; once spent it takes no new connections until the day turns. 0 for no limit (default: %u)", overlay::DEFAULT_GATEWAY_BANDWIDTH_MIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayrate=<n>", strprintf("KiB a second one visitor may move through this gateway. 0 for no limit (default: %u)", overlay::DEFAULT_GATEWAY_RATE_KIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewaymaxflows=<n>", strprintf("Connections a gateway holds open at once, for everyone together (default: %u)", overlay::DEFAULT_GATEWAY_MAX_FLOWS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-gatewayproxy", strprintf("Run a SOCKS5 proxy on 127.0.0.1 that takes programs on this computer out to the internet through the network's gateways, each connection through another gateway; names are looked up at a gateway, never here. Used only while this node's own gateway is listed, or while it has no internet line and relays over radio (default: %u; on in BPS Relay)", overlay::DEFAULT_GATEWAY_PROXY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-gatewayproxyport=<port>", "Port of the local proxy on 127.0.0.1 (default: two above the peer-to-peer port)", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-gatewayhops=<n>", strprintf("Relays between this node and a gateway's meeting point, 1 to %d: more hides who is asking better and is slower (default: %d)", overlay::MAX_MEET_HOPS, overlay::DEFAULT_GATEWAY_HOPS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayallowlocal", "Let a gateway connect to loopback and private addresses (regtest only, for tests)", ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
     argsman.AddArg("-meethops=<n>", strprintf("Relays between this node and each of its meeting points, 1 to %d: more hides its address better and is slower (default: %d)", overlay::MAX_MEET_HOPS, overlay::DEFAULT_MEET_HOPS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-overlayblocks", strprintf("With -radio, carry new blocks to and from radio neighbours over the overlay, so a node with only radio keeps up with the chain (default: %u)", overlay::DEFAULT_OVERLAY_BLOCKS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -2287,8 +2301,14 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 } else if (!payload.empty() && payload[0] == overlay::KEEPALIVE_TAG) {
                     // Only holds a router's mapping open (overlay/meeting.h).
                 } else if (overlay::IsGatewayPayload(payload)) {
-                    // A visitor's packets, across a meeting (overlay/gateway.h).
-                    if (overlay::g_gateway) overlay::g_gateway->HandleApp(from, std::move(payload));
+                    // A gateway answering one of this node's own meetings
+                    // (overlay/gatewayclient.h), or a visitor's packets
+                    // across a meeting with this node's gateway (overlay/gateway.h).
+                    if (overlay::g_gateway_client && from.via_path && overlay::g_gateway_client->Owns(from.path)) {
+                        overlay::g_gateway_client->HandleApp(from, std::move(payload));
+                    } else if (overlay::g_gateway) {
+                        overlay::g_gateway->HandleApp(from, std::move(payload));
+                    }
                 } else if (overlay::g_chainsync && !from.via_path && overlay::IsChainPayload(payload)) {
                     // Blocks between adjacent radio neighbours, never over a path.
                     overlay::g_chainsync->HandleApp(from.addr, payload);
@@ -2463,6 +2483,51 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             if (!overlay::g_gateway->Start(gw_error)) {
                 overlay::g_gateway.reset();
                 return InitError(Untranslated("gateway: " + gw_error));
+            }
+        }
+
+        // Using the network's internet: gateways met in turn, and the local
+        // proxy programs on this computer reach them through
+        // (overlay/gatewayclient.h, overlay/localproxy.h).
+        if (args.GetBoolArg("-gatewayproxy", overlay::DEFAULT_GATEWAY_PROXY) && g_rosterindex) {
+            std::string gc_error;
+            const bool allow_local = args.GetBoolArg("-gatewayallowlocal", false) &&
+                                     chainparams.NetworkIDString() == CBaseChainParams::REGTEST;
+            if (!overlay::GetNetStack().Start(gc_error)) {
+                return InitError(Untranslated("gateway client: " + gc_error));
+            }
+            overlay::g_gateway_client = MakeUnique<overlay::GatewayClient>(
+                overlay::DEFAULT_GATEWAY_POOL, (int)args.GetArg("-gatewayhops", overlay::DEFAULT_GATEWAY_HOPS), allow_local,
+                // Giving to get (design note section 8.7): this node's own gateway
+                // listed, or no internet line of its own and relaying over radio.
+                [&node](std::string& why) {
+                    if (overlay::g_gateway && overlay::g_gateway->GetStats().listed) return true;
+                    if (overlay::g_radio && node.connman && node.connman->GetNodeCount(CConnman::CONNECTIONS_ALL) == 0) return true;
+                    why = overlay::g_gateway
+                        ? "this node is not listed as a gateway yet: the network's internet is for those who share theirs"
+                        : "this node's own gateway is off (-gateway=0): the network's internet is for those who share theirs";
+                    return false;
+                },
+                [self]() {
+                    std::vector<roster::KeyBytes> out;
+                    if (!g_rosterindex) return out;
+                    roster::CollectGateways(*g_rosterindex, g_rosterindex->GetSummary().best_block_height, out);
+                    out.erase(std::remove(out.begin(), out.end(), self), out.end());
+                    return out;
+                },
+                overlay::MeetService, overlay::CloseMeeting,
+                [](uint64_t path, const std::vector<uint8_t>& msg) {
+                    return overlay::g_overlay && overlay::g_overlay->SendSecret(path, msg);
+                });
+            if (!overlay::g_gateway_client->Start(gc_error)) {
+                overlay::g_gateway_client.reset();
+                return InitError(Untranslated("gateway client: " + gc_error));
+            }
+            const uint16_t proxy_port = (uint16_t)args.GetArg("-gatewayproxyport", overlay::OverlayPortFor(GetListenPort()) + 1);
+            overlay::g_local_proxy = MakeUnique<overlay::LocalProxy>(*overlay::g_gateway_client, proxy_port);
+            if (!overlay::g_local_proxy->Start(gc_error)) {
+                overlay::g_local_proxy.reset();
+                return InitError(Untranslated("local proxy: " + gc_error));
             }
         }
 

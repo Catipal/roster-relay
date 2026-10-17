@@ -70,6 +70,17 @@ bool IsResolvableName(const std::string& name)
     return name.find("..") == std::string::npos;
 }
 
+bool IsLocalOnlyName(const std::string& lower)
+{
+    if (lower.find('.') == std::string::npos) return true;
+    for (const char* suffix : {".bps", ".onion", ".local", ".localhost", ".localdomain", ".lan", ".home",
+                               ".internal", ".intranet", ".corp", ".private", ".home.arpa", ".in-addr.arpa", ".ip6.arpa"}) {
+        const size_t n = strlen(suffix);
+        if (lower.size() >= n && lower.compare(lower.size() - n, n, suffix) == 0) return true;
+    }
+    return false;
+}
+
 bool DecodeGatewayMessage(const std::vector<uint8_t>& payload, GatewayMessage& out)
 {
     out = GatewayMessage();

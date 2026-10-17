@@ -87,14 +87,42 @@ public:
     /** The address actually bound, which resolves a port of 0. */
     CService BoundAddress() const { return m_bound; }
 
+    /**
+     * The address of this computer's a datagram arrived on, kept per peer so
+     * that what goes back to it leaves from that address. Bound to every
+     * address (0.0.0.0), a socket's plain replies would leave from whichever
+     * address the route to the peer names; on a computer with several, the
+     * peer would then hear from an address it never wrote to and ignore the
+     * answer, and its handshake would never complete.
+     */
+    struct LocalAddress {
+        int family{0};                   //!< AF_INET or AF_INET6; 0 when unknown
+        unsigned char addr[16]{};
+        unsigned int ifindex{0};         //!< IPv6 link-local only
+    };
+    /** What this socket knows of the local address `peer` last wrote to; family 0 if nothing. */
+    LocalAddress LocalAddressFor(const CService& peer);
+
 private:
     void ThreadReceive();
+    /** recvfrom, telling which local address the datagram was sent to when the system says. */
+    int ReceiveDatagram(unsigned char* buf, size_t len, struct sockaddr_storage& from, LocalAddress& local);
     /** False when this datagram should be dropped before any key agreement. */
     bool AllowHandshake(const CService& from, int64_t now) EXCLUSIVE_LOCKS_REQUIRED(m_mutex);
     bool SendDatagram(const CService& to, const std::vector<unsigned char>& datagram);
 
     SOCKET m_socket{INVALID_SOCKET};
     CService m_bound;
+    //! Whether the system tells the address each datagram was sent to (IP_PKTINFO).
+    bool m_pktinfo{false};
+#ifdef WIN32
+    void* m_recvmsg{nullptr}; //!< WSARecvMsg, which Windows hands out only by asking
+#endif
+
+    // Separate from m_mutex: sending happens with it released.
+    Mutex m_local_mutex;
+    std::map<CService, LocalAddress> m_local GUARDED_BY(m_local_mutex);
+    static constexpr size_t MAX_LOCAL_ADDRESSES = 8192;
 
     // Transport is not thread safe and is reached from both the receive thread
     // and whichever thread calls Connect or Send, so it is guarded rather than

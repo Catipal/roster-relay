@@ -140,6 +140,7 @@ BASE_SCRIPTS = [
     'feature_gateway_listing.py',
     'feature_gateway_interface.py',
     'feature_gateway_routes.py',
+    'feature_overlay_second_address.py',
     'feature_radio_mesh.py',
     'feature_radio_blocks.py',
     'feature_roster_identity.py',

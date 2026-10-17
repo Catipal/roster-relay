@@ -9,6 +9,10 @@
 #include <util/system.h>
 #include <util/time.h>
 
+#ifdef WIN32
+#include <mswsock.h>
+#include <ws2ipdef.h>
+#endif
 
 #include <cstring>
 
@@ -25,6 +29,174 @@ CService FromSockAddr(const struct sockaddr_storage& ss, socklen_t len)
     out.SetSockAddr(reinterpret_cast<const struct sockaddr*>(&ss));
     (void)len;
     return out;
+}
+
+/** A unicast address a reply may come from: not broadcast or multicast, not unspecified. */
+bool UsableSource(const Socket::LocalAddress& a)
+{
+    if (a.family == AF_INET) {
+        const uint32_t v = ((uint32_t)a.addr[0] << 24) | ((uint32_t)a.addr[1] << 16) | ((uint32_t)a.addr[2] << 8) | a.addr[3];
+        return v != 0 && v != 0xffffffffU && (a.addr[0] & 0xf0) != 0xe0;
+    }
+    if (a.family == AF_INET6) {
+        static const unsigned char zero[16] = {};
+        return a.addr[0] != 0xff && std::memcmp(a.addr, zero, 16) != 0;
+    }
+    return false;
+}
+
+#ifdef WIN32
+using CmsgHeader = WSACMSGHDR;
+#define BPS_CMSG_FIRSTHDR WSA_CMSG_FIRSTHDR
+#define BPS_CMSG_NXTHDR WSA_CMSG_NXTHDR
+#define BPS_CMSG_DATA WSA_CMSG_DATA
+#define BPS_CMSG_SPACE WSA_CMSG_SPACE
+#define BPS_CMSG_LEN WSA_CMSG_LEN
+using Pktinfo4 = IN_PKTINFO;
+using Pktinfo6 = IN6_PKTINFO;
+#define BPS_HAVE_PKTINFO4 1
+#define BPS_HAVE_PKTINFO6 1
+#else
+using CmsgHeader = struct cmsghdr;
+#define BPS_CMSG_FIRSTHDR CMSG_FIRSTHDR
+#define BPS_CMSG_NXTHDR CMSG_NXTHDR
+#define BPS_CMSG_DATA CMSG_DATA
+#define BPS_CMSG_SPACE CMSG_SPACE
+#define BPS_CMSG_LEN CMSG_LEN
+#ifdef IP_PKTINFO
+using Pktinfo4 = struct in_pktinfo;
+#define BPS_HAVE_PKTINFO4 1
+#endif
+#if defined(IPV6_RECVPKTINFO) && defined(IPV6_PKTINFO)
+using Pktinfo6 = struct in6_pktinfo;
+#define BPS_HAVE_PKTINFO6 1
+#endif
+#endif
+
+/** Room for the larger of the two kinds of packet information. */
+constexpr size_t CONTROL_SPACE = 128;
+
+/** Ask the system to tell, for each datagram, the address it was sent to. */
+bool EnablePacketInfo(SOCKET sock, int family)
+{
+    int one = 1;
+    if (family == AF_INET) {
+#ifdef BPS_HAVE_PKTINFO4
+        return setsockopt(sock, IPPROTO_IP, IP_PKTINFO, (sockopt_arg_type)&one, sizeof(one)) == 0;
+#endif
+    } else if (family == AF_INET6) {
+#if defined(WIN32)
+        return setsockopt(sock, IPPROTO_IPV6, IPV6_PKTINFO, (sockopt_arg_type)&one, sizeof(one)) == 0;
+#elif defined(BPS_HAVE_PKTINFO6)
+        return setsockopt(sock, IPPROTO_IPV6, IPV6_RECVPKTINFO, (sockopt_arg_type)&one, sizeof(one)) == 0;
+#endif
+    }
+    (void)sock;
+    (void)one;
+    return false;
+}
+
+/** The address a received datagram was sent to, from its packet information. */
+template <typename Message>
+void ReadPacketInfo(Message& msg, Socket::LocalAddress& local)
+{
+    for (CmsgHeader* c = BPS_CMSG_FIRSTHDR(&msg); c != nullptr; c = BPS_CMSG_NXTHDR(&msg, c)) {
+#ifdef BPS_HAVE_PKTINFO4
+        if (c->cmsg_level == IPPROTO_IP && c->cmsg_type == IP_PKTINFO) {
+            Pktinfo4 info;
+            std::memcpy(&info, BPS_CMSG_DATA(c), sizeof(info));
+            local.family = AF_INET;
+            std::memcpy(local.addr, &info.ipi_addr, 4);
+            local.ifindex = 0;
+        }
+#endif
+#ifdef BPS_HAVE_PKTINFO6
+        if (c->cmsg_level == IPPROTO_IPV6 && c->cmsg_type == IPV6_PKTINFO) {
+            Pktinfo6 info;
+            std::memcpy(&info, BPS_CMSG_DATA(c), sizeof(info));
+            local.family = AF_INET6;
+            std::memcpy(local.addr, &info.ipi6_addr, 16);
+            // The interface matters only where the address alone does not
+            // say which link: link-local.
+            const bool link_local = local.addr[0] == 0xfe && (local.addr[1] & 0xc0) == 0x80;
+            local.ifindex = link_local ? (unsigned int)info.ipi6_ifindex : 0;
+        }
+#endif
+    }
+}
+
+/** sendto, from the local address `local`. -1 when it cannot be said, or sending failed. */
+int SendFrom(SOCKET sock, const unsigned char* data, size_t len, const struct sockaddr* to, socklen_t to_len,
+             const Socket::LocalAddress& local)
+{
+    alignas(8) char control[CONTROL_SPACE];
+    std::memset(control, 0, sizeof(control));
+    size_t control_len = 0;
+#ifdef WIN32
+    WSABUF wbuf;
+    wbuf.buf = reinterpret_cast<char*>(const_cast<unsigned char*>(data));
+    wbuf.len = (ULONG)len;
+    WSAMSG msg;
+    std::memset(&msg, 0, sizeof(msg));
+    msg.name = const_cast<struct sockaddr*>(to);
+    msg.namelen = to_len;
+    msg.lpBuffers = &wbuf;
+    msg.dwBufferCount = 1;
+    msg.Control.buf = control;
+    msg.Control.len = sizeof(control);
+#else
+    struct iovec iov;
+    iov.iov_base = const_cast<unsigned char*>(data);
+    iov.iov_len = len;
+    struct msghdr msg;
+    std::memset(&msg, 0, sizeof(msg));
+    msg.msg_name = const_cast<struct sockaddr*>(to);
+    msg.msg_namelen = to_len;
+    msg.msg_iov = &iov;
+    msg.msg_iovlen = 1;
+    msg.msg_control = control;
+    msg.msg_controllen = sizeof(control);
+#endif
+    CmsgHeader* c = BPS_CMSG_FIRSTHDR(&msg);
+    if (c == nullptr) return -1;
+    if (local.family == AF_INET) {
+#ifdef BPS_HAVE_PKTINFO4
+        Pktinfo4 info;
+        std::memset(&info, 0, sizeof(info));
+        std::memcpy(&info.ipi_addr, local.addr, 4);
+#ifndef WIN32
+        // Linux reads the source from ipi_spec_dst; the interface is left to the route.
+        std::memcpy(&info.ipi_spec_dst, local.addr, 4);
+#endif
+        c->cmsg_level = IPPROTO_IP;
+        c->cmsg_type = IP_PKTINFO;
+        c->cmsg_len = BPS_CMSG_LEN(sizeof(info));
+        std::memcpy(BPS_CMSG_DATA(c), &info, sizeof(info));
+        control_len = BPS_CMSG_SPACE(sizeof(info));
+#endif
+    } else if (local.family == AF_INET6) {
+#ifdef BPS_HAVE_PKTINFO6
+        Pktinfo6 info;
+        std::memset(&info, 0, sizeof(info));
+        std::memcpy(&info.ipi6_addr, local.addr, 16);
+        info.ipi6_ifindex = local.ifindex;
+        c->cmsg_level = IPPROTO_IPV6;
+        c->cmsg_type = IPV6_PKTINFO;
+        c->cmsg_len = BPS_CMSG_LEN(sizeof(info));
+        std::memcpy(BPS_CMSG_DATA(c), &info, sizeof(info));
+        control_len = BPS_CMSG_SPACE(sizeof(info));
+#endif
+    }
+    if (control_len == 0) return -1;
+#ifdef WIN32
+    msg.Control.len = (ULONG)control_len;
+    DWORD sent = 0;
+    if (WSASendMsg(sock, &msg, 0, &sent, nullptr, nullptr) != 0) return -1;
+    return (int)sent;
+#else
+    msg.msg_controllen = control_len;
+    return (int)sendmsg(sock, &msg, 0);
+#endif
 }
 
 } // namespace
@@ -96,8 +268,81 @@ bool Socket::Bind(const CService& listen_addr, std::string& error)
     }
 
     m_socket = sock;
+    // Bound to every address of the computer, answers must name the one each
+    // peer wrote to (LocalAddress). Bound to one, the system does that already.
+    if (m_bound.IsBindAny()) {
+        m_pktinfo = EnablePacketInfo(sock, storage.ss_family);
+#ifdef WIN32
+        if (m_pktinfo) {
+            GUID guid = WSAID_WSARECVMSG;
+            LPFN_WSARECVMSG fn = nullptr;
+            DWORD bytes = 0;
+            if (WSAIoctl(sock, SIO_GET_EXTENSION_FUNCTION_POINTER, &guid, sizeof(guid), &fn, sizeof(fn), &bytes,
+                         nullptr, nullptr) == 0 && fn) {
+                m_recvmsg = reinterpret_cast<void*>(fn);
+            } else {
+                m_pktinfo = false;
+            }
+        }
+#endif
+        if (!m_pktinfo) {
+            LogPrintf("overlay: this system does not say which address a datagram came to; on a computer with "
+                      "several, answers may leave from another\n");
+        }
+    }
     LogPrintf("overlay: listening on %s\n", m_bound.ToString());
     return true;
+}
+
+Socket::LocalAddress Socket::LocalAddressFor(const CService& peer)
+{
+    LOCK(m_local_mutex);
+    std::map<CService, LocalAddress>::const_iterator it = m_local.find(peer);
+    return it == m_local.end() ? LocalAddress() : it->second;
+}
+
+int Socket::ReceiveDatagram(unsigned char* buf, size_t len, struct sockaddr_storage& from, LocalAddress& local)
+{
+    local = LocalAddress();
+    std::memset(&from, 0, sizeof(from));
+    if (!m_pktinfo) {
+        socklen_t from_len = sizeof(from);
+        return (int)::recvfrom(m_socket, reinterpret_cast<char*>(buf), len, 0,
+                               reinterpret_cast<struct sockaddr*>(&from), &from_len);
+    }
+    alignas(8) char control[CONTROL_SPACE];
+#ifdef WIN32
+    WSABUF wbuf;
+    wbuf.buf = reinterpret_cast<char*>(buf);
+    wbuf.len = (ULONG)len;
+    WSAMSG msg;
+    std::memset(&msg, 0, sizeof(msg));
+    msg.name = reinterpret_cast<struct sockaddr*>(&from);
+    msg.namelen = sizeof(from);
+    msg.lpBuffers = &wbuf;
+    msg.dwBufferCount = 1;
+    msg.Control.buf = control;
+    msg.Control.len = sizeof(control);
+    DWORD got = 0;
+    if (reinterpret_cast<LPFN_WSARECVMSG>(m_recvmsg)(m_socket, &msg, &got, nullptr, nullptr) != 0) return -1;
+    ReadPacketInfo(msg, local);
+    return (int)got;
+#else
+    struct iovec iov;
+    iov.iov_base = buf;
+    iov.iov_len = len;
+    struct msghdr msg;
+    std::memset(&msg, 0, sizeof(msg));
+    msg.msg_name = &from;
+    msg.msg_namelen = sizeof(from);
+    msg.msg_iov = &iov;
+    msg.msg_iovlen = 1;
+    msg.msg_control = control;
+    msg.msg_controllen = sizeof(control);
+    const ssize_t got = recvmsg(m_socket, &msg, 0);
+    if (got >= 0) ReadPacketInfo(msg, local);
+    return (int)got;
+#endif
 }
 
 bool Socket::Start(PayloadHandler handler, EstablishedHandler established)
@@ -133,10 +378,17 @@ bool Socket::SendDatagram(const CService& to, const std::vector<unsigned char>& 
     std::memset(&storage, 0, sizeof(storage));
     if (!to.GetSockAddr(reinterpret_cast<struct sockaddr*>(&storage), &len)) return false;
 
-    const ssize_t sent = ::sendto(m_socket,
-                                  reinterpret_cast<const char*>(datagram.data()),
-                                  datagram.size(), 0,
-                                  reinterpret_cast<struct sockaddr*>(&storage), len);
+    // To a peer that wrote to us, from the address it wrote to; to one that has
+    // not, from whichever the route names, and it answers to that one.
+    ssize_t sent = -1;
+    const LocalAddress local = m_pktinfo ? LocalAddressFor(to) : LocalAddress();
+    if (local.family != 0) {
+        sent = SendFrom(m_socket, datagram.data(), datagram.size(), reinterpret_cast<struct sockaddr*>(&storage), len, local);
+    }
+    if (sent < 0) {
+        sent = ::sendto(m_socket, reinterpret_cast<const char*>(datagram.data()), datagram.size(), 0,
+                        reinterpret_cast<struct sockaddr*>(&storage), len);
+    }
     // A datagram either goes whole or not at all; a short write means the
     // network refused it, and there is nothing useful to retry here. Loss is
     // the transport's normal condition, so this is logged, not escalated.
@@ -253,15 +505,24 @@ void Socket::ThreadReceive()
         if (ready == 0) continue;
 
         struct sockaddr_storage from;
-        socklen_t from_len = sizeof(from);
-        std::memset(&from, 0, sizeof(from));
-        const ssize_t got = ::recvfrom(m_socket,
-                                       reinterpret_cast<char*>(buffer.data()),
-                                       buffer.size(), 0,
-                                       reinterpret_cast<struct sockaddr*>(&from), &from_len);
+        LocalAddress local;
+        const int got = ReceiveDatagram(buffer.data(), buffer.size(), from, local);
         if (got <= 0) continue;
 
-        const CService peer = FromSockAddr(from, from_len);
+        const CService peer = FromSockAddr(from, sizeof(from));
+        if (UsableSource(local)) {
+            // Kept for every source, forged ones too: all it decides is which of
+            // this computer's own addresses an answer leaves from. Bounded,
+            // since sources are free to make up.
+            LOCK(m_local_mutex);
+            std::map<CService, LocalAddress>::iterator it = m_local.find(peer);
+            if (it == m_local.end()) {
+                if (m_local.size() >= MAX_LOCAL_ADDRESSES) m_local.erase(m_local.begin());
+                m_local.emplace(peer, local);
+            } else {
+                it->second = local;
+            }
+        }
         std::vector<unsigned char> reply, payload;
         Transport::Result result;
         {
@@ -306,5 +567,6 @@ constexpr int64_t Socket::RATE_WINDOW;
 constexpr size_t Socket::PER_SOURCE_LIMIT;
 constexpr size_t Socket::GLOBAL_LIMIT;
 constexpr size_t Socket::MAX_TRACKED_SOURCES;
+constexpr size_t Socket::MAX_LOCAL_ADDRESSES;
 
 } // namespace overlay

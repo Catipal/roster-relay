@@ -19,7 +19,10 @@ visitor reaches only through its default route. So:
   * the node's own traffic - the overlay to its relays, peer-to-peer to the
     others - has to pass the interface by, or the node would lose the
     network it carries the computer's traffic over: it stays in sync and
-    meets gateways with the routes on from its first packet;
+    meets gateways with the routes on from its first packet. The relays are
+    listed at an address their route back to the visitor does not answer
+    from, so this also needs them to answer from the address written to
+    (feature_overlay_second_address.py);
   * a plain program in the namespace, with no proxy setting, reaches the
     website through a gateway: the website sees the gateway's address, not
     the namespace's;
@@ -118,7 +121,7 @@ class GatewayRoutesTest(BitcoinTestFramework):
         common = ["-overlay", "-rosterindex", "-fallbackfee=0.0001", "-mailpoll=0", "-mail=0", "-gatewayproxy=0"]
         gateway = common + ["-gatewayallowlocal", "-gatewayports=%d" % self.http_port]
         visitor = common + ["-gatewayallowlocal", "-gatewayinterface=%s" % self.device, "-gatewayroutes",
-                            "-bind=%s" % CABLE_IN, "-rpcbind=%s" % CABLE_IN, "-rpcallowip=%s" % CABLE_OUT, "-rpcallowip=%s" % OTHERS]
+                            "-bind=%s" % CABLE_IN, "-rpcbind=%s" % CABLE_IN, "-rpcallowip=%s" % CABLE_OUT]
         self.extra_args = [list(common) for _ in range(5)] + [list(gateway), list(gateway), visitor]
 
     def skip_test_if_missing_module(self):
@@ -141,10 +144,6 @@ class GatewayRoutesTest(BitcoinTestFramework):
         ip("-n", self.netns, "route", "add", "default", "via", CABLE_OUT)
         for a in (OTHERS, WEBSITE):
             ip("addr", "add", a + "/32", "dev", "lo")
-        # The relays listen on every address and answer datagrams from the
-        # one their route to the visitor names; make that the address they
-        # are listed at, as a relay with a single address has anyway.
-        ip("route", "replace", CABLE_OUT.rsplit(".", 1)[0] + ".0/24", "dev", self.cable_out, "src", OTHERS)
 
     def remove_computer(self):
         ip("netns", "del", self.netns, check=False)

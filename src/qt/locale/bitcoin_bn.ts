@@ -3357,15 +3357,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>এই কম্পিউটারের ইন্টারনেট সংযোগ গেটওয়ে হিসেবে ভাগ করুন</translation>
+        <translation type="vanished">এই কম্পিউটারের ইন্টারনেট সংযোগ গেটওয়ে হিসেবে ভাগ করুন</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>নেটওয়ার্কের সদস্যরা এর মাধ্যমে যে ওয়েবসাইটে যান সেগুলো এই কম্পিউটারের ঠিকানা দেখে। আপনার সংযোগ ভাগ করার অনুমতি না থাকলে সার্ভার পাতায় গেটওয়ে বন্ধ করুন।</translation>
+        <translation type="vanished">নেটওয়ার্কের সদস্যরা এর মাধ্যমে যে ওয়েবসাইটে যান সেগুলো এই কম্পিউটারের ঠিকানা দেখে। আপনার সংযোগ ভাগ করার অনুমতি না থাকলে সার্ভার পাতায় গেটওয়ে বন্ধ করুন।</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>সার্ভার পাতায় গেটওয়ে বন্ধ করা আছে।</translation>
+        <translation type="vanished">সার্ভার পাতায় গেটওয়ে বন্ধ করা আছে।</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3393,7 +3393,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>রিলে হিসেবে অন্যদের পথ বহন করুন</translation>
+        <translation type="vanished">রিলে হিসেবে অন্যদের পথ বহন করুন</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3401,7 +3401,23 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>আপনার নোড চলার সময় নেটওয়ার্ককে এই কম্পিউটারের বর্তমান ঠিকানা জানায়, তার কী দিয়ে স্বাক্ষর করে, যাতে পথগুলো এখানে পৌঁছাতে পারে, এবং যখনই তা বদলায় আবার জানায়। এটি কখনো চেইনে লেখা হয় না, এবং আপনার নোড থামার তিন ঘণ্টার মধ্যে নেটওয়ার্ক এটি ভুলে যায়। অন্যদের অবশ্যই এই কম্পিউটারে পোর্ট %1 (TCP) এবং %2 (UDP)-এ পৌঁছাতে পারতে হবে।</translation>
+        <translation type="vanished">আপনার নোড চলার সময় নেটওয়ার্ককে এই কম্পিউটারের বর্তমান ঠিকানা জানায়, তার কী দিয়ে স্বাক্ষর করে, যাতে পথগুলো এখানে পৌঁছাতে পারে, এবং যখনই তা বদলায় আবার জানায়। এটি কখনো চেইনে লেখা হয় না, এবং আপনার নোড থামার তিন ঘণ্টার মধ্যে নেটওয়ার্ক এটি ভুলে যায়। অন্যদের অবশ্যই এই কম্পিউটারে পোর্ট %1 (TCP) এবং %2 (UDP)-এ পৌঁছাতে পারতে হবে।</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>এই নোড রিলে হিসেবে অন্যদের পথ বহন করে, যেমন সার্ভার পাতায় সেট করা আছে, তাই তালিকাভুক্তি তা বলে। এটি চলার সময় এর ঠিকানা ঘোষিত হয়, কখনো চেইনে লেখা হয় না।</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>এই নোড গেটওয়ে হিসেবে তার ইন্টারনেট সংযোগ শেয়ার করে, যেমন সার্ভার পাতায় সেট করা আছে, তাই তালিকাভুক্তি তা বলে।</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>এই নোড অন্যদের জন্য রিলে করে না এবং তার ইন্টারনেট সংযোগও শেয়ার করে না, যেমন সার্ভার পাতায় সেট করা আছে।</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>সেখানে কোনো পরিবর্তন আপনার পরবর্তী তালিকাভুক্তির সাথে রেজিস্টারে পৌঁছায়।</translation>
     </message>
 </context>
 <context>
@@ -5198,6 +5214,18 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>এই রিলে নেটওয়ার্ককে যেখানে আছে বলে জানায়, তার কী দিয়ে স্বাক্ষর করে। সেটি প্রতি ঘণ্টায় এবং ঠিকানা বদলালে আবার জানায়; এর কিছুই চেইনে নেই।</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>রিলে হিসেবে অন্যদের পথ বহন করুন</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>আপনার নোড চলার সময় নেটওয়ার্ককে এই কম্পিউটারের বর্তমান ঠিকানা জানায়, তার কী দিয়ে স্বাক্ষর করে, যাতে পথগুলো এখানে পৌঁছাতে পারে, এবং যখনই তা বদলায় আবার জানায়। এটি কখনো চেইনে লেখা হয় না, এবং আপনার নোড থামার তিন ঘণ্টার মধ্যে নেটওয়ার্ক এটি ভুলে যায়। অন্যদের অবশ্যই এই কম্পিউটারে পোর্ট %1 (TCP) এবং %2 (UDP)-এ পৌঁছাতে পারতে হবে।</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>নেই — রিলে বন্ধ আছে</translation>
     </message>
 </context>
 <context>

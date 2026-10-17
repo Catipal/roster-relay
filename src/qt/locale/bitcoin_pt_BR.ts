@@ -3357,15 +3357,15 @@ Uma chave de recuperação será mostrada uma única vez. Anote-a: é a única f
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Compartilhar a conexão de internet deste computador como gateway</translation>
+        <translation type="vanished">Compartilhar a conexão de internet deste computador como gateway</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Os sites que os membros da rede visitam por meio dele veem o endereço deste computador. Desligue o gateway na página Servidor se você não puder compartilhar sua conexão.</translation>
+        <translation type="vanished">Os sites que os membros da rede visitam por meio dele veem o endereço deste computador. Desligue o gateway na página Servidor se você não puder compartilhar sua conexão.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>O gateway está desligado na página Servidor.</translation>
+        <translation type="vanished">O gateway está desligado na página Servidor.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3393,7 +3393,7 @@ Uma chave de recuperação será mostrada uma única vez. Anote-a: é a única f
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Levar caminhos de outros como retransmissor</translation>
+        <translation type="vanished">Levar caminhos de outros como retransmissor</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3401,7 +3401,23 @@ Uma chave de recuperação será mostrada uma única vez. Anote-a: é a única f
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Enquanto seu nó funciona, ele diz à rede o endereço atual deste computador, assinado com sua chave, para que os caminhos o alcancem, e de novo sempre que muda. Ele nunca é escrito na cadeia, e a rede o esquece nas três horas seguintes à parada do seu nó. Os outros precisam conseguir alcançar este computador na porta %1 (TCP) e %2 (UDP).</translation>
+        <translation type="vanished">Enquanto seu nó funciona, ele diz à rede o endereço atual deste computador, assinado com sua chave, para que os caminhos o alcancem, e de novo sempre que muda. Ele nunca é escrito na cadeia, e a rede o esquece nas três horas seguintes à parada do seu nó. Os outros precisam conseguir alcançar este computador na porta %1 (TCP) e %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Este nó leva caminhos de outros como retransmissor, conforme definido na página Servidor, então a inscrição diz isso. Seu endereço é anunciado enquanto ele funciona e nunca é escrito na cadeia.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Este nó compartilha sua conexão com a internet como gateway, conforme definido na página Servidor, então a inscrição diz isso.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Este nó nem retransmite para outros nem compartilha sua conexão com a internet, conforme definido na página Servidor.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>Uma mudança lá chega ao registro com sua próxima inscrição.</translation>
     </message>
 </context>
 <context>
@@ -5198,6 +5214,18 @@ Você pode mudar isso a qualquer momento na página Servidor.</translation>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Onde este retransmissor diz à rede que está, assinado com sua chave. Diz de novo a cada hora e quando o endereço muda; nada disso está na cadeia.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Levar caminhos de outros como retransmissor</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Enquanto seu nó funciona, ele diz à rede o endereço atual deste computador, assinado com sua chave, para que os caminhos o alcancem, e de novo sempre que muda. Ele nunca é escrito na cadeia, e a rede o esquece nas três horas seguintes à parada do seu nó. Os outros precisam conseguir alcançar este computador na porta %1 (TCP) e %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>nenhum — retransmitir está desligado</translation>
     </message>
 </context>
 <context>

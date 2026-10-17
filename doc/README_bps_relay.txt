@@ -54,8 +54,11 @@ Discovery tab shows each peer's for today. The listing also names one relay
 where you can be met for as long as it lasts, chosen at random and never one
 your node enters the network through, and each renewal names a new one.
 
-To carry others' paths as a relay, tick "Carry others' paths as a relay"
-under "Through the overlay". A relay has to be dialled, so while your node
+Relaying and sharing the internet are settings of your node, on the Server
+page, not choices made with each listing; your listing takes them over when
+you publish or renew it, since others find relays and gateways by it. To
+carry others' paths as a relay, tick "Carry others' paths as a relay" on the
+Server page's Relay card. A relay has to be dialled, so while your node
 runs it tells the network its current address, signed with its key, every
 hour and whenever the address changes - no transaction, never on the chain,
 and the network forgets it within three hours of your node stopping. Others
@@ -89,10 +92,10 @@ between servers, and never into your own home network. It shares at most
 where you live or your internet provider's terms forbid sharing your
 connection, switch it off.
 
-To share, your node has to be listed as a gateway: publish your listing with
-no address and "Share this computer's internet connection" ticked. A relay,
-whose listing carries its address, lists its gateway under a second key from
-the Server page instead. Another relay pays for that listing, asked through
+To share, your node has to be listed as a gateway: with sharing switched on
+on the Server page, publish your listing through the overlay, with no
+address. A relay, whose address is public, lists its gateway under a second
+key from the Server page instead. Another relay pays for that listing, asked through
 relays, so it learns the gateway's key and not where it is; paying from the
 relay's own wallet would tie the two together on the chain.
 

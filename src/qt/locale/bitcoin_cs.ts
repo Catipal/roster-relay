@@ -3365,15 +3365,15 @@ Klíč pro obnovení se vám zobrazí jednou. Zapište si ho: je to jediný způ
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Sdílet internetové připojení tohoto počítače jako bránu</translation>
+        <translation type="vanished">Sdílet internetové připojení tohoto počítače jako bránu</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Weby, které členové sítě přes ni navštěvují, vidí adresu tohoto počítače. Vypněte bránu na stránce Server, pokud své připojení nesmíte sdílet.</translation>
+        <translation type="vanished">Weby, které členové sítě přes ni navštěvují, vidí adresu tohoto počítače. Vypněte bránu na stránce Server, pokud své připojení nesmíte sdílet.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>Brána je vypnutá na stránce Server.</translation>
+        <translation type="vanished">Brána je vypnutá na stránce Server.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3401,7 +3401,7 @@ Klíč pro obnovení se vám zobrazí jednou. Zapište si ho: je to jediný způ
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Přenášet cesty ostatních jako relé</translation>
+        <translation type="vanished">Přenášet cesty ostatních jako relé</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3409,7 +3409,23 @@ Klíč pro obnovení se vám zobrazí jednou. Zapište si ho: je to jediný způ
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Dokud váš uzel běží, sděluje síti aktuální adresu tohoto počítače podepsanou svým klíčem, aby ho cesty zastihly, a znovu pokaždé, když se změní. Nikdy se nezapisuje do řetězce a síť ji zapomene do tří hodin od zastavení vašeho uzlu. Ostatní musí tento počítač zastihnout na portu %1 (TCP) a %2 (UDP).</translation>
+        <translation type="vanished">Dokud váš uzel běží, sděluje síti aktuální adresu tohoto počítače podepsanou svým klíčem, aby ho cesty zastihly, a znovu pokaždé, když se změní. Nikdy se nezapisuje do řetězce a síť ji zapomene do tří hodin od zastavení vašeho uzlu. Ostatní musí tento počítač zastihnout na portu %1 (TCP) a %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Tento uzel přenáší cesty ostatních jako relé, jak je nastaveno na stránce Server, a zápis to uvádí. Jeho adresa se oznamuje, dokud běží, a nikdy se nezapisuje do řetězce.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Tento uzel sdílí své připojení k internetu jako brána, jak je nastaveno na stránce Server, a zápis to uvádí.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Tento uzel nepřenáší pro ostatní ani nesdílí své připojení k internetu, jak je nastaveno na stránce Server.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>Změna tam se do rejstříku dostane s vaším příštím zápisem.</translation>
     </message>
 </context>
 <context>
@@ -5213,6 +5229,18 @@ Toto můžete kdykoli změnit na stránce Server.</translation>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Kde toto relé síti říká, že je, podepsáno svým klíčem. Říká to znovu každou hodinu a když se adresa změní; nic z toho není v řetězci.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Přenášet cesty ostatních jako relé</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Dokud váš uzel běží, sděluje síti aktuální adresu tohoto počítače podepsanou svým klíčem, aby ho cesty zastihly, a znovu pokaždé, když se změní. Nikdy se nezapisuje do řetězce a síť ji zapomene do tří hodin od zastavení vašeho uzlu. Ostatní musí tento počítač zastihnout na portu %1 (TCP) a %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>žádná — přenášení je vypnuto</translation>
     </message>
 </context>
 <context>

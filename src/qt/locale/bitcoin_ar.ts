@@ -3394,15 +3394,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>شارك اتصال هذا الحاسوب بالإنترنت كبوابة</translation>
+        <translation type="vanished">شارك اتصال هذا الحاسوب بالإنترنت كبوابة</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>المواقع التي يزورها أعضاء الشبكة عبرها ترى عنوان هذا الحاسوب. أطفئ البوابة في صفحة الخادم إن لم يكن مسموحًا لك أن تشارك اتصالك.</translation>
+        <translation type="vanished">المواقع التي يزورها أعضاء الشبكة عبرها ترى عنوان هذا الحاسوب. أطفئ البوابة في صفحة الخادم إن لم يكن مسموحًا لك أن تشارك اتصالك.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>البوابة مطفأة في صفحة الخادم.</translation>
+        <translation type="vanished">البوابة مطفأة في صفحة الخادم.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3430,7 +3430,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>نقل مسارات الآخرين كمرحِّل</translation>
+        <translation type="vanished">نقل مسارات الآخرين كمرحِّل</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3438,7 +3438,23 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>ما دامت عقدتك تعمل فإنها تخبر الشبكة بالعنوان الحالي لهذا الحاسوب، موقَّعًا بمفتاحها، كي تصل إليه المسارات، ومن جديد كلما تغيّر. لا يُكتب في السلسلة أبدًا، وتنساه الشبكة خلال ثلاث ساعات من توقف عقدتك. يجب أن يتمكن الآخرون من الوصول إلى هذا الحاسوب على المنفذ %1 (TCP) و%2 (UDP).</translation>
+        <translation type="vanished">ما دامت عقدتك تعمل فإنها تخبر الشبكة بالعنوان الحالي لهذا الحاسوب، موقَّعًا بمفتاحها، كي تصل إليه المسارات، ومن جديد كلما تغيّر. لا يُكتب في السلسلة أبدًا، وتنساه الشبكة خلال ثلاث ساعات من توقف عقدتك. يجب أن يتمكن الآخرون من الوصول إلى هذا الحاسوب على المنفذ %1 (TCP) و%2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>هذه العقدة تنقل مسارات الآخرين كمرحِّل، كما ضُبط في صفحة الخادم، لذا يقول الإدراج ذلك. يُعلَن عنوانها ما دامت تعمل، ولا يُكتب في السلسلة أبدًا.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>هذه العقدة تشارك اتصالها بالإنترنت كبوابة، كما ضُبط في صفحة الخادم، لذا يقول الإدراج ذلك.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>هذه العقدة لا ترحِّل للآخرين ولا تشارك اتصالها بالإنترنت، كما ضُبط في صفحة الخادم.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>أي تغيير هناك يصل إلى السجل مع إدراجك التالي.</translation>
     </message>
 </context>
 <context>
@@ -5255,6 +5271,18 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>المكان الذي يخبر به هذا المرحِّلُ الشبكةَ أنه فيه، موقَّعًا بمفتاحه. يقول ذلك من جديد كل ساعة وكلما تغيّر العنوان؛ ولا شيء من ذلك في السلسلة.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>نقل مسارات الآخرين كمرحِّل</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>ما دامت عقدتك تعمل فإنها تخبر الشبكة بالعنوان الحالي لهذا الحاسوب، موقَّعًا بمفتاحها، كي تصل إليه المسارات، ومن جديد كلما تغيّر. لا يُكتب في السلسلة أبدًا، وتنساه الشبكة خلال ثلاث ساعات من توقف عقدتك. يجب أن يتمكن الآخرون من الوصول إلى هذا الحاسوب على المنفذ %1 (TCP) و%2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>لا شيء — الترحيل متوقف</translation>
     </message>
 </context>
 <context>

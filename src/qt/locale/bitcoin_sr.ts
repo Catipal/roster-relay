@@ -3366,15 +3366,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Дели интернет везу овог рачунара као пролаз</translation>
+        <translation type="vanished">Дели интернет везу овог рачунара као пролаз</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Сајтови које чланови мреже посећују преко њега виде адресу овог рачунара. Искључите пролаз на страници Сервер ако не смете да делите своју везу.</translation>
+        <translation type="vanished">Сајтови које чланови мреже посећују преко њега виде адресу овог рачунара. Искључите пролаз на страници Сервер ако не смете да делите своју везу.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>Пролаз је искључен на страници Сервер.</translation>
+        <translation type="vanished">Пролаз је искључен на страници Сервер.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3402,7 +3402,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Преноси путање других као релеј</translation>
+        <translation type="vanished">Преноси путање других као релеј</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3410,7 +3410,23 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Док ваш чвор ради, говори мрежи тренутну адресу овог рачунара потписану својим кључем, да би путање могле да стигну до њега, и поново сваки пут када се промени. Никад се не уписује у ланац, а мрежа је заборавља у року од три сата након што се ваш чвор заустави. Други морају моћи да дођу до овог рачунара на порту %1 (TCP) и %2 (UDP).</translation>
+        <translation type="vanished">Док ваш чвор ради, говори мрежи тренутну адресу овог рачунара потписану својим кључем, да би путање могле да стигну до њега, и поново сваки пут када се промени. Никад се не уписује у ланац, а мрежа је заборавља у року од три сата након што се ваш чвор заустави. Други морају моћи да дођу до овог рачунара на порту %1 (TCP) и %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Овај чвор преноси путање других као релеј, како је подешено на страници Сервер, па упис то каже. Његова адреса се објављује док ради и никад се не уписује у ланац.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Овај чвор дели своју интернет везу као пролаз, како је подешено на страници Сервер, па упис то каже.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Овај чвор нити преноси за друге нити дели своју интернет везу, како је подешено на страници Сервер.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>Промена тамо стиже у регистар са вашим следећим уписом.</translation>
     </message>
 </context>
 <context>
@@ -5214,6 +5230,18 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Где овај релеј каже мрежи да је, потписано својим кључем. То понавља сваког сата и када се адреса промени; ништа од тога није у ланцу.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Преноси путање других као релеј</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Док ваш чвор ради, говори мрежи тренутну адресу овог рачунара потписану својим кључем, да би путање могле да стигну до њега, и поново сваки пут када се промени. Никад се не уписује у ланац, а мрежа је заборавља у року од три сата након што се ваш чвор заустави. Други морају моћи да дођу до овог рачунара на порту %1 (TCP) и %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>нема — преношење је искључено</translation>
     </message>
 </context>
 <context>

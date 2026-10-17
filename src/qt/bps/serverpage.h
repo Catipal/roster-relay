@@ -56,6 +56,14 @@ public:
     static void ApplyStoredSettings();
 
     /**
+     * What the owner chose here for relaying and the gateway, saved or as the
+     * node runs: settings of the node, which a listing takes over when it is
+     * published, not choices made with each listing.
+     */
+    static bool RelaySwitchedOn();
+    static bool GatewaySwitchedOn();
+
+    /**
      * The first time the client starts, say plainly what sharing the internet
      * connection means, and let the owner switch it off before the node
      * starts (design note section 8.7). Not asked again, and not asked when
@@ -75,6 +83,7 @@ private Q_SLOTS:
 
 private:
     QWidget* MakeRelayCard();
+    QCheckBox* m_relay{nullptr};    //!< carry others' paths as a relay (-relay)
     QWidget* MakeMailboxCard();
     QWidget* MakeGatewayCard();
     void ShowGateway(const UniValue& value);

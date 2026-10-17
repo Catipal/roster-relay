@@ -3346,15 +3346,15 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>E számítógép internetkapcsolatának megosztása átjáróként</translation>
+        <translation type="vanished">E számítógép internetkapcsolatának megosztása átjáróként</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Azok a webhelyek, amelyeket a hálózat tagjai rajta keresztül látogatnak, ennek a számítógépnek a címét látják. Kapcsolja ki az átjárót a Kiszolgáló oldalon, ha nem oszthatja meg a kapcsolatát.</translation>
+        <translation type="vanished">Azok a webhelyek, amelyeket a hálózat tagjai rajta keresztül látogatnak, ennek a számítógépnek a címét látják. Kapcsolja ki az átjárót a Kiszolgáló oldalon, ha nem oszthatja meg a kapcsolatát.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>Az átjáró ki van kapcsolva a Kiszolgáló oldalon.</translation>
+        <translation type="vanished">Az átjáró ki van kapcsolva a Kiszolgáló oldalon.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3382,7 +3382,7 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Mások útvonalainak vitele továbbítóként</translation>
+        <translation type="vanished">Mások útvonalainak vitele továbbítóként</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3390,7 +3390,23 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Amíg a csomópontja fut, közli a hálózattal ennek a számítógépnek a jelenlegi címét a kulcsával aláírva, hogy az útvonalak elérjék, és újra, valahányszor megváltozik. Sosem kerül a láncra, és a hálózat a csomópont leállása után három órán belül elfelejti. Másoknak el kell tudniuk érni ezt a számítógépet a(z) %1 (TCP) és %2 (UDP) porton.</translation>
+        <translation type="vanished">Amíg a csomópontja fut, közli a hálózattal ennek a számítógépnek a jelenlegi címét a kulcsával aláírva, hogy az útvonalak elérjék, és újra, valahányszor megváltozik. Sosem kerül a láncra, és a hálózat a csomópont leállása után három órán belül elfelejti. Másoknak el kell tudniuk érni ezt a számítógépet a(z) %1 (TCP) és %2 (UDP) porton.</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Ez a csomópont mások útvonalait viszi továbbítóként, ahogy a Kiszolgáló oldalon be van állítva, így a bejegyzés is ezt mondja. A címét futás közben közzéteszi, a láncra sosem kerül.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Ez a csomópont átjáróként osztja meg az internetkapcsolatát, ahogy a Kiszolgáló oldalon be van állítva, így a bejegyzés is ezt mondja.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Ez a csomópont nem továbbít másoknak, és nem osztja meg az internetkapcsolatát, ahogy a Kiszolgáló oldalon be van állítva.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>Az ottani változás a következő bejegyzésével jut a jegyzékbe.</translation>
     </message>
 </context>
 <context>
@@ -5180,6 +5196,18 @@ Ezt bármikor megváltoztathatja a Kiszolgáló oldalon.</translation>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Ahol ez a továbbító a hálózatnak mondja, hogy van, a kulcsával aláírva. Óránként és a cím változásakor újra megmondja; ebből semmi sincs a láncon.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Mások útvonalainak vitele továbbítóként</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Amíg a csomópontja fut, közli a hálózattal ennek a számítógépnek a jelenlegi címét a kulcsával aláírva, hogy az útvonalak elérjék, és újra, valahányszor megváltozik. Sosem kerül a láncra, és a hálózat a csomópont leállása után három órán belül elfelejti. Másoknak el kell tudniuk érni ezt a számítógépet a(z) %1 (TCP) és %2 (UDP) porton.</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>nincs — a továbbítás ki van kapcsolva</translation>
     </message>
 </context>
 <context>

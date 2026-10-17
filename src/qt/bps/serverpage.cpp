@@ -16,13 +16,16 @@
 #endif
 
 #include <mail/mailbox.h>
+#include <net.h>
 #include <overlay/gateway.h>
 #include <overlay/localproxy.h>
+#include <overlay/socket.h>
 #include <overlay/sysif.h>
 #include <overlay/sysroute.h>
 #include <policy/feerate.h>
 #include <roster/listing.h>
 #include <roster/payout.h>
+#include <roster/relayaddr.h>
 #include <univalue.h>
 #include <util/system.h>
 
@@ -58,6 +61,7 @@
 
 namespace {
 //! QSettings keys, prefixed like the Settings page's own.
+const char* KEY_RELAY = "bps/relay";
 const char* KEY_ACCEPTLISTINGS = "bps/acceptlistings";
 const char* KEY_MAXLISTEDUSERS = "bps/maxlistedusers";
 const char* KEY_LISTINGWALLET = "bps/listingwallet";
@@ -150,9 +154,26 @@ QFrame* MakeCard(const QString& title, Status status, const QString& description
 }
 } // namespace
 
+bool ServerPage::RelaySwitchedOn()
+{
+    QSettings settings;
+    if (settings.contains(KEY_RELAY)) return settings.value(KEY_RELAY).toBool();
+    return gArgs.GetBoolArg("-relay", roster::DEFAULT_RELAY);
+}
+
+bool ServerPage::GatewaySwitchedOn()
+{
+    QSettings settings;
+    if (settings.contains(KEY_GATEWAY)) return settings.value(KEY_GATEWAY).toBool();
+    return gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY);
+}
+
 void ServerPage::ApplyStoredSettings()
 {
     QSettings settings;
+    // Relaying makes this computer's address public, so it is off until the
+    // owner switches it on here.
+    if (settings.contains(KEY_RELAY)) gArgs.SoftSetBoolArg("-relay", settings.value(KEY_RELAY).toBool());
     // Paying for other peers' listings spends coins, so nothing is set until
     // the operator chooses here; the node's own defaults apply until then.
     if (settings.contains(KEY_ACCEPTLISTINGS)) {
@@ -312,6 +333,24 @@ QWidget* ServerPage::MakeRelayCard()
     rule->setFrameShadow(QFrame::Sunken);
     body->addWidget(rule);
 
+    // A setting of the node, not of its listing: the listing takes it over
+    // when it is next published (roster/relayaddr.h).
+    m_relay = new QCheckBox(tr("Carry others' paths as a relay"), card);
+    body->addWidget(m_relay);
+    QLabel* relay_note = new QLabel(
+        tr("While your node runs it tells the network this computer's current address, signed with "
+           "its key, so that paths can reach it, and again whenever it changes. It is never written to "
+           "the chain, and the network forgets it within three hours of your node stopping. Others "
+           "must be able to reach this computer at port %1 (TCP) and %2 (UDP).")
+            .arg(GetListenPort()).arg(overlay::OverlayPortFor(GetListenPort())),
+        card);
+    relay_note->setWordWrap(true);
+    relay_note->setContentsMargins(24, 0, 0, 0);
+    QFont relay_font = relay_note->font();
+    relay_font.setPointSizeF(relay_font.pointSizeF() * 0.9);
+    relay_note->setFont(relay_font);
+    body->addWidget(relay_note);
+
     m_acceptlistings = new QCheckBox(tr("Pay to list peers that ask through the overlay"), card);
     m_acceptlistings->setToolTip(tr("A peer with no coins can ask this node to publish its monthly "
                                     "listing. This node pays the fee, stakes it into a block, and adds "
@@ -346,6 +385,7 @@ QWidget* ServerPage::MakeRelayCard()
     m_restart_note->setVisible(false);
     body->addWidget(m_restart_note);
 
+    connect(m_relay, &QCheckBox::toggled, this, &ServerPage::onChanged);
     connect(m_acceptlistings, &QCheckBox::toggled, this, &ServerPage::onChanged);
     connect(m_maxlistedusers, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, &ServerPage::onChanged);
@@ -696,6 +736,7 @@ void ServerPage::Load()
     m_loading = true;
     // What the node is running with, so a value from the command line or the
     // config file shows here rather than being contradicted by the page.
+    m_relay->setChecked(gArgs.GetBoolArg("-relay", roster::DEFAULT_RELAY));
     m_acceptlistings->setChecked(gArgs.GetBoolArg("-acceptlistings", roster::DEFAULT_ACCEPT_LISTINGS));
     m_maxlistedusers->setValue((int)gArgs.GetArg("-maxlistedusers", roster::DEFAULT_MAX_LISTED_USERS));
     m_listingwallet->setText(QString::fromStdString(gArgs.GetArg("-listingwallet", "")));
@@ -714,6 +755,7 @@ void ServerPage::onChanged()
 {
     if (m_loading) return;
     QSettings settings;
+    settings.setValue(KEY_RELAY, m_relay->isChecked());
     settings.setValue(KEY_ACCEPTLISTINGS, m_acceptlistings->isChecked());
     settings.setValue(KEY_MAXLISTEDUSERS, m_maxlistedusers->value());
     settings.setValue(KEY_LISTINGWALLET, m_listingwallet->text().trimmed());
@@ -804,6 +846,11 @@ void ServerPage::onRpcResult(const QString& tag, const UniValue& value)
         // A relay listed to announce its address says where it is while it
         // runs, instead of on the chain (roster/relayaddr.h).
         const UniValue& announcing = find_value(value, "announcing");
+        if (!find_value(value, "relay").isTrue()) {
+            m_announced->setText(tr("none \xe2\x80\x94 relaying is switched off"));
+            m_announced->setToolTip(QString());
+            return;
+        }
         if (!announcing.isObject()) {
             m_announced->setText(tr("none \xe2\x80\x94 this node is not listed as a relay that announces its address"));
             m_announced->setToolTip(QString());

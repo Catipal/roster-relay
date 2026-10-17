@@ -3348,15 +3348,15 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Chia sẻ kết nối internet của máy tính này làm cổng</translation>
+        <translation type="vanished">Chia sẻ kết nối internet của máy tính này làm cổng</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Các trang web mà thành viên mạng truy cập qua cổng này sẽ thấy địa chỉ của máy tính này. Hãy tắt cổng ở trang Máy chủ nếu bạn không được phép chia sẻ kết nối.</translation>
+        <translation type="vanished">Các trang web mà thành viên mạng truy cập qua cổng này sẽ thấy địa chỉ của máy tính này. Hãy tắt cổng ở trang Máy chủ nếu bạn không được phép chia sẻ kết nối.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>Cổng đang tắt ở trang Máy chủ.</translation>
+        <translation type="vanished">Cổng đang tắt ở trang Máy chủ.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3384,7 +3384,7 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Chuyển đường đi của người khác như một trạm chuyển tiếp</translation>
+        <translation type="vanished">Chuyển đường đi của người khác như một trạm chuyển tiếp</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3392,7 +3392,23 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Khi nút của bạn đang chạy, nó cho mạng biết địa chỉ hiện tại của máy tính này, ký bằng khóa của nó, để đường đi có thể tới được, và cho biết lại mỗi khi địa chỉ thay đổi. Địa chỉ không bao giờ được ghi lên chuỗi, và mạng quên nó trong vòng ba giờ sau khi nút của bạn dừng. Người khác phải kết nối được tới máy tính này ở cổng %1 (TCP) và %2 (UDP).</translation>
+        <translation type="vanished">Khi nút của bạn đang chạy, nó cho mạng biết địa chỉ hiện tại của máy tính này, ký bằng khóa của nó, để đường đi có thể tới được, và cho biết lại mỗi khi địa chỉ thay đổi. Địa chỉ không bao giờ được ghi lên chuỗi, và mạng quên nó trong vòng ba giờ sau khi nút của bạn dừng. Người khác phải kết nối được tới máy tính này ở cổng %1 (TCP) và %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Nút này chuyển đường đi của người khác như một trạm chuyển tiếp, theo thiết lập ở trang Máy chủ, nên bản niêm yết nói vậy. Địa chỉ của nó được công bố khi nó đang chạy và không bao giờ được ghi lên chuỗi.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Nút này chia sẻ kết nối internet như một cổng, theo thiết lập ở trang Máy chủ, nên bản niêm yết nói vậy.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Nút này không chuyển tiếp cho người khác và cũng không chia sẻ kết nối internet, theo thiết lập ở trang Máy chủ.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>Thay đổi ở đó sẽ tới danh bạ cùng bản niêm yết tiếp theo của bạn.</translation>
     </message>
 </context>
 <context>
@@ -5182,6 +5198,18 @@ Bạn có thể thay đổi điều này bất cứ lúc nào ở trang Máy ch�
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Nơi trạm chuyển tiếp này cho mạng biết nó đang ở, ký bằng khóa của nó. Nó cho biết lại mỗi giờ và khi địa chỉ thay đổi; không có gì trong số đó nằm trên chuỗi.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Chuyển đường đi của người khác như một trạm chuyển tiếp</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Khi nút của bạn đang chạy, nó cho mạng biết địa chỉ hiện tại của máy tính này, ký bằng khóa của nó, để đường đi có thể tới được, và cho biết lại mỗi khi địa chỉ thay đổi. Địa chỉ không bao giờ được ghi lên chuỗi, và mạng quên nó trong vòng ba giờ sau khi nút của bạn dừng. Người khác phải kết nối được tới máy tính này ở cổng %1 (TCP) và %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>không có — chuyển tiếp đang tắt</translation>
     </message>
 </context>
 <context>

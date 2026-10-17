@@ -3357,15 +3357,15 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Compartir la conexión a internet de este ordenador como pasarela</translation>
+        <translation type="vanished">Compartir la conexión a internet de este ordenador como pasarela</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Los sitios que los miembros de la red visitan a través de ella ven la dirección de este ordenador. Desactiva la pasarela en la página Servidor si no puedes compartir tu conexión.</translation>
+        <translation type="vanished">Los sitios que los miembros de la red visitan a través de ella ven la dirección de este ordenador. Desactiva la pasarela en la página Servidor si no puedes compartir tu conexión.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>La pasarela está desactivada en la página Servidor.</translation>
+        <translation type="vanished">La pasarela está desactivada en la página Servidor.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3393,7 +3393,7 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Llevar caminos de otros como relé</translation>
+        <translation type="vanished">Llevar caminos de otros como relé</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3401,7 +3401,23 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Mientras tu nodo funciona, le dice a la red la dirección actual de este ordenador, firmada con su clave, para que los caminos puedan llegar a él, y otra vez cada vez que cambia. Nunca se escribe en la cadena, y la red la olvida en las tres horas siguientes a que tu nodo se detenga. Los demás deben poder llegar a este ordenador en el puerto %1 (TCP) y %2 (UDP).</translation>
+        <translation type="vanished">Mientras tu nodo funciona, le dice a la red la dirección actual de este ordenador, firmada con su clave, para que los caminos puedan llegar a él, y otra vez cada vez que cambia. Nunca se escribe en la cadena, y la red la olvida en las tres horas siguientes a que tu nodo se detenga. Los demás deben poder llegar a este ordenador en el puerto %1 (TCP) y %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Este nodo lleva caminos de otros como relé, según lo configurado en la página Servidor, así que la inscripción lo dice. Su dirección se anuncia mientras funciona y nunca se escribe en la cadena.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Este nodo comparte su conexión a internet como pasarela, según lo configurado en la página Servidor, así que la inscripción lo dice.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Este nodo ni retransmite para otros ni comparte su conexión a internet, según lo configurado en la página Servidor.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>Un cambio allí llega al registro con tu próxima inscripción.</translation>
     </message>
 </context>
 <context>
@@ -5198,6 +5214,18 @@ Puedes cambiarlo en cualquier momento en la página Servidor.</translation>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Dónde le dice este relé a la red que está, firmado con su clave. Lo vuelve a decir cada hora y cuando cambia la dirección; nada de ello está en la cadena.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Llevar caminos de otros como relé</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Mientras tu nodo funciona, le dice a la red la dirección actual de este ordenador, firmada con su clave, para que los caminos puedan llegar a él, y otra vez cada vez que cambia. Nunca se escribe en la cadena, y la red la olvida en las tres horas siguientes a que tu nodo se detenga. Los demás deben poder llegar a este ordenador en el puerto %1 (TCP) y %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>ninguna — retransmitir está desactivado</translation>
     </message>
 </context>
 <context>

@@ -39,7 +39,7 @@ class RelayAddressTest(BitcoinTestFramework):
         self.setup_clean_chain = True
         self.rpc_timeout = 300
         self.common = ["-overlay", "-rosterindex", "-fallbackfee=0.0001", "-mailpoll=0", "-mail=0", "-debug=net"]
-        self.extra_args = [self.common + ["-relayaddress=127.0.0.1"] for _ in range(6)] + [self.common + ["-meetable"]]
+        self.extra_args = [self.common + ["-relay", "-relayaddress=127.0.0.1"] for _ in range(6)] + [self.common + ["-meetable"]]
 
     def skip_test_if_missing_module(self):
         self.skip_if_no_wallet()
@@ -104,7 +104,7 @@ class RelayAddressTest(BitcoinTestFramework):
         height = payer.getblockcount()
         # A port slot no node of this test uses, for TCP and, one above, UDP.
         port = p2p_port(8)
-        self.restart_node(2, self.common + ["-relayaddress=" + MOVED, "-port=%d" % port])
+        self.restart_node(2, self.common + ["-relay", "-relayaddress=" + MOVED, "-port=%d" % port])
         self.connect_nodes(2, 1)
         self.connect_nodes(2, 3)
         moved = [{"network": "ipv4", "address": MOVED, "port": port}]
@@ -128,6 +128,13 @@ class RelayAddressTest(BitcoinTestFramework):
                     return False
             return self.nodes[2].getoverlayinfo()["carried"]["today_bytes"] > 0
         self.wait_until(met_through_moved_relay, timeout=900)
+
+        self.log.info("relaying is a setting of the node: switched off, it announces nothing")
+        self.restart_node(5, self.common + ["-relay=0", "-relayaddress=127.0.0.1"])
+        info = self.nodes[5].getrosterinfo()
+        assert_equal(info["relay"], False)
+        assert "announcing" not in info
+        assert_equal(self.nodes[4].getrosterinfo()["relay"], True)
 
 if __name__ == '__main__':
     RelayAddressTest().main()

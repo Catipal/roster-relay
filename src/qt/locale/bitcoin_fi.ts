@@ -3357,15 +3357,15 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Jaa tämän tietokoneen internetyhteys yhdyskäytävänä</translation>
+        <translation type="vanished">Jaa tämän tietokoneen internetyhteys yhdyskäytävänä</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Sivustot, joilla verkon jäsenet käyvät sen kautta, näkevät tämän tietokoneen osoitteen. Kytke yhdyskäytävä pois Palvelin-sivulla, jos et saa jakaa yhteyttäsi.</translation>
+        <translation type="vanished">Sivustot, joilla verkon jäsenet käyvät sen kautta, näkevät tämän tietokoneen osoitteen. Kytke yhdyskäytävä pois Palvelin-sivulla, jos et saa jakaa yhteyttäsi.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>Yhdyskäytävä on kytketty pois Palvelin-sivulla.</translation>
+        <translation type="vanished">Yhdyskäytävä on kytketty pois Palvelin-sivulla.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3393,7 +3393,7 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Kuljeta muiden polkuja välittäjänä</translation>
+        <translation type="vanished">Kuljeta muiden polkuja välittäjänä</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3401,7 +3401,23 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Niin kauan kuin solmusi on käynnissä, se kertoo verkolle tämän tietokoneen nykyisen osoitteen avaimellaan allekirjoitettuna, jotta polut tavoittavat sen, ja uudelleen aina sen muuttuessa. Sitä ei koskaan kirjoiteta ketjuun, ja verkko unohtaa sen kolmen tunnin kuluessa solmusi pysähtymisestä. Muiden on tavoitettava tämä tietokone portista %1 (TCP) ja %2 (UDP).</translation>
+        <translation type="vanished">Niin kauan kuin solmusi on käynnissä, se kertoo verkolle tämän tietokoneen nykyisen osoitteen avaimellaan allekirjoitettuna, jotta polut tavoittavat sen, ja uudelleen aina sen muuttuessa. Sitä ei koskaan kirjoiteta ketjuun, ja verkko unohtaa sen kolmen tunnin kuluessa solmusi pysähtymisestä. Muiden on tavoitettava tämä tietokone portista %1 (TCP) ja %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Tämä solmu kuljettaa muiden polkuja välittäjänä, kuten Palvelin-sivulla on asetettu, joten merkintä kertoo sen. Sen osoite ilmoitetaan sen ollessa käynnissä, eikä sitä koskaan kirjoiteta ketjuun.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Tämä solmu jakaa internetyhteytensä yhdyskäytävänä, kuten Palvelin-sivulla on asetettu, joten merkintä kertoo sen.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Tämä solmu ei välitä muille eikä jaa internetyhteyttään, kuten Palvelin-sivulla on asetettu.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>Muutos siellä päätyy rekisteriin seuraavan merkintäsi mukana.</translation>
     </message>
 </context>
 <context>
@@ -5198,6 +5214,18 @@ Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Missä tämä välittäjä kertoo verkolle olevansa, avaimellaan allekirjoitettuna. Se kertoo sen uudelleen joka tunti ja osoitteen muuttuessa; mitään siitä ei ole ketjussa.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Kuljeta muiden polkuja välittäjänä</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Niin kauan kuin solmusi on käynnissä, se kertoo verkolle tämän tietokoneen nykyisen osoitteen avaimellaan allekirjoitettuna, jotta polut tavoittavat sen, ja uudelleen aina sen muuttuessa. Sitä ei koskaan kirjoiteta ketjuun, ja verkko unohtaa sen kolmen tunnin kuluessa solmusi pysähtymisestä. Muiden on tavoitettava tämä tietokone portista %1 (TCP) ja %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>ei mitään — välittäminen on pois päältä</translation>
     </message>
 </context>
 <context>

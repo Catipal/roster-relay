@@ -53,6 +53,15 @@ class CService;
 namespace roster {
 
 /**
+ * Whether this node carries others' paths as a relay (-relay): a setting of
+ * the node, like the gateway's, not of its listing. While it is on and the
+ * roster lists the node as a relay, the node announces its address; switched
+ * off, it stops at once, and the listing drops the relay bit when it is next
+ * published.
+ */
+static const bool DEFAULT_RELAY = false;
+
+/**
  * How long an announcement counts after it was signed: three refreshes, so a
  * relay that stops running drops out of everyone's paths within three hours,
  * and one whose refresh is lost on the way still counts.

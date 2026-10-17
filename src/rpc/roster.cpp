@@ -729,7 +729,8 @@ static RPCHelpMan getrosterinfo()
                 {RPCResult::Type::NUM, "revocations_seen", "Revocations kept, from blocks, the mempool and peers"},
                 {RPCResult::Type::NUM, "unconfirmed_hints", "Announcements not on the chain, kept as dial hints"},
                 {RPCResult::Type::NUM, "relay_addresses", "Relays whose announced address this node holds and still counts"},
-                {RPCResult::Type::OBJ, "announcing", /* optional */ true, "Present while this node, listed as a relay, announces its address",
+                {RPCResult::Type::BOOL, "relay", "Whether relaying is switched on (-relay)"},
+                {RPCResult::Type::OBJ, "announcing", /* optional */ true, "Present while this node, listed as a relay with relaying on, announces its address",
                     {
                         {RPCResult::Type::NUM_TIME, "time", "When it last signed one"},
                         {RPCResult::Type::ARR, "endpoints", "The addresses it announced", {{RPCResult::Type::OBJ, "", "", {{RPCResult::Type::ELISION, "", ""}}}}},
@@ -781,7 +782,10 @@ static RPCHelpMan getrosterinfo()
     out.pushKV("unconfirmed_hints", (uint64_t)roster::g_hints.All().size());
     out.pushKV("relay_addresses", (uint64_t)(roster::g_relay_addresses ? roster::g_relay_addresses->Size() : 0));
     roster::RelayAddress own;
-    if (have_key && roster::g_relay_addresses && roster::g_relay_addresses->Current(roster::KeyBytesOf(key), GetTime(), own)) {
+    const bool relay_on = gArgs.GetBoolArg("-relay", roster::DEFAULT_RELAY);
+    out.pushKV("relay", relay_on);
+    if (relay_on && have_key && roster::g_relay_addresses &&
+        roster::g_relay_addresses->Current(roster::KeyBytesOf(key), GetTime(), own)) {
         UniValue a(UniValue::VOBJ);
         a.pushKV("time", own.time);
         UniValue eps(UniValue::VARR);

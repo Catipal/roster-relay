@@ -3358,15 +3358,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>இந்தக் கணினியின் இணைய இணைப்பை நுழைவாயிலாகப் பகிர்</translation>
+        <translation type="vanished">இந்தக் கணினியின் இணைய இணைப்பை நுழைவாயிலாகப் பகிர்</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>பிணைய உறுப்பினர்கள் இதன் வழியாகப் பார்க்கும் இணையதளங்கள் இந்தக் கணினியின் முகவரியைப் பார்க்கின்றன. உங்கள் இணைப்பைப் பகிர உங்களுக்கு அனுமதி இல்லையெனில், சேவையகப் பக்கத்தில் நுழைவாயிலை அணையுங்கள்.</translation>
+        <translation type="vanished">பிணைய உறுப்பினர்கள் இதன் வழியாகப் பார்க்கும் இணையதளங்கள் இந்தக் கணினியின் முகவரியைப் பார்க்கின்றன. உங்கள் இணைப்பைப் பகிர உங்களுக்கு அனுமதி இல்லையெனில், சேவையகப் பக்கத்தில் நுழைவாயிலை அணையுங்கள்.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>சேவையகப் பக்கத்தில் நுழைவாயில் அணைக்கப்பட்டுள்ளது.</translation>
+        <translation type="vanished">சேவையகப் பக்கத்தில் நுழைவாயில் அணைக்கப்பட்டுள்ளது.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3394,7 +3394,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>ரிலேவாக மற்றவர்களின் பாதைகளைச் சுமந்து செல்</translation>
+        <translation type="vanished">ரிலேவாக மற்றவர்களின் பாதைகளைச் சுமந்து செல்</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3402,7 +3402,23 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>உங்கள் கணு இயங்கும்வரை, பாதைகள் இதை அடையும்படி இந்தக் கணினியின் தற்போதைய முகவரியைத் தன் சாவியால் கையொப்பமிட்டு வலையமைப்புக்குச் சொல்கிறது, அது மாறும் ஒவ்வொரு முறையும் மீண்டும் சொல்கிறது. அது ஒருபோதும் சங்கிலியில் எழுதப்படாது, உங்கள் கணு நின்ற மூன்று மணி நேரத்துக்குள் வலையமைப்பு அதை மறந்துவிடும். மற்றவர்கள் இந்தக் கணினியை போர்ட் %1 (TCP) மற்றும் %2 (UDP) இல் அடைய முடிய வேண்டும்.</translation>
+        <translation type="vanished">உங்கள் கணு இயங்கும்வரை, பாதைகள் இதை அடையும்படி இந்தக் கணினியின் தற்போதைய முகவரியைத் தன் சாவியால் கையொப்பமிட்டு வலையமைப்புக்குச் சொல்கிறது, அது மாறும் ஒவ்வொரு முறையும் மீண்டும் சொல்கிறது. அது ஒருபோதும் சங்கிலியில் எழுதப்படாது, உங்கள் கணு நின்ற மூன்று மணி நேரத்துக்குள் வலையமைப்பு அதை மறந்துவிடும். மற்றவர்கள் இந்தக் கணினியை போர்ட் %1 (TCP) மற்றும் %2 (UDP) இல் அடைய முடிய வேண்டும்.</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>சேவையகம் பக்கத்தில் அமைத்தபடி, இந்தக் கணு ரிலேவாக மற்றவர்களின் பாதைகளைச் சுமக்கிறது, எனவே பட்டியல் அதைச் சொல்கிறது. அது இயங்கும்வரை அதன் முகவரி அறிவிக்கப்படுகிறது, ஒருபோதும் சங்கிலியில் எழுதப்படாது.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>சேவையகம் பக்கத்தில் அமைத்தபடி, இந்தக் கணு தன் இணைய இணைப்பை நுழைவாயிலாகப் பகிர்கிறது, எனவே பட்டியல் அதைச் சொல்கிறது.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>சேவையகம் பக்கத்தில் அமைத்தபடி, இந்தக் கணு மற்றவர்களுக்காக ரிலே செய்வதுமில்லை, தன் இணைய இணைப்பைப் பகிர்வதுமில்லை.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>அங்கு செய்யும் மாற்றம் உங்கள் அடுத்த பட்டியலுடன் பதிவேட்டை அடையும்.</translation>
     </message>
 </context>
 <context>
@@ -5199,6 +5215,18 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>இந்த ரிலே தான் இருப்பதாக வலையமைப்புக்குச் சொல்லும் இடம், தன் சாவியால் கையொப்பமிடப்பட்டது. அது ஒவ்வொரு மணி நேரமும், முகவரி மாறும்போதும் மீண்டும் சொல்கிறது; இதில் எதுவும் சங்கிலியில் இல்லை.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>ரிலேவாக மற்றவர்களின் பாதைகளைச் சுமந்து செல்</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>உங்கள் கணு இயங்கும்வரை, பாதைகள் இதை அடையும்படி இந்தக் கணினியின் தற்போதைய முகவரியைத் தன் சாவியால் கையொப்பமிட்டு வலையமைப்புக்குச் சொல்கிறது, அது மாறும் ஒவ்வொரு முறையும் மீண்டும் சொல்கிறது. அது ஒருபோதும் சங்கிலியில் எழுதப்படாது, உங்கள் கணு நின்ற மூன்று மணி நேரத்துக்குள் வலையமைப்பு அதை மறந்துவிடும். மற்றவர்கள் இந்தக் கணினியை போர்ட் %1 (TCP) மற்றும் %2 (UDP) இல் அடைய முடிய வேண்டும்.</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>இல்லை — ரிலே அணைக்கப்பட்டுள்ளது</translation>
     </message>
 </context>
 <context>

@@ -3358,15 +3358,15 @@ Du får se en återställningsnyckel en gång. Skriv ner den: det är det enda s
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Dela den här datorns internetanslutning som gateway</translation>
+        <translation type="vanished">Dela den här datorns internetanslutning som gateway</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Webbplatser som nätverkets medlemmar besöker genom den ser den här datorns adress. Stäng av gatewayen på sidan Server om du inte får dela din anslutning.</translation>
+        <translation type="vanished">Webbplatser som nätverkets medlemmar besöker genom den ser den här datorns adress. Stäng av gatewayen på sidan Server om du inte får dela din anslutning.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>Gatewayen är avstängd på sidan Server.</translation>
+        <translation type="vanished">Gatewayen är avstängd på sidan Server.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3394,7 +3394,7 @@ Du får se en återställningsnyckel en gång. Skriv ner den: det är det enda s
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Bär andras vägar som relä</translation>
+        <translation type="vanished">Bär andras vägar som relä</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3402,7 +3402,23 @@ Du får se en återställningsnyckel en gång. Skriv ner den: det är det enda s
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Medan din nod kör berättar den för nätverket den här datorns nuvarande adress, signerad med sin nyckel, så att vägar kan nå den, och igen varje gång den ändras. Den skrivs aldrig i kedjan, och nätverket glömmer den inom tre timmar efter att din nod stannat. Andra måste kunna nå den här datorn på port %1 (TCP) och %2 (UDP).</translation>
+        <translation type="vanished">Medan din nod kör berättar den för nätverket den här datorns nuvarande adress, signerad med sin nyckel, så att vägar kan nå den, och igen varje gång den ändras. Den skrivs aldrig i kedjan, och nätverket glömmer den inom tre timmar efter att din nod stannat. Andra måste kunna nå den här datorn på port %1 (TCP) och %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Den här noden bär andras vägar som relä, enligt inställningen på sidan Server, så listningen säger det. Dess adress tillkännages medan den kör och skrivs aldrig i kedjan.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Den här noden delar sin internetanslutning som gateway, enligt inställningen på sidan Server, så listningen säger det.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Den här noden vidarebefordrar varken för andra eller delar sin internetanslutning, enligt inställningen på sidan Server.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>En ändring där når registret med din nästa listning.</translation>
     </message>
 </context>
 <context>
@@ -5199,6 +5215,18 @@ Du kan ändra detta när som helst på sidan Server.</translation>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Var det här reläet berättar för nätverket att det är, signerat med sin nyckel. Det säger det igen varje timme och när adressen ändras; inget av det finns i kedjan.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Bär andras vägar som relä</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Medan din nod kör berättar den för nätverket den här datorns nuvarande adress, signerad med sin nyckel, så att vägar kan nå den, och igen varje gång den ändras. Den skrivs aldrig i kedjan, och nätverket glömmer den inom tre timmar efter att din nod stannat. Andra måste kunna nå den här datorn på port %1 (TCP) och %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>ingen — relä är avstängt</translation>
     </message>
 </context>
 <context>

@@ -6,6 +6,7 @@
 
 #include <qt/bps/bpsrpc.h>
 #include <qt/bps/bpsutil.h>
+#include <qt/bps/serverpage.h>
 
 #ifdef ENABLE_WALLET
 #include <interfaces/wallet.h>
@@ -111,45 +112,26 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
     nowhere_note->setContentsMargins(24, 0, 0, 0);
     where_layout->addWidget(nowhere_note);
 
-    // A node with no address is listed as a gateway too unless its owner
-    // switched the gateway off (design note section 8.7); with an address it
-    // is a relay, whose gateway is listed apart, from the Server page.
-    QWidget* gateway_row = new QWidget(where);
-    QHBoxLayout* gateway_layout = new QHBoxLayout(gateway_row);
-    gateway_layout->setContentsMargins(24, 0, 0, 0);
-    m_gateway = new QCheckBox(tr("Share this computer's internet connection as a gateway"), gateway_row);
-    m_gateway->setChecked(gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY));
-    gateway_layout->addWidget(m_gateway);
-    where_layout->addWidget(gateway_row);
-    QLabel* gateway_note = SmallNote(
-        gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY)
-            ? tr("Websites the network's members visit through it see this computer's address. Switch the "
-                 "gateway off on the Server page if you may not share your connection.")
-            : tr("The gateway is switched off on the Server page."),
-        where);
-    gateway_note->setContentsMargins(48, 0, 0, 0);
-    where_layout->addWidget(gateway_note);
-    if (!gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY)) m_gateway->setEnabled(false);
-
-    // A relay listed through the overlay too: its listing
-    // holds no address, and it says where it is while it runs, signed with its
-    // key (roster/relayaddr.h). Relays have to be dialled, so that address is
-    // public; a hidden node does not relay.
-    QWidget* relay_row = new QWidget(where);
-    QHBoxLayout* relay_layout = new QHBoxLayout(relay_row);
-    relay_layout->setContentsMargins(24, 0, 0, 0);
-    m_relay = new QCheckBox(tr("Carry others' paths as a relay"), relay_row);
-    relay_layout->addWidget(m_relay);
-    where_layout->addWidget(relay_row);
-    QLabel* relay_note = SmallNote(
-        tr("While your node runs it tells the network this computer's current address, signed with "
-           "its key, so that paths can reach it, and again whenever it changes. It is never written to "
-           "the chain, and the network forgets it within three hours of your node stopping. Others "
-           "must be able to reach this computer at port %1 (TCP) and %2 (UDP).")
-            .arg(GetListenPort()).arg(overlay::OverlayPortFor(GetListenPort())),
-        where);
-    relay_note->setContentsMargins(48, 0, 0, 0);
-    where_layout->addWidget(relay_note);
+    // Relaying and the gateway are settings of the node, on the Server page,
+    // not choices made with each listing: the listing
+    // only takes over what they are when it is published, since others find
+    // relays and gateways by it. Never both on one key: a relay's address is
+    // public, and the gateway beside it would be an exit at that address, so
+    // a relay lists its gateway under a second key, from the Server page.
+    QString settings_note;
+    if (ServerPage::RelaySwitchedOn()) {
+        settings_note = tr("This node carries others' paths as a relay, as set on the Server page, so the "
+                           "listing says so. Its address is announced while it runs, never written to the chain.");
+    } else if (ServerPage::GatewaySwitchedOn()) {
+        settings_note = tr("This node shares its internet connection as a gateway, as set on the Server page, "
+                           "so the listing says so.");
+    } else {
+        settings_note = tr("This node neither relays for others nor shares its internet connection, as set "
+                           "on the Server page.");
+    }
+    QLabel* switches_note = SmallNote(settings_note + " " + tr("A change there reaches the roster with your next listing."), where);
+    switches_note->setContentsMargins(24, 0, 0, 0);
+    where_layout->addWidget(switches_note);
 
     m_at_address = new QRadioButton(tr("At an address I publish"), where);
     where_layout->addWidget(m_at_address);
@@ -227,7 +209,6 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
     connect(m_buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
     connect(m_publish, &QPushButton::clicked, this, &PublishDialog::onPublish);
     connect(m_at_address, &QRadioButton::toggled, this, &PublishDialog::onAddressChoiceChanged);
-    connect(m_relay, &QCheckBox::toggled, this, &PublishDialog::onRelayToggled);
     connect(m_payer, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, &PublishDialog::onPayerChanged);
     connect(&m_rpc, &BpsRpc::result, this, &PublishDialog::onRpcResult);
@@ -351,20 +332,6 @@ void PublishDialog::onPayerChanged()
 void PublishDialog::onAddressChoiceChanged()
 {
     m_address_row->setEnabled(m_at_address->isChecked());
-    // Relaying and the gateway both belong to a listing through the overlay.
-    // Never a gateway at an address, published or announced: that would say
-    // where an exit is. A relay lists its gateway apart, from the Server page.
-    m_relay->setEnabled(m_nowhere->isChecked());
-    if (m_gateway) {
-        m_gateway->setEnabled(m_nowhere->isChecked() && !m_relay->isChecked() &&
-                              gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY));
-    }
-}
-
-void PublishDialog::onRelayToggled(bool on)
-{
-    if (on && m_gateway) m_gateway->setChecked(false);
-    onAddressChoiceChanged();
 }
 
 void PublishDialog::SetBusy(bool busy)
@@ -377,7 +344,6 @@ void PublishDialog::SetBusy(bool busy)
     m_length->setEnabled(!busy);
     m_nowhere->setEnabled(!busy);
     m_at_address->setEnabled(!busy);
-    m_relay->setEnabled(!busy && m_nowhere->isChecked());
     if (!busy) onPayerChanged();
 }
 
@@ -399,9 +365,10 @@ bool PublishDialog::BuildOptions(UniValue& options)
     options = UniValue(UniValue::VOBJ);
     if (m_gateway_key) {
         options.pushKV("key", "gateway");
-    } else if (m_nowhere->isChecked() && m_relay->isChecked()) {
+    } else if (m_nowhere->isChecked() && ServerPage::RelaySwitchedOn()) {
         options.pushKV("relay", true);
-    } else if (m_nowhere->isChecked() && m_gateway->isEnabled() && m_gateway->isChecked()) {
+    } else if (m_nowhere->isChecked() && ServerPage::GatewaySwitchedOn()) {
+        // Never a gateway at a published address: that would say where an exit is.
         options.pushKV("gateway", true);
     }
     if (!m_gateway_key && m_at_address->isChecked()) {

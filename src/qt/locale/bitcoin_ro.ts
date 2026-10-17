@@ -3366,15 +3366,15 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Partajează conexiunea la internet a acestui computer ca gateway</translation>
+        <translation type="vanished">Partajează conexiunea la internet a acestui computer ca gateway</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Site-urile pe care membrii rețelei le vizitează prin el văd adresa acestui computer. Oprește gateway-ul în pagina Server dacă nu ai voie să îți partajezi conexiunea.</translation>
+        <translation type="vanished">Site-urile pe care membrii rețelei le vizitează prin el văd adresa acestui computer. Oprește gateway-ul în pagina Server dacă nu ai voie să îți partajezi conexiunea.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>Gateway-ul este oprit în pagina Server.</translation>
+        <translation type="vanished">Gateway-ul este oprit în pagina Server.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3402,7 +3402,7 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Transportă căile altora ca releu</translation>
+        <translation type="vanished">Transportă căile altora ca releu</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3410,7 +3410,23 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Cât timp nodul tău rulează, spune rețelei adresa actuală a acestui calculator, semnată cu cheia lui, ca să poată ajunge căile la el, și din nou de fiecare dată când se schimbă. Nu este scrisă niciodată în lanț, iar rețeaua o uită în cel mult trei ore după ce nodul tău se oprește. Ceilalți trebuie să poată ajunge la acest calculator pe portul %1 (TCP) și %2 (UDP).</translation>
+        <translation type="vanished">Cât timp nodul tău rulează, spune rețelei adresa actuală a acestui calculator, semnată cu cheia lui, ca să poată ajunge căile la el, și din nou de fiecare dată când se schimbă. Nu este scrisă niciodată în lanț, iar rețeaua o uită în cel mult trei ore după ce nodul tău se oprește. Ceilalți trebuie să poată ajunge la acest calculator pe portul %1 (TCP) și %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Acest nod transportă căile altora ca releu, cum e setat în pagina Server, așa că înscrierea o spune. Adresa lui este anunțată cât timp rulează și nu este scrisă niciodată în lanț.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Acest nod își partajează conexiunea la internet ca gateway, cum e setat în pagina Server, așa că înscrierea o spune.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Acest nod nici nu face releu pentru alții, nici nu își partajează conexiunea la internet, cum e setat în pagina Server.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>O schimbare acolo ajunge în registru cu următoarea ta înscriere.</translation>
     </message>
 </context>
 <context>
@@ -5214,6 +5230,18 @@ Poți schimba asta oricând în pagina Server.</translation>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Unde spune acest releu rețelei că este, semnat cu cheia lui. O spune din nou în fiecare oră și când adresa se schimbă; nimic din toate acestea nu este în lanț.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Transportă căile altora ca releu</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Cât timp nodul tău rulează, spune rețelei adresa actuală a acestui calculator, semnată cu cheia lui, ca să poată ajunge căile la el, și din nou de fiecare dată când se schimbă. Nu este scrisă niciodată în lanț, iar rețeaua o uită în cel mult trei ore după ce nodul tău se oprește. Ceilalți trebuie să poată ajunge la acest calculator pe portul %1 (TCP) și %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>niciuna — releul este oprit</translation>
     </message>
 </context>
 <context>

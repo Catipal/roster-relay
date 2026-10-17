@@ -3366,15 +3366,15 @@ Klucz odzyskiwania zostanie pokazany raz. Zapisz go: to jedyny sposób, by powst
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Udostępniaj połączenie internetowe tego komputera jako bramę</translation>
+        <translation type="vanished">Udostępniaj połączenie internetowe tego komputera jako bramę</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Strony, które członkowie sieci odwiedzają przez nią, widzą adres tego komputera. Wyłącz bramę na stronie Serwer, jeśli nie wolno ci udostępniać połączenia.</translation>
+        <translation type="vanished">Strony, które członkowie sieci odwiedzają przez nią, widzą adres tego komputera. Wyłącz bramę na stronie Serwer, jeśli nie wolno ci udostępniać połączenia.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>Brama jest wyłączona na stronie Serwer.</translation>
+        <translation type="vanished">Brama jest wyłączona na stronie Serwer.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3402,7 +3402,7 @@ Klucz odzyskiwania zostanie pokazany raz. Zapisz go: to jedyny sposób, by powst
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Przenoś ścieżki innych jako przekaźnik</translation>
+        <translation type="vanished">Przenoś ścieżki innych jako przekaźnik</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3410,7 +3410,23 @@ Klucz odzyskiwania zostanie pokazany raz. Zapisz go: to jedyny sposób, by powst
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Dopóki twój węzeł działa, podaje sieci bieżący adres tego komputera podpisany swoim kluczem, aby ścieżki mogły do niego dotrzeć, i ponownie za każdym razem, gdy się zmieni. Nigdy nie jest zapisywany w łańcuchu, a sieć zapomina go w ciągu trzech godzin od zatrzymania twojego węzła. Inni muszą móc dotrzeć do tego komputera na porcie %1 (TCP) i %2 (UDP).</translation>
+        <translation type="vanished">Dopóki twój węzeł działa, podaje sieci bieżący adres tego komputera podpisany swoim kluczem, aby ścieżki mogły do niego dotrzeć, i ponownie za każdym razem, gdy się zmieni. Nigdy nie jest zapisywany w łańcuchu, a sieć zapomina go w ciągu trzech godzin od zatrzymania twojego węzła. Inni muszą móc dotrzeć do tego komputera na porcie %1 (TCP) i %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Ten węzeł przenosi ścieżki innych jako przekaźnik, zgodnie z ustawieniem na stronie Serwer, więc wpis to mówi. Jego adres jest ogłaszany, dopóki działa, i nigdy nie trafia do łańcucha.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Ten węzeł udostępnia swoje połączenie z internetem jako bramę, zgodnie z ustawieniem na stronie Serwer, więc wpis to mówi.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Ten węzeł ani nie przekazuje dla innych, ani nie udostępnia swojego połączenia z internetem, zgodnie z ustawieniem na stronie Serwer.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>Zmiana tam trafi do rejestru z twoim następnym wpisem.</translation>
     </message>
 </context>
 <context>
@@ -5215,6 +5231,18 @@ Możesz to zmienić w każdej chwili na stronie Serwer.</translation>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Gdzie ten przekaźnik mówi sieci, że jest, podpisane jego kluczem. Mówi to ponownie co godzinę i gdy adres się zmienia; nic z tego nie ma w łańcuchu.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Przenoś ścieżki innych jako przekaźnik</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Dopóki twój węzeł działa, podaje sieci bieżący adres tego komputera podpisany swoim kluczem, aby ścieżki mogły do niego dotrzeć, i ponownie za każdym razem, gdy się zmieni. Nigdy nie jest zapisywany w łańcuchu, a sieć zapomina go w ciągu trzech godzin od zatrzymania twojego węzła. Inni muszą móc dotrzeć do tego komputera na porcie %1 (TCP) i %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>brak — przekazywanie jest wyłączone</translation>
     </message>
 </context>
 <context>

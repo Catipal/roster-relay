@@ -3365,15 +3365,15 @@ Ključ za oporavak bit će vam prikazan jednom. Zapišite ga: to je jedini nači
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Dijeli internetsku vezu ovog računala kao pristupnik</translation>
+        <translation type="vanished">Dijeli internetsku vezu ovog računala kao pristupnik</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Web-mjesta koja članovi mreže posjećuju preko njega vide adresu ovog računala. Isključite pristupnik na stranici Poslužitelj ako ne smijete dijeliti svoju vezu.</translation>
+        <translation type="vanished">Web-mjesta koja članovi mreže posjećuju preko njega vide adresu ovog računala. Isključite pristupnik na stranici Poslužitelj ako ne smijete dijeliti svoju vezu.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>Pristupnik je isključen na stranici Poslužitelj.</translation>
+        <translation type="vanished">Pristupnik je isključen na stranici Poslužitelj.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3401,7 +3401,7 @@ Ključ za oporavak bit će vam prikazan jednom. Zapišite ga: to je jedini nači
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Prenosi putove drugih kao relej</translation>
+        <translation type="vanished">Prenosi putove drugih kao relej</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3409,7 +3409,23 @@ Ključ za oporavak bit će vam prikazan jednom. Zapišite ga: to je jedini nači
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Dok vaš čvor radi, govori mreži trenutačnu adresu ovog računala potpisanu svojim ključem, kako bi putovi mogli doći do njega, i ponovno svaki put kad se promijeni. Nikad se ne zapisuje u lanac, a mreža je zaboravlja unutar tri sata nakon što se vaš čvor zaustavi. Drugi moraju moći doći do ovog računala na priključku %1 (TCP) i %2 (UDP).</translation>
+        <translation type="vanished">Dok vaš čvor radi, govori mreži trenutačnu adresu ovog računala potpisanu svojim ključem, kako bi putovi mogli doći do njega, i ponovno svaki put kad se promijeni. Nikad se ne zapisuje u lanac, a mreža je zaboravlja unutar tri sata nakon što se vaš čvor zaustavi. Drugi moraju moći doći do ovog računala na priključku %1 (TCP) i %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Ovaj čvor prenosi putove drugih kao relej, kako je postavljeno na stranici Poslužitelj, pa upis to kaže. Njegova adresa objavljuje se dok radi i nikad se ne zapisuje u lanac.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Ovaj čvor dijeli svoju internetsku vezu kao pristupnik, kako je postavljeno na stranici Poslužitelj, pa upis to kaže.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Ovaj čvor niti prenosi za druge niti dijeli svoju internetsku vezu, kako je postavljeno na stranici Poslužitelj.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>Promjena ondje stiže u registar s vašim sljedećim upisom.</translation>
     </message>
 </context>
 <context>
@@ -5214,6 +5230,18 @@ To možete promijeniti bilo kada na stranici Poslužitelj.</translation>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Gdje ovaj relej kaže mreži da je, potpisano svojim ključem. To ponavlja svaki sat i kad se adresa promijeni; ništa od toga nije u lancu.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Prenosi putove drugih kao relej</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Dok vaš čvor radi, govori mreži trenutačnu adresu ovog računala potpisanu svojim ključem, kako bi putovi mogli doći do njega, i ponovno svaki put kad se promijeni. Nikad se ne zapisuje u lanac, a mreža je zaboravlja unutar tri sata nakon što se vaš čvor zaustavi. Drugi moraju moći doći do ovog računala na priključku %1 (TCP) i %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>nema — prenošenje je isključeno</translation>
     </message>
 </context>
 <context>

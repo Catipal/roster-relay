@@ -3348,15 +3348,15 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Bagikan koneksi internet komputer ini sebagai gerbang</translation>
+        <translation type="vanished">Bagikan koneksi internet komputer ini sebagai gerbang</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Situs yang dikunjungi anggota jaringan melaluinya melihat alamat komputer ini. Matikan gerbang di halaman Server jika Anda tidak boleh membagikan koneksi Anda.</translation>
+        <translation type="vanished">Situs yang dikunjungi anggota jaringan melaluinya melihat alamat komputer ini. Matikan gerbang di halaman Server jika Anda tidak boleh membagikan koneksi Anda.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>Gerbang dimatikan di halaman Server.</translation>
+        <translation type="vanished">Gerbang dimatikan di halaman Server.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3384,7 +3384,7 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Bawa jalur orang lain sebagai relai</translation>
+        <translation type="vanished">Bawa jalur orang lain sebagai relai</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3392,7 +3392,23 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Selama node Anda berjalan, node itu memberi tahu jaringan alamat komputer ini saat ini, ditandatangani dengan kuncinya, agar jalur dapat menjangkaunya, dan sekali lagi setiap kali berubah. Alamat itu tidak pernah ditulis ke rantai, dan jaringan melupakannya dalam tiga jam setelah node Anda berhenti. Orang lain harus dapat menjangkau komputer ini di port %1 (TCP) dan %2 (UDP).</translation>
+        <translation type="vanished">Selama node Anda berjalan, node itu memberi tahu jaringan alamat komputer ini saat ini, ditandatangani dengan kuncinya, agar jalur dapat menjangkaunya, dan sekali lagi setiap kali berubah. Alamat itu tidak pernah ditulis ke rantai, dan jaringan melupakannya dalam tiga jam setelah node Anda berhenti. Orang lain harus dapat menjangkau komputer ini di port %1 (TCP) dan %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Node ini membawa jalur orang lain sebagai relai, sesuai pengaturan di halaman Server, jadi catatannya menyatakan demikian. Alamatnya diumumkan selama ia berjalan, tidak pernah ditulis ke rantai.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Node ini berbagi koneksi internetnya sebagai gerbang, sesuai pengaturan di halaman Server, jadi catatannya menyatakan demikian.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Node ini tidak menjadi relai bagi orang lain dan tidak berbagi koneksi internetnya, sesuai pengaturan di halaman Server.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>Perubahan di sana sampai ke register bersama catatan Anda berikutnya.</translation>
     </message>
 </context>
 <context>
@@ -5184,6 +5200,18 @@ Anda dapat mengubahnya kapan saja di halaman Server.</translation>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Di mana relai ini memberi tahu jaringan bahwa ia berada, ditandatangani dengan kuncinya. Ia memberi tahu lagi setiap jam dan saat alamat berubah; tidak ada yang tersimpan di rantai.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Bawa jalur orang lain sebagai relai</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Selama node Anda berjalan, node itu memberi tahu jaringan alamat komputer ini saat ini, ditandatangani dengan kuncinya, agar jalur dapat menjangkaunya, dan sekali lagi setiap kali berubah. Alamat itu tidak pernah ditulis ke rantai, dan jaringan melupakannya dalam tiga jam setelah node Anda berhenti. Orang lain harus dapat menjangkau komputer ini di port %1 (TCP) dan %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>tidak ada — relai dimatikan</translation>
     </message>
 </context>
 <context>

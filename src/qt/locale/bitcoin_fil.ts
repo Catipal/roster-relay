@@ -3357,15 +3357,15 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Ibahagi ang koneksyon sa internet ng computer na ito bilang gateway</translation>
+        <translation type="vanished">Ibahagi ang koneksyon sa internet ng computer na ito bilang gateway</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Nakikita ng mga website na binibisita ng mga miyembro ng network sa pamamagitan nito ang address ng computer na ito. I-off ang gateway sa pahinang Server kung hindi ka pinapayagang ibahagi ang iyong koneksyon.</translation>
+        <translation type="vanished">Nakikita ng mga website na binibisita ng mga miyembro ng network sa pamamagitan nito ang address ng computer na ito. I-off ang gateway sa pahinang Server kung hindi ka pinapayagang ibahagi ang iyong koneksyon.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>Naka-off ang gateway sa pahinang Server.</translation>
+        <translation type="vanished">Naka-off ang gateway sa pahinang Server.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3393,7 +3393,7 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Magdala ng mga path ng iba bilang relay</translation>
+        <translation type="vanished">Magdala ng mga path ng iba bilang relay</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3401,7 +3401,23 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Habang tumatakbo ang iyong node, sinasabi nito sa network ang kasalukuyang address ng computer na ito, nilagdaan ng susi nito, para maabot ito ng mga path, at muli tuwing nagbabago ito. Hindi ito kailanman isinusulat sa chain, at nakakalimutan ito ng network sa loob ng tatlong oras matapos huminto ang iyong node. Dapat maabot ng iba ang computer na ito sa port %1 (TCP) at %2 (UDP).</translation>
+        <translation type="vanished">Habang tumatakbo ang iyong node, sinasabi nito sa network ang kasalukuyang address ng computer na ito, nilagdaan ng susi nito, para maabot ito ng mga path, at muli tuwing nagbabago ito. Hindi ito kailanman isinusulat sa chain, at nakakalimutan ito ng network sa loob ng tatlong oras matapos huminto ang iyong node. Dapat maabot ng iba ang computer na ito sa port %1 (TCP) at %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Nagdadala ang node na ito ng mga path ng iba bilang relay, gaya ng nakatakda sa pahinang Server, kaya iyon ang sinasabi ng listing. Inaanunsyo ang address nito habang tumatakbo ito, at hindi kailanman isinusulat sa chain.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Ibinabahagi ng node na ito ang koneksyon nito sa internet bilang gateway, gaya ng nakatakda sa pahinang Server, kaya iyon ang sinasabi ng listing.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Hindi nagre-relay para sa iba ang node na ito at hindi rin ibinabahagi ang koneksyon nito sa internet, gaya ng nakatakda sa pahinang Server.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>Ang pagbabago roon ay aabot sa talaan sa iyong susunod na listing.</translation>
     </message>
 </context>
 <context>
@@ -5199,6 +5215,18 @@ Mababago mo ito anumang oras sa pahinang Server.</translation>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Kung saan sinasabi ng relay na ito sa network na naroon ito, nilagdaan ng susi nito. Sinasabi ito muli bawat oras at kapag nagbabago ang address; wala rito ang nasa chain.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Magdala ng mga path ng iba bilang relay</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Habang tumatakbo ang iyong node, sinasabi nito sa network ang kasalukuyang address ng computer na ito, nilagdaan ng susi nito, para maabot ito ng mga path, at muli tuwing nagbabago ito. Hindi ito kailanman isinusulat sa chain, at nakakalimutan ito ng network sa loob ng tatlong oras matapos huminto ang iyong node. Dapat maabot ng iba ang computer na ito sa port %1 (TCP) at %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>wala — nakapatay ang pag-relay</translation>
     </message>
 </context>
 <context>

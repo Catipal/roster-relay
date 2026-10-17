@@ -3348,15 +3348,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>이 컴퓨터의 인터넷 연결을 게이트웨이로 공유</translation>
+        <translation type="vanished">이 컴퓨터의 인터넷 연결을 게이트웨이로 공유</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>네트워크 구성원이 이를 통해 방문하는 웹사이트에는 이 컴퓨터의 주소가 보입니다. 연결을 공유할 수 없다면 서버 페이지에서 게이트웨이를 끄세요.</translation>
+        <translation type="vanished">네트워크 구성원이 이를 통해 방문하는 웹사이트에는 이 컴퓨터의 주소가 보입니다. 연결을 공유할 수 없다면 서버 페이지에서 게이트웨이를 끄세요.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>게이트웨이는 서버 페이지에서 꺼져 있습니다.</translation>
+        <translation type="vanished">게이트웨이는 서버 페이지에서 꺼져 있습니다.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3384,7 +3384,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>릴레이로서 다른 사람의 경로를 나름</translation>
+        <translation type="vanished">릴레이로서 다른 사람의 경로를 나름</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3392,7 +3392,23 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>노드가 실행되는 동안 경로가 닿을 수 있도록 이 컴퓨터의 현재 주소를 키로 서명해 네트워크에 알리고, 주소가 바뀔 때마다 다시 알립니다. 주소는 체인에 기록되지 않으며, 노드가 멈추면 3시간 안에 네트워크가 잊습니다. 다른 사람이 이 컴퓨터의 포트 %1 (TCP)과 %2 (UDP)에 접속할 수 있어야 합니다.</translation>
+        <translation type="vanished">노드가 실행되는 동안 경로가 닿을 수 있도록 이 컴퓨터의 현재 주소를 키로 서명해 네트워크에 알리고, 주소가 바뀔 때마다 다시 알립니다. 주소는 체인에 기록되지 않으며, 노드가 멈추면 3시간 안에 네트워크가 잊습니다. 다른 사람이 이 컴퓨터의 포트 %1 (TCP)과 %2 (UDP)에 접속할 수 있어야 합니다.</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>이 노드는 서버 페이지의 설정대로 릴레이로서 다른 사람의 경로를 나르므로 등재 정보에도 그렇게 적힙니다. 주소는 실행되는 동안 알려지며 체인에는 기록되지 않습니다.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>이 노드는 서버 페이지의 설정대로 인터넷 연결을 게이트웨이로 공유하므로 등재 정보에도 그렇게 적힙니다.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>이 노드는 서버 페이지의 설정대로 다른 사람을 위해 릴레이하지도, 인터넷 연결을 공유하지도 않습니다.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>그곳에서 바꾼 내용은 다음 등재와 함께 명부에 반영됩니다.</translation>
     </message>
 </context>
 <context>
@@ -5182,6 +5198,18 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>이 릴레이가 네트워크에 알리는 위치이며, 키로 서명되어 있습니다. 매시간, 그리고 주소가 바뀔 때 다시 알립니다. 어떤 것도 체인에 있지 않습니다.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>릴레이로서 다른 사람의 경로를 나름</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>노드가 실행되는 동안 경로가 닿을 수 있도록 이 컴퓨터의 현재 주소를 키로 서명해 네트워크에 알리고, 주소가 바뀔 때마다 다시 알립니다. 주소는 체인에 기록되지 않으며, 노드가 멈추면 3시간 안에 네트워크가 잊습니다. 다른 사람이 이 컴퓨터의 포트 %1 (TCP)과 %2 (UDP)에 접속할 수 있어야 합니다.</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>없음 — 릴레이가 꺼져 있습니다</translation>
     </message>
 </context>
 <context>

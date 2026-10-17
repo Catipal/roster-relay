@@ -3350,15 +3350,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>هم‌رسانی اتصال اینترنت این رایانه به‌عنوان دروازه</translation>
+        <translation type="vanished">هم‌رسانی اتصال اینترنت این رایانه به‌عنوان دروازه</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>وب‌سایت‌هایی که اعضای شبکه از راه آن بازدید می‌کنند نشانی این رایانه را می‌بینند. اگر اجازهٔ هم‌رسانی اتصالتان را ندارید، دروازه را در صفحهٔ سرور خاموش کنید.</translation>
+        <translation type="vanished">وب‌سایت‌هایی که اعضای شبکه از راه آن بازدید می‌کنند نشانی این رایانه را می‌بینند. اگر اجازهٔ هم‌رسانی اتصالتان را ندارید، دروازه را در صفحهٔ سرور خاموش کنید.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>دروازه در صفحهٔ سرور خاموش است.</translation>
+        <translation type="vanished">دروازه در صفحهٔ سرور خاموش است.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3386,7 +3386,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>حمل مسیرهای دیگران به‌عنوان رله</translation>
+        <translation type="vanished">حمل مسیرهای دیگران به‌عنوان رله</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3394,7 +3394,23 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>تا وقتی گره شما کار می‌کند، نشانی فعلی این رایانه را با امضای کلیدش به شبکه می‌گوید تا مسیرها به آن برسند، و هر بار که تغییر کند دوباره. هرگز روی زنجیره نوشته نمی‌شود، و شبکه ظرف سه ساعت پس از توقف گره شما آن را فراموش می‌کند. دیگران باید بتوانند به این رایانه روی درگاه %1 (TCP) و %2 (UDP) برسند.</translation>
+        <translation type="vanished">تا وقتی گره شما کار می‌کند، نشانی فعلی این رایانه را با امضای کلیدش به شبکه می‌گوید تا مسیرها به آن برسند، و هر بار که تغییر کند دوباره. هرگز روی زنجیره نوشته نمی‌شود، و شبکه ظرف سه ساعت پس از توقف گره شما آن را فراموش می‌کند. دیگران باید بتوانند به این رایانه روی درگاه %1 (TCP) و %2 (UDP) برسند.</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>این گره مسیرهای دیگران را به‌عنوان رله حمل می‌کند، همان‌طور که در صفحه سرور تنظیم شده، پس ثبت همین را می‌گوید. نشانی‌اش تا وقتی کار می‌کند اعلام می‌شود و هرگز روی زنجیره نوشته نمی‌شود.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>این گره اتصال اینترنتش را به‌عنوان دروازه به اشتراک می‌گذارد، همان‌طور که در صفحه سرور تنظیم شده، پس ثبت همین را می‌گوید.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>این گره نه برای دیگران رله می‌کند و نه اتصال اینترنتش را به اشتراک می‌گذارد، همان‌طور که در صفحه سرور تنظیم شده.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>هر تغییری در آنجا با ثبت بعدی شما به دفتر می‌رسد.</translation>
     </message>
 </context>
 <context>
@@ -5184,6 +5200,18 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>جایی که این رله به شبکه می‌گوید هست، با امضای کلیدش. هر ساعت و هر وقت نشانی تغییر کند دوباره این را می‌گوید؛ هیچ‌کدام روی زنجیره نیست.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>حمل مسیرهای دیگران به‌عنوان رله</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>تا وقتی گره شما کار می‌کند، نشانی فعلی این رایانه را با امضای کلیدش به شبکه می‌گوید تا مسیرها به آن برسند، و هر بار که تغییر کند دوباره. هرگز روی زنجیره نوشته نمی‌شود، و شبکه ظرف سه ساعت پس از توقف گره شما آن را فراموش می‌کند. دیگران باید بتوانند به این رایانه روی درگاه %1 (TCP) و %2 (UDP) برسند.</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>هیچ — رله خاموش است</translation>
     </message>
 </context>
 <context>

@@ -3358,15 +3358,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Κοινή χρήση της σύνδεσης ίντερνετ αυτού του υπολογιστή ως πύλη</translation>
+        <translation type="vanished">Κοινή χρήση της σύνδεσης ίντερνετ αυτού του υπολογιστή ως πύλη</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Οι ιστότοποι που επισκέπτονται τα μέλη του δικτύου μέσω αυτής βλέπουν τη διεύθυνση αυτού του υπολογιστή. Απενεργοποιήστε την πύλη στη σελίδα Διακομιστής αν δεν επιτρέπεται να μοιράζεστε τη σύνδεσή σας.</translation>
+        <translation type="vanished">Οι ιστότοποι που επισκέπτονται τα μέλη του δικτύου μέσω αυτής βλέπουν τη διεύθυνση αυτού του υπολογιστή. Απενεργοποιήστε την πύλη στη σελίδα Διακομιστής αν δεν επιτρέπεται να μοιράζεστε τη σύνδεσή σας.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>Η πύλη είναι απενεργοποιημένη στη σελίδα Διακομιστής.</translation>
+        <translation type="vanished">Η πύλη είναι απενεργοποιημένη στη σελίδα Διακομιστής.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3394,7 +3394,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Μεταφορά διαδρομών άλλων ως αναμεταδότης</translation>
+        <translation type="vanished">Μεταφορά διαδρομών άλλων ως αναμεταδότης</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3402,7 +3402,23 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Όσο λειτουργεί ο κόμβος σας, λέει στο δίκτυο την τρέχουσα διεύθυνση αυτού του υπολογιστή, υπογεγραμμένη με το κλειδί του, ώστε να τον φτάνουν οι διαδρομές, και ξανά κάθε φορά που αλλάζει. Δεν γράφεται ποτέ στην αλυσίδα, και το δίκτυο την ξεχνά μέσα σε τρεις ώρες αφότου σταματήσει ο κόμβος σας. Οι άλλοι πρέπει να μπορούν να φτάσουν αυτόν τον υπολογιστή στη θύρα %1 (TCP) και %2 (UDP).</translation>
+        <translation type="vanished">Όσο λειτουργεί ο κόμβος σας, λέει στο δίκτυο την τρέχουσα διεύθυνση αυτού του υπολογιστή, υπογεγραμμένη με το κλειδί του, ώστε να τον φτάνουν οι διαδρομές, και ξανά κάθε φορά που αλλάζει. Δεν γράφεται ποτέ στην αλυσίδα, και το δίκτυο την ξεχνά μέσα σε τρεις ώρες αφότου σταματήσει ο κόμβος σας. Οι άλλοι πρέπει να μπορούν να φτάσουν αυτόν τον υπολογιστή στη θύρα %1 (TCP) και %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Αυτός ο κόμβος μεταφέρει διαδρομές άλλων ως αναμεταδότης, όπως ορίστηκε στη σελίδα Διακομιστής, οπότε η καταχώριση το λέει. Η διεύθυνσή του ανακοινώνεται όσο λειτουργεί και δεν γράφεται ποτέ στην αλυσίδα.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Αυτός ο κόμβος μοιράζεται τη σύνδεσή του στο διαδίκτυο ως πύλη, όπως ορίστηκε στη σελίδα Διακομιστής, οπότε η καταχώριση το λέει.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Αυτός ο κόμβος ούτε αναμεταδίδει για άλλους ούτε μοιράζεται τη σύνδεσή του στο διαδίκτυο, όπως ορίστηκε στη σελίδα Διακομιστής.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>Μια αλλαγή εκεί φτάνει στο μητρώο με την επόμενη καταχώρισή σας.</translation>
     </message>
 </context>
 <context>
@@ -5202,6 +5218,18 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Πού λέει αυτός ο αναμεταδότης στο δίκτυο ότι βρίσκεται, υπογεγραμμένο με το κλειδί του. Το λέει ξανά κάθε ώρα και όταν αλλάζει η διεύθυνση· τίποτα από αυτά δεν είναι στην αλυσίδα.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Μεταφορά διαδρομών άλλων ως αναμεταδότης</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Όσο λειτουργεί ο κόμβος σας, λέει στο δίκτυο την τρέχουσα διεύθυνση αυτού του υπολογιστή, υπογεγραμμένη με το κλειδί του, ώστε να τον φτάνουν οι διαδρομές, και ξανά κάθε φορά που αλλάζει. Δεν γράφεται ποτέ στην αλυσίδα, και το δίκτυο την ξεχνά μέσα σε τρεις ώρες αφότου σταματήσει ο κόμβος σας. Οι άλλοι πρέπει να μπορούν να φτάσουν αυτόν τον υπολογιστή στη θύρα %1 (TCP) και %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>καμία — η αναμετάδοση είναι απενεργοποιημένη</translation>
     </message>
 </context>
 <context>

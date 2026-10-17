@@ -3347,15 +3347,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>把這台電腦的網際網路連線當作閘道分享</translation>
+        <translation type="vanished">把這台電腦的網際網路連線當作閘道分享</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>網路成員透過它造訪的網站會看到這台電腦的位址。如果你不能分享自己的連線，請在伺服器頁面關閉閘道。</translation>
+        <translation type="vanished">網路成員透過它造訪的網站會看到這台電腦的位址。如果你不能分享自己的連線，請在伺服器頁面關閉閘道。</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>閘道已在伺服器頁面關閉。</translation>
+        <translation type="vanished">閘道已在伺服器頁面關閉。</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3383,7 +3383,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>作為中繼傳遞他人的路徑</translation>
+        <translation type="vanished">作為中繼傳遞他人的路徑</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3391,7 +3391,23 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>節點運作期間，會用自己的金鑰簽署後把這台電腦的目前位址告訴網路，讓路徑能夠到達，位址一變就再告訴一次。位址從不寫入鏈上，節點停止後三小時內網路就會忘記它。其他人需要能透過連接埠 %1 (TCP) 和 %2 (UDP) 連到這台電腦。</translation>
+        <translation type="vanished">節點運作期間，會用自己的金鑰簽署後把這台電腦的目前位址告訴網路，讓路徑能夠到達，位址一變就再告訴一次。位址從不寫入鏈上，節點停止後三小時內網路就會忘記它。其他人需要能透過連接埠 %1 (TCP) 和 %2 (UDP) 連到這台電腦。</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>依伺服器頁面的設定，此節點作為中繼傳遞他人的路徑，所以登記會寫明這一點。它的位址在運作期間公布，從不寫入鏈上。</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>依伺服器頁面的設定，此節點作為閘道分享其網際網路連線，所以登記會寫明這一點。</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>依伺服器頁面的設定，此節點既不為他人中繼，也不分享其網際網路連線。</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>在那裡的變更會隨你的下一次登記進入名冊。</translation>
     </message>
 </context>
 <context>
@@ -5181,6 +5197,18 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>這個中繼告訴網路它所在的位置，並以其金鑰簽署。它每小時以及位址變化時都會再次說明；這些都不在鏈上。</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>作為中繼傳遞他人的路徑</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>節點運作期間，會用自己的金鑰簽署後把這台電腦的目前位址告訴網路，讓路徑能夠到達，位址一變就再告訴一次。位址從不寫入鏈上，節點停止後三小時內網路就會忘記它。其他人需要能透過連接埠 %1 (TCP) 和 %2 (UDP) 連到這台電腦。</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>無——中繼已關閉</translation>
     </message>
 </context>
 <context>

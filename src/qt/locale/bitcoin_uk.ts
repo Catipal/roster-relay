@@ -3366,15 +3366,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Ділитися інтернет-з&apos;єднанням цього комп&apos;ютера як шлюз</translation>
+        <translation type="vanished">Ділитися інтернет-з&apos;єднанням цього комп&apos;ютера як шлюз</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Сайти, які учасники мережі відвідують через нього, бачать адресу цього комп&apos;ютера. Вимкніть шлюз на сторінці Сервер, якщо вам не можна ділитися з&apos;єднанням.</translation>
+        <translation type="vanished">Сайти, які учасники мережі відвідують через нього, бачать адресу цього комп&apos;ютера. Вимкніть шлюз на сторінці Сервер, якщо вам не можна ділитися з&apos;єднанням.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>Шлюз вимкнено на сторінці Сервер.</translation>
+        <translation type="vanished">Шлюз вимкнено на сторінці Сервер.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3402,7 +3402,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Передавати шляхи інших як ретранслятор</translation>
+        <translation type="vanished">Передавати шляхи інших як ретранслятор</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3410,7 +3410,23 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Поки ваш вузол працює, він повідомляє мережі поточну адресу цього комп&apos;ютера, підписану своїм ключем, щоб до нього доходили шляхи, і знову щоразу, коли вона змінюється. Вона ніколи не записується в ланцюжок, а мережа забуває її протягом трьох годин після зупинки вашого вузла. Інші повинні мати змогу дістатися до цього комп&apos;ютера через порт %1 (TCP) і %2 (UDP).</translation>
+        <translation type="vanished">Поки ваш вузол працює, він повідомляє мережі поточну адресу цього комп&apos;ютера, підписану своїм ключем, щоб до нього доходили шляхи, і знову щоразу, коли вона змінюється. Вона ніколи не записується в ланцюжок, а мережа забуває її протягом трьох годин після зупинки вашого вузла. Інші повинні мати змогу дістатися до цього комп&apos;ютера через порт %1 (TCP) і %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Цей вузол передає шляхи інших як ретранслятор, як задано на сторінці Сервер, тож запис так і каже. Його адреса оголошується, поки він працює, і ніколи не записується в ланцюжок.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Цей вузол ділиться своїм підключенням до інтернету як шлюз, як задано на сторінці Сервер, тож запис так і каже.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Цей вузол не ретранслює для інших і не ділиться своїм підключенням до інтернету, як задано на сторінці Сервер.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>Зміна там потрапить до реєстру з вашим наступним записом.</translation>
     </message>
 </context>
 <context>
@@ -5214,6 +5230,18 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Де, за словами цього ретранслятора, він перебуває, з підписом його ключем. Він повторює це щогодини і коли змінюється адреса; нічого з цього немає в ланцюжку.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Передавати шляхи інших як ретранслятор</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Поки ваш вузол працює, він повідомляє мережі поточну адресу цього комп&apos;ютера, підписану своїм ключем, щоб до нього доходили шляхи, і знову щоразу, коли вона змінюється. Вона ніколи не записується в ланцюжок, а мережа забуває її протягом трьох годин після зупинки вашого вузла. Інші повинні мати змогу дістатися до цього комп&apos;ютера через порт %1 (TCP) і %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>немає — ретрансляцію вимкнено</translation>
     </message>
 </context>
 <context>

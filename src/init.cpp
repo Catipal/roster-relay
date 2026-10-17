@@ -563,6 +563,7 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-mailpoll=<n>", strprintf("Seconds between trips to collect mail, or 0 to collect only when asked (default: %u)", mail::DEFAULT_MAIL_POLL), ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
     argsman.AddArg("-maxlistedusers=<n>", strprintf("Most peers this node keeps listed under -acceptlistings (default: %u)", roster::DEFAULT_MAX_LISTED_USERS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-meetable", strprintf("Keep this node registered at its meeting points, relays computed from the roster, so it can be reached by its key without publishing an address. Needs -overlay and -rosterindex, and a listing (default: %u)", overlay::DEFAULT_MEETABLE), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-relay", strprintf("Carry others' paths as a relay: while the roster lists this node as one (createannouncement's \"relay\"), announce this computer's address, signed and good for three hours, never on the chain. Off, nothing is announced, and paths stop coming within those three hours (default: %u)", roster::DEFAULT_RELAY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-relayaddress=<ip>[:<port>]", "The address this node announces while the roster lists it as a relay that announces its own (createannouncement's \"relay\"), signed and good for three hours; once for IPv4 and once for IPv6. Without it, the address most of its outbound peers see it at, else the best it knows of itself. The port is the peer-to-peer one by default; the overlay is one above it.", ArgsManager::ALLOW_ANY | ArgsManager::NETWORK_ONLY, OptionsCategory::CONNECTION);
     argsman.AddArg("-relaybandwidth=<n>", strprintf("MiB of other people's traffic this node carries through the overlay in a day; once spent it accepts no new paths until the day (UTC) turns, and paths already open stop a tenth later. 0 for no limit (default: %u)", overlay::DEFAULT_RELAY_BANDWIDTH_MIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-relaypathrate=<n>", strprintf("KiB a second one path may move through this node; more is dropped, as a full link would drop it. 0 for no limit (default: %u)", overlay::DEFAULT_RELAY_PATH_RATE_KIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -2765,7 +2766,9 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
         CConnman* connman = node.connman.get();
         PeerManager* peerman = node.peerman.get();
         const bool allow_local = chainparams.NetworkIDString() == CBaseChainParams::REGTEST;
-        const bool overlay_on = (bool)overlay::g_overlay;
+        // Only a node carrying paths for others, and only while its owner
+        // has relaying switched on.
+        const bool overlay_on = overlay::g_overlay && args.GetBoolArg("-relay", roster::DEFAULT_RELAY);
         // This relay's own last announcement, which the network still holds
         // after a restart: a new address is dated after it, or nobody takes it.
         const fs::path own_path = GetDataDir() / "relay_address.dat";
@@ -2779,7 +2782,6 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             if (!roster::g_relay_addresses) return;
             const int64_t now = GetTime();
             roster::g_relay_addresses->Expire(now);
-            // Only a node carrying paths is a relay worth announcing.
             CKey key;
             if (!overlay_on || !roster::ReadOperationalKey(key)) return;
             const roster::KeyBytes self = roster::KeyBytesOf(key);

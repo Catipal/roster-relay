@@ -3357,15 +3357,15 @@ Amosaráseche unha chave de recuperación unha vez. Anótaa: é a única forma d
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Compartir a conexión a internet deste ordenador como pasarela</translation>
+        <translation type="vanished">Compartir a conexión a internet deste ordenador como pasarela</translation>
     </message>
     <message>
         <source>Websites the network&apos;s members visit through it see this computer&apos;s address. Switch the gateway off on the Server page if you may not share your connection.</source>
-        <translation>Os sitios que os membros da rede visitan a través dela ven o enderezo deste ordenador. Desactiva a pasarela na páxina Servidor se non podes compartir a túa conexión.</translation>
+        <translation type="vanished">Os sitios que os membros da rede visitan a través dela ven o enderezo deste ordenador. Desactiva a pasarela na páxina Servidor se non podes compartir a túa conexión.</translation>
     </message>
     <message>
         <source>The gateway is switched off on the Server page.</source>
-        <translation>A pasarela está desactivada na páxina Servidor.</translation>
+        <translation type="vanished">A pasarela está desactivada na páxina Servidor.</translation>
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
@@ -3393,7 +3393,7 @@ Amosaráseche unha chave de recuperación unha vez. Anótaa: é a única forma d
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
-        <translation>Levar camiños doutros como repetidor</translation>
+        <translation type="vanished">Levar camiños doutros como repetidor</translation>
     </message>
     <message>
         <source>Paths need to reach a relay, so while your node runs it tells the network this computer&apos;s current address, signed with its key, and again whenever it changes, with no transaction. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP). A relay shares its internet connection under a second key, from the Server page.</source>
@@ -3401,7 +3401,23 @@ Amosaráseche unha chave de recuperación unha vez. Anótaa: é a única forma d
     </message>
     <message>
         <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
-        <translation>Mentres o teu nodo funciona, dille á rede o enderezo actual deste ordenador, asinado coa súa chave, para que os camiños poidan chegar a el, e de novo cada vez que cambia. Nunca se escribe na cadea, e a rede esquéceo nas tres horas seguintes a que o teu nodo se deteña. Os demais deben poder chegar a este ordenador no porto %1 (TCP) e %2 (UDP).</translation>
+        <translation type="vanished">Mentres o teu nodo funciona, dille á rede o enderezo actual deste ordenador, asinado coa súa chave, para que os camiños poidan chegar a el, e de novo cada vez que cambia. Nunca se escribe na cadea, e a rede esquéceo nas tres horas seguintes a que o teu nodo se deteña. Os demais deben poder chegar a este ordenador no porto %1 (TCP) e %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>This node carries others&apos; paths as a relay, as set on the Server page, so the listing says so. Its address is announced while it runs, never written to the chain.</source>
+        <translation>Este nodo leva camiños doutros como repetidor, tal como está configurado na páxina Servidor, así que a inscrición dio. O seu enderezo anúnciase mentres funciona e nunca se escribe na cadea.</translation>
+    </message>
+    <message>
+        <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
+        <translation>Este nodo comparte a súa conexión a internet como pasarela, tal como está configurado na páxina Servidor, así que a inscrición dio.</translation>
+    </message>
+    <message>
+        <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
+        <translation>Este nodo nin fai de repetidor para outros nin comparte a súa conexión a internet, tal como está configurado na páxina Servidor.</translation>
+    </message>
+    <message>
+        <source>A change there reaches the roster with your next listing.</source>
+        <translation>Un cambio alí chega ao rexistro coa túa próxima inscrición.</translation>
     </message>
 </context>
 <context>
@@ -5198,6 +5214,18 @@ Podes cambialo en calquera momento na páxina Servidor.</translation>
     <message>
         <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
         <translation>Onde lle di este repetidor á rede que está, asinado coa súa chave. Volve dicilo cada hora e cando cambia o enderezo; nada diso está na cadea.</translation>
+    </message>
+    <message>
+        <source>Carry others&apos; paths as a relay</source>
+        <translation>Levar camiños doutros como repetidor</translation>
+    </message>
+    <message>
+        <source>While your node runs it tells the network this computer&apos;s current address, signed with its key, so that paths can reach it, and again whenever it changes. It is never written to the chain, and the network forgets it within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Mentres o teu nodo funciona, dille á rede o enderezo actual deste ordenador, asinado coa súa chave, para que os camiños poidan chegar a el, e de novo cada vez que cambia. Nunca se escribe na cadea, e a rede esquéceo nas tres horas seguintes a que o teu nodo se deteña. Os demais deben poder chegar a este ordenador no porto %1 (TCP) e %2 (UDP).</translation>
+    </message>
+    <message>
+        <source>none — relaying is switched off</source>
+        <translation>ningún — facer de repetidor está desactivado</translation>
     </message>
 </context>
 <context>

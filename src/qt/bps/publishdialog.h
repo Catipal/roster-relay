@@ -74,7 +74,6 @@ private Q_SLOTS:
     void onRpcResult(const QString& tag, const UniValue& value);
     void onRpcFailed(const QString& tag, const QString& message);
     void onAddressChoiceChanged();
-    void onRelayToggled(bool on);
     void onPayerChanged();
     void onPublish();
 
@@ -99,8 +98,6 @@ private:
 
     QRadioButton* m_at_address{nullptr};
     QRadioButton* m_nowhere{nullptr};
-    QCheckBox* m_relay{nullptr};   //!< carry others' paths, announcing this computer's address while it runs
-    QCheckBox* m_gateway{nullptr}; //!< list as a gateway too, with no address
     QWidget* m_address_row{nullptr};
     QComboBox* m_network{nullptr};
     QLineEdit* m_address{nullptr};

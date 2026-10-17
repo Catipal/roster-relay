@@ -1406,7 +1406,7 @@ Semnarea este posibilă doar cu adrese de tipul &apos;legacy&apos;.</translation
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Partenerii se anunță în lanț, nu la un server, așa că această listă este aceeași pentru toată lumea și nimeni nu o poate modifica.</translation>
+        <translation type="vanished">Partenerii se anunță în lanț, nu la un server, așa că această listă este aceeași pentru toată lumea și nimeni nu o poate modifica.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1571,6 +1571,18 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Identitatea dvs. a fost publicată în tranzacția %1. Următoarea reînnoire a înscrierii leagă de ea cheia acestui nod.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Partenerii se anunță în lanț, nu la un server, așa că această listă este aceeași pentru toată lumea și nimeni nu o poate modifica. Releele spun unde sunt cât timp rulează, așa că adresele lor nu ajung niciodată în lanț și apar aici doar cât sunt online.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Doar releele online acum</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Relee care au spus unde sunt în ultimele trei ore. Și celelalte sunt înscrise: înscrierea spune că un partener există, nu că rulează.</translation>
     </message>
 </context>
 <context>
@@ -3372,6 +3384,14 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Se cere unui releu, prin alte relee, să o publice… poate dura un minut.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Ca releu — anunță-mi adresa cât timp rulez</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Căile altora trec prin acest calculator. Înscrierea ta spune că ești un releu, nu unde: cât timp nodul tău rulează, spune rețelei adresa lui actuală, semnată cu cheia lui, și din nou de fiecare dată când se schimbă, fără nicio tranzacție. Nimic despre unde ești nu ajunge în lanț, iar rețeaua uită adresa în cel mult trei ore după ce nodul tău se oprește. Ceilalți trebuie să poată ajunge la acest calculator pe portul %1 (TCP) și %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4217,6 +4237,24 @@ reached over the overlay, which is the point of allowing it.</source>
     <message>
         <source>new</source>
         <translation>nou</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Online: releul a spus acum %1 că este aici, semnat cu cheia lui.
+O spune din nou în fiecare oră și când se mută; nimic despre
+unde este nu se păstrează în lanț.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Un releu care spune unde este cât timp rulează și nu a spus-o în
+ultimele trei ore: nu rulează sau nu poate fi atins de aici.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>releu, offline</translation>
     </message>
 </context>
 <context>
@@ -5126,6 +5164,22 @@ Poți schimba asta oricând în pagina Server.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Pornește când clientul este repornit.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Adresă anunțată</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>niciuna — acest nod nu este înscris ca releu care își anunță adresa</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, semnat acum %2</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Unde spune acest releu rețelei că este, semnat cu cheia lui. O spune din nou în fiecare oră și când adresa se schimbă; nimic din toate acestea nu este în lanț.</translation>
     </message>
 </context>
 <context>

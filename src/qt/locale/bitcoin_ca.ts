@@ -1401,7 +1401,7 @@ Això és ideal per a carteres de mode només lectura.</translation>
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Els parells s&apos;anuncien a la cadena en lloc de fer-ho a un servidor, de manera que aquesta llista és la mateixa per a tothom i ningú no la pot editar.</translation>
+        <translation type="vanished">Els parells s&apos;anuncien a la cadena en lloc de fer-ho a un servidor, de manera que aquesta llista és la mateixa per a tothom i ningú no la pot editar.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1566,6 +1566,18 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>La vostra identitat s&apos;ha publicat a la transacció %1. La propera renovació de la vostra inscripció hi vincula la clau d&apos;aquest node.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Els parells s&apos;anuncien a la cadena en lloc de fer-ho a un servidor, de manera que aquesta llista és la mateixa per a tothom i ningú no la pot editar. Els repetidors diuen on són mentre funcionen, de manera que les seves adreces no van mai a la cadena i només es mostren aquí mentre són en línia.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Només repetidors en línia ara</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Repetidors que han dit on són en les darreres tres hores. Els altres també hi són: estar inscrit diu que un parell existeix, no que funcioni.</translation>
     </message>
 </context>
 <context>
@@ -3364,6 +3376,14 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Demanant a un repetidor, a través d&apos;altres, que la publiqui… pot trigar un minut.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Com a repetidor — anunciar la meva adreça mentre funcioni</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Els camins d&apos;altres passen per aquest ordinador. La teva inscripció diu que ets un repetidor, no on ets: mentre el teu node funciona, diu a la xarxa la seva adreça actual, signada amb la seva clau, i de nou cada cop que canvia, sense cap transacció. Res sobre on ets no va a la cadena, i la xarxa oblida l&apos;adreça en les tres hores següents a l&apos;aturada del teu node. Els altres han de poder arribar a aquest ordinador al port %1 (TCP) i %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4203,6 +4223,24 @@ arribar per la xarxa superposada, que és el sentit de permetre-ho.</translation
     <message>
         <source>new</source>
         <translation>nou</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>En línia: el repetidor ha dit que és aquí fa %1, signat amb la seva clau.
+Ho torna a dir cada hora i quan es mou; res sobre
+on és no es guarda a la cadena.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Un repetidor que diu on és mentre funciona, i que no ho ha dit en
+les darreres tres hores: no funciona, o no s&apos;hi pot arribar des d&apos;aquí.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>repetidor, fora de línia</translation>
     </message>
 </context>
 <context>
@@ -5111,6 +5149,22 @@ Pots canviar-ho en qualsevol moment a la pàgina Servidor.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Comença quan es reinicia el client.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Adreça anunciada</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>cap — aquest node no està inscrit com a repetidor que anuncia la seva adreça</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, signat fa %2</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>On aquest repetidor diu a la xarxa que és, signat amb la seva clau. Ho torna a dir cada hora i quan canvia l&apos;adreça; res d&apos;això no és a la cadena.</translation>
     </message>
 </context>
 <context>

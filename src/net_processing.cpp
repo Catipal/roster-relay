@@ -32,7 +32,9 @@
 #include <util/system.h>
 #include <validation.h>
 #include <consensus/merkle.h>
+#include <roster/peers.h>
 #include <roster/record.h>
+#include <roster/relayaddr.h>
 #include <roster/view.h>
 #include <shutdown.h>
 #include <checkpoints.h>
@@ -2602,6 +2604,11 @@ void PeerManager::ProcessMessage(CNode& pfrom, const std::string& msg_type, CDat
             // Get recent addresses
             m_connman.PushMessage(&pfrom, CNetMsgMaker(greatest_common_version).Make(NetMsgType::GETADDR));
             pfrom.fGetAddr = true;
+
+            // And where the relays are now, which no block says.
+            if (roster::g_relay_addresses) {
+                m_connman.PushMessage(&pfrom, CNetMsgMaker(greatest_common_version).Make(NetMsgType::GETRELAYADDRS));
+            }
         }
 
         if (!pfrom.IsInboundConn()) {
@@ -2689,6 +2696,12 @@ void PeerManager::ProcessMessage(CNode& pfrom, const std::string& msg_type, CDat
                 m_connman.PushMessage(&pfrom, msgMaker.Make(NetMsgType::SENDCMPCT, fAnnounceUsingCMPCTBLOCK, nCMPCTBLOCKVersion));
             nCMPCTBLOCKVersion = 1;
             m_connman.PushMessage(&pfrom, msgMaker.Make(NetMsgType::SENDCMPCT, fAnnounceUsingCMPCTBLOCK, nCMPCTBLOCKVersion));
+        }
+        // A relay that announces its address hands it to every peer that
+        // connects, whichever side dialled (roster/relayaddr.h).
+        std::vector<unsigned char> own_address;
+        if (roster::g_relay_addresses && !pfrom.IsBlockOnlyConn() && roster::g_relay_addresses->OwnRaw(GetTime(), own_address)) {
+            m_connman.PushMessage(&pfrom, msgMaker.Make(NetMsgType::RELAYADDRS, std::vector<std::vector<unsigned char>>{own_address}));
         }
         pfrom.fSuccessfullyConnected = true;
         return;
@@ -3922,6 +3935,49 @@ void PeerManager::ProcessMessage(CNode& pfrom, const std::string& msg_type, CDat
         return;
     }
 
+    if (msg_type == NetMsgType::GETRELAYADDRS) {
+        // Once per connection, and never over a block-relay-only one, which
+        // relays no addresses of any kind.
+        if (!roster::g_relay_addresses || pfrom.IsBlockOnlyConn() || pfrom.m_sent_relay_addrs.exchange(true)) return;
+        const std::vector<std::vector<unsigned char>> held =
+            roster::g_relay_addresses->FreshRaw(GetTime(), roster::RELAY_ADDRS_ON_REQUEST);
+        for (size_t at = 0; at < held.size(); at += roster::MAX_RELAY_ADDRS_PER_MSG) {
+            const size_t end = std::min(held.size(), at + roster::MAX_RELAY_ADDRS_PER_MSG);
+            const std::vector<std::vector<unsigned char>> chunk(held.begin() + at, held.begin() + end);
+            m_connman.PushMessage(&pfrom, msgMaker.Make(NetMsgType::RELAYADDRS, chunk));
+        }
+        return;
+    }
+
+    if (msg_type == NetMsgType::RELAYADDRS) {
+        std::vector<std::vector<unsigned char>> items;
+        vRecv >> items;
+        if (!roster::g_relay_addresses) return;
+        if (items.size() > roster::MAX_RELAY_ADDRS_PER_MSG) {
+            Misbehaving(pfrom.GetId(), 20, "too many relay addresses");
+            return;
+        }
+        const int64_t now = GetTime();
+        std::vector<std::vector<unsigned char>> fresh;
+        for (const std::vector<unsigned char>& raw : items) {
+            const roster::RelayAddressBook::AddResult added =
+                roster::g_relay_addresses->Add(raw, now, roster::ListedAsAnnouncingRelay);
+            if (added == roster::RelayAddressBook::AddResult::NEW) {
+                // New to this node: pass it on once. A node that has it
+                // already answers KNOWN, which is what stops it going round.
+                fresh.push_back(raw);
+            } else if (added == roster::RelayAddressBook::AddResult::INVALID) {
+                // Expired, early, or for a key this node's roster does not
+                // list as a relay may be an honest difference of clocks or
+                // of chain tips; malformed or badly signed is not.
+                Misbehaving(pfrom.GetId(), 10, "invalid relay address");
+                break;
+            }
+        }
+        if (!fresh.empty()) RelayRelayAddresses(fresh, pfrom.GetId());
+        return;
+    }
+
     if (msg_type == NetMsgType::GETCFHEADERS) {
         ProcessGetCFHeaders(pfrom, vRecv, m_chainparams, m_connman);
         return;
@@ -3958,6 +4014,14 @@ void PeerManager::RelayRosterRevocation(const std::vector<unsigned char>& raw, N
     m_connman.ForEachNode([&](CNode* node) {
         if (node->GetId() == except || !node->fSuccessfullyConnected || node->fDisconnect) return;
         m_connman.PushMessage(node, CNetMsgMaker(node->GetCommonVersion()).Make(NetMsgType::ROSTERREVOKE, raw));
+    });
+}
+
+void PeerManager::RelayRelayAddresses(const std::vector<std::vector<unsigned char>>& items, NodeId except)
+{
+    m_connman.ForEachNode([&](CNode* node) {
+        if (node->GetId() == except || !node->fSuccessfullyConnected || node->fDisconnect || node->IsBlockOnlyConn()) return;
+        m_connman.PushMessage(node, CNetMsgMaker(node->GetCommonVersion()).Make(NetMsgType::RELAYADDRS, items));
     });
 }
 

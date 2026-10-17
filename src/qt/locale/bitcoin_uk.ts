@@ -1406,7 +1406,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</transla
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Піри оголошують про себе в ланцюжку, а не на сервері, тому цей список у всіх однаковий і ніхто не може його змінити.</translation>
+        <translation type="vanished">Піри оголошують про себе в ланцюжку, а не на сервері, тому цей список у всіх однаковий і ніхто не може його змінити.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1571,6 +1571,18 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Вашу особу опубліковано в транзакції %1. Під час наступного продовження запису ключ цього вузла буде до неї прив&apos;язано.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Піри оголошують про себе в ланцюжку, а не на сервері, тому цей список у всіх однаковий і ніхто не може його змінити. Ретранслятори повідомляють, де вони, поки працюють, тому їхні адреси ніколи не потрапляють у ланцюжок і видно їх тут лише поки вони в мережі.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Лише ретранслятори, які зараз у мережі</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Ретранслятори, які повідомили, де вони, за останні три години. Інші теж у реєстрі: запис у реєстрі каже, що пір існує, а не що він працює.</translation>
     </message>
 </context>
 <context>
@@ -3372,6 +3384,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Просимо ретранслятор через інші ретранслятори опублікувати її… це може тривати хвилину.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Як ретранслятор — повідомляти мою адресу, поки я працюю</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Шляхи інших проходять через цей комп&apos;ютер. Ваш запис каже, що ви ретранслятор, але не де: поки ваш вузол працює, він повідомляє мережі свою поточну адресу, підписану своїм ключем, і знову щоразу, коли вона змінюється, без жодної транзакції. Нічого про те, де ви, не потрапляє в ланцюжок, а мережа забуває адресу протягом трьох годин після зупинки вашого вузла. Інші повинні мати змогу дістатися до цього комп&apos;ютера через порт %1 (TCP) і %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4217,6 +4237,24 @@ reached over the overlay, which is the point of allowing it.</source>
     <message>
         <source>new</source>
         <translation>новий</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>У мережі: ретранслятор %1 тому повідомив, що він тут, з підписом своїм ключем.
+Він повторює це щогодини і під час переїзду; нічого про те,
+де він, у ланцюжку не зберігається.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Ретранслятор, який повідомляє, де він, поки працює, але не повідомляв
+цього останні три години: він не працює або недосяжний звідси.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>ретранслятор, не в мережі</translation>
     </message>
 </context>
 <context>
@@ -5126,6 +5164,22 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Почне працювати після перезапуску клієнта.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Оголошена адреса</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>немає — цей вузол не внесено до реєстру як ретранслятор, що оголошує свою адресу</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, підписано %2 тому</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Де, за словами цього ретранслятора, він перебуває, з підписом його ключем. Він повторює це щогодини і коли змінюється адреса; нічого з цього немає в ланцюжку.</translation>
     </message>
 </context>
 <context>

@@ -1394,7 +1394,7 @@ Penandatanganan hanya dapat dilakukan dengan alamat berjenis &apos;legacy&apos;.
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Peer mengumumkan diri di rantai, bukan di server, jadi daftar ini sama bagi semua orang dan tidak ada yang dapat mengubahnya.</translation>
+        <translation type="vanished">Peer mengumumkan diri di rantai, bukan di server, jadi daftar ini sama bagi semua orang dan tidak ada yang dapat mengubahnya.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1559,6 +1559,18 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Identitas Anda diterbitkan dalam transaksi %1. Pembaruan pencatatan Anda berikutnya mengikatkan kunci node ini kepadanya.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Peer mengumumkan diri di rantai, bukan di server, jadi daftar ini sama bagi semua orang dan tidak ada yang dapat mengubahnya. Relai memberi tahu di mana mereka berada selama berjalan, sehingga alamat mereka tidak pernah masuk ke rantai dan hanya tampil di sini selama mereka daring.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Hanya relai yang daring sekarang</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Relai yang memberi tahu di mana mereka berada dalam tiga jam terakhir. Yang lain juga tercatat: tercatat berarti sebuah peer ada, bukan berarti sedang berjalan.</translation>
     </message>
 </context>
 <context>
@@ -3354,6 +3366,14 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Meminta sebuah relai melalui relai lain untuk menerbitkannya… ini bisa memakan waktu satu menit.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Sebagai relai — umumkan alamat saya selama saya berjalan</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Jalur orang lain melewati komputer ini. Catatan Anda menyatakan bahwa Anda adalah relai, bukan di mana: selama node Anda berjalan, node itu memberi tahu jaringan alamatnya saat ini, ditandatangani dengan kuncinya, dan sekali lagi setiap kali berubah, tanpa transaksi apa pun. Tidak ada apa pun tentang lokasi Anda yang masuk ke rantai, dan jaringan melupakan alamat itu dalam tiga jam setelah node Anda berhenti. Orang lain harus dapat menjangkau komputer ini di port %1 (TCP) dan %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4189,6 +4209,24 @@ dijangkau melalui jaringan overlay, dan itulah tujuan mengizinkannya.</translati
     <message>
         <source>new</source>
         <translation>baru</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Daring: relai memberi tahu %1 yang lalu bahwa ia ada di sini, ditandatangani dengan kuncinya.
+Ia memberi tahu lagi setiap jam dan saat berpindah; tidak ada apa pun tentang
+lokasinya yang disimpan di rantai.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Relai yang memberi tahu di mana ia berada selama berjalan, dan belum melakukannya dalam
+tiga jam terakhir: ia tidak berjalan, atau tidak dapat dijangkau dari sini.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>relai, luring</translation>
     </message>
 </context>
 <context>
@@ -5096,6 +5134,22 @@ Anda dapat mengubahnya kapan saja di halaman Server.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Dimulai saat klien dimulai ulang.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Alamat yang diumumkan</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>tidak ada — node ini tidak tercatat sebagai relai yang mengumumkan alamatnya</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, ditandatangani %2 yang lalu</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Di mana relai ini memberi tahu jaringan bahwa ia berada, ditandatangani dengan kuncinya. Ia memberi tahu lagi setiap jam dan saat alamat berubah; tidak ada yang tersimpan di rantai.</translation>
     </message>
 </context>
 <context>

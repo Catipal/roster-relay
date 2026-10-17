@@ -24,6 +24,7 @@
 #include <index/blockfilterindex.h>
 #include <index/rosterindex.h>
 #include <roster/peers.h>
+#include <roster/relayaddr.h>
 #include <overlay/chainsync.h>
 #include <overlay/gateway.h>
 #include <overlay/gatewayclient.h>
@@ -377,6 +378,7 @@ void Shutdown(NodeContext& node)
         g_rosterindex.reset();
     }
     roster::g_revocations.reset();
+    roster::g_relay_addresses.reset();
     names::g_registrar.reset();
     if (g_nameindex) {
         g_nameindex->Stop();
@@ -561,6 +563,7 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-mailpoll=<n>", strprintf("Seconds between trips to collect mail, or 0 to collect only when asked (default: %u)", mail::DEFAULT_MAIL_POLL), ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
     argsman.AddArg("-maxlistedusers=<n>", strprintf("Most peers this node keeps listed under -acceptlistings (default: %u)", roster::DEFAULT_MAX_LISTED_USERS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-meetable", strprintf("Keep this node registered at its meeting points, relays computed from the roster, so it can be reached by its key without publishing an address. Needs -overlay and -rosterindex, and a listing (default: %u)", overlay::DEFAULT_MEETABLE), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-relayaddress=<ip>[:<port>]", "The address this node announces while the roster lists it as a relay that announces its own (createannouncement's \"relay\"), signed and good for three hours; once for IPv4 and once for IPv6. Without it, the address most of its outbound peers see it at, else the best it knows of itself. The port is the peer-to-peer one by default; the overlay is one above it.", ArgsManager::ALLOW_ANY | ArgsManager::NETWORK_ONLY, OptionsCategory::CONNECTION);
     argsman.AddArg("-relaybandwidth=<n>", strprintf("MiB of other people's traffic this node carries through the overlay in a day; once spent it accepts no new paths until the day (UTC) turns, and paths already open stop a tenth later. 0 for no limit (default: %u)", overlay::DEFAULT_RELAY_BANDWIDTH_MIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-relaypathrate=<n>", strprintf("KiB a second one path may move through this node; more is dropped, as a full link would drop it. 0 for no limit (default: %u)", overlay::DEFAULT_RELAY_PATH_RATE_KIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gateway", strprintf("Carry other people's connections out to the internet while the roster lists this node as a gateway: its key with the gateway bit and no address, met at its meeting points, so nobody learns where it is (default: %u). Websites see this computer's address for what it carries; -gateway=0 switches it off. Needs -overlay and -rosterindex.", overlay::DEFAULT_GATEWAY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -2076,6 +2079,9 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                                                (int)args.GetArg("-rosterindexstart", 0), roster_window);
         g_rosterindex->SetObserver(roster::OnIndexedRecord);
         g_rosterindex->Start();
+        // Where relays are now (roster/relayaddr.h): taken only for keys this
+        // roster lists as relays, so only with the roster.
+        roster::g_relay_addresses = MakeUnique<roster::RelayAddressBook>(Params().NetworkIDString());
     }
 
     // The address book is this user's own, so it is there whatever else is on.
@@ -2520,7 +2526,8 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                         roster::Record own;
                         if (roster::LiveAnnouncement(*g_rosterindex, self, tip, own)) {
                             id.own_listed = true;
-                            id.own_address = !own.endpoints.empty();
+                            // On the chain, or announced while it runs as a relay.
+                            id.own_address = !own.endpoints.empty() || roster::IsAnnouncingRelay(own.services);
                         }
                         CKey second;
                         if (is_gateway(self)) {
@@ -2738,6 +2745,94 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
         // costs a read.
         node.scheduler->scheduleFromNow(refresh_roster, std::chrono::seconds{10});
         node.scheduler->scheduleEvery(refresh_roster, roster::ROSTER_PEERS_INTERVAL);
+    }
+
+    // Relay addresses (roster/relayaddr.h): drop those no longer counting,
+    // and, while the roster lists this node as a relay that announces its
+    // address, say where it is - at once, when it changes, and every hour.
+    if (roster::g_relay_addresses && node.connman && node.peerman) {
+        std::vector<CService> fixed;
+        for (const std::string& s : args.GetArgs("-relayaddress")) {
+            CService addr;
+            if (!Lookup(s, addr, GetListenPort(), false) || !(addr.IsIPv4() || addr.IsIPv6())) {
+                return InitError(strprintf(_("-relayaddress: %s is not an IPv4 or IPv6 address"), s));
+            }
+            fixed.push_back(addr);
+        }
+        CConnman* connman = node.connman.get();
+        PeerManager* peerman = node.peerman.get();
+        const bool allow_local = chainparams.NetworkIDString() == CBaseChainParams::REGTEST;
+        const bool overlay_on = (bool)overlay::g_overlay;
+        // This relay's own last announcement, which the network still holds
+        // after a restart: a new address is dated after it, or nobody takes it.
+        const fs::path own_path = GetDataDir() / "relay_address.dat";
+        auto own = std::make_shared<std::pair<roster::RelayAddress, bool>>();
+        {
+            std::vector<unsigned char> raw;
+            own->second = roster::ReadOwnRelayAddress(own_path, chainparams.NetworkIDString(), own->first, raw);
+            if (own->second) roster::g_relay_addresses->Add(raw, GetTime(), roster::ListedAsAnnouncingRelay);
+        }
+        const std::function<void()> relay_address = [connman, peerman, fixed, allow_local, overlay_on, own_path, own] {
+            if (!roster::g_relay_addresses) return;
+            const int64_t now = GetTime();
+            roster::g_relay_addresses->Expire(now);
+            // Only a node carrying paths is a relay worth announcing.
+            CKey key;
+            if (!overlay_on || !roster::ReadOperationalKey(key)) return;
+            const roster::KeyBytes self = roster::KeyBytesOf(key);
+            if (!roster::ListedAsAnnouncingRelay(self)) return;
+            roster::g_relay_addresses->SetOwn(self);
+            // What outbound peers see this node connect from: an inbound
+            // connection's peer chose the address it dialled, so it says less.
+            std::vector<CNetAddr> seen;
+            connman->ForEachNode([&seen](CNode* n) {
+                if (n->IsInboundConn() || !n->fSuccessfullyConnected) return;
+                const CService a = n->GetAddrLocal();
+                if (a.IsValid()) seen.push_back(a);
+            });
+            std::vector<std::pair<int, CNetAddr>> scored;
+            {
+                LOCK(cs_mapLocalHost);
+                for (const std::pair<const CNetAddr, LocalServiceInfo>& l : mapLocalHost) scored.emplace_back(-l.second.nScore, l.first);
+            }
+            std::sort(scored.begin(), scored.end());
+            std::vector<CNetAddr> local;
+            for (const std::pair<int, CNetAddr>& l : scored) local.push_back(l.second);
+            const std::vector<roster::Endpoint> endpoints =
+                roster::ChooseRelayEndpoints(fixed, seen, local, GetListenPort(), allow_local);
+            if (endpoints.empty()) {
+                LogPrint(BCLog::NET, "roster: listed as a relay, but no address to announce yet (-relayaddress sets one)\n");
+                return;
+            }
+            // The last one is this relay's own unless its key changed since.
+            const roster::RelayAddress* last = own->second && own->first.key == self ? &own->first : nullptr;
+            const int64_t at = roster::NextAnnouncementTime(endpoints, last, now);
+            if (at == 0) return;
+            roster::RelayAddress a;
+            a.key = self;
+            a.time = at;
+            a.endpoints = endpoints;
+            if (!roster::SignRelayAddress(a, key, Params().NetworkIDString())) return;
+            const std::vector<unsigned char> raw = roster::SerializeRelayAddress(a);
+            own->first = a;
+            own->second = true;
+            if (!roster::WriteOwnRelayAddress(own_path, raw)) {
+                LogPrintf("roster: could not write %s\n", own_path.string());
+            }
+            if (roster::g_relay_addresses->Add(raw, now, roster::ListedAsAnnouncingRelay) !=
+                roster::RelayAddressBook::AddResult::NEW) {
+                return;
+            }
+            std::string where;
+            for (const roster::Endpoint& ep : endpoints) {
+                CService s;
+                if (roster::EndpointToService(ep, s)) where += (where.empty() ? "" : ", ") + s.ToString();
+            }
+            LogPrintf("roster: announced this relay at %s\n", where);
+            peerman->RelayRelayAddresses({raw});
+        };
+        node.scheduler->scheduleFromNow(relay_address, std::chrono::seconds{5});
+        node.scheduler->scheduleEvery(relay_address, std::chrono::seconds{30});
     }
 
     // Only now, so nothing answers over RPC while the overlay, the mailbox or

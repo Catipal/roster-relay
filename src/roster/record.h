@@ -49,11 +49,14 @@ enum class RecordType : uint8_t {
  * Bit 31 is structural — it changes the record's length. Every other bit is
  * advisory and has no parsing consequence.
  *
- * Bits 0 and 1 are DEFINED BUT NOT IMPLEMENTED. Nothing sets or reads them; a
- * record carrying one is legal and inert, and createannouncement refuses to
- * set one rather than let an operator advertise something undeliverable. The
- * relay layer was built without them: a relay is any listed key with an
- * endpoint, and a key with none is met at its meeting points.
+ * Bit 1 is DEFINED BUT NOT IMPLEMENTED. Nothing sets or reads it; a record
+ * carrying it is legal and inert, and createannouncement refuses to set it
+ * rather than let an operator advertise something undeliverable.
+ *
+ * A relay is any listed key with an endpoint, or with bit 0: a relay that
+ * says where it is in short signed announcements while it runs, instead of on
+ * the chain (roster/relayaddr.h). A key with neither is met at its meeting
+ * points.
  *
  * An overlay relay carries sealed protocol messages between BPS peers and
  * cannot reach arbitrary hosts, so no third party's logs ever hold a relay's
@@ -63,6 +66,11 @@ enum class RecordType : uint8_t {
  * listed with no endpoint and reached only at its meeting points: no BPS node
  * learns where it is, and the roster never becomes a list of exit addresses.
  */
+/**
+ * This key is a relay that announces its address while it runs, signed and
+ * passed between peers, and good for a few hours (roster/relayaddr.h). The
+ * record need carry no endpoint: no relay's address has to be on the chain.
+ */
 static constexpr uint32_t SERVICE_RELAY_CAPABLE = 1U << 0;
 static constexpr uint32_t SERVICE_RENDEZVOUS_ONLY = 1U << 1;
 /**
@@ -70,16 +78,17 @@ static constexpr uint32_t SERVICE_RENDEZVOUS_ONLY = 1U << 1;
  *
  * Advisory like the others: a node that does not know the bit parses, indexes
  * and commits to the record unchanged. Meaningful only on a record with no
- * endpoint. With one, the record would publish where an exit is, so this
- * node's builder refuses the combination and readers ignore the bit.
+ * endpoint and not listing a relay. With an endpoint, or announcing one as a
+ * relay does, the record would say where an exit is, so this node's builder
+ * refuses the combination and readers ignore the bit.
  */
 static constexpr uint32_t SERVICE_GATEWAY = 1U << 2;
 static constexpr uint32_t SERVICE_META_PRESENT = 1U << 31;
 
-/** Whether a parsed announcement lists a gateway: the bit, and no endpoint. */
+/** Whether a parsed announcement lists a gateway: the bit, no endpoint, and not a relay. */
 inline bool IsGatewayRecord(uint32_t services, size_t endpoint_count)
 {
-    return (services & SERVICE_GATEWAY) != 0 && endpoint_count == 0;
+    return (services & SERVICE_GATEWAY) != 0 && (services & SERVICE_RELAY_CAPABLE) == 0 && endpoint_count == 0;
 }
 
 static constexpr size_t RECORD_HEADER_SIZE = 4; //!< magic(3) + ver/type(1)

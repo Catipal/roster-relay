@@ -1395,7 +1395,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</transla
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>همتاها خود را روی زنجیره اعلام می‌کنند نه روی یک سرور، بنابراین این فهرست برای همه یکسان است و هیچ‌کس نمی‌تواند آن را ویرایش کند.</translation>
+        <translation type="vanished">همتاها خود را روی زنجیره اعلام می‌کنند نه روی یک سرور، بنابراین این فهرست برای همه یکسان است و هیچ‌کس نمی‌تواند آن را ویرایش کند.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1560,6 +1560,18 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>هویت شما در تراکنش %1 منتشر شد. تمدید بعدی ثبت شما کلید این گره را به آن پیوند می‌دهد.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>همتاها خود را روی زنجیره اعلام می‌کنند نه روی یک سرور، بنابراین این فهرست برای همه یکسان است و هیچ‌کس نمی‌تواند آن را ویرایش کند. رله‌ها تا وقتی کار می‌کنند می‌گویند کجا هستند، پس نشانی‌هایشان هرگز روی زنجیره نمی‌رود و فقط تا وقتی آنلاین‌اند اینجا نشان داده می‌شود.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>فقط رله‌هایی که اکنون آنلاین‌اند</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>رله‌هایی که در سه ساعت گذشته گفته‌اند کجا هستند. دیگران هم ثبت شده‌اند: ثبت‌شدن یعنی همتایی وجود دارد، نه اینکه کار می‌کند.</translation>
     </message>
 </context>
 <context>
@@ -3356,6 +3368,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>در حال درخواست انتشار از یک رله از راه رله‌های دیگر… ممکن است یک دقیقه طول بکشد.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>به‌عنوان رله — تا وقتی کار می‌کنم نشانی‌ام را اعلام کن</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>مسیرهای دیگران از این رایانه می‌گذرد. ثبت شما می‌گوید که رله هستید، نه اینکه کجا: تا وقتی گره شما کار می‌کند، نشانی فعلی‌اش را با امضای کلیدش به شبکه می‌گوید، و هر بار که تغییر کند دوباره، بدون هیچ تراکنشی. چیزی دربارهٔ جای شما روی زنجیره نمی‌رود، و شبکه ظرف سه ساعت پس از توقف گره شما نشانی را فراموش می‌کند. دیگران باید بتوانند به این رایانه روی درگاه %1 (TCP) و %2 (UDP) برسند.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4189,6 +4209,24 @@ reached over the overlay, which is the point of allowing it.</source>
     <message>
         <source>new</source>
         <translation>جدید</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>آنلاین: رله %1 پیش گفت که اینجاست، با امضای کلیدش.
+هر ساعت و هر وقت جابه‌جا شود دوباره این را می‌گوید؛ چیزی دربارهٔ
+جای آن روی زنجیره نگه داشته نمی‌شود.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>رله‌ای که تا وقتی کار می‌کند می‌گوید کجاست و در سه ساعت گذشته
+این را نگفته است: کار نمی‌کند، یا از اینجا در دسترس نیست.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>رله، آفلاین</translation>
     </message>
 </context>
 <context>
@@ -5096,6 +5134,22 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>با راه‌اندازی دوباره برنامه آغاز می‌شود.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>نشانی اعلام‌شده</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>هیچ — این گره به‌عنوان رله‌ای که نشانی‌اش را اعلام می‌کند ثبت نشده است</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1، امضاشده %2 پیش</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>جایی که این رله به شبکه می‌گوید هست، با امضای کلیدش. هر ساعت و هر وقت نشانی تغییر کند دوباره این را می‌گوید؛ هیچ‌کدام روی زنجیره نیست.</translation>
     </message>
 </context>
 <context>

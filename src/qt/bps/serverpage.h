@@ -90,6 +90,7 @@ private:
     QLabel* m_staking{nullptr};
     QLabel* m_users{nullptr};
     QLabel* m_payout{nullptr};
+    QLabel* m_announced{nullptr}; //!< where this relay announces it is, if it does
     QCheckBox* m_acceptlistings{nullptr};
     QSpinBox* m_maxlistedusers{nullptr};
     QLineEdit* m_listingwallet{nullptr};

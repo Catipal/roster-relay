@@ -898,6 +898,8 @@ public:
     // next time DisconnectNodes() runs
     std::atomic_bool fDisconnect{false};
     bool fSentAddr{false};
+    //! Relay addresses are handed over once per connection (roster/relayaddr.h).
+    std::atomic_bool m_sent_relay_addrs{false};
     CSemaphoreGrant grantOutbound;
     std::atomic<int> nRefCount{0};
 

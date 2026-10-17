@@ -1405,7 +1405,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Protějšky se ohlašují v řetězci, ne na serveru, takže tento seznam je pro všechny stejný a nikdo ho nemůže upravit.</translation>
+        <translation type="vanished">Protějšky se ohlašují v řetězci, ne na serveru, takže tento seznam je pro všechny stejný a nikdo ho nemůže upravit.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1570,6 +1570,18 @@ Klíč pro obnovení se vám zobrazí jednou. Zapište si ho: je to jediný způ
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Vaše identita byla zveřejněna v transakci %1. Vaše příští obnovení zápisu k ní připojí klíč tohoto uzlu.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Protějšky se ohlašují v řetězci, ne na serveru, takže tento seznam je pro všechny stejný a nikdo ho nemůže upravit. Relé říkají, kde jsou, dokud běží, takže jejich adresy nikdy nejdou do řetězce a zobrazují se tu jen, dokud jsou online.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Jen relé, která jsou teď online</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Relé, která za poslední tři hodiny řekla, kde jsou. Ostatní jsou zapsána také: zápis říká, že protějšek existuje, ne že běží.</translation>
     </message>
 </context>
 <context>
@@ -3371,6 +3383,14 @@ Klíč pro obnovení se vám zobrazí jednou. Zapište si ho: je to jediný způ
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Žádáme jiné relé přes další relé o zveřejnění… může to trvat minutu.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Jako relé — oznamovat mou adresu, dokud běžím</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Cesty ostatních vedou přes tento počítač. Váš zápis říká, že jste relé, ale ne kde: dokud váš uzel běží, sděluje síti svou aktuální adresu podepsanou svým klíčem, a znovu pokaždé, když se změní, bez jakékoli transakce. Nic o tom, kde jste, nejde do řetězce, a síť adresu zapomene do tří hodin od zastavení vašeho uzlu. Ostatní musí tento počítač zastihnout na portu %1 (TCP) a %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4216,6 +4236,24 @@ zastihnout přes překryvnou síť, a proto je to povoleno.</translation>
     <message>
         <source>new</source>
         <translation>nové</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Online: relé před %1 řeklo, že je tady, podepsáno svým klíčem.
+Říká to znovu každou hodinu a když se přesune; nic o tom,
+kde je, se v řetězci neuchovává.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Relé, které říká, kde je, dokud běží, a neřeklo to za poslední
+tři hodiny: neběží, nebo odsud není dosažitelné.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>relé, offline</translation>
     </message>
 </context>
 <context>
@@ -5125,6 +5163,22 @@ Toto můžete kdykoli změnit na stránce Server.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Spustí se po restartu klienta.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Oznámená adresa</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>žádná — tento uzel není zapsán jako relé, které oznamuje svou adresu</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, podepsáno před %2</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Kde toto relé síti říká, že je, podepsáno svým klíčem. Říká to znovu každou hodinu a když se adresa změní; nic z toho není v řetězci.</translation>
     </message>
 </context>
 <context>

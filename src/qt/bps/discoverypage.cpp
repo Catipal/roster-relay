@@ -21,6 +21,7 @@
 #include <univalue.h>
 
 #include <QApplication>
+#include <QCheckBox>
 #include <QClipboard>
 #include <QDateTime>
 #include <QGridLayout>
@@ -55,6 +56,29 @@ const int ROSTER_PAGE = 500;
 
 //! The roster moves at block pace, so polling faster than this buys nothing.
 const int REFRESH_MS = 20000;
+
+//! The text filter, and optionally only relays that have said where they are
+//! in the last three hours.
+class RosterFilter : public QSortFilterProxyModel
+{
+public:
+    explicit RosterFilter(QObject* parent) : QSortFilterProxyModel(parent) {}
+    void SetOnlineOnly(bool on)
+    {
+        m_online_only = on;
+        invalidateFilter();
+    }
+
+protected:
+    bool filterAcceptsRow(int row, const QModelIndex& parent) const override
+    {
+        if (m_online_only && !sourceModel()->index(row, 0, parent).data(RosterModel::OnlineRole).toBool()) return false;
+        return QSortFilterProxyModel::filterAcceptsRow(row, parent);
+    }
+
+private:
+    bool m_online_only{false};
+};
 
 //! Peer and address share the spare width equally; the rest fit their contents.
 void SizeColumns(QTableView* table)
@@ -101,7 +125,9 @@ DiscoveryPage::DiscoveryPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_
 
     QLabel* subtitle = new QLabel(
         tr("Peers announce themselves on the chain rather than to a server, so this list "
-           "is the same for everyone and nobody is in a position to edit it."),
+           "is the same for everyone and nobody is in a position to edit it. Relays say "
+           "where they are while they run, so their addresses never go on the chain and "
+           "show here only while they are online."),
         this);
     subtitle->setWordWrap(true);
     subtitle->setEnabled(false);
@@ -160,16 +186,24 @@ DiscoveryPage::DiscoveryPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_
 
     // --- the roster itself ------------------------------------------------
     m_model = new RosterModel(this);
-    m_proxy = new QSortFilterProxyModel(this);
+    RosterFilter* proxy = new RosterFilter(this);
+    m_proxy = proxy;
     m_proxy->setSourceModel(m_model);
     m_proxy->setFilterCaseSensitivity(Qt::CaseInsensitive);
     m_proxy->setFilterKeyColumn(-1);
 
+    QHBoxLayout* filter_row = new QHBoxLayout();
     QLineEdit* filter = new QLineEdit(this);
     filter->setPlaceholderText(tr("Find a peer or an address"));
     filter->setClearButtonEnabled(true);
     connect(filter, &QLineEdit::textChanged, m_proxy, &QSortFilterProxyModel::setFilterFixedString);
-    outer->addWidget(filter);
+    QCheckBox* online = new QCheckBox(tr("Only relays online now"), this);
+    online->setToolTip(tr("Relays that said where they are in the last three hours. Others are listed "
+                          "too: being listed says a peer exists, not that it is running."));
+    connect(online, &QCheckBox::toggled, this, [proxy](bool on) { proxy->SetOnlineOnly(on); });
+    filter_row->addWidget(filter, 1);
+    filter_row->addWidget(online);
+    outer->addLayout(filter_row);
 
     m_table = new QTableView(this);
     m_table->setModel(m_proxy);

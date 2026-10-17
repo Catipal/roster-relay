@@ -25,6 +25,9 @@ static const int SECONDS_PER_BLOCK = 180;
 /** "about 2 months", "11 days", "under an hour". Never a block count. */
 QString HumanBlocks(int blocks);
 
+/** The same, for a span given in seconds. */
+QString HumanSeconds(qint64 seconds);
+
 /** The first and last few characters of a key, enough to recognise one. */
 QString ShortKey(const QString& hex);
 

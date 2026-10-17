@@ -1394,7 +1394,7 @@ Chỉ có thể ký với các địa chỉ loại &apos;legacy&apos;.</translat
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Các nút ngang hàng tự công bố trên chuỗi chứ không phải trên máy chủ, nên danh sách này giống nhau với mọi người và không ai chỉnh sửa được.</translation>
+        <translation type="vanished">Các nút ngang hàng tự công bố trên chuỗi chứ không phải trên máy chủ, nên danh sách này giống nhau với mọi người và không ai chỉnh sửa được.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1559,6 +1559,18 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Danh tính của bạn đã được công bố trong giao dịch %1. Lần gia hạn niêm yết tiếp theo sẽ gắn khóa của nút này vào nó.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Các nút ngang hàng tự công bố trên chuỗi chứ không phải trên máy chủ, nên danh sách này giống nhau với mọi người và không ai chỉnh sửa được. Các trạm chuyển tiếp cho biết chúng ở đâu khi đang chạy, nên địa chỉ của chúng không bao giờ lên chuỗi và chỉ hiện ở đây khi chúng đang trực tuyến.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Chỉ các trạm chuyển tiếp đang trực tuyến</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Các trạm chuyển tiếp đã cho biết chúng ở đâu trong ba giờ qua. Những nút khác cũng được niêm yết: được niêm yết nghĩa là một nút ngang hàng tồn tại, không phải là nó đang chạy.</translation>
     </message>
 </context>
 <context>
@@ -3354,6 +3366,14 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Đang nhờ một trạm chuyển tiếp, qua các trạm khác, công bố… việc này có thể mất một phút.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Làm trạm chuyển tiếp — công bố địa chỉ của tôi khi tôi đang chạy</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Đường đi của người khác đi qua máy tính này. Bản niêm yết của bạn cho biết bạn là trạm chuyển tiếp, không cho biết ở đâu: khi nút của bạn đang chạy, nó cho mạng biết địa chỉ hiện tại của nó, được ký bằng khóa của nó, và cho biết lại mỗi khi địa chỉ thay đổi, không cần giao dịch nào. Không có gì về nơi bạn ở được đưa lên chuỗi, và mạng quên địa chỉ trong vòng ba giờ sau khi nút của bạn dừng. Người khác phải kết nối được tới máy tính này ở cổng %1 (TCP) và %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4187,6 +4207,24 @@ liên lạc với nó qua mạng phủ, đó chính là lý do cho phép điều
     <message>
         <source>new</source>
         <translation>mới</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Trực tuyến: trạm chuyển tiếp đã cho biết %1 trước rằng nó ở đây, ký bằng khóa của nó.
+Nó cho biết lại mỗi giờ và khi di chuyển; không có gì về
+nơi nó ở được lưu trên chuỗi.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Một trạm chuyển tiếp cho biết nó ở đâu khi đang chạy, nhưng chưa cho biết trong
+ba giờ qua: nó không chạy, hoặc không thể kết nối từ đây.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>trạm chuyển tiếp, ngoại tuyến</translation>
     </message>
 </context>
 <context>
@@ -5094,6 +5132,22 @@ Bạn có thể thay đổi điều này bất cứ lúc nào ở trang Máy ch�
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Bắt đầu khi khởi động lại ứng dụng.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Địa chỉ đã công bố</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>không có — nút này không được niêm yết là trạm chuyển tiếp công bố địa chỉ của mình</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, đã ký %2 trước</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Nơi trạm chuyển tiếp này cho mạng biết nó đang ở, ký bằng khóa của nó. Nó cho biết lại mỗi giờ và khi địa chỉ thay đổi; không có gì trong số đó nằm trên chuỗi.</translation>
     </message>
 </context>
 <context>

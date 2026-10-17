@@ -48,6 +48,17 @@ To be a relay that pays for other peers' listings, turn on "Pay to list peers
 that ask through the overlay" on the Server page. It spends your coins, so it
 is off until you turn it on, and the node has to be staking.
 
+A relay need not put its address on the chain. Publish with "As a relay -
+announce my address while I run": the listing says you are a relay and not
+where, and while your node runs it tells the network its current address,
+signed with its key, every hour and whenever the address changes - no
+transaction, and the network forgets it within three hours of your node
+stopping. Others must be able to reach your computer at the peer-to-peer port
+(TCP) and the one above it (UDP); on a home connection, forward both. The node
+announces the address most of its peers see it at; to name one yourself, start
+it with -relayaddress=<ip>. The Server page shows what it announces, and the
+Discovery tab shows a relay's address only while it is online.
+
 
 Mail
 ----

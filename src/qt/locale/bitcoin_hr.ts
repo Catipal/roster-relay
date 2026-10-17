@@ -1405,7 +1405,7 @@ Potpisivanje je moguće samo s adresama vrste &apos;legacy&apos;.</translation>
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Peerovi se najavljuju u lancu umjesto na poslužitelju, pa je ovaj popis isti za sve i nitko ga ne može mijenjati.</translation>
+        <translation type="vanished">Peerovi se najavljuju u lancu umjesto na poslužitelju, pa je ovaj popis isti za sve i nitko ga ne može mijenjati.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1570,6 +1570,18 @@ Ključ za oporavak bit će vam prikazan jednom. Zapišite ga: to je jedini nači
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Vaš identitet objavljen je u transakciji %1. Vaše sljedeće obnavljanje upisa veže ključ ovog čvora uz njega.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Peerovi se najavljuju u lancu umjesto na poslužitelju, pa je ovaj popis isti za sve i nitko ga ne može mijenjati. Releji govore gdje su dok rade, pa njihove adrese nikad ne idu u lanac i ovdje se prikazuju samo dok su na mreži.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Samo releji koji su sada na mreži</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Releji koji su u posljednja tri sata rekli gdje su. Ostali su također upisani: upis kaže da peer postoji, ne da radi.</translation>
     </message>
 </context>
 <context>
@@ -3371,6 +3383,14 @@ Ključ za oporavak bit će vam prikazan jednom. Zapišite ga: to je jedini nači
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Molimo relej preko drugih releja da je objavi… to može potrajati minutu.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Kao relej — objavljuj moju adresu dok radim</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Putovi drugih prolaze kroz ovo računalo. Vaš upis kaže da ste relej, ali ne gdje: dok vaš čvor radi, govori mreži svoju trenutačnu adresu potpisanu svojim ključem, i ponovno svaki put kad se promijeni, bez ikakve transakcije. Ništa o tome gdje ste ne ide u lanac, a mreža zaboravlja adresu unutar tri sata nakon što se vaš čvor zaustavi. Drugi moraju moći doći do ovog računala na priključku %1 (TCP) i %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4216,6 +4236,24 @@ doseći preko prekrivne mreže, zbog čega je to i dopušteno.</translation>
     <message>
         <source>new</source>
         <translation>novo</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Na mreži: relej je prije %1 rekao da je ovdje, potpisano svojim ključem.
+To ponavlja svaki sat i kad se premjesti; ništa o tome
+gdje je ne čuva se u lancu.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Relej koji govori gdje je dok radi, a to nije rekao u posljednja
+tri sata: ne radi ili nije dostupan odavde.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>relej, izvan mreže</translation>
     </message>
 </context>
 <context>
@@ -5126,6 +5164,22 @@ To možete promijeniti bilo kada na stranici Poslužitelj.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Pokreće se kad se klijent ponovno pokrene.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Objavljena adresa</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>nema — ovaj čvor nije upisan kao relej koji objavljuje svoju adresu</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, potpisano prije %2</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Gdje ovaj relej kaže mreži da je, potpisano svojim ključem. To ponavlja svaki sat i kad se adresa promijeni; ništa od toga nije u lancu.</translation>
     </message>
 </context>
 <context>

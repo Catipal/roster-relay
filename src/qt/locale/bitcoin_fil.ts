@@ -1400,7 +1400,7 @@ Maaari lamang pumirma gamit ang mga address na uri ng &apos;legacy&apos;.</trans
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Inaanunsyo ng mga peer ang kanilang sarili sa chain at hindi sa isang server, kaya pareho ang listahang ito para sa lahat at walang makapag-e-edit nito.</translation>
+        <translation type="vanished">Inaanunsyo ng mga peer ang kanilang sarili sa chain at hindi sa isang server, kaya pareho ang listahang ito para sa lahat at walang makapag-e-edit nito.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1565,6 +1565,18 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Nailathala ang iyong pagkakakilanlan sa transaksyon %1. Itatali ng susunod mong pag-renew ng pagkakalista ang susi ng node na ito rito.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Inaanunsyo ng mga peer ang kanilang sarili sa chain at hindi sa isang server, kaya pareho ang listahang ito para sa lahat at walang makapag-e-edit nito. Sinasabi ng mga relay kung nasaan sila habang tumatakbo, kaya hindi kailanman napupunta sa chain ang kanilang mga address at lumalabas lang dito habang online sila.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Mga relay na online ngayon lamang</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Mga relay na nagsabi kung nasaan sila sa nakalipas na tatlong oras. Nakalista rin ang iba: ang pagkakalista ay nagsasabing umiiral ang isang peer, hindi na tumatakbo ito.</translation>
     </message>
 </context>
 <context>
@@ -3363,6 +3375,14 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Hinihiling sa isang relay sa pamamagitan ng ibang relay na ilathala ito… maaari itong umabot nang isang minuto.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Bilang relay — ianunsyo ang aking address habang tumatakbo ako</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Dumadaan sa computer na ito ang mga path ng iba. Sinasabi ng iyong listing na relay ka, hindi kung nasaan: habang tumatakbo ang iyong node, sinasabi nito sa network ang kasalukuyang address nito, nilagdaan ng susi nito, at muli tuwing nagbabago ito, nang walang transaksyon. Walang anuman tungkol sa kung nasaan ka ang napupunta sa chain, at nakakalimutan ng network ang address sa loob ng tatlong oras matapos huminto ang iyong node. Dapat maabot ng iba ang computer na ito sa port %1 (TCP) at %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4203,6 +4223,24 @@ itong maabot sa pamamagitan ng overlay, na siyang dahilan kung bakit ito pinapay
     <message>
         <source>new</source>
         <translation>bago</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Online: sinabi ng relay %1 na ang nakalipas na narito ito, nilagdaan ng susi nito.
+Sinasabi ito muli bawat oras at kapag lumilipat; walang anuman tungkol
+sa kung nasaan ito ang itinatago sa chain.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Isang relay na nagsasabi kung nasaan ito habang tumatakbo, at hindi ito nasabi sa
+nakalipas na tatlong oras: hindi ito tumatakbo, o hindi ito maabot mula rito.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>relay, offline</translation>
     </message>
 </context>
 <context>
@@ -5111,6 +5149,22 @@ Mababago mo ito anumang oras sa pahinang Server.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Magsisimula kapag na-restart ang client.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Inanunsyong address</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>wala — hindi nakalista ang node na ito bilang relay na nag-aanunsyo ng address nito</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, nilagdaan %2 na ang nakalipas</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Kung saan sinasabi ng relay na ito sa network na naroon ito, nilagdaan ng susi nito. Sinasabi ito muli bawat oras at kapag nagbabago ang address; wala rito ang nasa chain.</translation>
     </message>
 </context>
 <context>

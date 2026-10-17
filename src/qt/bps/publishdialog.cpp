@@ -17,7 +17,9 @@
 
 #include <amount.h>
 #include <chainparams.h>
+#include <net.h>
 #include <overlay/gateway.h>
+#include <overlay/socket.h>
 #include <roster/listing.h>
 #include <util/system.h>
 #include <roster/record.h>
@@ -127,6 +129,21 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
     where_layout->addWidget(gateway_note);
     if (!gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY)) m_gateway->setEnabled(false);
 
+    // A relay without its address on the chain: it says where it is while it
+    // runs, signed with its key (roster/relayaddr.h).
+    m_as_relay = new QRadioButton(tr("As a relay \xe2\x80\x94 announce my address while I run"), where);
+    where_layout->addWidget(m_as_relay);
+    QLabel* relay_note = SmallNote(
+        tr("Others' paths run through this computer. Your listing says you are a relay and not where: "
+           "while your node runs it tells the network its current address, signed with its key, and "
+           "again whenever it changes, with no transaction. Nothing about where you are goes on the "
+           "chain, and the network forgets the address within three hours of your node stopping. "
+           "Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).")
+            .arg(GetListenPort()).arg(overlay::OverlayPortFor(GetListenPort())),
+        where);
+    relay_note->setContentsMargins(24, 0, 0, 0);
+    where_layout->addWidget(relay_note);
+
     m_at_address = new QRadioButton(tr("At an address I publish"), where);
     where_layout->addWidget(m_at_address);
 
@@ -203,6 +220,7 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
     connect(m_buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
     connect(m_publish, &QPushButton::clicked, this, &PublishDialog::onPublish);
     connect(m_at_address, &QRadioButton::toggled, this, &PublishDialog::onAddressChoiceChanged);
+    connect(m_as_relay, &QRadioButton::toggled, this, &PublishDialog::onAddressChoiceChanged);
     connect(m_payer, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, &PublishDialog::onPayerChanged);
     connect(&m_rpc, &BpsRpc::result, this, &PublishDialog::onRpcResult);
@@ -326,8 +344,9 @@ void PublishDialog::onPayerChanged()
 void PublishDialog::onAddressChoiceChanged()
 {
     m_address_row->setEnabled(m_at_address->isChecked());
-    // Never a gateway at a published address: that would say where an exit is.
-    if (m_gateway) m_gateway->setEnabled(!m_at_address->isChecked() && gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY));
+    // Never a gateway at an address, published or announced: that would say
+    // where an exit is. A relay lists its gateway apart, from the Server page.
+    if (m_gateway) m_gateway->setEnabled(m_nowhere->isChecked() && gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY));
 }
 
 void PublishDialog::SetBusy(bool busy)
@@ -339,6 +358,7 @@ void PublishDialog::SetBusy(bool busy)
     m_payer->setEnabled(!busy && m_payer->count() > 1);
     m_length->setEnabled(!busy);
     m_nowhere->setEnabled(!busy);
+    m_as_relay->setEnabled(!busy);
     m_at_address->setEnabled(!busy);
     if (!busy) onPayerChanged();
 }
@@ -361,7 +381,9 @@ bool PublishDialog::BuildOptions(UniValue& options)
     options = UniValue(UniValue::VOBJ);
     if (m_gateway_key) {
         options.pushKV("key", "gateway");
-    } else if (!m_at_address->isChecked() && m_gateway->isEnabled() && m_gateway->isChecked()) {
+    } else if (m_as_relay->isChecked()) {
+        options.pushKV("relay", true);
+    } else if (m_nowhere->isChecked() && m_gateway->isEnabled() && m_gateway->isChecked()) {
         options.pushKV("gateway", true);
     }
     if (!m_gateway_key && m_at_address->isChecked()) {

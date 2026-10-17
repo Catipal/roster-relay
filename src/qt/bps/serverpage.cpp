@@ -38,6 +38,7 @@
 #include <QScrollArea>
 #include <QSettings>
 #include <QSpinBox>
+#include <QDateTime>
 #include <QStringList>
 #include <QTimer>
 #include <QVBoxLayout>
@@ -92,6 +93,7 @@ bool InterfaceAvailable()
 const char* TAG_PAYOUT = "server:payout";
 const char* TAG_MAIL = "server:mail";
 const char* TAG_GATEWAY = "server:gateway";
+const char* TAG_ROSTERINFO = "server:rosterinfo";
 
 //! The roster moves at block pace; so do the figures here.
 const int REFRESH_MS = 20000;
@@ -296,9 +298,13 @@ QWidget* ServerPage::MakeRelayCard()
     m_users = new QLabel(tr("\xe2\x80\x94"), card);
     m_payout = new QLabel(tr("\xe2\x80\x94"), card);
     m_payout->setWordWrap(true);
+    m_announced = new QLabel(tr("\xe2\x80\x94"), card);
+    m_announced->setWordWrap(true);
+    m_announced->setTextInteractionFlags(Qt::TextSelectableByMouse);
     status->addRow(tr("Staking"), m_staking);
     status->addRow(tr("Peers listed here"), m_users);
     status->addRow(tr("Next block it stakes"), m_payout);
+    status->addRow(tr("Address announced"), m_announced);
     body->addLayout(status);
 
     QFrame* rule = new QFrame(card);
@@ -750,6 +756,7 @@ void ServerPage::Refresh()
         m_rpc.Call(TAG_PAYOUT, "getrelaypayout");
         m_rpc.Call(TAG_MAIL, "getmailinfo");
         m_rpc.Call(TAG_GATEWAY, "getgatewayinfo");
+        m_rpc.Call(TAG_ROSTERINFO, "getrosterinfo");
     }
 }
 
@@ -791,6 +798,25 @@ void ServerPage::onRpcResult(const QString& tag, const UniValue& value)
 {
     if (tag == TAG_GATEWAY) {
         ShowGateway(value);
+        return;
+    }
+    if (tag == TAG_ROSTERINFO) {
+        // A relay listed to announce its address says where it is while it
+        // runs, instead of on the chain (roster/relayaddr.h).
+        const UniValue& announcing = find_value(value, "announcing");
+        if (!announcing.isObject()) {
+            m_announced->setText(tr("none \xe2\x80\x94 this node is not listed as a relay that announces its address"));
+            m_announced->setToolTip(QString());
+            return;
+        }
+        QStringList where;
+        const UniValue& eps = find_value(announcing, "endpoints");
+        for (size_t i = 0; eps.isArray() && i < eps.size(); ++i) where << BpsUtil::DescribeEndpoint(eps[i]);
+        const UniValue& time = find_value(announcing, "time");
+        const qint64 age = time.isNum() ? std::max<qint64>(0, QDateTime::currentSecsSinceEpoch() - time.get_int64()) : 0;
+        m_announced->setText(tr("%1, signed %2 ago").arg(where.join(", "), BpsUtil::HumanSeconds(age)));
+        m_announced->setToolTip(tr("Where this relay tells the network it is, signed with its key. It says so "
+                                   "again every hour and when the address changes; none of it is on the chain."));
         return;
     }
     if (tag == TAG_MAIL) {

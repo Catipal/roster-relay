@@ -1406,7 +1406,7 @@ Podpisywanie jest możliwe tylko z adresami typu „legacy”.</translation>
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Peery ogłaszają się w łańcuchu, a nie na serwerze, więc ta lista jest dla wszystkich taka sama i nikt nie może jej edytować.</translation>
+        <translation type="vanished">Peery ogłaszają się w łańcuchu, a nie na serwerze, więc ta lista jest dla wszystkich taka sama i nikt nie może jej edytować.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1571,6 +1571,18 @@ Klucz odzyskiwania zostanie pokazany raz. Zapisz go: to jedyny sposób, by powst
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Twoja tożsamość została opublikowana w transakcji %1. Kolejne odnowienie wpisu powiąże z nią klucz tego węzła.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Peery ogłaszają się w łańcuchu, a nie na serwerze, więc ta lista jest dla wszystkich taka sama i nikt nie może jej edytować. Przekaźniki mówią, gdzie są, dopóki działają, więc ich adresy nigdy nie trafiają do łańcucha i są tu widoczne tylko wtedy, gdy są online.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Tylko przekaźniki, które są teraz online</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Przekaźniki, które w ciągu ostatnich trzech godzin powiedziały, gdzie są. Pozostałe też są wpisane: wpis mówi, że peer istnieje, a nie że działa.</translation>
     </message>
 </context>
 <context>
@@ -3372,6 +3384,14 @@ Klucz odzyskiwania zostanie pokazany raz. Zapisz go: to jedyny sposób, by powst
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Prośba do przekaźnika, przez inne przekaźniki, o publikację… to może potrwać minutę.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Jako przekaźnik — ogłaszaj mój adres, dopóki działam</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Ścieżki innych przechodzą przez ten komputer. Twój wpis mówi, że jesteś przekaźnikiem, ale nie gdzie: dopóki twój węzeł działa, podaje sieci swój bieżący adres podpisany swoim kluczem, i ponownie za każdym razem, gdy się zmieni, bez żadnej transakcji. Nic o tym, gdzie jesteś, nie trafia do łańcucha, a sieć zapomina adres w ciągu trzech godzin od zatrzymania twojego węzła. Inni muszą móc dotrzeć do tego komputera na porcie %1 (TCP) i %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4217,6 +4237,24 @@ do niego dotrzeć przez sieć nakładkową i właśnie po to jest to dozwolone.<
     <message>
         <source>new</source>
         <translation>nowy</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Online: przekaźnik %1 temu powiedział, że jest tutaj, podpisane jego kluczem.
+Mówi to ponownie co godzinę i gdy się przenosi; nic o tym,
+gdzie jest, nie jest przechowywane w łańcuchu.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Przekaźnik, który mówi, gdzie jest, dopóki działa, a nie powiedział tego
+w ciągu ostatnich trzech godzin: nie działa albo jest stąd nieosiągalny.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>przekaźnik, offline</translation>
     </message>
 </context>
 <context>
@@ -5127,6 +5165,22 @@ Możesz to zmienić w każdej chwili na stronie Serwer.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Zaczyna działać po ponownym uruchomieniu klienta.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Ogłoszony adres</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>brak — ten węzeł nie jest wpisany jako przekaźnik ogłaszający swój adres</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, podpisano %2 temu</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Gdzie ten przekaźnik mówi sieci, że jest, podpisane jego kluczem. Mówi to ponownie co godzinę i gdy adres się zmienia; nic z tego nie ma w łańcuchu.</translation>
     </message>
 </context>
 <context>

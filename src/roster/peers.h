@@ -18,6 +18,10 @@
 class CAddress;
 class RosterIndex;
 
+namespace roster {
+class RelayAddressBook;
+}
+
 /**
  * Turning roster records into peers worth dialling.
  *
@@ -57,6 +61,9 @@ static constexpr std::chrono::minutes ROSTER_PEERS_INTERVAL{30};
  */
 bool EndpointToService(const Endpoint& ep, CService& out);
 
+/** The other way, for IPv4 and IPv6 only: false for anything else, or port 0. */
+bool ServiceToEndpoint(const CService& service, Endpoint& out);
+
 /** One roster member, as the overlay needs it: who it is, where, and its standing. */
 struct RelayInfo {
     KeyBytes key;
@@ -78,21 +85,28 @@ struct RelayInfo {
  * three addresses is still one relay, and counting it three times would let it
  * occupy three path positions.
  *
+ * A relay listed to announce its address (SERVICE_RELAY_CAPABLE) is dialled at
+ * the address in its announcement in `book` that still counts at `now`, before
+ * any on its record; with neither, it is not running, and is left out.
+ *
  * `allow_local` keeps loopback and private endpoints, for regtest only: every
  * node of a functional test listens on 127.0.0.1, and a test of paths needs
  * them to count as relays.
  */
 bool CollectRelays(const RosterIndex& index, int tip_height,
-                   std::vector<RelayInfo>& out, bool allow_local = false);
+                   std::vector<RelayInfo>& out, bool allow_local = false,
+                   const RelayAddressBook* book = nullptr, int64_t now = 0);
 
 /**
  * The relay set every node agrees on at `height`: keys the roster lists as live
- * there with an endpoint any node could dial, in ascending key order.
+ * there with an endpoint any node could dial, or listed to announce their
+ * address (SERVICE_RELAY_CAPABLE), in ascending key order.
  *
  * Unlike CollectRelays, nothing about this node enters into it - not which
- * networks it can reach, not revocations it has seen ahead of the chain -
- * because meeting points are computed from it on both sides of a meeting and
- * have to come out the same. `allow_local` as for CollectRelays.
+ * networks it can reach, not revocations it has seen ahead of the chain, not
+ * which relays it has heard announce - because meeting points are computed
+ * from it on both sides of a meeting and have to come out the same.
+ * `allow_local` as for CollectRelays.
  */
 bool AgreedRelays(const RosterIndex& index, int height, std::vector<KeyBytes>& out, bool allow_local = false);
 
@@ -113,13 +127,22 @@ bool CollectGateways(const RosterIndex& index, int height, std::vector<KeyBytes>
 bool LiveAnnouncement(const RosterIndex& index, const KeyBytes& key, int height, Record& out);
 
 /**
+ * Whether the roster lists `key` at the index's height as a relay that
+ * announces its address, and this node has not seen it revoked: the keys whose
+ * address announcements are taken and passed on (roster/relayaddr.h). False
+ * when the roster index is off.
+ */
+bool ListedAsAnnouncingRelay(const KeyBytes& key);
+
+/**
  * Re-read the relay set into the overlay's path selector, unless it was read
  * at the index's current height less than `max_age` seconds ago, and return it.
  *
  * Read at the roster index's own height, on regtest with local endpoints
- * kept. Rate limited, because it reads the index and its callers include
- * relays deciding whether to dial for a stranger. Empty when the overlay or
- * the index is off.
+ * kept, with the relay addresses this node holds. Rate limited, because it
+ * reads the index and its callers include relays deciding whether to dial for
+ * a stranger; read again at once when a relay announces a new address. Empty
+ * when the overlay or the index is off.
  */
 std::vector<RelayInfo> FreshRelays(int64_t max_age = 10);
 

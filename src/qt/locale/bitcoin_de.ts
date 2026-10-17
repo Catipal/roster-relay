@@ -1400,7 +1400,7 @@ Das Signieren ist nur mit Adressen vom Typ &apos;Legacy&apos; möglich.</transla
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Peers kündigen sich auf der Kette an statt bei einem Server, daher ist diese Liste für alle gleich und niemand kann sie bearbeiten.</translation>
+        <translation type="vanished">Peers kündigen sich auf der Kette an statt bei einem Server, daher ist diese Liste für alle gleich und niemand kann sie bearbeiten.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1565,6 +1565,18 @@ Ihnen wird einmal ein Wiederherstellungsschlüssel angezeigt. Schreiben Sie ihn 
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Ihre Identität ist in Transaktion %1 veröffentlicht. Ihre nächste Erneuerung des Eintrags verknüpft den Schlüssel dieses Knotens damit.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Peers kündigen sich auf der Kette an statt bei einem Server, daher ist diese Liste für alle gleich und niemand kann sie bearbeiten. Relays sagen, wo sie sind, solange sie laufen, daher kommen ihre Adressen nie auf die Kette und erscheinen hier nur, solange sie online sind.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Nur Relays, die jetzt online sind</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Relays, die in den letzten drei Stunden gesagt haben, wo sie sind. Andere sind ebenfalls eingetragen: Eingetragen zu sein sagt, dass ein Peer existiert, nicht dass er läuft.</translation>
     </message>
 </context>
 <context>
@@ -3363,6 +3375,14 @@ Ihnen wird einmal ein Wiederherstellungsschlüssel angezeigt. Schreiben Sie ihn 
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Bitte ein Relay über andere Relays, ihn zu veröffentlichen… das kann eine Minute dauern.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Als Relay — meine Adresse bekanntgeben, solange ich laufe</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Die Pfade anderer laufen über diesen Computer. Ihr Eintrag sagt, dass Sie ein Relay sind, aber nicht wo: Solange Ihr Knoten läuft, teilt er dem Netz seine aktuelle Adresse mit, signiert mit seinem Schlüssel, und erneut, sobald sie sich ändert, ohne Transaktion. Nichts darüber, wo Sie sind, kommt auf die Kette, und das Netz vergisst die Adresse innerhalb von drei Stunden, nachdem Ihr Knoten anhält. Andere müssen diesen Computer an Port %1 (TCP) und %2 (UDP) erreichen können.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4202,6 +4222,24 @@ reached over the overlay, which is the point of allowing it.</source>
     <message>
         <source>new</source>
         <translation>neu</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Online: Das Relay hat vor %1 gesagt, dass es hier ist, signiert mit seinem Schlüssel.
+Es sagt das jede Stunde erneut und wenn es umzieht; nichts darüber,
+wo es ist, wird auf der Kette gespeichert.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Ein Relay, das sagt, wo es ist, solange es läuft, und das in den letzten
+drei Stunden nicht gesagt hat: Es läuft nicht oder ist von hier nicht erreichbar.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>Relay, offline</translation>
     </message>
 </context>
 <context>
@@ -5110,6 +5148,22 @@ Sie können das jederzeit auf der Seite Server ändern.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Startet, wenn der Client neu startet.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Bekanntgegebene Adresse</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>keine — dieser Knoten ist nicht als Relay eingetragen, das seine Adresse bekanntgibt</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, vor %2 signiert</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Wo dieses Relay dem Netz zufolge ist, signiert mit seinem Schlüssel. Es sagt das jede Stunde erneut und wenn sich die Adresse ändert; nichts davon steht auf der Kette.</translation>
     </message>
 </context>
 <context>

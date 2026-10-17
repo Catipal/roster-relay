@@ -1400,7 +1400,7 @@ Ondertekening is slegs moontlik met adresse van die tipe &apos;legacy&apos;.</tr
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Eweknieë kondig hulself op die ketting aan in plaas van by &apos;n bediener, so hierdie lys is dieselfde vir almal en niemand kan dit wysig nie.</translation>
+        <translation type="vanished">Eweknieë kondig hulself op die ketting aan in plaas van by &apos;n bediener, so hierdie lys is dieselfde vir almal en niemand kan dit wysig nie.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1565,6 +1565,18 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Jou identiteit is in transaksie %1 gepubliseer. Jou volgende hernuwing van die inskrywing koppel hierdie nodus se sleutel daaraan.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Eweknieë kondig hulself op die ketting aan in plaas van by &apos;n bediener, so hierdie lys is dieselfde vir almal en niemand kan dit wysig nie. Relês sê waar hulle is terwyl hulle loop, so hul adresse gaan nooit op die ketting nie en verskyn hier slegs terwyl hulle aanlyn is.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Slegs relês wat nou aanlyn is</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Relês wat in die laaste drie uur gesê het waar hulle is. Ander word ook gelys: ingeskryf wees sê dat &apos;n eweknie bestaan, nie dat dit loop nie.</translation>
     </message>
 </context>
 <context>
@@ -3363,6 +3375,14 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Vra &apos;n relê deur ander relês om dit te publiseer… dit kan &apos;n minuut neem.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>As &apos;n relê — kondig my adres aan terwyl ek loop</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Ander se paaie loop deur hierdie rekenaar. Jou inskrywing sê dat jy &apos;n relê is en nie waar nie: terwyl jou nodus loop, vertel dit die netwerk sy huidige adres, onderteken met sy sleutel, en weer wanneer dit verander, sonder &apos;n transaksie. Niks oor waar jy is gaan op die ketting nie, en die netwerk vergeet die adres binne drie uur nadat jou nodus stop. Ander moet hierdie rekenaar by poort %1 (TCP) en %2 (UDP) kan bereik.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4202,6 +4222,24 @@ steeds oor die oorlegnetwerk bereik word, wat die punt is van om dit toe te laat
     <message>
         <source>new</source>
         <translation>nuut</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Aanlyn: die relê het %1 gelede gesê dat dit hier is, onderteken met sy sleutel.
+Dit sê dit weer elke uur en wanneer dit skuif; niks oor
+waar dit is, word op die ketting gehou nie.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>&apos;n Relê wat sê waar dit is terwyl dit loop, en dit nie in die laaste
+drie uur gesê het nie: dit loop nie, of is nie van hier af bereikbaar nie.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>relê, vanlyn</translation>
     </message>
 </context>
 <context>
@@ -5110,6 +5148,22 @@ Jy kan dit enige tyd op die Bediener-bladsy verander.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Begin wanneer die kliënt herbegin.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Aangekondigde adres</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>geen — hierdie nodus is nie ingeskryf as &apos;n relê wat sy adres aankondig nie</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, %2 gelede onderteken</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Waar hierdie relê vir die netwerk sê dit is, onderteken met sy sleutel. Dit sê dit weer elke uur en wanneer die adres verander; niks daarvan is op die ketting nie.</translation>
     </message>
 </context>
 <context>

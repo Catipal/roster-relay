@@ -1402,7 +1402,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>עמיתים מכריזים על עצמם בשרשרת ולא בשרת, כך שהרשימה הזו זהה אצל כולם ואיש אינו יכול לערוך אותה.</translation>
+        <translation type="vanished">עמיתים מכריזים על עצמם בשרשרת ולא בשרת, כך שהרשימה הזו זהה אצל כולם ואיש אינו יכול לערוך אותה.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1567,6 +1567,18 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>הזהות שלך פורסמה בעסקה %1. חידוש הרישום הבא שלך קושר אליה את המפתח של הצומת הזה.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>עמיתים מכריזים על עצמם בשרשרת ולא בשרת, כך שהרשימה הזו זהה אצל כולם ואיש אינו יכול לערוך אותה. ממסרים אומרים היכן הם נמצאים כל עוד הם פועלים, כך שהכתובות שלהם לעולם אינן נכנסות לשרשרת ומוצגות כאן רק כל עוד הם מחוברים.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>רק ממסרים שמחוברים עכשיו</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>ממסרים שאמרו היכן הם נמצאים בשלוש השעות האחרונות. גם האחרים רשומים: רישום אומר שעמית קיים, לא שהוא פועל.</translation>
     </message>
 </context>
 <context>
@@ -3365,6 +3377,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>מבקש מממסר דרך ממסרים אחרים לפרסם אותה… זה עשוי לקחת דקה.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>כממסר — להכריז על הכתובת שלי כל עוד אני פועל/ת</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>נתיבים של אחרים עוברים דרך המחשב הזה. הרישום שלך אומר שאת/ה ממסר, לא היכן: כל עוד הצומת שלך פועל, הוא מודיע לרשת את הכתובת הנוכחית שלו, חתומה במפתח שלו, ושוב בכל פעם שהיא משתנה, בלי שום עסקה. שום דבר על המקום שבו את/ה נמצא/ת לא נכנס לשרשרת, והרשת שוכחת את הכתובת בתוך שלוש שעות מעצירת הצומת שלך. אחרים צריכים להיות מסוגלים להגיע למחשב הזה בפורט %1 (TCP) ו־%2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4204,6 +4224,24 @@ reached over the overlay, which is the point of allowing it.</source>
     <message>
         <source>new</source>
         <translation>חדש</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>מחובר: הממסר אמר לפני %1 שהוא כאן, חתום במפתח שלו.
+הוא אומר זאת שוב בכל שעה וכשהוא עובר; שום דבר על
+המקום שבו הוא נמצא אינו נשמר בשרשרת.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>ממסר שאומר היכן הוא נמצא כל עוד הוא פועל, ולא אמר זאת
+בשלוש השעות האחרונות: הוא אינו פועל, או שאי אפשר להגיע אליו מכאן.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>ממסר, לא מחובר</translation>
     </message>
 </context>
 <context>
@@ -5112,6 +5150,22 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>מתחיל כשהלקוח מופעל מחדש.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>כתובת מוכרזת</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>אין — הצומת הזה אינו רשום כממסר שמכריז על הכתובת שלו</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, נחתם לפני %2</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>היכן הממסר הזה אומר לרשת שהוא נמצא, חתום במפתח שלו. הוא אומר זאת שוב בכל שעה וכשהכתובת משתנה; שום דבר מזה אינו בשרשרת.</translation>
     </message>
 </context>
 <context>

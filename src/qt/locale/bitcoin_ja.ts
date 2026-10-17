@@ -1394,7 +1394,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>ピアはサーバーではなくチェーン上で自らを告知するため、このリストは誰にとっても同じで、誰も編集できません。</translation>
+        <translation type="vanished">ピアはサーバーではなくチェーン上で自らを告知するため、このリストは誰にとっても同じで、誰も編集できません。</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1559,6 +1559,18 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>あなたのアイデンティティはトランザクション %1 で公開されました。次回の登録更新でこのノードの鍵がそれに結び付けられます。</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>ピアはサーバーではなくチェーン上で自らを告知するため、このリストは誰にとっても同じで、誰も編集できません。リレーは動いている間、自分がどこにいるかを伝えます。そのためアドレスがチェーンに載ることはなく、ここにはオンラインの間だけ表示されます。</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>今オンラインのリレーのみ</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>直近3時間以内に居場所を伝えたリレー。ほかのピアも登録されています。登録はピアが存在することを示すだけで、動いていることは示しません。</translation>
     </message>
 </context>
 <context>
@@ -3354,6 +3366,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>リレー経由で別のリレーに公開を依頼しています… 1 分ほどかかることがあります。</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>リレーとして — 動いている間、自分のアドレスを告知する</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>他の人の経路がこのコンピューターを通ります。あなたの登録はリレーであることを示しますが、場所は示しません。ノードが動いている間、現在のアドレスを鍵で署名してネットワークに伝え、変わるたびに再び伝えます。トランザクションは不要です。あなたの居場所に関することはチェーンに一切載らず、ノードが止まってから3時間以内にネットワークはアドレスを忘れます。他の人がこのコンピューターのポート %1 (TCP) と %2 (UDP) に到達できる必要があります。</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4187,6 +4207,24 @@ reached over the overlay, which is the point of allowing it.</source>
     <message>
         <source>new</source>
         <translation>新規</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>オンライン: リレーは %1 前に、ここにいると鍵で署名して伝えました。
+毎時、また移動したときに再び伝えます。居場所に関することは
+チェーンに一切保存されません。</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>動いている間は居場所を伝えるリレーですが、直近3時間以内に
+伝えていません。動いていないか、ここから到達できません。</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>リレー、オフライン</translation>
     </message>
 </context>
 <context>
@@ -5094,6 +5132,22 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>クライアントの再起動後に始まります。</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>告知しているアドレス</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>なし — このノードは、アドレスを告知するリレーとして登録されていません</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1、%2 前に署名</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>このリレーがネットワークに伝えている居場所です。鍵で署名されています。毎時、またアドレスが変わったときに再び伝えます。どれもチェーンには載りません。</translation>
     </message>
 </context>
 <context>

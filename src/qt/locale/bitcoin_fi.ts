@@ -1400,7 +1400,7 @@ Allekirjoitus on mahdollista vain &apos;legacy&apos;-tyyppisillä osoitteilla.</
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Vertaiset ilmoittautuvat ketjussa eivätkä palvelimella, joten tämä lista on kaikille sama eikä kukaan voi muokata sitä.</translation>
+        <translation type="vanished">Vertaiset ilmoittautuvat ketjussa eivätkä palvelimella, joten tämä lista on kaikille sama eikä kukaan voi muokata sitä.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1565,6 +1565,18 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Identiteettisi julkaistiin transaktiossa %1. Seuraava merkinnän uusiminen sitoo tämän solmun avaimen siihen.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Vertaiset ilmoittautuvat ketjussa eivätkä palvelimella, joten tämä lista on kaikille sama eikä kukaan voi muokata sitä. Välittäjät kertovat, missä ne ovat, niin kauan kuin ne ovat käynnissä, joten niiden osoitteet eivät koskaan päädy ketjuun ja näkyvät täällä vain, kun ne ovat verkossa.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Vain nyt verkossa olevat välittäjät</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Välittäjät, jotka ovat kertoneet sijaintinsa viimeisten kolmen tunnin aikana. Muutkin on merkitty: merkintä kertoo, että vertainen on olemassa, ei että se on käynnissä.</translation>
     </message>
 </context>
 <context>
@@ -3363,6 +3375,14 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Pyydetään välittäjää muiden välittäjien kautta julkaisemaan se… tämä voi kestää minuutin.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Välittäjänä — ilmoita osoitteeni niin kauan kuin olen käynnissä</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Muiden polut kulkevat tämän tietokoneen kautta. Merkintäsi kertoo, että olet välittäjä, mutta ei missä: niin kauan kuin solmusi on käynnissä, se kertoo verkolle nykyisen osoitteensa avaimellaan allekirjoitettuna, ja uudelleen aina sen muuttuessa, ilman tapahtumaa. Mitään sijainnistasi ei päädy ketjuun, ja verkko unohtaa osoitteen kolmen tunnin kuluessa solmusi pysähtymisestä. Muiden on tavoitettava tämä tietokone portista %1 (TCP) ja %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4202,6 +4222,24 @@ silti tavoittaa peittoverkon kautta, mikä on tämän sallimisen tarkoitus.</tra
     <message>
         <source>new</source>
         <translation>uusi</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Verkossa: välittäjä kertoi %1 sitten olevansa täällä, avaimellaan allekirjoitettuna.
+Se kertoo sen uudelleen joka tunti ja siirtyessään; mitään sen
+sijainnista ei säilytetä ketjussa.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Välittäjä, joka kertoo sijaintinsa ollessaan käynnissä, mutta ei ole kertonut sitä
+viimeisten kolmen tunnin aikana: se ei ole käynnissä tai sitä ei tavoiteta täältä.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>välittäjä, ei verkossa</translation>
     </message>
 </context>
 <context>
@@ -5110,6 +5148,22 @@ Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Alkaa, kun asiakasohjelma käynnistetään uudelleen.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Ilmoitettu osoite</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>ei mitään — tätä solmua ei ole merkitty osoitteensa ilmoittavaksi välittäjäksi</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, allekirjoitettu %2 sitten</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Missä tämä välittäjä kertoo verkolle olevansa, avaimellaan allekirjoitettuna. Se kertoo sen uudelleen joka tunti ja osoitteen muuttuessa; mitään siitä ei ole ketjussa.</translation>
     </message>
 </context>
 <context>

@@ -22,6 +22,9 @@ struct RosterRow {
     int age{0};       //!< blocks of continuous history, 0 until it is deep enough to count
     int since{-1};    //!< where that history starts
     QString identity; //!< the identity running it, full hex, or empty
+    bool relay{false};  //!< listed as a relay that announces its address while it runs
+    QString announced;  //!< where it says it is now, readable, or empty when not heard from
+    int announced_age{-1}; //!< seconds since it said so, -1 when not heard from
 };
 
 /**
@@ -49,6 +52,8 @@ public:
     static const int KeyRole = Qt::UserRole + 1;
     //! The address shown in a row, for copying; empty when none is published.
     static const int AddressRole = Qt::UserRole + 2;
+    //! Whether a row is a relay that has said where it is in the last three hours.
+    static const int OnlineRole = Qt::UserRole + 3;
 
     explicit RosterModel(QObject* parent = nullptr);
 

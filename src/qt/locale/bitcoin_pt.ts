@@ -1400,7 +1400,7 @@ Assinar só é possível com endereços do tipo &quot;legado&quot;.</translation
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Os pares se anunciam na cadeia em vez de em um servidor, então esta lista é a mesma para todos e ninguém está em posição de editá-la.</translation>
+        <translation type="vanished">Os pares se anunciam na cadeia em vez de em um servidor, então esta lista é a mesma para todos e ninguém está em posição de editá-la.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1565,6 +1565,18 @@ Uma chave de recuperação será mostrada uma única vez. Anote-a: é a única f
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Sua identidade foi publicada na transação %1. Sua próxima renovação de inscrição vincula a ela a chave deste nó.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Os pares se anunciam na cadeia em vez de em um servidor, então esta lista é a mesma para todos e ninguém está em posição de editá-la. Os retransmissores dizem onde estão enquanto funcionam, então os seus endereços nunca vão para a cadeia e só aparecem aqui enquanto estão online.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Só retransmissores online agora</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Retransmissores que disseram onde estão nas últimas três horas. Os outros também estão inscritos: estar inscrito diz que um par existe, não que esteja funcionando.</translation>
     </message>
 </context>
 <context>
@@ -3365,6 +3377,14 @@ ID transação: %1</translation>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Pedindo a um retransmissor, por meio de outros, que a publique… isso pode levar um minuto.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Como retransmissor — anunciar o meu endereço enquanto funciono</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Os caminhos de outros passam por este computador. A sua inscrição diz que é um retransmissor, não onde: enquanto o seu nó funciona, ele diz à rede o seu endereço atual, assinado com a sua chave, e de novo sempre que muda, sem nenhuma transação. Nada sobre onde está vai para a cadeia, e a rede esquece o endereço nas três horas seguintes à parada do seu nó. Os outros precisam conseguir alcançar este computador na porta %1 (TCP) e %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4204,6 +4224,24 @@ alcançado pelo overlay, que é o motivo de isso ser permitido.</translation>
     <message>
         <source>new</source>
         <translation>novo</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Online: o retransmissor disse há %1 que está aqui, assinado com a sua chave.
+Diz de novo a cada hora e quando muda de lugar; nada sobre
+onde está é guardado na cadeia.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Um retransmissor que diz onde está enquanto funciona e não o disse nas
+últimas três horas: não está funcionando, ou não é alcançável daqui.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>retransmissor, offline</translation>
     </message>
 </context>
 <context>
@@ -5112,6 +5150,22 @@ Pode mudar isto a qualquer momento na página Servidor.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Começa quando o cliente reinicia.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Endereço anunciado</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>nenhum — este nó não está inscrito como um retransmissor que anuncia o seu endereço</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, assinado há %2</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Onde este retransmissor diz à rede que está, assinado com a sua chave. Diz de novo a cada hora e quando o endereço muda; nada disso está na cadeia.</translation>
     </message>
 </context>
 <context>

@@ -1400,7 +1400,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Οι ομότιμοι ανακοινώνονται στην αλυσίδα αντί σε διακομιστή, οπότε αυτή η λίστα είναι ίδια για όλους και κανείς δεν μπορεί να την επεξεργαστεί.</translation>
+        <translation type="vanished">Οι ομότιμοι ανακοινώνονται στην αλυσίδα αντί σε διακομιστή, οπότε αυτή η λίστα είναι ίδια για όλους και κανείς δεν μπορεί να την επεξεργαστεί.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1565,6 +1565,18 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Η ταυτότητά σας δημοσιεύτηκε στη συναλλαγή %1. Η επόμενη ανανέωση της καταχώρισής σας συνδέει σε αυτήν το κλειδί αυτού του κόμβου.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Οι ομότιμοι ανακοινώνονται στην αλυσίδα αντί σε διακομιστή, οπότε αυτή η λίστα είναι ίδια για όλους και κανείς δεν μπορεί να την επεξεργαστεί. Οι αναμεταδότες λένε πού βρίσκονται όσο λειτουργούν, οπότε οι διευθύνσεις τους δεν μπαίνουν ποτέ στην αλυσίδα και εμφανίζονται εδώ μόνο όσο είναι συνδεδεμένοι.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Μόνο αναμεταδότες που είναι συνδεδεμένοι τώρα</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Αναμεταδότες που είπαν πού βρίσκονται τις τελευταίες τρεις ώρες. Και οι άλλοι είναι καταχωρισμένοι: η καταχώριση λέει ότι ένας ομότιμος υπάρχει, όχι ότι λειτουργεί.</translation>
     </message>
 </context>
 <context>
@@ -3364,6 +3376,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Ζητείται από έναν αναμεταδότη, μέσω άλλων, να τη δημοσιεύσει… μπορεί να διαρκέσει ένα λεπτό.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Ως αναμεταδότης — ανακοίνωση της διεύθυνσής μου όσο λειτουργώ</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Οι διαδρομές άλλων περνούν από αυτόν τον υπολογιστή. Η καταχώρισή σας λέει ότι είστε αναμεταδότης, όχι πού: όσο λειτουργεί ο κόμβος σας, λέει στο δίκτυο την τρέχουσα διεύθυνσή του, υπογεγραμμένη με το κλειδί του, και ξανά κάθε φορά που αλλάζει, χωρίς συναλλαγή. Τίποτα για το πού βρίσκεστε δεν μπαίνει στην αλυσίδα, και το δίκτυο ξεχνά τη διεύθυνση μέσα σε τρεις ώρες αφότου σταματήσει ο κόμβος σας. Οι άλλοι πρέπει να μπορούν να φτάσουν αυτόν τον υπολογιστή στη θύρα %1 (TCP) και %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4204,6 +4224,24 @@ reached over the overlay, which is the point of allowing it.</source>
     <message>
         <source>new</source>
         <translation>νέο</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Συνδεδεμένος: ο αναμεταδότης είπε πριν από %1 ότι είναι εδώ, υπογεγραμμένο με το κλειδί του.
+Το λέει ξανά κάθε ώρα και όταν μετακινείται· τίποτα για το
+πού βρίσκεται δεν κρατιέται στην αλυσίδα.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Αναμεταδότης που λέει πού βρίσκεται όσο λειτουργεί και δεν το έχει πει
+τις τελευταίες τρεις ώρες: δεν λειτουργεί ή δεν είναι προσβάσιμος από εδώ.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>αναμεταδότης, εκτός σύνδεσης</translation>
     </message>
 </context>
 <context>
@@ -5114,6 +5152,22 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Ξεκινά όταν γίνει επανεκκίνηση του προγράμματος.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Ανακοινωμένη διεύθυνση</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>καμία — αυτός ο κόμβος δεν είναι καταχωρισμένος ως αναμεταδότης που ανακοινώνει τη διεύθυνσή του</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, υπογράφηκε πριν από %2</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Πού λέει αυτός ο αναμεταδότης στο δίκτυο ότι βρίσκεται, υπογεγραμμένο με το κλειδί του. Το λέει ξανά κάθε ώρα και όταν αλλάζει η διεύθυνση· τίποτα από αυτά δεν είναι στην αλυσίδα.</translation>
     </message>
 </context>
 <context>

@@ -233,10 +233,12 @@ class RosterTest(BitcoinTestFramework):
 
     def test_unimplemented_service_bits_are_refused(self):
         self.log.info("createannouncement refuses to advertise what nothing delivers")
-        for bit in ["relay_capable", "rendezvous_only"]:
-            assert_raises_rpc_error(
-                -8, "not implemented",
-                self.nodes[0].createannouncement, {bit: True})
+        assert_raises_rpc_error(-8, "not implemented", self.nodes[0].createannouncement, {"rendezvous_only": True})
+        assert_raises_rpc_error(-8, "the \"relay\" option", self.nodes[0].createannouncement, {"relay_capable": True})
+        self.log.info("a relay that announces its address is never a gateway too")
+        assert_raises_rpc_error(-8, "cannot be both", self.nodes[0].createannouncement, {"relay": True, "gateway": True})
+        # No endpoint, and nothing to warn about: where it is, it announces.
+        assert "warnings" not in self.nodes[0].createannouncement({"relay": True})
 
     def test_datacarrier_limit_is_reported_usefully(self):
         self.log.info("a node configured too tightly says so, and spends nothing")

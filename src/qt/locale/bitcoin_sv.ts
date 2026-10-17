@@ -1401,7 +1401,7 @@ Signering är bara möjlig med adresser av typen &apos;legacy&apos;.</translatio
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Peers tillkännager sig i kedjan i stället för hos en server, så den här listan är densamma för alla och ingen kan redigera den.</translation>
+        <translation type="vanished">Peers tillkännager sig i kedjan i stället för hos en server, så den här listan är densamma för alla och ingen kan redigera den.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1566,6 +1566,18 @@ Du får se en återställningsnyckel en gång. Skriv ner den: det är det enda s
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Din identitet publicerades i transaktion %1. Din nästa förnyelse av listningen knyter den här nodens nyckel till den.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Peers tillkännager sig i kedjan i stället för hos en server, så den här listan är densamma för alla och ingen kan redigera den. Reläer säger var de är medan de kör, så deras adresser hamnar aldrig i kedjan och visas här bara medan de är online.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Bara reläer som är online nu</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Reläer som har sagt var de är under de senaste tre timmarna. Andra är också listade: att vara listad säger att en peer finns, inte att den kör.</translation>
     </message>
 </context>
 <context>
@@ -3364,6 +3376,14 @@ Du får se en återställningsnyckel en gång. Skriv ner den: det är det enda s
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Ber ett relä genom andra reläer att publicera den… det kan ta en minut.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Som relä — tillkännage min adress medan jag kör</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Andras vägar går genom den här datorn. Din listning säger att du är ett relä, inte var: medan din nod kör berättar den för nätverket sin nuvarande adress, signerad med sin nyckel, och igen varje gång den ändras, utan någon transaktion. Inget om var du är hamnar i kedjan, och nätverket glömmer adressen inom tre timmar efter att din nod stannat. Andra måste kunna nå den här datorn på port %1 (TCP) och %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4203,6 +4223,24 @@ fortfarande nås över överlagringsnätet, vilket är poängen med att tillåta
     <message>
         <source>new</source>
         <translation>ny</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Online: reläet sa för %1 sedan att det är här, signerat med sin nyckel.
+Det säger det igen varje timme och när det flyttar; inget om
+var det är sparas i kedjan.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Ett relä som säger var det är medan det kör, och inte har sagt det under
+de senaste tre timmarna: det kör inte, eller går inte att nå härifrån.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>relä, offline</translation>
     </message>
 </context>
 <context>
@@ -5111,6 +5149,22 @@ Du kan ändra detta när som helst på sidan Server.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Startar när klienten startas om.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Tillkännagiven adress</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>ingen — den här noden är inte listad som ett relä som tillkännager sin adress</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, signerat för %2 sedan</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Var det här reläet berättar för nätverket att det är, signerat med sin nyckel. Det säger det igen varje timme och när adressen ändras; inget av det finns i kedjan.</translation>
     </message>
 </context>
 <context>

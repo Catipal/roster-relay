@@ -1392,7 +1392,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>A partnerek a láncon jelentik be magukat, nem egy kiszolgálón, így ez a lista mindenkinél ugyanaz, és senki sem szerkesztheti.</translation>
+        <translation type="vanished">A partnerek a láncon jelentik be magukat, nem egy kiszolgálón, így ez a lista mindenkinél ugyanaz, és senki sem szerkesztheti.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1557,6 +1557,18 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Identitása közzé lett téve a(z) %1 tranzakcióban. A bejegyzés következő megújítása ehhez köti e csomópont kulcsát.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>A partnerek a láncon jelentik be magukat, nem egy kiszolgálón, így ez a lista mindenkinél ugyanaz, és senki sem szerkesztheti. A továbbítók addig mondják meg, hol vannak, amíg futnak, így a címük sosem kerül a láncra, és itt csak addig látszik, amíg elérhetők.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Csak a most elérhető továbbítók</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Továbbítók, amelyek az elmúlt három órában megmondták, hol vannak. A többiek is be vannak jegyezve: a bejegyzés azt mondja, hogy egy partner létezik, nem azt, hogy fut.</translation>
     </message>
 </context>
 <context>
@@ -3352,6 +3364,14 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Egy továbbító megkérése más továbbítókon át a közzétételre… ez egy percig is eltarthat.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Továbbítóként — a címem közzététele, amíg futok</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Mások útvonalai ezen a számítógépen haladnak át. Az Ön bejegyzése azt mondja, hogy Ön továbbító, de azt nem, hogy hol: amíg a csomópontja fut, közli a hálózattal a jelenlegi címét a kulcsával aláírva, és újra, valahányszor megváltozik, tranzakció nélkül. Semmi sem kerül a láncra arról, hol van Ön, és a hálózat a csomópont leállása után három órán belül elfelejti a címet. Másoknak el kell tudniuk érni ezt a számítógépet a(z) %1 (TCP) és %2 (UDP) porton.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4185,6 +4205,24 @@ elérhető az átfedő hálózaton, és éppen ezért van megengedve.</translati
     <message>
         <source>new</source>
         <translation>új</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Elérhető: a továbbító %1 ezelőtt mondta meg, hogy itt van, a kulcsával aláírva.
+Óránként és költözéskor újra megmondja; semmit sem őriz a lánc
+arról, hogy hol van.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Továbbító, amely megmondja, hol van, amíg fut, de az elmúlt három
+órában nem mondta meg: nem fut, vagy innen nem érhető el.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>továbbító, nem elérhető</translation>
     </message>
 </context>
 <context>
@@ -5092,6 +5130,22 @@ Ezt bármikor megváltoztathatja a Kiszolgáló oldalon.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>A kliens újraindításakor indul.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Közzétett cím</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>nincs — ez a csomópont nincs bejegyezve a címét közzétevő továbbítóként</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, aláírva %2 ezelőtt</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Ahol ez a továbbító a hálózatnak mondja, hogy van, a kulcsával aláírva. Óránként és a cím változásakor újra megmondja; ebből semmi sincs a láncon.</translation>
     </message>
 </context>
 <context>

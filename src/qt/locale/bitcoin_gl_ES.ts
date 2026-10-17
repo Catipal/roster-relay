@@ -1400,7 +1400,7 @@ Só se pode asinar con enderezos do tipo &apos;legacy&apos;.</translation>
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Os pares anúncianse na cadea en vez de nun servidor, así que esta lista é a mesma para todos e ninguén a pode editar.</translation>
+        <translation type="vanished">Os pares anúncianse na cadea en vez de nun servidor, así que esta lista é a mesma para todos e ninguén a pode editar.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1565,6 +1565,18 @@ Amosaráseche unha chave de recuperación unha vez. Anótaa: é a única forma d
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>A túa identidade publicouse na transacción %1. A próxima renovación da túa inscrición vincúlalle a chave deste nodo.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Os pares anúncianse na cadea en vez de nun servidor, así que esta lista é a mesma para todos e ninguén a pode editar. Os repetidores din onde están mentres funcionan, así que os seus enderezos nunca van á cadea e só se amosan aquí mentres están en liña.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Só repetidores en liña agora</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Repetidores que dixeron onde están nas últimas tres horas. Os demais tamén están inscritos: estar inscrito di que un par existe, non que estea funcionando.</translation>
     </message>
 </context>
 <context>
@@ -3363,6 +3375,14 @@ Amosaráseche unha chave de recuperación unha vez. Anótaa: é a única forma d
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Pedíndolle a un repetidor, a través doutros, que a publique… pode levar un minuto.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Como repetidor — anunciar o meu enderezo mentres funciono</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Os camiños doutros pasan por este ordenador. A túa inscrición di que es un repetidor, non onde: mentres o teu nodo funciona, dille á rede o seu enderezo actual, asinado coa súa chave, e de novo cada vez que cambia, sen ningunha transacción. Nada sobre onde estás vai á cadea, e a rede esquece o enderezo nas tres horas seguintes a que o teu nodo se deteña. Os demais deben poder chegar a este ordenador no porto %1 (TCP) e %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4202,6 +4222,24 @@ chegar a el pola rede superposta, que é o sentido de permitilo.</translation>
     <message>
         <source>new</source>
         <translation>novo</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>En liña: o repetidor dixo hai %1 que está aquí, asinado coa súa chave.
+Volve dicilo cada hora e cando se move; nada sobre
+onde está se garda na cadea.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Un repetidor que di onde está mentres funciona e non o dixo nas
+últimas tres horas: non está funcionando, ou non se pode chegar a el desde aquí.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>repetidor, fóra de liña</translation>
     </message>
 </context>
 <context>
@@ -5110,6 +5148,22 @@ Podes cambialo en calquera momento na páxina Servidor.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Comeza cando se reinicia o cliente.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Enderezo anunciado</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>ningún — este nodo non está inscrito como un repetidor que anuncia o seu enderezo</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, asinado hai %2</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Onde lle di este repetidor á rede que está, asinado coa súa chave. Volve dicilo cada hora e cando cambia o enderezo; nada diso está na cadea.</translation>
     </message>
 </context>
 <context>

@@ -14,14 +14,20 @@ namespace BpsUtil {
 
 QString HumanBlocks(int blocks)
 {
+    if (blocks <= 0) return QCoreApplication::translate("BpsUtil", "less than a minute");
+    return HumanSeconds((qint64)blocks * SECONDS_PER_BLOCK);
+}
+
+QString HumanSeconds(qint64 seconds)
+{
     // Written out longhand rather than with Qt's %n plural form. Without a
     // translation loaded %n falls back to the source string, so "%n month(s)"
     // reaches the screen with the brackets still in it.
     // The context is written out in every call, not kept in a variable:
     // lupdate reads it from the source and cannot follow a variable.
-    if (blocks <= 0) return QCoreApplication::translate("BpsUtil", "less than a minute");
+    if (seconds < 60) return QCoreApplication::translate("BpsUtil", "less than a minute");
 
-    const qint64 minutes = (qint64)blocks * SECONDS_PER_BLOCK / 60;
+    const qint64 minutes = seconds / 60;
     if (minutes < 90) {
         if (minutes <= 1) return QCoreApplication::translate("BpsUtil", "a minute");
         return QCoreApplication::translate("BpsUtil", "%1 minutes").arg(minutes);

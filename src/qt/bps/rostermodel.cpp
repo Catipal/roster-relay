@@ -41,12 +41,25 @@ QVariant RosterModel::data(const QModelIndex& index, int role) const
     const RosterRow& row = m_rows.at(index.row());
 
     if (role == KeyRole) return row.key;
-    if (role == AddressRole) return row.endpoints == 0 ? QString() : row.where;
+    if (role == AddressRole) return !row.announced.isEmpty() ? row.announced : row.endpoints == 0 ? QString() : row.where;
+    if (role == OnlineRole) return !row.announced.isEmpty();
 
     if (role == Qt::ToolTipRole) {
         switch (index.column()) {
         case Peer: return row.key + "\n" + tr("Click to copy");
         case Where:
+            // A relay says where it is while it runs; the chain never holds it.
+            if (!row.announced.isEmpty()) {
+                return tr("Online: the relay said it is here %1 ago, signed with its key.\n"
+                          "It says so again every hour and when it moves; nothing about\n"
+                          "where it is is kept on the chain.")
+                           .arg(BpsUtil::HumanSeconds(row.announced_age)) +
+                       "\n" + tr("Click to copy");
+            }
+            if (row.relay && row.endpoints == 0) {
+                return tr("A relay that says where it is while it runs, and has not said so in\n"
+                          "the last three hours: it is not running, or not reachable from here.");
+            }
             return row.endpoints == 0
                        ? tr("This peer is listed but publishes no address. It can still be\n"
                             "reached over the overlay, which is the point of allowing it.")
@@ -83,6 +96,8 @@ QVariant RosterModel::data(const QModelIndex& index, int role) const
         // too narrow, so a wide window shows the whole key.
         return row.key;
     case Where:
+        if (!row.announced.isEmpty()) return row.announced;
+        if (row.relay && row.endpoints == 0) return tr("relay, offline");
         return row.endpoints == 0 ? tr("no address published") : row.where;
     case ListedAt: {
         const int age = m_tip - row.height;
@@ -139,6 +154,14 @@ void RosterModel::SetRoster(const UniValue& reply, int tip)
             if (eps.isArray()) {
                 row.endpoints = (int)eps.size();
                 if (eps.size() > 0) row.where = BpsUtil::DescribeEndpoint(eps[0]);
+            }
+            row.relay = find_value(entry, "relay").isTrue();
+            const UniValue& announced = find_value(entry, "announced");
+            if (announced.isObject()) {
+                const UniValue& now_at = find_value(announced, "endpoints");
+                if (now_at.isArray() && now_at.size() > 0) row.announced = BpsUtil::DescribeEndpoint(now_at[0]);
+                const UniValue& age = find_value(announced, "age_seconds");
+                if (age.isNum()) row.announced_age = (int)age.get_int64();
             }
             rows.append(row);
         }

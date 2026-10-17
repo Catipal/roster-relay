@@ -1400,7 +1400,7 @@ Signering er kun mulig med adresser af typen &apos;legacy&apos;.</translation>
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Peers annoncerer sig på kæden i stedet for hos en server, så denne liste er den samme for alle, og ingen kan redigere den.</translation>
+        <translation type="vanished">Peers annoncerer sig på kæden i stedet for hos en server, så denne liste er den samme for alle, og ingen kan redigere den.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1565,6 +1565,18 @@ Du får vist en gendannelsesnøgle én gang. Skriv den ned: det er den eneste m�
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Din identitet blev offentliggjort i transaktion %1. Din næste fornyelse af opføringen knytter denne knudes nøgle til den.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Peers annoncerer sig på kæden i stedet for hos en server, så denne liste er den samme for alle, og ingen kan redigere den. Relæer fortæller, hvor de er, mens de kører, så deres adresser kommer aldrig på kæden og vises her kun, mens de er online.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Kun relæer, der er online nu</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Relæer, der har sagt, hvor de er, inden for de sidste tre timer. Andre er også opført: at være opført siger, at en peer findes, ikke at den kører.</translation>
     </message>
 </context>
 <context>
@@ -3363,6 +3375,14 @@ Du får vist en gendannelsesnøgle én gang. Skriv den ned: det er den eneste m�
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Beder et relæ gennem andre relæer om at offentliggøre den… det kan tage et minut.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Som relæ — annoncér min adresse, mens jeg kører</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Andres stier går gennem denne computer. Din opførelse siger, at du er et relæ, men ikke hvor: mens din node kører, fortæller den netværket sin nuværende adresse, signeret med sin nøgle, og igen hver gang den ændrer sig, uden nogen transaktion. Intet om, hvor du er, kommer på kæden, og netværket glemmer adressen inden for tre timer efter, at din node stopper. Andre skal kunne nå denne computer på port %1 (TCP) og %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4202,6 +4222,24 @@ stadig nås over overlay-netværket, hvilket er pointen med at tillade det.</tra
     <message>
         <source>new</source>
         <translation>ny</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Online: relæet sagde for %1 siden, at det er her, signeret med sin nøgle.
+Det siger det igen hver time, og når det flytter; intet om,
+hvor det er, gemmes på kæden.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Et relæ, der siger, hvor det er, mens det kører, og ikke har sagt det
+inden for de sidste tre timer: det kører ikke, eller kan ikke nås herfra.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>relæ, offline</translation>
     </message>
 </context>
 <context>
@@ -5110,6 +5148,22 @@ Du kan ændre dette når som helst på siden Server.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Starter, når klienten genstartes.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Annonceret adresse</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>ingen — denne node er ikke opført som et relæ, der annoncerer sin adresse</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, signeret for %2 siden</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Hvor dette relæ fortæller netværket, at det er, signeret med sin nøgle. Det siger det igen hver time, og når adressen ændrer sig; intet af det er på kæden.</translation>
     </message>
 </context>
 <context>

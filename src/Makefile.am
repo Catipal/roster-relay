@@ -242,6 +242,7 @@ BITCOIN_CORE_H = \
   roster/listing.h \
   roster/payout.h \
   roster/peers.h \
+  roster/relayaddr.h \
   roster/record.h \
   roster/view.h \
   rpc/blockchain.h \
@@ -666,6 +667,7 @@ libbitcoin_common_a_SOURCES = \
   roster/keystore.cpp \
   roster/payout.cpp \
   roster/peers.cpp \
+  roster/relayaddr.cpp \
   roster/record.cpp \
   rpc/hint.cpp \
   rpc/rawtransaction_util.cpp \

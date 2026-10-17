@@ -18,6 +18,7 @@
 #include <roster/payout.h>
 #include <roster/peers.h>
 #include <roster/record.h>
+#include <roster/relayaddr.h>
 #include <roster/view.h>
 #include <overlay/chainsync.h>
 #include <overlay/gateway.h>
@@ -135,6 +136,7 @@ UniValue EntryToJSON(const RosterEntry& entry, const roster::Record& rec)
         // announcement may carry no endpoint at all, which is legal and says
         // "this identity exists" without offering anywhere to dial.
         out.pushKV("dialable", !rec.endpoints.empty());
+        out.pushKV("relay", roster::IsAnnouncingRelay(rec.services));
         out.pushKV("gateway", roster::IsGatewayRecord(rec.services, rec.endpoints.size()));
         out.pushKV("prev_height", (uint64_t)rec.prev_height);
         {
@@ -714,6 +716,12 @@ static RPCHelpMan getrosterinfo()
                 {RPCResult::Type::STR_HEX, "identity_key", /* optional */ true, "This node's identity, if it has one here"},
                 {RPCResult::Type::NUM, "revocations_seen", "Revocations kept, from blocks, the mempool and peers"},
                 {RPCResult::Type::NUM, "unconfirmed_hints", "Announcements not on the chain, kept as dial hints"},
+                {RPCResult::Type::NUM, "relay_addresses", "Relays whose announced address this node holds and still counts"},
+                {RPCResult::Type::OBJ, "announcing", /* optional */ true, "Present while this node, listed as a relay, announces its address",
+                    {
+                        {RPCResult::Type::NUM_TIME, "time", "When it last signed one"},
+                        {RPCResult::Type::ARR, "endpoints", "The addresses it announced", {{RPCResult::Type::OBJ, "", "", {{RPCResult::Type::ELISION, "", ""}}}}},
+                    }},
             }},
         RPCExamples{HelpExampleCli("getrosterinfo", "") + HelpExampleRpc("getrosterinfo", "")},
         [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
@@ -739,7 +747,8 @@ static RPCHelpMan getrosterinfo()
 
     CKey key;
     std::string error;
-    if (roster::GetOperationalKey(key, error)) {
+    const bool have_key = roster::GetOperationalKey(key, error);
+    if (have_key) {
         const CPubKey pubkey = key.GetPubKey();
         out.pushKV("operational_key", HexStr(Span<const unsigned char>(pubkey.data() + 1, 32)));
     } else {
@@ -758,6 +767,16 @@ static RPCHelpMan getrosterinfo()
     if (roster::GetIdentityKey(identity, identity_error)) out.pushKV("identity_key", HexStr(roster::KeyBytesOf(identity)));
     out.pushKV("revocations_seen", (uint64_t)(roster::g_revocations ? roster::g_revocations->Size() : 0));
     out.pushKV("unconfirmed_hints", (uint64_t)roster::g_hints.All().size());
+    out.pushKV("relay_addresses", (uint64_t)(roster::g_relay_addresses ? roster::g_relay_addresses->Size() : 0));
+    roster::RelayAddress own;
+    if (have_key && roster::g_relay_addresses && roster::g_relay_addresses->Current(roster::KeyBytesOf(key), GetTime(), own)) {
+        UniValue a(UniValue::VOBJ);
+        a.pushKV("time", own.time);
+        UniValue eps(UniValue::VARR);
+        for (const roster::Endpoint& ep : own.endpoints) eps.push_back(EndpointToJSON(ep));
+        a.pushKV("endpoints", eps);
+        out.pushKV("announcing", a);
+    }
     return out;
 },
     };
@@ -783,7 +802,14 @@ static RPCHelpMan getroster()
                     {RPCResult::Type::NUM, "expiry_height", "Height the record stops counting"},
                     {RPCResult::Type::NUM, "prev_height", "Height of this key's previous record, 0 if first"},
                     {RPCResult::Type::BOOL, "dialable", "Whether the record carries any endpoint at all"},
+                    {RPCResult::Type::BOOL, "relay", "Whether it is listed as a relay that announces its address while it runs, instead of on the chain"},
                     {RPCResult::Type::BOOL, "gateway", "Whether the key is a gateway to the internet, met at its meeting points: the gateway bit, on a record with no endpoint"},
+                    {RPCResult::Type::OBJ, "announced", /* optional */ true, "Present for a relay whose announcement this node holds and still counts: where it says it is now",
+                        {
+                            {RPCResult::Type::NUM_TIME, "time", "When the relay signed it"},
+                            {RPCResult::Type::NUM, "age_seconds", "How long ago that was"},
+                            {RPCResult::Type::ARR, "endpoints", "Its addresses, as in endpoints below", {{RPCResult::Type::OBJ, "", "", {{RPCResult::Type::ELISION, "", ""}}}}},
+                        }},
                     {RPCResult::Type::NUM, "age_blocks", "Blocks of continuous history, 0 until it is deep enough to count"},
                     {RPCResult::Type::NUM, "since_height", "Where that history starts"},
                     {RPCResult::Type::STR_HEX, "identity", /* optional */ true, "The identity running it"},
@@ -821,6 +847,7 @@ static RPCHelpMan getroster()
     }
 
     const bool hints = !request.params[2].isNull() && request.params[2].get_bool();
+    const int64_t now = GetTime();
     UniValue out(UniValue::VARR);
     int seen = 0, emitted = 0;
     for (const std::pair<const roster::KeyBytes, RosterEntry>& item : live) {
@@ -830,6 +857,17 @@ static RPCHelpMan getroster()
         roster::Record rec;
         if (!item.second.Parse(rec)) continue;
         UniValue entry = EntryToJSON(item.second, rec);
+        roster::RelayAddress announced;
+        if (roster::IsAnnouncingRelay(rec.services) && roster::g_relay_addresses &&
+            roster::g_relay_addresses->Current(item.first, now, announced)) {
+            UniValue a(UniValue::VOBJ);
+            a.pushKV("time", announced.time);
+            a.pushKV("age_seconds", std::max<int64_t>(0, now - announced.time));
+            UniValue eps(UniValue::VARR);
+            for (const roster::Endpoint& ep : announced.endpoints) eps.push_back(EndpointToJSON(ep));
+            a.pushKV("endpoints", eps);
+            entry.pushKV("announced", a);
+        }
         roster::Standing standing;
         if (roster::GetStanding(index, item.first, tip, standing)) {
             entry.pushKV("age_blocks", standing.age);
@@ -909,21 +947,18 @@ static RPCHelpMan getrosterhistory()
 static std::vector<unsigned char> BuildAnnouncement(const UniValue& options, roster::Record& rec,
                                                     UniValue& warnings)
 {
-    // Refused rather than ignored, and refused rather than honoured. The relay
-    // layer is an open design question, not an abandoned one, but nothing
-    // implements it -- so setting the bit would advertise a capability no peer
-    // can use, and silently dropping the option would let an operator believe
-    // they had enabled something.
-    for (const std::string& unimplemented : {"relay_capable", "rendezvous_only"}) {
-        if (options.exists(unimplemented)) {
-            throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
-                "%s is defined in the record format but not implemented: no peer relays, so the "
-                "bit would advertise something undeliverable. The obstacle is sybil resistance for "
-                "relay selection rather than anything about the wire format. For an address you can "
-                "publish without revealing your location, and which works behind NAT today, use an "
-                "onion endpoint. Omitting endpoints entirely is also legal and lists the identity "
-                "without offering anywhere to dial.", unimplemented));
-        }
+    // Refused rather than ignored, and refused rather than honoured: setting
+    // a bit nothing reads would advertise something no peer acts on, and
+    // silently dropping the option would let an operator believe they had
+    // enabled something.
+    if (options.exists("relay_capable")) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "relay_capable is the \"relay\" option.");
+    }
+    if (options.exists("rendezvous_only")) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER,
+            "rendezvous_only is defined in the record format but not implemented: a record with no "
+            "endpoints, and not listing a relay, is already met only at its meeting points, so the bit "
+            "would say nothing a peer acts on. Leave the endpoints out instead.");
     }
 
     // Signed with the operational key, or with the gateway key a relay lists
@@ -1005,6 +1040,18 @@ static std::vector<unsigned char> BuildAnnouncement(const UniValue& options, ros
         rec.services |= roster::SERVICE_GATEWAY;
     }
 
+    // A relay that says where it is while it runs, instead of here: the
+    // chain keeps that it is a relay, and never where (roster/relayaddr.h).
+    // Never a gateway as well: the address it announces would be an exit's.
+    if (options.exists("relay") && options["relay"].get_bool()) {
+        if (rec.services & roster::SERVICE_GATEWAY) {
+            throw JSONRPCError(RPC_INVALID_PARAMETER,
+                "A relay announces where it is, and a gateway must not say where it is: one key cannot be "
+                "both. A relay lists its gateway under its second key (\"key\": \"gateway\").");
+        }
+        rec.services |= roster::SERVICE_RELAY_CAPABLE;
+    }
+
     // Link the age chain without making the caller track it. §5's prev_height
     // is what makes age unforgeable, and an operator who has to remember it by
     // hand will eventually publish a zero and silently restart their history.
@@ -1078,7 +1125,7 @@ static std::vector<unsigned char> BuildAnnouncement(const UniValue& options, ros
                                "peers not on one will not reach this address.");
         }
     }
-    if (rec.endpoints.empty() && !(rec.services & roster::SERVICE_GATEWAY)) {
+    if (rec.endpoints.empty() && !(rec.services & (roster::SERVICE_GATEWAY | roster::SERVICE_RELAY_CAPABLE))) {
         warnings.push_back("No endpoints: this record lists the identity but offers nowhere to dial. "
                            "Intentional for a name holder or for accruing age; add an endpoint to be reachable.");
     }
@@ -1113,6 +1160,8 @@ static RPCHelpMan createannouncement()
                         }},
                     {"gateway", RPCArg::Type::BOOL, /* default */ "false",
                      "List this key as a gateway to the internet, met at its meeting points (design note §8·7). Only on a record with no endpoints."},
+                    {"relay", RPCArg::Type::BOOL, /* default */ "false",
+                     "List this key as a relay that announces its address while it runs - signed, passed between peers, good for three hours - instead of writing it to the chain. Give no endpoints, and no address of this node lands on the chain; it can change without a transaction. Not with gateway."},
                     {"key", RPCArg::Type::STR, /* default */ "operational",
                      "Which key signs: \"operational\", or \"gateway\" - the second key a relay lists its gateway under, since its operational key carries its address. A gateway key is always listed as a gateway, with no endpoints, and is created in <datadir>/gateway.key on first use."},
                 }},

@@ -267,6 +267,15 @@ extern const char* WTXIDRELAY;
  * passes it on once. Nodes that do not know it ignore it.
  */
 extern const char* ROSTERREVOKE;
+/**
+ * Relays' current addresses, each signed by the relay's roster key and good
+ * for a few hours (roster/relayaddr.h). Passed on once when new, as
+ * revocations are, so a relay's address reaches everyone without a
+ * transaction and never lands on the chain. Nodes that do not know it ignore it.
+ */
+extern const char* RELAYADDRS;
+/** Asks a peer, once per connection, for the relay addresses it holds. */
+extern const char* GETRELAYADDRS;
 }; // namespace NetMsgType
 
 /* Get a vector of all valid message types (see above) */

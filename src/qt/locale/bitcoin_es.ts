@@ -1400,7 +1400,7 @@ Firmar solo es posible con correos del tipo Legacy.</translation>
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Los pares se anuncian en la cadena en lugar de ante un servidor, así que esta lista es la misma para todos y nadie está en posición de editarla.</translation>
+        <translation type="vanished">Los pares se anuncian en la cadena en lugar de ante un servidor, así que esta lista es la misma para todos y nadie está en posición de editarla.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1565,6 +1565,18 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Tu identidad está publicada en la transacción %1. Tu próxima renovación de la inscripción vincula a ella la clave de este nodo.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Los pares se anuncian en la cadena en lugar de ante un servidor, así que esta lista es la misma para todos y nadie está en posición de editarla. Los relés dicen dónde están mientras funcionan, así que sus direcciones nunca van a la cadena y solo aparecen aquí mientras están en línea.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Solo relés en línea ahora</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Relés que han dicho dónde están en las últimas tres horas. Los demás también están inscritos: estar inscrito dice que un par existe, no que esté funcionando.</translation>
     </message>
 </context>
 <context>
@@ -3363,6 +3375,14 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Pidiendo a un relé, a través de otros, que la publique… puede tardar un minuto.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Como relé — anunciar mi dirección mientras funciono</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>Los caminos de otros pasan por este ordenador. Tu inscripción dice que eres un relé, no dónde: mientras tu nodo funciona, le dice a la red su dirección actual, firmada con su clave, y otra vez cada vez que cambia, sin ninguna transacción. Nada sobre dónde estás va a la cadena, y la red olvida la dirección en las tres horas siguientes a que tu nodo se detenga. Los demás deben poder llegar a este ordenador en el puerto %1 (TCP) y %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4202,6 +4222,24 @@ alcanzar por el overlay, que es para lo que se permite.</translation>
     <message>
         <source>new</source>
         <translation>nuevo</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>En línea: el relé dijo hace %1 que está aquí, firmado con su clave.
+Lo vuelve a decir cada hora y cuando se mueve; nada sobre
+dónde está se guarda en la cadena.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Un relé que dice dónde está mientras funciona y no lo ha dicho en
+las últimas tres horas: no está funcionando, o no se puede llegar a él desde aquí.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>relé, fuera de línea</translation>
     </message>
 </context>
 <context>
@@ -5110,6 +5148,22 @@ Puedes cambiarlo en cualquier momento en la página Servidor.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Empieza cuando se reinicia el cliente.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Dirección anunciada</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>ninguna — este nodo no está inscrito como un relé que anuncia su dirección</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, firmado hace %2</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Dónde le dice este relé a la red que está, firmado con su clave. Lo vuelve a decir cada hora y cuando cambia la dirección; nada de ello está en la cadena.</translation>
     </message>
 </context>
 <context>

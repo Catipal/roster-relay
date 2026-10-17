@@ -1394,7 +1394,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>对等节点在区块链上公布自己，而不是在服务器上，所以这份列表对每个人都相同，没有人能够编辑它。</translation>
+        <translation type="vanished">对等节点在区块链上公布自己，而不是在服务器上，所以这份列表对每个人都相同，没有人能够编辑它。</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1559,6 +1559,18 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>你的身份已在交易 %1 中发布。你下一次续期登记时会将本节点的密钥绑定到它。</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>对等节点在区块链上公布自己，而不是在服务器上，所以这份列表对每个人都相同，没有人能够编辑它。中继在运行期间会说明自己所在的位置，所以它们的地址从不上链，只在在线时显示在这里。</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>仅显示当前在线的中继</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>最近三小时内说明过自己位置的中继。其他节点也已登记：登记只说明对等节点存在，并不说明它在运行。</translation>
     </message>
 </context>
 <context>
@@ -3354,6 +3366,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>正在经由其他中继请一个中继发布…可能需要一分钟。</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>作为中继——运行期间公布我的地址</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>其他人的路径会经过这台电脑。你的登记只说明你是中继，不说明你在哪里：节点运行期间，会用自己的密钥签名后把当前地址告诉网络，地址一变就再告诉一次，无需任何交易。关于你所在位置的任何信息都不会上链，节点停止后三小时内网络就会忘记这个地址。其他人需要能通过端口 %1 (TCP) 和 %2 (UDP) 连到这台电脑。</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4187,6 +4207,24 @@ reached over the overlay, which is the point of allowing it.</source>
     <message>
         <source>new</source>
         <translation>新</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>在线：中继在 %1 前说明自己在这里，并用其密钥签名。
+它每小时以及迁移时都会再次说明；关于它所在位置的
+任何信息都不会保存在链上。</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>这个中继在运行期间会说明自己的位置，但最近三小时内
+没有说明：它没有在运行，或者从这里无法连到。</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>中继，离线</translation>
     </message>
 </context>
 <context>
@@ -5094,6 +5132,22 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>客户端重启后开始。</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>已公布的地址</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>无——此节点没有登记为公布自身地址的中继</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1，%2 前签名</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>这个中继告诉网络它所在的位置，并用其密钥签名。它每小时以及地址变化时都会再次说明；这些都不在链上。</translation>
     </message>
 </context>
 <context>

@@ -1401,7 +1401,7 @@ Dit is ideaal voor alleen-lezen portommonees.</translation>
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>Peers kondigen zich aan op de keten in plaats van bij een server, dus deze lijst is voor iedereen gelijk en niemand kan hem bewerken.</translation>
+        <translation type="vanished">Peers kondigen zich aan op de keten in plaats van bij een server, dus deze lijst is voor iedereen gelijk en niemand kan hem bewerken.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1566,6 +1566,18 @@ Je krijgt één keer een herstelsleutel te zien. Schrijf hem op: het is de enige
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>Je identiteit is gepubliceerd in transactie %1. Je volgende vernieuwing van de vermelding koppelt de sleutel van deze node eraan.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>Peers kondigen zich aan op de keten in plaats van bij een server, dus deze lijst is voor iedereen gelijk en niemand kan hem bewerken. Relays zeggen waar ze zijn zolang ze draaien, dus hun adressen komen nooit op de keten en staan hier alleen zolang ze online zijn.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>Alleen relays die nu online zijn</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>Relays die in de afgelopen drie uur hebben gezegd waar ze zijn. Andere staan er ook in: vermeld zijn zegt dat een peer bestaat, niet dat hij draait.</translation>
     </message>
 </context>
 <context>
@@ -3364,6 +3376,14 @@ Je krijgt één keer een herstelsleutel te zien. Schrijf hem op: het is de enige
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>Een relay via andere relays vragen hem te publiceren… dit kan een minuut duren.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>Als relay — mijn adres bekendmaken zolang ik draai</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>De paden van anderen lopen via deze computer. Je vermelding zegt dat je een relay bent, niet waar: zolang je node draait, vertelt hij het netwerk zijn huidige adres, ondertekend met zijn sleutel, en opnieuw telkens als het verandert, zonder transactie. Niets over waar je bent komt op de keten, en het netwerk vergeet het adres binnen drie uur nadat je node stopt. Anderen moeten deze computer kunnen bereiken op poort %1 (TCP) en %2 (UDP).</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4203,6 +4223,24 @@ bereikbaar via de overlay, en daarom is dit toegestaan.</translation>
     <message>
         <source>new</source>
         <translation>nieuw</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>Online: de relay zei %1 geleden dat hij hier is, ondertekend met zijn sleutel.
+Hij zegt het elk uur opnieuw en wanneer hij verhuist; niets over
+waar hij is wordt op de keten bewaard.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>Een relay die zegt waar hij is zolang hij draait, en dat in de afgelopen
+drie uur niet heeft gezegd: hij draait niet, of is van hieruit niet bereikbaar.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>relay, offline</translation>
     </message>
 </context>
 <context>
@@ -5112,6 +5150,22 @@ Je kunt dit altijd veranderen op de pagina Server.</translation>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>Begint wanneer de client opnieuw start.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>Bekendgemaakt adres</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>geen — deze node staat niet vermeld als relay die zijn adres bekendmaakt</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, %2 geleden ondertekend</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>Waar deze relay het netwerk vertelt dat hij is, ondertekend met zijn sleutel. Hij zegt het elk uur opnieuw en wanneer het adres verandert; niets daarvan staat op de keten.</translation>
     </message>
 </context>
 <context>

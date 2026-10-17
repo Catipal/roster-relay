@@ -1394,7 +1394,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it.</source>
-        <translation>피어는 서버가 아니라 체인에 자신을 알리므로, 이 목록은 누구에게나 같고 아무도 편집할 수 없습니다.</translation>
+        <translation type="vanished">피어는 서버가 아니라 체인에 자신을 알리므로, 이 목록은 누구에게나 같고 아무도 편집할 수 없습니다.</translation>
     </message>
     <message>
         <source>Roster</source>
@@ -1559,6 +1559,18 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Your identity is published in transaction %1. Your next listing renewal links this node&apos;s key to it.</source>
         <translation>신원이 트랜잭션 %1에 게시되었습니다. 다음 등재 갱신 때 이 노드의 키가 신원에 연결됩니다.</translation>
+    </message>
+    <message>
+        <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. Relays say where they are while they run, so their addresses never go on the chain and show here only while they are online.</source>
+        <translation>피어는 서버가 아니라 체인에 자신을 알리므로, 이 목록은 누구에게나 같고 아무도 편집할 수 없습니다. 릴레이는 실행되는 동안 자신이 어디에 있는지 알리므로, 주소가 체인에 올라가지 않으며 온라인인 동안에만 여기에 표시됩니다.</translation>
+    </message>
+    <message>
+        <source>Only relays online now</source>
+        <translation>지금 온라인인 릴레이만</translation>
+    </message>
+    <message>
+        <source>Relays that said where they are in the last three hours. Others are listed too: being listed says a peer exists, not that it is running.</source>
+        <translation>지난 3시간 안에 위치를 알린 릴레이입니다. 다른 피어도 등재되어 있습니다. 등재는 피어가 존재한다는 뜻일 뿐, 실행 중이라는 뜻이 아닙니다.</translation>
     </message>
 </context>
 <context>
@@ -3354,6 +3366,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
         <translation>릴레이를 거쳐 다른 릴레이에 게시를 요청하는 중… 1분 정도 걸릴 수 있습니다.</translation>
     </message>
+    <message>
+        <source>As a relay — announce my address while I run</source>
+        <translation>릴레이로 — 실행되는 동안 내 주소를 알림</translation>
+    </message>
+    <message>
+        <source>Others&apos; paths run through this computer. Your listing says you are a relay and not where: while your node runs it tells the network its current address, signed with its key, and again whenever it changes, with no transaction. Nothing about where you are goes on the chain, and the network forgets the address within three hours of your node stopping. Others must be able to reach this computer at port %1 (TCP) and %2 (UDP).</source>
+        <translation>다른 사람들의 경로가 이 컴퓨터를 지나갑니다. 등재 정보에는 릴레이라는 사실만 있고 위치는 없습니다. 노드가 실행되는 동안 현재 주소를 키로 서명해 네트워크에 알리고, 주소가 바뀔 때마다 다시 알립니다. 트랜잭션은 필요 없습니다. 위치에 관한 어떤 것도 체인에 올라가지 않으며, 노드가 멈추면 3시간 안에 네트워크가 주소를 잊습니다. 다른 사람이 이 컴퓨터의 포트 %1 (TCP)과 %2 (UDP)에 접속할 수 있어야 합니다.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4187,6 +4207,24 @@ reached over the overlay, which is the point of allowing it.</source>
     <message>
         <source>new</source>
         <translation>새로움</translation>
+    </message>
+    <message>
+        <source>Online: the relay said it is here %1 ago, signed with its key.
+It says so again every hour and when it moves; nothing about
+where it is is kept on the chain.</source>
+        <translation>온라인: 릴레이가 %1 전에 여기 있다고 키로 서명해 알렸습니다.
+매시간, 그리고 옮겨 갈 때 다시 알립니다. 위치에 관한 어떤 것도
+체인에 보관되지 않습니다.</translation>
+    </message>
+    <message>
+        <source>A relay that says where it is while it runs, and has not said so in
+the last three hours: it is not running, or not reachable from here.</source>
+        <translation>실행되는 동안 위치를 알리는 릴레이지만 지난 3시간 동안
+알리지 않았습니다. 실행 중이 아니거나 여기서 접속할 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>relay, offline</source>
+        <translation>릴레이, 오프라인</translation>
     </message>
 </context>
 <context>
@@ -5094,6 +5132,22 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Starts when the client restarts.</source>
         <translation>클라이언트를 다시 시작하면 시작됩니다.</translation>
+    </message>
+    <message>
+        <source>Address announced</source>
+        <translation>알린 주소</translation>
+    </message>
+    <message>
+        <source>none — this node is not listed as a relay that announces its address</source>
+        <translation>없음 — 이 노드는 주소를 알리는 릴레이로 등재되어 있지 않습니다</translation>
+    </message>
+    <message>
+        <source>%1, signed %2 ago</source>
+        <translation>%1, %2 전에 서명됨</translation>
+    </message>
+    <message>
+        <source>Where this relay tells the network it is, signed with its key. It says so again every hour and when the address changes; none of it is on the chain.</source>
+        <translation>이 릴레이가 네트워크에 알리는 위치이며, 키로 서명되어 있습니다. 매시간, 그리고 주소가 바뀔 때 다시 알립니다. 어떤 것도 체인에 있지 않습니다.</translation>
     </message>
 </context>
 <context>

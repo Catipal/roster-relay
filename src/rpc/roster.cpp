@@ -12,9 +12,11 @@
 #include <core_io.h>
 #include <policy/policy.h>
 #include <policy/settings.h>
+#include <random.h>
 #include <roster/keystore.h>
 #include <roster/listing.h>
 #include <roster/payout.h>
+#include <roster/peers.h>
 #include <roster/record.h>
 #include <roster/view.h>
 #include <overlay/chainsync.h>
@@ -35,6 +37,7 @@
 #include <algorithm>
 #include <cstring>
 #include <map>
+#include <set>
 #include <string>
 #include <vector>
 
@@ -541,6 +544,9 @@ static RPCHelpMan getgatewayinfo()
                         {RPCResult::Type::BOOL, "enabled", "Whether -gateway is on, with the overlay and the roster index"},
                         {RPCResult::Type::STR, "state", /* optional */ true, "open, closed for today (budget spent), or off (not listed as a gateway)"},
                         {RPCResult::Type::BOOL, "listed", /* optional */ true, "Whether the roster lists this node as a gateway"},
+                        {RPCResult::Type::STR_HEX, "key", /* optional */ true, "The key it serves under, when listed"},
+                        {RPCResult::Type::BOOL, "second_key", /* optional */ true, "Whether that is its gateway key, apart from its operational key (a relay's gateway)"},
+                        {RPCResult::Type::STR, "own_listing", /* optional */ true, "This node's own listing: none, with an address (a relay's, whose gateway takes the gateway key), or without one"},
                         {RPCResult::Type::NUM, "registrations", /* optional */ true, "Meeting points it is registered at"},
                         {RPCResult::Type::STR, "policy", /* optional */ true, "Ports it carries, as -gatewayports takes them"},
                         {RPCResult::Type::NUM, "today_bytes", /* optional */ true, "Bytes carried today (UTC), both ways"},
@@ -621,11 +627,20 @@ static RPCHelpMan getgatewayinfo()
     out.pushKV("state", s.state == overlay::GatewayState::OPEN ? "open"
                         : s.state == overlay::GatewayState::CLOSED_TODAY ? "closed for today" : "off");
     out.pushKV("listed", s.listed);
+    const overlay::GatewayIdentity id = overlay::GetGatewayIdentity();
+    if (id.listed) {
+        out.pushKV("key", HexStr(id.key));
+        out.pushKV("second_key", id.second_key);
+    }
+    out.pushKV("own_listing", !id.own_listed ? "none" : id.own_address ? "with an address" : "without an address");
     size_t registrations = 0;
-    if (overlay::g_gateway_meeting) {
-        registrations = overlay::g_gateway_meeting->Registrations().size();
-    } else if (overlay::g_meeting) {
-        registrations = overlay::g_meeting->Registrations().size();
+    {
+        LOCK(overlay::g_gateway_meeting_mutex);
+        if (overlay::g_gateway_meeting) {
+            registrations = overlay::g_gateway_meeting->Registrations().size();
+        } else if (id.listed && !id.second_key && overlay::g_meeting) {
+            registrations = overlay::g_meeting->Registrations().size();
+        }
     }
     out.pushKV("registrations", (uint64_t)registrations);
     out.pushKV("policy", s.policy);
@@ -878,9 +893,18 @@ static std::vector<unsigned char> BuildAnnouncement(const UniValue& options, ros
         }
     }
 
+    // Signed with the operational key, or with the gateway key a relay lists
+    // its gateway under, apart from its own address (design note section 8.7).
+    const std::string which = options.exists("key") ? options["key"].get_str() : "operational";
+    if (which != "operational" && which != "gateway") {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "key is \"operational\" or \"gateway\"");
+    }
+    const bool gateway_key = which == "gateway";
     CKey key;
     std::string error;
-    if (!roster::GetOperationalKey(key, error)) throw JSONRPCError(RPC_INTERNAL_ERROR, error);
+    if (!(gateway_key ? roster::GetGatewayKey(key, error) : roster::GetOperationalKey(key, error))) {
+        throw JSONRPCError(RPC_INTERNAL_ERROR, error);
+    }
 
     int tip;
     {
@@ -936,7 +960,9 @@ static std::vector<unsigned char> BuildAnnouncement(const UniValue& options, ros
     // A gateway is listed by its key alone and met at its meeting points. With
     // an endpoint the record would publish where an exit is - the public exit
     // list design note §8·7 exists to avoid - so the two never go together.
-    if (options.exists("gateway") && options["gateway"].get_bool()) {
+    // The gateway key exists for nothing else: it is always listed as a
+    // gateway, and always with no address.
+    if (gateway_key || (options.exists("gateway") && options["gateway"].get_bool())) {
         if (!rec.endpoints.empty()) {
             throw JSONRPCError(RPC_INVALID_PARAMETER,
                 "A gateway is listed with no endpoint: it is met at its meeting points, so nobody "
@@ -1054,6 +1080,8 @@ static RPCHelpMan createannouncement()
                         }},
                     {"gateway", RPCArg::Type::BOOL, /* default */ "false",
                      "List this key as a gateway to the internet, met at its meeting points (design note §8·7). Only on a record with no endpoints."},
+                    {"key", RPCArg::Type::STR, /* default */ "operational",
+                     "Which key signs: \"operational\", or \"gateway\" - the second key a relay lists its gateway under, since its operational key carries its address. A gateway key is always listed as a gateway, with no endpoints, and is created in <datadir>/gateway.key on first use."},
                 }},
         },
         RPCResult{
@@ -1090,6 +1118,103 @@ static RPCHelpMan createannouncement()
     };
 }
 
+/**
+ * requestlisting for a relay's gateway key: through a path proving that key,
+ * from a relay that is not one of this node's entry relays, which see its
+ * address. The path's relays and the relay that pays then each know at most
+ * one of the two, as at a meeting.
+ */
+static UniValue RequestGatewayListing(const UniValue& options, const UniValue& relay_param)
+{
+    CKey gateway_key;
+    std::string error;
+    if (!roster::GetGatewayKey(gateway_key, error)) throw JSONRPCError(RPC_MISC_ERROR, error);
+    const roster::KeyBytes own = roster::KeyBytesOf(gateway_key);
+    roster::KeyBytes node{};
+    {
+        CKey op;
+        if (roster::ReadOperationalKey(op)) node = roster::KeyBytesOf(op);
+    }
+
+    std::set<roster::KeyBytes> guards;
+    {
+        LOCK(overlay::g_selector_mutex);
+        if (overlay::g_selector) {
+            // Entry relays are drawn when a path first needs one. Draw them
+            // now, or the relay asked could become one with this very path.
+            std::vector<overlay::RelayCandidate> unused;
+            overlay::g_selector->Select(1, unused);
+            for (const overlay::RelayCandidate& g : overlay::g_selector->Guards()) guards.insert(g.key);
+        }
+    }
+    roster::KeyBytes relay_key{};
+    if (!relay_param.isNull()) {
+        const std::vector<unsigned char> key = ParseHexV(find_value(relay_param.get_obj(), "key"), "key");
+        if (key.size() != relay_key.size()) {
+            throw JSONRPCError(RPC_INVALID_PARAMETER, "key must be 32 bytes of hex, as the roster lists it");
+        }
+        std::copy(key.begin(), key.end(), relay_key.begin());
+        if (guards.count(relay_key)) {
+            throw JSONRPCError(RPC_INVALID_PARAMETER,
+                "That relay is one of this node's entry relays, which know where it is. Ask another.");
+        }
+    } else {
+        std::vector<roster::KeyBytes> others;
+        for (const roster::RelayInfo& r : roster::FreshRelays()) {
+            if (r.key != own && r.key != node && !guards.count(r.key)) others.push_back(r.key);
+        }
+        std::sort(others.begin(), others.end());
+        others.erase(std::unique(others.begin(), others.end()), others.end());
+        if (others.empty()) {
+            throw JSONRPCError(RPC_MISC_ERROR,
+                "The roster lists no relay to ask other than this node's entry relays.");
+        }
+        relay_key = others[GetRand(others.size())];
+    }
+    if (relay_key == own || relay_key == node) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "A node cannot ask itself to pay for its gateway's listing.");
+    }
+
+    roster::Record rec;
+    UniValue warnings(UniValue::VARR);
+    std::vector<unsigned char> raw = BuildAnnouncement(options, rec, warnings);
+    const int hops = std::max(1, std::min(overlay::MAX_MEET_HOPS,
+                                          (int)gArgs.GetArg("-meethops", overlay::DEFAULT_MEET_HOPS)));
+    const std::chrono::seconds answer_wait{60};
+    bool answered = false;
+    roster::ListingOutcome outcome = roster::RequestListingOverPath(relay_key, gateway_key, raw, hops, answer_wait, answered);
+    // As below: a relay that stakes rarely names the window it needs, once.
+    if (!outcome.ok && answered && outcome.needed_window > 0) {
+        int tip;
+        {
+            LOCK(cs_main);
+            tip = ::ChainActive().Height();
+        }
+        UniValue longer = options;
+        longer.pushKV("expiry_height", tip + (int)roster::MIN_TTL + (int)outcome.needed_window + 6);
+        raw = BuildAnnouncement(longer, rec, warnings);
+        outcome = roster::RequestListingOverPath(relay_key, gateway_key, raw, hops, answer_wait, answered);
+    }
+    int tip_now;
+    {
+        LOCK(cs_main);
+        tip_now = ::ChainActive().Height();
+    }
+
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("status", outcome.ok ? "published" : answered ? "refused" : "unanswered");
+    out.pushKV("relay", HexStr(relay_key));
+    out.pushKV("key", HexStr(rec.op_key));
+    out.pushKV("expiry_height", (uint64_t)rec.expiry_height);
+    out.pushKV("confirm_window", (int64_t)rec.expiry_height - (int64_t)roster::MIN_TTL - tip_now);
+    if (outcome.ok) {
+        out.pushKV("txid", outcome.txid.GetHex());
+    } else {
+        out.pushKV("reason", outcome.reason);
+    }
+    return out;
+}
+
 static RPCHelpMan requestlisting()
 {
     return RPCHelpMan{"requestlisting",
@@ -1101,6 +1226,13 @@ static RPCHelpMan requestlisting()
         "paying lets the listing lapse within the month; renewing from a funded wallet\n"
         "with publishrecord is always possible (design note 001 section 8).\n"
         "\nNeeds -overlay. With no relay named, this node's own entry relay is asked.\n"
+        "\nWith options {\"key\":\"gateway\"}, the listing is a relay's gateway key\n"
+        "(design note 001 section 8.7): the gateway bit and no address. It is asked for\n"
+        "through a path of -meethops relays that proves the gateway key and nothing\n"
+        "else, from a relay that is not one of this node's entry relays (a random listed\n"
+        "one unless named), so the relay that pays learns the key and never this node's\n"
+        "address. Paying from this node's own wallet instead would tie the gateway to\n"
+        "this relay's own listing on the chain, and so to its address.\n"
         "\nThe relay puts the listing into a block it stakes itself, which is how it\n"
         "confirms while most nodes still refuse to relay records. A relay that stakes\n"
         "rarely asks for a record that can wait longer to confirm; this call signs\n"
@@ -1110,15 +1242,15 @@ static RPCHelpMan requestlisting()
             {"relay", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED_NAMED_ARG, "The relay to ask, instead of this node's entry relay.",
                 {
                     {"key", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "The relay's operational key, as the roster lists it."},
-                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "Where its overlay listens, host:port."},
+                    {"address", RPCArg::Type::STR, RPCArg::Optional::OMITTED, "Where its overlay listens, host:port. Not used for a gateway key, which reaches the relay through a path."},
                 }},
         },
         RPCResult{
             RPCResult::Type::OBJ, "", "", {
                 {RPCResult::Type::STR, "status", "published, refused or unanswered"},
                 {RPCResult::Type::STR_HEX, "relay", "Key of the relay that was asked"},
-                {RPCResult::Type::STR, "relay_address", "Where it was asked"},
-                {RPCResult::Type::STR_HEX, "key", "This node's operational key"},
+                {RPCResult::Type::STR, "relay_address", /* optional */ true, "Where it was asked; absent when asked through a path"},
+                {RPCResult::Type::STR_HEX, "key", "The key listed: this node's operational key, or its gateway key"},
                 {RPCResult::Type::NUM, "expiry_height", "Height the listing stops counting"},
                 {RPCResult::Type::NUM, "confirm_window", "Blocks the listing could wait to confirm and still count"},
                 {RPCResult::Type::STR_HEX, "txid", /* optional */ true, "The relay's transaction, when published"},
@@ -1127,13 +1259,19 @@ static RPCHelpMan requestlisting()
         RPCExamples{
             HelpExampleCli("requestlisting", "")
           + HelpExampleCli("requestlisting", "'{}' '{\"key\":\"<hex>\",\"address\":\"203.0.113.7:48931\"}'")
+          + HelpExampleCli("requestlisting", "'{\"key\":\"gateway\"}'")
         },
         [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
 {
     const UniValue options = request.params[0].isNull() ? UniValue(UniValue::VOBJ) : request.params[0].get_obj();
+    const std::string which = options.exists("key") ? options["key"].get_str() : "operational";
+    if (which != "operational" && which != "gateway") {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "key must be \"operational\" or \"gateway\"");
+    }
     if (!overlay::g_overlay) {
         throw JSONRPCError(RPC_MISC_ERROR, "The overlay is off (-overlay), so there is no way to reach a relay.");
     }
+    if (which == "gateway") return RequestGatewayListing(options, request.params[1]);
 
     roster::KeyBytes relay_key{};
     CService relay_addr;
@@ -1145,7 +1283,11 @@ static RPCHelpMan requestlisting()
             throw JSONRPCError(RPC_INVALID_PARAMETER, "key must be 32 bytes of hex, as the roster lists it");
         }
         std::copy(key.begin(), key.end(), relay_key.begin());
-        const std::string address = find_value(relay, "address").get_str();
+        const UniValue& address_value = find_value(relay, "address");
+        if (!address_value.isStr()) {
+            throw JSONRPCError(RPC_INVALID_PARAMETER, "Name the relay's address too: it is asked directly.");
+        }
+        const std::string address = address_value.get_str();
         if (!Lookup(address, relay_addr, overlay::OverlayPortFor(Params().GetDefaultPort()), false)) {
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Cannot read the relay address: " + address);
         }

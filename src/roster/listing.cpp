@@ -8,6 +8,7 @@
 #include <crypto/common.h>
 #include <index/rosterindex.h>
 #include <logging.h>
+#include <overlay/meeting.h>
 #include <overlay/radio.h>
 #include <overlay/relay.h>
 #include <random.h>
@@ -89,15 +90,29 @@ uint32_t LiveExpiry(const KeyBytes& key, int tip)
 
 namespace {
 
-void Answer(const CService& to, uint64_t id, const ListingOutcome& outcome)
+void Answer(const overlay::Hop& to, uint64_t id, const ListingOutcome& outcome)
 {
     std::vector<unsigned char> msg;
-    if (overlay::g_overlay && EncodeListingResult(id, outcome, msg)) {
-        overlay::g_overlay->SendApp(to, msg);
+    if (!overlay::g_overlay || !EncodeListingResult(id, outcome, msg)) return;
+    if (to.via_path) {
+        overlay::g_overlay->SendSecret(to.path, msg);
+    } else {
+        overlay::g_overlay->SendApp(to.addr, msg);
     }
 }
 
-ListingOutcome Decide(const CService& from, const std::vector<unsigned char>& raw)
+/**
+ * The key the asker proved: in the hop's handshake, or for a path in the
+ * end-to-end handshake, where a requester proves its key on purpose (a
+ * gateway's) and every other path a throwaway one.
+ */
+CPubKey RequesterIdentity(const overlay::Hop& from)
+{
+    return from.via_path ? overlay::g_overlay->SecretPeerIdentity(from.path)
+                         : overlay::g_overlay->PeerIdentity(from.addr);
+}
+
+ListingOutcome Decide(const overlay::Hop& from, const std::vector<unsigned char>& raw)
 {
     if (!gArgs.GetBoolArg("-acceptlistings", DEFAULT_ACCEPT_LISTINGS)) {
         return Refused("This relay does not pay for listings.");
@@ -105,13 +120,14 @@ ListingOutcome Decide(const CService& from, const std::vector<unsigned char>& ra
 
     // The overlay authenticated this key in the handshake. It is the only
     // identity in the exchange that cannot be claimed by just saying so.
-    const CPubKey identity = overlay::g_overlay->PeerIdentity(from);
+    const CPubKey identity = RequesterIdentity(from);
     if (!identity.IsValid() || identity.size() != CPubKey::COMPRESSED_SIZE) {
         return Refused("No session with this peer.");
     }
 
     ListingContext ctx;
     std::copy(identity.begin() + 1, identity.begin() + 33, ctx.requester.begin());
+    ctx.over_path = from.via_path;
     ctx.chain_id = Params().NetworkIDString();
     int tip;
     uint64_t network_weight;
@@ -189,16 +205,16 @@ ListingOutcome Decide(const CService& from, const std::vector<unsigned char>& ra
 
 void HandleRequest(const overlay::Hop& from, const std::vector<unsigned char>& payload)
 {
-    // Only from an adjacent peer. Through a path the requester has no address
-    // here and no identity either, which is the point of a path - and the
-    // identity is exactly what the relay is being asked to pay for.
-    if (from.via_path || !overlay::g_overlay) return;
+    // From an adjacent peer, or through a path whose session proved a key: a
+    // gateway's, the one listing a node asks for from no address
+    // (CheckListingRequest refuses any other over a path).
+    if (!overlay::g_overlay) return;
 
     uint64_t id = 0;
     std::vector<unsigned char> raw;
     if (!DecodeListingRequest(payload, id, raw)) return;
 
-    const CPubKey identity = overlay::g_overlay->PeerIdentity(from.addr);
+    const CPubKey identity = RequesterIdentity(from);
     KeyBytes requester{};
     if (identity.IsValid() && identity.size() == CPubKey::COMPRESSED_SIZE) {
         std::copy(identity.begin() + 1, identity.begin() + 33, requester.begin());
@@ -219,14 +235,14 @@ void HandleRequest(const overlay::Hop& from, const std::vector<unsigned char>& p
         }
     }
     if (repeated) {
-        Answer(from.addr, id, before);
+        Answer(from, id, before);
         return;
     }
 
-    const ListingOutcome outcome = Decide(from.addr, raw);
+    const ListingOutcome outcome = Decide(from, raw);
     if (!outcome.ok) {
         LogPrint(BCLog::NET, "roster: declined a listing request from %s: %s\n",
-                 from.addr.ToString(), outcome.reason);
+                 from.via_path ? strprintf("path %016x", from.path) : from.addr.ToString(), outcome.reason);
     }
     {
         LOCK(g_relay_mutex);
@@ -237,13 +253,14 @@ void HandleRequest(const overlay::Hop& from, const std::vector<unsigned char>& p
             g_given[asked] = given;
         }
     }
-    Answer(from.addr, id, outcome);
+    Answer(from, id, outcome);
 }
 
 // --- requester side ---------------------------------------------------------
 
 struct PendingRequest {
     CService relay;
+    uint64_t path{0}; //!< asked through this path instead, when not 0
     bool done{false};
     ListingOutcome outcome;
 };
@@ -254,16 +271,20 @@ std::map<uint64_t, PendingRequest> g_requests GUARDED_BY(g_requests_mutex);
 
 void HandleResult(const overlay::Hop& from, const std::vector<unsigned char>& payload)
 {
-    if (from.via_path) return;
     uint64_t id = 0;
     ListingOutcome outcome;
     if (!DecodeListingResult(payload, id, outcome)) return;
 
     LOCK(g_requests_mutex);
     std::map<uint64_t, PendingRequest>::iterator it = g_requests.find(id);
-    // Answers are accepted only from the relay that was asked, so a third
-    // party who learned the id cannot answer on its behalf.
-    if (it == g_requests.end() || it->second.relay != from.addr || it->second.done) return;
+    // Answers are accepted only from the relay that was asked - on the path
+    // it was asked through, when it was - so a third party who learned the
+    // id cannot answer on its behalf.
+    if (it == g_requests.end() || it->second.done) return;
+    if (from.via_path ? it->second.path == 0 || it->second.path != from.path
+                      : it->second.path != 0 || it->second.relay != from.addr) {
+        return;
+    }
     it->second.done = true;
     it->second.outcome = outcome;
     g_requests_cv.notify_all();
@@ -369,6 +390,13 @@ bool CheckListingRequest(const std::vector<unsigned char>& raw, const ListingCon
     }
     if (rec.op_key != ctx.requester) {
         reason = "The listing names a different key from the one connected here.";
+        return false;
+    }
+    // Over a path the relay cannot watch who it is paying for, as it watches
+    // its own connections. A gateway is the one listing that must be asked
+    // for from no address, so it is the one paid for that way.
+    if (ctx.over_path && !IsGatewayRecord(rec.services, rec.endpoints.size())) {
+        reason = "Through a path, this relay pays only for a gateway's listing: the gateway bit and no address.";
         return false;
     }
     if (!ExpiryInRange(rec.expiry_height, ctx.next_height)) {
@@ -508,6 +536,60 @@ ListingOutcome RequestListing(const CService& relay_addr, const CPubKey& relay_k
             break;
         }
     }
+    if (!result.done) return Refused("The relay did not answer in time.");
+    answered = true;
+    return result.outcome;
+}
+
+ListingOutcome RequestListingOverPath(const KeyBytes& relay, const CKey& as,
+                                      const std::vector<unsigned char>& record, int hops,
+                                      std::chrono::seconds answer_timeout, bool& answered)
+{
+    answered = false;
+    if (!overlay::g_overlay) return Refused("The overlay is off, so there is no way to reach a relay.");
+
+    // The relay proves itself as the path's far end; this node proves `as`
+    // to it and to nobody else on the way.
+    overlay::Reached reached;
+    std::string error;
+    if (!overlay::ReachRelay(relay, hops, /* prove_last */ true, reached, error, &as)) {
+        return Refused("Could not reach the relay through a path: " + error + ".");
+    }
+
+    const uint64_t id = GetRand(std::numeric_limits<uint64_t>::max());
+    std::vector<unsigned char> msg;
+    if (!EncodeListingRequest(id, record, msg)) {
+        overlay::g_overlay->ClosePath(reached.legs);
+        return Refused("The listing is too large to send.");
+    }
+    {
+        LOCK(g_requests_mutex);
+        g_requests[id].path = reached.path;
+    }
+    // Sent again under the same id while no answer comes, as above; each try
+    // allows for the step timeout of every relay on the way and back.
+    const auto answer_deadline = std::chrono::steady_clock::now() + answer_timeout;
+    const auto resend_every = std::chrono::milliseconds{10000} + 2 * reached.step;
+    PendingRequest result;
+    while (true) {
+        if (!overlay::g_overlay->SendSecret(reached.path, msg)) {
+            LOCK(g_requests_mutex);
+            g_requests.erase(id);
+            overlay::g_overlay->ClosePath(reached.legs);
+            return Refused("Could not send the request through the path.");
+        }
+        WAIT_LOCK(g_requests_mutex, lock);
+        const auto until = std::min(answer_deadline, std::chrono::steady_clock::now() + resend_every);
+        g_requests_cv.wait_until(lock, until, [&]() EXCLUSIVE_LOCKS_REQUIRED(g_requests_mutex) {
+            return g_requests[id].done;
+        });
+        if (g_requests[id].done || std::chrono::steady_clock::now() >= answer_deadline) {
+            result = g_requests[id];
+            g_requests.erase(id);
+            break;
+        }
+    }
+    overlay::g_overlay->ClosePath(reached.legs);
     if (!result.done) return Refused("The relay did not answer in time.");
     answered = true;
     return result.outcome;

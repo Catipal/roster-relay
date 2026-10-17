@@ -11,6 +11,7 @@
 #include <overlay/ippacket.h>
 #include <overlay/limits.h>
 #include <overlay/path.h>
+#include <roster/record.h>
 #include <sync.h>
 
 #include <atomic>
@@ -273,13 +274,32 @@ private:
 /** The running gateway, or null when -gateway is off or the overlay is. */
 extern std::unique_ptr<Gateway> g_gateway;
 
+/**
+ * The key this node serves as a gateway under: its own operational key when
+ * the roster lists that as a gateway (no address), or its gateway key - a
+ * relay's, since a relay's own key carries its address (roster/keystore.h).
+ */
+struct GatewayIdentity {
+    bool listed{false};
+    bool second_key{false};
+    roster::KeyBytes key{};
+    //! The node's own listing, which says how it may list itself as a gateway:
+    //! a listing with an address is a relay's, whose gateway needs the second key.
+    bool own_listed{false};
+    bool own_address{false};
+};
+GatewayIdentity GetGatewayIdentity();
+void SetGatewayIdentity(const GatewayIdentity& id);
+
 class MeetingService;
 /**
  * The gateway's registration at its meeting points, running only while the
- * roster lists this node as a gateway. Null when -meetable keeps the node
- * registered anyway (overlay::g_meeting).
+ * roster lists this node as a gateway, under the key it is listed by. Null
+ * when not listed, or when -meetable keeps the node's own key registered
+ * anyway (overlay::g_meeting). Guarded by g_gateway_meeting_mutex.
  */
-extern std::unique_ptr<MeetingService> g_gateway_meeting;
+extern Mutex g_gateway_meeting_mutex;
+extern std::unique_ptr<MeetingService> g_gateway_meeting GUARDED_BY(g_gateway_meeting_mutex);
 
 /** This machine's interface addresses, for SelfAddresses. */
 std::vector<IpAddr> LocalInterfaceAddresses();

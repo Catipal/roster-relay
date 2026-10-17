@@ -20,6 +20,7 @@ constexpr size_t SECRET_SIZE = 32;
 
 fs::path KeyPath() { return GetDataDir() / "roster.key"; }
 fs::path IdentityPath() { return GetDataDir() / "roster_identity.key"; }
+fs::path GatewayPath() { return GetDataDir() / "gateway.key"; }
 
 //! Best-effort owner-only permissions. Failure is logged rather than fatal:
 //! some filesystems cannot express it, and refusing to run there would be a
@@ -150,9 +151,8 @@ bool StakerPubKeyFromRoster(const KeyBytes& op_key, CPubKey& pubkey_out)
     return pubkey_out.IsFullyValid();
 }
 
-bool GetOperationalKey(CKey& key_out, std::string& error)
+bool LoadOrCreateKey(const fs::path& path, const char* what, CKey& key_out, std::string& error)
 {
-    const fs::path path = KeyPath();
 
     if (fs::exists(path)) {
         fsbridge::ifstream file(path, std::ios::binary);
@@ -194,7 +194,26 @@ bool GetOperationalKey(CKey& key_out, std::string& error)
     file.close();
     RestrictPermissions(path);
 
-    LogPrintf("roster: created a new operational key at %s\n", path.string());
+    LogPrintf("roster: created a new %s key at %s\n", what, path.string());
+    return true;
+}
+
+bool GetOperationalKey(CKey& key_out, std::string& error)
+{
+    return LoadOrCreateKey(KeyPath(), "operational", key_out, error);
+}
+
+bool GetGatewayKey(CKey& key_out, std::string& error)
+{
+    return LoadOrCreateKey(GatewayPath(), "gateway", key_out, error);
+}
+
+bool ReadGatewayKey(CKey& key_out)
+{
+    const fs::path path = GatewayPath();
+    std::string error;
+    if (!fs::exists(path) || !ReadKeyFile(path, key_out, error)) return false;
+    CanonicaliseEvenY(key_out);
     return true;
 }
 

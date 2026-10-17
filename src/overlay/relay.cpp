@@ -164,12 +164,15 @@ bool Relay::SendOnPath(uint64_t path_id, const std::vector<unsigned char>& inner
     return SendToHop(carrier, msg, /* wrapping */ true);
 }
 
-bool Relay::ConnectSecret(uint64_t path_id, const CPubKey& far_static, bool anonymous)
+bool Relay::ConnectSecret(uint64_t path_id, const CPubKey& far_static, bool anonymous, const CKey* as)
 {
     std::vector<unsigned char> hello;
     {
         LOCK(m_mutex);
-        if (anonymous) {
+        if (as) {
+            // A key of this node's other than its static one, shown on purpose.
+            if (!m_secret.ConnectAs(path_id, far_static, *as, hello)) return false;
+        } else if (anonymous) {
             // Made for this handshake and dropped with it. The far end sees a
             // key it has never seen and never will again.
             CKey once;
@@ -218,7 +221,8 @@ bool Relay::SendSecret(uint64_t path_id, const std::vector<unsigned char>& paylo
 }
 
 bool Relay::BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out,
-                         std::string& error, std::chrono::milliseconds step_timeout, bool prove_last)
+                         std::string& error, std::chrono::milliseconds step_timeout, bool prove_last,
+                         const CKey* prove_as)
 {
     path_out = 0;
     if (hops.size() < 2) {
@@ -277,7 +281,7 @@ bool Relay::BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out
             // asked, the last: a meeting point registers a service only over a
             // session that proved the service's own key.
             const bool anonymous = !(prove_last && i + 1 == hops.size());
-            if (!ConnectSecret(id, hops[i].key, anonymous)) break;
+            if (!ConnectSecret(id, hops[i].key, anonymous, anonymous ? nullptr : prove_as)) break;
             const auto until = std::chrono::steady_clock::now() + attempt_timeout;
             while (std::chrono::steady_clock::now() < until && !HasSecretSession(id) && !m_interrupted) {
                 UninterruptibleSleep(std::chrono::milliseconds{20});
@@ -353,6 +357,17 @@ void Relay::PruneIntros()
 TrafficLimits::Stats Relay::LimitStats() const
 {
     return m_limits.GetStats(LimitsNow());
+}
+
+void Relay::SetServiceKey(uint64_t registration_path, const CKey& key)
+{
+    LOCK(m_mutex);
+    // Bounded like the path table; a registration's path is the only thing
+    // that ever names an entry, and old ones are simply never asked for again.
+    if (m_service_keys.size() >= PathTable::MAX_PATHS && !m_service_keys.count(registration_path)) {
+        m_service_keys.erase(m_service_keys.begin());
+    }
+    m_service_keys[registration_path] = key;
 }
 
 size_t Relay::PathCount()
@@ -561,6 +576,12 @@ void Relay::OnMessage(const Hop& from, std::vector<unsigned char>&& msg)
         LOCK(m_mutex);
         m_paths.Expire(GetTime());
         m_paths.CreateEndpoint(path_id, from, GetTime());
+        // Spliced onto a registration made under another key: the visitor is
+        // asking for that key, so that is the key that answers.
+        if (from.via_path) {
+            std::map<uint64_t, CKey>::const_iterator k = m_service_keys.find(from.path);
+            if (k != m_service_keys.end()) m_secret.SetResponderKey(path_id, k->second);
+        }
         return;
     }
 

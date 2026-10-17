@@ -5,6 +5,7 @@
 #ifndef BITCOIN_OVERLAY_MEETING_H
 #define BITCOIN_OVERLAY_MEETING_H
 
+#include <key.h>
 #include <overlay/path.h>
 #include <overlay/select.h>
 #include <roster/record.h>
@@ -91,7 +92,8 @@ struct Reached {
  * meeting point must be to register it; every relay before it sees only a key
  * made for the occasion.
  */
-bool ReachRelay(const roster::KeyBytes& key, int hops, bool prove_last, Reached& out, std::string& error);
+bool ReachRelay(const roster::KeyBytes& key, int hops, bool prove_last, Reached& out, std::string& error,
+                const CKey* prove_as = nullptr);
 
 /** One registration of this node at a meeting point. */
 struct Registration {
@@ -106,7 +108,12 @@ struct Registration {
 class MeetingService
 {
 public:
-    MeetingService(const roster::KeyBytes& self, int hops);
+    /**
+     * Keep `self` registered. With `as`, `self` is that key - one the node
+     * holds besides its static key, as a relay's gateway key is - and both
+     * the registration and the meetings spliced onto it use it.
+     */
+    MeetingService(const roster::KeyBytes& self, int hops, const CKey* as = nullptr);
     ~MeetingService();
 
     void Start();
@@ -127,6 +134,12 @@ private:
 
     const roster::KeyBytes m_self;
     const int m_hops;
+    const bool m_has_as;
+    const CKey m_as;
+    //! This node's own operational key. Under a second key, the node can be one
+    //! of its own meeting points - a relay running a gateway - and a path to
+    //! itself cannot be built, so that point is left out.
+    roster::KeyBytes m_node{};
     mutable Mutex m_mutex;
     std::map<roster::KeyBytes, Registration> m_regs GUARDED_BY(m_mutex);
     std::string m_error GUARDED_BY(m_mutex);

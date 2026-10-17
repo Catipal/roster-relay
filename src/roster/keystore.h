@@ -57,6 +57,18 @@ bool StakerPubKeyFromRoster(const KeyBytes& op_key, CPubKey& pubkey_out);
 KeyBytes KeyBytesOf(const CKey& key);
 
 /**
+ * The key a relay's gateway is listed and met under (design note §8·7).
+ *
+ * A relay's operational key carries its address, so a gateway under it would
+ * publish where an exit is. A relay that is also a gateway lists this second
+ * key with no address instead; nobody can tell from the roster that the two
+ * belong to one node. Created on first use, in <datadir>/gateway.key.
+ */
+bool GetGatewayKey(CKey& key_out, std::string& error);
+/** The gateway key if one has been made; false without creating one. */
+bool ReadGatewayKey(CKey& key_out);
+
+/**
  * This node's identity key (§7), from <datadir>/roster_identity.key.
  *
  * Unlike the operational key it is never created by itself: a node has an

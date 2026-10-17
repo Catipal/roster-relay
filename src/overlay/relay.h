@@ -154,7 +154,7 @@ public:
      * that has to be recognised - a service registering at its meeting point -
      * passes false and proves its roster key instead.
      */
-    bool ConnectSecret(uint64_t path_id, const CPubKey& far_static, bool anonymous = true);
+    bool ConnectSecret(uint64_t path_id, const CPubKey& far_static, bool anonymous = true, const CKey* as = nullptr);
 
     /** True once the far end of this path has completed the exchange. */
     bool HasSecretSession(uint64_t path_id);
@@ -185,7 +185,14 @@ public:
      */
     bool BuildCircuit(const std::vector<CircuitHop>& hops, uint64_t& path_out, std::string& error,
                       std::chrono::milliseconds step_timeout = std::chrono::milliseconds{4000},
-                      bool prove_last = false);
+                      bool prove_last = false, const CKey* prove_as = nullptr);
+
+    /**
+     * A registration this node made on `registration_path` was made under
+     * `key`, not its static key, so meetings spliced onto that path are
+     * answered as `key`: how a relay's gateway is met under a key of its own.
+     */
+    void SetServiceKey(uint64_t registration_path, const CKey& key);
 
     /**
      * Forget a path this node built, and every leg under it that `legs` names.
@@ -273,6 +280,8 @@ private:
     // Bounded like the path table: registering is something strangers do.
     std::map<roster::KeyBytes, uint64_t> m_intros GUARDED_BY(m_mutex);
     std::vector<PendingBuild> m_pending_builds GUARDED_BY(m_mutex);
+    // Registrations made under a key other than the static one, by path.
+    std::map<uint64_t, CKey> m_service_keys GUARDED_BY(m_mutex);
     // Circuits this node built: the innermost path and the legs under it.
     std::map<uint64_t, std::vector<uint64_t>> m_circuits GUARDED_BY(m_mutex);
     DialPolicy m_dial GUARDED_BY(m_mutex);

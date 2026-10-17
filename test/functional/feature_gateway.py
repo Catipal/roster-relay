@@ -23,7 +23,9 @@ What the test is about:
   * a gateway switched off is let go, and the visitor carries on through the
     other; switched on again, it is met again;
   * a gateway whose day's budget is spent says so, takes nothing new, and the
-    visitor carries on through the other.
+    visitor carries on through the other;
+  * a relay is a gateway too, under a second key listed with no address, so
+    nothing in the roster ties its gateway to where it is.
 """
 
 import hashlib
@@ -35,7 +37,7 @@ import threading
 import time
 
 from test_framework.test_framework import BitcoinTestFramework
-from test_framework.util import assert_equal, p2p_port
+from test_framework.util import assert_equal, assert_raises_rpc_error, p2p_port
 
 EPOCH = 480
 BIG = bytes(random.Random(7).getrandbits(8) for _ in range(1536 * 1024))
@@ -250,6 +252,45 @@ class GatewayTest(BitcoinTestFramework):
         for _ in range(4):
             assert_equal(self.fetch("/small"), b"hello from the internet\n")
         self.log.info("  node 6 refused %d connection(s) for its budget", self.nodes[6].getgatewayinfo()["refused_limits"])
+
+        self.log.info("a relay is a gateway under a second key, listed with no address")
+        assert_raises_rpc_error(-8, "listed with no endpoint", self.nodes[5].createannouncement,
+                                {"key": "gateway", "endpoints": [{"network": "ipv4", "address": "127.0.0.1", "port": p2p_port(5)}]})
+        # Its gateway's listing is asked for through a path, from a relay that
+        # is not one of its entry relays; none here pays for listings, and the
+        # answer comes back along the path (feature_gateway_listing.py has
+        # relays that pay). The test's payer publishes it instead.
+        asked = self.nodes[5].requestlisting({"key": "gateway"})
+        assert_equal(asked["status"], "refused")
+        assert "does not pay for listings" in asked["reason"], asked["reason"]
+        assert asked["relay"] not in self.nodes[5].getoverlayinfo()["guards"]
+        record = self.nodes[5].createannouncement({"key": "gateway"})
+        relay_gateway = record["key"]
+        assert relay_gateway != self.key(5)
+        self.restart_node(5, self.gateway_args)
+        self.connect_nodes(4, 5)
+        self.connect_nodes(5, 6)
+        payer.publishrecord(record["hex"])
+        payer.generatetoaddress(1, payer.getnewaddress())
+        self.sync_all()
+        roster = {e["key"]: e for e in self.nodes[0].getroster(0)}
+        assert_equal(roster[relay_gateway]["gateway"], True)
+        assert_equal(roster[relay_gateway]["endpoints"], [])
+        assert_equal(roster[self.key(5)]["gateway"], False)
+        assert_equal(len(roster[self.key(5)]["endpoints"]), 1)
+        # No gateway in the roster carries an address.
+        assert all(e["endpoints"] == [] for e in roster.values() if e["gateway"])
+        self.wait_until(lambda: self.nodes[5].getgatewayinfo().get("key") == relay_gateway, timeout=120)
+        assert_equal(self.nodes[5].getgatewayinfo()["second_key"], True)
+        # Three points, or two when the relay is itself one of its gateway's
+        # points: a node does not register at itself.
+        self.wait_until(lambda: self.nodes[5].getgatewayinfo()["registrations"] >= 2, timeout=240)
+        self.wait_until(lambda: relay_gateway in self.open_gateways(), timeout=300)
+        for _ in range(6):
+            assert_equal(self.fetch("/small"), b"hello from the internet\n")
+        assert self.nodes[5].getgatewayinfo()["opened"] >= 1
+        # The relay still relays: its own key's listing and paths are untouched.
+        assert self.nodes[5].getoverlayinfo()["carried"]["today_bytes"] >= 0
 
         server.shutdown()
 

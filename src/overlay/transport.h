@@ -102,6 +102,16 @@ public:
     /** Drop everything for one peer. */
     void Forget(const PeerKey& peer);
 
+    /**
+     * Answer a handshake from `peer` with `key` rather than this node's
+     * static key. For a node met under a second key: a gateway listed apart
+     * from the relay it runs on, whose own key carries the relay's address
+     * (design note §8·7). Bounded, since meetings are something strangers
+     * start; past the bound an arbitrary one goes.
+     */
+    void SetResponderKey(const PeerKey& peer, const CKey& key);
+    static constexpr size_t MAX_RESPONDER_KEYS = 4096;
+
     size_t SessionCount() const { return m_sessions.size(); }
     size_t PendingCount() const { return m_pending.size(); }
 
@@ -116,6 +126,7 @@ private:
     };
 
     CKey m_static;
+    std::map<PeerKey, CKey> m_responder_keys;
     std::map<PeerKey, Pending> m_pending;
     std::map<PeerKey, Established> m_sessions;
 };

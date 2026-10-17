@@ -10,6 +10,7 @@
 #include <overlay/ippacket.h>
 #include <overlay/netstack.h>
 #include <overlay/path.h>
+#include <overlay/transport.h>
 #include <test/util/setup_common.h>
 #include <util/memory.h>
 #include <util/time.h>
@@ -193,6 +194,43 @@ BOOST_AUTO_TEST_CASE(only_public_addresses_are_exits)
                           "20010200000000000000000000000001", "24000000000000000000000000000001"}) {
         BOOST_CHECK_MESSAGE(IsPublicAddress(V6(a)), a);
     }
+}
+
+//! A relay's gateway is met under its gateway key, not the relay's own: the
+//! end of a meeting spliced onto that registration answers as that key, and a
+//! handshake meant for it fails anywhere else.
+BOOST_AUTO_TEST_CASE(second_key_answers_its_meetings)
+{
+    CKey node_key, gateway_key, visitor_once;
+    node_key.MakeNewKey(true);
+    gateway_key.MakeNewKey(true);
+    visitor_once.MakeNewKey(true);
+    PathTransport gateway(node_key), visitor(visitor_once);
+    const uint64_t meeting = 42, other = 43;
+    std::vector<unsigned char> init, reply, payload;
+
+    // Without being told, the node answers only as itself: a handshake meant
+    // for the gateway key gets nothing.
+    BOOST_REQUIRE(visitor.ConnectAs(meeting, gateway_key.GetPubKey(), visitor_once, init));
+    BOOST_CHECK(gateway.Receive(meeting, init.data(), init.size(), reply, payload) == PathTransport::Result::IGNORED);
+
+    // Told that this meeting is for its gateway key, it answers as that key.
+    gateway.SetResponderKey(meeting, gateway_key);
+    BOOST_REQUIRE(visitor.ConnectAs(meeting, gateway_key.GetPubKey(), visitor_once, init));
+    BOOST_REQUIRE(gateway.Receive(meeting, init.data(), init.size(), reply, payload) == PathTransport::Result::ESTABLISHED);
+    BOOST_REQUIRE(visitor.Receive(meeting, reply.data(), reply.size(), init, payload) == PathTransport::Result::ESTABLISHED);
+    BOOST_CHECK(visitor.PeerIdentity(meeting) == gateway_key.GetPubKey());
+
+    // Only that meeting: another path still gets the node's own key.
+    BOOST_REQUIRE(visitor.ConnectAs(other, gateway_key.GetPubKey(), visitor_once, init));
+    BOOST_CHECK(gateway.Receive(other, init.data(), init.size(), reply, payload) == PathTransport::Result::IGNORED);
+    BOOST_REQUIRE(visitor.ConnectAs(other, node_key.GetPubKey(), visitor_once, init));
+    BOOST_CHECK(gateway.Receive(other, init.data(), init.size(), reply, payload) == PathTransport::Result::ESTABLISHED);
+
+    // Forgetting the meeting forgets the key it answered with.
+    gateway.Forget(meeting);
+    BOOST_REQUIRE(visitor.ConnectAs(meeting, gateway_key.GetPubKey(), visitor_once, init));
+    BOOST_CHECK(gateway.Receive(meeting, init.data(), init.size(), reply, payload) == PathTransport::Result::IGNORED);
 }
 
 BOOST_AUTO_TEST_CASE(exit_policy)

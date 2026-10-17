@@ -34,7 +34,25 @@
 namespace overlay {
 
 std::unique_ptr<Gateway> g_gateway;
+Mutex g_gateway_meeting_mutex;
 std::unique_ptr<MeetingService> g_gateway_meeting;
+
+namespace {
+Mutex g_identity_mutex;
+GatewayIdentity g_identity GUARDED_BY(g_identity_mutex);
+} // namespace
+
+GatewayIdentity GetGatewayIdentity()
+{
+    LOCK(g_identity_mutex);
+    return g_identity;
+}
+
+void SetGatewayIdentity(const GatewayIdentity& id)
+{
+    LOCK(g_identity_mutex);
+    g_identity = id;
+}
 
 namespace {
 

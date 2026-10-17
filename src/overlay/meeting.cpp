@@ -89,7 +89,8 @@ bool MeetingPointsFor(const roster::KeyBytes& service, uint64_t epoch, std::vect
     return !out.empty();
 }
 
-bool ReachRelay(const roster::KeyBytes& key, int hops, bool prove_last, Reached& out, std::string& error)
+bool ReachRelay(const roster::KeyBytes& key, int hops, bool prove_last, Reached& out, std::string& error,
+                const CKey* prove_as)
 {
     out = Reached();
     if (!g_overlay) {
@@ -143,7 +144,7 @@ bool ReachRelay(const roster::KeyBytes& key, int hops, bool prove_last, Reached&
         // returns. Success still returns as soon as each step completes.
         const std::chrono::milliseconds step = RadioStepTimeout(circuit[0].addr);
         uint64_t path = 0;
-        if (g_overlay->BuildCircuit(circuit, path, error, step, prove_last)) {
+        if (g_overlay->BuildCircuit(circuit, path, error, step, prove_last, prove_as)) {
             out.path = path;
             out.legs = g_overlay->CircuitLegs(path);
             for (size_t i = 0; i + 1 < chosen.size(); ++i) out.through.push_back(chosen[i].key);
@@ -160,9 +161,12 @@ bool ReachRelay(const roster::KeyBytes& key, int hops, bool prove_last, Reached&
     return false;
 }
 
-MeetingService::MeetingService(const roster::KeyBytes& self, int hops)
-    : m_self(self), m_hops(std::max(1, std::min(MAX_MEET_HOPS, hops)))
+MeetingService::MeetingService(const roster::KeyBytes& self, int hops, const CKey* as)
+    : m_self(self), m_hops(std::max(1, std::min(MAX_MEET_HOPS, hops))), m_has_as(as != nullptr),
+      m_as(as ? *as : CKey())
 {
+    CKey node;
+    if (roster::ReadOperationalKey(node)) m_node = roster::KeyBytesOf(node);
 }
 
 MeetingService::~MeetingService() { Stop(); }
@@ -252,7 +256,12 @@ void MeetingService::Tick()
             last_error = error;
             continue;
         }
-        for (const roster::KeyBytes& p : points) want[p].push_back(epoch);
+        for (const roster::KeyBytes& p : points) {
+            // Visitors who try this node as the point find no registration and
+            // go on to the others; nobody else learns anything from it.
+            if (p == m_node) continue;
+            want[p].push_back(epoch);
+        }
     }
 
     // Registrations no epoch needs any more lapse with their paths.
@@ -293,7 +302,9 @@ void MeetingService::Tick()
         if (!ok) {
             if (have) g_overlay->ClosePath(reg.reached.legs);
             Reached fresh;
-            if (ReachRelay(w.first, m_hops, /* prove_last */ true, fresh, error)) {
+            if (ReachRelay(w.first, m_hops, /* prove_last */ true, fresh, error, m_has_as ? &m_as : nullptr)) {
+                // Meetings spliced onto this path are for m_self: answered as it.
+                if (m_has_as) g_overlay->SetServiceKey(fresh.path, m_as);
                 ok = Register(fresh.path, m_self, std::max(ANSWER_WAIT, fresh.step / 3));
                 if (!ok) {
                     g_overlay->ClosePath(fresh.legs);

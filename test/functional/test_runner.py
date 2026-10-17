@@ -137,6 +137,7 @@ BASE_SCRIPTS = [
     'feature_radio.py',
     'feature_meeting.py',
     'feature_gateway.py',
+    'feature_gateway_listing.py',
     'feature_radio_mesh.py',
     'feature_radio_blocks.py',
     'feature_roster_identity.py',

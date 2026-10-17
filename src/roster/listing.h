@@ -5,6 +5,7 @@
 #ifndef BITCOIN_ROSTER_LISTING_H
 #define BITCOIN_ROSTER_LISTING_H
 
+#include <key.h>
 #include <netaddress.h>
 #include <pubkey.h>
 #include <roster/record.h>
@@ -40,6 +41,14 @@ struct Hop;
  * Paying is opt-in on the relay's side and off by default. Spending a wallet's
  * coins because a stranger asked is something an operator should choose, not
  * discover.
+ *
+ * One listing is asked for over a path instead: a relay's gateway key
+ * (design note §8·7). The relay's own key carries its address, so asking from
+ * where it is - or paying from its own wallet, whose coins the chain ties to
+ * the relay's own listing - would say where that gateway is. Over a path that
+ * proves the gateway key and nothing else, the relay that pays learns the key
+ * and not the address. Relays pay that way only for a gateway's listing: the
+ * bit, and no address.
  *
  * A relay also has to be staking, and that is what makes this work before the
  * rest of the network upgrades (settled 2026-09-07). A record is larger than
@@ -106,6 +115,7 @@ bool DecodeListingResult(const std::vector<unsigned char>& msg, uint64_t& id_out
 /** Everything a relay knows when deciding, gathered so the decision can be tested alone. */
 struct ListingContext {
     KeyBytes requester{};        //!< key the overlay session authenticated
+    bool over_path{false};       //!< asked through a path, so from no address
     int next_height{0};          //!< earliest height the record could confirm at
     std::string chain_id;
     uint32_t live_expiry{0};     //!< expiry of the requester's live listing, 0 if none
@@ -126,7 +136,7 @@ uint32_t NeededConfirmWindow(uint64_t own_weight, uint64_t network_weight);
  * Decide whether to pay for a peer's record, before any coin is touched.
  *
  * Refuses a record that would not be indexed, one naming a key other than the
- * requester's, a renewal asked for before the current listing's last three days, a second payment while the first is still confirming, and a new peer
+ * requester's, anything but a gateway's listing when asked over a path, a renewal asked for before the current listing's last three days, a second payment while the first is still confirming, and a new peer
  * once the relay is full. Each of those would cost the relay a fee and gain
  * nobody anything.
  *
@@ -178,6 +188,16 @@ ListingOutcome RequestListing(const CService& relay_addr, const CPubKey& relay_k
                               const std::vector<unsigned char>& record,
                               std::chrono::seconds connect_timeout,
                               std::chrono::seconds answer_timeout, bool& answered);
+
+/**
+ * Ask the listed relay `relay` to publish a gateway's `record`, through a path
+ * of `hops` relays whose session proves `as` - the key the record names - and
+ * nothing about where this node is. For a relay's gateway key, which must not
+ * be asked for from the relay's own address.
+ */
+ListingOutcome RequestListingOverPath(const KeyBytes& relay, const CKey& as,
+                                      const std::vector<unsigned char>& record, int hops,
+                                      std::chrono::seconds answer_timeout, bool& answered);
 
 } // namespace roster
 

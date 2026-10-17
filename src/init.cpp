@@ -269,9 +269,12 @@ void Shutdown(NodeContext& node)
         overlay::g_gateway->Stop();
         overlay::g_gateway.reset();
     }
-    if (overlay::g_gateway_meeting) {
-        overlay::g_gateway_meeting->Stop();
-        overlay::g_gateway_meeting.reset();
+    {
+        LOCK(overlay::g_gateway_meeting_mutex);
+        if (overlay::g_gateway_meeting) {
+            overlay::g_gateway_meeting->Stop();
+            overlay::g_gateway_meeting.reset();
+        }
     }
     overlay::GetNetStack().Stop();
     // Its thread builds paths over the overlay too.
@@ -2436,22 +2439,58 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 return InitError(Untranslated("gateway: " + gw_error));
             }
             // Registered at its meeting points only while listed as a gateway,
-            // unless -meetable keeps the node registered regardless.
-            if (!overlay::g_meeting) {
+            // under the key it is listed by, unless -meetable keeps the node's
+            // own key registered regardless.
+            const int meet_hops = (int)args.GetArg("-meethops", overlay::DEFAULT_MEET_HOPS);
+            auto register_as = [self, meet_hops](const overlay::GatewayIdentity& id) {
+                LOCK(overlay::g_gateway_meeting_mutex);
+                if (overlay::g_gateway_meeting) {
+                    overlay::g_gateway_meeting->Stop();
+                    overlay::g_gateway_meeting.reset();
+                }
+                if (!id.listed || (!id.second_key && overlay::g_meeting)) return;
+                CKey second;
+                if (id.second_key && !roster::ReadGatewayKey(second)) return;
                 overlay::g_gateway_meeting = MakeUnique<overlay::MeetingService>(
-                    self, (int)args.GetArg("-meethops", overlay::DEFAULT_MEET_HOPS));
-            }
+                    id.key, meet_hops, id.second_key ? &second : nullptr);
+                overlay::g_gateway_meeting->Start();
+            };
             overlay::g_gateway = MakeUnique<overlay::Gateway>(gw,
                 [](uint64_t path, const std::vector<uint8_t>& msg) {
                     return overlay::g_overlay && overlay::g_overlay->SendSecret(path, msg);
                 },
-                // Never under a key with an address: that would publish where an exit is.
-                [self]() {
-                    if (!g_rosterindex || roster::SeenRevoked(self)) return false;
-                    roster::Record rec;
-                    const int tip = g_rosterindex->GetSummary().best_block_height;
-                    return roster::LiveAnnouncement(*g_rosterindex, self, tip, rec) &&
-                           roster::IsGatewayRecord(rec.services, rec.endpoints.size());
+                // Which of this node's keys the roster lists as a gateway, if
+                // any. Never one with an address: that would publish where an
+                // exit is.
+                [self, register_as]() {
+                    overlay::GatewayIdentity id;
+                    if (g_rosterindex) {
+                        const int tip = g_rosterindex->GetSummary().best_block_height;
+                        auto is_gateway = [tip](const roster::KeyBytes& key) {
+                            roster::Record rec;
+                            return !roster::SeenRevoked(key) && roster::LiveAnnouncement(*g_rosterindex, key, tip, rec) &&
+                                   roster::IsGatewayRecord(rec.services, rec.endpoints.size());
+                        };
+                        roster::Record own;
+                        if (roster::LiveAnnouncement(*g_rosterindex, self, tip, own)) {
+                            id.own_listed = true;
+                            id.own_address = !own.endpoints.empty();
+                        }
+                        CKey second;
+                        if (is_gateway(self)) {
+                            id.listed = true;
+                            id.key = self;
+                        } else if (roster::ReadGatewayKey(second) && is_gateway(roster::KeyBytesOf(second))) {
+                            id.listed = true;
+                            id.second_key = true;
+                            id.key = roster::KeyBytesOf(second);
+                        }
+                    }
+                    const overlay::GatewayIdentity before = overlay::GetGatewayIdentity();
+                    overlay::SetGatewayIdentity(id);
+                    // Still listed, but now under the other key: register under it.
+                    if (id.listed && before.listed && id.key != before.key) register_as(id);
+                    return id.listed;
                 },
                 // This machine's own addresses, as its interfaces and its peers see them.
                 [&node]() {
@@ -2472,13 +2511,10 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                     return out;
                 },
                 nullptr,
-                [](bool listed) {
-                    if (!overlay::g_gateway_meeting) return;
-                    if (listed) {
-                        overlay::g_gateway_meeting->Start();
-                    } else {
-                        overlay::g_gateway_meeting->Stop();
-                    }
+                [register_as](bool listed) {
+                    overlay::GatewayIdentity id = overlay::GetGatewayIdentity();
+                    id.listed = listed;
+                    register_as(id);
                 });
             if (!overlay::g_gateway->Start(gw_error)) {
                 overlay::g_gateway.reset();
@@ -2512,7 +2548,12 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                     std::vector<roster::KeyBytes> out;
                     if (!g_rosterindex) return out;
                     roster::CollectGateways(*g_rosterindex, g_rosterindex->GetSummary().best_block_height, out);
+                    // Never this node itself, under either of its keys.
                     out.erase(std::remove(out.begin(), out.end(), self), out.end());
+                    CKey second;
+                    if (roster::ReadGatewayKey(second)) {
+                        out.erase(std::remove(out.begin(), out.end(), roster::KeyBytesOf(second)), out.end());
+                    }
                     return out;
                 },
                 overlay::MeetService, overlay::CloseMeeting,

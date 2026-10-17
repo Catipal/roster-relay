@@ -86,7 +86,8 @@ typename TransportT<PeerKey>::Result TransportT<PeerKey>::Receive(const PeerKey&
         std::vector<unsigned char> msg2;
         SessionKeys keys;
         HandshakeResponder responder;
-        if (!responder.Accept(m_static, body, body_len, initiator, msg2, keys)) {
+        typename std::map<PeerKey, CKey>::const_iterator as = m_responder_keys.find(from);
+        if (!responder.Accept(as != m_responder_keys.end() ? as->second : m_static, body, body_len, initiator, msg2, keys)) {
             return TransportT<PeerKey>::Result::IGNORED;
         }
 
@@ -176,6 +177,16 @@ void TransportT<PeerKey>::Forget(const PeerKey& peer)
 {
     m_sessions.erase(peer);
     m_pending.erase(peer);
+    m_responder_keys.erase(peer);
+}
+
+template <typename PeerKey>
+void TransportT<PeerKey>::SetResponderKey(const PeerKey& peer, const CKey& key)
+{
+    if (m_responder_keys.size() >= MAX_RESPONDER_KEYS && !m_responder_keys.count(peer)) {
+        m_responder_keys.erase(m_responder_keys.begin());
+    }
+    m_responder_keys[peer] = key;
 }
 
 // Explicit instantiations: hop sessions keyed by address, path sessions keyed

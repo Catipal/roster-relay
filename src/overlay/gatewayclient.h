@@ -38,8 +38,10 @@ struct pbuf;
  * everything one person does. The connections themselves are the node's own
  * TCP/IP stack's (overlay/netstack.h): it holds them on an interface whose
  * other side is the overlay, and its packets go to the gateway chosen for
- * their connection. What uses this today is the local proxy
- * (overlay/localproxy.h); the system-wide interface comes later.
+ * their connection. Programs reach it through the local proxy
+ * (overlay/localproxy.h), or - all of a computer's traffic - through the
+ * system-wide interface (overlay/sysif.h), whose packets are the computer's
+ * own and go to the gateways as they are.
  *
  * Giving to get: a node uses the network's internet only
  * while its own gateway is on, or when it has no internet line of its own and
@@ -63,8 +65,10 @@ public:
     using Meeter = std::function<bool(const roster::KeyBytes& key, int hops, Meeting& out, std::string& error)>;
     using Closer = std::function<void(const Meeting& m)>;
     using Sender = std::function<bool(uint64_t path, const std::vector<uint8_t>& payload)>;
-    using Resolved = std::function<void(ResolveStatus status, const std::vector<IpAddr>& addrs)>;
+    using Resolved = std::function<void(ResolveStatus status, const std::vector<IpAddr>& addrs, uint32_t ttl)>;
     using GatewayGone = std::function<void(uint64_t path)>;
+    /** A gateway's packet for the system-wide interface, and the meeting it came across. */
+    using InterfaceSink = std::function<void(uint64_t path, std::vector<uint8_t>&& pkt)>;
 
     static constexpr int64_t HELLO_EVERY_MS = 60 * 1000;
     /** A gateway not heard from this long is let go; its meeting path has idled out. */
@@ -101,6 +105,8 @@ public:
 
     /** Whether destinations on this computer's own network may be asked for (regtest). */
     bool LocalAllowed() const { return m_allow_local; }
+    /** The address connections held by the node's own stack come from, for `version`. */
+    static IpAddr StackAddress(uint8_t version);
 
     // Stack thread only.
 
@@ -109,8 +115,11 @@ public:
     /** Whether any gateway is open at all. */
     bool AnyOpen() const;
     /** Send a connection's packets to the gateway on `path`. */
-    void AddFlow(uint8_t protocol, uint16_t local_port, const IpAddr& dst, uint16_t dst_port, uint64_t path);
-    void RemoveFlow(uint8_t protocol, uint16_t local_port, const IpAddr& dst, uint16_t dst_port);
+    void AddFlow(uint8_t protocol, const IpAddr& src, uint16_t src_port, const IpAddr& dst, uint16_t dst_port,
+                 uint64_t path);
+    void RemoveFlow(uint8_t protocol, const IpAddr& src, uint16_t src_port, const IpAddr& dst, uint16_t dst_port);
+    /** One IP packet to the gateway on `path`, in as many messages as it takes. */
+    void SendPacket(uint64_t path, const std::vector<uint8_t>& pkt);
     /**
      * Bytes a connection through `path` may send now, and spending them.
      * Paced at PACE_SHARE of the default per-path relay cap
@@ -122,7 +131,13 @@ public:
     /** Look a name up at a gateway; `done` runs on the stack thread. */
     void Resolve(const std::string& name, uint8_t family, Resolved done);
     /** Called on the stack thread when a gateway leaves, so connections through it can end at once. */
-    void SetGatewayGone(GatewayGone gone) { m_gone = std::move(gone); }
+    int AddGatewayGone(GatewayGone gone);
+    void RemoveGatewayGone(int id);
+    /**
+     * Packets from gateways addressed to `v4` or `v6` go to `sink` instead of
+     * the node's own stack: the system-wide interface's. Null to stop.
+     */
+    void SetInterface(const IpAddr& v4, const IpAddr& v6, InterfaceSink sink);
 
     /** From the stack's C callbacks. */
     void OnStackOutput(struct pbuf* p);
@@ -162,7 +177,7 @@ private:
         Resolved done;
         int64_t deadline{0};
     };
-    using FlowKey = std::tuple<uint8_t, uint16_t, IpAddr, uint16_t>;
+    using FlowKey = std::tuple<uint8_t, IpAddr, uint16_t, IpAddr, uint16_t>;
 
     void ThreadWorker();
     void Round();
@@ -180,7 +195,10 @@ private:
     const Meeter m_meet;
     const Closer m_close;
     const Sender m_send;
-    GatewayGone m_gone;
+    std::map<int, GatewayGone> m_gone; //!< stack thread
+    int m_next_gone{0};
+    IpAddr m_if_v4, m_if_v6;           //!< stack thread
+    InterfaceSink m_if_sink;
 
     std::thread m_thread;
     CThreadInterrupt m_interrupt;

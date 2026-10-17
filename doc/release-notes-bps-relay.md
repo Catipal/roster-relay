@@ -290,6 +290,15 @@ What this node offers other people.
   at all. It works while this node shares its own connection, or while it
   has none and relays over radio. Measured on one computer (regtest): 1.5 MiB
   in 39 s, paced to stay under the relays' caps.
+- **System-wide interface (Linux, first part)** - `-gatewayinterface=<name>`
+  carries the computer's own IP packets through the gateways on a TUN
+  device an administrator makes once; each new connection through another
+  gateway, and only what comes back for the computer's own connections let
+  in. Its resolver (10.77.1.53) looks names up at a gateway and never sends
+  `.bps`, `.onion` or home-network names anywhere; other record types than
+  addresses get no answer. Segments are kept to the interface's 1,280-byte
+  packets. Routing the whole computer through it, and Windows, are not done
+  yet.
 - **Relays carry within limits** - `-relaypathrate` (64 KiB/s per path) and
   `-relaybandwidth` (1 GiB of other people's traffic a day), shown in
   `getoverlayinfo`.

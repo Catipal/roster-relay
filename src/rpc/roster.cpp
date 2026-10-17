@@ -23,6 +23,7 @@
 #include <overlay/gateway.h>
 #include <overlay/gatewayclient.h>
 #include <overlay/localproxy.h>
+#include <overlay/sysif.h>
 #include <overlay/meeting.h>
 #include <overlay/radio.h>
 #include <overlay/relay.h>
@@ -570,6 +571,21 @@ static RPCHelpMan getgatewayinfo()
                                 {RPCResult::Type::STR, "proxy", /* optional */ true, "Where the local SOCKS5 proxy listens"},
                                 {RPCResult::Type::NUM, "proxy_sessions", /* optional */ true, "Programs connected to the proxy now"},
                                 {RPCResult::Type::NUM, "served", /* optional */ true, "Connections the proxy has opened since start"},
+                                {RPCResult::Type::OBJ, "interface", /* optional */ true, "The system-wide interface (-gatewayinterface)",
+                                    {
+                                        {RPCResult::Type::STR, "name", "The interface"},
+                                        {RPCResult::Type::STR, "address", "The computer's IPv4 address on it"},
+                                        {RPCResult::Type::STR, "resolver", "The resolver address it answers on"},
+                                        {RPCResult::Type::NUM, "connections", "Connections through it now"},
+                                        {RPCResult::Type::NUM, "packets_out", "Packets sent to gateways"},
+                                        {RPCResult::Type::NUM, "packets_in", "Packets given to the computer"},
+                                        {RPCResult::Type::NUM, "bytes_out", "Bytes of them sent"},
+                                        {RPCResult::Type::NUM, "bytes_in", "Bytes of them given"},
+                                        {RPCResult::Type::NUM, "refused", "Connections no gateway would take, or not to be sent"},
+                                        {RPCResult::Type::NUM, "dropped", "Packets dropped: a full queue, unreadable, or not for a connection of the computer's"},
+                                        {RPCResult::Type::NUM, "lookups", "Names asked of its resolver"},
+                                        {RPCResult::Type::NUM, "kept_local", "Of those, names never sent out"},
+                                    }},
                                 {RPCResult::Type::NUM, "connections", "Connections out through gateways now"},
                                 {RPCResult::Type::NUM, "lookups", "Names looked up at gateways"},
                                 {RPCResult::Type::NUM, "meetings_failed", "Gateways it tried and could not meet"},
@@ -600,6 +616,23 @@ static RPCHelpMan getgatewayinfo()
             v.pushKV("proxy", strprintf("127.0.0.1:%u", overlay::g_local_proxy->Port()));
             v.pushKV("proxy_sessions", (uint64_t)overlay::g_local_proxy->Sessions());
             v.pushKV("served", overlay::g_local_proxy->Served());
+        }
+        if (overlay::g_system_interface) {
+            const overlay::SystemInterface::Stats s = overlay::g_system_interface->GetStats();
+            UniValue i(UniValue::VOBJ);
+            i.pushKV("name", s.device);
+            i.pushKV("address", overlay::InterfaceAddress(4).ToString());
+            i.pushKV("resolver", overlay::InterfaceResolver(4).ToString());
+            i.pushKV("connections", s.flows);
+            i.pushKV("packets_out", s.packets_out);
+            i.pushKV("packets_in", s.packets_in);
+            i.pushKV("bytes_out", s.bytes_out);
+            i.pushKV("bytes_in", s.bytes_in);
+            i.pushKV("refused", s.refused);
+            i.pushKV("dropped", s.dropped);
+            i.pushKV("lookups", s.lookups);
+            i.pushKV("kept_local", s.kept_local);
+            v.pushKV("interface", i);
         }
         v.pushKV("connections", c.flows);
         v.pushKV("lookups", c.lookups);

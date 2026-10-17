@@ -264,6 +264,51 @@ std::vector<uint8_t> BuildTcpReset(const PacketInfo& opening)
     return pkt;
 }
 
+bool ClampTcpMss(std::vector<uint8_t>& pkt, const PacketInfo& info, uint16_t mss)
+{
+    if (!info.IsTcp() || !(info.tcp_flags & TCP_SYN) || info.l4_header <= 20) return false;
+    const size_t start = info.ip_header + 20;
+    const size_t end = info.ip_header + info.l4_header;
+    if (end > pkt.size()) return false;
+    size_t at = start;
+    while (at < end) {
+        const uint8_t kind = pkt[at];
+        if (kind == 0) break;          // end of options
+        if (kind == 1) { ++at; continue; } // no-op
+        if (at + 1 >= end) break;
+        const uint8_t len = pkt[at + 1];
+        if (len < 2 || at + len > end) break;
+        if (kind == 2 && len == 4) {
+            const uint16_t offered = (uint16_t)((pkt[at + 2] << 8) | pkt[at + 3]);
+            if (offered <= mss) return false;
+            Put16(&pkt[at + 2], mss);
+            FixChecksums(pkt, info.version, info.ip_header, IPPROTO_TCP_NUM, info.src, info.dst);
+            return true;
+        }
+        at += len;
+    }
+    return false;
+}
+
+std::vector<uint8_t> BuildTcpResetFor(const PacketInfo& sent)
+{
+    if (!(sent.tcp_flags & TCP_ACK)) return BuildTcpReset(sent);
+    std::vector<uint8_t> pkt;
+    const size_t at = WriteIpHeader(pkt, sent.dst, sent.src, IPPROTO_TCP_NUM, 20);
+    uint8_t* tcp = pkt.data() + at;
+    Put16(tcp, sent.dst_port);
+    Put16(tcp + 2, sent.src_port);
+    // RFC 9293: a reset is accepted in a synchronised state when its sequence
+    // number is the one the receiver expects next, which is what it last
+    // acknowledged.
+    Put32(tcp + 4, sent.tcp_ack);
+    Put32(tcp + 8, 0);
+    tcp[12] = 5 << 4;
+    tcp[13] = TCP_RST;
+    FixChecksums(pkt, sent.version, at, IPPROTO_TCP_NUM, sent.dst, sent.src);
+    return pkt;
+}
+
 std::vector<uint8_t> BuildUdp(const IpAddr& src, uint16_t src_port, const IpAddr& dst, uint16_t dst_port,
                               const std::vector<uint8_t>& payload)
 {

@@ -146,7 +146,7 @@ bool LocalProxy::Start(std::string& error)
         g_proxy_active = this;
         stack.Watch(m_listen, true, false, [this](bool, bool, bool) { OnListen(); });
         m_tick = stack.AddTick([this] { Tick(); });
-        m_client.SetGatewayGone([this](uint64_t path) { OnGatewayGone(path); });
+        m_gone = m_client.AddGatewayGone([this](uint64_t path) { OnGatewayGone(path); });
     });
     LogPrintf("local proxy: SOCKS5 on 127.0.0.1:%u, out through the network's gateways\n", m_port);
     return true;
@@ -166,7 +166,8 @@ void LocalProxy::Stop()
         stack.Unwatch(m_listen);
         if (m_tick) stack.RemoveTick(m_tick);
         m_tick = 0;
-        m_client.SetGatewayGone(nullptr);
+        m_client.RemoveGatewayGone(m_gone);
+        m_gone = 0;
         if (g_proxy_active == this) g_proxy_active = nullptr;
     };
     if (stack.Running()) {
@@ -325,7 +326,7 @@ bool LocalProxy::Handshake(Session& s)
     s.stage = Stage::RESOLVING;
     s.deadline = NowMs() + CONNECT_TIMEOUT_MS;
     const uint64_t id = s.id;
-    m_client.Resolve(name, RESOLVE_ANY, [this, id](ResolveStatus status, const std::vector<IpAddr>& addrs) {
+    m_client.Resolve(name, RESOLVE_ANY, [this, id](ResolveStatus status, const std::vector<IpAddr>& addrs, uint32_t) {
         std::map<uint64_t, Session>::iterator it = m_sessions.find(id);
         if (it == m_sessions.end() || it->second.stage != Stage::RESOLVING) return;
         Session& t = it->second;
@@ -364,7 +365,7 @@ void LocalProxy::Connect(Session& s)
     s.local_port = pcb->local_port;
     s.path = path;
     // The flow first, so the very first segment knows which gateway it goes to.
-    m_client.AddFlow(IPPROTO_TCP_NUM, s.local_port, s.dst, s.dst_port, path);
+    m_client.AddFlow(IPPROTO_TCP_NUM, GatewayClient::StackAddress(s.dst.version), s.local_port, s.dst, s.dst_port, path);
     s.flow = true;
     tcp_arg(pcb, (void*)(uintptr_t)s.id);
     tcp_recv(pcb, ProxyRecv);
@@ -517,7 +518,7 @@ void LocalProxy::Close(Session& s)
         if (s.closing || tcp_close(s.pcb) != ERR_OK) tcp_abort(s.pcb);
         s.pcb = nullptr;
     }
-    if (s.flow) m_client.RemoveFlow(IPPROTO_TCP_NUM, s.local_port, s.dst, s.dst_port);
+    if (s.flow) m_client.RemoveFlow(IPPROTO_TCP_NUM, GatewayClient::StackAddress(s.dst.version), s.local_port, s.dst, s.dst_port);
     GetNetStack().Unwatch(s.sock);
     CloseSocket(s.sock);
     m_sessions.erase(s.id);
@@ -535,7 +536,7 @@ void LocalProxy::OnGatewayGone(uint64_t path)
             tcp_abort(s.pcb);
             s.pcb = nullptr;
         }
-        m_client.RemoveFlow(IPPROTO_TCP_NUM, s.local_port, s.dst, s.dst_port);
+        m_client.RemoveFlow(IPPROTO_TCP_NUM, GatewayClient::StackAddress(s.dst.version), s.local_port, s.dst, s.dst_port);
         s.flow = false;
         if (s.stage == Stage::CONNECTING && s.retries < MAX_RETRIES) {
             // Nothing has reached the program yet, so the connection can still

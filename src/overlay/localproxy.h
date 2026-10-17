@@ -113,6 +113,7 @@ private:
     const uint16_t m_port;
     SOCKET m_listen{INVALID_SOCKET};
     int m_tick{0};
+    int m_gone{0};
     uint64_t m_next_id{0};
     std::map<uint64_t, Session> m_sessions;
     std::atomic<size_t> m_session_count{0};

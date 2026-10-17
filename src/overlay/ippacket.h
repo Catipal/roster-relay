@@ -91,6 +91,22 @@ void RewritePacket(std::vector<uint8_t>& pkt, const PacketInfo& info,
 /** A TCP reset answering `opening`: from its destination, back to its source. */
 std::vector<uint8_t> BuildTcpReset(const PacketInfo& opening);
 
+/**
+ * A TCP reset ending a connection whose last segment from this side was
+ * `sent`, delivered back to its sender: from the far end, with the sequence
+ * number `sent` acknowledged, which is the one the sender expects next. A
+ * segment that acknowledged nothing gets BuildTcpReset's answer instead.
+ */
+std::vector<uint8_t> BuildTcpResetFor(const PacketInfo& sent);
+
+/**
+ * Lower the maximum segment size a TCP SYN offers to `mss`, if it offers more,
+ * and make the checksum right. Packets cross the overlay whole only up to
+ * MAX_GATEWAY_PACKET, so a computer whose interface is set larger would
+ * otherwise send segments that cannot go. True when it changed the packet.
+ */
+bool ClampTcpMss(std::vector<uint8_t>& pkt, const PacketInfo& info, uint16_t mss);
+
 /** A UDP datagram from `src`:`src_port` to `dst`:`dst_port`, both of one IP version. */
 std::vector<uint8_t> BuildUdp(const IpAddr& src, uint16_t src_port, const IpAddr& dst, uint16_t dst_port,
                               const std::vector<uint8_t>& payload);

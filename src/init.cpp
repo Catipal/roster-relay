@@ -28,6 +28,7 @@
 #include <overlay/gateway.h>
 #include <overlay/gatewayclient.h>
 #include <overlay/localproxy.h>
+#include <overlay/sysif.h>
 #include <overlay/gatewayproto.h>
 #include <overlay/netstack.h>
 #include <overlay/meeting.h>
@@ -255,8 +256,13 @@ void Shutdown(NodeContext& node)
         mail::g_mail->Stop();
         mail::g_mail.reset();
     }
-    // The local proxy and the gateways it uses, then this node's own gateway
-    // and its registration, all of which build paths too.
+    // The system-wide interface and the local proxy, the gateways they use,
+    // then this node's own gateway and its registration, all of which build
+    // paths too.
+    if (overlay::g_system_interface) {
+        overlay::g_system_interface->Stop();
+        overlay::g_system_interface.reset();
+    }
     if (overlay::g_local_proxy) {
         overlay::g_local_proxy->Stop();
         overlay::g_local_proxy.reset();
@@ -556,6 +562,7 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-gatewayrate=<n>", strprintf("KiB a second one visitor may move through this gateway. 0 for no limit (default: %u)", overlay::DEFAULT_GATEWAY_RATE_KIB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewaymaxflows=<n>", strprintf("Connections a gateway holds open at once, for everyone together (default: %u)", overlay::DEFAULT_GATEWAY_MAX_FLOWS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayproxy", strprintf("Run a SOCKS5 proxy on 127.0.0.1 that takes programs on this computer out to the internet through the network's gateways, each connection through another gateway; names are looked up at a gateway, never here. Used only while this node's own gateway is listed, or while it has no internet line and relays over radio (default: %u; on in BPS Relay)", overlay::DEFAULT_GATEWAY_PROXY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-gatewayinterface=<name>", "Carry all of this computer's traffic through the network's gateways, on the network interface <name>: on Linux a TUN device an administrator makes once for the user the node runs as (ip tuntap add dev <name> mode tun user <user>), given the addresses 10.77.1.2 and fd62:7073:6966::2, with the computer's resolver set to 10.77.1.53. Each new connection goes through another gateway, names are looked up at a gateway, and only what comes back for the computer's own connections is let in. Under the same rule as -gatewayproxy (default: off)", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayproxyport=<port>", "Port of the local proxy on 127.0.0.1 (default: two above the peer-to-peer port)", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayhops=<n>", strprintf("Relays between this node and a gateway's meeting point, 1 to %d: more hides who is asking better and is slower (default: %d)", overlay::MAX_MEET_HOPS, overlay::DEFAULT_GATEWAY_HOPS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-gatewayallowlocal", "Let a gateway connect to loopback and private addresses (regtest only, for tests)", ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
@@ -2525,7 +2532,9 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
         // Using the network's internet: gateways met in turn, and the local
         // proxy programs on this computer reach them through
         // (overlay/gatewayclient.h, overlay/localproxy.h).
-        if (args.GetBoolArg("-gatewayproxy", overlay::DEFAULT_GATEWAY_PROXY) && g_rosterindex) {
+        const std::string interface_name = args.GetArg("-gatewayinterface", "");
+        const bool use_proxy = args.GetBoolArg("-gatewayproxy", overlay::DEFAULT_GATEWAY_PROXY);
+        if ((use_proxy || !interface_name.empty()) && g_rosterindex) {
             std::string gc_error;
             const bool allow_local = args.GetBoolArg("-gatewayallowlocal", false) &&
                                      chainparams.NetworkIDString() == CBaseChainParams::REGTEST;
@@ -2564,11 +2573,21 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 overlay::g_gateway_client.reset();
                 return InitError(Untranslated("gateway client: " + gc_error));
             }
-            const uint16_t proxy_port = (uint16_t)args.GetArg("-gatewayproxyport", overlay::OverlayPortFor(GetListenPort()) + 1);
-            overlay::g_local_proxy = MakeUnique<overlay::LocalProxy>(*overlay::g_gateway_client, proxy_port);
-            if (!overlay::g_local_proxy->Start(gc_error)) {
-                overlay::g_local_proxy.reset();
-                return InitError(Untranslated("local proxy: " + gc_error));
+            if (use_proxy) {
+                const uint16_t proxy_port = (uint16_t)args.GetArg("-gatewayproxyport", overlay::OverlayPortFor(GetListenPort()) + 1);
+                overlay::g_local_proxy = MakeUnique<overlay::LocalProxy>(*overlay::g_gateway_client, proxy_port);
+                if (!overlay::g_local_proxy->Start(gc_error)) {
+                    overlay::g_local_proxy.reset();
+                    return InitError(Untranslated("local proxy: " + gc_error));
+                }
+            }
+            if (!interface_name.empty()) {
+                overlay::g_system_interface = MakeUnique<overlay::SystemInterface>(
+                    *overlay::g_gateway_client, overlay::MakeTunDevice(interface_name));
+                if (!overlay::g_system_interface->Start(gc_error)) {
+                    overlay::g_system_interface.reset();
+                    return InitError(Untranslated("system-wide interface: " + gc_error));
+                }
             }
         }
 

@@ -86,6 +86,20 @@ connection leaves through another member's gateway, and names are looked up
 there, never on your computer. .bps names are not sent out. It is slower than
 your own connection: browsing and messages, not video.
 
+On Linux, all of a computer's traffic can go this way, with no proxy setting
+in any program: a network interface carries it (-gatewayinterface). Making the
+interface needs an administrator once - for now by hand, for the user BPS
+Relay runs as:
+
+  sudo ip tuntap add dev bps0 mode tun user <user>
+  sudo ip addr add 10.77.1.2/32 dev bps0
+  sudo ip link set bps0 mtu 1280 up
+
+then -gatewayinterface=bps0. Programs whose traffic is routed to bps0 - in a
+network namespace of their own, or by routes you add - go out through the
+network's gateways, and ask its resolver at 10.77.1.53. Routing the whole
+computer there, and Windows, come next.
+
 
 Radio
 -----

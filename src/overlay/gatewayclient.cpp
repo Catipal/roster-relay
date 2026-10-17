@@ -65,6 +65,41 @@ err_t ClientNetifInit(struct netif* n)
 
 } // namespace
 
+IpAddr GatewayClient::StackAddress(uint8_t version)
+{
+    if (version == 6) {
+        std::array<uint8_t, 16> b{};
+        std::memcpy(b.data(), VISITOR_V6, sizeof(b));
+        return IpAddr::V6(b);
+    }
+    return IpAddr::V4(VISITOR_V4[0], VISITOR_V4[1], VISITOR_V4[2], VISITOR_V4[3]);
+}
+
+int GatewayClient::AddGatewayGone(GatewayGone gone)
+{
+    const int id = ++m_next_gone;
+    m_gone[id] = std::move(gone);
+    return id;
+}
+
+void GatewayClient::RemoveGatewayGone(int id)
+{
+    m_gone.erase(id);
+}
+
+void GatewayClient::SetInterface(const IpAddr& v4, const IpAddr& v6, InterfaceSink sink)
+{
+    m_if_v4 = v4;
+    m_if_v6 = v6;
+    m_if_sink = std::move(sink);
+}
+
+void GatewayClient::SendPacket(uint64_t path, const std::vector<uint8_t>& pkt)
+{
+    if (!Owns(path)) return;
+    for (const std::vector<uint8_t>& m : EncodePacket(pkt, ++m_frag_id)) m_send(path, m);
+}
+
 GatewayClient::GatewayClient(int pool, int hops, bool allow_local, Allowed allowed, Candidates candidates,
                              Meeter meet, Closer close, Sender send)
     : m_pool(std::max(1, pool)), m_hops(std::max(1, std::min(MAX_MEET_HOPS, hops))), m_allow_local(allow_local),
@@ -156,8 +191,9 @@ void GatewayClient::Stop()
     auto teardown = [this, &stack] {
         std::map<uint32_t, Pending> pending;
         pending.swap(m_pending);
-        for (std::pair<const uint32_t, Pending>& p : pending) p.second.done(ResolveStatus::FAILED, {});
+        for (std::pair<const uint32_t, Pending>& p : pending) p.second.done(ResolveStatus::FAILED, {}, 0);
         m_flows.clear();
+        m_if_sink = nullptr;
         if (m_netif) {
             netif_remove(m_netif);
             delete m_netif;
@@ -236,7 +272,7 @@ void GatewayClient::DrainInbox()
             if (it == m_pending.end()) continue;
             Resolved done = std::move(it->second.done);
             m_pending.erase(it);
-            done(m.status, m.addrs);
+            done(m.status, m.addrs, m.ttl);
             continue;
         }
         if (m.kind == GatewayKind::PACKET) {
@@ -247,7 +283,14 @@ void GatewayClient::DrainInbox()
         // A gateway is a stranger too: what it sends is checked like anything else.
         PacketInfo info;
         std::string why;
-        if (!ParsePacket(pkt, info, why) || !info.IsTcp()) continue;
+        if (!ParsePacket(pkt, info, why)) continue;
+        // For the system-wide interface, which checks it against its own
+        // connections before the computer sees it.
+        if (m_if_sink && (info.dst == m_if_v4 || info.dst == m_if_v6)) {
+            m_if_sink(item.first, std::move(pkt));
+            continue;
+        }
+        if (!info.IsTcp()) continue;
         struct pbuf* p = pbuf_alloc(PBUF_RAW, (u16_t)pkt.size(), PBUF_RAM);
         if (p == nullptr) continue;
         pbuf_take(p, pkt.data(), (u16_t)pkt.size());
@@ -263,11 +306,9 @@ void GatewayClient::OnStackOutput(struct pbuf* p)
     std::string why;
     if (!ParsePacket(pkt, info, why)) return;
     std::map<FlowKey, uint64_t>::const_iterator it =
-        m_flows.find(FlowKey(info.protocol, info.src_port, info.dst, info.dst_port));
+        m_flows.find(FlowKey(info.protocol, info.src, info.src_port, info.dst, info.dst_port));
     if (it == m_flows.end()) return;
-    const uint64_t path = it->second;
-    if (!Owns(path)) return;
-    for (const std::vector<uint8_t>& m : EncodePacket(pkt, ++m_frag_id)) m_send(path, m);
+    SendPacket(it->second, pkt);
 }
 
 bool GatewayClient::Choose(uint8_t protocol, uint16_t port, uint64_t& path)
@@ -297,17 +338,18 @@ bool GatewayClient::AnyOpen() const
     return false;
 }
 
-void GatewayClient::AddFlow(uint8_t protocol, uint16_t local_port, const IpAddr& dst, uint16_t dst_port, uint64_t path)
+void GatewayClient::AddFlow(uint8_t protocol, const IpAddr& src, uint16_t src_port, const IpAddr& dst, uint16_t dst_port,
+                            uint64_t path)
 {
-    m_flows[FlowKey(protocol, local_port, dst, dst_port)] = path;
+    m_flows[FlowKey(protocol, src, src_port, dst, dst_port)] = path;
     ++m_flow_total;
     LOCK(m_mutex);
     ++m_flow_counts[path];
 }
 
-void GatewayClient::RemoveFlow(uint8_t protocol, uint16_t local_port, const IpAddr& dst, uint16_t dst_port)
+void GatewayClient::RemoveFlow(uint8_t protocol, const IpAddr& src, uint16_t src_port, const IpAddr& dst, uint16_t dst_port)
 {
-    std::map<FlowKey, uint64_t>::iterator it = m_flows.find(FlowKey(protocol, local_port, dst, dst_port));
+    std::map<FlowKey, uint64_t>::iterator it = m_flows.find(FlowKey(protocol, src, src_port, dst, dst_port));
     if (it == m_flows.end()) return;
     const uint64_t path = it->second;
     m_flows.erase(it);
@@ -330,7 +372,7 @@ void GatewayClient::Resolve(const std::string& name, uint8_t family, Resolved do
         if (!open.empty()) path = open[m_rr++ % open.size()];
     }
     if (path == 0) {
-        done(ResolveStatus::FAILED, {});
+        done(ResolveStatus::FAILED, {}, 0);
         return;
     }
     const uint32_t id = ++m_next_request;
@@ -354,7 +396,7 @@ void GatewayClient::Tick()
             ++it;
         }
     }
-    for (Resolved& done : late) done(ResolveStatus::FAILED, {});
+    for (Resolved& done : late) done(ResolveStatus::FAILED, {}, 0);
 }
 
 void GatewayClient::Drop(uint64_t path, int64_t retry_after)
@@ -439,7 +481,9 @@ void GatewayClient::Round()
                 }
             }
             m_reassembler.Forget(path);
-            if (m_gone) m_gone(path);
+            // Copied: a listener may remove itself.
+            const std::map<int, GatewayGone> listeners = m_gone;
+            for (const std::pair<const int, GatewayGone>& g : listeners) g.second(path);
         });
     }
     // Asking how a gateway is keeps its meeting path from idling out too.

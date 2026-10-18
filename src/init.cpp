@@ -25,6 +25,7 @@
 #include <index/rosterindex.h>
 #include <roster/peers.h>
 #include <overlay/chainsync.h>
+#include <overlay/hosting.h>
 #include <overlay/meeting.h>
 #include <overlay/radio.h>
 #include <overlay/relay.h>
@@ -259,6 +260,7 @@ void Shutdown(NodeContext& node)
         overlay::g_chainsync->Stop();
         overlay::g_chainsync.reset();
     }
+    overlay::g_hosting.reset();
     if (overlay::g_overlay) {
         overlay::g_overlay->Stop();
         overlay::g_overlay.reset();
@@ -2262,6 +2264,11 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 } else if (overlay::g_chainsync && !from.via_path && overlay::IsChainPayload(payload)) {
                     // Blocks between adjacent radio neighbours, never over a path.
                     overlay::g_chainsync->HandleApp(from.addr, payload);
+                } else if (!from.via_path && overlay::IsSitePayload(payload)) {
+                    // Hosted sites (overlay/hosting.h): serve a published site, or
+                    // hand a reply to a fetch in progress. Routed even when this node
+                    // hosts nothing, so a visitor's own fetch gets its answers.
+                    overlay::HandleSiteApp(from.addr, payload);
                 } else {
                     roster::HandleOverlayApp(from, std::move(payload));
                 }

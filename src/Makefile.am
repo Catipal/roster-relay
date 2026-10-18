@@ -205,6 +205,7 @@ BITCOIN_CORE_H = \
   overlay/frame.h \
   overlay/handshake.h \
   overlay/chainsync.h \
+  overlay/hosting.h \
   overlay/meeting.h \
   overlay/path.h \
   overlay/radio.h \
@@ -353,6 +354,7 @@ libbitcoin_server_a_SOURCES = \
   mail/mailbox.cpp \
   mail/protocol.cpp \
   overlay/chainsync.cpp \
+  overlay/hosting.cpp \
   overlay/meeting.cpp \
   names/name.cpp \
   names/petnames.cpp \

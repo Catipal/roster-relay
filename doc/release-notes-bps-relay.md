@@ -334,7 +334,7 @@ revocations `getidentity`, `createidentity`, `createdelegation`,
 `listrevocations`, `getageproof` and `verifyageproof`; and for the roster's
 fingerprint `getrostersnapshot`, `verifyrostersnapshot`,
 `getrostermembership` and `verifyrostermembership`; `getradioinfo` for
-radio links; and `getmeetinginfo` and `meet` for reaching a node by its key alone; and `getchainfeedinfo` for blocks over radio.
+radio links; and `getmeetinginfo` and `meet` for reaching a node by its key alone; and `getchainfeedinfo` for blocks over radio; and `publishsite` and `getsite` for hosting a folder under a key and fetching it back over the overlay.
 Each has its full description in `help`.
 
 The console suggests commands from what you type in plain words - "pay pilot
@@ -364,6 +364,15 @@ Known issues
   LoRa cannot carry that - so a radio-only node starts from a recent copy and
   only ever follows the last few hundred blocks this way. A node kept at the
   tip by the internet has nothing to pull.
+- A folder can be hosted as a site under a node's roster key (`publishsite`)
+  and fetched back over the overlay by that key (`getsite`). Every file is cut
+  into 16 KiB pieces, each one hashed, and the whole manifest is signed by the
+  key; a visitor checks the signature against the key it asked for and every
+  piece against the manifest as it lands, so a relay or a host that changes a
+  byte is caught at once. This first slice serves a host listed with an
+  endpoint; reaching a host listed with no address at its meeting points, and
+  the viewer and the ordinary-browser gateway that render a fetched site, are
+  still to come.
 - Mail over radio is heavy: each letter goes to three mailboxes through
   three separate paths, and every path is built across the radio.
 - Radio needs Python and Reticulum installed beside BPS Relay. Ham radio

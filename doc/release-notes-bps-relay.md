@@ -130,11 +130,13 @@ LoRa with an RNode, packet radio, serial links. A node without the internet
 reaches the overlay through a radio neighbour that is a listed relay, so its
 mail and listing requests still go out.
 
-- **Turning it on** - Settings, Radio: "Carry the overlay over radio too".
-  BPS Relay then starts the Reticulum bridge (`bps-rns-bridge.py`, shipped
-  beside it) by itself. Reticulum is installed separately, with
-  `pip install rns`, and the radio is set up in Reticulum's own
-  configuration. `contrib/reticulum/README.md` walks through it.
+- **It is on by default** - Settings, Radio: "Carry the overlay over radio
+  too" is ticked, with an off switch there. BPS Relay starts the Reticulum
+  bridge (`bps-rns-bridge.py`, shipped beside it) by itself. Until Reticulum
+  is installed and a radio is set up the bridge simply finds no radio and the
+  node carries on over the internet, so having it on costs nothing. Reticulum
+  is installed separately, with `pip install rns`, and the radio is set up in
+  Reticulum's own configuration. `contrib/reticulum/README.md` walks through it.
 - **Neighbours** - the BPS nodes heard on the radio are on the Overlay page.
   Each one announces itself every half hour, and again soon after it hears a
   newcomer.
@@ -300,7 +302,7 @@ New options
 | `-rosterindexwindow` | 0, keep everything | Blocks of roster history to keep; at least 175,320 (a year), or the node refuses to start |
 | `-overlay` | on in BPS Relay, off in the node | Run the encrypted relay network |
 | `-overlayport` | one above this node's peer-to-peer port (48931 on mainnet) | Its UDP port |
-| `-radio` | off | Carry the overlay over Reticulum too (needs the bridge running) |
+| `-radio` | on | Carry the overlay over Reticulum too (inert until the bridge and a radio are set up) |
 | `-radioentry` | on | With `-radio`, enter the overlay through a radio neighbour that is a listed relay |
 | `-overlayblocks` | on with `-radio` | Carry new blocks to and from radio neighbours, so a radio-only node keeps up with the chain |
 | `-meetable` | off | Stay registered at this node's meeting points, so it can be reached by its key with no address published (needs a listing) |

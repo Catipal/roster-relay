@@ -138,7 +138,7 @@ BpsWindow::BpsWindow(interfaces::Node& node, const PlatformStyle* platformStyle,
     m_pages->addWidget(m_node_tabs);
 
     m_nav = new QListWidget(this);
-    m_nav->addItem(tr("Node"));
+    m_nav->addItem(tr("Snodo"));
 
 #ifdef ENABLE_WALLET
     // After the node: the wallet is here because publishing costs a fee and a

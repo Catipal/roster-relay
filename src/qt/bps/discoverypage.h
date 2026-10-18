@@ -47,6 +47,8 @@ public:
 Q_SIGNALS:
     /** Whether this node is listed, and until when, as one short phrase. */
     void listingChanged(const QString& summary, bool listed);
+    /** The user asked to register or manage a name: open the Names tab. */
+    void showNames();
 
 public Q_SLOTS:
     /** Ask the node for everything on this page. Cheap to call; answers are async. */
@@ -74,6 +76,8 @@ private:
     QLabel* m_key{nullptr};
     QLabel* m_identity{nullptr};
     QPushButton* m_make_identity{nullptr};
+    QLabel* m_name{nullptr};
+    QPushButton* m_name_button{nullptr};
     QLabel* m_error{nullptr};
     QPushButton* m_copy_key{nullptr};
     QPushButton* m_publish{nullptr};

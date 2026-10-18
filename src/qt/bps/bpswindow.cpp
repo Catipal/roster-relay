@@ -268,6 +268,10 @@ void BpsWindow::CreateFooter()
     connect(m_discovery, &DiscoveryPage::listingChanged, this, [this](const QString& summary, bool) {
         m_listing_label->setText(summary);
     });
+    connect(m_discovery, &DiscoveryPage::showNames, this, [this] {
+        m_nav->setCurrentRow(0);
+        m_node_tabs->setCurrentWidget(m_names);
+    });
     connect(m_overlay, &OverlayPage::overlayChanged, this, [this](const QString& summary, bool) {
         m_overlay_label->setText(summary);
     });

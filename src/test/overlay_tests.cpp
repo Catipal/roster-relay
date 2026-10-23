@@ -1115,14 +1115,16 @@ BOOST_AUTO_TEST_CASE(socket_stop_is_idempotent)
     S.Stop(); // must not hang or crash on a second call, nor on destruction
 }
 
-#ifndef __APPLE__ // macOS sets up only 127.0.0.1 on its loopback
+#if !defined(__APPLE__) && !defined(WIN32) // macOS and Windows bring up only 127.0.0.1 on loopback
 BOOST_AUTO_TEST_CASE(socket_answers_from_the_address_it_was_written_to)
 {
-    // A node listening on every address, written to at one of several. On
-    // Linux and Windows the whole of 127.0.0.0/8 is this computer, and a plain
-    // reply to a peer at 127.0.0.1 leaves from 127.0.0.1, not from the
-    // 127.0.0.2 the peer wrote to: the peer never hears its handshake
-    // answered. The same happens to a relay with two addresses on a network.
+    // A node listening on every address, written to at one of several. On Linux
+    // the whole of 127.0.0.0/8 is this computer, and a plain reply to a peer at
+    // 127.0.0.1 leaves from 127.0.0.1, not from the 127.0.0.2 the peer wrote to:
+    // the peer never hears its handshake answered. The same happens to a relay
+    // with two addresses on a network. (macOS and Windows set up only 127.0.0.1,
+    // so 127.0.0.2 is unreachable there and this case cannot be exercised; the
+    // feature itself is not platform-specific.)
     CKey ka, kb;
     ka.MakeNewKey(true);
     kb.MakeNewKey(true);

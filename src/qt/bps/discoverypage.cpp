@@ -48,6 +48,7 @@ const char* TAG_HISTORY = "disc:history";
 const char* TAG_ROSTER = "disc:roster";
 const char* TAG_IDENTITY = "disc:identity";
 const char* TAG_DELEGATION = "disc:delegation";
+const char* TAG_NAMES = "disc:names";
 
 //! How many entries the table holds. The roster is bounded by the rolling
 //! window rather than by the chain, but it can still be larger than anyone
@@ -179,6 +180,24 @@ DiscoveryPage::DiscoveryPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_
     identity_row->addStretch(1);
     outer->addLayout(identity_row);
 
+    // --- the name that points at this key (design note 001 §11) -----------
+    // A listing is a key; a name is how a person finds that key without
+    // copying it. The names a key holds all resolve to it, so this is "what
+    // you are known by" beside "who you are".
+    QHBoxLayout* name_row = new QHBoxLayout();
+    QLabel* name_caption = new QLabel(tr("Name"), this);
+    name_caption->setEnabled(false);
+    m_name = new QLabel(tr("\xe2\x80\x94"), this);
+    m_name->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    m_name_button = new QPushButton(tr("Register a name\xe2\x80\xa6"), this);
+    m_name_button->setToolTip(tr("A name is how others reach you without copying your key. "
+                                 "Names are registered on the Names tab."));
+    name_row->addWidget(name_caption);
+    name_row->addWidget(m_name);
+    name_row->addWidget(m_name_button);
+    name_row->addStretch(1);
+    outer->addLayout(name_row);
+
     m_error = new QLabel(this);
     m_error->setWordWrap(true);
     m_error->setVisible(false);
@@ -236,6 +255,7 @@ DiscoveryPage::DiscoveryPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_
 
     connect(m_copy_key, &QPushButton::clicked, this, &DiscoveryPage::onCopyKey);
     connect(m_make_identity, &QPushButton::clicked, this, &DiscoveryPage::onMakeIdentity);
+    connect(m_name_button, &QPushButton::clicked, this, [this] { Q_EMIT showNames(); });
     connect(m_publish, &QPushButton::clicked, this, &DiscoveryPage::onPublishClicked);
     connect(&m_rpc, &BpsRpc::result, this, &DiscoveryPage::onRpcResult);
     connect(&m_rpc, &BpsRpc::failed, this, &DiscoveryPage::onRpcFailed);
@@ -438,6 +458,9 @@ void DiscoveryPage::onRpcResult(const QString& tag, const UniValue& value)
         UniValue roster_params(UniValue::VARR);
         roster_params.push_back(ROSTER_PAGE);
         m_rpc.Call(TAG_ROSTER, "getroster", roster_params);
+
+        // The names this node's key holds, which all resolve to it.
+        m_rpc.Call(TAG_NAMES, "listnames");
         return;
     }
 
@@ -499,6 +522,29 @@ void DiscoveryPage::onRpcResult(const QString& tag, const UniValue& value)
         SizeColumns(m_table);
         return;
     }
+
+    if (tag == TAG_NAMES) {
+        // Live names this key holds, newest-sounding first is not meaningful, so
+        // just show them in the order the node returns, with the rest in a tooltip.
+        QStringList live;
+        if (value.isArray()) {
+            for (size_t i = 0; i < value.size(); ++i) {
+                if (find_value(value[i], "status").getValStr() != "live") continue;
+                const QString n = QString::fromStdString(find_value(value[i], "name").getValStr());
+                if (!n.isEmpty()) live << n;
+            }
+        }
+        if (live.isEmpty()) {
+            m_name->setText(tr("none"));
+            m_name->setToolTip(QString());
+            m_name_button->setText(tr("Register a name\xe2\x80\xa6"));
+        } else {
+            m_name->setText(live.join(QStringLiteral(", ")));
+            m_name->setToolTip(tr("These names all resolve to this node's key. Others can reach you by any of them."));
+            m_name_button->setText(tr("Manage names\xe2\x80\xa6"));
+        }
+        return;
+    }
 }
 
 void DiscoveryPage::onRpcFailed(const QString& tag, const QString& message)
@@ -507,6 +553,14 @@ void DiscoveryPage::onRpcFailed(const QString& tag, const QString& message)
         // A key with no records is a normal state, not a failure worth showing.
         m_own_expiry = 0;
         UpdateListingSummary();
+        return;
+    }
+    if (tag == TAG_NAMES) {
+        // Names run off their own index (-nameindex); without it there is just
+        // nothing to show here, not an error for the whole page.
+        m_name->setText(tr("names off"));
+        m_name->setToolTip(tr("Names need the name index. Turn it on in Settings to register and show one."));
+        m_name_button->setText(tr("Register a name\xe2\x80\xa6"));
         return;
     }
     if (tag != TAG_INFO && tag != TAG_ROSTER) return;

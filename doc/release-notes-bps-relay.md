@@ -131,6 +131,20 @@ protocol in December 2025:
 A letter is signed by the sender's roster key and bound to the recipient, so
 it cannot be passed on to someone else as though it had been written to them.
 
+- **Your usual mail client** - with `-mailbridge` the node also speaks POP3 and
+  SMTP on the loopback interface (127.0.0.1), so Thunderbird, Apple Mail or K-9
+  can read and write BPS mail. Point the client at `127.0.0.1`, POP3 on 1100 and
+  SMTP on 1587 (change with `-mailbridgepop3port` / `-mailbridgesmtpport`), no
+  encryption, any username and password. Write a recipient as `name@bps` or
+  `<key>@bps` - the part after `@` is ignored. Nothing here touches the internet's
+  mail network: "send" hands the letter to the node, which seals it and carries
+  it over the overlay to that key, and "receive" reads the node's own inbox. It
+  is **off by default**, because while it is on any program on the computer that
+  can reach the port reads this node's mail in the clear; turn it on only on a
+  machine that is yours. There are no folders: it serves the inbox, marks a
+  letter read when the client fetches it, and deletes it from the node when the
+  client does.
+
 Radio
 -----
 
@@ -139,11 +153,13 @@ LoRa with an RNode, packet radio, serial links. A node without the internet
 reaches the overlay through a radio neighbour that is a listed relay, so its
 mail and listing requests still go out.
 
-- **Turning it on** - Settings, Radio: "Carry the overlay over radio too".
-  BPS Relay then starts the Reticulum bridge (`bps-rns-bridge.py`, shipped
-  beside it) by itself. Reticulum is installed separately, with
-  `pip install rns`, and the radio is set up in Reticulum's own
-  configuration. `contrib/reticulum/README.md` walks through it.
+- **It is on by default** - Settings, Radio: "Carry the overlay over radio
+  too" is ticked, with an off switch there. BPS Relay starts the Reticulum
+  bridge (`bps-rns-bridge.py`, shipped beside it) by itself. Until Reticulum
+  is installed and a radio is set up the bridge simply finds no radio and the
+  node carries on over the internet, so having it on costs nothing. Reticulum
+  is installed separately, with `pip install rns`, and the radio is set up in
+  Reticulum's own configuration. `contrib/reticulum/README.md` walks through it.
 - **Neighbours** - the BPS nodes heard on the radio are on the Overlay page.
   Each one announces itself every half hour, and again soon after it hears a
   newcomer.
@@ -353,7 +369,7 @@ New options
 | `-rosterindexwindow` | 0, keep everything | Blocks of roster history to keep; at least 175,320 (a year), or the node refuses to start |
 | `-overlay` | on in BPS Relay, off in the node | Run the encrypted relay network |
 | `-overlayport` | one above this node's peer-to-peer port (48931 on mainnet) | Its UDP port |
-| `-radio` | off | Carry the overlay over Reticulum too (needs the bridge running) |
+| `-radio` | on | Carry the overlay over Reticulum too (inert until the bridge and a radio are set up) |
 | `-radioentry` | on | With `-radio`, enter the overlay through a radio neighbour that is a listed relay |
 | `-overlayblocks` | on with `-radio` | Carry new blocks to and from radio neighbours, so a radio-only node keeps up with the chain |
 | `-meetable` | off | Stay registered at this node's meeting points, so it can be reached by its key with no address published (needs a listing) |
@@ -363,6 +379,9 @@ New options
 | `-mail` | on | Send and collect mail (needs the overlay) |
 | `-mailbox` | on | Hold sealed mail for others (needs the overlay) |
 | `-mailboxmaxsize` | 256 | Disk the mailbox may use, in MiB |
+| `-mailbridge` | off | Read and send BPS mail from an ordinary client over loopback POP3/SMTP (needs `-mail`) |
+| `-mailbridgepop3port` | 1100 | Loopback port the bridge serves POP3 on |
+| `-mailbridgesmtpport` | 1587 | Loopback port the bridge accepts SMTP on |
 | `-acceptlistings` | off | Pay for the listings peers ask this node to publish |
 | `-maxlistedusers` | 100 | Most peers to keep listed |
 | `-listingwallet` | the only wallet open | Which wallet pays for listings |
@@ -388,7 +407,7 @@ revocations `getidentity`, `createidentity`, `createdelegation`,
 `listrevocations`, `getageproof` and `verifyageproof`; and for the roster's
 fingerprint `getrostersnapshot`, `verifyrostersnapshot`,
 `getrostermembership` and `verifyrostermembership`; `getradioinfo` for
-radio links; and `getmeetinginfo` and `meet` for reaching a node by its key alone; and `getchainfeedinfo` for blocks over radio.
+radio links; and `getmeetinginfo` and `meet` for reaching a node by its key alone; and `getchainfeedinfo` for blocks over radio; and `publishsite` and `getsite` for hosting a folder under a key and fetching it back over the overlay.
 Each has its full description in `help`.
 
 The console suggests commands from what you type in plain words - "pay pilot
@@ -418,6 +437,15 @@ Known issues
   LoRa cannot carry that - so a radio-only node starts from a recent copy and
   only ever follows the last few hundred blocks this way. A node kept at the
   tip by the internet has nothing to pull.
+- A folder can be hosted as a site under a node's roster key (`publishsite`)
+  and fetched back over the overlay by that key (`getsite`). Every file is cut
+  into 16 KiB pieces, each one hashed, and the whole manifest is signed by the
+  key; a visitor checks the signature against the key it asked for and every
+  piece against the manifest as it lands, so a relay or a host that changes a
+  byte is caught at once. This first slice serves a host listed with an
+  endpoint; reaching a host listed with no address at its meeting points, and
+  the viewer and the ordinary-browser gateway that render a fetched site, are
+  still to come.
 - Mail over radio is heavy: each letter goes to three mailboxes through
   three separate paths, and every path is built across the radio.
 - Radio needs Python and Reticulum installed beside BPS Relay. Ham radio

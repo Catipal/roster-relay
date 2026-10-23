@@ -163,6 +163,7 @@ BITCOIN_CORE_H = \
   key_io.h \
   logging.h \
   logging/timer.h \
+  mail/bridge.h \
   mail/client.h \
   mail/letter.h \
   mail/mailbox.h \
@@ -216,6 +217,7 @@ BITCOIN_CORE_H = \
   overlay/gateway.h \
   overlay/gatewayclient.h \
   overlay/gatewayproto.h \
+  overlay/hosting.h \
   overlay/ippacket.h \
   overlay/limits.h \
   overlay/localproxy.h \
@@ -369,6 +371,7 @@ libbitcoin_server_a_SOURCES = \
   index/txindex.cpp \
   init.cpp \
   roster/listing.cpp \
+  mail/bridge.cpp \
   mail/client.cpp \
   mail/letter.cpp \
   mail/mailbox.cpp \
@@ -378,6 +381,7 @@ libbitcoin_server_a_SOURCES = \
   overlay/dnsclient.cpp \
   overlay/gateway.cpp \
   overlay/gatewayclient.cpp \
+  overlay/hosting.cpp \
   overlay/localproxy.cpp \
   overlay/meeting.cpp \
   overlay/netstack.cpp \

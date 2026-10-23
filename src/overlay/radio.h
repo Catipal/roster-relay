@@ -39,7 +39,7 @@
  */
 namespace overlay {
 
-static const bool DEFAULT_RADIO = false;
+static const bool DEFAULT_RADIO = true;
 static const bool DEFAULT_RADIO_ENTRY = true;
 /** How long the bridge may stay silent before it is taken to be gone. */
 static constexpr int64_t RADIO_BRIDGE_TIMEOUT = 60;

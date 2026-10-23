@@ -291,7 +291,7 @@ What this node offers other people.
   at, and says why the node does not share when it does not.
 - **Local proxy** - a SOCKS5 proxy on 127.0.0.1 (`-gatewayproxy`, on in BPS
   Relay; port `-gatewayproxyport`, two above the peer-to-peer port). Each
-  connection leaves through another member's gateway, met through one relay
+  connection leaves through another member's gateway, met through two relays
   of this node's own (`-gatewayhops`); names are looked up at a gateway,
   never here, and `.bps`, `.onion` and home-network names are not sent out
   at all. It works while this node's own gateway is switched on, or while it
@@ -357,7 +357,8 @@ New options
 | `-radioentry` | on | With `-radio`, enter the overlay through a radio neighbour that is a listed relay |
 | `-overlayblocks` | on with `-radio` | Carry new blocks to and from radio neighbours, so a radio-only node keeps up with the chain |
 | `-meetable` | off | Stay registered at this node's meeting points, so it can be reached by its key with no address published (needs a listing) |
-| `-meethops` | 1 | Relays between this node and each meeting point, 1 to 3 |
+| `-meethops` | 2 | Relays between this node and each meeting point, 1 to 3 |
+| `-gatewayhops` | 2 | Relays between this node and a gateway's meeting point, 1 to 3 |
 | `-nameindex` | on in BPS Relay, off in the node | Keep an index of names, to look them up, register, sell and buy |
 | `-mail` | on | Send and collect mail (needs the overlay) |
 | `-mailbox` | on | Hold sealed mail for others (needs the overlay) |

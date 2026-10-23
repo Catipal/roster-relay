@@ -40,8 +40,15 @@
  */
 namespace overlay {
 
-/** Relays between a side and its meeting point, by default. */
-static const int DEFAULT_MEET_HOPS = 1;
+/**
+ * Relays between a side and its meeting point, by default: two.
+ * With one, the entry relay is also the relay that reaches the
+ * meeting point, and meeting points are worked out from a key, so the entry
+ * relay - which sees the address - could work the key out from the points
+ * a node registers at, or tell which service a visitor meets. With two it
+ * sees only a middle relay.
+ */
+static const int DEFAULT_MEET_HOPS = 2;
 /** And at most. */
 static constexpr int MAX_MEET_HOPS = 3;
 /** Whether this node keeps itself registered at its meeting points (-meetable). */

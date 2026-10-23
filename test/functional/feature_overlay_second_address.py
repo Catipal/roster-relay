@@ -71,9 +71,9 @@ class OverlaySecondAddressTest(BitcoinTestFramework):
         self.log.info("node 6 registers at its points through a relay written to at %s", SECOND)
         self.wait_until(lambda: len(self.nodes[6].getmeetinginfo()["registrations"]) == 3, timeout=180)
 
-        self.log.info("visitors meet it through one relay and through three")
+        self.log.info("visitors meet it through two relays, the default, and through three")
         met = self.nodes[1].meet(self.key(6))
-        assert_equal(met["hops"], 1)
+        assert_equal(met["hops"], 2)
         met = self.nodes[2].meet(self.key(6), 3)
         assert_equal(met["hops"], 3)
 

@@ -54,8 +54,12 @@ namespace overlay {
 
 /** Gateways kept met at once. */
 static constexpr int DEFAULT_GATEWAY_POOL = 3;
-/** -gatewayhops: relays between this node and a gateway's meeting point. */
-static constexpr int DEFAULT_GATEWAY_HOPS = 1;
+/**
+ * -gatewayhops: relays between this node and a gateway's meeting point. Two,
+ * as for registering (DEFAULT_MEET_HOPS): with one, this node's entry relay
+ * would know which gateway it uses, and with that gateway, where it goes.
+ */
+static constexpr int DEFAULT_GATEWAY_HOPS = 2;
 
 class GatewayClient
 {

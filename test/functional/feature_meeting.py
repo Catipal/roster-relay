@@ -78,7 +78,9 @@ class MeetingTest(BitcoinTestFramework):
         self.log.info("until an epoch's anchor lists them, there is nowhere to meet")
         info = self.nodes[6].getmeetinginfo()
         assert_equal(info["meetable"], True)
-        assert_equal(info["hops"], 1)
+        # Two relays in front of each point by default: with one, the relay
+        # that sees this node's address would also see its points.
+        assert_equal(info["hops"], 2)
         assert_equal(info["registrations"], [])
 
         self.log.info("into the next epoch, whose anchor lists every relay")
@@ -87,9 +89,9 @@ class MeetingTest(BitcoinTestFramework):
         reg = self.nodes[6].getmeetinginfo()["registrations"]
         for r in reg:
             assert_equal(r["epochs"], [2])
-            # One relay of its own in front of it, never the point itself.
-            assert_equal(len(r["through"]), 1)
-            assert r["through"][0] != r["point"]
+            # Two relays of its own in front of it, never the point itself.
+            assert_equal(len(r["through"]), 2)
+            assert r["point"] not in r["through"]
 
         self.log.info("the points are the ones anyone computes, and they hold the registration")
         expected = sorted(self.nodes[6].getoverlayinfo()["rendezvous"])
@@ -97,14 +99,17 @@ class MeetingTest(BitcoinTestFramework):
         self.wait_until(lambda: self.holders() == expected, timeout=60)
         assert self.key(6) not in expected
 
-        self.log.info("a visitor meets node 6 by its key alone, through one relay of its own")
+        self.log.info("a visitor meets node 6 by its key alone, through two relays of its own")
         met = self.nodes[1].meet(self.key(6))
         self.log.info("  %s", met)
         assert met["point"] in expected
         assert_equal(met["epoch"], 2)
-        assert_equal(met["hops"], 1)
+        assert_equal(met["hops"], 2)
 
-        self.log.info("and through three")
+        self.log.info("and through one, or three")
+        met = self.nodes[3].meet(self.key(6), 1)
+        assert_equal(met["hops"], 1)
+        assert met["point"] in expected
         met = self.nodes[2].meet(self.key(6), 3)
         assert_equal(met["hops"], 3)
         assert met["point"] in expected

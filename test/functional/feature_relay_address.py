@@ -95,8 +95,8 @@ class RelayAddressTest(BitcoinTestFramework):
         self.mine_to(2 * EPOCH + 10)
         self.log.info("node 6 registers at its points through relays it found by their announcements")
         self.wait_until(lambda: len(self.nodes[6].getmeetinginfo()["registrations"]) == 3, timeout=180)
-        self.log.info("visitors meet it through one relay and through three")
-        assert_equal(self.nodes[1].meet(self.keys[6])["hops"], 1)
+        self.log.info("visitors meet it through two relays, the default, and through three")
+        assert_equal(self.nodes[1].meet(self.keys[6])["hops"], 2)
         assert_equal(self.nodes[2].meet(self.keys[6], 3)["hops"], 3)
 
         self.log.info("relay 2 moves to %s and another port: everyone has it with no block mined", MOVED)

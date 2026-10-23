@@ -150,7 +150,10 @@ class RadioMeshTest(BitcoinTestFramework):
             self.wait_until(lambda: r2.getmeetinginfo()["held"] >= 1, timeout=60)
 
             self.log.info("the user meets S through R2, so R1 forwarded the path to R2 over radio")
-            met = user.meet(self.key(3))
+            # One hop: the topology has the single radio relay R1 in front of
+            # R2, which is what this test exercises; the default of two needs
+            # two relays run by different people, which this small net lacks.
+            met = user.meet(self.key(3), 1)
             self.log.info("  %s", met)
             assert_equal(met["point"], self.key(2))
             assert "rtt_ms" in met

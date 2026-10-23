@@ -945,7 +945,7 @@ E&apos; possibile firmare solo con indirizzi di tipo &quot;legacy&quot;.</transl
     </message>
     <message>
         <source>Node</source>
-        <translation>Nodo</translation>
+        <translation>Snodo</translation>
     </message>
     <message>
         <source>Wallet</source>

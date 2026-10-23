@@ -132,6 +132,7 @@ BASE_SCRIPTS = [
     'feature_roster_payout.py',
     'feature_roster_listing.py',
     'feature_mail.py',
+    'feature_mail_bridge.py',
     'feature_names.py',
     'feature_name_payments.py',
     'feature_radio.py',

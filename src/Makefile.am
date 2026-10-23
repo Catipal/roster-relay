@@ -158,6 +158,7 @@ BITCOIN_CORE_H = \
   key_io.h \
   logging.h \
   logging/timer.h \
+  mail/bridge.h \
   mail/client.h \
   mail/letter.h \
   mail/mailbox.h \
@@ -349,6 +350,7 @@ libbitcoin_server_a_SOURCES = \
   index/txindex.cpp \
   init.cpp \
   roster/listing.cpp \
+  mail/bridge.cpp \
   mail/client.cpp \
   mail/letter.cpp \
   mail/mailbox.cpp \

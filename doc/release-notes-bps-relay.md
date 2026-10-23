@@ -122,6 +122,20 @@ protocol in December 2025:
 A letter is signed by the sender's roster key and bound to the recipient, so
 it cannot be passed on to someone else as though it had been written to them.
 
+- **Your usual mail client** - with `-mailbridge` the node also speaks POP3 and
+  SMTP on the loopback interface (127.0.0.1), so Thunderbird, Apple Mail or K-9
+  can read and write BPS mail. Point the client at `127.0.0.1`, POP3 on 1100 and
+  SMTP on 1587 (change with `-mailbridgepop3port` / `-mailbridgesmtpport`), no
+  encryption, any username and password. Write a recipient as `name@bps` or
+  `<key>@bps` - the part after `@` is ignored. Nothing here touches the internet's
+  mail network: "send" hands the letter to the node, which seals it and carries
+  it over the overlay to that key, and "receive" reads the node's own inbox. It
+  is **off by default**, because while it is on any program on the computer that
+  can reach the port reads this node's mail in the clear; turn it on only on a
+  machine that is yours. There are no folders: it serves the inbox, marks a
+  letter read when the client fetches it, and deletes it from the node when the
+  client does.
+
 Radio
 -----
 
@@ -311,6 +325,9 @@ New options
 | `-mail` | on | Send and collect mail (needs the overlay) |
 | `-mailbox` | on | Hold sealed mail for others (needs the overlay) |
 | `-mailboxmaxsize` | 256 | Disk the mailbox may use, in MiB |
+| `-mailbridge` | off | Read and send BPS mail from an ordinary client over loopback POP3/SMTP (needs `-mail`) |
+| `-mailbridgepop3port` | 1100 | Loopback port the bridge serves POP3 on |
+| `-mailbridgesmtpport` | 1587 | Loopback port the bridge accepts SMTP on |
 | `-acceptlistings` | off | Pay for the listings peers ask this node to publish |
 | `-maxlistedusers` | 100 | Most peers to keep listed |
 | `-listingwallet` | the only wallet open | Which wallet pays for listings |

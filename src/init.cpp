@@ -37,6 +37,7 @@
 #include <roster/ledger.h>
 #include <roster/view.h>
 #include <index/nameindex.h>
+#include <mail/bridge.h>
 #include <mail/client.h>
 #include <names/name.h>
 #include <names/petnames.h>
@@ -247,6 +248,10 @@ void Shutdown(NodeContext& node)
     // waiting on the network is told to give up, so it is not waited for.
     if (overlay::g_overlay) overlay::g_overlay->Interrupt();
     mail::InterruptAsks();
+    if (mail::g_mail_bridge) {
+        mail::g_mail_bridge->Stop();
+        mail::g_mail_bridge.reset();
+    }
     if (mail::g_mail) {
         mail::g_mail->Stop();
         mail::g_mail.reset();
@@ -521,6 +526,9 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-mailbox", strprintf("Hold sealed mail for the people the roster makes this node a mailbox for (default: %u). Needs -overlay. Letters are kept for two weeks at most and cannot be read here.", mail::DEFAULT_MAILBOX), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-mailboxmaxsize=<n>", strprintf("Disk the mailbox may use, in MiB (default: %u)", mail::DEFAULT_MAILBOX_MAX_MB), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-mailpoll=<n>", strprintf("Seconds between trips to collect mail, or 0 to collect only when asked (default: %u)", mail::DEFAULT_MAIL_POLL), ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
+    argsman.AddArg("-mailbridge", strprintf("Let an ordinary mail client read and send this node's mail over the loopback interface: POP3 to read, SMTP to send (default: %u). Needs -mail. It serves decrypted mail on a local port, so it is for your own machine only; letters still leave sealed over the overlay, never to an internet mail server. Write a recipient as name@bps or <key>@bps.", mail::DEFAULT_MAILBRIDGE), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-mailbridgepop3port=<n>", strprintf("Loopback port the mail bridge serves POP3 on (default: %u)", mail::DEFAULT_MAILBRIDGE_POP3_PORT), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-mailbridgesmtpport=<n>", strprintf("Loopback port the mail bridge accepts SMTP on (default: %u)", mail::DEFAULT_MAILBRIDGE_SMTP_PORT), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-maxlistedusers=<n>", strprintf("Most peers this node keeps listed under -acceptlistings (default: %u)", roster::DEFAULT_MAX_LISTED_USERS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-meetable", strprintf("Keep this node registered at its meeting points, relays computed from the roster, so it can be reached by its key without publishing an address. Needs -overlay and -rosterindex, and a listing (default: %u)", overlay::DEFAULT_MEETABLE), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-meethops=<n>", strprintf("Relays between this node and each of its meeting points, 1 to %d: more hides its address better and is slower (default: %d)", overlay::MAX_MEET_HOPS, overlay::DEFAULT_MEET_HOPS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -2400,6 +2408,20 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             mail::g_mail = MakeUnique<mail::MailClient>(GetDataDir() / "mail", op_key, chainparams.NetworkIDString(),
                                                         std::chrono::seconds{std::max<int64_t>(0, poll)});
             if (poll > 0) mail::g_mail->Start();
+
+            // Local bridge to an ordinary mail client (POP3 to read, SMTP to
+            // send), on the loopback interface only. Off unless asked for: it
+            // serves this node's decrypted mail on a local port.
+            if (mail::g_mail && args.GetBoolArg("-mailbridge", mail::DEFAULT_MAILBRIDGE)) {
+                const uint16_t pop3 = (uint16_t)args.GetArg("-mailbridgepop3port", mail::DEFAULT_MAILBRIDGE_POP3_PORT);
+                const uint16_t smtp = (uint16_t)args.GetArg("-mailbridgesmtpport", mail::DEFAULT_MAILBRIDGE_SMTP_PORT);
+                mail::g_mail_bridge = MakeUnique<mail::MailBridge>(pop3, smtp);
+                std::string bridge_error;
+                if (!mail::g_mail_bridge->Start(bridge_error)) {
+                    mail::g_mail_bridge.reset();
+                    return InitError(Untranslated("mail bridge: " + bridge_error));
+                }
+            }
         }
     }
 

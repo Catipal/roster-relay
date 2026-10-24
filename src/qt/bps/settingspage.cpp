@@ -16,6 +16,7 @@
 #include <qt/optionsmodel.h>
 
 #include <chainparams.h>
+#include <clientversion.h>
 #include <index/rosterindex.h>
 #include <overlay/gatewayclient.h>
 #include <overlay/meeting.h>
@@ -251,6 +252,13 @@ SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
     buttons->addWidget(m_core_options);
     buttons->addStretch(1);
     outer->addLayout(buttons);
+
+    // Which build this is, with the commit it was made from, so two copies of
+    // the program that both say 0.22 can still be told apart.
+    QLabel* version = new QLabel(tr("Version %1").arg(QString::fromStdString(FormatFullVersion())), this);
+    version->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    version->setEnabled(false);
+    outer->addWidget(version);
 
     outer->addStretch(1);
 

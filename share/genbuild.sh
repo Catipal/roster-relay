@@ -33,6 +33,11 @@ if [ "${BITCOIN_GENBUILD_NO_GIT}" != "1" ] && [ -e "$(command -v git)" ] && [ "$
     # otherwise generate suffix from git, i.e. string like "59887e8-dirty"
     GIT_COMMIT=$(git rev-parse --short HEAD)
     git diff-index --quiet HEAD -- || GIT_COMMIT="$GIT_COMMIT-dirty"
+elif [ -n "${BPS_BUILD_COMMIT}" ]; then
+    # A copy of the tree without .git (a cross-build fed by rsync) cannot ask
+    # git, so whoever made the copy says which commit it is. Without it every
+    # such build reports the same version and nobody can tell them apart.
+    GIT_COMMIT="${BPS_BUILD_COMMIT}"
 fi
 
 if [ -n "$GIT_TAG" ]; then

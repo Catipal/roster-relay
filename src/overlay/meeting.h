@@ -157,6 +157,31 @@ private:
 /** The running service, or null when -meetable is off. */
 extern std::unique_ptr<MeetingService> g_meeting;
 
+/**
+ * Registering for reasons other than -meetable: a gateway while it serves
+ * (overlay/gateway.h), a site this node hosts with no address
+ * (overlay/hosting.h). One service covers every reason; it runs while any of
+ * them holds and -meetable's own service (g_meeting) does not, so a node is
+ * never registered twice.
+ */
+enum MeetNeed : uint32_t {
+    MEET_FOR_GATEWAY = 1U << 0,
+    MEET_FOR_SITE = 1U << 1,
+};
+/** Who to register and through how many relays. Until this is called, nothing starts. */
+void ConfigureMeetOnDemand(const roster::KeyBytes& self, int hops);
+/** Add or drop one reason to be registered. */
+void SetMeetNeed(uint32_t need, bool on);
+/** Whether `need` is among the reasons now. */
+bool HasMeetNeed(uint32_t need);
+/**
+ * The registrations of whichever service keeps this node met, -meetable's or
+ * the on-demand one. False when neither runs.
+ */
+bool CurrentRegistrations(std::vector<Registration>& out);
+/** Stop the on-demand service, at shutdown. */
+void StopMeetOnDemand();
+
 /** A visitor's side of a meeting: an end-to-end session with the service. */
 struct Meeting {
     uint64_t path{0};              //!< SendSecret on this reaches the service

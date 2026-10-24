@@ -28,6 +28,8 @@
 #include <overlay/sysif.h>
 #include <overlay/hosting.h>
 #include <overlay/meeting.h>
+#include <overlay/siteproxy.h>
+#include <names/resolve.h>
 #include <overlay/radio.h>
 #include <overlay/relay.h>
 #include <overlay/rendezvous.h>
@@ -334,14 +336,25 @@ static RPCHelpMan getchainfeedinfo()
     };
 }
 
+static UniValue SiteRouteToJSON(const overlay::SiteRoute& r)
+{
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("hidden", r.hidden);
+    out.pushKV("hops", r.hops);
+    if (r.hidden) out.pushKV("point", HexStr(r.point));
+    return out;
+}
+
 static RPCHelpMan publishsite()
 {
     return RPCHelpMan{"publishsite",
                 "\nPublish a folder as a site under this node's roster key (design note §11·6).\n"
                 "\nEvery file is cut into 16 KiB pieces, each hashed, and the whole manifest is signed by the\n"
                 "node's key. Visitors fetch it over the overlay and check every piece against the manifest.\n"
-                "The node must be listed with an endpoint for others to reach it (hidden hosting is not built\n"
-                "yet). Publishing again replaces what is served.\n",
+                "Listed with an address, the site is reached there through relays, so it never learns who\n"
+                "visits; listed through the overlay, with none, it is met at its meeting points, which this\n"
+                "node keeps registered at while it publishes, so nobody learns where it is either. The folder\n"
+                "is published again at every start until unpublishsite. Publishing again replaces it.\n",
                 {
                     {"directory", RPCArg::Type::STR, RPCArg::Optional::NO, "The folder to publish"},
                 },
@@ -352,6 +365,8 @@ static RPCHelpMan publishsite()
                         {RPCResult::Type::NUM, "version", "The version published (the publish time)"},
                         {RPCResult::Type::NUM, "files", "How many files"},
                         {RPCResult::Type::NUM, "bytes", "Total size"},
+                        {RPCResult::Type::BOOL, "listed", "Whether this node is listed; until it is, nobody can find the site"},
+                        {RPCResult::Type::BOOL, "hidden", "Whether it is met at meeting points, the listing having no address"},
                     }},
                 RPCExamples{HelpExampleCli("publishsite", "\"/home/me/mysite\"")},
         [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
@@ -361,21 +376,124 @@ static RPCHelpMan publishsite()
     std::string error;
     if (!roster::GetOperationalKey(op_key, error)) throw JSONRPCError(RPC_MISC_ERROR, error);
 
-    const fs::path dir = fs::absolute(request.params[0].get_str());
     overlay::SiteManifest m;
-    const uint32_t version = (uint32_t)GetTime();
-    if (!overlay::BuildSiteManifest(dir, version, m, error)) throw JSONRPCError(RPC_INVALID_PARAMETER, error);
-    if (!overlay::SignSiteManifest(m, op_key)) throw JSONRPCError(RPC_MISC_ERROR, "Could not sign the manifest.");
-    overlay::g_hosting = MakeUnique<overlay::HostingServer>(dir, m);
-
-    uint64_t bytes = 0;
-    for (const overlay::SiteFile& f : m.files) bytes += f.size;
+    if (!overlay::PublishSite(fs::path(request.params[0].get_str()), op_key, m, error)) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, error);
+    }
     const CPubKey pub = op_key.GetPubKey();
     UniValue out(UniValue::VOBJ);
     out.pushKV("key", HexStr(Span<const unsigned char>(pub.begin() + 1, 32)));
-    out.pushKV("version", (uint64_t)version);
+    out.pushKV("version", (uint64_t)m.version);
     out.pushKV("files", (uint64_t)m.files.size());
-    out.pushKV("bytes", bytes);
+    out.pushKV("bytes", m.TotalSize());
+    out.pushKV("listed", overlay::SiteIsListed());
+    out.pushKV("hidden", overlay::SiteIsHidden());
+    return out;
+},
+    };
+}
+
+static RPCHelpMan unpublishsite()
+{
+    return RPCHelpMan{"unpublishsite",
+                "\nStop publishing this node's site, and do not publish it again at the next start.\n",
+                {},
+                RPCResult{RPCResult::Type::BOOL, "", "Whether a site was being published"},
+                RPCExamples{HelpExampleCli("unpublishsite", "")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    const bool was = overlay::GetHosting() != nullptr;
+    overlay::UnpublishSite();
+    return was;
+},
+    };
+}
+
+static RPCHelpMan gethostinginfo()
+{
+    return RPCHelpMan{"gethostinginfo",
+                "\nThe site this node publishes, and how it is reached (design note §11·6).\n",
+                {},
+                RPCResult{
+                    RPCResult::Type::OBJ, "", "",
+                    {
+                        {RPCResult::Type::BOOL, "publishing", "Whether a site is published"},
+                        {RPCResult::Type::STR, "folder", /* optional */ true, "The folder published"},
+                        {RPCResult::Type::NUM, "version", /* optional */ true, "Its version (the publish time)"},
+                        {RPCResult::Type::NUM, "files", /* optional */ true, "How many files"},
+                        {RPCResult::Type::NUM, "bytes", /* optional */ true, "Total size"},
+                        {RPCResult::Type::BOOL, "listed", /* optional */ true, "Whether this node is listed; until it is, nobody can find the site"},
+                        {RPCResult::Type::BOOL, "hidden", /* optional */ true, "Met at meeting points, the listing having no address"},
+                        {RPCResult::Type::NUM, "registrations", /* optional */ true, "Meeting points it is registered at now, when hidden"},
+                        {RPCResult::Type::NUM, "manifests_sent", /* optional */ true, "Manifests sent to visitors"},
+                        {RPCResult::Type::NUM, "pieces_sent", /* optional */ true, "Pieces sent to visitors"},
+                        {RPCResult::Type::NUM, "bytes_sent", /* optional */ true, "Bytes sent to visitors"},
+                        {RPCResult::Type::NUM, "refused", /* optional */ true, "Requests dropped while too much was queued"},
+                        {RPCResult::Type::NUM, "queued", /* optional */ true, "Answers waiting to go"},
+                    }},
+                RPCExamples{HelpExampleCli("gethostinginfo", "")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    UniValue out(UniValue::VOBJ);
+    const std::shared_ptr<overlay::HostingServer> h = overlay::GetHosting();
+    out.pushKV("publishing", h != nullptr);
+    if (!h) return out;
+    out.pushKV("folder", h->Dir().string());
+    out.pushKV("version", (uint64_t)h->Manifest().version);
+    out.pushKV("files", (uint64_t)h->Manifest().files.size());
+    out.pushKV("bytes", h->Manifest().TotalSize());
+    const bool hidden = overlay::SiteIsHidden();
+    out.pushKV("listed", overlay::SiteIsListed());
+    out.pushKV("hidden", hidden);
+    if (hidden) {
+        std::vector<overlay::Registration> regs;
+        overlay::CurrentRegistrations(regs);
+        out.pushKV("registrations", (uint64_t)regs.size());
+    }
+    const overlay::HostingServer::Stats st = h->GetStats();
+    out.pushKV("manifests_sent", st.manifests);
+    out.pushKV("pieces_sent", st.pieces);
+    out.pushKV("bytes_sent", st.bytes);
+    out.pushKV("refused", st.refused);
+    out.pushKV("queued", (uint64_t)st.queued);
+    return out;
+},
+    };
+}
+
+static RPCHelpMan getsiteaddress()
+{
+    return RPCHelpMan{"getsiteaddress",
+                "\nWhere a site opens: in BPS Relay's viewer, and in an ordinary browser through the local site\n"
+                "proxy (-siteproxy), on this computer only.\n",
+                {
+                    {"site", RPCArg::Type::STR, RPCArg::Optional::NO, "A name, a petname, or the site's key"},
+                },
+                RPCResult{
+                    RPCResult::Type::OBJ, "", "",
+                    {
+                        {RPCResult::Type::STR_HEX, "key", "The site's key"},
+                        {RPCResult::Type::STR, "viewer", "The address for BPS Relay's viewer"},
+                        {RPCResult::Type::STR, "browser", /* optional */ true, "The address for a browser, while the site proxy runs"},
+                        {RPCResult::Type::STR, "browser_key", /* optional */ true, "The same by the key, which does not change hands as a name can"},
+                    }},
+                RPCExamples{HelpExampleCli("getsiteaddress", "\"pilot\"")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    const std::string text = request.params[0].get_str();
+    names::Target target;
+    std::string error;
+    if (!names::ResolveTarget(text, target, error)) throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, error);
+    const bool by_name = target.source != names::Source::KEY;
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("key", HexStr(target.key));
+    out.pushKV("viewer", "bps://" + (by_name ? target.label : HexStr(target.key)) + "/");
+    if (overlay::g_site_proxy) {
+        const std::string port = std::to_string(overlay::g_site_proxy->Port());
+        const std::string by_key = "http://" + overlay::SiteKeyLabel(target.key) + ".bps.localhost:" + port + "/";
+        out.pushKV("browser", by_name ? "http://" + target.label + ".bps.localhost:" + port + "/" : by_key);
+        out.pushKV("browser_key", by_key);
+    }
     return out;
 },
     };
@@ -385,8 +503,9 @@ static RPCHelpMan getsite()
 {
     return RPCHelpMan{"getsite",
                 "\nFetch one file of a site over the overlay, by the site's key, and return its bytes.\n"
-                "\nThe manifest's signature is checked against the key given, and every piece against the\n"
-                "manifest, so tampering anywhere on the way is caught.\n",
+                "\nA site listed with an address is reached there through relays; one listed with none is met\n"
+                "at its meeting points. The manifest's signature is checked against the key given, and every\n"
+                "piece against the manifest, so tampering anywhere on the way is caught.\n",
                 {
                     {"key", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "The site's roster key"},
                     {"path", RPCArg::Type::STR, RPCArg::Optional::NO, "The file within the site, e.g. index.html"},
@@ -396,6 +515,12 @@ static RPCHelpMan getsite()
                     {
                         {RPCResult::Type::NUM, "bytes", "The file's length"},
                         {RPCResult::Type::STR_HEX, "hex", "The file's contents"},
+                        {RPCResult::Type::OBJ, "route", "How the site was reached",
+                        {
+                            {RPCResult::Type::BOOL, "hidden", "Met at a meeting point, the site having no address"},
+                            {RPCResult::Type::NUM, "hops", "Relays on this side"},
+                            {RPCResult::Type::STR_HEX, "point", /* optional */ true, "The meeting point, when hidden"},
+                        }},
                     }},
                 RPCExamples{HelpExampleCli("getsite", "\"a1b2...\" \"index.html\"")},
         [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
@@ -404,25 +529,18 @@ static RPCHelpMan getsite()
     roster::KeyBytes site_key{};
     if (raw.size() != site_key.size()) throw JSONRPCError(RPC_INVALID_PARAMETER, "key must be 32 bytes of hex");
     std::copy(raw.begin(), raw.end(), site_key.begin());
-    const std::string path = request.params[1].get_str();
-
-    CService addr;
-    bool found = false;
-    for (const roster::RelayInfo& r : roster::FreshRelays()) {
-        if (r.key == site_key) { addr = roster::OverlayAddressFor(r.addr); found = true; break; }
-    }
-    if (!found) {
-        throw JSONRPCError(RPC_MISC_ERROR,
-            "The roster lists no address for that site key. Hidden hosting - reaching a site with no "
-            "published address at its meeting points - is not built yet.");
-    }
+    if (!overlay::g_overlay) throw JSONRPCError(RPC_MISC_ERROR, "The overlay is off (-overlay).");
 
     std::vector<unsigned char> content;
     std::string error;
-    if (!overlay::FetchSiteFile(site_key, addr, path, content, error)) throw JSONRPCError(RPC_MISC_ERROR, error);
+    overlay::SiteRoute route;
+    if (!overlay::FetchSiteFile(site_key, request.params[1].get_str(), content, error, &route)) {
+        throw JSONRPCError(RPC_MISC_ERROR, error);
+    }
     UniValue out(UniValue::VOBJ);
     out.pushKV("bytes", (uint64_t)content.size());
     out.pushKV("hex", HexStr(content));
+    out.pushKV("route", SiteRouteToJSON(route));
     return out;
 },
     };
@@ -777,13 +895,9 @@ static RPCHelpMan getgatewayinfo()
         out.pushKV("why", id.why);
     }
     size_t registrations = 0;
-    {
-        LOCK(overlay::g_gateway_meeting_mutex);
-        if (overlay::g_gateway_meeting) {
-            registrations = overlay::g_gateway_meeting->Registrations().size();
-        } else if (id.serving && overlay::g_meeting) {
-            registrations = overlay::g_meeting->Registrations().size();
-        }
+    if (id.serving) {
+        std::vector<overlay::Registration> regs;
+        if (overlay::CurrentRegistrations(regs)) registrations = regs.size();
     }
     out.pushKV("registrations", (uint64_t)registrations);
     out.pushKV("policy", s.policy);
@@ -1825,6 +1939,9 @@ static const CRPCCommand commands[] =
     { "overlay",          "getchainfeedinfo",     &getchainfeedinfo,      {} },
     { "overlay",          "publishsite",          &publishsite,           {"directory"} },
     { "overlay",          "getsite",              &getsite,               {"key","path"} },
+    { "overlay",          "unpublishsite",        &unpublishsite,         {} },
+    { "overlay",          "gethostinginfo",       &gethostinginfo,        {} },
+    { "overlay",          "getsiteaddress",       &getsiteaddress,        {"site"} },
     { "overlay",          "meet",                 &meet,                  {"key","hops","point"} },
     { "roster",           "getrosterinfo",        &getrosterinfo,         {} },
     { "roster",           "getroster",            &getroster,             {"count","skip","hints"} },

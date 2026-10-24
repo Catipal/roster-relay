@@ -12,6 +12,7 @@
 #include <qt/bps/overlaypage.h>
 #include <qt/bps/radiobridge.h>
 #include <qt/bps/serverpage.h>
+#include <qt/bps/sitespage.h>
 #include <qt/bps/settingspage.h>
 #ifdef ENABLE_WALLET
 #include <qt/bps/walletpage.h>
@@ -160,9 +161,20 @@ BpsWindow::BpsWindow(interfaces::Node& node, const PlatformStyle* platformStyle,
         mail_item->setText(unread > 0 ? tr("Mail (%1)").arg(unread) : tr("Mail"));
     });
 
+    // Reading sites over the overlay (design note 11.6): something a person
+    // uses, beside mail; publishing one is a service, on the Server page.
+    m_sites = new SitesPage(*m_rpc, this);
+    m_pages->addWidget(m_sites);
+    m_nav->addItem(tr("Sites"));
+    const int sites_row = m_nav->count() - 1;
+
     m_server = new ServerPage(*m_rpc, this);
     m_pages->addWidget(m_server);
     m_nav->addItem(tr("Server"));
+    connect(m_server, &ServerPage::openSite, this, [this, sites_row](const QString& address) {
+        m_nav->setCurrentRow(sites_row);
+        m_sites->Open(address);
+    });
 
     m_settings = new SettingsPage(platformStyle, this);
     connect(m_settings, &SettingsPage::message, this,

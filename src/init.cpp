@@ -35,6 +35,7 @@
 #include <overlay/gatewayproto.h>
 #include <overlay/netstack.h>
 #include <overlay/hosting.h>
+#include <overlay/siteproxy.h>
 #include <overlay/meeting.h>
 #include <overlay/radio.h>
 #include <overlay/relay.h>
@@ -257,6 +258,10 @@ void Shutdown(NodeContext& node)
     // waiting on the network is told to give up, so it is not waited for.
     if (overlay::g_overlay) overlay::g_overlay->Interrupt();
     mail::InterruptAsks();
+    if (overlay::g_site_proxy) {
+        overlay::g_site_proxy->Stop();
+        overlay::g_site_proxy.reset();
+    }
     if (mail::g_mail_bridge) {
         mail::g_mail_bridge->Stop();
         mail::g_mail_bridge.reset();
@@ -290,14 +295,11 @@ void Shutdown(NodeContext& node)
         overlay::g_gateway.reset();
     }
     {
-        LOCK(overlay::g_gateway_meeting_mutex);
-        if (overlay::g_gateway_meeting) {
-            overlay::g_gateway_meeting->Stop();
-            overlay::g_gateway_meeting.reset();
-        }
+        overlay::SetMeetNeed(overlay::MEET_FOR_GATEWAY, false);
     }
     overlay::GetNetStack().Stop();
     // Its thread builds paths over the overlay too.
+    overlay::StopMeetOnDemand();
     if (overlay::g_meeting) {
         overlay::g_meeting->Stop();
         overlay::g_meeting.reset();
@@ -306,7 +308,8 @@ void Shutdown(NodeContext& node)
         overlay::g_chainsync->Stop();
         overlay::g_chainsync.reset();
     }
-    overlay::g_hosting.reset();
+    overlay::CloseSiteVisits();
+    overlay::StopHosting();
     if (overlay::g_overlay) {
         overlay::g_overlay->Stop();
         overlay::g_overlay.reset();
@@ -570,6 +573,8 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-mailpoll=<n>", strprintf("Seconds between trips to collect mail, or 0 to collect only when asked (default: %u)", mail::DEFAULT_MAIL_POLL), ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
     argsman.AddArg("-mailbridge", strprintf("Let an ordinary mail client read and send this node's mail over the loopback interface: POP3 to read, SMTP to send (default: %u). Needs -mail. It serves decrypted mail on a local port, so it is for your own machine only; letters still leave sealed over the overlay, never to an internet mail server. Write a recipient as name@bps or <key>@bps.", mail::DEFAULT_MAILBRIDGE), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-mailbridgepop3port=<n>", strprintf("Loopback port the mail bridge serves POP3 on (default: %u)", mail::DEFAULT_MAILBRIDGE_POP3_PORT), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-siteproxy", strprintf("Let an ordinary browser open sites hosted over the overlay, at http://<name or key>.bps.localhost:<port>/, served on the loopback interface only. Pages are fetched over the overlay as BPS Relay's viewer fetches them, and may load nothing from outside their own site; the viewer, which runs no scripts, stays the safer way to read a hidden site (default: %u; on in BPS Relay). Needs -overlay.", overlay::DEFAULT_SITE_PROXY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-siteproxyport=<port>", "Loopback port the site proxy listens on (default: three above the peer-to-peer port)", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-mailbridgesmtpport=<n>", strprintf("Loopback port the mail bridge accepts SMTP on (default: %u)", mail::DEFAULT_MAILBRIDGE_SMTP_PORT), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-maxlistedusers=<n>", strprintf("Most peers this node keeps listed under -acceptlistings (default: %u)", roster::DEFAULT_MAX_LISTED_USERS), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-meetable", strprintf("Keep this node registered at its meeting points, relays computed from the roster, so it can be reached by its key without publishing an address. Needs -overlay and -rosterindex, and a listing (default: %u)", overlay::DEFAULT_MEETABLE), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -2385,11 +2390,12 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 } else if (overlay::g_chainsync && !from.via_path && overlay::IsChainPayload(payload)) {
                     // Blocks between adjacent radio neighbours, never over a path.
                     overlay::g_chainsync->HandleApp(from.addr, payload);
-                } else if (!from.via_path && overlay::IsSitePayload(payload)) {
+                } else if (overlay::IsSitePayload(payload)) {
                     // Hosted sites (overlay/hosting.h): serve a published site, or
-                    // hand a reply to a fetch in progress. Routed even when this node
-                    // hosts nothing, so a visitor's own fetch gets its answers.
-                    overlay::HandleSiteApp(from.addr, payload);
+                    // hand an answer to a fetch in progress - over a path, or from
+                    // an adjacent peer. Routed even when this node hosts nothing,
+                    // so a visitor's own fetch gets its answers.
+                    overlay::HandleSiteApp(from, payload);
                 } else {
                     roster::HandleOverlayApp(from, std::move(payload));
                 }
@@ -2523,6 +2529,25 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 self, (int)args.GetArg("-meethops", overlay::DEFAULT_MEET_HOPS));
             overlay::g_meeting->Start();
         }
+        // Registered on demand otherwise: while a gateway serves, or a site is
+        // hosted with no address (overlay/meeting.h, MeetNeed).
+        if (g_rosterindex) {
+            overlay::ConfigureMeetOnDemand(self, (int)args.GetArg("-meethops", overlay::DEFAULT_MEET_HOPS));
+        }
+        // The site published last, again (overlay/hosting.h).
+        overlay::RepublishSavedSite(op_key);
+
+        // Sites in an ordinary browser, on the loopback interface only
+        // (overlay/siteproxy.h).
+        if (args.GetBoolArg("-siteproxy", overlay::DEFAULT_SITE_PROXY)) {
+            const uint16_t site_port = (uint16_t)args.GetArg("-siteproxyport", overlay::DefaultSiteProxyPort(GetListenPort()));
+            overlay::g_site_proxy = MakeUnique<overlay::SiteProxy>(site_port);
+            std::string proxy_error;
+            if (!overlay::g_site_proxy->Start(proxy_error)) {
+                overlay::g_site_proxy.reset();
+                return InitError(Untranslated("site proxy: " + proxy_error));
+            }
+        }
 
         // A gateway out to the internet (overlay/gateway.h): on unless switched
         // off, and serving while the roster lists this node through the overlay.
@@ -2546,16 +2571,8 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             }
             // Registered at its meeting points only while it serves, unless
             // -meetable keeps the node registered regardless.
-            const int meet_hops = (int)args.GetArg("-meethops", overlay::DEFAULT_MEET_HOPS);
-            auto register_gateway = [self, meet_hops](bool serving) {
-                LOCK(overlay::g_gateway_meeting_mutex);
-                if (overlay::g_gateway_meeting) {
-                    overlay::g_gateway_meeting->Stop();
-                    overlay::g_gateway_meeting.reset();
-                }
-                if (!serving || overlay::g_meeting) return;
-                overlay::g_gateway_meeting = MakeUnique<overlay::MeetingService>(self, meet_hops);
-                overlay::g_gateway_meeting->Start();
+            auto register_gateway = [](bool serving) {
+                overlay::SetMeetNeed(overlay::MEET_FOR_GATEWAY, serving);
             };
             const bool relaying = args.GetBoolArg("-relay", roster::DEFAULT_RELAY);
             overlay::g_gateway = MakeUnique<overlay::Gateway>(gw,

@@ -73,18 +73,27 @@ public:
 public Q_SLOTS:
     void Refresh();
 
+Q_SIGNALS:
+    /** Show a site in the Sites page. */
+    void openSite(const QString& address);
+
 private Q_SLOTS:
     void onRpcResult(const QString& tag, const UniValue& value);
     void onRpcFailed(const QString& tag, const QString& message);
     void onChanged();
     void onInstallNetService();
+    void onPublishSite();
+    void onRepublishSite();
+    void onStopSite();
 
 private:
     QWidget* MakeRelayCard();
     QCheckBox* m_relay{nullptr};    //!< carry others' paths as a relay (-relay)
     QWidget* MakeMailboxCard();
     QWidget* MakeGatewayCard();
+    QWidget* MakeHostingCard();
     void ShowGateway(const UniValue& value);
+    void ShowHosting(const UniValue& value);
     void Load();
     void UpdateStaking();
 
@@ -121,6 +130,18 @@ private:
     QLabel* m_interface_status{nullptr};
     QPushButton* m_interface_setup{nullptr}; //!< Windows: install the network service
     QLabel* m_gateway_note{nullptr};
+
+    QLabel* m_hosting_badge{nullptr};
+    QLabel* m_hosting_folder{nullptr};
+    QLabel* m_hosting_reached{nullptr};
+    QLabel* m_hosting_sent{nullptr};
+    QPushButton* m_hosting_publish{nullptr};
+    QPushButton* m_hosting_again{nullptr};
+    QPushButton* m_hosting_stop{nullptr};
+    QPushButton* m_hosting_open{nullptr};
+    QLabel* m_hosting_note{nullptr};
+    QString m_hosting_dir;   //!< the folder published, to publish again
+    QString m_own_key;       //!< this node's roster key, the site's address
     QTimer* m_timer{nullptr};
 };
 

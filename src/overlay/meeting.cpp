@@ -17,6 +17,7 @@
 #include <roster/listing.h>
 #include <roster/peers.h>
 #include <tinyformat.h>
+#include <util/memory.h>
 #include <util/system.h>
 #include <util/time.h>
 
@@ -30,6 +31,26 @@ namespace overlay {
 std::unique_ptr<MeetingService> g_meeting;
 
 namespace {
+
+Mutex g_demand_mutex;
+bool g_demand_configured GUARDED_BY(g_demand_mutex){false};
+roster::KeyBytes g_demand_self GUARDED_BY(g_demand_mutex){};
+int g_demand_hops GUARDED_BY(g_demand_mutex){DEFAULT_MEET_HOPS};
+uint32_t g_demand_needs GUARDED_BY(g_demand_mutex){0};
+std::unique_ptr<MeetingService> g_demand_meeting GUARDED_BY(g_demand_mutex);
+
+//! Start or stop the on-demand service to match the reasons held.
+void ApplyMeetDemand() EXCLUSIVE_LOCKS_REQUIRED(g_demand_mutex)
+{
+    const bool want = g_demand_configured && g_demand_needs != 0 && !g_meeting;
+    if (want && !g_demand_meeting) {
+        g_demand_meeting = MakeUnique<MeetingService>(g_demand_self, g_demand_hops);
+        g_demand_meeting->Start();
+    } else if (!want && g_demand_meeting) {
+        g_demand_meeting->Stop();
+        g_demand_meeting.reset();
+    }
+}
 
 /** How long a meeting point has to answer one registration or one request to meet. */
 constexpr std::chrono::milliseconds ANSWER_WAIT{5000};
@@ -462,6 +483,50 @@ bool EchoAcross(const Meeting& m, std::chrono::milliseconds timeout, std::chrono
     g_echoes.erase(nonce);
     rtt = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start);
     return answered;
+}
+
+void ConfigureMeetOnDemand(const roster::KeyBytes& self, int hops)
+{
+    LOCK(g_demand_mutex);
+    g_demand_self = self;
+    g_demand_hops = std::max(1, std::min(MAX_MEET_HOPS, hops));
+    g_demand_configured = true;
+    ApplyMeetDemand();
+}
+
+void SetMeetNeed(uint32_t need, bool on)
+{
+    LOCK(g_demand_mutex);
+    const uint32_t before = g_demand_needs;
+    g_demand_needs = on ? (g_demand_needs | need) : (g_demand_needs & ~need);
+    if (g_demand_needs != before) ApplyMeetDemand();
+}
+
+bool HasMeetNeed(uint32_t need)
+{
+    LOCK(g_demand_mutex);
+    return (g_demand_needs & need) != 0;
+}
+
+bool CurrentRegistrations(std::vector<Registration>& out)
+{
+    out.clear();
+    if (g_meeting) {
+        out = g_meeting->Registrations();
+        return true;
+    }
+    LOCK(g_demand_mutex);
+    if (!g_demand_meeting) return false;
+    out = g_demand_meeting->Registrations();
+    return true;
+}
+
+void StopMeetOnDemand()
+{
+    LOCK(g_demand_mutex);
+    g_demand_configured = false;
+    g_demand_needs = 0;
+    ApplyMeetDemand();
 }
 
 void HandleMeetEcho(const Hop& from, const std::vector<unsigned char>& payload)

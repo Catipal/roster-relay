@@ -28,7 +28,8 @@ BPS_QT_H = \
   qt/bps/radiobridge.h \
   qt/bps/rostermodel.h \
   qt/bps/serverpage.h \
-  qt/bps/settingspage.h
+  qt/bps/settingspage.h \
+  qt/bps/sitespage.h
 
 if ENABLE_WALLET
 BPS_QT_H += qt/bps/walletpage.h
@@ -47,7 +48,8 @@ BPS_QT_CPP = \
   qt/bps/radiobridge.cpp \
   qt/bps/rostermodel.cpp \
   qt/bps/serverpage.cpp \
-  qt/bps/settingspage.cpp
+  qt/bps/settingspage.cpp \
+  qt/bps/sitespage.cpp
 
 if ENABLE_WALLET
 BPS_QT_CPP += qt/bps/walletpage.cpp
@@ -65,7 +67,8 @@ BPS_QT_MOC_CPP = \
   qt/bps/moc_radiobridge.cpp \
   qt/bps/moc_rostermodel.cpp \
   qt/bps/moc_serverpage.cpp \
-  qt/bps/moc_settingspage.cpp
+  qt/bps/moc_settingspage.cpp \
+  qt/bps/moc_sitespage.cpp
 
 if ENABLE_WALLET
 BPS_QT_MOC_CPP += qt/bps/moc_walletpage.cpp

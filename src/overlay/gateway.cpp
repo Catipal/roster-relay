@@ -34,8 +34,6 @@
 namespace overlay {
 
 std::unique_ptr<Gateway> g_gateway;
-Mutex g_gateway_meeting_mutex;
-std::unique_ptr<MeetingService> g_gateway_meeting;
 
 namespace {
 Mutex g_identity_mutex;

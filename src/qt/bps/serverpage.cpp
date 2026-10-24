@@ -30,6 +30,7 @@
 #include <util/system.h>
 
 #include <QCheckBox>
+#include <QFileDialog>
 #include <QFormLayout>
 #include <QFrame>
 #include <QGridLayout>
@@ -96,6 +97,9 @@ const char* TAG_PAYOUT = "server:payout";
 const char* TAG_MAIL = "server:mail";
 const char* TAG_GATEWAY = "server:gateway";
 const char* TAG_ROSTERINFO = "server:rosterinfo";
+const char* TAG_HOSTING = "server:hosting";
+const char* TAG_PUBLISH = "server:publishsite";
+const char* TAG_UNPUBLISH = "server:unpublishsite";
 
 //! The roster moves at block pace; so do the figures here.
 const int REFRESH_MS = 20000;
@@ -262,9 +266,9 @@ ServerPage::ServerPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rp
     outer->addWidget(title);
 
     QLabel* subtitle = new QLabel(
-        tr("What this node offers other people. Relaying, holding mail and sharing the internet run "
-           "today; hosting is on the way, and like everything here it is found the same way peers are "
-           "\xe2\x80\x94 through the roster. Names have a page of their own."),
+        tr("What this node offers other people: relaying, holding mail, sharing the internet and "
+           "hosting a site. Like everything here it is found the same way peers are \xe2\x80\x94 "
+           "through the roster. Names have a page of their own."),
         content);
     subtitle->setWordWrap(true);
     subtitle->setEnabled(false);
@@ -274,18 +278,7 @@ ServerPage::ServerPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rp
     outer->addWidget(MakeRelayCard());
     outer->addWidget(MakeMailboxCard());
     outer->addWidget(MakeGatewayCard());
-
-    QGridLayout* planned = new QGridLayout();
-    planned->setHorizontalSpacing(12);
-    planned->setVerticalSpacing(12);
-    planned->addWidget(MakeCard(tr("Hosting"), Status::PLANNED,
-        tr("A site or service served from this node, found by its key or name and reached over "
-           "the overlay, so the host never publishes where it runs. The meeting part exists: a "
-           "service registers at rendezvous points both sides work out from the roster. Serving "
-           "pages and apps through it is not built yet."),
-        content, nullptr), 0, 0);
-    planned->setColumnStretch(0, 1);
-    outer->addLayout(planned);
+    outer->addWidget(MakeHostingCard());
     outer->addStretch(1);
 
     connect(&m_rpc, &BpsRpc::result, this, &ServerPage::onRpcResult);
@@ -294,6 +287,7 @@ ServerPage::ServerPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rp
     m_timer->setInterval(REFRESH_MS);
     connect(m_timer, &QTimer::timeout, this, &ServerPage::Refresh);
 
+    BpsUtil::KeepWheelForPage(this);
     Load();
 }
 
@@ -731,6 +725,123 @@ void ServerPage::setClientModel(ClientModel* model)
     Refresh();
 }
 
+QWidget* ServerPage::MakeHostingCard()
+{
+    QVBoxLayout* body = nullptr;
+    QFrame* card = MakeCard(tr("Hosting"), Status::OFF,
+        tr("Publish a folder as a site under this node's key, so anyone you give the key or your name "
+           "to can read it over the overlay. Every file is signed and checked piece by piece as it "
+           "arrives. Listed with no address, this node is met at its meeting points and nobody learns "
+           "where the site runs; listed at an address, visitors reach it through relays, so it never "
+           "learns who they are. Pages only, for now: no programs run for visitors."),
+        this, &body, &m_hosting_badge);
+
+    QFormLayout* status = new QFormLayout();
+    m_hosting_folder = new QLabel(tr("\xe2\x80\x94"), card);
+    m_hosting_folder->setWordWrap(true);
+    m_hosting_folder->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    m_hosting_reached = new QLabel(tr("\xe2\x80\x94"), card);
+    m_hosting_reached->setWordWrap(true);
+    m_hosting_sent = new QLabel(tr("\xe2\x80\x94"), card);
+    status->addRow(tr("Folder"), m_hosting_folder);
+    status->addRow(tr("Reached"), m_hosting_reached);
+    status->addRow(tr("Sent"), m_hosting_sent);
+    body->addLayout(status);
+
+    QFrame* rule = new QFrame(card);
+    rule->setFrameShape(QFrame::HLine);
+    rule->setFrameShadow(QFrame::Sunken);
+    body->addWidget(rule);
+
+    QHBoxLayout* buttons = new QHBoxLayout();
+    m_hosting_publish = new QPushButton(tr("Publish a folder\xe2\x80\xa6"), card);
+    m_hosting_again = new QPushButton(tr("Publish again"), card);
+    m_hosting_again->setToolTip(tr("Read the folder again after changing it, and publish what is there now."));
+    m_hosting_stop = new QPushButton(tr("Stop publishing"), card);
+    m_hosting_open = new QPushButton(tr("Open in Sites"), card);
+    for (QPushButton* b : {m_hosting_publish, m_hosting_again, m_hosting_stop, m_hosting_open}) buttons->addWidget(b);
+    buttons->addStretch(1);
+    body->addLayout(buttons);
+
+    m_hosting_note = new QLabel(card);
+    m_hosting_note->setWordWrap(true);
+    m_hosting_note->setVisible(false);
+    body->addWidget(m_hosting_note);
+
+    m_hosting_again->setEnabled(false);
+    m_hosting_stop->setEnabled(false);
+    m_hosting_open->setEnabled(false);
+    connect(m_hosting_publish, &QPushButton::clicked, this, &ServerPage::onPublishSite);
+    connect(m_hosting_again, &QPushButton::clicked, this, &ServerPage::onRepublishSite);
+    connect(m_hosting_stop, &QPushButton::clicked, this, &ServerPage::onStopSite);
+    connect(m_hosting_open, &QPushButton::clicked, this, [this] {
+        if (!m_own_key.isEmpty()) Q_EMIT openSite("bps://" + m_own_key + "/");
+    });
+    return card;
+}
+
+void ServerPage::ShowHosting(const UniValue& value)
+{
+    const bool publishing = find_value(value, "publishing").isTrue();
+    m_hosting_again->setEnabled(publishing);
+    m_hosting_stop->setEnabled(publishing);
+    m_hosting_open->setEnabled(publishing && !m_own_key.isEmpty());
+    if (!publishing) {
+        SetBadge(m_hosting_badge, Status::OFF, tr("not publishing"));
+        m_hosting_dir.clear();
+        m_hosting_folder->setText(tr("none \xe2\x80\x94 nothing is published"));
+        for (QLabel* l : {m_hosting_reached, m_hosting_sent}) l->setText(tr("\xe2\x80\x94"));
+        return;
+    }
+    m_hosting_dir = QString::fromStdString(find_value(value, "folder").getValStr());
+    const int64_t files = find_value(value, "files").get_int64();
+    const int64_t bytes = find_value(value, "bytes").get_int64();
+    const QString size = bytes < (1 << 20) ? tr("%1 KiB").arg((bytes + 1023) / 1024)
+                                           : tr("%1 MiB").arg(bytes / 1048576.0, 0, 'f', 1);
+    m_hosting_folder->setText(tr("%1 \xe2\x80\x94 %2 file(s), %3").arg(m_hosting_dir).arg(files).arg(size));
+    if (!find_value(value, "listed").isTrue()) {
+        SetBadge(m_hosting_badge, Status::ATTENTION, tr("not listed"));
+        m_hosting_reached->setText(tr("by nobody yet: this node is not listed in the roster, so visitors cannot "
+                                      "find the site. Publish a listing on the Node page, under Discovery."));
+    } else if (find_value(value, "hidden").isTrue()) {
+        const int64_t regs = find_value(value, "registrations").isNum() ? find_value(value, "registrations").get_int64() : 0;
+        SetBadge(m_hosting_badge, regs > 0 ? Status::RUNNING : Status::ATTENTION,
+                 regs > 0 ? tr("publishing") : tr("not met yet"));
+        m_hosting_reached->setText(regs > 0
+            ? tr("at %1 meeting point(s), with no address published").arg(regs)
+            : tr("not yet: registering at its meeting points, which needs the roster's relays"));
+    } else {
+        SetBadge(m_hosting_badge, Status::RUNNING, tr("publishing"));
+        m_hosting_reached->setText(tr("at this node's address, through relays that hide the visitor"));
+    }
+    const int64_t sent = find_value(value, "bytes_sent").get_int64();
+    m_hosting_sent->setText(tr("%1 page piece(s), %2").arg(find_value(value, "pieces_sent").get_int64())
+                                .arg(sent < (1 << 20) ? tr("%1 KiB").arg((sent + 1023) / 1024)
+                                                      : tr("%1 MiB").arg(sent / 1048576.0, 0, 'f', 1)));
+}
+
+void ServerPage::onPublishSite()
+{
+    const QString dir = QFileDialog::getExistingDirectory(this, tr("The folder to publish as a site"), m_hosting_dir);
+    if (dir.isEmpty()) return;
+    UniValue params(UniValue::VARR);
+    params.push_back(QDir::toNativeSeparators(dir).toStdString());
+    m_rpc.Call(TAG_PUBLISH, "publishsite", params);
+}
+
+void ServerPage::onRepublishSite()
+{
+    if (m_hosting_dir.isEmpty()) return;
+    UniValue params(UniValue::VARR);
+    params.push_back(m_hosting_dir.toStdString());
+    m_rpc.Call(TAG_PUBLISH, "publishsite", params);
+}
+
+void ServerPage::onStopSite()
+{
+    m_rpc.Call(TAG_UNPUBLISH, "unpublishsite");
+}
+
 void ServerPage::Refresh()
 {
     UpdateStaking();
@@ -739,6 +850,7 @@ void ServerPage::Refresh()
         m_rpc.Call(TAG_MAIL, "getmailinfo");
         m_rpc.Call(TAG_GATEWAY, "getgatewayinfo");
         m_rpc.Call(TAG_ROSTERINFO, "getrosterinfo");
+        m_rpc.Call(TAG_HOSTING, "gethostinginfo");
     }
 }
 
@@ -782,9 +894,20 @@ void ServerPage::onRpcResult(const QString& tag, const UniValue& value)
         ShowGateway(value);
         return;
     }
+    if (tag == TAG_HOSTING) {
+        ShowHosting(value);
+        return;
+    }
+    if (tag == TAG_PUBLISH || tag == TAG_UNPUBLISH) {
+        m_hosting_note->setVisible(false);
+        m_rpc.Call(TAG_HOSTING, "gethostinginfo");
+        return;
+    }
     if (tag == TAG_ROSTERINFO) {
         // A relay listed to announce its address says where it is while it
         // runs, instead of on the chain (roster/relayaddr.h).
+        const UniValue& key = find_value(value, "operational_key");
+        if (key.isStr()) m_own_key = QString::fromStdString(key.get_str());
         const UniValue& announcing = find_value(value, "announcing");
         if (!find_value(value, "relay").isTrue()) {
             m_announced->setText(tr("none \xe2\x80\x94 relaying is switched off"));
@@ -853,6 +976,11 @@ void ServerPage::onRpcFailed(const QString& tag, const QString& message)
 {
     if (tag == TAG_GATEWAY) {
         m_gateway_state->setText(message);
+        return;
+    }
+    if (tag == TAG_PUBLISH || tag == TAG_UNPUBLISH || tag == TAG_HOSTING) {
+        m_hosting_note->setText(message);
+        m_hosting_note->setVisible(true);
         return;
     }
     if (tag == TAG_MAIL) {

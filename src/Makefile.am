@@ -218,6 +218,7 @@ BITCOIN_CORE_H = \
   overlay/gatewayclient.h \
   overlay/gatewayproto.h \
   overlay/hosting.h \
+  overlay/siteproxy.h \
   overlay/ippacket.h \
   overlay/limits.h \
   overlay/localproxy.h \
@@ -382,6 +383,7 @@ libbitcoin_server_a_SOURCES = \
   overlay/gateway.cpp \
   overlay/gatewayclient.cpp \
   overlay/hosting.cpp \
+  overlay/siteproxy.cpp \
   overlay/localproxy.cpp \
   overlay/meeting.cpp \
   overlay/netstack.cpp \

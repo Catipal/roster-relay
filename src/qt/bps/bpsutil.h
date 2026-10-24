@@ -7,6 +7,7 @@
 
 #include <QFont>
 #include <QString>
+#include <QWidget>
 
 class UniValue;
 
@@ -36,6 +37,14 @@ QString DescribeEndpoint(const UniValue& endpoint);
 
 /** The monospaced font the rest of the GUI uses, for keys and addresses. */
 QFont FixedPitchFont();
+
+/**
+ * Scrolling a page with the wheel over a number box or a drop-down scrolls the
+ * page, and changes nothing: only a box clicked into takes the wheel. Without
+ * this, scrolling down the Server page turned whatever setting passed under
+ * the pointer.
+ */
+void KeepWheelForPage(QWidget* page);
 
 } // namespace BpsUtil
 

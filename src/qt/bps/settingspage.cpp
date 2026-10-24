@@ -8,6 +8,7 @@
 
 #include <qt/bps/settingspage.h>
 
+#include <qt/bps/bpsutil.h>
 #include <qt/bps/radiobridge.h>
 
 #include <qt/bitcoinunits.h>
@@ -99,6 +100,9 @@ void SettingsPage::ApplyStoredSettings()
     }
     gArgs.SoftSetBoolArg("-radio", settings.value(KEY_RADIO, overlay::DEFAULT_RADIO).toBool());
     gArgs.SoftSetBoolArg("-radioentry", settings.value(KEY_RADIOENTRY, overlay::DEFAULT_RADIO_ENTRY).toBool());
+    // Sites in an ordinary browser, through a server on this computer only
+    // (overlay/siteproxy.h): part of this client, off in the node.
+    gArgs.SoftSetBoolArg("-siteproxy", true);
 }
 
 SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
@@ -280,6 +284,7 @@ SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
     connect(m_language, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, &SettingsPage::onLanguageChanged);
 
+    BpsUtil::KeepWheelForPage(this);
     Load();
 }
 

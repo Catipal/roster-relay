@@ -288,14 +288,6 @@ struct GatewayIdentity {
 GatewayIdentity GetGatewayIdentity();
 void SetGatewayIdentity(const GatewayIdentity& id);
 
-class MeetingService;
-/**
- * The gateway's registration at its meeting points, running only while it
- * serves. Null when it does not, or when -meetable keeps the node registered
- * anyway (overlay::g_meeting). Guarded by g_gateway_meeting_mutex.
- */
-extern Mutex g_gateway_meeting_mutex;
-extern std::unique_ptr<MeetingService> g_gateway_meeting GUARDED_BY(g_gateway_meeting_mutex);
 
 /** This machine's interface addresses, for SelfAddresses. */
 std::vector<IpAddr> LocalInterfaceAddresses();

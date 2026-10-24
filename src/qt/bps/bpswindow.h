@@ -23,6 +23,7 @@ class PlatformStyle;
 class RPCConsole;
 class RadioBridge;
 class MailPage;
+class SitesPage;
 class NamesPage;
 class ServerPage;
 class SettingsPage;
@@ -138,6 +139,7 @@ private:
     RPCConsole* m_console{nullptr};
     RadioBridge* m_radio_bridge{nullptr};
     MailPage* m_mail{nullptr};
+    SitesPage* m_sites{nullptr};
     NamesPage* m_names{nullptr};
     ServerPage* m_server{nullptr};
     SettingsPage* m_settings{nullptr};

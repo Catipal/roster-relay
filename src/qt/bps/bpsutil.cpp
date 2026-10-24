@@ -8,7 +8,10 @@
 
 #include <univalue.h>
 
+#include <QAbstractSpinBox>
+#include <QComboBox>
 #include <QCoreApplication>
+#include <QEvent>
 
 namespace BpsUtil {
 
@@ -90,6 +93,43 @@ QString DescribeEndpoint(const UniValue& endpoint)
 QFont FixedPitchFont()
 {
     return GUIUtil::fixedPitchFont();
+}
+
+namespace {
+
+/** Passes a wheel turn on to the page unless the box has been clicked into. */
+class WheelGuard : public QObject
+{
+public:
+    explicit WheelGuard(QObject* parent) : QObject(parent) {}
+
+    bool eventFilter(QObject* watched, QEvent* event) override
+    {
+        if (event->type() == QEvent::Wheel) {
+            QWidget* w = qobject_cast<QWidget*>(watched);
+            if (w && !w->hasFocus()) {
+                // Ignored, so it goes on to the page behind the box.
+                event->ignore();
+                return true;
+            }
+        }
+        return QObject::eventFilter(watched, event);
+    }
+};
+
+} // namespace
+
+void KeepWheelForPage(QWidget* page)
+{
+    WheelGuard* guard = new WheelGuard(page);
+    for (QAbstractSpinBox* box : page->findChildren<QAbstractSpinBox*>()) {
+        box->setFocusPolicy(Qt::StrongFocus);
+        box->installEventFilter(guard);
+    }
+    for (QComboBox* box : page->findChildren<QComboBox*>()) {
+        box->setFocusPolicy(Qt::StrongFocus);
+        box->installEventFilter(guard);
+    }
 }
 
 } // namespace BpsUtil

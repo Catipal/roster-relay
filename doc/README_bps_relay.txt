@@ -139,6 +139,22 @@ resolvers by itself; a switch that blocks everything while BPS Relay is not
 running; macOS.
 
 
+Sites
+-----
+A site is a folder published under your node's key, from the Server page's
+Hosting card. Anyone you give your key or your name can read it on the Sites
+page: bps://yourname/. Every file is signed and checked piece by piece as it
+arrives. If you are listed through the overlay, with no address, visitors meet
+your node at its meeting points and nobody learns where the site runs; listed
+at an address, visitors reach it through relays, so it never learns who they
+are. Until your node is listed, nobody can find the site at all.
+
+The Sites page shows pages with no scripts and fetches nothing from outside the
+site, so a page cannot learn where you are. "Open in your browser" shows the
+same site in an ordinary browser, through a server on this computer only, at
+http://<name>.bps.localhost:<port>/. A browser can run a page's scripts, so the
+Sites page stays the safer way to read a hidden site.
+
 Radio
 -----
 With a LoRa radio (an RNode) or another radio Reticulum supports, your node

@@ -334,7 +334,24 @@ What this node offers other people.
 - **Relays carry within limits** - `-relaypathrate` (64 KiB/s per path) and
   `-relaybandwidth` (1 GiB of other people's traffic a day), shown in
   `getoverlayinfo`.
-- **Hosting** - shown as planned. Not built yet.
+- **Hosting** - publish a folder as a site under this node's key ("Publish a
+  folder..."), publish it again after changing it, or stop. Listed with no
+  address, the node keeps itself registered at its meeting points while it
+  publishes, so nobody learns where the site runs; listed at an address,
+  visitors reach it through three relays, so it never learns who they are.
+  The card shows how the site is reached and what has been sent, and says so
+  when the node is not listed and nobody can find it yet. The folder is
+  published again at every start until stopped.
+- **Sites** - a page of its own for reading sites: write `bps://name/` or a
+  site's key. Pages are shown with no scripts, and nothing on them is fetched
+  from outside the site, so a page cannot learn where its reader is; a link
+  outside BPS is shown, not followed. The page says how the site was reached,
+  and warns when a name now points to a different key than when it was last
+  opened. "Open in your browser" shows the same site in an ordinary browser,
+  through a server on this computer only (`-siteproxy`, on in BPS Relay):
+  `http://<name or key>.bps.localhost:<port>/`, the port three above the
+  peer-to-peer one. There a page may load only from its own site, but scripts
+  can run, so the viewer stays the safer way to read a hidden site.
 
 Footer
 ------
@@ -407,7 +424,7 @@ revocations `getidentity`, `createidentity`, `createdelegation`,
 `listrevocations`, `getageproof` and `verifyageproof`; and for the roster's
 fingerprint `getrostersnapshot`, `verifyrostersnapshot`,
 `getrostermembership` and `verifyrostermembership`; `getradioinfo` for
-radio links; and `getmeetinginfo` and `meet` for reaching a node by its key alone; and `getchainfeedinfo` for blocks over radio; and `publishsite` and `getsite` for hosting a folder under a key and fetching it back over the overlay.
+radio links; and `getmeetinginfo` and `meet` for reaching a node by its key alone; and `getchainfeedinfo` for blocks over radio; and `publishsite`, `unpublishsite`, `gethostinginfo`, `getsite` and `getsiteaddress` for hosting a folder under a key and reading it over the overlay.
 Each has its full description in `help`.
 
 The console suggests commands from what you type in plain words - "pay pilot
@@ -442,10 +459,11 @@ Known issues
   into 16 KiB pieces, each one hashed, and the whole manifest is signed by the
   key; a visitor checks the signature against the key it asked for and every
   piece against the manifest as it lands, so a relay or a host that changes a
-  byte is caught at once. This first slice serves a host listed with an
-  endpoint; reaching a host listed with no address at its meeting points, and
-  the viewer and the ordinary-browser gateway that render a fetched site, are
-  still to come.
+  byte is caught at once. A visitor asks for several pieces at once - two at
+  first, one more for each that arrives whole, half as many after a loss -
+  and a host sends no faster than 48 KiB/s down one path, under the relays'
+  cap. Not yet: services (a port on the host's computer reached as a
+  stream), and saying in the viewer when a site is reached over the radio.
 - Mail over radio is heavy: each letter goes to three mailboxes through
   three separate paths, and every path is built across the radio.
 - Radio needs Python and Reticulum installed beside BPS Relay. Ham radio

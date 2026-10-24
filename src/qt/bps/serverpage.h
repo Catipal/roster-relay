@@ -85,6 +85,8 @@ private Q_SLOTS:
     void onPublishSite();
     void onRepublishSite();
     void onStopSite();
+    void onPublishService();
+    void onStopService();
 
 private:
     QWidget* MakeRelayCard();
@@ -94,6 +96,7 @@ private:
     QWidget* MakeHostingCard();
     void ShowGateway(const UniValue& value);
     void ShowHosting(const UniValue& value);
+    void ShowServices(const UniValue& value);
     void Load();
     void UpdateStaking();
 
@@ -140,6 +143,8 @@ private:
     QPushButton* m_hosting_stop{nullptr};
     QPushButton* m_hosting_open{nullptr};
     QLabel* m_hosting_note{nullptr};
+    QLabel* m_services{nullptr};
+    QStringList m_service_names;
     QString m_hosting_dir;   //!< the folder published, to publish again
     QString m_own_key;       //!< this node's roster key, the site's address
     QTimer* m_timer{nullptr};

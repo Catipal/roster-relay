@@ -32,6 +32,7 @@
 #include <QCheckBox>
 #include <QFileDialog>
 #include <QFormLayout>
+#include <QInputDialog>
 #include <QFrame>
 #include <QGridLayout>
 #include <QHBoxLayout>
@@ -100,6 +101,8 @@ const char* TAG_ROSTERINFO = "server:rosterinfo";
 const char* TAG_HOSTING = "server:hosting";
 const char* TAG_PUBLISH = "server:publishsite";
 const char* TAG_UNPUBLISH = "server:unpublishsite";
+const char* TAG_SERVICES = "server:services";
+const char* TAG_SERVICE_CHANGE = "server:servicechange";
 
 //! The roster moves at block pace; so do the figures here.
 const int REFRESH_MS = 20000;
@@ -733,7 +736,9 @@ QWidget* ServerPage::MakeHostingCard()
            "to can read it over the overlay. Every file is signed and checked piece by piece as it "
            "arrives. Listed with no address, this node is met at its meeting points and nobody learns "
            "where the site runs; listed at an address, visitors reach it through relays, so it never "
-           "learns who they are. Pages only, for now: no programs run for visitors."),
+           "learns who they are. A program on this computer \xe2\x80\x94 a web application, a chat server "
+           "\xe2\x80\x94 can be published the same way: visitors reach it over the overlay, and this node "
+           "connects to nothing but the port you name."),
         this, &body, &m_hosting_badge);
 
     QFormLayout* status = new QFormLayout();
@@ -746,6 +751,12 @@ QWidget* ServerPage::MakeHostingCard()
     status->addRow(tr("Folder"), m_hosting_folder);
     status->addRow(tr("Reached"), m_hosting_reached);
     status->addRow(tr("Sent"), m_hosting_sent);
+    m_services = new QLabel(tr("none"), card);
+    m_services->setWordWrap(true);
+    m_services->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    m_services->setToolTip(tr("Programs on this computer that visitors reach over the overlay. A program named web "
+                              "is what a browser opens at this node's address when there is no site."));
+    status->addRow(tr("Programs"), m_services);
     body->addLayout(status);
 
     QFrame* rule = new QFrame(card);
@@ -760,6 +771,12 @@ QWidget* ServerPage::MakeHostingCard()
     m_hosting_stop = new QPushButton(tr("Stop publishing"), card);
     m_hosting_open = new QPushButton(tr("Open in Sites"), card);
     for (QPushButton* b : {m_hosting_publish, m_hosting_again, m_hosting_stop, m_hosting_open}) buttons->addWidget(b);
+    QPushButton* publish_service = new QPushButton(tr("Publish a program\xe2\x80\xa6"), card);
+    QPushButton* stop_service = new QPushButton(tr("Stop a program\xe2\x80\xa6"), card);
+    buttons->addWidget(publish_service);
+    buttons->addWidget(stop_service);
+    connect(publish_service, &QPushButton::clicked, this, &ServerPage::onPublishService);
+    connect(stop_service, &QPushButton::clicked, this, &ServerPage::onStopService);
     buttons->addStretch(1);
     body->addLayout(buttons);
 
@@ -842,6 +859,51 @@ void ServerPage::onStopSite()
     m_rpc.Call(TAG_UNPUBLISH, "unpublishsite");
 }
 
+void ServerPage::onPublishService()
+{
+    bool ok = false;
+    const QString name = QInputDialog::getText(this, tr("Publish a program"),
+        tr("A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open "
+           "at this node's address:"),
+        QLineEdit::Normal, m_service_names.contains("web") ? QString() : QStringLiteral("web"), &ok).trimmed();
+    if (!ok || name.isEmpty()) return;
+    const int port = QInputDialog::getInt(this, tr("Publish a program"),
+        tr("The port it listens on, on 127.0.0.1 (this computer only):"), 8080, 1, 65535, 1, &ok);
+    if (!ok) return;
+    UniValue params(UniValue::VARR);
+    params.push_back(name.toStdString());
+    params.push_back(port);
+    m_rpc.Call(TAG_SERVICE_CHANGE, "publishservice", params);
+}
+
+void ServerPage::onStopService()
+{
+    if (m_service_names.isEmpty()) return;
+    bool ok = false;
+    const QString name = QInputDialog::getItem(this, tr("Stop a program"), tr("Which program visitors should no longer reach:"),
+                                               m_service_names, 0, false, &ok);
+    if (!ok || name.isEmpty()) return;
+    UniValue params(UniValue::VARR);
+    params.push_back(name.toStdString());
+    m_rpc.Call(TAG_SERVICE_CHANGE, "unpublishservice", params);
+}
+
+void ServerPage::ShowServices(const UniValue& value)
+{
+    m_service_names.clear();
+    QStringList shown;
+    const UniValue& services = find_value(value, "services");
+    for (size_t i = 0; services.isArray() && i < services.size(); ++i) {
+        const QString name = QString::fromStdString(find_value(services[i], "name").getValStr());
+        m_service_names << name;
+        shown << tr("%1 at 127.0.0.1:%2").arg(name).arg(find_value(services[i], "port").get_int());
+    }
+    const UniValue& streams = find_value(value, "streams");
+    QString text = shown.isEmpty() ? tr("none") : shown.join(", ");
+    if (streams.isNum() && streams.get_int64() > 0) text += " " + tr("\xe2\x80\x94 %1 stream(s) open").arg(streams.get_int64());
+    m_services->setText(text);
+}
+
 void ServerPage::Refresh()
 {
     UpdateStaking();
@@ -851,6 +913,7 @@ void ServerPage::Refresh()
         m_rpc.Call(TAG_GATEWAY, "getgatewayinfo");
         m_rpc.Call(TAG_ROSTERINFO, "getrosterinfo");
         m_rpc.Call(TAG_HOSTING, "gethostinginfo");
+        m_rpc.Call(TAG_SERVICES, "getserviceinfo");
     }
 }
 
@@ -896,6 +959,15 @@ void ServerPage::onRpcResult(const QString& tag, const UniValue& value)
     }
     if (tag == TAG_HOSTING) {
         ShowHosting(value);
+        return;
+    }
+    if (tag == TAG_SERVICES) {
+        ShowServices(value);
+        return;
+    }
+    if (tag == TAG_SERVICE_CHANGE) {
+        m_hosting_note->setVisible(false);
+        m_rpc.Call(TAG_SERVICES, "getserviceinfo");
         return;
     }
     if (tag == TAG_PUBLISH || tag == TAG_UNPUBLISH) {
@@ -978,7 +1050,7 @@ void ServerPage::onRpcFailed(const QString& tag, const QString& message)
         m_gateway_state->setText(message);
         return;
     }
-    if (tag == TAG_PUBLISH || tag == TAG_UNPUBLISH || tag == TAG_HOSTING) {
+    if (tag == TAG_PUBLISH || tag == TAG_UNPUBLISH || tag == TAG_HOSTING || tag == TAG_SERVICE_CHANGE) {
         m_hosting_note->setText(message);
         m_hosting_note->setVisible(true);
         return;

@@ -149,6 +149,14 @@ your node at its meeting points and nobody learns where the site runs; listed
 at an address, visitors reach it through relays, so it never learns who they
 are. Until your node is listed, nobody can find the site at all.
 
+A program on this computer - a web application, a chat server, a game - can be
+published the same way from the Hosting card, if it listens on 127.0.0.1:
+visitors reach it over the overlay, and your node connects to nothing but the
+port you name. Call a web application "web" and a browser opens it at your
+address when you have no pages. To reach someone else's program, open their
+site on the Sites page and use "Connect to a program...": BPS Relay listens on
+a port of your computer and carries each connection there to it.
+
 The Sites page shows pages with no scripts and fetches nothing from outside the
 site, so a page cannot learn where you are. "Open in your browser" shows the
 same site in an ordinary browser, through a server on this computer only, at

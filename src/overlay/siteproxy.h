@@ -35,6 +35,13 @@
  * refused, so a page elsewhere cannot use the server by pointing a name of
  * its own at 127.0.0.1.
  *
+ * A host with no pages but a service named "web" (overlay/service.h) is
+ * served the same way: the request is carried to that program on the host's
+ * loopback as a stream, with Connection: close, and its answer comes back
+ * with the same headers added, any of its own of those kinds removed but its
+ * content security policy, which a browser applies together with this one.
+ * Any method goes to a web service; a site of pages answers GET and HEAD.
+ *
  * What it cannot stop: WebRTC can still show a script the computer's
  * addresses in some browsers, and a link the reader follows to an ordinary
  * site leaves as any link does. BPS Relay's viewer, which runs no scripts,
@@ -82,11 +89,13 @@ private:
     struct Conn {
         SOCKET sock{INVALID_SOCKET};
         std::shared_ptr<std::atomic<bool>> done;
+        std::shared_ptr<std::atomic<bool>> handed; //!< the socket went to the service hub, which closes it
         std::thread thread;
     };
 
     void Accept();
-    void Serve(SOCKET sock);
+    /** Answer one request. True when the socket was handed to a web service, which owns it from then. */
+    bool Serve(SOCKET sock);
     void Reap() EXCLUSIVE_LOCKS_REQUIRED(m_mutex);
 
     const uint16_t m_port;

@@ -250,6 +250,16 @@ bool FetchSiteManifest(const roster::KeyBytes& site_key, SiteManifest& out, std:
 /** Close every visit's path, at shutdown. */
 void CloseSiteVisits();
 
+/**
+ * The path to the host of `site_key` that page fetches use, for a service's
+ * stream (overlay/service.h). The path stays open while `hold` is kept, even
+ * after the visit has been idle long enough to be dropped.
+ */
+bool OpenSitePath(const roster::KeyBytes& site_key, Hop& to, std::shared_ptr<void>& hold, SiteRoute* route,
+                  std::string& error);
+/** Forget that path, after it failed, so the next visit builds another. */
+void DropSitePath(const roster::KeyBytes& site_key, const Hop& to);
+
 } // namespace overlay
 
 #endif // BITCOIN_OVERLAY_HOSTING_H

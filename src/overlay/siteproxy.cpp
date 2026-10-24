@@ -8,6 +8,7 @@
 #include <names/resolve.h>
 #include <netbase.h>
 #include <overlay/hosting.h>
+#include <overlay/service.h>
 #include <tinyformat.h>
 #include <util/strencodings.h>
 #include <util/threadnames.h>
@@ -30,6 +31,8 @@ const int SEND_FLAGS = 0;
 #ifndef SHUT_RDWR
 #define SHUT_RDWR 2
 #endif
+
+using SiteResponseFilter = ServiceHub::Filter;
 
 //! The request line and headers, together.
 constexpr size_t MAX_REQUEST_HEAD = 16 * 1024;
@@ -124,6 +127,83 @@ void RespondText(SOCKET s, int code, const std::string& reason, const std::strin
 {
     const std::string page = "<!doctype html><meta charset=\"utf-8\"><title>" + reason + "</title><p>" + text + "</p>\n";
     Respond(s, code, reason, "text/html; charset=utf-8", page, head_only);
+}
+
+/**
+ * A request's head as it goes to a web service: the target in origin form,
+ * and one request per connection, so each answer can be told apart.
+ */
+std::string ForwardedHead(const std::string& head, const std::string& target)
+{
+    const size_t eol = head.find("\r\n");
+    const std::string line = head.substr(0, eol);
+    std::string origin = target;
+    if (Lower(origin.substr(0, 7)) == "http://") {
+        const size_t slash = origin.find('/', 7);
+        origin = slash == std::string::npos ? "/" : origin.substr(slash);
+    }
+    const size_t sp1 = line.find(' ');
+    const size_t sp2 = line.find(' ', sp1 + 1);
+    std::string out = line.substr(0, sp1) + " " + origin + line.substr(sp2) + "\r\n";
+    size_t at = eol;
+    while (at != std::string::npos && at < head.size()) {
+        const size_t next = head.find("\r\n", at + 2);
+        const std::string h = head.substr(at + 2, next == std::string::npos ? std::string::npos : next - at - 2);
+        const std::string name = Lower(h.substr(0, h.find(':')));
+        if (name != "connection" && name != "proxy-connection" && name != "keep-alive" && !h.empty()) out += h + "\r\n";
+        at = next;
+    }
+    return out + "Connection: close\r\n\r\n";
+}
+
+/**
+ * The web service's answer on its way back: its head held until whole, then
+ * passed on with this proxy's headers in it; the body as it comes.
+ */
+SiteResponseFilter WebFilter()
+{
+    std::shared_ptr<bool> past_head = std::make_shared<bool>(false);
+    return [past_head](std::vector<unsigned char>& held, bool end) -> std::vector<unsigned char> {
+        std::vector<unsigned char> out;
+        if (*past_head) {
+            out.swap(held);
+            return out;
+        }
+        const std::string text(held.begin(), held.end());
+        const size_t stop = text.find("\r\n\r\n");
+        if (stop == std::string::npos) {
+            // A head that never ends is passed on as it is, not held for ever.
+            if (end || held.size() > MAX_REQUEST_HEAD) {
+                *past_head = true;
+                out.swap(held);
+            }
+            return out;
+        }
+        const std::string head = text.substr(0, stop);
+        std::string rewritten;
+        size_t at = 0;
+        bool first = true;
+        while (at <= head.size()) {
+            const size_t next = head.find("\r\n", at);
+            const std::string h = head.substr(at, next == std::string::npos ? std::string::npos : next - at);
+            const std::string name = Lower(h.substr(0, h.find(':')));
+            if (first || (name != "connection" && name != "referrer-policy" && name != "x-frame-options" &&
+                          name != "keep-alive")) {
+                rewritten += h + "\r\n";
+            }
+            first = false;
+            if (next == std::string::npos) break;
+            at = next + 2;
+        }
+        rewritten += std::string("Content-Security-Policy: ") + CSP + "\r\n";
+        rewritten += "Referrer-Policy: no-referrer\r\nX-Frame-Options: SAMEORIGIN\r\nX-Content-Type-Options: nosniff\r\n";
+        rewritten += "Connection: close\r\n\r\n";
+        out.assign(rewritten.begin(), rewritten.end());
+        out.insert(out.end(), held.begin() + stop + 4, held.end());
+        held.clear();
+        *past_head = true;
+        return out;
+    };
 }
 
 } // namespace
@@ -293,27 +373,31 @@ void SiteProxy::Accept()
         Conn conn;
         conn.sock = c;
         conn.done = std::make_shared<std::atomic<bool>>(false);
+        conn.handed = std::make_shared<std::atomic<bool>>(false);
         std::shared_ptr<std::atomic<bool>> done = conn.done;
-        conn.thread = std::thread([this, c, done] {
+        std::shared_ptr<std::atomic<bool>> handed = conn.handed;
+        conn.thread = std::thread([this, c, done, handed] {
             util::ThreadRename("siteproxy-conn");
-            Serve(c);
+            if (Serve(c)) handed->store(true);
             done->store(true);
         });
         m_conns.push_back(std::move(conn));
     }
 }
 
-void SiteProxy::Serve(SOCKET sock)
+bool SiteProxy::Serve(SOCKET sock)
 {
-    std::string head;
+    std::string raw;
     char buf[4096];
-    while (head.find("\r\n\r\n") == std::string::npos) {
-        if (head.size() > MAX_REQUEST_HEAD) return;
+    while (raw.find("\r\n\r\n") == std::string::npos) {
+        if (raw.size() > MAX_REQUEST_HEAD) return false;
         const int n = recv(sock, buf, sizeof(buf), 0);
-        if (n <= 0) return;
-        head.append(buf, n);
+        if (n <= 0) return false;
+        raw.append(buf, n);
     }
-    head.resize(head.find("\r\n\r\n"));
+    const std::string head = raw.substr(0, raw.find("\r\n\r\n"));
+    // Bytes of a request's body that came with its head.
+    const std::string body_start = raw.substr(head.size() + 4);
 
     // The request line, then the Host header.
     const size_t eol = head.find("\r\n");
@@ -322,7 +406,7 @@ void SiteProxy::Serve(SOCKET sock)
     const size_t sp2 = sp1 == std::string::npos ? std::string::npos : line.find(' ', sp1 + 1);
     if (sp2 == std::string::npos) {
         RespondText(sock, 400, "Bad Request", "That is not an HTTP request.", false);
-        return;
+        return false;
     }
     const std::string method = line.substr(0, sp1);
     const std::string target = line.substr(sp1 + 1, sp2 - sp1 - 1);
@@ -347,11 +431,7 @@ void SiteProxy::Serve(SOCKET sock)
         // elsewhere cannot point a name of its own here and use this server.
         RespondText(sock, 403, "Forbidden", "This answers only BPS sites: http://&lt;name&gt;.bps.localhost:" +
                     std::to_string(m_port) + "/", head_only);
-        return;
-    }
-    if (method != "GET" && method != "HEAD") {
-        RespondText(sock, 405, "Method Not Allowed", "A site is read, not written to.", head_only);
-        return;
+        return false;
     }
 
     roster::KeyBytes key{};
@@ -361,21 +441,31 @@ void SiteProxy::Serve(SOCKET sock)
         if (!names::ResolveTarget(site, t, error)) {
             RespondText(sock, 404, "Not Found", "No name " + site + " is registered, and it is not a site's key.",
                         head_only);
-            return;
+            return false;
         }
         key = t.key;
     }
+
+    // A site of pages answers reading; a web service anything.
+    const bool reading = method == "GET" || method == "HEAD";
     std::vector<unsigned char> bytes;
     std::string error;
-    if (!FetchSiteFile(key, path, bytes, error)) {
-        if (error.find("no file at that path") != std::string::npos) {
-            RespondText(sock, 404, "Not Found", "The site has no " + path + ".", head_only);
-        } else {
-            RespondText(sock, 502, "Bad Gateway", "The site could not be reached over BPS: " + error + ".", head_only);
-        }
-        return;
+    if (reading && FetchSiteFile(key, path, bytes, error)) {
+        Respond(sock, 200, "OK", SiteContentType(path), std::string(bytes.begin(), bytes.end()), head_only);
+        return false;
     }
-    Respond(sock, 200, "OK", SiteContentType(path), std::string(bytes.begin(), bytes.end()), head_only);
+    if (reading && error.find("no file at that path") != std::string::npos) {
+        RespondText(sock, 404, "Not Found", "The site has no " + path + ".", head_only);
+        return false;
+    }
+    if (g_services && (!reading || error.find("no site under that key") != std::string::npos)) {
+        // No pages there: the host's web application, if it runs one.
+        const std::string request = ForwardedHead(head, target) + body_start;
+        g_services->Attach(sock, key, "web", std::vector<unsigned char>(request.begin(), request.end()), WebFilter());
+        return true;
+    }
+    RespondText(sock, 502, "Bad Gateway", "The site could not be reached over BPS: " + error + ".", head_only);
+    return false;
 }
 
 void SiteProxy::Reap()
@@ -383,7 +473,7 @@ void SiteProxy::Reap()
     for (size_t i = 0; i < m_conns.size();) {
         if (m_conns[i].done && m_conns[i].done->load()) {
             if (m_conns[i].thread.joinable()) m_conns[i].thread.join();
-            CloseSocket(m_conns[i].sock);
+            if (!m_conns[i].handed->load()) CloseSocket(m_conns[i].sock);
             m_conns.erase(m_conns.begin() + i);
         } else {
             ++i;
@@ -402,11 +492,11 @@ void SiteProxy::Stop()
         conns.swap(m_conns);
     }
     for (Conn& c : conns) {
-        if (c.sock != INVALID_SOCKET) shutdown(c.sock, SHUT_RDWR);
+        if (c.sock != INVALID_SOCKET && !c.handed->load()) shutdown(c.sock, SHUT_RDWR);
     }
     for (Conn& c : conns) {
         if (c.thread.joinable()) c.thread.join();
-        CloseSocket(c.sock);
+        if (!c.handed->load()) CloseSocket(c.sock);
     }
 }
 

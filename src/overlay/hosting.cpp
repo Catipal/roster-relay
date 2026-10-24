@@ -968,6 +968,25 @@ bool ReadOwnFile(const HostingServer& h, const std::string& path, std::vector<un
 
 } // namespace
 
+bool OpenSitePath(const roster::KeyBytes& site_key, Hop& to, std::shared_ptr<void>& hold, SiteRoute* route,
+                  std::string& error)
+{
+    std::shared_ptr<SiteVisit> v;
+    if (!OpenVisit(site_key, v, error)) return false;
+    v->last_used = GetTime();
+    to = v->to;
+    hold = v;
+    if (route) *route = v->route;
+    return true;
+}
+
+void DropSitePath(const roster::KeyBytes& site_key, const Hop& to)
+{
+    LOCK(g_visits_mutex);
+    std::map<roster::KeyBytes, std::shared_ptr<SiteVisit>>::iterator it = g_visits.find(site_key);
+    if (it != g_visits.end() && it->second->to == to) g_visits.erase(it);
+}
+
 bool FetchSiteManifest(const roster::KeyBytes& site_key, SiteManifest& out, std::string& error, SiteRoute* route)
 {
     if (std::shared_ptr<HostingServer> h = GetHosting()) {

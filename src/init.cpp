@@ -35,6 +35,7 @@
 #include <overlay/gatewayproto.h>
 #include <overlay/netstack.h>
 #include <overlay/hosting.h>
+#include <overlay/service.h>
 #include <overlay/siteproxy.h>
 #include <overlay/meeting.h>
 #include <overlay/radio.h>
@@ -261,6 +262,10 @@ void Shutdown(NodeContext& node)
     if (overlay::g_site_proxy) {
         overlay::g_site_proxy->Stop();
         overlay::g_site_proxy.reset();
+    }
+    if (overlay::g_services) {
+        overlay::g_services->Stop();
+        overlay::g_services.reset();
     }
     if (mail::g_mail_bridge) {
         mail::g_mail_bridge->Stop();
@@ -2390,6 +2395,10 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 } else if (overlay::g_chainsync && !from.via_path && overlay::IsChainPayload(payload)) {
                     // Blocks between adjacent radio neighbours, never over a path.
                     overlay::g_chainsync->HandleApp(from.addr, payload);
+                } else if (overlay::IsServicePayload(payload)) {
+                    // Services (overlay/service.h): streams to programs on the
+                    // host's loopback, and back to this node's local ports.
+                    overlay::HandleServiceApp(from, payload);
                 } else if (overlay::IsSitePayload(payload)) {
                     // Hosted sites (overlay/hosting.h): serve a published site, or
                     // hand an answer to a fetch in progress - over a path, or from
@@ -2536,6 +2545,17 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
         }
         // The site published last, again (overlay/hosting.h).
         overlay::RepublishSavedSite(op_key);
+
+        // Services: programs on this computer's loopback, reached as streams
+        // over the overlay, and local ports carried to others' (overlay/service.h).
+        overlay::g_services = MakeUnique<overlay::ServiceHub>(self);
+        {
+            std::string services_error;
+            if (!overlay::g_services->Start(services_error)) {
+                overlay::g_services.reset();
+                return InitError(Untranslated("services: " + services_error));
+            }
+        }
 
         // Sites in an ordinary browser, on the loopback interface only
         // (overlay/siteproxy.h).

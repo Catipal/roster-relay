@@ -53,6 +53,7 @@ private Q_SLOTS:
     void onReload();
     void onSave();
     void onBrowser();
+    void onConnectService();
     void onAnchor(const QUrl& raw);
     void onRpcResult(const QString& tag, const UniValue& value);
     void onRpcFailed(const QString& tag, const QString& message);
@@ -90,6 +91,7 @@ private:
     QPushButton* m_reload{nullptr};
     QPushButton* m_save{nullptr};
     QPushButton* m_browser{nullptr};
+    QPushButton* m_program{nullptr};
     QLabel* m_route{nullptr};
     QLabel* m_notice{nullptr};
     SiteBrowser* m_view{nullptr};

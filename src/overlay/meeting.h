@@ -167,6 +167,7 @@ extern std::unique_ptr<MeetingService> g_meeting;
 enum MeetNeed : uint32_t {
     MEET_FOR_GATEWAY = 1U << 0,
     MEET_FOR_SITE = 1U << 1,
+    MEET_FOR_SERVICE = 1U << 2,
 };
 /** Who to register and through how many relays. Until this is called, nothing starts. */
 void ConfigureMeetOnDemand(const roster::KeyBytes& self, int hops);

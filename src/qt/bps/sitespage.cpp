@@ -13,6 +13,7 @@
 #include <QFont>
 #include <QHBoxLayout>
 #include <QImage>
+#include <QInputDialog>
 #include <QLabel>
 #include <QLineEdit>
 #include <QMessageBox>
@@ -192,8 +193,14 @@ SitesPage::SitesPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rpc)
                              "Pages there may run scripts, so the viewer here stays the safer way to read a "
                              "hidden site."));
     m_browser->setEnabled(false);
+    m_program = new QPushButton(tr("Connect to a program\xe2\x80\xa6"), this);
+    m_program->setToolTip(tr("Reach a program this site runs - a chat server, a game - from a program on this "
+                             "computer: BPS Relay listens on a port here and carries each connection to it over "
+                             "the overlay."));
+    m_program->setEnabled(false);
     QHBoxLayout* save_row = new QHBoxLayout();
     save_row->addWidget(m_browser);
+    save_row->addWidget(m_program);
     save_row->addWidget(m_save);
     save_row->addStretch(1);
     outer->addLayout(save_row);
@@ -205,6 +212,7 @@ SitesPage::SitesPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rpc)
     connect(m_reload, &QPushButton::clicked, this, &SitesPage::onReload);
     connect(m_save, &QPushButton::clicked, this, &SitesPage::onSave);
     connect(m_browser, &QPushButton::clicked, this, &SitesPage::onBrowser);
+    connect(m_program, &QPushButton::clicked, this, &SitesPage::onConnectService);
     m_view->clicked = [this](const QUrl& url) { onAnchor(url); };
     connect(&m_rpc, &BpsRpc::result, this, &SitesPage::onRpcResult);
     connect(&m_rpc, &BpsRpc::failed, this, &SitesPage::onRpcFailed);
@@ -358,6 +366,14 @@ void SitesPage::onRpcResult(const QString& tag, const UniValue& value)
     if (parts.size() < 2 || parts[1].toInt() != m_seq) return; // an answer to a page left behind
     const QString kind = parts[0];
 
+    if (kind == "program") {
+        const UniValue& address = find_value(value, "address");
+        ShowNotice(tr("Point the program on this computer at %1: BPS Relay carries every connection made there to "
+                      "the site's program, over the overlay, until it restarts.")
+                       .arg(QString::fromStdString(address.getValStr())));
+        return;
+    }
+
     if (kind == "browser") {
         const UniValue& browser = find_value(value, "browser");
         if (!browser.isStr()) {
@@ -430,6 +446,8 @@ void SitesPage::onRpcFailed(const QString& tag, const QString& message)
     const QString kind = parts[0];
     if (kind == "resolve") {
         ShowError(tr("%1 is not a name this node knows: %2").arg(m_loc.host, message));
+    } else if (kind == "program" || kind == "browser") {
+        ShowNotice(message);
     } else if (kind == "page") {
         ShowError(tr("Could not open %1: %2").arg(m_loc.Address(), message));
     } else if (kind == "res" && parts.size() >= 3) {
@@ -471,6 +489,16 @@ void SitesPage::onAnchor(const QUrl& raw)
     ShowNotice(tr("This link leads outside BPS, so it was not followed: %1\nOpen it in an ordinary browser if "
                   "you choose to; whoever runs it will see your address.")
                    .arg(url.toString()));
+}
+
+void SitesPage::onConnectService()
+{
+    if (!m_have_loc) return;
+    bool ok = false;
+    const QString name = QInputDialog::getText(this, tr("Connect to a program"),
+        tr("The name the site gave its program:"), QLineEdit::Normal, QString(), &ok).trimmed();
+    if (!ok || name.isEmpty()) return;
+    m_rpc.Call(QString("%1program:%2").arg(TAG_PREFIX).arg(m_seq), "connectservice", Params(m_loc.host, name));
 }
 
 void SitesPage::onBrowser()
@@ -615,6 +643,7 @@ void SitesPage::ShowNotice(const QString& text)
 void SitesPage::UpdateButtons()
 {
     m_browser->setEnabled(m_have_loc);
+    m_program->setEnabled(m_have_loc);
     m_back->setEnabled(!m_history.isEmpty());
     m_forward->setEnabled(!m_ahead.isEmpty());
     m_reload->setEnabled(m_have_loc);

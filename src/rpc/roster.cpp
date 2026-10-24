@@ -28,6 +28,7 @@
 #include <overlay/sysif.h>
 #include <overlay/hosting.h>
 #include <overlay/meeting.h>
+#include <overlay/service.h>
 #include <overlay/siteproxy.h>
 #include <names/resolve.h>
 #include <overlay/radio.h>
@@ -494,6 +495,191 @@ static RPCHelpMan getsiteaddress()
         out.pushKV("browser", by_name ? "http://" + target.label + ".bps.localhost:" + port + "/" : by_key);
         out.pushKV("browser_key", by_key);
     }
+    return out;
+},
+    };
+}
+
+static RPCHelpMan publishservice()
+{
+    return RPCHelpMan{"publishservice",
+                "\nLet visitors reach a program on this computer - a web application, a chat server, a game -\n"
+                "under this node's key and a name (design note §11·6). The program listens on 127.0.0.1;\n"
+                "visitors reach it as a stream over the overlay, the same way as this node's site, and this\n"
+                "node connects to nothing but that port for them. Kept for the next start.\n",
+                {
+                    {"name", RPCArg::Type::STR, RPCArg::Optional::NO, "1 to 32 of a-z, 0-9 and -; a service named web is what a browser reaches when there is no site"},
+                    {"port", RPCArg::Type::NUM, RPCArg::Optional::NO, "The port the program listens on, on 127.0.0.1"},
+                },
+                RPCResult{
+                    RPCResult::Type::OBJ, "", "",
+                    {
+                        {RPCResult::Type::STR, "name", "The service's name"},
+                        {RPCResult::Type::NUM, "port", "Its port on 127.0.0.1"},
+                        {RPCResult::Type::STR_HEX, "key", "This node's key, the service's address"},
+                        {RPCResult::Type::BOOL, "hidden", "Met at meeting points, the listing having no address"},
+                    }},
+                RPCExamples{HelpExampleCli("publishservice", "web 8080")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    if (!overlay::g_services) throw JSONRPCError(RPC_MISC_ERROR, "The overlay is off (-overlay).");
+    const int port = request.params[1].get_int();
+    if (port < 1 || port > 65535) throw JSONRPCError(RPC_INVALID_PARAMETER, "port must be 1 to 65535");
+    std::string error;
+    if (!overlay::g_services->Publish(request.params[0].get_str(), (uint16_t)port, error)) {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, error);
+    }
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("name", request.params[0].get_str());
+    out.pushKV("port", port);
+    CKey op_key;
+    std::string key_error;
+    if (roster::GetOperationalKey(op_key, key_error)) {
+        const CPubKey pub = op_key.GetPubKey();
+        out.pushKV("key", HexStr(Span<const unsigned char>(pub.begin() + 1, 32)));
+    }
+    out.pushKV("hidden", overlay::g_services->Hidden());
+    return out;
+},
+    };
+}
+
+static RPCHelpMan unpublishservice()
+{
+    return RPCHelpMan{"unpublishservice",
+                "\nStop letting visitors reach a service, and forget it for the next start. Streams already open finish.\n",
+                {
+                    {"name", RPCArg::Type::STR, RPCArg::Optional::NO, "The service's name"},
+                },
+                RPCResult{RPCResult::Type::BOOL, "", "Whether there was such a service"},
+                RPCExamples{HelpExampleCli("unpublishservice", "web")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    if (!overlay::g_services) throw JSONRPCError(RPC_MISC_ERROR, "The overlay is off (-overlay).");
+    return overlay::g_services->Unpublish(request.params[0].get_str());
+},
+    };
+}
+
+static RPCHelpMan connectservice()
+{
+    return RPCHelpMan{"connectservice",
+                "\nListen on a port of this computer and carry every connection made to it to a service at a\n"
+                "site, as a stream over the overlay. Point the program that talks to the service at the\n"
+                "address this returns. The port listens on 127.0.0.1 only.\n",
+                {
+                    {"site", RPCArg::Type::STR, RPCArg::Optional::NO, "A name, a petname, or the site's key"},
+                    {"service", RPCArg::Type::STR, RPCArg::Optional::NO, "The service's name"},
+                    {"port", RPCArg::Type::NUM, /* default */ "any free one", "The local port to listen on"},
+                },
+                RPCResult{
+                    RPCResult::Type::OBJ, "", "",
+                    {
+                        {RPCResult::Type::STR, "address", "Where to connect: 127.0.0.1 and the port"},
+                        {RPCResult::Type::NUM, "port", "The local port"},
+                        {RPCResult::Type::STR_HEX, "key", "The site's key"},
+                    }},
+                RPCExamples{HelpExampleCli("connectservice", "pilot chat 6667")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    if (!overlay::g_services) throw JSONRPCError(RPC_MISC_ERROR, "The overlay is off (-overlay).");
+    names::Target target;
+    std::string error;
+    if (!names::ResolveTarget(request.params[0].get_str(), target, error)) throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, error);
+    const int want = request.params[2].isNull() ? 0 : request.params[2].get_int();
+    if (want < 0 || want > 65535) throw JSONRPCError(RPC_INVALID_PARAMETER, "port must be 0 to 65535");
+    uint16_t port = 0;
+    if (!overlay::g_services->Forward(target.key, request.params[1].get_str(), (uint16_t)want, port, error)) {
+        throw JSONRPCError(RPC_MISC_ERROR, error);
+    }
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("address", strprintf("127.0.0.1:%u", port));
+    out.pushKV("port", port);
+    out.pushKV("key", HexStr(target.key));
+    return out;
+},
+    };
+}
+
+static RPCHelpMan disconnectservice()
+{
+    return RPCHelpMan{"disconnectservice",
+                "\nStop listening on a local port connectservice opened. Streams already open finish.\n",
+                {
+                    {"port", RPCArg::Type::NUM, RPCArg::Optional::NO, "The local port"},
+                },
+                RPCResult{RPCResult::Type::BOOL, "", "Whether it was listening"},
+                RPCExamples{HelpExampleCli("disconnectservice", "6667")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    if (!overlay::g_services) throw JSONRPCError(RPC_MISC_ERROR, "The overlay is off (-overlay).");
+    return overlay::g_services->StopForward((uint16_t)request.params[0].get_int());
+},
+    };
+}
+
+static RPCHelpMan getserviceinfo()
+{
+    return RPCHelpMan{"getserviceinfo",
+                "\nThe services this node publishes, the local ports it carries to others', and the streams open.\n",
+                {},
+                RPCResult{
+                    RPCResult::Type::OBJ, "", "",
+                    {
+                        {RPCResult::Type::ARR, "services", "Published here",
+                            {{RPCResult::Type::OBJ, "", "", {
+                                {RPCResult::Type::STR, "name", "Its name"},
+                                {RPCResult::Type::NUM, "port", "Its port on 127.0.0.1"},
+                            }}}},
+                        {RPCResult::Type::BOOL, "hidden", "Met at meeting points, the listing having no address"},
+                        {RPCResult::Type::NUM, "registrations", /* optional */ true, "Meeting points registered at now, when hidden"},
+                        {RPCResult::Type::ARR, "forwards", "Local ports carried to others' services",
+                            {{RPCResult::Type::OBJ, "", "", {
+                                {RPCResult::Type::STR_HEX, "site", "The site's key"},
+                                {RPCResult::Type::STR, "service", "The service"},
+                                {RPCResult::Type::NUM, "port", "The local port"},
+                                {RPCResult::Type::NUM, "open", "Streams open through it"},
+                            }}}},
+                        {RPCResult::Type::NUM, "streams", "Streams open, both ways"},
+                        {RPCResult::Type::NUM, "bytes_in", "Bytes from the overlay to programs here"},
+                        {RPCResult::Type::NUM, "bytes_out", "Bytes from programs here to the overlay"},
+                        {RPCResult::Type::NUM, "refused", "Opens turned down"},
+                    }},
+                RPCExamples{HelpExampleCli("getserviceinfo", "")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    if (!overlay::g_services) throw JSONRPCError(RPC_MISC_ERROR, "The overlay is off (-overlay).");
+    UniValue out(UniValue::VOBJ);
+    UniValue services(UniValue::VARR);
+    for (const auto& s : overlay::g_services->Services()) {
+        UniValue e(UniValue::VOBJ);
+        e.pushKV("name", s.first);
+        e.pushKV("port", s.second);
+        services.push_back(e);
+    }
+    out.pushKV("services", services);
+    const bool hidden = overlay::g_services->Hidden();
+    out.pushKV("hidden", hidden);
+    if (hidden) {
+        std::vector<overlay::Registration> regs;
+        overlay::CurrentRegistrations(regs);
+        out.pushKV("registrations", (uint64_t)regs.size());
+    }
+    UniValue forwards(UniValue::VARR);
+    for (const auto& f : overlay::g_services->Forwards()) {
+        UniValue e(UniValue::VOBJ);
+        e.pushKV("site", HexStr(f.site));
+        e.pushKV("service", f.service);
+        e.pushKV("port", f.local);
+        e.pushKV("open", (uint64_t)f.open);
+        forwards.push_back(e);
+    }
+    out.pushKV("forwards", forwards);
+    const overlay::ServiceHub::Stats st = overlay::g_services->GetStats();
+    out.pushKV("streams", (uint64_t)st.streams);
+    out.pushKV("bytes_in", st.bytes_in);
+    out.pushKV("bytes_out", st.bytes_out);
+    out.pushKV("refused", st.refused);
     return out;
 },
     };
@@ -1942,6 +2128,11 @@ static const CRPCCommand commands[] =
     { "overlay",          "unpublishsite",        &unpublishsite,         {} },
     { "overlay",          "gethostinginfo",       &gethostinginfo,        {} },
     { "overlay",          "getsiteaddress",       &getsiteaddress,        {"site"} },
+    { "overlay",          "publishservice",       &publishservice,        {"name","port"} },
+    { "overlay",          "unpublishservice",     &unpublishservice,      {"name"} },
+    { "overlay",          "connectservice",       &connectservice,        {"site","service","port"} },
+    { "overlay",          "disconnectservice",    &disconnectservice,     {"port"} },
+    { "overlay",          "getserviceinfo",       &getserviceinfo,        {} },
     { "overlay",          "meet",                 &meet,                  {"key","hops","point"} },
     { "roster",           "getrosterinfo",        &getrosterinfo,         {} },
     { "roster",           "getroster",            &getroster,             {"count","skip","hints"} },

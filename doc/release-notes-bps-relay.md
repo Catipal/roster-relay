@@ -341,7 +341,12 @@ What this node offers other people.
   visitors reach it through three relays, so it never learns who they are.
   The card shows how the site is reached and what has been sent, and says so
   when the node is not listed and nobody can find it yet. The folder is
-  published again at every start until stopped.
+  published again at every start until stopped. "Publish a program..." does
+  the same for a program on this computer - a web application, a chat
+  server, a game - listening on 127.0.0.1: visitors reach it over the
+  overlay as a stream, and this node connects to nothing but the port named.
+  A program named `web` is what a browser opens at the node's address when
+  there are no pages.
 - **Sites** - a page of its own for reading sites: write `bps://name/` or a
   site's key. Pages are shown with no scripts, and nothing on them is fetched
   from outside the site, so a page cannot learn where its reader is; a link
@@ -352,6 +357,8 @@ What this node offers other people.
   `http://<name or key>.bps.localhost:<port>/`, the port three above the
   peer-to-peer one. There a page may load only from its own site, but scripts
   can run, so the viewer stays the safer way to read a hidden site.
+  "Connect to a program..." carries a port of this computer to a program the
+  site runs, for a chat client or a game to connect to.
 
 Footer
 ------
@@ -424,7 +431,7 @@ revocations `getidentity`, `createidentity`, `createdelegation`,
 `listrevocations`, `getageproof` and `verifyageproof`; and for the roster's
 fingerprint `getrostersnapshot`, `verifyrostersnapshot`,
 `getrostermembership` and `verifyrostermembership`; `getradioinfo` for
-radio links; and `getmeetinginfo` and `meet` for reaching a node by its key alone; and `getchainfeedinfo` for blocks over radio; and `publishsite`, `unpublishsite`, `gethostinginfo`, `getsite` and `getsiteaddress` for hosting a folder under a key and reading it over the overlay.
+radio links; and `getmeetinginfo` and `meet` for reaching a node by its key alone; and `getchainfeedinfo` for blocks over radio; and `publishsite`, `unpublishsite`, `gethostinginfo`, `getsite` and `getsiteaddress` for hosting a folder under a key and reading it over the overlay; and `publishservice`, `unpublishservice`, `connectservice`, `disconnectservice` and `getserviceinfo` for programs reached as streams.
 Each has its full description in `help`.
 
 The console suggests commands from what you type in plain words - "pay pilot
@@ -462,8 +469,13 @@ Known issues
   byte is caught at once. A visitor asks for several pieces at once - two at
   first, one more for each that arrives whole, half as many after a loss -
   and a host sends no faster than 48 KiB/s down one path, under the relays'
-  cap. Not yet: services (a port on the host's computer reached as a
-  stream), and saying in the viewer when a site is reached over the radio.
+  cap. A program's bytes travel as a stream: numbered cells, the far end
+  saying which it has, cells not acknowledged in time sent again, and both
+  how many are out and how fast they leave halving on a loss and growing
+  back, so a stream finds the pace a path's relays allow. Measured on one
+  computer (regtest): 200 KiB echoed both ways through a hidden service in
+  about nine seconds. Not yet: saying in the viewer when a site is reached
+  over the radio.
 - Mail over radio is heavy: each letter goes to three mailboxes through
   three separate paths, and every path is built across the radio.
 - Radio needs Python and Reticulum installed beside BPS Relay. Ham radio

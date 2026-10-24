@@ -266,6 +266,7 @@ BITCOIN_TESTS =\
   test/lwip_tests.cpp \
   test/gateway_tests.cpp \
   test/hosting_tests.cpp \
+  test/stream_tests.cpp \
   test/sysif_tests.cpp \
   test/roster_tests.cpp \
   test/rosteridentity_tests.cpp \

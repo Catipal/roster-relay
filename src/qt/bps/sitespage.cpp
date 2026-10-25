@@ -422,6 +422,10 @@ void SitesPage::onRpcResult(const QString& tag, const UniValue& value)
         } else {
             m_route->setText(tr("Your own site, read from this computer."));
         }
+        // A radio link carries a few kilobytes a minute: a slow page is not a broken one.
+        if (find_value(route, "radio").isTrue()) {
+            m_route->setText(m_route->text() + " " + tr("It is reached over the radio, so pages come slowly."));
+        }
         Show(bytes);
         return;
     }

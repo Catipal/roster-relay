@@ -10,6 +10,7 @@
 #include <validation.h>
 #include <validationinterface.h>
 #include <node/transaction.h>
+#include <overlay/txpath.h>
 
 #include <future>
 
@@ -95,6 +96,12 @@ TransactionError BroadcastTransaction(NodeContext& node, const CTransactionRef t
     }
 
     if (relay) {
+        // This node's own transactions leave through a path where the overlay
+        // runs, so that the first to announce one is a relay that does not
+        // know where it came from (overlay/txpath.h). That relay's announcing
+        // is the broadcast; this node's address takes no part in it.
+        if (overlay::SendOwnTransaction(tx)) return TransactionError::OK;
+
         // the mempool tracks locally submitted transactions to make a
         // best-effort of initial broadcast
         node.mempool->AddUnbroadcastTx(hashTx);

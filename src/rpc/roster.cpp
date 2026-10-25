@@ -18,6 +18,7 @@
 #include <roster/listing.h>
 #include <roster/payout.h>
 #include <roster/peers.h>
+#include <roster/extract.h>
 #include <roster/record.h>
 #include <roster/relayaddr.h>
 #include <roster/view.h>
@@ -30,6 +31,7 @@
 #include <overlay/meeting.h>
 #include <overlay/service.h>
 #include <overlay/siteproxy.h>
+#include <overlay/txpath.h>
 #include <names/resolve.h>
 #include <overlay/radio.h>
 #include <overlay/relay.h>
@@ -343,6 +345,7 @@ static UniValue SiteRouteToJSON(const overlay::SiteRoute& r)
     out.pushKV("hidden", r.hidden);
     out.pushKV("hops", r.hops);
     if (r.hidden) out.pushKV("point", HexStr(r.point));
+    out.pushKV("radio", r.radio);
     return out;
 }
 
@@ -685,6 +688,133 @@ static RPCHelpMan getserviceinfo()
     };
 }
 
+static RPCHelpMan getrostergrowth()
+{
+    return RPCHelpMan{"getrostergrowth",
+                "\nHow much of the chain's growth is listings, over the last blocks (design note section 4).\n"
+                "\nThe design accepts that listings grow the chain, and keeps a tripwire rather than a limit:\n"
+                "this number, watched from the first release, and a number of peers agreed in advance at which\n"
+                "the longest listing is raised from a month toward a year. Counts every transaction carrying a\n"
+                "record, whole, against every block, whole, as they sit on disk.\n",
+                {
+                    {"blocks", RPCArg::Type::NUM, /* default */ "14400 (thirty days)", "How many of the last blocks to count, at most a year's"},
+                },
+                RPCResult{
+                    RPCResult::Type::OBJ, "", "",
+                    {
+                        {RPCResult::Type::NUM, "from_height", "The first block counted"},
+                        {RPCResult::Type::NUM, "to_height", "The last block counted"},
+                        {RPCResult::Type::NUM, "blocks", "Blocks counted"},
+                        {RPCResult::Type::NUM, "chain_bytes", "Their size"},
+                        {RPCResult::Type::NUM, "roster_bytes", "The size of the transactions in them that carry records"},
+                        {RPCResult::Type::NUM, "roster_transactions", "How many such transactions"},
+                        {RPCResult::Type::NUM, "share", "Records' part of the chain's growth, 0 to 1"},
+                        {RPCResult::Type::NUM, "chain_bytes_per_year", "At this rate, the chain's growth in a year"},
+                        {RPCResult::Type::NUM, "roster_bytes_per_year", "And the records' part of it"},
+                        {RPCResult::Type::NUM, "live_peers", "Peers the roster lists now"},
+                        {RPCResult::Type::NUM, "missing_blocks", /* optional */ true, "Blocks pruned away, not counted"},
+                    }},
+                RPCExamples{HelpExampleCli("getrostergrowth", "") + HelpExampleCli("getrostergrowth", "1440")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    const int want = request.params[0].isNull() ? 14400 : request.params[0].get_int();
+    if (want < 1 || want > (int)roster::MAX_TTL) throw JSONRPCError(RPC_INVALID_PARAMETER, "blocks must be 1 to a year's (175320)");
+
+    // The blocks to read, picked under the lock and read without it: block
+    // index entries are never freed, and reading a month of blocks is not
+    // something to hold the chain's lock for.
+    std::vector<const CBlockIndex*> blocks;
+    {
+        LOCK(cs_main);
+        const CBlockIndex* tip = ::ChainActive().Tip();
+        for (const CBlockIndex* p = tip; p && (int)blocks.size() < want; p = p->pprev) blocks.push_back(p);
+    }
+    if (blocks.empty()) throw JSONRPCError(RPC_MISC_ERROR, "No blocks yet.");
+
+    uint64_t chain_bytes = 0, roster_bytes = 0, roster_txs = 0, missing = 0;
+    const Consensus::Params& consensus = Params().GetConsensus();
+    for (const CBlockIndex* p : blocks) {
+        CBlock block;
+        if (!ReadBlockFromDisk(block, p, consensus)) {
+            ++missing;
+            continue;
+        }
+        chain_bytes += ::GetSerializeSize(block, PROTOCOL_VERSION);
+        for (const CTransactionRef& tx : block.vtx) {
+            bool carries = false;
+            for (const CTxOut& out : tx->vout) {
+                std::vector<unsigned char> payload;
+                roster::Record rec;
+                if (roster::ExtractOpReturnPayload(out.scriptPubKey, payload) &&
+                    roster::ParseRecord(payload, rec) == roster::ParseError::OK) {
+                    carries = true;
+                    break;
+                }
+            }
+            if (carries) {
+                roster_bytes += ::GetSerializeSize(*tx, PROTOCOL_VERSION);
+                ++roster_txs;
+            }
+        }
+    }
+    const uint64_t counted = blocks.size() - missing;
+    const double per_year = counted > 0 ? (double)roster::MAX_TTL / (double)counted : 0;
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("from_height", blocks.back()->nHeight);
+    out.pushKV("to_height", blocks.front()->nHeight);
+    out.pushKV("blocks", (uint64_t)counted);
+    out.pushKV("chain_bytes", chain_bytes);
+    out.pushKV("roster_bytes", roster_bytes);
+    out.pushKV("roster_transactions", roster_txs);
+    out.pushKV("share", chain_bytes > 0 ? (double)roster_bytes / (double)chain_bytes : 0.0);
+    out.pushKV("chain_bytes_per_year", (uint64_t)((double)chain_bytes * per_year));
+    out.pushKV("roster_bytes_per_year", (uint64_t)((double)roster_bytes * per_year));
+    uint64_t live = 0;
+    if (g_rosterindex) {
+        std::map<roster::KeyBytes, RosterEntry> roster_now;
+        if (g_rosterindex->BuildRoster(blocks.front()->nHeight, roster_now)) live = roster_now.size();
+    }
+    out.pushKV("live_peers", live);
+    if (missing > 0) out.pushKV("missing_blocks", missing);
+    return out;
+},
+    };
+}
+
+static RPCHelpMan gettxpathinfo()
+{
+    return RPCHelpMan{"gettxpathinfo",
+                "\nHow this node's own transactions left (-txpath), and what it announced for others.\n",
+                {},
+                RPCResult{
+                    RPCResult::Type::OBJ, "", "",
+                    {
+                        {RPCResult::Type::BOOL, "enabled", "Whether this node's transactions leave through a path"},
+                        {RPCResult::Type::NUM, "through_path", /* optional */ true, "Own transactions a relay took"},
+                        {RPCResult::Type::NUM, "over_p2p", /* optional */ true, "Own transactions the peer-to-peer network carried after all"},
+                        {RPCResult::Type::NUM, "refused_own", /* optional */ true, "Own transactions a relay found invalid"},
+                        {RPCResult::Type::NUM, "for_others", /* optional */ true, "Others' transactions this node announced"},
+                        {RPCResult::Type::NUM, "turned_away", /* optional */ true, "Others' transactions refused"},
+                        {RPCResult::Type::NUM, "queued", /* optional */ true, "Own transactions waiting to leave"},
+                    }},
+                RPCExamples{HelpExampleCli("gettxpathinfo", "")},
+        [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
+{
+    UniValue out(UniValue::VOBJ);
+    out.pushKV("enabled", overlay::g_txpath != nullptr);
+    if (!overlay::g_txpath) return out;
+    const overlay::TxPath::Stats s = overlay::g_txpath->GetStats();
+    out.pushKV("through_path", s.through_path);
+    out.pushKV("over_p2p", s.over_p2p);
+    out.pushKV("refused_own", s.refused_own);
+    out.pushKV("for_others", s.for_others);
+    out.pushKV("turned_away", s.turned_away);
+    out.pushKV("queued", (uint64_t)s.queued);
+    return out;
+},
+    };
+}
+
 static RPCHelpMan getsite()
 {
     return RPCHelpMan{"getsite",
@@ -706,6 +836,7 @@ static RPCHelpMan getsite()
                             {RPCResult::Type::BOOL, "hidden", "Met at a meeting point, the site having no address"},
                             {RPCResult::Type::NUM, "hops", "Relays on this side"},
                             {RPCResult::Type::STR_HEX, "point", /* optional */ true, "The meeting point, when hidden"},
+                            {RPCResult::Type::BOOL, "radio", "Whether the path starts on the radio, so pages come slowly"},
                         }},
                     }},
                 RPCExamples{HelpExampleCli("getsite", "\"a1b2...\" \"index.html\"")},
@@ -2133,6 +2264,8 @@ static const CRPCCommand commands[] =
     { "overlay",          "connectservice",       &connectservice,        {"site","service","port"} },
     { "overlay",          "disconnectservice",    &disconnectservice,     {"port"} },
     { "overlay",          "getserviceinfo",       &getserviceinfo,        {} },
+    { "overlay",          "gettxpathinfo",        &gettxpathinfo,         {} },
+    { "roster",           "getrostergrowth",      &getrostergrowth,       {"blocks"} },
     { "overlay",          "meet",                 &meet,                  {"key","hops","point"} },
     { "roster",           "getrosterinfo",        &getrosterinfo,         {} },
     { "roster",           "getroster",            &getroster,             {"count","skip","hints"} },

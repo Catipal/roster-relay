@@ -37,6 +37,7 @@
 #include <overlay/hosting.h>
 #include <overlay/service.h>
 #include <overlay/siteproxy.h>
+#include <overlay/txpath.h>
 #include <overlay/meeting.h>
 #include <overlay/radio.h>
 #include <overlay/relay.h>
@@ -266,6 +267,10 @@ void Shutdown(NodeContext& node)
     if (overlay::g_services) {
         overlay::g_services->Stop();
         overlay::g_services.reset();
+    }
+    if (overlay::g_txpath) {
+        overlay::g_txpath->Stop();
+        overlay::g_txpath.reset();
     }
     if (mail::g_mail_bridge) {
         mail::g_mail_bridge->Stop();
@@ -578,6 +583,7 @@ void SetupServerArgs(NodeContext& node)
     argsman.AddArg("-mailpoll=<n>", strprintf("Seconds between trips to collect mail, or 0 to collect only when asked (default: %u)", mail::DEFAULT_MAIL_POLL), ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::DEBUG_TEST);
     argsman.AddArg("-mailbridge", strprintf("Let an ordinary mail client read and send this node's mail over the loopback interface: POP3 to read, SMTP to send (default: %u). Needs -mail. It serves decrypted mail on a local port, so it is for your own machine only; letters still leave sealed over the overlay, never to an internet mail server. Write a recipient as name@bps or <key>@bps.", mail::DEFAULT_MAILBRIDGE), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-mailbridgepop3port=<n>", strprintf("Loopback port the mail bridge serves POP3 on (default: %u)", mail::DEFAULT_MAILBRIDGE_POP3_PORT), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
+    argsman.AddArg("-txpath", strprintf("Send this node's own transactions through a path to a relay that announces them, so the peer-to-peer network does not see them come first from this node's address; if no relay takes one, the peer-to-peer network carries it after all. Relays announce others' this way too, within limits. Needs -overlay (default: %u)", overlay::DEFAULT_TXPATH), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-siteproxy", strprintf("Let an ordinary browser open sites hosted over the overlay, at http://<name or key>.bps.localhost:<port>/, served on the loopback interface only. Pages are fetched over the overlay as BPS Relay's viewer fetches them, and may load nothing from outside their own site; the viewer, which runs no scripts, stays the safer way to read a hidden site (default: %u; on in BPS Relay). Needs -overlay.", overlay::DEFAULT_SITE_PROXY), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-siteproxyport=<port>", "Loopback port the site proxy listens on (default: three above the peer-to-peer port)", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
     argsman.AddArg("-mailbridgesmtpport=<n>", strprintf("Loopback port the mail bridge accepts SMTP on (default: %u)", mail::DEFAULT_MAILBRIDGE_SMTP_PORT), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -2395,6 +2401,10 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 } else if (overlay::g_chainsync && !from.via_path && overlay::IsChainPayload(payload)) {
                     // Blocks between adjacent radio neighbours, never over a path.
                     overlay::g_chainsync->HandleApp(from.addr, payload);
+                } else if (overlay::IsTxPathPayload(payload)) {
+                    // This node's transactions going out through a relay, and
+                    // others' coming in for this node to announce (overlay/txpath.h).
+                    overlay::HandleTxPathApp(from, payload);
                 } else if (overlay::IsServicePayload(payload)) {
                     // Services (overlay/service.h): streams to programs on the
                     // host's loopback, and back to this node's local ports.
@@ -2545,6 +2555,30 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
         }
         // The site published last, again (overlay/hosting.h).
         overlay::RepublishSavedSite(op_key);
+
+        // This node's transactions leave through a path (overlay/txpath.h);
+        // a relay takes others' and announces them.
+        if (args.GetBoolArg("-txpath", overlay::DEFAULT_TXPATH)) {
+            overlay::g_txpath = MakeUnique<overlay::TxPath>(self,
+                [&node](const CTransactionRef& tx) -> std::string {
+                    LOCK(cs_main);
+                    if (!node.mempool->exists(tx->GetHash())) {
+                        TxValidationState state;
+                        if (!AcceptToMemoryPool(*node.mempool, state, tx, nullptr /* plTxnReplaced */,
+                                                false /* bypass_limits */)) {
+                            return state.ToString();
+                        }
+                    }
+                    RelayTransaction(tx->GetHash(), tx->GetWitnessHash(), *node.connman);
+                    return std::string();
+                },
+                [&node](const CTransactionRef& tx) {
+                    node.mempool->AddUnbroadcastTx(tx->GetHash());
+                    LOCK(cs_main);
+                    RelayTransaction(tx->GetHash(), tx->GetWitnessHash(), *node.connman);
+                });
+            overlay::g_txpath->Start();
+        }
 
         // Services: programs on this computer's loopback, reached as streams
         // over the overlay, and local ports carried to others' (overlay/service.h).

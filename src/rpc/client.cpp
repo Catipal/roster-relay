@@ -45,6 +45,7 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "publishservice", 1, "port" },
     { "connectservice", 2, "port" },
     { "disconnectservice", 0, "port" },
+    { "getrostergrowth", 0, "blocks" },
     { "registername", 1, "years" },
     { "renewname", 1, "years" },
     { "getnameprice", 1, "years" },

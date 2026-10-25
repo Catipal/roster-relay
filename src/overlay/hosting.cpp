@@ -697,6 +697,7 @@ bool OpenVisit(const roster::KeyBytes& key, std::shared_ptr<SiteVisit>& out, std
         v->legs = reached.legs;
         v->route.hidden = false;
         v->route.hops = SITE_PUBLIC_HOPS;
+        v->route.radio = reached.step > Reached().step;
     } else {
         if (!g_rosterindex || roster::LiveExpiry(key, g_rosterindex->GetSummary().best_block_height) == 0) {
             error = "the roster does not list that key";
@@ -713,6 +714,7 @@ bool OpenVisit(const roster::KeyBytes& key, std::shared_ptr<SiteVisit>& out, std
         v->route.hidden = true;
         v->route.hops = m.hops;
         v->route.point = m.point;
+        v->route.radio = m.radio;
     }
     v->last_used = now;
     LOCK(g_visits_mutex);

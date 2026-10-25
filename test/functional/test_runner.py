@@ -146,6 +146,7 @@ BASE_SCRIPTS = [
     'feature_radio_blocks.py',
     'feature_site.py',
     'feature_service.py',
+    'feature_txpath.py',
     'feature_roster_identity.py',
     'feature_roster_commitment.py',
     'feature_reindex.py',

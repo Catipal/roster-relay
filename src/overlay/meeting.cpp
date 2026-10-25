@@ -448,6 +448,7 @@ bool MeetService(const roster::KeyBytes& service, int hops, Meeting& out, std::s
             out.path = meet_id;
             out.legs = legs;
             out.point = point;
+            out.radio = r.step > Reached().step;
             out.epoch = epoch;
             out.hops = hops;
             out.listed = t.listed;

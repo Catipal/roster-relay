@@ -191,6 +191,7 @@ struct Meeting {
     uint64_t epoch{0};
     int hops{0};
     bool listed{false};            //!< met at the point its listing names
+    bool radio{false};             //!< this side's path starts on the radio
 };
 
 /**

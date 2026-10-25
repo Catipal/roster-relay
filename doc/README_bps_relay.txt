@@ -139,6 +139,14 @@ resolvers by itself; a switch that blocks everything while BPS Relay is not
 running; macOS.
 
 
+Payments
+--------
+Your own transactions leave through the overlay: through two relays to a
+third that is not one of your entry relays, which announces each to the
+network as it would anyone's. So the network does not first hear of your
+payment from your address. If no relay will take one, BPS Relay announces it
+the usual way after all, so a payment is never stuck.
+
 Sites
 -----
 A site is a folder published under your node's key, from the Server page's

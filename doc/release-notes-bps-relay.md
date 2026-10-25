@@ -331,6 +331,15 @@ What this node offers other people.
   program, after which it sets the routes up and takes them down itself; on
   Windows BPS Relay's network service (bps-relay-net.exe, with Wintun 0.14.1
   beside it), installed from the Server page.
+- **Your own transactions leave through a path** (`-txpath`, wherever the
+  overlay runs): a payment goes through two relays to a relay that is not one
+  of your entry relays, which announces it as it would anyone's. Announced
+  from your own address, a transaction can be traced to you by anyone
+  connected to many nodes; this way the first to announce it does not know
+  where it came from. If no relay takes it, the peer-to-peer network carries
+  it after all, and the log says so. A relay announces others' this way too,
+  at most 20 a minute from one path and 600 in all. `gettxpathinfo` counts
+  both.
 - **Relays carry within limits** - `-relaypathrate` (64 KiB/s per path) and
   `-relaybandwidth` (1 GiB of other people's traffic a day), shown in
   `getoverlayinfo`.
@@ -431,7 +440,7 @@ revocations `getidentity`, `createidentity`, `createdelegation`,
 `listrevocations`, `getageproof` and `verifyageproof`; and for the roster's
 fingerprint `getrostersnapshot`, `verifyrostersnapshot`,
 `getrostermembership` and `verifyrostermembership`; `getradioinfo` for
-radio links; and `getmeetinginfo` and `meet` for reaching a node by its key alone; and `getchainfeedinfo` for blocks over radio; and `publishsite`, `unpublishsite`, `gethostinginfo`, `getsite` and `getsiteaddress` for hosting a folder under a key and reading it over the overlay; and `publishservice`, `unpublishservice`, `connectservice`, `disconnectservice` and `getserviceinfo` for programs reached as streams.
+radio links; and `getmeetinginfo` and `meet` for reaching a node by its key alone; and `getchainfeedinfo` for blocks over radio; and `publishsite`, `unpublishsite`, `gethostinginfo`, `getsite` and `getsiteaddress` for hosting a folder under a key and reading it over the overlay; and `publishservice`, `unpublishservice`, `connectservice`, `disconnectservice` and `getserviceinfo` for programs reached as streams; `gettxpathinfo` for transactions sent through paths; and `getrostergrowth`, which says how much of the chain's growth listings are, over the last blocks - the tripwire the design note asks to watch from the first release.
 Each has its full description in `help`.
 
 The console suggests commands from what you type in plain words - "pay pilot
@@ -474,8 +483,8 @@ Known issues
   how many are out and how fast they leave halving on a loss and growing
   back, so a stream finds the pace a path's relays allow. Measured on one
   computer (regtest): 200 KiB echoed both ways through a hidden service in
-  about nine seconds. Not yet: saying in the viewer when a site is reached
-  over the radio.
+  about nine seconds. The Sites page says when a site is reached over the
+  radio, so a slow page is not taken for a broken one.
 - Mail over radio is heavy: each letter goes to three mailboxes through
   three separate paths, and every path is built across the radio.
 - Radio needs Python and Reticulum installed beside BPS Relay. Ham radio

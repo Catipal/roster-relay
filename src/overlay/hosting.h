@@ -234,6 +234,7 @@ struct SiteRoute {
     bool hidden{false};    //!< met at a meeting point, rather than reached at its address
     int hops{0};           //!< relays on this side
     roster::KeyBytes point{}; //!< the meeting point, when hidden
+    bool radio{false};     //!< the path starts on the radio, so pages come slowly
 };
 
 /**

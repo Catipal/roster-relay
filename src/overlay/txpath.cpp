@@ -18,6 +18,7 @@
 #include <version.h>
 
 #include <algorithm>
+#include <iterator>
 #include <limits>
 #include <set>
 
@@ -180,6 +181,18 @@ void TxPath::ThreadSend()
             LogPrint(BCLog::NET, "txpath: %s left through a path\n", tx->GetHash().ToString());
             LOCK(m_mutex);
             ++m_stats.through_path;
+            const int64_t now = GetTime();
+            for (std::map<uint256, Sent>::iterator it = m_sent.begin(); it != m_sent.end();) {
+                it = now - it->second.at >= HEARD_BACK_TTL ? m_sent.erase(it) : std::next(it);
+            }
+            if (m_sent.size() + 2 <= 2 * MAX_HEARD_BACK) {
+                Sent s;
+                s.txid = tx->GetHash();
+                s.wtxid = tx->GetWitnessHash();
+                s.at = now;
+                m_sent[s.txid] = s;
+                m_sent[s.wtxid] = s;
+            }
         } else if (definitive) {
             LogPrintf("txpath: a relay refused %s: %s\n", tx->GetHash().ToString(), error);
             LOCK(m_mutex);
@@ -297,6 +310,23 @@ void TxPath::ThreadAccept()
         }
         if (g_overlay) g_overlay->SendSecret(key.first.path, AckMessage(key.second, why.empty(), why));
     }
+}
+
+bool TxPath::HeardBack(const uint256& hash, uint256& txid, uint256& wtxid)
+{
+    LOCK(m_mutex);
+    std::map<uint256, Sent>::iterator it = m_sent.find(hash);
+    if (it == m_sent.end()) return false;
+    txid = it->second.txid;
+    wtxid = it->second.wtxid;
+    m_sent.erase(txid);
+    m_sent.erase(wtxid);
+    return true;
+}
+
+bool OwnTransactionHeardBack(const uint256& hash, uint256& txid, uint256& wtxid)
+{
+    return g_txpath && g_txpath->HeardBack(hash, txid, wtxid);
 }
 
 bool SendOwnTransaction(const CTransactionRef& tx)

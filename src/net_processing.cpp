@@ -36,6 +36,7 @@
 #include <roster/record.h>
 #include <roster/relayaddr.h>
 #include <roster/view.h>
+#include <overlay/txpath.h>
 #include <shutdown.h>
 #include <checkpoints.h>
 
@@ -2893,6 +2894,13 @@ void PeerManager::ProcessMessage(CNode& pfrom, const std::string& msg_type, CDat
                     return;
                 } else if (!fAlreadyHave && !m_chainman.ActiveChainstate().IsInitialBlockDownload()) {
                     AddTxAnnouncement(pfrom, gtxid, current_time);
+                } else if (fAlreadyHave) {
+                    // One of this node's own, back from the network after
+                    // leaving through a path: pass it on as anyone would.
+                    uint256 txid, wtxid;
+                    if (overlay::OwnTransactionHeardBack(gtxid.GetHash(), txid, wtxid) && m_mempool.exists(txid)) {
+                        RelayTransaction(txid, wtxid, m_connman);
+                    }
                 }
             } else {
                 LogPrint(BCLog::NET, "Unknown inv type \"%s\" received from peer=%d\n", inv.ToString(), pfrom.GetId());

@@ -51,6 +51,9 @@ static constexpr size_t MAX_TXPATH_TX = 400000;
 //! Transactions a relay takes from one path, and from all, in a minute.
 static constexpr size_t TXPATH_PER_PATH_MINUTE = 20;
 static constexpr size_t TXPATH_ALL_MINUTE = 600;
+/** Own transactions remembered until a peer announces them back, and for how long. */
+static constexpr size_t MAX_HEARD_BACK = 1000;
+static constexpr int64_t HEARD_BACK_TTL = 3600;
 
 bool IsTxPathPayload(const std::vector<unsigned char>& payload);
 
@@ -72,6 +75,13 @@ public:
     void Send(const CTransactionRef& tx);
     /** A transaction message from the far end of a path. Never blocks. */
     void HandleApp(const Hop& from, const std::vector<unsigned char>& payload);
+
+    /**
+     * A peer announced `hash` (a txid or a wtxid): if it is one of this node's
+     * own that left through a path, the network has it now. Gives back both
+     * ids, once, for the caller to relay it as it would anyone's.
+     */
+    bool HeardBack(const uint256& hash, uint256& txid, uint256& wtxid);
 
     struct Stats {
         uint64_t through_path{0};  //!< own transactions a relay took
@@ -113,6 +123,13 @@ private:
     std::deque<std::pair<std::pair<Hop, uint64_t>, CTransactionRef>> m_to_accept GUARDED_BY(m_mutex);
     std::map<Hop, std::deque<int64_t>> m_recent GUARDED_BY(m_mutex); //!< when each path's last transactions came
     std::deque<int64_t> m_recent_all GUARDED_BY(m_mutex);
+    //! Own transactions that left through a path, by txid and by wtxid: (txid, wtxid, when).
+    struct Sent {
+        uint256 txid;
+        uint256 wtxid;
+        int64_t at{0};
+    };
+    std::map<uint256, Sent> m_sent GUARDED_BY(m_mutex);
     Stats m_stats GUARDED_BY(m_mutex);
 };
 
@@ -124,6 +141,15 @@ extern std::unique_ptr<TxPath> g_txpath;
  * to a path; false to announce it on the peer-to-peer network as before.
  */
 bool SendOwnTransaction(const CTransactionRef& tx);
+
+/**
+ * For the peer-to-peer side: a peer announced `hash`. True, once, when it is
+ * this node's own transaction that left through a path, so that it is now
+ * relayed like anyone else's. A node that never passed on its own
+ * transactions would stand out as their sender among its peers - and a peer
+ * that only hears from it would never get them.
+ */
+bool OwnTransactionHeardBack(const uint256& hash, uint256& txid, uint256& wtxid);
 
 void HandleTxPathApp(const Hop& from, const std::vector<unsigned char>& payload);
 

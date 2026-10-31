@@ -23,6 +23,7 @@ class QLabel;
 class QLineEdit;
 class QPushButton;
 class QSpinBox;
+class QTableWidget;
 class QTimer;
 QT_END_NAMESPACE
 
@@ -69,13 +70,14 @@ public:
      * -gateway was given on the command line or in the config file.
      */
     static void AskAboutGatewayOnce();
-
 public Q_SLOTS:
     void Refresh();
 
 Q_SIGNALS:
     /** Show a site in the Sites page. */
     void openSite(const QString& address);
+    /** Open the wallet's Send tab, to pay `address` - the allowance wallet's. */
+    void topUpRequested(const QString& address);
 
 private Q_SLOTS:
     void onRpcResult(const QString& tag, const UniValue& value);
@@ -87,6 +89,13 @@ private Q_SLOTS:
     void onStopSite();
     void onPublishService();
     void onStopService();
+    void onPairPhone();
+    void onCreateAllowance();
+    void onTopUp();
+    void onDeviceLimits();
+    void onDeviceUnlock();
+    void onDeviceRevoke();
+    void onDeviceSelected();
 
 private:
     QWidget* MakeRelayCard();
@@ -97,8 +106,15 @@ private:
     void ShowGateway(const UniValue& value);
     void ShowHosting(const UniValue& value);
     void ShowServices(const UniValue& value);
+    QWidget* MakeCompanionCard();
     void Load();
     void UpdateStaking();
+    void ShowCompanion(const UniValue& info);
+    void ShowDevices(const UniValue& devices);
+    /** The selected phone's device key, or empty. */
+    QString SelectedDevice() const;
+    /** The allowance wallet's name as the node runs it, or as the field says. */
+    QString AllowanceName() const;
 
     BpsRpc& m_rpc;
     ClientModel* m_client_model{nullptr};
@@ -147,6 +163,21 @@ private:
     QStringList m_service_names;
     QString m_hosting_dir;   //!< the folder published, to publish again
     QString m_own_key;       //!< this node's roster key, the site's address
+    QLabel* m_companion_badge{nullptr};
+    QLabel* m_companion_wallet_state{nullptr};
+    QLabel* m_companion_reach{nullptr};
+    QCheckBox* m_companion{nullptr};
+    QLineEdit* m_companion_wallet{nullptr};
+    QPushButton* m_companion_create{nullptr};
+    QPushButton* m_companion_topup{nullptr};
+    QPushButton* m_companion_pair{nullptr};
+    QTableWidget* m_companion_devices{nullptr};
+    QPushButton* m_companion_limits{nullptr};
+    QPushButton* m_companion_unlock{nullptr};
+    QPushButton* m_companion_revoke{nullptr};
+    QLabel* m_companion_note{nullptr};
+    bool m_companion_running{false};
+
     QTimer* m_timer{nullptr};
 };
 

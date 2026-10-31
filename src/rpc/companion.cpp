@@ -13,6 +13,7 @@
 #include <util/strencodings.h>
 #include <util/time.h>
 
+#include <algorithm>
 #include <string>
 #include <vector>
 
@@ -88,6 +89,7 @@ RPCHelpMan getcompanioninfo()
             {RPCResult::Type::STR, "address", /* optional */ true, "Where the roster lists this node's overlay"},
             {RPCResult::Type::STR_HEX, "node_key", /* optional */ true, "The key a phone builds its paths to"},
             {RPCResult::Type::NUM, "devices", /* optional */ true, "Paired phones"},
+            {RPCResult::Type::NUM, "locked", /* optional */ true, "Paired phones locked after too many wrong PINs"},
             {RPCResult::Type::NUM, "waiting", /* optional */ true, "Phones that answered a ticket and wait to be accepted"},
         }},
         RPCExamples{HelpExampleCli("getcompanioninfo", "") + HelpExampleRpc("getcompanioninfo", "")},
@@ -117,7 +119,9 @@ RPCHelpMan getcompanioninfo()
     out.pushKV("listed", listed);
     if (listed) out.pushKV("address", address);
     out.pushKV("node_key", HexStr(s.NodeKey()));
-    out.pushKV("devices", (uint64_t)s.Devices().size());
+    const std::vector<Device> devices = s.Devices();
+    out.pushKV("devices", (uint64_t)devices.size());
+    out.pushKV("locked", (uint64_t)std::count_if(devices.begin(), devices.end(), [](const Device& d) { return d.Locked(); }));
     size_t waiting = 0;
     for (const Pairing& p : s.Pairings(GetTime())) {
         if (p.answered && p.state == PairState::WAITING) ++waiting;

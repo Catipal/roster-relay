@@ -139,3 +139,10 @@ void WalletPage::setWalletController(WalletController* controller)
 {
     m_gui->setWalletController(controller);
 }
+
+void WalletPage::OpenSend(const QString& address)
+{
+    // The wallet client's own Send tab, of whichever wallet is chosen there,
+    // so its own passphrase prompt and fee choice apply.
+    m_gui->gotoSendCoinsPage(address);
+}

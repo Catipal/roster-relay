@@ -6,6 +6,7 @@
 
 #include <qt/bps/bpsrpc.h>
 #include <qt/bps/bpsutil.h>
+#include <qt/bps/companiondialogs.h>
 #include <qt/bps/publishdialog.h>
 
 #include <qt/clientmodel.h>
@@ -15,6 +16,8 @@
 #include <qt/walletmodel.h>
 #endif
 
+#include <companion/service.h>
+#include <core_io.h>
 #include <mail/mailbox.h>
 #include <net.h>
 #include <overlay/gateway.h>
@@ -27,6 +30,7 @@
 #include <roster/payout.h>
 #include <roster/relayaddr.h>
 #include <univalue.h>
+#include <util/moneystr.h>
 #include <util/system.h>
 
 #include <QCheckBox>
@@ -36,6 +40,7 @@
 #include <QFrame>
 #include <QGridLayout>
 #include <QHBoxLayout>
+#include <QHeaderView>
 #include <QLabel>
 #include <QLineEdit>
 #include <QMessageBox>
@@ -45,6 +50,7 @@
 #include <QSpinBox>
 #include <QDateTime>
 #include <QStringList>
+#include <QTableWidget>
 #include <QTimer>
 #include <QVBoxLayout>
 
@@ -73,6 +79,8 @@ const char* KEY_MAILBOX_SIZE = "bps/mailboxmaxsize";
 const char* KEY_GATEWAY = "bps/gateway";
 const char* KEY_GATEWAY_BUDGET = "bps/gatewaybandwidth";
 const char* KEY_GATEWAY_NOTICE = "bps/gatewaynotice";
+const char* KEY_COMPANION = "bps/companion";
+const char* KEY_COMPANION_WALLET = "bps/companionwallet";
 
 /** The system-wide interface's name: a TUN device on Linux; on Windows the service's adapter, whatever this says. */
 const char* InterfaceName()
@@ -103,6 +111,17 @@ const char* TAG_PUBLISH = "server:publishsite";
 const char* TAG_UNPUBLISH = "server:unpublishsite";
 const char* TAG_SERVICES = "server:services";
 const char* TAG_SERVICE_CHANGE = "server:servicechange";
+const char* TAG_COMPANION = "server:companion";
+const char* TAG_COMPANION_DEVICES = "server:companiondevices";
+const char* TAG_COMPANION_CREATE = "server:companioncreate";
+const char* TAG_COMPANION_TOPUP = "server:companiontopup";
+const char* TAG_COMPANION_ACTION = "server:companionaction";
+
+//! What the allowance wallet is called unless the operator names another.
+const char* DEFAULT_ALLOWANCE = "allowance";
+
+//! Columns of the paired phones' table.
+enum DeviceColumn { COL_NAME, COL_PER_TX, COL_PER_DAY, COL_SPENT, COL_STATE, COL_COUNT };
 
 //! The roster moves at block pace; so do the figures here.
 const int REFRESH_MS = 20000;
@@ -191,6 +210,12 @@ void ServerPage::ApplyStoredSettings()
     if (settings.contains(KEY_MAILBOX_SIZE)) {
         gArgs.SoftSetArg("-mailboxmaxsize", settings.value(KEY_MAILBOX_SIZE).toString().toStdString());
     }
+    // A phone spends coins, so the companion is off until the operator turns it on here.
+    if (settings.contains(KEY_COMPANION)) {
+        gArgs.SoftSetBoolArg("-companion", settings.value(KEY_COMPANION).toBool());
+    }
+    const QString allowance = settings.value(KEY_COMPANION_WALLET).toString();
+    if (!allowance.isEmpty()) gArgs.SoftSetArg("-companionwallet", allowance.toStdString());
     // The gateway is on unless switched off, in the node as here; what is
     // stored is only ever the owner's own choice.
     if (settings.contains(KEY_GATEWAY)) gArgs.SoftSetBoolArg("-gateway", settings.value(KEY_GATEWAY).toBool());
@@ -270,8 +295,9 @@ ServerPage::ServerPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rp
 
     QLabel* subtitle = new QLabel(
         tr("What this node offers other people: relaying, holding mail, sharing the internet and "
-           "hosting a site. Like everything here it is found the same way peers are \xe2\x80\x94 "
-           "through the roster. Names have a page of their own."),
+           "hosting a site; and to your own phone, a way to spend from here. Like everything here it "
+           "is found the same way peers are \xe2\x80\x94 through the roster. Names have a page of "
+           "their own."),
         content);
     subtitle->setWordWrap(true);
     subtitle->setEnabled(false);
@@ -282,6 +308,7 @@ ServerPage::ServerPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rp
     outer->addWidget(MakeMailboxCard());
     outer->addWidget(MakeGatewayCard());
     outer->addWidget(MakeHostingCard());
+    outer->addWidget(MakeCompanionCard());
     outer->addStretch(1);
 
     connect(&m_rpc, &BpsRpc::result, this, &ServerPage::onRpcResult);
@@ -687,6 +714,8 @@ void ServerPage::Load()
     m_mailbox_size->setValue((int)gArgs.GetArg("-mailboxmaxsize", (int64_t)mail::DEFAULT_MAILBOX_MAX_MB));
     m_gateway->setChecked(gArgs.GetBoolArg("-gateway", overlay::DEFAULT_GATEWAY));
     m_gateway_budget->setValue((int)gArgs.GetArg("-gatewaybandwidth", (int64_t)overlay::DEFAULT_GATEWAY_BANDWIDTH_MIB));
+    m_companion->setChecked(gArgs.GetBoolArg("-companion", companion::DEFAULT_COMPANION));
+    m_companion_wallet->setText(QString::fromStdString(gArgs.GetArg("-companionwallet", "")));
     m_loading = false;
 }
 
@@ -703,9 +732,15 @@ void ServerPage::onChanged()
     settings.setValue(KEY_MAILBOX_SIZE, m_mailbox_size->value());
     settings.setValue(KEY_GATEWAY, m_gateway->isChecked());
     settings.setValue(KEY_GATEWAY_BUDGET, m_gateway_budget->value());
+    // Turned on with no wallet named, the companion pays from one called "allowance".
+    if (m_companion->isChecked() && m_companion_wallet->text().trimmed().isEmpty()) {
+        m_companion_wallet->setText(DEFAULT_ALLOWANCE);
+    }
+    settings.setValue(KEY_COMPANION, m_companion->isChecked());
+    settings.setValue(KEY_COMPANION_WALLET, m_companion_wallet->text().trimmed());
     const QString saved = tr("Saved. These are read when the node starts, so restart the client "
                              "for the change to take effect.");
-    for (QLabel* note : {m_restart_note, m_mailbox_note, m_gateway_note}) {
+    for (QLabel* note : {m_restart_note, m_mailbox_note, m_gateway_note, m_companion_note}) {
         note->setVisible(true);
         note->setText(saved);
     }
@@ -904,6 +939,290 @@ void ServerPage::ShowServices(const UniValue& value)
     m_services->setText(text);
 }
 
+QWidget* ServerPage::MakeCompanionCard()
+{
+    QVBoxLayout* body = nullptr;
+    QFrame* card = MakeCard(tr("Phone companion"), Status::OFF,
+        tr("Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches "
+           "this node through three relays, proves the key it was paired with, and this node pays from a "
+           "small allowance wallet \xe2\x80\x94 after checking the phone's PIN and the limits you set, which the "
+           "phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it "
+           "here. A phone finds this node as a listed relay, so this node has to be listed."),
+        this, &body, &m_companion_badge);
+
+    QFormLayout* status = new QFormLayout();
+    m_companion_wallet_state = new QLabel(tr("\xe2\x80\x94"), card);
+    m_companion_wallet_state->setWordWrap(true);
+    m_companion_reach = new QLabel(tr("\xe2\x80\x94"), card);
+    m_companion_reach->setWordWrap(true);
+    status->addRow(tr("Allowance"), m_companion_wallet_state);
+    status->addRow(tr("Reachable by phones"), m_companion_reach);
+    body->addLayout(status);
+
+    m_companion_devices = new QTableWidget(0, COL_COUNT, card);
+    m_companion_devices->setHorizontalHeaderLabels(
+        {tr("Phone"), tr("One payment"), tr("A day"), tr("Spent today"), tr("State")});
+    m_companion_devices->horizontalHeader()->setSectionResizeMode(COL_NAME, QHeaderView::Stretch);
+    m_companion_devices->verticalHeader()->setVisible(false);
+    m_companion_devices->setSelectionBehavior(QAbstractItemView::SelectRows);
+    m_companion_devices->setSelectionMode(QAbstractItemView::SingleSelection);
+    m_companion_devices->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    m_companion_devices->setMaximumHeight(150);
+    m_companion_devices->setVisible(false);
+    body->addWidget(m_companion_devices);
+
+    QHBoxLayout* device_buttons = new QHBoxLayout();
+    m_companion_pair = new QPushButton(tr("Pair a phone\xe2\x80\xa6"), card);
+    m_companion_limits = new QPushButton(tr("Limits\xe2\x80\xa6"), card);
+    m_companion_unlock = new QPushButton(tr("Unlock"), card);
+    m_companion_unlock->setToolTip(tr("A phone is locked after five wrong PINs in a row, until it is unlocked here."));
+    m_companion_revoke = new QPushButton(tr("Unpair"), card);
+    device_buttons->addWidget(m_companion_pair);
+    device_buttons->addStretch(1);
+    device_buttons->addWidget(m_companion_limits);
+    device_buttons->addWidget(m_companion_unlock);
+    device_buttons->addWidget(m_companion_revoke);
+    body->addLayout(device_buttons);
+
+    QFrame* rule = new QFrame(card);
+    rule->setFrameShape(QFrame::HLine);
+    rule->setFrameShadow(QFrame::Sunken);
+    body->addWidget(rule);
+
+    m_companion = new QCheckBox(tr("Let paired phones spend from an allowance wallet"), card);
+    m_companion->setToolTip(tr("Needs the overlay. Off by default, because it lets a phone spend this node's coins."));
+    body->addWidget(m_companion);
+
+    QFormLayout* form = new QFormLayout();
+    QHBoxLayout* wallet_row = new QHBoxLayout();
+    m_companion_wallet = new QLineEdit(card);
+    m_companion_wallet->setPlaceholderText(DEFAULT_ALLOWANCE);
+    m_companion_wallet->setToolTip(tr("A wallet of its own, with no passphrase \xe2\x80\x94 nobody is there to type one "
+                                      "when the phone pays \xe2\x80\x94 and only what the phone should be able to spend. It never "
+                                      "stakes, and cannot be the wallet that pays for listings."));
+    wallet_row->addWidget(m_companion_wallet, 1);
+    m_companion_create = new QPushButton(tr("Create it"), card);
+    m_companion_create->setToolTip(tr("Make the allowance wallet and open it whenever this node starts."));
+    wallet_row->addWidget(m_companion_create);
+    m_companion_topup = new QPushButton(tr("Top up\xe2\x80\xa6"), card);
+    m_companion_topup->setToolTip(tr("Open Send in the wallet, to move coins into the allowance."));
+    wallet_row->addWidget(m_companion_topup);
+    form->addRow(tr("Allowance wallet"), wallet_row);
+    body->addLayout(form);
+
+    m_companion_note = new QLabel(card);
+    m_companion_note->setWordWrap(true);
+    m_companion_note->setVisible(false);
+    body->addWidget(m_companion_note);
+
+    connect(m_companion, &QCheckBox::toggled, this, &ServerPage::onChanged);
+    connect(m_companion_wallet, &QLineEdit::editingFinished, this, &ServerPage::onChanged);
+    connect(m_companion_pair, &QPushButton::clicked, this, &ServerPage::onPairPhone);
+    connect(m_companion_create, &QPushButton::clicked, this, &ServerPage::onCreateAllowance);
+    connect(m_companion_topup, &QPushButton::clicked, this, &ServerPage::onTopUp);
+    connect(m_companion_limits, &QPushButton::clicked, this, &ServerPage::onDeviceLimits);
+    connect(m_companion_unlock, &QPushButton::clicked, this, &ServerPage::onDeviceUnlock);
+    connect(m_companion_revoke, &QPushButton::clicked, this, &ServerPage::onDeviceRevoke);
+    connect(m_companion_devices, &QTableWidget::itemSelectionChanged, this, &ServerPage::onDeviceSelected);
+
+    // Nothing to act on until the node says what it is running.
+    for (QPushButton* b : {m_companion_pair, m_companion_topup, m_companion_create, m_companion_limits,
+                           m_companion_unlock, m_companion_revoke}) {
+        b->setEnabled(false);
+    }
+    return card;
+}
+
+QString ServerPage::AllowanceName() const
+{
+    const std::string running = gArgs.GetArg("-companionwallet", "");
+    if (!running.empty()) return QString::fromStdString(running);
+    const QString typed = m_companion_wallet->text().trimmed();
+    return typed.isEmpty() ? QString(DEFAULT_ALLOWANCE) : typed;
+}
+
+QString ServerPage::SelectedDevice() const
+{
+    const QList<QTableWidgetItem*> items = m_companion_devices->selectedItems();
+    if (items.isEmpty()) return QString();
+    const QTableWidgetItem* name = m_companion_devices->item(items.first()->row(), COL_NAME);
+    return name ? name->data(Qt::UserRole).toString() : QString();
+}
+
+void ServerPage::onDeviceSelected()
+{
+    const bool selected = m_companion_running && !SelectedDevice().isEmpty();
+    m_companion_limits->setEnabled(selected);
+    m_companion_revoke->setEnabled(selected);
+    bool locked = false;
+    const QList<QTableWidgetItem*> items = m_companion_devices->selectedItems();
+    if (!items.isEmpty()) {
+        const QTableWidgetItem* state = m_companion_devices->item(items.first()->row(), COL_STATE);
+        locked = state && state->data(Qt::UserRole).toBool();
+    }
+    m_companion_unlock->setEnabled(selected && locked);
+}
+
+void ServerPage::ShowCompanion(const UniValue& info)
+{
+    m_companion_running = find_value(info, "enabled").isTrue();
+    if (!m_companion_running) {
+        const bool overlay = gArgs.GetBoolArg("-overlay", true);
+        SetBadge(m_companion_badge, Status::OFF, overlay ? tr("off") : tr("needs the overlay"));
+        m_companion_wallet_state->setText(tr("\xe2\x80\x94"));
+        m_companion_reach->setText(tr("\xe2\x80\x94"));
+        m_companion_devices->setVisible(false);
+        for (QPushButton* b : {m_companion_pair, m_companion_topup, m_companion_create}) b->setEnabled(false);
+        onDeviceSelected();
+        return;
+    }
+    const bool wallet_ok = find_value(info, "wallet_ok").isTrue();
+    const bool listed = find_value(info, "listed").isTrue();
+    const QString name = QString::fromStdString(find_value(info, "wallet").get_str());
+    if (wallet_ok) {
+        const QString balance = QString::fromStdString(find_value(info, "balance").getValStr());
+        const QString pending = QString::fromStdString(find_value(info, "pending").getValStr());
+        QString text = tr("%1: %2 %3").arg(name, balance, QString::fromStdString(CURRENCY_UNIT));
+        CAmount arriving = 0;
+        if (ParseMoney(pending.toStdString(), arriving) && arriving > 0) {
+            text += tr(", %1 more arriving").arg(pending);
+        }
+        m_companion_wallet_state->setText(text);
+    } else {
+        m_companion_wallet_state->setText(QString::fromStdString(find_value(info, "wallet_error").get_str()));
+    }
+    m_companion_reach->setText(listed
+        ? tr("yes, at %1").arg(QString::fromStdString(find_value(info, "address").get_str()))
+        : tr("no \xe2\x80\x94 publish this node's listing (Node, Discovery): a phone finds its home node as a listed relay"));
+
+    const int64_t devices = find_value(info, "devices").get_int64();
+    const int64_t waiting = find_value(info, "waiting").get_int64();
+    const int64_t locked = find_value(info, "locked").get_int64();
+    if (!listed) {
+        SetBadge(m_companion_badge, Status::ATTENTION, tr("not reachable"));
+    } else if (!wallet_ok) {
+        SetBadge(m_companion_badge, Status::ATTENTION, tr("no allowance"));
+    } else if (waiting > 0) {
+        SetBadge(m_companion_badge, Status::ATTENTION, tr("a phone is waiting"));
+    } else if (locked > 0) {
+        SetBadge(m_companion_badge, Status::ATTENTION,
+                 locked == 1 ? tr("a phone is locked") : tr("%1 phones are locked").arg(locked));
+    } else {
+        SetBadge(m_companion_badge, Status::RUNNING,
+                 devices == 0 ? tr("running, no phone yet")
+                 : devices == 1 ? tr("running, 1 phone") : tr("running, %1 phones").arg(devices));
+    }
+    m_companion_pair->setEnabled(listed && wallet_ok);
+    m_companion_topup->setEnabled(wallet_ok);
+    m_companion_create->setEnabled(!wallet_ok);
+    m_companion_devices->setVisible(devices > 0);
+    onDeviceSelected();
+}
+
+void ServerPage::ShowDevices(const UniValue& devices)
+{
+    const QString selected = SelectedDevice();
+    m_companion_devices->setRowCount(0);
+    const QString unit = QString::fromStdString(CURRENCY_UNIT);
+    for (const UniValue& d : devices.getValues()) {
+        const int row = m_companion_devices->rowCount();
+        m_companion_devices->insertRow(row);
+        QTableWidgetItem* name = new QTableWidgetItem(QString::fromStdString(find_value(d, "name").get_str()));
+        const QString key = QString::fromStdString(find_value(d, "key").get_str());
+        name->setData(Qt::UserRole, key);
+        name->setToolTip(tr("Device key %1").arg(key));
+        m_companion_devices->setItem(row, COL_NAME, name);
+        m_companion_devices->setItem(row, COL_PER_TX,
+            new QTableWidgetItem(QString::fromStdString(find_value(d, "per_tx").getValStr()) + " " + unit));
+        m_companion_devices->setItem(row, COL_PER_DAY,
+            new QTableWidgetItem(QString::fromStdString(find_value(d, "per_day").getValStr()) + " " + unit));
+        m_companion_devices->setItem(row, COL_SPENT,
+            new QTableWidgetItem(QString::fromStdString(find_value(d, "spent_today").getValStr()) + " " + unit));
+        const bool locked = find_value(d, "locked").isTrue();
+        QTableWidgetItem* state = new QTableWidgetItem(locked ? tr("locked: wrong PINs") : tr("paired"));
+        state->setData(Qt::UserRole, locked);
+        m_companion_devices->setItem(row, COL_STATE, state);
+        if (key == selected) m_companion_devices->selectRow(row);
+    }
+    m_companion_devices->resizeColumnsToContents();
+    m_companion_devices->horizontalHeader()->setSectionResizeMode(COL_NAME, QHeaderView::Stretch);
+    m_companion_devices->setVisible(m_companion_devices->rowCount() > 0);
+    onDeviceSelected();
+}
+
+void ServerPage::onPairPhone()
+{
+    CompanionPairDialog dialog(m_rpc, this);
+    dialog.exec();
+    Refresh();
+}
+
+void ServerPage::onCreateAllowance()
+{
+    const QString name = AllowanceName();
+    UniValue params(UniValue::VARR);
+    params.push_back(name.toStdString()); // wallet_name
+    params.push_back(false);              // disable_private_keys
+    params.push_back(false);              // blank
+    params.push_back("");                 // passphrase: none, on purpose
+    params.push_back(false);              // avoid_reuse
+    params.push_back(false);              // descriptors: legacy, like every wallet here
+    params.push_back(true);               // load_on_startup
+    m_companion_create->setEnabled(false);
+    m_rpc.Call(TAG_COMPANION_CREATE, "createwallet", params);
+}
+
+void ServerPage::onTopUp()
+{
+    UniValue params(UniValue::VARR);
+    params.push_back("Top-up");
+    params.push_back("legacy");
+    m_rpc.Call(TAG_COMPANION_TOPUP, "getnewaddress", params, "/wallet/" + AllowanceName());
+}
+
+void ServerPage::onDeviceLimits()
+{
+    const QString key = SelectedDevice();
+    if (key.isEmpty()) return;
+    const int row = m_companion_devices->selectedItems().first()->row();
+    CAmount per_tx = 0, per_day = 0;
+    if (!ParseMoney(m_companion_devices->item(row, COL_PER_TX)->text().split(' ').first().toStdString(), per_tx)) per_tx = 0;
+    if (!ParseMoney(m_companion_devices->item(row, COL_PER_DAY)->text().split(' ').first().toStdString(), per_day)) per_day = 0;
+    CompanionLimitsDialog dialog(m_companion_devices->item(row, COL_NAME)->text(), per_tx, per_day, this);
+    if (dialog.exec() != QDialog::Accepted) return;
+    UniValue params(UniValue::VARR);
+    params.push_back(key.toStdString());
+    params.push_back(ValueFromAmount(dialog.PerTx()));
+    params.push_back(ValueFromAmount(dialog.PerDay()));
+    m_rpc.Call(TAG_COMPANION_ACTION, "setcompanionlimits", params);
+}
+
+void ServerPage::onDeviceUnlock()
+{
+    const QString key = SelectedDevice();
+    if (key.isEmpty()) return;
+    UniValue params(UniValue::VARR);
+    params.push_back(key.toStdString());
+    m_rpc.Call(TAG_COMPANION_ACTION, "unlockcompaniondevice", params);
+}
+
+void ServerPage::onDeviceRevoke()
+{
+    const QString key = SelectedDevice();
+    if (key.isEmpty()) return;
+    const QString name = m_companion_devices->item(m_companion_devices->selectedItems().first()->row(), COL_NAME)->text();
+    if (QMessageBox::question(this, tr("Unpair %1").arg(name),
+                              tr("Unpair %1? It will not be able to spend again until it is paired anew. Do this "
+                                 "at once if the phone is lost or stolen.").arg(name),
+                              QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel) != QMessageBox::Yes) {
+        return;
+    }
+    UniValue params(UniValue::VARR);
+    params.push_back(key.toStdString());
+    m_rpc.Call(TAG_COMPANION_ACTION, "revokecompaniondevice", params);
+}
+
+
 void ServerPage::Refresh()
 {
     UpdateStaking();
@@ -914,6 +1233,8 @@ void ServerPage::Refresh()
         m_rpc.Call(TAG_ROSTERINFO, "getrosterinfo");
         m_rpc.Call(TAG_HOSTING, "gethostinginfo");
         m_rpc.Call(TAG_SERVICES, "getserviceinfo");
+        m_rpc.Call(TAG_COMPANION, "getcompanioninfo");
+        if (m_companion_running) m_rpc.Call(TAG_COMPANION_DEVICES, "listcompaniondevices");
     }
 }
 
@@ -953,6 +1274,36 @@ void ServerPage::UpdateStaking()
 
 void ServerPage::onRpcResult(const QString& tag, const UniValue& value)
 {
+    if (tag == TAG_COMPANION) {
+        const bool was_running = m_companion_running;
+        ShowCompanion(value);
+        // The first time it is seen running, its phones are not asked for yet.
+        if (m_companion_running && !was_running) m_rpc.Call(TAG_COMPANION_DEVICES, "listcompaniondevices");
+        return;
+    }
+    if (tag == TAG_COMPANION_DEVICES) {
+        ShowDevices(value);
+        return;
+    }
+    if (tag == TAG_COMPANION_CREATE) {
+        m_companion_note->setVisible(true);
+        m_companion_note->setText(tr("Created and opened the allowance wallet. Use Top up to move into it what "
+                                     "the phone should be able to spend."));
+        if (m_companion_wallet->text().trimmed().isEmpty()) {
+            m_companion_wallet->setText(AllowanceName());
+            onChanged();
+        }
+        Refresh();
+        return;
+    }
+    if (tag == TAG_COMPANION_TOPUP) {
+        Q_EMIT topUpRequested(QString::fromStdString(value.get_str()));
+        return;
+    }
+    if (tag == TAG_COMPANION_ACTION) {
+        Refresh();
+        return;
+    }
     if (tag == TAG_GATEWAY) {
         ShowGateway(value);
         return;
@@ -1046,6 +1397,13 @@ void ServerPage::onRpcResult(const QString& tag, const UniValue& value)
 
 void ServerPage::onRpcFailed(const QString& tag, const QString& message)
 {
+    if (tag == TAG_COMPANION || tag == TAG_COMPANION_DEVICES || tag == TAG_COMPANION_CREATE ||
+        tag == TAG_COMPANION_TOPUP || tag == TAG_COMPANION_ACTION) {
+        m_companion_note->setVisible(true);
+        m_companion_note->setText(message);
+        if (tag == TAG_COMPANION_CREATE) m_companion_create->setEnabled(true);
+        return;
+    }
     if (tag == TAG_GATEWAY) {
         m_gateway_state->setText(message);
         return;

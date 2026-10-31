@@ -223,10 +223,11 @@ class CompanionTest(BitcoinTestFramework):
         self.log.info("five wrong PINs lock the phone until the home node unlocks it")
         phone.run("prepare", payee_address, "0.1")
         for left in (4, 3, 2, 1):
-            phone.fails("{} tries left".format(left), "send", "000000")
+            phone.fails("{} {} left".format(left, "try" if left == 1 else "tries"), "send", "000000")
         phone.fails("now locked", "send", "000000")
         phone.fails("locked", "send", PIN)
         assert_equal(home.listcompaniondevices()[0]["locked"], True)
+        assert_equal(home.getcompanioninfo()["locked"], 1)
         home.unlockcompaniondevice(paired["device"])
         phone.run("pay", payee_address, "0.1", PIN)
 

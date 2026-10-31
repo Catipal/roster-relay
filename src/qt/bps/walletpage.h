@@ -52,6 +52,9 @@ public:
                         interfaces::BlockAndHeaderTipInfo* tip_info = nullptr);
     void setWalletController(WalletController* controller);
 
+    /** Open Send with `address` filled in. */
+    void OpenSend(const QString& address);
+
 private:
     void HideTrayIcon();
 

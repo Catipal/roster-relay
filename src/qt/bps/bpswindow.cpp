@@ -175,6 +175,14 @@ BpsWindow::BpsWindow(interfaces::Node& node, const PlatformStyle* platformStyle,
         m_nav->setCurrentRow(sites_row);
         m_sites->Open(address);
     });
+#ifdef ENABLE_WALLET
+    // The phone's allowance is topped up from the wallet, where the money is.
+    connect(m_server, &ServerPage::topUpRequested, this, [this](const QString& address) {
+        if (!m_wallet) return;
+        m_nav->setCurrentRow(m_pages->indexOf(m_wallet));
+        m_wallet->OpenSend(address);
+    });
+#endif
 
     m_settings = new SettingsPage(platformStyle, this);
     connect(m_settings, &SettingsPage::message, this,

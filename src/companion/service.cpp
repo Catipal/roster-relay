@@ -525,7 +525,8 @@ std::string Service::CheckDevicePin(Device& d, const std::string& pin, int64_t n
         LogPrintf("companion: %s locked after %d wrong PINs\n", SanitizeString(d.name), d.failures);
         return "Wrong PIN. This phone is now locked: unlock it on the home node.";
     }
-    return strprintf("Wrong PIN. %d tries left before this phone is locked.", MAX_PIN_FAILURES - d.failures);
+    const int left = MAX_PIN_FAILURES - d.failures;
+    return strprintf("Wrong PIN. %d %s left before this phone is locked.", left, left == 1 ? "try" : "tries");
 }
 
 Message Service::Send(const CPubKey& device, const Message& request, int64_t now)

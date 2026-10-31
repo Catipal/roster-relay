@@ -368,6 +368,42 @@ What this node offers other people.
   can run, so the viewer stays the safer way to read a hidden site.
   "Connect to a program..." carries a port of this computer to a program the
   site runs, for a chat client or a game to connect to.
+- **Phone companion** - off until you turn it on. Lets your phone spend from
+  a small allowance wallet on this node while your coins stay here; see below.
+
+Phone companion
+---------------
+
+Spend from your phone without putting your keys on it. The phone holds one
+key of its own, made on the phone, which can spend nothing; this node pays
+for it from a separate allowance wallet, after checking the phone's PIN and
+the limits you set.
+
+- **Setting up** - Server, Phone companion: turn on "Let paired phones spend
+  from an allowance wallet" and restart. Then Create it makes the allowance
+  wallet - no passphrase, because nobody is there to type one when the phone
+  pays - and Top up opens Send in the wallet to move coins into it. Put in it
+  only what the phone should be able to spend. It never stakes.
+- **Pairing** - Pair a phone shows a code, as a QR code and as text, good
+  for ten minutes and one phone. The phone answers it with a name and a PIN
+  of six to twelve digits. Both screens then show the same six digits: if
+  they differ, someone else answered first - reject, and show a new code.
+  When you accept, you set the most one payment may send and the most any
+  24 hours may send, fees included. The phone cannot change either.
+- **Paying** - the phone asks for a payment to an address or a name, sees
+  the fee, and sends it with its PIN. Names are paid exactly as from the
+  console: one that changed hands in the last day is refused.
+- **If the phone is lost** - Unpair it here. Five wrong PINs in a row lock
+  it until you unlock it here, and PIN tries are capped for all phones
+  together, so a stolen phone cannot guess its way in. At worst it can spend
+  what is left of the day's limit, never more than the allowance holds.
+- **How it is reached** - through three relays the phone picks itself, then
+  this node, which therefore has to be a listed relay. The relays cannot
+  read what passes and none of them learns both where the phone is and that
+  it is talking to this node. This node never learns where the phone is.
+
+The app is coming for Android and Linux phones; until then `bps-companion-cli`
+does the same from a terminal.
 
 Footer
 ------
@@ -419,6 +455,8 @@ New options
 | `-maxlistedusers` | 100 | Most peers to keep listed |
 | `-listingwallet` | the only wallet open | Which wallet pays for listings |
 | `-relayshare` | 0 | Percent of each block this node stakes, shared with its peers |
+| `-companion` | off | Let paired phones spend from an allowance wallet (needs the overlay and this node listed) |
+| `-companionwallet` | none | The allowance wallet paired phones spend from |
 
 The default for `-datacarriersize` rises from 83 to 253 bytes, so this node
 relays listings. It is relay policy only; blocks are validated as before.
@@ -440,7 +478,7 @@ revocations `getidentity`, `createidentity`, `createdelegation`,
 `listrevocations`, `getageproof` and `verifyageproof`; and for the roster's
 fingerprint `getrostersnapshot`, `verifyrostersnapshot`,
 `getrostermembership` and `verifyrostermembership`; `getradioinfo` for
-radio links; and `getmeetinginfo` and `meet` for reaching a node by its key alone; and `getchainfeedinfo` for blocks over radio; and `publishsite`, `unpublishsite`, `gethostinginfo`, `getsite` and `getsiteaddress` for hosting a folder under a key and reading it over the overlay; and `publishservice`, `unpublishservice`, `connectservice`, `disconnectservice` and `getserviceinfo` for programs reached as streams; `gettxpathinfo` for transactions sent through paths; and `getrostergrowth`, which says how much of the chain's growth listings are, over the last blocks - the tripwire the design note asks to watch from the first release.
+radio links; and `getmeetinginfo` and `meet` for reaching a node by its key alone; and `getchainfeedinfo` for blocks over radio; and `publishsite`, `unpublishsite`, `gethostinginfo`, `getsite` and `getsiteaddress` for hosting a folder under a key and reading it over the overlay; and `publishservice`, `unpublishservice`, `connectservice`, `disconnectservice` and `getserviceinfo` for programs reached as streams; `gettxpathinfo` for transactions sent through paths; and `getrostergrowth`, which says how much of the chain's growth listings are, over the last blocks - the tripwire the design note asks to watch from the first release; and for the phone companion `getcompanioninfo`, `companionpair`, `companionpending`, `companionaccept`, `companionreject`, `listcompaniondevices`, `setcompanionlimits`, `revokecompaniondevice` and `unlockcompaniondevice`.
 Each has its full description in `help`.
 
 The console suggests commands from what you type in plain words - "pay pilot

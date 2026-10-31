@@ -20,6 +20,7 @@ BPS_QT_H = \
   qt/bps/bpsrpc.h \
   qt/bps/bpsutil.h \
   qt/bps/bpswindow.h \
+  qt/bps/companiondialogs.h \
   qt/bps/discoverypage.h \
   qt/bps/mailpage.h \
   qt/bps/namespage.h \
@@ -40,6 +41,7 @@ BPS_QT_CPP = \
   qt/bps/bpsrpc.cpp \
   qt/bps/bpsutil.cpp \
   qt/bps/bpswindow.cpp \
+  qt/bps/companiondialogs.cpp \
   qt/bps/discoverypage.cpp \
   qt/bps/mailpage.cpp \
   qt/bps/namespage.cpp \
@@ -59,6 +61,7 @@ BPS_QT_MOC_CPP = \
   qt/bps/moc_bpsapp.cpp \
   qt/bps/moc_bpsrpc.cpp \
   qt/bps/moc_bpswindow.cpp \
+  qt/bps/moc_companiondialogs.cpp \
   qt/bps/moc_discoverypage.cpp \
   qt/bps/moc_mailpage.cpp \
   qt/bps/moc_namespage.cpp \
@@ -105,3 +108,8 @@ bps_relay_clean: FORCE
 	rm -f $(BPS_QT_MOC_CPP) $(qt_libbpsqt_a_OBJECTS) $(qt_bps_relay_OBJECTS) qt/bps-relay$(EXEEXT) qt/libbpsqt.a
 
 bps_relay: qt/bps-relay$(EXEEXT)
+
+# The wallet client's translate target reads every prerequisite it has ($^), so
+# naming this client's sources here is what puts its texts in bitcoin_en.ts.
+# Without it a `make translate` dropped every one of them.
+translate: $(BPS_QT_CPP) $(BPS_QT_H) qt/bps/bpsmain.cpp

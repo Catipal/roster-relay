@@ -7,6 +7,7 @@
 #endif
 
 #include <qt/bps/bpsapp.h>
+#include <qt/bps/bpsutil.h>
 #include <qt/bps/bpswindow.h>
 #include <qt/bps/serverpage.h>
 #include <qt/bps/settingspage.h>
@@ -147,6 +148,7 @@ BpsApplication::BpsApplication()
 {
     RegisterMetaTypes();
     setQuitOnLastWindowClosed(false);
+    BpsUtil::InstallStyle();
 }
 
 BpsApplication::~BpsApplication()

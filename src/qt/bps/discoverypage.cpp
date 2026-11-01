@@ -145,7 +145,11 @@ DiscoveryPage::DiscoveryPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_
     outer->addSpacing(8);
 
     // --- who this node is ------------------------------------------------
-    QHBoxLayout* key_row = new QHBoxLayout();
+    // One grid for the three rows below, so their values and buttons line up
+    // and a row whose button is hidden keeps the height of the others.
+    QGridLayout* who = new QGridLayout();
+    who->setHorizontalSpacing(8);
+    who->setColumnStretch(3, 1);
     QLabel* key_caption = new QLabel(tr("You are"), this);
     key_caption->setEnabled(false);
     m_key = new QLabel(tr("\xe2\x80\x94"), this);
@@ -156,15 +160,12 @@ DiscoveryPage::DiscoveryPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_
     m_publish = new QPushButton(tr("Publish your listing\xe2\x80\xa6"), this);
     m_publish->setEnabled(false);
 
-    key_row->addWidget(key_caption);
-    key_row->addWidget(m_key);
-    key_row->addWidget(m_copy_key);
-    key_row->addStretch(1);
-    key_row->addWidget(m_publish);
-    outer->addLayout(key_row);
+    who->addWidget(key_caption, 0, 0);
+    who->addWidget(m_key, 0, 1);
+    who->addWidget(m_copy_key, 0, 2, Qt::AlignLeft);
+    who->addWidget(m_publish, 0, 4);
 
     // --- the identity behind it (design note §7) ---------------------------
-    QHBoxLayout* identity_row = new QHBoxLayout();
     QLabel* identity_caption = new QLabel(tr("Identity"), this);
     identity_caption->setEnabled(false);
     m_identity = new QLabel(tr("\xe2\x80\x94"), this);
@@ -174,17 +175,14 @@ DiscoveryPage::DiscoveryPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_
     m_make_identity->setVisible(false);
     m_make_identity->setToolTip(tr("An identity keeps this node's history - how long it has been listed - "
                                    "if its key ever has to change."));
-    identity_row->addWidget(identity_caption);
-    identity_row->addWidget(m_identity);
-    identity_row->addWidget(m_make_identity);
-    identity_row->addStretch(1);
-    outer->addLayout(identity_row);
+    who->addWidget(identity_caption, 1, 0);
+    who->addWidget(m_identity, 1, 1);
+    who->addWidget(m_make_identity, 1, 2, Qt::AlignLeft);
 
     // --- the name that points at this key (design note 001 §11) -----------
     // A listing is a key; a name is how a person finds that key without
     // copying it. The names a key holds all resolve to it, so this is "what
     // you are known by" beside "who you are".
-    QHBoxLayout* name_row = new QHBoxLayout();
     QLabel* name_caption = new QLabel(tr("Name"), this);
     name_caption->setEnabled(false);
     m_name = new QLabel(tr("\xe2\x80\x94"), this);
@@ -192,11 +190,12 @@ DiscoveryPage::DiscoveryPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_
     m_name_button = new QPushButton(tr("Register a name\xe2\x80\xa6"), this);
     m_name_button->setToolTip(tr("A name is how others reach you without copying your key. "
                                  "Names are registered on the Names tab."));
-    name_row->addWidget(name_caption);
-    name_row->addWidget(m_name);
-    name_row->addWidget(m_name_button);
-    name_row->addStretch(1);
-    outer->addLayout(name_row);
+    who->addWidget(name_caption, 2, 0);
+    who->addWidget(m_name, 2, 1);
+    who->addWidget(m_name_button, 2, 2, Qt::AlignLeft);
+    const int row_height = m_name_button->sizeHint().height();
+    for (int row = 0; row < 3; ++row) who->setRowMinimumHeight(row, row_height);
+    outer->addLayout(who);
 
     m_error = new QLabel(this);
     m_error->setWordWrap(true);

@@ -6,9 +6,11 @@
 #define BITCOIN_QT_BPS_BPSUTIL_H
 
 #include <QFont>
+#include <QList>
 #include <QString>
 #include <QWidget>
 
+class QLabel;
 class UniValue;
 
 /**
@@ -45,6 +47,28 @@ QFont FixedPitchFont();
  * the pointer.
  */
 void KeepWheelForPage(QWidget* page);
+
+/**
+ * Lines up a page's forms: every label column as wide as the widest of them,
+ * so the values of one card start where the next card's do, and number boxes
+ * and drop-downs no wider than what they hold rather than stretched across
+ * the page. Call once the page is built.
+ */
+void TidyForms(QWidget* page);
+
+/**
+ * Keeps wrapped labels that sit side by side as tall as the tallest of them,
+ * however wide the window, so what comes below each starts on the same line.
+ */
+void SameHeight(const QList<QLabel*>& labels);
+
+/**
+ * The application's style with room around a button's text and a table
+ * header's: Windows' own style leaves a few pixels either side of a long
+ * label, so "Register a name..." touched its frame. Installed once, before
+ * any window exists.
+ */
+void InstallStyle();
 
 } // namespace BpsUtil
 

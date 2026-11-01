@@ -9,9 +9,17 @@
 #include <univalue.h>
 
 #include <QAbstractSpinBox>
+#include <QApplication>
 #include <QComboBox>
 #include <QCoreApplication>
 #include <QEvent>
+#include <QFormLayout>
+#include <QLabel>
+#include <QProxyStyle>
+#include <QStyleOptionButton>
+#include <QTimer>
+
+#include <algorithm>
 
 namespace BpsUtil {
 
@@ -130,6 +138,105 @@ void KeepWheelForPage(QWidget* page)
         box->setFocusPolicy(Qt::StrongFocus);
         box->installEventFilter(guard);
     }
+}
+
+void TidyForms(QWidget* page)
+{
+    int widest = 0;
+    QList<QWidget*> labels;
+    for (QFormLayout* form : page->findChildren<QFormLayout*>()) {
+        for (int row = 0; row < form->rowCount(); ++row) {
+            QLayoutItem* label = form->itemAt(row, QFormLayout::LabelRole);
+            if (label && label->widget()) {
+                labels.append(label->widget());
+                widest = std::max(widest, label->widget()->sizeHint().width());
+            }
+            QLayoutItem* field = form->itemAt(row, QFormLayout::FieldRole);
+            QWidget* box = field ? field->widget() : nullptr;
+            if (qobject_cast<QAbstractSpinBox*>(box) || qobject_cast<QComboBox*>(box)) {
+                const int least = box->fontMetrics().averageCharWidth() * 16;
+                box->setMaximumWidth(std::max(box->sizeHint().width(), least));
+            }
+        }
+    }
+    for (QWidget* label : labels) label->setMinimumWidth(widest);
+}
+
+namespace {
+
+/**
+ * On any of its labels resizing, sets them all to the height the tallest needs
+ * at its width - once the layout has settled, since while it is being worked
+ * out a label can briefly be a hundred pixels wide and many lines tall.
+ */
+class HeightMatcher : public QObject
+{
+public:
+    HeightMatcher(const QList<QLabel*>& labels, QObject* parent) : QObject(parent), m_labels(labels) {}
+
+    bool eventFilter(QObject* watched, QEvent* event) override
+    {
+        const QEvent::Type type = event->type();
+        if ((type == QEvent::Resize || type == QEvent::Show || type == QEvent::Hide) && !m_pending) {
+            m_pending = true;
+            QTimer::singleShot(0, this, [this] { Match(); });
+        }
+        return QObject::eventFilter(watched, event);
+    }
+
+private:
+    void Match()
+    {
+        m_pending = false;
+        int tallest = 0;
+        for (QLabel* label : m_labels) {
+            if (label->isVisible()) tallest = std::max(tallest, label->heightForWidth(label->width()));
+        }
+        for (QLabel* label : m_labels) {
+            if (label->minimumHeight() != tallest) label->setMinimumHeight(tallest);
+        }
+    }
+
+    const QList<QLabel*> m_labels;
+    bool m_pending{false};
+};
+
+class BpsStyle : public QProxyStyle
+{
+public:
+    QSize sizeFromContents(ContentsType type, const QStyleOption* option, const QSize& contents,
+                           const QWidget* widget) const override
+    {
+        QSize size = QProxyStyle::sizeFromContents(type, option, contents, widget);
+        if (!option) return size;
+        const int em = option->fontMetrics.averageCharWidth();
+        if (type == CT_PushButton) {
+            const QStyleOptionButton* button = qstyleoption_cast<const QStyleOptionButton*>(option);
+            // About two characters' room either side of the text.
+            if (button && !button->text.isEmpty()) size.setWidth(std::max(size.width(), contents.width() + 4 * em));
+        } else if (type == CT_HeaderSection) {
+            size.setWidth(size.width() + 2 * em);
+        }
+        return size;
+    }
+};
+
+} // namespace
+
+void SameHeight(const QList<QLabel*>& labels)
+{
+    if (labels.isEmpty()) return;
+    HeightMatcher* matcher = new HeightMatcher(labels, labels.front());
+    for (QLabel* label : labels) {
+        label->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+        label->installEventFilter(matcher);
+    }
+}
+
+void InstallStyle()
+{
+    // With no base given, the proxy draws with the platform's own style.
+    QApplication::setStyle(new BpsStyle());
 }
 
 } // namespace BpsUtil

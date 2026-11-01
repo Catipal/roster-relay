@@ -175,6 +175,10 @@ OverlayPage::OverlayPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(
     lists->addWidget(m_radio_box);
 
     outer->addLayout(lists, 1);
+    // The notes above the lists differ in length; held to one height, the
+    // lists below them start on one line.
+    BpsUtil::SameHeight({guards_note, rv_note, m_radio_state});
+    for (QListWidget* list : {m_guards, m_rendezvous, m_radio}) list->setWordWrap(true);
 
     // --- what relaying pays ------------------------------------------------
     QGroupBox* pay = new QGroupBox(tr("What relaying pays"), this);

@@ -285,6 +285,7 @@ SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
             this, &SettingsPage::onLanguageChanged);
 
     BpsUtil::KeepWheelForPage(this);
+    BpsUtil::TidyForms(this);
     Load();
 }
 

@@ -318,6 +318,7 @@ ServerPage::ServerPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_rpc(rp
     connect(m_timer, &QTimer::timeout, this, &ServerPage::Refresh);
 
     BpsUtil::KeepWheelForPage(this);
+    BpsUtil::TidyForms(this);
     Load();
 }
 

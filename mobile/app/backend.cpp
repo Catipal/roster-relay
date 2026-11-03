@@ -4,6 +4,8 @@
 
 #include <backend.h>
 
+#include <devicekey.h>
+
 #include <pubkey.h>
 #include <util/moneystr.h>
 #include <util/strencodings.h>
@@ -28,30 +30,6 @@ namespace {
 QString Q(const std::string& s) { return QString::fromStdString(s); }
 
 QString Coins(CAmount amount) { return Q(FormatMoney(amount)); }
-
-/**
- * The device key, made here on first run. Kept as hex in a file only this
- * user can read - encrypted at rest once a keystore is linked; until then the
- * phone's own storage protection is all it has. It can spend nothing by
- * itself: the home node also wants the PIN.
- */
-bool LoadOrMakeDeviceKey(const QString& path, CKey& key)
-{
-    QFile in(path);
-    if (in.open(QIODevice::ReadOnly)) {
-        const std::vector<unsigned char> raw = ParseHex(in.readAll().trimmed().toStdString());
-        if (raw.size() != 32) return false;
-        key.Set(raw.begin(), raw.end(), true);
-        return key.IsValid();
-    }
-    key.MakeNewKey(true);
-    QSaveFile out(path);
-    if (!out.open(QIODevice::WriteOnly)) return false;
-    out.write(QByteArray::fromStdString(HexStr(Span<const unsigned char>(key.begin(), key.size())) + "\n"));
-    if (!out.commit()) return false;
-    QFile::setPermissions(path, QFileDevice::ReadOwner | QFileDevice::WriteOwner);
-    return true;
-}
 
 } // namespace
 
@@ -78,10 +56,7 @@ Backend::~Backend()
 bool Backend::Load(QString& error)
 {
     QDir().mkpath(m_dir);
-    if (!LoadOrMakeDeviceKey(m_dir + QStringLiteral("/device.key"), m_device)) {
-        error = tr("The device key in %1 is damaged.").arg(m_dir);
-        return false;
-    }
+    if (!LoadOrMakeDeviceKey(m_dir, m_device, m_key_in_keystore, error)) return false;
     QFile in(m_dir + QStringLiteral("/home.json"));
     if (!in.open(QIODevice::ReadOnly)) return true;
     const QJsonObject v = QJsonDocument::fromJson(in.readAll()).object();
@@ -125,6 +100,8 @@ void Backend::Save()
     if (!m_token.IsNull()) v.insert(QStringLiteral("token"), Q(m_token.GetHex()));
     QSaveFile out(path);
     if (out.open(QIODevice::WriteOnly)) {
+        // Which home node, and so whose: nobody else's business.
+        out.setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
         out.write(QJsonDocument(v).toJson());
         out.commit();
     }

@@ -7,7 +7,7 @@
 
 #include <QQuickImageProvider>
 
-/** "image://qr/<text>": the text as a QR code, black on white, with its quiet zone. */
+/** "image://qr/<text>": the text as a QR code drawn by ZXing-C++, black on white, with its quiet zone. */
 class QrProvider : public QQuickImageProvider
 {
 public:

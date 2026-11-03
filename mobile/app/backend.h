@@ -25,8 +25,9 @@
  * client lives on a thread of its own and the screens only read properties
  * and call the slots below, which return at once.
  *
- * What it keeps between runs, in the app's data folder: the device key and
- * home.json, the home node as the client remembers it. A payment prepared
+ * What it keeps between runs: the device key, in the system keystore where
+ * there is one (devicekey.h), and home.json in the app's data folder, the
+ * home node as the client remembers it. A payment prepared
  * but not sent is kept in memory only: the home node forgets it on a restart
  * too.
  */
@@ -47,6 +48,8 @@ class Backend : public QObject
     Q_PROPERTY(QString address READ address NOTIFY addressChanged)
     Q_PROPERTY(QVariantMap prepared READ prepared NOTIFY preparedChanged)
     Q_PROPERTY(QVariantMap sent READ sent NOTIFY sentChanged)
+    /** Whether the device key is in the system keystore rather than a plain file. */
+    Q_PROPERTY(bool keyInKeystore READ keyInKeystore CONSTANT)
 
 public:
     explicit Backend(const QString& data_dir, QObject* parent = nullptr);
@@ -68,6 +71,7 @@ public:
     QString address() const { return m_address; }
     QVariantMap prepared() const { return m_prepared_view; }
     QVariantMap sent() const { return m_sent; }
+    bool keyInKeystore() const { return m_key_in_keystore; }
 
     /** Whether a pasted ticket reads as one: "" if so, else what is wrong. */
     Q_INVOKABLE QString checkTicket(const QString& text) const;
@@ -118,6 +122,7 @@ private:
 
     const QString m_dir;
     CKey m_device;
+    bool m_key_in_keystore{false};
 
     QThread m_thread;
     QObject* m_worker; //!< lives on m_thread; the client is only touched from there

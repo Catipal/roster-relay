@@ -8,6 +8,7 @@ Flickable {
     property alias phoneName: nameField.text
     property string problem: ""
     signal next()
+    signal scan()
     contentHeight: column.implicitHeight + 72
     clip: true
 
@@ -29,7 +30,7 @@ Flickable {
             }
             PageTitle { text: qsTr("Pair with your home node"); Layout.fillWidth: true }
             Label {
-                text: qsTr("On your computer, open BPS Relay, Server, Phone companion, and choose Pair a phone. Copy the text under the code it shows and paste it here.")
+                text: qsTr("On your computer, open BPS Relay, Server, Phone companion, and choose Pair a phone. Scan the code it shows, or paste the text under it.")
                 color: Theme.muted
                 wrapMode: Text.Wrap
                 lineHeight: 1.3
@@ -37,11 +38,17 @@ Flickable {
             }
         }
 
+        QuietButton {
+            text: qsTr("Scan the code")
+            Layout.fillWidth: true
+            onClicked: root.scan()
+        }
+
         ColumnLayout {
             spacing: 6
             Layout.fillWidth: true
             Label {
-                text: qsTr("The text from the home node")
+                text: qsTr("Or paste the text")
                 font.pixelSize: 13
                 font.weight: Font.DemiBold
                 color: Theme.label

@@ -7,6 +7,7 @@ ColumnLayout {
     property alias to: toField.text
     property alias amount: amountField.text
     signal back()
+    signal scan()
     spacing: 20
 
     PageTitle { text: qsTr("Send"); back: true; onBackClicked: root.back(); Layout.fillWidth: true }
@@ -17,6 +18,13 @@ ColumnLayout {
         placeholder: qsTr("bob, or an address")
         inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
         Layout.fillWidth: true
+    }
+    QuietButton {
+        flat: true
+        tint: Theme.accent
+        text: qsTr("Scan an address")
+        Layout.topMargin: -12
+        onClicked: root.scan()
     }
     Field {
         id: amountField

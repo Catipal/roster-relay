@@ -14,9 +14,10 @@ ApplicationWindow {
     // Where the screens are: pairing first, then the four tabs and the steps of a payment.
     property string screen: backend.state === "paired" ? "home" : "pair"
     property string firstPin: ""
+    property string scanFor: ""   // "ticket" or "payee"
     readonly property var tabs: ["home", "activity", "receive", "settings"]
     readonly property var pages: ["pair", "pin", "code", "locked", "home", "send", "review", "sent",
-                                  "receive", "activity", "settings", "broken"]
+                                  "receive", "activity", "settings", "broken", "scan"]
 
     function go(name) {
         backend.clearError()
@@ -28,8 +29,29 @@ ApplicationWindow {
     readonly property string shown: startupError !== "" ? "broken"
         : backend.state === "waiting" ? "code"
         : backend.state === "locked" ? "locked"
-        : backend.state === "unpaired" ? (screen === "pin" ? "pin" : "pair")
+        : backend.state === "unpaired" ? (screen === "pin" || screen === "scan" ? screen : "pair")
         : (screen === "pair" || screen === "pin" ? "home" : screen)
+
+    function startScan(what) {
+        scanFor = what
+        scanPage.title = what === "ticket" ? qsTr("Scan the home node's code") : qsTr("Scan an address")
+        screen = "scan"
+        scanPage.start()
+    }
+
+    // An address as text, or as a payment link: bps:<address>?amount=<coins>
+    function takePayee(text) {
+        let t = text.trim()
+        const colon = t.indexOf(":")
+        if (colon > 0 && colon < 8) t = t.slice(colon + 1)
+        const q = t.indexOf("?")
+        if (q >= 0) {
+            const m = t.slice(q + 1).match(/(?:^|&)amount=([0-9.]+)/)
+            if (m) sendPage.amount = m[1]
+            t = t.slice(0, q)
+        }
+        sendPage.to = t
+    }
 
     Connections {
         target: backend
@@ -71,6 +93,7 @@ ApplicationWindow {
 
             PairPage {
                 id: pairPage
+                onScan: window.startScan("ticket")
                 onNext: { pinPage.confirming = false; pinPage.problem = ""; pinPage.reset(); window.screen = "pin" }
             }
             PinPage {
@@ -119,6 +142,7 @@ ApplicationWindow {
                     anchors.margins: Theme.gutter
                     anchors.topMargin: 16
                     onBack: window.go("home")
+                    onScan: window.startScan("payee")
                 }
             }
             Item {
@@ -146,6 +170,19 @@ ApplicationWindow {
                     color: Theme.danger
                     wrapMode: Text.Wrap
                     verticalAlignment: Text.AlignVCenter
+                }
+            }
+            ScanPage {
+                id: scanPage
+                onBack: window.screen = window.scanFor === "ticket" ? "pair" : "send"
+                onScanned: (text) => {
+                    if (window.scanFor === "ticket") {
+                        pairPage.ticket = text
+                        window.screen = "pair"
+                    } else {
+                        window.takePayee(text)
+                        window.screen = "send"
+                    }
                 }
             }
         }

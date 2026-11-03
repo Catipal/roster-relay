@@ -41,6 +41,10 @@ Flickable {
                 Row2 { key: qsTr("Network"); value: backend.network }
                 Row2 { key: qsTr("Relays known"); value: backend.relaysKnown }
                 Row2 {
+                    key: qsTr("Device key")
+                    value: backend.keyInKeystore ? qsTr("in the system keystore") : qsTr("in a plain file")
+                }
+                Row2 {
                     key: qsTr("Limits")
                     value: backend.status.perTx ? qsTr("%1 a payment, %2 a day").arg(backend.status.perTx).arg(backend.status.perDay) : "—"
                 }
@@ -48,6 +52,14 @@ Flickable {
         }
         Label {
             text: qsTr("The limits are set on the home node and only it can change them. This phone holds no coin keys: only a key of its own, which can spend nothing by itself.")
+            color: Theme.muted
+            font.pixelSize: 13
+            wrapMode: Text.Wrap
+            Layout.fillWidth: true
+        }
+        Label {
+            visible: !backend.keyInKeystore
+            text: qsTr("No keystore was found on this system, so the device key is kept in a file only you can read. It still cannot spend without your PIN.")
             color: Theme.muted
             font.pixelSize: 13
             wrapMode: Text.Wrap

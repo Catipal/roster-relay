@@ -12,19 +12,21 @@ project(bps_companion_app VERSION 0.1 LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.8 REQUIRED COMPONENTS Gui Qml Quick QuickControls2)
+find_package(Qt6 6.8 REQUIRED COMPONENTS Concurrent Gui Multimedia Qml Quick QuickControls2)
+# QR codes read and drawn with ZXing-C++; the device key kept by QtKeychain.
+find_package(ZXing 3 REQUIRED)
+find_package(Qt6Keychain REQUIRED)
 qt_standard_project_setup(REQUIRES 6.8)
 
 set(BPS_COMPANION_CLI OFF CACHE BOOL "" FORCE)
 add_subdirectory(../core core)
 
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(QRENCODE REQUIRED IMPORTED_TARGET libqrencode)
-
 qt_add_executable(bps-companion
   main.cpp
   backend.cpp
   backend.h
+  devicekey.cpp
+  devicekey.h
   qrprovider.cpp
   qrprovider.h)
 target_include_directories(bps-companion PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
@@ -33,6 +35,9 @@ set_source_files_properties(qml/Theme.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 qt_add_qml_module(bps-companion
   URI BPSCompanion
   VERSION 1.0
+  SOURCES
+    qrscanner.cpp
+    qrscanner.h
   QML_FILES
     qml/Main.qml
     qml/Theme.qml
@@ -52,10 +57,27 @@ qt_add_qml_module(bps-companion
     qml/ReceivePage.qml
     qml/ActivityPage.qml
     qml/SettingsPage.qml
-    qml/LockedPage.qml)
+    qml/LockedPage.qml
+    qml/ScanPage.qml)
 
 target_link_libraries(bps-companion PRIVATE
-  Qt6::Gui Qt6::Qml Qt6::Quick Qt6::QuickControls2
-  bps_companion_core PkgConfig::QRENCODE)
+  Qt6::Concurrent Qt6::Gui Qt6::Multimedia Qt6::Qml Qt6::Quick Qt6::QuickControls2
+  ZXing::ZXing Qt6Keychain::Qt6Keychain
+  bps_companion_core)
 
-install(TARGETS bps-companion RUNTIME DESTINATION bin)
+if(ANDROID)
+  # Android 9 and later; Qt's own floor for 6.12 too.
+  set_target_properties(bps-companion PROPERTIES
+    QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android"
+    QT_ANDROID_PACKAGE_NAME org.bps.companion
+    QT_ANDROID_APP_NAME "BPS Companion"
+    QT_ANDROID_MIN_SDK_VERSION 28
+    QT_ANDROID_TARGET_SDK_VERSION 36
+    QT_ANDROID_VERSION_NAME "${PROJECT_VERSION}"
+    QT_ANDROID_VERSION_CODE 1)
+  # The client's own UDP socket is not Qt Network's, so nothing adds this by itself.
+  qt_add_android_permission(bps-companion NAME android.permission.INTERNET)
+  qt_add_android_permission(bps-companion NAME android.permission.CAMERA)
+else()
+  install(TARGETS bps-companion RUNTIME DESTINATION bin)
+endif()

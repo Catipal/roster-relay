@@ -32,13 +32,26 @@ qt_add_executable(bps-companion
 target_include_directories(bps-companion PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 
 set_source_files_properties(qml/Theme.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
+# Choosing a picture of a code: the system's picker on a phone, Qt's dialog
+# elsewhere. QtQuick.Dialogs brings every Controls style along, about 20 MB
+# a phone would carry for nothing.
+if(ANDROID)
+  set(picture_sources androidpicker.cpp androidpicker.h)
+  set(picture_qml platform/android/PictureDialog.qml)
+else()
+  set(picture_sources)
+  set(picture_qml platform/desktop/PictureDialog.qml)
+endif()
+set_source_files_properties(${picture_qml} PROPERTIES QT_RESOURCE_ALIAS PictureDialog.qml)
 qt_add_qml_module(bps-companion
   URI BPSCompanion
   VERSION 1.0
   SOURCES
     qrscanner.cpp
     qrscanner.h
+    ${picture_sources}
   QML_FILES
+    ${picture_qml}
     qml/Main.qml
     qml/Theme.qml
     qml/PrimaryButton.qml
@@ -74,7 +87,16 @@ if(ANDROID)
     QT_ANDROID_MIN_SDK_VERSION 28
     QT_ANDROID_TARGET_SDK_VERSION 36
     QT_ANDROID_VERSION_NAME "${PROJECT_VERSION}"
-    QT_ANDROID_VERSION_CODE 1)
+    QT_ANDROID_VERSION_CODE 1
+    # Libraries compressed in the package: a much smaller download, which is
+    # what matters for a package fetched by hand or from F-Droid.
+    QT_ANDROID_LEGACY_PACKAGING ON)
+  # QML debugger and profiler plugins, and image formats no code arrives in.
+  qt_import_plugins(bps-companion EXCLUDE_BY_TYPE qmltooling iconengines
+    EXCLUDE Qt6::QGifPlugin Qt6::QICOPlugin)
+  # The activity-result hook the picker uses.
+  find_package(Qt6 REQUIRED COMPONENTS CorePrivate)
+  target_link_libraries(bps-companion PRIVATE Qt6::CorePrivate)
   # The client's own UDP socket is not Qt Network's, so nothing adds this by itself.
   qt_add_android_permission(bps-companion NAME android.permission.INTERNET)
   qt_add_android_permission(bps-companion NAME android.permission.CAMERA)

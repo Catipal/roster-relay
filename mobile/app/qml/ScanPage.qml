@@ -1,7 +1,6 @@
 import QtCore
 import QtQuick
 import QtQuick.Controls.Basic
-import QtQuick.Dialogs
 import QtQuick.Layouts
 import QtMultimedia
 
@@ -44,12 +43,10 @@ Item {
         onFound: (text) => { root.scanning = false; root.scanned(text) }
     }
 
-    FileDialog {
+    PictureDialog {
         id: picture
-        title: qsTr("A picture of the code")
-        nameFilters: [qsTr("Pictures (*.png *.jpg *.jpeg *.webp *.bmp)")]
-        onAccepted: {
-            const text = scanner.decodeFile(selectedFile)
+        onPicked: (url) => {
+            const text = scanner.decodeFile(url)
             if (text === "") root.problem = qsTr("No QR code found in that picture.")
             else { root.scanning = false; root.scanned(text) }
         }

@@ -1,0 +1,1 @@
+First release: pair with your BPS Relay, pay an address or a BPS name within its limits, receive, and see your activity.

@@ -1,0 +1,12 @@
+BPS Companion pays and receives BPS without holding any coin keys.
+
+Your own BPS Relay at home keeps a small allowance wallet and signs for this phone, within limits only the relay can change:
+* so much per payment and so much a day, set when you pair the phone;
+* a PIN, checked by the relay, that locks the phone after five wrong tries;
+* the phone can be unpaired from the relay at any time.
+
+The app reaches your relay through three other relays. None of them, and nobody watching your home connection, learns where the phone is. The phone holds only a key of its own, kept in the Android Keystore, which can spend nothing by itself.
+
+Pair by scanning the code your BPS Relay shows (Server page, Phone companion), or paste its text. Pay an address or a BPS name, scan a payment code, and see your recent activity.
+
+You need a BPS Relay that is listed as a relay, with the phone companion turned on.

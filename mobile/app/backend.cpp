@@ -19,6 +19,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QLocale>
+#include <QRegularExpression>
 #include <QSaveFile>
 
 #include <algorithm>
@@ -30,6 +31,13 @@ namespace {
 QString Q(const std::string& s) { return QString::fromStdString(s); }
 
 QString Coins(CAmount amount) { return Q(FormatMoney(amount)); }
+
+/** A ticket as pasted: copied from a wrapped line it can come with breaks and spaces inside, which are never part of it. */
+std::string TicketText(QString text)
+{
+    text.remove(QRegularExpression(QStringLiteral("\\s")));
+    return text.toStdString();
+}
 
 } // namespace
 
@@ -125,7 +133,7 @@ QString Backend::checkTicket(const QString& text) const
 {
     PairingTicket t;
     std::string error;
-    if (!DecodeTicket(text.trimmed().toStdString(), t, error)) return Q(error);
+    if (!DecodeTicket(TicketText(text), t, error)) return Q(error);
     return {};
 }
 
@@ -211,7 +219,7 @@ void Backend::pair(const QString& ticket, const QString& name, const QString& pi
 {
     PairingTicket t;
     std::string error;
-    if (!DecodeTicket(ticket.trimmed().toStdString(), t, error)) return SetError(Q(error));
+    if (!DecodeTicket(TicketText(ticket), t, error)) return SetError(Q(error));
     if (!ValidPin(pin.toStdString())) return SetError(tr("A PIN is six to twelve digits."));
     const std::string device_name = name.trimmed().toStdString();
     const std::string pin_text = pin.toStdString();

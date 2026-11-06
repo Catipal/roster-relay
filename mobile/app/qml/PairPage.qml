@@ -59,6 +59,8 @@ Flickable {
                 Layout.preferredHeight: 104
                 placeholderText: "BPSC1:…"
                 wrapMode: TextEdit.WrapAnywhere
+                // A code, not words: no suggestions, corrections or capitals from the keyboard.
+                inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoAutoUppercase | Qt.ImhSensitiveData
                 font.family: Theme.mono
                 font.pixelSize: 13
                 color: Theme.text

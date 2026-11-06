@@ -43,16 +43,47 @@ ColumnLayout {
                 implicitHeight: 64
                 enabled: root.active && (digit ? root.pin.length < 12
                                                 : modelData === "ok" ? root.pin.length >= 6 : root.pin.length > 0)
-                text: modelData === "ok" ? qsTr("OK") : modelData === "back" ? "⌫" : modelData
+                text: modelData === "ok" ? qsTr("OK") : modelData === "back" ? "" : modelData
                 Accessible.name: modelData === "back" ? qsTr("Delete") : text
                 font.pixelSize: digit ? 26 : 18
                 font.weight: digit ? Font.Normal : Font.DemiBold
-                contentItem: Text {
-                    text: key.text
-                    font: key.font
-                    color: !key.enabled ? Theme.border : modelData === "ok" ? Theme.accent : Theme.text
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
+                readonly property color ink: !key.enabled ? Theme.border : modelData === "ok" ? Theme.accent : Theme.text
+                contentItem: Item {
+                    Text {
+                        anchors.fill: parent
+                        visible: modelData !== "back"
+                        text: key.text
+                        font: key.font
+                        color: key.ink
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                    // Drawn, not a ⌫ character: not every phone's font has one.
+                    Canvas {
+                        id: backIcon
+                        visible: modelData === "back"
+                        anchors.centerIn: parent
+                        width: 30
+                        height: 22
+                        property color ink: key.ink
+                        onInkChanged: requestPaint()
+                        onPaint: {
+                            const c = getContext("2d")
+                            c.reset()
+                            c.strokeStyle = ink
+                            c.lineWidth = 2
+                            c.lineJoin = "round"
+                            c.lineCap = "round"
+                            c.beginPath()
+                            c.moveTo(9, 2); c.lineTo(28, 2); c.lineTo(28, 20); c.lineTo(9, 20); c.lineTo(2, 11)
+                            c.closePath()
+                            c.stroke()
+                            c.beginPath()
+                            c.moveTo(14, 7); c.lineTo(22, 15)
+                            c.moveTo(22, 7); c.lineTo(14, 15)
+                            c.stroke()
+                        }
+                    }
                 }
                 background: Rectangle {
                     radius: 32

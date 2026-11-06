@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The app's icon: the accent blue, and a phone with a link going home. Same drawing as android/res/drawable/icon.xml. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 108 108">
+  <path fill="#1F6FB2" d="M24,0h60a24,24 0 0 1 24,24v60a24,24 0 0 1 -24,24h-60a24,24 0 0 1 -24,-24v-60a24,24 0 0 1 24,-24z"/>
+  <path fill="#FFFFFF" d="M38,26h24a6,6 0 0 1 6,6v44a6,6 0 0 1 -6,6h-24a6,6 0 0 1 -6,-6v-44a6,6 0 0 1 6,-6z"/>
+  <path fill="#1F6FB2" d="M37,34h26v36h-26z"/>
+  <path fill="#FFFFFF" fill-rule="evenodd" d="M74,40a10,10 0 1 1 0,20a10,10 0 1 1 0,-20z M74,45a5,5 0 1 0 0,10a5,5 0 1 0 0,-10z"/>
+  <path fill="#FFFFFF" d="M63,48h6v4h-6z"/>
+</svg>

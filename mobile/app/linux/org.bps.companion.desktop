@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=BPS Companion
+GenericName=Wallet companion
+Comment=Spend from your home BPS Relay's allowance, within its limits
+Exec=bps-companion
+Icon=org.bps.companion
+Terminal=false
+Categories=Office;Finance;
+Keywords=BPS;wallet;payment;
+StartupWMClass=bps-companion
+X-Purism-FormFactor=Workstation;Mobile;

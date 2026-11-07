@@ -17,7 +17,7 @@ RepoType: git
 Repo: <the project's repository>
 
 Builds:
-  - versionName: '0.1'
+  - versionName: '0.1.0'
     versionCode: 1
     commit: <the release commit>
     subdir: mobile/app
@@ -33,5 +33,5 @@ Builds:
 
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: '0.1'
+CurrentVersion: '0.1.0'
 CurrentVersionCode: 1

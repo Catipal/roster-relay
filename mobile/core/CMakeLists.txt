@@ -13,7 +13,10 @@
 # here instead of quietly pulling it in.
 #
 # Builds for Linux (desktop and phones) and, with Qt's Android toolchain file,
-# for Android. Every file is compiled from ../../src: there is one copy.
+# for Android. Every file is compiled from the node's sources: ../../src in
+# the BPS tree, or ../shared/src in the app's own repository, which carries a
+# copy of just the files the client needs (listed in the BPS tree's
+# mobile/standalone/shared-files.txt, and in ../shared/files.txt).
 
 cmake_minimum_required(VERSION 3.16)
 project(bps_companion_core LANGUAGES C CXX)
@@ -22,7 +25,13 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-get_filename_component(BPS_SRC "${CMAKE_CURRENT_LIST_DIR}/../../src" ABSOLUTE)
+if(EXISTS "${CMAKE_CURRENT_LIST_DIR}/../shared/src")
+  get_filename_component(BPS_SRC "${CMAKE_CURRENT_LIST_DIR}/../shared/src" ABSOLUTE)
+  set(BPS_VERSION_FILE "${CMAKE_CURRENT_LIST_DIR}/../shared/version.ac")
+else()
+  get_filename_component(BPS_SRC "${CMAKE_CURRENT_LIST_DIR}/../../src" ABSOLUTE)
+  set(BPS_VERSION_FILE "${BPS_SRC}/../configure.ac")
+endif()
 get_filename_component(BPS_COMPAT "${CMAKE_CURRENT_LIST_DIR}/../compat" ABSOLUTE)
 
 find_package(Threads REQUIRED)
@@ -57,8 +66,9 @@ foreach(flag HAVE_DECL_BSWAP_16 HAVE_DECL_BSWAP_32 HAVE_DECL_BSWAP_64 HAVE_DECL_
   endif()
 endforeach()
 
-# The client version, from the one place it is set (randomenv.cpp mixes it in).
-file(STRINGS "${BPS_SRC}/../configure.ac" BPS_VERSION_LINES
+# The node's version, from the one place it is set (randomenv.cpp mixes it in);
+# in the app's own repository, the lines copied from there.
+file(STRINGS "${BPS_VERSION_FILE}" BPS_VERSION_LINES
      REGEX "^define\\(_(CLIENT_VERSION_(MAJOR|MINOR|REVISION|BUILD)|COPYRIGHT_YEAR), [0-9]+\\)")
 foreach(line ${BPS_VERSION_LINES})
   string(REGEX REPLACE "^define\\(_([A-Z_]+), ([0-9]+)\\)$" "\\1=\\2" def "${line}")

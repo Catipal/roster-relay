@@ -7,7 +7,9 @@
 # built here, then one unsigned APK per ABI. What CI runs, and what F-Droid
 # can run.
 #
-#   mobile/tools/android.sh [abi...]      default: arm64-v8a armeabi-v7a x86_64
+#   tools/android.sh [abi...]      default: arm64-v8a armeabi-v7a x86_64
+#
+# from the app's repository, or mobile/tools/android.sh in the BPS tree.
 #
 # Needs: a JDK 21, CMake 3.21+, Ninja, a C++ compiler for the host Qt, and an
 # Android SDK at $ANDROID_SDK_ROOT with build-tools;37.0.0, platforms;android-37.0
@@ -26,7 +28,9 @@ WORK=${WORK:-$HOME/bps-mobile}
 ABIS=("$@")
 [ ${#ABIS[@]} -gt 0 ] || ABIS=(arm64-v8a armeabi-v7a x86_64)
 
-TREE=$(cd "$(dirname "$0")/../.." && pwd)
+HERE=$(cd "$(dirname "$0")" && pwd)
+# The app's own repository has app/ beside tools/; the BPS tree, mobile/app.
+if [ -d "$HERE/../app" ]; then APP_SRC=$(cd "$HERE/../app" && pwd); else APP_SRC=$(cd "$HERE/../../mobile/app" && pwd); fi
 : "${ANDROID_SDK_ROOT:?set ANDROID_SDK_ROOT to the Android SDK}"
 NDK=$ANDROID_SDK_ROOT/ndk/$NDK_VERSION
 [ -d "$NDK" ] || { echo "NDK $NDK_VERSION is not installed in $ANDROID_SDK_ROOT" >&2; exit 1; }
@@ -121,7 +125,7 @@ for abi in "${ABIS[@]}"; do
     log=$LOG/app-android-$abi.log
     # Deployment only ever adds libraries to the package folder; a stale one would ship.
     rm -rf "$APP/android-build/libs" "$APP/android-build/assets"
-    { "$QT/bin/qt-cmake" -S "$TREE/mobile/app" -B "$APP" -G Ninja -DCMAKE_BUILD_TYPE=Release \
+    { "$QT/bin/qt-cmake" -S "$APP_SRC" -B "$APP" -G Ninja -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_FIND_ROOT_PATH="$DEPS" -DQT_ANDROID_BUILD_ALL_ABIS=OFF &&
       cmake --build "$APP" --target apk; } > "$log" 2>&1 || fail "app $abi" "$log"
     cp "$APP/android-build/build/outputs/apk/release/android-build-release-unsigned.apk" \

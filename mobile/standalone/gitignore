@@ -1,0 +1,9 @@
+# Build folders, wherever CMake or flatpak-builder put them.
+/build*/
+/flatpak/build/
+/.flatpak-builder/
+/repo/
+*.apk
+*.flatpak
+*.keystore
+*.jks

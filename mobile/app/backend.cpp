@@ -302,6 +302,7 @@ void Backend::ApplyStatus(const StatusAnswer& a)
         {QStringLiteral("leftFraction"),
          a.per_day > 0 ? double(std::max<CAmount>(0, a.per_day - a.spent_today)) / double(a.per_day) : 0.0},
         {QStringLiteral("height"), a.height},
+        {QStringLiteral("walletProblem"), Q(a.wallet_problem)},
         {QStringLiteral("reached"), QLocale().toString(QTime::currentTime(), QLocale::ShortFormat)},
     };
     Q_EMIT statusChanged();

@@ -140,6 +140,18 @@ class CompanionTest(BitcoinTestFramework):
         payee.setnamepayments()
         self.mine(SETTLE_DEPTH + 1)
 
+        self.log.info("a phone pairs before there is an allowance wallet, and is told it cannot spend yet")
+        early = Phone(self, "early")
+        ticket = home.companionpair()
+        early_paired = early.run("pair", ticket["ticket"], "Early", PIN)
+        home.companionaccept(ticket["token"], 1, 1)
+        assert_equal(early.run("pairstatus")["state"], "accepted")
+        status = early.run("status")
+        assert "is not open" in status["wallet_problem"], status
+        assert_equal(status["balance"], "0.00")
+        assert_equal(early.run("history")["history"], [])
+        early.fails("is not open", "address")
+
         self.log.info("an allowance wallet, small, with no passphrase, filled from the main one")
         home.createwallet("allowance")
         allowance = home.get_wallet_rpc("allowance")
@@ -149,6 +161,11 @@ class CompanionTest(BitcoinTestFramework):
         info = home.getcompanioninfo()
         assert_equal(info["wallet_ok"], True)
         assert_equal(info["balance"], Decimal("20"))
+        # The phone paired early sees it as soon as it is there.
+        status = early.run("status")
+        assert "wallet_problem" not in status, status
+        assert_equal(status["balance"], "20.00")
+        home.revokecompaniondevice(early_paired["device"])
 
         self.log.info("the phone answers a pairing ticket; nothing works until the home node accepts")
         phone = Phone(self, "a")

@@ -55,7 +55,7 @@ Flickable {
                     Label { text: qsTr("Allowance"); color: "#D6E6F5"; font.pixelSize: 14 }
                     Label {
                         // Shrinks rather than widen the card when a balance has every decimal.
-                        text: (backend.status.balance || "—") + " BPS"
+                        text: (backend.status.walletProblem ? "—" : (backend.status.balance || "—")) + " BPS"
                         color: "white"
                         font.pixelSize: 34
                         font.weight: Font.Bold
@@ -114,6 +114,15 @@ Flickable {
         Label {
             visible: backend.error !== ""
             text: backend.error
+            color: Theme.danger
+            font.pixelSize: 14
+            wrapMode: Text.Wrap
+            Layout.fillWidth: true
+        }
+
+        Label {
+            visible: !!backend.status.walletProblem && backend.error === ""
+            text: qsTr("Your home node cannot pay or be paid yet: %1 Create the allowance wallet on its Server page, then top it up.").arg(backend.status.walletProblem || "")
             color: Theme.danger
             font.pixelSize: 14
             wrapMode: Text.Wrap

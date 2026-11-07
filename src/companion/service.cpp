@@ -412,10 +412,14 @@ Message Service::Status(const CPubKey& device, const Message& request, int64_t n
         a.spent_today = SpentInWindow(d.spends, now);
         a.locked = d.Locked();
     }
+    // Answered with or without a wallet to pay from: the phone is paired
+    // either way, and says why it cannot spend yet.
     const WalletHooks hooks = GetWalletHooks();
-    if (!hooks.status) return Result(request.req, false, NO_WALLET);
-    std::string error;
-    if (!hooks.status(m_wallet, a.balance, a.pending, error)) return Result(request.req, false, error);
+    std::string error = NO_WALLET;
+    if (!hooks.status || !hooks.status(m_wallet, a.balance, a.pending, error)) {
+        a.balance = a.pending = 0;
+        a.wallet_problem = error;
+    }
     a.height = m_node.height ? m_node.height() : 0;
     return Make(Op::STATUS_INFO, request.req, a);
 }
@@ -435,9 +439,14 @@ Message Service::History(const Message& request)
     HistoryRequest req;
     if (!Read(request, Op::HISTORY, req)) return Result(request.req, false, "Malformed request.");
     const WalletHooks hooks = GetWalletHooks();
-    if (!hooks.history) return Result(request.req, false, NO_WALLET);
     HistoryAnswer a;
     std::string error;
+    // No wallet yet, no payments yet: an empty history, not an error, so a
+    // phone paired before the wallet was made still shows its screens.
+    CAmount balance, pending;
+    if (!hooks.history || !hooks.status || !hooks.status(m_wallet, balance, pending, error)) {
+        return Make(Op::HISTORY_ITEMS, request.req, a);
+    }
     const size_t count = std::min<size_t>(req.count, MAX_HISTORY);
     if (!hooks.history(m_wallet, req.skip, count, a.items, error)) return Result(request.req, false, error);
     return Make(Op::HISTORY_ITEMS, request.req, a);

@@ -153,9 +153,24 @@ struct StatusAnswer {
     CAmount spent_today{0}; //!< inside the last 24 hours, fees included
     int32_t height{0};
     bool locked{false}; //!< too many wrong PINs: only the home node can unlock it
-    SERIALIZE_METHODS(StatusAnswer, obj)
+    /** Why the home node cannot pay yet - no allowance wallet, say - or empty
+     *  when it can. A phone is paired and answered without one; it just cannot
+     *  spend or be paid until there is one. Last, and left out by home nodes
+     *  older than it, so either side reads the other. */
+    std::string wallet_problem;
+
+    template <typename Stream>
+    void Serialize(Stream& s) const
     {
-        READWRITE(obj.balance, obj.pending, obj.per_tx, obj.per_day, obj.spent_today, obj.height, obj.locked);
+        s << balance << pending << per_tx << per_day << spent_today << height << locked;
+        s << LIMITED_STRING(const_cast<std::string&>(wallet_problem), MAX_RESULT_TEXT);
+    }
+    template <typename Stream>
+    void Unserialize(Stream& s)
+    {
+        s >> balance >> pending >> per_tx >> per_day >> spent_today >> height >> locked;
+        wallet_problem.clear();
+        if (!s.empty()) s >> LIMITED_STRING(wallet_problem, MAX_RESULT_TEXT);
     }
 };
 

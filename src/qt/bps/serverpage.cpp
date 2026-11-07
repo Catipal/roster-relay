@@ -1116,10 +1116,10 @@ void ServerPage::ShowCompanion(const UniValue& info)
     const int64_t locked = find_value(info, "locked").get_int64();
     if (!reachable) {
         SetBadge(m_companion_badge, Status::ATTENTION, tr("not reachable"));
-    } else if (!wallet_ok) {
-        SetBadge(m_companion_badge, Status::ATTENTION, tr("no allowance"));
     } else if (waiting > 0) {
         SetBadge(m_companion_badge, Status::ATTENTION, tr("a phone is waiting"));
+    } else if (!wallet_ok) {
+        SetBadge(m_companion_badge, Status::ATTENTION, tr("no allowance"));
     } else if (locked > 0) {
         SetBadge(m_companion_badge, Status::ATTENTION,
                  locked == 1 ? tr("a phone is locked") : tr("%1 phones are locked").arg(locked));
@@ -1128,7 +1128,7 @@ void ServerPage::ShowCompanion(const UniValue& info)
                  devices == 0 ? tr("running, no phone yet")
                  : devices == 1 ? tr("running, 1 phone") : tr("running, %1 phones").arg(devices));
     }
-    m_companion_pair->setEnabled(reachable && wallet_ok);
+    m_companion_pair->setEnabled(reachable); // a phone pairs before the wallet is made, and spends once it is
     m_companion_topup->setEnabled(wallet_ok);
     m_companion_create->setEnabled(!wallet_ok);
     m_companion_devices->setVisible(devices > 0);
@@ -1178,12 +1178,12 @@ void ServerPage::onCreateAllowance()
     const QString name = AllowanceName();
     UniValue params(UniValue::VARR);
     params.push_back(name.toStdString()); // wallet_name
-    params.push_back(false);              // disable_private_keys
-    params.push_back(false);              // blank
+    params.push_back(UniValue(false));    // disable_private_keys (push_back has no bool overload: a bare false becomes 0)
+    params.push_back(UniValue(false));    // blank
     params.push_back("");                 // passphrase: none, on purpose
-    params.push_back(false);              // avoid_reuse
-    params.push_back(false);              // descriptors: legacy, like every wallet here
-    params.push_back(true);               // load_on_startup
+    params.push_back(UniValue(false));    // avoid_reuse
+    params.push_back(UniValue(false));    // descriptors: legacy, like every wallet here
+    params.push_back(UniValue(true));     // load_on_startup
     m_companion_create->setEnabled(false);
     m_rpc.Call(TAG_COMPANION_CREATE, "createwallet", params);
 }

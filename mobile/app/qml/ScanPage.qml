@@ -22,6 +22,22 @@ Item {
     }
     function stop() { scanning = false }
 
+    /** The largest of `formats` no bigger than 1920x1080, the faster one of equals; null if none. */
+    function sharpest(formats) {
+        let best = null
+        for (let i = 0; i < formats.length; ++i) {
+            const f = formats[i]
+            const w = Math.max(f.resolution.width, f.resolution.height)
+            const h = Math.min(f.resolution.width, f.resolution.height)
+            if (w > 1920 || h > 1080) continue
+            if (!best) { best = f; continue }
+            const area = f.resolution.width * f.resolution.height
+            const best_area = best.resolution.width * best.resolution.height
+            if (area > best_area || (area === best_area && f.maxFrameRate > best.maxFrameRate)) best = f
+        }
+        return best
+    }
+
     readonly property bool allowed: permission.status === Qt.PermissionStatus.Granted
     // Asked only once the camera is allowed: on Android, Qt lists no cameras
     // before that and keeps the empty list for as long as the app runs.
@@ -52,6 +68,13 @@ Item {
                     id: camera
                     active: root.scanning && root.haveCamera
                     focusMode: Camera.FocusModeAutoNear
+                    // The default can be as small as 640x480, too coarse for a
+                    // dense code on a screen; up to 1920x1080 reads it, and the
+                    // scanner scales anything bigger down anyway.
+                    Component.onCompleted: {
+                        const f = root.sharpest(cameraDevice.videoFormats)
+                        if (f) cameraFormat = f
+                    }
                 }
                 videoOutput: output
             }

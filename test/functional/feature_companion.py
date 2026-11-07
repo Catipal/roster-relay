@@ -114,6 +114,8 @@ class CompanionTest(BitcoinTestFramework):
         info = home.getcompanioninfo()
         assert_equal(info["enabled"], True)
         assert_equal(info["listed"], False)
+        # Unlisted, it gives a phone no relays: none could reach it on a path.
+        assert_equal(info["path_relays"], 0)
         assert_equal(info["wallet_ok"], False)
         assert "is not open" in info["wallet_error"]
         for n in range(1, self.num_nodes):

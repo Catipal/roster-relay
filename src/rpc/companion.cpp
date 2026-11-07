@@ -88,7 +88,7 @@ RPCHelpMan getcompanioninfo()
             {RPCResult::Type::BOOL, "listed", /* optional */ true, "Whether this node is a listed relay, which a phone needs to reach it"},
             {RPCResult::Type::STR, "address", /* optional */ true, "Where the roster lists this node's overlay"},
             {RPCResult::Type::STR, "addresses", /* optional */ true, "Every address a pairing ticket gives a phone, comma separated, best first"},
-            {RPCResult::Type::NUM, "path_relays", /* optional */ true, "Listed relays a phone could build its paths through; with fewer than 3 it connects directly"},
+            {RPCResult::Type::NUM, "path_relays", /* optional */ true, "Listed relays a phone could build its paths through: none unless this node is listed itself; with fewer than 3 it connects directly"},
             {RPCResult::Type::STR_HEX, "node_key", /* optional */ true, "The key a phone builds its paths to"},
             {RPCResult::Type::NUM, "devices", /* optional */ true, "Paired phones"},
             {RPCResult::Type::NUM, "locked", /* optional */ true, "Paired phones locked after too many wrong PINs"},

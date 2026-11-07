@@ -16,6 +16,9 @@
 #include <univalue.h>
 #include <util/moneystr.h>
 
+#include <algorithm>
+#include <cmath>
+
 #include <QApplication>
 #include <QClipboard>
 #include <QDateTime>
@@ -42,7 +45,7 @@ const char* TAG_PENDING = "companionpair:pending";
 const char* TAG_ACCEPT = "companionpair:accept";
 const char* TAG_REJECT = "companionpair:reject";
 
-/** Pixels a QR code is drawn at: big enough to scan from across a desk. */
+/** Pixels a QR code is drawn at, at least: big enough to scan from across a desk. */
 const int QR_SIZE = 380;
 
 /**
@@ -65,7 +68,15 @@ QPixmap MakeQR(const QString& text)
         }
     }
     QRcode_free(code);
-    return QPixmap::fromImage(image.scaled(QR_SIZE, QR_SIZE, Qt::KeepAspectRatio, Qt::FastTransformation));
+    // A whole number of the screen's own pixels to every module: scaled by a
+    // fraction - here or by Windows' display scaling - some modules come out
+    // a pixel wider than others, which a camera reading a dense code off a
+    // screen trips on.
+    const qreal dpr = std::max<qreal>(1.0, qApp->devicePixelRatio());
+    const int scale = std::max(3, int(std::ceil(QR_SIZE * dpr / image.width())));
+    QPixmap pixmap = QPixmap::fromImage(image.scaled(image.width() * scale, image.height() * scale, Qt::KeepAspectRatio, Qt::FastTransformation));
+    pixmap.setDevicePixelRatio(dpr);
+    return pixmap;
 #else
     Q_UNUSED(text);
     return QPixmap();

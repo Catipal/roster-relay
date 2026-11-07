@@ -114,6 +114,13 @@ bool HomeAddresses(std::string& out, bool& listed)
 
 std::vector<RelayEntry> PhoneRelays(size_t max)
 {
+    // A path ends here, dialled by the relay before this node from the
+    // internet, and only a listed node can be counted on to answer that. An
+    // unlisted one gives its phones no relays, so they come straight here at
+    // once rather than first trying paths that cannot arrive - and its
+    // pairing code stays short enough to scan easily.
+    std::string listed;
+    if (!ListedOverlayAddress(listed)) return {};
     roster::KeyBytes self{};
     const bool have_self = OwnKey(self);
     const bool regtest = Params().NetworkIDString() == CBaseChainParams::REGTEST;

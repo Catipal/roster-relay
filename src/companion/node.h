@@ -17,7 +17,8 @@ namespace companion {
 /**
  * Relays a phone can build its paths through: listed, reachable over IPv4 or
  * IPv6 - a phone has no Tor - and not this node, at most `max` of them in
- * random order so no two phones lean on the same few.
+ * random order so no two phones lean on the same few. None when this node is
+ * not listed itself: no path could end here.
  */
 std::vector<RelayEntry> PhoneRelays(size_t max);
 

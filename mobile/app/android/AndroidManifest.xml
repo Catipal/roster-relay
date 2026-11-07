@@ -24,7 +24,7 @@
         android:name="org.qtproject.qt.android.bindings.QtApplication"
         android:hardwareAccelerated="true"
         android:label="-- %%INSERT_APP_NAME%% --"
-        android:icon="@drawable/icon"
+        android:icon="@mipmap/icon"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:dataExtractionRules="@xml/no_backup"

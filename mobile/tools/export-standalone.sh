@@ -69,9 +69,10 @@ cp "$TMP/$STANDALONE/workflows/"*.yml "$DEST/.github/workflows/"
 cp "$TMP/COPYING" "$DEST/COPYING"
 chmod +x "$DEST/tools/android.sh"
 
-# Nothing of the BPS tree's layout may be left behind.
-if grep -rnE 'mobile/(app|core|compat|tools|flatpak|fdroid)' "$DEST" --exclude-dir=.git --exclude-dir=shared \
-       | grep -v 'in the BPS tree' | grep -v "BPS tree's" | grep -v 'mobile/tools/export-standalone.sh' | grep -v 'mobile/standalone/shared-files.txt'; then
+# The files rewritten for this layout must keep nothing of the BPS tree's.
+# (core/ and tools/android.sh find their sources in either layout on purpose.)
+if grep -rnE 'mobile/(app|core|compat|tools|flatpak|fdroid)|\.\./\.\./\.\./' \
+       "$DEST/flatpak" "$DEST/fdroid" "$DEST/.github" "$DEST"/*.md; then
     echo "error: paths of the BPS tree left in the export (above)" >&2
     exit 1
 fi

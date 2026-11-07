@@ -87,6 +87,8 @@ RPCHelpMan getcompanioninfo()
             {RPCResult::Type::STR_AMOUNT, "pending", /* optional */ true, "Not yet confirmed"},
             {RPCResult::Type::BOOL, "listed", /* optional */ true, "Whether this node is a listed relay, which a phone needs to reach it"},
             {RPCResult::Type::STR, "address", /* optional */ true, "Where the roster lists this node's overlay"},
+            {RPCResult::Type::STR, "addresses", /* optional */ true, "Every address a pairing ticket gives a phone, comma separated, best first"},
+            {RPCResult::Type::NUM, "path_relays", /* optional */ true, "Listed relays a phone could build its paths through; with fewer than 3 it connects directly"},
             {RPCResult::Type::STR_HEX, "node_key", /* optional */ true, "The key a phone builds its paths to"},
             {RPCResult::Type::NUM, "devices", /* optional */ true, "Paired phones"},
             {RPCResult::Type::NUM, "locked", /* optional */ true, "Paired phones locked after too many wrong PINs"},
@@ -118,6 +120,10 @@ RPCHelpMan getcompanioninfo()
     const bool listed = ListedOverlayAddress(address);
     out.pushKV("listed", listed);
     if (listed) out.pushKV("address", address);
+    std::string addresses;
+    bool first_listed = false;
+    if (HomeAddresses(addresses, first_listed)) out.pushKV("addresses", addresses);
+    out.pushKV("path_relays", (uint64_t)PhoneRelays(MAX_RELAYS).size());
     out.pushKV("node_key", HexStr(s.NodeKey()));
     const std::vector<Device> devices = s.Devices();
     out.pushKV("devices", (uint64_t)devices.size());
@@ -148,16 +154,16 @@ RPCHelpMan companionpair()
         [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
 {
     Service& s = EnsureCompanion();
-    std::string address;
-    if (!ListedOverlayAddress(address)) {
-        throw JSONRPCError(RPC_MISC_ERROR, "A phone reaches its home node as a listed relay, and this node is not "
-                                           "listed. Turn on the Relay card, or wait for its listing to confirm.");
+    std::string addresses;
+    bool listed = false;
+    if (!HomeAddresses(addresses, listed)) {
+        throw JSONRPCError(RPC_MISC_ERROR, "This node knows no address a phone could reach it at. List it as a relay "
+                                           "(the Relay card), or give one with -companionaddress.");
     }
+    // With fewer than three, the phone connects straight to this node: it
+    // still proves its key, but no relays stand between them.
     const std::vector<RelayEntry> relays = PhoneRelays(TICKET_RELAYS);
-    if (relays.size() < 3) {
-        throw JSONRPCError(RPC_MISC_ERROR, "The roster lists too few relays for a phone to build a path through.");
-    }
-    const PairingTicket t = s.NewTicket(Params().NetworkIDString(), address, relays, GetTime());
+    const PairingTicket t = s.NewTicket(Params().NetworkIDString(), addresses, relays, GetTime());
     UniValue out(UniValue::VOBJ);
     out.pushKV("ticket", EncodeTicket(t));
     out.pushKV("token", t.token.GetHex());

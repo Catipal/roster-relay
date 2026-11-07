@@ -136,6 +136,13 @@ public:
     void SetClientOnly(bool client_only) { m_client_only = client_only; }
 
     bool Connect(const CService& peer, const CPubKey& peer_static);
+    /**
+     * Begin a session with an adjacent peer, proving `as`: a phone reaching
+     * its home node with no relays in between proves its device key this way.
+     */
+    bool ConnectAs(const CService& peer, const CPubKey& peer_static, const CKey& as);
+    /** A session with `peer` heard from lately (Socket::Live). */
+    bool Live(const CService& peer) { return m_socket.Live(peer); }
     CService BoundAddress() const { return m_socket.BoundAddress(); }
     bool HasSession(const CService& peer) { return m_socket.HasSession(peer); }
     /** Who an adjacent peer proved itself to be - its roster key. */

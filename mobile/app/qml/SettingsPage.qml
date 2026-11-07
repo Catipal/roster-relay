@@ -41,6 +41,10 @@ Flickable {
                 Row2 { key: qsTr("Network"); value: backend.network }
                 Row2 { key: qsTr("Relays known"); value: backend.relaysKnown }
                 Row2 {
+                    key: qsTr("Connection")
+                    value: backend.direct ? qsTr("straight to the home node") : qsTr("through three relays")
+                }
+                Row2 {
                     key: qsTr("Device key")
                     value: backend.keyInKeystore ? qsTr("in the system keystore") : qsTr("in a plain file")
                 }

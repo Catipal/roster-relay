@@ -240,13 +240,36 @@ class CompanionTest(BitcoinTestFramework):
         self.log.info("one relay stops: the phone builds its path through others")
         self.stop_node(5)
         for _ in range(3):
-            phone.run("status")
+            assert_equal(phone.run("status")["route"], "path")
 
         self.log.info("a revoked phone can do nothing more")
         home.revokecompaniondevice(paired["device"])
         assert_equal(home.listcompaniondevices(), [])
         phone.fails("not paired", "status")
         phone.fails("not paired", "pay", payee_address, "0.1", "13579246")
+
+        self.log.info("with fewer than three relays to build a path through, a phone goes straight to the home node")
+        for n in (2, 3, 4):
+            self.stop_node(n)
+        info = home.getcompanioninfo()
+        # The pairing ticket says where to dial the home node, its listed
+        # address first: the overlay, beside the p2p port.
+        assert info["addresses"].startswith("127.0.0.1:{}".format(p2p_port(0) + 1)), info["addresses"]
+        straight = Phone(self, "b")
+        ticket = home.companionpair()
+        paired = straight.run("pair", ticket["ticket"], "Pinephone", PIN)
+        assert_equal([p["code"] for p in home.companionpending() if p["token"] == ticket["token"]], [paired["code"]])
+        home.companionaccept(ticket["token"], 1, 2)
+        assert_equal(straight.run("pairstatus")["state"], "accepted")
+        status = straight.run("status")
+        assert_equal(status["route"], "direct")
+        assert_equal(status["per_tx"], "1.00")
+        paid = straight.run("pay", payee_address, "0.5", PIN)
+        assert paid["txid"] in home.getrawmempool()
+        straight.fails("more than this phone may send in one payment", "pay", payee_address, "1.5", PIN)
+        # Straight there or not, the phone proves its key: a revoked one is refused.
+        home.revokecompaniondevice(paired["device"])
+        straight.fails("not paired", "status")
 
 
 if __name__ == '__main__':

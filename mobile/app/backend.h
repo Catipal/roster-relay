@@ -50,6 +50,8 @@ class Backend : public QObject
     Q_PROPERTY(QVariantMap sent READ sent NOTIFY sentChanged)
     /** Whether the device key is in the system keystore rather than a plain file. */
     Q_PROPERTY(bool keyInKeystore READ keyInKeystore CONSTANT)
+    /** Whether the last connection to the home node went straight there, with no relays in between. */
+    Q_PROPERTY(bool direct READ direct NOTIFY routeChanged)
 
 public:
     explicit Backend(const QString& data_dir, QObject* parent = nullptr);
@@ -72,6 +74,7 @@ public:
     QVariantMap prepared() const { return m_prepared_view; }
     QVariantMap sent() const { return m_sent; }
     bool keyInKeystore() const { return m_key_in_keystore; }
+    bool direct() const { return m_direct; }
 
     /** Whether a pasted ticket reads as one: "" if so, else what is wrong. */
     Q_INVOKABLE QString checkTicket(const QString& text) const;
@@ -108,6 +111,7 @@ Q_SIGNALS:
     /** A payment was prepared and is waiting for the PIN. */
     void preparedReady();
     void sendDone();
+    void routeChanged();
 
 private:
     /** Run `work` on the client's thread; `done` back on this one with its result. */
@@ -131,6 +135,7 @@ private:
 
     QString m_state{QStringLiteral("unpaired")};
     bool m_busy{false};
+    bool m_direct{false};
     int m_pending{0}; //!< questions sent to the worker and not yet answered
     QString m_error;
     QString m_name;

@@ -236,6 +236,8 @@ int Run(const fs::path& dir, const std::vector<std::string>& args)
         out.pushKV("left_today", Coins(std::max<CAmount>(0, a.per_day - a.spent_today)));
         out.pushKV("height", a.height);
         out.pushKV("locked", a.locked);
+        // How this run reached the home node: through three relays, or straight there.
+        out.pushKV("route", client.CurrentRoute() == Route::DIRECT ? "direct" : "path");
     } else if (cmd == "address") {
         std::string address;
         if (!client.Address(address, error)) return Fail(error);

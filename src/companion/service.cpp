@@ -113,8 +113,8 @@ void Service::Work()
         }
         if (!have) continue;
 
-        // The key the far end proved on the path: the device, or nobody.
-        const CPubKey device = request.from.via_path && m_node.identify ? m_node.identify(request.from) : CPubKey();
+        // The key the sender proved, at the end of a path or directly: the device, or nobody.
+        const CPubKey device = m_node.identify ? m_node.identify(request.from) : CPubKey();
         Message msg;
         if (!DecodeMessage(request.message, msg)) continue;
         const Message reply = Serve(device, msg, now);
@@ -125,8 +125,8 @@ void Service::Work()
 Message Service::Serve(const CPubKey& device, const Message& request, int64_t now)
 {
     if (IsAnswer(request.op)) return Result(request.req, false, "Not a request.");
-    // Everything happens at the end of a path whose far end proved a key.
-    if (!device.IsFullyValid()) return Result(request.req, false, "Requests have to come over a path from a phone.");
+    // Everything comes from a sender that proved a key, over a path or directly.
+    if (!device.IsFullyValid()) return Result(request.req, false, "Requests have to come from a phone that proves its key.");
 
     switch (request.op) {
     case Op::PAIR: return Pair(device, request, now);

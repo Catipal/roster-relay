@@ -140,6 +140,11 @@ bool Relay::Connect(const CService& peer, const CPubKey& peer_static)
     return m_socket.Connect(peer, peer_static, Throwaway(peer));
 }
 
+bool Relay::ConnectAs(const CService& peer, const CPubKey& peer_static, const CKey& as)
+{
+    return m_socket.ConnectAs(peer, peer_static, as);
+}
+
 bool Relay::SendApp(const CService& peer, const std::vector<unsigned char>& payload)
 {
     std::vector<unsigned char> msg;

@@ -22,6 +22,7 @@
 #include <net.h>
 #include <overlay/gateway.h>
 #include <overlay/localproxy.h>
+#include <overlay/relay.h>
 #include <overlay/socket.h>
 #include <overlay/sysif.h>
 #include <overlay/sysroute.h>
@@ -945,10 +946,11 @@ QWidget* ServerPage::MakeCompanionCard()
     QVBoxLayout* body = nullptr;
     QFrame* card = MakeCard(tr("Phone companion"), Status::OFF,
         tr("Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches "
-           "this node through three relays, proves the key it was paired with, and this node pays from a "
-           "small allowance wallet \xe2\x80\x94 after checking the phone's PIN and the limits you set, which the "
-           "phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it "
-           "here. A phone finds this node as a listed relay, so this node has to be listed."),
+           "this node, proves the key it was paired with, and this node pays from a small allowance "
+           "wallet \xe2\x80\x94 after checking the phone's PIN and the limits you set, which the phone cannot "
+           "change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this "
+           "node is a listed relay and enough others are listed, the phone comes through three relays, so "
+           "nobody watching learns where it is; otherwise it connects straight here."),
         this, &body, &m_companion_badge);
 
     QFormLayout* status = new QFormLayout();
@@ -1092,14 +1094,27 @@ void ServerPage::ShowCompanion(const UniValue& info)
     } else {
         m_companion_wallet_state->setText(QString::fromStdString(find_value(info, "wallet_error").get_str()));
     }
-    m_companion_reach->setText(listed
-        ? tr("yes, at %1").arg(QString::fromStdString(find_value(info, "address").get_str()))
-        : tr("no \xe2\x80\x94 publish this node's listing (Node, Discovery): a phone finds its home node as a listed relay"));
+    const UniValue& addresses_v = find_value(info, "addresses");
+    const QString addresses = addresses_v.isStr() ? QString::fromStdString(addresses_v.get_str()) : QString();
+    const UniValue& relays_v = find_value(info, "path_relays");
+    const int64_t path_relays = relays_v.isNum() ? relays_v.get_int64() : 0;
+    const bool reachable = listed || !addresses.isEmpty();
+    const QString port = overlay::g_overlay ? QString::number(overlay::g_overlay->BoundAddress().GetPort()) : QString();
+    if (listed && path_relays >= 3) {
+        m_companion_reach->setText(tr("yes, at %1, through relays").arg(QString::fromStdString(find_value(info, "address").get_str())));
+    } else if (reachable) {
+        m_companion_reach->setText(
+            tr("directly, at %1. No relays in between: a phone's network sees it talking to this computer. "
+               "From outside this network, forward UDP port %2 on the router to this computer.")
+                .arg(QString(addresses).replace(QLatin1Char(','), QStringLiteral(", ")), port));
+    } else {
+        m_companion_reach->setText(tr("no \xe2\x80\x94 this node knows no address of its own yet"));
+    }
 
     const int64_t devices = find_value(info, "devices").get_int64();
     const int64_t waiting = find_value(info, "waiting").get_int64();
     const int64_t locked = find_value(info, "locked").get_int64();
-    if (!listed) {
+    if (!reachable) {
         SetBadge(m_companion_badge, Status::ATTENTION, tr("not reachable"));
     } else if (!wallet_ok) {
         SetBadge(m_companion_badge, Status::ATTENTION, tr("no allowance"));
@@ -1113,7 +1128,7 @@ void ServerPage::ShowCompanion(const UniValue& info)
                  devices == 0 ? tr("running, no phone yet")
                  : devices == 1 ? tr("running, 1 phone") : tr("running, %1 phones").arg(devices));
     }
-    m_companion_pair->setEnabled(listed && wallet_ok);
+    m_companion_pair->setEnabled(reachable && wallet_ok);
     m_companion_topup->setEnabled(wallet_ok);
     m_companion_create->setEnabled(!wallet_ok);
     m_companion_devices->setVisible(devices > 0);

@@ -43,6 +43,13 @@ bool ParseAddr(const std::string& text, CService& out)
     return Lookup(text, out, 0, /* fAllowLookup */ false) && out.IsValid() && out.GetPort() != 0;
 }
 
+std::string JoinAddrs(const std::vector<CService>& addrs)
+{
+    std::string out;
+    for (size_t i = 0; i < addrs.size(); ++i) out += (i ? ", " : "") + addrs[i].ToString();
+    return out;
+}
+
 } // namespace
 
 Client::Client(const CKey& device, bool local_relays) : m_device(device), m_local_relays(local_relays) {}
@@ -100,6 +107,12 @@ uint64_t Client::PathId()
     return m_path;
 }
 
+Route Client::CurrentRoute()
+{
+    LOCK(m_mutex);
+    return m_route;
+}
+
 bool Client::Connect(std::string& error)
 {
     const Home home = GetHome();
@@ -107,12 +120,71 @@ bool Client::Connect(std::string& error)
         error = "There is no home node yet: pair this phone first.";
         return false;
     }
-    overlay::RelayCandidate dest;
-    dest.key = XOnly(home.node);
-    if (!ParseAddr(home.node_addr, dest.addr)) {
+    std::vector<CService> addrs;
+    size_t start = 0;
+    while (start <= home.node_addr.size()) {
+        size_t comma = home.node_addr.find(',', start);
+        if (comma == std::string::npos) comma = home.node_addr.size();
+        CService a;
+        if (ParseAddr(home.node_addr.substr(start, comma - start), a)) addrs.push_back(a);
+        start = comma + 1;
+    }
+    if (addrs.empty()) {
         error = "The home node's address is not one this phone can use.";
         return false;
     }
+    std::string path_error;
+    if (ConnectPath(addrs, path_error)) return true;
+    // No path to be had: too few relays run by different people, or none of
+    // those known would carry one. Straight to the home node, then.
+    if (ConnectDirect(addrs, error)) return true;
+    if (!path_error.empty()) error = path_error + " " + error;
+    return false;
+}
+
+bool Client::ConnectDirect(const std::vector<CService>& addrs, std::string& error)
+{
+    const Home home = GetHome();
+    // Every address at once: a phone on the home Wi-Fi reaches the local one,
+    // anywhere else the public one, and a router may refuse to loop the
+    // public one back inside. The first to complete the handshake is used.
+    for (int attempt = 0; attempt < 3; ++attempt) {
+        for (const CService& a : addrs) m_relay->ConnectAs(a, home.node, m_device);
+        const auto until = std::chrono::steady_clock::now() + std::chrono::milliseconds{1500};
+        while (std::chrono::steady_clock::now() < until) {
+            for (const CService& a : addrs) {
+                if (m_relay->Live(a) && m_relay->PeerIdentity(a) == home.node) {
+                    LOCK(m_mutex);
+                    m_route = Route::DIRECT;
+                    m_direct = a;
+                    m_path = 0;
+                    m_legs.clear();
+                    return true;
+                }
+            }
+            UninterruptibleSleep(std::chrono::milliseconds{20});
+        }
+    }
+    error = "The home node did not answer at " + JoinAddrs(addrs) + ".";
+    return false;
+}
+
+bool Client::ConnectPath(const std::vector<CService>& addrs, std::string& error)
+{
+    const Home home = GetHome();
+    overlay::RelayCandidate dest;
+    dest.key = XOnly(home.node);
+    // The relay before the home node dials it, from the internet: a local
+    // network address means nothing there, except between regtest's own.
+    bool have_dest = false;
+    for (const CService& a : addrs) {
+        if (a.IsRoutable() || m_local_relays) {
+            dest.addr = a;
+            have_dest = true;
+            break;
+        }
+    }
+    if (!have_dest) return false;
 
     std::map<roster::KeyBytes, CPubKey> keys;
     std::vector<overlay::RelayCandidate> listed;
@@ -140,12 +212,9 @@ bool Client::Connect(std::string& error)
         overlay::PathSelector selector(overlay::PathSelector::GUARD_COUNT, m_local_relays);
         selector.SetRelays(candidates);
         std::vector<overlay::RelayCandidate> chosen;
-        if (!selector.Select(overlay::DEFAULT_PATH_HOPS, chosen, dest)) {
-            error = strprintf("This phone knows fewer than %u relays run by different people to reach its home node "
-                              "through. Pair it again to learn more.",
-                              (unsigned)overlay::DEFAULT_PATH_HOPS);
-            return false;
-        }
+        // Fewer than three run by different people: no path, and the caller
+        // goes direct. Not an error worth showing by itself.
+        if (!selector.Select(overlay::DEFAULT_PATH_HOPS, chosen, dest)) return false;
         std::vector<overlay::Relay::CircuitHop> hops;
         for (const overlay::RelayCandidate& c : chosen) {
             overlay::Relay::CircuitHop h;
@@ -163,6 +232,7 @@ bool Client::Connect(std::string& error)
         if (m_relay->BuildCircuit(hops, path, error, std::chrono::milliseconds{4000},
                                   /* prove_last */ false, &m_device, &failed_at)) {
             LOCK(m_mutex);
+            m_route = Route::PATH;
             m_path = path;
             m_legs = m_relay->CircuitLegs(path);
             return true;
@@ -173,7 +243,7 @@ bool Client::Connect(std::string& error)
             m_shunned[chosen[failed_at].key] = GetTime() + SHUN_SECONDS;
         }
     }
-    error = "Could not reach the home node: " + error;
+    error = "No path through relays: " + error + ".";
     return false;
 }
 
@@ -185,6 +255,7 @@ void Client::Disconnect()
         legs = m_legs;
         m_legs.clear();
         m_path = 0;
+        m_route = Route::NONE;
     }
     if (m_relay && !legs.empty()) m_relay->ClosePath(legs);
 }
@@ -196,13 +267,14 @@ bool Client::Ask(const Message& request, Message& answer, std::string& error, st
         return false;
     }
     for (int attempt = 0; attempt < 2; ++attempt) {
-        uint64_t path = PathId();
-        if (path == 0) {
-            if (!Connect(error)) return false;
-            path = PathId();
+        if (CurrentRoute() == Route::NONE && !Connect(error)) return false;
+        overlay::Hop to;
+        {
+            LOCK(m_mutex);
+            to = m_route == Route::DIRECT ? overlay::Hop::Direct(m_direct) : overlay::Hop::Path(m_path);
         }
         std::vector<unsigned char> raw;
-        if (m_channel->Ask(overlay::Hop::Path(path), EncodeMessage(request), raw, timeout, error)) {
+        if (m_channel->Ask(to, EncodeMessage(request), raw, timeout, error)) {
             if (!DecodeMessage(raw, answer)) {
                 error = "The home node's answer was garbled.";
                 return false;

@@ -120,6 +120,15 @@ Flickable {
             Layout.fillWidth: true
         }
 
+        Label {
+            visible: backend.direct && backend.error === ""
+            text: qsTr("Connected straight to your home node, with no relays in between: this phone's network can see it talks to that node.")
+            color: Theme.muted
+            font.pixelSize: 13
+            wrapMode: Text.Wrap
+            Layout.fillWidth: true
+        }
+
         RowLayout {
             Layout.fillWidth: true
             Layout.topMargin: 8

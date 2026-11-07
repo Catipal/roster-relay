@@ -452,10 +452,10 @@ BOOST_AUTO_TEST_CASE(service_pairs_a_phone_only_once_accepted)
 
     // Unpaired: nothing but pairing is answered.
     BOOST_CHECK_EQUAL(ResultText(f.AskEmpty(f.device, Op::STATUS)), "This phone is not paired with this home node, or has been unpaired.");
-    // And nothing at all without a key proved on a path.
+    // And nothing at all from a sender that proved no key.
     Message anon;
     anon.op = Op::STATUS;
-    BOOST_CHECK(ResultText(f.service->Serve(CPubKey(), anon, f.now)).find("over a path") != std::string::npos);
+    BOOST_CHECK(ResultText(f.service->Serve(CPubKey(), anon, f.now)).find("proves its key") != std::string::npos);
 
     const PairingTicket t = f.service->NewTicket("regtest", "127.0.0.1:1", {}, f.now);
     PairRequest req;

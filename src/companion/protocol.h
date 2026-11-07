@@ -255,17 +255,20 @@ struct RelaysAnswer {
  * Everything a phone needs to find its home node the first time, shown on the
  * home node's screen as a QR code or a code to paste.
  */
+/** Room in a ticket for the home node's addresses: six IPv4 ones, or a few IPv6. */
+static constexpr size_t MAX_NODE_ADDR = 160;
+
 struct PairingTicket {
     uint8_t version{1};
     std::string network; //!< "main", "test", "regtest" or "signet"
     CPubKey node;        //!< the home relay's key: the end of every path
-    std::string node_addr;
+    std::string node_addr; //!< where the home node's overlay listens: one or more addresses, comma separated, best first
     uint256 token; //!< single use, and only until `expires`
     int64_t expires{0};
     std::vector<RelayEntry> relays;
     SERIALIZE_METHODS(PairingTicket, obj)
     {
-        READWRITE(obj.version, LIMITED_STRING(obj.network, 16), obj.node, LIMITED_STRING(obj.node_addr, 64), obj.token,
+        READWRITE(obj.version, LIMITED_STRING(obj.network, 16), obj.node, LIMITED_STRING(obj.node_addr, MAX_NODE_ADDR), obj.token,
                   obj.expires, obj.relays);
     }
 };

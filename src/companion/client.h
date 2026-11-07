@@ -26,6 +26,12 @@
  * Each time it is asked something with no path open, it builds one - three
  * relays it picks itself, then the home node - and proves its device key at
  * the end and nowhere else. It never carries anyone's traffic.
+ *
+ * Where it knows fewer than three relays run by different people, or no path
+ * can be built through those it knows, it connects straight to the home node
+ * instead and proves the device key there. Still end to end encrypted and
+ * still only the home node learns the key; but with no relays in between,
+ * whoever watches either connection sees the phone talking to that node.
  */
 namespace companion {
 
@@ -33,9 +39,12 @@ namespace companion {
 struct Home {
     std::string network;
     CPubKey node;
-    std::string node_addr;
+    std::string node_addr; //!< one or more addresses, comma separated, best first
     std::vector<RelayEntry> relays;
 };
+
+/** How the open connection to the home node runs. */
+enum class Route { NONE, PATH, DIRECT };
 
 class Client
 {
@@ -73,11 +82,15 @@ public:
     bool SetPin(const std::string& old_pin, const std::string& new_pin, std::string& error);
     bool Unpair(std::string& error);
 
-    /** The circuit open now, or 0. */
+    /** The circuit open now, or 0 - also 0 while connected directly. */
     uint64_t PathId();
+    /** Through relays, directly, or not connected. */
+    Route CurrentRoute();
 
 private:
     bool Connect(std::string& error);
+    bool ConnectPath(const std::vector<CService>& addrs, std::string& error);
+    bool ConnectDirect(const std::vector<CService>& addrs, std::string& error);
     void Disconnect();
     /** Ask, and read the answer as `expected` - or as a RESULT, whose text becomes `error`. */
     template <typename T>
@@ -96,6 +109,8 @@ private:
     Home m_home GUARDED_BY(m_mutex);
     uint64_t m_path GUARDED_BY(m_mutex){0};
     std::vector<uint64_t> m_legs GUARDED_BY(m_mutex);
+    Route m_route GUARDED_BY(m_mutex){Route::NONE};
+    CService m_direct GUARDED_BY(m_mutex);
     std::map<roster::KeyBytes, int64_t> m_shunned GUARDED_BY(m_mutex);
 };
 

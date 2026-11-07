@@ -194,6 +194,7 @@ void Backend::Run(std::function<bool(Client&, std::string&)> work, std::function
                 m_client_home.clear();
             }
         }
+        Route route = Route::NONE;
         if (m_client) {
             m_client->SetHome(home);
             try {
@@ -201,9 +202,14 @@ void Backend::Run(std::function<bool(Client&, std::string&)> work, std::function
             } catch (const std::exception& e) {
                 error = e.what();
             }
+            route = m_client->CurrentRoute();
         }
-        QMetaObject::invokeMethod(this, [this, ok, error, done, failed] {
+        QMetaObject::invokeMethod(this, [this, ok, error, done, failed, route] {
             SetBusy(--m_pending > 0);
+            if (route != Route::NONE && (route == Route::DIRECT) != m_direct) {
+                m_direct = route == Route::DIRECT;
+                Q_EMIT routeChanged();
+            }
             if (ok) {
                 if (done) done();
             } else if (failed) {

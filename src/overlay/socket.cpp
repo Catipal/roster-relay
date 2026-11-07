@@ -410,6 +410,16 @@ bool Socket::Connect(const CService& peer, const CPubKey& peer_static, bool thro
     return SendDatagram(peer, datagram);
 }
 
+bool Socket::ConnectAs(const CService& peer, const CPubKey& peer_static, const CKey& as)
+{
+    std::vector<unsigned char> datagram;
+    {
+        LOCK(m_mutex);
+        if (!m_transport.ConnectAs(peer, peer_static, as, datagram)) return false;
+    }
+    return SendDatagram(peer, datagram);
+}
+
 bool Socket::Send(const CService& peer, const std::vector<unsigned char>& payload)
 {
     std::vector<unsigned char> datagram;

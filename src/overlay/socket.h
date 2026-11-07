@@ -79,6 +79,8 @@ public:
     /** Begin a session with a peer whose identity came from the roster. */
     /** With `throwaway`, prove a key made for this session instead of the static key. */
     bool Connect(const CService& peer, const CPubKey& peer_static, bool throwaway = false);
+    /** The same, proving `as` instead of this node's own static key (Transport::ConnectAs). */
+    bool ConnectAs(const CService& peer, const CPubKey& peer_static, const CKey& as);
 
     /** Send application data to an established peer. */
     bool Send(const CService& peer, const std::vector<unsigned char>& payload);

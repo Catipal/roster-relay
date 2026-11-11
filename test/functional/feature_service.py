@@ -22,12 +22,17 @@ What the test is about:
   * a host with no pages but a service named web is a web application in a
     browser, through the visitor's site proxy, any method, with the proxy's
     own headers on every answer;
+  * the host's node gives the web application one request per stream, with
+    its own label for the visitor and nothing the request claimed about
+    where it came from, and turns away a request the application might read
+    differently than it did;
   * services are kept across a restart.
 """
 
 import base64
 import http.client
 import http.server
+import re
 import socket
 import threading
 
@@ -93,7 +98,10 @@ class Echo:
 class WebApp(http.server.BaseHTTPRequestHandler):
     """A web application on a host's loopback."""
 
+    seen = []  # (path, headers) of every request that reached it
+
     def do_GET(self):
+        WebApp.seen.append((self.path, self.headers))
         body = ("web application at %s" % self.path).encode()
         self.send_response(200)
         self.send_header("Content-Type", "text/plain")
@@ -104,6 +112,7 @@ class WebApp(http.server.BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_POST(self):
+        WebApp.seen.append((self.path, self.headers))
         data = self.rfile.read(int(self.headers["Content-Length"]))
         body = data[::-1]
         self.send_response(201)
@@ -263,6 +272,39 @@ class ServiceTest(BitcoinTestFramework):
         assert_equal(headers["Connection"], "close")
         status, _, body = self.http(site, "/form", method="POST", body=b"posted over BPS")
         assert_equal((status, body), (201, b"SPB revo detsop"))
+
+        self.log.info("the host's node labels the visitor, the same on every request along one path")
+        assert_equal([path for path, _ in WebApp.seen], ["/hello?x=1", "/form"])
+        label = WebApp.seen[0][1]["X-BPS-Visitor"]
+        assert re.fullmatch("[0-9a-f]{16}", label), label
+        assert_equal(WebApp.seen[1][1]["X-BPS-Visitor"], label)
+
+        self.log.info("a visitor that writes its own request cannot say who it is, or slip a second request in")
+        own = visitor.connectservice(self.key(HIDDEN), "web")
+        answer = roundtrip(own["port"],
+                           b"GET /own HTTP/1.1\r\nHost: x\r\nCF-Connecting-IP: 203.0.113.9\r\n"
+                           b"X-Forwarded-For: 203.0.113.9\r\nX-BPS-Visitor: ffffffffffffffff\r\n"
+                           b"Connection: keep-alive\r\n\r\n"
+                           b"GET /second HTTP/1.1\r\nHost: x\r\nCF-Connecting-IP: 198.51.100.1\r\n\r\n", timeout=120)
+        assert b" 200 " in answer.split(b"\r\n")[0], answer[:80]
+        assert answer.endswith(b"web application at /own"), answer[-80:]
+        assert_equal(len(WebApp.seen), 3)
+        path, headers = WebApp.seen[2]
+        assert_equal(path, "/own")
+        assert_equal(headers["CF-Connecting-IP"], None)
+        assert_equal(headers["X-Forwarded-For"], None)
+        assert re.fullmatch("[0-9a-f]{16}", headers["X-BPS-Visitor"]), headers["X-BPS-Visitor"]
+        assert headers["X-BPS-Visitor"] != "ffffffffffffffff"
+        assert_equal(headers["Connection"], "close")
+
+        self.log.info("a request the application might read differently never reaches it")
+        refused = host.getserviceinfo()["refused"]
+        for bad in (b"POST /chunked HTTP/1.1\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\n",
+                    b"GET /fold HTTP/1.1\r\nX-A: 1\nCF-Connecting-IP: 203.0.113.9\r\n\r\n"):
+            assert_equal(roundtrip(own["port"], bad, timeout=120), b"")
+        assert_equal(len(WebApp.seen), 3)
+        assert_equal(host.getserviceinfo()["refused"], refused + 2)
+        assert_equal(visitor.disconnectservice(own["port"]), True)
         web.shutdown()
 
         self.log.info("services are kept across a restart")

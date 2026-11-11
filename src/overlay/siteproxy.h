@@ -11,6 +11,7 @@
 
 #include <atomic>
 #include <cstdint>
+#include <map>
 #include <memory>
 #include <string>
 #include <thread>
@@ -84,6 +85,10 @@ public:
 
     //! Connections served at once; more wait for one to finish.
     static constexpr size_t MAX_CONNECTIONS = 16;
+    //! How long a host found to have no pages is not asked for one again:
+    //! every request to its web application would otherwise cross the
+    //! overlay twice.
+    static constexpr int64_t NO_PAGES_SECONDS = 60;
 
 private:
     struct Conn {
@@ -104,6 +109,8 @@ private:
     std::thread m_thread;
     Mutex m_mutex;
     std::vector<Conn> m_conns GUARDED_BY(m_mutex);
+    //! Hosts found to have no pages, and until when that is believed.
+    std::map<roster::KeyBytes, int64_t> m_no_pages GUARDED_BY(m_mutex);
 };
 
 /** The running server, or null when -siteproxy is off. */

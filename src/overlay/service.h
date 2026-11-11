@@ -8,6 +8,7 @@
 #include <compat.h>
 #include <overlay/path.h>
 #include <overlay/stream.h>
+#include <overlay/webrequest.h>
 #include <roster/record.h>
 #include <sync.h>
 
@@ -35,6 +36,9 @@
  *
  * No exits: the host's node connects to nothing but the loopback ports its
  * owner published, whatever a visitor asks for.
+ *
+ * A service named "web" is HTTP, and its requests pass a gate first
+ * (overlay/webrequest.h): one request per stream, told apart by visitor.
  */
 namespace overlay {
 
@@ -145,6 +149,8 @@ private:
     void UpdateMeeting();
 
     const roster::KeyBytes m_self;
+    //! Made at each start: what visitors' labels are worked out under.
+    const uint256 m_visitor_secret;
     std::atomic<bool> m_running{false};
     std::thread m_worker;
     std::thread m_opener;

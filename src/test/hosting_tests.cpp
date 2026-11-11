@@ -4,6 +4,7 @@
 
 #include <overlay/hosting.h>
 #include <overlay/siteproxy.h>
+#include <overlay/webrequest.h>
 
 #include <crypto/common.h>
 #include <crypto/sha256.h>
@@ -217,6 +218,131 @@ BOOST_AUTO_TEST_CASE(browser_requests)
     BOOST_CHECK_EQUAL(overlay::SiteContentType("a/b.HTML"), "text/html; charset=utf-8");
     BOOST_CHECK_EQUAL(overlay::SiteContentType("x.png"), "image/png");
     BOOST_CHECK_EQUAL(overlay::SiteContentType("noext"), "application/octet-stream");
+}
+
+namespace {
+
+/** What a gate lets through of `request`, fed in pieces of `step` bytes; false if it refuses. */
+bool Through(const std::string& request, std::string& passed, size_t step = 0)
+{
+    overlay::WebRequestGate gate("0123456789abcdef");
+    passed.clear();
+    std::vector<unsigned char> out;
+    if (step == 0) step = request.size();
+    for (size_t at = 0; at < request.size(); at += step) {
+        const size_t n = std::min(step, request.size() - at);
+        if (!gate.Feed((const unsigned char*)request.data() + at, n, out)) return false;
+        passed.append(out.begin(), out.end());
+    }
+    return true;
+}
+
+} // namespace
+
+BOOST_AUTO_TEST_CASE(web_request_is_told_apart_by_visitor)
+{
+    // Whatever a request says about where it came from is taken out, and the
+    // host's own label put in; the rest reaches the program as it was sent.
+    const std::string request =
+        "POST /api/chat?x=1 HTTP/1.1\r\n"
+        "Host: pilot.bps.localhost:9348\r\n"
+        "CF-Connecting-IP: 203.0.113.9\r\n"
+        "X-Forwarded-For: 203.0.113.9, 10.0.0.1\r\n"
+        "x-real-ip: 203.0.113.9\r\n"
+        "Forwarded: for=203.0.113.9\r\n"
+        "X-BPS-Visitor: ffffffffffffffff\r\n"
+        "Connection: keep-alive\r\n"
+        "Upgrade: websocket\r\n"
+        "Content-Type: application/json\r\n"
+        "Content-Length: 13\r\n"
+        "\r\n"
+        "{\"text\":\"hi\"}";
+    const std::string expected =
+        "POST /api/chat?x=1 HTTP/1.1\r\n"
+        "Host: pilot.bps.localhost:9348\r\n"
+        "Content-Type: application/json\r\n"
+        "Content-Length: 13\r\n"
+        "X-BPS-Visitor: 0123456789abcdef\r\n"
+        "Connection: close\r\n"
+        "\r\n"
+        "{\"text\":\"hi\"}";
+    std::string passed;
+    BOOST_CHECK(Through(request, passed));
+    BOOST_CHECK_EQUAL(passed, expected);
+    // The same however the bytes happen to arrive.
+    for (size_t step : {1, 2, 7, 64}) {
+        BOOST_CHECK(Through(request, passed, step));
+        BOOST_CHECK_EQUAL(passed, expected);
+    }
+
+    // One request per stream: a second one behind the first never reaches
+    // the program, with or without a body before it.
+    BOOST_CHECK(Through(request + "GET /second HTTP/1.1\r\nCF-Connecting-IP: 198.51.100.1\r\n\r\n", passed, 5));
+    BOOST_CHECK_EQUAL(passed, expected);
+    BOOST_CHECK(Through("GET / HTTP/1.1\r\nHost: a\r\n\r\nGET /second HTTP/1.1\r\n\r\n", passed));
+    BOOST_CHECK_EQUAL(passed, "GET / HTTP/1.1\r\nHost: a\r\nX-BPS-Visitor: 0123456789abcdef\r\nConnection: close\r\n\r\n");
+
+    // Nothing passes until the head is whole.
+    overlay::WebRequestGate gate("0123456789abcdef");
+    std::vector<unsigned char> out;
+    const std::string part = "GET / HTTP/1.1\r\nHost: a\r\n";
+    BOOST_CHECK(gate.Feed((const unsigned char*)part.data(), part.size(), out));
+    BOOST_CHECK(out.empty());
+}
+
+BOOST_AUTO_TEST_CASE(web_request_the_program_might_read_differently_is_refused)
+{
+    std::string passed;
+    const std::string ok = "GET / HTTP/1.1\r\nHost: a\r\n\r\n";
+    BOOST_CHECK(Through(ok, passed));
+
+    for (const std::string& bad : {
+             // A header hidden behind a bare line feed, or a carriage return.
+             std::string("GET / HTTP/1.1\r\nX-A: 1\nCF-Connecting-IP: 203.0.113.9\r\n\r\n"),
+             std::string("GET / HTTP/1.1\r\nX-A: 1\rCF-Connecting-IP: 203.0.113.9\r\n\r\n"),
+             // A folded line, a name with a space before its colon, a line with no colon.
+             std::string("GET / HTTP/1.1\r\nX-A: 1\r\n CF-Connecting-IP: 203.0.113.9\r\n\r\n"),
+             std::string("GET / HTTP/1.1\r\nCF-Connecting-IP : 203.0.113.9\r\n\r\n"),
+             std::string("GET / HTTP/1.1\r\nnonsense\r\n\r\n"),
+             // A body whose end the two could disagree about.
+             std::string("POST / HTTP/1.1\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\n"),
+             std::string("POST / HTTP/1.1\r\nContent-Length: 3\r\nContent-Length: 30\r\n\r\nabc"),
+             std::string("POST / HTTP/1.1\r\nContent-Length: +3\r\n\r\nabc"),
+             std::string("POST / HTTP/1.1\r\nContent-Length: 3, 3\r\n\r\nabc"),
+             // Not a request line.
+             std::string("GET /a b HTTP/1.1\r\n\r\n"),
+             std::string("get / HTTP/1.1\r\n\r\n"),
+             std::string("GET / HTTP/2\r\n\r\n"),
+             std::string("GET  HTTP/1.1\r\n\r\n"),
+             std::string("\r\n\r\n"),
+         }) {
+        BOOST_CHECK_MESSAGE(!Through(bad, passed), bad);
+        BOOST_CHECK_MESSAGE(!Through(bad, passed, 3), bad);
+    }
+    // The same length twice is one length.
+    BOOST_CHECK(Through("POST / HTTP/1.1\r\nContent-Length: 3\r\ncontent-length: 3\r\n\r\nabcdef", passed));
+    BOOST_CHECK_EQUAL(passed, "POST / HTTP/1.1\r\nContent-Length: 3\r\nX-BPS-Visitor: 0123456789abcdef\r\nConnection: close\r\n\r\nabc");
+
+    // A head that never ends is given up on, not held for ever.
+    const std::string endless = "GET / HTTP/1.1\r\nX-Pad: " + std::string(overlay::MAX_WEB_REQUEST_HEAD, 'a');
+    BOOST_CHECK(!Through(endless, passed, 4096));
+}
+
+BOOST_AUTO_TEST_CASE(visitor_label_follows_the_path)
+{
+    const uint256 secret = GetRandHash();
+    const std::string a = overlay::VisitorLabel(secret, overlay::Hop::Path(7));
+    BOOST_CHECK_EQUAL(a.size(), 16U);
+    BOOST_CHECK_EQUAL(a, overlay::VisitorLabel(secret, overlay::Hop::Path(7)));
+    BOOST_CHECK(a != overlay::VisitorLabel(secret, overlay::Hop::Path(8)));
+    // Another node, or this one after a restart, labels the same path otherwise.
+    BOOST_CHECK(a != overlay::VisitorLabel(GetRandHash(), overlay::Hop::Path(7)));
+
+    BOOST_CHECK(overlay::IsForwardingHeader("cf-connecting-ip"));
+    BOOST_CHECK(overlay::IsForwardingHeader("x-forwarded-for"));
+    BOOST_CHECK(overlay::IsForwardingHeader("x-bps-visitor"));
+    BOOST_CHECK(!overlay::IsForwardingHeader("cookie"));
+    BOOST_CHECK(!overlay::IsForwardingHeader("user-agent"));
 }
 
 BOOST_AUTO_TEST_SUITE_END()

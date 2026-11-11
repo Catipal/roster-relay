@@ -165,6 +165,18 @@ address when you have no pages. To reach someone else's program, open their
 site on the Sites page and use "Connect to a program...": BPS Relay listens on
 a port of your computer and carries each connection there to it.
 
+A web application sees every visitor arrive from 127.0.0.1, since nobody here
+has an address to show it. So your node checks each request before the
+application gets it: it takes out anything the request says about where it
+came from (CF-Connecting-IP, X-Forwarded-For and the like), and adds a header
+of its own, X-BPS-Visitor - sixteen hex digits that are the same for every
+request along one path a visitor built. An application that limits how often
+one visitor may post can count by that. A visitor gets a new one by building
+a new path, which takes seconds; it says nothing about who they are. Each
+connection carries one request: WebSockets and chunked uploads are refused.
+Compress what the application sends if it does not already: a path carries
+about 64 KB a second.
+
 The Sites page shows pages with no scripts and fetches nothing from outside the
 site, so a page cannot learn where you are. "Open in your browser" shows the
 same site in an ordinary browser, through a server on this computer only, at

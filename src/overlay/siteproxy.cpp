@@ -12,6 +12,7 @@
 #include <tinyformat.h>
 #include <util/strencodings.h>
 #include <util/threadnames.h>
+#include <util/time.h>
 
 #include <algorithm>
 #include <cstring>
@@ -150,7 +151,11 @@ std::string ForwardedHead(const std::string& head, const std::string& target)
         const size_t next = head.find("\r\n", at + 2);
         const std::string h = head.substr(at + 2, next == std::string::npos ? std::string::npos : next - at - 2);
         const std::string name = Lower(h.substr(0, h.find(':')));
-        if (name != "connection" && name != "proxy-connection" && name != "keep-alive" && !h.empty()) out += h + "\r\n";
+        // Nothing that says where the request came from leaves this computer.
+        if (name != "connection" && name != "proxy-connection" && name != "keep-alive" && !IsForwardingHeader(name) &&
+            !h.empty()) {
+            out += h + "\r\n";
+        }
         at = next;
     }
     return out + "Connection: close\r\n\r\n";
@@ -448,20 +453,32 @@ bool SiteProxy::Serve(SOCKET sock)
 
     // A site of pages answers reading; a web service anything.
     const bool reading = method == "GET" || method == "HEAD";
+    // Whether to ask for a page at all: not from a host that had none a moment ago.
+    bool pages = true;
+    {
+        LOCK(m_mutex);
+        const auto it = m_no_pages.find(key);
+        pages = it == m_no_pages.end() || GetTime() >= it->second;
+    }
     std::vector<unsigned char> bytes;
     std::string error;
-    if (reading && FetchSiteFile(key, path, bytes, error)) {
+    if (reading && pages && FetchSiteFile(key, path, bytes, error)) {
         Respond(sock, 200, "OK", SiteContentType(path), std::string(bytes.begin(), bytes.end()), head_only);
         return false;
     }
-    if (reading && error.find("no file at that path") != std::string::npos) {
+    if (reading && pages && error.find("no file at that path") != std::string::npos) {
         RespondText(sock, 404, "Not Found", "The site has no " + path + ".", head_only);
         return false;
     }
-    if (g_services && (!reading || error.find("no site under that key") != std::string::npos)) {
+    if (g_services && (!reading || !pages || error.find("no site under that key") != std::string::npos)) {
         // No pages there: the host's web application, if it runs one.
+        if (reading && pages) {
+            LOCK(m_mutex);
+            if (m_no_pages.size() >= 256) m_no_pages.clear();
+            m_no_pages[key] = GetTime() + NO_PAGES_SECONDS;
+        }
         const std::string request = ForwardedHead(head, target) + body_start;
-        g_services->Attach(sock, key, "web", std::vector<unsigned char>(request.begin(), request.end()), WebFilter());
+        g_services->Attach(sock, key, WEB_SERVICE, std::vector<unsigned char>(request.begin(), request.end()), WebFilter());
         return true;
     }
     RespondText(sock, 502, "Bad Gateway", "The site could not be reached over BPS: " + error + ".", head_only);

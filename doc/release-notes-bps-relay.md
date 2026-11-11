@@ -355,7 +355,15 @@ What this node offers other people.
   server, a game - listening on 127.0.0.1: visitors reach it over the
   overlay as a stream, and this node connects to nothing but the port named.
   A program named `web` is what a browser opens at the node's address when
-  there are no pages.
+  there are no pages. Its requests pass the host's node first: one request
+  per stream, with every header that claims where it came from removed
+  (`CF-Connecting-IP`, `X-Forwarded-For`, ...) and `X-BPS-Visitor` added, a
+  label that is the same along one path a visitor built - so an application
+  that sits behind a reverse proxy elsewhere cannot be told a visitor is
+  someone else, and can still tell visitors apart. A request with a chunked
+  body, a folded header or a bare line feed is refused, since the
+  application might read it differently. A visitor's node asks a host with
+  no pages for one once a minute, not before every request.
 - **Sites** - a page of its own for reading sites: write `bps://name/` or a
   site's key. Pages are shown with no scripts, and nothing on them is fetched
   from outside the site, so a page cannot learn where its reader is; a link

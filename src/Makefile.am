@@ -230,6 +230,7 @@ BITCOIN_CORE_H = \
   overlay/service.h \
   overlay/stream.h \
   overlay/txpath.h \
+  overlay/webrequest.h \
   overlay/ippacket.h \
   overlay/limits.h \
   overlay/localproxy.h \
@@ -402,6 +403,7 @@ libbitcoin_server_a_SOURCES = \
   overlay/service.cpp \
   overlay/stream.cpp \
   overlay/txpath.cpp \
+  overlay/webrequest.cpp \
   overlay/localproxy.cpp \
   overlay/meeting.cpp \
   overlay/netstack.cpp \

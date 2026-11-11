@@ -97,13 +97,14 @@ struct ServiceHub::Stream {
     std::vector<unsigned char> to_sock;
     std::vector<unsigned char> held;
     Filter filter;
+    std::unique_ptr<WebRequestGate> gate; //!< on the host's side of a web service
     bool flushed{false};
     bool sock_eof{false};         //!< the local program has sent all it will
     bool sock_shut{false};        //!< told the local program nothing more is coming
     int64_t active_ms{0};
 };
 
-ServiceHub::ServiceHub(const roster::KeyBytes& self) : m_self(self) {}
+ServiceHub::ServiceHub(const roster::KeyBytes& self) : m_self(self), m_visitor_secret(GetRandHash()) {}
 
 ServiceHub::~ServiceHub() { Stop(); }
 
@@ -401,6 +402,7 @@ void ServiceHub::OnOpen(const Hop& from, uint32_t id, const std::string& name, i
     st->open = true;
     st->service = name;
     st->active_ms = now_ms;
+    if (name == WEB_SERVICE) st->gate = MakeUnique<WebRequestGate>(VisitorLabel(m_visitor_secret, from));
     m_streams.emplace(std::make_pair(from, id), std::move(st));
     SendTo(from, Message(SVC_OPENED, id));
 }
@@ -486,7 +488,15 @@ void ServiceHub::Pump(Stream& s, int64_t now_ms)
             std::vector<unsigned char> chunk = s.stream.Read(65536);
             if (chunk.empty() && !(s.filter && s.stream.ReadClosed() && !s.flushed)) break;
             m_stats.bytes_in += chunk.size();
-            if (s.filter) {
+            if (s.gate) {
+                if (!s.gate->Feed(chunk.data(), chunk.size(), s.to_sock)) {
+                    LogPrint(BCLog::NET, "services: a request to %s was not one to pass on\n", s.service);
+                    ++m_stats.refused;
+                    Close(s, true);
+                    return;
+                }
+                if (s.to_sock.empty()) continue;
+            } else if (s.filter) {
                 s.held.insert(s.held.end(), chunk.begin(), chunk.end());
                 const bool end = s.stream.ReadClosed();
                 s.to_sock = s.filter(s.held, end);

@@ -59,6 +59,13 @@ Discovery tab shows each peer's for today. The listing also names one relay
 where you can be met for as long as it lasts, chosen at random and never one
 your node enters the network through, and each renewal names a new one.
 
+A listing made here never carries an address. It can carry a note instead:
+one line of your own text, up to 72 bytes (about 72 letters of plain English,
+fewer in other scripts), shown beside your key in everyone's Discovery tab.
+Anyone can read it and the chain keeps it for good, so leave out anything
+that says where you are. A renewal offers the note again; clear it to drop
+it.
+
 Relaying and sharing the internet are settings of your node, on the Server
 page, not choices made with each listing; your listing takes them over when
 you publish or renew it, since others find relays and gateways by it. To

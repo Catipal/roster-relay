@@ -37,8 +37,9 @@ Node
 The first page, with four tabs.
 
 - **Discovery** - the peers listed on the chain, and your own listing. A
-  listing is a short signed record saying you exist and, if you want,
-  where to reach you. Nobody can list you without your key, hide you from
+  listing is a short signed record saying you exist and, if you want, a
+  line of your own text (a note, up to 72 bytes) shown beside your key. It
+  never carries your address. Nobody can list you without your key, hide you from
   some clients and not others, or quietly remove you. Click a peer's key or
   address to copy it. A peer listed through the overlay shows where it can
   be met today, worked out from the roster; these change every day, and its

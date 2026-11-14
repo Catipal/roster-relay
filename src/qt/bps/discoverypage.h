@@ -91,6 +91,7 @@ private:
     QString m_delegation_wallet; //!< which wallet publishes the identity's delegation
     int m_tip{0};
     int m_own_expiry{0}; //!< 0 when this node is not listed
+    QString m_own_note;  //!< the note of the listing in force, empty when none
     bool m_index_enabled{false};
 };
 

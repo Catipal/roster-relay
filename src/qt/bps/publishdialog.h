@@ -30,23 +30,20 @@ class QDialogButtonBox;
 class QLabel;
 class QLineEdit;
 class QPushButton;
-class QRadioButton;
-class QSpinBox;
 class QWidget;
 QT_END_NAMESPACE
 
 /**
  * Publishing or renewing this node's listing.
  *
- * Two decisions: where peers may reach you, and who pays the fee.
+ * A listing made here never carries an address: it says who you are and not
+ * where you run (design note 001 §0·5), and peers meet you through the
+ * overlay. What it may carry instead is a note, a line of text shown beside
+ * the key in everyone's roster. An address can still be published with
+ * createannouncement, for an onion service or a test network; this dialog
+ * does not offer it, since the chain keeps it for good.
  *
- * The first is the one design note 001 §0·5 cares about. A listing with no
- * address at all is legal, useful, and the private option - it puts an identity
- * in the roster without telling anyone where that identity runs. It is offered
- * as a peer of the others rather than buried, because a privacy choice nobody
- * can find is not a choice.
- *
- * The second has two answers. A wallet with coins pays, through
+ * Who pays the fee has two answers. A wallet with coins pays, through
  * createannouncement and publishrecord. A node with none asks its relay to pay,
  * through requestlisting - which is the settled model (§8): the user signs, the
  * relay pays. The dialog duplicates none of the node's checks; the record is
@@ -57,8 +54,9 @@ class PublishDialog : public QDialog
     Q_OBJECT
 
 public:
+    /** `note` is the current listing's note, offered again when renewing. */
     PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bool renewing,
-                  QWidget* parent = nullptr);
+                  const QString& note, QWidget* parent = nullptr);
     ~PublishDialog();
 
 Q_SIGNALS:
@@ -68,7 +66,7 @@ Q_SIGNALS:
 private Q_SLOTS:
     void onRpcResult(const QString& tag, const UniValue& value);
     void onRpcFailed(const QString& tag, const QString& message);
-    void onAddressChoiceChanged();
+    void onNoteChanged();
     void onPayerChanged();
     void onPublish();
 
@@ -77,7 +75,7 @@ private:
     void SetBusy(bool busy);
     void ShowError(const QString& message);
     bool RelayChosen() const;
-    /** The endpoint and expiry options both RPCs take. False with an error shown. */
+    /** The note and expiry options both RPCs take. False with an error shown. */
     bool BuildOptions(UniValue& options);
     void Done();
     /** Blocks a listing must be able to wait for this node to stake it; 0 if it never would. */
@@ -90,12 +88,9 @@ private:
     bool m_overlay_on{false};
     int m_relays{-1}; //!< relays this node could ask, -1 until known
 
-    QRadioButton* m_at_address{nullptr};
-    QRadioButton* m_nowhere{nullptr};
-    QWidget* m_address_row{nullptr};
-    QComboBox* m_network{nullptr};
-    QLineEdit* m_address{nullptr};
-    QSpinBox* m_port{nullptr};
+    QLineEdit* m_note{nullptr};
+    QLabel* m_note_count{nullptr}; //!< bytes used of the note's room
+    bool m_note_fits{true};
     QComboBox* m_payer{nullptr};
     QComboBox* m_length{nullptr};    //!< a month or a year, when this node pays
     QLabel* m_length_fixed{nullptr}; //!< a month, when a relay pays

@@ -28,6 +28,7 @@ struct RosterRow {
     int announced_age{-1}; //!< seconds since it said so, -1 when not heard from
     QStringList meets;  //!< listed with no address: today's meeting points, full hex
     QString meet_point; //!< the meeting point its listing names, full hex, or empty
+    QString note;       //!< the line of text its listing carries, or empty
 };
 
 /**
@@ -44,6 +45,7 @@ class RosterModel : public QAbstractTableModel
 public:
     enum Column {
         Peer = 0,
+        Note,
         Where,
         ListedAt,
         Until,

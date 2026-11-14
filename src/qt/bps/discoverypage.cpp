@@ -81,12 +81,13 @@ private:
     bool m_online_only{false};
 };
 
-//! Peer and address share the spare width equally; the rest fit their contents.
+//! Peer, note and address share the spare width equally; the rest fit their contents.
 void SizeColumns(QTableView* table)
 {
     table->resizeColumnsToContents();
     QHeaderView* header = table->horizontalHeader();
     header->setSectionResizeMode(RosterModel::Peer, QHeaderView::Stretch);
+    header->setSectionResizeMode(RosterModel::Note, QHeaderView::Stretch);
     header->setSectionResizeMode(RosterModel::Where, QHeaderView::Stretch);
 }
 
@@ -212,7 +213,7 @@ DiscoveryPage::DiscoveryPage(BpsRpc& rpc, QWidget* parent) : QWidget(parent), m_
 
     QHBoxLayout* filter_row = new QHBoxLayout();
     QLineEdit* filter = new QLineEdit(this);
-    filter->setPlaceholderText(tr("Find a peer or an address"));
+    filter->setPlaceholderText(tr("Find a peer, a note or an address"));
     filter->setClearButtonEnabled(true);
     connect(filter, &QLineEdit::textChanged, m_proxy, &QSortFilterProxyModel::setFilterFixedString);
     QCheckBox* online = new QCheckBox(tr("Only relays online now"), this);
@@ -336,7 +337,8 @@ void DiscoveryPage::onMakeIdentity()
 
 void DiscoveryPage::onPublishClicked()
 {
-    PublishDialog dialog(m_rpc, m_wallets, m_tip, m_own_expiry > m_tip, this);
+    const bool renewing = m_own_expiry > m_tip;
+    PublishDialog dialog(m_rpc, m_wallets, m_tip, renewing, renewing ? m_own_note : QString(), this);
     connect(&dialog, &PublishDialog::published, this, [this](const QString& txid, bool by_relay) {
         m_error->setVisible(true);
         m_error->setText(by_relay
@@ -505,11 +507,14 @@ void DiscoveryPage::onRpcResult(const QString& tag, const UniValue& value)
         // Oldest first, so the last announcement is the one in force. The
         // history also holds delegations naming this key, which are not listings.
         m_own_expiry = 0;
+        m_own_note.clear();
         if (value.isArray()) {
             for (size_t i = 0; i < value.size(); ++i) {
                 if (find_value(value[i], "type").getValStr() != "announce") continue;
                 const UniValue& expiry = find_value(value[i], "expiry_height");
                 if (expiry.isNum()) m_own_expiry = expiry.get_int();
+                // The listing in force, so a renewal offers its note again.
+                m_own_note = QString::fromStdString(find_value(value[i], "note").getValStr());
             }
         }
         UpdateListingSummary();

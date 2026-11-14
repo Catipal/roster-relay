@@ -27,6 +27,7 @@ QVariant RosterModel::headerData(int section, Qt::Orientation orientation, int r
     if (orientation != Qt::Horizontal || role != Qt::DisplayRole) return QVariant();
     switch (section) {
     case Peer: return tr("Peer");
+    case Note: return tr("Note");
     case Where: return tr("Address");
     case ListedAt: return tr("Listed");
     case Until: return tr("Listing ends");
@@ -51,6 +52,9 @@ QVariant RosterModel::data(const QModelIndex& index, int role) const
     if (role == Qt::ToolTipRole) {
         switch (index.column()) {
         case Peer: return row.key + "\n" + tr("Click to copy");
+        case Note:
+            if (row.note.isEmpty()) return QVariant();
+            return row.note + "\n" + tr("Written by whoever holds this key; nobody checks it.");
         case Where:
             // A relay says where it is while it runs; the chain never holds it.
             if (!row.announced.isEmpty()) {
@@ -111,6 +115,8 @@ QVariant RosterModel::data(const QModelIndex& index, int role) const
         // In full: the view shortens it in the middle only when the column is
         // too narrow, so a wide window shows the whole key.
         return row.key;
+    case Note:
+        return row.note;
     case Where:
         if (!row.announced.isEmpty()) return row.announced;
         if (row.relay && row.endpoints == 0) return tr("relay, offline");
@@ -181,6 +187,8 @@ void RosterModel::SetRoster(const UniValue& reply, int tip)
             for (size_t m = 0; meets.isArray() && m < meets.size(); ++m) {
                 if (meets[m].isStr()) row.meets << QString::fromStdString(meets[m].get_str());
             }
+            const UniValue& note = find_value(entry, "note");
+            if (note.isStr()) row.note = QString::fromStdString(note.get_str());
             const UniValue& meet_point = find_value(entry, "meeting_point");
             if (meet_point.isStr()) row.meet_point = QString::fromStdString(meet_point.get_str());
             const UniValue& announced = find_value(entry, "announced");

@@ -24,6 +24,7 @@
 #include <roster/listing.h>
 #include <util/system.h>
 #include <roster/record.h>
+#include <span.h>
 #include <univalue.h>
 
 #include <QCheckBox>
@@ -35,8 +36,6 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QRadioButton>
-#include <QSpinBox>
 #include <QStringList>
 #include <QUrl>
 #include <QVBoxLayout>
@@ -67,7 +66,7 @@ QLabel* SmallNote(const QString& text, QWidget* parent)
 } // namespace
 
 PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bool renewing,
-                             QWidget* parent)
+                             const QString& note, QWidget* parent)
     : QDialog(parent), m_rpc(rpc), m_wallets(wallets), m_tip(tip)
 {
     setWindowTitle(renewing ? tr("Renew your listing") : tr("Publish your listing"));
@@ -81,30 +80,26 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
             ? tr("Renewing writes a fresh record to the chain. Until it confirms, the "
                  "old one still counts.")
             : tr("This writes a short record to the chain saying that you exist, and "
-                 "optionally where to find you."),
+                 "optionally a line about you."),
         this);
     intro->setWordWrap(true);
     outer->addWidget(intro);
 
-    // --- where ---------------------------------------------------------
-    QGroupBox* where = new QGroupBox(tr("How should peers reach you?"), this);
-    QVBoxLayout* where_layout = new QVBoxLayout(where);
+    // --- what the listing says ------------------------------------------
+    // No address: a listing says who you are and not where you run, and the
+    // chain would keep an address for good. A line of the owner's own text
+    // stands where an address used to.
+    QGroupBox* says = new QGroupBox(tr("What your listing says"), this);
+    QVBoxLayout* says_layout = new QVBoxLayout(says);
 
-    // The overlay comes first and is the default. Publishing an address is the
-    // exception, not the starting point: a listing with no address is legal,
-    // useful and private, and a default that leaks your location is a default
-    // most people will never change.
-    m_nowhere = new QRadioButton(tr("Through the overlay \xe2\x80\x94 publish no address"), where);
-    where_layout->addWidget(m_nowhere);
-    QLabel* nowhere_note = SmallNote(
-        tr("Your listing says who you are and not where you run. Peers reach you over "
-           "the overlay, meeting you at points both sides work out from the roster, "
-           "which change every day; Discovery shows today's. Your listing also names "
-           "one relay where you can be met for as long as it lasts, and each renewal "
-           "names a new one. This is what this client turns on by default."),
-        where);
-    nowhere_note->setContentsMargins(24, 0, 0, 0);
-    where_layout->addWidget(nowhere_note);
+    QLabel* overlay_note = SmallNote(
+        tr("Your listing says who you are and not where you run: it carries no address. Peers "
+           "reach you over the overlay, meeting you at points both sides work out from the "
+           "roster, which change every day; Discovery shows today's. Your listing also names "
+           "one relay where you can be met for as long as it lasts, and each renewal names a "
+           "new one."),
+        says);
+    says_layout->addWidget(overlay_note);
 
     // Relaying is a setting of the node, on the Server page, not a choice made
     // with each listing: the listing only takes it over
@@ -115,44 +110,28 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
             tr("This node carries others' paths as a relay, as set on the Server page, so the "
                "listing says so. Its address is announced while it runs, never written to the chain.") +
                 " " + tr("A change there reaches the roster with your next listing."),
-            where);
-        switches_note->setContentsMargins(24, 0, 0, 0);
-        where_layout->addWidget(switches_note);
+            says);
+        says_layout->addWidget(switches_note);
     }
 
-    m_at_address = new QRadioButton(tr("At an address I publish"), where);
-    where_layout->addWidget(m_at_address);
+    QHBoxLayout* note_row = new QHBoxLayout();
+    QLabel* note_label = new QLabel(tr("Note"), says);
+    m_note = new QLineEdit(says);
+    m_note->setPlaceholderText(tr("optional: a line shown beside your key"));
+    m_note->setText(note);
+    note_label->setBuddy(m_note);
+    m_note_count = new QLabel(says);
+    note_row->addWidget(note_label);
+    note_row->addWidget(m_note, 1);
+    note_row->addWidget(m_note_count);
+    says_layout->addLayout(note_row);
 
-    m_address_row = new QWidget(where);
-    QHBoxLayout* row = new QHBoxLayout(m_address_row);
-    row->setContentsMargins(24, 0, 0, 0);
-    m_network = new QComboBox(m_address_row);
-    m_network->addItem(tr("IPv4"), "ipv4");
-    m_network->addItem(tr("IPv6"), "ipv6");
-    m_network->addItem(tr("Onion"), "onion");
-    m_network->addItem(tr("I2P"), "i2p");
-    m_network->addItem(tr("cjdns"), "cjdns");
-    m_address = new QLineEdit(m_address_row);
-    m_address->setPlaceholderText(tr("address other peers can reach"));
-    m_port = new QSpinBox(m_address_row);
-    m_port->setRange(1, 65535);
-    m_port->setValue(Params().GetDefaultPort());
-    row->addWidget(m_network);
-    row->addWidget(m_address, 1);
-    row->addWidget(m_port);
-    where_layout->addWidget(m_address_row);
-
-    QLabel* address_note = SmallNote(
-        tr("Anyone can see it, and the chain keeps it permanently. An onion address "
-           "publishes a location nobody can trace back to you and works from behind "
-           "NAT; an IP address does neither. A node that publishes an IP address can "
-           "be chosen as a relay by others."),
-        where);
-    address_note->setContentsMargins(24, 0, 0, 0);
-    where_layout->addWidget(address_note);
-
-    m_nowhere->setChecked(true);
-    outer->addWidget(where);
+    QLabel* note_warning = SmallNote(
+        tr("Anyone can read it, and the chain keeps it for good, even after the listing ends. "
+           "Leave out anything that says where you are or who you are, if that matters to you."),
+        says);
+    says_layout->addWidget(note_warning);
+    outer->addWidget(says);
 
     // --- who pays, and how long ----------------------------------------
     QFormLayout* form = new QFormLayout();
@@ -193,14 +172,14 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
 
     connect(m_buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
     connect(m_publish, &QPushButton::clicked, this, &PublishDialog::onPublish);
-    connect(m_at_address, &QRadioButton::toggled, this, &PublishDialog::onAddressChoiceChanged);
+    connect(m_note, &QLineEdit::textChanged, this, &PublishDialog::onNoteChanged);
     connect(m_payer, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, &PublishDialog::onPayerChanged);
     connect(&m_rpc, &BpsRpc::result, this, &PublishDialog::onRpcResult);
     connect(&m_rpc, &BpsRpc::failed, this, &PublishDialog::onRpcFailed);
 
-    onAddressChoiceChanged();
     FillPayers();
+    onNoteChanged();
 
     // Whether a relay can be asked at all depends on the overlay, so find out
     // before the user picks.
@@ -298,27 +277,32 @@ void PublishDialog::onPayerChanged()
 
     m_payer_note->setText(note);
     m_payer_note->setVisible(!note.isEmpty());
-    m_publish->setEnabled(can_publish);
+    m_publish->setEnabled(can_publish && m_note_fits);
     // A dialog does not grow by itself when a label gains text, and the notes
     // above would otherwise be clipped to whatever height it opened at.
     adjustSize();
 }
 
-void PublishDialog::onAddressChoiceChanged()
+void PublishDialog::onNoteChanged()
 {
-    m_address_row->setEnabled(m_at_address->isChecked());
+    // Counted the way the record counts it, in bytes of UTF-8, so a note with
+    // accents or other scripts is told how much room it really has.
+    const int used = m_note->text().trimmed().toUtf8().size();
+    const int room = (int)roster::MAX_NOTE_SIZE;
+    m_note_fits = used <= room;
+    m_note_count->setText(tr("%1 / %2 bytes").arg(used).arg(room));
+    m_note_count->setStyleSheet(m_note_fits ? QString() : QStringLiteral("color:#a3282c;"));
+    m_note_count->setToolTip(m_note_fits ? QString()
+                                         : tr("Too long: letters outside plain English take two to four bytes each."));
+    onPayerChanged();
 }
 
 void PublishDialog::SetBusy(bool busy)
 {
     m_publish->setEnabled(!busy);
-    m_network->setEnabled(!busy && m_at_address->isChecked());
-    m_address->setEnabled(!busy && m_at_address->isChecked());
-    m_port->setEnabled(!busy && m_at_address->isChecked());
+    m_note->setEnabled(!busy);
     m_payer->setEnabled(!busy && m_payer->count() > 1);
     m_length->setEnabled(!busy);
-    m_nowhere->setEnabled(!busy);
-    m_at_address->setEnabled(!busy);
     if (!busy) onPayerChanged();
 }
 
@@ -338,20 +322,17 @@ void PublishDialog::Done()
 bool PublishDialog::BuildOptions(UniValue& options)
 {
     options = UniValue(UniValue::VOBJ);
-    if (m_nowhere->isChecked() && ServerPage::RelaySwitchedOn()) options.pushKV("relay", true);
-    if (m_at_address->isChecked()) {
-        const QString address = m_address->text().trimmed();
-        if (address.isEmpty()) {
-            ShowError(tr("Enter an address, or choose not to publish one."));
+    if (ServerPage::RelaySwitchedOn()) options.pushKV("relay", true);
+    const QByteArray note = m_note->text().trimmed().toUtf8();
+    if (!note.isEmpty()) {
+        if (!roster::IsValidNote(MakeUCharSpan(note))) {
+            ShowError(note.size() > (int)roster::MAX_NOTE_SIZE
+                          ? tr("The note is too long.")
+                          : tr("The note can't contain control characters or marks that change the "
+                               "direction of text."));
             return false;
         }
-        UniValue endpoint(UniValue::VOBJ);
-        endpoint.pushKV("network", m_network->currentData().toString().toStdString());
-        endpoint.pushKV("address", address.toStdString());
-        endpoint.pushKV("port", m_port->value());
-        UniValue endpoints(UniValue::VARR);
-        endpoints.push_back(endpoint);
-        options.pushKV("endpoints", endpoints);
+        options.pushKV("note", std::string(note.constData(), note.size()));
     }
     // A month, plus the blocks it may wait to confirm and still count. Paid
     // from this node's wallet, the block is this node's own if it stakes, so

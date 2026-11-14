@@ -145,6 +145,7 @@ UniValue EntryToJSON(const RosterEntry& entry, const roster::Record& rec)
         out.pushKV("dialable", !rec.endpoints.empty());
         out.pushKV("relay", roster::IsAnnouncingRelay(rec.services));
         if (rec.meet_point.has_value()) out.pushKV("meeting_point", HexStr(*rec.meet_point));
+        if (!rec.note.empty()) out.pushKV("note", rec.note);
         out.pushKV("prev_height", (uint64_t)rec.prev_height);
         {
             UniValue eps(UniValue::VARR);
@@ -1347,6 +1348,7 @@ static RPCHelpMan getroster()
                     {RPCResult::Type::BOOL, "dialable", "Whether the record carries any endpoint at all"},
                     {RPCResult::Type::BOOL, "relay", "Whether it is listed as a relay that announces its address while it runs, instead of on the chain"},
                     {RPCResult::Type::STR_HEX, "meeting_point", /* optional */ true, "The relay its listing names to meet it at, for the listing's life"},
+                    {RPCResult::Type::STR, "note", /* optional */ true, "The line of text its listing carries, as its owner wrote it"},
                     {RPCResult::Type::ARR, "meeting_points", /* optional */ true, "For a key listed with no address and not a relay: where it can be met today, worked out from the roster; they change every epoch",
                         {{RPCResult::Type::STR_HEX, "", "A meeting point's roster key"}}},
                     {RPCResult::Type::OBJ, "announced", /* optional */ true, "Present for a relay whose announcement this node holds and still counts: where it says it is now",
@@ -1583,6 +1585,28 @@ static std::vector<unsigned char> BuildAnnouncement(const UniValue& options, ros
         }
     }
 
+    // A line of text in place of an address: what the owner wants the roster
+    // to say beside the key. Checked here so the error names the rule.
+    if (options.exists("note")) {
+        const std::string note = options["note"].get_str();
+        if (!note.empty()) {
+            if (!rec.endpoints.empty()) {
+                throw JSONRPCError(RPC_INVALID_PARAMETER, "A note is only for a listing with no endpoints.");
+            }
+            if (note.size() > roster::MAX_NOTE_SIZE) {
+                throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf(
+                    "The note is %u bytes; at most %u fit, counted as UTF-8.", (unsigned)note.size(),
+                    (unsigned)roster::MAX_NOTE_SIZE));
+            }
+            if (!roster::IsValidNote(MakeUCharSpan(note))) {
+                throw JSONRPCError(RPC_INVALID_PARAMETER,
+                    "The note must be one line of UTF-8 text, with no control characters, no marks "
+                    "that change the direction of text, and no space at either end.");
+            }
+            rec.note = note;
+        }
+    }
+
     // A key listed with no address names one relay it can be met at for as
     // long as the listing counts: the chain cannot change
     // it, so it holds for the listing's life, and each renewal names a new
@@ -1735,6 +1759,8 @@ static RPCHelpMan createannouncement()
                      "List this key as a relay that carries others' paths and announces its address while it runs - signed, passed between peers, good for three hours - instead of writing it to the chain. Give no endpoints, and no address of this node lands on the chain; it can change without a transaction."},
                     {"meeting_point", RPCArg::Type::STR, /* default */ "a relay drawn at random",
                      "For a listing with no endpoints: the relay key it can be met at for the listing's life, or \"none\". By default one this node can reach, never one of its guards nor the one it names now, so each renewal names a new one; none while it can reach no relay."},
+                    {"note", RPCArg::Type::STR, /* default */ "none",
+                     "For a listing with no endpoints: one line of text shown beside this key wherever the roster is listed, at most 72 bytes of UTF-8. The chain keeps it; a renewal without it drops it."},
                 }},
         },
         RPCResult{
@@ -1749,8 +1775,9 @@ static RPCHelpMan createannouncement()
                     }},
             }},
         RPCExamples{
-            HelpExampleCli("createannouncement", "'{\"endpoints\":[{\"network\":\"ipv4\",\"address\":\"203.0.113.7\",\"port\":9345}]}'")
-          + HelpExampleCli("createannouncement", "'{}'")
+            HelpExampleCli("createannouncement", "'{}'")
+          + HelpExampleCli("createannouncement", "'{\"note\":\"pilot's node, up most evenings\"}'")
+          + HelpExampleCli("createannouncement", "'{\"endpoints\":[{\"network\":\"ipv4\",\"address\":\"203.0.113.7\",\"port\":9345}]}'")
         },
         [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
 {

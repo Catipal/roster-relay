@@ -457,6 +457,29 @@ class RosterTest(BitcoinTestFramework):
             assert_raises_rpc_error(-8, "not listed", self.nodes[1].createannouncement, options)
         assert all("gateway" not in e for e in self.nodes[0].getroster())
 
+    def test_note_in_place_of_an_address(self):
+        self.log.info("a listing with no address carries a line of its owner's text")
+        node = self.nodes[0]
+        note = "pilot's node \u2014 caf\u00e9 hours, \U0001F680"
+        record = node.createannouncement({"note": note})
+        entry = self.publish(record)
+        assert_equal(entry["note"], note)
+        assert_equal(entry["endpoints"], [])
+        assert_equal(entry["dialable"], False)
+        history = node.getrosterhistory(record["key"])
+        assert_equal(history[-1]["note"], note)
+
+        # Counted in bytes of UTF-8: 36 two-byte letters fit, 37 do not.
+        assert_equal(len(node.createannouncement({"note": "\u00e8" * 36})["hex"]) // 2, 113 + 1 + 72)
+        assert_raises_rpc_error(-8, "at most 72 fit", node.createannouncement, {"note": "\u00e8" * 37})
+        # One plain line, and never beside an address.
+        for bad in ("two\nlines", " leading", "trailing ", "rtl \u202e"):
+            assert_raises_rpc_error(-8, "one line of UTF-8 text", node.createannouncement, {"note": bad})
+        assert_raises_rpc_error(-8, "only for a listing with no endpoints", node.createannouncement,
+                                {"note": "hello", "endpoints": [IPV4_ENDPOINT]})
+        # An empty note is no note.
+        assert "note" not in self.publish(node.createannouncement({"note": ""}))
+
     def run_test(self):
         node = self.nodes[0]
         self.sink = node.getnewaddress()
@@ -484,6 +507,7 @@ class RosterTest(BitcoinTestFramework):
         self.test_index_can_be_switched_off()
         self.test_too_small_a_window_is_refused()
         self.test_gateway_records()
+        self.test_note_in_place_of_an_address()
 
 
 if __name__ == "__main__":

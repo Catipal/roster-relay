@@ -194,6 +194,106 @@ BOOST_AUTO_TEST_CASE(meeting_point)
     BOOST_CHECK(ParseRecord(cut, out) != ParseError::OK);
 }
 
+//! A listing with no address may carry a line of its owner's text instead:
+//! a length byte and up to 72 bytes of UTF-8, after the meeting point.
+BOOST_AUTO_TEST_CASE(note_in_place_of_an_address)
+{
+    const CKey key = MakeKey(6);
+    KeyBytes point;
+    point.fill(0x42);
+    Record in = MakeAnnounce(key);
+    in.endpoints.clear();
+    in.note = "pilot's node, up most evenings";
+    SignInPlace(in, key, "main");
+
+    const std::vector<unsigned char> raw = SerializeRecord(in);
+    BOOST_CHECK_EQUAL(raw.size(), 113U + 1U + in.note.size());
+    Record out;
+    BOOST_REQUIRE(ParseAndVerify(raw, "main", out));
+    BOOST_CHECK_EQUAL(out.note, in.note);
+    BOOST_CHECK(out.services & SERVICE_NOTE_PRESENT);
+    BOOST_CHECK(SerializeRecord(out) == raw);
+
+    // The signature covers it: a changed letter no longer verifies.
+    std::vector<unsigned char> changed = raw;
+    changed[49 + 1] ^= 0x01; // the first letter, after the length byte
+    BOOST_CHECK(!ParseAndVerify(changed, "main", out));
+
+    // The largest record: meeting point, the longest note and a meta hash
+    // together come to exactly MAX_RECORD_SIZE.
+    in.meet_point = point;
+    in.meta_hash = uint256S("01");
+    in.note = std::string(MAX_NOTE_SIZE, 'a');
+    BOOST_CHECK_EQUAL(SerializeRecord(in).size(), MAX_RECORD_SIZE);
+    BOOST_CHECK_EQUAL(ParseErrorString(ParseRecord(SerializeRecord(in), out)), "ok");
+    BOOST_CHECK(out.meet_point.has_value() && out.meta_hash.has_value());
+    BOOST_CHECK_EQUAL(out.note.size(), MAX_NOTE_SIZE);
+    // One byte more is no record at all.
+    in.note += "a";
+    BOOST_CHECK(ParseRecord(SerializeRecord(in), out) != ParseError::OK);
+
+    // Letters beyond plain English count in bytes: 36 two-byte letters fit.
+    in.meta_hash.reset();
+    in.note.clear();
+    for (int i = 0; i < 36; ++i) in.note += "\xc3\xa8";
+    BOOST_CHECK_EQUAL(ParseErrorString(ParseRecord(SerializeRecord(in), out)), "ok");
+    BOOST_CHECK_EQUAL(out.note, in.note);
+
+    // The bit follows the field, whatever the caller set.
+    Record none = in;
+    none.note.clear();
+    none.services |= SERVICE_NOTE_PRESENT;
+    BOOST_CHECK_EQUAL(ParseErrorString(ParseRecord(SerializeRecord(none), out)), "ok");
+    BOOST_CHECK(out.note.empty());
+
+    // Never beside an address.
+    in.meet_point.reset();
+    in.note = "hello";
+    in.endpoints.push_back(EpIPv4(9345));
+    BOOST_CHECK_EQUAL(ParseErrorString(ParseRecord(SerializeRecord(in), out)),
+                      ParseErrorString(ParseError::BAD_NOTE));
+
+    // A length byte of zero, or one pointing past the end, does not parse.
+    in.endpoints.clear();
+    std::vector<unsigned char> bad = SerializeRecord(in);
+    bad[49] = 0; // the length byte: header and fixed fields, no meeting point
+    BOOST_CHECK(ParseRecord(bad, out) != ParseError::OK);
+    bad[49] = 200;
+    BOOST_CHECK(ParseRecord(bad, out) != ParseError::OK);
+}
+
+BOOST_AUTO_TEST_CASE(note_text_is_one_plain_line)
+{
+    auto ok = [](const std::string& text) { return IsValidNote(MakeUCharSpan(text)); };
+    BOOST_CHECK(ok("a"));
+    BOOST_CHECK(ok("caf\xc3\xa9 \xe2\x82\xac 5"));                 // é, €
+    BOOST_CHECK(ok("\xe6\x97\xa5\xe6\x9c\xac"));                   // two CJK letters
+    BOOST_CHECK(ok("\xf0\x9f\x9a\x80 launch"));                    // an emoji, four bytes
+    BOOST_CHECK(ok(std::string(MAX_NOTE_SIZE, 'x')));
+
+    BOOST_CHECK(!ok(""));
+    BOOST_CHECK(!ok(std::string(MAX_NOTE_SIZE + 1, 'x')));
+    BOOST_CHECK(!ok(" leading"));
+    BOOST_CHECK(!ok("trailing "));
+    BOOST_CHECK(!ok("two\nlines"));
+    BOOST_CHECK(!ok("tab\there"));
+    BOOST_CHECK(!ok(std::string("nul\0x", 5)));
+    BOOST_CHECK(!ok("del\x7f"));
+    BOOST_CHECK(!ok("c1 \xc2\x85"));                               // U+0085, next line
+    BOOST_CHECK(!ok("rtl \xe2\x80\xae" "drowssap"));               // U+202E, right-to-left override
+    BOOST_CHECK(!ok("iso \xe2\x81\xa6x"));                         // U+2066, an isolate
+    BOOST_CHECK(!ok("mark \xe2\x80\x8f"));                         // U+200F
+    BOOST_CHECK(!ok("\xef\xbb\xbf" "bom"));                        // U+FEFF
+    // Not well-formed UTF-8.
+    BOOST_CHECK(!ok("\x80"));                                      // a lone continuation byte
+    BOOST_CHECK(!ok("\xc3"));                                      // cut short
+    BOOST_CHECK(!ok("\xc0\xaf"));                                  // overlong '/'
+    BOOST_CHECK(!ok("\xe0\x80\xaf"));                              // overlong, three bytes
+    BOOST_CHECK(!ok("\xed\xa0\x80"));                              // a surrogate
+    BOOST_CHECK(!ok("\xf4\x90\x80\x80"));                          // past U+10FFFF
+    BOOST_CHECK(!ok("\xf5\x80\x80\x80"));
+}
+
 //! The sizes quoted in design note 001 §1. If one of these moves, the growth
 //! arithmetic in §4 moves with it, so they are asserted rather than assumed.
 BOOST_AUTO_TEST_CASE(documented_record_sizes)

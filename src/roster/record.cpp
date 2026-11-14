@@ -90,6 +90,55 @@ bool ExpiryInRange(uint32_t expiry_height, int confirm_height)
     return expiry_height >= confirm + MIN_TTL && expiry_height <= confirm + MAX_TTL;
 }
 
+bool IsValidNote(Span<const unsigned char> text)
+{
+    if (text.size() == 0 || text.size() > MAX_NOTE_SIZE) return false;
+    if (text[0] == ' ' || text[text.size() - 1] == ' ') return false;
+    size_t i = 0;
+    while (i < text.size()) {
+        const unsigned char lead = text[i];
+        uint32_t cp;
+        size_t len;
+        if (lead < 0x80) {
+            cp = lead;
+            len = 1;
+        } else if (lead >= 0xc2 && lead <= 0xdf) {
+            cp = lead & 0x1f;
+            len = 2;
+        } else if (lead >= 0xe0 && lead <= 0xef) {
+            cp = lead & 0x0f;
+            len = 3;
+        } else if (lead >= 0xf0 && lead <= 0xf4) {
+            cp = lead & 0x07;
+            len = 4;
+        } else {
+            return false; // a continuation byte first, an overlong 0xc0/0xc1, or past U+10FFFF
+        }
+        if (i + len > text.size()) return false;
+        for (size_t k = 1; k < len; ++k) {
+            const unsigned char c = text[i + k];
+            if ((c & 0xc0) != 0x80) return false;
+            cp = (cp << 6) | (c & 0x3f);
+        }
+        // Shortest form only, and nothing a decoder may map differently.
+        if (len == 3 && cp < 0x800) return false;
+        if (len == 4 && (cp < 0x10000 || cp > 0x10ffff)) return false;
+        if (cp >= 0xd800 && cp <= 0xdfff) return false;
+        // Control characters, C0 and C1, and DEL: line breaks and tabs too,
+        // since a note is one line.
+        if (cp < 0x20 || (cp >= 0x7f && cp <= 0x9f)) return false;
+        // Marks that are invisible yet change how the text around them reads:
+        // direction overrides and isolates, which can make a note show a key
+        // or an amount it does not contain, and the byte-order mark.
+        if (cp == 0x200e || cp == 0x200f || (cp >= 0x202a && cp <= 0x202e) ||
+            (cp >= 0x2066 && cp <= 0x2069) || cp == 0xfeff) {
+            return false;
+        }
+        i += len;
+    }
+    return true;
+}
+
 bool operator==(const Endpoint& a, const Endpoint& b)
 {
     return a.network == b.network && a.addr == b.addr && a.port == b.port;
@@ -108,6 +157,7 @@ std::string ParseErrorString(ParseError err)
     case ParseError::BAD_ENDPOINT_COUNT: return "too many endpoints";
     case ParseError::BAD_ENDPOINT_NETWORK: return "unknown or unsupported endpoint network";
     case ParseError::BAD_MEETING_POINT: return "meeting point on a record with endpoints";
+    case ParseError::BAD_NOTE: return "note on a record with endpoints, or not acceptable text";
     case ParseError::TRAILING_BYTES: return "trailing bytes after record";
     }
     return "unknown error";
@@ -178,6 +228,18 @@ ParseError ParseRecord(Span<const unsigned char> raw, Record& out)
             std::memcpy(point.data(), body + off, RECORD_KEY_SIZE);
             out.meet_point = point;
             off += RECORD_KEY_SIZE;
+        }
+
+        // A note stands where an address would: never beside one.
+        if (out.services & SERVICE_NOTE_PRESENT) {
+            if (ep_count != 0) return ParseError::BAD_NOTE;
+            if (off + 1 > body_size) return ParseError::BAD_LENGTH;
+            const size_t note_size = body[off];
+            off += 1;
+            if (off + note_size > body_size) return ParseError::BAD_LENGTH;
+            if (!IsValidNote(Span<const unsigned char>(body + off, note_size))) return ParseError::BAD_NOTE;
+            out.note.assign(reinterpret_cast<const char*>(body + off), note_size);
+            off += note_size;
         }
 
         if (out.services & SERVICE_META_PRESENT) {
@@ -265,6 +327,11 @@ std::vector<unsigned char> SerializeRecord(const Record& rec)
         } else {
             services &= ~SERVICE_MEET_PRESENT;
         }
+        if (!rec.note.empty()) {
+            services |= SERVICE_NOTE_PRESENT;
+        } else {
+            services &= ~SERVICE_NOTE_PRESENT;
+        }
         WriteLE32(out, services);
         WriteLE32(out, rec.prev_height);
         out.push_back((unsigned char)rec.endpoints.size());
@@ -274,6 +341,12 @@ std::vector<unsigned char> SerializeRecord(const Record& rec)
             WriteBE16(out, ep.port);
         }
         if (rec.meet_point.has_value()) AppendKey(out, *rec.meet_point);
+        if (!rec.note.empty()) {
+            // Callers check with IsValidNote first; the length byte is only
+            // ever written for a note that fits it.
+            out.push_back((unsigned char)std::min<size_t>(rec.note.size(), 0xff));
+            out.insert(out.end(), rec.note.begin(), rec.note.end());
+        }
         if (rec.meta_hash.has_value()) {
             out.insert(out.end(), rec.meta_hash->begin(), rec.meta_hash->end());
         }

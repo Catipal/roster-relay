@@ -92,6 +92,14 @@ static constexpr uint32_t SERVICE_GATEWAY = 1U << 2;
  * epoch (overlay/rendezvous.h).
  */
 static constexpr uint32_t SERVICE_MEET_PRESENT = 1U << 30;
+/**
+ * The record carries a note: a line of text its owner chose, shown beside
+ * the key wherever the roster is listed. Only on a record with no endpoint,
+ * after the meeting point: one length byte, then 1 to MAX_NOTE_SIZE bytes of
+ * UTF-8 (IsValidNote). It is what a listing says about itself in place of an
+ * address, so the largest record stays MAX_RECORD_SIZE.
+ */
+static constexpr uint32_t SERVICE_NOTE_PRESENT = 1U << 29;
 static constexpr uint32_t SERVICE_META_PRESENT = 1U << 31;
 
 /**
@@ -109,6 +117,26 @@ static constexpr size_t RECORD_KEY_SIZE = 32;
 static constexpr size_t RECORD_SIG_SIZE = 64;
 static constexpr size_t RECORD_HASH_SIZE = 32;
 static constexpr size_t MAX_ENDPOINTS = 3;
+
+/**
+ * The longest note, in bytes of UTF-8. A record with no endpoint, a meeting
+ * point, a note and meta_hash:
+ *
+ *     header 4 + op_key 32 + expiry 4 + services 4 + prev_height 4
+ *          + ep_count 1 + meet 32 + note (1 + 72) + meta 32 + sig 64  =  250
+ *
+ * so a note never makes a record larger than the largest one with endpoints.
+ */
+static constexpr size_t MAX_NOTE_SIZE = 72;
+
+/**
+ * Whether bytes are a note a record may carry: 1 to MAX_NOTE_SIZE bytes of
+ * well-formed UTF-8 (shortest form, no surrogates), with no control
+ * characters, none of the invisible marks that reorder or hide text around
+ * them, and no space at either end. Strict for the reason the parser is: text
+ * two readers could show differently is worse than text neither accepts.
+ */
+bool IsValidNote(Span<const unsigned char> text);
 
 /**
  * The largest legal record, and the cheap bound used to reject obvious
@@ -253,6 +281,9 @@ struct Record {
     //! ANNOUNCE with no endpoints only: the relay this key can be met at for
     //! the record's life (SERVICE_MEET_PRESENT).
     Optional<KeyBytes> meet_point;
+    //! ANNOUNCE with no endpoints only: the owner's note, UTF-8
+    //! (SERVICE_NOTE_PRESENT). Empty when absent.
+    std::string note;
     Optional<uint256> meta_hash;
 
     //! DELEGATE only, present on an identity's first delegation.
@@ -280,6 +311,7 @@ enum class ParseError {
     BAD_ENDPOINT_COUNT,
     BAD_ENDPOINT_NETWORK, //!< unknown, or a network we refuse to carry
     BAD_MEETING_POINT,    //!< a meeting point on a record that has endpoints
+    BAD_NOTE,             //!< a note on a record with endpoints, or text IsValidNote refuses
     TRAILING_BYTES,
 };
 

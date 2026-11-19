@@ -1,3 +1,29 @@
+BPS Relay
+=========
+
+BPS Relay is a second client for Bitcoin PoS. Bitcoin PoS Core is about
+coins; BPS Relay is about who is on the network. It runs the same full node
+and wallets, and adds:
+
+- a roster of peers kept on the chain, which nobody can edit for others;
+- an encrypted relay network, where every path goes through three relays run
+  by different people;
+- mail between the people on the roster, names for them, and sites and
+  services hosted from home;
+- relays that pay for the listings of the peers who use them;
+- a companion app for phones (`mobile/`).
+
+Downloads are on the [Releases](../../releases) page. How to use it:
+[doc/README_bps_relay.txt](doc/README_bps_relay.txt). What is in this
+version: [doc/release-notes-bps-relay.md](doc/release-notes-bps-relay.md).
+
+It builds from this tree like Bitcoin PoS Core (see [INSTALL.md](INSTALL.md)),
+with the GUI enabled; the program is `src/qt/bps-relay`. Bitcoin PoS Core,
+built from the same tree as `src/qt/bitcoin-pos-qt`, is released from its own
+repository.
+
+The rest of this file is Bitcoin PoS Core's own introduction.
+
 Bitcoin PoS Core integration/staging tree
 =====================================
 

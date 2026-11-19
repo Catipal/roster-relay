@@ -324,8 +324,12 @@ jobs:
 
       # The notes are wrapped for reading in a terminal, but a release page shows
       # every line break, so join each paragraph and list item back into one line.
+      # This repository releases BPS Relay; Bitcoin PoS Core, built from the same
+      # tree, is released from its own repository. So the page carries BPS
+      # Relay's notes and its archives, and the wallet archives stay workflow
+      # artifacts.
       - name: Unwrap the release notes
-        run: python3 contrib/devtools/unwrap-release-notes.py doc/release-notes.md > release-notes.md
+        run: python3 contrib/devtools/unwrap-release-notes.py doc/release-notes-bps-relay.md > release-notes.md
 
       - name: Attach the archives to the release
         env:
@@ -336,5 +340,5 @@ jobs:
           gh release view "${GITHUB_REF_NAME}" --repo "${GITHUB_REPOSITORY}" >/dev/null 2>&1 \
             || gh release create "${GITHUB_REF_NAME}" --repo "${GITHUB_REPOSITORY}" \
                  --title "${GITHUB_REF_NAME}" --notes-file release-notes.md --draft
-          gh release upload "${GITHUB_REF_NAME}" assets/* \
+          gh release upload "${GITHUB_REF_NAME}" assets/bps-relay-* \
             --repo "${GITHUB_REPOSITORY}" --clobber

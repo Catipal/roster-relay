@@ -1121,6 +1121,10 @@ Semnarea este posibilă doar cu adrese de tipul &apos;legacy&apos;.</translation
         <source>Not staking</source>
         <translation>Fără staking</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>Site-uri</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1275,6 +1279,92 @@ Semnarea este posibilă doar cu adrese de tipul &apos;legacy&apos;.</translation
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>delegat către %1 pentru staking la rece</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>Limite pentru %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>Cât poate cheltui acest telefon din portofelul de alocație, inclusiv comisioanele.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Cel mult într-o plată</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Cel mult în orice 24 de ore</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>Asociați un telefon</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>În aplicația BPS de pe telefon, alegeți Asociere și scanați acest cod. Sau copiați textul de sub el în aplicație. Funcționează o singură dată, timp de zece minute.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>Copiați codul</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>Afișați un cod nou</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>Asociați doar dacă telefonul arată aceleași șase cifre. Dacă arată altele, altcineva a răspuns primul la cod: respingeți și afișați unul nou.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>Cât poate cheltui acest telefon din portofelul de alocație. Doar acest nod o poate schimba mai târziu, niciodată telefonul.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Cel mult într-o plată</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Cel mult în orice 24 de ore</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>Respingeți</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>Asociați acest telefon</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>Se creează un cod…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>Acest cod a expirat.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>Se așteaptă telefonul… codul mai funcționează %1 minute.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>Această versiune nu poate desena coduri QR: copiați în schimb textul de mai jos în aplicație.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>Un telefon numit „%1” vrea să se asocieze cu acest nod.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>Asociat. Telefonul poate acum cheltui din portofelul de alocație în limitele stabilite de dvs. Lista lui este pe pagina Server, unde îi puteți schimba limitele, îl puteți debloca după prea multe PIN-uri greșite sau îl puteți disocia.</translation>
     </message>
 </context>
 <context>
@@ -1450,7 +1540,7 @@ Semnarea este posibilă doar cu adrese de tipul &apos;legacy&apos;.</translation
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>Găsește un partener sau o adresă</translation>
+        <translation type="vanished">Găsește un partener sau o adresă</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1587,6 +1677,38 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>Partenerii se anunță în lanț, nu la un server, așa că această listă este aceeași pentru toată lumea și nimeni nu o poate modifica. Un partener înscris prin rețeaua suprapusă arată unde poate fi întâlnit azi, lucru care se schimbă în fiecare zi; un releu își arată adresa doar cât este online, pentru că ea nu este niciodată în lanț.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nume</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>Înregistrați un nume…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>Un nume este felul în care alții ajung la dvs. fără să vă copieze cheia. Numele se înregistrează în fila Nume.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>Găsiți un partener, o notă sau o adresă</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>Toate aceste nume duc la cheia acestui nod. Alții pot ajunge la dvs. prin oricare dintre ele.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>Gestionați numele…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>nume dezactivate</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>Numele au nevoie de indexul de nume. Activați-l în Setări pentru a înregistra și afișa unul.</translation>
     </message>
 </context>
 <context>
@@ -3218,15 +3340,15 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>Aceasta scrie în lanț o înregistrare scurtă care spune că existați și, opțional, unde să fiți găsit.</translation>
+        <translation type="vanished">Aceasta scrie în lanț o înregistrare scurtă care spune că existați și, opțional, unde să fiți găsit.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>Cum ar trebui să ajungă partenerii la dvs.?</translation>
+        <translation type="vanished">Cum ar trebui să ajungă partenerii la dvs.?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>Prin rețeaua suprapusă — fără a publica o adresă</translation>
+        <translation type="vanished">Prin rețeaua suprapusă — fără a publica o adresă</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3234,35 +3356,35 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>La o adresă pe care o public</translation>
+        <translation type="vanished">La o adresă pe care o public</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>adresă la care pot ajunge alți parteneri</translation>
+        <translation type="vanished">adresă la care pot ajunge alți parteneri</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>Oricine o poate vedea, iar lanțul o păstrează pentru totdeauna. O adresă onion publică o locație pe care nimeni nu o poate lega de dvs. și funcționează din spatele NAT; o adresă IP nu face nici una, nici alta. Un nod care publică o adresă IP poate fi ales ca releu de alții.</translation>
+        <translation type="vanished">Oricine o poate vedea, iar lanțul o păstrează pentru totdeauna. O adresă onion publică o locație pe care nimeni nu o poate lega de dvs. și funcționează din spatele NAT; o adresă IP nu face nici una, nici alta. Un nod care publică o adresă IP poate fi ales ca releu de alții.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3306,7 +3428,7 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>Nodul dvs. semnează înscrierea și o trimite prin rețeaua suprapusă releului prin care intră. Un releu care plătește înscrieri o pune pe a dvs. într-un bloc pe care îl creează singur, așa că se confirmă chiar dacă majoritatea nodurilor nu ar transmite-o, și vă adaugă la partenerii cu care își împarte recompensele. Dacă mai târziu încetează să plătească, înscrierea dvs. expiră în decurs de o lună; o puteți reînnoi oricând singur dintr-un portofel cu fonduri.</translation>
+        <translation type="vanished">Nodul dvs. semnează înscrierea și o trimite prin rețeaua suprapusă releului prin care intră. Un releu care plătește înscrieri o pune pe a dvs. într-un bloc pe care îl creează singur, așa că se confirmă chiar dacă majoritatea nodurilor nu ar transmite-o, și vă adaugă la partenerii cu care își împarte recompensele. Dacă mai târziu încetează să plătească, înscrierea dvs. expiră în decurs de o lună; o puteți reînnoi oricând singur dintr-un portofel cu fonduri.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3322,11 +3444,11 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>Introduceți o adresă sau alegeți să nu publicați niciuna.</translation>
+        <translation type="vanished">Introduceți o adresă sau alegeți să nu publicați niciuna.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>Se cere releului dvs. să o publice… poate dura până la o jumătate de minut.</translation>
+        <translation type="vanished">Se cere releului dvs. să o publice… poate dura până la o jumătate de minut.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3358,11 +3480,11 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>Înscrie gateway-ul acestui releu</translation>
+        <translation type="vanished">Înscrie gateway-ul acestui releu</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>Înscrierea unui releu conține adresa lui, așa că gateway-ul lui este înscris sub o a doua cheie fără adresă, separat. Nimeni nu poate afla din registru că cele două aparțin aceluiași computer. Vizitatorii ajung la gateway prin relee, așa că el nu află niciodată cine sunt; site-urile pe care le vizitează văd adresa acestui computer.</translation>
+        <translation type="vanished">Înscrierea unui releu conține adresa lui, așa că gateway-ul lui este înscris sub o a doua cheie fără adresă, separat. Nimeni nu poate afla din registru că cele două aparțin aceluiași computer. Vizitatorii ajung la gateway prin relee, așa că el nu află niciodată cine sunt; site-urile pe care le vizitează văd adresa acestui computer.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3378,11 +3500,11 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>Plătește alt releu, rugat prin alte relee</translation>
+        <translation type="vanished">Plătește alt releu, rugat prin alte relee</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>Nodul dvs. semnează înscrierea gateway-ului și o trimite prin relee unui alt releu, care plătește pentru ea și o pune într-un bloc pe care îl creează singur. Acel releu află cheia gateway-ului și niciodată adresa acestui computer. Plata din portofelul propriu al acestui nod ar lega gateway-ul de acest releu pe lanț și, astfel, de adresa lui.</translation>
+        <translation type="vanished">Nodul dvs. semnează înscrierea gateway-ului și o trimite prin relee unui alt releu, care plătește pentru ea și o pune într-un bloc pe care îl creează singur. Acel releu află cheia gateway-ului și niciodată adresa acestui computer. Plata din portofelul propriu al acestui nod ar lega gateway-ul de acest releu pe lanț și, astfel, de adresa lui.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3398,7 +3520,7 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>Înscrierea ta spune cine ești, nu unde rulezi. Partenerii ajung la tine prin rețeaua suprapusă și te întâlnesc în puncte pe care ambele părți le calculează din registru și care se schimbă în fiecare zi; Descoperă le arată pe cele de azi. Înscrierea ta numește și un releu unde poți fi întâlnit cât timp ea este valabilă, iar fiecare reînnoire numește unul nou. Asta activează acest client în mod implicit.</translation>
+        <translation type="vanished">Înscrierea ta spune cine ești, nu unde rulezi. Partenerii ajung la tine prin rețeaua suprapusă și te întâlnesc în puncte pe care ambele părți le calculează din registru și care se schimbă în fiecare zi; Descoperă le arată pe cele de azi. Înscrierea ta numește și un releu unde poți fi întâlnit cât timp ea este valabilă, iar fiecare reînnoire numește unul nou. Asta activează acest client în mod implicit.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3418,15 +3540,59 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>Acest nod își partajează conexiunea la internet ca gateway, cum e setat în pagina Server, așa că înscrierea o spune.</translation>
+        <translation type="vanished">Acest nod își partajează conexiunea la internet ca gateway, cum e setat în pagina Server, așa că înscrierea o spune.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>Acest nod nici nu face releu pentru alții, nici nu își partajează conexiunea la internet, cum e setat în pagina Server.</translation>
+        <translation type="vanished">Acest nod nici nu face releu pentru alții, nici nu își partajează conexiunea la internet, cum e setat în pagina Server.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>O schimbare acolo ajunge în registru cu următoarea ta înscriere.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>Aceasta scrie în lanț o scurtă înregistrare că existați și, opțional, un rând despre dvs.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>Ce spune înscrierea dvs.</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>Înscrierea dvs. spune cine sunteți, nu unde rulați: nu conține nicio adresă. Partenerii ajung la dvs. prin rețeaua suprapusă, întâlnindu-vă în puncte pe care ambele părți le deduc din registru și care se schimbă în fiecare zi; Descoperire le arată pe cele de azi. Înscrierea dvs. numește și un releu unde puteți fi întâlnit cât timp durează, iar fiecare reînnoire numește unul nou.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>Notă</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>opțional: un rând afișat lângă cheia dvs.</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>Oricine o poate citi, iar lanțul o păstrează pentru totdeauna, chiar și după ce înscrierea se încheie. Omiteți orice spune unde sau cine sunteți, dacă asta contează pentru dvs.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Nodul dvs. semnează înscrierea și o trimite pe o cale către un releu prin care nu intră, astfel încât acel releu află cine sunteți, nu unde. Un releu care plătește pentru înscrieri o pune pe a dvs. într-un bloc pe care îl mizează el însuși, astfel încât se confirmă chiar dacă majoritatea nodurilor nu ar transmite-o, și vă adaugă la partenerii cu care își împarte recompensele. Dacă mai târziu încetează să plătească, înscrierea dvs. expiră în cursul lunii; o puteți reînnoi oricând singur dintr-un portofel cu fonduri.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 octeți</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>Prea lungă: literele din afara englezei simple ocupă câte doi până la patru octeți.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>Nota este prea lungă.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>Nota nu poate conține caractere de control sau semne care schimbă direcția textului.</translation>
     </message>
 </context>
 <context>
@@ -3606,6 +3772,14 @@ Vi se va arăta o cheie de recuperare o singură dată. Notați-o: este singura 
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>Introduceți o adresă BitcoinPoS (de ex. %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>Setați ambele limite.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>O plată nu poate avea voie la mai mult decât o zi întreagă.</translation>
     </message>
 </context>
 <context>
@@ -4306,6 +4480,14 @@ calculate din registru; se schimbă în fiecare zi:</translation>
         <source>meets at %1</source>
         <translation>se întâlnește la %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>Notă</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>Scrisă de cine deține această cheie; nimeni nu o verifică.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4789,7 +4971,7 @@ Nota: Cum taxa este calculata per byte, o taxa de &quot;100 satoshi per kB&quot;
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>Un site sau serviciu oferit de acest nod, găsit după cheie sau nume și accesat prin rețeaua suprapusă, astfel încât gazda nu publică niciodată unde rulează. Partea de întâlnire există: un serviciu se înregistrează în puncte de întâlnire pe care ambele părți le calculează din registru. Servirea de pagini și aplicații prin el nu este încă construită.</translation>
+        <translation type="vanished">Un site sau serviciu oferit de acest nod, găsit după cheie sau nume și accesat prin rețeaua suprapusă, astfel încât gazda nu publică niciodată unde rulează. Partea de întâlnire există: un serviciu se înregistrează în puncte de întâlnire pe care ambele părți le calculează din registru. Servirea de pagini și aplicații prin el nu este încă construită.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -5013,7 +5195,7 @@ Poți schimba asta oricând în pagina Server.</translation>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Ce oferă acest nod altora. Retransmiterea, păstrarea e-mailului și partajarea internetului funcționează azi; găzduirea e pe drum și, ca tot ce e aici, se găsește la fel ca nodurile pereche — prin registru. Numele au o pagină proprie.</translation>
+        <translation type="vanished">Ce oferă acest nod altora. Retransmiterea, păstrarea e-mailului și partajarea internetului funcționează azi; găzduirea e pe drum și, ca tot ce e aici, se găsește la fel ca nodurile pereche — prin registru. Numele au o pagină proprie.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -5029,7 +5211,7 @@ Poți schimba asta oricând în pagina Server.</translation>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>Înscris ca</translation>
+        <translation type="vanished">Înscris ca</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5041,15 +5223,15 @@ Poți schimba asta oricând în pagina Server.</translation>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>Înscrie ca gateway…</translation>
+        <translation type="vanished">Înscrie ca gateway…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Partajează conexiunea la internet a acestui computer ca gateway</translation>
+        <translation type="vanished">Partajează conexiunea la internet a acestui computer ca gateway</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>Oprește-l dacă legea de unde locuiești sau condițiile furnizorului tău de internet interzic partajarea conexiunii. Oprit, acest nod continuă să retransmită, să păstreze e-mailul și să urmeze lanțul, și își folosește direct propria conexiune.</translation>
+        <translation type="vanished">Oprește-l dacă legea de unde locuiești sau condițiile furnizorului tău de internet interzic partajarea conexiunii. Oprit, acest nod continuă să retransmită, să păstreze e-mailul și să urmeze lanțul, și își folosește direct propria conexiune.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5065,11 +5247,11 @@ Poți schimba asta oricând în pagina Server.</translation>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>Permite programelor de pe acest computer să folosească internetul rețelei, printr-un proxy local</translation>
+        <translation type="vanished">Permite programelor de pe acest computer să folosească internetul rețelei, printr-un proxy local</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>Un proxy SOCKS5 doar pentru acest computer. Fiecare conexiune iese prin gateway-ul altui membru, iar numele sunt rezolvate acolo, niciodată aici. Funcționează cât timp acest computer își partajează propria conexiune.</translation>
+        <translation type="vanished">Un proxy SOCKS5 doar pentru acest computer. Fiecare conexiune iese prin gateway-ul altui membru, iar numele sunt rezolvate acolo, niciodată aici. Funcționează cât timp acest computer își partajează propria conexiune.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5105,27 +5287,27 @@ Poți schimba asta oricând în pagina Server.</translation>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>neînscris ca gateway</translation>
+        <translation type="vanished">neînscris ca gateway</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>încă nu — registrul nu înscrie acest nod ca gateway, așa că nimeni nu îl poate găsi</translation>
+        <translation type="vanished">încă nu — registrul nu înscrie acest nod ca gateway, așa că nimeni nu îl poate găsi</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>încă nimic — un releu își înscrie gateway-ul sub o a doua cheie, fără adresă, separat de propria înscriere</translation>
+        <translation type="vanished">încă nimic — un releu își înscrie gateway-ul sub o a doua cheie, fără adresă, separat de propria înscriere</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>încă nimic — înscrierii acestui nod îi lipsește opțiunea de gateway; public-o din nou cu opțiunea pornită</translation>
+        <translation type="vanished">încă nimic — înscrierii acestui nod îi lipsește opțiunea de gateway; public-o din nou cu opțiunea pornită</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>încă nimic — publică o înscriere fără adresă cu opțiunea de gateway pornită</translation>
+        <translation type="vanished">încă nimic — publică o înscriere fără adresă cu opțiunea de gateway pornită</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>Înscrie gateway-ul acestui releu…</translation>
+        <translation type="vanished">Înscrie gateway-ul acestui releu…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5145,11 +5327,11 @@ Poți schimba asta oricând în pagina Server.</translation>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>cheia lui de gateway %1, separată de adresa releului</translation>
+        <translation type="vanished">cheia lui de gateway %1, separată de adresa releului</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>cheia proprie a acestui nod %1</translation>
+        <translation type="vanished">cheia proprie a acestui nod %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5165,11 +5347,11 @@ Poți schimba asta oricând în pagina Server.</translation>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>Trece tot traficul acestui computer prin rețea, fără setare de proxy în niciun program</translation>
+        <translation type="vanished">Trece tot traficul acestui computer prin rețea, fără setare de proxy în niciun program</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>Conexiunile fiecărui program ies prin gateway-urile rețelei, fiecare prin altul, iar numele sunt căutate acolo. Rețeaua proprie a acestui computer — o imprimantă, routerul — și conexiunile proprii ale acestui nod rămân directe. Funcționează cât timp acest computer își partajează propria conexiune.</translation>
+        <translation type="vanished">Conexiunile fiecărui program ies prin gateway-urile rețelei, fiecare prin altul, iar numele sunt căutate acolo. Rețeaua proprie a acestui computer — o imprimantă, routerul — și conexiunile proprii ale acestui nod rămân directe. Funcționează cât timp acest computer își partajează propria conexiune.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5197,11 +5379,11 @@ Poți schimba asta oricând în pagina Server.</translation>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>Pornit: %1 conexiune(i) prin rețea acum; %2 trimiși, %3 primiți.</translation>
+        <translation type="vanished">Pornit: %1 conexiune(i) prin rețea acum; %2 trimiși, %3 primiți.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>Încă nu este disponibil pe acest sistem.</translation>
+        <translation type="vanished">Încă nu este disponibil pe acest sistem.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5213,7 +5395,7 @@ Poți schimba asta oricând în pagina Server.</translation>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>Pornește când clientul este repornit.</translation>
+        <translation type="vanished">Pornește când clientul este repornit.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5242,6 +5424,334 @@ Poți schimba asta oricând în pagina Server.</translation>
     <message>
         <source>none — relaying is switched off</source>
         <translation>niciuna — releul este oprit</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Ce oferă acest nod altora: retransmitere, păstrarea corespondenței, partajarea internetului și găzduirea unui site; iar telefonului dvs., un mod de a cheltui de aici. Ca tot ce e aici, se găsește la fel ca partenerii — prin registru. Numele au o pagină proprie.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>Partajați conexiunea la internet a acestui computer și folosiți în schimb pe cea a rețelei</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>Activat, conexiunea acestui computer este partajată, iar tot traficul său propriu iese prin gateway-urile rețelei, fiecare conexiune prin altul; rețeaua proprie a acestui computer — o imprimantă, routerul — rămâne directă. Dezactivați-l dacă legea de unde locuiți sau termenii furnizorului de internet interzic partajarea conexiunii: rețeaua transportă atunci doar BPS, iar acest computer își folosește propria conexiune.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Pentru tot computerul: activat, %1 conexiuni prin rețea acum; %2 trimiși, %3 primiți.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>Pentru tot computerul: încă indisponibil pe acest sistem; programele pot folosi proxy-ul.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>Pentru tot computerul: pornește când clientul repornește.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>nu partajează</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>nu — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>Publicați un dosar ca site sub cheia acestui nod, astfel încât oricine căruia îi dați cheia sau numele dvs. îl poate citi prin rețeaua suprapusă. Fiecare fișier este semnat și verificat bucată cu bucată pe măsură ce sosește. Înscris fără adresă, acest nod este întâlnit în punctele sale de întâlnire și nimeni nu află unde rulează site-ul; înscris cu o adresă, vizitatorii ajung la el prin relee, astfel încât nu află niciodată cine sunt. Un program de pe acest computer — o aplicație web, un server de chat — poate fi publicat la fel: vizitatorii ajung la el prin rețeaua suprapusă, iar acest nod se conectează doar la portul pe care îl indicați.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Dosar</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>Atins</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Trimis</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>niciunul</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>Programe de pe acest computer la care vizitatorii ajung prin rețeaua suprapusă. Un program numit web este ce deschide un browser la adresa acestui nod când nu există site.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>Programe</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>Publicați un dosar…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>Publicați din nou</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>Citiți din nou dosarul după ce l-ați modificat și publicați ce este acum în el.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>Opriți publicarea</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>Deschideți în Site-uri</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>Publicați un program…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>Opriți un program…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>nu publică</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>nimic — nu este nimic publicat</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 fișier(e), %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>neînscris</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>de nimeni încă: acest nod nu este înscris în registru, deci vizitatorii nu pot găsi site-ul. Publicați o înscriere pe pagina Nod, la Descoperire.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>publică</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>încă neîntâlnit</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>în %1 punct(e) de întâlnire, fără adresă publicată</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>încă nu: se înregistrează în punctele sale de întâlnire, ceea ce necesită releele registrului</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>la adresa acestui nod, prin relee care ascund vizitatorul</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 bucată(ți) de pagină, %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>Dosarul de publicat ca site</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>Publicați un program</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>Un nume pentru el, de la 1 la 32 dintre a-z, 0-9 și -. Numiți-l web pentru o aplicație web pe care un browser trebuie să o deschidă la adresa acestui nod:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>Portul pe care ascultă, pe 127.0.0.1 (doar acest computer):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>Opriți un program</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>La ce program nu mai trebuie să ajungă vizitatorii:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 la 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 flux(uri) deschis(e)</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>Telefon însoțitor</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>Cheltuiți de pe telefon în timp ce monedele dvs. rămân aici. Telefonul nu deține chei de monede: ajunge la acest nod, dovedește cheia cu care a fost asociat, iar acest nod plătește dintr-un mic portofel de alocație — după ce verifică PIN-ul telefonului și limitele stabilite de dvs., pe care telefonul nu le poate schimba. Pierdeți telefonul și pierdeți cel mult ce conține alocația; disociați-l aici. Când acest nod este un releu înscris și sunt înscrise destule altele, telefonul vine prin trei relee, astfel încât nimeni care privește nu află unde este; altfel se conectează direct aici.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>Alocație</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>Accesibil pentru telefoane</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>Telefon</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>O plată</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>O zi</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>Cheltuit azi</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>Stare</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>Asociați un telefon…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>Limite…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>Deblocați</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>Un telefon este blocat după cinci PIN-uri greșite la rând, până când este deblocat aici.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>Disociați</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>Permiteți telefoanelor asociate să cheltuiască dintr-un portofel de alocație</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>Necesită rețeaua suprapusă. Dezactivat implicit, deoarece permite unui telefon să cheltuiască monedele acestui nod.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>Un portofel separat, fără frază de acces — nimeni nu e acolo să o tasteze când telefonul plătește — și doar cu ce ar trebui să poată cheltui telefonul. Nu mizează niciodată și nu poate fi portofelul care plătește pentru înscrieri.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>Creați-l</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>Creați portofelul de alocație și deschideți-l de fiecare dată când pornește acest nod.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>Alimentați…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>Deschideți Trimitere în portofel, pentru a muta monede în alocație.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>Portofel de alocație</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, încă %1 în drum</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>da, la %1, prin relee</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>direct, la %1. Fără relee între: rețeaua telefonului vede că vorbește cu acest computer. Din afara acestei rețele, redirecționați portul UDP %2 de pe router către acest computer.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>nu — acest nod nu își cunoaște încă nicio adresă proprie</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>inaccesibil</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>un telefon așteaptă</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>fără alocație</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>un telefon este blocat</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 telefoane sunt blocate</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>rulează, încă niciun telefon</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>rulează, 1 telefon</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>rulează, %1 telefoane</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>Cheie de dispozitiv %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>blocat: PIN-uri greșite</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>asociat</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>Disociați %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>Disociați %1? Nu va mai putea cheltui până nu este asociat din nou. Faceți asta imediat dacă telefonul este pierdut sau furat.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>Portofelul de alocație a fost creat și deschis. Folosiți Alimentați pentru a muta în el ce ar trebui să poată cheltui telefonul.</translation>
     </message>
 </context>
 <context>
@@ -5373,6 +5883,30 @@ Poți schimba asta oricând în pagina Server.</translation>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>Nodul încă pornește; setările de bază nu sunt încă disponibile.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>Alții vă întâlnesc la relee deduse din registru, iar nodul dvs. ține deschisă o cale către fiecare dintre ele prin atâtea relee. Punctul de întâlnire îl vede doar pe ultimul dintre ele, niciodată adresa dvs. Mai multe vă ascund mai bine și sunt mai lente.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>Relee înaintea punctelor dvs. de întâlnire</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>Când acest computer folosește internetul rețelei, fiecare conexiune trece prin atâtea relee până la punctul de întâlnire al unui gateway și apoi prin releele gateway-ului: gateway-ul nu află niciodată cine sunteți. Mai multe vă ascund mai bine și sunt mai lente.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>Relee înaintea punctului de întâlnire al unui gateway</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>Doar prima dvs. conexiune este directă, către un releu de intrare care vă vede adresa, nu cine sunteți. Corespondența trece mereu prin trei relee.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Versiunea %1</translation>
     </message>
 </context>
 <context>
@@ -5535,6 +6069,147 @@ Poți schimba asta oricând în pagina Server.</translation>
     <message>
         <source>No error</source>
         <translation>Nicio eroare</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>Site-uri</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>Site-uri găzduite prin rețeaua suprapusă, deschise după un nume sau o cheie pe care cineva v-a dat-o. Paginile sunt afișate aici fără scripturi și nimic de pe ele nu este preluat din afara BPS, astfel încât o pagină nu poate afla unde sunteți.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Înapoi</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Înainte</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>Preluați din nou pagina</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://nume/ sau cheia unui site</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Deschideți</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>Salvați acest fișier…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>Deschideți în browser</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>Același site într-un browser obișnuit, printr-un server doar pe acest computer. Paginile de acolo pot rula scripturi, așa că vizualizatorul de aici rămâne modul mai sigur de a citi un site ascuns.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>Conectați-vă la un program…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>Ajungeți la un program pe care îl rulează acest site — un server de chat, un joc — dintr-un program de pe acest computer: BPS Relay ascultă aici pe un port și duce fiecare conexiune la el prin rețeaua suprapusă.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>Aceasta nu este adresa unui site. Scrieți un nume sau o cheie, de exemplu bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>Se caută %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>Se preia %1 prin rețeaua suprapusă…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 nu este o pagină pe care o arată acest vizualizator (%2 octeți). Salvați-o pentru a o deschide cu alt program.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>Îndreptați programul de pe acest computer către %1: BPS Relay duce fiecare conexiune făcută acolo la programul site-ului, prin rețeaua suprapusă, până repornește.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>Serverul de site-uri pentru browsere nu rulează. Pornește odată cu BPS Relay, dacă nu s-a dat -siteproxy=0.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 nu duce la nicio cheie.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 indică acum o altă cheie decât când l-ați deschis ultima dată. Cine deține numele acum poate să nu fie cel pe care l-ați citit înainte.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>Întâlnit într-unul dintre punctele sale de întâlnire, prin %1 relee ale dvs.: nici dvs., nici gazda nu aflați unde este celălalt.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>Atins la adresa sa prin %1 relee: gazda nu află cine sunteți.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>Propriul dvs. site, citit de pe acest computer.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>Se ajunge la el prin radio, așa că paginile vin încet.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 nu este un nume pe care îl cunoaște acest nod: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>Nu s-a putut deschide %1: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>Acest link duce în afara BPS, deci nu a fost urmat: %1
+Deschideți-l într-un browser obișnuit dacă doriți; cine îl administrează vă va vedea adresa.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>Conectați-vă la un program</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>Numele pe care site-ul l-a dat programului său:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>Deschiderea unui site în browser</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>Browserul dvs. va cere acestui computer site-ul, iar BPS Relay îl preia prin rețeaua suprapusă, ca aici. Fiecare pagină se poate încărca doar de pe propriul site, deci nu poate aduce nimic din internetul deschis pentru a afla unde sunteți.
+
+Ce poate face totuși un browser: un script poate folosi WebRTC pentru a arăta unei pagini adresele acestui computer, iar un link pe care îl urmați spre un site obișnuit pleacă la fel ca orice link. Vizualizatorul din BPS Relay nu rulează scripturi și rămâne modul mai sigur de a citi un site ascuns.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>Salvați fișierul</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>Nu s-a putut salva %1.</translation>
     </message>
 </context>
 <context>

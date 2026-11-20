@@ -1109,6 +1109,10 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <source>Not staking</source>
         <translation>未在质押</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>站点</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1263,6 +1267,92 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>已委托给 %1 进行冷质押</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>%1 的限额</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>这部手机可以从零用钱包中花费多少，含手续费。</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>单笔支付最多</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>任意 24 小时内最多</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>配对手机</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>在手机上的 BPS 应用中选择“配对”并扫描此码。或者把下面的文字复制到应用中。只能使用一次，有效期十分钟。</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>复制此码</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>显示新码</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>只有手机显示相同的六位数字时才配对。如果显示的是其他数字，说明有人先回应了此码：请拒绝，并显示一个新码。</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>这部手机可以从零用钱包中花费多少。以后只有本节点能更改，手机永远不能。</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>单笔支付最多</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>任意 24 小时内最多</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>拒绝</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>配对这部手机</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>正在生成码…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>此码已过期。</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>正在等待手机… 此码还可使用 %1 分钟。</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>此版本无法绘制二维码：请改为把下面的文字复制到应用中。</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>名为“%1”的手机想与本节点配对。</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>已配对。手机现在可以在你设定的限额内从零用钱包支出。它的列表在“服务器”页面，你可以在那里更改限额、在多次输错 PIN 后解锁，或解除配对。</translation>
     </message>
 </context>
 <context>
@@ -1438,7 +1528,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>查找对等节点或地址</translation>
+        <translation type="vanished">查找对等节点或地址</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1575,6 +1665,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>对等节点在区块链上公布自己，而不是在服务器上，所以这份列表对每个人都相同，没有人能够编辑它。通过覆盖网络登记的对等节点会显示今天在哪里能与它会面，每天都会变化；中继只在在线时显示地址，因为地址从不上链。</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>名称</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>注册名称…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>有了名称，别人无需复制你的密钥就能联系你。名称在“名称”标签页注册。</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>查找对等节点、备注或地址</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>这些名称都解析到本节点的密钥。别人可以通过其中任何一个联系你。</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>管理名称…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>名称已关闭</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>名称需要名称索引。请在设置中开启它，以注册和显示名称。</translation>
     </message>
 </context>
 <context>
@@ -3200,15 +3322,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>这会向区块链写入一条简短记录，表明你的存在，并可选地说明在哪里能找到你。</translation>
+        <translation type="vanished">这会向区块链写入一条简短记录，表明你的存在，并可选地说明在哪里能找到你。</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>对等节点应如何联系你？</translation>
+        <translation type="vanished">对等节点应如何联系你？</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>通过覆盖网络——不发布地址</translation>
+        <translation type="vanished">通过覆盖网络——不发布地址</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3216,35 +3338,35 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>在我发布的地址上</translation>
+        <translation type="vanished">在我发布的地址上</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>洋葱</translation>
+        <translation type="vanished">洋葱</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>其他对等节点可以连接的地址</translation>
+        <translation type="vanished">其他对等节点可以连接的地址</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>任何人都能看到它，区块链会永久保存它。洋葱地址发布的位置无人能追溯到你，并且可以在 NAT 后面工作；IP 地址两者都做不到。发布 IP 地址的节点可以被其他人选为中继。</translation>
+        <translation type="vanished">任何人都能看到它，区块链会永久保存它。洋葱地址发布的位置无人能追溯到你，并且可以在 NAT 后面工作；IP 地址两者都做不到。发布 IP 地址的节点可以被其他人选为中继。</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3288,7 +3410,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>你的节点签署登记，并通过覆盖网络把它发送给你所接入的中继。为登记付费的中继会把你的登记放进它自己质押产出的区块，因此即使大多数节点不愿转发也能确认，并且会把你加入它分享奖励的对等节点中。如果它以后停止付费，你的登记会在一个月内失效；你随时可以用有余额的钱包自己续期。</translation>
+        <translation type="vanished">你的节点签署登记，并通过覆盖网络把它发送给你所接入的中继。为登记付费的中继会把你的登记放进它自己质押产出的区块，因此即使大多数节点不愿转发也能确认，并且会把你加入它分享奖励的对等节点中。如果它以后停止付费，你的登记会在一个月内失效；你随时可以用有余额的钱包自己续期。</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3304,11 +3426,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>请输入一个地址，或者选择不发布地址。</translation>
+        <translation type="vanished">请输入一个地址，或者选择不发布地址。</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>正在请你的中继发布…最多可能需要半分钟。</translation>
+        <translation type="vanished">正在请你的中继发布…最多可能需要半分钟。</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3340,11 +3462,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>登记这个中继的网关</translation>
+        <translation type="vanished">登记这个中继的网关</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>中继的登记中带有它的地址，所以它的网关用第二个不带地址的密钥另行登记。没人能从名册看出两者属于同一台电脑。访问者经由中继到达网关，所以网关永远不知道他们是谁；他们访问的网站看到的是这台电脑的地址。</translation>
+        <translation type="vanished">中继的登记中带有它的地址，所以它的网关用第二个不带地址的密钥另行登记。没人能从名册看出两者属于同一台电脑。访问者经由中继到达网关，所以网关永远不知道他们是谁；他们访问的网站看到的是这台电脑的地址。</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3360,11 +3482,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>由另一个中继支付，经由中继请求</translation>
+        <translation type="vanished">由另一个中继支付，经由中继请求</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>你的节点签署网关的登记，并经由中继把它发送给另一个中继，由它付费并放进它自己质押产出的区块。那个中继只知道网关的密钥，永远不知道这台电脑的地址。如果从这个节点自己的钱包付费，链上就会把网关和这个中继联系在一起，从而联系到它的地址。</translation>
+        <translation type="vanished">你的节点签署网关的登记，并经由中继把它发送给另一个中继，由它付费并放进它自己质押产出的区块。那个中继只知道网关的密钥，永远不知道这台电脑的地址。如果从这个节点自己的钱包付费，链上就会把网关和这个中继联系在一起，从而联系到它的地址。</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3380,7 +3502,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>你的登记只说明你是谁，不说明你在哪里运行。对等节点通过覆盖网络找到你，在双方都从名册算出的会面点与你会面，这些点每天变化；发现页面显示今天的会面点。你的登记还会写明一个中继，在登记有效期内都能在那里与你会面，每次续期都会写明一个新的。这是本客户端的默认设置。</translation>
+        <translation type="vanished">你的登记只说明你是谁，不说明你在哪里运行。对等节点通过覆盖网络找到你，在双方都从名册算出的会面点与你会面，这些点每天变化；发现页面显示今天的会面点。你的登记还会写明一个中继，在登记有效期内都能在那里与你会面，每次续期都会写明一个新的。这是本客户端的默认设置。</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3400,15 +3522,59 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>按服务器页面的设置，此节点作为网关共享其互联网连接，所以登记会写明这一点。</translation>
+        <translation type="vanished">按服务器页面的设置，此节点作为网关共享其互联网连接，所以登记会写明这一点。</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>按服务器页面的设置，此节点既不为他人中继，也不共享其互联网连接。</translation>
+        <translation type="vanished">按服务器页面的设置，此节点既不为他人中继，也不共享其互联网连接。</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>在那里的更改会随你的下一次登记进入名册。</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>这会在链上写入一条简短记录，说明你存在，并可附上一行关于你的文字。</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>你的登记内容</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>你的登记说明你是谁，而不是你在哪里运行：其中不含地址。对等节点通过覆盖网络联系你，在双方从名册推算出、每天变化的会面点与你相遇；“发现”会显示今天的会面点。你的登记还指定一个中继，在登记有效期内可以在那里与你会面，每次续期都会指定一个新的。</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>备注</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>可选：显示在你密钥旁边的一行文字</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>任何人都能读到它，链会永久保存它，即使登记结束之后也是如此。如果你在意，请不要写任何透露你在哪里或你是谁的内容。</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>你的节点签署登记，并通过一条路径把它发送到一个不是它入口的中继，这样该中继知道你是谁，却不知道你在哪里。为登记付费的中继会把你的登记放进它自己质押的区块中，因此即使大多数节点不会转发它，它也能被确认；该中继还会把你加入与它分享奖励的对等节点中。如果之后它停止付费，你的登记会在当月内失效；你随时可以用有余额的钱包自己续期。</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 字节</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>太长：简单英文以外的字母每个占二到四个字节。</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>备注太长。</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>备注不能包含控制字符或改变文字方向的标记。</translation>
     </message>
 </context>
 <context>
@@ -3576,6 +3742,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>输入 BitcoinPoS 地址（例如 %1）</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>请设置两个限额。</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>单笔支付的限额不能超过一整天的限额。</translation>
     </message>
 </context>
 <context>
@@ -4276,6 +4450,14 @@ worked out from the roster; they change every day:</source>
         <source>meets at %1</source>
         <translation>会面于 %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>备注</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>由持有此密钥的人所写；没有人核实。</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4757,7 +4939,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>由本节点提供的网站或服务，通过其密钥或名称找到，经由覆盖网络访问，因此主机永远不会公开它在哪里运行。会合部分已经存在：服务在双方根据名册算出的会合点注册。通过它提供网页和应用的功能尚未实现。</translation>
+        <translation type="vanished">由本节点提供的网站或服务，通过其密钥或名称找到，经由覆盖网络访问，因此主机永远不会公开它在哪里运行。会合部分已经存在：服务在双方根据名册算出的会合点注册。通过它提供网页和应用的功能尚未实现。</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4981,7 +5163,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>这个节点向他人提供的服务。中继、保存邮件和共享互联网现已运行；托管即将到来，和这里的一切一样，它的找到方式与对等节点相同——通过名册。名称有自己的页面。</translation>
+        <translation type="vanished">这个节点向他人提供的服务。中继、保存邮件和共享互联网现已运行；托管即将到来，和这里的一切一样，它的找到方式与对等节点相同——通过名册。名称有自己的页面。</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -4997,7 +5179,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>登记为</translation>
+        <translation type="vanished">登记为</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5009,15 +5191,15 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>登记为网关…</translation>
+        <translation type="vanished">登记为网关…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>把这台电脑的互联网连接作为网关共享</translation>
+        <translation type="vanished">把这台电脑的互联网连接作为网关共享</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>如果你所在地的法律或互联网服务商的条款禁止共享连接，请关闭它。关闭后，这个节点仍会中继、保存邮件并跟随区块链，并直接使用自己的连接。</translation>
+        <translation type="vanished">如果你所在地的法律或互联网服务商的条款禁止共享连接，请关闭它。关闭后，这个节点仍会中继、保存邮件并跟随区块链，并直接使用自己的连接。</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5033,11 +5215,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>允许这台电脑上的程序通过本地代理使用网络的互联网</translation>
+        <translation type="vanished">允许这台电脑上的程序通过本地代理使用网络的互联网</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>仅供这台电脑使用的 SOCKS5 代理。每个连接都从另一位成员的网关出去，名称也在那里解析，绝不在这里。只要这台电脑共享自己的连接，它就能工作。</translation>
+        <translation type="vanished">仅供这台电脑使用的 SOCKS5 代理。每个连接都从另一位成员的网关出去，名称也在那里解析，绝不在这里。只要这台电脑共享自己的连接，它就能工作。</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5073,27 +5255,27 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>未登记为网关</translation>
+        <translation type="vanished">未登记为网关</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>尚未——名册没有把这个节点列为网关，所以没人能找到它</translation>
+        <translation type="vanished">尚未——名册没有把这个节点列为网关，所以没人能找到它</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>暂无——中继用第二个不带地址的密钥登记它的网关，与自己的登记分开</translation>
+        <translation type="vanished">暂无——中继用第二个不带地址的密钥登记它的网关，与自己的登记分开</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>暂无——这个节点的登记缺少网关选项；请打开该选项后重新发布</translation>
+        <translation type="vanished">暂无——这个节点的登记缺少网关选项；请打开该选项后重新发布</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>暂无——请发布一条不带地址并打开网关选项的登记</translation>
+        <translation type="vanished">暂无——请发布一条不带地址并打开网关选项的登记</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>登记这个中继的网关…</translation>
+        <translation type="vanished">登记这个中继的网关…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5113,11 +5295,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>它的网关密钥 %1，与中继的地址分开</translation>
+        <translation type="vanished">它的网关密钥 %1，与中继的地址分开</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>这个节点自己的密钥 %1</translation>
+        <translation type="vanished">这个节点自己的密钥 %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5133,11 +5315,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>让这台电脑的全部流量都经过网络，任何程序都无需设置代理</translation>
+        <translation type="vanished">让这台电脑的全部流量都经过网络，任何程序都无需设置代理</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>每个程序的连接都经由网络的网关出去，每个连接用不同的网关，名称也在那里查询。这台电脑自己的网络（打印机、路由器）和这个节点自己的连接保持直连。只有在这台电脑共享自己的连接时才有效。</translation>
+        <translation type="vanished">每个程序的连接都经由网络的网关出去，每个连接用不同的网关，名称也在那里查询。这台电脑自己的网络（打印机、路由器）和这个节点自己的连接保持直连。只有在这台电脑共享自己的连接时才有效。</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5165,11 +5347,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>已开启：现在有 %1 个连接经过网络；已发送 %2，已接收 %3。</translation>
+        <translation type="vanished">已开启：现在有 %1 个连接经过网络；已发送 %2，已接收 %3。</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>此系统暂不支持。</translation>
+        <translation type="vanished">此系统暂不支持。</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5181,7 +5363,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>客户端重启后开始。</translation>
+        <translation type="vanished">客户端重启后开始。</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5210,6 +5392,334 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>none — relaying is switched off</source>
         <translation>无——中继已关闭</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>本节点为他人提供的服务：中继、保管邮件、共享互联网和托管站点；并为你自己的手机提供从这里支出的方式。和这里的一切一样，它和对等节点一样通过名册被找到。名称有自己的页面。</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>共享这台电脑的互联网连接，并以此换取使用网络的连接</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>开启后，这台电脑的连接会被共享，它自己的所有流量都经由网络的网关出去，每个连接经过不同的网关；这台电脑自己的网络——打印机、路由器——仍然直连。如果你所在地的法律或互联网服务商的条款禁止共享连接，请关闭它：此时网络只承载 BPS 本身，这台电脑使用自己的连接。</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>整台电脑：已开启，当前有 %1 个连接经由网络；已发送 %2，已接收 %3。</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>整台电脑：此系统上暂不可用；程序可以使用代理。</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>整台电脑：客户端重启后开始。</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>未共享</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>否 — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>把一个文件夹以本节点的密钥发布为站点，这样你给了密钥或名称的任何人都能通过覆盖网络阅读它。每个文件都经过签名，到达时逐块校验。不带地址登记时，本节点在其会面点被找到，没有人知道站点在哪里运行；带地址登记时，访客经由中继到达，因此本节点永远不知道他们是谁。这台电脑上的程序——网页应用、聊天服务器——也可以用同样的方式发布：访客通过覆盖网络到达它，本节点只连接你指定的端口。</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>文件夹</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>到达</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>已发送</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>这台电脑上访客通过覆盖网络到达的程序。名为 web 的程序是没有站点时浏览器在本节点地址打开的内容。</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>程序</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>发布文件夹…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>重新发布</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>修改后重新读取文件夹，并发布其中现有的内容。</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>停止发布</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>在“站点”中打开</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>发布程序…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>停止程序…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>未发布</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>无 — 没有发布任何内容</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 个文件，%3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>未登记</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>尚无人访问：本节点未在名册中登记，因此访客找不到站点。请在“节点”页面的“发现”下发布登记。</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>发布中</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>尚未会面</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>在 %1 个会面点，未公布地址</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>尚未：正在其会面点注册，这需要名册中的中继</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>在本节点的地址，经由隐藏访客的中继</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 个页面块，%2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>要发布为站点的文件夹</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>发布程序</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>为它取个名称，由 a-z、0-9 和 - 组成，1 到 32 个字符。若是浏览器应在本节点地址打开的网页应用，请命名为 web：</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>它在 127.0.0.1 上监听的端口（仅限这台电脑）：</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>停止程序</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>访客不应再到达哪个程序：</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 位于 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 个流已打开</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>手机伴侣</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>币留在这里，用手机支出。手机不持有任何币的密钥：它连接到本节点，证明配对时使用的密钥，然后本节点从一个小额零用钱包付款——此前会检查手机的 PIN 和你设定的、手机无法更改的限额。丢了手机，最多损失零用钱包里的钱；请在这里解除配对。当本节点是已登记的中继且已登记的其他中继足够多时，手机会经过三个中继到达，因此观察者无法得知它在哪里；否则它会直接连接到这里。</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>零用钱</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>手机可访问</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>手机</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>单笔支付</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>一天</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>今日已花</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>状态</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>配对手机…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>限额…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>解锁</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>连续五次输错 PIN 后手机会被锁定，直到在这里解锁。</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>解除配对</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>允许已配对的手机从零用钱包支出</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>需要覆盖网络。默认关闭，因为它允许手机花费本节点的币。</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>一个独立的钱包，没有密码短语——手机付款时没有人在场输入——并且只放手机应当能花的钱。它从不质押，也不能作为为登记付费的钱包。</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>创建</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>创建零用钱包，并在本节点每次启动时打开它。</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>充值…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>打开钱包中的“发送”，把币转入零用钱包。</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>零用钱包</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1：%2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>，另有 %1 正在到账</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>是，在 %1，经由中继</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>直连，在 %1。中间没有中继：手机所在的网络能看到它在与这台电脑通信。要从该网络之外访问，请在路由器上把 UDP 端口 %2 转发到这台电脑。</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>否 — 本节点尚不知道自己的地址</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>不可访问</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>有手机在等待</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>无零用钱</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>有手机被锁定</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 部手机被锁定</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>运行中，尚无手机</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>运行中，1 部手机</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>运行中，%1 部手机</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>设备密钥 %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>已锁定：PIN 错误</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>已配对</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>解除 %1 的配对</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>解除 %1 的配对？在重新配对之前，它将无法再支出。如果手机丢失或被盗，请立即这样做。</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>已创建并打开零用钱包。使用“充值”把手机应当能花的钱转入其中。</translation>
     </message>
 </context>
 <context>
@@ -5341,6 +5851,30 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>节点仍在启动；核心设置暂不可用。</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>他人在从名册推算出的中继与你会面，你的节点经过这么多个中继，保持一条通往每个中继的路径。会面点只能看到其中最后一个，永远看不到你的地址。越多越能隐藏你，但越慢。</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>会面点之前的中继数</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>当这台电脑使用网络的互联网时，每个连接都会经过这么多个中继到达网关的会面点，之后再经过网关自己的中继：网关永远不知道你是谁。越多越能隐藏你，但越慢。</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>网关会面点之前的中继数</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>只有你的第一个连接是直连，连到一个入口中继，它能看到你的地址，却不知道你是谁。邮件总是经过三个中继。</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>版本 %1</translation>
     </message>
 </context>
 <context>
@@ -5503,6 +6037,147 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Message verified.</source>
         <translation>消息验证成功。</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>站点</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>托管在覆盖网络上的站点，用别人分享给你的名称或密钥打开。这里显示的页面不运行脚本，也不会从 BPS 之外获取任何内容，因此页面无法得知你在哪里。</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>后退</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>前进</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>重新获取页面</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://名称/ 或站点的密钥</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>打开</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>保存此文件…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>在浏览器中打开</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>在普通浏览器中打开同一个站点，经由仅在这台电脑上的服务器。那里的页面可能运行脚本，因此这里的查看器仍是阅读隐藏站点更安全的方式。</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>连接到程序…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>从这台电脑上的程序连接到此站点运行的程序——聊天服务器、游戏：BPS Relay 在这里监听一个端口，并通过覆盖网络把每个连接送达。</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>这不是站点地址。请输入名称或密钥，例如 bps://pilot/。</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>正在查找 %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>正在通过覆盖网络获取 %1…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 不是此查看器能显示的页面（%2 字节）。请保存后用其他程序打开。</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>把这台电脑上的程序指向 %1：在重启之前，BPS Relay 会把在那里建立的每个连接通过覆盖网络送到站点的程序。</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>面向浏览器的站点服务器未运行。除非指定了 -siteproxy=0，否则它会随 BPS Relay 启动。</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 未解析到任何密钥。</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 现在指向的密钥与你上次打开时不同。现在持有该名称的人可能不是你以前阅读的那个人。</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>在其一个会面点相遇，经过你的 %1 个中继：你和主机都不知道对方在哪里。</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>经过 %1 个中继在其地址到达：主机不知道你是谁。</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>你自己的站点，从这台电脑读取。</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>它通过无线电访问，因此页面加载较慢。</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 不是本节点知道的名称：%2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>无法打开 %1：%2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>此链接通向 BPS 之外，因此没有打开：%1
+如果你愿意，可以在普通浏览器中打开它；运营它的人会看到你的地址。</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>连接到程序</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>站点给其程序起的名称：</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>在浏览器中打开站点</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>你的浏览器会向这台电脑请求站点，BPS Relay 会像在这里一样通过覆盖网络获取它。每个页面只能从自己的站点加载，因此无法从开放的互联网拉取任何内容来得知你在哪里。
+
+浏览器仍然能做到的：脚本可以使用 WebRTC 向页面显示这台电脑的地址，而你点击的指向普通站点的链接会像任何链接一样离开。BPS Relay 中的查看器不运行任何脚本，仍是阅读隐藏站点更安全的方式。</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>保存文件</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>无法保存 %1。</translation>
     </message>
 </context>
 <context>

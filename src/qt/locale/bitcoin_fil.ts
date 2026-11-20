@@ -1115,6 +1115,10 @@ Maaari lamang pumirma gamit ang mga address na uri ng &apos;legacy&apos;.</trans
         <source>Not staking</source>
         <translation>Hindi nag-i-stake</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>Mga Site</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1269,6 +1273,92 @@ Maaari lamang pumirma gamit ang mga address na uri ng &apos;legacy&apos;.</trans
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>ipinagkatiwala kay %1 para sa cold staking</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>Mga limitasyon para sa %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>Magkano ang puwedeng gastusin ng teleponong ito mula sa allowance wallet, kasama ang mga bayarin.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Pinakamarami sa isang bayad</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Pinakamarami sa anumang 24 oras</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>Ipares ang isang telepono</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>Sa BPS app sa telepono, piliin ang Ipares at i-scan ang code na ito. O kopyahin ang teksto sa ilalim nito papunta sa app. Gumagana ito nang isang beses, sa loob ng sampung minuto.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>Kopyahin ang code</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>Magpakita ng bagong code</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>Ipares lang kung ipinapakita ng telepono ang parehong anim na digit. Kung iba ang ipinapakita, may ibang naunang sumagot sa code: tanggihan, at magpakita ng bago.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>Magkano ang puwedeng gastusin ng teleponong ito mula sa allowance wallet. Ang node lang na ito ang makapagbabago nito mamaya, hindi kailanman ang telepono.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Pinakamarami sa isang bayad</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Pinakamarami sa anumang 24 oras</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>Tanggihan</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>Ipares ang teleponong ito</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>Gumagawa ng code…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>Nag-expire na ang code na ito.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>Hinihintay ang telepono… gagana pa ang code nang %1 minuto.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>Hindi makaguhit ng QR code ang build na ito: kopyahin na lang ang teksto sa ibaba papunta sa app.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>Gustong makipagpares ng teleponong may pangalang “%1” sa node na ito.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>Naipares na. Puwede nang gumastos ang telepono mula sa allowance wallet sa loob ng mga limitasyong itinakda mo. Nasa pahinang Server ang listahan nito, kung saan mo mababago ang mga limitasyon nito, ma-a-unlock ito pagkatapos ng sobrang daming maling PIN, o ma-a-unpair ito.</translation>
     </message>
 </context>
 <context>
@@ -1444,7 +1534,7 @@ Maaari lamang pumirma gamit ang mga address na uri ng &apos;legacy&apos;.</trans
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>Maghanap ng peer o address</translation>
+        <translation type="vanished">Maghanap ng peer o address</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1581,6 +1671,38 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>Inaanunsyo ng mga peer ang kanilang sarili sa chain at hindi sa isang server, kaya pareho ang listahang ito para sa lahat at walang makapag-e-edit nito. Ang peer na nakalista sa pamamagitan ng overlay ay nagpapakita kung saan ito makikita ngayon, na nagbabago araw-araw; ipinapakita lang ng relay ang address nito habang online ito, dahil hindi ito kailanman nasa chain.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Pangalan</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>Magrehistro ng pangalan…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>Ang pangalan ang paraan ng iba para maabot ka nang hindi kinokopya ang iyong susi. Nirerehistro ang mga pangalan sa tab na Mga Pangalan.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>Maghanap ng peer, tala o address</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>Lahat ng pangalang ito ay tumuturo sa susi ng node na ito. Maaabot ka ng iba gamit ang alinman sa mga ito.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>Pamahalaan ang mga pangalan…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>naka-off ang mga pangalan</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>Kailangan ng mga pangalan ang name index. I-on ito sa Mga Setting para makapagrehistro at makapagpakita ng pangalan.</translation>
     </message>
 </context>
 <context>
@@ -3209,15 +3331,15 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>Nagsusulat ito ng maikling record sa chain na nagsasabing umiiral ka, at kung nais mo, kung saan ka matatagpuan.</translation>
+        <translation type="vanished">Nagsusulat ito ng maikling record sa chain na nagsasabing umiiral ka, at kung nais mo, kung saan ka matatagpuan.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>Paano ka dapat maabot ng mga peer?</translation>
+        <translation type="vanished">Paano ka dapat maabot ng mga peer?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>Sa pamamagitan ng overlay — walang ilalathalang address</translation>
+        <translation type="vanished">Sa pamamagitan ng overlay — walang ilalathalang address</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3225,35 +3347,35 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>Sa address na inilalathala ko</translation>
+        <translation type="vanished">Sa address na inilalathala ko</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>address na maaabot ng ibang peer</translation>
+        <translation type="vanished">address na maaabot ng ibang peer</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>Makikita ito ng sinuman, at iniingatan ito ng chain magpakailanman. Ang onion address ay naglalathala ng lokasyong walang makapagtuturo pabalik sa iyo at gumagana mula sa likod ng NAT; ang IP address ay walang nagagawa sa dalawang iyon. Ang node na naglalathala ng IP address ay maaaring piliin ng iba bilang relay.</translation>
+        <translation type="vanished">Makikita ito ng sinuman, at iniingatan ito ng chain magpakailanman. Ang onion address ay naglalathala ng lokasyong walang makapagtuturo pabalik sa iyo at gumagana mula sa likod ng NAT; ang IP address ay walang nagagawa sa dalawang iyon. Ang node na naglalathala ng IP address ay maaaring piliin ng iba bilang relay.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3297,7 +3419,7 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>Pinipirmahan ng iyong node ang pagkakalista at ipinapadala ito sa pamamagitan ng overlay sa relay na pinapasukan nito. Ang relay na nagbabayad para sa mga pagkakalista ay inilalagay ang iyo sa block na ito mismo ang gumawa, kaya makukumpirma ito kahit hindi ito ipapasa ng karamihan ng node, at idinadagdag ka sa mga peer na binabahaginan nito ng gantimpala. Kung titigil itong magbayad sa hinaharap, mag-e-expire ang iyong pagkakalista sa loob ng buwan; maaari mo itong i-renew anumang oras mula sa wallet na may pondo.</translation>
+        <translation type="vanished">Pinipirmahan ng iyong node ang pagkakalista at ipinapadala ito sa pamamagitan ng overlay sa relay na pinapasukan nito. Ang relay na nagbabayad para sa mga pagkakalista ay inilalagay ang iyo sa block na ito mismo ang gumawa, kaya makukumpirma ito kahit hindi ito ipapasa ng karamihan ng node, at idinadagdag ka sa mga peer na binabahaginan nito ng gantimpala. Kung titigil itong magbayad sa hinaharap, mag-e-expire ang iyong pagkakalista sa loob ng buwan; maaari mo itong i-renew anumang oras mula sa wallet na may pondo.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3313,11 +3435,11 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>Maglagay ng address, o piliing huwag maglathala.</translation>
+        <translation type="vanished">Maglagay ng address, o piliing huwag maglathala.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>Hinihiling sa iyong relay na ilathala ito… maaari itong umabot nang hanggang kalahating minuto.</translation>
+        <translation type="vanished">Hinihiling sa iyong relay na ilathala ito… maaari itong umabot nang hanggang kalahating minuto.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3349,11 +3471,11 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>Ilista ang gateway ng relay na ito</translation>
+        <translation type="vanished">Ilista ang gateway ng relay na ito</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>Dala ng listing ng isang relay ang address nito, kaya ang gateway nito ay inililista sa ilalim ng ikalawang susi na walang address, hiwalay rito. Walang makakaalam mula sa roster na iisang computer ang may-ari ng dalawa. Inaabot ng mga bisita ang gateway sa pamamagitan ng mga relay, kaya hindi nito nalalaman kung sino sila; ang mga website na binibisita nila ay nakikita ang address ng computer na ito.</translation>
+        <translation type="vanished">Dala ng listing ng isang relay ang address nito, kaya ang gateway nito ay inililista sa ilalim ng ikalawang susi na walang address, hiwalay rito. Walang makakaalam mula sa roster na iisang computer ang may-ari ng dalawa. Inaabot ng mga bisita ang gateway sa pamamagitan ng mga relay, kaya hindi nito nalalaman kung sino sila; ang mga website na binibisita nila ay nakikita ang address ng computer na ito.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3369,11 +3491,11 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>Ibang relay ang nagbabayad, hiniling sa pamamagitan ng mga relay</translation>
+        <translation type="vanished">Ibang relay ang nagbabayad, hiniling sa pamamagitan ng mga relay</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>Pinipirmahan ng iyong node ang pagkakalista ng gateway at ipinapadala ito sa pamamagitan ng mga relay sa ibang relay, na nagbabayad para dito at inilalagay ito sa block na ito mismo ang gumawa. Nalalaman ng relay na iyon ang susi ng gateway at hindi kailanman ang address ng computer na ito. Kapag nagbayad mula sa sariling wallet ng node na ito, maiuugnay sa chain ang gateway sa relay na ito, at sa gayon sa address nito.</translation>
+        <translation type="vanished">Pinipirmahan ng iyong node ang pagkakalista ng gateway at ipinapadala ito sa pamamagitan ng mga relay sa ibang relay, na nagbabayad para dito at inilalagay ito sa block na ito mismo ang gumawa. Nalalaman ng relay na iyon ang susi ng gateway at hindi kailanman ang address ng computer na ito. Kapag nagbayad mula sa sariling wallet ng node na ito, maiuugnay sa chain ang gateway sa relay na ito, at sa gayon sa address nito.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3389,7 +3511,7 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>Sinasabi ng iyong listing kung sino ka at hindi kung saan ka tumatakbo. Inaabot ka ng mga peer sa pamamagitan ng overlay at nakikipagkita sa iyo sa mga puntong kinukwenta ng magkabilang panig mula sa talaan, na nagbabago araw-araw; ipinapakita ng Tuklasin ang mga ngayon. Pinapangalanan din ng iyong listing ang isang relay kung saan ka makikita habang ito ay may bisa, at bawat pag-renew ay nagpapangalan ng bago. Ito ang binubuksan ng client na ito bilang default.</translation>
+        <translation type="vanished">Sinasabi ng iyong listing kung sino ka at hindi kung saan ka tumatakbo. Inaabot ka ng mga peer sa pamamagitan ng overlay at nakikipagkita sa iyo sa mga puntong kinukwenta ng magkabilang panig mula sa talaan, na nagbabago araw-araw; ipinapakita ng Tuklasin ang mga ngayon. Pinapangalanan din ng iyong listing ang isang relay kung saan ka makikita habang ito ay may bisa, at bawat pag-renew ay nagpapangalan ng bago. Ito ang binubuksan ng client na ito bilang default.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3409,15 +3531,59 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>Ibinabahagi ng node na ito ang koneksyon nito sa internet bilang gateway, gaya ng nakatakda sa pahinang Server, kaya iyon ang sinasabi ng listing.</translation>
+        <translation type="vanished">Ibinabahagi ng node na ito ang koneksyon nito sa internet bilang gateway, gaya ng nakatakda sa pahinang Server, kaya iyon ang sinasabi ng listing.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>Hindi nagre-relay para sa iba ang node na ito at hindi rin ibinabahagi ang koneksyon nito sa internet, gaya ng nakatakda sa pahinang Server.</translation>
+        <translation type="vanished">Hindi nagre-relay para sa iba ang node na ito at hindi rin ibinabahagi ang koneksyon nito sa internet, gaya ng nakatakda sa pahinang Server.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>Ang pagbabago roon ay aabot sa talaan sa iyong susunod na listing.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>Nagsusulat ito sa chain ng maikling tala na nagsasabing umiiral ka, at kung gusto mo, isang linya tungkol sa iyo.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>Ano ang sinasabi ng iyong pagkakalista</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>Sinasabi ng iyong pagkakalista kung sino ka at hindi kung saan ka tumatakbo: wala itong address. Naaabot ka ng mga peer sa pamamagitan ng overlay, at nakikipagkita sa iyo sa mga puntong kinukuwenta ng magkabilang panig mula sa talaan at nagbabago araw-araw; ipinapakita ng Tuklasin ang mga para ngayong araw. Pinapangalanan din ng iyong pagkakalista ang isang relay kung saan ka makikita habang tumatagal ito, at bawat pag-renew ay nagpapangalan ng bago.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>Tala</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>opsyonal: isang linyang ipinapakita sa tabi ng iyong susi</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>Kahit sino ay makababasa nito, at itinatago ito ng chain magpakailanman, kahit matapos na ang pagkakalista. Huwag isama ang anumang nagsasabi kung nasaan ka o kung sino ka, kung mahalaga iyon sa iyo.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Pinipirmahan ng iyong node ang pagkakalista at ipinapadala ito sa isang path papunta sa relay na hindi nito pinapasukan, kaya nalalaman ng relay na iyon kung sino ka at hindi kung nasaan ka. Ang relay na nagbabayad para sa mga pagkakalista ay inilalagay ang iyo sa isang block na ito mismo ang nag-i-stake, kaya nakukumpirma ito kahit hindi ito ipapasa ng karamihan ng node, at idinadagdag ka sa mga peer na binabahagian nito ng mga gantimpala. Kung huminto ito sa pagbabayad mamaya, mawawalan ng bisa ang iyong pagkakalista sa loob ng buwan; lagi mo itong mare-renew mismo mula sa wallet na may pondo.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 byte</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>Masyadong mahaba: ang mga titik na wala sa simpleng Ingles ay tig-dalawa hanggang apat na byte.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>Masyadong mahaba ang tala.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>Hindi puwedeng maglaman ang tala ng mga control character o markang nagbabago ng direksyon ng teksto.</translation>
     </message>
 </context>
 <context>
@@ -3591,6 +3757,14 @@ Ipapakita sa iyo nang isang beses ang recovery key. Isulat ito: ito lamang ang p
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>Maglagay ng BitcoinPoS address (hal. %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>Itakda ang parehong limitasyon.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>Hindi puwedeng payagan ang isang bayad nang higit sa isang buong araw.</translation>
     </message>
 </context>
 <context>
@@ -4292,6 +4466,14 @@ kinuwenta mula sa talaan; nagbabago sila araw-araw:</translation>
         <source>meets at %1</source>
         <translation>makikita sa %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>Tala</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>Isinulat ng sinumang may hawak ng susing ito; walang sumusuri dito.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4774,7 +4956,7 @@ Tandaan: Dahil ang bayad  ay kinakalkula sa bawat-byte na batayan, ang bayad ng 
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>Isang site o serbisyong inihahain mula sa node na ito, natatagpuan sa pamamagitan ng susi o pangalan nito at naaabot sa pamamagitan ng overlay, kaya hindi kailanman inilalathala ng host kung saan ito tumatakbo. Mayroon na ang bahaging pagtatagpo: nagpaparehistro ang serbisyo sa mga tagpuang kinukuwenta ng magkabilang panig mula sa talaan. Hindi pa nagagawa ang paghahain ng mga pahina at app sa pamamagitan nito.</translation>
+        <translation type="vanished">Isang site o serbisyong inihahain mula sa node na ito, natatagpuan sa pamamagitan ng susi o pangalan nito at naaabot sa pamamagitan ng overlay, kaya hindi kailanman inilalathala ng host kung saan ito tumatakbo. Mayroon na ang bahaging pagtatagpo: nagpaparehistro ang serbisyo sa mga tagpuang kinukuwenta ng magkabilang panig mula sa talaan. Hindi pa nagagawa ang paghahain ng mga pahina at app sa pamamagitan nito.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4998,7 +5180,7 @@ Mababago mo ito anumang oras sa pahinang Server.</translation>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Ang iniaalok ng node na ito sa iba. Gumagana na ngayon ang pagre-relay, pag-iingat ng mail at pagbabahagi ng internet; paparating ang hosting, at gaya ng lahat dito, natatagpuan ito sa parehong paraan ng mga peer — sa pamamagitan ng roster. May sariling pahina ang mga pangalan.</translation>
+        <translation type="vanished">Ang iniaalok ng node na ito sa iba. Gumagana na ngayon ang pagre-relay, pag-iingat ng mail at pagbabahagi ng internet; paparating ang hosting, at gaya ng lahat dito, natatagpuan ito sa parehong paraan ng mga peer — sa pamamagitan ng roster. May sariling pahina ang mga pangalan.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -5014,7 +5196,7 @@ Mababago mo ito anumang oras sa pahinang Server.</translation>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>Nakalista bilang</translation>
+        <translation type="vanished">Nakalista bilang</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5026,15 +5208,15 @@ Mababago mo ito anumang oras sa pahinang Server.</translation>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>Ilista bilang gateway…</translation>
+        <translation type="vanished">Ilista bilang gateway…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Ibahagi ang koneksyon sa internet ng computer na ito bilang gateway</translation>
+        <translation type="vanished">Ibahagi ang koneksyon sa internet ng computer na ito bilang gateway</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>I-off ito kung ipinagbabawal ng batas kung saan ka nakatira o ng mga tuntunin ng iyong internet provider ang pagbabahagi ng koneksyon. Kapag naka-off, patuloy pa ring nagre-relay ang node na ito, nag-iingat ng mail at nasa chain, at direktang ginagamit ang sarili nitong koneksyon.</translation>
+        <translation type="vanished">I-off ito kung ipinagbabawal ng batas kung saan ka nakatira o ng mga tuntunin ng iyong internet provider ang pagbabahagi ng koneksyon. Kapag naka-off, patuloy pa ring nagre-relay ang node na ito, nag-iingat ng mail at nasa chain, at direktang ginagamit ang sarili nitong koneksyon.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5050,11 +5232,11 @@ Mababago mo ito anumang oras sa pahinang Server.</translation>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>Payagan ang mga programa sa computer na ito na gamitin ang internet ng network, sa pamamagitan ng lokal na proxy</translation>
+        <translation type="vanished">Payagan ang mga programa sa computer na ito na gamitin ang internet ng network, sa pamamagitan ng lokal na proxy</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>Isang SOCKS5 proxy para lamang sa computer na ito. Lumalabas ang bawat koneksyon sa gateway ng ibang miyembro, at doon hinahanap ang mga pangalan, hindi kailanman dito. Gumagana ito habang ibinabahagi ng computer na ito ang sarili nitong koneksyon.</translation>
+        <translation type="vanished">Isang SOCKS5 proxy para lamang sa computer na ito. Lumalabas ang bawat koneksyon sa gateway ng ibang miyembro, at doon hinahanap ang mga pangalan, hindi kailanman dito. Gumagana ito habang ibinabahagi ng computer na ito ang sarili nitong koneksyon.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5090,27 +5272,27 @@ Mababago mo ito anumang oras sa pahinang Server.</translation>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>hindi nakalista bilang gateway</translation>
+        <translation type="vanished">hindi nakalista bilang gateway</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>hindi pa — hindi inililista ng roster ang node na ito bilang gateway, kaya walang makakahanap dito</translation>
+        <translation type="vanished">hindi pa — hindi inililista ng roster ang node na ito bilang gateway, kaya walang makakahanap dito</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>wala pa — inililista ng isang relay ang gateway nito sa ilalim ng ikalawang susi, walang address, hiwalay sa sarili nitong listing</translation>
+        <translation type="vanished">wala pa — inililista ng isang relay ang gateway nito sa ilalim ng ikalawang susi, walang address, hiwalay sa sarili nitong listing</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>wala pa — kulang ang listing ng node na ito sa opsyon na gateway; ilathala itong muli na naka-on ang opsyon</translation>
+        <translation type="vanished">wala pa — kulang ang listing ng node na ito sa opsyon na gateway; ilathala itong muli na naka-on ang opsyon</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>wala pa — maglathala ng listing na walang address at naka-on ang opsyon na gateway</translation>
+        <translation type="vanished">wala pa — maglathala ng listing na walang address at naka-on ang opsyon na gateway</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>Ilista ang gateway ng relay na ito…</translation>
+        <translation type="vanished">Ilista ang gateway ng relay na ito…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5130,11 +5312,11 @@ Mababago mo ito anumang oras sa pahinang Server.</translation>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>ang gateway key nito na %1, hiwalay sa address ng relay</translation>
+        <translation type="vanished">ang gateway key nito na %1, hiwalay sa address ng relay</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>ang sariling susi ng node na ito na %1</translation>
+        <translation type="vanished">ang sariling susi ng node na ito na %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5150,11 +5332,11 @@ Mababago mo ito anumang oras sa pahinang Server.</translation>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>Idaan ang lahat ng trapiko ng computer na ito sa network, nang walang proxy setting sa anumang programa</translation>
+        <translation type="vanished">Idaan ang lahat ng trapiko ng computer na ito sa network, nang walang proxy setting sa anumang programa</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>Lumalabas ang mga koneksyon ng bawat programa sa mga gateway ng network, bawat isa sa ibang gateway, at doon hinahanap ang mga pangalan. Nananatiling direkta ang sariling network ng computer na ito — isang printer, ang router — at ang sariling mga koneksyon ng node na ito. Gumagana ito habang ibinabahagi ng computer na ito ang sarili nitong koneksyon.</translation>
+        <translation type="vanished">Lumalabas ang mga koneksyon ng bawat programa sa mga gateway ng network, bawat isa sa ibang gateway, at doon hinahanap ang mga pangalan. Nananatiling direkta ang sariling network ng computer na ito — isang printer, ang router — at ang sariling mga koneksyon ng node na ito. Gumagana ito habang ibinabahagi ng computer na ito ang sarili nitong koneksyon.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5182,11 +5364,11 @@ Mababago mo ito anumang oras sa pahinang Server.</translation>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>Naka-on: %1 koneksyon sa network ngayon; %2 naipadala, %3 natanggap.</translation>
+        <translation type="vanished">Naka-on: %1 koneksyon sa network ngayon; %2 naipadala, %3 natanggap.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>Hindi pa available sa system na ito.</translation>
+        <translation type="vanished">Hindi pa available sa system na ito.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5198,7 +5380,7 @@ Mababago mo ito anumang oras sa pahinang Server.</translation>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>Magsisimula kapag na-restart ang client.</translation>
+        <translation type="vanished">Magsisimula kapag na-restart ang client.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5227,6 +5409,334 @@ Mababago mo ito anumang oras sa pahinang Server.</translation>
     <message>
         <source>none — relaying is switched off</source>
         <translation>wala — nakapatay ang pag-relay</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Ano ang iniaalok ng node na ito sa iba: pag-relay, pag-iingat ng mail, pagbabahagi ng internet at pag-host ng site; at sa sarili mong telepono, isang paraan para gumastos mula rito. Gaya ng lahat dito, natatagpuan ito sa parehong paraan ng mga peer — sa pamamagitan ng talaan. May sariling pahina ang mga pangalan.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>Ibahagi ang internet connection ng computer na ito, at gamitin ang sa network bilang kapalit</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>Kapag naka-on, ibinabahagi ang connection ng computer na ito, at lahat ng sarili nitong traffic ay lumalabas sa mga gateway ng network, bawat connection sa ibang gateway; nananatiling direkta ang sariling network ng computer na ito — printer, router. I-off ito kung ipinagbabawal ng batas kung saan ka nakatira, o ng mga tuntunin ng iyong internet provider, ang pagbabahagi ng connection: ang dadalhin lang ng network ay ang BPS mismo, at gagamitin ng computer na ito ang sarili nitong connection.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Para sa buong computer: naka-on, %1 connection sa network ngayon; %2 naipadala, %3 natanggap.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>Para sa buong computer: hindi pa available sa system na ito; puwedeng gamitin ng mga program ang proxy.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>Para sa buong computer: magsisimula kapag nag-restart ang client.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>hindi nagbabahagi</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>hindi — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>I-publish ang isang folder bilang site sa ilalim ng susi ng node na ito, para mabasa ito sa overlay ng sinumang bibigyan mo ng susi o ng iyong pangalan. Bawat file ay may pirma at sinusuri nang piraso-piraso habang dumarating. Kapag nakalista nang walang address, nakikita ang node na ito sa mga meeting point nito at walang nakaaalam kung saan tumatakbo ang site; kapag nakalista sa isang address, naaabot ito ng mga bisita sa pamamagitan ng mga relay, kaya hindi nito kailanman nalalaman kung sino sila. Ang isang program sa computer na ito — web application, chat server — ay maipa-publish sa parehong paraan: naaabot ito ng mga bisita sa overlay, at kumokonekta lang ang node na ito sa port na pinangalanan mo.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Folder</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>Naabot</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Naipadala</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>wala</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>Mga program sa computer na ito na naaabot ng mga bisita sa overlay. Ang program na may pangalang web ang binubuksan ng browser sa address ng node na ito kapag walang site.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>Mga Program</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>I-publish ang isang folder…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>I-publish muli</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>Basahin muli ang folder pagkatapos itong baguhin, at i-publish kung ano ang naroon ngayon.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>Itigil ang pag-publish</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>Buksan sa Mga Site</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>I-publish ang isang program…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>Ihinto ang isang program…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>hindi nagpa-publish</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>wala — walang naka-publish</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 file, %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>hindi nakalista</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>wala pang nakaaabot: hindi nakalista ang node na ito sa talaan, kaya hindi mahanap ng mga bisita ang site. Mag-publish ng pagkakalista sa pahinang Node, sa ilalim ng Tuklasin.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>nagpa-publish</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>hindi pa nakikita</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>sa %1 meeting point, walang naka-publish na address</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>hindi pa: nagrerehistro sa mga meeting point nito, na nangangailangan ng mga relay ng talaan</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>sa address ng node na ito, sa pamamagitan ng mga relay na nagtatago sa bisita</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 piraso ng pahina, %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>Ang folder na ipa-publish bilang site</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>I-publish ang isang program</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>Pangalan para dito, 1 hanggang 32 mula sa a-z, 0-9 at -. Tawagin itong web para sa web application na dapat buksan ng browser sa address ng node na ito:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>Ang port na pinakikinggan nito, sa 127.0.0.1 (ang computer lang na ito):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>Ihinto ang isang program</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>Aling program ang hindi na dapat maabot ng mga bisita:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 sa 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 stream na bukas</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>Kasamang telepono</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>Gumastos mula sa iyong telepono habang nananatili rito ang iyong mga coin. Walang hawak na coin key ang telepono: inaabot nito ang node na ito, pinatutunayan ang susing ipinares dito, at nagbabayad ang node na ito mula sa maliit na allowance wallet — matapos suriin ang PIN ng telepono at ang mga limitasyong itinakda mo, na hindi mababago ng telepono. Kapag nawala ang telepono, ang mawawala sa iyo ay hindi hihigit sa laman ng allowance; i-unpair ito rito. Kapag nakalistang relay ang node na ito at sapat ang iba pang nakalista, dumarating ang telepono sa tatlong relay, kaya walang nagmamasid na nakaaalam kung nasaan ito; kung hindi, direkta itong kumokonekta rito.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>Allowance</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>Naaabot ng mga telepono</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>Telepono</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>Isang bayad</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>Isang araw</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>Nagastos ngayon</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>Kalagayan</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>Ipares ang isang telepono…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>Mga limitasyon…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>I-unlock</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>Nala-lock ang telepono pagkatapos ng limang sunod-sunod na maling PIN, hanggang ma-unlock ito rito.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>I-unpair</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>Payagan ang mga nakapares na telepono na gumastos mula sa allowance wallet</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>Kailangan ang overlay. Naka-off bilang default, dahil pinapayagan nito ang telepono na gastusin ang mga coin ng node na ito.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>Sariling wallet, walang passphrase — walang tao roon para i-type ito kapag nagbabayad ang telepono — at ang laman lang ay ang dapat magastos ng telepono. Hindi ito kailanman nag-i-stake, at hindi ito puwedeng maging wallet na nagbabayad para sa mga pagkakalista.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>Gawin ito</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>Gawin ang allowance wallet at buksan ito tuwing magsisimula ang node na ito.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>Mag-top up…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>Buksan ang Ipadala sa wallet, para maglipat ng mga coin sa allowance.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>Allowance wallet</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, %1 pa ang paparating</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>oo, sa %1, sa pamamagitan ng mga relay</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>direkta, sa %1. Walang relay sa pagitan: nakikita ng network ng telepono na kausap nito ang computer na ito. Mula sa labas ng network na ito, i-forward sa router ang UDP port %2 papunta sa computer na ito.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>hindi — wala pang alam na sariling address ang node na ito</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>hindi maaabot</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>may naghihintay na telepono</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>walang allowance</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>may naka-lock na telepono</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 telepono ang naka-lock</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>tumatakbo, wala pang telepono</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>tumatakbo, 1 telepono</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>tumatakbo, %1 telepono</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>Device key %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>naka-lock: maling PIN</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>nakapares</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>I-unpair ang %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>I-unpair ang %1? Hindi na ito makagagastos hangga&apos;t hindi naipapares muli. Gawin ito agad kung nawala o ninakaw ang telepono.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>Nagawa at nabuksan ang allowance wallet. Gamitin ang Mag-top up para ilipat dito ang dapat magastos ng telepono.</translation>
     </message>
 </context>
 <context>
@@ -5358,6 +5868,30 @@ Mababago mo ito anumang oras sa pahinang Server.</translation>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>Nagsisimula pa ang node; hindi pa available ang mga pangunahing setting.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>Nakikipagkita sa iyo ang iba sa mga relay na kinuwenta mula sa talaan, at pinapanatiling bukas ng iyong node ang path papunta sa bawat isa sa pamamagitan ng ganito karaming relay. Ang huli lang sa mga ito ang nakikita ng meeting point, hindi kailanman ang iyong address. Mas marami, mas mahusay kang naitatago at mas mabagal.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>Mga relay bago ang iyong mga meeting point</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>Kapag ginagamit ng computer na ito ang internet ng network, bawat connection ay dumadaan sa ganito karaming relay papunta sa meeting point ng gateway, at sa sariling mga relay ng gateway pagkatapos nito: hindi kailanman nalalaman ng gateway kung sino ka. Mas marami, mas mahusay kang naitatago at mas mabagal.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>Mga relay bago ang meeting point ng gateway</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>Ang una mo lang na connection ang direkta, papunta sa entry relay na nakikita ang iyong address at hindi kung sino ka. Laging dumadaan ang mail sa tatlong relay.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Bersyon %1</translation>
     </message>
 </context>
 <context>
@@ -5520,6 +6054,147 @@ Mababago mo ito anumang oras sa pahinang Server.</translation>
     <message>
         <source>The signature given when the message was signed</source>
         <translation>Ang pirmang ibinigay nang pirmahan ang mensahe</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>Mga Site</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>Mga site na naka-host sa overlay, binubuksan gamit ang pangalan o susing ibinahagi sa iyo ng isang tao. Ipinapakita rito ang mga pahina nang walang script, at walang kinukuha sa mga ito mula sa labas ng BPS, kaya hindi malalaman ng pahina kung nasaan ka.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Bumalik</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Sumulong</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>Kunin muli ang pahina</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://pangalan/ o susi ng site</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Buksan</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>I-save ang file na ito…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>Buksan sa iyong browser</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>Ang parehong site sa karaniwang browser, sa pamamagitan ng server na nasa computer lang na ito. Puwedeng magpatakbo ng script ang mga pahina roon, kaya ang viewer dito pa rin ang mas ligtas na paraan para magbasa ng nakatagong site.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>Kumonekta sa isang program…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>Abutin ang program na pinapatakbo ng site na ito — chat server, laro — mula sa program sa computer na ito: nakikinig ang BPS Relay sa isang port dito at dinadala ang bawat connection papunta roon sa overlay.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>Hindi iyan address ng site. Magsulat ng pangalan o susi, gaya ng bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>Hinahanap ang %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>Kinukuha ang %1 sa overlay…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>Ang %1 ay hindi pahinang ipinapakita ng viewer na ito (%2 byte). I-save ito para mabuksan sa ibang program.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>Ituro ang program sa computer na ito sa %1: dinadala ng BPS Relay ang bawat connection na ginawa roon papunta sa program ng site, sa overlay, hanggang mag-restart ito.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>Hindi tumatakbo ang site server para sa mga browser. Nagsisimula ito kasama ng BPS Relay maliban kung ibinigay ang -siteproxy=0.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>Hindi tumuturo sa anumang susi ang %1.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>Tumuturo na ngayon ang %1 sa ibang susi kaysa noong huli mo itong buksan. Ang may hawak ng pangalan ngayon ay maaaring hindi ang binasa mo dati.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>Nakita sa isa sa mga meeting point nito, sa pamamagitan ng %1 mong relay: ikaw man o ang host ay hindi nakaaalam kung nasaan ang isa.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>Naabot sa address nito sa pamamagitan ng %1 relay: hindi nalalaman ng host kung sino ka.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>Ang sarili mong site, binasa mula sa computer na ito.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>Naaabot ito sa radyo, kaya mabagal dumating ang mga pahina.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>Ang %1 ay hindi pangalang kilala ng node na ito: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>Hindi mabuksan ang %1: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>Patungo sa labas ng BPS ang link na ito, kaya hindi ito sinundan: %1
+Buksan ito sa karaniwang browser kung gusto mo; makikita ng nagpapatakbo nito ang iyong address.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>Kumonekta sa isang program</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>Ang pangalang ibinigay ng site sa program nito:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>Pagbubukas ng site sa iyong browser</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>Hihingin ng iyong browser ang site sa computer na ito, at kukunin ito ng BPS Relay sa overlay, gaya ng ginagawa nito rito. Makapaglo-load lang ang bawat pahina mula sa sarili nitong site, kaya wala itong makukuha mula sa bukas na internet para malaman kung nasaan ka.
+
+Ang kaya pa ring gawin ng browser: puwedeng gamitin ng script ang WebRTC para ipakita sa pahina ang mga address ng computer na ito, at ang link na sinusundan mo papunta sa karaniwang site ay lumalabas gaya ng anumang link. Walang pinapatakbong script ang viewer sa BPS Relay at ito pa rin ang mas ligtas na paraan para magbasa ng nakatagong site.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>I-save ang file</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>Hindi ma-save ang %1.</translation>
     </message>
 </context>
 <context>

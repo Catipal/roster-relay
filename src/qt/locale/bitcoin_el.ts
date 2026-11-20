@@ -1115,6 +1115,10 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <source>Not staking</source>
         <translation>Χωρίς staking</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>Ιστότοποι</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1269,6 +1273,92 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>ανατέθηκε στο %1 για ψυχρό staking</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>Όρια για %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>Πόσα μπορεί να ξοδέψει αυτό το τηλέφωνο από το πορτοφόλι χαρτζιλικιού, μαζί με τις χρεώσεις.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Το πολύ σε μία πληρωμή</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Το πολύ σε οποιεσδήποτε 24 ώρες</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>Σύζευξη τηλεφώνου</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>Στην εφαρμογή BPS στο τηλέφωνο, επιλέξτε Σύζευξη και σαρώστε αυτόν τον κωδικό. Ή αντιγράψτε το κείμενο από κάτω στην εφαρμογή. Λειτουργεί μία φορά, για δέκα λεπτά.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>Αντιγραφή κωδικού</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>Εμφάνιση νέου κωδικού</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>Κάντε σύζευξη μόνο αν το τηλέφωνο δείχνει τα ίδια έξι ψηφία. Αν δείχνει άλλα, κάποιος άλλος απάντησε πρώτος στον κωδικό: απορρίψτε και εμφανίστε νέο.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>Πόσα μπορεί να ξοδέψει αυτό το τηλέφωνο από το πορτοφόλι χαρτζιλικιού. Μόνο αυτός ο κόμβος μπορεί να το αλλάξει αργότερα, ποτέ το τηλέφωνο.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Το πολύ σε μία πληρωμή</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Το πολύ σε οποιεσδήποτε 24 ώρες</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>Απόρριψη</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>Σύζευξη αυτού του τηλεφώνου</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>Δημιουργία κωδικού…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>Αυτός ο κωδικός έληξε.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>Αναμονή για το τηλέφωνο… ο κωδικός ισχύει για %1 λεπτά ακόμη.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>Αυτή η έκδοση δεν μπορεί να σχεδιάσει κωδικούς QR: αντιγράψτε αντί γι&apos; αυτό το κείμενο παρακάτω στην εφαρμογή.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>Ένα τηλέφωνο με όνομα «%1» θέλει σύζευξη με αυτόν τον κόμβο.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>Έγινε σύζευξη. Το τηλέφωνο μπορεί πλέον να ξοδεύει από το πορτοφόλι χαρτζιλικιού εντός των ορίων που ορίσατε. Η λίστα του βρίσκεται στη σελίδα Διακομιστής, όπου μπορείτε να αλλάξετε τα όριά του, να το ξεκλειδώσετε μετά από πολλά λάθος PIN ή να καταργήσετε τη σύζευξη.</translation>
     </message>
 </context>
 <context>
@@ -1444,7 +1534,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>Εύρεση ομότιμου ή διεύθυνσης</translation>
+        <translation type="vanished">Εύρεση ομότιμου ή διεύθυνσης</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1581,6 +1671,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>Οι ομότιμοι ανακοινώνονται στην αλυσίδα αντί σε διακομιστή, οπότε αυτή η λίστα είναι ίδια για όλους και κανείς δεν μπορεί να την επεξεργαστεί. Ένας ομότιμος καταχωρισμένος μέσω του δικτύου επικάλυψης δείχνει πού μπορεί να βρεθεί σήμερα, κάτι που αλλάζει κάθε μέρα· ένας αναμεταδότης δείχνει τη διεύθυνσή του μόνο όσο είναι συνδεδεμένος, αφού δεν βρίσκεται ποτέ στην αλυσίδα.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Όνομα</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>Καταχώριση ονόματος…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>Ένα όνομα είναι ο τρόπος να σας βρίσκουν οι άλλοι χωρίς να αντιγράφουν το κλειδί σας. Τα ονόματα καταχωρίζονται στην καρτέλα Ονόματα.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>Εύρεση ομότιμου, σημείωσης ή διεύθυνσης</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>Όλα αυτά τα ονόματα οδηγούν στο κλειδί αυτού του κόμβου. Οι άλλοι μπορούν να σας βρουν με οποιοδήποτε από αυτά.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>Διαχείριση ονομάτων…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>ονόματα ανενεργά</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>Τα ονόματα χρειάζονται το ευρετήριο ονομάτων. Ενεργοποιήστε το στις Ρυθμίσεις για να καταχωρίσετε και να εμφανίσετε ένα.</translation>
     </message>
 </context>
 <context>
@@ -3210,15 +3332,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>Αυτό γράφει στην αλυσίδα μια σύντομη εγγραφή που λέει ότι υπάρχετε και, προαιρετικά, πού θα σας βρουν.</translation>
+        <translation type="vanished">Αυτό γράφει στην αλυσίδα μια σύντομη εγγραφή που λέει ότι υπάρχετε και, προαιρετικά, πού θα σας βρουν.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>Πώς πρέπει να σας προσεγγίζουν οι ομότιμοι;</translation>
+        <translation type="vanished">Πώς πρέπει να σας προσεγγίζουν οι ομότιμοι;</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>Μέσω του δικτύου επικάλυψης — χωρίς δημοσίευση διεύθυνσης</translation>
+        <translation type="vanished">Μέσω του δικτύου επικάλυψης — χωρίς δημοσίευση διεύθυνσης</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3226,35 +3348,35 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>Σε μια διεύθυνση που δημοσιεύω</translation>
+        <translation type="vanished">Σε μια διεύθυνση που δημοσιεύω</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>διεύθυνση στην οποία μπορούν να φτάσουν άλλοι ομότιμοι</translation>
+        <translation type="vanished">διεύθυνση στην οποία μπορούν να φτάσουν άλλοι ομότιμοι</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>Οποιοσδήποτε μπορεί να τη δει και η αλυσίδα τη διατηρεί για πάντα. Μια διεύθυνση onion δημοσιεύει μια τοποθεσία που κανείς δεν μπορεί να συνδέσει με εσάς και λειτουργεί πίσω από NAT· μια διεύθυνση IP δεν κάνει τίποτα από τα δύο. Ένας κόμβος που δημοσιεύει διεύθυνση IP μπορεί να επιλεγεί ως αναμεταδότης από άλλους.</translation>
+        <translation type="vanished">Οποιοσδήποτε μπορεί να τη δει και η αλυσίδα τη διατηρεί για πάντα. Μια διεύθυνση onion δημοσιεύει μια τοποθεσία που κανείς δεν μπορεί να συνδέσει με εσάς και λειτουργεί πίσω από NAT· μια διεύθυνση IP δεν κάνει τίποτα από τα δύο. Ένας κόμβος που δημοσιεύει διεύθυνση IP μπορεί να επιλεγεί ως αναμεταδότης από άλλους.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3298,7 +3420,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>Ο κόμβος σας υπογράφει την καταχώριση και τη στέλνει μέσω του δικτύου επικάλυψης στον αναμεταδότη από τον οποίο μπαίνει. Ένας αναμεταδότης που πληρώνει για καταχωρίσεις βάζει τη δική σας σε μπλοκ που δημιουργεί ο ίδιος, οπότε επιβεβαιώνεται ακόμη κι αν οι περισσότεροι κόμβοι δεν θα την προωθούσαν, και σας προσθέτει στους ομότιμους με τους οποίους μοιράζεται τις ανταμοιβές του. Αν αργότερα σταματήσει να πληρώνει, η καταχώρισή σας λήγει μέσα στον μήνα· μπορείτε πάντα να την ανανεώσετε μόνοι σας από πορτοφόλι με υπόλοιπο.</translation>
+        <translation type="vanished">Ο κόμβος σας υπογράφει την καταχώριση και τη στέλνει μέσω του δικτύου επικάλυψης στον αναμεταδότη από τον οποίο μπαίνει. Ένας αναμεταδότης που πληρώνει για καταχωρίσεις βάζει τη δική σας σε μπλοκ που δημιουργεί ο ίδιος, οπότε επιβεβαιώνεται ακόμη κι αν οι περισσότεροι κόμβοι δεν θα την προωθούσαν, και σας προσθέτει στους ομότιμους με τους οποίους μοιράζεται τις ανταμοιβές του. Αν αργότερα σταματήσει να πληρώνει, η καταχώρισή σας λήγει μέσα στον μήνα· μπορείτε πάντα να την ανανεώσετε μόνοι σας από πορτοφόλι με υπόλοιπο.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3314,11 +3436,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>Εισαγάγετε μια διεύθυνση ή επιλέξτε να μη δημοσιεύσετε καμία.</translation>
+        <translation type="vanished">Εισαγάγετε μια διεύθυνση ή επιλέξτε να μη δημοσιεύσετε καμία.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>Ζητείται από τον αναμεταδότη σας να τη δημοσιεύσει… μπορεί να διαρκέσει έως μισό λεπτό.</translation>
+        <translation type="vanished">Ζητείται από τον αναμεταδότη σας να τη δημοσιεύσει… μπορεί να διαρκέσει έως μισό λεπτό.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3350,11 +3472,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>Καταχώριση της πύλης αυτού του αναμεταδότη</translation>
+        <translation type="vanished">Καταχώριση της πύλης αυτού του αναμεταδότη</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>Η καταχώριση ενός αναμεταδότη περιέχει τη διεύθυνσή του, γι&apos; αυτό η πύλη του καταχωρίζεται με δεύτερο κλειδί χωρίς διεύθυνση, χωριστά. Κανείς δεν μπορεί να καταλάβει από το μητρώο ότι τα δύο ανήκουν στον ίδιο υπολογιστή. Οι επισκέπτες φτάνουν στην πύλη μέσω αναμεταδοτών, άρα δεν μαθαίνει ποτέ ποιοι είναι· οι ιστότοποι που επισκέπτονται βλέπουν τη διεύθυνση αυτού του υπολογιστή.</translation>
+        <translation type="vanished">Η καταχώριση ενός αναμεταδότη περιέχει τη διεύθυνσή του, γι&apos; αυτό η πύλη του καταχωρίζεται με δεύτερο κλειδί χωρίς διεύθυνση, χωριστά. Κανείς δεν μπορεί να καταλάβει από το μητρώο ότι τα δύο ανήκουν στον ίδιο υπολογιστή. Οι επισκέπτες φτάνουν στην πύλη μέσω αναμεταδοτών, άρα δεν μαθαίνει ποτέ ποιοι είναι· οι ιστότοποι που επισκέπτονται βλέπουν τη διεύθυνση αυτού του υπολογιστή.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3370,11 +3492,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>Πληρώνει άλλος αναμεταδότης, μέσω άλλων αναμεταδοτών</translation>
+        <translation type="vanished">Πληρώνει άλλος αναμεταδότης, μέσω άλλων αναμεταδοτών</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>Ο κόμβος σας υπογράφει την καταχώριση της πύλης και τη στέλνει μέσω αναμεταδοτών σε άλλον αναμεταδότη, που πληρώνει γι&apos; αυτήν και τη βάζει σε μπλοκ που δημιουργεί ο ίδιος. Αυτός ο αναμεταδότης μαθαίνει το κλειδί της πύλης και ποτέ τη διεύθυνση αυτού του υπολογιστή. Η πληρωμή από το πορτοφόλι αυτού του κόμβου θα συνέδεε την πύλη με αυτόν τον αναμεταδότη στην αλυσίδα, άρα και με τη διεύθυνσή του.</translation>
+        <translation type="vanished">Ο κόμβος σας υπογράφει την καταχώριση της πύλης και τη στέλνει μέσω αναμεταδοτών σε άλλον αναμεταδότη, που πληρώνει γι&apos; αυτήν και τη βάζει σε μπλοκ που δημιουργεί ο ίδιος. Αυτός ο αναμεταδότης μαθαίνει το κλειδί της πύλης και ποτέ τη διεύθυνση αυτού του υπολογιστή. Η πληρωμή από το πορτοφόλι αυτού του κόμβου θα συνέδεε την πύλη με αυτόν τον αναμεταδότη στην αλυσίδα, άρα και με τη διεύθυνσή του.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3390,7 +3512,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>Η καταχώρισή σας λέει ποιος είστε και όχι πού λειτουργείτε. Οι ομότιμοι σας φτάνουν μέσω του δικτύου επικάλυψης και σας συναντούν σε σημεία που υπολογίζουν και οι δύο πλευρές από το μητρώο και που αλλάζουν κάθε μέρα· η Ανακάλυψη δείχνει τα σημερινά. Η καταχώρισή σας ονομάζει επίσης έναν αναμεταδότη όπου μπορείτε να βρεθείτε όσο ισχύει, και κάθε ανανέωση ονομάζει νέο. Αυτό ενεργοποιεί αυτός ο πελάτης από προεπιλογή.</translation>
+        <translation type="vanished">Η καταχώρισή σας λέει ποιος είστε και όχι πού λειτουργείτε. Οι ομότιμοι σας φτάνουν μέσω του δικτύου επικάλυψης και σας συναντούν σε σημεία που υπολογίζουν και οι δύο πλευρές από το μητρώο και που αλλάζουν κάθε μέρα· η Ανακάλυψη δείχνει τα σημερινά. Η καταχώρισή σας ονομάζει επίσης έναν αναμεταδότη όπου μπορείτε να βρεθείτε όσο ισχύει, και κάθε ανανέωση ονομάζει νέο. Αυτό ενεργοποιεί αυτός ο πελάτης από προεπιλογή.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3410,15 +3532,59 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>Αυτός ο κόμβος μοιράζεται τη σύνδεσή του στο διαδίκτυο ως πύλη, όπως ορίστηκε στη σελίδα Διακομιστής, οπότε η καταχώριση το λέει.</translation>
+        <translation type="vanished">Αυτός ο κόμβος μοιράζεται τη σύνδεσή του στο διαδίκτυο ως πύλη, όπως ορίστηκε στη σελίδα Διακομιστής, οπότε η καταχώριση το λέει.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>Αυτός ο κόμβος ούτε αναμεταδίδει για άλλους ούτε μοιράζεται τη σύνδεσή του στο διαδίκτυο, όπως ορίστηκε στη σελίδα Διακομιστής.</translation>
+        <translation type="vanished">Αυτός ο κόμβος ούτε αναμεταδίδει για άλλους ούτε μοιράζεται τη σύνδεσή του στο διαδίκτυο, όπως ορίστηκε στη σελίδα Διακομιστής.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>Μια αλλαγή εκεί φτάνει στο μητρώο με την επόμενη καταχώρισή σας.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>Αυτό γράφει στην αλυσίδα μια σύντομη εγγραφή ότι υπάρχετε και, προαιρετικά, μια γραμμή για εσάς.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>Τι λέει η καταχώρισή σας</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>Η καταχώρισή σας λέει ποιος είστε και όχι πού λειτουργείτε: δεν περιέχει διεύθυνση. Οι ομότιμοι σας βρίσκουν μέσω του δικτύου επικάλυψης, συναντώντας σας σε σημεία που υπολογίζουν και οι δύο πλευρές από το μητρώο και που αλλάζουν κάθε μέρα· η Ανακάλυψη δείχνει τα σημερινά. Η καταχώρισή σας ορίζει επίσης έναν αναμεταδότη όπου μπορούν να σας συναντήσουν όσο διαρκεί, και κάθε ανανέωση ορίζει νέο.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>Σημείωση</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>προαιρετικό: μια γραμμή δίπλα στο κλειδί σας</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>Μπορεί να τη διαβάσει οποιοσδήποτε, και η αλυσίδα την κρατά για πάντα, ακόμη και μετά τη λήξη της καταχώρισης. Παραλείψτε ό,τι λέει πού είστε ή ποιος είστε, αν αυτό σας ενδιαφέρει.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Ο κόμβος σας υπογράφει την καταχώριση και τη στέλνει μέσω μιας διαδρομής σε έναν αναμεταδότη από τον οποίο δεν εισέρχεται, ώστε αυτός ο αναμεταδότης μαθαίνει ποιος είστε και όχι πού. Ένας αναμεταδότης που πληρώνει για καταχωρίσεις βάζει τη δική σας σε ένα μπλοκ που ο ίδιος κάνει stake, ώστε επιβεβαιώνεται ακόμη κι όσο οι περισσότεροι κόμβοι δεν θα τη μετέδιδαν, και σας προσθέτει στους ομότιμους με τους οποίους μοιράζεται τις ανταμοιβές του. Αν αργότερα σταματήσει να πληρώνει, η καταχώρισή σας λήγει μέσα στον μήνα· μπορείτε πάντα να την ανανεώσετε μόνοι σας από ένα πορτοφόλι με κεφάλαια.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 byte</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>Πολύ μεγάλη: τα γράμματα εκτός απλών αγγλικών πιάνουν δύο έως τέσσερα byte το καθένα.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>Η σημείωση είναι πολύ μεγάλη.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>Η σημείωση δεν μπορεί να περιέχει χαρακτήρες ελέγχου ή σημάδια που αλλάζουν την κατεύθυνση του κειμένου.</translation>
     </message>
 </context>
 <context>
@@ -3592,6 +3758,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>Εισαγάγετε μια διεύθυνση BitcoinPoS (π.χ. %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>Ορίστε και τα δύο όρια.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>Μία πληρωμή δεν μπορεί να επιτρέπεται περισσότερο από μια ολόκληρη μέρα.</translation>
     </message>
 </context>
 <context>
@@ -4293,6 +4467,14 @@ worked out from the roster; they change every day:</source>
         <source>meets at %1</source>
         <translation>συνάντηση στο %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>Σημείωση</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>Γραμμένη από όποιον κατέχει αυτό το κλειδί· κανείς δεν την ελέγχει.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4777,7 +4959,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>Ένας ιστότοπος ή υπηρεσία που προσφέρεται από αυτόν τον κόμβο, εντοπίζεται από το κλειδί ή το όνομά του και προσεγγίζεται μέσω του δικτύου επικάλυψης, ώστε ο οικοδεσπότης να μη δημοσιεύει ποτέ πού λειτουργεί. Το κομμάτι της συνάντησης υπάρχει: μια υπηρεσία καταχωρίζεται σε σημεία συνάντησης που υπολογίζουν και οι δύο πλευρές από το μητρώο. Η προσφορά σελίδων και εφαρμογών μέσω αυτού δεν έχει υλοποιηθεί ακόμη.</translation>
+        <translation type="vanished">Ένας ιστότοπος ή υπηρεσία που προσφέρεται από αυτόν τον κόμβο, εντοπίζεται από το κλειδί ή το όνομά του και προσεγγίζεται μέσω του δικτύου επικάλυψης, ώστε ο οικοδεσπότης να μη δημοσιεύει ποτέ πού λειτουργεί. Το κομμάτι της συνάντησης υπάρχει: μια υπηρεσία καταχωρίζεται σε σημεία συνάντησης που υπολογίζουν και οι δύο πλευρές από το μητρώο. Η προσφορά σελίδων και εφαρμογών μέσω αυτού δεν έχει υλοποιηθεί ακόμη.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -5001,7 +5183,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Τι προσφέρει αυτός ο κόμβος στους άλλους. Η αναμετάδοση, η φύλαξη ταχυδρομείου και η κοινή χρήση του ίντερνετ λειτουργούν ήδη· η φιλοξενία έρχεται και, όπως όλα εδώ, βρίσκεται με τον ίδιο τρόπο όπως οι ομότιμοι — μέσω του μητρώου. Τα ονόματα έχουν δική τους σελίδα.</translation>
+        <translation type="vanished">Τι προσφέρει αυτός ο κόμβος στους άλλους. Η αναμετάδοση, η φύλαξη ταχυδρομείου και η κοινή χρήση του ίντερνετ λειτουργούν ήδη· η φιλοξενία έρχεται και, όπως όλα εδώ, βρίσκεται με τον ίδιο τρόπο όπως οι ομότιμοι — μέσω του μητρώου. Τα ονόματα έχουν δική τους σελίδα.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -5017,7 +5199,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>Καταχωρισμένο ως</translation>
+        <translation type="vanished">Καταχωρισμένο ως</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5029,15 +5211,15 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>Καταχώριση ως πύλη…</translation>
+        <translation type="vanished">Καταχώριση ως πύλη…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Κοινή χρήση της σύνδεσης ίντερνετ αυτού του υπολογιστή ως πύλη</translation>
+        <translation type="vanished">Κοινή χρήση της σύνδεσης ίντερνετ αυτού του υπολογιστή ως πύλη</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>Απενεργοποιήστε το αν ο νόμος του τόπου σας ή οι όροι του παρόχου ίντερνετ απαγορεύουν την κοινή χρήση της σύνδεσης. Απενεργοποιημένος, αυτός ο κόμβος συνεχίζει να αναμεταδίδει, να φυλάει ταχυδρομείο και να ακολουθεί την αλυσίδα, και χρησιμοποιεί απευθείας τη δική του σύνδεση.</translation>
+        <translation type="vanished">Απενεργοποιήστε το αν ο νόμος του τόπου σας ή οι όροι του παρόχου ίντερνετ απαγορεύουν την κοινή χρήση της σύνδεσης. Απενεργοποιημένος, αυτός ο κόμβος συνεχίζει να αναμεταδίδει, να φυλάει ταχυδρομείο και να ακολουθεί την αλυσίδα, και χρησιμοποιεί απευθείας τη δική του σύνδεση.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5053,11 +5235,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>Να επιτρέπεται στα προγράμματα αυτού του υπολογιστή να χρησιμοποιούν το ίντερνετ του δικτύου μέσω τοπικού διακομιστή μεσολάβησης</translation>
+        <translation type="vanished">Να επιτρέπεται στα προγράμματα αυτού του υπολογιστή να χρησιμοποιούν το ίντερνετ του δικτύου μέσω τοπικού διακομιστή μεσολάβησης</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>Ένας διακομιστής μεσολάβησης SOCKS5 μόνο για αυτόν τον υπολογιστή. Κάθε σύνδεση βγαίνει από την πύλη άλλου μέλους, και τα ονόματα επιλύονται εκεί, ποτέ εδώ. Λειτουργεί όσο αυτός ο υπολογιστής μοιράζεται τη δική του σύνδεση.</translation>
+        <translation type="vanished">Ένας διακομιστής μεσολάβησης SOCKS5 μόνο για αυτόν τον υπολογιστή. Κάθε σύνδεση βγαίνει από την πύλη άλλου μέλους, και τα ονόματα επιλύονται εκεί, ποτέ εδώ. Λειτουργεί όσο αυτός ο υπολογιστής μοιράζεται τη δική του σύνδεση.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5093,27 +5275,27 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>δεν είναι καταχωρισμένο ως πύλη</translation>
+        <translation type="vanished">δεν είναι καταχωρισμένο ως πύλη</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>όχι ακόμα — το μητρώο δεν καταχωρίζει αυτόν τον κόμβο ως πύλη, άρα κανείς δεν μπορεί να τον βρει</translation>
+        <translation type="vanished">όχι ακόμα — το μητρώο δεν καταχωρίζει αυτόν τον κόμβο ως πύλη, άρα κανείς δεν μπορεί να τον βρει</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>τίποτα ακόμα — ένας αναμεταδότης καταχωρίζει την πύλη του με δεύτερο κλειδί, χωρίς διεύθυνση, χωριστά από τη δική του καταχώριση</translation>
+        <translation type="vanished">τίποτα ακόμα — ένας αναμεταδότης καταχωρίζει την πύλη του με δεύτερο κλειδί, χωρίς διεύθυνση, χωριστά από τη δική του καταχώριση</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>τίποτα ακόμα — στην καταχώριση αυτού του κόμβου λείπει η επιλογή πύλης· δημοσιεύστε την ξανά με ενεργή την επιλογή</translation>
+        <translation type="vanished">τίποτα ακόμα — στην καταχώριση αυτού του κόμβου λείπει η επιλογή πύλης· δημοσιεύστε την ξανά με ενεργή την επιλογή</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>τίποτα ακόμα — δημοσιεύστε μια καταχώριση χωρίς διεύθυνση με ενεργή την επιλογή πύλης</translation>
+        <translation type="vanished">τίποτα ακόμα — δημοσιεύστε μια καταχώριση χωρίς διεύθυνση με ενεργή την επιλογή πύλης</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>Καταχώριση της πύλης αυτού του αναμεταδότη…</translation>
+        <translation type="vanished">Καταχώριση της πύλης αυτού του αναμεταδότη…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5133,11 +5315,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>το κλειδί πύλης του %1, χωριστά από τη διεύθυνση του αναμεταδότη</translation>
+        <translation type="vanished">το κλειδί πύλης του %1, χωριστά από τη διεύθυνση του αναμεταδότη</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>το δικό κλειδί αυτού του κόμβου %1</translation>
+        <translation type="vanished">το δικό κλειδί αυτού του κόμβου %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5153,11 +5335,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>Να περνά όλη η κίνηση αυτού του υπολογιστή μέσα από το δίκτυο, χωρίς ρύθμιση διακομιστή μεσολάβησης σε κανένα πρόγραμμα</translation>
+        <translation type="vanished">Να περνά όλη η κίνηση αυτού του υπολογιστή μέσα από το δίκτυο, χωρίς ρύθμιση διακομιστή μεσολάβησης σε κανένα πρόγραμμα</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>Οι συνδέσεις κάθε προγράμματος βγαίνουν μέσα από τις πύλες του δικτύου, η καθεμία από άλλη, και τα ονόματα αναζητούνται εκεί. Το δίκτυο αυτού του υπολογιστή — ένας εκτυπωτής, ο δρομολογητής — και οι συνδέσεις αυτού του κόμβου μένουν άμεσες. Λειτουργεί όσο αυτός ο υπολογιστής μοιράζεται τη σύνδεσή του.</translation>
+        <translation type="vanished">Οι συνδέσεις κάθε προγράμματος βγαίνουν μέσα από τις πύλες του δικτύου, η καθεμία από άλλη, και τα ονόματα αναζητούνται εκεί. Το δίκτυο αυτού του υπολογιστή — ένας εκτυπωτής, ο δρομολογητής — και οι συνδέσεις αυτού του κόμβου μένουν άμεσες. Λειτουργεί όσο αυτός ο υπολογιστής μοιράζεται τη σύνδεσή του.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5185,11 +5367,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>Ενεργό: %1 σύνδεση(-εις) μέσα από το δίκτυο τώρα· στάλθηκαν %2, λήφθηκαν %3.</translation>
+        <translation type="vanished">Ενεργό: %1 σύνδεση(-εις) μέσα από το δίκτυο τώρα· στάλθηκαν %2, λήφθηκαν %3.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>Δεν είναι ακόμη διαθέσιμο σε αυτό το σύστημα.</translation>
+        <translation type="vanished">Δεν είναι ακόμη διαθέσιμο σε αυτό το σύστημα.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5201,7 +5383,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>Ξεκινά όταν γίνει επανεκκίνηση του προγράμματος.</translation>
+        <translation type="vanished">Ξεκινά όταν γίνει επανεκκίνηση του προγράμματος.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5230,6 +5412,334 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>none — relaying is switched off</source>
         <translation>καμία — η αναμετάδοση είναι απενεργοποιημένη</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Τι προσφέρει αυτός ο κόμβος στους άλλους: αναμετάδοση, φύλαξη αλληλογραφίας, κοινή χρήση του διαδικτύου και φιλοξενία ιστότοπου· και στο δικό σας τηλέφωνο, έναν τρόπο να ξοδεύει από εδώ. Όπως όλα εδώ, βρίσκεται με τον ίδιο τρόπο που βρίσκονται οι ομότιμοι — μέσω του μητρώου. Τα ονόματα έχουν δική τους σελίδα.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>Κοινή χρήση της σύνδεσης διαδικτύου αυτού του υπολογιστή, και χρήση της σύνδεσης του δικτύου σε αντάλλαγμα</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>Όταν είναι ενεργό, η σύνδεση αυτού του υπολογιστή μοιράζεται, και όλη η δική του κίνηση βγαίνει μέσα από τις πύλες του δικτύου, κάθε σύνδεση μέσα από άλλη· το δικό του δίκτυο — ένας εκτυπωτής, ο δρομολογητής — μένει άμεσο. Απενεργοποιήστε το αν ο νόμος εκεί που ζείτε ή οι όροι του παρόχου διαδικτύου σας απαγορεύουν την κοινή χρήση της σύνδεσης: το δίκτυο τότε μεταφέρει μόνο το ίδιο το BPS, και αυτός ο υπολογιστής χρησιμοποιεί τη δική του σύνδεση.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Για όλο τον υπολογιστή: ενεργό, %1 σύνδεση(-εις) μέσω του δικτύου τώρα· %2 εστάλησαν, %3 ελήφθησαν.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>Για όλο τον υπολογιστή: δεν είναι ακόμη διαθέσιμο σε αυτό το σύστημα· τα προγράμματα μπορούν να χρησιμοποιήσουν τον διακομιστή μεσολάβησης.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>Για όλο τον υπολογιστή: ξεκινά όταν γίνει επανεκκίνηση του προγράμματος.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>χωρίς κοινή χρήση</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>όχι — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>Δημοσιεύστε έναν φάκελο ως ιστότοπο με το κλειδί αυτού του κόμβου, ώστε όποιος λάβει από εσάς το κλειδί ή το όνομά σας να μπορεί να τον διαβάσει μέσω του δικτύου επικάλυψης. Κάθε αρχείο είναι υπογεγραμμένο και ελέγχεται κομμάτι-κομμάτι καθώς φτάνει. Με καταχώριση χωρίς διεύθυνση, αυτός ο κόμβος συναντάται στα σημεία συνάντησής του και κανείς δεν μαθαίνει πού τρέχει ο ιστότοπος· με καταχώριση σε διεύθυνση, οι επισκέπτες φτάνουν μέσω αναμεταδοτών, ώστε δεν μαθαίνει ποτέ ποιοι είναι. Ένα πρόγραμμα σε αυτόν τον υπολογιστή — μια εφαρμογή ιστού, ένας διακομιστής συνομιλίας — μπορεί να δημοσιευτεί με τον ίδιο τρόπο: οι επισκέπτες το φτάνουν μέσω του δικτύου επικάλυψης, και αυτός ο κόμβος συνδέεται μόνο στη θύρα που ορίζετε.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Φάκελος</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>Προσεγγίσεις</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Εστάλησαν</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>κανένα</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>Προγράμματα σε αυτόν τον υπολογιστή που οι επισκέπτες φτάνουν μέσω του δικτύου επικάλυψης. Ένα πρόγραμμα με όνομα web είναι αυτό που ανοίγει ένα πρόγραμμα περιήγησης στη διεύθυνση αυτού του κόμβου όταν δεν υπάρχει ιστότοπος.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>Προγράμματα</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>Δημοσίευση φακέλου…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>Δημοσίευση ξανά</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>Ξαναδιαβάστε τον φάκελο μετά την αλλαγή του και δημοσιεύστε ό,τι υπάρχει τώρα.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>Διακοπή δημοσίευσης</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>Άνοιγμα στους Ιστότοπους</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>Δημοσίευση προγράμματος…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>Διακοπή προγράμματος…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>δεν δημοσιεύει</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>κανένας — τίποτα δεν δημοσιεύεται</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 αρχείο(-α), %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>μη καταχωρισμένος</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>από κανέναν ακόμη: αυτός ο κόμβος δεν είναι καταχωρισμένος στο μητρώο, οπότε οι επισκέπτες δεν μπορούν να βρουν τον ιστότοπο. Δημοσιεύστε μια καταχώριση στη σελίδα Κόμβος, στην Ανακάλυψη.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>δημοσιεύει</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>δεν έχει συναντηθεί ακόμη</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>σε %1 σημείο(-α) συνάντησης, χωρίς δημοσιευμένη διεύθυνση</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>όχι ακόμη: εγγράφεται στα σημεία συνάντησής του, κάτι που χρειάζεται τους αναμεταδότες του μητρώου</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>στη διεύθυνση αυτού του κόμβου, μέσω αναμεταδοτών που κρύβουν τον επισκέπτη</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 κομμάτι(-α) σελίδων, %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>Ο φάκελος προς δημοσίευση ως ιστότοπος</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>Δημοσίευση προγράμματος</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>Ένα όνομα γι&apos; αυτό, 1 έως 32 από a-z, 0-9 και -. Ονομάστε το web για μια εφαρμογή ιστού που πρέπει να ανοίγει ένα πρόγραμμα περιήγησης στη διεύθυνση αυτού του κόμβου:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>Η θύρα στην οποία ακούει, στο 127.0.0.1 (μόνο αυτός ο υπολογιστής):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>Διακοπή προγράμματος</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>Σε ποιο πρόγραμμα δεν πρέπει πια να φτάνουν οι επισκέπτες:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 στο 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 ροή(-ές) ανοιχτή(-ές)</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>Συνοδευτικό τηλέφωνο</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>Ξοδέψτε από το τηλέφωνό σας ενώ τα νομίσματά σας μένουν εδώ. Το τηλέφωνο δεν κρατά κλειδιά νομισμάτων: φτάνει σε αυτόν τον κόμβο, αποδεικνύει το κλειδί με το οποίο έγινε η σύζευξη, και αυτός ο κόμβος πληρώνει από ένα μικρό πορτοφόλι χαρτζιλικιού — αφού ελέγξει το PIN του τηλεφώνου και τα όρια που ορίσατε, τα οποία το τηλέφωνο δεν μπορεί να αλλάξει. Αν χάσετε το τηλέφωνο, χάνετε το πολύ ό,τι έχει το χαρτζιλίκι· καταργήστε τη σύζευξη εδώ. Όταν αυτός ο κόμβος είναι καταχωρισμένος αναμεταδότης και αρκετοί άλλοι είναι καταχωρισμένοι, το τηλέφωνο έρχεται μέσω τριών αναμεταδοτών, ώστε κανείς που παρακολουθεί να μη μαθαίνει πού βρίσκεται· διαφορετικά συνδέεται απευθείας εδώ.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>Χαρτζιλίκι</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>Προσβάσιμο από τηλέφωνα</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>Τηλέφωνο</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>Μία πληρωμή</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>Μία μέρα</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>Ξοδεύτηκαν σήμερα</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>Κατάσταση</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>Σύζευξη τηλεφώνου…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>Όρια…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>Ξεκλείδωμα</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>Ένα τηλέφωνο κλειδώνεται μετά από πέντε συνεχόμενα λάθος PIN, μέχρι να ξεκλειδωθεί εδώ.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>Κατάργηση σύζευξης</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>Να επιτρέπεται στα συζευγμένα τηλέφωνα να ξοδεύουν από ένα πορτοφόλι χαρτζιλικιού</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>Χρειάζεται το δίκτυο επικάλυψης. Ανενεργό από προεπιλογή, γιατί επιτρέπει σε ένα τηλέφωνο να ξοδεύει τα νομίσματα αυτού του κόμβου.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>Ένα ξεχωριστό πορτοφόλι, χωρίς φράση πρόσβασης — κανείς δεν είναι εκεί να την πληκτρολογήσει όταν πληρώνει το τηλέφωνο — και μόνο με ό,τι πρέπει να μπορεί να ξοδέψει το τηλέφωνο. Δεν κάνει ποτέ stake και δεν μπορεί να είναι το πορτοφόλι που πληρώνει για καταχωρίσεις.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>Δημιουργία</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>Δημιουργία του πορτοφολιού χαρτζιλικιού και άνοιγμά του σε κάθε εκκίνηση αυτού του κόμβου.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>Ανανέωση υπολοίπου…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>Άνοιγμα της Αποστολής στο πορτοφόλι, για μεταφορά νομισμάτων στο χαρτζιλίκι.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>Πορτοφόλι χαρτζιλικιού</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, %1 ακόμη έρχονται</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>ναι, στο %1, μέσω αναμεταδοτών</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>απευθείας, στο %1. Χωρίς αναμεταδότες ενδιάμεσα: το δίκτυο ενός τηλεφώνου βλέπει ότι μιλά με αυτόν τον υπολογιστή. Από έξω από αυτό το δίκτυο, προωθήστε τη θύρα UDP %2 στον δρομολογητή προς αυτόν τον υπολογιστή.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>όχι — αυτός ο κόμβος δεν γνωρίζει ακόμη δική του διεύθυνση</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>μη προσβάσιμο</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>ένα τηλέφωνο περιμένει</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>χωρίς χαρτζιλίκι</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>ένα τηλέφωνο είναι κλειδωμένο</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 τηλέφωνα είναι κλειδωμένα</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>σε λειτουργία, κανένα τηλέφωνο ακόμη</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>σε λειτουργία, 1 τηλέφωνο</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>σε λειτουργία, %1 τηλέφωνα</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>Κλειδί συσκευής %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>κλειδωμένο: λάθος PIN</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>σε σύζευξη</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>Κατάργηση σύζευξης του %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>Κατάργηση σύζευξης του %1; Δεν θα μπορεί να ξοδέψει ξανά μέχρι να γίνει νέα σύζευξη. Κάντε το αμέσως αν το τηλέφωνο χάθηκε ή κλάπηκε.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>Το πορτοφόλι χαρτζιλικιού δημιουργήθηκε και άνοιξε. Χρησιμοποιήστε την Ανανέωση υπολοίπου για να μεταφέρετε σε αυτό ό,τι πρέπει να μπορεί να ξοδέψει το τηλέφωνο.</translation>
     </message>
 </context>
 <context>
@@ -5361,6 +5871,30 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>Ο κόμβος ακόμη ξεκινά· οι βασικές ρυθμίσεις δεν είναι ακόμη διαθέσιμες.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>Οι άλλοι σας συναντούν σε αναμεταδότες που υπολογίζονται από το μητρώο, και ο κόμβος σας κρατά ανοιχτή μια διαδρομή προς τον καθένα μέσω τόσων αναμεταδοτών. Το σημείο συνάντησης βλέπει μόνο τον τελευταίο, ποτέ τη διεύθυνσή σας. Περισσότεροι σας κρύβουν καλύτερα και είναι πιο αργοί.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>Αναμεταδότες πριν από τα σημεία συνάντησής σας</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>Όταν αυτός ο υπολογιστής χρησιμοποιεί το διαδίκτυο του δικτύου, κάθε σύνδεση περνά μέσω τόσων αναμεταδοτών σε ένα σημείο συνάντησης μιας πύλης, και μετά μέσω των αναμεταδοτών της ίδιας της πύλης: η πύλη δεν μαθαίνει ποτέ ποιος είστε. Περισσότεροι σας κρύβουν καλύτερα και είναι πιο αργοί.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>Αναμεταδότες πριν από το σημείο συνάντησης μιας πύλης</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>Μόνο η πρώτη σας σύνδεση είναι άμεση, σε έναν αναμεταδότη εισόδου που βλέπει τη διεύθυνσή σας και όχι ποιος είστε. Η αλληλογραφία περνά πάντα από τρεις αναμεταδότες.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Έκδοση %1</translation>
     </message>
 </context>
 <context>
@@ -5523,6 +6057,147 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Message verified.</source>
         <translation>Το μήνυμα επαληθεύτηκε.</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>Ιστότοποι</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>Ιστότοποι που φιλοξενούνται στο δίκτυο επικάλυψης, ανοιγμένοι με όνομα ή κλειδί που σας έδωσε κάποιος. Οι σελίδες εμφανίζονται εδώ χωρίς σενάρια, και τίποτα σε αυτές δεν φορτώνεται από έξω από το BPS, οπότε μια σελίδα δεν μπορεί να μάθει πού βρίσκεστε.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Πίσω</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Μπροστά</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>Νέα λήψη της σελίδας</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://όνομα/ ή κλειδί ιστότοπου</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Άνοιγμα</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>Αποθήκευση αυτού του αρχείου…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>Άνοιγμα στο πρόγραμμα περιήγησης</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>Ο ίδιος ιστότοπος σε ένα συνηθισμένο πρόγραμμα περιήγησης, μέσω διακομιστή μόνο σε αυτόν τον υπολογιστή. Οι σελίδες εκεί μπορεί να τρέχουν σενάρια, οπότε η προβολή εδώ παραμένει ο ασφαλέστερος τρόπος να διαβάσετε έναν κρυφό ιστότοπο.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>Σύνδεση σε πρόγραμμα…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>Φτάστε σε ένα πρόγραμμα που τρέχει αυτός ο ιστότοπος — έναν διακομιστή συνομιλίας, ένα παιχνίδι — από ένα πρόγραμμα σε αυτόν τον υπολογιστή: το BPS Relay ακούει σε μια θύρα εδώ και μεταφέρει κάθε σύνδεση σε αυτό μέσω του δικτύου επικάλυψης.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>Αυτή δεν είναι διεύθυνση ιστότοπου. Γράψτε ένα όνομα ή ένα κλειδί, όπως bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>Αναζήτηση %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>Λήψη %1 μέσω του δικτύου επικάλυψης…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>Το %1 δεν είναι σελίδα που δείχνει αυτή η προβολή (%2 byte). Αποθηκεύστε το για να το ανοίξετε με άλλο πρόγραμμα.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>Στρέψτε το πρόγραμμα σε αυτόν τον υπολογιστή στο %1: το BPS Relay μεταφέρει κάθε σύνδεση που γίνεται εκεί στο πρόγραμμα του ιστότοπου, μέσω του δικτύου επικάλυψης, μέχρι την επανεκκίνησή του.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>Ο διακομιστής ιστότοπων για προγράμματα περιήγησης δεν εκτελείται. Ξεκινά με το BPS Relay εκτός αν δόθηκε -siteproxy=0.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>Το %1 δεν οδηγεί σε κάποιο κλειδί.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>Το %1 δείχνει τώρα σε διαφορετικό κλειδί από την τελευταία φορά που το ανοίξατε. Όποιος κατέχει τώρα το όνομα ίσως δεν είναι αυτός που διαβάζατε πριν.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>Συναντήθηκε σε ένα από τα σημεία συνάντησής του, μέσω %1 δικών σας αναμεταδοτών: ούτε εσείς ούτε ο οικοδεσπότης μαθαίνετε πού είναι ο άλλος.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>Προσεγγίστηκε στη διεύθυνσή του μέσω %1 αναμεταδοτών: ο οικοδεσπότης δεν μαθαίνει ποιος είστε.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>Ο δικός σας ιστότοπος, διαβασμένος από αυτόν τον υπολογιστή.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>Προσεγγίζεται μέσω ραδιοφώνου, οπότε οι σελίδες έρχονται αργά.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>Το %1 δεν είναι όνομα που γνωρίζει αυτός ο κόμβος: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>Δεν ήταν δυνατό το άνοιγμα του %1: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>Αυτός ο σύνδεσμος οδηγεί έξω από το BPS, οπότε δεν ακολουθήθηκε: %1
+Ανοίξτε τον σε ένα συνηθισμένο πρόγραμμα περιήγησης αν το επιλέξετε· όποιος τον διαχειρίζεται θα δει τη διεύθυνσή σας.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>Σύνδεση σε πρόγραμμα</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>Το όνομα που έδωσε ο ιστότοπος στο πρόγραμμά του:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>Άνοιγμα ιστότοπου στο πρόγραμμα περιήγησης</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>Το πρόγραμμα περιήγησής σας θα ζητήσει τον ιστότοπο από αυτόν τον υπολογιστή, και το BPS Relay τον φέρνει μέσω του δικτύου επικάλυψης, όπως και εδώ. Κάθε σελίδα μπορεί να φορτώνει μόνο από τον δικό της ιστότοπο, οπότε δεν μπορεί να τραβήξει τίποτα από το ανοιχτό διαδίκτυο για να μάθει πού βρίσκεστε.
+
+Τι μπορεί ακόμη να κάνει ένα πρόγραμμα περιήγησης: ένα σενάριο μπορεί να χρησιμοποιήσει το WebRTC για να δείξει σε μια σελίδα τις διευθύνσεις αυτού του υπολογιστή, και ένας σύνδεσμος που ακολουθείτε προς έναν συνηθισμένο ιστότοπο φεύγει όπως κάθε σύνδεσμος. Η προβολή στο BPS Relay δεν τρέχει σενάρια και παραμένει ο ασφαλέστερος τρόπος να διαβάσετε έναν κρυφό ιστότοπο.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>Αποθήκευση αρχείου</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>Δεν ήταν δυνατή η αποθήκευση του %1.</translation>
     </message>
 </context>
 <context>

@@ -1115,6 +1115,10 @@ Firmar solo es posible con correos del tipo Legacy.</translation>
         <source>Not staking</source>
         <translation>Sin staking</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>Sitios</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1269,6 +1273,92 @@ Firmar solo es posible con correos del tipo Legacy.</translation>
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>delegado a %1 para cold staking</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>Límites para %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>Lo que este teléfono puede gastar del monedero de asignación, comisiones incluidas.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Como máximo en un pago</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Como máximo en 24 horas</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>Vincular un teléfono</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>En la aplicación BPS del teléfono, elige Vincular y escanea este código. O copia el texto de debajo en la aplicación. Funciona una vez, durante diez minutos.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>Copiar el código</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>Mostrar un código nuevo</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>Vincula solo si el teléfono muestra estos mismos seis dígitos. Si muestra otros, alguien más respondió al código primero: rechaza y muestra uno nuevo.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>Lo que este teléfono puede gastar del monedero de asignación. Solo este nodo podrá cambiarlo después, nunca el teléfono.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Como máximo en un pago</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Como máximo en 24 horas</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>Rechazar</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>Vincular este teléfono</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>Creando un código…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>Este código ha caducado.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>Esperando al teléfono… el código vale %1 minutos más.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>Esta versión no puede dibujar códigos QR: copia el texto de abajo en la aplicación.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>Un teléfono llamado «%1» quiere vincularse con este nodo.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>Vinculado. El teléfono ya puede gastar del monedero de asignación dentro de los límites fijados. Su lista está en la página Servidor, donde puedes cambiar sus límites, desbloquearlo tras demasiados PIN erróneos o desvincularlo.</translation>
     </message>
 </context>
 <context>
@@ -1444,7 +1534,7 @@ Firmar solo es posible con correos del tipo Legacy.</translation>
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>Buscar un par o una dirección</translation>
+        <translation type="vanished">Buscar un par o una dirección</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1581,6 +1671,38 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>Los pares se anuncian en la cadena en lugar de ante un servidor, así que esta lista es la misma para todos y nadie está en posición de editarla. Un par inscrito por el overlay muestra dónde se le puede encontrar hoy, lo que cambia cada día; un relé muestra su dirección solo mientras está en línea, porque nunca está en la cadena.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nombre</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>Registrar un nombre…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>Un nombre permite que otros te encuentren sin copiar tu clave. Los nombres se registran en la pestaña Nombres.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>Buscar un par, una nota o una dirección</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>Todos estos nombres apuntan a la clave de este nodo. Otros pueden encontrarte por cualquiera de ellos.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>Gestionar nombres…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>nombres desactivados</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>Los nombres necesitan el índice de nombres. Actívalo en Ajustes para registrar y mostrar uno.</translation>
     </message>
 </context>
 <context>
@@ -3209,15 +3331,15 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>Esto escribe en la cadena un registro breve que dice que existes y, si quieres, dónde encontrarte.</translation>
+        <translation type="vanished">Esto escribe en la cadena un registro breve que dice que existes y, si quieres, dónde encontrarte.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>¿Cómo deben llegar a ti los pares?</translation>
+        <translation type="vanished">¿Cómo deben llegar a ti los pares?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>Por el overlay — no publicar ninguna dirección</translation>
+        <translation type="vanished">Por el overlay — no publicar ninguna dirección</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3225,35 +3347,35 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>En una dirección que publico</translation>
+        <translation type="vanished">En una dirección que publico</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>dirección que otros pares pueden alcanzar</translation>
+        <translation type="vanished">dirección que otros pares pueden alcanzar</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>Cualquiera puede verla, y la cadena la guarda para siempre. Una dirección onion publica una ubicación que nadie puede relacionar contigo y funciona detrás de un NAT; una dirección IP no hace ninguna de las dos cosas. Un nodo que publica una dirección IP puede ser elegido como relé por otros.</translation>
+        <translation type="vanished">Cualquiera puede verla, y la cadena la guarda para siempre. Una dirección onion publica una ubicación que nadie puede relacionar contigo y funciona detrás de un NAT; una dirección IP no hace ninguna de las dos cosas. Un nodo que publica una dirección IP puede ser elegido como relé por otros.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3297,7 +3419,7 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>Tu nodo firma la inscripción y la envía por el overlay al relé por el que entra. Un relé que paga inscripciones mete la tuya en un bloque que produce él mismo, así que se confirma aunque la mayoría de los nodos no la retransmitiría, y te añade a los pares con los que comparte sus recompensas. Si más adelante deja de pagar, tu inscripción caduca dentro del mes; siempre puedes renovarla tú desde un monedero con fondos.</translation>
+        <translation type="vanished">Tu nodo firma la inscripción y la envía por el overlay al relé por el que entra. Un relé que paga inscripciones mete la tuya en un bloque que produce él mismo, así que se confirma aunque la mayoría de los nodos no la retransmitiría, y te añade a los pares con los que comparte sus recompensas. Si más adelante deja de pagar, tu inscripción caduca dentro del mes; siempre puedes renovarla tú desde un monedero con fondos.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3313,11 +3435,11 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>Introduce una dirección, o elige no publicar ninguna.</translation>
+        <translation type="vanished">Introduce una dirección, o elige no publicar ninguna.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>Pidiendo a tu relé que la publique… puede tardar hasta medio minuto.</translation>
+        <translation type="vanished">Pidiendo a tu relé que la publique… puede tardar hasta medio minuto.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3349,11 +3471,11 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>Inscribir la pasarela de este relé</translation>
+        <translation type="vanished">Inscribir la pasarela de este relé</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>La inscripción de un relé lleva su dirección, así que su pasarela se inscribe con una segunda clave sin dirección, aparte. Nadie puede saber por el registro que las dos pertenecen al mismo ordenador. Los visitantes llegan a la pasarela a través de relés, así que nunca sabe quiénes son; los sitios que visitan ven la dirección de este ordenador.</translation>
+        <translation type="vanished">La inscripción de un relé lleva su dirección, así que su pasarela se inscribe con una segunda clave sin dirección, aparte. Nadie puede saber por el registro que las dos pertenecen al mismo ordenador. Los visitantes llegan a la pasarela a través de relés, así que nunca sabe quiénes son; los sitios que visitan ven la dirección de este ordenador.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3369,11 +3491,11 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>Paga otro relé, pedido a través de otros relés</translation>
+        <translation type="vanished">Paga otro relé, pedido a través de otros relés</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>Tu nodo firma la inscripción de la pasarela y la envía a través de relés a otro relé, que la paga y la mete en un bloque que produce él mismo. Ese relé conoce la clave de la pasarela y nunca la dirección de este ordenador. Pagar desde el monedero de este mismo nodo ataría la pasarela a este relé en la cadena, y por tanto a su dirección.</translation>
+        <translation type="vanished">Tu nodo firma la inscripción de la pasarela y la envía a través de relés a otro relé, que la paga y la mete en un bloque que produce él mismo. Ese relé conoce la clave de la pasarela y nunca la dirección de este ordenador. Pagar desde el monedero de este mismo nodo ataría la pasarela a este relé en la cadena, y por tanto a su dirección.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3389,7 +3511,7 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>Tu inscripción dice quién eres y no dónde funcionas. Los pares te alcanzan por el overlay y se encuentran contigo en puntos que ambas partes calculan a partir del registro, y que cambian cada día; Descubrimiento muestra los de hoy. Tu inscripción también nombra un relé donde se te puede encontrar mientras dure, y cada renovación nombra uno nuevo. Esto es lo que este cliente activa por defecto.</translation>
+        <translation type="vanished">Tu inscripción dice quién eres y no dónde funcionas. Los pares te alcanzan por el overlay y se encuentran contigo en puntos que ambas partes calculan a partir del registro, y que cambian cada día; Descubrimiento muestra los de hoy. Tu inscripción también nombra un relé donde se te puede encontrar mientras dure, y cada renovación nombra uno nuevo. Esto es lo que este cliente activa por defecto.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3409,15 +3531,59 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>Este nodo comparte su conexión a internet como pasarela, según lo configurado en la página Servidor, así que la inscripción lo dice.</translation>
+        <translation type="vanished">Este nodo comparte su conexión a internet como pasarela, según lo configurado en la página Servidor, así que la inscripción lo dice.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>Este nodo ni retransmite para otros ni comparte su conexión a internet, según lo configurado en la página Servidor.</translation>
+        <translation type="vanished">Este nodo ni retransmite para otros ni comparte su conexión a internet, según lo configurado en la página Servidor.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>Un cambio allí llega al registro con tu próxima inscripción.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>Esto escribe en la cadena un registro breve que dice que existes y, si quieres, una línea sobre ti.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>Lo que dice tu inscripción</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>Tu inscripción dice quién eres y no dónde funcionas: no lleva ninguna dirección. Los pares te alcanzan por el overlay, encontrándote en puntos que ambos lados calculan a partir del registro y que cambian cada día; Descubrimiento muestra los de hoy. Tu inscripción también nombra un relé donde se te puede encontrar mientras dure, y cada renovación nombra uno nuevo.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>Nota</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>opcional: una línea que se muestra junto a tu clave</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>Cualquiera puede leerla, y la cadena la guarda para siempre, incluso cuando la inscripción termina. Omite todo lo que diga dónde estás o quién eres, si eso te importa.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Tu nodo firma la inscripción y la envía por una ruta a un relé por el que no entra, así que ese relé sabe quién eres y no dónde. Un relé que paga inscripciones pone la tuya en un bloque que él mismo hace staking, de modo que se confirma aunque la mayoría de los nodos aún no la reenvíen, y te añade a los pares con los que comparte sus recompensas. Si deja de pagar, tu inscripción caduca en el mes; siempre puedes renovarla tú mismo desde un monedero con fondos.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 bytes</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>Demasiado larga: las letras fuera del inglés básico ocupan de dos a cuatro bytes cada una.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>La nota es demasiado larga.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>La nota no puede contener caracteres de control ni marcas que cambien la dirección del texto.</translation>
     </message>
 </context>
 <context>
@@ -3591,6 +3757,14 @@ Se te mostrará una clave de recuperación una sola vez. Apúntala: es la única
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>Introduce una dirección BitcoinPoS (p. ej. %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>Fija ambos límites.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>Un pago no puede permitir más que un día entero.</translation>
     </message>
 </context>
 <context>
@@ -4291,6 +4465,14 @@ calculados a partir del registro; cambian cada día:</translation>
         <source>meets at %1</source>
         <translation>se encuentra en %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>Nota</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>Escrita por quien tiene esta clave; nadie la comprueba.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4773,7 +4955,7 @@ Nota: Dado que la comisión se calcula por byte, una comisión de &quot;100 sato
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>Un sitio o servicio servido desde este nodo, encontrado por su clave o su nombre y alcanzado por el overlay, para que quien lo aloja nunca publique dónde funciona. La parte del encuentro existe: un servicio se registra en puntos de encuentro que ambas partes calculan a partir del registro. Servir páginas y aplicaciones así aún no está construido.</translation>
+        <translation type="vanished">Un sitio o servicio servido desde este nodo, encontrado por su clave o su nombre y alcanzado por el overlay, para que quien lo aloja nunca publique dónde funciona. La parte del encuentro existe: un servicio se registra en puntos de encuentro que ambas partes calculan a partir del registro. Servir páginas y aplicaciones así aún no está construido.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4997,7 +5179,7 @@ Puedes cambiarlo en cualquier momento en la página Servidor.</translation>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Lo que este nodo ofrece a los demás. Retransmitir, guardar correo y compartir internet funcionan hoy; el alojamiento está en camino y, como todo aquí, se encuentra igual que los pares — a través del registro. Los nombres tienen su propia página.</translation>
+        <translation type="vanished">Lo que este nodo ofrece a los demás. Retransmitir, guardar correo y compartir internet funcionan hoy; el alojamiento está en camino y, como todo aquí, se encuentra igual que los pares — a través del registro. Los nombres tienen su propia página.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -5013,7 +5195,7 @@ Puedes cambiarlo en cualquier momento en la página Servidor.</translation>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>Inscrito como</translation>
+        <translation type="vanished">Inscrito como</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5025,15 +5207,15 @@ Puedes cambiarlo en cualquier momento en la página Servidor.</translation>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>Inscribir como pasarela…</translation>
+        <translation type="vanished">Inscribir como pasarela…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Compartir la conexión a internet de este ordenador como pasarela</translation>
+        <translation type="vanished">Compartir la conexión a internet de este ordenador como pasarela</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>Desactívalo si la ley de donde vives o las condiciones de tu proveedor de internet prohíben compartir tu conexión. Desactivado, este nodo sigue retransmitiendo, guardando correo y en la cadena, y usa su propia conexión directamente.</translation>
+        <translation type="vanished">Desactívalo si la ley de donde vives o las condiciones de tu proveedor de internet prohíben compartir tu conexión. Desactivado, este nodo sigue retransmitiendo, guardando correo y en la cadena, y usa su propia conexión directamente.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5049,11 +5231,11 @@ Puedes cambiarlo en cualquier momento en la página Servidor.</translation>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>Dejar que los programas de este ordenador usen el internet de la red, mediante un proxy local</translation>
+        <translation type="vanished">Dejar que los programas de este ordenador usen el internet de la red, mediante un proxy local</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>Un proxy SOCKS5 solo para este ordenador. Cada conexión sale por la pasarela de otro miembro, y los nombres se resuelven allí, nunca aquí. Funciona mientras este ordenador comparte su propia conexión.</translation>
+        <translation type="vanished">Un proxy SOCKS5 solo para este ordenador. Cada conexión sale por la pasarela de otro miembro, y los nombres se resuelven allí, nunca aquí. Funciona mientras este ordenador comparte su propia conexión.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5089,27 +5271,27 @@ Puedes cambiarlo en cualquier momento en la página Servidor.</translation>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>no inscrito como pasarela</translation>
+        <translation type="vanished">no inscrito como pasarela</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>todavía no — el registro no inscribe este nodo como pasarela, así que nadie puede encontrarlo</translation>
+        <translation type="vanished">todavía no — el registro no inscribe este nodo como pasarela, así que nadie puede encontrarlo</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>nada todavía — un relé inscribe su pasarela con una segunda clave, sin dirección, aparte de su propia inscripción</translation>
+        <translation type="vanished">nada todavía — un relé inscribe su pasarela con una segunda clave, sin dirección, aparte de su propia inscripción</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>nada todavía — a la inscripción de este nodo le falta la opción de pasarela; publícala de nuevo con la opción activada</translation>
+        <translation type="vanished">nada todavía — a la inscripción de este nodo le falta la opción de pasarela; publícala de nuevo con la opción activada</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>nada todavía — publica una inscripción sin dirección con la opción de pasarela activada</translation>
+        <translation type="vanished">nada todavía — publica una inscripción sin dirección con la opción de pasarela activada</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>Inscribir la pasarela de este relé…</translation>
+        <translation type="vanished">Inscribir la pasarela de este relé…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5129,11 +5311,11 @@ Puedes cambiarlo en cualquier momento en la página Servidor.</translation>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>su clave de pasarela %1, aparte de la dirección del relé</translation>
+        <translation type="vanished">su clave de pasarela %1, aparte de la dirección del relé</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>la clave propia de este nodo %1</translation>
+        <translation type="vanished">la clave propia de este nodo %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5149,11 +5331,11 @@ Puedes cambiarlo en cualquier momento en la página Servidor.</translation>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>Hacer pasar todo el tráfico de este ordenador por la red, sin configurar un proxy en ningún programa</translation>
+        <translation type="vanished">Hacer pasar todo el tráfico de este ordenador por la red, sin configurar un proxy en ningún programa</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>Las conexiones de cada programa salen por las pasarelas de la red, cada una por otra, y los nombres se consultan allí. La red propia de este ordenador — una impresora, el router — y las conexiones propias de este nodo siguen siendo directas. Funciona mientras este ordenador comparte su propia conexión.</translation>
+        <translation type="vanished">Las conexiones de cada programa salen por las pasarelas de la red, cada una por otra, y los nombres se consultan allí. La red propia de este ordenador — una impresora, el router — y las conexiones propias de este nodo siguen siendo directas. Funciona mientras este ordenador comparte su propia conexión.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5181,11 +5363,11 @@ Puedes cambiarlo en cualquier momento en la página Servidor.</translation>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>Activado: %1 conexión(es) por la red ahora; %2 enviado, %3 recibido.</translation>
+        <translation type="vanished">Activado: %1 conexión(es) por la red ahora; %2 enviado, %3 recibido.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>Aún no está disponible en este sistema.</translation>
+        <translation type="vanished">Aún no está disponible en este sistema.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5197,7 +5379,7 @@ Puedes cambiarlo en cualquier momento en la página Servidor.</translation>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>Empieza cuando se reinicia el cliente.</translation>
+        <translation type="vanished">Empieza cuando se reinicia el cliente.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5226,6 +5408,334 @@ Puedes cambiarlo en cualquier momento en la página Servidor.</translation>
     <message>
         <source>none — relaying is switched off</source>
         <translation>ninguna — retransmitir está desactivado</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Lo que este nodo ofrece a otros: hacer de relé, guardar correo, compartir la conexión a internet y alojar un sitio; y a tu propio teléfono, una forma de gastar desde aquí. Como todo aquí, se encuentra igual que los pares: a través del registro. Los nombres tienen su propia página.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>Compartir la conexión a internet de este ordenador y usar la de la red a cambio</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>Activado, la conexión de este ordenador se comparte, y todo su propio tráfico sale por las pasarelas de la red, cada conexión por una distinta; la red local de este ordenador —una impresora, el router— sigue directa. Desactívalo si la ley de donde vives o las condiciones de tu proveedor de internet prohíben compartir tu conexión: la red entonces solo lleva BPS, y este ordenador usa su propia conexión.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Para todo el ordenador: activado, %1 conexión(es) por la red ahora; %2 enviados, %3 recibidos.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>Para todo el ordenador: aún no disponible en este sistema; los programas pueden usar el proxy.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>Para todo el ordenador: empieza cuando el cliente se reinicie.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>sin compartir</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>no — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>Publica una carpeta como sitio bajo la clave de este nodo, para que cualquiera a quien des la clave o tu nombre pueda leerlo por el overlay. Cada archivo va firmado y se comprueba pieza a pieza al llegar. Inscrito sin dirección, este nodo se encuentra en sus puntos de encuentro y nadie sabe dónde funciona el sitio; inscrito con dirección, los visitantes llegan a través de relés, así que nunca sabe quiénes son. Un programa de este ordenador —una aplicación web, un servidor de chat— puede publicarse igual: los visitantes llegan por el overlay, y este nodo solo se conecta al puerto que indiques.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Carpeta</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>Alcanzado</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Enviado</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>ninguno</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>Programas de este ordenador a los que los visitantes llegan por el overlay. Un programa llamado web es lo que un navegador abre en la dirección de este nodo cuando no hay sitio.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>Programas</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>Publicar una carpeta…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>Volver a publicar</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>Volver a leer la carpeta después de cambiarla y publicar lo que hay ahora.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>Dejar de publicar</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>Abrir en Sitios</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>Publicar un programa…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>Detener un programa…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>sin publicar</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>ninguno — no hay nada publicado</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 archivo(s), %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>no inscrito</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>por nadie todavía: este nodo no está inscrito en el registro, así que los visitantes no pueden encontrar el sitio. Publica una inscripción en la página Nodo, en Descubrimiento.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>publicando</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>aún no encontrado</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>en %1 punto(s) de encuentro, sin dirección publicada</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>aún no: registrándose en sus puntos de encuentro, lo que necesita los relés del registro</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>en la dirección de este nodo, a través de relés que ocultan al visitante</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 trozo(s) de página, %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>La carpeta que se publicará como sitio</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>Publicar un programa</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>Un nombre para él, de 1 a 32 caracteres entre a-z, 0-9 y -. Llámalo web para una aplicación web que un navegador debe abrir en la dirección de este nodo:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>El puerto en el que escucha, en 127.0.0.1 (solo este ordenador):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>Detener un programa</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>A qué programa ya no deben llegar los visitantes:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 en 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 flujo(s) abierto(s)</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>Compañero de teléfono</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>Gasta desde tu teléfono mientras tus monedas se quedan aquí. El teléfono no guarda claves de monedas: llega a este nodo, demuestra la clave con la que se vinculó, y este nodo paga desde un pequeño monedero de asignación, tras comprobar el PIN del teléfono y los límites que fijaste, que el teléfono no puede cambiar. Si pierdes el teléfono, pierdes como mucho lo que tenga la asignación; desvincúlalo aquí. Cuando este nodo es un relé inscrito y hay suficientes otros inscritos, el teléfono llega a través de tres relés, así que nadie que observe sabe dónde está; si no, se conecta directamente aquí.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>Asignación</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>Accesible para teléfonos</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>Teléfono</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>Un pago</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>Un día</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>Gastado hoy</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>Estado</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>Vincular un teléfono…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>Límites…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>Desbloquear</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>Un teléfono se bloquea tras cinco PIN erróneos seguidos, hasta que se desbloquea aquí.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>Desvincular</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>Permitir que los teléfonos vinculados gasten de un monedero de asignación</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>Necesita el overlay. Desactivado por defecto, porque permite a un teléfono gastar las monedas de este nodo.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>Un monedero propio, sin frase de contraseña —no hay nadie para escribirla cuando el teléfono paga— y solo con lo que el teléfono deba poder gastar. Nunca hace staking y no puede ser el monedero que paga las inscripciones.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>Crearlo</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>Crear el monedero de asignación y abrirlo cada vez que arranque este nodo.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>Recargar…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>Abrir Enviar en el monedero para mover monedas a la asignación.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>Monedero de asignación</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, %1 más llegando</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>sí, en %1, a través de relés</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>directamente, en %1. Sin relés en medio: la red de un teléfono lo ve hablando con este ordenador. Desde fuera de esta red, redirige el puerto UDP %2 del router a este ordenador.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>no — este nodo aún no conoce ninguna dirección propia</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>no accesible</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>un teléfono espera</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>sin asignación</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>un teléfono está bloqueado</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 teléfonos están bloqueados</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>en marcha, aún sin teléfono</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>en marcha, 1 teléfono</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>en marcha, %1 teléfonos</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>Clave del dispositivo %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>bloqueado: PIN erróneos</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>vinculado</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>Desvincular %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>¿Desvincular %1? No podrá volver a gastar hasta que se vincule de nuevo. Hazlo enseguida si el teléfono se ha perdido o lo han robado.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>Monedero de asignación creado y abierto. Usa Recargar para mover a él lo que el teléfono deba poder gastar.</translation>
     </message>
 </context>
 <context>
@@ -5357,6 +5867,30 @@ Puedes cambiarlo en cualquier momento en la página Servidor.</translation>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>El nodo aún está arrancando; los ajustes básicos todavía no están disponibles.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>Otros te encuentran en relés calculados a partir del registro, y tu nodo mantiene abierta una ruta hacia cada uno a través de este número de relés. El punto de encuentro solo ve el último, nunca tu dirección. Más te oculta mejor y es más lento.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>Relés antes de tus puntos de encuentro</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>Cuando este ordenador usa el internet de la red, cada conexión pasa por este número de relés hasta el punto de encuentro de una pasarela, y después por los de la propia pasarela: la pasarela nunca sabe quién eres. Más te oculta mejor y es más lento.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>Relés antes del punto de encuentro de una pasarela</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>Solo tu primera conexión es directa, a un relé de entrada que ve tu dirección y no quién eres. El correo siempre pasa por tres relés.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Versión %1</translation>
     </message>
 </context>
 <context>
@@ -5519,6 +6053,147 @@ Puedes cambiarlo en cualquier momento en la página Servidor.</translation>
     <message>
         <source>Message verified.</source>
         <translation>Mensaje verificado.</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>Sitios</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>Sitios alojados en el overlay, abiertos por un nombre o una clave que alguien te ha dado. Las páginas se muestran aquí sin scripts, y nada en ellas se trae de fuera de BPS, así que una página no puede saber dónde estás.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Atrás</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Adelante</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>Volver a cargar la página</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://nombre/ o la clave de un sitio</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Abrir</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>Guardar este archivo…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>Abrir en tu navegador</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>El mismo sitio en un navegador corriente, a través de un servidor solo en este ordenador. Allí las páginas pueden ejecutar scripts, así que el visor de aquí sigue siendo la forma más segura de leer un sitio oculto.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>Conectar con un programa…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>Llegar a un programa que ejecuta este sitio —un servidor de chat, un juego— desde un programa de este ordenador: BPS Relay escucha en un puerto aquí y lleva cada conexión hasta él por el overlay.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>Eso no es la dirección de un sitio. Escribe un nombre o una clave, como bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>Buscando %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>Trayendo %1 por el overlay…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 no es una página que muestre este visor (%2 bytes). Guárdala para abrirla con otro programa.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>Apunta el programa de este ordenador a %1: BPS Relay lleva cada conexión hecha allí al programa del sitio, por el overlay, hasta que se reinicie.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>El servidor de sitios para navegadores no está en marcha. Arranca con BPS Relay salvo que se haya dado -siteproxy=0.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 no apunta a ninguna clave.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 apunta ahora a una clave distinta de la última vez que lo abriste. Quien tiene el nombre ahora puede no ser quien leíste antes.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>Encontrado en uno de sus puntos de encuentro, a través de %1 de tus relés: ni tú ni el anfitrión sabéis dónde está el otro.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>Alcanzado en su dirección a través de %1 relés: el anfitrión no sabe quién eres.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>Tu propio sitio, leído desde este ordenador.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>Se llega a él por radio, así que las páginas llegan despacio.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 no es un nombre que conozca este nodo: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>No se pudo abrir %1: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>Este enlace lleva fuera de BPS, así que no se ha seguido: %1
+Ábrelo en un navegador corriente si quieres; quien lo gestione verá tu dirección.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>Conectar con un programa</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>El nombre que el sitio dio a su programa:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>Abrir un sitio en tu navegador</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>Tu navegador pedirá el sitio a este ordenador, y BPS Relay lo trae por el overlay, como aquí. Cada página solo puede cargar desde su propio sitio, así que no puede traer nada de internet abierto para saber dónde estás.
+
+Lo que un navegador aún puede hacer: un script puede usar WebRTC para mostrar a una página las direcciones de este ordenador, y un enlace que sigas a un sitio corriente sale como cualquier enlace. El visor de BPS Relay no ejecuta scripts y sigue siendo la forma más segura de leer un sitio oculto.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>Guardar el archivo</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>No se pudo guardar %1.</translation>
     </message>
 </context>
 <context>

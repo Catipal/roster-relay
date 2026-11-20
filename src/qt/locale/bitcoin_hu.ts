@@ -1107,6 +1107,10 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <source>Not staking</source>
         <translation>Nincs staking</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>Webhelyek</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1261,6 +1265,92 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>delegálva neki: %1, hideg stakinghez</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>%1 korlátai</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>Mennyit költhet ez a telefon a zsebpénztárcából, díjakkal együtt.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Legfeljebb egy fizetésben</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Legfeljebb bármely 24 órában</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>Telefon párosítása</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>A telefonon a BPS alkalmazásban válassza a Párosítás lehetőséget, és olvassa be ezt a kódot. Vagy másolja be az alatta lévő szöveget az alkalmazásba. Egyszer működik, tíz percig.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>Kód másolása</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>Új kód megjelenítése</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>Csak akkor párosítson, ha a telefon ugyanezt a hat számjegyet mutatja. Ha mást mutat, valaki más válaszolt előbb a kódra: utasítsa el, és jelenítsen meg újat.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>Mennyit költhet ez a telefon a zsebpénztárcából. Később csak ez a csomópont változtathatja meg, a telefon soha.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Legfeljebb egy fizetésben</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Legfeljebb bármely 24 órában</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>Elutasítás</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>A telefon párosítása</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>Kód készítése…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>Ez a kód lejárt.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>Várakozás a telefonra… a kód még %1 percig érvényes.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>Ez a változat nem tud QR-kódot rajzolni: másolja inkább az alábbi szöveget az alkalmazásba.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>Egy „%1” nevű telefon párosodni szeretne ezzel a csomóponttal.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>Párosítva. A telefon most költhet a zsebpénztárcából az Ön által megadott korlátokon belül. Listája a Kiszolgáló oldalon van, ahol módosíthatja a korlátait, feloldhatja túl sok hibás PIN után, vagy megszüntetheti a párosítást.</translation>
     </message>
 </context>
 <context>
@@ -1436,7 +1526,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>Partner vagy cím keresése</translation>
+        <translation type="vanished">Partner vagy cím keresése</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1573,6 +1663,38 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>A partnerek a láncon jelentik be magukat, nem egy kiszolgálón, így ez a lista mindenkinél ugyanaz, és senki sem szerkesztheti. Az átfedő hálózaton át bejegyzett partner azt mutatja, hol találkozhatunk vele ma, ami naponta változik; egy továbbító csak akkor mutatja a címét, amíg elérhető, mert az sosem kerül a láncra.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Név</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>Név regisztrálása…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>A név az, amivel mások elérik Önt a kulcsa másolása nélkül. A neveket a Nevek lapon lehet regisztrálni.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>Partner, megjegyzés vagy cím keresése</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>Mindezek a nevek ennek a csomópontnak a kulcsára mutatnak. Mások bármelyikkel elérhetik Önt.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>Nevek kezelése…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>nevek kikapcsolva</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>A nevekhez névindex kell. Kapcsolja be a Beállításokban egy név regisztrálásához és megjelenítéséhez.</translation>
     </message>
 </context>
 <context>
@@ -3198,15 +3320,15 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>Ez egy rövid rekordot ír a láncra arról, hogy Ön létezik, és ha kívánja, hogy hol található.</translation>
+        <translation type="vanished">Ez egy rövid rekordot ír a láncra arról, hogy Ön létezik, és ha kívánja, hogy hol található.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>Hogyan érjék el Önt a partnerek?</translation>
+        <translation type="vanished">Hogyan érjék el Önt a partnerek?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>Az átfedő hálózaton át — cím közzététele nélkül</translation>
+        <translation type="vanished">Az átfedő hálózaton át — cím közzététele nélkül</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3214,35 +3336,35 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>Egy általam közzétett címen</translation>
+        <translation type="vanished">Egy általam közzétett címen</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>cím, amelyen más partnerek elérhetik</translation>
+        <translation type="vanished">cím, amelyen más partnerek elérhetik</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>Bárki láthatja, és a lánc örökre megőrzi. Egy onion cím olyan helyet tesz közzé, amelyet senki sem tud visszavezetni Önhöz, és NAT mögül is működik; egy IP-cím egyikre sem képes. Egy IP-címet közzétevő csomópontot mások továbbítónak választhatnak.</translation>
+        <translation type="vanished">Bárki láthatja, és a lánc örökre megőrzi. Egy onion cím olyan helyet tesz közzé, amelyet senki sem tud visszavezetni Önhöz, és NAT mögül is működik; egy IP-cím egyikre sem képes. Egy IP-címet közzétevő csomópontot mások továbbítónak választhatnak.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3286,7 +3408,7 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>A csomópontja aláírja a bejegyzést, és az átfedő hálózaton elküldi annak a továbbítónak, amelyen át belép. Egy bejegyzésekért fizető továbbító az Önét egy általa készített blokkba teszi, így akkor is megerősítődik, ha a legtöbb csomópont nem adná tovább, és hozzáadja Önt azokhoz a partnerekhez, akikkel megosztja jutalmait. Ha később abbahagyja a fizetést, a bejegyzése egy hónapon belül lejár; bármikor megújíthatja maga egy fedezettel rendelkező tárcából.</translation>
+        <translation type="vanished">A csomópontja aláírja a bejegyzést, és az átfedő hálózaton elküldi annak a továbbítónak, amelyen át belép. Egy bejegyzésekért fizető továbbító az Önét egy általa készített blokkba teszi, így akkor is megerősítődik, ha a legtöbb csomópont nem adná tovább, és hozzáadja Önt azokhoz a partnerekhez, akikkel megosztja jutalmait. Ha később abbahagyja a fizetést, a bejegyzése egy hónapon belül lejár; bármikor megújíthatja maga egy fedezettel rendelkező tárcából.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3302,11 +3424,11 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>Adjon meg egy címet, vagy válassza, hogy nem tesz közzé címet.</translation>
+        <translation type="vanished">Adjon meg egy címet, vagy válassza, hogy nem tesz közzé címet.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>A továbbítója megkérése a közzétételre… ez fél percig is eltarthat.</translation>
+        <translation type="vanished">A továbbítója megkérése a közzétételre… ez fél percig is eltarthat.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3338,11 +3460,11 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>E továbbító átjárójának bejegyzése</translation>
+        <translation type="vanished">E továbbító átjárójának bejegyzése</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>Egy továbbító bejegyzése tartalmazza a címét, ezért az átjárója egy második kulccsal, cím nélkül, attól külön kerül be. A nyilvántartásból senki sem tudhatja meg, hogy a kettő egy számítógéphez tartozik. A látogatók továbbítókon keresztül érik el az átjárót, így az sosem tudja meg, kik ők; az általuk látogatott webhelyek ennek a számítógépnek a címét látják.</translation>
+        <translation type="vanished">Egy továbbító bejegyzése tartalmazza a címét, ezért az átjárója egy második kulccsal, cím nélkül, attól külön kerül be. A nyilvántartásból senki sem tudhatja meg, hogy a kettő egy számítógéphez tartozik. A látogatók továbbítókon keresztül érik el az átjárót, így az sosem tudja meg, kik ők; az általuk látogatott webhelyek ennek a számítógépnek a címét látják.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3358,11 +3480,11 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>Egy másik továbbító fizet, továbbítókon át megkérve</translation>
+        <translation type="vanished">Egy másik továbbító fizet, továbbítókon át megkérve</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>A csomópontja aláírja az átjáró bejegyzését, és továbbítókon át elküldi egy másik továbbítónak, amely kifizeti, és egy általa készített blokkba teszi. Az a továbbító megtudja az átjáró kulcsát, de ennek a számítógépnek a címét soha. Ha ennek a csomópontnak a saját tárcájából fizetne, a láncon az átjáró ehhez a továbbítóhoz, és így a címéhez kötődne.</translation>
+        <translation type="vanished">A csomópontja aláírja az átjáró bejegyzését, és továbbítókon át elküldi egy másik továbbítónak, amely kifizeti, és egy általa készített blokkba teszi. Az a továbbító megtudja az átjáró kulcsát, de ennek a számítógépnek a címét soha. Ha ennek a csomópontnak a saját tárcájából fizetne, a láncon az átjáró ehhez a továbbítóhoz, és így a címéhez kötődne.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3378,7 +3500,7 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>Az Ön bejegyzése azt mondja meg, ki Ön, és nem azt, hol fut. A partnerek az átfedő hálózaton át érik el Önt, és olyan pontokon találkoznak Önnel, amelyeket mindkét fél a jegyzékből számol ki, és amelyek naponta változnak; a Felfedezés a maiakat mutatja. Bejegyzése egy továbbítót is megnevez, ahol a bejegyzés érvényessége alatt találkozni lehet Önnel, és minden megújítás újat nevez meg. Ezt kapcsolja be ez a kliens alapértelmezésként.</translation>
+        <translation type="vanished">Az Ön bejegyzése azt mondja meg, ki Ön, és nem azt, hol fut. A partnerek az átfedő hálózaton át érik el Önt, és olyan pontokon találkoznak Önnel, amelyeket mindkét fél a jegyzékből számol ki, és amelyek naponta változnak; a Felfedezés a maiakat mutatja. Bejegyzése egy továbbítót is megnevez, ahol a bejegyzés érvényessége alatt találkozni lehet Önnel, és minden megújítás újat nevez meg. Ezt kapcsolja be ez a kliens alapértelmezésként.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3398,15 +3520,59 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>Ez a csomópont átjáróként osztja meg az internetkapcsolatát, ahogy a Kiszolgáló oldalon be van állítva, így a bejegyzés is ezt mondja.</translation>
+        <translation type="vanished">Ez a csomópont átjáróként osztja meg az internetkapcsolatát, ahogy a Kiszolgáló oldalon be van állítva, így a bejegyzés is ezt mondja.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>Ez a csomópont nem továbbít másoknak, és nem osztja meg az internetkapcsolatát, ahogy a Kiszolgáló oldalon be van állítva.</translation>
+        <translation type="vanished">Ez a csomópont nem továbbít másoknak, és nem osztja meg az internetkapcsolatát, ahogy a Kiszolgáló oldalon be van állítva.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>Az ottani változás a következő bejegyzésével jut a jegyzékbe.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>Ez egy rövid bejegyzést ír a láncba arról, hogy Ön létezik, és opcionálisan egy sort Önről.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>Mit mond a bejegyzése</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>A bejegyzése azt mondja meg, ki Ön, nem azt, hol fut: nincs benne cím. A partnerek az átfedő hálózaton érik el Önt, olyan pontokon találkozva Önnel, amelyeket mindkét fél a jegyzékből számít ki, és amelyek naponta változnak; a Felfedezés a maiakat mutatja. A bejegyzése egy továbbítót is megnevez, ahol addig találkozhatnak Önnel, amíg az tart, és minden megújítás újat nevez meg.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>Megjegyzés</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>nem kötelező: egy sor a kulcsa mellett</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>Bárki elolvashatja, és a lánc örökre megőrzi, a bejegyzés vége után is. Hagyjon ki mindent, ami elárulja, hol van vagy ki Ön, ha ez fontos Önnek.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>A csomópontja aláírja a bejegyzést, és egy útvonalon elküldi egy olyan továbbítóhoz, amelyen keresztül nem lép be, így az a továbbító megtudja, ki Ön, de azt nem, hol van. Egy bejegyzésekért fizető továbbító az Önét egy általa stake-elt blokkba teszi, így akkor is megerősítést kap, amíg a legtöbb csomópont nem adná tovább, és felveszi Önt azon partnerei közé, akikkel megosztja a jutalmait. Ha később abbahagyja a fizetést, a bejegyzése a hónapon belül lejár; mindig megújíthatja maga egy fedezettel rendelkező tárcából.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 bájt</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>Túl hosszú: az egyszerű angolon kívüli betűk egyenként két-négy bájtot foglalnak.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>A megjegyzés túl hosszú.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>A megjegyzés nem tartalmazhat vezérlőkaraktereket vagy a szöveg irányát megváltoztató jeleket.</translation>
     </message>
 </context>
 <context>
@@ -3574,6 +3740,14 @@ Egyszer megjelenik egy helyreállítási kulcs. Írja le: ez az egyetlen módja 
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>Adjon meg egy BitcoinPoS címet (pl. %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>Állítsa be mindkét korlátot.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>Egy fizetés nem engedhet meg többet egy egész napnál.</translation>
     </message>
 </context>
 <context>
@@ -4274,6 +4448,14 @@ a jegyzékből számolva; naponta változnak:</translation>
         <source>meets at %1</source>
         <translation>találkozás itt: %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>Megjegyzés</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>Az írta, akinél ez a kulcs van; senki sem ellenőrzi.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4755,7 +4937,7 @@ Figyelem: Mivel bájtonként lesz a dj kiszámolva ezért a &quot;100 satoshi pe
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>Egy erről a csomópontról kiszolgált webhely vagy szolgáltatás, amely kulcsa vagy neve alapján található meg, és az átfedő hálózaton érhető el, így a gazdagép soha nem teszi közzé, hol fut. A találkozási rész létezik: egy szolgáltatás olyan találkozási pontokon regisztrál, amelyeket mindkét fél a jegyzékből számít ki. Oldalak és alkalmazások kiszolgálása rajta keresztül még nincs elkészítve.</translation>
+        <translation type="vanished">Egy erről a csomópontról kiszolgált webhely vagy szolgáltatás, amely kulcsa vagy neve alapján található meg, és az átfedő hálózaton érhető el, így a gazdagép soha nem teszi közzé, hol fut. A találkozási rész létezik: egy szolgáltatás olyan találkozási pontokon regisztrál, amelyeket mindkét fél a jegyzékből számít ki. Oldalak és alkalmazások kiszolgálása rajta keresztül még nincs elkészítve.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4979,7 +5161,7 @@ Ezt bármikor megváltoztathatja a Kiszolgáló oldalon.</translation>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Amit ez a csomópont másoknak kínál. A továbbítás, a levelek őrzése és az internet megosztása már ma működik; a tárhely úton van, és mint itt minden, ugyanúgy található meg, mint a társak — a nyilvántartáson keresztül. A neveknek saját oldaluk van.</translation>
+        <translation type="vanished">Amit ez a csomópont másoknak kínál. A továbbítás, a levelek őrzése és az internet megosztása már ma működik; a tárhely úton van, és mint itt minden, ugyanúgy található meg, mint a társak — a nyilvántartáson keresztül. A neveknek saját oldaluk van.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -4995,7 +5177,7 @@ Ezt bármikor megváltoztathatja a Kiszolgáló oldalon.</translation>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>Bejegyezve mint</translation>
+        <translation type="vanished">Bejegyezve mint</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5007,15 +5189,15 @@ Ezt bármikor megváltoztathatja a Kiszolgáló oldalon.</translation>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>Bejegyzés átjáróként…</translation>
+        <translation type="vanished">Bejegyzés átjáróként…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>E számítógép internetkapcsolatának megosztása átjáróként</translation>
+        <translation type="vanished">E számítógép internetkapcsolatának megosztása átjáróként</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>Kapcsolja ki, ha a lakóhelye szerinti törvény vagy az internetszolgáltatója feltételei tiltják a kapcsolat megosztását. Kikapcsolva ez a csomópont továbbra is továbbít, levelet őriz és követi a láncot, a saját kapcsolatát pedig közvetlenül használja.</translation>
+        <translation type="vanished">Kapcsolja ki, ha a lakóhelye szerinti törvény vagy az internetszolgáltatója feltételei tiltják a kapcsolat megosztását. Kikapcsolva ez a csomópont továbbra is továbbít, levelet őriz és követi a láncot, a saját kapcsolatát pedig közvetlenül használja.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5031,11 +5213,11 @@ Ezt bármikor megváltoztathatja a Kiszolgáló oldalon.</translation>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>E számítógép programjai használhatják a hálózat internetét egy helyi proxyn keresztül</translation>
+        <translation type="vanished">E számítógép programjai használhatják a hálózat internetét egy helyi proxyn keresztül</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>SOCKS5 proxy csak erre a számítógépre. Minden kapcsolat egy másik tag átjáróján keresztül megy ki, és a neveket ott oldják fel, sosem itt. Addig működik, amíg ez a számítógép megosztja a saját kapcsolatát.</translation>
+        <translation type="vanished">SOCKS5 proxy csak erre a számítógépre. Minden kapcsolat egy másik tag átjáróján keresztül megy ki, és a neveket ott oldják fel, sosem itt. Addig működik, amíg ez a számítógép megosztja a saját kapcsolatát.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5071,27 +5253,27 @@ Ezt bármikor megváltoztathatja a Kiszolgáló oldalon.</translation>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>nincs bejegyezve átjáróként</translation>
+        <translation type="vanished">nincs bejegyezve átjáróként</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>még nem — a nyilvántartás nem tartja nyilván ezt a csomópontot átjáróként, így senki sem találja meg</translation>
+        <translation type="vanished">még nem — a nyilvántartás nem tartja nyilván ezt a csomópontot átjáróként, így senki sem találja meg</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>még semmi — egy továbbító az átjáróját egy második kulccsal, cím nélkül, a saját bejegyzésétől külön jegyzi be</translation>
+        <translation type="vanished">még semmi — egy továbbító az átjáróját egy második kulccsal, cím nélkül, a saját bejegyzésétől külön jegyzi be</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>még semmi — e csomópont bejegyzéséből hiányzik az átjáró beállítás; tegye közzé újra bekapcsolt beállítással</translation>
+        <translation type="vanished">még semmi — e csomópont bejegyzéséből hiányzik az átjáró beállítás; tegye közzé újra bekapcsolt beállítással</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>még semmi — tegyen közzé egy cím nélküli bejegyzést bekapcsolt átjáró beállítással</translation>
+        <translation type="vanished">még semmi — tegyen közzé egy cím nélküli bejegyzést bekapcsolt átjáró beállítással</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>E továbbító átjárójának bejegyzése…</translation>
+        <translation type="vanished">E továbbító átjárójának bejegyzése…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5111,11 +5293,11 @@ Ezt bármikor megváltoztathatja a Kiszolgáló oldalon.</translation>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>az átjárókulcsa %1, a továbbító címétől külön</translation>
+        <translation type="vanished">az átjárókulcsa %1, a továbbító címétől külön</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>e csomópont saját kulcsa %1</translation>
+        <translation type="vanished">e csomópont saját kulcsa %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5131,11 +5313,11 @@ Ezt bármikor megváltoztathatja a Kiszolgáló oldalon.</translation>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>A számítógép teljes forgalma a hálózaton át menjen, egyetlen programban sem kell proxybeállítás</translation>
+        <translation type="vanished">A számítógép teljes forgalma a hálózaton át menjen, egyetlen programban sem kell proxybeállítás</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>Minden program kapcsolatai a hálózat átjáróin át mennek ki, mindegyik másikon, és a neveket is ott keresik ki. A számítógép saját hálózata — egy nyomtató, a router — és a csomópont saját kapcsolatai közvetlenek maradnak. Akkor működik, ha ez a számítógép megosztja a saját kapcsolatát.</translation>
+        <translation type="vanished">Minden program kapcsolatai a hálózat átjáróin át mennek ki, mindegyik másikon, és a neveket is ott keresik ki. A számítógép saját hálózata — egy nyomtató, a router — és a csomópont saját kapcsolatai közvetlenek maradnak. Akkor működik, ha ez a számítógép megosztja a saját kapcsolatát.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5163,11 +5345,11 @@ Ezt bármikor megváltoztathatja a Kiszolgáló oldalon.</translation>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>Be: most %1 kapcsolat a hálózaton át; elküldve %2, fogadva %3.</translation>
+        <translation type="vanished">Be: most %1 kapcsolat a hálózaton át; elküldve %2, fogadva %3.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>Ezen a rendszeren még nem érhető el.</translation>
+        <translation type="vanished">Ezen a rendszeren még nem érhető el.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5179,7 +5361,7 @@ Ezt bármikor megváltoztathatja a Kiszolgáló oldalon.</translation>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>A kliens újraindításakor indul.</translation>
+        <translation type="vanished">A kliens újraindításakor indul.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5208,6 +5390,334 @@ Ezt bármikor megváltoztathatja a Kiszolgáló oldalon.</translation>
     <message>
         <source>none — relaying is switched off</source>
         <translation>nincs — a továbbítás ki van kapcsolva</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Mit kínál ez a csomópont másoknak: továbbítást, levelek tárolását, internetmegosztást és webhely tárolását; a saját telefonjának pedig módot arra, hogy innen költsön. Mint itt minden, ugyanúgy található meg, mint a partnerek — a jegyzéken keresztül. A neveknek saját oldaluk van.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>A számítógép internetkapcsolatának megosztása, cserébe a hálózatéé használata</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>Bekapcsolva ennek a számítógépnek a kapcsolata meg van osztva, és minden saját forgalma a hálózat átjáróin megy ki, minden kapcsolat egy másikon; a számítógép saját hálózata — nyomtató, router — közvetlen marad. Kapcsolja ki, ha lakóhelye törvényei vagy internetszolgáltatója feltételei tiltják a kapcsolat megosztását: a hálózat ekkor csak magát a BPS-t viszi, és ez a számítógép a saját kapcsolatát használja.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Az egész számítógépre: bekapcsolva, most %1 kapcsolat a hálózaton át; %2 elküldve, %3 fogadva.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>Az egész számítógépre: ezen a rendszeren még nem érhető el; a programok használhatják a proxyt.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>Az egész számítógépre: a kliens újraindításakor indul.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>nem oszt meg</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>nem — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>Tegyen közzé egy mappát webhelyként ennek a csomópontnak a kulcsa alatt, hogy bárki, akinek megadja a kulcsot vagy a nevét, olvashassa az átfedő hálózaton. Minden fájl alá van írva, és érkezéskor darabonként ellenőrizve. Cím nélkül bejegyezve ezt a csomópontot a találkozási pontjain érik el, és senki sem tudja meg, hol fut a webhely; címmel bejegyezve a látogatók továbbítókon át érik el, így sosem tudja meg, kik ők. Egy program ezen a számítógépen — webalkalmazás, csevegőszerver — ugyanígy közzétehető: a látogatók az átfedő hálózaton érik el, és ez a csomópont csak a megadott porthoz kapcsolódik.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Mappa</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>Elérve</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Elküldve</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>nincs</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>Programok ezen a számítógépen, amelyeket a látogatók az átfedő hálózaton érnek el. A web nevű program az, amit egy böngésző megnyit ennek a csomópontnak a címén, ha nincs webhely.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>Programok</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>Mappa közzététele…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>Közzététel újra</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>A mappa újraolvasása módosítás után, és a benne most lévők közzététele.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>Közzététel leállítása</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>Megnyitás a Webhelyekben</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>Program közzététele…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>Program leállítása…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>nem tesz közzé</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>nincs — semmi sincs közzétéve</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 fájl, %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>nincs bejegyezve</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>még senki által: ez a csomópont nincs bejegyezve a jegyzékbe, így a látogatók nem találják a webhelyet. Tegyen közzé bejegyzést a Csomópont oldalon, a Felfedezés alatt.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>közzétesz</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>még nem érték el</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>%1 találkozási ponton, közzétett cím nélkül</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>még nem: regisztrál a találkozási pontjain, amihez a jegyzék továbbítói kellenek</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>ennek a csomópontnak a címén, a látogatót elrejtő továbbítókon át</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 oldaldarab, %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>A webhelyként közzéteendő mappa</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>Program közzététele</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>Egy név neki, 1–32 karakter a-z, 0-9 és - közül. Nevezze web-nek egy olyan webalkalmazáshoz, amelyet a böngészőnek ennek a csomópontnak a címén kell megnyitnia:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>A port, amelyen figyel, a 127.0.0.1-en (csak ez a számítógép):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>Program leállítása</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>Melyik programot ne érjék el többé a látogatók:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 itt: 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 nyitott folyam</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>Társtelefon</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>Költsön a telefonjáról, miközben az érméi itt maradnak. A telefonon nincsenek érmekulcsok: eléri ezt a csomópontot, igazolja a kulcsot, amellyel párosították, és ez a csomópont egy kis zsebpénztárcából fizet — miután ellenőrizte a telefon PIN-kódját és az Ön által megadott korlátokat, amelyeket a telefon nem módosíthat. Ha elveszíti a telefont, legfeljebb azt veszíti el, ami a zsebpénzben van; itt szüntesse meg a párosítást. Ha ez a csomópont bejegyzett továbbító, és elég más is be van jegyezve, a telefon három továbbítón át érkezik, így senki, aki figyel, nem tudja meg, hol van; különben közvetlenül ide kapcsolódik.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>Zsebpénz</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>Telefonok számára elérhető</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>Telefon</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>Egy fizetés</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>Egy nap</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>Ma elköltve</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>Állapot</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>Telefon párosítása…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>Korlátok…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>Feloldás</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>A telefon zárolódik öt egymást követő hibás PIN után, amíg itt fel nem oldják.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>Párosítás megszüntetése</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>Párosított telefonok költhetnek egy zsebpénztárcából</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>Az átfedő hálózat kell hozzá. Alapból ki van kapcsolva, mert lehetővé teszi, hogy egy telefon ennek a csomópontnak az érméit költse.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>Egy saját tárca, jelmondat nélkül — senki sincs ott, hogy beírja, amikor a telefon fizet —, és csak azzal, amit a telefonnak költenie kell tudnia. Sosem stake-el, és nem lehet a bejegyzésekért fizető tárca.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>Létrehozás</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>A zsebpénztárca létrehozása és megnyitása, valahányszor ez a csomópont elindul.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>Feltöltés…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>A Küldés megnyitása a tárcában, hogy érméket mozgasson a zsebpénzbe.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>Zsebpénztárca</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, még %1 érkezik</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>igen, itt: %1, továbbítókon át</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>közvetlenül, itt: %1. Nincsenek továbbítók közben: a telefon hálózata látja, hogy ezzel a számítógéppel beszél. A hálózaton kívülről továbbítsa a routeren a(z) %2 UDP-portot erre a számítógépre.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>nem — ez a csomópont még nem ismer saját címet</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>nem érhető el</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>egy telefon várakozik</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>nincs zsebpénz</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>egy telefon zárolva</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 telefon zárolva</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>fut, még nincs telefon</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>fut, 1 telefon</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>fut, %1 telefon</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>Eszközkulcs %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>zárolva: hibás PIN-ek</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>párosítva</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>%1 párosításának megszüntetése</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>Megszünteti %1 párosítását? Nem tud majd költeni, amíg újra nem párosítják. Tegye meg azonnal, ha a telefon elveszett vagy ellopták.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>A zsebpénztárca létrejött és megnyílt. A Feltöltéssel mozgassa bele, amit a telefonnak költenie kell tudnia.</translation>
     </message>
 </context>
 <context>
@@ -5339,6 +5849,30 @@ Ezt bármikor megváltoztathatja a Kiszolgáló oldalon.</translation>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>A csomópont még indul; az alapbeállítások még nem érhetők el.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>Mások a jegyzékből kiszámított továbbítóknál találkoznak Önnel, és a csomópontja mindegyikhez ennyi továbbítón át nyitva tart egy útvonalat. A találkozási pont csak az utolsót látja közülük, a címét soha. A több jobban elrejti, és lassabb.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>Továbbítók a találkozási pontjai előtt</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>Amikor ez a számítógép a hálózat internetét használja, minden kapcsolat ennyi továbbítón megy át egy átjáró találkozási pontjáig, utána pedig az átjáró saját továbbítóin: az átjáró sosem tudja meg, ki Ön. A több jobban elrejti, és lassabb.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>Továbbítók egy átjáró találkozási pontja előtt</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>Csak az első kapcsolata közvetlen, egy belépő továbbítóhoz, amely a címét látja, de azt nem, ki Ön. A levelek mindig három továbbítón mennek át.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>%1 verzió</translation>
     </message>
 </context>
 <context>
@@ -5501,6 +6035,147 @@ Ezt bármikor megváltoztathatja a Kiszolgáló oldalon.</translation>
     <message>
         <source>Message verified.</source>
         <translation>Üzenet ellenőrizve.</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>Webhelyek</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>Az átfedő hálózaton tárolt webhelyek, amelyeket egy valakitől kapott név vagy kulcs nyit meg. Az oldalak itt szkriptek nélkül jelennek meg, és semmi sem töltődik be rájuk a BPS-en kívülről, így egy oldal nem tudhatja meg, hol van Ön.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Vissza</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Előre</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>Oldal újratöltése</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://név/ vagy egy webhely kulcsa</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Megnyitás</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>Fájl mentése…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>Megnyitás a böngészőben</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>Ugyanez a webhely egy hagyományos böngészőben, egy csak ezen a számítógépen futó kiszolgálón át. Az oldalak ott futtathatnak szkripteket, így az itteni megjelenítő marad a biztonságosabb módja egy rejtett webhely olvasásának.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>Kapcsolódás egy programhoz…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>Érjen el egy programot, amelyet ez a webhely futtat — csevegőszervert, játékot — egy ezen a számítógépen lévő programból: a BPS Relay itt figyel egy porton, és minden kapcsolatot az átfedő hálózaton visz el hozzá.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>Ez nem egy webhely címe. Írjon be egy nevet vagy kulcsot, például bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>%1 keresése…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>%1 letöltése az átfedő hálózaton…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>A(z) %1 nem olyan oldal, amelyet ez a megjelenítő mutat (%2 bájt). Mentse el, hogy egy másik programmal nyissa meg.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>Irányítsa a számítógépen lévő programot ide: %1. A BPS Relay minden ott létrejövő kapcsolatot a webhely programjához visz az átfedő hálózaton, amíg újra nem indul.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>A böngészőknek szóló webhelykiszolgáló nem fut. A BPS Relay-jel indul, hacsak nem adták meg a -siteproxy=0 kapcsolót.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>A(z) %1 nem mutat kulcsra.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>A(z) %1 most más kulcsra mutat, mint amikor legutóbb megnyitotta. Aki most birtokolja a nevet, lehet, hogy nem az, akit korábban olvasott.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>Az egyik találkozási pontján elérve, %1 saját továbbítón át: sem Ön, sem a gazda nem tudja meg, hol van a másik.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>A saját címén elérve %1 továbbítón át: a gazda nem tudja meg, ki Ön.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>A saját webhelye, erről a számítógépről olvasva.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>Rádión át érhető el, ezért az oldalak lassan jönnek.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>A(z) %1 nem olyan név, amelyet ez a csomópont ismer: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>Nem sikerült megnyitni: %1: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>Ez a hivatkozás a BPS-en kívülre vezet, ezért nem követtük: %1
+Nyissa meg egy hagyományos böngészőben, ha úgy dönt; aki üzemelteti, látni fogja a címét.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>Kapcsolódás egy programhoz</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>A név, amelyet a webhely a programjának adott:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>Webhely megnyitása a böngészőben</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>A böngészője ettől a számítógéptől kéri a webhelyet, és a BPS Relay az átfedő hálózaton tölti le, ahogy itt is. Minden oldal csak a saját webhelyéről tölthet be, így semmit sem húzhat le a nyílt internetről, hogy megtudja, hol van Ön.
+
+Amit egy böngésző mégis megtehet: egy szkript WebRTC-vel megmutathatja egy oldalnak a számítógép címeit, és egy hagyományos webhelyre mutató hivatkozás úgy távozik, mint bármelyik. A BPS Relay megjelenítője nem futtat szkripteket, és marad a biztonságosabb módja egy rejtett webhely olvasásának.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>Fájl mentése</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>Nem sikerült menteni: %1.</translation>
     </message>
 </context>
 <context>

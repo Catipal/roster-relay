@@ -1116,6 +1116,10 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <source>Not staking</source>
         <translation>ஸ்டேக்கிங் இல்லை</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>தளங்கள்</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1270,6 +1274,92 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>குளிர் ஸ்டேக்கிங்கிற்காக %1 இடம் ஒப்படைக்கப்பட்டது</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>%1 க்கான வரம்புகள்</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>இந்தத் தொலைபேசி கைச்செலவு வாலட்டிலிருந்து எவ்வளவு செலவிடலாம், கட்டணங்கள் உட்பட.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>ஒரு கட்டணத்தில் அதிகபட்சம்</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>எந்த 24 மணி நேரத்திலும் அதிகபட்சம்</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>ஒரு தொலைபேசியை இணை</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>தொலைபேசியில் உள்ள BPS செயலியில் இணை என்பதைத் தேர்ந்தெடுத்து இந்தக் குறியீட்டை ஸ்கேன் செய்யவும். அல்லது அதன் கீழ் உள்ள உரையைச் செயலியில் நகலெடுக்கவும். இது ஒருமுறை, பத்து நிமிடங்களுக்குச் செயல்படும்.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>குறியீட்டை நகலெடு</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>புதிய குறியீட்டைக் காட்டு</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>தொலைபேசி இதே ஆறு இலக்கங்களைக் காட்டினால் மட்டும் இணைக்கவும். வேறு இலக்கங்களைக் காட்டினால், வேறு யாரோ முதலில் குறியீட்டுக்குப் பதிலளித்துள்ளனர்: நிராகரித்து, புதியதைக் காட்டவும்.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>இந்தத் தொலைபேசி கைச்செலவு வாலட்டிலிருந்து எவ்வளவு செலவிடலாம். பின்னர் இந்த முனை மட்டுமே இதை மாற்ற முடியும், தொலைபேசி ஒருபோதும் இல்லை.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>ஒரு கட்டணத்தில் அதிகபட்சம்</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>எந்த 24 மணி நேரத்திலும் அதிகபட்சம்</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>நிராகரி</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>இந்தத் தொலைபேசியை இணை</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>குறியீடு உருவாக்கப்படுகிறது…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>இந்தக் குறியீடு காலாவதியானது.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>தொலைபேசிக்காகக் காத்திருக்கிறது… குறியீடு இன்னும் %1 நிமிடங்கள் செயல்படும்.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>இந்தப் பதிப்பால் QR குறியீடுகளை வரைய முடியாது: பதிலாகக் கீழே உள்ள உரையைச் செயலியில் நகலெடுக்கவும்.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>“%1” என்ற தொலைபேசி இந்த முனையுடன் இணைய விரும்புகிறது.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>இணைக்கப்பட்டது. நீங்கள் அமைத்த வரம்புகளுக்குள் தொலைபேசி இப்போது கைச்செலவு வாலட்டிலிருந்து செலவிடலாம். அதன் பட்டியல் சேவையகம் பக்கத்தில் உள்ளது; அங்கு அதன் வரம்புகளை மாற்றலாம், பல தவறான PIN களுக்குப் பிறகு திறக்கலாம், அல்லது இணைப்பை நீக்கலாம்.</translation>
     </message>
 </context>
 <context>
@@ -1445,7 +1535,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>ஒரு பியர் அல்லது முகவரியைக் கண்டுபிடி</translation>
+        <translation type="vanished">ஒரு பியர் அல்லது முகவரியைக் கண்டுபிடி</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1582,6 +1672,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>பியர்கள் சேவையகத்தில் அல்ல, சங்கிலியில் தங்களை அறிவிக்கின்றன, எனவே இந்தப் பட்டியல் அனைவருக்கும் ஒன்றே, யாரும் இதைத் திருத்த முடியாது. மேலடுக்கு வழியாகப் பட்டியலிடப்பட்ட பியர் இன்று எங்கே சந்திக்கலாம் என்று காட்டுகிறது, அது ஒவ்வொரு நாளும் மாறும்; ரிலே இணைப்பில் இருக்கும்போது மட்டுமே தன் முகவரியைக் காட்டுகிறது, ஏனெனில் அது ஒருபோதும் சங்கிலியில் இல்லை.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>பெயர்</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>ஒரு பெயரைப் பதிவுசெய்…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>உங்கள் விசையை நகலெடுக்காமல் மற்றவர்கள் உங்களை அடையும் வழியே பெயர். பெயர்கள் பெயர்கள் தாவலில் பதிவுசெய்யப்படுகின்றன.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>பியர், குறிப்பு அல்லது முகவரியைக் கண்டறி</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>இந்தப் பெயர்கள் அனைத்தும் இந்த முனையின் விசைக்கே செல்கின்றன. மற்றவர்கள் இவற்றில் எதன் மூலமும் உங்களை அடையலாம்.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>பெயர்களை நிர்வகி…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>பெயர்கள் அணைக்கப்பட்டுள்ளன</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>பெயர்களுக்குப் பெயர் அட்டவணை தேவை. ஒரு பெயரைப் பதிவுசெய்து காட்ட அமைப்புகளில் அதை இயக்கவும்.</translation>
     </message>
 </context>
 <context>
@@ -3210,15 +3332,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>இது நீங்கள் இருக்கிறீர்கள் என்றும், விரும்பினால், உங்களை எங்கே காணலாம் என்றும் கூறும் சிறிய பதிவைச் சங்கிலியில் எழுதுகிறது.</translation>
+        <translation type="vanished">இது நீங்கள் இருக்கிறீர்கள் என்றும், விரும்பினால், உங்களை எங்கே காணலாம் என்றும் கூறும் சிறிய பதிவைச் சங்கிலியில் எழுதுகிறது.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>பியர்கள் உங்களை எப்படி அடைய வேண்டும்?</translation>
+        <translation type="vanished">பியர்கள் உங்களை எப்படி அடைய வேண்டும்?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>மேலடுக்கு வழியாக — முகவரியை வெளியிடாமல்</translation>
+        <translation type="vanished">மேலடுக்கு வழியாக — முகவரியை வெளியிடாமல்</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3226,35 +3348,35 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>நான் வெளியிடும் முகவரியில்</translation>
+        <translation type="vanished">நான் வெளியிடும் முகவரியில்</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>பிற பியர்கள் அடையக்கூடிய முகவரி</translation>
+        <translation type="vanished">பிற பியர்கள் அடையக்கூடிய முகவரி</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>யார் வேண்டுமானாலும் இதைப் பார்க்கலாம், சங்கிலி இதை எப்போதும் வைத்திருக்கும். ஒரு onion முகவரி யாரும் உங்களிடம் தடம் கண்டுபிடிக்க முடியாத இடத்தை வெளியிடுகிறது, NAT க்குப் பின்னாலிருந்தும் செயல்படும்; IP முகவரி இவற்றில் எதையும் செய்யாது. IP முகவரியை வெளியிடும் முனையைப் பிறர் ரிலேவாகத் தேர்ந்தெடுக்கலாம்.</translation>
+        <translation type="vanished">யார் வேண்டுமானாலும் இதைப் பார்க்கலாம், சங்கிலி இதை எப்போதும் வைத்திருக்கும். ஒரு onion முகவரி யாரும் உங்களிடம் தடம் கண்டுபிடிக்க முடியாத இடத்தை வெளியிடுகிறது, NAT க்குப் பின்னாலிருந்தும் செயல்படும்; IP முகவரி இவற்றில் எதையும் செய்யாது. IP முகவரியை வெளியிடும் முனையைப் பிறர் ரிலேவாகத் தேர்ந்தெடுக்கலாம்.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3298,7 +3420,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>உங்கள் முனை பட்டியலிடலில் கையொப்பமிட்டு, மேலடுக்கு வழியாக அது நுழையும் ரிலேக்கு அனுப்புகிறது. பட்டியலிடல்களுக்குச் செலுத்தும் ரிலே உங்களுடையதைத் தானே உருவாக்கும் தொகுதியில் வைக்கிறது, எனவே பெரும்பாலான முனைகள் அனுப்பாவிட்டாலும் அது உறுதிசெய்யப்படும், மேலும் தன் வெகுமதிகளைப் பகிரும் பியர்களுடன் உங்களைச் சேர்க்கும். பின்னர் அது செலுத்துவதை நிறுத்தினால், உங்கள் பட்டியலிடல் மாதத்திற்குள் காலாவதியாகும்; நிதியுள்ள வாலட்டிலிருந்து நீங்களே எப்போதும் புதுப்பிக்கலாம்.</translation>
+        <translation type="vanished">உங்கள் முனை பட்டியலிடலில் கையொப்பமிட்டு, மேலடுக்கு வழியாக அது நுழையும் ரிலேக்கு அனுப்புகிறது. பட்டியலிடல்களுக்குச் செலுத்தும் ரிலே உங்களுடையதைத் தானே உருவாக்கும் தொகுதியில் வைக்கிறது, எனவே பெரும்பாலான முனைகள் அனுப்பாவிட்டாலும் அது உறுதிசெய்யப்படும், மேலும் தன் வெகுமதிகளைப் பகிரும் பியர்களுடன் உங்களைச் சேர்க்கும். பின்னர் அது செலுத்துவதை நிறுத்தினால், உங்கள் பட்டியலிடல் மாதத்திற்குள் காலாவதியாகும்; நிதியுள்ள வாலட்டிலிருந்து நீங்களே எப்போதும் புதுப்பிக்கலாம்.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3314,11 +3436,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>ஒரு முகவரியை உள்ளிடவும், அல்லது எதையும் வெளியிட வேண்டாம் எனத் தேர்ந்தெடுக்கவும்.</translation>
+        <translation type="vanished">ஒரு முகவரியை உள்ளிடவும், அல்லது எதையும் வெளியிட வேண்டாம் எனத் தேர்ந்தெடுக்கவும்.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>உங்கள் ரிலேயிடம் வெளியிடக் கேட்கிறது… இதற்கு அரை நிமிடம் வரை ஆகலாம்.</translation>
+        <translation type="vanished">உங்கள் ரிலேயிடம் வெளியிடக் கேட்கிறது… இதற்கு அரை நிமிடம் வரை ஆகலாம்.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3350,11 +3472,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>இந்த அஞ்சலியின் நுழைவாயிலைப் பதிவு செய்</translation>
+        <translation type="vanished">இந்த அஞ்சலியின் நுழைவாயிலைப் பதிவு செய்</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>ஒரு அஞ்சலியின் பதிவில் அதன் முகவரி இருப்பதால், அதன் நுழைவாயில் முகவரி இல்லாத இரண்டாவது சாவியின் கீழ் தனியாகப் பதியப்படுகிறது. இரண்டும் ஒரே கணினிக்குச் சொந்தமானவை என்று பதிவேட்டிலிருந்து யாராலும் அறிய முடியாது. பார்வையாளர்கள் அஞ்சலிகள் வழியாக நுழைவாயிலை அடைவதால், அவர்கள் யார் என்று அதற்கு ஒருபோதும் தெரியாது; அவர்கள் பார்க்கும் இணையதளங்கள் இந்தக் கணினியின் முகவரியைப் பார்க்கின்றன.</translation>
+        <translation type="vanished">ஒரு அஞ்சலியின் பதிவில் அதன் முகவரி இருப்பதால், அதன் நுழைவாயில் முகவரி இல்லாத இரண்டாவது சாவியின் கீழ் தனியாகப் பதியப்படுகிறது. இரண்டும் ஒரே கணினிக்குச் சொந்தமானவை என்று பதிவேட்டிலிருந்து யாராலும் அறிய முடியாது. பார்வையாளர்கள் அஞ்சலிகள் வழியாக நுழைவாயிலை அடைவதால், அவர்கள் யார் என்று அதற்கு ஒருபோதும் தெரியாது; அவர்கள் பார்க்கும் இணையதளங்கள் இந்தக் கணினியின் முகவரியைப் பார்க்கின்றன.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3370,11 +3492,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>வேறொரு ரிலே செலுத்துகிறது, ரிலேக்கள் வழியாகக் கேட்கப்படுகிறது</translation>
+        <translation type="vanished">வேறொரு ரிலே செலுத்துகிறது, ரிலேக்கள் வழியாகக் கேட்கப்படுகிறது</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>உங்கள் முனை நுழைவாயிலின் பட்டியலிடலில் கையொப்பமிட்டு, ரிலேக்கள் வழியாக வேறொரு ரிலேக்கு அனுப்புகிறது; அது அதற்குச் செலுத்தித் தானே உருவாக்கும் தொகுதியில் வைக்கிறது. அந்த ரிலே நுழைவாயிலின் சாவியை அறியும், இந்தக் கணினியின் முகவரியை ஒருபோதும் அறியாது. இந்த முனையின் சொந்த வாலட்டிலிருந்து செலுத்தினால், சங்கிலியில் நுழைவாயில் இந்த ரிலேயுடனும், அதனால் அதன் முகவரியுடனும் இணைக்கப்படும்.</translation>
+        <translation type="vanished">உங்கள் முனை நுழைவாயிலின் பட்டியலிடலில் கையொப்பமிட்டு, ரிலேக்கள் வழியாக வேறொரு ரிலேக்கு அனுப்புகிறது; அது அதற்குச் செலுத்தித் தானே உருவாக்கும் தொகுதியில் வைக்கிறது. அந்த ரிலே நுழைவாயிலின் சாவியை அறியும், இந்தக் கணினியின் முகவரியை ஒருபோதும் அறியாது. இந்த முனையின் சொந்த வாலட்டிலிருந்து செலுத்தினால், சங்கிலியில் நுழைவாயில் இந்த ரிலேயுடனும், அதனால் அதன் முகவரியுடனும் இணைக்கப்படும்.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3390,7 +3512,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>உங்கள் பட்டியல் நீங்கள் யார் என்று சொல்கிறது, நீங்கள் எங்கே இயங்குகிறீர்கள் என்று அல்ல. பியர்கள் மேலடுக்கு வழியாக உங்களை அடைந்து, இரு தரப்பும் பதிவேட்டிலிருந்து கணக்கிடும் புள்ளிகளில் உங்களைச் சந்திக்கின்றன; அவை ஒவ்வொரு நாளும் மாறும், கண்டறி இன்றையவற்றைக் காட்டுகிறது. உங்கள் பட்டியல் அது செல்லுபடியாகும்வரை உங்களைச் சந்திக்கக்கூடிய ஒரு ரிலேயையும் பெயரிடுகிறது, ஒவ்வொரு புதுப்பிப்பும் புதியதைப் பெயரிடுகிறது. இதையே இந்தக் கிளையன்ட் இயல்பாக இயக்குகிறது.</translation>
+        <translation type="vanished">உங்கள் பட்டியல் நீங்கள் யார் என்று சொல்கிறது, நீங்கள் எங்கே இயங்குகிறீர்கள் என்று அல்ல. பியர்கள் மேலடுக்கு வழியாக உங்களை அடைந்து, இரு தரப்பும் பதிவேட்டிலிருந்து கணக்கிடும் புள்ளிகளில் உங்களைச் சந்திக்கின்றன; அவை ஒவ்வொரு நாளும் மாறும், கண்டறி இன்றையவற்றைக் காட்டுகிறது. உங்கள் பட்டியல் அது செல்லுபடியாகும்வரை உங்களைச் சந்திக்கக்கூடிய ஒரு ரிலேயையும் பெயரிடுகிறது, ஒவ்வொரு புதுப்பிப்பும் புதியதைப் பெயரிடுகிறது. இதையே இந்தக் கிளையன்ட் இயல்பாக இயக்குகிறது.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3410,15 +3532,59 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>சேவையகம் பக்கத்தில் அமைத்தபடி, இந்தக் கணு தன் இணைய இணைப்பை நுழைவாயிலாகப் பகிர்கிறது, எனவே பட்டியல் அதைச் சொல்கிறது.</translation>
+        <translation type="vanished">சேவையகம் பக்கத்தில் அமைத்தபடி, இந்தக் கணு தன் இணைய இணைப்பை நுழைவாயிலாகப் பகிர்கிறது, எனவே பட்டியல் அதைச் சொல்கிறது.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>சேவையகம் பக்கத்தில் அமைத்தபடி, இந்தக் கணு மற்றவர்களுக்காக ரிலே செய்வதுமில்லை, தன் இணைய இணைப்பைப் பகிர்வதுமில்லை.</translation>
+        <translation type="vanished">சேவையகம் பக்கத்தில் அமைத்தபடி, இந்தக் கணு மற்றவர்களுக்காக ரிலே செய்வதுமில்லை, தன் இணைய இணைப்பைப் பகிர்வதுமில்லை.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>அங்கு செய்யும் மாற்றம் உங்கள் அடுத்த பட்டியலுடன் பதிவேட்டை அடையும்.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>நீங்கள் இருக்கிறீர்கள் என்று சொல்லும் ஒரு சிறிய பதிவையும், விருப்பப்பட்டால் உங்களைப் பற்றிய ஒரு வரியையும் இது சங்கிலியில் எழுதுகிறது.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>உங்கள் பட்டியலிடல் என்ன சொல்கிறது</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>உங்கள் பட்டியலிடல் நீங்கள் யார் என்று சொல்கிறது, எங்கே இயங்குகிறீர்கள் என்று அல்ல: அதில் முகவரி எதுவும் இல்லை. பியர்கள் மேலடுக்கு வழியாக உங்களை அடைகின்றனர்; இரு பக்கமும் பதிவேட்டிலிருந்து கணக்கிடும், தினமும் மாறும் புள்ளிகளில் உங்களைச் சந்திக்கின்றனர்; கண்டறி இன்றையவற்றைக் காட்டுகிறது. அது நீடிக்கும் வரை உங்களைச் சந்திக்கக்கூடிய ஒரு ரிலேயையும் உங்கள் பட்டியலிடல் குறிப்பிடுகிறது, ஒவ்வொரு புதுப்பித்தலும் புதியதைக் குறிப்பிடுகிறது.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>குறிப்பு</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>விருப்பம்: உங்கள் விசைக்கு அருகில் காட்டப்படும் ஒரு வரி</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>யார் வேண்டுமானாலும் இதைப் படிக்கலாம், பட்டியலிடல் முடிந்த பிறகும் சங்கிலி இதை என்றென்றும் வைத்திருக்கும். அது உங்களுக்கு முக்கியம் என்றால், நீங்கள் எங்கே இருக்கிறீர்கள் அல்லது யார் என்று சொல்லும் எதையும் விட்டுவிடுங்கள்.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>உங்கள் முனை பட்டியலிடலில் கையொப்பமிட்டு, அது நுழையாத ஒரு ரிலேக்கு ஒரு பாதை வழியாக அனுப்புகிறது; எனவே அந்த ரிலே நீங்கள் யார் என்று அறிகிறது, எங்கே என்று அல்ல. பட்டியலிடல்களுக்குப் பணம் செலுத்தும் ரிலே, உங்களுடையதை அது தானே ஸ்டேக் செய்யும் தொகுதியில் வைக்கிறது; எனவே பெரும்பாலான முனைகள் அதை அனுப்பாத போதும் அது உறுதியாகிறது; மேலும் அது தன் வெகுமதிகளைப் பகிரும் பியர்களில் உங்களைச் சேர்க்கிறது. பின்னர் அது பணம் செலுத்துவதை நிறுத்தினால், உங்கள் பட்டியலிடல் மாதத்துக்குள் காலாவதியாகும்; நிதியுள்ள வாலட்டிலிருந்து நீங்களே எப்போதும் புதுப்பிக்கலாம்.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 பைட்டுகள்</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>மிக நீளம்: எளிய ஆங்கிலத்துக்கு வெளியே உள்ள எழுத்துகள் ஒவ்வொன்றும் இரண்டு முதல் நான்கு பைட்டுகள் எடுக்கும்.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>குறிப்பு மிக நீளமாக உள்ளது.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>குறிப்பில் கட்டுப்பாட்டு எழுத்துகளோ உரையின் திசையை மாற்றும் குறிகளோ இருக்கக்கூடாது.</translation>
     </message>
 </context>
 <context>
@@ -3592,6 +3758,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
             <numerusform>%n ஆண்டு</numerusform>
             <numerusform>%n ஆண்டுகள்</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>இரண்டு வரம்புகளையும் அமைக்கவும்.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>ஒரு கட்டணத்துக்கு ஒரு முழு நாளுக்கு மேல் அனுமதிக்க முடியாது.</translation>
     </message>
 </context>
 <context>
@@ -4292,6 +4466,14 @@ worked out from the roster; they change every day:</source>
         <source>meets at %1</source>
         <translation>%1 இல் சந்திப்பு</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>குறிப்பு</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>இந்த விசையை வைத்திருப்பவர் எழுதியது; யாரும் இதைச் சரிபார்ப்பதில்லை.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4774,7 +4956,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>இந்த முனையிலிருந்து வழங்கப்படும் தளம் அல்லது சேவை, அதன் விசை அல்லது பெயரால் கண்டறியப்பட்டு மேலடுக்கு வழியாக அடையப்படுகிறது, எனவே ஹோஸ்ட் தான் எங்கே இயங்குகிறது என்பதை ஒருபோதும் வெளியிடாது. சந்திப்புப் பகுதி உள்ளது: இரு தரப்பும் பதிவேட்டிலிருந்து கணக்கிடும் சந்திப்புப் புள்ளிகளில் சேவை பதிவுசெய்கிறது. இதன் வழியாகப் பக்கங்களையும் பயன்பாடுகளையும் வழங்குவது இன்னும் உருவாக்கப்படவில்லை.</translation>
+        <translation type="vanished">இந்த முனையிலிருந்து வழங்கப்படும் தளம் அல்லது சேவை, அதன் விசை அல்லது பெயரால் கண்டறியப்பட்டு மேலடுக்கு வழியாக அடையப்படுகிறது, எனவே ஹோஸ்ட் தான் எங்கே இயங்குகிறது என்பதை ஒருபோதும் வெளியிடாது. சந்திப்புப் பகுதி உள்ளது: இரு தரப்பும் பதிவேட்டிலிருந்து கணக்கிடும் சந்திப்புப் புள்ளிகளில் சேவை பதிவுசெய்கிறது. இதன் வழியாகப் பக்கங்களையும் பயன்பாடுகளையும் வழங்குவது இன்னும் உருவாக்கப்படவில்லை.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4998,7 +5180,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>இந்தக் கணு மற்றவர்களுக்கு வழங்குவது. அஞ்சல் செய்தல், அஞ்சலைக் காத்தல், இணையத்தைப் பகிர்தல் இன்றே இயங்குகின்றன; வலைத்தள வழங்கல் வந்துகொண்டிருக்கிறது, இங்குள்ள எல்லாவற்றையும் போல அதுவும் சகாக்களைப் போலவே கண்டறியப்படுகிறது — பதிவேடு வழியாக. பெயர்களுக்குத் தனிப் பக்கம் உண்டு.</translation>
+        <translation type="vanished">இந்தக் கணு மற்றவர்களுக்கு வழங்குவது. அஞ்சல் செய்தல், அஞ்சலைக் காத்தல், இணையத்தைப் பகிர்தல் இன்றே இயங்குகின்றன; வலைத்தள வழங்கல் வந்துகொண்டிருக்கிறது, இங்குள்ள எல்லாவற்றையும் போல அதுவும் சகாக்களைப் போலவே கண்டறியப்படுகிறது — பதிவேடு வழியாக. பெயர்களுக்குத் தனிப் பக்கம் உண்டு.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -5014,7 +5196,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>பதிவு</translation>
+        <translation type="vanished">பதிவு</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5026,15 +5208,15 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>நுழைவாயிலாகப் பதிவு செய்…</translation>
+        <translation type="vanished">நுழைவாயிலாகப் பதிவு செய்…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>இந்தக் கணினியின் இணைய இணைப்பை நுழைவாயிலாகப் பகிர்</translation>
+        <translation type="vanished">இந்தக் கணினியின் இணைய இணைப்பை நுழைவாயிலாகப் பகிர்</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>நீங்கள் வசிக்கும் இடத்தின் சட்டமோ உங்கள் இணைய வழங்குநரின் விதிமுறைகளோ இணைப்பைப் பகிர்வதைத் தடை செய்தால் இதை அணையுங்கள். அணைத்த பிறகும் இந்தக் கணு அஞ்சல் செய்கிறது, அஞ்சலைக் காக்கிறது, சங்கிலியில் தொடர்கிறது, தன் இணைப்பை நேரடியாகப் பயன்படுத்துகிறது.</translation>
+        <translation type="vanished">நீங்கள் வசிக்கும் இடத்தின் சட்டமோ உங்கள் இணைய வழங்குநரின் விதிமுறைகளோ இணைப்பைப் பகிர்வதைத் தடை செய்தால் இதை அணையுங்கள். அணைத்த பிறகும் இந்தக் கணு அஞ்சல் செய்கிறது, அஞ்சலைக் காக்கிறது, சங்கிலியில் தொடர்கிறது, தன் இணைப்பை நேரடியாகப் பயன்படுத்துகிறது.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5050,11 +5232,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>இந்தக் கணினியிலுள்ள நிரல்கள் ஒரு உள்ளூர் பதிலி வழியாகப் பிணையத்தின் இணையத்தைப் பயன்படுத்த அனுமதி</translation>
+        <translation type="vanished">இந்தக் கணினியிலுள்ள நிரல்கள் ஒரு உள்ளூர் பதிலி வழியாகப் பிணையத்தின் இணையத்தைப் பயன்படுத்த அனுமதி</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>இந்தக் கணினிக்கு மட்டுமான SOCKS5 பதிலி. ஒவ்வொரு இணைப்பும் வேறொரு உறுப்பினரின் நுழைவாயில் வழியாக வெளியேறுகிறது, பெயர்கள் அங்கேயே தேடப்படுகின்றன, இங்கே ஒருபோதும் இல்லை. இந்தக் கணினி தன் இணைப்பைப் பகிரும் வரை இது வேலை செய்யும்.</translation>
+        <translation type="vanished">இந்தக் கணினிக்கு மட்டுமான SOCKS5 பதிலி. ஒவ்வொரு இணைப்பும் வேறொரு உறுப்பினரின் நுழைவாயில் வழியாக வெளியேறுகிறது, பெயர்கள் அங்கேயே தேடப்படுகின்றன, இங்கே ஒருபோதும் இல்லை. இந்தக் கணினி தன் இணைப்பைப் பகிரும் வரை இது வேலை செய்யும்.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5090,27 +5272,27 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>நுழைவாயிலாகப் பதியப்படவில்லை</translation>
+        <translation type="vanished">நுழைவாயிலாகப் பதியப்படவில்லை</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>இன்னும் இல்லை — பதிவேடு இந்தக் கணுவை நுழைவாயிலாகப் பதியவில்லை, எனவே யாராலும் இதைக் கண்டறிய முடியாது</translation>
+        <translation type="vanished">இன்னும் இல்லை — பதிவேடு இந்தக் கணுவை நுழைவாயிலாகப் பதியவில்லை, எனவே யாராலும் இதைக் கண்டறிய முடியாது</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>இன்னும் எதுவும் இல்லை — ஒரு அஞ்சலி தன் நுழைவாயிலை இரண்டாவது சாவியின் கீழ், முகவரி இல்லாமல், தன் சொந்தப் பதிவிலிருந்து தனியாகப் பதிகிறது</translation>
+        <translation type="vanished">இன்னும் எதுவும் இல்லை — ஒரு அஞ்சலி தன் நுழைவாயிலை இரண்டாவது சாவியின் கீழ், முகவரி இல்லாமல், தன் சொந்தப் பதிவிலிருந்து தனியாகப் பதிகிறது</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>இன்னும் எதுவும் இல்லை — இந்தக் கணுவின் பதிவில் நுழைவாயில் விருப்பம் இல்லை; விருப்பத்தை இயக்கி மீண்டும் வெளியிடுங்கள்</translation>
+        <translation type="vanished">இன்னும் எதுவும் இல்லை — இந்தக் கணுவின் பதிவில் நுழைவாயில் விருப்பம் இல்லை; விருப்பத்தை இயக்கி மீண்டும் வெளியிடுங்கள்</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>இன்னும் எதுவும் இல்லை — முகவரி இல்லாமல், நுழைவாயில் விருப்பம் இயக்கத்தில் உள்ள ஒரு பதிவை வெளியிடுங்கள்</translation>
+        <translation type="vanished">இன்னும் எதுவும் இல்லை — முகவரி இல்லாமல், நுழைவாயில் விருப்பம் இயக்கத்தில் உள்ள ஒரு பதிவை வெளியிடுங்கள்</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>இந்த அஞ்சலியின் நுழைவாயிலைப் பதிவு செய்…</translation>
+        <translation type="vanished">இந்த அஞ்சலியின் நுழைவாயிலைப் பதிவு செய்…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5130,11 +5312,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>அதன் நுழைவாயில் சாவி %1, அஞ்சலியின் முகவரியிலிருந்து தனியாக</translation>
+        <translation type="vanished">அதன் நுழைவாயில் சாவி %1, அஞ்சலியின் முகவரியிலிருந்து தனியாக</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>இந்தக் கணுவின் சொந்தச் சாவி %1</translation>
+        <translation type="vanished">இந்தக் கணுவின் சொந்தச் சாவி %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5150,11 +5332,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>இந்தக் கணினியின் அனைத்துப் போக்குவரத்தையும் வலையமைப்பு வழியாக அனுப்பு, எந்த நிரலிலும் ப்ராக்ஸி அமைப்பு இல்லாமல்</translation>
+        <translation type="vanished">இந்தக் கணினியின் அனைத்துப் போக்குவரத்தையும் வலையமைப்பு வழியாக அனுப்பு, எந்த நிரலிலும் ப்ராக்ஸி அமைப்பு இல்லாமல்</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>ஒவ்வொரு நிரலின் இணைப்புகளும் வலையமைப்பின் நுழைவாயில்கள் வழியாக வெளியேறுகின்றன, ஒவ்வொன்றும் வேறொன்றின் வழியாக, பெயர்களும் அங்கேயே தேடப்படுகின்றன. இந்தக் கணினியின் சொந்த வலையமைப்பு — அச்சுப்பொறி, ரூட்டர் — மற்றும் இந்த முனையின் சொந்த இணைப்புகள் நேரடியாகவே இருக்கும். இந்தக் கணினி தன் இணைப்பைப் பகிரும் வரை இது செயல்படும்.</translation>
+        <translation type="vanished">ஒவ்வொரு நிரலின் இணைப்புகளும் வலையமைப்பின் நுழைவாயில்கள் வழியாக வெளியேறுகின்றன, ஒவ்வொன்றும் வேறொன்றின் வழியாக, பெயர்களும் அங்கேயே தேடப்படுகின்றன. இந்தக் கணினியின் சொந்த வலையமைப்பு — அச்சுப்பொறி, ரூட்டர் — மற்றும் இந்த முனையின் சொந்த இணைப்புகள் நேரடியாகவே இருக்கும். இந்தக் கணினி தன் இணைப்பைப் பகிரும் வரை இது செயல்படும்.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5182,11 +5364,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>இயக்கத்தில்: இப்போது வலையமைப்பு வழியாக %1 இணைப்பு(கள்); %2 அனுப்பப்பட்டது, %3 பெறப்பட்டது.</translation>
+        <translation type="vanished">இயக்கத்தில்: இப்போது வலையமைப்பு வழியாக %1 இணைப்பு(கள்); %2 அனுப்பப்பட்டது, %3 பெறப்பட்டது.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>இந்த அமைப்பில் இன்னும் கிடைக்கவில்லை.</translation>
+        <translation type="vanished">இந்த அமைப்பில் இன்னும் கிடைக்கவில்லை.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5198,7 +5380,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>கிளையன்ட் மீண்டும் தொடங்கும்போது தொடங்கும்.</translation>
+        <translation type="vanished">கிளையன்ட் மீண்டும் தொடங்கும்போது தொடங்கும்.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5227,6 +5409,334 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>none — relaying is switched off</source>
         <translation>இல்லை — ரிலே அணைக்கப்பட்டுள்ளது</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>இந்த முனை மற்றவர்களுக்கு வழங்குவது: ரிலே செய்தல், அஞ்சல் வைத்திருத்தல், இணையத்தைப் பகிர்தல், தளத்தை ஹோஸ்ட் செய்தல்; உங்கள் சொந்தத் தொலைபேசிக்கு, இங்கிருந்து செலவிடும் ஒரு வழி. இங்குள்ள எல்லாவற்றையும் போல, பியர்கள் கண்டறியப்படும் அதே வழியில் இதுவும் கண்டறியப்படுகிறது — பதிவேடு வழியாக. பெயர்களுக்குத் தனிப் பக்கம் உண்டு.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>இந்தக் கணினியின் இணைய இணைப்பைப் பகிர்ந்து, அதற்குப் பதிலாக நெட்வொர்க்கின் இணைப்பைப் பயன்படுத்து</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>இயக்கத்தில் இருக்கும்போது, இந்தக் கணினியின் இணைப்பு பகிரப்படுகிறது, அதன் சொந்தப் போக்குவரத்து முழுவதும் நெட்வொர்க்கின் நுழைவாயில்கள் வழியாக வெளியேறுகிறது, ஒவ்வொரு இணைப்பும் வேறொன்றின் வழியாக; இந்தக் கணினியின் சொந்த நெட்வொர்க் — அச்சுப்பொறி, ரவுட்டர் — நேரடியாகவே இருக்கும். நீங்கள் வாழும் இடத்தின் சட்டமோ, உங்கள் இணைய வழங்குநரின் விதிமுறைகளோ இணைப்பைப் பகிர்வதைத் தடைசெய்தால் இதை அணைக்கவும்: அப்போது நெட்வொர்க் BPS ஐ மட்டுமே கொண்டுசெல்லும், இந்தக் கணினி தன் சொந்த இணைப்பைப் பயன்படுத்தும்.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>முழுக் கணினிக்கும்: இயக்கத்தில், இப்போது நெட்வொர்க் வழியாக %1 இணைப்பு(கள்); %2 அனுப்பப்பட்டது, %3 பெறப்பட்டது.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>முழுக் கணினிக்கும்: இந்த அமைப்பில் இன்னும் கிடைக்கவில்லை; நிரல்கள் ப்ராக்ஸியைப் பயன்படுத்தலாம்.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>முழுக் கணினிக்கும்: கிளையன்ட் மறுதொடக்கம் செய்யும்போது தொடங்கும்.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>பகிரவில்லை</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>இல்லை — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>இந்த முனையின் விசையின் கீழ் ஒரு கோப்புறையைத் தளமாக வெளியிடுங்கள்; நீங்கள் விசையையோ உங்கள் பெயரையோ கொடுக்கும் எவரும் மேலடுக்கு வழியாக அதைப் படிக்கலாம். ஒவ்வொரு கோப்பும் கையொப்பமிடப்பட்டு, வந்தடையும்போது துண்டு துண்டாகச் சரிபார்க்கப்படுகிறது. முகவரி இல்லாமல் பட்டியலிடப்பட்டால், இந்த முனை அதன் சந்திப்புப் புள்ளிகளில் சந்திக்கப்படுகிறது, தளம் எங்கே இயங்குகிறது என்று யாரும் அறிவதில்லை; முகவரியுடன் பட்டியலிடப்பட்டால், பார்வையாளர்கள் ரிலேக்கள் வழியாக அடைகின்றனர், எனவே அவர்கள் யார் என்று அது ஒருபோதும் அறிவதில்லை. இந்தக் கணினியில் உள்ள ஒரு நிரல் — வலைச் செயலி, அரட்டைச் சேவையகம் — இதே வழியில் வெளியிடப்படலாம்: பார்வையாளர்கள் மேலடுக்கு வழியாக அதை அடைகின்றனர், இந்த முனை நீங்கள் குறிப்பிடும் போர்ட்டுடன் மட்டுமே இணைகிறது.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>கோப்புறை</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>அடைந்தது</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>அனுப்பப்பட்டது</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>எதுவுமில்லை</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>பார்வையாளர்கள் மேலடுக்கு வழியாக அடையும் இந்தக் கணினியில் உள்ள நிரல்கள். தளம் இல்லாதபோது இந்த முனையின் முகவரியில் உலாவி திறப்பது web என்ற பெயருள்ள நிரலே.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>நிரல்கள்</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>ஒரு கோப்புறையை வெளியிடு…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>மீண்டும் வெளியிடு</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>கோப்புறையை மாற்றிய பிறகு மீண்டும் படித்து, இப்போது அதில் உள்ளதை வெளியிடு.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>வெளியிடுவதை நிறுத்து</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>தளங்களில் திற</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>ஒரு நிரலை வெளியிடு…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>ஒரு நிரலை நிறுத்து…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>வெளியிடவில்லை</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>எதுவுமில்லை — எதுவும் வெளியிடப்படவில்லை</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 கோப்பு(கள்), %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>பட்டியலிடப்படவில்லை</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>இன்னும் யாராலும் இல்லை: இந்த முனை பதிவேட்டில் பட்டியலிடப்படவில்லை, எனவே பார்வையாளர்களால் தளத்தைக் கண்டறிய முடியாது. முனை பக்கத்தில், கண்டறி என்பதன் கீழ் ஒரு பட்டியலிடலை வெளியிடவும்.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>வெளியிடுகிறது</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>இன்னும் சந்திக்கப்படவில்லை</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>%1 சந்திப்புப் புள்ளி(களில்), முகவரி வெளியிடப்படாமல்</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>இன்னும் இல்லை: அதன் சந்திப்புப் புள்ளிகளில் பதிவுசெய்கிறது, இதற்குப் பதிவேட்டின் ரிலேக்கள் தேவை</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>இந்த முனையின் முகவரியில், பார்வையாளரை மறைக்கும் ரிலேக்கள் வழியாக</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 பக்கத் துண்டு(கள்), %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>தளமாக வெளியிட வேண்டிய கோப்புறை</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>ஒரு நிரலை வெளியிடு</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>அதற்கு ஒரு பெயர், a-z, 0-9 மற்றும் - இலிருந்து 1 முதல் 32. இந்த முனையின் முகவரியில் உலாவி திறக்க வேண்டிய வலைச் செயலிக்கு web எனப் பெயரிடவும்:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>அது கேட்கும் போர்ட், 127.0.0.1 இல் (இந்தக் கணினி மட்டும்):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>ஒரு நிரலை நிறுத்து</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>பார்வையாளர்கள் இனி எந்த நிரலை அடையக்கூடாது:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>127.0.0.1:%2 இல் %1</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 ஸ்ட்ரீம்(கள்) திறந்துள்ளன</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>துணைத் தொலைபேசி</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>உங்கள் நாணயங்கள் இங்கேயே இருக்க, உங்கள் தொலைபேசியிலிருந்து செலவிடுங்கள். தொலைபேசியில் நாணய விசைகள் இல்லை: அது இந்த முனையை அடைந்து, இணைக்கப்பட்ட விசையை நிரூபிக்கிறது, இந்த முனை ஒரு சிறிய கைச்செலவு வாலட்டிலிருந்து செலுத்துகிறது — தொலைபேசியின் PIN ஐயும் நீங்கள் அமைத்த, தொலைபேசியால் மாற்ற முடியாத வரம்புகளையும் சரிபார்த்த பிறகு. தொலைபேசியை இழந்தால், கைச்செலவில் உள்ளதை மட்டுமே அதிகபட்சம் இழப்பீர்கள்; இங்கே இணைப்பை நீக்கவும். இந்த முனை பட்டியலிடப்பட்ட ரிலேயாகவும் போதுமான பிறவும் பட்டியலிடப்பட்டும் இருக்கும்போது, தொலைபேசி மூன்று ரிலேக்கள் வழியாக வருகிறது, எனவே கவனிக்கும் யாரும் அது எங்கே என்று அறிவதில்லை; இல்லையெனில் அது நேரடியாக இங்கே இணைகிறது.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>கைச்செலவு</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>தொலைபேசிகளால் அடையக்கூடியது</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>தொலைபேசி</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>ஒரு கட்டணம்</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>ஒரு நாள்</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>இன்று செலவிட்டது</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>நிலை</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>ஒரு தொலைபேசியை இணை…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>வரம்புகள்…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>திற</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>தொடர்ந்து ஐந்து தவறான PIN களுக்குப் பிறகு தொலைபேசி பூட்டப்படும், இங்கே திறக்கப்படும் வரை.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>இணைப்பை நீக்கு</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>இணைக்கப்பட்ட தொலைபேசிகள் கைச்செலவு வாலட்டிலிருந்து செலவிட அனுமதி</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>மேலடுக்கு தேவை. இயல்பாக அணைக்கப்பட்டுள்ளது, ஏனெனில் இது ஒரு தொலைபேசி இந்த முனையின் நாணயங்களைச் செலவிட அனுமதிக்கிறது.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>தனி வாலட், கடவுச்சொற்றொடர் இல்லாமல் — தொலைபேசி செலுத்தும்போது அதைத் தட்டச்சு செய்ய யாரும் இருக்கமாட்டார்கள் — தொலைபேசி செலவிட வேண்டியது மட்டுமே அதில் இருக்கும். இது ஒருபோதும் ஸ்டேக் செய்யாது, பட்டியலிடல்களுக்குப் பணம் செலுத்தும் வாலட்டாகவும் இருக்க முடியாது.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>உருவாக்கு</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>கைச்செலவு வாலட்டை உருவாக்கி, இந்த முனை தொடங்கும் ஒவ்வொரு முறையும் அதைத் திற.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>நிரப்பு…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>கைச்செலவுக்கு நாணயங்களை நகர்த்த, வாலட்டில் அனுப்பு என்பதைத் திற.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>கைச்செலவு வாலட்</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, மேலும் %1 வந்துகொண்டிருக்கிறது</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>ஆம், %1 இல், ரிலேக்கள் வழியாக</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>நேரடியாக, %1 இல். இடையில் ரிலேக்கள் இல்லை: தொலைபேசியின் நெட்வொர்க் அது இந்தக் கணினியுடன் பேசுவதைப் பார்க்கிறது. இந்த நெட்வொர்க்குக்கு வெளியிலிருந்து, ரவுட்டரில் UDP போர்ட் %2 ஐ இந்தக் கணினிக்கு முன்னனுப்பவும்.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>இல்லை — இந்த முனைக்குத் தன் சொந்த முகவரி இன்னும் தெரியாது</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>அடைய முடியாது</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>ஒரு தொலைபேசி காத்திருக்கிறது</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>கைச்செலவு இல்லை</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>ஒரு தொலைபேசி பூட்டப்பட்டுள்ளது</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 தொலைபேசிகள் பூட்டப்பட்டுள்ளன</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>இயங்குகிறது, இன்னும் தொலைபேசி இல்லை</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>இயங்குகிறது, 1 தொலைபேசி</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>இயங்குகிறது, %1 தொலைபேசிகள்</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>சாதன விசை %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>பூட்டப்பட்டது: தவறான PIN கள்</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>இணைக்கப்பட்டது</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>%1 இன் இணைப்பை நீக்கு</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>%1 இன் இணைப்பை நீக்கவா? மீண்டும் இணைக்கப்படும் வரை அது செலவிட முடியாது. தொலைபேசி தொலைந்தாலோ திருடப்பட்டாலோ உடனே இதைச் செய்யவும்.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>கைச்செலவு வாலட் உருவாக்கப்பட்டுத் திறக்கப்பட்டது. தொலைபேசி செலவிட வேண்டியதை அதில் நகர்த்த நிரப்பு என்பதைப் பயன்படுத்தவும்.</translation>
     </message>
 </context>
 <context>
@@ -5358,6 +5868,30 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>முனை இன்னும் தொடங்குகிறது; முக்கிய அமைப்புகள் இன்னும் கிடைக்கவில்லை.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>பதிவேட்டிலிருந்து கணக்கிடப்பட்ட ரிலேக்களில் மற்றவர்கள் உங்களைச் சந்திக்கின்றனர், உங்கள் முனை இத்தனை ரிலேக்கள் வழியாக ஒவ்வொன்றுக்கும் ஒரு பாதையைத் திறந்து வைக்கிறது. சந்திப்புப் புள்ளி அவற்றில் கடைசியை மட்டுமே பார்க்கிறது, உங்கள் முகவரியை ஒருபோதும் இல்லை. அதிகம் என்றால் உங்களை நன்றாக மறைக்கும், மெதுவாக இருக்கும்.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>உங்கள் சந்திப்புப் புள்ளிகளுக்கு முன் ரிலேக்கள்</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>இந்தக் கணினி நெட்வொர்க்கின் இணையத்தைப் பயன்படுத்தும்போது, ஒவ்வொரு இணைப்பும் இத்தனை ரிலேக்கள் வழியாக ஒரு நுழைவாயிலின் சந்திப்புப் புள்ளிக்குச் செல்கிறது, பின்னர் நுழைவாயிலின் சொந்த ரிலேக்கள் வழியாக: நீங்கள் யார் என்று நுழைவாயில் ஒருபோதும் அறிவதில்லை. அதிகம் என்றால் உங்களை நன்றாக மறைக்கும், மெதுவாக இருக்கும்.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>நுழைவாயிலின் சந்திப்புப் புள்ளிக்கு முன் ரிலேக்கள்</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>உங்கள் முதல் இணைப்பு மட்டுமே நேரடியானது, உங்கள் முகவரியைப் பார்க்கும், நீங்கள் யார் என்று அறியாத நுழைவு ரிலேக்கு. அஞ்சல் எப்போதும் மூன்று ரிலேக்கள் வழியாகச் செல்கிறது.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>பதிப்பு %1</translation>
     </message>
 </context>
 <context>
@@ -5520,6 +6054,147 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>The signature given when the message was signed</source>
         <translation>செய்தி கையொப்பமிடப்பட்டபோது தரப்பட்ட கையொப்பம்</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>தளங்கள்</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>மேலடுக்கில் ஹோஸ்ட் செய்யப்பட்ட தளங்கள், யாரோ உங்களுடன் பகிர்ந்த பெயர் அல்லது விசையால் திறக்கப்படுபவை. பக்கங்கள் இங்கே ஸ்கிரிப்ட்கள் இல்லாமல் காட்டப்படுகின்றன, அவற்றில் எதுவும் BPS க்கு வெளியிலிருந்து எடுக்கப்படுவதில்லை, எனவே நீங்கள் எங்கே இருக்கிறீர்கள் என்று பக்கத்தால் அறிய முடியாது.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>பின்</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>முன்</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>பக்கத்தை மீண்டும் பெறு</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://பெயர்/ அல்லது தளத்தின் விசை</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>திற</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>இந்தக் கோப்பைச் சேமி…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>உங்கள் உலாவியில் திற</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>அதே தளம் ஒரு சாதாரண உலாவியில், இந்தக் கணினியில் மட்டும் உள்ள சேவையகம் வழியாக. அங்குள்ள பக்கங்கள் ஸ்கிரிப்ட்களை இயக்கலாம், எனவே மறைந்த தளத்தைப் படிக்க இங்குள்ள பார்வையாளரே பாதுகாப்பான வழியாக இருக்கும்.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>ஒரு நிரலுடன் இணை…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>இந்தத் தளம் இயக்கும் நிரலை — அரட்டைச் சேவையகம், விளையாட்டு — இந்தக் கணினியில் உள்ள நிரலிலிருந்து அடையுங்கள்: BPS Relay இங்கே ஒரு போர்ட்டில் கேட்டு, ஒவ்வொரு இணைப்பையும் மேலடுக்கு வழியாக அதற்குக் கொண்டுசெல்கிறது.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>அது தளத்தின் முகவரி அல்ல. ஒரு பெயர் அல்லது விசையை எழுதவும், எ.கா. bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>%1 தேடப்படுகிறது…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>மேலடுக்கு வழியாக %1 பெறப்படுகிறது…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 இந்தப் பார்வையாளர் காட்டும் பக்கம் அல்ல (%2 பைட்டுகள்). வேறு நிரலில் திறக்க அதைச் சேமிக்கவும்.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>இந்தக் கணினியில் உள்ள நிரலை %1 க்குச் சுட்டவும்: அங்கே உருவாகும் ஒவ்வொரு இணைப்பையும் BPS Relay மேலடுக்கு வழியாகத் தளத்தின் நிரலுக்குக் கொண்டுசெல்லும், அது மறுதொடக்கம் செய்யும் வரை.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>உலாவிகளுக்கான தளச் சேவையகம் இயங்கவில்லை. -siteproxy=0 கொடுக்கப்படாவிட்டால் இது BPS Relay உடன் தொடங்கும்.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 எந்த விசைக்கும் செல்லவில்லை.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>நீங்கள் கடைசியாகத் திறந்தபோது இருந்ததைவிட வேறு விசையை %1 இப்போது சுட்டுகிறது. இப்போது பெயரை வைத்திருப்பவர் நீங்கள் முன்பு படித்தவராக இல்லாமல் இருக்கலாம்.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>அதன் சந்திப்புப் புள்ளிகளில் ஒன்றில் சந்திக்கப்பட்டது, உங்கள் %1 ரிலேக்கள் வழியாக: நீங்களோ ஹோஸ்டோ மற்றவர் எங்கே என்று அறிவதில்லை.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>அதன் முகவரியில் %1 ரிலேக்கள் வழியாக அடையப்பட்டது: நீங்கள் யார் என்று ஹோஸ்ட் அறிவதில்லை.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>உங்கள் சொந்தத் தளம், இந்தக் கணினியிலிருந்து படிக்கப்பட்டது.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>இது ரேடியோ வழியாக அடையப்படுகிறது, எனவே பக்கங்கள் மெதுவாக வரும்.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 இந்த முனைக்குத் தெரிந்த பெயர் அல்ல: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>%1 ஐத் திறக்க முடியவில்லை: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>இந்த இணைப்பு BPS க்கு வெளியே செல்கிறது, எனவே அது பின்தொடரப்படவில்லை: %1
+விரும்பினால் சாதாரண உலாவியில் அதைத் திறக்கவும்; அதை இயக்குபவர் உங்கள் முகவரியைப் பார்ப்பார்.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>ஒரு நிரலுடன் இணை</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>தளம் தன் நிரலுக்குக் கொடுத்த பெயர்:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>உங்கள் உலாவியில் ஒரு தளத்தைத் திறத்தல்</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>உங்கள் உலாவி இந்தக் கணினியிடம் தளத்தைக் கேட்கும், BPS Relay இங்கே செய்வது போலவே மேலடுக்கு வழியாக அதைப் பெறும். ஒவ்வொரு பக்கமும் தன் சொந்தத் தளத்திலிருந்து மட்டுமே ஏற்ற முடியும், எனவே நீங்கள் எங்கே இருக்கிறீர்கள் என்று அறியத் திறந்த இணையத்திலிருந்து எதையும் இழுக்க முடியாது.
+
+உலாவி இன்னும் செய்யக்கூடியது: ஒரு ஸ்கிரிப்ட் WebRTC ஐப் பயன்படுத்தி இந்தக் கணினியின் முகவரிகளை ஒரு பக்கத்துக்குக் காட்டலாம், மேலும் சாதாரணத் தளத்துக்கு நீங்கள் பின்தொடரும் இணைப்பு எந்த இணைப்பையும் போலவே வெளியேறும். BPS Relay இல் உள்ள பார்வையாளர் ஸ்கிரிப்ட்களை இயக்குவதில்லை, மறைந்த தளத்தைப் படிக்கப் பாதுகாப்பான வழியாகவே இருக்கும்.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>கோப்பைச் சேமி</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>%1 ஐச் சேமிக்க முடியவில்லை.</translation>
     </message>
 </context>
 <context>

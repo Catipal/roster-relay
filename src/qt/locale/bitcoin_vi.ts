@@ -1109,6 +1109,10 @@ Chỉ có thể ký với các địa chỉ loại &apos;legacy&apos;.</translat
         <source>Not staking</source>
         <translation>Không staking</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>Trang web</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1263,6 +1267,92 @@ Chỉ có thể ký với các địa chỉ loại &apos;legacy&apos;.</translat
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>đã ủy thác cho %1 để staking lạnh</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>Giới hạn cho %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>Điện thoại này được tiêu bao nhiêu từ ví tiền tiêu vặt, tính cả phí.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Tối đa trong một lần thanh toán</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Tối đa trong 24 giờ bất kỳ</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>Ghép đôi điện thoại</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>Trong ứng dụng BPS trên điện thoại, chọn Ghép đôi và quét mã này. Hoặc sao chép đoạn văn bản bên dưới vào ứng dụng. Mã dùng được một lần, trong mười phút.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>Sao chép mã</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>Hiện mã mới</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>Chỉ ghép đôi nếu điện thoại hiện đúng sáu chữ số này. Nếu hiện số khác, người khác đã trả lời mã trước: từ chối và hiện mã mới.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>Điện thoại này được tiêu bao nhiêu từ ví tiền tiêu vặt. Sau này chỉ nút này đổi được, điện thoại thì không bao giờ.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Tối đa trong một lần thanh toán</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Tối đa trong 24 giờ bất kỳ</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>Từ chối</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>Ghép đôi điện thoại này</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>Đang tạo mã…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>Mã này đã hết hạn.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>Đang chờ điện thoại… mã còn dùng được %1 phút.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>Bản dựng này không vẽ được mã QR: hãy sao chép đoạn văn bản bên dưới vào ứng dụng.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>Một điện thoại tên “%1” muốn ghép đôi với nút này.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>Đã ghép đôi. Điện thoại giờ có thể tiêu từ ví tiền tiêu vặt trong giới hạn bạn đặt. Danh sách của nó ở trang Máy chủ, nơi bạn có thể đổi giới hạn, mở khóa sau quá nhiều lần nhập sai PIN, hoặc hủy ghép đôi.</translation>
     </message>
 </context>
 <context>
@@ -1438,7 +1528,7 @@ Chỉ có thể ký với các địa chỉ loại &apos;legacy&apos;.</translat
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>Tìm nút ngang hàng hoặc địa chỉ</translation>
+        <translation type="vanished">Tìm nút ngang hàng hoặc địa chỉ</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1575,6 +1665,38 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>Các nút ngang hàng tự công bố trên chuỗi chứ không phải trên máy chủ, nên danh sách này giống nhau với mọi người và không ai chỉnh sửa được. Nút ngang hàng niêm yết qua mạng phủ cho thấy hôm nay có thể gặp nó ở đâu, điều này thay đổi mỗi ngày; trạm chuyển tiếp chỉ hiện địa chỉ khi đang trực tuyến, vì địa chỉ đó không bao giờ có trên chuỗi.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Tên</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>Đăng ký tên…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>Tên là cách người khác tìm đến bạn mà không cần sao chép khóa của bạn. Tên được đăng ký ở thẻ Tên.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>Tìm nút ngang hàng, ghi chú hoặc địa chỉ</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>Tất cả các tên này đều trỏ đến khóa của nút này. Người khác có thể tìm đến bạn qua bất kỳ tên nào.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>Quản lý tên…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>tên đang tắt</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>Tên cần chỉ mục tên. Bật nó trong Cài đặt để đăng ký và hiển thị tên.</translation>
     </message>
 </context>
 <context>
@@ -3200,15 +3322,15 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>Việc này ghi một bản ghi ngắn lên chuỗi nói rằng bạn tồn tại, và nếu muốn, nơi có thể tìm bạn.</translation>
+        <translation type="vanished">Việc này ghi một bản ghi ngắn lên chuỗi nói rằng bạn tồn tại, và nếu muốn, nơi có thể tìm bạn.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>Các nút ngang hàng nên liên lạc với bạn thế nào?</translation>
+        <translation type="vanished">Các nút ngang hàng nên liên lạc với bạn thế nào?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>Qua mạng phủ — không công bố địa chỉ</translation>
+        <translation type="vanished">Qua mạng phủ — không công bố địa chỉ</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3216,35 +3338,35 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>Tại một địa chỉ tôi công bố</translation>
+        <translation type="vanished">Tại một địa chỉ tôi công bố</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>địa chỉ các nút ngang hàng khác có thể liên lạc</translation>
+        <translation type="vanished">địa chỉ các nút ngang hàng khác có thể liên lạc</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>Ai cũng có thể thấy nó, và chuỗi lưu giữ nó mãi mãi. Địa chỉ onion công bố một vị trí không ai truy ngược được về bạn và hoạt động được sau NAT; địa chỉ IP không làm được điều nào. Một nút công bố địa chỉ IP có thể được người khác chọn làm trạm chuyển tiếp.</translation>
+        <translation type="vanished">Ai cũng có thể thấy nó, và chuỗi lưu giữ nó mãi mãi. Địa chỉ onion công bố một vị trí không ai truy ngược được về bạn và hoạt động được sau NAT; địa chỉ IP không làm được điều nào. Một nút công bố địa chỉ IP có thể được người khác chọn làm trạm chuyển tiếp.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3288,7 +3410,7 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>Nút của bạn ký niêm yết và gửi nó qua mạng phủ đến trạm chuyển tiếp mà nó đi vào. Một trạm chuyển tiếp trả phí niêm yết sẽ đưa niêm yết của bạn vào một khối do chính nó staking, nên nó được xác nhận dù phần lớn các nút không chuyển tiếp, và thêm bạn vào các nút ngang hàng mà nó chia phần thưởng. Nếu sau này nó ngừng trả, niêm yết của bạn hết hạn trong tháng; bạn luôn có thể tự gia hạn từ một ví có tiền.</translation>
+        <translation type="vanished">Nút của bạn ký niêm yết và gửi nó qua mạng phủ đến trạm chuyển tiếp mà nó đi vào. Một trạm chuyển tiếp trả phí niêm yết sẽ đưa niêm yết của bạn vào một khối do chính nó staking, nên nó được xác nhận dù phần lớn các nút không chuyển tiếp, và thêm bạn vào các nút ngang hàng mà nó chia phần thưởng. Nếu sau này nó ngừng trả, niêm yết của bạn hết hạn trong tháng; bạn luôn có thể tự gia hạn từ một ví có tiền.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3304,11 +3426,11 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>Nhập một địa chỉ, hoặc chọn không công bố địa chỉ nào.</translation>
+        <translation type="vanished">Nhập một địa chỉ, hoặc chọn không công bố địa chỉ nào.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>Đang nhờ trạm chuyển tiếp của bạn công bố… việc này có thể mất đến nửa phút.</translation>
+        <translation type="vanished">Đang nhờ trạm chuyển tiếp của bạn công bố… việc này có thể mất đến nửa phút.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3340,11 +3462,11 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>Đăng ký cổng của trạm chuyển tiếp này</translation>
+        <translation type="vanished">Đăng ký cổng của trạm chuyển tiếp này</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>Bản đăng ký của một trạm chuyển tiếp chứa địa chỉ của nó, nên cổng của nó được đăng ký bằng một khóa thứ hai không có địa chỉ, tách riêng. Không ai có thể biết từ sổ đăng ký rằng hai khóa thuộc cùng một máy tính. Khách truy cập đến cổng qua các trạm chuyển tiếp, nên cổng không bao giờ biết họ là ai; các trang web họ truy cập thấy địa chỉ của máy tính này.</translation>
+        <translation type="vanished">Bản đăng ký của một trạm chuyển tiếp chứa địa chỉ của nó, nên cổng của nó được đăng ký bằng một khóa thứ hai không có địa chỉ, tách riêng. Không ai có thể biết từ sổ đăng ký rằng hai khóa thuộc cùng một máy tính. Khách truy cập đến cổng qua các trạm chuyển tiếp, nên cổng không bao giờ biết họ là ai; các trang web họ truy cập thấy địa chỉ của máy tính này.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3360,11 +3482,11 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>Một trạm chuyển tiếp khác trả, được nhờ qua các trạm chuyển tiếp</translation>
+        <translation type="vanished">Một trạm chuyển tiếp khác trả, được nhờ qua các trạm chuyển tiếp</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>Nút của bạn ký niêm yết của cổng và gửi nó qua các trạm chuyển tiếp đến một trạm chuyển tiếp khác, trạm này trả phí và đưa nó vào một khối do chính nó staking. Trạm đó biết khóa của cổng và không bao giờ biết địa chỉ của máy tính này. Trả từ ví riêng của nút này sẽ gắn cổng với trạm chuyển tiếp này trên chuỗi, và do đó với địa chỉ của nó.</translation>
+        <translation type="vanished">Nút của bạn ký niêm yết của cổng và gửi nó qua các trạm chuyển tiếp đến một trạm chuyển tiếp khác, trạm này trả phí và đưa nó vào một khối do chính nó staking. Trạm đó biết khóa của cổng và không bao giờ biết địa chỉ của máy tính này. Trả từ ví riêng của nút này sẽ gắn cổng với trạm chuyển tiếp này trên chuỗi, và do đó với địa chỉ của nó.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3380,7 +3502,7 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>Bản niêm yết của bạn cho biết bạn là ai chứ không cho biết bạn chạy ở đâu. Các nút ngang hàng tới bạn qua mạng phủ và gặp bạn tại những điểm mà hai bên tính ra từ danh bạ, thay đổi mỗi ngày; Khám phá hiện các điểm của hôm nay. Bản niêm yết của bạn cũng nêu một trạm chuyển tiếp nơi có thể gặp bạn chừng nào nó còn hiệu lực, và mỗi lần gia hạn nêu một trạm mới. Đây là thiết lập mặc định của ứng dụng này.</translation>
+        <translation type="vanished">Bản niêm yết của bạn cho biết bạn là ai chứ không cho biết bạn chạy ở đâu. Các nút ngang hàng tới bạn qua mạng phủ và gặp bạn tại những điểm mà hai bên tính ra từ danh bạ, thay đổi mỗi ngày; Khám phá hiện các điểm của hôm nay. Bản niêm yết của bạn cũng nêu một trạm chuyển tiếp nơi có thể gặp bạn chừng nào nó còn hiệu lực, và mỗi lần gia hạn nêu một trạm mới. Đây là thiết lập mặc định của ứng dụng này.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3400,15 +3522,59 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>Nút này chia sẻ kết nối internet như một cổng, theo thiết lập ở trang Máy chủ, nên bản niêm yết nói vậy.</translation>
+        <translation type="vanished">Nút này chia sẻ kết nối internet như một cổng, theo thiết lập ở trang Máy chủ, nên bản niêm yết nói vậy.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>Nút này không chuyển tiếp cho người khác và cũng không chia sẻ kết nối internet, theo thiết lập ở trang Máy chủ.</translation>
+        <translation type="vanished">Nút này không chuyển tiếp cho người khác và cũng không chia sẻ kết nối internet, theo thiết lập ở trang Máy chủ.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>Thay đổi ở đó sẽ tới danh bạ cùng bản niêm yết tiếp theo của bạn.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>Thao tác này ghi lên chuỗi một bản ghi ngắn nói rằng bạn tồn tại, và tùy chọn một dòng về bạn.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>Niêm yết của bạn nói gì</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>Niêm yết của bạn cho biết bạn là ai chứ không phải bạn chạy ở đâu: nó không chứa địa chỉ nào. Các nút ngang hàng tìm đến bạn qua mạng phủ, gặp bạn tại các điểm mà cả hai bên tính ra từ danh bạ và thay đổi mỗi ngày; Khám phá hiển thị các điểm hôm nay. Niêm yết của bạn cũng nêu một trạm chuyển tiếp nơi có thể gặp bạn chừng nào nó còn hiệu lực, và mỗi lần gia hạn nêu một trạm mới.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>Ghi chú</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>tùy chọn: một dòng hiện bên cạnh khóa của bạn</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>Ai cũng đọc được, và chuỗi giữ nó mãi mãi, kể cả sau khi niêm yết kết thúc. Hãy bỏ qua bất cứ điều gì cho biết bạn ở đâu hay bạn là ai, nếu điều đó quan trọng với bạn.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Nút của bạn ký niêm yết và gửi nó qua một đường dẫn đến một trạm chuyển tiếp mà nó không đi vào qua đó, nên trạm đó biết bạn là ai chứ không biết bạn ở đâu. Một trạm chuyển tiếp trả phí cho niêm yết sẽ đưa niêm yết của bạn vào một khối do chính nó stake, nên nó được xác nhận ngay cả khi phần lớn các nút sẽ không chuyển tiếp nó, và thêm bạn vào các nút ngang hàng mà nó chia phần thưởng. Nếu sau đó nó ngừng trả, niêm yết của bạn hết hạn trong tháng; bạn luôn có thể tự gia hạn từ một ví có tiền.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 byte</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>Quá dài: chữ cái ngoài tiếng Anh đơn giản chiếm từ hai đến bốn byte mỗi chữ.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>Ghi chú quá dài.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>Ghi chú không được chứa ký tự điều khiển hay dấu làm đổi hướng văn bản.</translation>
     </message>
 </context>
 <context>
@@ -3576,6 +3742,14 @@ Bạn sẽ được xem khóa khôi phục một lần. Hãy ghi lại: đó là
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>Nhập một địa chỉ BitcoinPoS (ví dụ %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>Hãy đặt cả hai giới hạn.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>Một lần thanh toán không thể được phép nhiều hơn cả một ngày.</translation>
     </message>
 </context>
 <context>
@@ -4276,6 +4450,14 @@ tính ra từ danh bạ; chúng thay đổi mỗi ngày:</translation>
         <source>meets at %1</source>
         <translation>gặp tại %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>Ghi chú</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>Do người giữ khóa này viết; không ai kiểm tra nó.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4757,7 +4939,7 @@ Lưu ý: Vì phí được tính trên cơ sở mỗi byte, nên phí &quot;100 
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>Một trang hoặc dịch vụ được phục vụ từ nút này, tìm được qua khóa hoặc tên và truy cập qua mạng phủ, nên máy chủ không bao giờ công bố nơi nó chạy. Phần gặp gỡ đã có: dịch vụ đăng ký tại các điểm hẹn mà cả hai bên tính ra từ danh bạ. Việc phục vụ trang và ứng dụng qua nó chưa được xây dựng.</translation>
+        <translation type="vanished">Một trang hoặc dịch vụ được phục vụ từ nút này, tìm được qua khóa hoặc tên và truy cập qua mạng phủ, nên máy chủ không bao giờ công bố nơi nó chạy. Phần gặp gỡ đã có: dịch vụ đăng ký tại các điểm hẹn mà cả hai bên tính ra từ danh bạ. Việc phục vụ trang và ứng dụng qua nó chưa được xây dựng.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4981,7 +5163,7 @@ Bạn có thể thay đổi điều này bất cứ lúc nào ở trang Máy ch�
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Những gì nút này cung cấp cho người khác. Chuyển tiếp, giữ thư và chia sẻ internet đã chạy; lưu trữ trang web đang đến, và như mọi thứ ở đây, nó được tìm thấy giống như các nút ngang hàng — qua sổ đăng ký. Tên có trang riêng.</translation>
+        <translation type="vanished">Những gì nút này cung cấp cho người khác. Chuyển tiếp, giữ thư và chia sẻ internet đã chạy; lưu trữ trang web đang đến, và như mọi thứ ở đây, nó được tìm thấy giống như các nút ngang hàng — qua sổ đăng ký. Tên có trang riêng.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -4997,7 +5179,7 @@ Bạn có thể thay đổi điều này bất cứ lúc nào ở trang Máy ch�
     </message>
     <message>
         <source>Listed as</source>
-        <translation>Đã đăng ký là</translation>
+        <translation type="vanished">Đã đăng ký là</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5009,15 +5191,15 @@ Bạn có thể thay đổi điều này bất cứ lúc nào ở trang Máy ch�
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>Đăng ký làm cổng…</translation>
+        <translation type="vanished">Đăng ký làm cổng…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Chia sẻ kết nối internet của máy tính này làm cổng</translation>
+        <translation type="vanished">Chia sẻ kết nối internet của máy tính này làm cổng</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>Hãy tắt nếu luật nơi bạn sống hoặc điều khoản của nhà cung cấp internet cấm chia sẻ kết nối. Khi tắt, nút này vẫn chuyển tiếp, giữ thư và theo chuỗi, và dùng trực tiếp kết nối của chính nó.</translation>
+        <translation type="vanished">Hãy tắt nếu luật nơi bạn sống hoặc điều khoản của nhà cung cấp internet cấm chia sẻ kết nối. Khi tắt, nút này vẫn chuyển tiếp, giữ thư và theo chuỗi, và dùng trực tiếp kết nối của chính nó.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5033,11 +5215,11 @@ Bạn có thể thay đổi điều này bất cứ lúc nào ở trang Máy ch�
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>Cho phép các chương trình trên máy tính này dùng internet của mạng qua một proxy cục bộ</translation>
+        <translation type="vanished">Cho phép các chương trình trên máy tính này dùng internet của mạng qua một proxy cục bộ</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>Một proxy SOCKS5 chỉ cho máy tính này. Mỗi kết nối đi ra qua cổng của một thành viên khác, và tên được tra cứu ở đó, không bao giờ ở đây. Nó hoạt động khi máy tính này chia sẻ kết nối của chính mình.</translation>
+        <translation type="vanished">Một proxy SOCKS5 chỉ cho máy tính này. Mỗi kết nối đi ra qua cổng của một thành viên khác, và tên được tra cứu ở đó, không bao giờ ở đây. Nó hoạt động khi máy tính này chia sẻ kết nối của chính mình.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5073,27 +5255,27 @@ Bạn có thể thay đổi điều này bất cứ lúc nào ở trang Máy ch�
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>chưa đăng ký làm cổng</translation>
+        <translation type="vanished">chưa đăng ký làm cổng</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>chưa — sổ đăng ký không ghi nút này là cổng, nên không ai tìm thấy nó</translation>
+        <translation type="vanished">chưa — sổ đăng ký không ghi nút này là cổng, nên không ai tìm thấy nó</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>chưa có gì — trạm chuyển tiếp đăng ký cổng bằng khóa thứ hai, không có địa chỉ, tách khỏi bản đăng ký của chính nó</translation>
+        <translation type="vanished">chưa có gì — trạm chuyển tiếp đăng ký cổng bằng khóa thứ hai, không có địa chỉ, tách khỏi bản đăng ký của chính nó</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>chưa có gì — bản đăng ký của nút này thiếu tùy chọn cổng; hãy công bố lại với tùy chọn được bật</translation>
+        <translation type="vanished">chưa có gì — bản đăng ký của nút này thiếu tùy chọn cổng; hãy công bố lại với tùy chọn được bật</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>chưa có gì — hãy công bố một bản đăng ký không có địa chỉ với tùy chọn cổng được bật</translation>
+        <translation type="vanished">chưa có gì — hãy công bố một bản đăng ký không có địa chỉ với tùy chọn cổng được bật</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>Đăng ký cổng của trạm chuyển tiếp này…</translation>
+        <translation type="vanished">Đăng ký cổng của trạm chuyển tiếp này…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5113,11 +5295,11 @@ Bạn có thể thay đổi điều này bất cứ lúc nào ở trang Máy ch�
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>khóa cổng của nó %1, tách khỏi địa chỉ của trạm chuyển tiếp</translation>
+        <translation type="vanished">khóa cổng của nó %1, tách khỏi địa chỉ của trạm chuyển tiếp</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>khóa riêng của nút này %1</translation>
+        <translation type="vanished">khóa riêng của nút này %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5133,11 +5315,11 @@ Bạn có thể thay đổi điều này bất cứ lúc nào ở trang Máy ch�
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>Cho toàn bộ lưu lượng của máy tính này đi qua mạng, không cần cài proxy trong bất kỳ chương trình nào</translation>
+        <translation type="vanished">Cho toàn bộ lưu lượng của máy tính này đi qua mạng, không cần cài proxy trong bất kỳ chương trình nào</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>Các kết nối của mọi chương trình đi ra qua các cổng của mạng, mỗi kết nối qua một cổng khác, và tên được tra cứu ở đó. Mạng riêng của máy tính này — máy in, bộ định tuyến — và các kết nối riêng của nút này vẫn đi trực tiếp. Tính năng này hoạt động khi máy tính này chia sẻ kết nối của chính nó.</translation>
+        <translation type="vanished">Các kết nối của mọi chương trình đi ra qua các cổng của mạng, mỗi kết nối qua một cổng khác, và tên được tra cứu ở đó. Mạng riêng của máy tính này — máy in, bộ định tuyến — và các kết nối riêng của nút này vẫn đi trực tiếp. Tính năng này hoạt động khi máy tính này chia sẻ kết nối của chính nó.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5165,11 +5347,11 @@ Bạn có thể thay đổi điều này bất cứ lúc nào ở trang Máy ch�
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>Bật: hiện có %1 kết nối qua mạng; đã gửi %2, đã nhận %3.</translation>
+        <translation type="vanished">Bật: hiện có %1 kết nối qua mạng; đã gửi %2, đã nhận %3.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>Chưa có trên hệ thống này.</translation>
+        <translation type="vanished">Chưa có trên hệ thống này.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5181,7 +5363,7 @@ Bạn có thể thay đổi điều này bất cứ lúc nào ở trang Máy ch�
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>Bắt đầu khi khởi động lại ứng dụng.</translation>
+        <translation type="vanished">Bắt đầu khi khởi động lại ứng dụng.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5210,6 +5392,334 @@ Bạn có thể thay đổi điều này bất cứ lúc nào ở trang Máy ch�
     <message>
         <source>none — relaying is switched off</source>
         <translation>không có — chuyển tiếp đang tắt</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Những gì nút này cung cấp cho người khác: chuyển tiếp, giữ thư, chia sẻ internet và lưu trữ trang web; và cho điện thoại của chính bạn, một cách tiêu tiền từ đây. Như mọi thứ ở đây, nó được tìm thấy theo cùng cách với các nút ngang hàng — qua danh bạ. Tên có trang riêng.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>Chia sẻ kết nối internet của máy tính này, và đổi lại dùng kết nối của mạng</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>Khi bật, kết nối của máy tính này được chia sẻ, và toàn bộ lưu lượng của chính nó đi ra qua các cổng của mạng, mỗi kết nối qua một cổng khác; mạng riêng của máy tính này — máy in, bộ định tuyến — vẫn đi trực tiếp. Hãy tắt nếu luật nơi bạn sống, hoặc điều khoản của nhà cung cấp internet, cấm chia sẻ kết nối: khi đó mạng chỉ mang chính BPS, và máy tính này dùng kết nối của riêng nó.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Cho cả máy tính: bật, hiện có %1 kết nối qua mạng; đã gửi %2, đã nhận %3.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>Cho cả máy tính: chưa có trên hệ thống này; các chương trình có thể dùng proxy.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>Cho cả máy tính: bắt đầu khi ứng dụng khởi động lại.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>không chia sẻ</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>không — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>Công bố một thư mục thành trang web dưới khóa của nút này, để bất kỳ ai bạn đưa khóa hoặc tên của bạn đều đọc được qua mạng phủ. Mỗi tệp đều được ký và kiểm tra từng phần khi đến. Niêm yết không có địa chỉ, nút này được gặp tại các điểm gặp của nó và không ai biết trang web chạy ở đâu; niêm yết có địa chỉ, khách truy cập đến qua các trạm chuyển tiếp, nên nó không bao giờ biết họ là ai. Một chương trình trên máy tính này — ứng dụng web, máy chủ trò chuyện — có thể được công bố theo cùng cách: khách truy cập đến nó qua mạng phủ, và nút này chỉ kết nối đến cổng bạn chỉ định.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Thư mục</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>Lượt đến</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Đã gửi</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>không có</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>Các chương trình trên máy tính này mà khách truy cập đến qua mạng phủ. Chương trình tên web là thứ trình duyệt mở tại địa chỉ của nút này khi không có trang web.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>Chương trình</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>Công bố thư mục…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>Công bố lại</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>Đọc lại thư mục sau khi thay đổi, và công bố những gì đang có trong đó.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>Ngừng công bố</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>Mở trong Trang web</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>Công bố chương trình…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>Dừng chương trình…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>không công bố</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>không có — chưa công bố gì</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 tệp, %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>chưa niêm yết</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>chưa ai cả: nút này chưa niêm yết trong danh bạ, nên khách truy cập không tìm được trang web. Hãy công bố niêm yết ở trang Nút, mục Khám phá.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>đang công bố</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>chưa được gặp</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>tại %1 điểm gặp, không công bố địa chỉ</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>chưa: đang đăng ký tại các điểm gặp, việc này cần các trạm chuyển tiếp của danh bạ</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>tại địa chỉ của nút này, qua các trạm chuyển tiếp che giấu khách truy cập</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 phần trang, %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>Thư mục sẽ công bố thành trang web</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>Công bố chương trình</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>Tên cho nó, từ 1 đến 32 ký tự trong a-z, 0-9 và -. Đặt tên web cho ứng dụng web mà trình duyệt sẽ mở tại địa chỉ của nút này:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>Cổng nó lắng nghe, trên 127.0.0.1 (chỉ máy tính này):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>Dừng chương trình</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>Chương trình nào khách truy cập không còn đến được nữa:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 tại 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 luồng đang mở</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>Điện thoại đồng hành</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>Tiêu từ điện thoại trong khi tiền của bạn vẫn ở đây. Điện thoại không giữ khóa tiền nào: nó đến nút này, chứng minh khóa đã ghép đôi, và nút này trả từ một ví tiền tiêu vặt nhỏ — sau khi kiểm tra PIN của điện thoại và các giới hạn bạn đặt, mà điện thoại không thể thay đổi. Mất điện thoại thì bạn mất tối đa số tiền trong tiền tiêu vặt; hủy ghép đôi ở đây. Khi nút này là trạm chuyển tiếp đã niêm yết và có đủ trạm khác niêm yết, điện thoại đến qua ba trạm chuyển tiếp, nên không ai theo dõi biết nó ở đâu; nếu không, nó kết nối thẳng đến đây.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>Tiền tiêu vặt</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>Điện thoại truy cập được</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>Điện thoại</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>Một lần thanh toán</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>Một ngày</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>Đã tiêu hôm nay</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>Trạng thái</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>Ghép đôi điện thoại…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>Giới hạn…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>Mở khóa</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>Điện thoại bị khóa sau năm lần nhập sai PIN liên tiếp, cho đến khi được mở khóa ở đây.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>Hủy ghép đôi</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>Cho phép điện thoại đã ghép đôi tiêu từ ví tiền tiêu vặt</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>Cần mạng phủ. Mặc định tắt, vì nó cho phép điện thoại tiêu tiền của nút này.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>Một ví riêng, không có cụm mật khẩu — không ai ở đó để gõ khi điện thoại thanh toán — và chỉ chứa số tiền điện thoại được phép tiêu. Nó không bao giờ stake, và không thể là ví trả phí cho niêm yết.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>Tạo</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>Tạo ví tiền tiêu vặt và mở nó mỗi khi nút này khởi động.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>Nạp thêm…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>Mở Gửi trong ví, để chuyển tiền vào tiền tiêu vặt.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>Ví tiền tiêu vặt</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, thêm %1 đang đến</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>có, tại %1, qua các trạm chuyển tiếp</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>trực tiếp, tại %1. Không có trạm chuyển tiếp ở giữa: mạng của điện thoại thấy nó nói chuyện với máy tính này. Từ bên ngoài mạng này, hãy chuyển tiếp cổng UDP %2 trên bộ định tuyến đến máy tính này.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>không — nút này chưa biết địa chỉ nào của chính nó</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>không truy cập được</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>có điện thoại đang chờ</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>không có tiền tiêu vặt</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>có điện thoại bị khóa</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 điện thoại bị khóa</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>đang chạy, chưa có điện thoại</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>đang chạy, 1 điện thoại</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>đang chạy, %1 điện thoại</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>Khóa thiết bị %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>bị khóa: sai PIN</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>đã ghép đôi</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>Hủy ghép đôi %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>Hủy ghép đôi %1? Nó sẽ không thể tiêu nữa cho đến khi được ghép đôi lại. Hãy làm ngay nếu điện thoại bị mất hoặc bị đánh cắp.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>Đã tạo và mở ví tiền tiêu vặt. Dùng Nạp thêm để chuyển vào đó số tiền điện thoại được phép tiêu.</translation>
     </message>
 </context>
 <context>
@@ -5341,6 +5851,30 @@ Bạn có thể thay đổi điều này bất cứ lúc nào ở trang Máy ch�
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>Nút vẫn đang khởi động; cài đặt cốt lõi chưa sẵn sàng.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>Người khác gặp bạn tại các trạm chuyển tiếp tính ra từ danh bạ, và nút của bạn giữ một đường dẫn mở đến mỗi trạm qua chừng này trạm chuyển tiếp. Điểm gặp chỉ thấy trạm cuối cùng, không bao giờ thấy địa chỉ của bạn. Nhiều hơn thì che giấu bạn tốt hơn và chậm hơn.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>Số trạm chuyển tiếp trước điểm gặp của bạn</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>Khi máy tính này dùng internet của mạng, mỗi kết nối đi qua chừng này trạm chuyển tiếp đến điểm gặp của một cổng, và sau đó qua các trạm của chính cổng: cổng không bao giờ biết bạn là ai. Nhiều hơn thì che giấu bạn tốt hơn và chậm hơn.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>Số trạm chuyển tiếp trước điểm gặp của cổng</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>Chỉ kết nối đầu tiên của bạn là trực tiếp, đến một trạm chuyển tiếp đầu vào thấy địa chỉ của bạn chứ không biết bạn là ai. Thư luôn đi qua ba trạm chuyển tiếp.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Phiên bản %1</translation>
     </message>
 </context>
 <context>
@@ -5503,6 +6037,147 @@ Bạn có thể thay đổi điều này bất cứ lúc nào ở trang Máy ch�
     <message>
         <source>Message verified.</source>
         <translation>Message verified.</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>Trang web</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>Các trang web được lưu trữ trên mạng phủ, mở bằng tên hoặc khóa mà ai đó chia sẻ với bạn. Trang được hiển thị ở đây không có script, và không gì trên đó được tải từ bên ngoài BPS, nên trang không thể biết bạn ở đâu.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Quay lại</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Tiến tới</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>Tải lại trang</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://tên/ hoặc khóa của trang web</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Mở</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>Lưu tệp này…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>Mở trong trình duyệt</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>Cùng trang web đó trong một trình duyệt thông thường, qua một máy chủ chỉ trên máy tính này. Trang ở đó có thể chạy script, nên trình xem ở đây vẫn là cách an toàn hơn để đọc trang web ẩn.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>Kết nối với chương trình…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>Đến một chương trình mà trang web này chạy — máy chủ trò chuyện, trò chơi — từ một chương trình trên máy tính này: BPS Relay lắng nghe một cổng ở đây và mang mỗi kết nối đến đó qua mạng phủ.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>Đó không phải địa chỉ trang web. Hãy viết tên hoặc khóa, như bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>Đang tra cứu %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>Đang tải %1 qua mạng phủ…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 không phải trang mà trình xem này hiển thị (%2 byte). Hãy lưu nó để mở bằng chương trình khác.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>Trỏ chương trình trên máy tính này đến %1: BPS Relay mang mọi kết nối tạo ra ở đó đến chương trình của trang web, qua mạng phủ, cho đến khi khởi động lại.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>Máy chủ trang web cho trình duyệt không chạy. Nó khởi động cùng BPS Relay trừ khi có -siteproxy=0.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 không trỏ đến khóa nào.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 giờ trỏ đến một khóa khác so với lần cuối bạn mở. Người giữ tên lúc này có thể không phải người bạn đã đọc trước đây.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>Gặp tại một trong các điểm gặp của nó, qua %1 trạm chuyển tiếp của bạn: cả bạn và máy chủ đều không biết bên kia ở đâu.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>Đến tại địa chỉ của nó qua %1 trạm chuyển tiếp: máy chủ không biết bạn là ai.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>Trang web của chính bạn, đọc từ máy tính này.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>Nó được truy cập qua radio, nên trang đến chậm.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 không phải tên mà nút này biết: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>Không thể mở %1: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>Liên kết này dẫn ra ngoài BPS, nên không được mở: %1
+Hãy mở nó trong trình duyệt thông thường nếu bạn muốn; ai vận hành nó sẽ thấy địa chỉ của bạn.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>Kết nối với chương trình</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>Tên mà trang web đặt cho chương trình của nó:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>Mở trang web trong trình duyệt</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>Trình duyệt của bạn sẽ hỏi máy tính này về trang web, và BPS Relay tải nó qua mạng phủ, như ở đây. Mỗi trang chỉ được tải từ trang web của chính nó, nên không thể kéo gì từ internet mở để biết bạn ở đâu.
+
+Những gì trình duyệt vẫn làm được: một script có thể dùng WebRTC để cho trang thấy địa chỉ của máy tính này, và một liên kết bạn mở đến trang web thông thường sẽ đi ra như mọi liên kết. Trình xem trong BPS Relay không chạy script và vẫn là cách an toàn hơn để đọc trang web ẩn.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>Lưu tệp</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>Không thể lưu %1.</translation>
     </message>
 </context>
 <context>

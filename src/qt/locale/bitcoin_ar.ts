@@ -1140,6 +1140,10 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <source>Not staking</source>
         <translation>لا يوجد تخزين</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>المواقع</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1294,6 +1298,92 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>مفوَّض إلى %1 للتخزين البارد</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>حدود %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>ما يمكن لهذا الهاتف إنفاقه من محفظة المصروف، شاملًا الرسوم.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>الحد الأقصى في دفعة واحدة</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>الحد الأقصى في أي 24 ساعة</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>إقران هاتف</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>في تطبيق BPS على الهاتف، اختر إقران وامسح هذا الرمز. أو انسخ النص الذي تحته إلى التطبيق. يعمل مرة واحدة، لمدة عشر دقائق.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>نسخ الرمز</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>عرض رمز جديد</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>أقرِن فقط إذا عرض الهاتف الأرقام الستة نفسها. إن عرض غيرها، فقد أجاب شخص آخر على الرمز أولًا: ارفض واعرض رمزًا جديدًا.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>ما يمكن لهذا الهاتف إنفاقه من محفظة المصروف. لا يمكن تغييره لاحقًا إلا من هذه العقدة، وليس من الهاتف أبدًا.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>الحد الأقصى في دفعة واحدة</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>الحد الأقصى في أي 24 ساعة</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>رفض</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>إقران هذا الهاتف</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>جارٍ إنشاء رمز…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>انتهت صلاحية هذا الرمز.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>في انتظار الهاتف… يعمل الرمز %1 دقيقة أخرى.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>لا يستطيع هذا الإصدار رسم رموز QR: انسخ النص أدناه إلى التطبيق بدلًا من ذلك.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>هاتف باسم «%1» يريد الإقران مع هذه العقدة.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>تم الإقران. يمكن للهاتف الآن الإنفاق من محفظة المصروف ضمن الحدود التي وضعتها. قائمته في صفحة الخادم، حيث يمكنك تغيير حدوده، أو إلغاء قفله بعد كثرة أرقام PIN الخاطئة، أو إلغاء إقرانه.</translation>
     </message>
 </context>
 <context>
@@ -1469,7 +1559,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>البحث عن نظير أو عنوان</translation>
+        <translation type="vanished">البحث عن نظير أو عنوان</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1606,6 +1696,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>يعلن النظراء عن أنفسهم على السلسلة لا على خادم، لذا فهذه القائمة واحدة للجميع ولا يستطيع أحد تعديلها. ويُظهر النظير المُدرَج عبر الشبكة المتراكبة أين يمكن لقاؤه اليوم، وهو ما يتغيّر كل يوم؛ ولا يُظهر المرحِّل عنوانه إلا وهو متصل، لأنه لا يُكتب في السلسلة أبدًا.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>الاسم</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>تسجيل اسم…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>الاسم هو ما يصل به الآخرون إليك دون نسخ مفتاحك. تُسجَّل الأسماء في تبويب الأسماء.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>ابحث عن نظير أو ملاحظة أو عنوان</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>كل هذه الأسماء تؤدي إلى مفتاح هذه العقدة. يمكن للآخرين الوصول إليك بأي منها.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>إدارة الأسماء…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>الأسماء معطلة</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>تحتاج الأسماء إلى فهرس الأسماء. فعّله في الإعدادات لتسجيل اسم وعرضه.</translation>
     </message>
 </context>
 <context>
@@ -3246,15 +3368,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>يكتب هذا سجلًا قصيرًا على السلسلة يقول إنك موجود، واختياريًا أين يمكن العثور عليك.</translation>
+        <translation type="vanished">يكتب هذا سجلًا قصيرًا على السلسلة يقول إنك موجود، واختياريًا أين يمكن العثور عليك.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>كيف يصل إليك النظراء؟</translation>
+        <translation type="vanished">كيف يصل إليك النظراء؟</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>عبر الشبكة المتراكبة — دون نشر عنوان</translation>
+        <translation type="vanished">عبر الشبكة المتراكبة — دون نشر عنوان</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3262,35 +3384,35 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>على عنوان أنشره</translation>
+        <translation type="vanished">على عنوان أنشره</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>عنوان يمكن للنظراء الآخرين الوصول إليه</translation>
+        <translation type="vanished">عنوان يمكن للنظراء الآخرين الوصول إليه</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>يستطيع أي شخص رؤيته، وتحتفظ به السلسلة إلى الأبد. ينشر عنوان onion موقعًا لا يستطيع أحد تتبعه إليك ويعمل من خلف NAT؛ أما عنوان IP فلا يفعل أيًّا من ذلك. العقدة التي تنشر عنوان IP قد يختارها الآخرون مرحِّلًا.</translation>
+        <translation type="vanished">يستطيع أي شخص رؤيته، وتحتفظ به السلسلة إلى الأبد. ينشر عنوان onion موقعًا لا يستطيع أحد تتبعه إليك ويعمل من خلف NAT؛ أما عنوان IP فلا يفعل أيًّا من ذلك. العقدة التي تنشر عنوان IP قد يختارها الآخرون مرحِّلًا.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3334,7 +3456,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>توقّع عقدتك الإدراج وترسله عبر الشبكة المتراكبة إلى المرحِّل الذي تدخل منه. المرحِّل الذي يدفع مقابل الإدراجات يضع إدراجك في كتلة ينشئها بنفسه، فيتأكد حتى لو لم تمرره معظم العقد، ويضيفك إلى النظراء الذين يتقاسم معهم مكافآته. إذا توقف عن الدفع لاحقًا، ينتهي إدراجك خلال الشهر؛ ويمكنك دائمًا تجديده بنفسك من محفظة فيها رصيد.</translation>
+        <translation type="vanished">توقّع عقدتك الإدراج وترسله عبر الشبكة المتراكبة إلى المرحِّل الذي تدخل منه. المرحِّل الذي يدفع مقابل الإدراجات يضع إدراجك في كتلة ينشئها بنفسه، فيتأكد حتى لو لم تمرره معظم العقد، ويضيفك إلى النظراء الذين يتقاسم معهم مكافآته. إذا توقف عن الدفع لاحقًا، ينتهي إدراجك خلال الشهر؛ ويمكنك دائمًا تجديده بنفسك من محفظة فيها رصيد.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3350,11 +3472,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>أدخل عنوانًا، أو اختر عدم نشر أي عنوان.</translation>
+        <translation type="vanished">أدخل عنوانًا، أو اختر عدم نشر أي عنوان.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>جارٍ طلب النشر من مرحِّلك… قد يستغرق ذلك حتى نصف دقيقة.</translation>
+        <translation type="vanished">جارٍ طلب النشر من مرحِّلك… قد يستغرق ذلك حتى نصف دقيقة.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3386,11 +3508,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>قيّد بوابة هذا المرحِّل</translation>
+        <translation type="vanished">قيّد بوابة هذا المرحِّل</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>قيد المرحِّل يحمل عنوانه، لذلك تُقيَّد بوابته بمفتاح ثانٍ بلا عنوان، منفصلة عنه. لا أحد يستطيع أن يعرف من السجل أن الاثنين لحاسوب واحد. يصل الزوار إلى البوابة عبر مرحِّلات، فلا تعرف أبدًا من هم؛ والمواقع التي يزورونها ترى عنوان هذا الحاسوب.</translation>
+        <translation type="vanished">قيد المرحِّل يحمل عنوانه، لذلك تُقيَّد بوابته بمفتاح ثانٍ بلا عنوان، منفصلة عنه. لا أحد يستطيع أن يعرف من السجل أن الاثنين لحاسوب واحد. يصل الزوار إلى البوابة عبر مرحِّلات، فلا تعرف أبدًا من هم؛ والمواقع التي يزورونها ترى عنوان هذا الحاسوب.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3406,11 +3528,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>يدفع مرحِّل آخر، يُطلب منه عبر مرحِّلات</translation>
+        <translation type="vanished">يدفع مرحِّل آخر، يُطلب منه عبر مرحِّلات</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>توقّع عقدتك إدراج البوابة وترسله عبر مرحِّلات إلى مرحِّل آخر يدفع مقابله ويضعه في كتلة ينشئها بنفسه. يعرف ذلك المرحِّل مفتاح البوابة ولا يعرف أبدًا عنوان هذا الحاسوب. أما الدفع من محفظة هذه العقدة نفسها فسيربط البوابة بهذا المرحِّل على السلسلة، ومن ثم بعنوانه.</translation>
+        <translation type="vanished">توقّع عقدتك إدراج البوابة وترسله عبر مرحِّلات إلى مرحِّل آخر يدفع مقابله ويضعه في كتلة ينشئها بنفسه. يعرف ذلك المرحِّل مفتاح البوابة ولا يعرف أبدًا عنوان هذا الحاسوب. أما الدفع من محفظة هذه العقدة نفسها فسيربط البوابة بهذا المرحِّل على السلسلة، ومن ثم بعنوانه.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3426,7 +3548,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>يقول إدراجك من أنت لا أين تعمل. يصل إليك النظراء عبر الشبكة المتراكبة، فيلتقون بك عند نقاط يحسبها الطرفان من السجل وتتغيّر كل يوم؛ وتُظهر صفحة الاستكشاف نقاط اليوم. ويذكر إدراجك أيضًا مرحِّلًا واحدًا يمكن لقاؤك عنده ما دام الإدراج قائمًا، وكل تجديد يذكر مرحِّلًا جديدًا. هذا ما يفعّله هذا العميل افتراضيًا.</translation>
+        <translation type="vanished">يقول إدراجك من أنت لا أين تعمل. يصل إليك النظراء عبر الشبكة المتراكبة، فيلتقون بك عند نقاط يحسبها الطرفان من السجل وتتغيّر كل يوم؛ وتُظهر صفحة الاستكشاف نقاط اليوم. ويذكر إدراجك أيضًا مرحِّلًا واحدًا يمكن لقاؤك عنده ما دام الإدراج قائمًا، وكل تجديد يذكر مرحِّلًا جديدًا. هذا ما يفعّله هذا العميل افتراضيًا.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3446,15 +3568,59 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>هذه العقدة تشارك اتصالها بالإنترنت كبوابة، كما ضُبط في صفحة الخادم، لذا يقول الإدراج ذلك.</translation>
+        <translation type="vanished">هذه العقدة تشارك اتصالها بالإنترنت كبوابة، كما ضُبط في صفحة الخادم، لذا يقول الإدراج ذلك.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>هذه العقدة لا ترحِّل للآخرين ولا تشارك اتصالها بالإنترنت، كما ضُبط في صفحة الخادم.</translation>
+        <translation type="vanished">هذه العقدة لا ترحِّل للآخرين ولا تشارك اتصالها بالإنترنت، كما ضُبط في صفحة الخادم.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>أي تغيير هناك يصل إلى السجل مع إدراجك التالي.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>يكتب هذا في السلسلة سجلًا قصيرًا يقول إنك موجود، واختياريًا سطرًا عنك.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>ما يقوله إدراجك</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>يقول إدراجك من أنت وليس أين تعمل: لا يحمل أي عنوان. يصل إليك النظراء عبر الشبكة المتراكبة، ويلتقونك في نقاط يستنتجها الطرفان من السجل وتتغير كل يوم؛ ويعرض استكشاف نقاط اليوم. ويسمّي إدراجك أيضًا مرحِّلًا واحدًا يمكن لقاؤك عنده ما دام قائمًا، وكل تجديد يسمّي مرحِّلًا جديدًا.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>ملاحظة</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>اختياري: سطر يُعرض بجانب مفتاحك</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>يمكن لأي شخص قراءتها، وتحتفظ بها السلسلة إلى الأبد، حتى بعد انتهاء الإدراج. اترك كل ما يدل على مكانك أو هويتك، إن كان ذلك يهمك.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>توقّع عقدتك الإدراج وترسله عبر مسار إلى مرحِّل لا تدخل من خلاله، فيعرف ذلك المرحِّل من أنت لا أين أنت. والمرحِّل الذي يدفع عن الإدراجات يضع إدراجك في كتلة يُجري لها التخزين (stake) بنفسه، فيُؤكَّد حتى لو كانت معظم العقد لن تمرره، ويضيفك إلى النظراء الذين يقاسمهم مكافآته. وإن توقف لاحقًا عن الدفع، ينقضي إدراجك خلال الشهر؛ ويمكنك دائمًا تجديده بنفسك من محفظة فيها رصيد.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 بايت</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>طويلة جدًا: الحروف خارج الإنجليزية البسيطة يأخذ كل منها من بايتين إلى أربعة.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>الملاحظة طويلة جدًا.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>لا يمكن أن تحتوي الملاحظة على أحرف تحكم أو علامات تغيّر اتجاه النص.</translation>
     </message>
 </context>
 <context>
@@ -3652,6 +3818,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
             <numerusform>%n سنة</numerusform>
             <numerusform>%n سنة</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>اضبط الحدّين كليهما.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>لا يمكن السماح لدفعة واحدة بأكثر من يوم كامل.</translation>
     </message>
 </context>
 <context>
@@ -4344,6 +4518,14 @@ worked out from the roster; they change every day:</source>
         <source>meets at %1</source>
         <translation>يُلتقى عند %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>ملاحظة</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>كتبها من يملك هذا المفتاح؛ لا أحد يتحقق منها.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4830,7 +5012,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>موقع أو خدمة تُقدَّم من هذه العقدة، يُعثر عليها بمفتاحها أو اسمها ويُوصل إليها عبر الشبكة المتراكبة، فلا ينشر المضيف أبدًا مكان عمله. جزء الالتقاء موجود: تسجّل الخدمة عند نقاط التقاء يحسبها الطرفان من السجل. لم يُنجز بعد تقديم الصفحات والتطبيقات عبرها.</translation>
+        <translation type="vanished">موقع أو خدمة تُقدَّم من هذه العقدة، يُعثر عليها بمفتاحها أو اسمها ويُوصل إليها عبر الشبكة المتراكبة، فلا ينشر المضيف أبدًا مكان عمله. جزء الالتقاء موجود: تسجّل الخدمة عند نقاط التقاء يحسبها الطرفان من السجل. لم يُنجز بعد تقديم الصفحات والتطبيقات عبرها.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -5054,7 +5236,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>ما تقدمه هذه العقدة للآخرين. الترحيل وحفظ البريد ومشاركة الإنترنت تعمل اليوم؛ الاستضافة في الطريق، وكل شيء هنا يُعثر عليه بالطريقة نفسها التي يُعثر بها على النظراء — عبر السجل. للأسماء صفحة خاصة بها.</translation>
+        <translation type="vanished">ما تقدمه هذه العقدة للآخرين. الترحيل وحفظ البريد ومشاركة الإنترنت تعمل اليوم؛ الاستضافة في الطريق، وكل شيء هنا يُعثر عليه بالطريقة نفسها التي يُعثر بها على النظراء — عبر السجل. للأسماء صفحة خاصة بها.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -5070,7 +5252,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>مقيَّد بصفة</translation>
+        <translation type="vanished">مقيَّد بصفة</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5082,15 +5264,15 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>قيّد كبوابة…</translation>
+        <translation type="vanished">قيّد كبوابة…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>شارك اتصال هذا الحاسوب بالإنترنت كبوابة</translation>
+        <translation type="vanished">شارك اتصال هذا الحاسوب بالإنترنت كبوابة</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>أطفئه إن كان قانون مكان إقامتك أو شروط مزوّد الإنترنت تمنع مشاركة اتصالك. وهو مطفأ يواصل هذا العقدة الترحيل وحفظ البريد ومتابعة السلسلة، ويستخدم اتصاله مباشرة.</translation>
+        <translation type="vanished">أطفئه إن كان قانون مكان إقامتك أو شروط مزوّد الإنترنت تمنع مشاركة اتصالك. وهو مطفأ يواصل هذا العقدة الترحيل وحفظ البريد ومتابعة السلسلة، ويستخدم اتصاله مباشرة.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5106,11 +5288,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>اسمح للبرامج على هذا الحاسوب باستخدام إنترنت الشبكة عبر وكيل محلي</translation>
+        <translation type="vanished">اسمح للبرامج على هذا الحاسوب باستخدام إنترنت الشبكة عبر وكيل محلي</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>وكيل SOCKS5 لهذا الحاسوب وحده. يخرج كل اتصال عبر بوابة عضو آخر، وتُحَلّ الأسماء هناك، لا هنا أبدًا. يعمل ما دام هذا الحاسوب يشارك اتصاله.</translation>
+        <translation type="vanished">وكيل SOCKS5 لهذا الحاسوب وحده. يخرج كل اتصال عبر بوابة عضو آخر، وتُحَلّ الأسماء هناك، لا هنا أبدًا. يعمل ما دام هذا الحاسوب يشارك اتصاله.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5146,27 +5328,27 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>غير مقيَّد كبوابة</translation>
+        <translation type="vanished">غير مقيَّد كبوابة</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>ليس بعد — السجل لا يقيّد هذه العقدة كبوابة، فلا يستطيع أحد العثور عليها</translation>
+        <translation type="vanished">ليس بعد — السجل لا يقيّد هذه العقدة كبوابة، فلا يستطيع أحد العثور عليها</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>لا شيء بعد — يقيّد المرحِّل بوابته بمفتاح ثانٍ، بلا عنوان، منفصلة عن قيده هو</translation>
+        <translation type="vanished">لا شيء بعد — يقيّد المرحِّل بوابته بمفتاح ثانٍ، بلا عنوان، منفصلة عن قيده هو</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>لا شيء بعد — قيد هذه العقدة ينقصه خيار البوابة؛ انشره من جديد مع تفعيل الخيار</translation>
+        <translation type="vanished">لا شيء بعد — قيد هذه العقدة ينقصه خيار البوابة؛ انشره من جديد مع تفعيل الخيار</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>لا شيء بعد — انشر قيدًا بلا عنوان مع تفعيل خيار البوابة</translation>
+        <translation type="vanished">لا شيء بعد — انشر قيدًا بلا عنوان مع تفعيل خيار البوابة</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>قيّد بوابة هذا المرحِّل…</translation>
+        <translation type="vanished">قيّد بوابة هذا المرحِّل…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5186,11 +5368,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>مفتاح بوابته %1، منفصلًا عن عنوان المرحِّل</translation>
+        <translation type="vanished">مفتاح بوابته %1، منفصلًا عن عنوان المرحِّل</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>مفتاح هذه العقدة نفسها %1</translation>
+        <translation type="vanished">مفتاح هذه العقدة نفسها %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5206,11 +5388,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>مرّر كل حركة هذا الحاسوب عبر الشبكة، دون إعداد وكيل في أي برنامج</translation>
+        <translation type="vanished">مرّر كل حركة هذا الحاسوب عبر الشبكة، دون إعداد وكيل في أي برنامج</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>تخرج اتصالات كل برنامج عبر بوابات الشبكة، كل اتصال عبر بوابة أخرى، وتُبحث الأسماء هناك. تبقى شبكة هذا الحاسوب نفسه — طابعة، الموجّه — واتصالات هذه العقدة نفسها مباشرة. يعمل ذلك ما دام هذا الحاسوب يشارك اتصاله.</translation>
+        <translation type="vanished">تخرج اتصالات كل برنامج عبر بوابات الشبكة، كل اتصال عبر بوابة أخرى، وتُبحث الأسماء هناك. تبقى شبكة هذا الحاسوب نفسه — طابعة، الموجّه — واتصالات هذه العقدة نفسها مباشرة. يعمل ذلك ما دام هذا الحاسوب يشارك اتصاله.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5238,11 +5420,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>مفعّل: %1 اتصال(ات) عبر الشبكة الآن؛ أُرسل %2، واستُقبل %3.</translation>
+        <translation type="vanished">مفعّل: %1 اتصال(ات) عبر الشبكة الآن؛ أُرسل %2، واستُقبل %3.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>غير متاح على هذا النظام بعد.</translation>
+        <translation type="vanished">غير متاح على هذا النظام بعد.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5254,7 +5436,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>يبدأ عند إعادة تشغيل العميل.</translation>
+        <translation type="vanished">يبدأ عند إعادة تشغيل العميل.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5283,6 +5465,334 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>none — relaying is switched off</source>
         <translation>لا شيء — الترحيل متوقف</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>ما تقدمه هذه العقدة للآخرين: الترحيل، وحفظ البريد، ومشاركة الإنترنت، واستضافة موقع؛ ولهاتفك طريقة للإنفاق من هنا. ومثل كل شيء هنا، يُعثر عليه بالطريقة نفسها التي يُعثر بها على النظراء — عبر السجل. للأسماء صفحة خاصة بها.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>مشاركة اتصال الإنترنت لهذا الحاسوب، واستخدام اتصال الشبكة في المقابل</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>عند التشغيل، يُشارَك اتصال هذا الحاسوب، وتخرج كل حركته الخاصة عبر بوابات الشبكة، كل اتصال عبر بوابة أخرى؛ وتبقى شبكة هذا الحاسوب نفسه — طابعة، الموجّه — مباشرة. أوقفه إن كان القانون حيث تعيش، أو شروط مزوّد الإنترنت، تمنع مشاركة اتصالك: عندها لا تحمل الشبكة إلا BPS نفسه، ويستخدم هذا الحاسوب اتصاله الخاص.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>للحاسوب كله: مُشغَّل، %1 اتصال عبر الشبكة الآن؛ أُرسل %2، واستُلم %3.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>للحاسوب كله: غير متاح على هذا النظام بعد؛ يمكن للبرامج استخدام الوكيل.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>للحاسوب كله: يبدأ عند إعادة تشغيل العميل.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>لا يشارك</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>لا — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>انشر مجلدًا كموقع تحت مفتاح هذه العقدة، ليتمكن كل من تعطيه المفتاح أو اسمك من قراءته عبر الشبكة المتراكبة. كل ملف موقّع ويُفحص قطعة قطعة عند وصوله. عند إدراجها بلا عنوان، تُلتقى هذه العقدة في نقاط لقائها ولا يعرف أحد أين يعمل الموقع؛ وعند إدراجها بعنوان، يصل إليها الزوار عبر مرحِّلات، فلا تعرف أبدًا من هم. ويمكن نشر برنامج على هذا الحاسوب — تطبيق ويب، خادم دردشة — بالطريقة نفسها: يصل إليه الزوار عبر الشبكة المتراكبة، ولا تتصل هذه العقدة إلا بالمنفذ الذي تحدده.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>المجلد</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>الزيارات</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>المُرسَل</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>لا شيء</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>برامج على هذا الحاسوب يصل إليها الزوار عبر الشبكة المتراكبة. البرنامج المسمى web هو ما يفتحه المتصفح على عنوان هذه العقدة عندما لا يوجد موقع.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>البرامج</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>نشر مجلد…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>النشر مجددًا</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>أعد قراءة المجلد بعد تغييره، وانشر ما فيه الآن.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>إيقاف النشر</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>فتح في المواقع</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>نشر برنامج…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>إيقاف برنامج…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>لا ينشر</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>لا شيء — لا شيء منشور</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 ملف، %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>غير مُدرَج</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>من لا أحد بعد: هذه العقدة غير مُدرَجة في السجل، فلا يستطيع الزوار العثور على الموقع. انشر إدراجًا في صفحة العقدة، تحت استكشاف.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>ينشر</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>لم يُلتقَ بعد</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>في %1 نقطة لقاء، دون عنوان منشور</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>ليس بعد: يسجّل في نقاط لقائه، وهذا يحتاج إلى مرحِّلات السجل</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>على عنوان هذه العقدة، عبر مرحِّلات تخفي الزائر</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 قطعة صفحات، %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>المجلد المراد نشره كموقع</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>نشر برنامج</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>اسم له، من 1 إلى 32 من a-z و0-9 و-. سمّه web لتطبيق ويب ينبغي أن يفتحه المتصفح على عنوان هذه العقدة:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>المنفذ الذي يستمع عليه، على 127.0.0.1 (هذا الحاسوب فقط):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>إيقاف برنامج</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>أي برنامج يجب ألا يصل إليه الزوار بعد الآن:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 على 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 تدفق مفتوح</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>الهاتف المرافق</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>أنفق من هاتفك بينما تبقى عملاتك هنا. لا يحمل الهاتف مفاتيح عملات: يصل إلى هذه العقدة، ويثبت المفتاح الذي أُقرن به، فتدفع هذه العقدة من محفظة مصروف صغيرة — بعد التحقق من رمز PIN للهاتف والحدود التي وضعتها، والتي لا يستطيع الهاتف تغييرها. إن فقدت الهاتف، فلن تخسر أكثر مما في المصروف؛ ألغِ إقرانه هنا. عندما تكون هذه العقدة مرحِّلًا مُدرَجًا ويكون عدد كافٍ من غيرها مُدرَجًا، يأتي الهاتف عبر ثلاثة مرحِّلات، فلا يعرف أي مراقب أين هو؛ وإلا فإنه يتصل هنا مباشرة.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>المصروف</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>يمكن للهواتف الوصول إليه</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>الهاتف</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>دفعة واحدة</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>يوم</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>أُنفق اليوم</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>الحالة</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>إقران هاتف…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>الحدود…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>إلغاء القفل</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>يُقفل الهاتف بعد خمسة أرقام PIN خاطئة متتالية، حتى يُلغى قفله هنا.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>إلغاء الإقران</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>السماح للهواتف المقترنة بالإنفاق من محفظة مصروف</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>يحتاج إلى الشبكة المتراكبة. معطّل افتراضيًا، لأنه يسمح لهاتف بإنفاق عملات هذه العقدة.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>محفظة مستقلة، بلا عبارة مرور — فلا أحد هناك ليكتبها عندما يدفع الهاتف — وفيها فقط ما ينبغي أن يقدر الهاتف على إنفاقه. لا تُجري التخزين (stake) أبدًا، ولا يمكن أن تكون المحفظة التي تدفع عن الإدراجات.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>إنشاؤها</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>إنشاء محفظة المصروف وفتحها كلما بدأت هذه العقدة.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>تعبئة…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>فتح الإرسال في المحفظة، لنقل عملات إلى المصروف.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>محفظة المصروف</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>، و%1 أخرى في الطريق</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>نعم، على %1، عبر مرحِّلات</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>مباشرة، على %1. لا مرحِّلات بينهما: ترى شبكة الهاتف أنه يتحدث مع هذا الحاسوب. ومن خارج هذه الشبكة، وجّه منفذ UDP %2 على الموجّه إلى هذا الحاسوب.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>لا — لا تعرف هذه العقدة أي عنوان خاص بها بعد</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>لا يمكن الوصول إليه</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>هاتف ينتظر</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>لا مصروف</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>هاتف مقفل</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 هواتف مقفلة</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>يعمل، لا هاتف بعد</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>يعمل، هاتف واحد</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>يعمل، %1 هواتف</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>مفتاح الجهاز %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>مقفل: أرقام PIN خاطئة</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>مقترن</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>إلغاء إقران %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>إلغاء إقران %1؟ لن يتمكن من الإنفاق مجددًا حتى يُقرَن من جديد. افعل ذلك فورًا إن فُقد الهاتف أو سُرق.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>أُنشئت محفظة المصروف وفُتحت. استخدم تعبئة لتنقل إليها ما ينبغي أن يقدر الهاتف على إنفاقه.</translation>
     </message>
 </context>
 <context>
@@ -5414,6 +5924,30 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>العقدة ما زالت تبدأ؛ الإعدادات الأساسية غير متاحة بعد.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>يلتقيك الآخرون عند مرحِّلات مستنتجة من السجل، وتُبقي عقدتك مسارًا مفتوحًا إلى كل منها عبر هذا العدد من المرحِّلات. لا ترى نقطة اللقاء إلا آخرها، ولا ترى عنوانك أبدًا. الأكثر يخفيك أفضل وهو أبطأ.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>المرحِّلات قبل نقاط لقائك</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>عندما يستخدم هذا الحاسوب إنترنت الشبكة، يمر كل اتصال عبر هذا العدد من المرحِّلات إلى نقطة لقاء بوابة، ثم عبر مرحِّلات البوابة نفسها: لا تعرف البوابة أبدًا من أنت. الأكثر يخفيك أفضل وهو أبطأ.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>المرحِّلات قبل نقطة لقاء بوابة</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>اتصالك الأول وحده مباشر، إلى مرحِّل دخول يرى عنوانك لا هويتك. يمر البريد دائمًا عبر ثلاثة مرحِّلات.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>الإصدار %1</translation>
     </message>
 </context>
 <context>
@@ -5576,6 +6110,147 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>No error</source>
         <translation>لا خطأ</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>المواقع</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>مواقع مستضافة عبر الشبكة المتراكبة، تُفتح باسم أو مفتاح شاركه أحدهم معك. تُعرض الصفحات هنا بلا نصوص برمجية، ولا يُجلب عليها شيء من خارج BPS، فلا تستطيع الصفحة معرفة مكانك.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>رجوع</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>تقدّم</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>جلب الصفحة مجددًا</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://اسم/ أو مفتاح موقع</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>فتح</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>حفظ هذا الملف…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>فتح في متصفحك</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>الموقع نفسه في متصفح عادي، عبر خادم على هذا الحاسوب فقط. قد تشغّل الصفحات هناك نصوصًا برمجية، فيبقى العارض هنا الطريقة الأكثر أمانًا لقراءة موقع مخفي.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>الاتصال ببرنامج…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>صِل إلى برنامج يشغّله هذا الموقع — خادم دردشة، لعبة — من برنامج على هذا الحاسوب: يستمع BPS Relay على منفذ هنا وينقل كل اتصال إليه عبر الشبكة المتراكبة.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>هذا ليس عنوان موقع. اكتب اسمًا أو مفتاحًا، مثل bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>جارٍ البحث عن %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>جارٍ جلب %1 عبر الشبكة المتراكبة…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 ليس صفحة يعرضها هذا العارض (%2 بايت). احفظه لتفتحه ببرنامج آخر.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>وجّه البرنامج على هذا الحاسوب إلى %1: ينقل BPS Relay كل اتصال يُجرى هناك إلى برنامج الموقع، عبر الشبكة المتراكبة، حتى يُعاد تشغيله.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>خادم المواقع للمتصفحات لا يعمل. يبدأ مع BPS Relay ما لم يُعطَ -siteproxy=0.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 لا يؤدي إلى أي مفتاح.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 يشير الآن إلى مفتاح مختلف عن آخر مرة فتحته فيها. من يملك الاسم الآن قد لا يكون من قرأت له من قبل.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>لُقي عند إحدى نقاط لقائه، عبر %1 من مرحِّلاتك: لا تعرف أنت ولا المضيف أين الآخر.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>وُصل إليه على عنوانه عبر %1 مرحِّلات: لا يعرف المضيف من أنت.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>موقعك الخاص، مقروءًا من هذا الحاسوب.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>يُوصل إليه عبر الراديو، فتصل الصفحات ببطء.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 ليس اسمًا تعرفه هذه العقدة: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>تعذّر فتح %1: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>يؤدي هذا الرابط إلى خارج BPS، فلم يُتبَع: %1
+افتحه في متصفح عادي إن شئت؛ وسيرى من يديره عنوانك.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>الاتصال ببرنامج</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>الاسم الذي أعطاه الموقع لبرنامجه:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>فتح موقع في متصفحك</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>سيطلب متصفحك الموقع من هذا الحاسوب، ويجلبه BPS Relay عبر الشبكة المتراكبة، كما يفعل هنا. لا يُسمح لكل صفحة بالتحميل إلا من موقعها، فلا تستطيع جلب أي شيء من الإنترنت المفتوح لمعرفة مكانك.
+
+ما يستطيع المتصفح فعله رغم ذلك: يمكن لنص برمجي استخدام WebRTC ليُري صفحةً عناوين هذا الحاسوب، والرابط الذي تتبعه إلى موقع عادي يخرج كأي رابط. لا يشغّل العارض في BPS Relay أي نصوص برمجية ويبقى الطريقة الأكثر أمانًا لقراءة موقع مخفي.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>حفظ الملف</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>تعذّر حفظ %1.</translation>
     </message>
 </context>
 <context>

@@ -1109,6 +1109,10 @@ Penandatanganan hanya dapat dilakukan dengan alamat berjenis &apos;legacy&apos;.
         <source>Not staking</source>
         <translation>Tidak staking</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>Situs</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1263,6 +1267,92 @@ Penandatanganan hanya dapat dilakukan dengan alamat berjenis &apos;legacy&apos;.
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>didelegasikan ke %1 untuk cold staking</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>Batas untuk %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>Berapa banyak ponsel ini boleh membelanjakan dari dompet uang saku, termasuk biaya.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Paling banyak dalam satu pembayaran</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Paling banyak dalam 24 jam mana pun</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>Pasangkan ponsel</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>Di aplikasi BPS pada ponsel, pilih Pasangkan dan pindai kode ini. Atau salin teks di bawahnya ke aplikasi. Kode ini berfungsi sekali, selama sepuluh menit.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>Salin kode</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>Tampilkan kode baru</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>Pasangkan hanya jika ponsel menampilkan enam digit yang sama. Jika menampilkan yang lain, orang lain menjawab kode lebih dulu: tolak, lalu tampilkan yang baru.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>Berapa banyak ponsel ini boleh membelanjakan dari dompet uang saku. Hanya node ini yang dapat mengubahnya nanti, tidak pernah ponsel.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Paling banyak dalam satu pembayaran</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Paling banyak dalam 24 jam mana pun</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>Tolak</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>Pasangkan ponsel ini</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>Membuat kode…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>Kode ini sudah kedaluwarsa.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>Menunggu ponsel… kode masih berfungsi %1 menit lagi.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>Versi ini tidak dapat menggambar kode QR: salin teks di bawah ke aplikasi sebagai gantinya.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>Ponsel bernama “%1” ingin dipasangkan dengan node ini.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>Terpasang. Ponsel kini dapat membelanjakan dari dompet uang saku dalam batas yang Anda tetapkan. Daftarnya ada di halaman Server, tempat Anda dapat mengubah batasnya, membukanya setelah terlalu banyak PIN salah, atau melepas pasangannya.</translation>
     </message>
 </context>
 <context>
@@ -1438,7 +1528,7 @@ Penandatanganan hanya dapat dilakukan dengan alamat berjenis &apos;legacy&apos;.
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>Cari peer atau alamat</translation>
+        <translation type="vanished">Cari peer atau alamat</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1575,6 +1665,38 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>Peer mengumumkan diri di rantai, bukan di server, jadi daftar ini sama bagi semua orang dan tidak ada yang dapat mengubahnya. Peer yang tercatat melalui jaringan overlay menunjukkan di mana ia dapat ditemui hari ini, yang berubah setiap hari; relai menunjukkan alamatnya hanya selama ia daring, karena alamat itu tidak pernah ada di rantai.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nama</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>Daftarkan nama…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>Nama adalah cara orang lain menjangkau Anda tanpa menyalin kunci Anda. Nama didaftarkan di tab Nama.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>Cari peer, catatan, atau alamat</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>Semua nama ini mengarah ke kunci node ini. Orang lain dapat menjangkau Anda dengan salah satunya.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>Kelola nama…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>nama nonaktif</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>Nama memerlukan indeks nama. Aktifkan di Pengaturan untuk mendaftarkan dan menampilkan nama.</translation>
     </message>
 </context>
 <context>
@@ -3200,15 +3322,15 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>Ini menulis catatan singkat ke rantai yang menyatakan bahwa Anda ada, dan jika mau, di mana Anda dapat ditemukan.</translation>
+        <translation type="vanished">Ini menulis catatan singkat ke rantai yang menyatakan bahwa Anda ada, dan jika mau, di mana Anda dapat ditemukan.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>Bagaimana peer harus menjangkau Anda?</translation>
+        <translation type="vanished">Bagaimana peer harus menjangkau Anda?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>Melalui jaringan overlay — tanpa menerbitkan alamat</translation>
+        <translation type="vanished">Melalui jaringan overlay — tanpa menerbitkan alamat</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3216,35 +3338,35 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>Di alamat yang saya terbitkan</translation>
+        <translation type="vanished">Di alamat yang saya terbitkan</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>alamat yang dapat dijangkau peer lain</translation>
+        <translation type="vanished">alamat yang dapat dijangkau peer lain</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>Siapa pun dapat melihatnya, dan rantai menyimpannya selamanya. Alamat onion menerbitkan lokasi yang tidak dapat dilacak siapa pun kembali ke Anda dan berfungsi dari balik NAT; alamat IP tidak melakukan keduanya. Node yang menerbitkan alamat IP dapat dipilih sebagai relai oleh orang lain.</translation>
+        <translation type="vanished">Siapa pun dapat melihatnya, dan rantai menyimpannya selamanya. Alamat onion menerbitkan lokasi yang tidak dapat dilacak siapa pun kembali ke Anda dan berfungsi dari balik NAT; alamat IP tidak melakukan keduanya. Node yang menerbitkan alamat IP dapat dipilih sebagai relai oleh orang lain.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3288,7 +3410,7 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>Node Anda menandatangani pencatatan dan mengirimkannya melalui jaringan overlay ke relai tempat ia masuk. Relai yang membayar pencatatan memasukkan pencatatan Anda ke blok yang dibuatnya sendiri, sehingga dikonfirmasi meski sebagian besar node tidak meneruskannya, dan menambahkan Anda ke peer yang ia bagikan hadiahnya. Jika nanti ia berhenti membayar, pencatatan Anda berakhir dalam sebulan; Anda selalu dapat memperbaruinya sendiri dari dompet yang berisi dana.</translation>
+        <translation type="vanished">Node Anda menandatangani pencatatan dan mengirimkannya melalui jaringan overlay ke relai tempat ia masuk. Relai yang membayar pencatatan memasukkan pencatatan Anda ke blok yang dibuatnya sendiri, sehingga dikonfirmasi meski sebagian besar node tidak meneruskannya, dan menambahkan Anda ke peer yang ia bagikan hadiahnya. Jika nanti ia berhenti membayar, pencatatan Anda berakhir dalam sebulan; Anda selalu dapat memperbaruinya sendiri dari dompet yang berisi dana.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3304,11 +3426,11 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>Masukkan alamat, atau pilih untuk tidak menerbitkannya.</translation>
+        <translation type="vanished">Masukkan alamat, atau pilih untuk tidak menerbitkannya.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>Meminta relai Anda untuk menerbitkannya… ini bisa memakan waktu hingga setengah menit.</translation>
+        <translation type="vanished">Meminta relai Anda untuk menerbitkannya… ini bisa memakan waktu hingga setengah menit.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3340,11 +3462,11 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>Daftarkan gerbang relai ini</translation>
+        <translation type="vanished">Daftarkan gerbang relai ini</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>Pendaftaran relai memuat alamatnya, jadi gerbangnya didaftarkan dengan kunci kedua tanpa alamat, terpisah darinya. Tak seorang pun bisa tahu dari daftar bahwa keduanya milik satu komputer. Pengunjung mencapai gerbang melalui relai, jadi gerbang tidak pernah tahu siapa mereka; situs yang mereka kunjungi melihat alamat komputer ini.</translation>
+        <translation type="vanished">Pendaftaran relai memuat alamatnya, jadi gerbangnya didaftarkan dengan kunci kedua tanpa alamat, terpisah darinya. Tak seorang pun bisa tahu dari daftar bahwa keduanya milik satu komputer. Pengunjung mencapai gerbang melalui relai, jadi gerbang tidak pernah tahu siapa mereka; situs yang mereka kunjungi melihat alamat komputer ini.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3360,11 +3482,11 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>Relai lain yang membayar, diminta melalui relai-relai</translation>
+        <translation type="vanished">Relai lain yang membayar, diminta melalui relai-relai</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>Node Anda menandatangani pencatatan gerbang dan mengirimkannya melalui relai-relai ke relai lain, yang membayarnya dan memasukkannya ke blok yang dibuatnya sendiri. Relai itu mengetahui kunci gerbang dan tidak pernah alamat komputer ini. Membayar dari dompet node ini sendiri akan mengaitkan gerbang dengan relai ini di rantai, dan dengan demikian dengan alamatnya.</translation>
+        <translation type="vanished">Node Anda menandatangani pencatatan gerbang dan mengirimkannya melalui relai-relai ke relai lain, yang membayarnya dan memasukkannya ke blok yang dibuatnya sendiri. Relai itu mengetahui kunci gerbang dan tidak pernah alamat komputer ini. Membayar dari dompet node ini sendiri akan mengaitkan gerbang dengan relai ini di rantai, dan dengan demikian dengan alamatnya.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3380,7 +3502,7 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>Catatan Anda menyatakan siapa Anda, bukan di mana Anda berjalan. Peer menjangkau Anda melalui jaringan overlay dan menemui Anda di titik-titik yang dihitung kedua pihak dari register, yang berubah setiap hari; Jelajahi menampilkan titik hari ini. Catatan Anda juga menyebut satu relai tempat Anda dapat ditemui selama catatan berlaku, dan setiap pembaruan menyebut relai baru. Inilah yang diaktifkan klien ini secara bawaan.</translation>
+        <translation type="vanished">Catatan Anda menyatakan siapa Anda, bukan di mana Anda berjalan. Peer menjangkau Anda melalui jaringan overlay dan menemui Anda di titik-titik yang dihitung kedua pihak dari register, yang berubah setiap hari; Jelajahi menampilkan titik hari ini. Catatan Anda juga menyebut satu relai tempat Anda dapat ditemui selama catatan berlaku, dan setiap pembaruan menyebut relai baru. Inilah yang diaktifkan klien ini secara bawaan.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3400,15 +3522,59 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>Node ini berbagi koneksi internetnya sebagai gerbang, sesuai pengaturan di halaman Server, jadi catatannya menyatakan demikian.</translation>
+        <translation type="vanished">Node ini berbagi koneksi internetnya sebagai gerbang, sesuai pengaturan di halaman Server, jadi catatannya menyatakan demikian.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>Node ini tidak menjadi relai bagi orang lain dan tidak berbagi koneksi internetnya, sesuai pengaturan di halaman Server.</translation>
+        <translation type="vanished">Node ini tidak menjadi relai bagi orang lain dan tidak berbagi koneksi internetnya, sesuai pengaturan di halaman Server.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>Perubahan di sana sampai ke register bersama catatan Anda berikutnya.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>Ini menulis catatan singkat ke rantai yang menyatakan bahwa Anda ada, dan secara opsional satu baris tentang Anda.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>Apa yang dikatakan pencatatan Anda</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>Pencatatan Anda menyatakan siapa Anda dan bukan di mana Anda berjalan: tidak memuat alamat. Peer menjangkau Anda melalui jaringan overlay, bertemu Anda di titik-titik yang dihitung kedua pihak dari register dan berganti setiap hari; Jelajahi menampilkan titik hari ini. Pencatatan Anda juga menyebut satu relai tempat Anda dapat ditemui selama masih berlaku, dan setiap pembaruan menyebut relai baru.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>Catatan</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>opsional: satu baris yang ditampilkan di samping kunci Anda</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>Siapa pun dapat membacanya, dan rantai menyimpannya selamanya, bahkan setelah pencatatan berakhir. Hilangkan apa pun yang menyebut di mana Anda berada atau siapa Anda, jika itu penting bagi Anda.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Node Anda menandatangani pencatatan dan mengirimkannya melalui jalur ke relai yang tidak menjadi pintu masuknya, sehingga relai itu tahu siapa Anda dan bukan di mana. Relai yang membayar pencatatan memasukkan milik Anda ke blok yang ia stake sendiri, sehingga terkonfirmasi bahkan selagi sebagian besar node tidak akan meneruskannya, dan menambahkan Anda ke peer yang berbagi imbalan dengannya. Jika kemudian ia berhenti membayar, pencatatan Anda berakhir dalam bulan itu; Anda selalu dapat memperbaruinya sendiri dari dompet yang berisi dana.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 byte</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>Terlalu panjang: huruf di luar bahasa Inggris sederhana masing-masing memakan dua hingga empat byte.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>Catatan terlalu panjang.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>Catatan tidak boleh berisi karakter kontrol atau tanda yang mengubah arah teks.</translation>
     </message>
 </context>
 <context>
@@ -3576,6 +3742,14 @@ Anda akan ditunjukkan kunci pemulihan satu kali. Tuliskan: itulah satu-satunya c
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>Masukkan alamat BitcoinPoS (mis. %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>Tetapkan kedua batas.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>Satu pembayaran tidak boleh diizinkan lebih dari satu hari penuh.</translation>
     </message>
 </context>
 <context>
@@ -4278,6 +4452,14 @@ dihitung dari register; relai ini berubah setiap hari:</translation>
         <source>meets at %1</source>
         <translation>ditemui di %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>Catatan</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>Ditulis oleh siapa pun yang memegang kunci ini; tidak ada yang memeriksanya.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4759,7 +4941,7 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya &quot;100 satoshi per
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>Situs atau layanan yang disajikan dari node ini, ditemukan melalui kunci atau namanya dan dijangkau melalui jaringan overlay, sehingga host tidak pernah menerbitkan di mana ia berjalan. Bagian pertemuannya sudah ada: layanan mendaftar di titik temu yang dihitung kedua pihak dari register. Menyajikan halaman dan aplikasi melaluinya belum dibuat.</translation>
+        <translation type="vanished">Situs atau layanan yang disajikan dari node ini, ditemukan melalui kunci atau namanya dan dijangkau melalui jaringan overlay, sehingga host tidak pernah menerbitkan di mana ia berjalan. Bagian pertemuannya sudah ada: layanan mendaftar di titik temu yang dihitung kedua pihak dari register. Menyajikan halaman dan aplikasi melaluinya belum dibuat.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4983,7 +5165,7 @@ Anda dapat mengubahnya kapan saja di halaman Server.</translation>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Apa yang ditawarkan simpul ini kepada orang lain. Meneruskan, menyimpan surel, dan berbagi internet sudah berjalan; hosting sedang menyusul dan, seperti semua hal di sini, ditemukan dengan cara yang sama seperti rekan — melalui daftar. Nama punya halamannya sendiri.</translation>
+        <translation type="vanished">Apa yang ditawarkan simpul ini kepada orang lain. Meneruskan, menyimpan surel, dan berbagi internet sudah berjalan; hosting sedang menyusul dan, seperti semua hal di sini, ditemukan dengan cara yang sama seperti rekan — melalui daftar. Nama punya halamannya sendiri.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -4999,7 +5181,7 @@ Anda dapat mengubahnya kapan saja di halaman Server.</translation>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>Terdaftar sebagai</translation>
+        <translation type="vanished">Terdaftar sebagai</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5011,15 +5193,15 @@ Anda dapat mengubahnya kapan saja di halaman Server.</translation>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>Daftarkan sebagai gerbang…</translation>
+        <translation type="vanished">Daftarkan sebagai gerbang…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Bagikan koneksi internet komputer ini sebagai gerbang</translation>
+        <translation type="vanished">Bagikan koneksi internet komputer ini sebagai gerbang</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>Matikan jika hukum di tempat Anda tinggal atau ketentuan penyedia internet Anda melarang berbagi koneksi. Saat dimatikan, simpul ini tetap meneruskan, menyimpan surel, dan mengikuti rantai, serta memakai koneksinya sendiri secara langsung.</translation>
+        <translation type="vanished">Matikan jika hukum di tempat Anda tinggal atau ketentuan penyedia internet Anda melarang berbagi koneksi. Saat dimatikan, simpul ini tetap meneruskan, menyimpan surel, dan mengikuti rantai, serta memakai koneksinya sendiri secara langsung.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5035,11 +5217,11 @@ Anda dapat mengubahnya kapan saja di halaman Server.</translation>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>Izinkan program di komputer ini memakai internet jaringan, melalui proksi lokal</translation>
+        <translation type="vanished">Izinkan program di komputer ini memakai internet jaringan, melalui proksi lokal</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>Proksi SOCKS5 hanya untuk komputer ini. Setiap koneksi keluar melalui gerbang anggota lain, dan nama dicari di sana, tidak pernah di sini. Proksi bekerja selama komputer ini membagikan koneksinya sendiri.</translation>
+        <translation type="vanished">Proksi SOCKS5 hanya untuk komputer ini. Setiap koneksi keluar melalui gerbang anggota lain, dan nama dicari di sana, tidak pernah di sini. Proksi bekerja selama komputer ini membagikan koneksinya sendiri.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5075,27 +5257,27 @@ Anda dapat mengubahnya kapan saja di halaman Server.</translation>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>tidak terdaftar sebagai gerbang</translation>
+        <translation type="vanished">tidak terdaftar sebagai gerbang</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>belum — daftar tidak mencatat simpul ini sebagai gerbang, jadi tak seorang pun bisa menemukannya</translation>
+        <translation type="vanished">belum — daftar tidak mencatat simpul ini sebagai gerbang, jadi tak seorang pun bisa menemukannya</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>belum ada — relai mendaftarkan gerbangnya dengan kunci kedua, tanpa alamat, terpisah dari pendaftarannya sendiri</translation>
+        <translation type="vanished">belum ada — relai mendaftarkan gerbangnya dengan kunci kedua, tanpa alamat, terpisah dari pendaftarannya sendiri</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>belum ada — pendaftaran simpul ini tidak punya opsi gerbang; terbitkan lagi dengan opsi menyala</translation>
+        <translation type="vanished">belum ada — pendaftaran simpul ini tidak punya opsi gerbang; terbitkan lagi dengan opsi menyala</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>belum ada — terbitkan pendaftaran tanpa alamat dengan opsi gerbang menyala</translation>
+        <translation type="vanished">belum ada — terbitkan pendaftaran tanpa alamat dengan opsi gerbang menyala</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>Daftarkan gerbang relai ini…</translation>
+        <translation type="vanished">Daftarkan gerbang relai ini…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5115,11 +5297,11 @@ Anda dapat mengubahnya kapan saja di halaman Server.</translation>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>kunci gerbangnya %1, terpisah dari alamat relai</translation>
+        <translation type="vanished">kunci gerbangnya %1, terpisah dari alamat relai</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>kunci simpul ini sendiri %1</translation>
+        <translation type="vanished">kunci simpul ini sendiri %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5135,11 +5317,11 @@ Anda dapat mengubahnya kapan saja di halaman Server.</translation>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>Alirkan semua lalu lintas komputer ini melalui jaringan, tanpa pengaturan proksi di program mana pun</translation>
+        <translation type="vanished">Alirkan semua lalu lintas komputer ini melalui jaringan, tanpa pengaturan proksi di program mana pun</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>Koneksi setiap program keluar melalui gerbang jaringan, masing-masing melalui gerbang lain, dan nama dicari di sana. Jaringan komputer ini sendiri — printer, router — dan koneksi node ini sendiri tetap langsung. Ini berfungsi selama komputer ini berbagi koneksinya sendiri.</translation>
+        <translation type="vanished">Koneksi setiap program keluar melalui gerbang jaringan, masing-masing melalui gerbang lain, dan nama dicari di sana. Jaringan komputer ini sendiri — printer, router — dan koneksi node ini sendiri tetap langsung. Ini berfungsi selama komputer ini berbagi koneksinya sendiri.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5167,11 +5349,11 @@ Anda dapat mengubahnya kapan saja di halaman Server.</translation>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>Aktif: %1 koneksi melalui jaringan sekarang; %2 terkirim, %3 diterima.</translation>
+        <translation type="vanished">Aktif: %1 koneksi melalui jaringan sekarang; %2 terkirim, %3 diterima.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>Belum tersedia di sistem ini.</translation>
+        <translation type="vanished">Belum tersedia di sistem ini.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5183,7 +5365,7 @@ Anda dapat mengubahnya kapan saja di halaman Server.</translation>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>Dimulai saat klien dimulai ulang.</translation>
+        <translation type="vanished">Dimulai saat klien dimulai ulang.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5212,6 +5394,334 @@ Anda dapat mengubahnya kapan saja di halaman Server.</translation>
     <message>
         <source>none — relaying is switched off</source>
         <translation>tidak ada — relai dimatikan</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Apa yang ditawarkan node ini kepada orang lain: me-relai, menyimpan surat, berbagi internet, dan menghosting situs; dan bagi ponsel Anda sendiri, cara membelanjakan dari sini. Seperti semua hal di sini, ia ditemukan dengan cara yang sama seperti peer — melalui register. Nama memiliki halaman sendiri.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>Bagikan koneksi internet komputer ini, dan gunakan koneksi jaringan sebagai gantinya</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>Saat aktif, koneksi komputer ini dibagikan, dan semua lalu lintasnya sendiri keluar melalui gerbang jaringan, setiap koneksi melalui gerbang lain; jaringan komputer ini sendiri — printer, router — tetap langsung. Matikan jika hukum di tempat Anda tinggal, atau ketentuan penyedia internet Anda, melarang berbagi koneksi: jaringan lalu hanya membawa BPS itu sendiri, dan komputer ini memakai koneksinya sendiri.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Untuk seluruh komputer: aktif, %1 koneksi melalui jaringan sekarang; %2 terkirim, %3 diterima.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>Untuk seluruh komputer: belum tersedia di sistem ini; program dapat menggunakan proksi.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>Untuk seluruh komputer: dimulai saat klien dimulai ulang.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>tidak berbagi</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>tidak — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>Terbitkan folder sebagai situs di bawah kunci node ini, agar siapa pun yang Anda beri kunci atau nama Anda dapat membacanya melalui jaringan overlay. Setiap berkas ditandatangani dan diperiksa per bagian saat tiba. Jika dicatat tanpa alamat, node ini ditemui di titik-titik temunya dan tidak ada yang tahu di mana situs berjalan; jika dicatat dengan alamat, pengunjung menjangkaunya melalui relai, sehingga ia tidak pernah tahu siapa mereka. Program di komputer ini — aplikasi web, server obrolan — dapat diterbitkan dengan cara yang sama: pengunjung menjangkaunya melalui jaringan overlay, dan node ini hanya terhubung ke port yang Anda sebutkan.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Folder</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>Dijangkau</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Terkirim</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>tidak ada</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>Program di komputer ini yang dijangkau pengunjung melalui jaringan overlay. Program bernama web adalah yang dibuka peramban di alamat node ini saat tidak ada situs.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>Program</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>Terbitkan folder…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>Terbitkan lagi</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>Baca ulang folder setelah mengubahnya, dan terbitkan isinya sekarang.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>Hentikan penerbitan</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>Buka di Situs</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>Terbitkan program…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>Hentikan program…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>tidak menerbitkan</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>tidak ada — tidak ada yang diterbitkan</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 berkas, %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>tidak tercatat</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>belum oleh siapa pun: node ini tidak tercatat di register, sehingga pengunjung tidak dapat menemukan situs. Terbitkan pencatatan di halaman Node, di bawah Jelajahi.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>menerbitkan</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>belum ditemui</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>di %1 titik temu, tanpa alamat yang diterbitkan</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>belum: mendaftar di titik-titik temunya, yang memerlukan relai register</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>di alamat node ini, melalui relai yang menyembunyikan pengunjung</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 bagian halaman, %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>Folder yang akan diterbitkan sebagai situs</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>Terbitkan program</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>Nama untuknya, 1 hingga 32 dari a-z, 0-9, dan -. Beri nama web untuk aplikasi web yang harus dibuka peramban di alamat node ini:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>Port yang didengarkannya, di 127.0.0.1 (hanya komputer ini):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>Hentikan program</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>Program mana yang tidak boleh lagi dijangkau pengunjung:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 di 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 aliran terbuka</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>Ponsel pendamping</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>Belanjakan dari ponsel sementara koin Anda tetap di sini. Ponsel tidak menyimpan kunci koin: ia menjangkau node ini, membuktikan kunci yang dipasangkan dengannya, dan node ini membayar dari dompet uang saku kecil — setelah memeriksa PIN ponsel dan batas yang Anda tetapkan, yang tidak dapat diubah ponsel. Jika ponsel hilang, Anda kehilangan paling banyak isi uang saku; lepas pasangannya di sini. Saat node ini adalah relai yang tercatat dan cukup banyak yang lain tercatat, ponsel datang melalui tiga relai, sehingga tidak ada pengamat yang tahu di mana ia berada; jika tidak, ia terhubung langsung ke sini.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>Uang saku</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>Dapat dijangkau ponsel</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>Ponsel</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>Satu pembayaran</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>Sehari</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>Dibelanjakan hari ini</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>Pasangkan ponsel…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>Batas…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>Buka kunci</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>Ponsel dikunci setelah lima PIN salah berturut-turut, sampai dibuka di sini.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>Lepas pasangan</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>Izinkan ponsel terpasang membelanjakan dari dompet uang saku</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>Memerlukan jaringan overlay. Nonaktif secara bawaan, karena memungkinkan ponsel membelanjakan koin node ini.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>Dompet tersendiri, tanpa frasa sandi — tidak ada orang yang mengetiknya saat ponsel membayar — dan hanya berisi apa yang boleh dibelanjakan ponsel. Dompet ini tidak pernah melakukan stake, dan tidak dapat menjadi dompet yang membayar pencatatan.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>Buat</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>Buat dompet uang saku dan buka setiap kali node ini dimulai.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>Isi ulang…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>Buka Kirim di dompet, untuk memindahkan koin ke uang saku.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>Dompet uang saku</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, %1 lagi sedang tiba</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>ya, di %1, melalui relai</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>langsung, di %1. Tanpa relai di antaranya: jaringan ponsel melihatnya berbicara dengan komputer ini. Dari luar jaringan ini, teruskan port UDP %2 di router ke komputer ini.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>tidak — node ini belum mengetahui alamatnya sendiri</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>tidak dapat dijangkau</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>ada ponsel yang menunggu</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>tidak ada uang saku</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>ada ponsel yang terkunci</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 ponsel terkunci</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>berjalan, belum ada ponsel</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>berjalan, 1 ponsel</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>berjalan, %1 ponsel</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>Kunci perangkat %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>terkunci: PIN salah</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>terpasang</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>Lepas pasangan %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>Lepas pasangan %1? Ponsel tidak akan dapat membelanjakan lagi sampai dipasangkan kembali. Lakukan segera jika ponsel hilang atau dicuri.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>Dompet uang saku dibuat dan dibuka. Gunakan Isi ulang untuk memindahkan ke dalamnya apa yang boleh dibelanjakan ponsel.</translation>
     </message>
 </context>
 <context>
@@ -5343,6 +5853,30 @@ Anda dapat mengubahnya kapan saja di halaman Server.</translation>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>Node masih dimulai; pengaturan inti belum tersedia.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>Orang lain menemui Anda di relai yang dihitung dari register, dan node Anda menjaga jalur terbuka ke masing-masing melalui sebanyak ini relai. Titik temu hanya melihat yang terakhir, tidak pernah alamat Anda. Lebih banyak menyembunyikan Anda lebih baik dan lebih lambat.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>Relai sebelum titik temu Anda</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>Saat komputer ini memakai internet jaringan, setiap koneksi melewati sebanyak ini relai menuju titik temu gerbang, lalu melalui relai gerbang itu sendiri: gerbang tidak pernah tahu siapa Anda. Lebih banyak menyembunyikan Anda lebih baik dan lebih lambat.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>Relai sebelum titik temu gerbang</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>Hanya koneksi pertama Anda yang langsung, ke relai masuk yang melihat alamat Anda dan bukan siapa Anda. Surat selalu melewati tiga relai.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Versi %1</translation>
     </message>
 </context>
 <context>
@@ -5505,6 +6039,147 @@ Anda dapat mengubahnya kapan saja di halaman Server.</translation>
     <message>
         <source>Message verified.</source>
         <translation>Pesan diverifikasi.</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>Situs</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>Situs yang dihosting melalui jaringan overlay, dibuka dengan nama atau kunci yang dibagikan seseorang kepada Anda. Halaman ditampilkan di sini tanpa skrip, dan tidak ada isinya yang diambil dari luar BPS, sehingga halaman tidak dapat mengetahui di mana Anda berada.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Kembali</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Maju</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>Ambil ulang halaman</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://nama/ atau kunci situs</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Buka</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>Simpan berkas ini…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>Buka di peramban Anda</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>Situs yang sama di peramban biasa, melalui server hanya di komputer ini. Halaman di sana dapat menjalankan skrip, sehingga penampil di sini tetap cara yang lebih aman untuk membaca situs tersembunyi.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>Hubungkan ke program…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>Jangkau program yang dijalankan situs ini — server obrolan, permainan — dari program di komputer ini: BPS Relay mendengarkan sebuah port di sini dan membawa setiap koneksi ke sana melalui jaringan overlay.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>Itu bukan alamat situs. Tulis nama atau kunci, misalnya bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>Mencari %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>Mengambil %1 melalui jaringan overlay…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 bukan halaman yang ditampilkan penampil ini (%2 byte). Simpan untuk membukanya dengan program lain.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>Arahkan program di komputer ini ke %1: BPS Relay membawa setiap koneksi yang dibuat di sana ke program situs, melalui jaringan overlay, sampai dimulai ulang.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>Server situs untuk peramban tidak berjalan. Server ini dimulai bersama BPS Relay kecuali -siteproxy=0 diberikan.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 tidak mengarah ke kunci apa pun.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 sekarang menunjuk ke kunci yang berbeda dari saat terakhir Anda membukanya. Pemegang nama saat ini mungkin bukan orang yang Anda baca sebelumnya.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>Ditemui di salah satu titik temunya, melalui %1 relai Anda: baik Anda maupun host tidak tahu di mana pihak lain.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>Dijangkau di alamatnya melalui %1 relai: host tidak tahu siapa Anda.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>Situs Anda sendiri, dibaca dari komputer ini.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>Situs ini dijangkau melalui radio, sehingga halaman datang perlahan.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 bukan nama yang dikenal node ini: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>Tidak dapat membuka %1: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>Tautan ini mengarah ke luar BPS, sehingga tidak diikuti: %1
+Buka di peramban biasa jika Anda mau; siapa pun yang mengelolanya akan melihat alamat Anda.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>Hubungkan ke program</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>Nama yang diberikan situs untuk programnya:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>Membuka situs di peramban Anda</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>Peramban Anda akan meminta situs kepada komputer ini, dan BPS Relay mengambilnya melalui jaringan overlay, seperti di sini. Setiap halaman hanya boleh memuat dari situsnya sendiri, sehingga tidak dapat menarik apa pun dari internet terbuka untuk mengetahui di mana Anda berada.
+
+Yang masih dapat dilakukan peramban: skrip dapat memakai WebRTC untuk menunjukkan alamat komputer ini kepada halaman, dan tautan yang Anda ikuti ke situs biasa keluar seperti tautan lainnya. Penampil di BPS Relay tidak menjalankan skrip dan tetap cara yang lebih aman untuk membaca situs tersembunyi.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>Simpan berkas</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>Tidak dapat menyimpan %1.</translation>
     </message>
 </context>
 <context>

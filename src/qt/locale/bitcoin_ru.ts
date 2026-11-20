@@ -1122,6 +1122,10 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <source>Not staking</source>
         <translation>Стейкинг не идёт</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>Сайты</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1276,6 +1280,92 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>делегировано %1 для холодного стейкинга</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>Лимиты для %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>Сколько этот телефон может потратить из кошелька на карманные расходы, включая комиссии.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Не больше за один платёж</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Не больше за любые 24 часа</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>Связать телефон</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>В приложении BPS на телефоне выберите «Связать» и отсканируйте этот код. Или скопируйте текст под ним в приложение. Код действует один раз, десять минут.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>Копировать код</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>Показать новый код</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>Связывайте, только если телефон показывает те же шесть цифр. Если другие — кто-то другой ответил на код первым: отклоните и покажите новый.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>Сколько этот телефон может потратить из кошелька на карманные расходы. Изменить это позже может только этот узел, но не телефон.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Не больше за один платёж</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Не больше за любые 24 часа</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>Отклонить</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>Связать этот телефон</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>Создание кода…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>Срок действия кода истёк.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>Ожидание телефона… код действует ещё %1 мин.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>Эта сборка не умеет рисовать QR-коды: вместо этого скопируйте текст ниже в приложение.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>Телефон «%1» хочет связаться с этим узлом.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>Связано. Теперь телефон может тратить из кошелька на карманные расходы в заданных вами лимитах. Его список — на странице «Сервер», где можно изменить его лимиты, разблокировать после слишком многих неверных PIN-кодов или отвязать.</translation>
     </message>
 </context>
 <context>
@@ -1451,7 +1541,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>Найти пира или адрес</translation>
+        <translation type="vanished">Найти пира или адрес</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1588,6 +1678,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>Пиры объявляют о себе в цепочке, а не на сервере, поэтому этот список у всех одинаков и никто не может его изменить. Пир, внесённый в реестр через оверлей, показывает, где его можно встретить сегодня, а это меняется каждый день; ретранслятор показывает свой адрес только пока он в сети, потому что адреса никогда нет в цепочке.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Имя</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>Зарегистрировать имя…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>Имя позволяет другим связаться с вами, не копируя ваш ключ. Имена регистрируются на вкладке «Имена».</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>Найти пира, заметку или адрес</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>Все эти имена указывают на ключ этого узла. Другие могут связаться с вами по любому из них.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>Управление именами…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>имена выключены</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>Для имён нужен индекс имён. Включите его в настройках, чтобы зарегистрировать и показать имя.</translation>
     </message>
 </context>
 <context>
@@ -3219,15 +3341,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>Это пишет в цепочку короткую запись о том, что вы существуете, и, по желанию, где вас найти.</translation>
+        <translation type="vanished">Это пишет в цепочку короткую запись о том, что вы существуете, и, по желанию, где вас найти.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>Как пирам связаться с вами?</translation>
+        <translation type="vanished">Как пирам связаться с вами?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>Через оверлей — не публиковать адрес</translation>
+        <translation type="vanished">Через оверлей — не публиковать адрес</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3235,35 +3357,35 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>По адресу, который я публикую</translation>
+        <translation type="vanished">По адресу, который я публикую</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>адрес, доступный другим пирам</translation>
+        <translation type="vanished">адрес, доступный другим пирам</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>Её может увидеть любой, и цепочка хранит её навсегда. Onion-адрес публикует местоположение, которое никто не сможет связать с вами, и работает из-за NAT; IP-адрес не даёт ни того, ни другого. Узел, публикующий IP-адрес, могут выбрать ретранслятором другие.</translation>
+        <translation type="vanished">Её может увидеть любой, и цепочка хранит её навсегда. Onion-адрес публикует местоположение, которое никто не сможет связать с вами, и работает из-за NAT; IP-адрес не даёт ни того, ни другого. Узел, публикующий IP-адрес, могут выбрать ретранслятором другие.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3307,7 +3429,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>Ваш узел подписывает запись и отправляет её через оверлей ретранслятору, через который он входит. Ретранслятор, оплачивающий записи, включает вашу в блок, который создаёт сам, так что она подтверждается, даже если большинство узлов её не передают, и добавляет вас к пирам, с которыми делит награды. Если он потом перестанет платить, ваша запись истечёт в течение месяца; вы всегда можете продлить её сами из кошелька со средствами.</translation>
+        <translation type="vanished">Ваш узел подписывает запись и отправляет её через оверлей ретранслятору, через который он входит. Ретранслятор, оплачивающий записи, включает вашу в блок, который создаёт сам, так что она подтверждается, даже если большинство узлов её не передают, и добавляет вас к пирам, с которыми делит награды. Если он потом перестанет платить, ваша запись истечёт в течение месяца; вы всегда можете продлить её сами из кошелька со средствами.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3323,11 +3445,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>Введите адрес или выберите не публиковать его.</translation>
+        <translation type="vanished">Введите адрес или выберите не публиковать его.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>Просим ваш ретранслятор опубликовать её… это может занять до полуминуты.</translation>
+        <translation type="vanished">Просим ваш ретранслятор опубликовать её… это может занять до полуминуты.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3359,11 +3481,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>Записать шлюз этого ретранслятора</translation>
+        <translation type="vanished">Записать шлюз этого ретранслятора</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>Запись ретранслятора содержит его адрес, поэтому его шлюз записывается под вторым ключом без адреса, отдельно. По реестру никто не может понять, что оба принадлежат одному компьютеру. Посетители добираются до шлюза через ретрансляторы, поэтому он никогда не узнаёт, кто они; сайты, которые они посещают, видят адрес этого компьютера.</translation>
+        <translation type="vanished">Запись ретранслятора содержит его адрес, поэтому его шлюз записывается под вторым ключом без адреса, отдельно. По реестру никто не может понять, что оба принадлежат одному компьютеру. Посетители добираются до шлюза через ретрансляторы, поэтому он никогда не узнаёт, кто они; сайты, которые они посещают, видят адрес этого компьютера.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3379,11 +3501,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>Платит другой ретранслятор, запрос идёт через ретрансляторы</translation>
+        <translation type="vanished">Платит другой ретранслятор, запрос идёт через ретрансляторы</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>Ваш узел подписывает запись шлюза и отправляет её через ретрансляторы другому ретранслятору, который оплачивает её и включает в блок, который создаёт сам. Этот ретранслятор узнаёт ключ шлюза и никогда — адрес этого компьютера. Оплата из собственного кошелька этого узла связала бы шлюз с этим ретранслятором в цепочке, а значит, и с его адресом.</translation>
+        <translation type="vanished">Ваш узел подписывает запись шлюза и отправляет её через ретрансляторы другому ретранслятору, который оплачивает её и включает в блок, который создаёт сам. Этот ретранслятор узнаёт ключ шлюза и никогда — адрес этого компьютера. Оплата из собственного кошелька этого узла связала бы шлюз с этим ретранслятором в цепочке, а значит, и с его адресом.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3399,7 +3521,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>Ваша запись говорит, кто вы, а не где вы работаете. Пиры добираются до вас через оверлей и встречают вас в точках, которые обе стороны вычисляют из реестра и которые меняются каждый день; Обзор показывает сегодняшние. Ваша запись также называет один ретранслятор, где вас можно встретить, пока она действует, и каждое продление называет новый. Это то, что этот клиент включает по умолчанию.</translation>
+        <translation type="vanished">Ваша запись говорит, кто вы, а не где вы работаете. Пиры добираются до вас через оверлей и встречают вас в точках, которые обе стороны вычисляют из реестра и которые меняются каждый день; Обзор показывает сегодняшние. Ваша запись также называет один ретранслятор, где вас можно встретить, пока она действует, и каждое продление называет новый. Это то, что этот клиент включает по умолчанию.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3419,15 +3541,59 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>Этот узел делится своим подключением к интернету как шлюз, как задано на странице Сервер, поэтому запись так и говорит.</translation>
+        <translation type="vanished">Этот узел делится своим подключением к интернету как шлюз, как задано на странице Сервер, поэтому запись так и говорит.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>Этот узел не ретранслирует для других и не делится своим подключением к интернету, как задано на странице Сервер.</translation>
+        <translation type="vanished">Этот узел не ретранслирует для других и не делится своим подключением к интернету, как задано на странице Сервер.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>Изменение там попадёт в реестр с вашей следующей записью.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>Это записывает в цепочку короткую запись о том, что вы существуете, и по желанию строку о вас.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>Что говорит ваша запись</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>Ваша запись говорит, кто вы, а не где вы работаете: в ней нет адреса. Пиры связываются с вами через оверлей, встречаясь с вами в точках, которые обе стороны вычисляют из реестра и которые меняются каждый день; «Обнаружение» показывает сегодняшние. Ваша запись также называет один ретранслятор, где вас можно встретить, пока она действует, и каждое продление называет новый.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>Заметка</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>необязательно: строка рядом с вашим ключом</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>Её может прочитать любой, и цепочка хранит её навсегда, даже после окончания записи. Не пишите ничего, что говорит, где вы или кто вы, если это для вас важно.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Ваш узел подписывает запись и отправляет её по пути к ретранслятору, через который он не входит, так что этот ретранслятор узнаёт, кто вы, но не где. Ретранслятор, оплачивающий записи, помещает вашу в блок, который сам стейкает, поэтому она подтверждается, даже пока большинство узлов не стали бы её передавать, и добавляет вас к пирам, с которыми делит вознаграждения. Если позже он перестанет платить, ваша запись истечёт в течение месяца; вы всегда можете продлить её сами из кошелька со средствами.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 байт</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>Слишком длинно: буквы вне простого английского занимают от двух до четырёх байт каждая.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>Заметка слишком длинная.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>Заметка не может содержать управляющие символы или знаки, меняющие направление текста.</translation>
     </message>
 </context>
 <context>
@@ -3607,6 +3773,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>Введите адрес BitcoinPoS (например, %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>Задайте оба лимита.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>Один платёж не может превышать лимит за весь день.</translation>
     </message>
 </context>
 <context>
@@ -4307,6 +4481,14 @@ worked out from the roster; they change every day:</source>
         <source>meets at %1</source>
         <translation>встреча у %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>Заметка</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>Написана тем, кто владеет этим ключом; никто её не проверяет.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4790,7 +4972,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>Сайт или сервис, работающий на этом узле, находимый по ключу или имени и доступный через оверлей, так что хост никогда не публикует, где работает. Часть с встречей уже есть: сервис регистрируется в точках встречи, которые обе стороны вычисляют из реестра. Отдача страниц и приложений через это ещё не сделана.</translation>
+        <translation type="vanished">Сайт или сервис, работающий на этом узле, находимый по ключу или имени и доступный через оверлей, так что хост никогда не публикует, где работает. Часть с встречей уже есть: сервис регистрируется в точках встречи, которые обе стороны вычисляют из реестра. Отдача страниц и приложений через это ещё не сделана.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -5014,7 +5196,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Что этот узел предлагает другим. Ретрансляция, хранение почты и раздача интернета работают уже сегодня; хостинг на подходе и, как всё здесь, находится так же, как пиры, — через реестр. У имён своя страница.</translation>
+        <translation type="vanished">Что этот узел предлагает другим. Ретрансляция, хранение почты и раздача интернета работают уже сегодня; хостинг на подходе и, как всё здесь, находится так же, как пиры, — через реестр. У имён своя страница.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -5030,7 +5212,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>Записан как</translation>
+        <translation type="vanished">Записан как</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5042,15 +5224,15 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>Записать как шлюз…</translation>
+        <translation type="vanished">Записать как шлюз…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Делиться интернет-соединением этого компьютера как шлюз</translation>
+        <translation type="vanished">Делиться интернет-соединением этого компьютера как шлюз</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>Выключите его, если закон там, где вы живёте, или условия вашего интернет-провайдера запрещают делиться соединением. Выключенный, этот узел по-прежнему ретранслирует, хранит почту и следит за цепочкой, а своим соединением пользуется напрямую.</translation>
+        <translation type="vanished">Выключите его, если закон там, где вы живёте, или условия вашего интернет-провайдера запрещают делиться соединением. Выключенный, этот узел по-прежнему ретранслирует, хранит почту и следит за цепочкой, а своим соединением пользуется напрямую.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5066,11 +5248,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>Разрешить программам на этом компьютере пользоваться интернетом сети через локальный прокси</translation>
+        <translation type="vanished">Разрешить программам на этом компьютере пользоваться интернетом сети через локальный прокси</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>SOCKS5-прокси только для этого компьютера. Каждое соединение выходит через шлюз другого участника, а имена разрешаются там, никогда здесь. Работает, пока этот компьютер делится своим соединением.</translation>
+        <translation type="vanished">SOCKS5-прокси только для этого компьютера. Каждое соединение выходит через шлюз другого участника, а имена разрешаются там, никогда здесь. Работает, пока этот компьютер делится своим соединением.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5106,27 +5288,27 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>не записан как шлюз</translation>
+        <translation type="vanished">не записан как шлюз</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>пока нет — реестр не числит этот узел шлюзом, поэтому его никто не найдёт</translation>
+        <translation type="vanished">пока нет — реестр не числит этот узел шлюзом, поэтому его никто не найдёт</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>пока ничего — ретранслятор записывает свой шлюз под вторым ключом, без адреса, отдельно от собственной записи</translation>
+        <translation type="vanished">пока ничего — ретранслятор записывает свой шлюз под вторым ключом, без адреса, отдельно от собственной записи</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>пока ничего — в записи этого узла нет параметра шлюза; опубликуйте её заново с включённым параметром</translation>
+        <translation type="vanished">пока ничего — в записи этого узла нет параметра шлюза; опубликуйте её заново с включённым параметром</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>пока ничего — опубликуйте запись без адреса с включённым параметром шлюза</translation>
+        <translation type="vanished">пока ничего — опубликуйте запись без адреса с включённым параметром шлюза</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>Записать шлюз этого ретранслятора…</translation>
+        <translation type="vanished">Записать шлюз этого ретранслятора…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5146,11 +5328,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>его ключ шлюза %1, отдельно от адреса ретранслятора</translation>
+        <translation type="vanished">его ключ шлюза %1, отдельно от адреса ретранслятора</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>собственный ключ этого узла %1</translation>
+        <translation type="vanished">собственный ключ этого узла %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5166,11 +5348,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>Пропускать весь трафик этого компьютера через сеть, без настройки прокси в каких-либо программах</translation>
+        <translation type="vanished">Пропускать весь трафик этого компьютера через сеть, без настройки прокси в каких-либо программах</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>Соединения каждой программы выходят через шлюзы сети, каждое через другой, и имена ищутся там же. Собственная сеть этого компьютера — принтер, маршрутизатор — и собственные соединения этого узла остаются прямыми. Это работает, пока этот компьютер делится своим подключением.</translation>
+        <translation type="vanished">Соединения каждой программы выходят через шлюзы сети, каждое через другой, и имена ищутся там же. Собственная сеть этого компьютера — принтер, маршрутизатор — и собственные соединения этого узла остаются прямыми. Это работает, пока этот компьютер делится своим подключением.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5198,11 +5380,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>Включено: сейчас %1 соединений через сеть; отправлено %2, получено %3.</translation>
+        <translation type="vanished">Включено: сейчас %1 соединений через сеть; отправлено %2, получено %3.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>В этой системе пока недоступно.</translation>
+        <translation type="vanished">В этой системе пока недоступно.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5214,7 +5396,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>Начнёт работать после перезапуска клиента.</translation>
+        <translation type="vanished">Начнёт работать после перезапуска клиента.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5243,6 +5425,334 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>none — relaying is switched off</source>
         <translation>нет — ретрансляция выключена</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Что этот узел предлагает другим: ретрансляцию, хранение почты, общий доступ к интернету и размещение сайта; а вашему телефону — способ тратить отсюда. Как и всё здесь, это находят так же, как пиров, — через реестр. У имён своя страница.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>Делиться интернет-подключением этого компьютера и взамен пользоваться подключением сети</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>Когда включено, подключение этого компьютера доступно другим, а весь его собственный трафик выходит через шлюзы сети, каждое соединение через другой; собственная сеть компьютера — принтер, роутер — остаётся напрямую. Выключите, если закон там, где вы живёте, или условия вашего провайдера запрещают делиться подключением: тогда сеть передаёт только сам BPS, а компьютер пользуется своим подключением.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Для всего компьютера: включено, сейчас соединений через сеть: %1; отправлено %2, получено %3.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>Для всего компьютера: пока недоступно в этой системе; программы могут использовать прокси.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>Для всего компьютера: заработает после перезапуска клиента.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>не делится</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>нет — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>Опубликуйте папку как сайт под ключом этого узла, чтобы любой, кому вы дадите ключ или своё имя, мог читать его через оверлей. Каждый файл подписан и проверяется по частям по мере получения. Если узел записан без адреса, его встречают в его точках встречи, и никто не узнаёт, где работает сайт; если с адресом — посетители приходят через ретрансляторы, и он никогда не узнаёт, кто они. Программу на этом компьютере — веб-приложение, чат-сервер — можно опубликовать так же: посетители приходят к ней через оверлей, а узел подключается только к указанному вами порту.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Папка</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>Посещено</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Отправлено</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>нет</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>Программы на этом компьютере, к которым посетители приходят через оверлей. Программа с именем web — то, что браузер открывает по адресу этого узла, когда сайта нет.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>Программы</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>Опубликовать папку…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>Опубликовать заново</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>Перечитать папку после изменений и опубликовать то, что в ней сейчас.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>Прекратить публикацию</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>Открыть в «Сайтах»</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>Опубликовать программу…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>Остановить программу…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>не публикует</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>ничего — ничего не опубликовано</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — файлов: %2, %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>нет в реестре</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>пока никем: этот узел не записан в реестр, поэтому посетители не найдут сайт. Опубликуйте запись на странице «Узел», в разделе «Обнаружение».</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>публикует</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>пока не встречен</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>в точках встречи: %1, без опубликованного адреса</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>пока нет: регистрируется в своих точках встречи, для чего нужны ретрансляторы реестра</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>по адресу этого узла, через ретрансляторы, скрывающие посетителя</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>частей страниц: %1, %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>Папка для публикации как сайта</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>Опубликовать программу</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>Имя для неё, от 1 до 32 символов из a-z, 0-9 и -. Назовите её web для веб-приложения, которое браузер должен открыть по адресу этого узла:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>Порт, который она слушает на 127.0.0.1 (только этот компьютер):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>Остановить программу</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>К какой программе посетители больше не должны приходить:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 на 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— открытых потоков: %1</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>Телефон-компаньон</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>Тратьте с телефона, пока ваши монеты остаются здесь. На телефоне нет ключей от монет: он связывается с этим узлом, подтверждает ключ, с которым был связан, и узел платит из небольшого кошелька на карманные расходы — проверив PIN-код телефона и заданные вами лимиты, которые телефон изменить не может. Потеряете телефон — потеряете не больше, чем лежит в кармане; отвяжите его здесь. Когда этот узел — записанный ретранслятор и записано достаточно других, телефон приходит через три ретранслятора, так что никто из наблюдающих не узнаёт, где он; иначе он подключается сюда напрямую.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>Карманные</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>Доступен для телефонов</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>Телефон</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>Один платёж</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>День</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>Потрачено сегодня</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>Состояние</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>Связать телефон…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>Лимиты…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>Разблокировать</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>Телефон блокируется после пяти неверных PIN-кодов подряд, пока его не разблокируют здесь.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>Отвязать</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>Разрешить связанным телефонам тратить из кошелька на карманные расходы</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>Нужен оверлей. По умолчанию выключено, потому что позволяет телефону тратить монеты этого узла.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>Отдельный кошелёк без пароля — некому вводить его, когда платит телефон, — и только с тем, что телефон должен мочь потратить. Он никогда не стейкает и не может быть кошельком, оплачивающим записи.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>Создать</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>Создать кошелёк на карманные расходы и открывать его при каждом запуске узла.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>Пополнить…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>Открыть «Отправить» в кошельке, чтобы перевести монеты на карманные расходы.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>Кошелёк на карманные расходы</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, ещё %1 в пути</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>да, на %1, через ретрансляторы</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>напрямую, на %1. Без ретрансляторов посередине: сеть телефона видит, что он общается с этим компьютером. Снаружи этой сети пробросьте на роутере UDP-порт %2 на этот компьютер.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>нет — этот узел пока не знает собственного адреса</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>недоступен</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>телефон ожидает</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>нет карманного кошелька</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>телефон заблокирован</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>заблокировано телефонов: %1</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>работает, телефонов пока нет</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>работает, 1 телефон</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>работает, телефонов: %1</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>Ключ устройства %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>заблокирован: неверные PIN-коды</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>связан</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>Отвязать %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>Отвязать %1? Он не сможет тратить, пока его не свяжут заново. Сделайте это сразу, если телефон потерян или украден.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>Кошелёк на карманные расходы создан и открыт. Используйте «Пополнить», чтобы перевести в него то, что телефон должен мочь потратить.</translation>
     </message>
 </context>
 <context>
@@ -5374,6 +5884,30 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>Узел ещё запускается; основные настройки пока недоступны.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>Другие встречают вас у ретрансляторов, вычисленных из реестра, а ваш узел держит открытым путь к каждому из них через столько ретрансляторов. Точка встречи видит только последний из них и никогда — ваш адрес. Больше — лучше скрывает и медленнее.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>Ретрансляторов до ваших точек встречи</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>Когда этот компьютер пользуется интернетом сети, каждое соединение идёт через столько ретрансляторов до точки встречи шлюза, а за ней — через ретрансляторы самого шлюза: шлюз никогда не узнаёт, кто вы. Больше — лучше скрывает и медленнее.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>Ретрансляторов до точки встречи шлюза</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>Прямое только ваше первое соединение — к входному ретранслятору, который видит ваш адрес, но не знает, кто вы. Почта всегда идёт через три ретранслятора.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Версия %1</translation>
     </message>
 </context>
 <context>
@@ -5536,6 +6070,147 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Message verified.</source>
         <translation>Сообщение проверено.</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>Сайты</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>Сайты, размещённые в оверлее, открываемые по имени или ключу, которым с вами поделились. Страницы показываются здесь без скриптов, и ничего на них не загружается извне BPS, поэтому страница не может узнать, где вы.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Назад</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Вперёд</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>Загрузить страницу заново</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://имя/ или ключ сайта</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Открыть</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>Сохранить этот файл…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>Открыть в браузере</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>Тот же сайт в обычном браузере, через сервер только на этом компьютере. Страницы там могут выполнять скрипты, поэтому просмотрщик здесь остаётся более безопасным способом читать скрытый сайт.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>Подключиться к программе…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>Связаться с программой, которую запускает этот сайт, — чат-сервером, игрой — из программы на этом компьютере: BPS Relay слушает здесь порт и передаёт каждое соединение к ней через оверлей.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>Это не адрес сайта. Введите имя или ключ, например bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>Поиск %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>Загрузка %1 через оверлей…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 — не страница, которую показывает этот просмотрщик (%2 байт). Сохраните её, чтобы открыть другой программой.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>Направьте программу на этом компьютере на %1: BPS Relay передаёт каждое установленное там соединение к программе сайта через оверлей до своего перезапуска.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>Сервер сайтов для браузеров не запущен. Он запускается вместе с BPS Relay, если не указано -siteproxy=0.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 не указывает ни на какой ключ.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 теперь указывает на другой ключ, чем при последнем открытии. Тот, кто сейчас владеет именем, может быть не тем, кого вы читали раньше.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>Встречен в одной из его точек встречи, через ваши ретрансляторы: %1. Ни вы, ни хост не узнаёте, где другой.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>Достигнут по своему адресу через ретрансляторы: %1. Хост не узнаёт, кто вы.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>Ваш собственный сайт, прочитанный с этого компьютера.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>Он доступен по радио, поэтому страницы приходят медленно.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 — не имя, известное этому узлу: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>Не удалось открыть %1: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>Эта ссылка ведёт за пределы BPS, поэтому по ней не перешли: %1
+Откройте её в обычном браузере, если хотите; тот, кто её обслуживает, увидит ваш адрес.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>Подключиться к программе</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>Имя, которое сайт дал своей программе:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>Открытие сайта в браузере</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>Ваш браузер запросит сайт у этого компьютера, а BPS Relay загрузит его через оверлей, как и здесь. Каждая страница может загружать только со своего сайта, поэтому не может подтянуть ничего из открытого интернета, чтобы узнать, где вы.
+
+Что браузер всё же может: скрипт через WebRTC может показать странице адреса этого компьютера, а ссылка на обычный сайт уходит как любая ссылка. Просмотрщик в BPS Relay не выполняет скриптов и остаётся более безопасным способом читать скрытый сайт.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>Сохранить файл</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>Не удалось сохранить %1.</translation>
     </message>
 </context>
 <context>

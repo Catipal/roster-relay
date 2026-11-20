@@ -1117,6 +1117,10 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <source>Not staking</source>
         <translation>אין סטייקינג</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>אתרים</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1271,6 +1275,92 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>הואצל ל־%1 לסטייקינג קר</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>מגבלות עבור %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>כמה הטלפון הזה רשאי להוציא מארנק דמי הכיס, כולל עמלות.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>לכל היותר בתשלום אחד</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>לכל היותר בכל 24 שעות</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>צימוד טלפון</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>באפליקציית BPS בטלפון, בחרו צימוד וסרקו את הקוד הזה. או העתיקו את הטקסט שמתחתיו לאפליקציה. הוא פועל פעם אחת, למשך עשר דקות.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>העתקת הקוד</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>הצגת קוד חדש</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>צמדו רק אם הטלפון מציג את אותן שש ספרות. אם הוא מציג אחרות, מישהו אחר ענה לקוד קודם: דחו והציגו קוד חדש.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>כמה הטלפון הזה רשאי להוציא מארנק דמי הכיס. רק הצומת הזה יכול לשנות זאת בהמשך, לעולם לא הטלפון.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>לכל היותר בתשלום אחד</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>לכל היותר בכל 24 שעות</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>דחייה</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>צימוד הטלפון הזה</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>יוצר קוד…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>תוקף הקוד הזה פג.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>ממתין לטלפון… הקוד פועל עוד %1 דקות.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>גרסה זו אינה יכולה לצייר קודי QR: העתיקו במקום זאת את הטקסט שלמטה לאפליקציה.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>טלפון בשם „%1” רוצה להצטמד לצומת הזה.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>צומד. הטלפון יכול כעת להוציא מארנק דמי הכיס בתוך המגבלות שקבעתם. הרשימה שלו נמצאת בעמוד שרת, שם אפשר לשנות את מגבלותיו, לשחרר אותו לאחר יותר מדי קודי PIN שגויים או לבטל את הצימוד.</translation>
     </message>
 </context>
 <context>
@@ -1446,7 +1536,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>חיפוש עמית או כתובת</translation>
+        <translation type="vanished">חיפוש עמית או כתובת</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1583,6 +1673,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>עמיתים מכריזים על עצמם בשרשרת ולא בשרת, כך שהרשימה הזו זהה אצל כולם ואיש אינו יכול לערוך אותה. עמית שרשום דרך שכבת־העל מראה היכן אפשר לפגוש אותו היום, וזה משתנה כל יום; ממסר מראה את הכתובת שלו רק כל עוד הוא מחובר, כי היא אף פעם אינה בשרשרת.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>שם</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>רישום שם…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>שם הוא הדרך שבה אחרים מגיעים אליכם בלי להעתיק את המפתח שלכם. שמות נרשמים בלשונית שמות.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>חיפוש עמית, הערה או כתובת</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>כל השמות האלה מובילים למפתח של הצומת הזה. אחרים יכולים להגיע אליכם דרך כל אחד מהם.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>ניהול שמות…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>שמות כבויים</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>שמות דורשים את אינדקס השמות. הפעילו אותו בהגדרות כדי לרשום ולהציג שם.</translation>
     </message>
 </context>
 <context>
@@ -3211,15 +3333,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>זה כותב לשרשרת רשומה קצרה שאומרת שאת/ה קיים/ת, ואם תרצה/י, איפה למצוא אותך.</translation>
+        <translation type="vanished">זה כותב לשרשרת רשומה קצרה שאומרת שאת/ה קיים/ת, ואם תרצה/י, איפה למצוא אותך.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>איך עמיתים יגיעו אליך?</translation>
+        <translation type="vanished">איך עמיתים יגיעו אליך?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>דרך שכבת־העל — בלי לפרסם כתובת</translation>
+        <translation type="vanished">דרך שכבת־העל — בלי לפרסם כתובת</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3227,35 +3349,35 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>בכתובת שאני מפרסם/ת</translation>
+        <translation type="vanished">בכתובת שאני מפרסם/ת</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>כתובת שעמיתים אחרים יכולים להגיע אליה</translation>
+        <translation type="vanished">כתובת שעמיתים אחרים יכולים להגיע אליה</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>כל אחד יכול לראות אותה, והשרשרת שומרת אותה לצמיתות. כתובת onion מפרסמת מיקום שאיש אינו יכול לקשר אליך ועובדת מאחורי NAT; כתובת IP אינה עושה אף אחד מהם. צומת שמפרסם כתובת IP יכול להיבחר כממסר על ידי אחרים.</translation>
+        <translation type="vanished">כל אחד יכול לראות אותה, והשרשרת שומרת אותה לצמיתות. כתובת onion מפרסמת מיקום שאיש אינו יכול לקשר אליך ועובדת מאחורי NAT; כתובת IP אינה עושה אף אחד מהם. צומת שמפרסם כתובת IP יכול להיבחר כממסר על ידי אחרים.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3299,7 +3421,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>הצומת שלך חותם על הרישום ושולח אותו דרך שכבת־העל לממסר שדרכו הוא נכנס. ממסר שמשלם על רישומים מכניס את שלך לבלוק שהוא עצמו יוצר, כך שהוא מאושר גם אם רוב הצמתים לא היו מעבירים אותו, ומוסיף אותך לעמיתים שאיתם הוא חולק את התגמולים שלו. אם הוא יפסיק לשלם בהמשך, הרישום שלך יפוג בתוך החודש; תמיד אפשר לחדש בעצמך מארנק עם יתרה.</translation>
+        <translation type="vanished">הצומת שלך חותם על הרישום ושולח אותו דרך שכבת־העל לממסר שדרכו הוא נכנס. ממסר שמשלם על רישומים מכניס את שלך לבלוק שהוא עצמו יוצר, כך שהוא מאושר גם אם רוב הצמתים לא היו מעבירים אותו, ומוסיף אותך לעמיתים שאיתם הוא חולק את התגמולים שלו. אם הוא יפסיק לשלם בהמשך, הרישום שלך יפוג בתוך החודש; תמיד אפשר לחדש בעצמך מארנק עם יתרה.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3315,11 +3437,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>יש להזין כתובת, או לבחור לא לפרסם כתובת.</translation>
+        <translation type="vanished">יש להזין כתובת, או לבחור לא לפרסם כתובת.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>מבקש מהממסר שלך לפרסם אותה… זה עשוי לקחת עד חצי דקה.</translation>
+        <translation type="vanished">מבקש מהממסר שלך לפרסם אותה… זה עשוי לקחת עד חצי דקה.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3351,11 +3473,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>רישום השער של הממסר הזה</translation>
+        <translation type="vanished">רישום השער של הממסר הזה</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>הרישום של ממסר כולל את הכתובת שלו, ולכן השער שלו נרשם תחת מפתח שני בלי כתובת, בנפרד ממנו. איש אינו יכול לדעת מתוך הרשם ששניהם שייכים למחשב אחד. מבקרים מגיעים לשער דרך ממסרים, כך שהוא לעולם אינו יודע מי הם; האתרים שהם מבקרים בהם רואים את הכתובת של המחשב הזה.</translation>
+        <translation type="vanished">הרישום של ממסר כולל את הכתובת שלו, ולכן השער שלו נרשם תחת מפתח שני בלי כתובת, בנפרד ממנו. איש אינו יכול לדעת מתוך הרשם ששניהם שייכים למחשב אחד. מבקרים מגיעים לשער דרך ממסרים, כך שהוא לעולם אינו יודע מי הם; האתרים שהם מבקרים בהם רואים את הכתובת של המחשב הזה.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3371,11 +3493,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>ממסר אחר משלם, בבקשה דרך ממסרים</translation>
+        <translation type="vanished">ממסר אחר משלם, בבקשה דרך ממסרים</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>הצומת שלך חותם על הרישום של השער ושולח אותו דרך ממסרים לממסר אחר, שמשלם עליו ומכניס אותו לבלוק שהוא עצמו יוצר. הממסר הזה לומד את המפתח של השער ולעולם לא את הכתובת של המחשב הזה. תשלום מהארנק של הצומת הזה עצמו היה קושר את השער לממסר הזה בשרשרת, ולכן לכתובת שלו.</translation>
+        <translation type="vanished">הצומת שלך חותם על הרישום של השער ושולח אותו דרך ממסרים לממסר אחר, שמשלם עליו ומכניס אותו לבלוק שהוא עצמו יוצר. הממסר הזה לומד את המפתח של השער ולעולם לא את הכתובת של המחשב הזה. תשלום מהארנק של הצומת הזה עצמו היה קושר את השער לממסר הזה בשרשרת, ולכן לכתובת שלו.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3391,7 +3513,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>הרישום שלך אומר מי את/ה ולא היכן את/ה פועל/ת. עמיתים מגיעים אליך דרך שכבת־העל ונפגשים איתך בנקודות ששני הצדדים מחשבים מהמרשם, ושמשתנות כל יום; דף הגילוי מראה את של היום. הרישום שלך גם נוקב בממסר אחד שבו אפשר לפגוש אותך כל עוד הוא בתוקף, וכל חידוש נוקב בממסר חדש. זה מה שהלקוח הזה מפעיל כברירת מחדל.</translation>
+        <translation type="vanished">הרישום שלך אומר מי את/ה ולא היכן את/ה פועל/ת. עמיתים מגיעים אליך דרך שכבת־העל ונפגשים איתך בנקודות ששני הצדדים מחשבים מהמרשם, ושמשתנות כל יום; דף הגילוי מראה את של היום. הרישום שלך גם נוקב בממסר אחד שבו אפשר לפגוש אותך כל עוד הוא בתוקף, וכל חידוש נוקב בממסר חדש. זה מה שהלקוח הזה מפעיל כברירת מחדל.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3411,15 +3533,59 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>הצומת הזה משתף את חיבור האינטרנט שלו כשער, כפי שהוגדר בדף השרת, ולכן הרישום אומר זאת.</translation>
+        <translation type="vanished">הצומת הזה משתף את חיבור האינטרנט שלו כשער, כפי שהוגדר בדף השרת, ולכן הרישום אומר זאת.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>הצומת הזה אינו מעביר עבור אחרים ואינו משתף את חיבור האינטרנט שלו, כפי שהוגדר בדף השרת.</translation>
+        <translation type="vanished">הצומת הזה אינו מעביר עבור אחרים ואינו משתף את חיבור האינטרנט שלו, כפי שהוגדר בדף השרת.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>שינוי שם מגיע למרשם עם הרישום הבא שלך.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>פעולה זו כותבת בשרשרת רשומה קצרה שאתם קיימים, ובאופן אופציונלי שורה עליכם.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>מה הרישום שלכם אומר</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>הרישום שלכם אומר מי אתם ולא היכן אתם פועלים: אין בו כתובת. עמיתים מגיעים אליכם דרך שכבת־העל, ופוגשים אתכם בנקודות ששני הצדדים מחשבים מהמרשם ומשתנות בכל יום; גילוי מציג את של היום. הרישום שלכם גם נוקב בממסר אחד שבו אפשר לפגוש אתכם כל עוד הוא בתוקף, וכל חידוש נוקב בממסר חדש.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>הערה</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>אופציונלי: שורה המוצגת לצד המפתח שלכם</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>כל אחד יכול לקרוא אותה, והשרשרת שומרת אותה לתמיד, גם אחרי שהרישום מסתיים. השמיטו כל דבר שאומר היכן אתם או מי אתם, אם זה חשוב לכם.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>הצומת שלכם חותם על הרישום ושולח אותו בנתיב לממסר שהוא אינו נכנס דרכו, כך שהממסר הזה לומד מי אתם ולא היכן. ממסר שמשלם על רישומים מכניס את שלכם לבלוק שהוא עצמו עושה לו stake, כך שהוא מאושר גם כשרוב הצמתים לא היו מעבירים אותו הלאה, ומוסיף אתכם לעמיתים שאיתם הוא חולק את תגמוליו. אם בהמשך יפסיק לשלם, הרישום שלכם יפקע במהלך החודש; תמיד אפשר לחדש אותו בעצמכם מארנק עם כספים.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 בתים</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>ארוך מדי: אותיות מחוץ לאנגלית פשוטה תופסות שניים עד ארבעה בתים כל אחת.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>ההערה ארוכה מדי.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>ההערה אינה יכולה להכיל תווי בקרה או סימנים שמשנים את כיוון הטקסט.</translation>
     </message>
 </context>
 <context>
@@ -3593,6 +3759,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>יש להזין כתובת BitcoinPoS (למשל %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>קבעו את שתי המגבלות.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>לא ניתן להתיר לתשלום אחד יותר מיום שלם.</translation>
     </message>
 </context>
 <context>
@@ -4293,6 +4467,14 @@ worked out from the roster; they change every day:</source>
         <source>meets at %1</source>
         <translation>נפגש ב־%1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>הערה</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>נכתבה על ידי מי שמחזיק במפתח הזה; איש אינו בודק אותה.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4775,7 +4957,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>אתר או שירות המוגש מהצומת הזה, שנמצא לפי המפתח או השם שלו ומושג דרך שכבת־העל, כך שהמארח לעולם לא מפרסם איפה הוא פועל. חלק המפגש קיים: שירות נרשם בנקודות מפגש ששני הצדדים מחשבים מהמרשם. הגשת דפים ויישומים דרכו עדיין לא נבנתה.</translation>
+        <translation type="vanished">אתר או שירות המוגש מהצומת הזה, שנמצא לפי המפתח או השם שלו ומושג דרך שכבת־העל, כך שהמארח לעולם לא מפרסם איפה הוא פועל. חלק המפגש קיים: שירות נרשם בנקודות מפגש ששני הצדדים מחשבים מהמרשם. הגשת דפים ויישומים דרכו עדיין לא נבנתה.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4999,7 +5181,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>מה שהצומת הזה מציע לאחרים. העברה כממסר, שמירת דואר ושיתוף האינטרנט פועלים כבר היום; אירוח בדרך, וכמו כל דבר כאן הוא נמצא באותה דרך כמו עמיתים — דרך הרשם. לשמות יש דף משלהם.</translation>
+        <translation type="vanished">מה שהצומת הזה מציע לאחרים. העברה כממסר, שמירת דואר ושיתוף האינטרנט פועלים כבר היום; אירוח בדרך, וכמו כל דבר כאן הוא נמצא באותה דרך כמו עמיתים — דרך הרשם. לשמות יש דף משלהם.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -5015,7 +5197,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>רשום בתור</translation>
+        <translation type="vanished">רשום בתור</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5027,15 +5209,15 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>רישום כשער…</translation>
+        <translation type="vanished">רישום כשער…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>שיתוף חיבור האינטרנט של המחשב הזה כשער</translation>
+        <translation type="vanished">שיתוף חיבור האינטרנט של המחשב הזה כשער</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>כבו זאת אם החוק במקום מגוריכם או התנאים של ספק האינטרנט שלכם אוסרים לשתף את החיבור. כשזה כבוי, הצומת הזה ממשיך לשמש ממסר, לשמור דואר ולעקוב אחרי השרשרת, ומשתמש בחיבור שלו ישירות.</translation>
+        <translation type="vanished">כבו זאת אם החוק במקום מגוריכם או התנאים של ספק האינטרנט שלכם אוסרים לשתף את החיבור. כשזה כבוי, הצומת הזה ממשיך לשמש ממסר, לשמור דואר ולעקוב אחרי השרשרת, ומשתמש בחיבור שלו ישירות.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5051,11 +5233,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>לאפשר לתוכנות במחשב הזה להשתמש באינטרנט של הרשת דרך מתווך מקומי</translation>
+        <translation type="vanished">לאפשר לתוכנות במחשב הזה להשתמש באינטרנט של הרשת דרך מתווך מקומי</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>מתווך SOCKS5 למחשב הזה בלבד. כל חיבור יוצא דרך השער של חבר אחר, והשמות מתורגמים שם, לעולם לא כאן. הוא פועל כל עוד המחשב הזה משתף את החיבור שלו.</translation>
+        <translation type="vanished">מתווך SOCKS5 למחשב הזה בלבד. כל חיבור יוצא דרך השער של חבר אחר, והשמות מתורגמים שם, לעולם לא כאן. הוא פועל כל עוד המחשב הזה משתף את החיבור שלו.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5091,27 +5273,27 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>לא רשום כשער</translation>
+        <translation type="vanished">לא רשום כשער</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>עדיין לא — הרשם אינו רושם את הצומת הזה כשער, כך שאיש אינו יכול למצוא אותו</translation>
+        <translation type="vanished">עדיין לא — הרשם אינו רושם את הצומת הזה כשער, כך שאיש אינו יכול למצוא אותו</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>עדיין כלום — ממסר רושם את השער שלו תחת מפתח שני, בלי כתובת, בנפרד מהרישום שלו</translation>
+        <translation type="vanished">עדיין כלום — ממסר רושם את השער שלו תחת מפתח שני, בלי כתובת, בנפרד מהרישום שלו</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>עדיין כלום — לרישום של הצומת הזה חסרה אפשרות השער; פרסמו אותו שוב עם האפשרות מופעלת</translation>
+        <translation type="vanished">עדיין כלום — לרישום של הצומת הזה חסרה אפשרות השער; פרסמו אותו שוב עם האפשרות מופעלת</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>עדיין כלום — פרסמו רישום בלי כתובת עם אפשרות השער מופעלת</translation>
+        <translation type="vanished">עדיין כלום — פרסמו רישום בלי כתובת עם אפשרות השער מופעלת</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>רישום השער של הממסר הזה…</translation>
+        <translation type="vanished">רישום השער של הממסר הזה…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5131,11 +5313,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>מפתח השער שלו %1, בנפרד מכתובת הממסר</translation>
+        <translation type="vanished">מפתח השער שלו %1, בנפרד מכתובת הממסר</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>המפתח של הצומת הזה עצמו %1</translation>
+        <translation type="vanished">המפתח של הצומת הזה עצמו %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5151,11 +5333,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>להעביר את כל התעבורה של המחשב הזה דרך הרשת, בלי הגדרת פרוקסי באף תוכנה</translation>
+        <translation type="vanished">להעביר את כל התעבורה של המחשב הזה דרך הרשת, בלי הגדרת פרוקסי באף תוכנה</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>החיבורים של כל תוכנה יוצאים דרך השערים של הרשת, כל אחד דרך שער אחר, והשמות נבדקים שם. הרשת של המחשב הזה עצמו — מדפסת, הנתב — והחיבורים של הצומת הזה עצמו נשארים ישירים. זה עובד כל עוד המחשב הזה משתף את החיבור שלו.</translation>
+        <translation type="vanished">החיבורים של כל תוכנה יוצאים דרך השערים של הרשת, כל אחד דרך שער אחר, והשמות נבדקים שם. הרשת של המחשב הזה עצמו — מדפסת, הנתב — והחיבורים של הצומת הזה עצמו נשארים ישירים. זה עובד כל עוד המחשב הזה משתף את החיבור שלו.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5183,11 +5365,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>פעיל: %1 חיבורים דרך הרשת עכשיו; נשלחו %2, התקבלו %3.</translation>
+        <translation type="vanished">פעיל: %1 חיבורים דרך הרשת עכשיו; נשלחו %2, התקבלו %3.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>עדיין לא זמין במערכת הזו.</translation>
+        <translation type="vanished">עדיין לא זמין במערכת הזו.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5199,7 +5381,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>מתחיל כשהלקוח מופעל מחדש.</translation>
+        <translation type="vanished">מתחיל כשהלקוח מופעל מחדש.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5228,6 +5410,334 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>none — relaying is switched off</source>
         <translation>אין — הממסר כבוי</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>מה הצומת הזה מציע לאחרים: ממסור, שמירת דואר, שיתוף האינטרנט ואירוח אתר; ולטלפון שלכם, דרך להוציא מכאן. כמו כל דבר כאן, הוא נמצא באותה דרך שבה נמצאים עמיתים — דרך המרשם. לשמות יש עמוד משלהם.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>שיתוף חיבור האינטרנט של המחשב הזה, ושימוש בחיבור של הרשת בתמורה</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>כשמופעל, החיבור של המחשב הזה משותף, וכל התעבורה שלו עצמו יוצאת דרך השערים של הרשת, כל חיבור דרך שער אחר; הרשת של המחשב עצמו — מדפסת, הנתב — נשארת ישירה. כבו זאת אם החוק במקום מגוריכם, או תנאי ספק האינטרנט שלכם, אוסרים לשתף את החיבור: הרשת נושאת אז רק את BPS עצמו, והמחשב הזה משתמש בחיבור שלו.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>לכל המחשב: מופעל, %1 חיבורים דרך הרשת כעת; נשלחו %2, התקבלו %3.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>לכל המחשב: עדיין לא זמין במערכת זו; תוכנות יכולות להשתמש ב־proxy.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>לכל המחשב: יתחיל כשהלקוח יופעל מחדש.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>לא משתף</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>לא — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>פרסמו תיקייה כאתר תחת המפתח של הצומת הזה, כך שכל מי שתתנו לו את המפתח או את שמכם יוכל לקרוא אותו דרך שכבת־העל. כל קובץ חתום ונבדק חלק אחר חלק כשהוא מגיע. כשהוא רשום ללא כתובת, פוגשים את הצומת הזה בנקודות המפגש שלו ואיש אינו לומד היכן האתר פועל; כשהוא רשום בכתובת, מבקרים מגיעים אליו דרך ממסרים, כך שהוא לעולם אינו לומד מי הם. תוכנה במחשב הזה — יישום רשת, שרת צ&apos;אט — ניתן לפרסם באותה דרך: מבקרים מגיעים אליה דרך שכבת־העל, והצומת הזה מתחבר רק לפורט שאתם מציינים.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>תיקייה</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>הגיעו</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>נשלח</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>אין</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>תוכנות במחשב הזה שמבקרים מגיעים אליהן דרך שכבת־העל. תוכנה בשם web היא מה שדפדפן פותח בכתובת של הצומת הזה כשאין אתר.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>תוכנות</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>פרסום תיקייה…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>פרסום מחדש</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>קריאה מחדש של התיקייה אחרי שינויה, ופרסום מה שיש בה כעת.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>הפסקת פרסום</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>פתיחה באתרים</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>פרסום תוכנה…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>עצירת תוכנה…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>לא מפרסם</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>אין — דבר אינו מפורסם</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 קבצים, %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>לא רשום</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>עדיין על ידי אף אחד: הצומת הזה אינו רשום במרשם, ולכן מבקרים אינם יכולים למצוא את האתר. פרסמו רישום בעמוד צומת, תחת גילוי.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>מפרסם</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>עדיין לא נפגש</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>ב־%1 נקודות מפגש, ללא כתובת מפורסמת</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>עדיין לא: נרשם בנקודות המפגש שלו, מה שדורש את הממסרים של המרשם</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>בכתובת של הצומת הזה, דרך ממסרים שמסתירים את המבקר</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 חלקי עמודים, %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>התיקייה לפרסום כאתר</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>פרסום תוכנה</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>שם עבורה, 1 עד 32 תווים מתוך a-z, 0-9 ו־-. קראו לה web עבור יישום רשת שדפדפן אמור לפתוח בכתובת של הצומת הזה:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>הפורט שהיא מאזינה לו, ב־127.0.0.1 (המחשב הזה בלבד):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>עצירת תוכנה</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>לאיזו תוכנה מבקרים לא יגיעו עוד:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 ב־127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 זרמים פתוחים</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>טלפון נלווה</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>הוציאו מהטלפון בזמן שהמטבעות שלכם נשארים כאן. הטלפון אינו מחזיק מפתחות מטבעות: הוא מגיע לצומת הזה, מוכיח את המפתח שאיתו צומד, והצומת הזה משלם מארנק דמי כיס קטן — לאחר בדיקת ה־PIN של הטלפון והמגבלות שקבעתם, שהטלפון אינו יכול לשנות. אם תאבדו את הטלפון, תאבדו לכל היותר את מה שיש בדמי הכיס; בטלו את הצימוד כאן. כשהצומת הזה הוא ממסר רשום ומספיק אחרים רשומים, הטלפון מגיע דרך שלושה ממסרים, כך שאיש מהצופים אינו לומד היכן הוא; אחרת הוא מתחבר לכאן ישירות.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>דמי כיס</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>נגיש לטלפונים</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>טלפון</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>תשלום אחד</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>יום</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>הוצא היום</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>מצב</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>צימוד טלפון…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>מגבלות…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>שחרור נעילה</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>טלפון ננעל אחרי חמישה קודי PIN שגויים ברצף, עד שמשחררים אותו כאן.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>ביטול צימוד</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>לאפשר לטלפונים מצומדים להוציא מארנק דמי כיס</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>דורש את שכבת־העל. כבוי כברירת מחדל, כי הוא מאפשר לטלפון להוציא את המטבעות של הצומת הזה.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>ארנק נפרד, ללא ביטוי סיסמה — אין שם איש שיקליד אותו כשהטלפון משלם — ורק עם מה שהטלפון אמור להיות מסוגל להוציא. הוא לעולם אינו עושה stake ואינו יכול להיות הארנק שמשלם על רישומים.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>יצירה</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>יצירת ארנק דמי הכיס ופתיחתו בכל פעם שהצומת הזה מתחיל.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>טעינה…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>פתיחת שליחה בארנק, כדי להעביר מטבעות לדמי הכיס.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>ארנק דמי כיס</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, עוד %1 בדרך</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>כן, ב־%1, דרך ממסרים</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>ישירות, ב־%1. אין ממסרים באמצע: הרשת של הטלפון רואה שהוא מדבר עם המחשב הזה. מחוץ לרשת זו, הפנו בנתב את פורט ה־UDP %2 אל המחשב הזה.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>לא — הצומת הזה עדיין אינו מכיר כתובת משלו</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>לא נגיש</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>טלפון ממתין</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>אין דמי כיס</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>טלפון נעול</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 טלפונים נעולים</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>פועל, עדיין אין טלפון</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>פועל, טלפון 1</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>פועל, %1 טלפונים</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>מפתח מכשיר %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>נעול: קודי PIN שגויים</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>מצומד</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>ביטול צימוד של %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>לבטל את הצימוד של %1? הוא לא יוכל להוציא שוב עד שיצומד מחדש. עשו זאת מיד אם הטלפון אבד או נגנב.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>ארנק דמי הכיס נוצר ונפתח. השתמשו בטעינה כדי להעביר אליו את מה שהטלפון אמור להיות מסוגל להוציא.</translation>
     </message>
 </context>
 <context>
@@ -5359,6 +5869,30 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>הצומת עדיין מתחיל; הגדרות הליבה עדיין אינן זמינות.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>אחרים פוגשים אתכם בממסרים שמחושבים מהמרשם, והצומת שלכם שומר נתיב פתוח לכל אחד מהם דרך מספר כזה של ממסרים. נקודת המפגש רואה רק את האחרון שבהם, לעולם לא את הכתובת שלכם. יותר מסתיר אתכם טוב יותר ואיטי יותר.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>ממסרים לפני נקודות המפגש שלכם</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>כשהמחשב הזה משתמש באינטרנט של הרשת, כל חיבור עובר דרך מספר כזה של ממסרים לנקודת המפגש של שער, ואחריה דרך הממסרים של השער עצמו: השער לעולם אינו לומד מי אתם. יותר מסתיר אתכם טוב יותר ואיטי יותר.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>ממסרים לפני נקודת המפגש של שער</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>רק החיבור הראשון שלכם ישיר, לממסר כניסה שרואה את הכתובת שלכם ולא מי אתם. דואר תמיד עובר דרך שלושה ממסרים.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>גרסה %1</translation>
     </message>
 </context>
 <context>
@@ -5521,6 +6055,147 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Message verified.</source>
         <translation>ההודעה עברה וידוא.</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>אתרים</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>אתרים המתארחים על גבי שכבת־העל, הנפתחים לפי שם או מפתח שמישהו שיתף איתכם. עמודים מוצגים כאן ללא סקריפטים, ושום דבר בהם אינו נטען מחוץ ל־BPS, כך שעמוד אינו יכול ללמוד היכן אתם.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>אחורה</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>קדימה</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>טעינת העמוד מחדש</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://שם/ או מפתח של אתר</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>פתיחה</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>שמירת הקובץ הזה…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>פתיחה בדפדפן</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>אותו אתר בדפדפן רגיל, דרך שרת במחשב הזה בלבד. עמודים שם עשויים להריץ סקריפטים, ולכן המציג כאן נשאר הדרך הבטוחה יותר לקרוא אתר נסתר.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>התחברות לתוכנה…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>הגיעו לתוכנה שהאתר הזה מריץ — שרת צ&apos;אט, משחק — מתוכנה במחשב הזה: BPS Relay מאזין כאן לפורט ונושא כל חיבור אליה דרך שכבת־העל.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>זו אינה כתובת של אתר. כתבו שם או מפתח, למשל bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>מחפש את %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>מביא את %1 דרך שכבת־העל…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 אינו עמוד שהמציג הזה מציג (%2 בתים). שמרו אותו כדי לפתוח אותו בתוכנה אחרת.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>כוונו את התוכנה במחשב הזה אל %1: BPS Relay נושא כל חיבור שנוצר שם אל התוכנה של האתר, דרך שכבת־העל, עד שהוא מופעל מחדש.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>שרת האתרים לדפדפנים אינו פועל. הוא מתחיל עם BPS Relay אלא אם ניתן -siteproxy=0.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 אינו מוביל לשום מפתח.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 מצביע כעת על מפתח אחר מאשר בפעם האחרונה שפתחתם אותו. מי שמחזיק בשם עכשיו אולי אינו מי שקראתם קודם.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>נפגש באחת מנקודות המפגש שלו, דרך %1 ממסרים שלכם: לא אתם ולא המארח לומדים היכן האחר.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>הושג בכתובת שלו דרך %1 ממסרים: המארח אינו לומד מי אתם.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>האתר שלכם, נקרא מהמחשב הזה.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>מגיעים אליו דרך הרדיו, ולכן עמודים מגיעים לאט.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 אינו שם שהצומת הזה מכיר: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>לא ניתן לפתוח את %1: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>הקישור הזה מוביל אל מחוץ ל־BPS, ולכן לא נפתח: %1
+פתחו אותו בדפדפן רגיל אם תבחרו בכך; מי שמפעיל אותו יראה את הכתובת שלכם.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>התחברות לתוכנה</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>השם שהאתר נתן לתוכנה שלו:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>פתיחת אתר בדפדפן</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>הדפדפן שלכם יבקש את האתר מהמחשב הזה, ו־BPS Relay מביא אותו דרך שכבת־העל, כמו כאן. כל עמוד רשאי לטעון רק מהאתר שלו, כך שאינו יכול למשוך דבר מהאינטרנט הפתוח כדי ללמוד היכן אתם.
+
+מה שדפדפן עדיין יכול לעשות: סקריפט יכול להשתמש ב־WebRTC כדי להראות לעמוד את הכתובות של המחשב הזה, וקישור שאתם עוקבים אחריו לאתר רגיל יוצא כמו כל קישור. המציג ב־BPS Relay אינו מריץ סקריפטים ונשאר הדרך הבטוחה יותר לקרוא אתר נסתר.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>שמירת הקובץ</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>לא ניתן לשמור את %1.</translation>
     </message>
 </context>
 <context>

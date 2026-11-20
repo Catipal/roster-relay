@@ -1115,6 +1115,10 @@ Allekirjoitus on mahdollista vain &apos;legacy&apos;-tyyppisillä osoitteilla.</
         <source>Not staking</source>
         <translation>Ei stakingia</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>Sivustot</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1269,6 +1273,92 @@ Allekirjoitus on mahdollista vain &apos;legacy&apos;-tyyppisillä osoitteilla.</
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>delegoitu kohteelle %1 kylmää stakingia varten</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>Rajat: %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>Kuinka paljon tämä puhelin saa käyttää taskurahalompakosta, maksut mukaan lukien.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Enintään yhdessä maksussa</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Enintään minkä tahansa 24 tunnin aikana</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>Pariuta puhelin</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>Valitse puhelimen BPS-sovelluksessa Pariuta ja skannaa tämä koodi. Tai kopioi sen alla oleva teksti sovellukseen. Toimii kerran, kymmenen minuutin ajan.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>Kopioi koodi</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>Näytä uusi koodi</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>Pariuta vain, jos puhelin näyttää samat kuusi numeroa. Jos se näyttää muita, joku muu vastasi koodiin ensin: hylkää ja näytä uusi.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>Kuinka paljon tämä puhelin saa käyttää taskurahalompakosta. Vain tämä solmu voi muuttaa sitä myöhemmin, ei koskaan puhelin.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Enintään yhdessä maksussa</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Enintään minkä tahansa 24 tunnin aikana</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>Hylkää</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>Pariuta tämä puhelin</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>Luodaan koodia…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>Tämä koodi on vanhentunut.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>Odotetaan puhelinta… koodi toimii vielä %1 min.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>Tämä versio ei osaa piirtää QR-koodeja: kopioi sen sijaan alla oleva teksti sovellukseen.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>Puhelin nimeltä ”%1” haluaa pariutua tämän solmun kanssa.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>Pariutettu. Puhelin voi nyt käyttää taskurahalompakosta asettamiesi rajojen puitteissa. Sen luettelo on Palvelin-sivulla, jossa voit muuttaa sen rajoja, avata sen lukituksen liian monen väärän PIN-koodin jälkeen tai purkaa pariutuksen.</translation>
     </message>
 </context>
 <context>
@@ -1444,7 +1534,7 @@ Allekirjoitus on mahdollista vain &apos;legacy&apos;-tyyppisillä osoitteilla.</
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>Etsi vertainen tai osoite</translation>
+        <translation type="vanished">Etsi vertainen tai osoite</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1581,6 +1671,38 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>Vertaiset ilmoittautuvat ketjussa eivätkä palvelimella, joten tämä lista on kaikille sama eikä kukaan voi muokata sitä. Peittoverkon kautta merkitty vertainen näyttää, missä sen voi tavata tänään, mikä vaihtuu joka päivä; välittäjä näyttää osoitteensa vain ollessaan verkossa, koska se ei ole koskaan ketjussa.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nimi</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>Rekisteröi nimi…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>Nimellä muut tavoittavat sinut kopioimatta avaintasi. Nimet rekisteröidään Nimet-välilehdellä.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>Etsi vertainen, huomautus tai osoite</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>Kaikki nämä nimet osoittavat tämän solmun avaimeen. Muut voivat tavoittaa sinut millä tahansa niistä.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>Hallitse nimiä…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>nimet pois</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>Nimet tarvitsevat nimi-indeksin. Ota se käyttöön Asetuksissa, jotta voit rekisteröidä ja näyttää nimen.</translation>
     </message>
 </context>
 <context>
@@ -3209,15 +3331,15 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>Tämä kirjoittaa ketjuun lyhyen tietueen siitä, että olet olemassa, ja halutessasi siitä, mistä sinut löytää.</translation>
+        <translation type="vanished">Tämä kirjoittaa ketjuun lyhyen tietueen siitä, että olet olemassa, ja halutessasi siitä, mistä sinut löytää.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>Miten vertaiset tavoittavat sinut?</translation>
+        <translation type="vanished">Miten vertaiset tavoittavat sinut?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>Peittoverkon kautta — ei julkaistua osoitetta</translation>
+        <translation type="vanished">Peittoverkon kautta — ei julkaistua osoitetta</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3225,35 +3347,35 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>Osoitteessa, jonka julkaisen</translation>
+        <translation type="vanished">Osoitteessa, jonka julkaisen</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>osoite, jonka muut vertaiset tavoittavat</translation>
+        <translation type="vanished">osoite, jonka muut vertaiset tavoittavat</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>Kuka tahansa voi nähdä sen, ja ketju säilyttää sen pysyvästi. Onion-osoite julkaisee sijainnin, jota kukaan ei voi jäljittää sinuun, ja toimii NAT:n takaa; IP-osoite ei tee kumpaakaan. IP-osoitteen julkaisevan solmun muut voivat valita välittäjäksi.</translation>
+        <translation type="vanished">Kuka tahansa voi nähdä sen, ja ketju säilyttää sen pysyvästi. Onion-osoite julkaisee sijainnin, jota kukaan ei voi jäljittää sinuun, ja toimii NAT:n takaa; IP-osoite ei tee kumpaakaan. IP-osoitteen julkaisevan solmun muut voivat valita välittäjäksi.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3297,7 +3419,7 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>Solmusi allekirjoittaa merkinnän ja lähettää sen peittoverkon kautta välittäjälle, jonka kautta se tulee sisään. Merkinnöistä maksava välittäjä laittaa sinun merkintäsi itse tekemäänsä lohkoon, joten se vahvistuu, vaikka useimmat solmut eivät välittäisi sitä, ja lisää sinut vertaisiin, joiden kanssa se jakaa palkkionsa. Jos se myöhemmin lopettaa maksamisen, merkintäsi raukeaa kuukauden kuluessa; voit aina uusia sen itse katteellisesta lompakosta.</translation>
+        <translation type="vanished">Solmusi allekirjoittaa merkinnän ja lähettää sen peittoverkon kautta välittäjälle, jonka kautta se tulee sisään. Merkinnöistä maksava välittäjä laittaa sinun merkintäsi itse tekemäänsä lohkoon, joten se vahvistuu, vaikka useimmat solmut eivät välittäisi sitä, ja lisää sinut vertaisiin, joiden kanssa se jakaa palkkionsa. Jos se myöhemmin lopettaa maksamisen, merkintäsi raukeaa kuukauden kuluessa; voit aina uusia sen itse katteellisesta lompakosta.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3313,11 +3435,11 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>Anna osoite tai valitse, ettei osoitetta julkaista.</translation>
+        <translation type="vanished">Anna osoite tai valitse, ettei osoitetta julkaista.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>Pyydetään välittäjääsi julkaisemaan se… tämä voi kestää puoli minuuttia.</translation>
+        <translation type="vanished">Pyydetään välittäjääsi julkaisemaan se… tämä voi kestää puoli minuuttia.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3349,11 +3471,11 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>Ilmoita tämän välittäjän yhdyskäytävä</translation>
+        <translation type="vanished">Ilmoita tämän välittäjän yhdyskäytävä</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>Välittäjän ilmoitus sisältää sen osoitteen, joten sen yhdyskäytävä ilmoitetaan toisella avaimella ilman osoitetta, erillään siitä. Kukaan ei voi nähdä rekisteristä, että ne kuuluvat samalle tietokoneelle. Vierailijat tavoittavat yhdyskäytävän välittäjien kautta, joten se ei koskaan saa tietää, keitä he ovat; heidän vierailemansa sivustot näkevät tämän tietokoneen osoitteen.</translation>
+        <translation type="vanished">Välittäjän ilmoitus sisältää sen osoitteen, joten sen yhdyskäytävä ilmoitetaan toisella avaimella ilman osoitetta, erillään siitä. Kukaan ei voi nähdä rekisteristä, että ne kuuluvat samalle tietokoneelle. Vierailijat tavoittavat yhdyskäytävän välittäjien kautta, joten se ei koskaan saa tietää, keitä he ovat; heidän vierailemansa sivustot näkevät tämän tietokoneen osoitteen.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3369,11 +3491,11 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>Toinen välittäjä maksaa, pyydettynä välittäjien kautta</translation>
+        <translation type="vanished">Toinen välittäjä maksaa, pyydettynä välittäjien kautta</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>Solmusi allekirjoittaa yhdyskäytävän merkinnän ja lähettää sen välittäjien kautta toiselle välittäjälle, joka maksaa sen ja laittaa sen itse tekemäänsä lohkoon. Se välittäjä saa tietää yhdyskäytävän avaimen mutta ei koskaan tämän tietokoneen osoitetta. Maksaminen tämän solmun omasta lompakosta sitoisi yhdyskäytävän ketjussa tähän välittäjään ja siten sen osoitteeseen.</translation>
+        <translation type="vanished">Solmusi allekirjoittaa yhdyskäytävän merkinnän ja lähettää sen välittäjien kautta toiselle välittäjälle, joka maksaa sen ja laittaa sen itse tekemäänsä lohkoon. Se välittäjä saa tietää yhdyskäytävän avaimen mutta ei koskaan tämän tietokoneen osoitetta. Maksaminen tämän solmun omasta lompakosta sitoisi yhdyskäytävän ketjussa tähän välittäjään ja siten sen osoitteeseen.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3389,7 +3511,7 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>Merkintäsi kertoo, kuka olet, eikä sitä, missä olet käynnissä. Vertaiset tavoittavat sinut peittoverkon kautta ja tapaavat sinut pisteissä, jotka molemmat osapuolet laskevat rekisteristä ja jotka vaihtuvat joka päivä; Löydä näyttää tämän päivän pisteet. Merkintäsi nimeää myös yhden välittäjän, jossa sinut voi tavata niin kauan kuin se on voimassa, ja jokainen uusiminen nimeää uuden. Tämän tämä asiakas ottaa oletuksena käyttöön.</translation>
+        <translation type="vanished">Merkintäsi kertoo, kuka olet, eikä sitä, missä olet käynnissä. Vertaiset tavoittavat sinut peittoverkon kautta ja tapaavat sinut pisteissä, jotka molemmat osapuolet laskevat rekisteristä ja jotka vaihtuvat joka päivä; Löydä näyttää tämän päivän pisteet. Merkintäsi nimeää myös yhden välittäjän, jossa sinut voi tavata niin kauan kuin se on voimassa, ja jokainen uusiminen nimeää uuden. Tämän tämä asiakas ottaa oletuksena käyttöön.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3409,15 +3531,59 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>Tämä solmu jakaa internetyhteytensä yhdyskäytävänä, kuten Palvelin-sivulla on asetettu, joten merkintä kertoo sen.</translation>
+        <translation type="vanished">Tämä solmu jakaa internetyhteytensä yhdyskäytävänä, kuten Palvelin-sivulla on asetettu, joten merkintä kertoo sen.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>Tämä solmu ei välitä muille eikä jaa internetyhteyttään, kuten Palvelin-sivulla on asetettu.</translation>
+        <translation type="vanished">Tämä solmu ei välitä muille eikä jaa internetyhteyttään, kuten Palvelin-sivulla on asetettu.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>Muutos siellä päätyy rekisteriin seuraavan merkintäsi mukana.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>Tämä kirjoittaa ketjuun lyhyen merkinnän siitä, että olet olemassa, ja halutessasi rivin sinusta.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>Mitä merkintäsi kertoo</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>Merkintäsi kertoo, kuka olet, ei sitä, missä toimit: siinä ei ole osoitetta. Vertaiset tavoittavat sinut peittoverkon kautta ja tapaavat sinut pisteissä, jotka molemmat osapuolet laskevat rekisteristä ja jotka vaihtuvat päivittäin; Löytäminen näyttää tämän päivän pisteet. Merkintäsi nimeää myös yhden välittäjän, jossa sinut voi tavata niin kauan kuin se on voimassa, ja jokainen uusiminen nimeää uuden.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>Huomautus</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>valinnainen: avaimesi vieressä näkyvä rivi</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>Kuka tahansa voi lukea sen, ja ketju säilyttää sen pysyvästi, myös merkinnän päätyttyä. Jätä pois kaikki, mikä kertoo missä tai kuka olet, jos sillä on sinulle merkitystä.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Solmusi allekirjoittaa merkinnän ja lähettää sen polkua pitkin välittäjälle, jonka kautta se ei tule sisään, joten se välittäjä saa tietää, kuka olet, mutta ei missä. Merkinnöistä maksava välittäjä lisää sinun merkintäsi lohkoon, jonka se itse panostaa, joten se vahvistuu, vaikka useimmat solmut eivät välittäisi sitä eteenpäin, ja lisää sinut vertaisiin, joiden kanssa se jakaa palkkionsa. Jos se myöhemmin lopettaa maksamisen, merkintäsi raukeaa kuukauden kuluessa; voit aina uusia sen itse lompakosta, jossa on varoja.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 tavua</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>Liian pitkä: yksinkertaisen englannin ulkopuoliset kirjaimet vievät kukin kahdesta neljään tavua.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>Huomautus on liian pitkä.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>Huomautus ei voi sisältää ohjausmerkkejä eikä tekstin suuntaa muuttavia merkkejä.</translation>
     </message>
 </context>
 <context>
@@ -3591,6 +3757,14 @@ Sinulle näytetään palautusavain kerran. Kirjoita se ylös: se on ainoa tapa e
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>Anna BitcoinPoS-osoite (esim. %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>Aseta molemmat rajat.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>Yksi maksu ei voi saada enempää kuin koko päivä.</translation>
     </message>
 </context>
 <context>
@@ -4291,6 +4465,14 @@ rekisteristä laskettuina; ne vaihtuvat joka päivä:</translation>
         <source>meets at %1</source>
         <translation>tavattavissa: %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>Huomautus</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>Kirjoittanut se, jolla tämä avain on; kukaan ei tarkista sitä.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4773,7 +4955,7 @@ Huom: Koska siirtomaksu lasketaan tavujen mukaan, niin määrittelemällä 500 t
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>Tästä solmusta tarjottu sivusto tai palvelu, joka löydetään avaimen tai nimen perusteella ja tavoitetaan peittoverkon kautta, joten isäntä ei koskaan julkaise, missä se toimii. Tapaamisosa on olemassa: palvelu rekisteröityy kohtaamispisteisiin, jotka molemmat osapuolet laskevat rekisteristä. Sivujen ja sovellusten tarjoamista sen kautta ei ole vielä rakennettu.</translation>
+        <translation type="vanished">Tästä solmusta tarjottu sivusto tai palvelu, joka löydetään avaimen tai nimen perusteella ja tavoitetaan peittoverkon kautta, joten isäntä ei koskaan julkaise, missä se toimii. Tapaamisosa on olemassa: palvelu rekisteröityy kohtaamispisteisiin, jotka molemmat osapuolet laskevat rekisteristä. Sivujen ja sovellusten tarjoamista sen kautta ei ole vielä rakennettu.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4997,7 +5179,7 @@ Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Mitä tämä solmu tarjoaa muille. Välittäminen, postin säilyttäminen ja internetin jakaminen toimivat jo; ylläpito on tulossa, ja kuten kaikki täällä, se löytyy samalla tavalla kuin vertaiset — rekisterin kautta. Nimillä on oma sivunsa.</translation>
+        <translation type="vanished">Mitä tämä solmu tarjoaa muille. Välittäminen, postin säilyttäminen ja internetin jakaminen toimivat jo; ylläpito on tulossa, ja kuten kaikki täällä, se löytyy samalla tavalla kuin vertaiset — rekisterin kautta. Nimillä on oma sivunsa.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -5013,7 +5195,7 @@ Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>Ilmoitettu</translation>
+        <translation type="vanished">Ilmoitettu</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5025,15 +5207,15 @@ Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>Ilmoita yhdyskäytävänä…</translation>
+        <translation type="vanished">Ilmoita yhdyskäytävänä…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Jaa tämän tietokoneen internetyhteys yhdyskäytävänä</translation>
+        <translation type="vanished">Jaa tämän tietokoneen internetyhteys yhdyskäytävänä</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>Kytke se pois, jos asuinmaasi laki tai internetpalveluntarjoajasi ehdot kieltävät yhteyden jakamisen. Pois kytkettynä tämä solmu välittää edelleen, säilyttää postia ja pysyy ketjussa, ja käyttää omaa yhteyttään suoraan.</translation>
+        <translation type="vanished">Kytke se pois, jos asuinmaasi laki tai internetpalveluntarjoajasi ehdot kieltävät yhteyden jakamisen. Pois kytkettynä tämä solmu välittää edelleen, säilyttää postia ja pysyy ketjussa, ja käyttää omaa yhteyttään suoraan.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5049,11 +5231,11 @@ Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>Anna tämän tietokoneen ohjelmien käyttää verkon internetiä paikallisen välityspalvelimen kautta</translation>
+        <translation type="vanished">Anna tämän tietokoneen ohjelmien käyttää verkon internetiä paikallisen välityspalvelimen kautta</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>SOCKS5-välityspalvelin vain tälle tietokoneelle. Jokainen yhteys lähtee toisen jäsenen yhdyskäytävän kautta, ja nimet selvitetään siellä, ei koskaan täällä. Se toimii niin kauan kuin tämä tietokone jakaa oman yhteytensä.</translation>
+        <translation type="vanished">SOCKS5-välityspalvelin vain tälle tietokoneelle. Jokainen yhteys lähtee toisen jäsenen yhdyskäytävän kautta, ja nimet selvitetään siellä, ei koskaan täällä. Se toimii niin kauan kuin tämä tietokone jakaa oman yhteytensä.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5089,27 +5271,27 @@ Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>ei ilmoitettu yhdyskäytävänä</translation>
+        <translation type="vanished">ei ilmoitettu yhdyskäytävänä</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>ei vielä — rekisteri ei ilmoita tätä solmua yhdyskäytävänä, joten kukaan ei löydä sitä</translation>
+        <translation type="vanished">ei vielä — rekisteri ei ilmoita tätä solmua yhdyskäytävänä, joten kukaan ei löydä sitä</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>ei vielä mitään — välittäjä ilmoittaa yhdyskäytävänsä toisella avaimella ilman osoitetta, erillään omasta ilmoituksestaan</translation>
+        <translation type="vanished">ei vielä mitään — välittäjä ilmoittaa yhdyskäytävänsä toisella avaimella ilman osoitetta, erillään omasta ilmoituksestaan</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>ei vielä mitään — tämän solmun ilmoituksesta puuttuu yhdyskäytävävalinta; julkaise se uudelleen valinta päällä</translation>
+        <translation type="vanished">ei vielä mitään — tämän solmun ilmoituksesta puuttuu yhdyskäytävävalinta; julkaise se uudelleen valinta päällä</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>ei vielä mitään — julkaise ilmoitus ilman osoitetta yhdyskäytävävalinta päällä</translation>
+        <translation type="vanished">ei vielä mitään — julkaise ilmoitus ilman osoitetta yhdyskäytävävalinta päällä</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>Ilmoita tämän välittäjän yhdyskäytävä…</translation>
+        <translation type="vanished">Ilmoita tämän välittäjän yhdyskäytävä…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5129,11 +5311,11 @@ Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>sen yhdyskäytäväavain %1, erillään välittäjän osoitteesta</translation>
+        <translation type="vanished">sen yhdyskäytäväavain %1, erillään välittäjän osoitteesta</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>tämän solmun oma avain %1</translation>
+        <translation type="vanished">tämän solmun oma avain %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5149,11 +5331,11 @@ Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>Ohjaa kaikki tämän tietokoneen liikenne verkon kautta, ilman välityspalvelinasetusta missään ohjelmassa</translation>
+        <translation type="vanished">Ohjaa kaikki tämän tietokoneen liikenne verkon kautta, ilman välityspalvelinasetusta missään ohjelmassa</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>Jokaisen ohjelman yhteydet lähtevät verkon yhdyskäytävien kautta, kukin eri yhdyskäytävän, ja nimet haetaan siellä. Tämän tietokoneen oma verkko — tulostin, reititin — ja tämän solmun omat yhteydet pysyvät suorina. Toimii, kun tämä tietokone jakaa oman yhteytensä.</translation>
+        <translation type="vanished">Jokaisen ohjelman yhteydet lähtevät verkon yhdyskäytävien kautta, kukin eri yhdyskäytävän, ja nimet haetaan siellä. Tämän tietokoneen oma verkko — tulostin, reititin — ja tämän solmun omat yhteydet pysyvät suorina. Toimii, kun tämä tietokone jakaa oman yhteytensä.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5181,11 +5363,11 @@ Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>Päällä: nyt %1 yhteys(tä) verkon kautta; lähetetty %2, vastaanotettu %3.</translation>
+        <translation type="vanished">Päällä: nyt %1 yhteys(tä) verkon kautta; lähetetty %2, vastaanotettu %3.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>Ei vielä saatavilla tässä järjestelmässä.</translation>
+        <translation type="vanished">Ei vielä saatavilla tässä järjestelmässä.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5197,7 +5379,7 @@ Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>Alkaa, kun asiakasohjelma käynnistetään uudelleen.</translation>
+        <translation type="vanished">Alkaa, kun asiakasohjelma käynnistetään uudelleen.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5226,6 +5408,334 @@ Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
     <message>
         <source>none — relaying is switched off</source>
         <translation>ei mitään — välittäminen on pois päältä</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Mitä tämä solmu tarjoaa muille: välittämistä, postin säilyttämistä, internetin jakamista ja sivuston ylläpitoa; ja omalle puhelimellesi tavan käyttää varoja täältä. Kuten kaikki täällä, se löytyy samalla tavalla kuin vertaiset — rekisterin kautta. Nimillä on oma sivunsa.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>Jaa tämän tietokoneen internetyhteys ja käytä vastineeksi verkon yhteyttä</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>Päällä tämän tietokoneen yhteys on jaettu, ja kaikki sen oma liikenne kulkee ulos verkon yhdyskäytävien kautta, kukin yhteys eri kautta; tietokoneen oma verkko — tulostin, reititin — pysyy suorana. Kytke pois, jos asuinpaikkasi laki tai internetpalveluntarjoajasi ehdot kieltävät yhteyden jakamisen: verkko kuljettaa silloin vain BPS:ää, ja tämä tietokone käyttää omaa yhteyttään.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Koko tietokoneelle: päällä, nyt %1 yhteyttä verkon kautta; lähetetty %2, vastaanotettu %3.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>Koko tietokoneelle: ei vielä saatavilla tässä järjestelmässä; ohjelmat voivat käyttää välityspalvelinta.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>Koko tietokoneelle: käynnistyy, kun asiakasohjelma käynnistetään uudelleen.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>ei jaa</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>ei — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>Julkaise kansio sivustona tämän solmun avaimella, jotta kuka tahansa, jolle annat avaimen tai nimesi, voi lukea sitä peittoverkon kautta. Jokainen tiedosto on allekirjoitettu ja tarkistetaan pala palalta saapuessaan. Ilman osoitetta merkittynä tämä solmu tavataan sen tapaamispisteissä, eikä kukaan saa tietää, missä sivusto toimii; osoitteella merkittynä kävijät tavoittavat sen välittäjien kautta, joten se ei koskaan saa tietää, keitä he ovat. Tämän tietokoneen ohjelma — verkkosovellus, keskustelupalvelin — voidaan julkaista samalla tavalla: kävijät tavoittavat sen peittoverkon kautta, ja tämä solmu yhdistää vain nimeämääsi porttiin.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Kansio</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>Tavoitettu</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Lähetetty</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>ei mitään</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>Tämän tietokoneen ohjelmat, jotka kävijät tavoittavat peittoverkon kautta. Ohjelma nimeltä web on se, minkä selain avaa tämän solmun osoitteessa, kun sivustoa ei ole.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>Ohjelmat</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>Julkaise kansio…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>Julkaise uudelleen</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>Lue kansio uudelleen muutosten jälkeen ja julkaise, mitä siinä nyt on.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>Lopeta julkaiseminen</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>Avaa Sivustoissa</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>Julkaise ohjelma…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>Pysäytä ohjelma…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>ei julkaise</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>ei mitään — mitään ei ole julkaistu</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 tiedostoa, %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>ei merkitty</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>ei vielä kenenkään: tätä solmua ei ole merkitty rekisteriin, joten kävijät eivät löydä sivustoa. Julkaise merkintä Solmu-sivulla kohdassa Löytäminen.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>julkaisee</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>ei vielä tavattu</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>%1 tapaamispisteessä, ilman julkaistua osoitetta</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>ei vielä: rekisteröityy tapaamispisteisiinsä, mikä vaatii rekisterin välittäjiä</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>tämän solmun osoitteessa, kävijän piilottavien välittäjien kautta</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 sivun palaa, %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>Sivustona julkaistava kansio</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>Julkaise ohjelma</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>Nimi sille, 1–32 merkkiä joukosta a-z, 0-9 ja -. Nimeä se web, jos se on verkkosovellus, jonka selaimen pitää avata tämän solmun osoitteessa:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>Portti, jota se kuuntelee osoitteessa 127.0.0.1 (vain tämä tietokone):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>Pysäytä ohjelma</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>Mitä ohjelmaa kävijöiden ei enää pidä tavoittaa:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 osoitteessa 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 virtaa auki</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>Puhelinkumppani</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>Käytä varoja puhelimesta, kun kolikkosi pysyvät täällä. Puhelimessa ei ole kolikkoavaimia: se tavoittaa tämän solmun, todistaa avaimen, jolla se pariutettiin, ja tämä solmu maksaa pienestä taskurahalompakosta — tarkistettuaan puhelimen PIN-koodin ja asettamasi rajat, joita puhelin ei voi muuttaa. Jos menetät puhelimen, menetät enintään sen, mitä taskurahassa on; pura sen pariutus täällä. Kun tämä solmu on merkitty välittäjä ja muita on merkitty tarpeeksi, puhelin tulee kolmen välittäjän kautta, joten kukaan tarkkailija ei saa tietää, missä se on; muuten se yhdistää suoraan tänne.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>Taskuraha</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>Puhelinten tavoitettavissa</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>Puhelin</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>Yksi maksu</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>Päivä</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>Käytetty tänään</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>Tila</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>Pariuta puhelin…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>Rajat…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>Avaa lukitus</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>Puhelin lukitaan viiden peräkkäisen väärän PIN-koodin jälkeen, kunnes sen lukitus avataan täällä.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>Pura pariutus</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>Anna pariutettujen puhelinten käyttää taskurahalompakkoa</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>Vaatii peittoverkon. Oletuksena pois, koska se antaa puhelimen käyttää tämän solmun kolikoita.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>Oma lompakko ilman salalausetta — kukaan ei ole kirjoittamassa sitä, kun puhelin maksaa — ja vain sillä, mitä puhelimen pitää voida käyttää. Se ei koskaan panosta eikä voi olla merkinnöistä maksava lompakko.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>Luo se</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>Luo taskurahalompakko ja avaa se aina, kun tämä solmu käynnistyy.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>Lataa…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>Avaa lompakon Lähetä siirtääksesi kolikoita taskurahaan.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>Taskurahalompakko</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, %1 lisää tulossa</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>kyllä, osoitteessa %1, välittäjien kautta</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>suoraan, osoitteessa %1. Ei välittäjiä välissä: puhelimen verkko näkee sen puhuvan tämän tietokoneen kanssa. Tämän verkon ulkopuolelta ohjaa reitittimessä UDP-portti %2 tähän tietokoneeseen.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>ei — tämä solmu ei vielä tunne omaa osoitettaan</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>ei tavoitettavissa</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>puhelin odottaa</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>ei taskurahaa</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>puhelin on lukittu</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 puhelinta lukittu</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>käynnissä, ei vielä puhelinta</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>käynnissä, 1 puhelin</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>käynnissä, %1 puhelinta</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>Laiteavain %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>lukittu: väärät PIN-koodit</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>pariutettu</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>Pura pariutus: %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>Puretaanko pariutus: %1? Se ei voi käyttää varoja, ennen kuin se pariutetaan uudelleen. Tee tämä heti, jos puhelin on kadonnut tai varastettu.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>Taskurahalompakko luotiin ja avattiin. Siirrä siihen Lataa-toiminnolla se, mitä puhelimen pitää voida käyttää.</translation>
     </message>
 </context>
 <context>
@@ -5357,6 +5867,30 @@ Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>Solmu käynnistyy vielä; perusasetukset eivät ole vielä käytettävissä.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>Muut tapaavat sinut rekisteristä lasketuilla välittäjillä, ja solmusi pitää polun auki jokaiseen niistä näin monen välittäjän kautta. Tapaamispiste näkee vain viimeisen niistä, ei koskaan osoitettasi. Useampi piilottaa paremmin ja on hitaampi.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>Välittäjiä ennen tapaamispisteitäsi</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>Kun tämä tietokone käyttää verkon internetiä, jokainen yhteys kulkee näin monen välittäjän kautta yhdyskäytävän tapaamispisteeseen ja sen jälkeen yhdyskäytävän omien kautta: yhdyskäytävä ei koskaan saa tietää, kuka olet. Useampi piilottaa paremmin ja on hitaampi.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>Välittäjiä ennen yhdyskäytävän tapaamispistettä</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>Vain ensimmäinen yhteytesi on suora, sisääntulovälittäjään, joka näkee osoitteesi mutta ei sitä, kuka olet. Posti kulkee aina kolmen välittäjän kautta.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Versio %1</translation>
     </message>
 </context>
 <context>
@@ -5519,6 +6053,147 @@ Voit muuttaa tätä milloin tahansa Palvelin-sivulla.</translation>
     <message>
         <source>Message verified.</source>
         <translation>Viesti varmistettu.</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>Sivustot</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>Peittoverkossa ylläpidetyt sivustot, jotka avataan jonkun kanssasi jakamalla nimellä tai avaimella. Sivut näytetään täällä ilman skriptejä, eikä niille haeta mitään BPS:n ulkopuolelta, joten sivu ei voi saada selville, missä olet.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Takaisin</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Eteenpäin</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>Hae sivu uudelleen</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://nimi/ tai sivuston avain</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Avaa</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>Tallenna tämä tiedosto…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>Avaa selaimessa</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>Sama sivusto tavallisessa selaimessa, vain tällä tietokoneella toimivan palvelimen kautta. Sivut voivat siellä ajaa skriptejä, joten tämä katselin on yhä turvallisempi tapa lukea piilotettua sivustoa.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>Yhdistä ohjelmaan…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>Tavoita ohjelma, jota tämä sivusto ajaa — keskustelupalvelin, peli — tämän tietokoneen ohjelmasta: BPS Relay kuuntelee täällä porttia ja kuljettaa jokaisen yhteyden siihen peittoverkon kautta.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>Tämä ei ole sivuston osoite. Kirjoita nimi tai avain, esimerkiksi bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>Haetaan %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>Noudetaan %1 peittoverkon kautta…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 ei ole sivu, jonka tämä katselin näyttää (%2 tavua). Tallenna se avataksesi sen toisella ohjelmalla.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>Osoita tämän tietokoneen ohjelma kohteeseen %1: BPS Relay kuljettaa jokaisen sinne avatun yhteyden sivuston ohjelmalle peittoverkon kautta, kunnes se käynnistyy uudelleen.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>Selainten sivustopalvelin ei ole käynnissä. Se käynnistyy BPS Relayn mukana, ellei -siteproxy=0 annettu.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 ei osoita mihinkään avaimeen.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 osoittaa nyt eri avaimeen kuin viimeksi avatessasi. Nimen nykyinen haltija ei ehkä ole se, jota luit aiemmin.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>Tavattu yhdessä sen tapaamispisteistä, %1 oman välittäjäsi kautta: kumpikaan, sinä tai isäntä, ei saa tietää, missä toinen on.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>Tavoitettu sen osoitteessa %1 välittäjän kautta: isäntä ei saa tietää, kuka olet.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>Oma sivustosi, luettu tältä tietokoneelta.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>Se tavoitetaan radion kautta, joten sivut tulevat hitaasti.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 ei ole tämän solmun tuntema nimi: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>Kohdetta %1 ei voitu avata: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>Tämä linkki vie BPS:n ulkopuolelle, joten sitä ei seurattu: %1
+Avaa se tavallisessa selaimessa, jos haluat; sen ylläpitäjä näkee osoitteesi.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>Yhdistä ohjelmaan</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>Nimi, jonka sivusto antoi ohjelmalleen:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>Sivuston avaaminen selaimessa</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>Selaimesi pyytää sivustoa tältä tietokoneelta, ja BPS Relay noutaa sen peittoverkon kautta, kuten täälläkin. Jokainen sivu saa ladata vain omalta sivustoltaan, joten se ei voi hakea avoimesta internetistä mitään saadakseen selville, missä olet.
+
+Mitä selain silti voi tehdä: skripti voi WebRTC:n avulla näyttää sivulle tämän tietokoneen osoitteet, ja tavalliselle sivustolle vievä linkki lähtee kuten mikä tahansa linkki. BPS Relayn katselin ei aja skriptejä ja on yhä turvallisempi tapa lukea piilotettua sivustoa.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>Tallenna tiedosto</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>Kohdetta %1 ei voitu tallentaa.</translation>
     </message>
 </context>
 <context>

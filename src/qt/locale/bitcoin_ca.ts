@@ -1115,6 +1115,10 @@ Només és possible firmar amb adreces del tipus &quot;legacy&quot;.</translatio
         <source>Not staking</source>
         <translation>Sense staking</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>Llocs</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1269,6 +1273,92 @@ Només és possible firmar amb adreces del tipus &quot;legacy&quot;.</translatio
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>delegat a %1 per a staking en fred</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>Límits per a %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>El que aquest telèfon pot gastar del moneder d&apos;assignació, comissions incloses.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Com a màxim en un pagament</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Com a màxim en 24 hores</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>Vincula un telèfon</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>A l&apos;aplicació BPS del telèfon, trieu Vincula i escanegeu aquest codi. O copieu el text de sota a l&apos;aplicació. Funciona una vegada, durant deu minuts.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>Copia el codi</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>Mostra un codi nou</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>Vinculeu només si el telèfon mostra aquests mateixos sis dígits. Si en mostra d&apos;altres, algú altre ha respost al codi primer: rebutgeu-lo i mostreu-ne un de nou.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>El que aquest telèfon pot gastar del moneder d&apos;assignació. Només aquest node ho pot canviar més endavant, mai el telèfon.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Com a màxim en un pagament</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Com a màxim en 24 hores</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>Rebutja</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>Vincula aquest telèfon</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>S&apos;està creant un codi…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>Aquest codi ha caducat.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>S&apos;espera el telèfon… el codi val %1 minuts més.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>Aquesta versió no pot dibuixar codis QR: copieu el text de sota a l&apos;aplicació.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>Un telèfon anomenat «%1» vol vincular-se amb aquest node.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>Vinculat. Ara el telèfon pot gastar del moneder d&apos;assignació dins dels límits que heu fixat. La seva llista és a la pàgina Servidor, on podeu canviar-ne els límits, desbloquejar-lo després de massa PIN incorrectes o desvincular-lo.</translation>
     </message>
 </context>
 <context>
@@ -1445,7 +1535,7 @@ Això és ideal per a carteres de mode només lectura.</translation>
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>Cerca un parell o una adreça</translation>
+        <translation type="vanished">Cerca un parell o una adreça</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1582,6 +1672,38 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>Els parells s&apos;anuncien a la cadena en lloc de fer-ho a un servidor, de manera que aquesta llista és la mateixa per a tothom i ningú no la pot editar. Un parell inscrit a través de la xarxa superposada mostra on se&apos;l pot trobar avui, que canvia cada dia; un repetidor mostra la seva adreça només mentre és en línia, perquè mai no és a la cadena.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nom</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>Registra un nom…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>Un nom permet que altres us trobin sense copiar la vostra clau. Els noms es registren a la pestanya Noms.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>Cerca un parell, una nota o una adreça</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>Tots aquests noms porten a la clau d&apos;aquest node. Altres us poden trobar per qualsevol d&apos;ells.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>Gestiona els noms…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>noms desactivats</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>Els noms necessiten l&apos;índex de noms. Activeu-lo a Configuració per registrar-ne i mostrar-ne un.</translation>
     </message>
 </context>
 <context>
@@ -3210,15 +3332,15 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>Això escriu un registre breu a la cadena que diu que existiu i, opcionalment, on trobar-vos.</translation>
+        <translation type="vanished">Això escriu un registre breu a la cadena que diu que existiu i, opcionalment, on trobar-vos.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>Com us han d&apos;arribar els parells?</translation>
+        <translation type="vanished">Com us han d&apos;arribar els parells?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>A través de la xarxa superposada — sense publicar cap adreça</translation>
+        <translation type="vanished">A través de la xarxa superposada — sense publicar cap adreça</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3226,35 +3348,35 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>En una adreça que publico</translation>
+        <translation type="vanished">En una adreça que publico</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>adreça a la qual poden arribar altres parells</translation>
+        <translation type="vanished">adreça a la qual poden arribar altres parells</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>Qualsevol la pot veure, i la cadena la conserva per sempre. Una adreça onion publica una ubicació que ningú no pot relacionar amb vosaltres i funciona darrere de NAT; una adreça IP no fa ni una cosa ni l&apos;altra. Un node que publica una adreça IP pot ser triat com a repetidor per altres.</translation>
+        <translation type="vanished">Qualsevol la pot veure, i la cadena la conserva per sempre. Una adreça onion publica una ubicació que ningú no pot relacionar amb vosaltres i funciona darrere de NAT; una adreça IP no fa ni una cosa ni l&apos;altra. Un node que publica una adreça IP pot ser triat com a repetidor per altres.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3298,7 +3420,7 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>El vostre node signa la inscripció i l&apos;envia per la xarxa superposada al repetidor pel qual entra. Un repetidor que paga inscripcions posa la vostra en un bloc que genera ell mateix, de manera que es confirma encara que la majoria de nodes no la transmetin, i us afegeix als parells amb qui comparteix les recompenses. Si més endavant deixa de pagar, la vostra inscripció caduca dins del mes; sempre la podeu renovar vosaltres des d&apos;un moneder amb fons.</translation>
+        <translation type="vanished">El vostre node signa la inscripció i l&apos;envia per la xarxa superposada al repetidor pel qual entra. Un repetidor que paga inscripcions posa la vostra en un bloc que genera ell mateix, de manera que es confirma encara que la majoria de nodes no la transmetin, i us afegeix als parells amb qui comparteix les recompenses. Si més endavant deixa de pagar, la vostra inscripció caduca dins del mes; sempre la podeu renovar vosaltres des d&apos;un moneder amb fons.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3314,11 +3436,11 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>Introduïu una adreça o trieu no publicar-ne cap.</translation>
+        <translation type="vanished">Introduïu una adreça o trieu no publicar-ne cap.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>Demanant al vostre repetidor que la publiqui… pot trigar fins a mig minut.</translation>
+        <translation type="vanished">Demanant al vostre repetidor que la publiqui… pot trigar fins a mig minut.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3350,11 +3472,11 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>Inscriu la passarel·la d&apos;aquest relé</translation>
+        <translation type="vanished">Inscriu la passarel·la d&apos;aquest relé</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>La inscripció d&apos;un relé porta la seva adreça, així que la seva passarel·la s&apos;inscriu amb una segona clau sense adreça, a part. Ningú pot saber pel registre que les dues pertanyen al mateix ordinador. Els visitants arriben a la passarel·la a través de relés, així que mai no sap qui són; els llocs que visiten veuen l&apos;adreça d&apos;aquest ordinador.</translation>
+        <translation type="vanished">La inscripció d&apos;un relé porta la seva adreça, així que la seva passarel·la s&apos;inscriu amb una segona clau sense adreça, a part. Ningú pot saber pel registre que les dues pertanyen al mateix ordinador. Els visitants arriben a la passarel·la a través de relés, així que mai no sap qui són; els llocs que visiten veuen l&apos;adreça d&apos;aquest ordinador.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3370,11 +3492,11 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>Paga un altre repetidor, demanat a través d&apos;altres repetidors</translation>
+        <translation type="vanished">Paga un altre repetidor, demanat a través d&apos;altres repetidors</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>El vostre node signa la inscripció de la passarel·la i l&apos;envia a través de repetidors a un altre repetidor, que la paga i la posa en un bloc que genera ell mateix. Aquest repetidor coneix la clau de la passarel·la i mai l&apos;adreça d&apos;aquest ordinador. Pagar des del moneder d&apos;aquest mateix node lligaria la passarel·la a aquest repetidor a la cadena, i per tant a la seva adreça.</translation>
+        <translation type="vanished">El vostre node signa la inscripció de la passarel·la i l&apos;envia a través de repetidors a un altre repetidor, que la paga i la posa en un bloc que genera ell mateix. Aquest repetidor coneix la clau de la passarel·la i mai l&apos;adreça d&apos;aquest ordinador. Pagar des del moneder d&apos;aquest mateix node lligaria la passarel·la a aquest repetidor a la cadena, i per tant a la seva adreça.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3390,7 +3512,7 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>La teva inscripció diu qui ets i no on funciones. Els parells t&apos;arriben per la xarxa superposada i et troben en punts que totes dues parts calculen a partir del registre, i que canvien cada dia; Descobreix mostra els d&apos;avui. La teva inscripció també anomena un repetidor on se&apos;t pot trobar mentre duri, i cada renovació n&apos;anomena un de nou. Això és el que aquest client activa per defecte.</translation>
+        <translation type="vanished">La teva inscripció diu qui ets i no on funciones. Els parells t&apos;arriben per la xarxa superposada i et troben en punts que totes dues parts calculen a partir del registre, i que canvien cada dia; Descobreix mostra els d&apos;avui. La teva inscripció també anomena un repetidor on se&apos;t pot trobar mentre duri, i cada renovació n&apos;anomena un de nou. Això és el que aquest client activa per defecte.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3410,15 +3532,59 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>Aquest node comparteix la seva connexió a internet com a passarel·la, tal com està configurat a la pàgina Servidor, i la inscripció ho diu.</translation>
+        <translation type="vanished">Aquest node comparteix la seva connexió a internet com a passarel·la, tal com està configurat a la pàgina Servidor, i la inscripció ho diu.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>Aquest node ni fa de repetidor per a altres ni comparteix la seva connexió a internet, tal com està configurat a la pàgina Servidor.</translation>
+        <translation type="vanished">Aquest node ni fa de repetidor per a altres ni comparteix la seva connexió a internet, tal com està configurat a la pàgina Servidor.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>Un canvi allà arriba al registre amb la teva propera inscripció.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>Això escriu a la cadena un registre breu que diu que existiu i, si voleu, una línia sobre vós.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>Què diu la vostra inscripció</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>La vostra inscripció diu qui sou i no on funcioneu: no porta cap adreça. Els parells us arriben per la xarxa superposada, trobant-vos en punts que ambdues bandes calculen a partir del registre i que canvien cada dia; Descobreix mostra els d&apos;avui. La vostra inscripció també anomena un repetidor on se us pot trobar mentre duri, i cada renovació n&apos;anomena un de nou.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>Nota</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>opcional: una línia que es mostra al costat de la vostra clau</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>Tothom la pot llegir, i la cadena la guarda per sempre, fins i tot quan la inscripció s&apos;acaba. Deixeu fora tot el que digui on sou o qui sou, si us importa.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>El vostre node signa la inscripció i l&apos;envia per un camí a un repetidor per on no entra, de manera que aquest repetidor sap qui sou i no on. Un repetidor que paga inscripcions posa la vostra en un bloc que fa staking ell mateix, perquè es confirmi encara que la majoria de nodes no la reenviarien, i us afegeix als parells amb qui comparteix les recompenses. Si deixa de pagar, la vostra inscripció caduca dins del mes; sempre la podeu renovar vós mateix des d&apos;un moneder amb fons.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 bytes</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>Massa llarga: les lletres fora de l&apos;anglès bàsic ocupen de dos a quatre bytes cadascuna.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>La nota és massa llarga.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>La nota no pot contenir caràcters de control ni marques que canviïn la direcció del text.</translation>
     </message>
 </context>
 <context>
@@ -3592,6 +3758,14 @@ Se us mostrarà una clau de recuperació una vegada. Anoteu-la: és l&apos;únic
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>Introduïu una adreça BitcoinPoS (p. ex. %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>Fixeu tots dos límits.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>Un pagament no pot permetre més que un dia sencer.</translation>
     </message>
 </context>
 <context>
@@ -4292,6 +4466,14 @@ calculats a partir del registre; canvien cada dia:</translation>
         <source>meets at %1</source>
         <translation>es troba a %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>Nota</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>Escrita per qui té aquesta clau; ningú no la comprova.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4774,7 +4956,7 @@ Nota: Com que la comissió es calcula en funció dels bytes, una comissió de &q
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>Un lloc o servei servit des d&apos;aquest node, trobat per la seva clau o nom i accessible per la xarxa superposada, de manera que l&apos;amfitrió no publica mai on s&apos;executa. La part de trobada ja existeix: un servei es registra en punts de trobada que totes dues parts calculen a partir del registre. Servir-hi pàgines i aplicacions encara no està fet.</translation>
+        <translation type="vanished">Un lloc o servei servit des d&apos;aquest node, trobat per la seva clau o nom i accessible per la xarxa superposada, de manera que l&apos;amfitrió no publica mai on s&apos;executa. La part de trobada ja existeix: un servei es registra en punts de trobada que totes dues parts calculen a partir del registre. Servir-hi pàgines i aplicacions encara no està fet.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4998,7 +5180,7 @@ Pots canviar-ho en qualsevol moment a la pàgina Servidor.</translation>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>El que aquest node ofereix als altres. Retransmetre, guardar correu i compartir internet funcionen avui; l&apos;allotjament és en camí i, com tot aquí, es troba igual que els iguals — a través del registre. Els noms tenen una pàgina pròpia.</translation>
+        <translation type="vanished">El que aquest node ofereix als altres. Retransmetre, guardar correu i compartir internet funcionen avui; l&apos;allotjament és en camí i, com tot aquí, es troba igual que els iguals — a través del registre. Els noms tenen una pàgina pròpia.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -5014,7 +5196,7 @@ Pots canviar-ho en qualsevol moment a la pàgina Servidor.</translation>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>Inscrit com a</translation>
+        <translation type="vanished">Inscrit com a</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5026,15 +5208,15 @@ Pots canviar-ho en qualsevol moment a la pàgina Servidor.</translation>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>Inscriu com a passarel·la…</translation>
+        <translation type="vanished">Inscriu com a passarel·la…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Comparteix la connexió a internet d&apos;aquest ordinador com a passarel·la</translation>
+        <translation type="vanished">Comparteix la connexió a internet d&apos;aquest ordinador com a passarel·la</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>Desactiva-ho si la llei d&apos;on vius o les condicions del teu proveïdor d&apos;internet prohibeixen compartir la connexió. Desactivat, aquest node continua retransmetent, guardant correu i a la cadena, i fa servir directament la seva pròpia connexió.</translation>
+        <translation type="vanished">Desactiva-ho si la llei d&apos;on vius o les condicions del teu proveïdor d&apos;internet prohibeixen compartir la connexió. Desactivat, aquest node continua retransmetent, guardant correu i a la cadena, i fa servir directament la seva pròpia connexió.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5050,11 +5232,11 @@ Pots canviar-ho en qualsevol moment a la pàgina Servidor.</translation>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>Deixa que els programes d&apos;aquest ordinador facin servir l&apos;internet de la xarxa, a través d&apos;un servidor intermediari local</translation>
+        <translation type="vanished">Deixa que els programes d&apos;aquest ordinador facin servir l&apos;internet de la xarxa, a través d&apos;un servidor intermediari local</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>Un servidor intermediari SOCKS5 només per a aquest ordinador. Cada connexió surt per la passarel·la d&apos;un altre membre, i els noms es resolen allà, mai aquí. Funciona mentre aquest ordinador comparteix la seva pròpia connexió.</translation>
+        <translation type="vanished">Un servidor intermediari SOCKS5 només per a aquest ordinador. Cada connexió surt per la passarel·la d&apos;un altre membre, i els noms es resolen allà, mai aquí. Funciona mentre aquest ordinador comparteix la seva pròpia connexió.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5090,27 +5272,27 @@ Pots canviar-ho en qualsevol moment a la pàgina Servidor.</translation>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>no inscrit com a passarel·la</translation>
+        <translation type="vanished">no inscrit com a passarel·la</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>encara no — el registre no inscriu aquest node com a passarel·la, així que ningú no el pot trobar</translation>
+        <translation type="vanished">encara no — el registre no inscriu aquest node com a passarel·la, així que ningú no el pot trobar</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>encara res — un relé inscriu la seva passarel·la amb una segona clau, sense adreça, a part de la seva pròpia inscripció</translation>
+        <translation type="vanished">encara res — un relé inscriu la seva passarel·la amb una segona clau, sense adreça, a part de la seva pròpia inscripció</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>encara res — a la inscripció d&apos;aquest node li falta l&apos;opció de passarel·la; torna-la a publicar amb l&apos;opció activada</translation>
+        <translation type="vanished">encara res — a la inscripció d&apos;aquest node li falta l&apos;opció de passarel·la; torna-la a publicar amb l&apos;opció activada</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>encara res — publica una inscripció sense adreça amb l&apos;opció de passarel·la activada</translation>
+        <translation type="vanished">encara res — publica una inscripció sense adreça amb l&apos;opció de passarel·la activada</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>Inscriu la passarel·la d&apos;aquest relé…</translation>
+        <translation type="vanished">Inscriu la passarel·la d&apos;aquest relé…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5130,11 +5312,11 @@ Pots canviar-ho en qualsevol moment a la pàgina Servidor.</translation>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>la seva clau de passarel·la %1, a part de l&apos;adreça del relé</translation>
+        <translation type="vanished">la seva clau de passarel·la %1, a part de l&apos;adreça del relé</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>la clau pròpia d&apos;aquest node %1</translation>
+        <translation type="vanished">la clau pròpia d&apos;aquest node %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5150,11 +5332,11 @@ Pots canviar-ho en qualsevol moment a la pàgina Servidor.</translation>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>Fes passar tot el trànsit d&apos;aquest ordinador per la xarxa, sense cap configuració de servidor intermediari en cap programa</translation>
+        <translation type="vanished">Fes passar tot el trànsit d&apos;aquest ordinador per la xarxa, sense cap configuració de servidor intermediari en cap programa</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>Les connexions de cada programa surten per les passarel·les de la xarxa, cadascuna per una altra, i els noms es consulten allà. La xarxa pròpia d&apos;aquest ordinador — una impressora, l&apos;encaminador — i les connexions pròpies d&apos;aquest node continuen directes. Funciona mentre aquest ordinador comparteix la seva connexió.</translation>
+        <translation type="vanished">Les connexions de cada programa surten per les passarel·les de la xarxa, cadascuna per una altra, i els noms es consulten allà. La xarxa pròpia d&apos;aquest ordinador — una impressora, l&apos;encaminador — i les connexions pròpies d&apos;aquest node continuen directes. Funciona mentre aquest ordinador comparteix la seva connexió.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5182,11 +5364,11 @@ Pots canviar-ho en qualsevol moment a la pàgina Servidor.</translation>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>Activat: %1 connexió(ns) per la xarxa ara; %2 enviat, %3 rebut.</translation>
+        <translation type="vanished">Activat: %1 connexió(ns) per la xarxa ara; %2 enviat, %3 rebut.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>Encara no està disponible en aquest sistema.</translation>
+        <translation type="vanished">Encara no està disponible en aquest sistema.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5198,7 +5380,7 @@ Pots canviar-ho en qualsevol moment a la pàgina Servidor.</translation>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>Comença quan es reinicia el client.</translation>
+        <translation type="vanished">Comença quan es reinicia el client.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5227,6 +5409,334 @@ Pots canviar-ho en qualsevol moment a la pàgina Servidor.</translation>
     <message>
         <source>none — relaying is switched off</source>
         <translation>cap — fer de repetidor està desactivat</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>El que aquest node ofereix als altres: fer de repetidor, guardar correu, compartir la connexió a internet i allotjar un lloc; i al vostre telèfon, una manera de gastar des d&apos;aquí. Com tot aquí, es troba igual que els parells: a través del registre. Els noms tenen una pàgina pròpia.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>Comparteix la connexió a internet d&apos;aquest ordinador, i fes servir la de la xarxa a canvi</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>Activat, la connexió d&apos;aquest ordinador es comparteix, i tot el seu trànsit propi surt per les passarel·les de la xarxa, cada connexió per una de diferent; la xarxa local d&apos;aquest ordinador —una impressora, l&apos;encaminador— continua directa. Desactiveu-lo si la llei d&apos;on viviu o les condicions del vostre proveïdor d&apos;internet prohibeixen compartir la connexió: aleshores la xarxa només porta el mateix BPS, i aquest ordinador fa servir la seva pròpia connexió.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Per a tot l&apos;ordinador: activat, %1 connexió(ns) per la xarxa ara; %2 enviats, %3 rebuts.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>Per a tot l&apos;ordinador: encara no disponible en aquest sistema; els programes poden fer servir el servidor intermediari.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>Per a tot l&apos;ordinador: comença quan el client es reiniciï.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>no comparteix</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>no — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>Publiqueu una carpeta com a lloc sota la clau d&apos;aquest node, perquè qualsevol a qui doneu la clau o el vostre nom la pugui llegir per la xarxa superposada. Cada fitxer va signat i es comprova tros a tros quan arriba. Inscrit sense adreça, aquest node es troba als seus punts de trobada i ningú no sap on funciona el lloc; inscrit amb adreça, els visitants hi arriben per repetidors, de manera que mai no sap qui són. Un programa d&apos;aquest ordinador —una aplicació web, un servidor de xat— es pot publicar igual: els visitants hi arriben per la xarxa superposada, i aquest node només es connecta al port que indiqueu.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Carpeta</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>Abastat</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Enviat</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>cap</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>Programes d&apos;aquest ordinador on els visitants arriben per la xarxa superposada. Un programa anomenat web és el que un navegador obre a l&apos;adreça d&apos;aquest node quan no hi ha lloc.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>Programes</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>Publica una carpeta…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>Torna a publicar</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>Torna a llegir la carpeta després de canviar-la, i publica el que hi ha ara.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>Deixa de publicar</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>Obre a Llocs</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>Publica un programa…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>Atura un programa…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>no publica</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>cap — no hi ha res publicat</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 fitxer(s), %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>no inscrit</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>per ningú encara: aquest node no és inscrit al registre, de manera que els visitants no poden trobar el lloc. Publiqueu una inscripció a la pàgina Node, a Descobreix.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>publicant</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>encara no trobat</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>a %1 punt(s) de trobada, sense adreça publicada</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>encara no: s&apos;està registrant als seus punts de trobada, cosa que necessita els repetidors del registre</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>a l&apos;adreça d&apos;aquest node, per repetidors que amaguen el visitant</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 tros(sos) de pàgina, %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>La carpeta que es publicarà com a lloc</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>Publica un programa</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>Un nom per a ell, d&apos;1 a 32 caràcters entre a-z, 0-9 i -. Anomeneu-lo web per a una aplicació web que un navegador ha d&apos;obrir a l&apos;adreça d&apos;aquest node:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>El port on escolta, a 127.0.0.1 (només aquest ordinador):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>Atura un programa</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>A quin programa no han d&apos;arribar més els visitants:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 a 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 flux(os) oberts</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>Company de telèfon</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>Gasteu des del telèfon mentre les vostres monedes es queden aquí. El telèfon no té claus de monedes: arriba a aquest node, demostra la clau amb què es va vincular, i aquest node paga des d&apos;un petit moneder d&apos;assignació — després de comprovar el PIN del telèfon i els límits que heu fixat, que el telèfon no pot canviar. Si perdeu el telèfon, perdeu com a màxim el que té l&apos;assignació; desvinculeu-lo aquí. Quan aquest node és un repetidor inscrit i n&apos;hi ha prou d&apos;altres d&apos;inscrits, el telèfon arriba per tres repetidors, de manera que ningú que observi no sap on és; si no, es connecta directament aquí.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>Assignació</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>Accessible per als telèfons</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>Telèfon</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>Un pagament</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>Un dia</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>Gastat avui</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>Estat</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>Vincula un telèfon…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>Límits…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>Desbloqueja</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>Un telèfon es bloqueja després de cinc PIN incorrectes seguits, fins que es desbloqueja aquí.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>Desvincula</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>Permet que els telèfons vinculats gastin d&apos;un moneder d&apos;assignació</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>Necessita la xarxa superposada. Desactivat per defecte, perquè permet a un telèfon gastar les monedes d&apos;aquest node.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>Un moneder propi, sense frase de contrasenya —no hi ha ningú per escriure-la quan el telèfon paga— i només amb el que el telèfon ha de poder gastar. Mai no fa staking i no pot ser el moneder que paga les inscripcions.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>Crea&apos;l</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>Crea el moneder d&apos;assignació i obre&apos;l cada cop que s&apos;iniciï aquest node.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>Recarrega…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>Obre Envia al moneder, per moure monedes a l&apos;assignació.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>Moneder d&apos;assignació</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, %1 més arribant</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>sí, a %1, per repetidors</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>directament, a %1. Sense repetidors entremig: la xarxa d&apos;un telèfon el veu parlant amb aquest ordinador. Des de fora d&apos;aquesta xarxa, redirigiu el port UDP %2 de l&apos;encaminador cap a aquest ordinador.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>no — aquest node encara no coneix cap adreça pròpia</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>no accessible</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>un telèfon espera</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>sense assignació</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>un telèfon està bloquejat</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 telèfons estan bloquejats</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>en marxa, encara sense telèfon</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>en marxa, 1 telèfon</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>en marxa, %1 telèfons</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>Clau del dispositiu %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>bloquejat: PIN incorrectes</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>vinculat</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>Desvincula %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>Voleu desvincular %1? No podrà tornar a gastar fins que es vinculi de nou. Feu-ho de seguida si el telèfon s&apos;ha perdut o l&apos;han robat.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>S&apos;ha creat i obert el moneder d&apos;assignació. Feu servir Recarrega per moure-hi el que el telèfon ha de poder gastar.</translation>
     </message>
 </context>
 <context>
@@ -5358,6 +5868,30 @@ Pots canviar-ho en qualsevol moment a la pàgina Servidor.</translation>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>El node encara s&apos;està iniciant; les opcions bàsiques encara no estan disponibles.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>Els altres us troben en repetidors calculats a partir del registre, i el vostre node manté un camí obert cap a cadascun a través d&apos;aquest nombre de repetidors. El punt de trobada només veu l&apos;últim, mai la vostra adreça. Més us amaga millor i és més lent.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>Repetidors abans dels vostres punts de trobada</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>Quan aquest ordinador fa servir l&apos;internet de la xarxa, cada connexió passa per aquest nombre de repetidors fins al punt de trobada d&apos;una passarel·la, i després pels de la mateixa passarel·la: la passarel·la mai no sap qui sou. Més us amaga millor i és més lent.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>Repetidors abans del punt de trobada d&apos;una passarel·la</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>Només la vostra primera connexió és directa, a un repetidor d&apos;entrada que veu la vostra adreça i no qui sou. El correu sempre passa per tres repetidors.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Versió %1</translation>
     </message>
 </context>
 <context>
@@ -5520,6 +6054,147 @@ Pots canviar-ho en qualsevol moment a la pàgina Servidor.</translation>
     <message>
         <source>Message verified.</source>
         <translation>Missatge verificat.</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>Llocs</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>Llocs allotjats a la xarxa superposada, oberts amb un nom o una clau que algú us ha donat. Aquí les pàgines es mostren sense scripts, i res no s&apos;hi carrega des de fora de BPS, de manera que una pàgina no pot saber on sou.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Enrere</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Endavant</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>Torna a carregar la pàgina</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://nom/ o la clau d&apos;un lloc</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Obre</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>Desa aquest fitxer…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>Obre al vostre navegador</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>El mateix lloc en un navegador corrent, a través d&apos;un servidor només en aquest ordinador. Allà les pàgines poden executar scripts, així que el visualitzador d&apos;aquí continua sent la manera més segura de llegir un lloc ocult.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>Connecta amb un programa…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>Arribeu a un programa que fa funcionar aquest lloc —un servidor de xat, un joc— des d&apos;un programa d&apos;aquest ordinador: BPS Relay escolta en un port aquí i porta cada connexió fins a ell per la xarxa superposada.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>Això no és l&apos;adreça d&apos;un lloc. Escriviu un nom o una clau, com bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>S&apos;està cercant %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>S&apos;està obtenint %1 per la xarxa superposada…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 no és una pàgina que aquest visualitzador mostri (%2 bytes). Deseu-la per obrir-la amb un altre programa.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>Apunteu el programa d&apos;aquest ordinador a %1: BPS Relay porta cada connexió feta allà fins al programa del lloc, per la xarxa superposada, fins que es reiniciï.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>El servidor de llocs per a navegadors no està en marxa. S&apos;inicia amb BPS Relay tret que s&apos;hagi donat -siteproxy=0.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 no porta a cap clau.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 ara porta a una clau diferent de l&apos;última vegada que el vau obrir. Qui té el nom ara potser no és qui llegíeu abans.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>Trobat en un dels seus punts de trobada, a través de %1 dels vostres repetidors: ni vós ni l&apos;amfitrió no sabeu on és l&apos;altre.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>Abastat a la seva adreça a través de %1 repetidors: l&apos;amfitrió no sap qui sou.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>El vostre propi lloc, llegit des d&apos;aquest ordinador.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>S&apos;hi arriba per ràdio, així que les pàgines arriben a poc a poc.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 no és un nom que conegui aquest node: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>No s&apos;ha pogut obrir %1: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>Aquest enllaç porta fora de BPS, així que no s&apos;ha seguit: %1
+Obriu-lo en un navegador corrent si voleu; qui el gestiona veurà la vostra adreça.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>Connecta amb un programa</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>El nom que el lloc va donar al seu programa:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>Obrir un lloc al vostre navegador</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>El vostre navegador demanarà el lloc a aquest ordinador, i BPS Relay l&apos;obté per la xarxa superposada, com aquí. Cada pàgina només pot carregar del seu propi lloc, de manera que no pot portar res de l&apos;internet obert per saber on sou.
+
+El que un navegador encara pot fer: un script pot fer servir WebRTC per mostrar a una pàgina les adreces d&apos;aquest ordinador, i un enllaç que seguiu cap a un lloc corrent surt com qualsevol enllaç. El visualitzador de BPS Relay no executa scripts i continua sent la manera més segura de llegir un lloc ocult.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>Desa el fitxer</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>No s&apos;ha pogut desar %1.</translation>
     </message>
 </context>
 <context>

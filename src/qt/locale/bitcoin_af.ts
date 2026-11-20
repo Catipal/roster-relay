@@ -1115,6 +1115,10 @@ Ondertekening is slegs moontlik met adresse van die tipe &apos;legacy&apos;.</tr
         <source>Not staking</source>
         <translation>Geen staking nie</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>Werwe</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1269,6 +1273,92 @@ Ondertekening is slegs moontlik met adresse van die tipe &apos;legacy&apos;.</tr
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>aan %1 gedelegeer vir koue staking</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>Perke vir %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>Hoeveel hierdie foon uit die sakgeldbeursie mag spandeer, fooie ingesluit.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Hoogstens in een betaling</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Hoogstens in enige 24 uur</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>Koppel &apos;n foon</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>Kies Koppel in die BPS-toep op die foon en skandeer hierdie kode. Of kopieer die teks daaronder in die toep. Dit werk een keer, vir tien minute.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>Kopieer die kode</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>Wys &apos;n nuwe kode</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>Koppel net as die foon dieselfde ses syfers wys. As dit ander wys, het iemand anders eerste op die kode geantwoord: weier, en wys &apos;n nuwe een.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>Hoeveel hierdie foon uit die sakgeldbeursie mag spandeer. Net hierdie nodus kan dit later verander, nooit die foon nie.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Hoogstens in een betaling</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Hoogstens in enige 24 uur</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>Weier</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>Koppel hierdie foon</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>Maak &apos;n kode…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>Hierdie kode het verval.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>Wag vir die foon… die kode werk nog %1 minute.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>Hierdie weergawe kan nie QR-kodes teken nie: kopieer eerder die teks hieronder in die toep.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>&apos;n Foon genaamd “%1” wil met hierdie nodus koppel.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>Gekoppel. Die foon kan nou uit die sakgeldbeursie spandeer binne die perke wat jy gestel het. Sy lys is op die Bediener-bladsy, waar jy sy perke kan verander, dit kan ontsluit na te veel verkeerde PIN&apos;s, of dit kan ontkoppel.</translation>
     </message>
 </context>
 <context>
@@ -1444,7 +1534,7 @@ Ondertekening is slegs moontlik met adresse van die tipe &apos;legacy&apos;.</tr
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>Vind &apos;n eweknie of &apos;n adres</translation>
+        <translation type="vanished">Vind &apos;n eweknie of &apos;n adres</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1581,6 +1671,38 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>Eweknieë kondig hulself op die ketting aan in plaas van by &apos;n bediener, so hierdie lys is dieselfde vir almal en niemand kan dit wysig nie. &apos;n Eweknie wat deur die oorlegnetwerk ingeskryf is, wys waar dit vandag ontmoet kan word, wat elke dag verander; &apos;n relê wys sy adres slegs terwyl dit aanlyn is, want dit is nooit op die ketting nie.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Naam</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>Registreer &apos;n naam…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>&apos;n Naam is hoe ander jou bereik sonder om jou sleutel te kopieer. Name word op die Name-oortjie geregistreer.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>Vind &apos;n eweknie, &apos;n nota of &apos;n adres</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>Al hierdie name lei na hierdie nodus se sleutel. Ander kan jou deur enigeen daarvan bereik.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>Bestuur name…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>name af</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>Name het die naamindeks nodig. Skakel dit aan in Instellings om een te registreer en te wys.</translation>
     </message>
 </context>
 <context>
@@ -3209,15 +3331,15 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>Dit skryf &apos;n kort rekord op die ketting wat sê dat jy bestaan, en opsioneel waar om jou te vind.</translation>
+        <translation type="vanished">Dit skryf &apos;n kort rekord op die ketting wat sê dat jy bestaan, en opsioneel waar om jou te vind.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>Hoe moet eweknieë jou bereik?</translation>
+        <translation type="vanished">Hoe moet eweknieë jou bereik?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>Deur die oorlegnetwerk — publiseer geen adres nie</translation>
+        <translation type="vanished">Deur die oorlegnetwerk — publiseer geen adres nie</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3225,35 +3347,35 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>By &apos;n adres wat ek publiseer</translation>
+        <translation type="vanished">By &apos;n adres wat ek publiseer</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>adres wat ander eweknieë kan bereik</translation>
+        <translation type="vanished">adres wat ander eweknieë kan bereik</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>Enigiemand kan dit sien, en die ketting hou dit vir altyd. &apos;n Onion-adres publiseer &apos;n ligging wat niemand na jou kan terugspoor nie en werk agter NAT; &apos;n IP-adres doen geen van die twee nie. &apos;n Nodus wat &apos;n IP-adres publiseer, kan deur ander as relê gekies word.</translation>
+        <translation type="vanished">Enigiemand kan dit sien, en die ketting hou dit vir altyd. &apos;n Onion-adres publiseer &apos;n ligging wat niemand na jou kan terugspoor nie en werk agter NAT; &apos;n IP-adres doen geen van die twee nie. &apos;n Nodus wat &apos;n IP-adres publiseer, kan deur ander as relê gekies word.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3297,7 +3419,7 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>Jou nodus onderteken die inskrywing en stuur dit oor die oorlegnetwerk na die relê waardeur dit ingaan. &apos;n Relê wat vir inskrywings betaal, sit joune in &apos;n blok wat dit self maak, so dit word bevestig selfs al sou die meeste nodusse dit nie aanstuur nie, en voeg jou by die eweknieë met wie dit sy belonings deel. As dit later ophou betaal, verval jou inskrywing binne die maand; jy kan dit altyd self uit &apos;n beursie met fondse hernu.</translation>
+        <translation type="vanished">Jou nodus onderteken die inskrywing en stuur dit oor die oorlegnetwerk na die relê waardeur dit ingaan. &apos;n Relê wat vir inskrywings betaal, sit joune in &apos;n blok wat dit self maak, so dit word bevestig selfs al sou die meeste nodusse dit nie aanstuur nie, en voeg jou by die eweknieë met wie dit sy belonings deel. As dit later ophou betaal, verval jou inskrywing binne die maand; jy kan dit altyd self uit &apos;n beursie met fondse hernu.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3313,11 +3435,11 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>Voer &apos;n adres in, of kies om geen te publiseer nie.</translation>
+        <translation type="vanished">Voer &apos;n adres in, of kies om geen te publiseer nie.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>Vra jou relê om dit te publiseer… dit kan tot &apos;n halwe minuut neem.</translation>
+        <translation type="vanished">Vra jou relê om dit te publiseer… dit kan tot &apos;n halwe minuut neem.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3349,11 +3471,11 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>Skryf hierdie aflosser se poort in</translation>
+        <translation type="vanished">Skryf hierdie aflosser se poort in</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>&apos;n Aflosser se inskrywing dra sy adres, dus word sy poort onder &apos;n tweede sleutel sonder adres ingeskryf, apart daarvan. Niemand kan uit die register agterkom dat die twee aan een rekenaar behoort nie. Besoekers bereik die poort deur aflossers, dus weet dit nooit wie hulle is nie; die webwerwe wat hulle besoek, sien hierdie rekenaar se adres.</translation>
+        <translation type="vanished">&apos;n Aflosser se inskrywing dra sy adres, dus word sy poort onder &apos;n tweede sleutel sonder adres ingeskryf, apart daarvan. Niemand kan uit die register agterkom dat die twee aan een rekenaar behoort nie. Besoekers bereik die poort deur aflossers, dus weet dit nooit wie hulle is nie; die webwerwe wat hulle besoek, sien hierdie rekenaar se adres.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3369,11 +3491,11 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>&apos;n Ander relê betaal, deur relês gevra</translation>
+        <translation type="vanished">&apos;n Ander relê betaal, deur relês gevra</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>Jou nodus onderteken die poort se inskrywing en stuur dit deur relês na &apos;n ander relê, wat daarvoor betaal en dit in &apos;n blok sit wat dit self maak. Daardie relê leer die poort se sleutel en nooit hierdie rekenaar se adres nie. Om uit hierdie nodus se eie beursie te betaal, sou die poort op die ketting aan hierdie relê koppel, en so aan sy adres.</translation>
+        <translation type="vanished">Jou nodus onderteken die poort se inskrywing en stuur dit deur relês na &apos;n ander relê, wat daarvoor betaal en dit in &apos;n blok sit wat dit self maak. Daardie relê leer die poort se sleutel en nooit hierdie rekenaar se adres nie. Om uit hierdie nodus se eie beursie te betaal, sou die poort op die ketting aan hierdie relê koppel, en so aan sy adres.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3389,7 +3511,7 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>Jou inskrywing sê wie jy is en nie waar jy loop nie. Eweknieë bereik jou oor die oorlegnetwerk en ontmoet jou by punte wat albei kante uit die register uitwerk, en wat elke dag verander; Ontdek wys dié van vandag. Jou inskrywing noem ook een relê waar jy ontmoet kan word solank dit geld, en elke hernuwing noem &apos;n nuwe een. Dit is wat hierdie kliënt by verstek aanskakel.</translation>
+        <translation type="vanished">Jou inskrywing sê wie jy is en nie waar jy loop nie. Eweknieë bereik jou oor die oorlegnetwerk en ontmoet jou by punte wat albei kante uit die register uitwerk, en wat elke dag verander; Ontdek wys dié van vandag. Jou inskrywing noem ook een relê waar jy ontmoet kan word solank dit geld, en elke hernuwing noem &apos;n nuwe een. Dit is wat hierdie kliënt by verstek aanskakel.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3409,15 +3531,59 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>Hierdie nodus deel sy internetverbinding as &apos;n poort, soos op die Bediener-bladsy gestel, so die inskrywing sê so.</translation>
+        <translation type="vanished">Hierdie nodus deel sy internetverbinding as &apos;n poort, soos op die Bediener-bladsy gestel, so die inskrywing sê so.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>Hierdie nodus relê nie vir ander nie en deel ook nie sy internetverbinding nie, soos op die Bediener-bladsy gestel.</translation>
+        <translation type="vanished">Hierdie nodus relê nie vir ander nie en deel ook nie sy internetverbinding nie, soos op die Bediener-bladsy gestel.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>&apos;n Verandering daar bereik die register met jou volgende inskrywing.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>Dit skryf &apos;n kort rekord op die ketting wat sê dat jy bestaan, en opsioneel &apos;n reël oor jou.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>Wat jou inskrywing sê</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>Jou inskrywing sê wie jy is en nie waar jy loop nie: dit bevat geen adres nie. Eweknieë bereik jou oor die oorlegnetwerk en ontmoet jou by punte wat albei kante uit die register bereken en wat elke dag verander; Ontdek wys vandag s&apos;n. Jou inskrywing noem ook een relê waar jy ontmoet kan word solank dit duur, en elke hernuwing noem &apos;n nuwe een.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>Nota</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>opsioneel: &apos;n reël wat langs jou sleutel gewys word</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>Enigiemand kan dit lees, en die ketting hou dit vir altyd, selfs nadat die inskrywing verval. Laat enigiets uit wat sê waar jy is of wie jy is, as dit vir jou saak maak.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Jou nodus onderteken die inskrywing en stuur dit langs &apos;n pad na &apos;n relê waardeur dit nie binnekom nie, sodat daardie relê leer wie jy is en nie waar nie. &apos;n Relê wat vir inskrywings betaal, sit joune in &apos;n blok wat dit self stake, sodat dit bevestig selfs terwyl die meeste nodusse dit nie sou aanstuur nie, en voeg jou by die eweknieë met wie dit sy belonings deel. As dit later ophou betaal, verval jou inskrywing binne die maand; jy kan dit altyd self vanuit &apos;n beursie met fondse hernu.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 grepe</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>Te lank: letters buite eenvoudige Engels neem elk twee tot vier grepe.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>Die nota is te lank.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>Die nota mag nie beheerkarakters of tekens bevat wat die rigting van teks verander nie.</translation>
     </message>
 </context>
 <context>
@@ -3591,6 +3757,14 @@ Jy sal een keer &apos;n herstelsleutel gewys word. Skryf dit neer: dit is die en
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>Voer &apos;n BitcoinPoS-adres in (bv. %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>Stel albei perke.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>Een betaling kan nie meer as &apos;n hele dag toegelaat word nie.</translation>
     </message>
 </context>
 <context>
@@ -4291,6 +4465,14 @@ uitgewerk uit die register; hulle verander elke dag:</translation>
         <source>meets at %1</source>
         <translation>ontmoet by %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>Nota</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>Geskryf deur wie ook al hierdie sleutel hou; niemand kontroleer dit nie.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4773,7 +4955,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>&apos;n Werf of diens wat vanaf hierdie nodus bedien word, gevind deur sy sleutel of naam en oor die oorlegnetwerk bereik, sodat die gasheer nooit publiseer waar dit loop nie. Die ontmoetingsdeel bestaan: &apos;n diens registreer by ontmoetingspunte wat albei kante uit die register bereken. Om bladsye en toepassings daardeur te bedien, is nog nie gebou nie.</translation>
+        <translation type="vanished">&apos;n Werf of diens wat vanaf hierdie nodus bedien word, gevind deur sy sleutel of naam en oor die oorlegnetwerk bereik, sodat die gasheer nooit publiseer waar dit loop nie. Die ontmoetingsdeel bestaan: &apos;n diens registreer by ontmoetingspunte wat albei kante uit die register bereken. Om bladsye en toepassings daardeur te bedien, is nog nie gebou nie.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4997,7 +5179,7 @@ Jy kan dit enige tyd op die Bediener-bladsy verander.</translation>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Wat hierdie nodus vir ander bied. Aflos, pos bewaar en die internet deel werk vandag; gasheerdienste is op pad, en soos alles hier word dit gevind net soos portuurs — deur die register. Name het hul eie bladsy.</translation>
+        <translation type="vanished">Wat hierdie nodus vir ander bied. Aflos, pos bewaar en die internet deel werk vandag; gasheerdienste is op pad, en soos alles hier word dit gevind net soos portuurs — deur die register. Name het hul eie bladsy.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -5013,7 +5195,7 @@ Jy kan dit enige tyd op die Bediener-bladsy verander.</translation>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>Ingeskryf as</translation>
+        <translation type="vanished">Ingeskryf as</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5025,15 +5207,15 @@ Jy kan dit enige tyd op die Bediener-bladsy verander.</translation>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>Skryf in as poort…</translation>
+        <translation type="vanished">Skryf in as poort…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Deel hierdie rekenaar se internetverbinding as &apos;n poort</translation>
+        <translation type="vanished">Deel hierdie rekenaar se internetverbinding as &apos;n poort</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>Skakel dit af as die wet waar jy woon of jou internetverskaffer se voorwaardes verbied dat jy jou verbinding deel. Afgeskakel bly hierdie nodus aflos, pos bewaar en op die ketting, en gebruik dit sy eie verbinding direk.</translation>
+        <translation type="vanished">Skakel dit af as die wet waar jy woon of jou internetverskaffer se voorwaardes verbied dat jy jou verbinding deel. Afgeskakel bly hierdie nodus aflos, pos bewaar en op die ketting, en gebruik dit sy eie verbinding direk.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5049,11 +5231,11 @@ Jy kan dit enige tyd op die Bediener-bladsy verander.</translation>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>Laat programme op hierdie rekenaar die netwerk se internet gebruik, deur &apos;n plaaslike instaanbediener</translation>
+        <translation type="vanished">Laat programme op hierdie rekenaar die netwerk se internet gebruik, deur &apos;n plaaslike instaanbediener</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>&apos;n SOCKS5-instaanbediener net vir hierdie rekenaar. Elke verbinding gaan uit deur &apos;n ander lid se poort, en name word daar opgesoek, nooit hier nie. Dit werk solank hierdie rekenaar sy eie verbinding deel.</translation>
+        <translation type="vanished">&apos;n SOCKS5-instaanbediener net vir hierdie rekenaar. Elke verbinding gaan uit deur &apos;n ander lid se poort, en name word daar opgesoek, nooit hier nie. Dit werk solank hierdie rekenaar sy eie verbinding deel.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5089,27 +5271,27 @@ Jy kan dit enige tyd op die Bediener-bladsy verander.</translation>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>nie as poort ingeskryf nie</translation>
+        <translation type="vanished">nie as poort ingeskryf nie</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>nog nie — die register het nie hierdie nodus as poort nie, dus kan niemand dit vind nie</translation>
+        <translation type="vanished">nog nie — die register het nie hierdie nodus as poort nie, dus kan niemand dit vind nie</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>nog niks — &apos;n aflosser skryf sy poort onder &apos;n tweede sleutel in, sonder adres, apart van sy eie inskrywing</translation>
+        <translation type="vanished">nog niks — &apos;n aflosser skryf sy poort onder &apos;n tweede sleutel in, sonder adres, apart van sy eie inskrywing</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>nog niks — hierdie nodus se inskrywing het nie die poortopsie nie; publiseer dit weer met die opsie aan</translation>
+        <translation type="vanished">nog niks — hierdie nodus se inskrywing het nie die poortopsie nie; publiseer dit weer met die opsie aan</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>nog niks — publiseer &apos;n inskrywing sonder adres met die poortopsie aan</translation>
+        <translation type="vanished">nog niks — publiseer &apos;n inskrywing sonder adres met die poortopsie aan</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>Skryf hierdie aflosser se poort in…</translation>
+        <translation type="vanished">Skryf hierdie aflosser se poort in…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5129,11 +5311,11 @@ Jy kan dit enige tyd op die Bediener-bladsy verander.</translation>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>sy poortsleutel %1, apart van die aflosser se adres</translation>
+        <translation type="vanished">sy poortsleutel %1, apart van die aflosser se adres</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>hierdie nodus se eie sleutel %1</translation>
+        <translation type="vanished">hierdie nodus se eie sleutel %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5149,11 +5331,11 @@ Jy kan dit enige tyd op die Bediener-bladsy verander.</translation>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>Stuur al hierdie rekenaar se verkeer deur die netwerk, sonder &apos;n instaanbedienerinstelling in enige program</translation>
+        <translation type="vanished">Stuur al hierdie rekenaar se verkeer deur die netwerk, sonder &apos;n instaanbedienerinstelling in enige program</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>Elke program se verbindings gaan uit deur die netwerk se poorte, elkeen deur &apos;n ander, en name word daar opgesoek. Hierdie rekenaar se eie netwerk — &apos;n drukker, die roeteerder — en hierdie nodus se eie verbindings bly direk. Dit werk terwyl hierdie rekenaar sy eie verbinding deel.</translation>
+        <translation type="vanished">Elke program se verbindings gaan uit deur die netwerk se poorte, elkeen deur &apos;n ander, en name word daar opgesoek. Hierdie rekenaar se eie netwerk — &apos;n drukker, die roeteerder — en hierdie nodus se eie verbindings bly direk. Dit werk terwyl hierdie rekenaar sy eie verbinding deel.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5181,11 +5363,11 @@ Jy kan dit enige tyd op die Bediener-bladsy verander.</translation>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>Aan: %1 verbinding(s) nou deur die netwerk; %2 gestuur, %3 ontvang.</translation>
+        <translation type="vanished">Aan: %1 verbinding(s) nou deur die netwerk; %2 gestuur, %3 ontvang.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>Nog nie op hierdie stelsel beskikbaar nie.</translation>
+        <translation type="vanished">Nog nie op hierdie stelsel beskikbaar nie.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5197,7 +5379,7 @@ Jy kan dit enige tyd op die Bediener-bladsy verander.</translation>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>Begin wanneer die kliënt herbegin.</translation>
+        <translation type="vanished">Begin wanneer die kliënt herbegin.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5226,6 +5408,334 @@ Jy kan dit enige tyd op die Bediener-bladsy verander.</translation>
     <message>
         <source>none — relaying is switched off</source>
         <translation>geen — relê is afgeskakel</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Wat hierdie nodus ander mense bied: aanstuur, pos bewaar, die internet deel en &apos;n werf huisves; en aan jou eie foon, &apos;n manier om van hier af te spandeer. Soos alles hier word dit op dieselfde manier as eweknieë gevind — deur die register. Name het &apos;n eie bladsy.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>Deel hierdie rekenaar se internetverbinding, en gebruik die netwerk s&apos;n in ruil</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>Aan word hierdie rekenaar se verbinding gedeel, en al sy eie verkeer gaan uit deur die netwerk se poorte, elke verbinding deur &apos;n ander; hierdie rekenaar se eie netwerk — &apos;n drukker, die roeteerder — bly direk. Skakel dit af as die wet waar jy woon, of jou internetverskaffer se voorwaardes, die deel van jou verbinding verbied: die netwerk dra dan net BPS self, en hierdie rekenaar gebruik sy eie verbinding.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Vir die hele rekenaar: aan, %1 verbinding(s) deur die netwerk nou; %2 gestuur, %3 ontvang.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>Vir die hele rekenaar: nog nie op hierdie stelsel beskikbaar nie; programme kan die instaanbediener gebruik.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>Vir die hele rekenaar: begin wanneer die kliënt herbegin.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>deel nie</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>nee — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>Publiseer &apos;n vouer as &apos;n werf onder hierdie nodus se sleutel, sodat enigiemand aan wie jy die sleutel of jou naam gee, dit oor die oorlegnetwerk kan lees. Elke lêer is onderteken en word stuk vir stuk nagegaan soos dit aankom. Ingeskryf sonder adres word hierdie nodus by sy ontmoetpunte ontmoet en niemand leer waar die werf loop nie; ingeskryf by &apos;n adres bereik besoekers dit deur relês, sodat dit nooit leer wie hulle is nie. &apos;n Program op hierdie rekenaar — &apos;n webtoepassing, &apos;n kletsbediener — kan op dieselfde manier gepubliseer word: besoekers bereik dit oor die oorlegnetwerk, en hierdie nodus koppel net aan die poort wat jy noem.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Vouer</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>Bereik</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Gestuur</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>geen</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>Programme op hierdie rekenaar wat besoekers oor die oorlegnetwerk bereik. &apos;n Program genaamd web is wat &apos;n blaaier by hierdie nodus se adres oopmaak as daar geen werf is nie.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>Programme</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>Publiseer &apos;n vouer…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>Publiseer weer</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>Lees die vouer weer nadat dit verander is, en publiseer wat nou daar is.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>Hou op publiseer</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>Maak oop in Werwe</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>Publiseer &apos;n program…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>Stop &apos;n program…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>publiseer nie</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>geen — niks is gepubliseer nie</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 lêer(s), %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>nie ingeskryf nie</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>nog deur niemand: hierdie nodus is nie in die register ingeskryf nie, so besoekers kan nie die werf vind nie. Publiseer &apos;n inskrywing op die Nodus-bladsy, onder Ontdek.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>publiseer</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>nog nie ontmoet nie</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>by %1 ontmoetpunt(e), met geen adres gepubliseer nie</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>nog nie: registreer by sy ontmoetpunte, wat die register se relês nodig het</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>by hierdie nodus se adres, deur relês wat die besoeker versteek</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 bladsystuk(ke), %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>Die vouer om as &apos;n werf te publiseer</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>Publiseer &apos;n program</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>&apos;n Naam daarvoor, 1 tot 32 van a-z, 0-9 en -. Noem dit web vir &apos;n webtoepassing wat &apos;n blaaier by hierdie nodus se adres moet oopmaak:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>Die poort waarop dit luister, op 127.0.0.1 (net hierdie rekenaar):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>Stop &apos;n program</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>Watter program besoekers nie meer moet bereik nie:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 by 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 stroom/strome oop</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>Foongesel</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>Spandeer van jou foon terwyl jou munte hier bly. Die foon hou geen muntsleutels nie: dit bereik hierdie nodus, bewys die sleutel waarmee dit gekoppel is, en hierdie nodus betaal uit &apos;n klein sakgeldbeursie — nadat dit die foon se PIN en die perke wat jy gestel het nagegaan het, wat die foon nie kan verander nie. Verloor die foon en jy verloor hoogstens wat die sakgeld hou; ontkoppel dit hier. Wanneer hierdie nodus &apos;n ingeskrewe relê is en genoeg ander ingeskryf is, kom die foon deur drie relês, sodat niemand wat kyk leer waar dit is nie; anders koppel dit direk hiernatoe.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>Sakgeld</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>Bereikbaar deur fone</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>Foon</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>Een betaling</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>&apos;n Dag</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>Vandag spandeer</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>Toestand</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>Koppel &apos;n foon…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>Perke…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>Ontsluit</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>&apos;n Foon word gesluit na vyf verkeerde PIN&apos;s in &apos;n ry, totdat dit hier ontsluit word.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>Ontkoppel</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>Laat gekoppelde fone uit &apos;n sakgeldbeursie spandeer</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>Het die oorlegnetwerk nodig. By verstek af, omdat dit &apos;n foon hierdie nodus se munte laat spandeer.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>&apos;n Eie beursie, sonder wagfrase — niemand is daar om een in te tik wanneer die foon betaal nie — en net met wat die foon moet kan spandeer. Dit stake nooit, en kan nie die beursie wees wat vir inskrywings betaal nie.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>Skep dit</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>Skep die sakgeldbeursie en maak dit oop wanneer hierdie nodus begin.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>Laai op…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>Maak Stuur in die beursie oop, om munte na die sakgeld te skuif.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>Sakgeldbeursie</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, %1 meer op pad</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>ja, by %1, deur relês</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>direk, by %1. Geen relês tussenin nie: &apos;n foon se netwerk sien dit met hierdie rekenaar praat. Van buite hierdie netwerk, stuur UDP-poort %2 op die roeteerder na hierdie rekenaar aan.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>nee — hierdie nodus ken nog geen eie adres nie</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>nie bereikbaar nie</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>&apos;n foon wag</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>geen sakgeld</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>&apos;n foon is gesluit</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 fone is gesluit</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>loop, nog geen foon nie</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>loop, 1 foon</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>loop, %1 fone</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>Toestelsleutel %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>gesluit: verkeerde PIN&apos;s</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>gekoppel</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>Ontkoppel %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>Ontkoppel %1? Dit sal nie weer kan spandeer totdat dit opnuut gekoppel is nie. Doen dit dadelik as die foon verloor of gesteel is.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>Die sakgeldbeursie is geskep en oopgemaak. Gebruik Laai op om daarin te skuif wat die foon moet kan spandeer.</translation>
     </message>
 </context>
 <context>
@@ -5357,6 +5867,30 @@ Jy kan dit enige tyd op die Bediener-bladsy verander.</translation>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>Die nodus begin nog; kerninstellings is nog nie beskikbaar nie.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>Ander ontmoet jou by relês wat uit die register bereken is, en jou nodus hou &apos;n pad oop na elkeen daarvan deur soveel relês. Die ontmoetpunt sien net die laaste daarvan, nooit jou adres nie. Meer versteek jou beter en is stadiger.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>Relês voor jou ontmoetpunte</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>Wanneer hierdie rekenaar die netwerk se internet gebruik, gaan elke verbinding deur soveel relês na &apos;n poort se ontmoetpunt, en daarna deur die poort se eie: die poort leer nooit wie jy is nie. Meer versteek jou beter en is stadiger.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>Relês voor &apos;n poort se ontmoetpunt</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>Net jou eerste verbinding is direk, na &apos;n ingangsrelê wat jou adres sien en nie wie jy is nie. Pos gaan altyd deur drie relês.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Weergawe %1</translation>
     </message>
 </context>
 <context>
@@ -5519,6 +6053,147 @@ Jy kan dit enige tyd op die Bediener-bladsy verander.</translation>
     <message>
         <source>Message verified.</source>
         <translation>Message verified.</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>Werwe</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>Werwe wat oor die oorlegnetwerk gehuisves word, oopgemaak met &apos;n naam of sleutel wat iemand met jou gedeel het. Bladsye word hier sonder skrifte gewys, en niks daarop word van buite BPS gehaal nie, so &apos;n bladsy kan nie uitvind waar jy is nie.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Terug</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Vorentoe</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>Haal die bladsy weer</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://naam/ of &apos;n werf se sleutel</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Maak oop</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>Stoor hierdie lêer…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>Maak oop in jou blaaier</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>Dieselfde werf in &apos;n gewone blaaier, deur &apos;n bediener net op hierdie rekenaar. Bladsye daar mag skrifte laat loop, so die kyker hier bly die veiliger manier om &apos;n versteekte werf te lees.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>Koppel aan &apos;n program…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>Bereik &apos;n program wat hierdie werf laat loop — &apos;n kletsbediener, &apos;n speletjie — vanaf &apos;n program op hierdie rekenaar: BPS Relay luister hier op &apos;n poort en dra elke verbinding daarheen oor die oorlegnetwerk.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>Dit is nie &apos;n werf se adres nie. Skryf &apos;n naam of &apos;n sleutel, soos bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>Soek %1 op…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>Haal %1 oor die oorlegnetwerk…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 is nie &apos;n bladsy wat hierdie kyker wys nie (%2 grepe). Stoor dit om dit met &apos;n ander program oop te maak.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>Rig die program op hierdie rekenaar na %1: BPS Relay dra elke verbinding wat daar gemaak word na die werf se program, oor die oorlegnetwerk, totdat dit herbegin.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>Die werfbediener vir blaaiers loop nie. Dit begin saam met BPS Relay tensy -siteproxy=0 gegee is.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 lei nie na &apos;n sleutel nie.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 wys nou na &apos;n ander sleutel as toe jy dit laas oopgemaak het. Wie ook al die naam nou hou, is dalk nie wie jy voorheen gelees het nie.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>Ontmoet by een van sy ontmoetpunte, deur %1 van jou relês: nie jy of die gasheer leer waar die ander is nie.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>Bereik by sy adres deur %1 relês: die gasheer leer nie wie jy is nie.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>Jou eie werf, gelees vanaf hierdie rekenaar.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>Dit word oor die radio bereik, so bladsye kom stadig.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 is nie &apos;n naam wat hierdie nodus ken nie: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>Kon nie %1 oopmaak nie: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>Hierdie skakel lei buite BPS, so dit is nie gevolg nie: %1
+Maak dit in &apos;n gewone blaaier oop as jy wil; wie ook al dit bedryf, sal jou adres sien.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>Koppel aan &apos;n program</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>Die naam wat die werf aan sy program gegee het:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>Maak &apos;n werf in jou blaaier oop</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>Jou blaaier sal hierdie rekenaar vir die werf vra, en BPS Relay haal dit oor die oorlegnetwerk, soos dit hier doen. Elke bladsy mag net van sy eie werf laai, so dit kan niks van die oop internet aftrek om uit te vind waar jy is nie.
+
+Wat &apos;n blaaier steeds kan doen: &apos;n skrif kan WebRTC gebruik om &apos;n bladsy hierdie rekenaar se adresse te wys, en &apos;n skakel wat jy na &apos;n gewone werf volg, vertrek soos enige skakel. Die kyker in BPS Relay laat geen skrifte loop nie en bly die veiliger manier om &apos;n versteekte werf te lees.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>Stoor die lêer</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>Kon nie %1 stoor nie.</translation>
     </message>
 </context>
 <context>

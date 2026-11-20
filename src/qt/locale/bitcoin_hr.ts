@@ -1120,6 +1120,10 @@ Potpisivanje je moguće samo s adresama vrste &apos;legacy&apos;.</translation>
         <source>Not staking</source>
         <translation>Nema stakinga</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>Stranice</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1274,6 +1278,92 @@ Potpisivanje je moguće samo s adresama vrste &apos;legacy&apos;.</translation>
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>delegirano za %1 radi hladnog stakinga</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>Ograničenja za %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>Koliko ovaj telefon smije potrošiti iz novčanika džeparca, uključujući naknade.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Najviše u jednoj uplati</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Najviše u bilo kojih 24 sata</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>Upari telefon</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>U aplikaciji BPS na telefonu odaberite Upari i skenirajte ovaj kôd. Ili kopirajte tekst ispod njega u aplikaciju. Radi jednom, deset minuta.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>Kopiraj kôd</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>Prikaži novi kôd</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>Uparite samo ako telefon prikazuje istih šest znamenki. Ako prikazuje druge, netko je drugi prvi odgovorio na kôd: odbijte i prikažite novi.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>Koliko ovaj telefon smije potrošiti iz novčanika džeparca. Kasnije to može promijeniti samo ovaj čvor, nikad telefon.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Najviše u jednoj uplati</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Najviše u bilo kojih 24 sata</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>Odbij</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>Upari ovaj telefon</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>Izrada kôda…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>Ovaj je kôd istekao.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>Čeka se telefon… kôd vrijedi još %1 min.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>Ova verzija ne može crtati QR kôdove: umjesto toga kopirajte tekst ispod u aplikaciju.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>Telefon nazvan „%1” želi se upariti s ovim čvorom.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>Upareno. Telefon sada može trošiti iz novčanika džeparca unutar ograničenja koja ste postavili. Njegov je popis na stranici Poslužitelj, gdje mu možete promijeniti ograničenja, otključati ga nakon previše pogrešnih PIN-ova ili ga raspariti.</translation>
     </message>
 </context>
 <context>
@@ -1449,7 +1539,7 @@ Potpisivanje je moguće samo s adresama vrste &apos;legacy&apos;.</translation>
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>Pronađi peera ili adresu</translation>
+        <translation type="vanished">Pronađi peera ili adresu</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1586,6 +1676,38 @@ Ključ za oporavak bit će vam prikazan jednom. Zapišite ga: to je jedini nači
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>Peerovi se najavljuju u lancu umjesto na poslužitelju, pa je ovaj popis isti za sve i nitko ga ne može mijenjati. Peer upisan preko prekrivne mreže pokazuje gdje ga se danas može sresti, što se mijenja svaki dan; relej pokazuje svoju adresu samo dok je na mreži, jer ona nikad nije u lancu.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Ime</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>Registriraj ime…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>Ime je način na koji vas drugi dosežu bez kopiranja vašeg ključa. Imena se registriraju na kartici Imena.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>Pronađi peer, bilješku ili adresu</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>Sva ova imena vode do ključa ovog čvora. Drugi vas mogu doseći bilo kojim od njih.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>Upravljaj imenima…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>imena isključena</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>Imena trebaju indeks imena. Uključite ga u Postavkama da biste registrirali i prikazali ime.</translation>
     </message>
 </context>
 <context>
@@ -3217,15 +3339,15 @@ Ključ za oporavak bit će vam prikazan jednom. Zapišite ga: to je jedini nači
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>Ovo upisuje kratak zapis u lanac koji kaže da postojite i, po želji, gdje vas naći.</translation>
+        <translation type="vanished">Ovo upisuje kratak zapis u lanac koji kaže da postojite i, po želji, gdje vas naći.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>Kako vas peerovi trebaju doseći?</translation>
+        <translation type="vanished">Kako vas peerovi trebaju doseći?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>Preko prekrivne mreže — bez objavljivanja adrese</translation>
+        <translation type="vanished">Preko prekrivne mreže — bez objavljivanja adrese</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3233,35 +3355,35 @@ Ključ za oporavak bit će vam prikazan jednom. Zapišite ga: to je jedini nači
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>Na adresi koju objavljujem</translation>
+        <translation type="vanished">Na adresi koju objavljujem</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>adresa koju drugi peerovi mogu doseći</translation>
+        <translation type="vanished">adresa koju drugi peerovi mogu doseći</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>Svatko je može vidjeti, a lanac je čuva zauvijek. Onion adresa objavljuje lokaciju koju nitko ne može povezati s vama i radi iza NAT-a; IP adresa ne radi ni jedno ni drugo. Čvor koji objavi IP adresu drugi mogu odabrati za relej.</translation>
+        <translation type="vanished">Svatko je može vidjeti, a lanac je čuva zauvijek. Onion adresa objavljuje lokaciju koju nitko ne može povezati s vama i radi iza NAT-a; IP adresa ne radi ni jedno ni drugo. Čvor koji objavi IP adresu drugi mogu odabrati za relej.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3305,7 +3427,7 @@ Ključ za oporavak bit će vam prikazan jednom. Zapišite ga: to je jedini nači
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>Vaš čvor potpisuje upis i šalje ga preko prekrivne mreže releju preko kojeg ulazi. Relej koji plaća upise stavlja vaš u blok koji sam stvori, pa se potvrđuje iako ga većina čvorova ne bi prenijela, i dodaje vas peerovima s kojima dijeli nagrade. Ako kasnije prestane plaćati, vaš upis istječe tijekom mjeseca; uvijek ga možete sami obnoviti iz novčanika sa sredstvima.</translation>
+        <translation type="vanished">Vaš čvor potpisuje upis i šalje ga preko prekrivne mreže releju preko kojeg ulazi. Relej koji plaća upise stavlja vaš u blok koji sam stvori, pa se potvrđuje iako ga većina čvorova ne bi prenijela, i dodaje vas peerovima s kojima dijeli nagrade. Ako kasnije prestane plaćati, vaš upis istječe tijekom mjeseca; uvijek ga možete sami obnoviti iz novčanika sa sredstvima.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3321,11 +3443,11 @@ Ključ za oporavak bit će vam prikazan jednom. Zapišite ga: to je jedini nači
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>Unesite adresu ili odaberite da je ne objavite.</translation>
+        <translation type="vanished">Unesite adresu ili odaberite da je ne objavite.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>Molimo vaš relej da je objavi… to može potrajati do pola minute.</translation>
+        <translation type="vanished">Molimo vaš relej da je objavi… to može potrajati do pola minute.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3357,11 +3479,11 @@ Ključ za oporavak bit će vam prikazan jednom. Zapišite ga: to je jedini nači
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>Upiši pristupnik ovog releja</translation>
+        <translation type="vanished">Upiši pristupnik ovog releja</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>Upis releja sadrži njegovu adresu, pa se njegov pristupnik upisuje pod drugim ključem bez adrese, odvojeno. Nitko iz registra ne može saznati da oba pripadaju istom računalu. Posjetitelji dolaze do pristupnika preko releja, pa nikad ne saznaje tko su; web-mjesta koja posjećuju vide adresu ovog računala.</translation>
+        <translation type="vanished">Upis releja sadrži njegovu adresu, pa se njegov pristupnik upisuje pod drugim ključem bez adrese, odvojeno. Nitko iz registra ne može saznati da oba pripadaju istom računalu. Posjetitelji dolaze do pristupnika preko releja, pa nikad ne saznaje tko su; web-mjesta koja posjećuju vide adresu ovog računala.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3377,11 +3499,11 @@ Ključ za oporavak bit će vam prikazan jednom. Zapišite ga: to je jedini nači
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>Plaća drugi relej, zamoljen preko releja</translation>
+        <translation type="vanished">Plaća drugi relej, zamoljen preko releja</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>Vaš čvor potpisuje upis pristupnika i šalje ga preko releja drugom releju, koji ga plaća i stavlja u blok koji sam stvori. Taj relej sazna ključ pristupnika, a nikad adresu ovog računala. Plaćanje iz vlastitog novčanika ovog čvora povezalo bi pristupnik s ovim relejem u lancu, a time i s njegovom adresom.</translation>
+        <translation type="vanished">Vaš čvor potpisuje upis pristupnika i šalje ga preko releja drugom releju, koji ga plaća i stavlja u blok koji sam stvori. Taj relej sazna ključ pristupnika, a nikad adresu ovog računala. Plaćanje iz vlastitog novčanika ovog čvora povezalo bi pristupnik s ovim relejem u lancu, a time i s njegovom adresom.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3397,7 +3519,7 @@ Ključ za oporavak bit će vam prikazan jednom. Zapišite ga: to je jedini nači
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>Vaš upis kaže tko ste, a ne gdje radite. Peerovi vas dosežu preko prekrivne mreže i susreću vas u točkama koje obje strane izračunaju iz registra i koje se mijenjaju svaki dan; Otkrivanje prikazuje današnje. Vaš upis također imenuje jedan relej gdje vas se može sresti dok vrijedi, a svaka obnova imenuje novi. To ovaj klijent uključuje prema zadanim postavkama.</translation>
+        <translation type="vanished">Vaš upis kaže tko ste, a ne gdje radite. Peerovi vas dosežu preko prekrivne mreže i susreću vas u točkama koje obje strane izračunaju iz registra i koje se mijenjaju svaki dan; Otkrivanje prikazuje današnje. Vaš upis također imenuje jedan relej gdje vas se može sresti dok vrijedi, a svaka obnova imenuje novi. To ovaj klijent uključuje prema zadanim postavkama.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3417,15 +3539,59 @@ Ključ za oporavak bit će vam prikazan jednom. Zapišite ga: to je jedini nači
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>Ovaj čvor dijeli svoju internetsku vezu kao pristupnik, kako je postavljeno na stranici Poslužitelj, pa upis to kaže.</translation>
+        <translation type="vanished">Ovaj čvor dijeli svoju internetsku vezu kao pristupnik, kako je postavljeno na stranici Poslužitelj, pa upis to kaže.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>Ovaj čvor niti prenosi za druge niti dijeli svoju internetsku vezu, kako je postavljeno na stranici Poslužitelj.</translation>
+        <translation type="vanished">Ovaj čvor niti prenosi za druge niti dijeli svoju internetsku vezu, kako je postavljeno na stranici Poslužitelj.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>Promjena ondje stiže u registar s vašim sljedećim upisom.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>Ovo u lanac zapisuje kratak zapis da postojite i, po želji, redak o vama.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>Što kaže vaš upis</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>Vaš upis govori tko ste, a ne gdje radite: ne sadrži adresu. Peerovi vas dosežu preko prekrivne mreže, susrećući vas na točkama koje obje strane izvode iz registra i koje se mijenjaju svaki dan; Otkrivanje prikazuje današnje. Vaš upis navodi i jedan relej gdje vas se može susresti dok traje, a svaka obnova navodi novi.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>Bilješka</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>neobavezno: redak prikazan pokraj vašeg ključa</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>Svatko je može pročitati, a lanac je čuva zauvijek, čak i nakon što upis završi. Izostavite sve što govori gdje ste ili tko ste, ako vam je to važno.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Vaš čvor potpisuje upis i šalje ga putem do releja kroz koji ne ulazi, pa taj relej sazna tko ste, a ne gdje. Relej koji plaća upise stavlja vaš u blok koji sam stakea, pa se potvrđuje čak i dok ga većina čvorova ne bi proslijedila, i dodaje vas među peerove s kojima dijeli nagrade. Ako kasnije prestane plaćati, vaš upis istječe unutar mjeseca; uvijek ga možete sami obnoviti iz novčanika sa sredstvima.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 bajtova</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>Predugo: slova izvan običnog engleskog zauzimaju po dva do četiri bajta.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>Bilješka je preduga.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>Bilješka ne smije sadržavati kontrolne znakove ni oznake koje mijenjaju smjer teksta.</translation>
     </message>
 </context>
 <context>
@@ -3605,6 +3771,14 @@ Ključ za oporavak bit će vam prikazan jednom. Zapišite ga: to je jedini nači
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>Unesite BitcoinPoS adresu (npr. %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>Postavite oba ograničenja.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>Jednoj uplati ne može se dopustiti više od cijelog dana.</translation>
     </message>
 </context>
 <context>
@@ -4305,6 +4479,14 @@ izračunatih iz registra; mijenjaju se svaki dan:</translation>
         <source>meets at %1</source>
         <translation>susret kod %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>Bilješka</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>Napisao ju je tko god drži ovaj ključ; nitko je ne provjerava.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4789,7 +4971,7 @@ Napomena: Budući da se naknada računa po bajtu, naknada od &quot;100 satošija
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>Stranica ili usluga koju nudi ovaj čvor, pronađena po ključu ili imenu i dosegnuta preko prekrivne mreže, tako da domaćin nikada ne objavljuje gdje radi. Dio za susret postoji: usluga se registrira na točkama susreta koje obje strane izračunavaju iz registra. Posluživanje stranica i aplikacija preko toga još nije izrađeno.</translation>
+        <translation type="vanished">Stranica ili usluga koju nudi ovaj čvor, pronađena po ključu ili imenu i dosegnuta preko prekrivne mreže, tako da domaćin nikada ne objavljuje gdje radi. Dio za susret postoji: usluga se registrira na točkama susreta koje obje strane izračunavaju iz registra. Posluživanje stranica i aplikacija preko toga još nije izrađeno.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -5013,7 +5195,7 @@ To možete promijeniti bilo kada na stranici Poslužitelj.</translation>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Što ovaj čvor nudi drugima. Prosljeđivanje, čuvanje pošte i dijeljenje interneta rade već danas; hosting stiže i, kao sve ovdje, pronalazi se jednako kao čvorovi — preko registra. Imena imaju vlastitu stranicu.</translation>
+        <translation type="vanished">Što ovaj čvor nudi drugima. Prosljeđivanje, čuvanje pošte i dijeljenje interneta rade već danas; hosting stiže i, kao sve ovdje, pronalazi se jednako kao čvorovi — preko registra. Imena imaju vlastitu stranicu.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -5029,7 +5211,7 @@ To možete promijeniti bilo kada na stranici Poslužitelj.</translation>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>Upisano kao</translation>
+        <translation type="vanished">Upisano kao</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5041,15 +5223,15 @@ To možete promijeniti bilo kada na stranici Poslužitelj.</translation>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>Upiši kao pristupnik…</translation>
+        <translation type="vanished">Upiši kao pristupnik…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Dijeli internetsku vezu ovog računala kao pristupnik</translation>
+        <translation type="vanished">Dijeli internetsku vezu ovog računala kao pristupnik</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>Isključite ga ako zakon gdje živite ili uvjeti vašeg pružatelja interneta zabranjuju dijeljenje veze. Isključen, ovaj čvor i dalje prosljeđuje, čuva poštu i prati lanac, a vlastitu vezu koristi izravno.</translation>
+        <translation type="vanished">Isključite ga ako zakon gdje živite ili uvjeti vašeg pružatelja interneta zabranjuju dijeljenje veze. Isključen, ovaj čvor i dalje prosljeđuje, čuva poštu i prati lanac, a vlastitu vezu koristi izravno.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5065,11 +5247,11 @@ To možete promijeniti bilo kada na stranici Poslužitelj.</translation>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>Dopusti programima na ovom računalu da koriste internet mreže preko lokalnog posrednika</translation>
+        <translation type="vanished">Dopusti programima na ovom računalu da koriste internet mreže preko lokalnog posrednika</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>SOCKS5 posrednik samo za ovo računalo. Svaka veza izlazi kroz pristupnik drugog člana, a imena se razrješavaju ondje, nikad ovdje. Radi dok ovo računalo dijeli vlastitu vezu.</translation>
+        <translation type="vanished">SOCKS5 posrednik samo za ovo računalo. Svaka veza izlazi kroz pristupnik drugog člana, a imena se razrješavaju ondje, nikad ovdje. Radi dok ovo računalo dijeli vlastitu vezu.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5105,27 +5287,27 @@ To možete promijeniti bilo kada na stranici Poslužitelj.</translation>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>nije upisano kao pristupnik</translation>
+        <translation type="vanished">nije upisano kao pristupnik</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>još ne — registar ne vodi ovaj čvor kao pristupnik, pa ga nitko ne može pronaći</translation>
+        <translation type="vanished">još ne — registar ne vodi ovaj čvor kao pristupnik, pa ga nitko ne može pronaći</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>još ništa — relej upisuje svoj pristupnik pod drugim ključem, bez adrese, odvojeno od vlastitog upisa</translation>
+        <translation type="vanished">još ništa — relej upisuje svoj pristupnik pod drugim ključem, bez adrese, odvojeno od vlastitog upisa</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>još ništa — upisu ovog čvora nedostaje opcija pristupnika; objavite ga ponovno s uključenom opcijom</translation>
+        <translation type="vanished">još ništa — upisu ovog čvora nedostaje opcija pristupnika; objavite ga ponovno s uključenom opcijom</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>još ništa — objavite upis bez adrese s uključenom opcijom pristupnika</translation>
+        <translation type="vanished">još ništa — objavite upis bez adrese s uključenom opcijom pristupnika</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>Upiši pristupnik ovog releja…</translation>
+        <translation type="vanished">Upiši pristupnik ovog releja…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5145,11 +5327,11 @@ To možete promijeniti bilo kada na stranici Poslužitelj.</translation>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>njegov ključ pristupnika %1, odvojen od adrese releja</translation>
+        <translation type="vanished">njegov ključ pristupnika %1, odvojen od adrese releja</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>vlastiti ključ ovog čvora %1</translation>
+        <translation type="vanished">vlastiti ključ ovog čvora %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5165,11 +5347,11 @@ To možete promijeniti bilo kada na stranici Poslužitelj.</translation>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>Provedi sav promet ovog računala kroz mrežu, bez postavke proxyja u ijednom programu</translation>
+        <translation type="vanished">Provedi sav promet ovog računala kroz mrežu, bez postavke proxyja u ijednom programu</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>Veze svakog programa izlaze kroz pristupnike mreže, svaka kroz drugi, a imena se ondje traže. Vlastita mreža ovog računala — pisač, usmjerivač — i vlastite veze ovog čvora ostaju izravne. Radi dok ovo računalo dijeli vlastitu vezu.</translation>
+        <translation type="vanished">Veze svakog programa izlaze kroz pristupnike mreže, svaka kroz drugi, a imena se ondje traže. Vlastita mreža ovog računala — pisač, usmjerivač — i vlastite veze ovog čvora ostaju izravne. Radi dok ovo računalo dijeli vlastitu vezu.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5197,11 +5379,11 @@ To možete promijeniti bilo kada na stranici Poslužitelj.</translation>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>Uključeno: %1 veza kroz mrežu sada; poslano %2, primljeno %3.</translation>
+        <translation type="vanished">Uključeno: %1 veza kroz mrežu sada; poslano %2, primljeno %3.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>Još nije dostupno na ovom sustavu.</translation>
+        <translation type="vanished">Još nije dostupno na ovom sustavu.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5213,7 +5395,7 @@ To možete promijeniti bilo kada na stranici Poslužitelj.</translation>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>Pokreće se kad se klijent ponovno pokrene.</translation>
+        <translation type="vanished">Pokreće se kad se klijent ponovno pokrene.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5242,6 +5424,334 @@ To možete promijeniti bilo kada na stranici Poslužitelj.</translation>
     <message>
         <source>none — relaying is switched off</source>
         <translation>nema — prenošenje je isključeno</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Što ovaj čvor nudi drugima: prosljeđivanje, čuvanje pošte, dijeljenje interneta i hostanje stranice; a vašem telefonu način trošenja odavde. Kao i sve ovdje, pronalazi se jednako kao peerovi — kroz registar. Imena imaju vlastitu stranicu.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>Dijeli internetsku vezu ovog računala i zauzvrat koristi vezu mreže</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>Uključeno, veza ovog računala se dijeli, a sav njegov vlastiti promet izlazi kroz pristupnike mreže, svaka veza kroz drugi; vlastita mreža ovog računala — pisač, usmjerivač — ostaje izravna. Isključite ako zakon gdje živite ili uvjeti vašeg pružatelja interneta zabranjuju dijeljenje veze: mreža tada prenosi samo BPS, a ovo računalo koristi vlastitu vezu.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Za cijelo računalo: uključeno, sada %1 veza kroz mrežu; poslano %2, primljeno %3.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>Za cijelo računalo: još nije dostupno na ovom sustavu; programi mogu koristiti proxy.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>Za cijelo računalo: pokreće se kad se klijent ponovno pokrene.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>ne dijeli</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>ne — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>Objavite mapu kao stranicu pod ključem ovog čvora, tako da je svatko kome date ključ ili svoje ime može čitati preko prekrivne mreže. Svaka je datoteka potpisana i provjerava se dio po dio dok stiže. Upisan bez adrese, ovaj se čvor susreće na svojim točkama susreta i nitko ne sazna gdje stranica radi; upisan s adresom, posjetitelji ga dosežu kroz releje, pa nikad ne sazna tko su. Program na ovom računalu — web aplikacija, poslužitelj za chat — može se objaviti na isti način: posjetitelji ga dosežu preko prekrivne mreže, a ovaj se čvor spaja samo na port koji navedete.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Mapa</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>Dosegnuto</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Poslano</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>ništa</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>Programi na ovom računalu koje posjetitelji dosežu preko prekrivne mreže. Program nazvan web je ono što preglednik otvara na adresi ovog čvora kad nema stranice.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>Programi</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>Objavi mapu…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>Objavi ponovno</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>Ponovno pročitaj mapu nakon izmjene i objavi ono što je sada u njoj.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>Prestani objavljivati</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>Otvori u Stranicama</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>Objavi program…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>Zaustavi program…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>ne objavljuje</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>ništa — ništa nije objavljeno</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — datoteka: %2, %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>nije upisan</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>još nitko: ovaj čvor nije upisan u registar, pa posjetitelji ne mogu pronaći stranicu. Objavite upis na stranici Čvor, pod Otkrivanje.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>objavljuje</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>još nije susretnut</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>na %1 točaka susreta, bez objavljene adrese</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>još ne: registrira se na svojim točkama susreta, za što trebaju releji registra</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>na adresi ovog čvora, kroz releje koji skrivaju posjetitelja</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>dijelova stranica: %1, %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>Mapa za objavu kao stranica</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>Objavi program</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>Ime za njega, od 1 do 32 znaka iz a-z, 0-9 i -. Nazovite ga web za web aplikaciju koju preglednik treba otvoriti na adresi ovog čvora:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>Port na kojem sluša, na 127.0.0.1 (samo ovo računalo):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>Zaustavi program</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>Koji program posjetitelji više ne bi trebali doseći:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 na 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— otvorenih tokova: %1</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>Telefon pratitelj</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>Trošite s telefona dok vaši novčići ostaju ovdje. Telefon ne drži ključeve novčića: doseže ovaj čvor, dokazuje ključ s kojim je uparen, a ovaj čvor plaća iz malog novčanika džeparca — nakon provjere PIN-a telefona i ograničenja koja ste postavili, a koja telefon ne može promijeniti. Izgubite li telefon, gubite najviše ono što je u džeparcu; rasparite ga ovdje. Kad je ovaj čvor upisani relej i upisano je dovoljno drugih, telefon dolazi kroz tri releja, pa nitko tko promatra ne sazna gdje je; inače se spaja izravno ovamo.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>Džeparac</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>Dostupno telefonima</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>Telefon</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>Jedna uplata</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>Dan</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>Potrošeno danas</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>Stanje</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>Upari telefon…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>Ograničenja…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>Otključaj</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>Telefon se zaključava nakon pet uzastopnih pogrešnih PIN-ova, dok se ovdje ne otključa.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>Raspari</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>Dopusti uparenim telefonima trošenje iz novčanika džeparca</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>Treba prekrivnu mrežu. Zadano isključeno, jer telefonu dopušta trošenje novčića ovog čvora.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>Zaseban novčanik, bez lozinke — nikoga nema da je upiše kad telefon plaća — i samo s onim što telefon treba moći potrošiti. Nikad ne stakea i ne može biti novčanik koji plaća upise.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>Izradi ga</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>Izradi novčanik džeparca i otvori ga pri svakom pokretanju ovog čvora.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>Nadoplati…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>Otvori Pošalji u novčaniku, za premještanje novčića u džeparac.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>Novčanik džeparca</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, još %1 stiže</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>da, na %1, kroz releje</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>izravno, na %1. Bez releja između: mreža telefona vidi da razgovara s ovim računalom. Izvan ove mreže proslijedite UDP port %2 na usmjerivaču na ovo računalo.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>ne — ovaj čvor još ne zna nijednu vlastitu adresu</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>nedostupno</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>telefon čeka</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>bez džeparca</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>telefon je zaključan</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>zaključanih telefona: %1</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>radi, još bez telefona</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>radi, 1 telefon</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>radi, telefona: %1</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>Ključ uređaja %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>zaključan: pogrešni PIN-ovi</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>uparen</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>Raspari %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>Raspariti %1? Neće moći trošiti dok se ponovno ne upari. Učinite to odmah ako je telefon izgubljen ili ukraden.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>Novčanik džeparca izrađen je i otvoren. Upotrijebite Nadoplati da u njega premjestite ono što telefon treba moći potrošiti.</translation>
     </message>
 </context>
 <context>
@@ -5373,6 +5883,30 @@ To možete promijeniti bilo kada na stranici Poslužitelj.</translation>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>Čvor se još pokreće; osnovne postavke još nisu dostupne.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>Drugi vas susreću na relejima izvedenim iz registra, a vaš čvor do svakog od njih drži otvoren put kroz ovoliko releja. Točka susreta vidi samo posljednji od njih, nikad vašu adresu. Više vas bolje skriva i sporije je.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>Releji prije vaših točaka susreta</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>Kad ovo računalo koristi internet mreže, svaka veza prolazi kroz ovoliko releja do točke susreta pristupnika, a zatim kroz releje samog pristupnika: pristupnik nikad ne sazna tko ste. Više vas bolje skriva i sporije je.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>Releji prije točke susreta pristupnika</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>Samo je vaša prva veza izravna, do ulaznog releja koji vidi vašu adresu, a ne tko ste. Pošta uvijek ide kroz tri releja.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Verzija %1</translation>
     </message>
 </context>
 <context>
@@ -5535,6 +6069,147 @@ To možete promijeniti bilo kada na stranici Poslužitelj.</translation>
     <message>
         <source>The signature given when the message was signed</source>
         <translation>Potpis dan pri potpisivanju poruke</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>Stranice</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>Stranice hostane preko prekrivne mreže, otvorene imenom ili ključem koji vam je netko dao. Stranice se ovdje prikazuju bez skripti i ništa na njima ne dohvaća se izvan BPS-a, pa stranica ne može saznati gdje ste.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Natrag</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Naprijed</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>Ponovno dohvati stranicu</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://ime/ ili ključ stranice</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Otvori</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>Spremi ovu datoteku…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>Otvori u pregledniku</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>Ista stranica u običnom pregledniku, kroz poslužitelj samo na ovom računalu. Stranice tamo mogu pokretati skripte, pa preglednik ovdje ostaje sigurniji način čitanja skrivene stranice.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>Spoji se na program…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>Dosegnite program koji ova stranica pokreće — poslužitelj za chat, igru — iz programa na ovom računalu: BPS Relay ovdje sluša na portu i prenosi svaku vezu do njega preko prekrivne mreže.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>To nije adresa stranice. Napišite ime ili ključ, npr. bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>Traži se %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>Dohvaća se %1 preko prekrivne mreže…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 nije stranica koju ovaj preglednik prikazuje (%2 bajtova). Spremite je da biste je otvorili drugim programom.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>Usmjerite program na ovom računalu na %1: BPS Relay prenosi svaku tamo uspostavljenu vezu do programa stranice, preko prekrivne mreže, dok se ponovno ne pokrene.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>Poslužitelj stranica za preglednike ne radi. Pokreće se s BPS Relayem, osim ako je zadano -siteproxy=0.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 ne vodi ni do jednog ključa.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 sada pokazuje na drugi ključ nego kad ste ga zadnji put otvorili. Tko sada drži ime, možda nije onaj koga ste prije čitali.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>Susretnuto na jednoj od njegovih točaka susreta, kroz %1 vaših releja: ni vi ni domaćin ne saznajete gdje je drugi.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>Dosegnuto na njegovoj adresi kroz %1 releja: domaćin ne sazna tko ste.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>Vaša vlastita stranica, pročitana s ovog računala.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>Doseže se preko radija, pa stranice stižu sporo.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 nije ime koje ovaj čvor poznaje: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>Nije moguće otvoriti %1: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>Ova poveznica vodi izvan BPS-a, pa nije praćena: %1
+Otvorite je u običnom pregledniku ako želite; tko god je vodi, vidjet će vašu adresu.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>Spoji se na program</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>Ime koje je stranica dala svom programu:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>Otvaranje stranice u pregledniku</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>Vaš će preglednik zatražiti stranicu od ovog računala, a BPS Relay je dohvaća preko prekrivne mreže, kao i ovdje. Svaka stranica smije učitavati samo sa svoje stranice, pa ne može povući ništa s otvorenog interneta da sazna gdje ste.
+
+Što preglednik ipak može: skripta preko WebRTC-a može stranici pokazati adrese ovog računala, a poveznica koju slijedite na običnu stranicu odlazi kao svaka poveznica. Preglednik u BPS Relayu ne pokreće skripte i ostaje sigurniji način čitanja skrivene stranice.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>Spremi datoteku</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>Nije moguće spremiti %1.</translation>
     </message>
 </context>
 <context>

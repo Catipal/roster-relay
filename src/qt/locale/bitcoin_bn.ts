@@ -1115,6 +1115,10 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <source>Not staking</source>
         <translation>স্টেকিং হচ্ছে না</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>সাইট</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1269,6 +1273,92 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>কোল্ড স্টেকিংয়ের জন্য %1-কে অর্পণ করা হয়েছে</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>%1-এর সীমা</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>এই ফোন হাতখরচ ওয়ালেট থেকে কত খরচ করতে পারবে, ফি সহ।</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>এক পেমেন্টে সর্বোচ্চ</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>যেকোনো ২৪ ঘণ্টায় সর্বোচ্চ</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>একটি ফোন জোড়া লাগান</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>ফোনের BPS অ্যাপে জোড়া লাগান বেছে নিন এবং এই কোডটি স্ক্যান করুন। অথবা এর নিচের লেখাটি অ্যাপে কপি করুন। এটি একবার কাজ করে, দশ মিনিটের জন্য।</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>কোড কপি করুন</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>নতুন কোড দেখান</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>ফোন যদি একই ছয়টি অঙ্ক দেখায় তবেই জোড়া লাগান। অন্য অঙ্ক দেখালে অন্য কেউ আগে কোডের উত্তর দিয়েছে: প্রত্যাখ্যান করুন, এবং নতুন একটি দেখান।</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>এই ফোন হাতখরচ ওয়ালেট থেকে কত খরচ করতে পারবে। পরে শুধু এই নোড এটি বদলাতে পারে, ফোন কখনো নয়।</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>এক পেমেন্টে সর্বোচ্চ</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>যেকোনো ২৪ ঘণ্টায় সর্বোচ্চ</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>প্রত্যাখ্যান</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>এই ফোন জোড়া লাগান</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>কোড তৈরি হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>এই কোডের মেয়াদ শেষ হয়েছে।</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>ফোনের অপেক্ষায়… কোডটি আরও %1 মিনিট কাজ করবে।</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>এই বিল্ড QR কোড আঁকতে পারে না: বরং নিচের লেখাটি অ্যাপে কপি করুন।</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>“%1” নামের একটি ফোন এই নোডের সাথে জোড়া লাগতে চায়।</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>জোড়া লেগেছে। ফোনটি এখন আপনার ঠিক করা সীমার মধ্যে হাতখরচ ওয়ালেট থেকে খরচ করতে পারবে। এর তালিকা সার্ভার পাতায় আছে, যেখানে আপনি এর সীমা বদলাতে, অনেক ভুল PIN-এর পর আনলক করতে, বা জোড়া খুলতে পারেন।</translation>
     </message>
 </context>
 <context>
@@ -1444,7 +1534,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>একটি পিয়ার বা ঠিকানা খুঁজুন</translation>
+        <translation type="vanished">একটি পিয়ার বা ঠিকানা খুঁজুন</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1581,6 +1671,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>পিয়াররা সার্ভারে নয়, চেইনে নিজেদের ঘোষণা করে, তাই এই তালিকা সবার জন্য একই এবং কেউ এটি সম্পাদনা করতে পারে না। ওভারলের মাধ্যমে তালিকাভুক্ত একটি পিয়ার দেখায় আজ তাকে কোথায় পাওয়া যায়, যা প্রতিদিন বদলায়; একটি রিলে কেবল অনলাইনে থাকার সময় তার ঠিকানা দেখায়, কারণ তা কখনো চেইনে থাকে না।</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>নাম</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>একটি নাম নিবন্ধন করুন…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>নাম হলো অন্যরা আপনার কি কপি না করে আপনার কাছে পৌঁছানোর উপায়। নাম নিবন্ধিত হয় নাম ট্যাবে।</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>পিয়ার, নোট বা ঠিকানা খুঁজুন</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>এই সব নাম এই নোডের কি-তে পৌঁছায়। অন্যরা এর যেকোনোটি দিয়ে আপনার কাছে পৌঁছাতে পারে।</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>নাম পরিচালনা করুন…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>নাম বন্ধ</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>নামের জন্য নাম সূচি দরকার। নাম নিবন্ধন ও দেখাতে সেটিংসে এটি চালু করুন।</translation>
     </message>
 </context>
 <context>
@@ -3209,15 +3331,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>এটি চেইনে একটি সংক্ষিপ্ত রেকর্ড লেখে যা বলে যে আপনি আছেন, এবং ইচ্ছা হলে আপনাকে কোথায় পাওয়া যাবে।</translation>
+        <translation type="vanished">এটি চেইনে একটি সংক্ষিপ্ত রেকর্ড লেখে যা বলে যে আপনি আছেন, এবং ইচ্ছা হলে আপনাকে কোথায় পাওয়া যাবে।</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>পিয়াররা কীভাবে আপনার কাছে পৌঁছাবে?</translation>
+        <translation type="vanished">পিয়াররা কীভাবে আপনার কাছে পৌঁছাবে?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>ওভারলের মাধ্যমে — কোনো ঠিকানা প্রকাশ না করে</translation>
+        <translation type="vanished">ওভারলের মাধ্যমে — কোনো ঠিকানা প্রকাশ না করে</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3225,35 +3347,35 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>আমার প্রকাশ করা একটি ঠিকানায়</translation>
+        <translation type="vanished">আমার প্রকাশ করা একটি ঠিকানায়</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>অন্য পিয়াররা যে ঠিকানায় পৌঁছাতে পারে</translation>
+        <translation type="vanished">অন্য পিয়াররা যে ঠিকানায় পৌঁছাতে পারে</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>যে কেউ এটি দেখতে পারে, এবং চেইন এটি চিরকাল রাখে। একটি onion ঠিকানা এমন একটি অবস্থান প্রকাশ করে যা কেউ আপনার কাছে খুঁজে আনতে পারে না এবং NAT-এর পেছন থেকে কাজ করে; একটি IP ঠিকানা এর কোনোটিই করে না। IP ঠিকানা প্রকাশকারী নোডকে অন্যরা রিলে হিসেবে বেছে নিতে পারে।</translation>
+        <translation type="vanished">যে কেউ এটি দেখতে পারে, এবং চেইন এটি চিরকাল রাখে। একটি onion ঠিকানা এমন একটি অবস্থান প্রকাশ করে যা কেউ আপনার কাছে খুঁজে আনতে পারে না এবং NAT-এর পেছন থেকে কাজ করে; একটি IP ঠিকানা এর কোনোটিই করে না। IP ঠিকানা প্রকাশকারী নোডকে অন্যরা রিলে হিসেবে বেছে নিতে পারে।</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3297,7 +3419,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>আপনার নোড তালিকাভুক্তিতে স্বাক্ষর করে এবং ওভারলের মাধ্যমে যে রিলে দিয়ে এটি প্রবেশ করে সেখানে পাঠায়। তালিকাভুক্তির জন্য পরিশোধকারী রিলে আপনারটি তার নিজের তৈরি ব্লকে রাখে, তাই বেশিরভাগ নোড ফরোয়ার্ড না করলেও এটি নিশ্চিত হয়, এবং যে পিয়ারদের সাথে এটি পুরস্কার ভাগ করে তাদের মধ্যে আপনাকে যোগ করে। পরে যদি এটি পরিশোধ বন্ধ করে, আপনার তালিকাভুক্তি মাসের মধ্যে শেষ হয়ে যায়; তহবিলসহ ওয়ালেট থেকে আপনি সবসময় নিজে নবায়ন করতে পারেন।</translation>
+        <translation type="vanished">আপনার নোড তালিকাভুক্তিতে স্বাক্ষর করে এবং ওভারলের মাধ্যমে যে রিলে দিয়ে এটি প্রবেশ করে সেখানে পাঠায়। তালিকাভুক্তির জন্য পরিশোধকারী রিলে আপনারটি তার নিজের তৈরি ব্লকে রাখে, তাই বেশিরভাগ নোড ফরোয়ার্ড না করলেও এটি নিশ্চিত হয়, এবং যে পিয়ারদের সাথে এটি পুরস্কার ভাগ করে তাদের মধ্যে আপনাকে যোগ করে। পরে যদি এটি পরিশোধ বন্ধ করে, আপনার তালিকাভুক্তি মাসের মধ্যে শেষ হয়ে যায়; তহবিলসহ ওয়ালেট থেকে আপনি সবসময় নিজে নবায়ন করতে পারেন।</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3313,11 +3435,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>একটি ঠিকানা লিখুন, অথবা কোনোটি প্রকাশ না করা বেছে নিন।</translation>
+        <translation type="vanished">একটি ঠিকানা লিখুন, অথবা কোনোটি প্রকাশ না করা বেছে নিন।</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>আপনার রিলেকে এটি প্রকাশ করতে বলা হচ্ছে… এতে আধা মিনিট পর্যন্ত লাগতে পারে।</translation>
+        <translation type="vanished">আপনার রিলেকে এটি প্রকাশ করতে বলা হচ্ছে… এতে আধা মিনিট পর্যন্ত লাগতে পারে।</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3349,11 +3471,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>এই রিলের গেটওয়ে তালিকাভুক্ত করুন</translation>
+        <translation type="vanished">এই রিলের গেটওয়ে তালিকাভুক্ত করুন</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>একটি রিলের তালিকাভুক্তিতে তার ঠিকানা থাকে, তাই তার গেটওয়ে ঠিকানা ছাড়া একটি দ্বিতীয় চাবির অধীনে আলাদাভাবে তালিকাভুক্ত হয়। তালিকা দেখে কেউ বলতে পারে না যে দুটি একই কম্পিউটারের। দর্শনার্থীরা রিলের মাধ্যমে গেটওয়েতে পৌঁছান, তাই এটি কখনো জানে না তাঁরা কে; তাঁরা যে ওয়েবসাইটে যান সেগুলো এই কম্পিউটারের ঠিকানা দেখে।</translation>
+        <translation type="vanished">একটি রিলের তালিকাভুক্তিতে তার ঠিকানা থাকে, তাই তার গেটওয়ে ঠিকানা ছাড়া একটি দ্বিতীয় চাবির অধীনে আলাদাভাবে তালিকাভুক্ত হয়। তালিকা দেখে কেউ বলতে পারে না যে দুটি একই কম্পিউটারের। দর্শনার্থীরা রিলের মাধ্যমে গেটওয়েতে পৌঁছান, তাই এটি কখনো জানে না তাঁরা কে; তাঁরা যে ওয়েবসাইটে যান সেগুলো এই কম্পিউটারের ঠিকানা দেখে।</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3369,11 +3491,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>অন্য একটি রিলে পরিশোধ করে, রিলের মাধ্যমে অনুরোধ করে</translation>
+        <translation type="vanished">অন্য একটি রিলে পরিশোধ করে, রিলের মাধ্যমে অনুরোধ করে</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>আপনার নোড গেটওয়ের তালিকাভুক্তিতে স্বাক্ষর করে এবং রিলের মাধ্যমে অন্য একটি রিলেতে পাঠায়, যা এর জন্য পরিশোধ করে এবং এটি তার নিজের তৈরি ব্লকে রাখে। সেই রিলে গেটওয়ের চাবি জানে, কিন্তু এই কম্পিউটারের ঠিকানা কখনো জানে না। এই নোডের নিজের ওয়ালেট থেকে পরিশোধ করলে চেইনে গেটওয়েটি এই রিলের সাথে যুক্ত হয়ে যেত, আর তাই এর ঠিকানার সাথেও।</translation>
+        <translation type="vanished">আপনার নোড গেটওয়ের তালিকাভুক্তিতে স্বাক্ষর করে এবং রিলের মাধ্যমে অন্য একটি রিলেতে পাঠায়, যা এর জন্য পরিশোধ করে এবং এটি তার নিজের তৈরি ব্লকে রাখে। সেই রিলে গেটওয়ের চাবি জানে, কিন্তু এই কম্পিউটারের ঠিকানা কখনো জানে না। এই নোডের নিজের ওয়ালেট থেকে পরিশোধ করলে চেইনে গেটওয়েটি এই রিলের সাথে যুক্ত হয়ে যেত, আর তাই এর ঠিকানার সাথেও।</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3389,7 +3511,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>আপনার তালিকাভুক্তি বলে আপনি কে, আপনি কোথায় চলেন তা নয়। পিয়াররা ওভারলের মাধ্যমে আপনার কাছে পৌঁছায়, এমন বিন্দুতে আপনার সাথে মিলিত হয় যা দুই পক্ষই রেজিস্টার থেকে বের করে এবং যা প্রতিদিন বদলায়; খুঁজুন পাতা আজকেরগুলো দেখায়। আপনার তালিকাভুক্তি এমন একটি রিলের নামও দেয় যেখানে যতদিন তা বহাল থাকে আপনার সাথে মিলিত হওয়া যায়, এবং প্রতিটি নবায়ন নতুন একটির নাম দেয়। এই ক্লায়েন্ট ডিফল্টভাবে এটিই চালু করে।</translation>
+        <translation type="vanished">আপনার তালিকাভুক্তি বলে আপনি কে, আপনি কোথায় চলেন তা নয়। পিয়াররা ওভারলের মাধ্যমে আপনার কাছে পৌঁছায়, এমন বিন্দুতে আপনার সাথে মিলিত হয় যা দুই পক্ষই রেজিস্টার থেকে বের করে এবং যা প্রতিদিন বদলায়; খুঁজুন পাতা আজকেরগুলো দেখায়। আপনার তালিকাভুক্তি এমন একটি রিলের নামও দেয় যেখানে যতদিন তা বহাল থাকে আপনার সাথে মিলিত হওয়া যায়, এবং প্রতিটি নবায়ন নতুন একটির নাম দেয়। এই ক্লায়েন্ট ডিফল্টভাবে এটিই চালু করে।</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3409,15 +3531,59 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>এই নোড গেটওয়ে হিসেবে তার ইন্টারনেট সংযোগ শেয়ার করে, যেমন সার্ভার পাতায় সেট করা আছে, তাই তালিকাভুক্তি তা বলে।</translation>
+        <translation type="vanished">এই নোড গেটওয়ে হিসেবে তার ইন্টারনেট সংযোগ শেয়ার করে, যেমন সার্ভার পাতায় সেট করা আছে, তাই তালিকাভুক্তি তা বলে।</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>এই নোড অন্যদের জন্য রিলে করে না এবং তার ইন্টারনেট সংযোগও শেয়ার করে না, যেমন সার্ভার পাতায় সেট করা আছে।</translation>
+        <translation type="vanished">এই নোড অন্যদের জন্য রিলে করে না এবং তার ইন্টারনেট সংযোগও শেয়ার করে না, যেমন সার্ভার পাতায় সেট করা আছে।</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>সেখানে কোনো পরিবর্তন আপনার পরবর্তী তালিকাভুক্তির সাথে রেজিস্টারে পৌঁছায়।</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>এটি চেইনে একটি ছোট রেকর্ড লেখে যে আপনি আছেন, এবং ইচ্ছা হলে আপনার সম্পর্কে একটি লাইন।</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>আপনার তালিকাভুক্তি কী বলে</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>আপনার তালিকাভুক্তি বলে আপনি কে, কোথায় চলছেন তা নয়: এতে কোনো ঠিকানা নেই। পিয়াররা ওভারলের মাধ্যমে আপনার কাছে পৌঁছায়, এমন বিন্দুতে আপনার সাথে দেখা করে যা উভয় পক্ষ রেজিস্টার থেকে বের করে এবং প্রতিদিন বদলায়; খুঁজুন আজকেরগুলো দেখায়। আপনার তালিকাভুক্তি একটি রিলের নামও দেয় যেখানে এটি যতদিন থাকে আপনার সাথে দেখা করা যায়, এবং প্রতিটি নবায়ন নতুন একটির নাম দেয়।</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>নোট</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>ঐচ্ছিক: আপনার কি-এর পাশে দেখানো একটি লাইন</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>যে কেউ এটি পড়তে পারে, এবং চেইন এটি চিরকাল রাখে, তালিকাভুক্তি শেষ হওয়ার পরেও। আপনি কোথায় বা কে তা বলে এমন কিছু বাদ দিন, যদি তা আপনার কাছে গুরুত্বপূর্ণ হয়।</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>আপনার নোড তালিকাভুক্তিতে সই করে এবং একটি পথ ধরে এমন একটি রিলেতে পাঠায় যার মধ্য দিয়ে এটি প্রবেশ করে না, তাই সেই রিলে জানে আপনি কে, কোথায় নয়। যে রিলে তালিকাভুক্তির জন্য পেমেন্ট করে সেটি আপনারটি এমন একটি ব্লকে রাখে যা সে নিজে স্টেক করে, তাই বেশিরভাগ নোড এটি না পাঠালেও এটি নিশ্চিত হয়, এবং আপনাকে সেই পিয়ারদের মধ্যে যোগ করে যাদের সাথে সে পুরস্কার ভাগ করে। পরে পেমেন্ট বন্ধ করলে আপনার তালিকাভুক্তি মাসের মধ্যে বাতিল হয়ে যায়; আপনি সবসময় তহবিলযুক্ত ওয়ালেট থেকে নিজে এটি নবায়ন করতে পারেন।</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 বাইট</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>খুব দীর্ঘ: সাধারণ ইংরেজির বাইরের অক্ষর প্রতিটি দুই থেকে চার বাইট নেয়।</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>নোটটি খুব দীর্ঘ।</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>নোটে নিয়ন্ত্রণ অক্ষর বা লেখার দিক বদলায় এমন চিহ্ন থাকতে পারে না।</translation>
     </message>
 </context>
 <context>
@@ -3591,6 +3757,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>একটি BitcoinPoS ঠিকানা লিখুন (যেমন %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>দুটি সীমাই ঠিক করুন।</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>এক পেমেন্টকে পুরো এক দিনের চেয়ে বেশি অনুমতি দেওয়া যায় না।</translation>
     </message>
 </context>
 <context>
@@ -4291,6 +4465,14 @@ worked out from the roster; they change every day:</source>
         <source>meets at %1</source>
         <translation>%1-এ মিলিত হয়</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>নোট</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>এই কি যার কাছে আছে তার লেখা; কেউ এটি যাচাই করে না।</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4773,7 +4955,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>এই নোড থেকে পরিবেশিত একটি সাইট বা সেবা, যা তার কি বা নাম দিয়ে খুঁজে পাওয়া যায় এবং ওভারলের মাধ্যমে পৌঁছানো যায়, তাই হোস্ট কখনো প্রকাশ করে না এটি কোথায় চলছে। মিলনের অংশটি আছে: একটি সেবা এমন মিলনবিন্দুতে নিবন্ধন করে যা উভয় পক্ষ রেজিস্টার থেকে হিসাব করে। এর মাধ্যমে পাতা ও অ্যাপ পরিবেশন এখনো তৈরি হয়নি।</translation>
+        <translation type="vanished">এই নোড থেকে পরিবেশিত একটি সাইট বা সেবা, যা তার কি বা নাম দিয়ে খুঁজে পাওয়া যায় এবং ওভারলের মাধ্যমে পৌঁছানো যায়, তাই হোস্ট কখনো প্রকাশ করে না এটি কোথায় চলছে। মিলনের অংশটি আছে: একটি সেবা এমন মিলনবিন্দুতে নিবন্ধন করে যা উভয় পক্ষ রেজিস্টার থেকে হিসাব করে। এর মাধ্যমে পাতা ও অ্যাপ পরিবেশন এখনো তৈরি হয়নি।</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4997,7 +5179,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>এই নোড অন্যদের যা দেয়। রিলে করা, মেল রাখা ও ইন্টারনেট ভাগ করা আজই চলছে; হোস্টিং আসছে, আর এখানকার সবকিছুর মতো এটিও পিয়ারদের মতোই খুঁজে পাওয়া যায় — তালিকার মাধ্যমে। নামের নিজস্ব পাতা আছে।</translation>
+        <translation type="vanished">এই নোড অন্যদের যা দেয়। রিলে করা, মেল রাখা ও ইন্টারনেট ভাগ করা আজই চলছে; হোস্টিং আসছে, আর এখানকার সবকিছুর মতো এটিও পিয়ারদের মতোই খুঁজে পাওয়া যায় — তালিকার মাধ্যমে। নামের নিজস্ব পাতা আছে।</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -5013,7 +5195,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>তালিকাভুক্ত হিসেবে</translation>
+        <translation type="vanished">তালিকাভুক্ত হিসেবে</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5025,15 +5207,15 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>গেটওয়ে হিসেবে তালিকাভুক্ত করুন…</translation>
+        <translation type="vanished">গেটওয়ে হিসেবে তালিকাভুক্ত করুন…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>এই কম্পিউটারের ইন্টারনেট সংযোগ গেটওয়ে হিসেবে ভাগ করুন</translation>
+        <translation type="vanished">এই কম্পিউটারের ইন্টারনেট সংযোগ গেটওয়ে হিসেবে ভাগ করুন</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>আপনি যেখানে থাকেন সেখানকার আইন বা আপনার ইন্টারনেট সরবরাহকারীর শর্ত সংযোগ ভাগ করা নিষেধ করলে এটি বন্ধ করুন। বন্ধ থাকলেও এই নোড রিলে করে, মেল রাখে ও চেইনে থাকে, আর নিজের সংযোগ সরাসরি ব্যবহার করে।</translation>
+        <translation type="vanished">আপনি যেখানে থাকেন সেখানকার আইন বা আপনার ইন্টারনেট সরবরাহকারীর শর্ত সংযোগ ভাগ করা নিষেধ করলে এটি বন্ধ করুন। বন্ধ থাকলেও এই নোড রিলে করে, মেল রাখে ও চেইনে থাকে, আর নিজের সংযোগ সরাসরি ব্যবহার করে।</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5049,11 +5231,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>এই কম্পিউটারের প্রোগ্রামগুলোকে একটি স্থানীয় প্রক্সির মাধ্যমে নেটওয়ার্কের ইন্টারনেট ব্যবহার করতে দিন</translation>
+        <translation type="vanished">এই কম্পিউটারের প্রোগ্রামগুলোকে একটি স্থানীয় প্রক্সির মাধ্যমে নেটওয়ার্কের ইন্টারনেট ব্যবহার করতে দিন</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>শুধু এই কম্পিউটারের জন্য একটি SOCKS5 প্রক্সি। প্রতিটি সংযোগ অন্য সদস্যের গেটওয়ে দিয়ে বেরোয়, আর নাম সেখানেই খোঁজা হয়, কখনো এখানে নয়। এই কম্পিউটার নিজের সংযোগ ভাগ করা পর্যন্ত এটি কাজ করে।</translation>
+        <translation type="vanished">শুধু এই কম্পিউটারের জন্য একটি SOCKS5 প্রক্সি। প্রতিটি সংযোগ অন্য সদস্যের গেটওয়ে দিয়ে বেরোয়, আর নাম সেখানেই খোঁজা হয়, কখনো এখানে নয়। এই কম্পিউটার নিজের সংযোগ ভাগ করা পর্যন্ত এটি কাজ করে।</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5089,27 +5271,27 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>গেটওয়ে হিসেবে তালিকাভুক্ত নয়</translation>
+        <translation type="vanished">গেটওয়ে হিসেবে তালিকাভুক্ত নয়</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>এখনো নয় — তালিকা এই নোডকে গেটওয়ে হিসেবে রাখে না, তাই কেউ এটি খুঁজে পায় না</translation>
+        <translation type="vanished">এখনো নয় — তালিকা এই নোডকে গেটওয়ে হিসেবে রাখে না, তাই কেউ এটি খুঁজে পায় না</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>এখনো কিছু নেই — একটি রিলে তার গেটওয়ে একটি দ্বিতীয় চাবির অধীনে, ঠিকানা ছাড়া, নিজের তালিকাভুক্তি থেকে আলাদা করে তালিকাভুক্ত করে</translation>
+        <translation type="vanished">এখনো কিছু নেই — একটি রিলে তার গেটওয়ে একটি দ্বিতীয় চাবির অধীনে, ঠিকানা ছাড়া, নিজের তালিকাভুক্তি থেকে আলাদা করে তালিকাভুক্ত করে</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>এখনো কিছু নেই — এই নোডের তালিকাভুক্তিতে গেটওয়ে বিকল্প নেই; বিকল্প চালু রেখে আবার প্রকাশ করুন</translation>
+        <translation type="vanished">এখনো কিছু নেই — এই নোডের তালিকাভুক্তিতে গেটওয়ে বিকল্প নেই; বিকল্প চালু রেখে আবার প্রকাশ করুন</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>এখনো কিছু নেই — ঠিকানা ছাড়া, গেটওয়ে বিকল্প চালু রেখে একটি তালিকাভুক্তি প্রকাশ করুন</translation>
+        <translation type="vanished">এখনো কিছু নেই — ঠিকানা ছাড়া, গেটওয়ে বিকল্প চালু রেখে একটি তালিকাভুক্তি প্রকাশ করুন</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>এই রিলের গেটওয়ে তালিকাভুক্ত করুন…</translation>
+        <translation type="vanished">এই রিলের গেটওয়ে তালিকাভুক্ত করুন…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5129,11 +5311,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>এর গেটওয়ে চাবি %1, রিলের ঠিকানা থেকে আলাদা</translation>
+        <translation type="vanished">এর গেটওয়ে চাবি %1, রিলের ঠিকানা থেকে আলাদা</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>এই নোডের নিজের চাবি %1</translation>
+        <translation type="vanished">এই নোডের নিজের চাবি %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5149,11 +5331,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>এই কম্পিউটারের সব ট্র্যাফিক নেটওয়ার্কের মধ্য দিয়ে পাঠান, কোনো প্রোগ্রামে প্রক্সি সেটিং ছাড়াই</translation>
+        <translation type="vanished">এই কম্পিউটারের সব ট্র্যাফিক নেটওয়ার্কের মধ্য দিয়ে পাঠান, কোনো প্রোগ্রামে প্রক্সি সেটিং ছাড়াই</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>প্রতিটি প্রোগ্রামের সংযোগ নেটওয়ার্কের গেটওয়ে দিয়ে বের হয়, প্রতিটি আলাদা গেটওয়ে দিয়ে, এবং নাম সেখানেই খোঁজা হয়। এই কম্পিউটারের নিজস্ব নেটওয়ার্ক — একটি প্রিন্টার, রাউটার — এবং এই নোডের নিজস্ব সংযোগ সরাসরি থাকে। এই কম্পিউটার নিজের সংযোগ ভাগ করলে তবেই এটি কাজ করে।</translation>
+        <translation type="vanished">প্রতিটি প্রোগ্রামের সংযোগ নেটওয়ার্কের গেটওয়ে দিয়ে বের হয়, প্রতিটি আলাদা গেটওয়ে দিয়ে, এবং নাম সেখানেই খোঁজা হয়। এই কম্পিউটারের নিজস্ব নেটওয়ার্ক — একটি প্রিন্টার, রাউটার — এবং এই নোডের নিজস্ব সংযোগ সরাসরি থাকে। এই কম্পিউটার নিজের সংযোগ ভাগ করলে তবেই এটি কাজ করে।</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5181,11 +5363,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>চালু: এখন নেটওয়ার্কের মধ্য দিয়ে %1টি সংযোগ; %2 পাঠানো, %3 পাওয়া।</translation>
+        <translation type="vanished">চালু: এখন নেটওয়ার্কের মধ্য দিয়ে %1টি সংযোগ; %2 পাঠানো, %3 পাওয়া।</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>এই সিস্টেমে এখনো উপলব্ধ নয়।</translation>
+        <translation type="vanished">এই সিস্টেমে এখনো উপলব্ধ নয়।</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5197,7 +5379,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>ক্লায়েন্ট পুনরায় চালু হলে শুরু হয়।</translation>
+        <translation type="vanished">ক্লায়েন্ট পুনরায় চালু হলে শুরু হয়।</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5226,6 +5408,334 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>none — relaying is switched off</source>
         <translation>নেই — রিলে বন্ধ আছে</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>এই নোড অন্যদের যা দেয়: রিলে করা, মেইল রাখা, ইন্টারনেট শেয়ার করা এবং সাইট হোস্ট করা; আর আপনার নিজের ফোনকে, এখান থেকে খরচ করার একটি উপায়। এখানকার সবকিছুর মতো, এটি পিয়ারদের মতোই পাওয়া যায় — রেজিস্টারের মাধ্যমে। নামের নিজস্ব পাতা আছে।</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>এই কম্পিউটারের ইন্টারনেট সংযোগ শেয়ার করুন, এবং বিনিময়ে নেটওয়ার্কেরটি ব্যবহার করুন</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>চালু থাকলে এই কম্পিউটারের সংযোগ শেয়ার হয়, এবং এর নিজের সব ট্রাফিক নেটওয়ার্কের গেটওয়ে দিয়ে বের হয়, প্রতিটি সংযোগ আলাদা একটি দিয়ে; এই কম্পিউটারের নিজের নেটওয়ার্ক — প্রিন্টার, রাউটার — সরাসরি থাকে। আপনি যেখানে থাকেন সেখানকার আইন, বা আপনার ইন্টারনেট সরবরাহকারীর শর্ত, সংযোগ শেয়ার নিষিদ্ধ করলে এটি বন্ধ করুন: তখন নেটওয়ার্ক শুধু BPS বহন করে, এবং এই কম্পিউটার নিজের সংযোগ ব্যবহার করে।</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>পুরো কম্পিউটারের জন্য: চালু, এখন নেটওয়ার্কের মাধ্যমে %1টি সংযোগ; %2 পাঠানো, %3 গ্রহণ।</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>পুরো কম্পিউটারের জন্য: এই সিস্টেমে এখনো উপলব্ধ নয়; প্রোগ্রামগুলো প্রক্সি ব্যবহার করতে পারে।</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>পুরো কম্পিউটারের জন্য: ক্লায়েন্ট আবার চালু হলে শুরু হবে।</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>শেয়ার করছে না</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>না — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>এই নোডের কি-এর অধীনে একটি ফোল্ডার সাইট হিসেবে প্রকাশ করুন, যাতে যাকে আপনি কি বা আপনার নাম দেন সে ওভারলের মাধ্যমে এটি পড়তে পারে। প্রতিটি ফাইল সই করা এবং আসার সময় টুকরো টুকরো করে যাচাই করা হয়। ঠিকানা ছাড়া তালিকাভুক্ত হলে এই নোডের সাথে এর মিলনবিন্দুতে দেখা হয় এবং কেউ জানে না সাইট কোথায় চলে; ঠিকানাসহ তালিকাভুক্ত হলে দর্শকরা রিলের মাধ্যমে পৌঁছায়, তাই এটি কখনো জানে না তারা কে। এই কম্পিউটারের একটি প্রোগ্রাম — ওয়েব অ্যাপ, চ্যাট সার্ভার — একইভাবে প্রকাশ করা যায়: দর্শকরা ওভারলের মাধ্যমে এতে পৌঁছায়, এবং এই নোড শুধু আপনার বলা পোর্টে সংযোগ করে।</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>ফোল্ডার</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>পৌঁছেছে</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>পাঠানো</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>কিছু না</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>এই কম্পিউটারের প্রোগ্রাম যাতে দর্শকরা ওভারলের মাধ্যমে পৌঁছায়। web নামের প্রোগ্রামটি হলো যা কোনো সাইট না থাকলে ব্রাউজার এই নোডের ঠিকানায় খোলে।</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>প্রোগ্রাম</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>একটি ফোল্ডার প্রকাশ করুন…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>আবার প্রকাশ করুন</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>ফোল্ডার বদলানোর পর আবার পড়ুন, এবং এখন যা আছে তা প্রকাশ করুন।</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>প্রকাশ বন্ধ করুন</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>সাইটে খুলুন</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>একটি প্রোগ্রাম প্রকাশ করুন…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>একটি প্রোগ্রাম থামান…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>প্রকাশ করছে না</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>কিছু না — কিছুই প্রকাশিত নয়</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2টি ফাইল, %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>তালিকাভুক্ত নয়</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>এখনো কেউ না: এই নোড রেজিস্টারে তালিকাভুক্ত নয়, তাই দর্শকরা সাইটটি খুঁজে পায় না। নোড পাতায়, খুঁজুন-এর অধীনে একটি তালিকাভুক্তি প্রকাশ করুন।</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>প্রকাশ করছে</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>এখনো দেখা হয়নি</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>%1টি মিলনবিন্দুতে, কোনো ঠিকানা প্রকাশ না করে</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>এখনো না: এর মিলনবিন্দুতে নিবন্ধন করছে, যার জন্য রেজিস্টারের রিলে দরকার</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>এই নোডের ঠিকানায়, দর্শককে লুকিয়ে রাখা রিলের মাধ্যমে</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1টি পাতার টুকরো, %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>সাইট হিসেবে প্রকাশ করার ফোল্ডার</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>একটি প্রোগ্রাম প্রকাশ করুন</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>এর জন্য একটি নাম, a-z, 0-9 ও - থেকে ১ থেকে ৩২টি। ব্রাউজারের এই নোডের ঠিকানায় খোলার মতো ওয়েব অ্যাপের জন্য এর নাম দিন web:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>যে পোর্টে এটি শোনে, 127.0.0.1-এ (শুধু এই কম্পিউটার):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>একটি প্রোগ্রাম থামান</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>কোন প্রোগ্রামে দর্শকরা আর পৌঁছাবে না:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>127.0.0.1:%2-এ %1</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1টি স্ট্রিম খোলা</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>সঙ্গী ফোন</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>আপনার কয়েন এখানে রেখেই ফোন থেকে খরচ করুন। ফোনে কোনো কয়েন কি থাকে না: এটি এই নোডে পৌঁছায়, যে কি দিয়ে জোড়া লেগেছে তা প্রমাণ করে, এবং এই নোড একটি ছোট হাতখরচ ওয়ালেট থেকে পেমেন্ট করে — ফোনের PIN এবং আপনার ঠিক করা সীমা যাচাই করার পর, যা ফোন বদলাতে পারে না। ফোন হারালে আপনি বড়জোর হাতখরচে যা আছে তা হারান; এখানে জোড়া খুলুন। যখন এই নোড একটি তালিকাভুক্ত রিলে এবং যথেষ্ট অন্যরাও তালিকাভুক্ত, ফোন তিনটি রিলের মাধ্যমে আসে, তাই যে দেখছে সে জানে না এটি কোথায়; নইলে এটি সরাসরি এখানে সংযোগ করে।</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>হাতখরচ</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>ফোন থেকে পৌঁছানো যায়</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>ফোন</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>এক পেমেন্ট</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>এক দিন</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>আজ খরচ</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>অবস্থা</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>একটি ফোন জোড়া লাগান…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>সীমা…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>আনলক</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>পরপর পাঁচটি ভুল PIN-এর পর একটি ফোন লক হয়ে যায়, যতক্ষণ না এখানে আনলক করা হয়।</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>জোড়া খুলুন</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>জোড়া লাগানো ফোনকে হাতখরচ ওয়ালেট থেকে খরচ করতে দিন</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>ওভারলে দরকার। ডিফল্টভাবে বন্ধ, কারণ এটি একটি ফোনকে এই নোডের কয়েন খরচ করতে দেয়।</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>একটি আলাদা ওয়ালেট, পাসফ্রেজ ছাড়া — ফোন পেমেন্ট করার সময় তা টাইপ করার কেউ থাকে না — এবং শুধু তা নিয়ে যা ফোনের খরচ করতে পারা উচিত। এটি কখনো স্টেক করে না, এবং তালিকাভুক্তির জন্য পেমেন্ট করা ওয়ালেট হতে পারে না।</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>এটি তৈরি করুন</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>হাতখরচ ওয়ালেট তৈরি করুন এবং যখনই এই নোড শুরু হয় তখন এটি খুলুন।</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>টপ আপ…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>হাতখরচে কয়েন সরাতে ওয়ালেটে পাঠান খুলুন।</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>হাতখরচ ওয়ালেট</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, আরও %1 আসছে</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>হ্যাঁ, %1-এ, রিলের মাধ্যমে</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>সরাসরি, %1-এ। মাঝে কোনো রিলে নেই: ফোনের নেটওয়ার্ক দেখে এটি এই কম্পিউটারের সাথে কথা বলছে। এই নেটওয়ার্কের বাইরে থেকে, রাউটারে UDP পোর্ট %2 এই কম্পিউটারে ফরোয়ার্ড করুন।</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>না — এই নোড এখনো নিজের কোনো ঠিকানা জানে না</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>পৌঁছানো যায় না</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>একটি ফোন অপেক্ষা করছে</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>হাতখরচ নেই</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>একটি ফোন লক</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1টি ফোন লক</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>চলছে, এখনো কোনো ফোন নেই</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>চলছে, ১টি ফোন</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>চলছে, %1টি ফোন</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>ডিভাইস কি %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>লক: ভুল PIN</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>জোড়া লাগানো</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>%1-এর জোড়া খুলুন</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>%1-এর জোড়া খুলবেন? নতুন করে জোড়া না লাগানো পর্যন্ত এটি আর খরচ করতে পারবে না। ফোন হারালে বা চুরি হলে এখনই এটি করুন।</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>হাতখরচ ওয়ালেট তৈরি ও খোলা হয়েছে। ফোনের যা খরচ করতে পারা উচিত তা এতে সরাতে টপ আপ ব্যবহার করুন।</translation>
     </message>
 </context>
 <context>
@@ -5357,6 +5867,30 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>নোড এখনো চালু হচ্ছে; মূল সেটিংস এখনো পাওয়া যাচ্ছে না।</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>অন্যরা রেজিস্টার থেকে বের করা রিলেতে আপনার সাথে দেখা করে, এবং আপনার নোড এতগুলো রিলের মাধ্যমে প্রতিটির দিকে একটি পথ খোলা রাখে। মিলনবিন্দু শুধু শেষটিকে দেখে, আপনার ঠিকানা কখনো নয়। বেশি হলে আপনাকে ভালো লুকায় এবং ধীর হয়।</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>আপনার মিলনবিন্দুর আগে রিলে</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>এই কম্পিউটার যখন নেটওয়ার্কের ইন্টারনেট ব্যবহার করে, প্রতিটি সংযোগ এতগুলো রিলের মাধ্যমে একটি গেটওয়ের মিলনবিন্দুতে যায়, এবং তারপর গেটওয়ের নিজের রিলের মাধ্যমে: গেটওয়ে কখনো জানে না আপনি কে। বেশি হলে আপনাকে ভালো লুকায় এবং ধীর হয়।</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>গেটওয়ের মিলনবিন্দুর আগে রিলে</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>শুধু আপনার প্রথম সংযোগ সরাসরি, একটি প্রবেশ রিলেতে যা আপনার ঠিকানা দেখে, আপনি কে তা নয়। মেইল সবসময় তিনটি রিলের মধ্য দিয়ে যায়।</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>সংস্করণ %1</translation>
     </message>
 </context>
 <context>
@@ -5519,6 +6053,147 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Message verified.</source>
         <translation>Message verified.</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>সাইট</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>ওভারলেতে হোস্ট করা সাইট, কেউ আপনার সাথে শেয়ার করা নাম বা কি দিয়ে খোলা। পাতাগুলো এখানে কোনো স্ক্রিপ্ট ছাড়া দেখানো হয়, এবং এগুলোতে BPS-এর বাইরে থেকে কিছু আনা হয় না, তাই একটি পাতা জানতে পারে না আপনি কোথায়।</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>পিছনে</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>সামনে</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>পাতাটি আবার আনুন</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://নাম/ বা সাইটের কি</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>খুলুন</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>এই ফাইল সংরক্ষণ করুন…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>আপনার ব্রাউজারে খুলুন</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>একই সাইট একটি সাধারণ ব্রাউজারে, শুধু এই কম্পিউটারের একটি সার্ভারের মাধ্যমে। সেখানে পাতাগুলো স্ক্রিপ্ট চালাতে পারে, তাই এখানকার ভিউয়ার লুকানো সাইট পড়ার নিরাপদ উপায় থেকে যায়।</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>একটি প্রোগ্রামে সংযোগ করুন…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>এই সাইট যে প্রোগ্রাম চালায় — চ্যাট সার্ভার, গেম — তাতে এই কম্পিউটারের একটি প্রোগ্রাম থেকে পৌঁছান: BPS Relay এখানে একটি পোর্টে শোনে এবং প্রতিটি সংযোগ ওভারলের মাধ্যমে সেখানে বহন করে।</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>এটি কোনো সাইটের ঠিকানা নয়। একটি নাম বা কি লিখুন, যেমন bps://pilot/।</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>%1 খোঁজা হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>ওভারলের মাধ্যমে %1 আনা হচ্ছে…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 এমন পাতা নয় যা এই ভিউয়ার দেখায় (%2 বাইট)। অন্য প্রোগ্রামে খুলতে এটি সংরক্ষণ করুন।</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>এই কম্পিউটারের প্রোগ্রামটিকে %1-এ নির্দেশ করুন: BPS Relay সেখানে তৈরি প্রতিটি সংযোগ সাইটের প্রোগ্রামে বহন করে, ওভারলের মাধ্যমে, যতক্ষণ না এটি আবার চালু হয়।</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>ব্রাউজারের জন্য সাইট সার্ভার চলছে না। -siteproxy=0 না দেওয়া হলে এটি BPS Relay-এর সাথে শুরু হয়।</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 কোনো কি-তে পৌঁছায় না।</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 এখন সেই কি থেকে আলাদা একটি কি নির্দেশ করে যা আপনি শেষবার খোলার সময় ছিল। এখন যার কাছে নামটি আছে সে হয়তো আগে যাকে পড়েছিলেন সে নয়।</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>এর একটি মিলনবিন্দুতে দেখা হয়েছে, আপনার %1টি রিলের মাধ্যমে: আপনি বা হোস্ট কেউই জানেন না অন্যজন কোথায়।</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>এর ঠিকানায় %1টি রিলের মাধ্যমে পৌঁছানো হয়েছে: হোস্ট জানে না আপনি কে।</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>আপনার নিজের সাইট, এই কম্পিউটার থেকে পড়া।</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>এটি রেডিওর মাধ্যমে পৌঁছানো হয়, তাই পাতা ধীরে আসে।</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 এমন নাম নয় যা এই নোড জানে: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>%1 খোলা যায়নি: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>এই লিংক BPS-এর বাইরে নিয়ে যায়, তাই এটি অনুসরণ করা হয়নি: %1
+চাইলে একটি সাধারণ ব্রাউজারে এটি খুলুন; যে এটি চালায় সে আপনার ঠিকানা দেখবে।</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>একটি প্রোগ্রামে সংযোগ করুন</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>সাইট তার প্রোগ্রামকে যে নাম দিয়েছে:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>আপনার ব্রাউজারে একটি সাইট খোলা</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>আপনার ব্রাউজার এই কম্পিউটারের কাছে সাইটটি চাইবে, এবং BPS Relay ওভারলের মাধ্যমে এটি আনবে, যেমন এখানে করে। প্রতিটি পাতা শুধু নিজের সাইট থেকে লোড করতে পারে, তাই আপনি কোথায় তা জানতে খোলা ইন্টারনেট থেকে কিছু টেনে আনতে পারে না।
+
+ব্রাউজার তবুও যা করতে পারে: একটি স্ক্রিপ্ট WebRTC ব্যবহার করে একটি পাতাকে এই কম্পিউটারের ঠিকানাগুলো দেখাতে পারে, এবং একটি সাধারণ সাইটের দিকে আপনি যে লিংক অনুসরণ করেন তা যেকোনো লিংকের মতোই বেরিয়ে যায়। BPS Relay-এর ভিউয়ার কোনো স্ক্রিপ্ট চালায় না এবং লুকানো সাইট পড়ার নিরাপদ উপায় থেকে যায়।</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>ফাইল সংরক্ষণ করুন</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>%1 সংরক্ষণ করা যায়নি।</translation>
     </message>
 </context>
 <context>

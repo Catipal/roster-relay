@@ -1109,6 +1109,10 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <source>Not staking</source>
         <translation>스테이킹 안 함</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>사이트</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1263,6 +1267,92 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>콜드 스테이킹을 위해 %1에게 위임됨</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>%1의 한도</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>이 휴대폰이 용돈 지갑에서 쓸 수 있는 금액(수수료 포함).</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>결제 1회 최대</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>아무 24시간 동안 최대</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>휴대폰 페어링</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>휴대폰의 BPS 앱에서 페어링을 선택하고 이 코드를 스캔하세요. 또는 아래 텍스트를 앱에 복사하세요. 한 번, 10분 동안 유효합니다.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>코드 복사</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>새 코드 보기</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>휴대폰에 같은 여섯 자리 숫자가 표시될 때만 페어링하세요. 다른 숫자가 표시되면 다른 누군가가 먼저 코드에 응답한 것입니다. 거부하고 새 코드를 표시하세요.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>이 휴대폰이 용돈 지갑에서 쓸 수 있는 금액. 나중에 이 노드만 바꿀 수 있으며, 휴대폰은 절대 바꿀 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>결제 1회 최대</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>아무 24시간 동안 최대</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>거부</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>이 휴대폰 페어링</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>코드를 만드는 중…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>이 코드는 만료되었습니다.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>휴대폰을 기다리는 중… 코드는 %1분 더 유효합니다.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>이 빌드는 QR 코드를 그릴 수 없습니다. 대신 아래 텍스트를 앱에 복사하세요.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>“%1”라는 휴대폰이 이 노드와 페어링하려고 합니다.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>페어링되었습니다. 이제 휴대폰은 설정한 한도 안에서 용돈 지갑으로 지출할 수 있습니다. 목록은 서버 페이지에 있으며, 거기서 한도를 바꾸거나, PIN을 여러 번 틀린 뒤 잠금을 풀거나, 페어링을 해제할 수 있습니다.</translation>
     </message>
 </context>
 <context>
@@ -1438,7 +1528,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>피어 또는 주소 찾기</translation>
+        <translation type="vanished">피어 또는 주소 찾기</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1575,6 +1665,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>피어는 서버가 아니라 체인에 자신을 알리므로, 이 목록은 누구에게나 같고 아무도 편집할 수 없습니다. 오버레이로 등재된 피어는 오늘 어디서 만날 수 있는지를 보여 주며, 이는 매일 바뀝니다. 릴레이는 온라인인 동안에만 주소를 보여 줍니다. 주소가 체인에 올라가지 않기 때문입니다.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>이름</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>이름 등록…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>이름이 있으면 다른 사람이 키를 복사하지 않고도 당신에게 연락할 수 있습니다. 이름은 이름 탭에서 등록합니다.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>피어, 메모 또는 주소 찾기</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>이 이름들은 모두 이 노드의 키로 연결됩니다. 다른 사람은 어느 이름으로든 당신에게 연락할 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>이름 관리…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>이름 꺼짐</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>이름에는 이름 색인이 필요합니다. 이름을 등록하고 표시하려면 설정에서 켜세요.</translation>
     </message>
 </context>
 <context>
@@ -3200,15 +3322,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>내가 존재한다는 것과, 원하면 나를 찾을 수 있는 곳을 알리는 짧은 기록을 체인에 씁니다.</translation>
+        <translation type="vanished">내가 존재한다는 것과, 원하면 나를 찾을 수 있는 곳을 알리는 짧은 기록을 체인에 씁니다.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>피어가 나에게 어떻게 연결해야 하나요?</translation>
+        <translation type="vanished">피어가 나에게 어떻게 연결해야 하나요?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>오버레이를 통해 — 주소를 게시하지 않음</translation>
+        <translation type="vanished">오버레이를 통해 — 주소를 게시하지 않음</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3216,35 +3338,35 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>내가 게시하는 주소로</translation>
+        <translation type="vanished">내가 게시하는 주소로</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>어니언</translation>
+        <translation type="vanished">어니언</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>다른 피어가 연결할 수 있는 주소</translation>
+        <translation type="vanished">다른 피어가 연결할 수 있는 주소</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>누구나 볼 수 있으며 체인에 영구히 남습니다. 어니언 주소는 아무도 나에게까지 추적할 수 없는 위치를 게시하고 NAT 뒤에서도 작동합니다. IP 주소는 둘 다 해당하지 않습니다. IP 주소를 게시한 노드는 다른 사람이 릴레이로 선택할 수 있습니다.</translation>
+        <translation type="vanished">누구나 볼 수 있으며 체인에 영구히 남습니다. 어니언 주소는 아무도 나에게까지 추적할 수 없는 위치를 게시하고 NAT 뒤에서도 작동합니다. IP 주소는 둘 다 해당하지 않습니다. IP 주소를 게시한 노드는 다른 사람이 릴레이로 선택할 수 있습니다.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3288,7 +3410,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>노드가 등재에 서명하여 오버레이를 통해 진입 릴레이로 보냅니다. 등재 비용을 지불하는 릴레이는 자신이 스테이킹하는 블록에 내 등재를 넣으므로 대부분의 노드가 전달하지 않아도 확인되며, 보상을 나누는 피어에 나를 추가합니다. 나중에 지불을 멈추면 등재는 한 달 안에 만료되며, 언제든 잔액이 있는 지갑에서 직접 갱신할 수 있습니다.</translation>
+        <translation type="vanished">노드가 등재에 서명하여 오버레이를 통해 진입 릴레이로 보냅니다. 등재 비용을 지불하는 릴레이는 자신이 스테이킹하는 블록에 내 등재를 넣으므로 대부분의 노드가 전달하지 않아도 확인되며, 보상을 나누는 피어에 나를 추가합니다. 나중에 지불을 멈추면 등재는 한 달 안에 만료되며, 언제든 잔액이 있는 지갑에서 직접 갱신할 수 있습니다.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3304,11 +3426,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>주소를 입력하거나 게시하지 않도록 선택하세요.</translation>
+        <translation type="vanished">주소를 입력하거나 게시하지 않도록 선택하세요.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>릴레이에 게시를 요청하는 중… 최대 30초 정도 걸릴 수 있습니다.</translation>
+        <translation type="vanished">릴레이에 게시를 요청하는 중… 최대 30초 정도 걸릴 수 있습니다.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3340,11 +3462,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>이 릴레이의 게이트웨이 등록</translation>
+        <translation type="vanished">이 릴레이의 게이트웨이 등록</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>릴레이의 등록에는 그 주소가 들어 있으므로, 그 게이트웨이는 주소 없는 두 번째 키로 따로 등록됩니다. 명부만 보고 둘이 같은 컴퓨터의 것임을 알 수 있는 사람은 없습니다. 방문자는 릴레이를 거쳐 게이트웨이에 닿으므로 게이트웨이는 그들이 누구인지 알 수 없습니다. 그들이 방문하는 웹사이트에는 이 컴퓨터의 주소가 보입니다.</translation>
+        <translation type="vanished">릴레이의 등록에는 그 주소가 들어 있으므로, 그 게이트웨이는 주소 없는 두 번째 키로 따로 등록됩니다. 명부만 보고 둘이 같은 컴퓨터의 것임을 알 수 있는 사람은 없습니다. 방문자는 릴레이를 거쳐 게이트웨이에 닿으므로 게이트웨이는 그들이 누구인지 알 수 없습니다. 그들이 방문하는 웹사이트에는 이 컴퓨터의 주소가 보입니다.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3360,11 +3482,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>다른 릴레이가 지불 — 릴레이를 거쳐 요청</translation>
+        <translation type="vanished">다른 릴레이가 지불 — 릴레이를 거쳐 요청</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>노드가 게이트웨이의 등재에 서명하여 릴레이를 거쳐 다른 릴레이로 보내면, 그 릴레이가 비용을 지불하고 자신이 스테이킹하는 블록에 넣습니다. 그 릴레이는 게이트웨이의 키만 알 뿐 이 컴퓨터의 주소는 결코 알지 못합니다. 이 노드의 자체 지갑에서 지불하면 체인 위에서 게이트웨이가 이 릴레이와, 따라서 그 주소와 연결됩니다.</translation>
+        <translation type="vanished">노드가 게이트웨이의 등재에 서명하여 릴레이를 거쳐 다른 릴레이로 보내면, 그 릴레이가 비용을 지불하고 자신이 스테이킹하는 블록에 넣습니다. 그 릴레이는 게이트웨이의 키만 알 뿐 이 컴퓨터의 주소는 결코 알지 못합니다. 이 노드의 자체 지갑에서 지불하면 체인 위에서 게이트웨이가 이 릴레이와, 따라서 그 주소와 연결됩니다.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3380,7 +3502,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>등재 정보는 당신이 누구인지만 말하고 어디서 실행되는지는 말하지 않습니다. 피어는 오버레이를 통해 당신에게 닿고, 양쪽이 명부에서 계산하는 지점에서 당신을 만납니다. 이 지점은 매일 바뀌며 탐색에 오늘의 지점이 표시됩니다. 등재 정보에는 유효한 동안 당신을 만날 수 있는 릴레이 하나도 적혀 있고, 갱신할 때마다 새 릴레이가 적힙니다. 이 클라이언트는 기본적으로 이렇게 설정합니다.</translation>
+        <translation type="vanished">등재 정보는 당신이 누구인지만 말하고 어디서 실행되는지는 말하지 않습니다. 피어는 오버레이를 통해 당신에게 닿고, 양쪽이 명부에서 계산하는 지점에서 당신을 만납니다. 이 지점은 매일 바뀌며 탐색에 오늘의 지점이 표시됩니다. 등재 정보에는 유효한 동안 당신을 만날 수 있는 릴레이 하나도 적혀 있고, 갱신할 때마다 새 릴레이가 적힙니다. 이 클라이언트는 기본적으로 이렇게 설정합니다.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3400,15 +3522,59 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>이 노드는 서버 페이지의 설정대로 인터넷 연결을 게이트웨이로 공유하므로 등재 정보에도 그렇게 적힙니다.</translation>
+        <translation type="vanished">이 노드는 서버 페이지의 설정대로 인터넷 연결을 게이트웨이로 공유하므로 등재 정보에도 그렇게 적힙니다.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>이 노드는 서버 페이지의 설정대로 다른 사람을 위해 릴레이하지도, 인터넷 연결을 공유하지도 않습니다.</translation>
+        <translation type="vanished">이 노드는 서버 페이지의 설정대로 다른 사람을 위해 릴레이하지도, 인터넷 연결을 공유하지도 않습니다.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>그곳에서 바꾼 내용은 다음 등재와 함께 명부에 반영됩니다.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>당신이 존재한다는 짧은 기록과, 원하면 당신에 대한 한 줄을 체인에 기록합니다.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>등재 내용</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>등재는 당신이 누구인지를 말할 뿐 어디서 실행 중인지는 말하지 않습니다. 주소가 들어 있지 않습니다. 피어는 오버레이를 통해 당신에게 도달하며, 양쪽이 명부에서 계산하고 매일 바뀌는 지점에서 만납니다. 오늘의 지점은 탐색에 표시됩니다. 등재에는 유효한 동안 당신을 만날 수 있는 릴레이도 하나 적히며, 갱신할 때마다 새 릴레이가 적힙니다.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>메모</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>선택 사항: 키 옆에 표시되는 한 줄</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>누구나 읽을 수 있고, 등재가 끝난 뒤에도 체인에 영원히 남습니다. 신경 쓰인다면 당신의 위치나 정체를 드러내는 내용은 빼세요.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>노드는 등재에 서명하고, 자신이 들어가는 입구가 아닌 릴레이로 경로를 통해 보냅니다. 그래서 그 릴레이는 당신이 누구인지는 알지만 어디 있는지는 모릅니다. 등재 비용을 내는 릴레이는 당신의 등재를 자신이 직접 스테이킹하는 블록에 넣으므로, 대부분의 노드가 전달하지 않는 동안에도 확인되며, 보상을 나누는 피어 목록에 당신을 추가합니다. 나중에 비용 지급을 멈추면 등재는 그 달 안에 만료됩니다. 자금이 있는 지갑에서 언제든 직접 갱신할 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2바이트</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>너무 깁니다: 간단한 영어 이외의 글자는 한 글자에 2~4바이트를 차지합니다.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>메모가 너무 깁니다.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>메모에는 제어 문자나 글의 방향을 바꾸는 기호를 넣을 수 없습니다.</translation>
     </message>
 </context>
 <context>
@@ -3576,6 +3742,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>BitcoinPoS 주소를 입력하세요 (예: %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>두 한도를 모두 설정하세요.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>결제 1회에 하루 전체보다 많은 금액을 허용할 수 없습니다.</translation>
     </message>
 </context>
 <context>
@@ -4276,6 +4450,14 @@ worked out from the roster; they change every day:</source>
         <source>meets at %1</source>
         <translation>%1에서 만남</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>메모</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>이 키를 가진 사람이 썼으며, 아무도 확인하지 않습니다.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4757,7 +4939,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>이 노드에서 제공하는 사이트나 서비스로, 키나 이름으로 찾고 오버레이로 접속하므로 호스트는 자신이 어디서 실행되는지 게시하지 않습니다. 만남 부분은 이미 있습니다: 서비스는 양쪽이 명부에서 계산한 만남 지점에 등록합니다. 이를 통해 페이지와 앱을 제공하는 기능은 아직 구현되지 않았습니다.</translation>
+        <translation type="vanished">이 노드에서 제공하는 사이트나 서비스로, 키나 이름으로 찾고 오버레이로 접속하므로 호스트는 자신이 어디서 실행되는지 게시하지 않습니다. 만남 부분은 이미 있습니다: 서비스는 양쪽이 명부에서 계산한 만남 지점에 등록합니다. 이를 통해 페이지와 앱을 제공하는 기능은 아직 구현되지 않았습니다.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4981,7 +5163,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>이 노드가 다른 사람에게 제공하는 것. 릴레이, 메일 보관, 인터넷 공유는 오늘 작동합니다. 호스팅은 준비 중이며, 여기 있는 모든 것처럼 피어와 같은 방식 — 명부를 통해 — 찾을 수 있습니다. 이름에는 별도 페이지가 있습니다.</translation>
+        <translation type="vanished">이 노드가 다른 사람에게 제공하는 것. 릴레이, 메일 보관, 인터넷 공유는 오늘 작동합니다. 호스팅은 준비 중이며, 여기 있는 모든 것처럼 피어와 같은 방식 — 명부를 통해 — 찾을 수 있습니다. 이름에는 별도 페이지가 있습니다.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -4997,7 +5179,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>등록 상태</translation>
+        <translation type="vanished">등록 상태</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5009,15 +5191,15 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>게이트웨이로 등록…</translation>
+        <translation type="vanished">게이트웨이로 등록…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>이 컴퓨터의 인터넷 연결을 게이트웨이로 공유</translation>
+        <translation type="vanished">이 컴퓨터의 인터넷 연결을 게이트웨이로 공유</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>사는 곳의 법이나 인터넷 제공업체의 약관이 연결 공유를 금지한다면 끄세요. 꺼도 이 노드는 계속 릴레이하고 메일을 보관하며 체인에 남고, 자기 연결은 직접 씁니다.</translation>
+        <translation type="vanished">사는 곳의 법이나 인터넷 제공업체의 약관이 연결 공유를 금지한다면 끄세요. 꺼도 이 노드는 계속 릴레이하고 메일을 보관하며 체인에 남고, 자기 연결은 직접 씁니다.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5033,11 +5215,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>이 컴퓨터의 프로그램이 로컬 프록시를 통해 네트워크의 인터넷을 쓰도록 허용</translation>
+        <translation type="vanished">이 컴퓨터의 프로그램이 로컬 프록시를 통해 네트워크의 인터넷을 쓰도록 허용</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>이 컴퓨터 전용 SOCKS5 프록시입니다. 각 연결은 다른 구성원의 게이트웨이로 나가며, 이름은 그곳에서 조회되고 여기서는 절대 조회되지 않습니다. 이 컴퓨터가 자기 연결을 공유하는 동안 작동합니다.</translation>
+        <translation type="vanished">이 컴퓨터 전용 SOCKS5 프록시입니다. 각 연결은 다른 구성원의 게이트웨이로 나가며, 이름은 그곳에서 조회되고 여기서는 절대 조회되지 않습니다. 이 컴퓨터가 자기 연결을 공유하는 동안 작동합니다.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5073,27 +5255,27 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>게이트웨이로 등록되지 않음</translation>
+        <translation type="vanished">게이트웨이로 등록되지 않음</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>아직 아님 — 명부에 이 노드가 게이트웨이로 올라 있지 않아 아무도 찾을 수 없습니다</translation>
+        <translation type="vanished">아직 아님 — 명부에 이 노드가 게이트웨이로 올라 있지 않아 아무도 찾을 수 없습니다</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>아직 없음 — 릴레이는 자기 등록과 별도로, 주소 없는 두 번째 키로 게이트웨이를 등록합니다</translation>
+        <translation type="vanished">아직 없음 — 릴레이는 자기 등록과 별도로, 주소 없는 두 번째 키로 게이트웨이를 등록합니다</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>아직 없음 — 이 노드의 등록에 게이트웨이 옵션이 없습니다. 옵션을 켜고 다시 게시하세요</translation>
+        <translation type="vanished">아직 없음 — 이 노드의 등록에 게이트웨이 옵션이 없습니다. 옵션을 켜고 다시 게시하세요</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>아직 없음 — 주소 없이 게이트웨이 옵션을 켠 등록을 게시하세요</translation>
+        <translation type="vanished">아직 없음 — 주소 없이 게이트웨이 옵션을 켠 등록을 게시하세요</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>이 릴레이의 게이트웨이 등록…</translation>
+        <translation type="vanished">이 릴레이의 게이트웨이 등록…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5113,11 +5295,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>릴레이 주소와 분리된 게이트웨이 키 %1</translation>
+        <translation type="vanished">릴레이 주소와 분리된 게이트웨이 키 %1</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>이 노드 자신의 키 %1</translation>
+        <translation type="vanished">이 노드 자신의 키 %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5133,11 +5315,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>이 컴퓨터의 모든 트래픽을 네트워크로 보내기 (어떤 프로그램에도 프록시 설정 불필요)</translation>
+        <translation type="vanished">이 컴퓨터의 모든 트래픽을 네트워크로 보내기 (어떤 프로그램에도 프록시 설정 불필요)</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>각 프로그램의 연결은 네트워크의 게이트웨이를 통해 나가며, 연결마다 다른 게이트웨이를 쓰고 이름도 그곳에서 조회합니다. 이 컴퓨터 자체의 네트워크(프린터, 라우터)와 이 노드 자체의 연결은 직접 연결로 남습니다. 이 컴퓨터가 자신의 연결을 공유하는 동안에만 작동합니다.</translation>
+        <translation type="vanished">각 프로그램의 연결은 네트워크의 게이트웨이를 통해 나가며, 연결마다 다른 게이트웨이를 쓰고 이름도 그곳에서 조회합니다. 이 컴퓨터 자체의 네트워크(프린터, 라우터)와 이 노드 자체의 연결은 직접 연결로 남습니다. 이 컴퓨터가 자신의 연결을 공유하는 동안에만 작동합니다.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5165,11 +5347,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>켜짐: 지금 네트워크를 통한 연결 %1개, 보냄 %2, 받음 %3.</translation>
+        <translation type="vanished">켜짐: 지금 네트워크를 통한 연결 %1개, 보냄 %2, 받음 %3.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>이 시스템에서는 아직 사용할 수 없습니다.</translation>
+        <translation type="vanished">이 시스템에서는 아직 사용할 수 없습니다.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5181,7 +5363,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>클라이언트를 다시 시작하면 시작됩니다.</translation>
+        <translation type="vanished">클라이언트를 다시 시작하면 시작됩니다.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5210,6 +5392,334 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>none — relaying is switched off</source>
         <translation>없음 — 릴레이가 꺼져 있습니다</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>이 노드가 다른 사람에게 제공하는 것: 중계, 메일 보관, 인터넷 공유, 사이트 호스팅. 그리고 당신의 휴대폰에는 여기서 지출하는 방법. 여기 있는 모든 것처럼, 피어와 같은 방식으로 명부를 통해 찾을 수 있습니다. 이름은 별도 페이지가 있습니다.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>이 컴퓨터의 인터넷 연결을 공유하고, 대신 네트워크의 연결을 사용</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>켜면 이 컴퓨터의 연결이 공유되고, 자체 트래픽은 모두 네트워크의 게이트웨이를 통해 나가며 연결마다 다른 게이트웨이를 사용합니다. 이 컴퓨터 자체의 네트워크(프린터, 라우터)는 직접 연결로 남습니다. 거주지의 법이나 인터넷 제공업체의 약관이 연결 공유를 금지한다면 끄세요. 그러면 네트워크는 BPS 자체만 전달하고, 이 컴퓨터는 자신의 연결을 사용합니다.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>컴퓨터 전체: 켜짐, 현재 네트워크를 통한 연결 %1개, 보냄 %2, 받음 %3.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>컴퓨터 전체: 이 시스템에서는 아직 사용할 수 없습니다. 프로그램은 프록시를 사용할 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>컴퓨터 전체: 클라이언트를 다시 시작하면 시작됩니다.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>공유 안 함</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>아니요 — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>이 노드의 키로 폴더를 사이트로 게시하면, 키나 이름을 건넨 사람 누구나 오버레이를 통해 읽을 수 있습니다. 모든 파일은 서명되어 있으며 도착할 때 조각별로 검사됩니다. 주소 없이 등재하면 이 노드는 만남 지점에서 만나게 되며 사이트가 어디서 실행되는지 아무도 모릅니다. 주소와 함께 등재하면 방문자는 릴레이를 거쳐 도달하므로 이 노드는 방문자가 누구인지 알 수 없습니다. 이 컴퓨터의 프로그램(웹 앱, 채팅 서버)도 같은 방식으로 게시할 수 있습니다. 방문자는 오버레이를 통해 도달하고, 이 노드는 지정한 포트에만 연결합니다.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>폴더</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>도달</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>보냄</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>없음</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>방문자가 오버레이를 통해 도달하는 이 컴퓨터의 프로그램. web이라는 이름의 프로그램은 사이트가 없을 때 브라우저가 이 노드의 주소에서 여는 것입니다.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>프로그램</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>폴더 게시…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>다시 게시</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>변경 후 폴더를 다시 읽고 지금 있는 내용을 게시합니다.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>게시 중지</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>사이트에서 열기</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>프로그램 게시…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>프로그램 중지…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>게시하지 않음</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>없음 — 게시된 것이 없습니다</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — 파일 %2개, %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>등재되지 않음</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>아직 아무도 없음: 이 노드는 명부에 등재되지 않아 방문자가 사이트를 찾을 수 없습니다. 노드 페이지의 탐색에서 등재를 게시하세요.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>게시 중</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>아직 만나지 않음</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>만남 지점 %1곳에서, 주소는 게시하지 않음</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>아직 아님: 만남 지점에 등록하는 중이며, 명부의 릴레이가 필요합니다</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>이 노드의 주소에서, 방문자를 숨기는 릴레이를 거쳐</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>페이지 조각 %1개, %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>사이트로 게시할 폴더</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>프로그램 게시</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>이름(a-z, 0-9, - 중 1~32자). 브라우저가 이 노드의 주소에서 열어야 하는 웹 앱이라면 web으로 하세요:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>127.0.0.1에서 수신 대기하는 포트(이 컴퓨터 전용):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>프로그램 중지</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>방문자가 더 이상 도달하지 않을 프로그램:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>127.0.0.1:%2의 %1</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— 열린 스트림 %1개</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>동반 휴대폰</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>코인은 여기 둔 채 휴대폰에서 지출하세요. 휴대폰에는 코인 키가 없습니다. 휴대폰은 이 노드에 도달해 페어링된 키를 증명하고, 이 노드는 작은 용돈 지갑에서 지불합니다. 그 전에 휴대폰의 PIN과, 휴대폰이 바꿀 수 없는 당신이 정한 한도를 확인합니다. 휴대폰을 잃어버려도 잃는 것은 최대 용돈에 든 금액뿐입니다. 여기서 페어링을 해제하세요. 이 노드가 등재된 릴레이이고 다른 릴레이도 충분히 등재되어 있으면 휴대폰은 릴레이 세 개를 거쳐 오므로, 지켜보는 누구도 휴대폰의 위치를 알 수 없습니다. 그렇지 않으면 여기로 직접 연결합니다.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>용돈</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>휴대폰에서 도달 가능</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>휴대폰</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>결제 1회</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>하루</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>오늘 지출</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>상태</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>휴대폰 페어링…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>한도…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>잠금 해제</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>PIN을 연속 다섯 번 틀리면 휴대폰이 잠기며, 여기서 잠금을 풀 때까지 유지됩니다.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>페어링 해제</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>페어링된 휴대폰이 용돈 지갑에서 지출하도록 허용</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>오버레이가 필요합니다. 휴대폰이 이 노드의 코인을 쓸 수 있게 되므로 기본값은 꺼짐입니다.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>별도의 지갑으로, 암호 문구가 없으며(휴대폰이 결제할 때 입력할 사람이 없으므로) 휴대폰이 쓸 수 있어야 하는 만큼만 들어 있습니다. 스테이킹하지 않으며, 등재 비용을 내는 지갑이 될 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>만들기</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>용돈 지갑을 만들고 이 노드가 시작될 때마다 엽니다.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>충전…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>지갑의 보내기를 열어 용돈으로 코인을 옮깁니다.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>용돈 지갑</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, %1 추가 도착 예정</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>예, %1에서, 릴레이를 거쳐</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>직접, %1에서. 중간에 릴레이가 없습니다: 휴대폰의 네트워크에서는 이 컴퓨터와 통신하는 것이 보입니다. 이 네트워크 밖에서는 라우터에서 UDP 포트 %2를 이 컴퓨터로 전달하세요.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>아니요 — 이 노드는 아직 자신의 주소를 모릅니다</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>도달 불가</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>휴대폰이 대기 중</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>용돈 없음</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>휴대폰이 잠김</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>휴대폰 %1대 잠김</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>실행 중, 아직 휴대폰 없음</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>실행 중, 휴대폰 1대</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>실행 중, 휴대폰 %1대</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>기기 키 %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>잠김: 잘못된 PIN</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>페어링됨</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>%1 페어링 해제</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>%1의 페어링을 해제할까요? 다시 페어링할 때까지 지출할 수 없습니다. 휴대폰을 잃어버렸거나 도난당했다면 즉시 하세요.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>용돈 지갑을 만들고 열었습니다. 충전으로 휴대폰이 쓸 수 있어야 하는 만큼을 옮기세요.</translation>
     </message>
 </context>
 <context>
@@ -5341,6 +5851,30 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>노드가 아직 시작하는 중이라 핵심 설정을 아직 사용할 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>다른 사람은 명부에서 계산한 릴레이에서 당신을 만나며, 당신의 노드는 이만큼의 릴레이를 거쳐 각 릴레이로 가는 경로를 열어 둡니다. 만남 지점에는 그중 마지막 릴레이만 보이고, 당신의 주소는 절대 보이지 않습니다. 많을수록 더 잘 숨겨지지만 느려집니다.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>만남 지점 앞의 릴레이 수</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>이 컴퓨터가 네트워크의 인터넷을 사용할 때, 각 연결은 이만큼의 릴레이를 거쳐 게이트웨이의 만남 지점으로 가고, 그 뒤로는 게이트웨이 쪽 릴레이를 거칩니다. 게이트웨이는 당신이 누구인지 결코 알 수 없습니다. 많을수록 더 잘 숨겨지지만 느려집니다.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>게이트웨이 만남 지점 앞의 릴레이 수</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>직접 연결되는 것은 첫 번째 연결뿐이며, 그 상대인 입구 릴레이는 당신의 주소는 보지만 당신이 누구인지는 모릅니다. 메일은 항상 릴레이 세 개를 거칩니다.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>버전 %1</translation>
     </message>
 </context>
 <context>
@@ -5503,6 +6037,147 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Message verified.</source>
         <translation>메시지가 검증되었습니다.</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>사이트</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>오버레이에서 호스팅되며, 누군가 공유해 준 이름이나 키로 여는 사이트입니다. 여기서는 페이지가 스크립트 없이 표시되고 BPS 밖에서는 아무것도 가져오지 않으므로, 페이지는 당신의 위치를 알 수 없습니다.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>뒤로</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>앞으로</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>페이지 다시 가져오기</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://이름/ 또는 사이트의 키</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>열기</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>이 파일 저장…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>브라우저에서 열기</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>같은 사이트를 일반 브라우저에서, 이 컴퓨터에서만 도는 서버를 거쳐 엽니다. 거기서는 페이지가 스크립트를 실행할 수 있으므로, 숨겨진 사이트를 읽을 때는 여기 뷰어가 더 안전합니다.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>프로그램에 연결…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>이 사이트가 실행하는 프로그램(채팅 서버, 게임)에 이 컴퓨터의 프로그램에서 도달합니다. BPS Relay가 여기서 포트를 수신 대기하고 각 연결을 오버레이를 통해 그곳으로 전달합니다.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>사이트 주소가 아닙니다. 이름이나 키를 입력하세요(예: bps://pilot/).</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>%1 조회 중…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>오버레이를 통해 %1 가져오는 중…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1은(는) 이 뷰어가 표시하는 페이지가 아닙니다(%2바이트). 다른 프로그램으로 열려면 저장하세요.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>이 컴퓨터의 프로그램을 %1(으)로 향하게 하세요. BPS Relay는 다시 시작할 때까지 그곳에서 만들어진 모든 연결을 오버레이를 통해 사이트의 프로그램으로 전달합니다.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>브라우저용 사이트 서버가 실행되고 있지 않습니다. -siteproxy=0을 지정하지 않았다면 BPS Relay와 함께 시작됩니다.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1은(는) 어떤 키로도 연결되지 않습니다.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1은(는) 지난번에 열었을 때와 다른 키를 가리킵니다. 지금 이 이름을 가진 사람은 전에 읽었던 사람이 아닐 수 있습니다.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>만남 지점 중 하나에서, 당신의 릴레이 %1개를 거쳐 만났습니다. 당신도 호스트도 상대의 위치를 모릅니다.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>주소에서 릴레이 %1개를 거쳐 도달했습니다. 호스트는 당신이 누구인지 모릅니다.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>이 컴퓨터에서 읽은 당신 자신의 사이트입니다.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>무선으로 도달하므로 페이지가 느리게 옵니다.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1은(는) 이 노드가 아는 이름이 아닙니다: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>%1을(를) 열 수 없습니다: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>이 링크는 BPS 밖으로 향하므로 따라가지 않았습니다: %1
+원한다면 일반 브라우저에서 여세요. 운영자는 당신의 주소를 보게 됩니다.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>프로그램에 연결</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>사이트가 프로그램에 붙인 이름:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>브라우저에서 사이트 열기</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>브라우저는 이 컴퓨터에 사이트를 요청하고, BPS Relay는 여기서처럼 오버레이를 통해 가져옵니다. 각 페이지는 자신의 사이트에서만 불러올 수 있으므로, 당신의 위치를 알아내려고 열린 인터넷에서 무언가를 가져올 수 없습니다.
+
+그래도 브라우저가 할 수 있는 일: 스크립트는 WebRTC로 페이지에 이 컴퓨터의 주소를 보여 줄 수 있고, 일반 사이트로 가는 링크를 따라가면 다른 링크처럼 밖으로 나갑니다. BPS Relay의 뷰어는 스크립트를 실행하지 않으므로 숨겨진 사이트를 읽기에 더 안전한 방법입니다.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>파일 저장</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>%1을(를) 저장할 수 없습니다.</translation>
     </message>
 </context>
 <context>

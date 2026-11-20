@@ -1109,6 +1109,10 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <source>Not staking</source>
         <translation>ステーキングしていません</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>サイト</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1263,6 +1267,92 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>コールドステーキングのため %1 に委任済み</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>%1 の上限</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>この電話がお小遣いウォレットから使える額（手数料込み）。</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>1 回の支払いの上限</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>任意の 24 時間の上限</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>電話をペアリング</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>電話の BPS アプリで「ペアリング」を選び、このコードをスキャンしてください。または、その下のテキストをアプリにコピーしてください。1 回だけ、10 分間有効です。</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>コードをコピー</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>新しいコードを表示</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>電話に同じ 6 桁の数字が表示されている場合にのみペアリングしてください。違う数字なら、別の誰かが先にコードに応答しています。拒否して、新しいコードを表示してください。</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>この電話がお小遣いウォレットから使える額。後で変更できるのはこのノードだけで、電話からは決して変更できません。</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>1 回の支払いの上限</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>任意の 24 時間の上限</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>拒否</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>この電話をペアリング</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>コードを作成しています…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>このコードは期限切れです。</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>電話を待っています… コードはあと %1 分有効です。</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>このビルドは QR コードを描画できません。代わりに下のテキストをアプリにコピーしてください。</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>「%1」という電話がこのノードとのペアリングを求めています。</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>ペアリングしました。電話は設定した上限の範囲でお小遣いウォレットから支払えるようになりました。一覧はサーバーページにあり、上限の変更、PIN を何度も間違えた後のロック解除、ペアリング解除ができます。</translation>
     </message>
 </context>
 <context>
@@ -1438,7 +1528,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>ピアまたはアドレスを検索</translation>
+        <translation type="vanished">ピアまたはアドレスを検索</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1575,6 +1665,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>ピアはサーバーではなくチェーン上で自らを告知するため、このリストは誰にとっても同じで、誰も編集できません。オーバーレイ経由で登録されたピアは、今日どこで会えるかを表示します。これは毎日変わります。リレーはオンラインの間だけアドレスを表示します。アドレスがチェーンに載ることはないためです。</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>名前</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>名前を登録…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>名前があれば、他の人はキーをコピーせずにあなたに連絡できます。名前は「名前」タブで登録します。</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>ピア、メモ、アドレスを検索</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>これらの名前はすべてこのノードのキーを指しています。他の人はどの名前からでもあなたに連絡できます。</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>名前を管理…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>名前はオフ</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>名前には名前インデックスが必要です。名前を登録・表示するには設定で有効にしてください。</translation>
     </message>
 </context>
 <context>
@@ -3200,15 +3322,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>あなたが存在すること、そして任意で、どこで見つけられるかを示す短い記録をチェーンに書き込みます。</translation>
+        <translation type="vanished">あなたが存在すること、そして任意で、どこで見つけられるかを示す短い記録をチェーンに書き込みます。</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>ピアはどのようにあなたに接続しますか？</translation>
+        <translation type="vanished">ピアはどのようにあなたに接続しますか？</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>オーバーレイ経由 — アドレスは公開しない</translation>
+        <translation type="vanished">オーバーレイ経由 — アドレスは公開しない</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3216,35 +3338,35 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>私が公開するアドレスで</translation>
+        <translation type="vanished">私が公開するアドレスで</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>他のピアが接続できるアドレス</translation>
+        <translation type="vanished">他のピアが接続できるアドレス</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>誰でも見ることができ、チェーンに永久に残ります。onion アドレスは誰にもあなたまでたどれない場所を公開し、NAT の内側からでも機能します。IP アドレスはそのどちらもできません。IP アドレスを公開したノードは、他の人からリレーとして選ばれることがあります。</translation>
+        <translation type="vanished">誰でも見ることができ、チェーンに永久に残ります。onion アドレスは誰にもあなたまでたどれない場所を公開し、NAT の内側からでも機能します。IP アドレスはそのどちらもできません。IP アドレスを公開したノードは、他の人からリレーとして選ばれることがあります。</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3288,7 +3410,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>あなたのノードは登録に署名し、オーバーレイ経由で入口のリレーに送ります。登録料を支払うリレーは、あなたの登録を自分がステーキングで作るブロックに入れるので、大半のノードが中継しなくても承認され、報酬を分け合うピアにあなたを加えます。後でリレーが支払いをやめた場合、あなたの登録は 1 か月以内に失効します。残高のあるウォレットからいつでも自分で更新できます。</translation>
+        <translation type="vanished">あなたのノードは登録に署名し、オーバーレイ経由で入口のリレーに送ります。登録料を支払うリレーは、あなたの登録を自分がステーキングで作るブロックに入れるので、大半のノードが中継しなくても承認され、報酬を分け合うピアにあなたを加えます。後でリレーが支払いをやめた場合、あなたの登録は 1 か月以内に失効します。残高のあるウォレットからいつでも自分で更新できます。</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3304,11 +3426,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>アドレスを入力するか、公開しないことを選んでください。</translation>
+        <translation type="vanished">アドレスを入力するか、公開しないことを選んでください。</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>リレーに公開を依頼しています… 最大 30 秒ほどかかることがあります。</translation>
+        <translation type="vanished">リレーに公開を依頼しています… 最大 30 秒ほどかかることがあります。</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3340,11 +3462,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>このリレーのゲートウェイを登録</translation>
+        <translation type="vanished">このリレーのゲートウェイを登録</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>リレーの登録にはそのアドレスが載っているため、そのゲートウェイはアドレスのない2つ目の鍵で、別に登録されます。名簿から2つが同じコンピューターのものだと分かる人はいません。訪問者はリレーを経由してゲートウェイに届くので、ゲートウェイには相手が誰か分かりません。訪問者が見るウェブサイトには、このコンピューターのアドレスが見えます。</translation>
+        <translation type="vanished">リレーの登録にはそのアドレスが載っているため、そのゲートウェイはアドレスのない2つ目の鍵で、別に登録されます。名簿から2つが同じコンピューターのものだと分かる人はいません。訪問者はリレーを経由してゲートウェイに届くので、ゲートウェイには相手が誰か分かりません。訪問者が見るウェブサイトには、このコンピューターのアドレスが見えます。</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3360,11 +3482,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>別のリレーが支払う（リレー経由で依頼）</translation>
+        <translation type="vanished">別のリレーが支払う（リレー経由で依頼）</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>あなたのノードはゲートウェイの登録に署名し、リレーを経由して別のリレーに送ります。そのリレーが支払い、自分がステーキングで作るブロックに入れます。そのリレーが知るのはゲートウェイの鍵だけで、このコンピューターのアドレスは決して知りません。このノード自身のウォレットから支払うと、チェーン上でゲートウェイがこのリレーと結び付き、ひいてはそのアドレスと結び付いてしまいます。</translation>
+        <translation type="vanished">あなたのノードはゲートウェイの登録に署名し、リレーを経由して別のリレーに送ります。そのリレーが支払い、自分がステーキングで作るブロックに入れます。そのリレーが知るのはゲートウェイの鍵だけで、このコンピューターのアドレスは決して知りません。このノード自身のウォレットから支払うと、チェーン上でゲートウェイがこのリレーと結び付き、ひいてはそのアドレスと結び付いてしまいます。</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3380,7 +3502,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>あなたの登録は、あなたが誰かを示し、どこで動いているかは示しません。ピアはオーバーレイ経由であなたに届き、双方が名簿から割り出す地点であなたと会います。この地点は毎日変わり、発見に今日のものが表示されます。登録には、有効な間あなたと会えるリレーも1つ記されており、更新のたびに新しいものになります。これがこのクライアントの既定の設定です。</translation>
+        <translation type="vanished">あなたの登録は、あなたが誰かを示し、どこで動いているかは示しません。ピアはオーバーレイ経由であなたに届き、双方が名簿から割り出す地点であなたと会います。この地点は毎日変わり、発見に今日のものが表示されます。登録には、有効な間あなたと会えるリレーも1つ記されており、更新のたびに新しいものになります。これがこのクライアントの既定の設定です。</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3400,15 +3522,59 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>このノードは、サーバーページの設定どおりインターネット接続をゲートウェイとして共有するため、登録にもそう記されます。</translation>
+        <translation type="vanished">このノードは、サーバーページの設定どおりインターネット接続をゲートウェイとして共有するため、登録にもそう記されます。</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>このノードは、サーバーページの設定どおり、他の人のための中継もインターネット接続の共有も行いません。</translation>
+        <translation type="vanished">このノードは、サーバーページの設定どおり、他の人のための中継もインターネット接続の共有も行いません。</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>そこでの変更は、次の登録とともに名簿に反映されます。</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>あなたが存在することを示す短い記録と、任意であなたについての 1 行をチェーンに書き込みます。</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>登録の内容</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>登録が示すのはあなたが誰かであって、どこで動いているかではありません。アドレスは含まれません。ピアはオーバーレイを通じてあなたに到達し、双方が名簿から割り出す、毎日変わる地点であなたと会います。今日の地点は「発見」に表示されます。登録には、有効な間あなたに会えるリレーも 1 つ記され、更新のたびに新しいリレーが記されます。</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>メモ</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>任意：キーの横に表示される 1 行</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>誰でも読むことができ、登録が終わった後もチェーンに永久に残ります。気になる場合は、あなたの居場所や正体がわかることは書かないでください。</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>ノードは登録に署名し、自分の入口ではないリレーへ経路を通じて送ります。そのため、そのリレーにはあなたが誰かはわかっても、どこにいるかはわかりません。登録料を支払うリレーは、あなたの登録を自らステークするブロックに入れるので、ほとんどのノードが中継しない間でも承認されます。また、報酬を分け合うピアにあなたを加えます。後で支払いをやめた場合、登録はその月のうちに失効します。資金のあるウォレットから自分でいつでも更新できます。</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 バイト</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>長すぎます：簡単な英語以外の文字は 1 文字につき 2〜4 バイトを使います。</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>メモが長すぎます。</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>メモに制御文字や文字の向きを変える記号は使えません。</translation>
     </message>
 </context>
 <context>
@@ -3576,6 +3742,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>BitcoinPoS アドレスを入力（例: %1）</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>両方の上限を設定してください。</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>1 回の支払いに 1 日分を超える額は認められません。</translation>
     </message>
 </context>
 <context>
@@ -4276,6 +4450,14 @@ worked out from the roster; they change every day:</source>
         <source>meets at %1</source>
         <translation>%1 で会える</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>メモ</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>このキーの持ち主が書いたもので、誰も確認していません。</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4757,7 +4939,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>このノードから提供されるサイトやサービスで、鍵や名前で見つけてオーバーレイ経由でアクセスするため、ホストは自分の居場所を公開しません。落ち合う部分は既にあります。サービスは、双方が名簿から計算する落ち合い地点に登録します。これを通じたページやアプリの提供はまだ実装されていません。</translation>
+        <translation type="vanished">このノードから提供されるサイトやサービスで、鍵や名前で見つけてオーバーレイ経由でアクセスするため、ホストは自分の居場所を公開しません。落ち合う部分は既にあります。サービスは、双方が名簿から計算する落ち合い地点に登録します。これを通じたページやアプリの提供はまだ実装されていません。</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4981,7 +5163,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>このノードがほかの人に提供するもの。中継、メールの保管、インターネットの共有はすでに動いています。ホスティングは準備中で、ここにあるものすべてと同じく、ピアと同じ方法 — 名簿を通じて — 見つけられます。名前には専用のページがあります。</translation>
+        <translation type="vanished">このノードがほかの人に提供するもの。中継、メールの保管、インターネットの共有はすでに動いています。ホスティングは準備中で、ここにあるものすべてと同じく、ピアと同じ方法 — 名簿を通じて — 見つけられます。名前には専用のページがあります。</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -4997,7 +5179,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>登録</translation>
+        <translation type="vanished">登録</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5009,15 +5191,15 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>ゲートウェイとして登録…</translation>
+        <translation type="vanished">ゲートウェイとして登録…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>このコンピューターのインターネット接続をゲートウェイとして共有する</translation>
+        <translation type="vanished">このコンピューターのインターネット接続をゲートウェイとして共有する</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>お住まいの地域の法律やインターネットプロバイダーの規約が接続の共有を禁じている場合はオフにしてください。オフでも、このノードは中継とメールの保管を続けてチェーンに参加し、自分の接続は直接使います。</translation>
+        <translation type="vanished">お住まいの地域の法律やインターネットプロバイダーの規約が接続の共有を禁じている場合はオフにしてください。オフでも、このノードは中継とメールの保管を続けてチェーンに参加し、自分の接続は直接使います。</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5033,11 +5215,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>このコンピューターのプログラムが、ローカルプロキシを通じてネットワークのインターネットを使えるようにする</translation>
+        <translation type="vanished">このコンピューターのプログラムが、ローカルプロキシを通じてネットワークのインターネットを使えるようにする</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>このコンピューター専用の SOCKS5 プロキシです。各接続は別のメンバーのゲートウェイから出ていき、名前の解決もそこで行われ、ここでは決して行われません。このコンピューターが自分の接続を共有している間だけ動作します。</translation>
+        <translation type="vanished">このコンピューター専用の SOCKS5 プロキシです。各接続は別のメンバーのゲートウェイから出ていき、名前の解決もそこで行われ、ここでは決して行われません。このコンピューターが自分の接続を共有している間だけ動作します。</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5073,27 +5255,27 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>ゲートウェイとして未登録</translation>
+        <translation type="vanished">ゲートウェイとして未登録</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>まだです — 名簿はこのノードをゲートウェイとして載せていないので、誰も見つけられません</translation>
+        <translation type="vanished">まだです — 名簿はこのノードをゲートウェイとして載せていないので、誰も見つけられません</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>まだありません — リレーは自分の登録とは別に、アドレスのない2つ目の鍵でゲートウェイを登録します</translation>
+        <translation type="vanished">まだありません — リレーは自分の登録とは別に、アドレスのない2つ目の鍵でゲートウェイを登録します</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>まだありません — このノードの登録にはゲートウェイのオプションがありません。オプションをオンにして公開し直してください</translation>
+        <translation type="vanished">まだありません — このノードの登録にはゲートウェイのオプションがありません。オプションをオンにして公開し直してください</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>まだありません — アドレスなしでゲートウェイのオプションをオンにした登録を公開してください</translation>
+        <translation type="vanished">まだありません — アドレスなしでゲートウェイのオプションをオンにした登録を公開してください</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>このリレーのゲートウェイを登録…</translation>
+        <translation type="vanished">このリレーのゲートウェイを登録…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5113,11 +5295,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>リレーのアドレスとは別の、ゲートウェイ鍵 %1</translation>
+        <translation type="vanished">リレーのアドレスとは別の、ゲートウェイ鍵 %1</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>このノード自身の鍵 %1</translation>
+        <translation type="vanished">このノード自身の鍵 %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5133,11 +5315,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>このコンピューターのすべての通信をネットワーク経由にする（どのプログラムにもプロキシ設定は不要）</translation>
+        <translation type="vanished">このコンピューターのすべての通信をネットワーク経由にする（どのプログラムにもプロキシ設定は不要）</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>各プログラムの接続はネットワークのゲートウェイから外に出ます。接続ごとに別のゲートウェイを使い、名前の検索もそこで行います。このコンピューター自身のネットワーク（プリンター、ルーターなど）とこのノード自身の接続は直接のままです。このコンピューターが自分の接続を共有している間だけ機能します。</translation>
+        <translation type="vanished">各プログラムの接続はネットワークのゲートウェイから外に出ます。接続ごとに別のゲートウェイを使い、名前の検索もそこで行います。このコンピューター自身のネットワーク（プリンター、ルーターなど）とこのノード自身の接続は直接のままです。このコンピューターが自分の接続を共有している間だけ機能します。</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5165,11 +5347,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>オン: 現在 %1 件の接続がネットワーク経由。送信 %2、受信 %3。</translation>
+        <translation type="vanished">オン: 現在 %1 件の接続がネットワーク経由。送信 %2、受信 %3。</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>このシステムではまだ利用できません。</translation>
+        <translation type="vanished">このシステムではまだ利用できません。</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5181,7 +5363,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>クライアントの再起動後に始まります。</translation>
+        <translation type="vanished">クライアントの再起動後に始まります。</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5210,6 +5392,334 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>none — relaying is switched off</source>
         <translation>なし — リレーはオフです</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>このノードが他の人に提供するもの：中継、メールの保管、インターネットの共有、サイトのホスティング。そして自分の電話には、ここから支払う手段を。ここにあるものはすべて、ピアと同じく名簿を通じて見つけられます。名前には専用のページがあります。</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>このコンピューターのインターネット接続を共有し、代わりにネットワークの接続を使う</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>オンにすると、このコンピューターの接続が共有され、自身の通信はすべてネットワークのゲートウェイ経由で出ていきます。接続ごとに別のゲートウェイを使います。このコンピューター自身のネットワーク（プリンター、ルーター）は直接のままです。お住まいの地域の法律やプロバイダーの規約が接続の共有を禁じている場合はオフにしてください。その場合、ネットワークは BPS そのものだけを運び、このコンピューターは自分の接続を使います。</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>コンピューター全体：オン、現在ネットワーク経由の接続 %1 件。送信 %2、受信 %3。</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>コンピューター全体：このシステムではまだ使えません。プログラムはプロキシを使えます。</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>コンピューター全体：クライアントの再起動後に開始します。</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>共有していません</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>いいえ — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>フォルダーをこのノードのキーでサイトとして公開すると、キーや名前を渡した人なら誰でもオーバーレイを通じて読めます。各ファイルは署名されており、届くたびに断片ごとに検証されます。アドレスなしで登録すると、このノードには待ち合わせ地点で会い、サイトがどこで動いているかは誰にもわかりません。アドレス付きで登録すると、訪問者はリレー経由で到達するので、訪問者が誰かはこのノードにわかりません。このコンピューター上のプログラム（Web アプリ、チャットサーバー）も同じように公開できます。訪問者はオーバーレイを通じて到達し、このノードは指定したポートにだけ接続します。</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>フォルダー</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>到達</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>送信</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>なし</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>訪問者がオーバーレイを通じて到達する、このコンピューター上のプログラム。web という名前のプログラムは、サイトがないときにブラウザーがこのノードのアドレスで開くものです。</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>プログラム</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>フォルダーを公開…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>再公開</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>変更後にフォルダーを読み直し、今の内容を公開します。</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>公開を停止</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>サイトで開く</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>プログラムを公開…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>プログラムを停止…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>公開していません</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>なし — 何も公開されていません</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 ファイル、%3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>未登録</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>まだ誰からも：このノードは名簿に登録されていないので、訪問者はサイトを見つけられません。ノードページの「発見」で登録を公開してください。</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>公開中</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>まだ会っていません</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>%1 か所の待ち合わせ地点で、アドレスは公開せず</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>まだ：待ち合わせ地点に登録中です。名簿のリレーが必要です</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>このノードのアドレスで、訪問者を隠すリレー経由</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>ページの断片 %1 個、%2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>サイトとして公開するフォルダー</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>プログラムを公開</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>名前（a-z、0-9、- から 1〜32 文字）。ブラウザーがこのノードのアドレスで開く Web アプリなら web にしてください：</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>127.0.0.1 上で待ち受けるポート（このコンピューターのみ）：</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>プログラムを停止</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>訪問者が今後到達できないようにするプログラム：</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>127.0.0.1:%2 の %1</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— 開いているストリーム %1 本</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>コンパニオン電話</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>コインはここに置いたまま、電話から支払えます。電話はコインのキーを持ちません。このノードに到達し、ペアリングしたキーを証明すると、このノードが小さなお小遣いウォレットから支払います。その前に、電話の PIN と、電話からは変更できないあなたが設定した上限を確認します。電話をなくしても、失うのは最大でお小遣いの残高だけです。ここでペアリングを解除してください。このノードが登録済みのリレーで、他にも十分な数が登録されていれば、電話は 3 つのリレーを経由して来るので、見ている誰にも居場所はわかりません。そうでなければ直接ここに接続します。</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>お小遣い</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>電話から到達可能</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>電話</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>1 回の支払い</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>1 日</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>今日の支出</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>状態</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>電話をペアリング…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>上限…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>ロック解除</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>PIN を 5 回続けて間違えると電話はロックされ、ここで解除するまで使えません。</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>ペアリング解除</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>ペアリングした電話にお小遣いウォレットからの支払いを許可</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>オーバーレイが必要です。電話がこのノードのコインを使えるようになるため、既定ではオフです。</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>専用のウォレットで、パスフレーズはありません（電話が支払うときに入力する人がいないため）。中身は電話に使わせたい分だけにします。ステークすることはなく、登録料を支払うウォレットにもなれません。</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>作成</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>お小遣いウォレットを作成し、このノードの起動時に毎回開きます。</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>チャージ…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>ウォレットの「送金」を開いて、お小遣いにコインを移します。</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>お小遣いウォレット</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>、さらに %1 が到着予定</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>はい、%1 で、リレー経由</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>直接、%1 で。間にリレーはありません。電話のネットワークからは、このコンピューターと通信していることが見えます。このネットワークの外からは、ルーターで UDP ポート %2 をこのコンピューターに転送してください。</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>いいえ — このノードは自分のアドレスをまだ知りません</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>到達不可</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>電話が待機中</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>お小遣いなし</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>電話がロックされています</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 台の電話がロックされています</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>動作中、電話はまだありません</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>動作中、電話 1 台</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>動作中、電話 %1 台</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>デバイスキー %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>ロック：PIN の誤り</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>ペアリング済み</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>%1 のペアリングを解除</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>%1 のペアリングを解除しますか？ 再びペアリングするまで支払いはできなくなります。電話を紛失したり盗まれたりした場合はすぐに行ってください。</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>お小遣いウォレットを作成して開きました。「チャージ」で、電話に使わせたい分をここに移してください。</translation>
     </message>
 </context>
 <context>
@@ -5341,6 +5851,30 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>ノードはまだ起動中です。基本設定はまだ利用できません。</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>他の人は名簿から割り出したリレーであなたと会い、あなたのノードはこの数のリレーを経由して各リレーへの経路を開いたままにします。待ち合わせ地点に見えるのはその最後のリレーだけで、あなたのアドレスは見えません。多いほどよく隠れますが、遅くなります。</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>待ち合わせ地点までのリレー数</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>このコンピューターがネットワークのインターネットを使うとき、各接続はこの数のリレーを経由してゲートウェイの待ち合わせ地点へ向かい、その後はゲートウェイ側のリレーを通ります。ゲートウェイにあなたが誰かは決してわかりません。多いほどよく隠れますが、遅くなります。</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>ゲートウェイの待ち合わせ地点までのリレー数</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>直接つながるのは最初の接続だけで、その相手の入口リレーにはあなたのアドレスは見えても、あなたが誰かはわかりません。メールは常に 3 つのリレーを通ります。</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>バージョン %1</translation>
     </message>
 </context>
 <context>
@@ -5503,6 +6037,147 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Message verified.</source>
         <translation>メッセージは検証されました。</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>サイト</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>オーバーレイ上でホストされ、誰かに教わった名前やキーで開くサイトです。ここではページはスクリプトなしで表示され、BPS の外からは何も読み込まないため、ページにあなたの居場所はわかりません。</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>戻る</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>進む</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>ページを再取得</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://名前/ またはサイトのキー</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>開く</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>このファイルを保存…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>ブラウザーで開く</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>同じサイトを通常のブラウザーで、このコンピューター上だけのサーバー経由で開きます。そこではページがスクリプトを実行することがあるので、隠しサイトを読むにはここのビューアーの方が安全です。</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>プログラムに接続…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>このサイトが動かしているプログラム（チャットサーバー、ゲーム）に、このコンピューター上のプログラムから到達します。BPS Relay がここでポートを待ち受け、各接続をオーバーレイ経由で届けます。</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>これはサイトのアドレスではありません。名前かキーを入力してください（例：bps://pilot/）。</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>%1 を検索しています…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>オーバーレイ経由で %1 を取得しています…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 はこのビューアーで表示できるページではありません（%2 バイト）。保存して別のプログラムで開いてください。</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>このコンピューター上のプログラムを %1 に向けてください。BPS Relay は再起動するまで、そこで行われた接続をすべてオーバーレイ経由でサイトのプログラムへ届けます。</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>ブラウザー向けのサイトサーバーが動いていません。-siteproxy=0 を指定しない限り、BPS Relay と一緒に起動します。</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 はどのキーも指していません。</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 は前回開いたときとは別のキーを指しています。今この名前を持っている人は、以前読んだ相手ではないかもしれません。</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>待ち合わせ地点の 1 つで、あなたのリレー %1 つを経由して会いました。あなたにもホストにも、相手の居場所はわかりません。</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>アドレスに %1 つのリレー経由で到達しました。ホストにあなたが誰かはわかりません。</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>このコンピューターから読んだ、あなた自身のサイトです。</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>無線経由で到達するため、ページの表示は遅くなります。</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 はこのノードが知っている名前ではありません：%2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>%1 を開けませんでした：%2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>このリンクは BPS の外に向かうため、開きませんでした：%1
+開く場合は通常のブラウザーで開いてください。運営者にあなたのアドレスが見えます。</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>プログラムに接続</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>サイトがプログラムに付けた名前：</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>ブラウザーでサイトを開く</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>ブラウザーはこのコンピューターにサイトを要求し、BPS Relay はここと同じようにオーバーレイ経由で取得します。各ページは自分のサイトからしか読み込めないため、あなたの居場所を知るためにインターネットから何かを取ってくることはできません。
+
+それでもブラウザーにできること：スクリプトは WebRTC を使ってページにこのコンピューターのアドレスを見せることができ、通常のサイトへのリンクをたどると、ほかのリンクと同じように外へ出ていきます。BPS Relay のビューアーはスクリプトを実行しないので、隠しサイトを読むにはより安全な方法です。</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>ファイルを保存</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>%1 を保存できませんでした。</translation>
     </message>
 </context>
 <context>

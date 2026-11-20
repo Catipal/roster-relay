@@ -1110,6 +1110,10 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</transla
         <source>Not staking</source>
         <translation>استیکینگ انجام نمی‌شود</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>سایت‌ها</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1264,6 +1268,92 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</transla
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>برای استیکینگ سرد به %1 واگذار شده</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>محدودیت‌های %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>این تلفن چقدر می‌تواند از کیف پول جیبی خرج کند، با احتساب کارمزدها.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>حداکثر در یک پرداخت</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>حداکثر در هر ۲۴ ساعت</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>جفت کردن تلفن</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>در برنامه BPS روی تلفن، جفت کردن را انتخاب کنید و این کد را اسکن کنید. یا متن زیر آن را در برنامه کپی کنید. یک بار و به مدت ده دقیقه کار می‌کند.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>کپی کد</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>نمایش کد جدید</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>فقط اگر تلفن همین شش رقم را نشان می‌دهد جفت کنید. اگر ارقام دیگری نشان می‌دهد، کس دیگری زودتر به کد پاسخ داده است: رد کنید و کد جدیدی نشان دهید.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>این تلفن چقدر می‌تواند از کیف پول جیبی خرج کند. بعداً فقط این گره می‌تواند آن را تغییر دهد، هرگز تلفن.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>حداکثر در یک پرداخت</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>حداکثر در هر ۲۴ ساعت</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>رد</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>جفت کردن این تلفن</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>در حال ساخت کد…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>این کد منقضی شده است.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>در انتظار تلفن… کد تا %1 دقیقه دیگر کار می‌کند.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>این نسخه نمی‌تواند کد QR بکشد: به جای آن متن زیر را در برنامه کپی کنید.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>تلفنی به نام «%1» می‌خواهد با این گره جفت شود.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>جفت شد. تلفن اکنون می‌تواند در محدوده‌هایی که تعیین کرده‌اید از کیف پول جیبی خرج کند. فهرست آن در صفحه سرور است، جایی که می‌توانید محدودیت‌هایش را تغییر دهید، پس از PINهای اشتباه زیاد قفلش را باز کنید یا جفتش را لغو کنید.</translation>
     </message>
 </context>
 <context>
@@ -1439,7 +1529,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</transla
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>یافتن همتا یا نشانی</translation>
+        <translation type="vanished">یافتن همتا یا نشانی</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1576,6 +1666,38 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>همتاها خود را روی زنجیره اعلام می‌کنند نه روی یک سرور، بنابراین این فهرست برای همه یکسان است و هیچ‌کس نمی‌تواند آن را ویرایش کند. همتایی که از طریق شبکه روکش ثبت شده نشان می‌دهد امروز کجا می‌توان با آن دیدار کرد، که هر روز تغییر می‌کند؛ رله نشانی‌اش را فقط وقتی آنلاین است نشان می‌دهد، چون هرگز روی زنجیره نیست.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>نام</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>ثبت نام…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>نام راهی است که دیگران بدون کپی کردن کلید شما به شما می‌رسند. نام‌ها در زبانه نام‌ها ثبت می‌شوند.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>یافتن همتا، یادداشت یا نشانی</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>همه این نام‌ها به کلید این گره می‌رسند. دیگران می‌توانند با هر یک از آن‌ها به شما برسند.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>مدیریت نام‌ها…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>نام‌ها خاموش</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>نام‌ها به نمایه نام نیاز دارند. آن را در تنظیمات روشن کنید تا نامی ثبت و نمایش دهید.</translation>
     </message>
 </context>
 <context>
@@ -3202,15 +3324,15 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>این یک رکورد کوتاه روی زنجیره می‌نویسد که می‌گوید شما وجود دارید، و به دلخواه، کجا می‌توان شما را یافت.</translation>
+        <translation type="vanished">این یک رکورد کوتاه روی زنجیره می‌نویسد که می‌گوید شما وجود دارید، و به دلخواه، کجا می‌توان شما را یافت.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>همتاها چگونه به شما برسند؟</translation>
+        <translation type="vanished">همتاها چگونه به شما برسند؟</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>از طریق شبکه روکش — بدون انتشار نشانی</translation>
+        <translation type="vanished">از طریق شبکه روکش — بدون انتشار نشانی</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3218,35 +3340,35 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>در نشانی‌ای که منتشر می‌کنم</translation>
+        <translation type="vanished">در نشانی‌ای که منتشر می‌کنم</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>نشانی‌ای که دیگر همتاها می‌توانند به آن برسند</translation>
+        <translation type="vanished">نشانی‌ای که دیگر همتاها می‌توانند به آن برسند</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>هر کسی می‌تواند آن را ببیند و زنجیره آن را برای همیشه نگه می‌دارد. نشانی onion مکانی منتشر می‌کند که هیچ‌کس نمی‌تواند آن را به شما برساند و پشت NAT هم کار می‌کند؛ نشانی IP هیچ‌کدام را ندارد. گرهی که نشانی IP منتشر کند ممکن است از سوی دیگران به عنوان رله انتخاب شود.</translation>
+        <translation type="vanished">هر کسی می‌تواند آن را ببیند و زنجیره آن را برای همیشه نگه می‌دارد. نشانی onion مکانی منتشر می‌کند که هیچ‌کس نمی‌تواند آن را به شما برساند و پشت NAT هم کار می‌کند؛ نشانی IP هیچ‌کدام را ندارد. گرهی که نشانی IP منتشر کند ممکن است از سوی دیگران به عنوان رله انتخاب شود.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3290,7 +3412,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>گره شما ثبت را امضا می‌کند و از طریق شبکه روکش به رله‌ای که از آن وارد می‌شود می‌فرستد. رله‌ای که برای ثبت‌ها پرداخت می‌کند، ثبت شما را در بلوکی که خودش استیک می‌کند می‌گذارد، بنابراین حتی اگر بیشتر گره‌ها آن را منتقل نکنند تأیید می‌شود، و شما را به همتاهایی که پاداش‌هایش را با آن‌ها تقسیم می‌کند می‌افزاید. اگر بعداً پرداخت را متوقف کند، ثبت شما ظرف یک ماه منقضی می‌شود؛ همیشه می‌توانید خودتان از یک کیف پول دارای موجودی تمدید کنید.</translation>
+        <translation type="vanished">گره شما ثبت را امضا می‌کند و از طریق شبکه روکش به رله‌ای که از آن وارد می‌شود می‌فرستد. رله‌ای که برای ثبت‌ها پرداخت می‌کند، ثبت شما را در بلوکی که خودش استیک می‌کند می‌گذارد، بنابراین حتی اگر بیشتر گره‌ها آن را منتقل نکنند تأیید می‌شود، و شما را به همتاهایی که پاداش‌هایش را با آن‌ها تقسیم می‌کند می‌افزاید. اگر بعداً پرداخت را متوقف کند، ثبت شما ظرف یک ماه منقضی می‌شود؛ همیشه می‌توانید خودتان از یک کیف پول دارای موجودی تمدید کنید.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3306,11 +3428,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>یک نشانی وارد کنید، یا انتشار ندادن آن را انتخاب کنید.</translation>
+        <translation type="vanished">یک نشانی وارد کنید، یا انتشار ندادن آن را انتخاب کنید.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>در حال درخواست از رله شما برای انتشار… ممکن است تا نیم دقیقه طول بکشد.</translation>
+        <translation type="vanished">در حال درخواست از رله شما برای انتشار… ممکن است تا نیم دقیقه طول بکشد.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3342,11 +3464,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>ثبت دروازهٔ این رله</translation>
+        <translation type="vanished">ثبت دروازهٔ این رله</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>ثبت یک رله نشانی آن را دارد، پس دروازه‌اش با کلید دومی بدون نشانی، جدا از آن، ثبت می‌شود. هیچ‌کس از روی فهرست نمی‌تواند بفهمد که این دو مال یک رایانه‌اند. بازدیدکنندگان از راه رله‌ها به دروازه می‌رسند، پس دروازه هرگز نمی‌فهمد آن‌ها کیستند؛ وب‌سایت‌هایی که بازدید می‌کنند نشانی این رایانه را می‌بینند.</translation>
+        <translation type="vanished">ثبت یک رله نشانی آن را دارد، پس دروازه‌اش با کلید دومی بدون نشانی، جدا از آن، ثبت می‌شود. هیچ‌کس از روی فهرست نمی‌تواند بفهمد که این دو مال یک رایانه‌اند. بازدیدکنندگان از راه رله‌ها به دروازه می‌رسند، پس دروازه هرگز نمی‌فهمد آن‌ها کیستند؛ وب‌سایت‌هایی که بازدید می‌کنند نشانی این رایانه را می‌بینند.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3362,11 +3484,11 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>رله‌ای دیگر می‌پردازد، از راه رله‌های دیگر درخواست می‌شود</translation>
+        <translation type="vanished">رله‌ای دیگر می‌پردازد، از راه رله‌های دیگر درخواست می‌شود</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>گره شما ثبت دروازه را امضا می‌کند و از راه رله‌ها به رله‌ای دیگر می‌فرستد که هزینه‌اش را می‌پردازد و آن را در بلوکی که خودش استیک می‌کند می‌گذارد. آن رله کلید دروازه را می‌فهمد و هرگز نشانی این رایانه را نه. پرداخت از کیف پول خود این گره، دروازه را روی زنجیره به این رله و در نتیجه به نشانی آن پیوند می‌داد.</translation>
+        <translation type="vanished">گره شما ثبت دروازه را امضا می‌کند و از راه رله‌ها به رله‌ای دیگر می‌فرستد که هزینه‌اش را می‌پردازد و آن را در بلوکی که خودش استیک می‌کند می‌گذارد. آن رله کلید دروازه را می‌فهمد و هرگز نشانی این رایانه را نه. پرداخت از کیف پول خود این گره، دروازه را روی زنجیره به این رله و در نتیجه به نشانی آن پیوند می‌داد.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3382,7 +3504,7 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>ثبت شما می‌گوید چه کسی هستید، نه کجا کار می‌کنید. همتاها از طریق شبکه روکش به شما می‌رسند و در نقاطی با شما دیدار می‌کنند که هر دو طرف از دفتر حساب می‌کنند و هر روز تغییر می‌کنند؛ کاوش نقاط امروز را نشان می‌دهد. ثبت شما همچنین یک رله را نام می‌برد که تا وقتی ثبت برقرار است می‌توان در آن با شما دیدار کرد، و هر تمدید رله تازه‌ای را نام می‌برد. این همان چیزی است که این کارخواه به‌طور پیش‌فرض روشن می‌کند.</translation>
+        <translation type="vanished">ثبت شما می‌گوید چه کسی هستید، نه کجا کار می‌کنید. همتاها از طریق شبکه روکش به شما می‌رسند و در نقاطی با شما دیدار می‌کنند که هر دو طرف از دفتر حساب می‌کنند و هر روز تغییر می‌کنند؛ کاوش نقاط امروز را نشان می‌دهد. ثبت شما همچنین یک رله را نام می‌برد که تا وقتی ثبت برقرار است می‌توان در آن با شما دیدار کرد، و هر تمدید رله تازه‌ای را نام می‌برد. این همان چیزی است که این کارخواه به‌طور پیش‌فرض روشن می‌کند.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3402,15 +3524,59 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>این گره اتصال اینترنتش را به‌عنوان دروازه به اشتراک می‌گذارد، همان‌طور که در صفحه سرور تنظیم شده، پس ثبت همین را می‌گوید.</translation>
+        <translation type="vanished">این گره اتصال اینترنتش را به‌عنوان دروازه به اشتراک می‌گذارد، همان‌طور که در صفحه سرور تنظیم شده، پس ثبت همین را می‌گوید.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>این گره نه برای دیگران رله می‌کند و نه اتصال اینترنتش را به اشتراک می‌گذارد، همان‌طور که در صفحه سرور تنظیم شده.</translation>
+        <translation type="vanished">این گره نه برای دیگران رله می‌کند و نه اتصال اینترنتش را به اشتراک می‌گذارد، همان‌طور که در صفحه سرور تنظیم شده.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>هر تغییری در آنجا با ثبت بعدی شما به دفتر می‌رسد.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>این کار رکورد کوتاهی در زنجیره می‌نویسد که شما وجود دارید، و به دلخواه یک خط درباره شما.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>ثبت شما چه می‌گوید</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>ثبت شما می‌گوید چه کسی هستید، نه کجا اجرا می‌شوید: هیچ نشانی‌ای در آن نیست. همتاها از طریق شبکه روکش به شما می‌رسند و در نقاطی با شما دیدار می‌کنند که هر دو طرف از دفتر به دست می‌آورند و هر روز تغییر می‌کنند؛ کاوش نقاط امروز را نشان می‌دهد. ثبت شما همچنین یک رله را نام می‌برد که تا زمانی که برقرار است می‌توان شما را آنجا دید، و هر تمدید رله تازه‌ای را نام می‌برد.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>یادداشت</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>اختیاری: خطی که کنار کلید شما نشان داده می‌شود</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>هر کسی می‌تواند آن را بخواند، و زنجیره آن را برای همیشه نگه می‌دارد، حتی پس از پایان ثبت. اگر برایتان مهم است، هر چیزی را که می‌گوید کجا هستید یا چه کسی هستید کنار بگذارید.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>گره شما ثبت را امضا می‌کند و آن را از مسیری به رله‌ای می‌فرستد که از آن وارد نمی‌شود، تا آن رله بفهمد شما چه کسی هستید و نه کجا. رله‌ای که هزینه ثبت‌ها را می‌پردازد، ثبت شما را در بلوکی می‌گذارد که خودش استیک می‌کند، پس حتی وقتی بیشتر گره‌ها آن را منتقل نمی‌کنند تأیید می‌شود، و شما را به همتاهایی می‌افزاید که پاداش‌هایش را با آن‌ها تقسیم می‌کند. اگر بعداً پرداخت را متوقف کند، ثبت شما در طول ماه منقضی می‌شود؛ همیشه می‌توانید خودتان از کیف پولی با موجودی آن را تمدید کنید.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 بایت</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>بیش از حد طولانی: حروف خارج از انگلیسی ساده هر کدام دو تا چهار بایت می‌گیرند.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>یادداشت بیش از حد طولانی است.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>یادداشت نمی‌تواند نویسه‌های کنترلی یا علامت‌هایی داشته باشد که جهت متن را تغییر می‌دهند.</translation>
     </message>
 </context>
 <context>
@@ -3578,6 +3744,14 @@ You will be shown a recovery key once. Write it down: it is the only way to stop
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>یک نشانی BitcoinPoS وارد کنید (مثلاً %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>هر دو محدودیت را تعیین کنید.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>یک پرداخت نمی‌تواند بیش از کل یک روز مجاز باشد.</translation>
     </message>
 </context>
 <context>
@@ -4278,6 +4452,14 @@ worked out from the roster; they change every day:</source>
         <source>meets at %1</source>
         <translation>دیدار در %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>یادداشت</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>نوشته کسی که این کلید را دارد؛ هیچ‌کس آن را بررسی نمی‌کند.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4759,7 +4941,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>سایت یا سرویسی که از این گره ارائه می‌شود، با کلید یا نامش یافته و از طریق شبکه روکش به آن رسیده می‌شود، بنابراین میزبان هرگز منتشر نمی‌کند کجا اجرا می‌شود. بخش ملاقات وجود دارد: سرویس در نقاط ملاقاتی که هر دو طرف از دفتر محاسبه می‌کنند ثبت می‌شود. ارائه صفحه‌ها و برنامه‌ها از این طریق هنوز ساخته نشده است.</translation>
+        <translation type="vanished">سایت یا سرویسی که از این گره ارائه می‌شود، با کلید یا نامش یافته و از طریق شبکه روکش به آن رسیده می‌شود، بنابراین میزبان هرگز منتشر نمی‌کند کجا اجرا می‌شود. بخش ملاقات وجود دارد: سرویس در نقاط ملاقاتی که هر دو طرف از دفتر محاسبه می‌کنند ثبت می‌شود. ارائه صفحه‌ها و برنامه‌ها از این طریق هنوز ساخته نشده است.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4983,7 +5165,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>آنچه این گره به دیگران عرضه می‌کند. رله کردن، نگه‌داری ایمیل و هم‌رسانی اینترنت امروز کار می‌کنند؛ میزبانی در راه است و مانند همه‌چیز این‌جا، به همان روشی یافته می‌شود که همتاها — از راه فهرست. نام‌ها صفحهٔ خودشان را دارند.</translation>
+        <translation type="vanished">آنچه این گره به دیگران عرضه می‌کند. رله کردن، نگه‌داری ایمیل و هم‌رسانی اینترنت امروز کار می‌کنند؛ میزبانی در راه است و مانند همه‌چیز این‌جا، به همان روشی یافته می‌شود که همتاها — از راه فهرست. نام‌ها صفحهٔ خودشان را دارند.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -4999,7 +5181,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>ثبت‌شده به‌عنوان</translation>
+        <translation type="vanished">ثبت‌شده به‌عنوان</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5011,15 +5193,15 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>ثبت به‌عنوان دروازه…</translation>
+        <translation type="vanished">ثبت به‌عنوان دروازه…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>هم‌رسانی اتصال اینترنت این رایانه به‌عنوان دروازه</translation>
+        <translation type="vanished">هم‌رسانی اتصال اینترنت این رایانه به‌عنوان دروازه</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>اگر قانون محل زندگی‌تان یا شرایط ارائه‌دهندهٔ اینترنت، هم‌رسانی اتصال را ممنوع می‌کند، آن را خاموش کنید. با خاموش بودن، این گره همچنان رله می‌کند، ایمیل نگه می‌دارد و زنجیره را دنبال می‌کند، و از اتصال خودش مستقیم استفاده می‌کند.</translation>
+        <translation type="vanished">اگر قانون محل زندگی‌تان یا شرایط ارائه‌دهندهٔ اینترنت، هم‌رسانی اتصال را ممنوع می‌کند، آن را خاموش کنید. با خاموش بودن، این گره همچنان رله می‌کند، ایمیل نگه می‌دارد و زنجیره را دنبال می‌کند، و از اتصال خودش مستقیم استفاده می‌کند.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5035,11 +5217,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>اجازه به برنامه‌های این رایانه برای استفاده از اینترنت شبکه از راه یک پراکسی محلی</translation>
+        <translation type="vanished">اجازه به برنامه‌های این رایانه برای استفاده از اینترنت شبکه از راه یک پراکسی محلی</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>پراکسی SOCKS5 فقط برای این رایانه. هر اتصال از دروازهٔ عضو دیگری بیرون می‌رود و نام‌ها همان‌جا یافته می‌شوند، هرگز این‌جا. تا وقتی این رایانه اتصال خودش را هم‌رسانی می‌کند کار می‌کند.</translation>
+        <translation type="vanished">پراکسی SOCKS5 فقط برای این رایانه. هر اتصال از دروازهٔ عضو دیگری بیرون می‌رود و نام‌ها همان‌جا یافته می‌شوند، هرگز این‌جا. تا وقتی این رایانه اتصال خودش را هم‌رسانی می‌کند کار می‌کند.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5075,27 +5257,27 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>به‌عنوان دروازه ثبت نشده</translation>
+        <translation type="vanished">به‌عنوان دروازه ثبت نشده</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>هنوز نه — فهرست این گره را به‌عنوان دروازه ثبت نکرده است، پس هیچ‌کس نمی‌تواند پیدایش کند</translation>
+        <translation type="vanished">هنوز نه — فهرست این گره را به‌عنوان دروازه ثبت نکرده است، پس هیچ‌کس نمی‌تواند پیدایش کند</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>هنوز چیزی نیست — رله دروازه‌اش را با کلید دوم، بدون نشانی، جدا از ثبت خودش ثبت می‌کند</translation>
+        <translation type="vanished">هنوز چیزی نیست — رله دروازه‌اش را با کلید دوم، بدون نشانی، جدا از ثبت خودش ثبت می‌کند</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>هنوز چیزی نیست — ثبت این گره گزینهٔ دروازه را ندارد؛ آن را دوباره با گزینهٔ روشن منتشر کنید</translation>
+        <translation type="vanished">هنوز چیزی نیست — ثبت این گره گزینهٔ دروازه را ندارد؛ آن را دوباره با گزینهٔ روشن منتشر کنید</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>هنوز چیزی نیست — ثبتی بدون نشانی و با گزینهٔ دروازهٔ روشن منتشر کنید</translation>
+        <translation type="vanished">هنوز چیزی نیست — ثبتی بدون نشانی و با گزینهٔ دروازهٔ روشن منتشر کنید</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>ثبت دروازهٔ این رله…</translation>
+        <translation type="vanished">ثبت دروازهٔ این رله…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5115,11 +5297,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>کلید دروازهٔ آن %1، جدا از نشانی رله</translation>
+        <translation type="vanished">کلید دروازهٔ آن %1، جدا از نشانی رله</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>کلید خود این گره %1</translation>
+        <translation type="vanished">کلید خود این گره %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5135,11 +5317,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>همه ترافیک این رایانه از راه شبکه برود، بدون تنظیم پراکسی در هیچ برنامه‌ای</translation>
+        <translation type="vanished">همه ترافیک این رایانه از راه شبکه برود، بدون تنظیم پراکسی در هیچ برنامه‌ای</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>اتصال‌های هر برنامه از راه دروازه‌های شبکه بیرون می‌روند، هر کدام از راه دروازه‌ای دیگر، و نام‌ها همان‌جا جست‌وجو می‌شوند. شبکه خود این رایانه — یک چاپگر، مسیریاب — و اتصال‌های خود این گره مستقیم می‌مانند. این تا وقتی کار می‌کند که این رایانه اتصال خودش را هم به اشتراک بگذارد.</translation>
+        <translation type="vanished">اتصال‌های هر برنامه از راه دروازه‌های شبکه بیرون می‌روند، هر کدام از راه دروازه‌ای دیگر، و نام‌ها همان‌جا جست‌وجو می‌شوند. شبکه خود این رایانه — یک چاپگر، مسیریاب — و اتصال‌های خود این گره مستقیم می‌مانند. این تا وقتی کار می‌کند که این رایانه اتصال خودش را هم به اشتراک بگذارد.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5167,11 +5349,11 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>روشن: اکنون %1 اتصال از راه شبکه؛ %2 فرستاده، %3 دریافت شده.</translation>
+        <translation type="vanished">روشن: اکنون %1 اتصال از راه شبکه؛ %2 فرستاده، %3 دریافت شده.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>هنوز روی این سیستم در دسترس نیست.</translation>
+        <translation type="vanished">هنوز روی این سیستم در دسترس نیست.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5183,7 +5365,7 @@ You can change this at any time on the Server page.</source>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>با راه‌اندازی دوباره برنامه آغاز می‌شود.</translation>
+        <translation type="vanished">با راه‌اندازی دوباره برنامه آغاز می‌شود.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5212,6 +5394,334 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>none — relaying is switched off</source>
         <translation>هیچ — رله خاموش است</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>آنچه این گره به دیگران عرضه می‌کند: رله کردن، نگه‌داری نامه، اشتراک اینترنت و میزبانی سایت؛ و به تلفن خودتان، راهی برای خرج کردن از اینجا. مثل همه چیز در اینجا، به همان روشی پیدا می‌شود که همتاها — از طریق دفتر. نام‌ها صفحه خودشان را دارند.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>اشتراک اتصال اینترنت این رایانه، و در عوض استفاده از اتصال شبکه</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>وقتی روشن است، اتصال این رایانه به اشتراک گذاشته می‌شود و تمام ترافیک خودش از دروازه‌های شبکه بیرون می‌رود، هر اتصال از دروازه‌ای دیگر؛ شبکه خود این رایانه — چاپگر، مسیریاب — مستقیم می‌ماند. اگر قانون محل زندگی‌تان یا شرایط ارائه‌دهنده اینترنتتان اشتراک اتصال را ممنوع می‌کند، آن را خاموش کنید: در آن صورت شبکه فقط خود BPS را حمل می‌کند و این رایانه از اتصال خودش استفاده می‌کند.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>برای کل رایانه: روشن، اکنون %1 اتصال از طریق شبکه؛ %2 ارسال، %3 دریافت.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>برای کل رایانه: هنوز روی این سیستم در دسترس نیست؛ برنامه‌ها می‌توانند از پروکسی استفاده کنند.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>برای کل رایانه: وقتی کلاینت دوباره راه‌اندازی شود شروع می‌شود.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>اشتراک نمی‌گذارد</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>نه — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>پوشه‌ای را به عنوان سایت زیر کلید این گره منتشر کنید، تا هر کسی که کلید یا نامتان را به او می‌دهید بتواند آن را از طریق شبکه روکش بخواند. هر فایل امضا شده و هنگام رسیدن تکه به تکه بررسی می‌شود. اگر بدون نشانی ثبت شود، این گره در نقاط دیدارش دیده می‌شود و هیچ‌کس نمی‌فهمد سایت کجا اجرا می‌شود؛ اگر با نشانی ثبت شود، بازدیدکنندگان از طریق رله‌ها به آن می‌رسند، پس هرگز نمی‌فهمد آن‌ها چه کسانی هستند. برنامه‌ای روی این رایانه — یک برنامه وب، یک سرور گفتگو — را می‌توان به همین شکل منتشر کرد: بازدیدکنندگان از طریق شبکه روکش به آن می‌رسند و این گره فقط به درگاهی که نام می‌برید وصل می‌شود.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>پوشه</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>بازدید</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>ارسال</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>هیچ</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>برنامه‌هایی روی این رایانه که بازدیدکنندگان از طریق شبکه روکش به آن‌ها می‌رسند. برنامه‌ای به نام web همان چیزی است که مرورگر در نشانی این گره باز می‌کند وقتی سایتی نیست.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>برنامه‌ها</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>انتشار پوشه…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>انتشار دوباره</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>پس از تغییر پوشه آن را دوباره بخوان و آنچه اکنون در آن است را منتشر کن.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>توقف انتشار</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>باز کردن در سایت‌ها</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>انتشار برنامه…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>توقف برنامه…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>منتشر نمی‌کند</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>هیچ — چیزی منتشر نشده است</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 فایل، %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>ثبت نشده</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>هنوز توسط هیچ‌کس: این گره در دفتر ثبت نشده است، پس بازدیدکنندگان نمی‌توانند سایت را پیدا کنند. در صفحه گره، زیر کاوش، ثبتی منتشر کنید.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>در حال انتشار</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>هنوز دیده نشده</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>در %1 نقطه دیدار، بدون نشانی منتشرشده</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>هنوز نه: در نقاط دیدارش ثبت‌نام می‌کند، که به رله‌های دفتر نیاز دارد</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>در نشانی این گره، از طریق رله‌هایی که بازدیدکننده را پنهان می‌کنند</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 تکه صفحه، %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>پوشه‌ای که باید به عنوان سایت منتشر شود</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>انتشار برنامه</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>نامی برای آن، ۱ تا ۳۲ نویسه از a-z، 0-9 و -. آن را web بنامید اگر برنامه وبی است که مرورگر باید در نشانی این گره باز کند:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>درگاهی که روی 127.0.0.1 به آن گوش می‌دهد (فقط این رایانه):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>توقف برنامه</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>بازدیدکنندگان دیگر به کدام برنامه نرسند:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 در 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 جریان باز</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>تلفن همراه</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>از تلفنتان خرج کنید در حالی که سکه‌هایتان اینجا می‌مانند. تلفن هیچ کلید سکه‌ای ندارد: به این گره می‌رسد، کلیدی را که با آن جفت شده اثبات می‌کند، و این گره از یک کیف پول جیبی کوچک پرداخت می‌کند — پس از بررسی PIN تلفن و محدودیت‌هایی که تعیین کرده‌اید و تلفن نمی‌تواند تغییرشان دهد. اگر تلفن را گم کنید، حداکثر آنچه در جیبی است را از دست می‌دهید؛ جفتش را اینجا لغو کنید. وقتی این گره رله‌ای ثبت‌شده است و به اندازه کافی رله‌های دیگر ثبت شده‌اند، تلفن از طریق سه رله می‌آید، پس هیچ ناظری نمی‌فهمد کجاست؛ وگرنه مستقیم به اینجا وصل می‌شود.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>جیبی</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>در دسترس تلفن‌ها</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>تلفن</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>یک پرداخت</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>یک روز</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>خرج امروز</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>وضعیت</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>جفت کردن تلفن…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>محدودیت‌ها…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>باز کردن قفل</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>تلفن پس از پنج PIN اشتباه پشت سر هم قفل می‌شود، تا وقتی که اینجا قفلش باز شود.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>لغو جفت</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>اجازه به تلفن‌های جفت‌شده برای خرج از کیف پول جیبی</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>به شبکه روکش نیاز دارد. به طور پیش‌فرض خاموش است، چون به تلفن اجازه می‌دهد سکه‌های این گره را خرج کند.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>کیف پولی جداگانه، بدون عبارت عبور — کسی آنجا نیست که هنگام پرداخت تلفن آن را تایپ کند — و فقط با آنچه تلفن باید بتواند خرج کند. هرگز استیک نمی‌کند و نمی‌تواند کیف پولی باشد که هزینه ثبت‌ها را می‌پردازد.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>ایجاد</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>ایجاد کیف پول جیبی و باز کردن آن هر بار که این گره شروع می‌شود.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>شارژ…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>باز کردن ارسال در کیف پول، برای انتقال سکه به جیبی.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>کیف پول جیبی</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>، %1 دیگر در راه</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>بله، در %1، از طریق رله‌ها</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>مستقیم، در %1. بدون رله در میان: شبکه تلفن می‌بیند که با این رایانه صحبت می‌کند. از بیرون این شبکه، درگاه UDP %2 را در مسیریاب به این رایانه هدایت کنید.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>نه — این گره هنوز هیچ نشانی از خودش نمی‌شناسد</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>در دسترس نیست</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>یک تلفن منتظر است</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>بدون جیبی</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>یک تلفن قفل است</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 تلفن قفل است</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>در حال اجرا، هنوز تلفنی نیست</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>در حال اجرا، ۱ تلفن</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>در حال اجرا، %1 تلفن</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>کلید دستگاه %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>قفل: PINهای اشتباه</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>جفت‌شده</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>لغو جفت %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>جفت %1 لغو شود؟ تا وقتی دوباره جفت نشود نمی‌تواند خرج کند. اگر تلفن گم یا دزدیده شده، فوراً این کار را انجام دهید.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>کیف پول جیبی ایجاد و باز شد. با شارژ آنچه را تلفن باید بتواند خرج کند به آن منتقل کنید.</translation>
     </message>
 </context>
 <context>
@@ -5343,6 +5853,30 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>گره هنوز در حال شروع است؛ تنظیمات اصلی هنوز در دسترس نیستند.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>دیگران شما را در رله‌هایی می‌بینند که از دفتر به دست می‌آیند، و گره شما مسیری باز به هر یک از آن‌ها از طریق این تعداد رله نگه می‌دارد. نقطه دیدار فقط آخرین آن‌ها را می‌بیند، هرگز نشانی شما را. بیشتر، شما را بهتر پنهان می‌کند و کندتر است.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>رله‌ها پیش از نقاط دیدار شما</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>وقتی این رایانه از اینترنت شبکه استفاده می‌کند، هر اتصال از طریق این تعداد رله به نقطه دیدار یک دروازه می‌رود، و پس از آن از رله‌های خود دروازه: دروازه هرگز نمی‌فهمد شما چه کسی هستید. بیشتر، شما را بهتر پنهان می‌کند و کندتر است.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>رله‌ها پیش از نقطه دیدار یک دروازه</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>فقط اولین اتصال شما مستقیم است، به رله ورودی‌ای که نشانی شما را می‌بیند و نه اینکه چه کسی هستید. نامه همیشه از سه رله می‌گذرد.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>نسخه %1</translation>
     </message>
 </context>
 <context>
@@ -5506,6 +6040,147 @@ You can change this at any time on the Server page.</source>
     <message>
         <source>Message verified.</source>
         <translation>پیام شما تایید شد</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>سایت‌ها</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>سایت‌هایی که روی شبکه روکش میزبانی می‌شوند و با نام یا کلیدی که کسی با شما به اشتراک گذاشته باز می‌شوند. صفحه‌ها اینجا بدون اسکریپت نشان داده می‌شوند و چیزی در آن‌ها از بیرون BPS دریافت نمی‌شود، پس صفحه نمی‌تواند بفهمد شما کجا هستید.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>عقب</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>جلو</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>دریافت دوباره صفحه</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://نام/ یا کلید یک سایت</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>باز کردن</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>ذخیره این فایل…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>باز کردن در مرورگر</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>همان سایت در یک مرورگر معمولی، از طریق سروری فقط روی این رایانه. صفحه‌ها آنجا ممکن است اسکریپت اجرا کنند، پس نمایشگر اینجا همچنان راه امن‌تر خواندن یک سایت پنهان است.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>اتصال به برنامه…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>از برنامه‌ای روی این رایانه به برنامه‌ای که این سایت اجرا می‌کند — سرور گفتگو، بازی — برسید: BPS Relay اینجا روی یک درگاه گوش می‌دهد و هر اتصال را از طریق شبکه روکش به آن می‌رساند.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>این نشانی یک سایت نیست. یک نام یا کلید بنویسید، مانند bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>در حال جستجوی %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>در حال دریافت %1 از طریق شبکه روکش…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 صفحه‌ای نیست که این نمایشگر نشان دهد (%2 بایت). آن را ذخیره کنید تا با برنامه دیگری باز کنید.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>برنامه روی این رایانه را به %1 هدایت کنید: BPS Relay هر اتصالی را که آنجا برقرار شود، از طریق شبکه روکش به برنامه سایت می‌رساند، تا زمانی که دوباره راه‌اندازی شود.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>سرور سایت برای مرورگرها در حال اجرا نیست. با BPS Relay شروع می‌شود مگر اینکه -siteproxy=0 داده شده باشد.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 به هیچ کلیدی نمی‌رسد.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 اکنون به کلیدی متفاوت از آخرین باری که آن را باز کردید اشاره می‌کند. کسی که اکنون نام را دارد شاید همان کسی نباشد که پیش‌تر خواندید.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>در یکی از نقاط دیدارش دیده شد، از طریق %1 رله شما: نه شما و نه میزبان نمی‌فهمید دیگری کجاست.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>در نشانی‌اش از طریق %1 رله رسیده شد: میزبان نمی‌فهمد شما چه کسی هستید.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>سایت خود شما، خوانده‌شده از این رایانه.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>از طریق رادیو به آن می‌رسند، پس صفحه‌ها کند می‌آیند.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 نامی نیست که این گره بشناسد: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>باز کردن %1 ممکن نشد: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>این پیوند به بیرون از BPS می‌رود، پس دنبال نشد: %1
+اگر خواستید آن را در یک مرورگر معمولی باز کنید؛ هر کس آن را اداره می‌کند نشانی شما را خواهد دید.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>اتصال به برنامه</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>نامی که سایت به برنامه‌اش داده است:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>باز کردن یک سایت در مرورگر</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>مرورگر شما سایت را از این رایانه می‌خواهد و BPS Relay آن را از طریق شبکه روکش دریافت می‌کند، همان‌طور که اینجا. هر صفحه فقط می‌تواند از سایت خودش بارگذاری کند، پس نمی‌تواند چیزی از اینترنت باز بکشد تا بفهمد شما کجا هستید.
+
+آنچه مرورگر همچنان می‌تواند بکند: یک اسکریپت می‌تواند با WebRTC نشانی‌های این رایانه را به صفحه نشان دهد، و پیوندی که به یک سایت معمولی دنبال می‌کنید مثل هر پیوندی بیرون می‌رود. نمایشگر در BPS Relay هیچ اسکریپتی اجرا نمی‌کند و همچنان راه امن‌تر خواندن یک سایت پنهان است.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>ذخیره فایل</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>ذخیره %1 ممکن نشد.</translation>
     </message>
 </context>
 <context>

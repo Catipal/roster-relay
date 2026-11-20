@@ -1114,6 +1114,10 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
         <source>Not staking</source>
         <translation>Ingen staking</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>Nettsteder</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1268,6 +1272,92 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>delegert til %1 for kald staking</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>Grenser for %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>Hvor mye denne telefonen kan bruke fra lommepengelommeboken, gebyrer medregnet.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Høyst i én betaling</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Høyst i løpet av 24 timer</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>Par en telefon</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>Velg Par i BPS-appen på telefonen, og skann denne koden. Eller kopier teksten under den inn i appen. Den virker én gang, i ti minutter.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>Kopier koden</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>Vis en ny kode</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>Par bare hvis telefonen viser de samme seks sifrene. Viser den andre, har noen andre svart på koden først: avvis, og vis en ny.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>Hvor mye denne telefonen kan bruke fra lommepengelommeboken. Bare denne noden kan endre det senere, aldri telefonen.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Høyst i én betaling</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Høyst i løpet av 24 timer</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>Avvis</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>Par denne telefonen</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>Lager en kode…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>Denne koden har utløpt.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>Venter på telefonen … koden virker i %1 minutter til.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>Denne versjonen kan ikke tegne QR-koder: kopier heller teksten nedenfor inn i appen.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>En telefon som heter «%1» vil pares med denne noden.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>Paret. Telefonen kan nå bruke fra lommepengelommeboken innenfor grensene du har satt. Listen dens er på Server-siden, der du kan endre grensene, låse den opp etter for mange feil PIN-koder eller oppheve paringen.</translation>
     </message>
 </context>
 <context>
@@ -1443,7 +1533,7 @@ Signing is only possible with addresses of the type &apos;legacy&apos;.</source>
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>Finn en likemann eller en adresse</translation>
+        <translation type="vanished">Finn en likemann eller en adresse</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1580,6 +1670,38 @@ Du får se en gjenopprettingsnøkkel én gang. Skriv den ned: det er den eneste 
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>Likemenn kunngjør seg på kjeden i stedet for hos en tjener, så denne listen er den samme for alle og ingen kan redigere den. En likemann som er oppført gjennom overleggsnettet, viser hvor den kan møtes i dag, noe som endres hver dag; et relé viser adressen sin bare mens det er tilkoblet, siden den aldri er på kjeden.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Navn</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>Registrer et navn…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>Et navn er hvordan andre når deg uten å kopiere nøkkelen din. Navn registreres på fanen Navn.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>Finn en likemann, et notat eller en adresse</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>Alle disse navnene peker til nøkkelen til denne noden. Andre kan nå deg med hvilket som helst av dem.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>Behandle navn…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>navn av</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>Navn krever navneindeksen. Slå den på i Innstillinger for å registrere og vise et.</translation>
     </message>
 </context>
 <context>
@@ -3208,15 +3330,15 @@ Du får se en gjenopprettingsnøkkel én gang. Skriv den ned: det er den eneste 
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>Dette skriver en kort post til kjeden som sier at du finnes, og eventuelt hvor du kan finnes.</translation>
+        <translation type="vanished">Dette skriver en kort post til kjeden som sier at du finnes, og eventuelt hvor du kan finnes.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>Hvordan skal likemenn nå deg?</translation>
+        <translation type="vanished">Hvordan skal likemenn nå deg?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>Gjennom overleggsnettet — publiser ingen adresse</translation>
+        <translation type="vanished">Gjennom overleggsnettet — publiser ingen adresse</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3224,35 +3346,35 @@ Du får se en gjenopprettingsnøkkel én gang. Skriv den ned: det er den eneste 
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>På en adresse jeg publiserer</translation>
+        <translation type="vanished">På en adresse jeg publiserer</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>adresse andre likemenn kan nå</translation>
+        <translation type="vanished">adresse andre likemenn kan nå</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>Alle kan se den, og kjeden beholder den for alltid. En onion-adresse publiserer et sted ingen kan spore tilbake til deg, og fungerer bak NAT; en IP-adresse gjør ingen av delene. En node som publiserer en IP-adresse, kan bli valgt som relé av andre.</translation>
+        <translation type="vanished">Alle kan se den, og kjeden beholder den for alltid. En onion-adresse publiserer et sted ingen kan spore tilbake til deg, og fungerer bak NAT; en IP-adresse gjør ingen av delene. En node som publiserer en IP-adresse, kan bli valgt som relé av andre.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3296,7 +3418,7 @@ Du får se en gjenopprettingsnøkkel én gang. Skriv den ned: det er den eneste 
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>Noden din signerer oppføringen og sender den over overleggsnettet til reléet den går inn gjennom. Et relé som betaler for oppføringer, legger din inn i en blokk det staker selv, så den bekreftes selv om de fleste noder ikke ville sendt den videre, og legger deg til likemennene det deler belønningene med. Hvis det senere slutter å betale, utløper oppføringen din innen måneden; du kan alltid fornye selv fra en lommebok med midler.</translation>
+        <translation type="vanished">Noden din signerer oppføringen og sender den over overleggsnettet til reléet den går inn gjennom. Et relé som betaler for oppføringer, legger din inn i en blokk det staker selv, så den bekreftes selv om de fleste noder ikke ville sendt den videre, og legger deg til likemennene det deler belønningene med. Hvis det senere slutter å betale, utløper oppføringen din innen måneden; du kan alltid fornye selv fra en lommebok med midler.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3312,11 +3434,11 @@ Du får se en gjenopprettingsnøkkel én gang. Skriv den ned: det er den eneste 
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>Skriv inn en adresse, eller velg å ikke publisere noen.</translation>
+        <translation type="vanished">Skriv inn en adresse, eller velg å ikke publisere noen.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>Ber reléet ditt publisere den… dette kan ta opptil et halvt minutt.</translation>
+        <translation type="vanished">Ber reléet ditt publisere den… dette kan ta opptil et halvt minutt.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3348,11 +3470,11 @@ Du får se en gjenopprettingsnøkkel én gang. Skriv den ned: det er den eneste 
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>Før opp gatewayen til dette reléet</translation>
+        <translation type="vanished">Før opp gatewayen til dette reléet</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>En reléoppføring inneholder adressen til reléet, så gatewayen føres opp under en andre nøkkel uten adresse, atskilt fra den. Ingen kan se i registeret at de to hører til én datamaskin. Besøkende når gatewayen gjennom reléer, så den får aldri vite hvem de er; nettstedene de besøker, ser adressen til denne datamaskinen.</translation>
+        <translation type="vanished">En reléoppføring inneholder adressen til reléet, så gatewayen føres opp under en andre nøkkel uten adresse, atskilt fra den. Ingen kan se i registeret at de to hører til én datamaskin. Besøkende når gatewayen gjennom reléer, så den får aldri vite hvem de er; nettstedene de besøker, ser adressen til denne datamaskinen.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3368,11 +3490,11 @@ Du får se en gjenopprettingsnøkkel én gang. Skriv den ned: det er den eneste 
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>Et annet relé betaler, spurt gjennom reléer</translation>
+        <translation type="vanished">Et annet relé betaler, spurt gjennom reléer</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>Noden din signerer gatewayens oppføring og sender den gjennom reléer til et annet relé, som betaler for den og legger den inn i en blokk det staker selv. Det reléet får vite gatewayens nøkkel og aldri denne datamaskinens adresse. Å betale fra denne nodens egen lommebok ville knyttet gatewayen til dette reléet i kjeden, og dermed til adressen dets.</translation>
+        <translation type="vanished">Noden din signerer gatewayens oppføring og sender den gjennom reléer til et annet relé, som betaler for den og legger den inn i en blokk det staker selv. Det reléet får vite gatewayens nøkkel og aldri denne datamaskinens adresse. Å betale fra denne nodens egen lommebok ville knyttet gatewayen til dette reléet i kjeden, og dermed til adressen dets.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3388,7 +3510,7 @@ Du får se en gjenopprettingsnøkkel én gang. Skriv den ned: det er den eneste 
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>Oppføringen din sier hvem du er og ikke hvor du kjører. Likemenn når deg gjennom overleggsnettet og møter deg på punkter som begge sider regner ut fra registeret, og som endres hver dag; Utforsk viser dagens. Oppføringen din nevner også ett relé der du kan møtes så lenge den gjelder, og hver fornyelse nevner et nytt. Det er dette denne klienten slår på som standard.</translation>
+        <translation type="vanished">Oppføringen din sier hvem du er og ikke hvor du kjører. Likemenn når deg gjennom overleggsnettet og møter deg på punkter som begge sider regner ut fra registeret, og som endres hver dag; Utforsk viser dagens. Oppføringen din nevner også ett relé der du kan møtes så lenge den gjelder, og hver fornyelse nevner et nytt. Det er dette denne klienten slår på som standard.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3408,15 +3530,59 @@ Du får se en gjenopprettingsnøkkel én gang. Skriv den ned: det er den eneste 
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>Denne noden deler internettforbindelsen sin som gateway, slik det er satt på siden Tjener, så oppføringen sier det.</translation>
+        <translation type="vanished">Denne noden deler internettforbindelsen sin som gateway, slik det er satt på siden Tjener, så oppføringen sier det.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>Denne noden videresender verken for andre eller deler internettforbindelsen sin, slik det er satt på siden Tjener.</translation>
+        <translation type="vanished">Denne noden videresender verken for andre eller deler internettforbindelsen sin, slik det er satt på siden Tjener.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>En endring der når registeret med din neste oppføring.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>Dette skriver en kort post i kjeden om at du finnes, og om ønskelig en linje om deg.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>Hva oppføringen din sier</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>Oppføringen din sier hvem du er og ikke hvor du kjører: den inneholder ingen adresse. Likemenn når deg over overleggsnettet og møter deg ved punkter som begge sider regner ut fra registeret, og som skifter hver dag; Oppdagelse viser dagens. Oppføringen din nevner også ett relé der du kan møtes så lenge den varer, og hver fornyelse nevner et nytt.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>Notat</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>valgfritt: en linje vist ved siden av nøkkelen din</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>Alle kan lese det, og kjeden beholder det for alltid, også etter at oppføringen er slutt. Utelat alt som sier hvor du er eller hvem du er, om det betyr noe for deg.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Noden din signerer oppføringen og sender den langs en sti til et relé den ikke går inn gjennom, så det reléet får vite hvem du er og ikke hvor. Et relé som betaler for oppføringer, legger din i en blokk det selv staker, så den bekreftes selv mens de fleste noder ikke ville sendt den videre, og legger deg til likemennene det deler belønningene sine med. Slutter det senere å betale, faller oppføringen din bort i løpet av måneden; du kan alltid fornye den selv fra en lommebok med midler.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 byte</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>For langt: bokstaver utenfor enkel engelsk tar to til fire byte hver.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>Notatet er for langt.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>Notatet kan ikke inneholde kontrolltegn eller tegn som endrer tekstretningen.</translation>
     </message>
 </context>
 <context>
@@ -3590,6 +3756,14 @@ Du får se en gjenopprettingsnøkkel én gang. Skriv den ned: det er den eneste 
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>Skriv inn en BitcoinPoS-adresse (f.eks. %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>Angi begge grensene.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>Én betaling kan ikke tillates mer enn en hel dag.</translation>
     </message>
 </context>
 <context>
@@ -4290,6 +4464,14 @@ regnet ut fra registeret; de endres hver dag:</translation>
         <source>meets at %1</source>
         <translation>møtes ved %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>Notat</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>Skrevet av den som har denne nøkkelen; ingen kontrollerer det.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4772,7 +4954,7 @@ Merk: Siden avgiften er beregnet per byte-basis, vil et gebyr på &quot;100 sato
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>Et nettsted eller en tjeneste som leveres fra denne noden, funnet via nøkkelen eller navnet og nådd over overleggsnettet, slik at verten aldri publiserer hvor den kjører. Møtedelen finnes: en tjeneste registrerer seg på møtepunkter begge sider beregner fra registeret. Å levere sider og apper gjennom den er ikke bygget ennå.</translation>
+        <translation type="vanished">Et nettsted eller en tjeneste som leveres fra denne noden, funnet via nøkkelen eller navnet og nådd over overleggsnettet, slik at verten aldri publiserer hvor den kjører. Møtedelen finnes: en tjeneste registrerer seg på møtepunkter begge sider beregner fra registeret. Å levere sider og apper gjennom den er ikke bygget ennå.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -4996,7 +5178,7 @@ Du kan endre dette når som helst på siden Server.</translation>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Hva denne noden tilbyr andre. Videresending, oppbevaring av e-post og deling av internett virker i dag; hosting er på vei, og som alt her finnes det på samme måte som likemenn — gjennom registeret. Navn har en egen side.</translation>
+        <translation type="vanished">Hva denne noden tilbyr andre. Videresending, oppbevaring av e-post og deling av internett virker i dag; hosting er på vei, og som alt her finnes det på samme måte som likemenn — gjennom registeret. Navn har en egen side.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -5012,7 +5194,7 @@ Du kan endre dette når som helst på siden Server.</translation>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>Oppført som</translation>
+        <translation type="vanished">Oppført som</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5024,15 +5206,15 @@ Du kan endre dette når som helst på siden Server.</translation>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>Før opp som gateway…</translation>
+        <translation type="vanished">Før opp som gateway…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Del denne datamaskinens internettforbindelse som gateway</translation>
+        <translation type="vanished">Del denne datamaskinens internettforbindelse som gateway</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>Slå det av hvis loven der du bor eller vilkårene til internettleverandøren din forbyr å dele forbindelsen. Avslått fortsetter denne noden å videresende, ta vare på e-post og følge kjeden, og den bruker sin egen forbindelse direkte.</translation>
+        <translation type="vanished">Slå det av hvis loven der du bor eller vilkårene til internettleverandøren din forbyr å dele forbindelsen. Avslått fortsetter denne noden å videresende, ta vare på e-post og følge kjeden, og den bruker sin egen forbindelse direkte.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5048,11 +5230,11 @@ Du kan endre dette når som helst på siden Server.</translation>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>La programmer på denne datamaskinen bruke nettverkets internett gjennom en lokal mellomtjener</translation>
+        <translation type="vanished">La programmer på denne datamaskinen bruke nettverkets internett gjennom en lokal mellomtjener</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>En SOCKS5-mellomtjener bare for denne datamaskinen. Hver forbindelse går ut gjennom et annet medlems gateway, og navn slås opp der, aldri her. Den virker så lenge denne datamaskinen deler sin egen forbindelse.</translation>
+        <translation type="vanished">En SOCKS5-mellomtjener bare for denne datamaskinen. Hver forbindelse går ut gjennom et annet medlems gateway, og navn slås opp der, aldri her. Den virker så lenge denne datamaskinen deler sin egen forbindelse.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5088,27 +5270,27 @@ Du kan endre dette når som helst på siden Server.</translation>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>ikke oppført som gateway</translation>
+        <translation type="vanished">ikke oppført som gateway</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>ikke ennå — registeret fører ikke denne noden som gateway, så ingen kan finne den</translation>
+        <translation type="vanished">ikke ennå — registeret fører ikke denne noden som gateway, så ingen kan finne den</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>ingenting ennå — et relé fører opp gatewayen sin under en andre nøkkel, uten adresse, atskilt fra sin egen oppføring</translation>
+        <translation type="vanished">ingenting ennå — et relé fører opp gatewayen sin under en andre nøkkel, uten adresse, atskilt fra sin egen oppføring</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>ingenting ennå — oppføringen til denne noden mangler gatewayvalget; publiser den på nytt med valget slått på</translation>
+        <translation type="vanished">ingenting ennå — oppføringen til denne noden mangler gatewayvalget; publiser den på nytt med valget slått på</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>ingenting ennå — publiser en oppføring uten adresse med gatewayvalget slått på</translation>
+        <translation type="vanished">ingenting ennå — publiser en oppføring uten adresse med gatewayvalget slått på</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>Før opp gatewayen til dette reléet…</translation>
+        <translation type="vanished">Før opp gatewayen til dette reléet…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5128,11 +5310,11 @@ Du kan endre dette når som helst på siden Server.</translation>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>gatewaynøkkelen %1, atskilt fra adressen til reléet</translation>
+        <translation type="vanished">gatewaynøkkelen %1, atskilt fra adressen til reléet</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>denne nodens egen nøkkel %1</translation>
+        <translation type="vanished">denne nodens egen nøkkel %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5148,11 +5330,11 @@ Du kan endre dette når som helst på siden Server.</translation>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>Send all trafikken fra denne datamaskinen gjennom nettverket, uten proxyinnstilling i noe program</translation>
+        <translation type="vanished">Send all trafikken fra denne datamaskinen gjennom nettverket, uten proxyinnstilling i noe program</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>Hvert programs forbindelser går ut gjennom nettverkets gatewayer, hver gjennom en annen, og navn slås opp der. Denne datamaskinens eget nettverk — en skriver, ruteren — og denne nodens egne forbindelser forblir direkte. Det virker så lenge denne datamaskinen deler sin egen forbindelse.</translation>
+        <translation type="vanished">Hvert programs forbindelser går ut gjennom nettverkets gatewayer, hver gjennom en annen, og navn slås opp der. Denne datamaskinens eget nettverk — en skriver, ruteren — og denne nodens egne forbindelser forblir direkte. Det virker så lenge denne datamaskinen deler sin egen forbindelse.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5180,11 +5362,11 @@ Du kan endre dette når som helst på siden Server.</translation>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>På: %1 forbindelse(r) gjennom nettverket nå; %2 sendt, %3 mottatt.</translation>
+        <translation type="vanished">På: %1 forbindelse(r) gjennom nettverket nå; %2 sendt, %3 mottatt.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>Ennå ikke tilgjengelig på dette systemet.</translation>
+        <translation type="vanished">Ennå ikke tilgjengelig på dette systemet.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5196,7 +5378,7 @@ Du kan endre dette når som helst på siden Server.</translation>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>Starter når klienten startes på nytt.</translation>
+        <translation type="vanished">Starter når klienten startes på nytt.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5225,6 +5407,334 @@ Du kan endre dette når som helst på siden Server.</translation>
     <message>
         <source>none — relaying is switched off</source>
         <translation>ingen — relé er slått av</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Hva denne noden tilbyr andre: videresending, oppbevaring av post, deling av internett og drift av et nettsted; og til din egen telefon en måte å bruke herfra. Som alt her finnes det på samme måte som likemenn — gjennom registeret. Navn har en egen side.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>Del denne datamaskinens internettilkobling, og bruk nettverkets til gjengjeld</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>På deles denne datamaskinens tilkobling, og all dens egen trafikk går ut gjennom nettverkets gatewayer, hver tilkobling gjennom en annen; datamaskinens eget nettverk — en skriver, ruteren — forblir direkte. Slå det av hvis loven der du bor eller vilkårene til internettleverandøren din forbyr deling av tilkoblingen: nettverket bærer da bare BPS selv, og denne datamaskinen bruker sin egen tilkobling.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>For hele datamaskinen: på, %1 tilkobling(er) gjennom nettverket nå; %2 sendt, %3 mottatt.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>For hele datamaskinen: ikke tilgjengelig på dette systemet ennå; programmer kan bruke proxyen.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>For hele datamaskinen: starter når klienten startes på nytt.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>deler ikke</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>nei — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>Publiser en mappe som nettsted under nøkkelen til denne noden, så alle du gir nøkkelen eller navnet ditt kan lese det over overleggsnettet. Hver fil er signert og kontrolleres bit for bit når den kommer. Oppført uten adresse møtes denne noden ved møtepunktene sine, og ingen får vite hvor nettstedet kjører; oppført med en adresse når besøkende den gjennom reléer, så den aldri får vite hvem de er. Et program på denne datamaskinen — en nettapp, en chatteserver — kan publiseres på samme måte: besøkende når det over overleggsnettet, og denne noden kobler bare til porten du oppgir.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Mappe</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>Nådd</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Sendt</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>ingen</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>Programmer på denne datamaskinen som besøkende når over overleggsnettet. Et program som heter web, er det en nettleser åpner på adressen til denne noden når det ikke finnes noe nettsted.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>Programmer</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>Publiser en mappe…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>Publiser igjen</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>Les mappen på nytt etter endringer, og publiser det som er der nå.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>Slutt å publisere</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>Åpne i Nettsteder</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>Publiser et program…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>Stopp et program…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>publiserer ikke</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>ingen — ingenting er publisert</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — %2 fil(er), %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>ikke oppført</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>av ingen ennå: denne noden er ikke oppført i registeret, så besøkende kan ikke finne nettstedet. Publiser en oppføring på Node-siden, under Oppdagelse.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>publiserer</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>ikke møtt ennå</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>ved %1 møtepunkt(er), uten publisert adresse</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>ikke ennå: registrerer seg ved møtepunktene sine, noe som krever registerets reléer</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>på adressen til denne noden, gjennom reléer som skjuler den besøkende</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>%1 sidebit(er), %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>Mappen som skal publiseres som nettsted</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>Publiser et program</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>Et navn på det, 1 til 32 av a-z, 0-9 og -. Kall det web for en nettapp som en nettleser skal åpne på adressen til denne noden:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>Porten det lytter på, på 127.0.0.1 (bare denne datamaskinen):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>Stopp et program</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>Hvilket program besøkende ikke lenger skal nå:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 på 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— %1 strøm(mer) åpne</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>Telefonfølgesvenn</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>Bruk fra telefonen mens myntene dine blir her. Telefonen har ingen myntnøkler: den når denne noden, beviser nøkkelen den ble paret med, og denne noden betaler fra en liten lommepengelommebok — etter å ha kontrollert telefonens PIN-kode og grensene du har satt, som telefonen ikke kan endre. Mister du telefonen, mister du høyst det lommepengene rommer; opphev paringen her. Når denne noden er et oppført relé og nok andre er oppført, kommer telefonen gjennom tre reléer, så ingen som ser på, får vite hvor den er; ellers kobler den direkte hit.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>Lommepenger</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>Kan nås av telefoner</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>Telefon</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>Én betaling</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>Et døgn</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>Brukt i dag</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>Tilstand</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>Par en telefon…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>Grenser…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>Lås opp</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>En telefon låses etter fem feil PIN-koder på rad, til den låses opp her.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>Opphev paring</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>La parede telefoner bruke fra en lommepengelommebok</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>Krever overleggsnettet. Av som standard, fordi det lar en telefon bruke myntene til denne noden.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>En egen lommebok, uten passordfrase — ingen er der for å skrive den når telefonen betaler — og bare med det telefonen skal kunne bruke. Den staker aldri og kan ikke være lommeboken som betaler for oppføringer.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>Opprett den</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>Opprett lommepengelommeboken, og åpne den hver gang denne noden starter.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>Fyll på…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>Åpne Send i lommeboken for å flytte mynter til lommepengene.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>Lommepengelommebok</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, %1 til på vei</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>ja, på %1, gjennom reléer</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>direkte, på %1. Ingen reléer imellom: telefonens nettverk ser at den snakker med denne datamaskinen. Utenfra dette nettverket må du videresende UDP-port %2 på ruteren til denne datamaskinen.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>nei — denne noden kjenner ennå ingen egen adresse</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>kan ikke nås</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>en telefon venter</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>ingen lommepenger</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>en telefon er låst</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>%1 telefoner er låst</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>kjører, ingen telefon ennå</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>kjører, 1 telefon</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>kjører, %1 telefoner</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>Enhetsnøkkel %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>låst: feil PIN-koder</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>paret</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>Opphev paring av %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>Oppheve paringen av %1? Den kan ikke bruke igjen før den er paret på nytt. Gjør det straks hvis telefonen er mistet eller stjålet.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>Lommepengelommeboken er opprettet og åpnet. Bruk Fyll på for å flytte inn det telefonen skal kunne bruke.</translation>
     </message>
 </context>
 <context>
@@ -5356,6 +5866,30 @@ Du kan endre dette når som helst på siden Server.</translation>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>Noden starter fortsatt; grunninnstillingene er ikke tilgjengelige ennå.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>Andre møter deg ved reléer regnet ut fra registeret, og noden din holder en sti åpen til hver av dem gjennom så mange reléer. Møtepunktet ser bare det siste av dem, aldri adressen din. Flere skjuler deg bedre og er tregere.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>Reléer før møtepunktene dine</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>Når denne datamaskinen bruker nettverkets internett, går hver tilkobling gjennom så mange reléer til en gateways møtepunkt, og gjennom gatewayens egne etter det: gatewayen får aldri vite hvem du er. Flere skjuler deg bedre og er tregere.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>Reléer før en gateways møtepunkt</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>Bare den første tilkoblingen din er direkte, til et inngangsrelé som ser adressen din og ikke hvem du er. Post går alltid gjennom tre reléer.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Versjon %1</translation>
     </message>
 </context>
 <context>
@@ -5518,6 +6052,147 @@ Du kan endre dette når som helst på siden Server.</translation>
     <message>
         <source>Message verified.</source>
         <translation>Melding bekreftet.</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>Nettsteder</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>Nettsteder driftet over overleggsnettet, åpnet med et navn eller en nøkkel noen har delt med deg. Sider vises her uten skript, og ingenting på dem hentes utenfor BPS, så en side kan ikke finne ut hvor du er.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Tilbake</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Fremover</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>Hent siden på nytt</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://navn/ eller et nettsteds nøkkel</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Åpne</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>Lagre denne filen…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>Åpne i nettleseren</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>Det samme nettstedet i en vanlig nettleser, gjennom en server bare på denne datamaskinen. Sider der kan kjøre skript, så visningen her forblir den tryggeste måten å lese et skjult nettsted på.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>Koble til et program…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>Nå et program dette nettstedet kjører — en chatteserver, et spill — fra et program på denne datamaskinen: BPS Relay lytter på en port her og bærer hver tilkobling til det over overleggsnettet.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>Det er ikke en nettstedsadresse. Skriv et navn eller en nøkkel, for eksempel bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>Slår opp %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>Henter %1 over overleggsnettet…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 er ikke en side denne visningen viser (%2 byte). Lagre den for å åpne den med et annet program.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>Pek programmet på denne datamaskinen mot %1: BPS Relay bærer hver tilkobling som opprettes der, til nettstedets program over overleggsnettet, til det startes på nytt.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>Nettstedsserveren for nettlesere kjører ikke. Den starter med BPS Relay med mindre -siteproxy=0 ble angitt.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 peker ikke til noen nøkkel.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 peker nå til en annen nøkkel enn sist du åpnet det. Den som har navnet nå, er kanskje ikke den du leste før.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>Møtt ved et av møtepunktene, gjennom %1 av reléene dine: verken du eller verten får vite hvor den andre er.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>Nådd på adressen sin gjennom %1 reléer: verten får ikke vite hvem du er.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>Ditt eget nettsted, lest fra denne datamaskinen.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>Det nås over radio, så sider kommer sakte.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 er ikke et navn denne noden kjenner: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>Kunne ikke åpne %1: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>Denne lenken fører utenfor BPS, så den ble ikke fulgt: %1
+Åpne den i en vanlig nettleser om du vil; den som driver den, vil se adressen din.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>Koble til et program</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>Navnet nettstedet ga programmet sitt:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>Åpne et nettsted i nettleseren</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>Nettleseren din vil be denne datamaskinen om nettstedet, og BPS Relay henter det over overleggsnettet, slik som her. Hver side kan bare laste fra sitt eget nettsted, så den kan ikke hente noe fra det åpne internettet for å finne ut hvor du er.
+
+Hva en nettleser likevel kan gjøre: et skript kan bruke WebRTC til å vise en side denne datamaskinens adresser, og en lenke du følger til et vanlig nettsted, går ut som enhver lenke. Visningen i BPS Relay kjører ingen skript og forblir den tryggeste måten å lese et skjult nettsted på.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>Lagre filen</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>Kunne ikke lagre %1.</translation>
     </message>
 </context>
 <context>

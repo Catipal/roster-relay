@@ -1121,6 +1121,10 @@ Podpisovanie je možné iba s adresami typu &apos;legacy&apos;.</translation>
         <source>Not staking</source>
         <translation>Bez stakingu</translation>
     </message>
+    <message>
+        <source>Sites</source>
+        <translation>Stránky</translation>
+    </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
@@ -1275,6 +1279,92 @@ Podpisovanie je možné iba s adresami typu &apos;legacy&apos;.</translation>
     <message>
         <source>delegated to %1 for cold staking</source>
         <translation>delegované na %1 na studený staking</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionLimitsDialog</name>
+    <message>
+        <source>Limits for %1</source>
+        <translation>Limity pre %1</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet, fees included.</source>
+        <translation>Koľko smie tento telefón minúť z peňaženky vreckového, vrátane poplatkov.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Najviac v jednej platbe</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Najviac za 24 hodín</translation>
+    </message>
+</context>
+<context>
+    <name>CompanionPairDialog</name>
+    <message>
+        <source>Pair a phone</source>
+        <translation>Spárovať telefón</translation>
+    </message>
+    <message>
+        <source>In the BPS app on the phone, choose Pair and scan this code. Or copy the text under it into the app. It works once, for ten minutes.</source>
+        <translation>V aplikácii BPS v telefóne zvoľte Spárovať a naskenujte tento kód. Alebo skopírujte text pod ním do aplikácie. Funguje raz, desať minút.</translation>
+    </message>
+    <message>
+        <source>Copy the code</source>
+        <translation>Kopírovať kód</translation>
+    </message>
+    <message>
+        <source>Show a new code</source>
+        <translation>Zobraziť nový kód</translation>
+    </message>
+    <message>
+        <source>Pair only if the phone shows these same six digits. If it shows others, someone else answered the code first: reject, and show a new one.</source>
+        <translation>Párujte, len ak telefón ukazuje tých istých šesť číslic. Ak ukazuje iné, niekto iný odpovedal na kód skôr: odmietnite a zobrazte nový.</translation>
+    </message>
+    <message>
+        <source>What this phone may spend from the allowance wallet. Only this node can change it later, never the phone.</source>
+        <translation>Koľko smie tento telefón minúť z peňaženky vreckového. Neskôr to môže zmeniť len tento uzol, nikdy telefón.</translation>
+    </message>
+    <message>
+        <source>Most in one payment</source>
+        <translation>Najviac v jednej platbe</translation>
+    </message>
+    <message>
+        <source>Most in any 24 hours</source>
+        <translation>Najviac za 24 hodín</translation>
+    </message>
+    <message>
+        <source>Reject</source>
+        <translation>Odmietnuť</translation>
+    </message>
+    <message>
+        <source>Pair this phone</source>
+        <translation>Spárovať tento telefón</translation>
+    </message>
+    <message>
+        <source>Making a code…</source>
+        <translation>Vytvára sa kód…</translation>
+    </message>
+    <message>
+        <source>This code has expired.</source>
+        <translation>Platnosť tohto kódu vypršala.</translation>
+    </message>
+    <message>
+        <source>Waiting for the phone… the code works for %1 more minutes.</source>
+        <translation>Čaká sa na telefón… kód platí ešte %1 min.</translation>
+    </message>
+    <message>
+        <source>This build cannot draw QR codes: copy the text below into the app instead.</source>
+        <translation>Táto zostava nevie kresliť QR kódy: namiesto toho skopírujte text nižšie do aplikácie.</translation>
+    </message>
+    <message>
+        <source>A phone called “%1” wants to pair with this node.</source>
+        <translation>Telefón s názvom „%1“ sa chce spárovať s týmto uzlom.</translation>
+    </message>
+    <message>
+        <source>Paired. The phone can now spend from the allowance wallet within the limits you set. Its list is on the Server page, where you can change its limits, unlock it after too many wrong PINs, or unpair it.</source>
+        <translation>Spárované. Telefón teraz môže míňať z peňaženky vreckového v limitoch, ktoré ste nastavili. Jeho zoznam je na stránke Server, kde mu môžete zmeniť limity, odomknúť ho po príliš mnohých chybných PIN alebo ho odpárovať.</translation>
     </message>
 </context>
 <context>
@@ -1450,7 +1540,7 @@ Podpisovanie je možné iba s adresami typu &apos;legacy&apos;.</translation>
     </message>
     <message>
         <source>Find a peer or an address</source>
-        <translation>Nájsť partnera alebo adresu</translation>
+        <translation type="vanished">Nájsť partnera alebo adresu</translation>
     </message>
     <message>
         <source>Key copied</source>
@@ -1587,6 +1677,38 @@ Kľúč na obnovenie sa vám zobrazí raz. Zapíšte si ho: je to jediný spôso
     <message>
         <source>Peers announce themselves on the chain rather than to a server, so this list is the same for everyone and nobody is in a position to edit it. A peer listed through the overlay shows where it can be met today, which changes every day; a relay shows its address only while it is online, since it is never on the chain.</source>
         <translation>Partneri sa ohlasujú v reťazci, nie na serveri, takže tento zoznam je pre všetkých rovnaký a nikto ho nemôže upraviť. Partner zapísaný cez prekryvnú sieť ukazuje, kde ho možno dnes zastihnúť, čo sa mení každý deň; relé ukazuje svoju adresu len vtedy, keď je online, pretože v reťazci nikdy nie je.</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Meno</translation>
+    </message>
+    <message>
+        <source>Register a name…</source>
+        <translation>Zaregistrovať meno…</translation>
+    </message>
+    <message>
+        <source>A name is how others reach you without copying your key. Names are registered on the Names tab.</source>
+        <translation>Meno umožňuje ostatným zastihnúť vás bez kopírovania kľúča. Mená sa registrujú na karte Mená.</translation>
+    </message>
+    <message>
+        <source>Find a peer, a note or an address</source>
+        <translation>Nájsť partnera, poznámku alebo adresu</translation>
+    </message>
+    <message>
+        <source>These names all resolve to this node&apos;s key. Others can reach you by any of them.</source>
+        <translation>Všetky tieto mená vedú na kľúč tohto uzla. Ostatní vás môžu zastihnúť ktorýmkoľvek z nich.</translation>
+    </message>
+    <message>
+        <source>Manage names…</source>
+        <translation>Spravovať mená…</translation>
+    </message>
+    <message>
+        <source>names off</source>
+        <translation>mená vypnuté</translation>
+    </message>
+    <message>
+        <source>Names need the name index. Turn it on in Settings to register and show one.</source>
+        <translation>Mená potrebujú index mien. Zapnite ho v Nastaveniach, aby ste mohli nejaké zaregistrovať a zobraziť.</translation>
     </message>
 </context>
 <context>
@@ -3218,15 +3340,15 @@ Kľúč na obnovenie sa vám zobrazí raz. Zapíšte si ho: je to jediný spôso
     </message>
     <message>
         <source>This writes a short record to the chain saying that you exist, and optionally where to find you.</source>
-        <translation>Týmto sa do reťazca zapíše krátky záznam, ktorý hovorí, že existujete, a voliteľne, kde vás nájsť.</translation>
+        <translation type="vanished">Týmto sa do reťazca zapíše krátky záznam, ktorý hovorí, že existujete, a voliteľne, kde vás nájsť.</translation>
     </message>
     <message>
         <source>How should peers reach you?</source>
-        <translation>Ako vás majú partneri zastihnúť?</translation>
+        <translation type="vanished">Ako vás majú partneri zastihnúť?</translation>
     </message>
     <message>
         <source>Through the overlay — publish no address</source>
-        <translation>Cez prekryvnú sieť — bez zverejnenia adresy</translation>
+        <translation type="vanished">Cez prekryvnú sieť — bez zverejnenia adresy</translation>
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay instead, meeting you at points both sides work out from the roster. This is what this client turns on by default.</source>
@@ -3234,35 +3356,35 @@ Kľúč na obnovenie sa vám zobrazí raz. Zapíšte si ho: je to jediný spôso
     </message>
     <message>
         <source>At an address I publish</source>
-        <translation>Na adrese, ktorú zverejním</translation>
+        <translation type="vanished">Na adrese, ktorú zverejním</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation>IPv4</translation>
+        <translation type="vanished">IPv4</translation>
     </message>
     <message>
         <source>IPv6</source>
-        <translation>IPv6</translation>
+        <translation type="vanished">IPv6</translation>
     </message>
     <message>
         <source>Onion</source>
-        <translation>Onion</translation>
+        <translation type="vanished">Onion</translation>
     </message>
     <message>
         <source>I2P</source>
-        <translation>I2P</translation>
+        <translation type="vanished">I2P</translation>
     </message>
     <message>
         <source>cjdns</source>
-        <translation>cjdns</translation>
+        <translation type="vanished">cjdns</translation>
     </message>
     <message>
         <source>address other peers can reach</source>
-        <translation>adresa, na ktorej vás zastihnú iní partneri</translation>
+        <translation type="vanished">adresa, na ktorej vás zastihnú iní partneri</translation>
     </message>
     <message>
         <source>Anyone can see it, and the chain keeps it permanently. An onion address publishes a location nobody can trace back to you and works from behind NAT; an IP address does neither. A node that publishes an IP address can be chosen as a relay by others.</source>
-        <translation>Ktokoľvek ho uvidí a reťazec ho uchová navždy. Onion adresa zverejní umiestnenie, ktoré k vám nikto nevystopuje, a funguje za NAT; IP adresa nerobí ani jedno. Uzol, ktorý zverejní IP adresu, si ostatní môžu vybrať ako relé.</translation>
+        <translation type="vanished">Ktokoľvek ho uvidí a reťazec ho uchová navždy. Onion adresa zverejní umiestnenie, ktoré k vám nikto nevystopuje, a funguje za NAT; IP adresa nerobí ani jedno. Uzol, ktorý zverejní IP adresu, si ostatní môžu vybrať ako relé.</translation>
     </message>
     <message>
         <source>Who pays the fee</source>
@@ -3306,7 +3428,7 @@ Kľúč na obnovenie sa vám zobrazí raz. Zapíšte si ho: je to jediný spôso
     </message>
     <message>
         <source>Your node signs the listing and sends it over the overlay to the relay it enters through. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
-        <translation>Váš uzol zápis podpíše a pošle ho cez prekryvnú sieť relé, cez ktoré vstupuje. Relé, ktoré platí za zápisy, vloží ten váš do bloku, ktorý samo vytvorí, takže sa potvrdí, aj keď by ho väčšina uzlov nepreposlala, a pridá vás k partnerom, s ktorými zdieľa odmeny. Ak neskôr prestane platiť, váš zápis do mesiaca vyprší; vždy ho môžete obnoviť sami z peňaženky s prostriedkami.</translation>
+        <translation type="vanished">Váš uzol zápis podpíše a pošle ho cez prekryvnú sieť relé, cez ktoré vstupuje. Relé, ktoré platí za zápisy, vloží ten váš do bloku, ktorý samo vytvorí, takže sa potvrdí, aj keď by ho väčšina uzlov nepreposlala, a pridá vás k partnerom, s ktorými zdieľa odmeny. Ak neskôr prestane platiť, váš zápis do mesiaca vyprší; vždy ho môžete obnoviť sami z peňaženky s prostriedkami.</translation>
     </message>
     <message>
         <source>This node isn&apos;t staking. A listing is bigger than older nodes pass on, so until most stakers upgrade it confirms only when a staker running this version includes it, which can take a while. Staking puts it in your own next block; a relay that pays stakes it into its own.</source>
@@ -3322,11 +3444,11 @@ Kľúč na obnovenie sa vám zobrazí raz. Zapíšte si ho: je to jediný spôso
     </message>
     <message>
         <source>Enter an address, or choose not to publish one.</source>
-        <translation>Zadajte adresu, alebo zvoľte, že žiadnu nezverejníte.</translation>
+        <translation type="vanished">Zadajte adresu, alebo zvoľte, že žiadnu nezverejníte.</translation>
     </message>
     <message>
         <source>Asking your relay to publish it… this can take up to half a minute.</source>
-        <translation>Žiadame vaše relé o zverejnenie… môže to trvať až pol minúty.</translation>
+        <translation type="vanished">Žiadame vaše relé o zverejnenie… môže to trvať až pol minúty.</translation>
     </message>
     <message>
         <source>That wallet is no longer open.</source>
@@ -3358,11 +3480,11 @@ Kľúč na obnovenie sa vám zobrazí raz. Zapíšte si ho: je to jediný spôso
     </message>
     <message>
         <source>List this relay&apos;s gateway</source>
-        <translation>Zapísať bránu tohto prenosového uzla</translation>
+        <translation type="vanished">Zapísať bránu tohto prenosového uzla</translation>
     </message>
     <message>
         <source>A relay&apos;s own listing carries its address, so its gateway is listed under a second key with no address, apart from it. Nobody can tell from the roster that the two belong to one computer. Visitors reach the gateway through relays, so it never learns who they are; the websites they visit see this computer&apos;s address.</source>
-        <translation>Zápis prenosového uzla obsahuje jeho adresu, preto sa jeho brána zapisuje pod druhým kľúčom bez adresy, oddelene. Nikto z registra nespozná, že oba patria jednému počítaču. Návštevníci sa k bráne dostávajú cez prenosové uzly, takže sa nikdy nedozvie, kto sú; weby, ktoré navštevujú, vidia adresu tohto počítača.</translation>
+        <translation type="vanished">Zápis prenosového uzla obsahuje jeho adresu, preto sa jeho brána zapisuje pod druhým kľúčom bez adresy, oddelene. Nikto z registra nespozná, že oba patria jednému počítaču. Návštevníci sa k bráne dostávajú cez prenosové uzly, takže sa nikdy nedozvie, kto sú; weby, ktoré navštevujú, vidia adresu tohto počítača.</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
@@ -3378,11 +3500,11 @@ Kľúč na obnovenie sa vám zobrazí raz. Zapíšte si ho: je to jediný spôso
     </message>
     <message>
         <source>Another relay pays, asked through a path</source>
-        <translation>Platí iné relé, požiadané cez ďalšie relé</translation>
+        <translation type="vanished">Platí iné relé, požiadané cez ďalšie relé</translation>
     </message>
     <message>
         <source>Your node signs the gateway&apos;s listing and sends it through relays to another relay, which pays for it and puts it into a block it stakes. That relay learns the gateway&apos;s key and never this computer&apos;s address. Paying from this node&apos;s own wallet would tie the gateway to this relay on the chain, and so to its address.</source>
-        <translation>Váš uzol podpíše zápis brány a pošle ho cez relé inému relé, ktoré zaň zaplatí a vloží ho do bloku, ktorý samo vytvorí. Toto relé sa dozvie kľúč brány, nikdy adresu tohto počítača. Platba z vlastnej peňaženky tohto uzla by na reťazci spojila bránu s týmto relé, a teda s jeho adresou.</translation>
+        <translation type="vanished">Váš uzol podpíše zápis brány a pošle ho cez relé inému relé, ktoré zaň zaplatí a vloží ho do bloku, ktorý samo vytvorí. Toto relé sa dozvie kľúč brány, nikdy adresu tohto počítača. Platba z vlastnej peňaženky tohto uzla by na reťazci spojila bránu s týmto relé, a teda s jeho adresou.</translation>
     </message>
     <message>
         <source>Asking a relay through a path to publish it… this can take a minute.</source>
@@ -3398,7 +3520,7 @@ Kľúč na obnovenie sa vám zobrazí raz. Zapíšte si ho: je to jediný spôso
     </message>
     <message>
         <source>Your listing says who you are and not where you run. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one. This is what this client turns on by default.</source>
-        <translation>Váš zápis hovorí, kto ste, a nie kde bežíte. Partneri vás zastihnú cez prekryvnú sieť a stretnú sa s vami v bodoch, ktoré obe strany vypočítajú z registra a ktoré sa každý deň menia; Objavovať ukazuje tie dnešné. Váš zápis tiež menuje jedno relé, kde vás možno zastihnúť, kým platí, a každé obnovenie menuje nové. Toto tento klient zapína predvolene.</translation>
+        <translation type="vanished">Váš zápis hovorí, kto ste, a nie kde bežíte. Partneri vás zastihnú cez prekryvnú sieť a stretnú sa s vami v bodoch, ktoré obe strany vypočítajú z registra a ktoré sa každý deň menia; Objavovať ukazuje tie dnešné. Váš zápis tiež menuje jedno relé, kde vás možno zastihnúť, kým platí, a každé obnovenie menuje nové. Toto tento klient zapína predvolene.</translation>
     </message>
     <message>
         <source>Carry others&apos; paths as a relay</source>
@@ -3418,15 +3540,59 @@ Kľúč na obnovenie sa vám zobrazí raz. Zapíšte si ho: je to jediný spôso
     </message>
     <message>
         <source>This node shares its internet connection as a gateway, as set on the Server page, so the listing says so.</source>
-        <translation>Tento uzol zdieľa svoje pripojenie na internet ako brána, ako je nastavené na stránke Server, takže to zápis uvádza.</translation>
+        <translation type="vanished">Tento uzol zdieľa svoje pripojenie na internet ako brána, ako je nastavené na stránke Server, takže to zápis uvádza.</translation>
     </message>
     <message>
         <source>This node neither relays for others nor shares its internet connection, as set on the Server page.</source>
-        <translation>Tento uzol neprenáša pre ostatných ani nezdieľa svoje pripojenie na internet, ako je nastavené na stránke Server.</translation>
+        <translation type="vanished">Tento uzol neprenáša pre ostatných ani nezdieľa svoje pripojenie na internet, ako je nastavené na stránke Server.</translation>
     </message>
     <message>
         <source>A change there reaches the roster with your next listing.</source>
         <translation>Zmena tam sa do registra dostane s vaším ďalším zápisom.</translation>
+    </message>
+    <message>
+        <source>This writes a short record to the chain saying that you exist, and optionally a line about you.</source>
+        <translation>Týmto sa do reťazca zapíše krátky záznam, že existujete, a voliteľne riadok o vás.</translation>
+    </message>
+    <message>
+        <source>What your listing says</source>
+        <translation>Čo hovorí váš zápis</translation>
+    </message>
+    <message>
+        <source>Your listing says who you are and not where you run: it carries no address. Peers reach you over the overlay, meeting you at points both sides work out from the roster, which change every day; Discovery shows today&apos;s. Your listing also names one relay where you can be met for as long as it lasts, and each renewal names a new one.</source>
+        <translation>Váš zápis hovorí, kto ste, a nie kde bežíte: neobsahuje žiadnu adresu. Partneri vás zastihnú cez prekryvnú sieť a stretnú sa s vami v bodoch, ktoré obe strany odvodia z registra a ktoré sa každý deň menia; Objavovanie ukazuje dnešné. Váš zápis tiež menuje jedno relé, kde vás možno zastihnúť, kým trvá, a každé obnovenie menuje nové.</translation>
+    </message>
+    <message>
+        <source>Note</source>
+        <translation>Poznámka</translation>
+    </message>
+    <message>
+        <source>optional: a line shown beside your key</source>
+        <translation>voliteľné: riadok zobrazený vedľa vášho kľúča</translation>
+    </message>
+    <message>
+        <source>Anyone can read it, and the chain keeps it for good, even after the listing ends. Leave out anything that says where you are or who you are, if that matters to you.</source>
+        <translation>Ktokoľvek si ju môže prečítať a reťazec ju uchová navždy, aj po skončení zápisu. Vynechajte všetko, čo hovorí, kde ste alebo kto ste, ak vám na tom záleží.</translation>
+    </message>
+    <message>
+        <source>Your node signs the listing and sends it through a path to a relay it does not enter through, so that relay learns who you are and not where. A relay that pays for listings puts yours into a block it stakes itself, so it confirms even while most nodes would not pass it on, and adds you to the peers it shares its rewards with. If it later stops paying, your listing lapses within the month; you can always renew from a funded wallet yourself.</source>
+        <translation>Váš uzol zápis podpíše a pošle ho cestou na relé, cez ktoré nevstupuje, takže sa to relé dozvie, kto ste, a nie kde. Relé, ktoré platí za zápisy, vloží váš do bloku, ktorý samo stakuje, takže sa potvrdí, aj kým by ho väčšina uzlov neposunula ďalej, a pridá vás medzi partnerov, s ktorými delí svoje odmeny. Ak neskôr prestane platiť, váš zápis do mesiaca vyprší; vždy ho môžete obnoviť sami z peňaženky s prostriedkami.</translation>
+    </message>
+    <message>
+        <source>%1 / %2 bytes</source>
+        <translation>%1 / %2 bajtov</translation>
+    </message>
+    <message>
+        <source>Too long: letters outside plain English take two to four bytes each.</source>
+        <translation>Príliš dlhá: písmená mimo jednoduchej angličtiny zaberajú po dva až štyri bajty.</translation>
+    </message>
+    <message>
+        <source>The note is too long.</source>
+        <translation>Poznámka je príliš dlhá.</translation>
+    </message>
+    <message>
+        <source>The note can&apos;t contain control characters or marks that change the direction of text.</source>
+        <translation>Poznámka nesmie obsahovať riadiace znaky ani značky meniace smer textu.</translation>
     </message>
 </context>
 <context>
@@ -3606,6 +3772,14 @@ Kľúč na obnovenie sa vám zobrazí raz. Zapíšte si ho: je to jediný spôso
     <message>
         <source>Enter a BitcoinPoS address (e.g. %1)</source>
         <translation>Zadajte adresu BitcoinPoS (napr. %1)</translation>
+    </message>
+    <message>
+        <source>Set both limits.</source>
+        <translation>Nastavte oba limity.</translation>
+    </message>
+    <message>
+        <source>One payment cannot be allowed more than a whole day.</source>
+        <translation>Jedna platba nesmie povoliť viac ako celý deň.</translation>
     </message>
 </context>
 <context>
@@ -4307,6 +4481,14 @@ vypočítaných z registra; menia sa každý deň:</translation>
         <source>meets at %1</source>
         <translation>stretnutie pri %1</translation>
     </message>
+    <message>
+        <source>Note</source>
+        <translation>Poznámka</translation>
+    </message>
+    <message>
+        <source>Written by whoever holds this key; nobody checks it.</source>
+        <translation>Napísal ju ten, kto drží tento kľúč; nikto ju nekontroluje.</translation>
+    </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -4790,7 +4972,7 @@ Poznámka: Keďže poplatok je počítaný za bajt, poplatok o hodnote &quot;100
     </message>
     <message>
         <source>A site or service served from this node, found by its key or name and reached over the overlay, so the host never publishes where it runs. The meeting part exists: a service registers at rendezvous points both sides work out from the roster. Serving pages and apps through it is not built yet.</source>
-        <translation>Web alebo služba poskytovaná z tohto uzla, nájdená podľa kľúča alebo mena a dosiahnuteľná cez prekryvnú sieť, takže hostiteľ nikdy nezverejní, kde beží. Časť na stretávanie existuje: služba sa registruje v bodoch stretnutia, ktoré obe strany vypočítajú z registra. Poskytovanie stránok a aplikácií cez ňu zatiaľ nie je hotové.</translation>
+        <translation type="vanished">Web alebo služba poskytovaná z tohto uzla, nájdená podľa kľúča alebo mena a dosiahnuteľná cez prekryvnú sieť, takže hostiteľ nikdy nezverejní, kde beží. Časť na stretávanie existuje: služba sa registruje v bodoch stretnutia, ktoré obe strany vypočítajú z registra. Poskytovanie stránok a aplikácií cez ňu zatiaľ nie je hotové.</translation>
     </message>
     <message>
         <source>Relay</source>
@@ -5014,7 +5196,7 @@ Toto môžete kedykoľvek zmeniť na stránke Server.</translation>
     </message>
     <message>
         <source>What this node offers other people. Relaying, holding mail and sharing the internet run today; hosting is on the way, and like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
-        <translation>Čo tento uzol ponúka ostatným. Prenášanie, uchovávanie pošty a zdieľanie internetu fungujú už dnes; hosting je na ceste a ako všetko tu sa nájde rovnako ako uzly — cez register. Mená majú vlastnú stránku.</translation>
+        <translation type="vanished">Čo tento uzol ponúka ostatným. Prenášanie, uchovávanie pošty a zdieľanie internetu fungujú už dnes; hosting je na ceste a ako všetko tu sa nájde rovnako ako uzly — cez register. Mená majú vlastnú stránku.</translation>
     </message>
     <message>
         <source>Gateway</source>
@@ -5030,7 +5212,7 @@ Toto môžete kedykoľvek zmeniť na stránke Server.</translation>
     </message>
     <message>
         <source>Listed as</source>
-        <translation>Zapísané ako</translation>
+        <translation type="vanished">Zapísané ako</translation>
     </message>
     <message>
         <source>Today</source>
@@ -5042,15 +5224,15 @@ Toto môžete kedykoľvek zmeniť na stránke Server.</translation>
     </message>
     <message>
         <source>List as a gateway…</source>
-        <translation>Zapísať ako bránu…</translation>
+        <translation type="vanished">Zapísať ako bránu…</translation>
     </message>
     <message>
         <source>Share this computer&apos;s internet connection as a gateway</source>
-        <translation>Zdieľať internetové pripojenie tohto počítača ako bránu</translation>
+        <translation type="vanished">Zdieľať internetové pripojenie tohto počítača ako bránu</translation>
     </message>
     <message>
         <source>Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection. With it off, this node still relays, holds mail and stays on the chain, and uses its own connection directly.</source>
-        <translation>Vypnite ho, ak zákon v mieste, kde žijete, alebo podmienky vášho poskytovateľa internetu zdieľanie pripojenia zakazujú. Vypnutý uzol ďalej prenáša, uchováva poštu a sleduje reťazec a vlastné pripojenie používa priamo.</translation>
+        <translation type="vanished">Vypnite ho, ak zákon v mieste, kde žijete, alebo podmienky vášho poskytovateľa internetu zdieľanie pripojenia zakazujú. Vypnutý uzol ďalej prenáša, uchováva poštu a sleduje reťazec a vlastné pripojenie používa priamo.</translation>
     </message>
     <message>
         <source>no limit</source>
@@ -5066,11 +5248,11 @@ Toto môžete kedykoľvek zmeniť na stránke Server.</translation>
     </message>
     <message>
         <source>Let programs on this computer use the network&apos;s internet, through a local proxy</source>
-        <translation>Dovoliť programom na tomto počítači používať internet siete cez miestnu proxy</translation>
+        <translation type="vanished">Dovoliť programom na tomto počítači používať internet siete cez miestnu proxy</translation>
     </message>
     <message>
         <source>A SOCKS5 proxy on this computer only. Each connection leaves through another member&apos;s gateway, and names are looked up there, never here. It works while this computer shares its own connection.</source>
-        <translation>Proxy SOCKS5 len pre tento počítač. Každé spojenie odchádza cez bránu iného člena a mená sa zisťujú tam, nikdy tu. Funguje, kým tento počítač zdieľa vlastné pripojenie.</translation>
+        <translation type="vanished">Proxy SOCKS5 len pre tento počítač. Každé spojenie odchádza cez bránu iného člena a mená sa zisťujú tam, nikdy tu. Funguje, kým tento počítač zdieľa vlastné pripojenie.</translation>
     </message>
     <message>
         <source>Waiting: %1.</source>
@@ -5106,27 +5288,27 @@ Toto môžete kedykoľvek zmeniť na stránke Server.</translation>
     </message>
     <message>
         <source>not listed as a gateway</source>
-        <translation>nezapísané ako brána</translation>
+        <translation type="vanished">nezapísané ako brána</translation>
     </message>
     <message>
         <source>not yet — the roster does not list this node as a gateway, so nobody can find it</source>
-        <translation>zatiaľ nie — register tento uzol ako bránu neuvádza, takže ho nikto nenájde</translation>
+        <translation type="vanished">zatiaľ nie — register tento uzol ako bránu neuvádza, takže ho nikto nenájde</translation>
     </message>
     <message>
         <source>nothing yet — a relay lists its gateway under a second key, with no address, apart from its own listing</source>
-        <translation>zatiaľ nič — prenosový uzol zapisuje svoju bránu pod druhým kľúčom, bez adresy, oddelene od vlastného zápisu</translation>
+        <translation type="vanished">zatiaľ nič — prenosový uzol zapisuje svoju bránu pod druhým kľúčom, bez adresy, oddelene od vlastného zápisu</translation>
     </message>
     <message>
         <source>nothing yet — this node&apos;s listing lacks the gateway option; publish it again with the option on</source>
-        <translation>zatiaľ nič — zápisu tohto uzla chýba voľba brány; zverejnite ho znova so zapnutou voľbou</translation>
+        <translation type="vanished">zatiaľ nič — zápisu tohto uzla chýba voľba brány; zverejnite ho znova so zapnutou voľbou</translation>
     </message>
     <message>
         <source>nothing yet — publish a listing with no address and the gateway option on</source>
-        <translation>zatiaľ nič — zverejnite zápis bez adresy so zapnutou voľbou brány</translation>
+        <translation type="vanished">zatiaľ nič — zverejnite zápis bez adresy so zapnutou voľbou brány</translation>
     </message>
     <message>
         <source>List this relay&apos;s gateway…</source>
-        <translation>Zapísať bránu tohto prenosového uzla…</translation>
+        <translation type="vanished">Zapísať bránu tohto prenosového uzla…</translation>
     </message>
     <message>
         <source>sharing</source>
@@ -5146,11 +5328,11 @@ Toto môžete kedykoľvek zmeniť na stránke Server.</translation>
     </message>
     <message>
         <source>its gateway key %1, apart from the relay&apos;s address</source>
-        <translation>jeho kľúč brány %1, oddelene od adresy prenosového uzla</translation>
+        <translation type="vanished">jeho kľúč brány %1, oddelene od adresy prenosového uzla</translation>
     </message>
     <message>
         <source>this node&apos;s own key %1</source>
-        <translation>vlastný kľúč tohto uzla %1</translation>
+        <translation type="vanished">vlastný kľúč tohto uzla %1</translation>
     </message>
     <message>
         <source>%1 of %2 MiB</source>
@@ -5166,11 +5348,11 @@ Toto môžete kedykoľvek zmeniť na stránke Server.</translation>
     </message>
     <message>
         <source>Carry all of this computer&apos;s traffic through the network, with no proxy setting in any program</source>
-        <translation>Viesť všetku prevádzku tohto počítača cez sieť, bez nastavenia proxy v akomkoľvek programe</translation>
+        <translation type="vanished">Viesť všetku prevádzku tohto počítača cez sieť, bez nastavenia proxy v akomkoľvek programe</translation>
     </message>
     <message>
         <source>Every program&apos;s connections leave through the network&apos;s gateways, each through another, and names are looked up there. This computer&apos;s own network — a printer, the router — and this node&apos;s own connections stay direct. It works while this computer shares its own connection.</source>
-        <translation>Spojenia každého programu odchádzajú cez brány siete, každé cez inú, a mená sa vyhľadávajú tam. Vlastná sieť tohto počítača — tlačiareň, smerovač — a vlastné spojenia tohto uzla zostávajú priame. Funguje to, kým tento počítač zdieľa svoje vlastné pripojenie.</translation>
+        <translation type="vanished">Spojenia každého programu odchádzajú cez brány siete, každé cez inú, a mená sa vyhľadávajú tam. Vlastná sieť tohto počítača — tlačiareň, smerovač — a vlastné spojenia tohto uzla zostávajú priame. Funguje to, kým tento počítač zdieľa svoje vlastné pripojenie.</translation>
     </message>
     <message>
         <source>Install the network service…</source>
@@ -5198,11 +5380,11 @@ Toto môžete kedykoľvek zmeniť na stránke Server.</translation>
     </message>
     <message>
         <source>On: %1 connection(s) through the network now; %2 sent, %3 received.</source>
-        <translation>Zapnuté: %1 spojení teraz cez sieť; odoslané %2, prijaté %3.</translation>
+        <translation type="vanished">Zapnuté: %1 spojení teraz cez sieť; odoslané %2, prijaté %3.</translation>
     </message>
     <message>
         <source>Not available on this system yet.</source>
-        <translation>V tomto systéme zatiaľ nie je k dispozícii.</translation>
+        <translation type="vanished">V tomto systéme zatiaľ nie je k dispozícii.</translation>
     </message>
     <message>
         <source>First install BPS Relay&apos;s network service, once; Windows asks for an administrator.</source>
@@ -5214,7 +5396,7 @@ Toto môžete kedykoľvek zmeniť na stránke Server.</translation>
     </message>
     <message>
         <source>Starts when the client restarts.</source>
-        <translation>Spustí sa po reštarte klienta.</translation>
+        <translation type="vanished">Spustí sa po reštarte klienta.</translation>
     </message>
     <message>
         <source>Address announced</source>
@@ -5243,6 +5425,334 @@ Toto môžete kedykoľvek zmeniť na stránke Server.</translation>
     <message>
         <source>none — relaying is switched off</source>
         <translation>žiadna — prenášanie je vypnuté</translation>
+    </message>
+    <message>
+        <source>What this node offers other people: relaying, holding mail, sharing the internet and hosting a site; and to your own phone, a way to spend from here. Like everything here it is found the same way peers are — through the roster. Names have a page of their own.</source>
+        <translation>Čo tento uzol ponúka ostatným: preposielanie, uchovávanie pošty, zdieľanie internetu a hosťovanie stránky; a vášmu vlastnému telefónu spôsob, ako míňať odtiaľto. Ako všetko tu sa to nájde rovnako ako partneri — cez register. Mená majú vlastnú stránku.</translation>
+    </message>
+    <message>
+        <source>Share this computer&apos;s internet connection, and use the network&apos;s in return</source>
+        <translation>Zdieľať internetové pripojenie tohto počítača a na oplátku používať pripojenie siete</translation>
+    </message>
+    <message>
+        <source>On, this computer&apos;s connection is shared, and all of its own traffic goes out through the network&apos;s gateways, each connection through another; this computer&apos;s own network — a printer, the router — stays direct. Switch it off if the law where you live, or your internet provider&apos;s terms, forbid sharing your connection: the network then carries only BPS itself, and this computer uses its own connection.</source>
+        <translation>Keď je zapnuté, pripojenie tohto počítača sa zdieľa a všetka jeho vlastná prevádzka odchádza cez brány siete, každé spojenie cez inú; vlastná sieť tohto počítača — tlačiareň, smerovač — zostáva priama. Vypnite to, ak zákon tam, kde žijete, alebo podmienky vášho poskytovateľa internetu zakazujú zdieľanie pripojenia: sieť potom nesie len samotné BPS a tento počítač používa vlastné pripojenie.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: on, %1 connection(s) through the network now; %2 sent, %3 received.</source>
+        <translation>Pre celý počítač: zapnuté, teraz %1 spojení cez sieť; odoslané %2, prijaté %3.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: not available on this system yet; programs can use the proxy.</source>
+        <translation>Pre celý počítač: v tomto systéme zatiaľ nedostupné; programy môžu použiť proxy.</translation>
+    </message>
+    <message>
+        <source>For the whole computer: starts when the client restarts.</source>
+        <translation>Pre celý počítač: spustí sa po reštarte klienta.</translation>
+    </message>
+    <message>
+        <source>not sharing</source>
+        <translation>nezdieľa</translation>
+    </message>
+    <message>
+        <source>no — %1</source>
+        <translation>nie — %1</translation>
+    </message>
+    <message>
+        <source>Publish a folder as a site under this node&apos;s key, so anyone you give the key or your name to can read it over the overlay. Every file is signed and checked piece by piece as it arrives. Listed with no address, this node is met at its meeting points and nobody learns where the site runs; listed at an address, visitors reach it through relays, so it never learns who they are. A program on this computer — a web application, a chat server — can be published the same way: visitors reach it over the overlay, and this node connects to nothing but the port you name.</source>
+        <translation>Zverejnite priečinok ako stránku pod kľúčom tohto uzla, aby ju každý, komu dáte kľúč alebo svoje meno, mohol čítať cez prekryvnú sieť. Každý súbor je podpísaný a pri príchode kontrolovaný kúsok po kúsku. Zapísaný bez adresy sa tento uzol zastihne vo svojich bodoch stretnutia a nikto sa nedozvie, kde stránka beží; zapísaný s adresou ho návštevníci zastihnú cez relé, takže sa nikdy nedozvie, kto sú. Program na tomto počítači — webovú aplikáciu, chatovací server — možno zverejniť rovnako: návštevníci ho zastihnú cez prekryvnú sieť a tento uzol sa pripojí len k portu, ktorý uvediete.</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Priečinok</translation>
+    </message>
+    <message>
+        <source>Reached</source>
+        <translation>Navštívené</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Odoslané</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>žiadne</translation>
+    </message>
+    <message>
+        <source>Programs on this computer that visitors reach over the overlay. A program named web is what a browser opens at this node&apos;s address when there is no site.</source>
+        <translation>Programy na tomto počítači, ktoré návštevníci zastihnú cez prekryvnú sieť. Program s názvom web je to, čo prehliadač otvorí na adrese tohto uzla, keď tu nie je stránka.</translation>
+    </message>
+    <message>
+        <source>Programs</source>
+        <translation>Programy</translation>
+    </message>
+    <message>
+        <source>Publish a folder…</source>
+        <translation>Zverejniť priečinok…</translation>
+    </message>
+    <message>
+        <source>Publish again</source>
+        <translation>Zverejniť znova</translation>
+    </message>
+    <message>
+        <source>Read the folder again after changing it, and publish what is there now.</source>
+        <translation>Po zmene znova načítať priečinok a zverejniť to, čo v ňom je teraz.</translation>
+    </message>
+    <message>
+        <source>Stop publishing</source>
+        <translation>Prestať zverejňovať</translation>
+    </message>
+    <message>
+        <source>Open in Sites</source>
+        <translation>Otvoriť v Stránkach</translation>
+    </message>
+    <message>
+        <source>Publish a program…</source>
+        <translation>Zverejniť program…</translation>
+    </message>
+    <message>
+        <source>Stop a program…</source>
+        <translation>Zastaviť program…</translation>
+    </message>
+    <message>
+        <source>not publishing</source>
+        <translation>nezverejňuje</translation>
+    </message>
+    <message>
+        <source>none — nothing is published</source>
+        <translation>žiadna — nič nie je zverejnené</translation>
+    </message>
+    <message>
+        <source>%1 — %2 file(s), %3</source>
+        <translation>%1 — súborov: %2, %3</translation>
+    </message>
+    <message>
+        <source>not listed</source>
+        <translation>nezapísané</translation>
+    </message>
+    <message>
+        <source>by nobody yet: this node is not listed in the roster, so visitors cannot find the site. Publish a listing on the Node page, under Discovery.</source>
+        <translation>zatiaľ nikým: tento uzol nie je zapísaný v registri, takže návštevníci stránku nenájdu. Zverejnite zápis na stránke Uzol v časti Objavovanie.</translation>
+    </message>
+    <message>
+        <source>publishing</source>
+        <translation>zverejňuje</translation>
+    </message>
+    <message>
+        <source>not met yet</source>
+        <translation>zatiaľ nezastihnutý</translation>
+    </message>
+    <message>
+        <source>at %1 meeting point(s), with no address published</source>
+        <translation>v %1 bodoch stretnutia, bez zverejnenej adresy</translation>
+    </message>
+    <message>
+        <source>not yet: registering at its meeting points, which needs the roster&apos;s relays</source>
+        <translation>zatiaľ nie: registruje sa vo svojich bodoch stretnutia, čo potrebuje relé registra</translation>
+    </message>
+    <message>
+        <source>at this node&apos;s address, through relays that hide the visitor</source>
+        <translation>na adrese tohto uzla, cez relé, ktoré skrývajú návštevníka</translation>
+    </message>
+    <message>
+        <source>%1 page piece(s), %2</source>
+        <translation>kúskov stránok: %1, %2</translation>
+    </message>
+    <message>
+        <source>The folder to publish as a site</source>
+        <translation>Priečinok na zverejnenie ako stránka</translation>
+    </message>
+    <message>
+        <source>Publish a program</source>
+        <translation>Zverejniť program</translation>
+    </message>
+    <message>
+        <source>A name for it, 1 to 32 of a-z, 0-9 and -. Call it web for a web application a browser should open at this node&apos;s address:</source>
+        <translation>Názov preň, 1 až 32 znakov z a-z, 0-9 a -. Nazvite ho web pre webovú aplikáciu, ktorú má prehliadač otvoriť na adrese tohto uzla:</translation>
+    </message>
+    <message>
+        <source>The port it listens on, on 127.0.0.1 (this computer only):</source>
+        <translation>Port, na ktorom počúva, na 127.0.0.1 (len tento počítač):</translation>
+    </message>
+    <message>
+        <source>Stop a program</source>
+        <translation>Zastaviť program</translation>
+    </message>
+    <message>
+        <source>Which program visitors should no longer reach:</source>
+        <translation>Ktorý program už návštevníci nemajú zastihnúť:</translation>
+    </message>
+    <message>
+        <source>%1 at 127.0.0.1:%2</source>
+        <translation>%1 na 127.0.0.1:%2</translation>
+    </message>
+    <message>
+        <source>— %1 stream(s) open</source>
+        <translation>— otvorených prúdov: %1</translation>
+    </message>
+    <message>
+        <source>Phone companion</source>
+        <translation>Telefón ako spoločník</translation>
+    </message>
+    <message>
+        <source>Spend from your phone while your coins stay here. The phone holds no coin keys: it reaches this node, proves the key it was paired with, and this node pays from a small allowance wallet — after checking the phone&apos;s PIN and the limits you set, which the phone cannot change. Lose the phone and you lose at most what the allowance holds; unpair it here. When this node is a listed relay and enough others are listed, the phone comes through three relays, so nobody watching learns where it is; otherwise it connects straight here.</source>
+        <translation>Míňajte z telefónu, kým vaše mince zostávajú tu. Telefón nedrží žiadne kľúče k minciam: zastihne tento uzol, preukáže kľúč, s ktorým bol spárovaný, a tento uzol zaplatí z malej peňaženky vreckového — po kontrole PIN telefónu a limitov, ktoré ste nastavili a ktoré telefón nemôže zmeniť. Ak stratíte telefón, stratíte najviac to, čo je vo vreckovom; odpárujte ho tu. Keď je tento uzol zapísané relé a zapísaných je dosť ďalších, telefón prichádza cez tri relé, takže nikto, kto sa pozerá, sa nedozvie, kde je; inak sa pripojí priamo sem.</translation>
+    </message>
+    <message>
+        <source>Allowance</source>
+        <translation>Vreckové</translation>
+    </message>
+    <message>
+        <source>Reachable by phones</source>
+        <translation>Dostupný pre telefóny</translation>
+    </message>
+    <message>
+        <source>Phone</source>
+        <translation>Telefón</translation>
+    </message>
+    <message>
+        <source>One payment</source>
+        <translation>Jedna platba</translation>
+    </message>
+    <message>
+        <source>A day</source>
+        <translation>Deň</translation>
+    </message>
+    <message>
+        <source>Spent today</source>
+        <translation>Dnes minuté</translation>
+    </message>
+    <message>
+        <source>State</source>
+        <translation>Stav</translation>
+    </message>
+    <message>
+        <source>Pair a phone…</source>
+        <translation>Spárovať telefón…</translation>
+    </message>
+    <message>
+        <source>Limits…</source>
+        <translation>Limity…</translation>
+    </message>
+    <message>
+        <source>Unlock</source>
+        <translation>Odomknúť</translation>
+    </message>
+    <message>
+        <source>A phone is locked after five wrong PINs in a row, until it is unlocked here.</source>
+        <translation>Telefón sa zamkne po piatich chybných PIN za sebou, kým ho tu neodomknete.</translation>
+    </message>
+    <message>
+        <source>Unpair</source>
+        <translation>Odpárovať</translation>
+    </message>
+    <message>
+        <source>Let paired phones spend from an allowance wallet</source>
+        <translation>Dovoliť spárovaným telefónom míňať z peňaženky vreckového</translation>
+    </message>
+    <message>
+        <source>Needs the overlay. Off by default, because it lets a phone spend this node&apos;s coins.</source>
+        <translation>Vyžaduje prekryvnú sieť. Predvolene vypnuté, pretože to telefónu dovolí míňať mince tohto uzla.</translation>
+    </message>
+    <message>
+        <source>A wallet of its own, with no passphrase — nobody is there to type one when the phone pays — and only what the phone should be able to spend. It never stakes, and cannot be the wallet that pays for listings.</source>
+        <translation>Samostatná peňaženka, bez hesla — nikto tu nie je, aby ho zadal, keď telefón platí — a len s tým, čo má telefón môcť minúť. Nikdy nestakuje a nemôže byť peňaženkou, ktorá platí za zápisy.</translation>
+    </message>
+    <message>
+        <source>Create it</source>
+        <translation>Vytvoriť</translation>
+    </message>
+    <message>
+        <source>Make the allowance wallet and open it whenever this node starts.</source>
+        <translation>Vytvoriť peňaženku vreckového a otvárať ju pri každom štarte tohto uzla.</translation>
+    </message>
+    <message>
+        <source>Top up…</source>
+        <translation>Dobiť…</translation>
+    </message>
+    <message>
+        <source>Open Send in the wallet, to move coins into the allowance.</source>
+        <translation>Otvoriť Odoslať v peňaženke a presunúť mince do vreckového.</translation>
+    </message>
+    <message>
+        <source>Allowance wallet</source>
+        <translation>Peňaženka vreckového</translation>
+    </message>
+    <message>
+        <source>%1: %2 %3</source>
+        <translation>%1: %2 %3</translation>
+    </message>
+    <message>
+        <source>, %1 more arriving</source>
+        <translation>, ďalších %1 prichádza</translation>
+    </message>
+    <message>
+        <source>yes, at %1, through relays</source>
+        <translation>áno, na %1, cez relé</translation>
+    </message>
+    <message>
+        <source>directly, at %1. No relays in between: a phone&apos;s network sees it talking to this computer. From outside this network, forward UDP port %2 on the router to this computer.</source>
+        <translation>priamo, na %1. Žiadne relé medzi tým: sieť telefónu vidí, že hovorí s týmto počítačom. Zvonku tejto siete presmerujte na smerovači port UDP %2 na tento počítač.</translation>
+    </message>
+    <message>
+        <source>no — this node knows no address of its own yet</source>
+        <translation>nie — tento uzol zatiaľ nepozná žiadnu vlastnú adresu</translation>
+    </message>
+    <message>
+        <source>not reachable</source>
+        <translation>nedostupný</translation>
+    </message>
+    <message>
+        <source>a phone is waiting</source>
+        <translation>telefón čaká</translation>
+    </message>
+    <message>
+        <source>no allowance</source>
+        <translation>bez vreckového</translation>
+    </message>
+    <message>
+        <source>a phone is locked</source>
+        <translation>telefón je zamknutý</translation>
+    </message>
+    <message>
+        <source>%1 phones are locked</source>
+        <translation>zamknuté telefóny: %1</translation>
+    </message>
+    <message>
+        <source>running, no phone yet</source>
+        <translation>beží, zatiaľ bez telefónu</translation>
+    </message>
+    <message>
+        <source>running, 1 phone</source>
+        <translation>beží, 1 telefón</translation>
+    </message>
+    <message>
+        <source>running, %1 phones</source>
+        <translation>beží, telefónov: %1</translation>
+    </message>
+    <message>
+        <source>Device key %1</source>
+        <translation>Kľúč zariadenia %1</translation>
+    </message>
+    <message>
+        <source>locked: wrong PINs</source>
+        <translation>zamknuté: chybné PIN</translation>
+    </message>
+    <message>
+        <source>paired</source>
+        <translation>spárované</translation>
+    </message>
+    <message>
+        <source>Unpair %1</source>
+        <translation>Odpárovať %1</translation>
+    </message>
+    <message>
+        <source>Unpair %1? It will not be able to spend again until it is paired anew. Do this at once if the phone is lost or stolen.</source>
+        <translation>Odpárovať %1? Nebude môcť míňať, kým nebude znova spárovaný. Urobte to hneď, ak sa telefón stratil alebo bol ukradnutý.</translation>
+    </message>
+    <message>
+        <source>Created and opened the allowance wallet. Use Top up to move into it what the phone should be able to spend.</source>
+        <translation>Peňaženka vreckového bola vytvorená a otvorená. Pomocou Dobiť do nej presuňte, čo má telefón môcť minúť.</translation>
     </message>
 </context>
 <context>
@@ -5374,6 +5884,30 @@ Toto môžete kedykoľvek zmeniť na stránke Server.</translation>
     <message>
         <source>The node is still starting; core settings are not available yet.</source>
         <translation>Uzol sa stále spúšťa; základné nastavenia zatiaľ nie sú k dispozícii.</translation>
+    </message>
+    <message>
+        <source>Others meet you at relays worked out from the roster, and your node keeps a path open to each of them through this many relays. The meeting point sees only the last of them, never your address. More hides you better and is slower.</source>
+        <translation>Ostatní sa s vami stretávajú pri relé odvodených z registra a váš uzol drží ku každému z nich otvorenú cestu cez toľko relé. Bod stretnutia vidí len posledné z nich, nikdy vašu adresu. Viac vás lepšie skryje a je pomalšie.</translation>
+    </message>
+    <message>
+        <source>Relays before your meeting points</source>
+        <translation>Relé pred vašimi bodmi stretnutia</translation>
+    </message>
+    <message>
+        <source>When this computer uses the network&apos;s internet, each connection goes through this many relays to a gateway&apos;s meeting point, and through the gateway&apos;s own after it: the gateway never learns who you are. More hides you better and is slower.</source>
+        <translation>Keď tento počítač používa internet siete, každé spojenie ide cez toľko relé k bodu stretnutia brány a potom cez relé samotnej brány: brána sa nikdy nedozvie, kto ste. Viac vás lepšie skryje a je pomalšie.</translation>
+    </message>
+    <message>
+        <source>Relays before a gateway&apos;s meeting point</source>
+        <translation>Relé pred bodom stretnutia brány</translation>
+    </message>
+    <message>
+        <source>Only your first connection is direct, to an entry relay that sees your address and not who you are. Mail always goes through three relays.</source>
+        <translation>Len vaše prvé spojenie je priame, k vstupnému relé, ktoré vidí vašu adresu, a nie kto ste. Pošta ide vždy cez tri relé.</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Verzia %1</translation>
     </message>
 </context>
 <context>
@@ -5536,6 +6070,147 @@ Toto môžete kedykoľvek zmeniť na stránke Server.</translation>
     <message>
         <source>Message verified.</source>
         <translation>Správa overená.</translation>
+    </message>
+</context>
+<context>
+    <name>SitesPage</name>
+    <message>
+        <source>Sites</source>
+        <translation>Stránky</translation>
+    </message>
+    <message>
+        <source>Sites hosted over the overlay, opened by a name or a key that someone shared with you. Pages are shown here with no scripts, and nothing on them is fetched from outside BPS, so a page cannot learn where you are.</source>
+        <translation>Stránky hosťované cez prekryvnú sieť, otvárané menom alebo kľúčom, ktorý vám niekto dal. Stránky sa tu zobrazujú bez skriptov a nič na nich sa nenačítava zvonku BPS, takže sa stránka nemôže dozvedieť, kde ste.</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Späť</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Dopredu</translation>
+    </message>
+    <message>
+        <source>Fetch the page again</source>
+        <translation>Znova načítať stránku</translation>
+    </message>
+    <message>
+        <source>bps://name/ or a site&apos;s key</source>
+        <translation>bps://meno/ alebo kľúč stránky</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Otvoriť</translation>
+    </message>
+    <message>
+        <source>Save this file…</source>
+        <translation>Uložiť tento súbor…</translation>
+    </message>
+    <message>
+        <source>Open in your browser</source>
+        <translation>Otvoriť v prehliadači</translation>
+    </message>
+    <message>
+        <source>The same site in an ordinary browser, through a server on this computer only. Pages there may run scripts, so the viewer here stays the safer way to read a hidden site.</source>
+        <translation>Tá istá stránka v bežnom prehliadači, cez server len na tomto počítači. Stránky tam môžu spúšťať skripty, takže prehliadač tu zostáva bezpečnejším spôsobom, ako čítať skrytú stránku.</translation>
+    </message>
+    <message>
+        <source>Connect to a program…</source>
+        <translation>Pripojiť k programu…</translation>
+    </message>
+    <message>
+        <source>Reach a program this site runs - a chat server, a game - from a program on this computer: BPS Relay listens on a port here and carries each connection to it over the overlay.</source>
+        <translation>Zastihnúť program, ktorý táto stránka prevádzkuje — chatovací server, hru — z programu na tomto počítači: BPS Relay tu počúva na porte a nesie každé spojenie k nemu cez prekryvnú sieť.</translation>
+    </message>
+    <message>
+        <source>That is not a site&apos;s address. Write a name or a key, like bps://pilot/.</source>
+        <translation>To nie je adresa stránky. Napíšte meno alebo kľúč, napríklad bps://pilot/.</translation>
+    </message>
+    <message>
+        <source>Looking up %1…</source>
+        <translation>Vyhľadáva sa %1…</translation>
+    </message>
+    <message>
+        <source>Fetching %1 over the overlay…</source>
+        <translation>Načítava sa %1 cez prekryvnú sieť…</translation>
+    </message>
+    <message>
+        <source>%1 is not a page this viewer shows (%2 bytes). Save it to open it with another program.</source>
+        <translation>%1 nie je stránka, ktorú tento prehliadač zobrazuje (%2 bajtov). Uložte ju a otvorte iným programom.</translation>
+    </message>
+    <message>
+        <source>Point the program on this computer at %1: BPS Relay carries every connection made there to the site&apos;s program, over the overlay, until it restarts.</source>
+        <translation>Nasmerujte program na tomto počítači na %1: BPS Relay nesie každé spojenie vytvorené tam k programu stránky cez prekryvnú sieť, kým sa nereštartuje.</translation>
+    </message>
+    <message>
+        <source>The site server for browsers is not running. It starts with BPS Relay unless -siteproxy=0 was given.</source>
+        <translation>Server stránok pre prehliadače nebeží. Spúšťa sa s BPS Relay, ak nebolo zadané -siteproxy=0.</translation>
+    </message>
+    <message>
+        <source>%1 does not resolve to a key.</source>
+        <translation>%1 nevedie na žiadny kľúč.</translation>
+    </message>
+    <message>
+        <source>%1 now points to a different key than when you last opened it. Whoever holds the name now may not be who you read before.</source>
+        <translation>%1 teraz vedie na iný kľúč než pri poslednom otvorení. Kto meno drží teraz, nemusí byť ten, koho ste čítali predtým.</translation>
+    </message>
+    <message>
+        <source>Met at one of its meeting points, through %1 relays of yours: neither you nor the host learns where the other is.</source>
+        <translation>Zastihnuté v jednom z jeho bodov stretnutia, cez %1 vašich relé: ani vy, ani hostiteľ sa nedozviete, kde je ten druhý.</translation>
+    </message>
+    <message>
+        <source>Reached at its address through %1 relays: the host does not learn who you are.</source>
+        <translation>Zastihnuté na svojej adrese cez %1 relé: hostiteľ sa nedozvie, kto ste.</translation>
+    </message>
+    <message>
+        <source>Your own site, read from this computer.</source>
+        <translation>Vaša vlastná stránka, čítaná z tohto počítača.</translation>
+    </message>
+    <message>
+        <source>It is reached over the radio, so pages come slowly.</source>
+        <translation>Dosahuje sa rádiom, takže stránky prichádzajú pomaly.</translation>
+    </message>
+    <message>
+        <source>%1 is not a name this node knows: %2</source>
+        <translation>%1 nie je meno, ktoré tento uzol pozná: %2</translation>
+    </message>
+    <message>
+        <source>Could not open %1: %2</source>
+        <translation>Nedá sa otvoriť %1: %2</translation>
+    </message>
+    <message>
+        <source>This link leads outside BPS, so it was not followed: %1
+Open it in an ordinary browser if you choose to; whoever runs it will see your address.</source>
+        <translation>Tento odkaz vedie mimo BPS, preto nebol otvorený: %1
+Otvorte ho v bežnom prehliadači, ak chcete; kto ho prevádzkuje, uvidí vašu adresu.</translation>
+    </message>
+    <message>
+        <source>Connect to a program</source>
+        <translation>Pripojiť k programu</translation>
+    </message>
+    <message>
+        <source>The name the site gave its program:</source>
+        <translation>Názov, ktorý stránka dala svojmu programu:</translation>
+    </message>
+    <message>
+        <source>Opening a site in your browser</source>
+        <translation>Otvorenie stránky v prehliadači</translation>
+    </message>
+    <message>
+        <source>Your browser will ask this computer for the site, and BPS Relay fetches it over the overlay, as it does here. Each page may load only from its own site, so it cannot pull anything from the open internet to learn where you are.
+
+What a browser can still do: a script can use WebRTC to show a page this computer&apos;s addresses, and a link you follow to an ordinary site leaves as any link does. The viewer in BPS Relay runs no scripts and stays the safer way to read a hidden site.</source>
+        <translation>Váš prehliadač požiada tento počítač o stránku a BPS Relay ju načíta cez prekryvnú sieť, rovnako ako tu. Každá stránka smie načítavať len zo svojej vlastnej stránky, takže nemôže z otvoreného internetu stiahnuť nič, aby zistila, kde ste.
+
+Čo prehliadač napriek tomu dokáže: skript môže cez WebRTC ukázať stránke adresy tohto počítača a odkaz na bežnú stránku odchádza ako každý odkaz. Prehliadač v BPS Relay nespúšťa žiadne skripty a zostáva bezpečnejším spôsobom, ako čítať skrytú stránku.</translation>
+    </message>
+    <message>
+        <source>Save the file</source>
+        <translation>Uložiť súbor</translation>
+    </message>
+    <message>
+        <source>Could not save %1.</source>
+        <translation>%1 sa nedá uložiť.</translation>
     </message>
 </context>
 <context>

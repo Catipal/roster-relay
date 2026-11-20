@@ -95,7 +95,7 @@ jobs:
       - name: Install build tools
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends ninja-build
+          sudo apt-get install -y --no-install-recommends ninja-build libgl-dev libegl-dev
           yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null
           "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" \
             "ndk;$NDK_VERSION" "platforms;android-37.0" "build-tools;37.0.0" > /dev/null
@@ -132,7 +132,7 @@ jobs:
       - name: Install flatpak-builder and the KDE runtime
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends flatpak flatpak-builder
+          sudo apt-get install -y --no-install-recommends flatpak flatpak-builder elfutils
           flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
           flatpak install --user -y --noninteractive flathub org.kde.Sdk//6.11 org.kde.Platform//6.11
 

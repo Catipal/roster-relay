@@ -130,7 +130,8 @@ cmake --build build
 **Android.** `tools/android.sh [abi...]` builds Qt 6.12, ZXing-C++ and
 QtKeychain for Android from source, checks every download against its
 checksum, and writes unsigned packages to `~/bps-mobile/out`. The script's
-header lists what it needs: a JDK 21, the Android SDK and NDK, CMake and Ninja.
+header lists what it needs: a JDK 21, the Android SDK and NDK, CMake, Ninja
+and the OpenGL headers (on Debian and Ubuntu, `libgl-dev` and `libegl-dev`).
 
 **Flatpak:**
 

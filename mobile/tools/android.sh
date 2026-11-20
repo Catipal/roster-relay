@@ -11,7 +11,8 @@
 #
 # from the app's repository, or mobile/tools/android.sh in the BPS tree.
 #
-# Needs: a JDK 21, CMake 3.21+, Ninja, a C++ compiler for the host Qt, and an
+# Needs: a JDK 21, CMake 3.21+, Ninja, a C++ compiler and the OpenGL headers
+# (libgl-dev, libegl-dev) for the host Qt, and an
 # Android SDK at $ANDROID_SDK_ROOT with build-tools;37.0.0, platforms;android-37.0
 # (Qt 6.12 compiles against it; the app targets 36) and ndk;$NDK_VERSION.
 # Everything else is fetched and checked against the checksums below, except

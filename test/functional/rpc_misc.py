@@ -69,12 +69,15 @@ class RpcMiscTest(BitcoinTestFramework):
         self.restart_node(0, ["-txindex", "-blockfilterindex"])
         self.wait_until(lambda: all(i["synced"] for i in node.getindexinfo().values()))
 
-        # Returns a list of all running indices by default
+        # Returns a list of all running indices by default. A bare
+        # -blockfilterindex turns on every filter type, and BPS has the
+        # roster filter as well as the basic one.
         assert_equal(
             node.getindexinfo(),
             {
                 "txindex": {"synced": True, "best_block_height": 200},
-                "basic block filter index": {"synced": True, "best_block_height": 200}
+                "basic block filter index": {"synced": True, "best_block_height": 200},
+                "roster block filter index": {"synced": True, "best_block_height": 200},
             }
         )
 

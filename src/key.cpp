@@ -15,7 +15,7 @@
 #include <secp256k1_schnorrsig.h>
 
 // OpenSSL is here only for EnsureLowS, which block validation uses. A phone
-// validates no blocks, so its build (mobile/core, BPS_MOBILE) leaves both out.
+// validates no blocks, so its build (the companion app's core, BPS_MOBILE) leaves both out.
 #ifndef BPS_MOBILE
 #include <openssl/bn.h>
 #include <openssl/ecdsa.h>

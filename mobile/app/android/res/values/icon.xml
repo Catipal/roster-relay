@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- The logo's own orange (#f18c21 in src/qt/res/src/bitcoin.svg). -->
-    <color name="icon_background">#F18C21</color>
-</resources>

@@ -57,7 +57,7 @@ class Phone:
         self.test = test
         self.dir = os.path.join(test.options.tmpdir, "phone_" + name)
         # BPS_COMPANION_CLI runs the scenario with another build of the phone,
-        # such as mobile/core's, which shares no library with the node.
+        # such as the companion app's core, which shares no library with the node.
         self.binary = os.environ.get("BPS_COMPANION_CLI") or os.path.join(
             test.config["environment"]["BUILDDIR"], "src", "bps-companion-cli" + test.config["environment"]["EXEEXT"])
 

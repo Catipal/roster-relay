@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- The BPS logo (src/qt/res/src/bitcoin.svg), as the wallet and BPS Relay show it,
-     with its own orange behind, so the launcher may cut any shape out of it.
-     The foreground PNGs are made from the SVG at 76/108 of each density's 108dp. -->
-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@color/icon_background" />
-    <foreground android:drawable="@mipmap/icon_foreground" />
-</adaptive-icon>

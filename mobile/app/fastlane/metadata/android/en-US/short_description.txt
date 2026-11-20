@@ -1,1 +1,0 @@
-Spend BPS from your home relay's allowance, with no coin keys on the phone

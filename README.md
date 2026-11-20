@@ -11,7 +11,8 @@ and wallets, and adds:
 - mail between the people on the roster, names for them, and sites and
   services hosted from home;
 - relays that pay for the listings of the peers who use them;
-- a companion app for phones (`mobile/`).
+- a companion app for phones, in its own repository:
+  [companion-app](https://github.com/Catipal/companion-app).
 
 Downloads are on the [Releases](../../releases) page. How to use it:
 [doc/README_bps_relay.txt](doc/README_bps_relay.txt). What is in this

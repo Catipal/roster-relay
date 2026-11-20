@@ -1626,9 +1626,16 @@ static std::vector<unsigned char> BuildAnnouncement(const UniValue& options, ros
         avoid.insert(rec.op_key);
         CKey own;
         if (roster::ReadOperationalKey(own)) avoid.insert(roster::KeyBytesOf(own));
+        // The roster first, which is what hands the selector its relays, and
+        // the entry relays drawn now: left undrawn, the meeting point named
+        // here could be drawn as one later, and an entry relay sees where this
+        // node is while the listing tells it who.
+        const std::vector<roster::RelayInfo> relays = roster::FreshRelays();
         {
             LOCK(overlay::g_selector_mutex);
             if (overlay::g_selector) {
+                std::vector<overlay::RelayCandidate> entry;
+                overlay::g_selector->Select(1, entry);
                 for (const overlay::RelayCandidate& g : overlay::g_selector->Guards()) avoid.insert(g.key);
             }
         }
@@ -1637,7 +1644,7 @@ static std::vector<unsigned char> BuildAnnouncement(const UniValue& options, ros
             avoid.insert(*live.meet_point);
         }
         std::vector<roster::KeyBytes> candidates;
-        for (const roster::RelayInfo& r : roster::FreshRelays()) {
+        for (const roster::RelayInfo& r : relays) {
             if (!avoid.count(r.key)) candidates.push_back(r.key);
         }
         // With none to draw from the listing names none, and is met at the
@@ -1854,6 +1861,9 @@ static RPCHelpMan requestlisting()
 
     std::set<roster::KeyBytes> guards;
     std::vector<overlay::RelayCandidate> entry;
+    // Reading the roster is what hands the selector its relays; with none it
+    // would draw no entry relays below and rule none out.
+    roster::FreshRelays();
     {
         LOCK(overlay::g_selector_mutex);
         if (overlay::g_selector) {

@@ -102,6 +102,14 @@ bool TxPath::SendOne(const CTransactionRef& tx, std::string& last_error, bool& d
     }
     // A relay that is not one of this node's entry relays, which see where it
     // is, nor this node. Entry relays are drawn now if no path has yet.
+    //
+    // The roster is read first: reading it is what hands the selector its
+    // relays. Asked before that, the selector has none, draws no entry relays
+    // and so rules none out; the path then draws them, and one can be the very
+    // relay chosen here. It is passed over for that path only and stays an
+    // entry relay, so every later path would enter through the relay that
+    // announced this node's own transaction.
+    const std::vector<roster::RelayInfo> relays = roster::FreshRelays();
     std::set<roster::KeyBytes> guards;
     {
         LOCK(g_selector_mutex);
@@ -112,7 +120,7 @@ bool TxPath::SendOne(const CTransactionRef& tx, std::string& last_error, bool& d
         }
     }
     std::vector<roster::KeyBytes> candidates;
-    for (const roster::RelayInfo& r : roster::FreshRelays()) {
+    for (const roster::RelayInfo& r : relays) {
         if (r.key != m_self && !guards.count(r.key)) candidates.push_back(r.key);
     }
     if (candidates.empty()) {

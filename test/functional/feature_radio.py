@@ -206,6 +206,15 @@ class RadioTest(BitcoinTestFramework):
         self.wait_until(lambda: user.getoverlayinfo().get("relay_candidates", 0) >= 1, timeout=60)
         assert_raises_rpc_error(-1, "other than this node's entry relays", user.requestlisting)
 
+        self.log.info("unless the user agrees to ask that entry relay directly, proving its key to it")
+        res = user.requestlisting({}, {"entry": True})
+        self.log.info("  %s", res)
+        assert_equal(res["relay"], self.key(0))
+        assert "relay_address" in res
+        # Answered on its merits, so the relay took the key the session proved.
+        assert_equal(res["status"], "refused")
+        assert "not staking" in res["reason"], res["reason"]
+
 
 if __name__ == '__main__':
     RadioTest().main()

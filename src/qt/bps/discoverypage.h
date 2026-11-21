@@ -92,6 +92,7 @@ private:
     int m_tip{0};
     int m_own_expiry{0}; //!< 0 when this node is not listed
     QString m_own_note;  //!< the note of the listing in force, empty when none
+    bool m_own_relay{false}; //!< whether the listing in force says this node is a relay
     bool m_index_enabled{false};
 };
 

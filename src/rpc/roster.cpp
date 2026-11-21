@@ -1821,6 +1821,11 @@ static RPCHelpMan requestlisting()
         "learn both: a random listed one unless named. A relay that is a radio neighbour is\n"
         "asked directly instead: it knows this node's key from its radio announcement, and a\n"
         "node with one relay in range could build no path. Needs -overlay.\n"
+        "\nWhile the roster lists no relay but this node's entry relays - fewer than three\n"
+        "relays in all - there is nobody else to ask. With \"entry\" this node then asks an\n"
+        "entry relay directly, proving its roster key to it: that relay learns this node's\n"
+        "address and key together, which a path exists to avoid. Refused while another\n"
+        "relay could be asked.\n"
         "\nThe relay puts the listing into a block it stakes itself, which is how it\n"
         "confirms while most nodes still refuse to relay records. A relay that stakes\n"
         "rarely asks for a record that can wait longer to confirm; this call signs\n"
@@ -1829,14 +1834,15 @@ static RPCHelpMan requestlisting()
             {"options", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED_NAMED_ARG, "As for createannouncement.", {}, "options"},
             {"relay", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED_NAMED_ARG, "The relay to ask, instead of a random one.",
                 {
-                    {"key", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "The relay's operational key, as the roster lists it. Not one of this node's entry relays."},
+                    {"key", RPCArg::Type::STR_HEX, RPCArg::Optional::OMITTED, "The relay's operational key, as the roster lists it. Not one of this node's entry relays, unless with entry."},
+                    {"entry", RPCArg::Type::BOOL, /* default */ "false", "Ask an entry relay directly when the roster lists no other relay, letting it see this node's address with its key."},
                 }},
         },
         RPCResult{
             RPCResult::Type::OBJ, "", "", {
                 {RPCResult::Type::STR, "status", "published, refused or unanswered"},
                 {RPCResult::Type::STR_HEX, "relay", "Key of the relay that was asked"},
-                {RPCResult::Type::STR, "relay_address", /* optional */ true, "The radio neighbour's address it was asked at; absent when asked through a path"},
+                {RPCResult::Type::STR, "relay_address", /* optional */ true, "The address it was asked at directly - a radio neighbour, or an entry relay with entry; absent when asked through a path"},
                 {RPCResult::Type::STR_HEX, "key", "The key listed: this node's operational key"},
                 {RPCResult::Type::NUM, "expiry_height", "Height the listing stops counting"},
                 {RPCResult::Type::NUM, "confirm_window", "Blocks the listing could wait to confirm and still count"},
@@ -1846,6 +1852,7 @@ static RPCHelpMan requestlisting()
         RPCExamples{
             HelpExampleCli("requestlisting", "")
           + HelpExampleCli("requestlisting", "'{}' '{\"key\":\"<hex>\"}'")
+          + HelpExampleCli("requestlisting", "'{}' '{\"entry\":true}'")
         },
         [&](const RPCHelpMan& self, const JSONRPCRequest& request) -> UniValue
 {
@@ -1883,37 +1890,74 @@ static RPCHelpMan requestlisting()
         }
         return false;
     };
+    // Relays that could be asked through a path: listed, and neither this node
+    // nor one of its entry relays.
+    std::vector<roster::KeyBytes> others;
+    for (const roster::RelayInfo& r : roster::FreshRelays()) {
+        if (r.key != node && !guards.count(r.key)) others.push_back(r.key);
+    }
+    std::sort(others.begin(), others.end());
+    others.erase(std::unique(others.begin(), others.end()), others.end());
+
     roster::KeyBytes relay_key{};
-    CService radio_at;
+    CService radio_at; // where a relay is asked directly: on the radio, or with entry
     bool radio = false;
+    bool direct = false; // an entry relay asked over the internet, at the user's choice
+    bool entry_ok = false;
+    bool chosen = false;
     if (!request.params[1].isNull()) {
-        const std::vector<unsigned char> key = ParseHexV(find_value(request.params[1].get_obj(), "key"), "key");
-        if (key.size() != relay_key.size()) {
-            throw JSONRPCError(RPC_INVALID_PARAMETER, "key must be 32 bytes of hex, as the roster lists it");
+        const UniValue& choice = request.params[1].get_obj();
+        const UniValue& entry_v = find_value(choice, "entry");
+        entry_ok = entry_v.isBool() && entry_v.get_bool();
+        const UniValue& key_v = find_value(choice, "key");
+        if (!key_v.isNull()) {
+            const std::vector<unsigned char> key = ParseHexV(key_v, "key");
+            if (key.size() != relay_key.size()) {
+                throw JSONRPCError(RPC_INVALID_PARAMETER, "key must be 32 bytes of hex, as the roster lists it");
+            }
+            std::copy(key.begin(), key.end(), relay_key.begin());
+            chosen = true;
+            radio = radio_address(relay_key, radio_at);
+            if (!radio && guards.count(relay_key)) {
+                if (!entry_ok) {
+                    throw JSONRPCError(RPC_INVALID_PARAMETER,
+                        "That relay is one of this node's entry relays, which see where it is. Ask another.");
+                }
+                if (!others.empty()) {
+                    throw JSONRPCError(RPC_INVALID_PARAMETER,
+                        "Another relay can be asked through a path, so an entry relay is not asked directly.");
+                }
+                direct = true;
+            }
         }
-        std::copy(key.begin(), key.end(), relay_key.begin());
-        radio = radio_address(relay_key, radio_at);
-        if (!radio && guards.count(relay_key)) {
-            throw JSONRPCError(RPC_INVALID_PARAMETER,
-                "That relay is one of this node's entry relays, which see where it is. Ask another.");
-        }
-    } else if (!entry.empty() && radio_address(entry[0].key, radio_at)) {
-        // The entry relay is a radio neighbour (-radioentry): ask it.
-        relay_key = entry[0].key;
-        radio = true;
-    } else {
-        std::vector<roster::KeyBytes> others;
-        for (const roster::RelayInfo& r : roster::FreshRelays()) {
-            if (r.key != node && !guards.count(r.key)) others.push_back(r.key);
-        }
-        std::sort(others.begin(), others.end());
-        others.erase(std::unique(others.begin(), others.end()), others.end());
-        if (others.empty()) {
+    }
+    if (!chosen) {
+        if (!entry.empty() && radio_address(entry[0].key, radio_at)) {
+            // The entry relay is a radio neighbour (-radioentry): ask it.
+            relay_key = entry[0].key;
+            radio = true;
+        } else if (!others.empty()) {
+            relay_key = others[GetRand(others.size())];
+        } else if (entry_ok && !entry.empty()) {
+            // Nobody else to ask, and the user agreed to show this entry
+            // relay who it is.
+            relay_key = entry[0].key;
+            direct = true;
+        } else {
             throw JSONRPCError(RPC_MISC_ERROR,
                 "The roster lists no relay to ask other than this node's entry relays. Try again once more "
-                "relays are listed, or publish from a funded wallet with publishrecord.");
+                "relays are listed, ask an entry relay directly with entry (it then sees this node's "
+                "address with its key), or publish from a funded wallet with publishrecord.");
         }
-        relay_key = others[GetRand(others.size())];
+    }
+    if (direct) {
+        bool found = false;
+        for (const roster::RelayInfo& r : roster::FreshRelays()) {
+            if (r.key != relay_key) continue;
+            radio_at = roster::OverlayAddressFor(r.addr);
+            found = radio_at.IsValid();
+        }
+        if (!found) throw JSONRPCError(RPC_MISC_ERROR, "The roster gives no address this node can reach that relay at.");
     }
     if (relay_key == node) throw JSONRPCError(RPC_INVALID_PARAMETER, "A node cannot ask itself to pay for its listing.");
 
@@ -1934,8 +1978,12 @@ static RPCHelpMan requestlisting()
     const std::chrono::seconds radio_wait{240 + 2 * std::chrono::duration_cast<std::chrono::seconds>(exchange).count()};
     const std::chrono::seconds answer_wait{60};
     const auto ask = [&](const std::vector<unsigned char>& record, bool& answered) {
-        return radio ? roster::RequestListing(radio_at, relay_pubkey, record, connect_wait, radio_wait, answered)
-                     : roster::RequestListingOverPath(relay_key, record, hops, answer_wait, answered);
+        if (radio) return roster::RequestListing(radio_at, relay_pubkey, record, connect_wait, radio_wait, answered);
+        if (direct) {
+            return roster::RequestListing(radio_at, relay_pubkey, record, std::chrono::seconds{30}, answer_wait,
+                                          answered, /* prove_roster_key */ true);
+        }
+        return roster::RequestListingOverPath(relay_key, record, hops, answer_wait, answered);
     };
     bool answered = false;
     roster::ListingOutcome outcome = ask(raw, answered);
@@ -1963,7 +2011,7 @@ static RPCHelpMan requestlisting()
     UniValue out(UniValue::VOBJ);
     out.pushKV("status", outcome.ok ? "published" : answered ? "refused" : "unanswered");
     out.pushKV("relay", HexStr(relay_key));
-    if (radio) out.pushKV("relay_address", radio_at.ToString());
+    if (radio || direct) out.pushKV("relay_address", radio_at.ToString());
     out.pushKV("key", HexStr(rec.op_key));
     out.pushKV("expiry_height", (uint64_t)rec.expiry_height);
     out.pushKV("confirm_window", (int64_t)rec.expiry_height - (int64_t)roster::MIN_TTL - tip_now);

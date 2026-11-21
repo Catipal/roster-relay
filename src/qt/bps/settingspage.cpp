@@ -37,6 +37,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QScrollArea>
 #include <QSettings>
 #include <QSpinBox>
 #include <QVBoxLayout>
@@ -108,7 +109,17 @@ void SettingsPage::ApplyStoredSettings()
 SettingsPage::SettingsPage(const PlatformStyle* platform_style, QWidget* parent)
     : QWidget(parent), m_platform_style(platform_style)
 {
-    QVBoxLayout* outer = new QVBoxLayout(this);
+    // In a scroll area, as the Server page is: in a window shorter than the
+    // page the rows would otherwise be squeezed until they overlap.
+    QVBoxLayout* page = new QVBoxLayout(this);
+    page->setContentsMargins(0, 0, 0, 0);
+    QScrollArea* scroll = new QScrollArea(this);
+    scroll->setWidgetResizable(true);
+    scroll->setFrameShape(QFrame::NoFrame);
+    page->addWidget(scroll);
+    QWidget* content = new QWidget(scroll);
+    scroll->setWidget(content);
+    QVBoxLayout* outer = new QVBoxLayout(content);
     outer->setContentsMargins(24, 18, 24, 12);
     outer->setSpacing(8);
 

@@ -8,6 +8,7 @@
 #include <qt/bps/bpsutil.h>
 #include <qt/bps/publishdialog.h>
 #include <qt/bps/rostermodel.h>
+#include <qt/bps/serverpage.h>
 
 #include <qt/clientmodel.h>
 
@@ -338,7 +339,10 @@ void DiscoveryPage::onMakeIdentity()
 void DiscoveryPage::onPublishClicked()
 {
     const bool renewing = m_own_expiry > m_tip;
-    PublishDialog dialog(m_rpc, m_wallets, m_tip, renewing, renewing ? m_own_note : QString(), this);
+    // Before the renewal window: only to make the listing say what the Server
+    // page now says about relaying (UpdateListingSummary).
+    const bool updating = renewing && m_own_expiry - m_tip > (int)roster::RENEW_WINDOW;
+    PublishDialog dialog(m_rpc, m_wallets, m_tip, renewing, renewing ? m_own_note : QString(), this, updating);
     connect(&dialog, &PublishDialog::published, this, [this](const QString& txid, bool by_relay) {
         m_error->setVisible(true);
         m_error->setText(by_relay
@@ -371,11 +375,24 @@ void DiscoveryPage::UpdateListingSummary()
         // Renewal opens in the listing's last three days, the same rule a relay
         // applies before paying, so a month already paid for is not cut short.
         const bool can_renew = blocks_left <= (int)roster::RENEW_WINDOW;
-        m_publish->setText(can_renew ? tr("Renew your listing\xe2\x80\xa6")
-                                     : tr("Renew in the last 3 days"));
-        m_publish->setToolTip(can_renew ? QString()
-            : tr("Your listing ends in %1. Renewing opens three days before it does.").arg(left));
-        m_publish->setEnabled(can_renew);
+        // Others find relays by the listing, so one that no longer says what
+        // the Server page does can be replaced at once, not only at renewal.
+        const bool relay_now = ServerPage::RelaySwitchedOn();
+        if (!can_renew && m_own_relay != relay_now) {
+            m_publish->setText(tr("Update your listing\xe2\x80\xa6"));
+            m_publish->setToolTip(relay_now
+                ? tr("Relaying is switched on on the Server page, but your listing does not say this node "
+                     "is a relay, so nobody finds it as one. Updating writes a fresh record that says it is.")
+                : tr("Your listing says this node is a relay, but relaying is switched off on the Server "
+                     "page. Updating writes a fresh record that says it is not."));
+            m_publish->setEnabled(true);
+        } else {
+            m_publish->setText(can_renew ? tr("Renew your listing\xe2\x80\xa6")
+                                         : tr("Renew in the last 3 days"));
+            m_publish->setToolTip(can_renew ? QString()
+                : tr("Your listing ends in %1. Renewing opens three days before it does.").arg(left));
+            m_publish->setEnabled(can_renew);
+        }
         Q_EMIT listingChanged(tr("listed, ends in %1").arg(left), true);
     }
 }
@@ -508,6 +525,7 @@ void DiscoveryPage::onRpcResult(const QString& tag, const UniValue& value)
         // history also holds delegations naming this key, which are not listings.
         m_own_expiry = 0;
         m_own_note.clear();
+        m_own_relay = false;
         if (value.isArray()) {
             for (size_t i = 0; i < value.size(); ++i) {
                 if (find_value(value[i], "type").getValStr() != "announce") continue;
@@ -515,6 +533,7 @@ void DiscoveryPage::onRpcResult(const QString& tag, const UniValue& value)
                 if (expiry.isNum()) m_own_expiry = expiry.get_int();
                 // The listing in force, so a renewal offers its note again.
                 m_own_note = QString::fromStdString(find_value(value[i], "note").getValStr());
+                m_own_relay = find_value(value[i], "relay").isTrue();
             }
         }
         UpdateListingSummary();

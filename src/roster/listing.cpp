@@ -12,6 +12,7 @@
 #include <overlay/radio.h>
 #include <overlay/relay.h>
 #include <random.h>
+#include <roster/keystore.h>
 #include <roster/payout.h>
 #include <rpc/server.h>
 #include <sync.h>
@@ -457,14 +458,20 @@ CService OverlayAddressFor(const CService& endpoint)
 ListingOutcome RequestListing(const CService& relay_addr, const CPubKey& relay_key,
                               const std::vector<unsigned char>& record,
                               std::chrono::seconds connect_timeout,
-                              std::chrono::seconds answer_timeout, bool& answered)
+                              std::chrono::seconds answer_timeout, bool& answered,
+                              bool prove_roster_key)
 {
     answered = false;
     if (!overlay::g_overlay) return Refused("The overlay is off, so there is no way to reach a relay.");
     if (!relay_key.IsFullyValid()) return Refused("That is not a valid relay key.");
 
-    // Only to a radio neighbour (requestlisting): over the radio this node
-    // proves its roster key, which its radio announcement shows anyway.
+    // To a radio neighbour (requestlisting): over the radio this node proves
+    // its roster key, which its radio announcement shows anyway. Over the
+    // internet only to an entry relay the user chose to show it to.
+    CKey own;
+    if (prove_roster_key && !ReadOperationalKey(own)) {
+        return Refused("This node has no roster key to prove.");
+    }
     //
     // A fresh handshake every time rather than trusting a session left over
     // from before: if the relay has restarted since, its half of the old
@@ -479,7 +486,9 @@ ListingOutcome RequestListing(const CService& relay_addr, const CPubKey& relay_k
     const auto pause = std::chrono::milliseconds{3000} + overlay::RadioAirtime(relay_addr, overlay::RADIO_GREETING_BYTES);
     bool connected = false;
     while (!connected && std::chrono::steady_clock::now() < deadline) {
-        if (!overlay::g_overlay->Connect(relay_addr, relay_key)) {
+        const bool started = prove_roster_key ? overlay::g_overlay->ConnectAs(relay_addr, relay_key, own)
+                                              : overlay::g_overlay->Connect(relay_addr, relay_key);
+        if (!started) {
             return Refused("Could not start a session with the relay.");
         }
         const auto retry = std::min(deadline, std::chrono::steady_clock::now() + pause);

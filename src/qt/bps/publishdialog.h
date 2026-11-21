@@ -54,9 +54,13 @@ class PublishDialog : public QDialog
     Q_OBJECT
 
 public:
-    /** `note` is the current listing's note, offered again when renewing. */
+    /**
+     * `note` is the current listing's note, offered again when renewing.
+     * `updating` replaces a listing before its renewal window, to change what it
+     * says about relaying; a relay pays only for renewals, so a wallet pays.
+     */
     PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bool renewing,
-                  const QString& note, QWidget* parent = nullptr);
+                  const QString& note, QWidget* parent = nullptr, bool updating = false);
     ~PublishDialog();
 
 Q_SIGNALS:
@@ -84,6 +88,7 @@ private:
     BpsRpc& m_rpc;
     WalletController* m_wallets;
     const int m_tip;
+    const bool m_updating;
 
     bool m_overlay_on{false};
     int m_relays{-1}; //!< relays this node could ask, -1 until known
@@ -95,6 +100,9 @@ private:
     QComboBox* m_length{nullptr};    //!< a month or a year, when this node pays
     QLabel* m_length_fixed{nullptr}; //!< a month, when a relay pays
     QLabel* m_payer_note{nullptr};
+    //! Ask an entry relay directly, offered only while the roster lists no
+    //! other relay (requestlisting's "entry").
+    QCheckBox* m_ask_entry{nullptr};
     QLabel* m_status{nullptr};
     QDialogButtonBox* m_buttons{nullptr};
     QPushButton* m_publish{nullptr};

@@ -101,9 +101,19 @@ decides how long it lasts:
   its address and, unless it relays itself, a key made for each connection,
   never its roster key.
 
+  A node enters through two relays of its own, so a relay that pays can be
+  reached this way only once at least three are listed. Until then the window
+  offers **Ask my entry relay directly**: that relay then sees your IP address
+  together with your key, and you have to tick it yourself.
+
 A listing can be renewed in its last three days and not before. Renewing is
 always done by hand: a peer leaves simply by not renewing, and stops costing
 its relay when the month runs out.
+
+Whether a listing says you are a relay comes from the **Relay** switch on the
+Server page, at the moment you publish. If you change the switch while listed,
+Discovery offers **Update your listing** at once rather than in the last three
+days; your own wallet pays for it.
 
 Listings are larger than 0.21 nodes will pass on, so until most of the network
 runs 0.22 a listing confirms only in a block staked by a node running this

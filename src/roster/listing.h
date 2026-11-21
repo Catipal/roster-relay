@@ -176,6 +176,12 @@ CService OverlayAddressFor(const CService& endpoint);
  * could build no path. Over the internet a node never asks the relay it
  * connects to, which sees its address (RequestListingOverPath).
  *
+ * With `prove_roster_key` it is also used over the internet, for an entry
+ * relay asked directly because the roster lists no other relay to ask
+ * (requestlisting's "entry"): the session then proves this node's roster key
+ * instead of a key made for the connection, so that relay learns this node's
+ * address and key together. Only when the user chose that.
+ *
  * Opens a session with the relay if there is none, checking that the key
  * answering at that address is the one asked for. `answered` is false when
  * the relay could not be reached or said nothing in time, so a caller can
@@ -184,7 +190,8 @@ CService OverlayAddressFor(const CService& endpoint);
 ListingOutcome RequestListing(const CService& relay_addr, const CPubKey& relay_key,
                               const std::vector<unsigned char>& record,
                               std::chrono::seconds connect_timeout,
-                              std::chrono::seconds answer_timeout, bool& answered);
+                              std::chrono::seconds answer_timeout, bool& answered,
+                              bool prove_roster_key = false);
 
 /**
  * Ask the listed relay `relay` to publish `record`, through a path of `hops`

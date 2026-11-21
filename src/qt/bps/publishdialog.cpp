@@ -20,6 +20,7 @@
 #include <chainparams.h>
 #include <net.h>
 #include <overlay/gateway.h>
+#include <overlay/select.h>
 #include <overlay/socket.h>
 #include <roster/listing.h>
 #include <util/system.h>
@@ -66,17 +67,22 @@ QLabel* SmallNote(const QString& text, QWidget* parent)
 } // namespace
 
 PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bool renewing,
-                             const QString& note, QWidget* parent)
-    : QDialog(parent), m_rpc(rpc), m_wallets(wallets), m_tip(tip)
+                             const QString& note, QWidget* parent, bool updating)
+    : QDialog(parent), m_rpc(rpc), m_wallets(wallets), m_tip(tip), m_updating(updating)
 {
-    setWindowTitle(renewing ? tr("Renew your listing") : tr("Publish your listing"));
+    setWindowTitle(updating ? tr("Update your listing")
+                            : renewing ? tr("Renew your listing") : tr("Publish your listing"));
     setMinimumWidth(540);
 
     QVBoxLayout* outer = new QVBoxLayout(this);
     outer->setSizeConstraint(QLayout::SetMinimumSize);
 
     QLabel* intro = new QLabel(
-        renewing
+        updating
+            ? tr("Updating writes a fresh record to the chain that replaces your listing, so it says "
+                 "what the Server page now says about relaying. Until it confirms, the old one still "
+                 "counts. It is paid from a wallet: a relay pays only for a renewal.")
+        : renewing
             ? tr("Renewing writes a fresh record to the chain. Until it confirms, the "
                  "old one still counts.")
             : tr("This writes a short record to the chain saying that you exist, and "
@@ -160,13 +166,18 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
     m_payer_note = SmallNote(QString(), this);
     outer->addWidget(m_payer_note);
 
+    m_ask_entry = new QCheckBox(tr("Ask my entry relay directly \xe2\x80\x94 it will see my IP address"), this);
+    m_ask_entry->setVisible(false);
+    outer->addWidget(m_ask_entry);
+
     m_status = new QLabel(this);
     m_status->setWordWrap(true);
     m_status->setTextInteractionFlags(Qt::TextSelectableByMouse);
     outer->addWidget(m_status);
 
     m_buttons = new QDialogButtonBox(QDialogButtonBox::Cancel, this);
-    m_publish = m_buttons->addButton(renewing ? tr("Renew") : tr("Publish"), QDialogButtonBox::AcceptRole);
+    m_publish = m_buttons->addButton(updating ? tr("Update") : renewing ? tr("Renew") : tr("Publish"),
+                                     QDialogButtonBox::AcceptRole);
     m_publish->setDefault(true);
     outer->addWidget(m_buttons);
 
@@ -175,6 +186,7 @@ PublishDialog::PublishDialog(BpsRpc& rpc, WalletController* wallets, int tip, bo
     connect(m_note, &QLineEdit::textChanged, this, &PublishDialog::onNoteChanged);
     connect(m_payer, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, &PublishDialog::onPayerChanged);
+    connect(m_ask_entry, &QCheckBox::toggled, this, &PublishDialog::onPayerChanged);
     connect(&m_rpc, &BpsRpc::result, this, &PublishDialog::onRpcResult);
     connect(&m_rpc, &BpsRpc::failed, this, &PublishDialog::onRpcFailed);
 
@@ -206,9 +218,10 @@ void PublishDialog::FillPayers()
         }
     }
 #endif
-    // Always offered, and the default when no wallet can pay: the user signs,
-    // the relay pays, which is how a node with no coins gets listed at all.
-    m_payer->addItem(tr("A relay pays \xe2\x80\x94 needs no coins"), RELAY);
+    // Offered, and the default when no wallet can pay: the user signs, the
+    // relay pays, which is how a node with no coins gets listed at all. Not
+    // for an early update, which a relay refuses as a renewal before its time.
+    if (!m_updating) m_payer->addItem(tr("A relay pays \xe2\x80\x94 needs no coins"), RELAY);
     m_payer->setCurrentIndex(preferred >= 0 ? preferred : m_payer->count() - 1);
     m_payer->setEnabled(m_payer->count() > 1);
     m_payer->blockSignals(false);
@@ -226,8 +239,16 @@ void PublishDialog::onPayerChanged()
     QString note;
     m_length->setVisible(!RelayChosen());
     m_length_fixed->setVisible(RelayChosen());
+    // This node enters the overlay through up to PathSelector::GUARD_COUNT
+    // relays and never asks those through a path; with no more relays listed
+    // than that, the only way is to ask one of them directly.
+    const bool only_entry = m_overlay_on && m_relays > 0 && m_relays <= (int)overlay::PathSelector::GUARD_COUNT;
+    m_ask_entry->setVisible(RelayChosen() && only_entry);
 
-    if (RelayChosen()) {
+    if (m_payer->count() == 0) {
+        note = tr("No wallet is open to pay for the update. Open one with a little BPS in it.");
+        can_publish = false;
+    } else if (RelayChosen()) {
         if (!m_overlay_on) {
             note = tr("The overlay is off, so there is no relay to ask. Turn it on in Settings, "
                       "or pay from a wallet.");
@@ -236,6 +257,13 @@ void PublishDialog::onPayerChanged()
             note = tr("No relay is listed in the roster yet, so there is nobody to ask. Pay from a "
                       "wallet, or try again once a relay has listed itself.");
             can_publish = false;
+        } else if (only_entry) {
+            note = tr("The roster lists too few relays to reach one through a path: this node enters "
+                      "the overlay through them, and asks only a relay it does not enter through, so "
+                      "that no relay learns both where you are and who you are. Until there are at "
+                      "least three, you can ask your entry relay directly. It then sees your IP "
+                      "address together with your key. Or pay from a wallet.");
+            can_publish = m_ask_entry->isChecked();
         } else {
             note = tr("Your node signs the listing and sends it through a path to a relay it does not "
                       "enter through, so that relay learns who you are and not where. A relay that pays "
@@ -303,6 +331,7 @@ void PublishDialog::SetBusy(bool busy)
     m_note->setEnabled(!busy);
     m_payer->setEnabled(!busy && m_payer->count() > 1);
     m_length->setEnabled(!busy);
+    m_ask_entry->setEnabled(!busy);
     if (!busy) onPayerChanged();
 }
 
@@ -381,7 +410,14 @@ void PublishDialog::onPublish()
 
     if (RelayChosen()) {
         SetBusy(true);
-        m_status->setText(tr("Asking a relay through a path to publish it\xe2\x80\xa6 this can take a minute."));
+        if (m_ask_entry->isVisible() && m_ask_entry->isChecked()) {
+            UniValue choice(UniValue::VOBJ);
+            choice.pushKV("entry", true);
+            params.push_back(choice);
+            m_status->setText(tr("Asking your entry relay to publish it\xe2\x80\xa6 this can take a minute."));
+        } else {
+            m_status->setText(tr("Asking a relay through a path to publish it\xe2\x80\xa6 this can take a minute."));
+        }
         m_rpc.Call(TAG_REQUEST, "requestlisting", params);
         return;
     }

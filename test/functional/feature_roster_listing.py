@@ -26,7 +26,8 @@ Seven nodes, the first six listed relays with addresses:
 What the test is about:
 
   * the user shows its relays a throwaway key, and the relays their own;
-  * naming one of the user's entry relays is refused, and one is never chosen;
+  * naming one of the user's entry relays is refused, and one is never chosen,
+    nor asked directly while another relay could be;
   * a relay that is not staking will not pay, since nothing would get the
     listing into a block;
   * the user is listed without spending anything, in a block the relay staked
@@ -110,6 +111,9 @@ class RosterListingTest(BitcoinTestFramework):
         guards = user.getoverlayinfo()["guards"]
         assert_equal(len(guards), 2)
         assert_raises_rpc_error(-8, "entry relays", user.requestlisting, {}, {"key": guards[0]})
+        # Asking one directly is only for a roster with no other relay.
+        assert_raises_rpc_error(-8, "Another relay can be asked", user.requestlisting, {},
+                                {"key": guards[0], "entry": True})
         payers = [n for n in range(PAYERS) if self.key(n) not in guards]
         idle = [n for n in range(PAYERS, USER) if self.key(n) not in guards]
         assert payers and idle

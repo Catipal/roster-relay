@@ -14,7 +14,9 @@ PoS Core one. Bitcoin PoS Core's own changes in 0.22 are in its release notes.
 How to install
 ==============
 
-Unpack the archive and run `bps-relay` (`bps-relay.exe` on Windows).
+Unpack the archive and run `bps-relay` (`bps-relay.exe` on Windows). On
+macOS, `bps-relay-0.22-osx.dmg` holds BPS Relay as an app: open it and drag
+BPS Relay to Applications.
 
 BPS Relay uses the same data directory as Bitcoin PoS Core, so it shares its
 copy of the chain and its wallets. Only one of the two can run at a time:
@@ -27,6 +29,9 @@ is the relay network.
 
 Windows: the programs are not code-signed yet, so Smart App Control may
 refuse a new build for a while, or until it has seen it before.
+
+macOS: the app is not signed or notarised either, so the first time macOS
+refuses to open it; open it from its menu (Control-click, Open) to allow it.
 
 What's in it
 ============

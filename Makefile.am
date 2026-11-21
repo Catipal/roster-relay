@@ -116,6 +116,46 @@ OSX_APP_BUILT=$(OSX_APP)/Contents/PkgInfo $(OSX_APP)/Contents/Resources/empty.lp
   $(OSX_APP)/Contents/Resources/bitcoin.icns $(OSX_APP)/Contents/Info.plist \
   $(OSX_APP)/Contents/MacOS/Bitcoin-POS-Qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings
 
+# BPS Relay as a macOS app of its own, beside the wallet: the same icon and
+# Info.plist under its own name and identifier, without the wallet's
+# bitcoinpos: links, which stay the wallet's to open.
+OSX_RELAY_APP=BPS-Relay.app
+OSX_RELAY_VOLNAME=BPS-Relay
+OSX_RELAY_DMG=$(OSX_RELAY_VOLNAME).dmg
+BPS_RELAY_BIN=$(top_builddir)/src/qt/bps-relay$(EXEEXT)
+RELAY_DEPLOY_DIR=$(top_builddir)/relay-deploy
+RELAY_DIST_DIR=$(RELAY_DEPLOY_DIR)/dist
+
+$(OSX_RELAY_APP)/Contents/PkgInfo:
+	$(MKDIR_P) $(@D)
+	@echo "APPL????" > $@
+
+$(OSX_RELAY_APP)/Contents/Resources/empty.lproj:
+	$(MKDIR_P) $(@D)
+	@touch $@
+
+$(OSX_RELAY_APP)/Contents/Info.plist: $(OSX_PLIST)
+	$(MKDIR_P) $(@D)
+	sed -e 's|<string>Bitcoin-POS-Qt</string>|<string>BPS-Relay</string>|' \
+	    -e 's|net\.bitcoinpos\.Bitcoin-POS-Qt|net.bitcoinpos.BPS-Relay|' \
+	    -e '/<key>CFBundleURLTypes<\/key>/,/^  <\/array>/d' < $< > $@
+
+$(OSX_RELAY_APP)/Contents/Resources/bitcoin.icns: $(OSX_INSTALLER_ICONS)
+	$(MKDIR_P) $(@D)
+	$(INSTALL_DATA) $< $@
+
+$(OSX_RELAY_APP)/Contents/MacOS/BPS-Relay: all-recursive
+	$(MKDIR_P) $(@D)
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(BPS_RELAY_BIN) $@
+
+$(OSX_RELAY_APP)/Contents/Resources/Base.lproj/InfoPlist.strings:
+	$(MKDIR_P) $(@D)
+	echo '{	CFBundleDisplayName = "BPS Relay"; CFBundleName = "BPS Relay"; }' > $@
+
+OSX_RELAY_APP_BUILT=$(OSX_RELAY_APP)/Contents/PkgInfo $(OSX_RELAY_APP)/Contents/Resources/empty.lproj \
+  $(OSX_RELAY_APP)/Contents/Resources/bitcoin.icns $(OSX_RELAY_APP)/Contents/Info.plist \
+  $(OSX_RELAY_APP)/Contents/MacOS/BPS-Relay $(OSX_RELAY_APP)/Contents/Resources/Base.lproj/InfoPlist.strings
+
 osx_volname:
 	echo $(OSX_VOLNAME) >$@
 
@@ -158,6 +198,33 @@ $(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/Bitcoin-POS-Qt: $(OSX_APP_BUILT) $(OSX
 	INSTALLNAMETOOL=$(INSTALLNAMETOOL)  OTOOL=$(OTOOL) STRIP=$(STRIP) $(PYTHON) $(OSX_DEPLOY_SCRIPT) $(OSX_APP) -translations-dir=$(QT_TRANSLATION_DIR) -add-qt-tr $(OSX_QT_TRANSLATIONS) -verbose 2
 
 deploydir: $(APP_DIST_EXTRAS)
+
+# BPS Relay's disk image, laid out like the wallet's in a folder of its own so
+# the two deployments do not clear each other's dist/.
+RELAY_DIST_EXTRAS=$(RELAY_DIST_DIR)/.background/$(OSX_BACKGROUND_IMAGE) $(RELAY_DIST_DIR)/.DS_Store $(RELAY_DIST_DIR)/Applications
+
+$(RELAY_DIST_DIR)/Applications:
+	@rm -f $@
+	@cd $(@D); $(LN_S) /Applications $(@F)
+
+$(RELAY_DIST_EXTRAS): $(RELAY_DIST_DIR)/$(OSX_RELAY_APP)/Contents/MacOS/BPS-Relay
+
+$(OSX_RELAY_DMG): $(RELAY_DIST_EXTRAS)
+	$(GENISOIMAGE) -no-cache-inodes -D -l -probe -V "$(OSX_RELAY_VOLNAME)" -no-pad -r -dir-mode 0755 -apple -o $@ $(RELAY_DIST_DIR)
+
+$(RELAY_DIST_DIR)/.background/$(OSX_BACKGROUND_IMAGE): $(OSX_BACKGROUND_IMAGE_DPIFILES)
+	$(MKDIR_P) $(@D)
+	$(TIFFCP) -c none $(OSX_BACKGROUND_IMAGE_DPIFILES) $@
+
+$(RELAY_DIST_DIR)/.DS_Store: $(OSX_DSSTORE_GEN)
+	$(PYTHON) $< "$@" "$(OSX_RELAY_VOLNAME)" "$(OSX_RELAY_APP)"
+
+$(RELAY_DIST_DIR)/$(OSX_RELAY_APP)/Contents/MacOS/BPS-Relay: $(OSX_RELAY_APP_BUILT) $(OSX_PACKAGING)
+	rm -rf $(RELAY_DEPLOY_DIR)
+	$(MKDIR_P) $(RELAY_DEPLOY_DIR)
+	cd $(RELAY_DEPLOY_DIR) && INSTALLNAMETOOL=$(INSTALLNAMETOOL)  OTOOL=$(OTOOL) STRIP=$(STRIP) $(PYTHON) $(abs_top_srcdir)/contrib/macdeploy/macdeployqtplus $(abs_top_builddir)/$(OSX_RELAY_APP) -translations-dir=$(QT_TRANSLATION_DIR) -add-qt-tr $(OSX_QT_TRANSLATIONS) -verbose 2
+
+deploy-relay: $(OSX_RELAY_DMG)
 endif
 
 if TARGET_DARWIN
@@ -328,7 +395,7 @@ EXTRA_DIST += \
     test/util/data/txcreatesignv2.hex \
     test/util/rpcauth-test.py
 
-CLEANFILES = $(OSX_DMG) $(BITCOIN_WIN_INSTALLER)
+CLEANFILES = $(OSX_DMG) $(OSX_RELAY_DMG) $(BITCOIN_WIN_INSTALLER)
 
 .INTERMEDIATE: $(COVERAGE_INFO)
 
@@ -353,6 +420,7 @@ clean-local: clean-docs
 	rm -rf coverage_percent.txt test_bitcoin.coverage/ total.coverage/ fuzz.coverage/ test/tmp/ cache/ $(OSX_APP)
 	rm -rf test/functional/__pycache__ test/functional/test_framework/__pycache__ test/cache share/rpcauth/__pycache__
 	rm -rf osx_volname dist/ dpi36.background.tiff dpi72.background.tiff
+	rm -rf $(OSX_RELAY_APP) relay-deploy/
 
 test-security-check:
 if TARGET_DARWIN

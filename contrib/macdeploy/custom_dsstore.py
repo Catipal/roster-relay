@@ -9,6 +9,8 @@ import sys
 
 output_file = sys.argv[1]
 package_name_ns = sys.argv[2]
+# The app the window shows beside Applications; the wallet's unless named.
+app_name = sys.argv[3] if len(sys.argv) > 3 else 'Bitcoin-POS-Qt.app'
 
 ds = DSStore.open(output_file, 'w+')
 ds['.']['bwsp'] = {
@@ -53,7 +55,7 @@ ds['.']['icvp'] = icvp
 ds['.']['vSrn'] = ('long', 1)
 
 ds['Applications']['Iloc'] = (370, 156)
-ds['Bitcoin-POS-Qt.app']['Iloc'] = (128, 156)
+ds[app_name]['Iloc'] = (128, 156)
 
 ds.flush()
 ds.close()

@@ -104,7 +104,10 @@ decides how long it lasts:
   A node enters through two relays of its own, so a relay that pays can be
   reached this way only once at least three are listed. Until then the window
   offers **Ask my entry relay directly**: that relay then sees your IP address
-  together with your key, and you have to tick it yourself.
+  together with your key, and you have to tick it yourself. A relay asked
+  this way pays for one key per internet address a month (per /64 on
+  IPv6), so made-up keys behind one connection cannot fill its list of peers
+  and take shares of its rewards.
 
 A listing can be renewed in its last three days and not before. Renewing is
 always done by hand: a peer leaves simply by not renewing, and stops costing

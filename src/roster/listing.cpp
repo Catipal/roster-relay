@@ -59,6 +59,10 @@ StakeWeightSource g_stake_weight GUARDED_BY(g_relay_mutex);
 //! request while the first payment is still unconfirmed does not pay twice;
 //! the chain answers the question once it confirms.
 std::map<KeyBytes, int> g_paid_at GUARDED_BY(g_relay_mutex);
+//! For each address a listing was asked for from directly (AddressLimitKey),
+//! the last key paid for from it and the height. Kept for a month, the
+//! length of a listing a relay pays for; like g_paid_at, not across restarts.
+std::map<std::vector<unsigned char>, std::pair<KeyBytes, int>> g_paid_from GUARDED_BY(g_relay_mutex);
 
 //! Answers given, by who asked and the request's id, so a request repeated
 //! because its answer was lost gets that answer again instead of being
@@ -73,6 +77,20 @@ constexpr int64_t GIVEN_TTL = 15 * 60;
 constexpr size_t MAX_GIVEN = 256;
 
 } // namespace
+
+std::vector<unsigned char> AddressLimitKey(const CNetAddr& addr)
+{
+    std::vector<unsigned char> out;
+    if (addr.IsIPv4()) {
+        out = addr.GetAddrBytes();
+        out.insert(out.begin(), 4);
+    } else if (addr.IsIPv6()) {
+        out = addr.GetAddrBytes();
+        out.resize(8); // the /64
+        out.insert(out.begin(), 6);
+    }
+    return out;
+}
 
 uint32_t LiveExpiry(const KeyBytes& key, int tip)
 {
@@ -153,12 +171,26 @@ ListingOutcome Decide(const overlay::Hop& from, const std::vector<unsigned char>
     ctx.already_user = std::find(users.begin(), users.end(), ctx.requester) != users.end();
     ctx.max_users = (size_t)std::max<int64_t>(0, gArgs.GetArg("-maxlistedusers", DEFAULT_MAX_LISTED_USERS));
 
+    // Asked directly, the relay sees where from: one key per address a month
+    // (AddressLimitKey). A radio neighbour's address is a port of the bridge
+    // on this computer, shared by every neighbour, so it is not counted.
+    std::vector<unsigned char> from_address;
+    if (!from.via_path && !(overlay::g_radio && overlay::g_radio->IsRadioAddress(from.addr))) {
+        from_address = AddressLimitKey(from.addr);
+    }
+
     ListingPublisher publisher;
     StakeWeightSource stake_weight;
     {
         LOCK(g_relay_mutex);
         std::map<KeyBytes, int>::const_iterator it = g_paid_at.find(ctx.requester);
         if (it != g_paid_at.end()) ctx.pending_height = it->second;
+        if (!from_address.empty()) {
+            const auto paid = g_paid_from.find(from_address);
+            if (paid != g_paid_from.end() && paid->second.first != ctx.requester) {
+                ctx.address_paid_height = paid->second.second;
+            }
+        }
         publisher = g_publisher;
         stake_weight = g_stake_weight;
     }
@@ -191,6 +223,12 @@ ListingOutcome Decide(const overlay::Hop& from, const std::vector<unsigned char>
     {
         LOCK(g_relay_mutex);
         g_paid_at[ctx.requester] = ctx.next_height;
+        if (!from_address.empty()) {
+            for (auto it = g_paid_from.begin(); it != g_paid_from.end();) {
+                it = ctx.next_height - it->second.second >= (int)MIN_TTL ? g_paid_from.erase(it) : std::next(it);
+            }
+            g_paid_from[from_address] = {ctx.requester, ctx.next_height};
+        }
     }
     // Paying for a peer's listing is what makes it one of this relay's users,
     // and the users are who the relay shares its rewards with (§8). Saving
@@ -408,6 +446,10 @@ bool CheckListingRequest(const std::vector<unsigned char>& raw, const ListingCon
     const int half = (int)MIN_TTL / 2;
     if (ctx.pending_height > 0 && ctx.next_height - ctx.pending_height < half) {
         reason = "This relay has already paid for your listing; it is waiting to confirm.";
+        return false;
+    }
+    if (ctx.address_paid_height > 0 && ctx.next_height - ctx.address_paid_height < (int)MIN_TTL) {
+        reason = "This relay has already paid for a listing asked for from your address this month.";
         return false;
     }
     if (!ctx.already_user && ctx.listed_users >= ctx.max_users) {

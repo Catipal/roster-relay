@@ -237,6 +237,36 @@ BOOST_AUTO_TEST_CASE(refuses_to_pay_twice)
     BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(peer), listed, rec, reason, needed), reason);
 }
 
+BOOST_AUTO_TEST_CASE(one_key_per_address_a_month)
+{
+    const CKey second = MakeKey(9);
+    Record rec;
+    std::string reason;
+    uint32_t needed = 0;
+
+    // Another key from the same address was paid for this month.
+    ListingContext ctx = ContextFor(second);
+    ctx.address_paid_height = NEXT_HEIGHT - 100;
+    BOOST_CHECK(!CheckListingRequest(SignedAnnounce(second), ctx, rec, reason, needed));
+    BOOST_CHECK(reason.find("from your address this month") != std::string::npos);
+
+    // A month on, the address may bring a key again.
+    ctx.address_paid_height = NEXT_HEIGHT - (int)MIN_TTL;
+    BOOST_CHECK_MESSAGE(CheckListingRequest(SignedAnnounce(second), ctx, rec, reason, needed), reason);
+
+    // What counts as one address: an IPv4 address, an IPv6 /64.
+    const auto key_of = [](const std::string& text) {
+        CNetAddr addr;
+        BOOST_REQUIRE(LookupHost(text, addr, false));
+        return AddressLimitKey(addr);
+    };
+    BOOST_CHECK(key_of("203.0.113.7") == key_of("203.0.113.7"));
+    BOOST_CHECK(key_of("203.0.113.7") != key_of("203.0.113.8"));
+    BOOST_CHECK(key_of("2001:db8:1:2::1") == key_of("2001:db8:1:2:ffff::9"));
+    BOOST_CHECK(key_of("2001:db8:1:2::1") != key_of("2001:db8:1:3::1"));
+    BOOST_CHECK(!key_of("203.0.113.7").empty());
+}
+
 BOOST_AUTO_TEST_CASE(a_full_relay_still_renews_its_own_peers)
 {
     const CKey peer = MakeKey(7);

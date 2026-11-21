@@ -112,11 +112,26 @@ struct ListingContext {
     std::string chain_id;
     uint32_t live_expiry{0};     //!< expiry of the requester's live listing, 0 if none
     int pending_height{0};       //!< height this relay last paid for it, 0 if never
+    //! Height this relay last paid for a different key that asked directly
+    //! from the same internet address, 0 if none (AddressLimitKey).
+    int address_paid_height{0};
     size_t listed_users{0};      //!< peers this relay already keeps listed
     size_t max_users{DEFAULT_MAX_LISTED_USERS};
     bool already_user{false};    //!< the requester is one of them
     uint32_t needed_window{DEFAULT_CONFIRM_WINDOW}; //!< blocks this relay needs to stake one
 };
+
+/**
+ * What a relay counts as one address when it pays for listings asked for
+ * directly, where it sees the address: an IPv4 address, or an IPv6 /64, the
+ * block one subscriber is usually given. Keys cost nothing to make; an
+ * address does, so a relay pays for one key per address a month and a crowd
+ * of made-up keys behind one connection cannot fill its list of peers and
+ * take shares of its rewards. Empty for anything else (a radio neighbour's
+ * port, an onion), which is not limited this way. Requests through a path
+ * show the relay no address, and are not limited either.
+ */
+std::vector<unsigned char> AddressLimitKey(const CNetAddr& addr);
 
 /**
  * The confirm window a relay needs, from its stake weight and the network's.
@@ -129,8 +144,9 @@ uint32_t NeededConfirmWindow(uint64_t own_weight, uint64_t network_weight);
  *
  * Refuses a record that would not be indexed, one naming a key other than the
  * requester's, a renewal asked for before the current listing's last three
- * days, a second payment while the first is still confirming, and a new peer
- * once the relay is full. Each of those would cost the relay a fee and gain
+ * days, a second payment while the first is still confirming, a second key
+ * asking directly from an address this relay paid for within the month, and
+ * a new peer once the relay is full. Each of those would cost the relay a fee and gain
  * nobody anything.
  *
  * A record that would stop counting before this relay can expect to stake it

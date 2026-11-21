@@ -50,6 +50,11 @@ const char* TAG_ROSTER = "disc:roster";
 const char* TAG_IDENTITY = "disc:identity";
 const char* TAG_DELEGATION = "disc:delegation";
 const char* TAG_NAMES = "disc:names";
+const char* TAG_PENDING = "disc:pending";
+
+//! Blocks a listing transaction may be missing from the mempool, and not yet
+//! in the history, before it is taken as dropped and the button opens again.
+const int PENDING_GONE_BLOCKS = 3;
 
 //! How many entries the table holds. The roster is bounded by the rolling
 //! window rather than by the chain, but it can still be larger than anyone
@@ -344,6 +349,11 @@ void DiscoveryPage::onPublishClicked()
     const bool updating = renewing && m_own_expiry - m_tip > (int)roster::RENEW_WINDOW;
     PublishDialog dialog(m_rpc, m_wallets, m_tip, renewing, renewing ? m_own_note : QString(), this, updating);
     connect(&dialog, &PublishDialog::published, this, [this](const QString& txid, bool by_relay) {
+        // Until it confirms the history still shows the old listing, and the
+        // button would offer to pay again.
+        m_pending_txid = txid;
+        m_pending_prev_height = m_own_last_height;
+        m_pending_gone_tip = 0;
         m_error->setVisible(true);
         m_error->setText(by_relay
             ? tr("Your relay published your listing in transaction %1. It counts once the "
@@ -360,6 +370,18 @@ void DiscoveryPage::UpdateListingSummary()
     if (!m_index_enabled) {
         m_listing_state->setText(tr("unknown"));
         Q_EMIT listingChanged(tr("roster index off"), false);
+        return;
+    }
+    if (!m_pending_txid.isEmpty()) {
+        // One payment at a time: a second click before the first confirms
+        // would only pay a second fee.
+        m_listing_state->setText(m_own_expiry > m_tip ? tr("ends in %1").arg(BpsUtil::HumanBlocks(m_own_expiry - m_tip))
+                                                      : tr("not listed"));
+        m_publish->setText(tr("Waiting for your listing to confirm"));
+        m_publish->setToolTip(tr("Transaction %1 is waiting to confirm. Publishing again before it does "
+                                 "would only pay a second fee.").arg(BpsUtil::ShortKey(m_pending_txid)));
+        m_publish->setEnabled(false);
+        Q_EMIT listingChanged(tr("waiting to confirm"), m_own_expiry > m_tip);
         return;
     }
     if (m_own_expiry == 0 || m_own_expiry <= m_tip) {
@@ -473,6 +495,12 @@ void DiscoveryPage::onRpcResult(const QString& tag, const UniValue& value)
             params.push_back(m_own_key.toStdString());
             m_rpc.Call(TAG_HISTORY, "getrosterhistory", params);
         }
+        // A listing just paid for, still to confirm (onPublishClicked).
+        if (!m_pending_txid.isEmpty()) {
+            UniValue params(UniValue::VARR);
+            params.push_back(m_pending_txid.toStdString());
+            m_rpc.Call(TAG_PENDING, "getmempoolentry", params);
+        }
         UniValue roster_params(UniValue::VARR);
         roster_params.push_back(ROSTER_PAGE);
         m_rpc.Call(TAG_ROSTER, "getroster", roster_params);
@@ -526,9 +554,12 @@ void DiscoveryPage::onRpcResult(const QString& tag, const UniValue& value)
         m_own_expiry = 0;
         m_own_note.clear();
         m_own_relay = false;
+        int last_height = 0;
         if (value.isArray()) {
             for (size_t i = 0; i < value.size(); ++i) {
                 if (find_value(value[i], "type").getValStr() != "announce") continue;
+                const UniValue& height = find_value(value[i], "height");
+                if (height.isNum()) last_height = height.get_int();
                 const UniValue& expiry = find_value(value[i], "expiry_height");
                 if (expiry.isNum()) m_own_expiry = expiry.get_int();
                 // The listing in force, so a renewal offers its note again.
@@ -536,7 +567,19 @@ void DiscoveryPage::onRpcResult(const QString& tag, const UniValue& value)
                 m_own_relay = find_value(value[i], "relay").isTrue();
             }
         }
+        m_own_last_height = last_height;
+        // The listing paid for has reached the chain: nothing waits any more.
+        if (!m_pending_txid.isEmpty() && last_height > m_pending_prev_height) {
+            m_pending_txid.clear();
+            m_pending_gone_tip = 0;
+        }
         UpdateListingSummary();
+        return;
+    }
+
+    if (tag == TAG_PENDING) {
+        // Still in the mempool, so still waiting.
+        m_pending_gone_tip = 0;
         return;
     }
 
@@ -575,6 +618,18 @@ void DiscoveryPage::onRpcFailed(const QString& tag, const QString& message)
     if (tag == TAG_HISTORY) {
         // A key with no records is a normal state, not a failure worth showing.
         m_own_expiry = 0;
+        UpdateListingSummary();
+        return;
+    }
+    if (tag == TAG_PENDING) {
+        // Not in the mempool: confirmed, which the history shows shortly, or
+        // dropped. Held a few blocks so the first is not taken for the second.
+        if (m_pending_gone_tip == 0) {
+            m_pending_gone_tip = std::max(1, m_tip);
+        } else if (m_tip - m_pending_gone_tip >= PENDING_GONE_BLOCKS) {
+            m_pending_txid.clear();
+            m_pending_gone_tip = 0;
+        }
         UpdateListingSummary();
         return;
     }

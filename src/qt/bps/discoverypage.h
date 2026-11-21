@@ -93,6 +93,10 @@ private:
     int m_own_expiry{0}; //!< 0 when this node is not listed
     QString m_own_note;  //!< the note of the listing in force, empty when none
     bool m_own_relay{false}; //!< whether the listing in force says this node is a relay
+    int m_own_last_height{0}; //!< height of this key's newest listing, 0 when none
+    QString m_pending_txid;   //!< a listing paid for from here, not yet in the history
+    int m_pending_prev_height{0}; //!< m_own_last_height when it was paid for
+    int m_pending_gone_tip{0};    //!< tip it was first missing from the mempool at, or 0
     bool m_index_enabled{false};
 };
 

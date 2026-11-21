@@ -2628,8 +2628,12 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             overlay::g_site_proxy = MakeUnique<overlay::SiteProxy>(site_port);
             std::string proxy_error;
             if (!overlay::g_site_proxy->Start(proxy_error)) {
+                // A busy port costs the browser address, not the node: the
+                // default (three above the peer-to-peer port) is a second
+                // node's RPC port when two run side by side.
                 overlay::g_site_proxy.reset();
-                return InitError(Untranslated("site proxy: " + proxy_error));
+                LogPrintf("site proxy: %s; running without it\n", proxy_error);
+                InitWarning(Untranslated("Sites will not open in a browser: " + proxy_error + "."));
             }
         }
 
@@ -2770,8 +2774,12 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
                 const uint16_t proxy_port = (uint16_t)args.GetArg("-gatewayproxyport", overlay::OverlayPortFor(GetListenPort()) + 1);
                 overlay::g_local_proxy = MakeUnique<overlay::LocalProxy>(*overlay::g_gateway_client, proxy_port);
                 if (!overlay::g_local_proxy->Start(gc_error)) {
+                    // As with the site proxy: a busy port (by default two above
+                    // the peer-to-peer one, a second node's own) loses only this
+                    // proxy, never the node.
                     overlay::g_local_proxy.reset();
-                    return InitError(Untranslated("local proxy: " + gc_error));
+                    LogPrintf("local proxy: %s; running without it\n", gc_error);
+                    InitWarning(Untranslated("The local proxy through the gateways is off: " + gc_error));
                 }
             }
             if (!interface_name.empty()) {

@@ -22,7 +22,9 @@ What the test is about:
     cleanly;
   * republishing replaces what is served, and a visitor holding the old
     manifest moves to the new one;
-  * a site is published again after a restart, until unpublishsite.
+  * a site is published again after a restart, until unpublishsite;
+  * a site proxy port that is already taken leaves the node running without
+    the proxy.
 """
 
 import base64
@@ -34,6 +36,7 @@ from test_framework.util import (
     assert_equal,
     assert_raises_rpc_error,
     p2p_port,
+    rpc_port,
 )
 
 EPOCH = 480
@@ -212,6 +215,19 @@ class SiteTest(BitcoinTestFramework):
         assert_raises_rpc_error(-1, "no site under that key", visitor.getsite, self.key(0), "index.html")
         self.restart_node(0, self.common)
         assert_equal(self.nodes[0].gethostinginfo()["publishing"], False)
+
+        self.log.info("a site proxy port another program holds costs the proxy, not the node")
+        # Node 6's RPC port: as when the default lands on a second node's.
+        busy = ["-siteproxy", "-siteproxyport=%d" % rpc_port(HIDDEN)]
+        with visitor.assert_debug_log(["running without it"]):
+            self.restart_node(VISITOR, self.common + busy)
+        visitor = self.nodes[VISITOR]
+        assert "browser" not in visitor.getsiteaddress(self.key(HIDDEN))
+        # And it says so, as a warning rather than an error.
+        visitor.stderr.seek(0)
+        warning = visitor.stderr.read().decode().strip()
+        assert warning.startswith("Warning: Sites will not open in a browser: cannot bind 127.0.0.1:%d" % rpc_port(HIDDEN)), warning
+        self.stop_node(VISITOR, expected_stderr=warning)
 
 
 if __name__ == '__main__':

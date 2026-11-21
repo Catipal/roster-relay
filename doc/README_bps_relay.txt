@@ -19,7 +19,9 @@ What changed in this version is in release-notes.md, next to this file.
 
 Setup
 -----
-Unpack the files into a directory and run bps-relay.exe.
+Unpack the files into a directory and run bps-relay.exe (on Windows) or
+bps-relay. On Linux, start it from a terminal in that directory with
+./bps-relay: file managers often do nothing when it is double-clicked.
 
 BPS Relay uses the same data directory as BitcoinPoS Core, so it shares its
 copy of the chain and its wallets. Only one of the two can run at a time.

@@ -33,6 +33,19 @@ refuse a new build for a while, or until it has seen it before.
 macOS: the app is not signed or notarised either, so the first time macOS
 refuses to open it; open it from its menu (Control-click, Open) to allow it.
 
+Linux, Raspberry Pi included: file managers often take the program for a
+library and do nothing on a double-click, so start it from a terminal in its
+folder with `./bps-relay`. Use `aarch64` on a 64-bit Raspberry Pi OS and
+`armhf` on a 32-bit one (`getconf LONG_BIT` tells which); the builds need
+glibc 2.34 or newer, as in Raspberry Pi OS Bookworm, Debian 12 or Ubuntu
+22.04; Raspberry Pi OS Bullseye is too old.
+
+Two loopback ports sit just above the peer-to-peer one: the local proxy (two
+above, 48932) and the site server for browsers (three above, 48933). If
+another node already uses them, BPS Relay now starts without that part and
+says so; give them free ports with `gatewayproxyport=` and `siteproxyport=` in
+bitcoin-pos.conf.
+
 What's in it
 ============
 

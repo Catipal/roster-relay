@@ -11,7 +11,11 @@ name: Release
 # BPS Relay, the discovery and overlay client, ships as its own archive beside
 # that one: bps-relay-<ver>/ holding bps-relay, its own release notes
 # (doc/release-notes-bps-relay.md) and doc/README_bps_relay.txt as readme.txt,
-# so the wallet archive keeps exactly the layout v0.21 had.
+# so the wallet archive keeps exactly the layout v0.21 had. On macOS it also
+# comes as BPS-Relay.app in a disk image of its own, bps-relay-<ver>-osx.dmg.
+#
+# Both are attached: the wallet's ten files as v0.21 shipped them, and BPS
+# Relay's nine, one for every platform plus the disk image.
 #
 # Run it by hand first (Actions -> Release -> Run workflow) to check a target
 # builds before committing to a tag; with no tag the archives are left as
@@ -295,6 +299,9 @@ jobs:
           # Bitcoin Core's release process does. The name comes from PACKAGE_NAME.
           make deploy
           depends/$HOST/native/bin/dmg dmg Bitcoin-PoS-Core.dmg "out/bitcoin-pos-$VER-osx.dmg"
+          # BPS Relay as an app of its own, packed the same way.
+          make deploy-relay
+          depends/$HOST/native/bin/dmg dmg BPS-Relay.dmg "out/bps-relay-$VER-osx.dmg"
           ls -l out/*.tar.gz out/*.dmg
 
       - uses: actions/upload-artifact@v4
@@ -324,10 +331,8 @@ jobs:
 
       # The notes are wrapped for reading in a terminal, but a release page shows
       # every line break, so join each paragraph and list item back into one line.
-      # This repository releases BPS Relay; Bitcoin PoS Core, built from the same
-      # tree, is released from its own repository. So the page carries BPS
-      # Relay's notes and its archives, and the wallet archives stay workflow
-      # artifacts.
+      # The page carries BPS Relay's notes, and every archive built: BPS Relay's
+      # for each platform and Bitcoin PoS Core's, built from the same tree.
       - name: Unwrap the release notes
         run: python3 contrib/devtools/unwrap-release-notes.py doc/release-notes-bps-relay.md > release-notes.md
 
@@ -340,5 +345,5 @@ jobs:
           gh release view "${GITHUB_REF_NAME}" --repo "${GITHUB_REPOSITORY}" >/dev/null 2>&1 \
             || gh release create "${GITHUB_REF_NAME}" --repo "${GITHUB_REPOSITORY}" \
                  --title "${GITHUB_REF_NAME}" --notes-file release-notes.md --draft
-          gh release upload "${GITHUB_REF_NAME}" assets/bps-relay-* \
+          gh release upload "${GITHUB_REF_NAME}" assets/* \
             --repo "${GITHUB_REPOSITORY}" --clobber

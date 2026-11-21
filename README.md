@@ -18,10 +18,23 @@ Downloads are on the [Releases](../../releases) page. How to use it:
 [doc/README_bps_relay.txt](doc/README_bps_relay.txt). What is in this
 version: [doc/release-notes-bps-relay.md](doc/release-notes-bps-relay.md).
 
+Every release carries both programs for every platform, `<ver>` being the
+version (for example `0.22`):
+
+| Platform                      | BPS Relay                                  | Bitcoin PoS Core (wallet)                    |
+|-------------------------------|--------------------------------------------|----------------------------------------------|
+| Windows, 64-bit               | `bps-relay-<ver>-win64.zip`                | `bitcoin-pos-<ver>-win64.zip`, `bitcoin-pos-qt.exe` |
+| Windows, 32-bit               | `bps-relay-<ver>-win32.zip`                | `bitcoin-pos-<ver>-win32.zip`                |
+| macOS (Intel, 10.12 or later) | `bps-relay-<ver>-osx.dmg`, `bps-relay-<ver>-osx64.tar.gz` | `bitcoin-pos-<ver>-osx.dmg`, `bitcoin-pos-<ver>-osx64.tar.gz` |
+| Linux, x86 64-bit             | `bps-relay-<ver>-x86_64-linux-gnu.tar.gz`  | `bitcoin-pos-<ver>-x86_64-linux-gnu.tar.gz`  |
+| Linux, x86 32-bit             | `bps-relay-<ver>-i686-pc-linux-gnu.tar.gz` | `bitcoin-pos-<ver>-i686-pc-linux-gnu.tar.gz` |
+| Linux, ARM 64-bit             | `bps-relay-<ver>-aarch64-linux-gnu.tar.gz` | `bitcoin-pos-<ver>-aarch64-linux-gnu.tar.gz` |
+| Linux, ARM 32-bit (armhf)     | `bps-relay-<ver>-arm-linux-gnueabihf.tar.gz` | `bitcoin-pos-<ver>-arm-linux-gnueabihf.tar.gz` |
+| Linux, RISC-V 64-bit          | `bps-relay-<ver>-riscv64-linux-gnu.tar.gz` | `bitcoin-pos-<ver>-riscv64-linux-gnu.tar.gz` |
+
 It builds from this tree like Bitcoin PoS Core (see [INSTALL.md](INSTALL.md)),
-with the GUI enabled; the program is `src/qt/bps-relay`. Bitcoin PoS Core,
-built from the same tree as `src/qt/bitcoin-pos-qt`, is released from its own
-repository.
+with the GUI enabled; the program is `src/qt/bps-relay`. Bitcoin PoS Core is
+built from the same tree as `src/qt/bitcoin-pos-qt`.
 
 The rest of this file is Bitcoin PoS Core's own introduction.
 
